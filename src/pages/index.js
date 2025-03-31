@@ -1,6 +1,7 @@
 // File: pages/index.js
 import React from 'react';
-import Head from 'next/head';
+import Head from "next/head";
+import Header from "../components/Header";
 
 export default function HomePage() {
   return (
@@ -37,200 +38,9 @@ export default function HomePage() {
       </Head>
 
       {/* ===== BODY CONTENT BELOW ===== */}
-      <body>
+     
         {/* ===== HEADER SECTION ===== */}
-        <header className="site-header">
-          {/* Mobile Menu Backdrop (hidden on large screens) */}
-          <div id="menuBackdrop" className="menu-backdrop"></div>
-
-          <div className="header-inner">
-            {/* LOGO + TOGGLE WRAPPER */}
-            <div className="logo-toggle-container">
-              {/* Hamburger Menu Button (hidden on large screens) */}
-              <button
-                id="hamburgerBtn"
-                className="menu-toggle"
-                aria-label="Toggle Menu"
-              >
-                <span className="bar"></span>
-                <span className="bar"></span>
-                <span className="bar"></span>
-              </button>
-
-              {/* Logo */}
-              <a href="index.html" className="site-logo">
-                <img src="6.jpg" alt="TravelCardInsider Logo" />
-              </a>
-            </div>
-
-            {/* NAVIGATION */}
-            <nav id="mobileNav" className="main-nav">
-              <ul className="nav-list">
-                <li className="header-actions">
-                  <div className="search-container">
-                    <input type="search" placeholder="Search..." />
-                  </div>
-                </li>
-
-                {/* Featured Cards - Dropdown */}
-                <li className="has-dropdown">
-                  <a
-                    href="javascript:void(0);"
-                    className="dropdown-toggle"
-                  >
-                    Featured Cards
-                  </a>
-                  <ul className="dropdown-menu">
-                    <li>
-                      <a href="#Best_Travel_Credit_Cards">
-                        Best Travel Credit Cards
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#Luxury_TravelCredit_Cards">
-                        Luxury Travel Credit Cards
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#Airline_Credit_Cards">Airline Credit Cards</a>
-                    </li>
-                    <li>
-                      <a href="#Hotel_Credit_Cards">Hotel Credit Cards</a>
-                    </li>
-                    <li>
-                      <a href="#No_Annual_Fee_Credit_Cards">
-                        No Annual Fee Credit Cards
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#Business_Credit_Cards">Business Credit Cards</a>
-                    </li>
-                    <li>
-                      <a href="#Balance_Transfer_Credit_Cards">
-                        0% APR &amp; Balance Transfer
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#Cards_With_Lounge_Access">
-                        Cards With Lounge Access
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#No_Foreign_Trans_Fees">
-                        No Foreign Transaction Fee Cards
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#Beginners_Travel_Credit_Cards">
-                        Beginners Travel Cards
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-
-                {/* Tools - Dropdown */}
-                <li className="has-dropdown">
-                  <a
-                    href="javascript:void(0);"
-                    className="dropdown-toggle"
-                  >
-                    Tools
-                  </a>
-                  <ul className="dropdown-menu">
-                    <li>
-                      <a href="#compare">Compare Travel Credit Cards</a>
-                    </li>
-                    <li>
-                      <a href="#personalized_recs">
-                        Personalized Recommendations
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-
-                {/* Single Links */}
-                <li className="has-dropdown">
-                  <a
-                    href="javascript:void(0);"
-                    className="dropdown-toggle"
-                  >
-                    Blog
-                  </a>
-                  <ul className="dropdown-menu Blog">
-                    <li>
-                      <a href="#Credit_Card_Guids">Guides</a>
-                    </li>
-                    <li>
-                      <a href="#Credit_Card_News">News</a>
-                    </li>
-                  </ul>
-                </li>
-
-                {/* Learn - Dropdown */}
-                <li className="has-dropdown">
-                  <a
-                    href="javascript:void(0);"
-                    className="dropdown-toggle"
-                  >
-                    Learn
-                  </a>
-                  <ul className="dropdown-menu">
-                    <li>
-                      <a href="#Credit_Card_Basics">
-                        Travel Credit Card Basics
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#Credit_Card_Rewards">Rewards &amp; Perks</a>
-                    </li>
-                    <li>
-                      <a href="#Credit_Management">Credit Management</a>
-                    </li>
-                    <li>
-                      <a href="#Advanced_Strategies">Advanced Strategies</a>
-                    </li>
-                    <li>
-                      <a href="#FAQs_and_Guides">FAQs &amp; Guides</a>
-                    </li>
-                  </ul>
-                </li>
-
-                <li className="has-dropdown">
-                  <a
-                    href="javascript:void(0);"
-                    className="dropdown-toggle"
-                  >
-                    About
-                  </a>
-                  <ul className="dropdown-menu">
-                    <li>
-                      <a href="#Credit_Card_Who We Are">Who We Are</a>
-                    </li>
-                    <li>
-                      <a href="#Credit_Card_Our Mission">Our Mission</a>
-                    </li>
-                    <li>
-                      <a href="#Credit_Card_How We Rate Credit Cards">
-                        How We Rate Credit Cards
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#Credit_Card_Affiliate Disclosure">
-                        Affiliate Disclosure
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#Credit_Card_Contact Us">Contact Us</a>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="#subscribe">Subscribe</a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </header>
+        <Header />
 
         <main>
           <section id="product-overview">
@@ -586,8 +396,8 @@ export default function HomePage() {
           </footer>
         </main>
         {/* Original script reference */}
-        <script src="tools.js"></script>
-      </body>
+        
+      
     </>
   );
 }
