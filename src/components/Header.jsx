@@ -99,7 +99,11 @@ export default function Header() {
 
   return (
     <header className="site-header">
-      <div className="menu-backdrop" style={{ display: isMobileMenuOpen ? "block" : "none" }} onClick={handleBackdropClick}></div>
+      <div
+  id="menuBackdrop"
+  className={`menu-backdrop ${isMobileMenuOpen ? "open" : ""}`}
+  onClick={handleBackdropClick}
+/>
 
       <div className="header-inner">
         {/* Logo + Toggle */}
