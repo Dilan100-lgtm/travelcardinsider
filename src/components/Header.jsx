@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 
-const MOBILE_MAX_WIDTH = 768;
+const MOBILE_MAX_WIDTH = 1100;
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
