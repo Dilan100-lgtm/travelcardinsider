@@ -35,6 +35,145 @@ export default function HomePage() {
           href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
           rel="stylesheet"
         />
+<script type="application/ld+json">
+{`
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://travelcardinsider.vercel.app/#website",
+      "url": "https://travelcardinsider.vercel.app/",
+      "name": "TravelCardInsider",
+      "publisher": {
+        "@id": "https://travelcardinsider.vercel.app/#organization"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://travelcardinsider.vercel.app/#organization",
+      "name": "TravelCardInsider",
+      "url": "https://travelcardinsider.vercel.app/",
+      "logo": {
+        "@type": "ImageObject",
+        "@id": "https://travelcardinsider.vercel.app/#logo",
+        "url": "https://travelcardinsider.vercel.app/6.jpg"
+      }
+    },
+    {
+      "@type": "Article",
+      "@id": "https://travelcardinsider.vercel.app/#article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://travelcardinsider.vercel.app/"
+      },
+      "headline": "Top Travel Credit Cards for 2025",
+      "description": "Compare top travel credit cards, learn about rewards, perks, and how to maximize your points in 2025.",
+      "image": "https://travelcardinsider.vercel.app/6.jpg",
+      "datePublished": "2025-01-01T00:00:00+00:00",
+      "dateModified": "2025-01-01T00:00:00+00:00",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://travelcardinsider.vercel.app/#organization",
+        "name": "TravelCardInsider"
+      },
+      "publisher": {
+        "@id": "https://travelcardinsider.vercel.app/#organization"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "Product",
+      "@id": "https://travelcardinsider.vercel.app/#chaseSapphirePreferred",
+      "name": "Chase Sapphire Preferred",
+      "image": "https://travelcardinsider.vercel.app/sapphire_preferred_card.png",
+      "description": "Travel rewards card with 60,000-point welcome bonus, 2X on travel & dining, $95 annual fee.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Chase"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "250",
+        "bestRating": "5"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "95",
+        "priceCurrency": "USD",
+        "url": "https://www.chase.com/apply?partner=example",
+        "description": "Annual fee"
+      },
+      "review": {
+        "@type": "Review",
+        "name": "Review of Chase Sapphire Preferred",
+        "reviewBody": "The Chase Sapphire Preferred remains one of the top picks for 2025, offering a generous bonus and flexible travel rewards at a moderate annual fee.",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "4.8",
+          "bestRating": "5"
+        },
+        "author": {
+          "@type": "Organization",
+          "@id": "https://travelcardinsider.vercel.app/#organization",
+          "name": "TravelCardInsider"
+        }
+      }
+    },
+    {
+      "@type": "Product",
+      "@id": "https://travelcardinsider.vercel.app/#amexPlatinum",
+      "name": "Amex Platinum",
+      "image": "https://travelcardinsider.vercel.app/ntb-amex-platinum-card.png",
+      "description": "Luxury travel card with 5X points on flights, lounge access, and premium benefits. High annual fee.",
+      "brand": {
+        "@type": "Brand",
+        "name": "American Express"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.6",
+        "ratingCount": "180",
+        "bestRating": "5"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "695",
+        "priceCurrency": "USD",
+        "url": "https://www.americanexpress.com/apply?partner=example",
+        "description": "Annual fee"
+      }
+    },
+    {
+      "@type": "Product",
+      "@id": "https://travelcardinsider.vercel.app/#ventureX",
+      "name": "Capital One Venture X",
+      "image": "https://travelcardinsider.vercel.app/venturex-cg-static-card-1000x630-2.avif",
+      "description": "Earn unlimited 2X miles on purchases, $300 annual travel credit, and lounge access for a mid-range annual fee.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Capital One"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.7",
+        "ratingCount": "95",
+        "bestRating": "5"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "395",
+        "priceCurrency": "USD",
+        "url": "https://www.capitalone.com/apply?partner=example",
+        "description": "Annual fee"
+      }
+    }
+  ]
+}
+`}
+</script>
+
       </Head>
 
       {/* ===== BODY CONTENT BELOW ===== */}
@@ -196,93 +335,70 @@ export default function HomePage() {
             </div>
           </section>
 
-          <section className="reviews-container">
-            <h2>Top Credit Card Reviews</h2>
-
-            <div className="reviews-grid">
-              <div className="card">
-                <img
-                  className="review_img"
-                  src="AdobeStock_560041735_result.webp"
-                  alt="Breaking: Top New Travel Credit Card Offers of 2025—Which One Is Best"
-                />
-                <h3>Top New Travel Credit Card Offers of 2025</h3>
-                <a href="#">Read Review</a>
-              </div>
-
-              <div className="card">
-                {/* Fixed the malformed tag and put the text into alt */}
-                <img
-                  className="review_img"
-                  src="AdobeStock_758160258_result.webp"
-                  alt="The Ultimate Guide to Lounge Access in 2025: How to Get VIP Treatment at Airports"
-                />
-                <h3>How to Get VIP Treatment at Airports</h3>
-                <a href="#">Read Review</a>
-              </div>
-
-              <div className="card">
-                <img
-                  className="review_img"
-                  src="AdobeStock_947404358_result.webp"
-                  alt="Top 5 Family-Friendly Travel Cards for 2025"
-                />
-                <h3>Top 5 Family-Friendly Travel Cards for 2025</h3>
-                <a href="#">Read Review</a>
-              </div>
-
-              <div className="card">
-                {/* Fixed the malformed tag, placed text in alt */}
-                <img
-                  className="review_img"
-                  src="AdobeStock_964630446_result.webp"
-                  alt="Improve Your Credit Score Fast for Premium Cards"
-                />
-                <h3> Improve Your Credit Score Fast for Premium Cards</h3>
-                <a href="#">Read Review</a>
-              </div>
-
-              <div className="card">
-                <img
-                  className="review_img"
-                  src="AdobeStock_323303711_result.webp"
-                  alt=" Ways to Redeem for Luxury Travel on a Budget"
-                />
-                <h3>Best Ways to Redeem for Luxury Travel on a Budget</h3>
-                <a href="#">Read Review</a>
-              </div>
-
-              <div className="card">
-                <img
-                  className="review_img"
-                  src="AdobeStock_265601656_result.webp"
-                  alt="Hidden Perks Secret Travel Card Benefits."
-                />
-                <h3>Hidden Perks Secret Travel Card Benefits.</h3>
-                <a href="#">Read Review</a>
-              </div>
-
-              <div className="card">
-                <img
-                  className="review_img"
-                  src="AdobeStock_446734479.webp"
-                  alt="The Best Travel Cards with No Annual Fee."
-                />
-                <h3>The Best Travel Cards with No Annual Fee. </h3>
-                <a href="#">Read Review</a>
-              </div>
-
-              <div className="card">
-                <img
-                  className="review_img"
-                  src="AdobeStock_241382254_result.webp"
-                  alt="Is Paying a $500+ Annual Fee Really Worth It?"
-                />
-                <h3>Is Paying a $500+ Annual Fee Really Worth It?</h3>
-                <a href="#">Read Review</a>
-              </div>
-            </div>
-          </section>
+         <section className="reviews-container">
+  <h2>Top Credit Card Reviews & News (2025)</h2>
+  <div className="reviews-grid">
+    {[
+      {
+        img: "AdobeStock_560041735_result.webp",
+        alt: "Top New Travel Credit Card Offers of 2025",
+        title: "Top New Travel Credit Card Offers of 2025",
+        desc: "Breaking news on the latest card launches and exclusive sign-up bonuses.",
+      },
+      {
+        img: "AdobeStock_758160258_result.webp",
+        alt: "The Ultimate Guide to Lounge Access in 2025",
+        title: "VIP Airport Lounge Access in 2025",
+        desc: "How to get premium perks and comfort while traveling.",
+      },
+      {
+        img: "AdobeStock_947404358_result.webp",
+        alt: "Top 5 Family-Friendly Travel Cards for 2025",
+        title: "5 Family-Friendly Travel Cards for 2025",
+        desc: "Kid-friendly perks and money-saving benefits for your family vacations.",
+      },
+      {
+        img: "AdobeStock_964630446_result.webp",
+        alt: "Improve Your Credit Score Fast for Premium Cards",
+        title: "Boost Your Credit Score for Premium Cards",
+        desc: "Actionable tips to qualify for the best travel rewards cards.",
+      },
+      {
+        img: "AdobeStock_323303711_result.webp",
+        alt: "Redeeming Points for Luxury Travel on a Budget",
+        title: "Redeem for Luxury Travel on a Budget",
+        desc: "Stretch your points and miles for a premium travel experience.",
+      },
+      {
+        img: "AdobeStock_265601656_result.webp",
+        alt: "Hidden Perks: Secret Travel Card Benefits",
+        title: "Secret Travel Card Benefits",
+        desc: "Little-known perks you might already have but never used.",
+      },
+      {
+        img: "AdobeStock_446734479.webp",
+        alt: "The Best No Annual Fee Travel Cards",
+        title: "The Best No Annual Fee Travel Cards",
+        desc: "Earn rewards without worrying about recurring charges.",
+      },
+      {
+        img: "AdobeStock_241382254_result.webp",
+        alt: "Is Paying a $500+ Annual Fee Really Worth It?",
+        title: "Is a $500+ Annual Fee Worth It?",
+        desc: "A cost-benefit breakdown of premium travel credit cards.",
+      },
+    ].map((review, index) => (
+      <div className="card" key={index}>
+        <img className="review_img" src={review.img} alt={review.alt} />
+        <h3>{review.title}</h3>
+        <p>{review.desc}</p>
+        <a href="#" className="cta-button">
+          Read Review
+        </a>
+      </div>
+    ))}
+  </div>
+</section>
 
           {/* Footer Section */}
           <footer>
