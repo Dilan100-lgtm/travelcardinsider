@@ -12,7 +12,7 @@ body {
 
 .img {
     background: linear-gradient(to top, rgba(80, 68, 18, 0.6) 10%, transparent);
-    background: url('AdobeStock_299190080_result.webp') no-repeat center center/cover;
+    background: url('/AdobeStock_299190080_result.webp') no-repeat center center/cover;
     background-position: left 10% bottom 40%;
     /* background-repeat: no-repeat;
       background-origin: border-box;
