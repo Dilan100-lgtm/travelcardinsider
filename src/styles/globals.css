@@ -718,6 +718,9 @@ border-radius: 5px;
 @media (min-width: 768px) {
   .has-dropdown:hover .dropdown-menu {
     display: block;
+    position: absolute;
+    background: white;
+    z-index: 9999;
   }
 }
 
@@ -726,4 +729,5 @@ border-radius: 5px;
     display: none !important;
   }
 }
+
 
