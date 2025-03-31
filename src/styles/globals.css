@@ -715,3 +715,15 @@ border-radius: 5px;
   grid-template-columns: repeat(1, 1fr);
 }
 }
+@media (min-width: 768px) {
+  .has-dropdown:hover .dropdown-menu {
+    display: block;
+  }
+}
+
+@media (max-width: 767px) {
+  .has-dropdown:hover .dropdown-menu {
+    display: none !important;
+  }
+}
+
