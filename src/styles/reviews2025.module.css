@@ -108,75 +108,41 @@
 /* ------------------------------
    Sections
 ---------------------------------*/
-section {
+.reviewSection {
   margin-bottom: 2rem;
 }
 
-section h2 {
+.reviewSection h2 {
   font-size: 1.5rem;
   color: #007bff;
   margin-bottom: 0.5rem;
 }
 
-section h3 {
+.reviewSection h3 {
   font-size: 1.2rem;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
   color: #555;
 }
 
-section p {
+.reviewSection p {
   line-height: 1.6;
   margin-bottom: 1rem;
   color: #444;
 }
 
-section ul {
+.reviewSection ul {
   margin-left: 2rem;
   list-style: disc;
   margin-bottom: 1rem;
   color: #444;
 }
 
-section ul li {
+.reviewSection ul li {
   margin-bottom: 0.5rem;
 }
 
-/* ------------------------------
-   Table (Comparison)
----------------------------------*/
-.table-responsive {
-  width: 100%;
-  overflow-x: auto; /* Enables horizontal scroll on small screens */
-  margin-top: 1rem;
-}
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  min-width: 600px; /* So smaller screens can scroll horizontally */
-  background: #fff;
-}
-
-table thead {
-  background: #007bff;
-  color: #fff;
-}
-
-table th, table td {
-  padding: 0.75rem;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-  font-size: 0.95rem;
-}
-
-table tbody tr:hover {
-  background-color: #f9f9f9;
-}
-
-table th {
-  font-weight: bold;
-}
 
 /* ------------------------------
    Disclaimer / Footer
@@ -204,7 +170,7 @@ table th {
     font-size: 1rem;
   }
 
-  section h2 {
+.reviewSection h2 {
     font-size: 1.2rem;
   }
 
@@ -236,7 +202,7 @@ table th {
     margin-left: 1rem;
   }
 
-  section h2 {
+.reviewSection h2 {
     font-size: 1.1rem;
   }
 }
