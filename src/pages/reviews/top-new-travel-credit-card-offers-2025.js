@@ -1,8 +1,7 @@
-// File: pages/review/top-new-travel-credit-card-offers-2025.js
-
 import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
+import styles from '../../styles/reviews2025.module.css'; // <-- Add your CSS module path here
 
 // If you have a shared header & footer in your project, import them:
 import Header from '../../components/Header';
@@ -29,40 +28,40 @@ export default function TopNewTravelCreditCardOffers2025() {
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" />
 
-         {/* ✅ Preload only critical fonts */}
-  <link
-    rel="preload"
-    href="/fonts/roboto-regular.woff2"
-    as="font"
-    type="font/woff2"
-    crossOrigin="anonymous"
-  />
-  <link
-    rel="preload"
-    href="/fonts/roboto-bold.woff2"
-    as="font"
-    type="font/woff2"
-    crossOrigin="anonymous"
-  />
-  <link
-    rel="preload"
-    href="/fonts/playfair-display-regular.woff2"
-    as="font"
-    type="font/woff2"
-    crossOrigin="anonymous"
-  />
-  <link
-    rel="preload"
-    href="/fonts/playfair-display-bold.woff2"
-    as="font"
-    type="font/woff2"
-    crossOrigin="anonymous"
-  />
-  <meta property="og:title" content="Top New Travel Credit Card Offers of 2025" />
-<meta property="og:description" content="Which travel credit card wins in 2025? Compare the top new cards now." />
-<meta property="og:image" content="https://www.travelcardinsider.com/your-og-image.jpg" />
-<meta property="og:url" content="https://www.travelcardinsider.com/review/top-new-travel-credit-card-offers-2025" />
-<meta name="twitter:card" content="summary_large_image" />
+        {/* ✅ Preload only critical fonts */}
+        <link
+          rel="preload"
+          href="/fonts/roboto-regular.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/roboto-bold.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/playfair-display-regular.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/playfair-display-bold.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <meta property="og:title" content="Top New Travel Credit Card Offers of 2025" />
+        <meta property="og:description" content="Which travel credit card wins in 2025? Compare the top new cards now." />
+        <meta property="og:image" content="https://www.travelcardinsider.com/your-og-image.jpg" />
+        <meta property="og:url" content="https://www.travelcardinsider.com/review/top-new-travel-credit-card-offers-2025" />
+        <meta name="twitter:card" content="summary_large_image" />
 
         {/* Structured Data (JSON-LD). 
             We keep "review" items under an "Article". If you plan to separate them, see the note below. */}
@@ -204,16 +203,23 @@ export default function TopNewTravelCreditCardOffers2025() {
 
       <main style={{ fontFamily: 'Roboto, sans-serif' }}>
         {/* The main container for the review article */}
-        <article className="review-container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '1rem' }}>
+        <article
+          className={styles.reviewContainer}
+          style={{ maxWidth: '1200px', margin: '0 auto', padding: '1rem' }}
+        >
           {/* Re-creating the original HTML structure */}
 
           {/* TITLE & INTRO */}
-          <header className="review-header">
-            <h1>Breaking: Top New Travel Credit Card Offers of 2025—Which One Is Best?</h1>
-            <b><u>By TravelCardInsider</u></b>
+          <header className={styles.reviewHeader}>
+            <h1 className={styles.reviewTitle}>
+              Breaking: Top New Travel Credit Card Offers of 2025—Which One Is Best?
+            </h1>
+            <b>
+              <u>By TravelCardInsider</u>
+            </b>
 
             {/* Replaced <img> with Next.js <Image>, corrected alt */}
-            <div style={{ marginTop: '1rem' }}>
+            <div className={styles.reviewImage} style={{ marginTop: '1rem' }}>
               <Image
                 src="/AdobeStock_560041735.jpeg"
                 alt="Travel Card Insider"
@@ -225,7 +231,7 @@ export default function TopNewTravelCreditCardOffers2025() {
             </div>
 
             <div>
-              <p className="Disclaimer">
+              <p className={styles.reviewDisclaimer}>
                 We may receive compensation when you click on links to credit card products
                 from our site. This compensation may influence the order and manner in which
                 such products appear. However, our reviews and opinions are our own, and we
@@ -233,14 +239,14 @@ export default function TopNewTravelCreditCardOffers2025() {
               </p>
             </div>
 
-            <p className="intro">
-              Travel credit cards can open up a world of possibilities—literally. Whether you’re a frequent flyer 
-              or an occasional vacationer, <strong>finding the best new travel credit card</strong> can help you 
-              earn rewards faster, save on travel expenses, and enjoy valuable perks like airport lounge access. 
-              In this 2025 edition of top travel credit card offers, we’ll break down the latest sign-up bonuses, 
+            <p className={styles.reviewIntro}>
+              Travel credit cards can open up a world of possibilities—literally. Whether you’re a frequent flyer
+              or an occasional vacationer, <strong>finding the best new travel credit card</strong> can help you
+              earn rewards faster, save on travel expenses, and enjoy valuable perks like airport lounge access.
+              In this 2025 edition of top travel credit card offers, we’ll break down the latest sign-up bonuses,
               annual fees, pros, cons, and everything else you need to decide which card fits your travel goals.
             </p>
-            <p className="intro">
+            <p className={styles.reviewIntro}>
               In this comprehensive review, you’ll learn:
               <ul>
                 <li>Key features of the top five new travel credit cards</li>
@@ -249,13 +255,13 @@ export default function TopNewTravelCreditCardOffers2025() {
                 <li>Insider tips on maximizing sign-up bonuses and everyday spending</li>
                 <li>A quick reference table for easy comparison</li>
               </ul>
-              By the end, you’ll be equipped with the knowledge to pick a travel credit card that aligns 
+              By the end, you’ll be equipped with the knowledge to pick a travel credit card that aligns
               perfectly with your spending habits and travel aspirations in 2025.
             </p>
           </header>
 
           {/* TABLE OF CONTENTS */}
-          <nav className="toc">
+          <nav className={styles.reviewToc}>
             <h2>Table of Contents</h2>
             <ol>
               <li><a href="#great-travel-cc">What Makes a Great Travel Credit Card</a></li>
@@ -272,7 +278,7 @@ export default function TopNewTravelCreditCardOffers2025() {
           </nav>
 
           {/* SECTION: 1. WHAT MAKES A GREAT TRAVEL CREDIT CARD */}
-          <section id="great-travel-cc">
+          <section id="great-travel-cc" className={styles.reviewSection}>
             <h2>1. What Makes a Great Travel Credit Card</h2>
             <p>
               Before diving into each new 2025 offer, let’s briefly discuss what sets <strong>top travel credit cards</strong> apart:
@@ -287,10 +293,10 @@ export default function TopNewTravelCreditCardOffers2025() {
           </section>
 
           {/* SECTION: 2. CHASE SAPPHIRE PREFERRED */}
-          <section id="sapphire">
+          <section id="sapphire" className={styles.reviewSection}>
             <h2>2. Card 1: Chase Sapphire Preferred</h2>
             <p>
-              The <strong>Chase Sapphire Preferred</strong> has long been a fan-favorite for travelers, thanks to its 
+              The <strong>Chase Sapphire Preferred</strong> has long been a fan-favorite for travelers, thanks to its
               <em>generous sign-up bonus, flexible points</em>, and relatively modest annual fee.
             </p>
             <h3>Key Highlights</h3>
@@ -299,7 +305,7 @@ export default function TopNewTravelCreditCardOffers2025() {
                 <strong>Sign-Up Bonus:</strong> Earn 60,000 Ultimate Rewards points after spending $4,000 in the first three months.
               </li>
               <li>
-                <strong>Rewards Structure:</strong> 
+                <strong>Rewards Structure:</strong>
                 <ul>
                   <li>2x points on travel and dining</li>
                   <li>1x on all other purchases</li>
@@ -307,7 +313,7 @@ export default function TopNewTravelCreditCardOffers2025() {
               </li>
               <li><strong>Annual Fee:</strong> $95</li>
               <li>
-                <strong>Redemption Flexibility:</strong> Points are worth 25% more when booking via Chase Ultimate Rewards, 
+                <strong>Redemption Flexibility:</strong> Points are worth 25% more when booking via Chase Ultimate Rewards,
                 or can be transferred to partners like United, Southwest, and Hyatt.
               </li>
             </ul>
@@ -326,16 +332,16 @@ export default function TopNewTravelCreditCardOffers2025() {
           </section>
 
           {/* SECTION: 3. AMERICAN EXPRESS PLATINUM */}
-          <section id="amex-platinum">
+          <section id="amex-platinum" className={styles.reviewSection}>
             <h2>3. Card 2: American Express Platinum</h2>
             <p>
-              The <strong>American Express Platinum</strong> is known for its <em>luxurious perks</em>—from lounge access to hotel status. 
+              The <strong>American Express Platinum</strong> is known for its <em>luxurious perks</em>—from lounge access to hotel status.
               It has a steep annual fee, but the benefits can far outweigh costs for frequent travelers.
             </p>
             <h3>Key Highlights</h3>
             <ul>
               <li>
-                <strong>Sign-Up Bonus:</strong> Typically 80,000–100,000 Membership Rewards points 
+                <strong>Sign-Up Bonus:</strong> Typically 80,000–100,000 Membership Rewards points
                 after spending $6,000 in six months (exact offer can vary).
               </li>
               <li>
@@ -348,7 +354,7 @@ export default function TopNewTravelCreditCardOffers2025() {
               </li>
               <li><strong>Annual Fee:</strong> $695 (Terms Apply)</li>
               <li>
-                <strong>Extra Perks:</strong> Global Lounge Collection (Centurion, Priority Pass, Delta Sky Club), 
+                <strong>Extra Perks:</strong> Global Lounge Collection (Centurion, Priority Pass, Delta Sky Club),
                 Hilton Gold, Marriott Bonvoy Gold, and $200 in airline fee credits.
               </li>
             </ul>
@@ -367,10 +373,10 @@ export default function TopNewTravelCreditCardOffers2025() {
           </section>
 
           {/* SECTION: 4. CAPITAL ONE VENTURE X */}
-          <section id="venture-x">
+          <section id="venture-x" className={styles.reviewSection}>
             <h2>4. Card 3: Capital One Venture X</h2>
             <p>
-              The <strong>Capital One Venture X</strong> is a relatively new entrant, appealing with its 
+              The <strong>Capital One Venture X</strong> is a relatively new entrant, appealing with its
               <em>straightforward rewards</em> and premium perks that rival big players—often at a lower net cost.
             </p>
             <h3>Key Highlights</h3>
@@ -388,7 +394,7 @@ export default function TopNewTravelCreditCardOffers2025() {
               </li>
               <li><strong>Annual Fee:</strong> $395</li>
               <li>
-                <strong>Extra Perks:</strong> $300 annual travel credit (via Capital One Travel), lounge access (Priority Pass & Capital One lounges), 
+                <strong>Extra Perks:</strong> $300 annual travel credit (via Capital One Travel), lounge access (Priority Pass & Capital One lounges),
                 and 10,000 bonus miles every anniversary.
               </li>
             </ul>
@@ -407,10 +413,10 @@ export default function TopNewTravelCreditCardOffers2025() {
           </section>
 
           {/* SECTION: 5. CITI PREMIER */}
-          <section id="citi-premier">
+          <section id="citi-premier" className={styles.reviewSection}>
             <h2>5. Card 4: Citi Premier Card</h2>
             <p>
-              A popular choice for broad bonus categories, the <strong>Citi Premier Card</strong> suits moderate travelers and everyday spenders. 
+              A popular choice for broad bonus categories, the <strong>Citi Premier Card</strong> suits moderate travelers and everyday spenders.
               It offers diverse 3x categories often missing in competing cards.
             </p>
             <h3>Key Highlights</h3>
@@ -443,10 +449,10 @@ export default function TopNewTravelCreditCardOffers2025() {
           </section>
 
           {/* SECTION: 6. CHASE SAPPHIRE RESERVE */}
-          <section id="sapphire-reserve">
+          <section id="sapphire-reserve" className={styles.reviewSection}>
             <h2>6. Card 5: Chase Sapphire Reserve</h2>
             <p>
-              The <strong>Chase Sapphire Reserve</strong> often stands as the “big brother” to the Sapphire Preferred, 
+              The <strong>Chase Sapphire Reserve</strong> often stands as the “big brother” to the Sapphire Preferred,
               offering <em>premium perks</em> and a higher earning rate on dining/travel but with a hefty annual fee.
             </p>
             <h3>Key Highlights</h3>
@@ -478,10 +484,10 @@ export default function TopNewTravelCreditCardOffers2025() {
           </section>
 
           {/* SECTION: 7. COMPARING KEY FEATURES */}
-          <section id="comparing-features">
+          <section id="comparing-features" className={styles.reviewSection}>
             <h2>7. Comparing Key Features</h2>
             <p>
-              Here’s a quick side-by-side look at the major selling points of these top five 2025 offers. 
+              Here’s a quick side-by-side look at the major selling points of these top five 2025 offers.
               On smaller screens, scroll horizontally to view all columns:
             </p>
             <div style={{ overflowX: 'auto' }}>
@@ -537,7 +543,7 @@ export default function TopNewTravelCreditCardOffers2025() {
           </section>
 
           {/* SECTION: 8. PROS AND CONS RECAP */}
-          <section id="pros-cons-recap">
+          <section id="pros-cons-recap" className={styles.reviewSection}>
             <h2>8. Pros and Cons Recap</h2>
             <ul>
               <li>
@@ -559,64 +565,64 @@ export default function TopNewTravelCreditCardOffers2025() {
           </section>
 
           {/* SECTION: 9. FAQS */}
-          <section id="faqs">
+          <section id="faqs" className={styles.reviewSection}>
             <h2>9. Frequently Asked Questions</h2>
             <h3>Q1: Which card has the best overall sign-up bonus in 2025?</h3>
             <p>
-              <strong>A1:</strong> The Amex Platinum frequently offers the highest point total (80k–100k), 
-              but it also requires higher spending. If you prefer a lower spend threshold, 
+              <strong>A1:</strong> The Amex Platinum frequently offers the highest point total (80k–100k),
+              but it also requires higher spending. If you prefer a lower spend threshold,
               Chase Sapphire Preferred or Reserve might be more attainable.
             </p>
             <h3>Q2: Are high annual fees actually worth it?</h3>
             <p>
-              <strong>A2:</strong> They can be, if you utilize all the lounge access, travel credits, 
-              and bonus categories. For instance, the $300 credit on the Sapphire Reserve can reduce the effective fee, 
+              <strong>A2:</strong> They can be, if you utilize all the lounge access, travel credits,
+              and bonus categories. For instance, the $300 credit on the Sapphire Reserve can reduce the effective fee,
               while Amex Platinum’s lounge network is unmatched.
             </p>
             <h3>Q3: Do these cards waive foreign transaction fees?</h3>
             <p>
-              <strong>A3:</strong> Most do. Chase, Amex, Citi, and Capital One typically waive foreign 
+              <strong>A3:</strong> Most do. Chase, Amex, Citi, and Capital One typically waive foreign
               transaction fees on their travel-focused cards. Always confirm the latest terms before applying.
             </p>
             <h3>Q4: Can I hold multiple travel credit cards at once?</h3>
             <p>
-              <strong>A4:</strong> Yes, though certain issuers have rules (e.g., Chase 5/24, 
+              <strong>A4:</strong> Yes, though certain issuers have rules (e.g., Chase 5/24,
               Amex once-per-lifetime bonus restrictions). Strategically combining cards can maximize different bonus categories.
             </p>
             <h3>Q5: How do I maximize point value?</h3>
             <p>
-              <strong>A5:</strong> Transfer your points to airline/hotel partners for premium cabin flights 
+              <strong>A5:</strong> Transfer your points to airline/hotel partners for premium cabin flights
               or sweet-spot redemptions. Keep an eye out for temporary transfer bonuses.
             </p>
           </section>
 
           {/* SECTION: 10. CONCLUSION */}
-          <section id="conclusion">
+          <section id="conclusion" className={styles.reviewSection}>
             <h2>10. Conclusion: Which Card Is Best?</h2>
             <p>
-              <strong>Frequent travelers who value lounge access</strong> may gravitate toward the 
-              <em> Amex Platinum</em> or <em>Chase Sapphire Reserve</em>. Both provide high-end perks, 
+              <strong>Frequent travelers who value lounge access</strong> may gravitate toward the
+              <em> Amex Platinum</em> or <em>Chase Sapphire Reserve</em>. Both provide high-end perks,
               though the Reserve can be more flexible for everyday spend, while Amex Platinum shines for frequent fliers.
             </p>
             <p>
-              If you want a <strong>simpler approach to premium rewards</strong>, 
-              the <em>Capital One Venture X</em> is a strong contender. Its $300 travel credit and 2x on everything 
+              If you want a <strong>simpler approach to premium rewards</strong>,
+              the <em>Capital One Venture X</em> is a strong contender. Its $300 travel credit and 2x on everything
               appeal to those who prefer minimal category juggling.
             </p>
             <p>
-              <strong>Citi Premier</strong> stands out if you want a <em>broad range of 3x categories</em> 
+              <strong>Citi Premier</strong> stands out if you want a <em>broad range of 3x categories</em>
               and a modest $95 fee, making it easy to recoup costs through gas, groceries, and travel spending.
             </p>
             <p>
-              Finally, if you’re <strong>new to travel rewards</strong>, 
-              the <em>Chase Sapphire Preferred</em> remains an outstanding starter card. Its $95 fee, 
+              Finally, if you’re <strong>new to travel rewards</strong>,
+              the <em>Chase Sapphire Preferred</em> remains an outstanding starter card. Its $95 fee,
               flexible points, and user-friendly redemption portal help novices build confidence in the points game.
             </p>
             <p>
-              Ultimately, the best travel credit card is the one that aligns with 
-              <em> your unique lifestyle and spending patterns</em>. Take a moment to assess how often you fly, 
-              how you prefer to redeem points, and whether premium perks justify a higher annual fee. 
-              Once you’ve chosen your card, watch for sign-up bonus deadlines and pay your balances responsibly 
+              Ultimately, the best travel credit card is the one that aligns with
+              <em> your unique lifestyle and spending patterns</em>. Take a moment to assess how often you fly,
+              how you prefer to redeem points, and whether premium perks justify a higher annual fee.
+              Once you’ve chosen your card, watch for sign-up bonus deadlines and pay your balances responsibly
               to maximize value in 2025 and beyond.
             </p>
             <p><em>Happy traveling!</em></p>
