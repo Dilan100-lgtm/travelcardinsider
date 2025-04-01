@@ -422,9 +422,10 @@ export default function HomePage() {
                 />
                 <h3>{review.title}</h3>
                 <p>{review.desc}</p>
-                <a href="#" className="cta-button">
-                  Read Review
-                </a>
+                <a href={review.link} className="cta-button">
+  Read Review
+</a>
+
               </div>
             ))}
           </div>
