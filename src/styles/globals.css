@@ -716,4 +716,39 @@ border-radius: 5px;
 }
 }
 
+/* Roboto Regular */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/roboto-regular.woff2') format('woff2');
+}
+
+/* Roboto Bold */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/roboto-bold.woff2') format('woff2');
+}
+
+/* Playfair Display Regular */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/playfair-display-regular.woff2') format('woff2');
+}
+
+/* Playfair Display Bold */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/playfair-display-bold.woff2') format('woff2');
+}
 

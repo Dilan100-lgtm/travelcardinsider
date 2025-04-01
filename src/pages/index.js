@@ -10,32 +10,40 @@ export default function HomePage() {
   return (
     <>
       <Head>
-        <title>TravelCardInsider - Best Travel Credit Cards 2024</title>
+        <title>TravelCardInsider - Best Travel Credit Cards 2025</title>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="main.css" />
 
-        {/* Google Fonts */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin=""
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-          rel="stylesheet"
-        />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin=""
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-          rel="stylesheet"
-        />
+        {/* ✅ Preload only critical fonts */}
+  <link
+    rel="preload"
+    href="/fonts/roboto-regular.woff2"
+    as="font"
+    type="font/woff2"
+    crossOrigin="anonymous"
+  />
+  <link
+    rel="preload"
+    href="/fonts/roboto-bold.woff2"
+    as="font"
+    type="font/woff2"
+    crossOrigin="anonymous"
+  />
+  <link
+    rel="preload"
+    href="/fonts/playfair-display-regular.woff2"
+    as="font"
+    type="font/woff2"
+    crossOrigin="anonymous"
+  />
+  <link
+    rel="preload"
+    href="/fonts/playfair-display-bold.woff2"
+    as="font"
+    type="font/woff2"
+    crossOrigin="anonymous"
+  />
 
         <script type="application/ld+json">
         {`
