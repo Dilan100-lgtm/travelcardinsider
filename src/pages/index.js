@@ -364,8 +364,9 @@ export default function HomePage() {
                 alt: "Top New Travel Credit Card Offers of 2025",
                 title: "Top New Travel Credit Card Offers of 2025",
                 desc: "Breaking news on the latest card launches and exclusive sign-up bonuses.",
-                link: "/reviews/Top New Travel Credit Card Offers of 2025",
-              },
+                link: "/reviews/top-new-travel-credit-card-offers-2025"
+              }
+              
               {
                 img: "/AdobeStock_758160258_result.webp",
                 alt: "The Ultimate Guide to Lounge Access in 2025",
