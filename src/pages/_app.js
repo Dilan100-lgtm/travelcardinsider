@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import '../styles/review2025.css';
+import "../styles/reveiws 2025.css";
 import Header from "../components/Header"; // ✅ Import the Header component
 
 function MyApp({ Component, pageProps }) {
