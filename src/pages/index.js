@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Head from "next/head";
-// 1) Import the Next.js Image component
 import Image from 'next/image';
 import Header from "../components/Header";
 
@@ -15,38 +14,58 @@ export default function HomePage() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="main.css" />
 
+        {/* ✅ Meta description for SEO */}
+        <meta
+          name="description"
+          content="Compare the best travel credit cards of 2025. Earn more rewards, travel perks, and exclusive bonuses."
+        />
+
+        {/* ✅ Preload images for LCP optimization */}
+        <link
+          rel="preload"
+          as="image"
+          href="AdobeStock_299190080_result.webp"
+          type="image/webp"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/sapphire_preferred_card.png"
+          type="image/png"
+        />
+
         {/* ✅ Preload only critical fonts */}
-  <link
-    rel="preload"
-    href="/fonts/roboto-regular.woff2"
-    as="font"
-    type="font/woff2"
-    crossOrigin="anonymous"
-  />
-  <link
-    rel="preload"
-    href="/fonts/roboto-bold.woff2"
-    as="font"
-    type="font/woff2"
-    crossOrigin="anonymous"
-  />
-  <link
-    rel="preload"
-    href="/fonts/playfair-display-regular.woff2"
-    as="font"
-    type="font/woff2"
-    crossOrigin="anonymous"
-  />
-  <link
-    rel="preload"
-    href="/fonts/playfair-display-bold.woff2"
-    as="font"
-    type="font/woff2"
-    crossOrigin="anonymous"
-  />
+        <link
+          rel="preload"
+          href="/fonts/roboto-regular.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/roboto-bold.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/playfair-display-regular.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/playfair-display-bold.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
 
         <script type="application/ld+json">
-        {`
+          {`
         {
           "@context": "https://schema.org",
           "@graph": [
@@ -200,7 +219,6 @@ export default function HomePage() {
 
       <main>
         <section id="product-overview">
-          {/* 2) For background images (in CSS), no <img> needed. This stays as is. */}
           <div className="img"></div>
         </section>
 
@@ -245,7 +263,6 @@ export default function HomePage() {
             <h1 className="H2_featured-cards">Top Travel Credit Cards</h1>
             <div className="card-grid">
               <div className="card card1">
-                {/* 3) Replace <img> with <Image> and give it width/height */}
                 <Image
                   className="img1"
                   src="/sapphire_preferred_card.png"
@@ -364,14 +381,15 @@ export default function HomePage() {
                 alt: "Top New Travel Credit Card Offers of 2025",
                 title: "Top New Travel Credit Card Offers of 2025",
                 desc: "Breaking news on the latest card launches and exclusive sign-up bonuses.",
-                link: "/reviews/top-new-travel-credit-card-offers-2025",
+                // 🔴 FIXED: corrected link path from /reviews/ -> /review/
+                link: "/review/top-new-travel-credit-card-offers-2025",
               },
-              
               {
                 img: "/AdobeStock_758160258_result.webp",
                 alt: "The Ultimate Guide to Lounge Access in 2025",
                 title: "VIP Airport Lounge Access in 2025",
                 desc: "How to get premium perks and comfort while traveling.",
+                // no link provided here, leaving as is
               },
               {
                 img: "/AdobeStock_947404358_result.webp",
@@ -411,7 +429,6 @@ export default function HomePage() {
               },
             ].map((review, index) => (
               <div className="card" key={index}>
-                {/* Replace each <img> in the reviews with <Image> as well */}
                 <Image
                   className="review_img"
                   src={review.img}
@@ -422,121 +439,20 @@ export default function HomePage() {
                 />
                 <h3>{review.title}</h3>
                 <p>{review.desc}</p>
-                <a href={review.link} className="cta-button">
-  Read Review
-</a>
-
+                {/* If link is missing in the array item, this <a> won't appear */}
+                {review.link && (
+                  <a href={review.link} className="cta-button">
+                    Read Review
+                  </a>
+                )}
               </div>
             ))}
           </div>
         </section>
 
         {/* Footer Section */}
-        <footer>
-          <footer className="site-footer">
-            <div className="footer-inner">
-              <div className="footer-columns">
-                <div className="footer-col">
-                  <h3>About Us</h3>
-                  <p>
-                    We specialize in in-depth travel credit card reviews,
-                    helping you find the best rewards and perks for your
-                    next adventure.
-                  </p>
-                </div>
-
-                <div className="footer-col">
-                  <h3>Quick Links</h3>
-                  <ul>
-                    <li className="footlink">
-                      <a href="/about">About</a>
-                    </li>
-                    <li className="footlink">
-                      <a href="/blog">Blog</a>
-                    </li>
-                    <li className="footlink">
-                      <a href="/compare">Compare Cards</a>
-                    </li>
-                    <li className="footlink">
-                      <a href="/contact">Contact Us</a>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="footer-col">
-                  <h3>Legal</h3>
-                  <ul>
-                    <li className="footlink">
-                      <a href="/privacy-policy">Privacy Policy</a>
-                    </li>
-                    <li className="footlink">
-                      <a href="/terms-of-service">Terms of Service</a>
-                    </li>
-                    <li className="footlink">
-                      <a href="/affiliate-disclosure">Affiliate Disclosure</a>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="footer-col">
-                  <h3>Connect</h3>
-                  <ul>
-                    <li className="footlink">
-                      {/* Replace social icons <img> with Next <Image> too */}
-                      <a
-                        href="https://www.facebook.com/YourPage"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Follow us on Facebook"
-                      >
-                        <Image
-                          className="imgf"
-                          src="/icons8-facebook-24.png"
-                          alt="Facebook"
-                          width={24}
-                          height={24}
-                          loading="lazy"
-                        />
-                      </a>
-                    </li>
-                    <li className="footlink">
-                      <a
-                        href="https://www.instagram.com/YourProfile"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Follow us on Instagram"
-                      >
-                        <Image
-                          className="imgf"
-                          src="/icons8-instagram-24.png"
-                          alt="Instagram"
-                          width={24}
-                          height={24}
-                          loading="lazy"
-                        />
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className="footer-disclaimer">
-                <p>
-                  Disclaimer: This site is for informational purposes only.
-                  We may receive compensation when you click links to partner
-                  sites, but our editorial opinions remain our own. All offers
-                  are subject to change or withdrawal at any time. We strive
-                  to keep information accurate but cannot guarantee completeness
-                  or timeliness.
-                </p>
-              </div>
-            </div>
-
-            <div className="footer-bottom">
-              <p>&copy; 2025 TravelCardInsider. All rights reserved.</p>
-            </div>
-          </footer>
-        </footer>
+        
+        <footer/>
       </main>
     </>
   );
