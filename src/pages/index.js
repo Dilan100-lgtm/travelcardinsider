@@ -4,6 +4,7 @@ import React from 'react';
 import Head from "next/head";
 import Image from 'next/image';
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 export default function HomePage() {
   return (
@@ -452,7 +453,7 @@ export default function HomePage() {
 
         {/* Footer Section */}
         
-        <footer/>
+        <Footer />
       </main>
     </>
   );
