@@ -3,7 +3,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
-import '../../styles/reviews 2025.css';
+import '../../styles/reviews2025.css';
 
 // If you have a shared header & footer in your project, import them:
 import Header from '../../components/Header';
