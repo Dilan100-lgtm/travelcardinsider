@@ -518,6 +518,7 @@ export default function TopNewTravelCreditCardOffers2025() {
               Here’s a quick side-by-side look at the major selling points of these top five 2025 offers.
               On smaller screens, scroll horizontally to view all columns:
             </p>
+            <div className={styles.tablereviewSectionResponsive}>
             <div style={{ overflowX: 'auto' }} className={styles.tablereviewSection}>
               <table style={{ borderCollapse: 'collapse', width: '100%' }}>
                 <thead>
@@ -567,6 +568,7 @@ export default function TopNewTravelCreditCardOffers2025() {
                   </tr>
                 </tbody>
               </table>
+            </div>
             </div>
           </section>
 
