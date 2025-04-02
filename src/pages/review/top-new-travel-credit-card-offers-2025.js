@@ -1,13 +1,21 @@
+// File: pages/review/top-new-travel-credit-card-offers-2025.js
+
 import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
-import styles from '../../styles/reviews2025.module.css'; // <-- Add your CSS module path here
+import styles from '../../styles/reviews2025.module.css'; // Your CSS module path here
 
-// If you have a shared header & footer in your project, import them:
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
 export default function TopNewTravelCreditCardOffers2025() {
+  // Helper style for table cells (unchanged from original)
+  const thTdStyle = {
+    border: '1px solid #ddd',
+    padding: '8px',
+    textAlign: 'left'
+  };
+
   return (
     <>
       <Head>
@@ -28,7 +36,7 @@ export default function TopNewTravelCreditCardOffers2025() {
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" />
 
-        {/* ✅ Preload only critical fonts */}
+        {/* Preload only critical fonts */}
         <link
           rel="preload"
           href="/fonts/roboto-regular.woff2"
@@ -57,19 +65,29 @@ export default function TopNewTravelCreditCardOffers2025() {
           type="font/woff2"
           crossOrigin="anonymous"
         />
-        <meta property="og:title" content="Top New Travel Credit Card Offers of 2025" />
-        <meta property="og:description" content="Which travel credit card wins in 2025? Compare the top new cards now." />
-        <meta property="og:image" content="https://www.travelcardinsider.com/your-og-image.jpg" />
-        <meta property="og:url" content="https://www.travelcardinsider.com/review/top-new-travel-credit-card-offers-2025" />
+        <meta
+          property="og:title"
+          content="Top New Travel Credit Card Offers of 2025"
+        />
+        <meta
+          property="og:description"
+          content="Which travel credit card wins in 2025? Compare the top new cards now."
+        />
+        <meta
+          property="og:image"
+          content="https://www.travelcardinsider.com/your-og-image.jpg"
+        />
+        <meta
+          property="og:url"
+          content="https://www.travelcardinsider.com/review/top-new-travel-credit-card-offers-2025"
+        />
         <meta name="twitter:card" content="summary_large_image" />
 
-        {/* Structured Data (JSON-LD). 
-            We keep "review" items under an "Article". If you plan to separate them, see the note below. */}
+        {/* Structured Data (JSON-LD) */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: `
-{
+            __html: `{
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Breaking: Top New Travel Credit Card Offers of 2025—Which One Is Best?",
@@ -192,23 +210,25 @@ export default function TopNewTravelCreditCardOffers2025() {
   "image": [
     "https://www.yoursite.com/path-to-featured-image.jpg"
   ]
-}
-`
+}`
           }}
         />
       </Head>
 
-      {/* Use your existing Header component */}
+      {/* Header component */}
       <Header />
 
       <main style={{ fontFamily: 'Roboto, sans-serif' }}>
         {/* The main container for the review article */}
-        <article>
+        <article
           className={styles.reviewContainer}
-          style={{ maxWidth: '1200px', margin: '0 auto', padding: '1rem',marginTop: '3rem' }}
+          style={{
+            maxWidth: '1200px',
+            margin: '0 auto',
+            padding: '1rem',
+            marginTop: '3rem'
+          }}
         >
-          {/* Re-creating the original HTML structure */}
-
           {/* TITLE & INTRO */}
           <header className={styles.reviewHeader}>
             <h1 className={styles.reviewTitle}>
@@ -218,13 +238,19 @@ export default function TopNewTravelCreditCardOffers2025() {
               <u>By TravelCardInsider</u>
             </b>
 
-            {/* Remove the incorrect closing tag */}
-            <div className={styles.reviewImage} style={{ marginTop: '1rem' }}>
+            <div
+              className={styles.reviewImage}
+              style={{ marginTop: '1rem' }}
+            >
+              {/*
+                Next.js <Image> requires numeric width/height
+                We also use style to make it fully responsive
+              */}
               <Image
                 src="/AdobeStock_560041735_result.webp"
                 alt="Travel Card Insider"
-                width="100%"
-                height="auto"
+                width={1200}
+                height={700}
                 loading="lazy"
                 style={{ width: '100%', height: 'auto' }}
               />
@@ -246,6 +272,7 @@ export default function TopNewTravelCreditCardOffers2025() {
               In this 2025 edition of top travel credit card offers, we’ll break down the latest sign-up bonuses,
               annual fees, pros, cons, and everything else you need to decide which card fits your travel goals.
             </p>
+
             <p className={styles.reviewIntro}>
               In this comprehensive review, you’ll learn:
               <ul>
@@ -258,6 +285,9 @@ export default function TopNewTravelCreditCardOffers2025() {
               By the end, you’ll be equipped with the knowledge to pick a travel credit card that aligns
               perfectly with your spending habits and travel aspirations in 2025.
             </p>
+          </header>
+
+          {/* TABLE OF CONTENTS */}
           <nav className={styles.reviewToc}>
             <h2>Table of Contents</h2>
             <ol>
@@ -627,15 +657,8 @@ export default function TopNewTravelCreditCardOffers2025() {
         </article>
       </main>
 
-      {/* Use your existing Footer component */}
+      {/* Footer component */}
       <Footer />
     </>
   );
 }
-
-/* Example style object for <th> and <td> to ensure consistent formatting */
-const thTdStyle = {
-  border: '1px solid #ddd',
-  padding: '8px',
-  textAlign: 'left'
-};
