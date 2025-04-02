@@ -218,13 +218,13 @@ export default function TopNewTravelCreditCardOffers2025() {
               <u>By TravelCardInsider</u>
             </b>
 
-            {/* Replaced <img> with Next.js <Image>, corrected alt */}
+            /* Replaced <img> with Next.js <Image>, corrected alt */</Image>
             <div className={styles.reviewImage} style={{ marginTop: '1rem' }}>
               <Image
                 src="AdobeStock_560041735_result"
                 alt="Travel Card Insider"
-                width={1000}
-                height={500}
+                width="100%"
+                height="auto"
                 loading="lazy"
                 style={{ width: '100%', height: 'auto' }}
               />
@@ -257,10 +257,7 @@ export default function TopNewTravelCreditCardOffers2025() {
               </ul>
               By the end, you’ll be equipped with the knowledge to pick a travel credit card that aligns
               perfectly with your spending habits and travel aspirations in 2025.
-            </p>
-          </header>
-
-          {/* TABLE OF CONTENTS */}
+            </p>}
           <nav className={styles.reviewToc}>
             <h2>Table of Contents</h2>
             <ol>
