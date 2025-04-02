@@ -60,20 +60,20 @@
 /* ------------------------------
    Header/Intro
 ---------------------------------*/
-.reviewTitle h1 {
+.reviewHeader h1 {
   font-size: 2rem;
   margin-bottom: 1rem;
   color: #007bff;
 }
 
-.reviewTitle .reviewIntro {
+.reviewHeader .reviewIntro {
   font-size: 1rem;
   margin-bottom: 1rem;
   color: #444;
   line-height: 1.5;
 }
 
-.reviewTitle ul {
+.reviewHeader ul {
   margin-left: 2rem;
   list-style: disc outside;
   margin-top: 0.5rem;
