@@ -209,3 +209,37 @@
     font-size: 1.1rem;
   }
 }
+
+---------------------------------*/
+.tablereviewSection-responsive {
+  width: 100%;
+  overflow-x: auto; /* Enables horizontal scroll on small screens */
+  margin-top: 1rem;
+}
+
+.tablereviewSection {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px; /* So smaller screens can scroll horizontally */
+  background: #fff;
+}
+
+.tablereviewSection thead {
+  background: #007bff;
+  color: #fff;
+}
+
+.tablereviewSection th, table td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  font-size: 0.95rem;
+}
+
+.tablereviewSection tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+.tablereviewSection th {
+  font-weight: bold;
+}
