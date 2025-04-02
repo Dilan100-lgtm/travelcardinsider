@@ -221,7 +221,7 @@ export default function TopNewTravelCreditCardOffers2025() {
             /* Replaced <img> with Next.js <Image>, corrected alt */</Image>
             <div className={styles.reviewImage} style={{ marginTop: '1rem' }}>
               <Image
-                src="AdobeStock_560041735_result"
+                src="/AdobeStock_560041735_result.webp"
                 alt="Travel Card Insider"
                 width="100%"
                 height="auto"
