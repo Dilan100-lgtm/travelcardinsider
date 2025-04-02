@@ -205,7 +205,7 @@ export default function TopNewTravelCreditCardOffers2025() {
         {/* The main container for the review article */}
         <article
           className={styles.reviewContainer}
-          style={{ maxWidth: '1200px', margin: '0 auto', padding: '1rem' }}
+          style={{ maxWidth: '1200px', margin: '0 auto', padding: '1rem',marginTop: '3rem' }}
         >
           {/* Re-creating the original HTML structure */}
 
@@ -221,7 +221,7 @@ export default function TopNewTravelCreditCardOffers2025() {
             {/* Replaced <img> with Next.js <Image>, corrected alt */}
             <div className={styles.reviewImage} style={{ marginTop: '1rem' }}>
               <Image
-                src="/AdobeStock_560041735.jpeg"
+                src="AdobeStock_560041735_result"
                 alt="Travel Card Insider"
                 width={1000}
                 height={500}
