@@ -17,19 +17,19 @@
   color: black;
 
 }
-.review {
+.reviewGuID {
   font-style: italic;
   font-weight: bolder;
   font-size: 1.4em;
   color: rgb(14, 117, 14);
 }
-.Disclaimer {
+.reviewDisclaimer {
   font-size: 0.9em;
   color: #555;
   margin-top: 0;
   margin-bottom: 1rem;
 }
-.img {
+.reviewImage {
   background: center/cover no-repeat border-box;
     margin-top: 0;
     /* background-repeat: no-repeat;
@@ -60,20 +60,20 @@
 /* ------------------------------
    Header/Intro
 ---------------------------------*/
-.review-header h1 {
+.reviewTitle h1 {
   font-size: 2rem;
   margin-bottom: 1rem;
   color: #007bff;
 }
 
-.review-header .intro {
+.reviewTitle .reviewIntro {
   font-size: 1rem;
   margin-bottom: 1rem;
   color: #444;
   line-height: 1.5;
 }
 
-.review-header ul {
+.reviewTitle ul {
   margin-left: 2rem;
   list-style: disc outside;
   margin-top: 0.5rem;
@@ -152,17 +152,7 @@
 
 
 
-/* ------------------------------
-   Disclaimer / Footer
----------------------------------*/
-.disclaimer {
-  padding: 1rem;
-  background: #f8f8f8;
-  border-top: 1px solid #ddd;
-  font-size: 0.9rem;
-  color: #555;
-  border-radius: 0 0 5px 5px;
-}
+
 
 /* ------------------------------
    RESPONSIVE MEDIA QUERIES

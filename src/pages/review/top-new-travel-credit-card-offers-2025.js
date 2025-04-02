@@ -230,6 +230,7 @@ export default function TopNewTravelCreditCardOffers2025() {
           }}
         >
           {/* TITLE & INTRO */}
+          <div className={styles.reviewGuID}>GUID:</div>
           <header className={styles.reviewHeader}>
             <h1 className={styles.reviewTitle}>
               Breaking: Top New Travel Credit Card Offers of 2025—Which One Is Best?
