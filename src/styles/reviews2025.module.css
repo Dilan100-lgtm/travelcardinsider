@@ -83,7 +83,7 @@
 /* ------------------------------
    Table of Contents
 ---------------------------------*/
-.toc {
+.reviewToc {
   margin: 1rem 0;
   padding: 1rem;
   background: #eaf2ff;
@@ -91,24 +91,24 @@
   border-radius: 5px;
 }
 
-.toc h2 {
+.reviewToc h2 {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
   color: #333;
 }
 
-.toc ol {
+.reviewToc ol {
   margin-left: 1.5rem;
   list-style-type: decimal;
 }
 
-.toc ol li a {
+.reviewToc ol li a {
   text-decoration: none;
   color: #007bff;
   transition: color 0.3s;
 }
 
-.toc ol li a:hover {
+.reviewToc ol li a:hover {
   text-decoration: underline;
   color: #0056b3;
 }
@@ -174,7 +174,7 @@
     font-size: 1.6rem;
   }
 
-  .toc h2 {
+  .reviewToc h2 {
     font-size: 1rem;
   }
 
@@ -193,15 +193,15 @@
     font-size: 0.95rem;
   }
 
-  .toc {
+  .reviewToc {
     padding: 0.5rem;
   }
 
-  .toc h2 {
+  .reviewToc h2 {
     font-size: 0.9rem;
   }
 
-  .toc ol {
+  .reviewToc ol {
     margin-left: 1rem;
   }
 
