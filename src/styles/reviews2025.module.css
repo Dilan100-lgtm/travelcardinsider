@@ -60,10 +60,10 @@
 /* ------------------------------
    Header/Intro
 ---------------------------------*/
-.reviewTitle h1 {
+.reviewTitle {
+  color: #007bff;
   font-size: 2rem;
   margin-bottom: 1rem;
-  color: #007bff;
 }
 
 .reviewHeader .reviewIntro {
