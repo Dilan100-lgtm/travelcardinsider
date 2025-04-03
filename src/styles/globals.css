@@ -716,22 +716,22 @@ border-radius: 5px;
 }
 }
 
-/* Roboto Regular */
+/* Example for Roboto Condensed Regular */
 @font-face {
-  font-family: 'Roboto';
-  font-style: normal;
+  font-family: 'Roboto Condensed';
+  src: url('/fonts/Roboto_Condensed-Regular.ttf') format('truetype');
   font-weight: 400;
-  font-display: swap;
-  src: url('/fonts/roboto-regular.woff2') format('woff2');
+  font-style: normal;
 }
 
-/* Roboto Bold */
+/* Optional: Add more weights/styles as needed */
 @font-face {
-  font-family: 'Roboto';
-  font-style: normal;
+  font-family: 'Roboto Condensed';
+  src: url('/fonts/Roboto_Condensed-Bold.ttf') format('truetype');
   font-weight: 700;
-  font-display: swap;
-  src: url('/fonts/roboto-bold.woff2') format('woff2');
+  font-style: normal;
+}
+
 }
 
 /* Playfair Display Regular */
