@@ -104,7 +104,7 @@ export default function HiddenPerksTravelCardBenefits2025() {
             <u>By TravelCardInsider</u>
           </strong>
           </header>
-        </article>
+        
 
           <div className={styles.reviewImage}>
             <div style={{ marginTop: '1rem' }}>
@@ -533,6 +533,7 @@ export default function HiddenPerksTravelCardBenefits2025() {
             For personalized advice, consult a licensed financial professional.
           </p>
         </section>
+        </article>
           </main>
   
         {/* Footer component (replaces the <footer> section) */}
