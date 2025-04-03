@@ -30,12 +30,33 @@ export default function NoFeeTravelCards2025() {
         />
         <meta name="author" content="TravelCardInsider" />
 
-        {/* Google Fonts Preconnect (optional if you self-host your fonts) */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Playfair+Display:wght@400..900&display=swap"
-          rel="stylesheet"
+         rel="preload"
+           href="/fonts/Roboto_Condensed-Regular.ttf"
+          as="font"
+          type="font/ttf"
+           crossOrigin="anonymous"
+         />
+        <link
+          rel="preload"
+          href="/fonts/roboto-bold.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/playfair-display-regular.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/playfair-display-bold.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
         />
 
         {/* JSON-LD Structured Data */}
