@@ -134,12 +134,12 @@ export default function PointsMilesTrends2025LuxuryTravel() {
 
             {/* Intro */}
             <p className={styles.reviewIntro}>
-              In the ever-changing world of loyalty programs, <em>2025</em> is shaping up to be a pivotal year for
-              maximizing <strong>points and miles</strong> for upscale yet affordable travel. From new <em>dynamic pricing</em> on flights
+              In the ever-changing world of loyalty programs, <em><b>2025</b></em> is shaping up to be a pivotal year for
+              maximizing <strong>points and miles</strong> for upscale yet affordable travel. From new <em><b>dynamic pricing</b></em> on flights
               to shifts in popular hotel award charts, savvy travelers can still find ways to book luxurious vacations
               for a fraction of the cash cost. Below, explore how to leverage <strong>redemption sweet spots</strong> in major airline
-              alliances and hotel programs, plus real examples of flying <em>First Class</em> or enjoying five-star suites at half
-              the usual miles. Ready to <em>upgrade your next adventure</em> without breaking the bank? Let’s dive in.
+              alliances and hotel programs, plus real examples of flying <em><b>First Class</b></em> or enjoying five-star suites at half
+              the usual miles. Ready to <em><b>upgrade your next adventure</b></em> without breaking the bank? Let’s dive in.
             </p>
           </header>
 
@@ -161,35 +161,35 @@ export default function PointsMilesTrends2025LuxuryTravel() {
             <h2>1. Major Program Shifts in 2025</h2>
             <p>
               Over the past year, several <strong>airline and hotel loyalty programs</strong> have introduced
-              <em> dynamic award pricing</em> or restructured their award charts entirely. While these changes
+              <em><b> dynamic award pricing</b></em> or restructured their award charts entirely. While these changes
               can feel daunting, they also create fresh opportunities for those willing to adapt.
             </p>
             <ul>
               <li>
                 <strong>United MileagePlus</strong>: Expanded dynamic pricing for both economy and premium cabins,
-                resulting in occasional <em>flash award sales</em> if you book early or during special promos.
+                resulting in occasional <em><b>flash award sales</b></em> if you book early or during special promos.
               </li>
               <li>
                 <strong>Delta SkyMiles</strong>: Ongoing shift away from a transparent chart means you might find
-                premium seats for fewer miles on <em>certain days</em>, while peak dates cost a fortune.
+                premium seats for fewer miles on <em><b>certain days</b></em>, while peak dates cost a fortune.
               </li>
               <li>
                 <strong>Marriott Bonvoy</strong>: Officially fully dynamic with upper-tier properties fluctuating
-                wildly. Some off-peak redemption deals at <em>high-end resorts</em> can be gems.
+                wildly. Some off-peak redemption deals at <em><b>high-end resorts</b></em> can be gems.
               </li>
               <li>
                 <strong>Hilton Honors</strong>: Maintains flexible point pricing, though many high-end properties
                 remain stable thanks to local pricing caps or brand-level standards. However, watch for newly introduced
-                seasonal surcharges in <em>major cities</em>.
+                seasonal surcharges in <em><b>major cities</b></em>.
               </li>
               <li>
                 <strong>World of Hyatt</strong>: Introduced new award categories for top-tier properties, but
-                <em> off-peak nights</em> can be relatively cheap in points if you plan carefully.
+                <em><b> off-peak nights</b></em> can be relatively cheap in points if you plan carefully.
               </li>
             </ul>
             <p>
               Despite these changes, the essence of maximizing points remains the same:
-              <em> book strategic alliances</em>, target <em>sweet spot routes</em>, and <em>redeem during off-peak periods</em>
+              <em><b> book strategic alliances</b></em>, target <em><b>sweet spot routes</b></em>, and <em><b>redeem during off-peak periods</b></em>
               whenever possible.
             </p>
           </section>
@@ -204,19 +204,19 @@ export default function PointsMilesTrends2025LuxuryTravel() {
             <h3>A. Airline Alliances</h3>
             <ul>
               <li>
-                <strong>Star Alliance Europe Trips</strong>: <em>Air Canada Aeroplan</em> introduced family pooling
+                <strong>Star Alliance Europe Trips</strong>: <em><b>Air Canada Aeroplan</b></em> introduced family pooling
                 and maintains decent award rates for flights to Europe, sometimes under 60,000 miles in
-                <em> Business Class</em> if you catch an off-peak window. Look for flights on <em>Lufthansa</em> or
-                <em> SWISS</em> with limited surcharges.
+                <em><b> Business Class</b></em> if you catch an off-peak window. Look for flights on <em><b>Lufthansa</b></em> or
+                <em><b> SWISS</b></em> with limited surcharges.
               </li>
               <li>
-                <strong>Oneworld to Asia</strong>: <em>American AAdvantage</em> miles for
-                <em> Japan Airlines First Class</em> from the U.S. to Tokyo can still be a steal if you find
+                <strong>Oneworld to Asia</strong>: <em><b>American AAdvantage</b></em> miles for
+                <em><b> Japan Airlines First Class</b></em> from the U.S. to Tokyo can still be a steal if you find
                 availability—under 90,000 miles for a seat that often costs $15,000 in cash.
               </li>
               <li>
-                <strong>SkyTeam Oddities</strong>: <em>Virgin Atlantic</em> miles used on <em>Air France/KLM</em>
-                routes can yield surprising <em>Business Class deals</em> under 50,000 miles transatlantic
+                <strong>SkyTeam Oddities</strong>: <em><b>Virgin Atlantic</b></em> miles used on <em><b>Air France/KLM</b></em>
+                routes can yield surprising <em><b>Business Class deals</b></em> under 50,000 miles transatlantic
                 if you avoid peak times. Keep an eye out for minimal surcharges, too.
               </li>
             </ul>
@@ -229,8 +229,8 @@ export default function PointsMilesTrends2025LuxuryTravel() {
               </li>
               <li>
                 <strong>Hilton 5th Night Free</strong>: This perk remains a key method for stretching your points
-                on <em>family vacations</em> or extended stays. Pair with an <em>Amex Hilton card</em> for more
-                earnings, or <em>Gold/Diamond status</em> for free breakfast or lounge access.
+                on <em><b>family vacations</b></em> or extended stays. Pair with an <em><b>Amex Hilton card</b></em> for more
+                earnings, or <em><b>Gold/Diamond status</b></em> for free breakfast or lounge access.
               </li>
               <li>
                 <strong>Hyatt Category 1–4 Freedoms</strong>: Hyatt’s chart can be kinder if you find newly minted
@@ -239,8 +239,8 @@ export default function PointsMilesTrends2025LuxuryTravel() {
               </li>
             </ul>
             <p>
-              The main lesson: <em>flexibility</em> pays off. Watch for airline or hotel promotions, leverage partnerships,
-              and plan ahead to lock in <em>off-peak</em> or promotional rates before they change.
+              The main lesson: <em><b>flexibility</b></em> pays off. Watch for airline or hotel promotions, leverage partnerships,
+              and plan ahead to lock in <em><b>off-peak</b></em> or promotional rates before they change.
             </p>
           </section>
 
@@ -253,28 +253,28 @@ export default function PointsMilesTrends2025LuxuryTravel() {
             </p>
             <h3>A. First Class to Asia at Half the Usual Miles</h3>
             <p>
-              <strong>Oneworld Route:</strong> Los Angeles (LAX) to Tokyo (HND) using <em>American AAdvantage miles</em> can
-              drop to <strong>80,000 miles</strong> plus ~$30 in taxes during <em>low-season</em> availability on Japan Airlines.
-              The cash price for a <em>First Class seat</em> on this route can exceed $12,000, netting you well over
+              <strong>Oneworld Route:</strong> Los Angeles (LAX) to Tokyo (HND) using <em><b>American AAdvantage miles</b></em> can
+              drop to <strong>80,000 miles</strong> plus ~$30 in taxes during <em><b>low-season</b></em> availability on Japan Airlines.
+              The cash price for a <em><b>First Class seat</b></em> on this route can exceed $12,000, netting you well over
               <strong> 10 cents per mile</strong> in value.
             </p>
             <h3>B. Luxury Resort in Southeast Asia for 50% Fewer Points</h3>
             <p>
-              <strong>Marriott Bonvoy Example:</strong> A five-night stay at a <em>Maldives Marriott property</em> might average
-              70,000 points per night in peak season. But if you book <em>off-peak dates</em>, you could see nights under
-              50,000 points each. Factor in the 5th-night-free perk (for <em>Marriott Silver and above</em>) and you effectively
+              <strong>Marriott Bonvoy Example:</strong> A five-night stay at a <em><b>Maldives Marriott property</b></em> might average
+              70,000 points per night in peak season. But if you book <em><b>off-peak dates</b></em>, you could see nights under
+              50,000 points each. Factor in the 5th-night-free perk (for <em><b>Marriott Silver and above</b></em>) and you effectively
               cut the total cost by up to 50%.
             </p>
             <h3>C. European City Hop with Aeroplan</h3>
             <p>
               <strong>Star Alliance Tactics:</strong> Fly from New York to Paris for around 60,000
-              <em> Aeroplan miles</em> in <em>Business Class</em> on <em>SWISS</em> or <em>Austrian Airlines</em>—a
+              <em><b> Aeroplan miles</b></em> in <em><b>Business Class</b></em> on <em><b>SWISS</b></em> or <em><b>Austrian Airlines</b></em>—a
               $3,000–$4,000 flight retail. Then use the same program for an additional short-haul flight to Rome or Berlin
-              for minimal extra miles. The new <em>stopover policy</em> can let you explore an extra city on the same award.
+              for minimal extra miles. The new <em><b>stopover policy</b></em> can let you explore an extra city on the same award.
             </p>
             <p>
               These examples highlight how a bit of planning and knowledge about alliances can unlock
-              <em> premium cabins and five-star resorts</em> that might otherwise be out of reach.
+              <em><b> premium cabins and five-star resorts</b></em> that might otherwise be out of reach.
             </p>
           </section>
 
@@ -291,26 +291,26 @@ export default function PointsMilesTrends2025LuxuryTravel() {
                 if you spot a good rate. Dynamic systems can inflate cost as seats fill.
               </li>
               <li>
-                <strong>Monitor Award Calendars:</strong> Some airlines, like <em>Air Canada</em> or
-                <em> British Airways</em>, show monthly views so you can find <em>lowest-mileage days</em> at a glance.
+                <strong>Monitor Award Calendars:</strong> Some airlines, like <em><b>Air Canada</b></em> or
+                <em><b> British Airways</b></em>, show monthly views so you can find <em><b>lowest-mileage days</b></em> at a glance.
               </li>
               <li>
                 <strong>Be Flexible with Dates &amp; Routes:</strong> If you can shift your trip by a day or two,
                 you might save tens of thousands of points. Consider connecting flights if direct flights are overpriced.
               </li>
               <li>
-                <strong>Use Tools &amp; Alerts:</strong> Sites like <em>AwardHacker</em> or <em>ExpertFlyer</em> can alert
+                <strong>Use Tools &amp; Alerts:</strong> Sites like <em><b>AwardHacker</b></em> or <em><b>ExpertFlyer</b></em> can alert
                 you when a seat you want drops in mileage cost. Jump quickly when you see it.
               </li>
               <li>
                 <strong>Capitalize on Transfer Bonuses:</strong> If your bank partner (e.g.,
-                <em> Amex, Chase, Citi</em>) runs a 20–30% transfer bonus to an airline/hotel, that effectively reduces
+                <em><b> Amex, Chase, Citi</b></em>) runs a 20–30% transfer bonus to an airline/hotel, that effectively reduces
                 the mileage outlay for the same redemption.
               </li>
             </ul>
             <p>
-              <em>Dynamic pricing</em> can feel chaotic, but it rewards travelers who remain vigilant and flexible.
-              If you pounce on a low demand window, you can snag a <em>First Class seat</em> or <em>junior suite</em>
+              <em><b>Dynamic pricing</b></em> can feel chaotic, but it rewards travelers who remain vigilant and flexible.
+              If you pounce on a low demand window, you can snag a <em><b>First Class seat</b></em> or <em><b>junior suite</b></em>
               for far fewer miles than older static charts might suggest.
             </p>
           </section>
@@ -327,16 +327,16 @@ export default function PointsMilesTrends2025LuxuryTravel() {
               <li>
                 <strong>Holding Too Many Points in One Program:</strong> If that airline or hotel changes its
                 terms drastically, you’re stuck. Diversify by keeping a healthy stash in flexible bank currencies like
-                <em> Chase Ultimate Rewards</em>, <em>Amex Membership Rewards</em>, or <em>Citi ThankYou Points</em>.
+                <em><b> Chase Ultimate Rewards</b></em>, <em><b>Amex Membership Rewards</b></em>, or <em><b>Citi ThankYou Points</b></em>.
               </li>
               <li>
                 <strong>Waiting Until the Last Minute:</strong> With dynamic pricing, sometimes close-in bookings
-                spike in cost. Book as early as possible or watch for <em>last-minute award dumps</em>
+                spike in cost. Book as early as possible or watch for <em><b>last-minute award dumps</b></em>
                 (riskier strategy if you can’t handle trip uncertainty).
               </li>
               <li>
                 <strong>Ignoring Taxes &amp; Surcharges:</strong> Some sweet spots come with high cash surcharges
-                (e.g., certain <em>British Airways</em> routes). If fees exceed $500, it might not be such a great deal.
+                (e.g., certain <em><b>British Airways</b></em> routes). If fees exceed $500, it might not be such a great deal.
                 Weigh total out-of-pocket carefully.
               </li>
             </ul>
@@ -349,7 +349,7 @@ export default function PointsMilesTrends2025LuxuryTravel() {
               </li>
               <li>
                 <strong>Maximize Category Bonuses &amp; Sign-Up Offers:</strong> If you aim for
-                <em> luxury awards</em>, you might need 100k+ miles. Use the right card for groceries, dining, or
+                <em><b> luxury awards</b></em>, you might need 100k+ miles. Use the right card for groceries, dining, or
                 travel to pile up miles quickly. A new sign-up bonus can push you over the threshold for a dream redemption.
               </li>
               <li>
@@ -363,19 +363,19 @@ export default function PointsMilesTrends2025LuxuryTravel() {
           <section id="conclusion" className={styles.reviewSection}>
             <h2>6. Conclusion</h2>
             <p>
-              Despite the evolution toward <em>dynamic award pricing</em>, <strong>2025</strong> remains ripe for
-              strategic travelers who want to experience <em>Business or First Class</em> flights, five-star hotels,
+              Despite the evolution toward <em><b>dynamic award pricing</b></em>, <strong>2025</strong> remains ripe for
+              strategic travelers who want to experience <em><b>Business or First Class</b></em> flights, five-star hotels,
               and exotic overwater villas at a fraction of the retail cost. By focusing on
               <strong> sweet spot routes</strong> through alliances like Oneworld or Star Alliance—and capitalizing on
-              <em> off-peak</em> or <em>promo windows</em> for hotel programs—adventurers can still find outstanding
+              <em><b> off-peak</b></em> or <em><b>promo windows</b></em> for hotel programs—adventurers can still find outstanding
               redemption deals.
             </p>
             <p>
               Keep an eye on <strong>major loyalty program shifts</strong>, such as new categories, surcharges, and
               dynamic rate expansions. Stay flexible with travel dates, monitor award calendars, and consider
               lesser-known partner redemptions to reach your dream destinations in style. If you use the
-              <em> best credit card earn rates</em> and watch for transfer bonuses, you’ll watch your balances grow
-              and redeem them for <em>luxe experiences</em> that once seemed unattainable. All that’s left is to book,
+              <em><b> best credit card earn rates</b></em> and watch for transfer bonuses, you’ll watch your balances grow
+              and redeem them for <em><b>luxe experiences</b></em> that once seemed unattainable. All that’s left is to book,
               pack, and enjoy your journey—without spending a fortune.
             </p>
           </section>
