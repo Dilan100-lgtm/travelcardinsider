@@ -390,6 +390,7 @@ export default function HomePage() {
                 alt: "The Ultimate Guide to Lounge Access in 2025",
                 title: "VIP Airport Lounge Access in 2025",
                 desc: "How to get premium perks and comfort while traveling.",
+                
                 // no link provided here, leaving as is
               },
               {
@@ -409,6 +410,7 @@ export default function HomePage() {
                 alt: "Redeeming Points for Luxury Travel on a Budget",
                 title: "Redeem for Luxury Travel on a Budget",
                 desc: "Stretch your points and miles for a premium travel experience.",
+                link: "/review/2025-Points-&-Miles-Trends-Best-Ways-to-Redeem-for-Luxury-Travel-on-a-Budget",
               },
               {
                 img: "/AdobeStock_265601656_result.webp",
