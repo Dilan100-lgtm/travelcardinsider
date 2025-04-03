@@ -107,8 +107,10 @@ export default function PointsMilesTrends2025LuxuryTravel() {
           <div className={styles.reviewGuID}>GUID:</div>
 
           {/* ARTICLE HEADER */}
-          <header className={styles.reviewHeader}>
-            <h1>2025 Points &amp; Miles Trends: Best Ways to Redeem for Luxury Travel on a Budget</h1>
+          <div className={styles.reviewGuID}>GUID:</div>
+                    <header className={styles.reviewHeader}>
+                      <h1 className={styles.reviewTitle}>
+            2025 Points &amp; Miles Trends: Best Ways to Redeem for Luxury Travel on a Budget</h1>
             <strong>
               <u>By TravelCardInsider</u>
             </strong>
