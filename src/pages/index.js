@@ -13,7 +13,7 @@ export default function HomePage() {
         <title>TravelCardInsider - Best Travel Credit Cards 2025</title>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="main.css" />
+        
 
         {/* ✅ Meta description for SEO */}
         <meta
