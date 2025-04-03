@@ -433,6 +433,7 @@ export default function HomePage() {
                 alt: "Is Paying a $500+ Annual Fee Really Worth It?",
                 title: "Is a $500+ Annual Fee Worth It?",
                 desc: "A cost-benefit breakdown of premium travel credit cards.",
+                link: "/review/Premium-vs-Budget-Travel-Cards-Is-Paying-a-$500+Annual-Fee-Really-Worth-It",
               },
             ].map((review, index) => (
               <div className="card" key={index}>
