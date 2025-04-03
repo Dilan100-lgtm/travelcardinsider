@@ -83,7 +83,7 @@ export default function HiddenPerksTravelCardBenefits2025() {
 
       {/* Header component (replaces the <header> section) */}
       <Header />
-<div className={styles.reviewGuID}>GUID:</div>
+<div className={`${styles.reviewGuID}`} style={{ marginTop: '1rem' }}>GUID:</div>
       {/* MAIN CONTENT */}
       <main className={styles.reviewContainer}>
         {/* Intro / Article Title */}
