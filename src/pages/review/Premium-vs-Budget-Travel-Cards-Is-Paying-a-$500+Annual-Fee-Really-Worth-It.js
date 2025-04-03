@@ -74,14 +74,19 @@ export default function PremiumVsBudgetTravelCards2025() {
 
       {/* Header component (replaces your <header> tag) */}
       <Header />
-      <div className={styles.reviewGuID}>GUID:</div>
       <main style={{ fontFamily: 'Roboto, sans-serif' }}>
-        {/* MAIN CONTENT WRAPPER */}
-        <div className={styles.reviewContainer}>
-          {/* GUID Placeholder */}
-          <div className={styles.reviewGuID}>GUID:</div>
-
-          {/* REVIEW HEADER */}
+              {/* The main container for the review article */}
+              <article
+                className={styles.reviewContainer}
+                style={{
+                  maxWidth: '1200px',
+                  margin: '0 auto',
+                  padding: '1rem',
+                  marginTop: '3rem'
+                }}
+              >
+                {/* TITLE & INTRO */}
+                <div className={styles.reviewGuID}>GUID:</div>
           <header className={styles.reviewHeader}>
                       <h1 className={styles.reviewTitle}>Premium vs. Budget Travel Cards: Is Paying a $500+ Annual Fee Really Worth It?</h1>
             <b>
