@@ -37,12 +37,12 @@ export default function HomePage() {
 
         {/* ✅ Preload only critical fonts */}
         <link
-          rel="preload"
-          href="/fonts/roboto-regular.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
+  rel="preload"
+  href="/fonts/Roboto_Condensed-Regular.ttf"
+  as="font"
+  type="font/ttf"
+  crossOrigin="anonymous"
+/>
         <link
           rel="preload"
           href="/fonts/roboto-bold.woff2"
