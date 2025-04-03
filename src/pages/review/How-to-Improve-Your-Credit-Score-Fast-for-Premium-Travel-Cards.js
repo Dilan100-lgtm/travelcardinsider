@@ -101,7 +101,7 @@ export default function ImproveCreditScoreFast2025() {
             {/* Convert <img> to Next.js <Image> */}
             <div style={{ marginTop: '1rem' }}>
               <Image
-                src="/AdobeStock_964630446.jpeg"
+                src="/AdobeStock_964630446_result.webp"
                 alt="Improve Credit Score Fast"
                 width={1200}
                 height={700}
