@@ -129,20 +129,20 @@
   font-size: 1.3rem;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
-  color: #555;
+  color: black;
 }
 
 .reviewSection p {
   line-height: 1.6;
   margin-bottom: 1rem;
-  color: #444;
+  color: black;
 }
 
 .reviewSection ul {
   margin-left: 2rem;
   list-style: disc;
   margin-bottom: 1rem;
-  color: #444;
+  color: black;
 }
 
 .reviewSection ul li {
