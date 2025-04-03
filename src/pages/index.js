@@ -400,6 +400,7 @@ export default function HomePage() {
                 alt: "Top 5 Family-Friendly Travel Cards for 2025",
                 title: "5 Family-Friendly Travel Cards for 2025",
                 desc: "Kid-friendly perks and money-saving benefits for your family vacations.",
+                link: "/review/Top-5-Family-Friendly-Travel-Cards-for-2025-Maximize-Points-&-Perks-with-Kids-in-Tow",
               },
               {
                 img: "/AdobeStock_964630446_result.webp",
