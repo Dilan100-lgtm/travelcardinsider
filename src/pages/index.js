@@ -427,6 +427,7 @@ export default function HomePage() {
                 alt: "The Best No Annual Fee Travel Cards",
                 title: "The Best No Annual Fee Travel Cards",
                 desc: "Earn rewards without worrying about recurring charges.",
+                link: "/review/The-Best-Travel-Cards-with-No-Annual-Fee-Get-Big-Rewards-for-Free",
               },
               {
                 img: "/AdobeStock_241382254_result.webp",
