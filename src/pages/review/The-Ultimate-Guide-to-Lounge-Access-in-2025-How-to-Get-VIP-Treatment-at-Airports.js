@@ -527,8 +527,10 @@ export default function LoungeAccess2025() {
           {/* 5. COMPARISON TABLE */}
           <section id="compareTable" className={styles.reviewSection}>
             <h2>5. Comparison Table</h2>
-            <div className=".tablereviewSection">
-              <table>
+            <div className={styles.tablereviewSectionResponsive}>
+                        <div style={{ overflowX: 'auto' }} className={styles.tablereviewSection}>
+                          <table style={{ borderCollapse: 'collapse', width: '100%' }}>
+              
                 <thead>
                   <tr>
                     <th>Card</th>
@@ -586,6 +588,7 @@ export default function LoungeAccess2025() {
                   </tr>
                 </tbody>
               </table>
+            </div>
             </div>
           </section>
 
