@@ -98,7 +98,7 @@ export default function HiddenPerksTravelCardBenefits2025() {
 
           <div className={styles.reviewImage}>
             <Image
-              src="/AdobeStock_265601656.jpeg"
+              src="/AdobeStock_265601656_result.webp"
               alt="2025 Points & Miles for Luxury Travel"
               width={1200}
               height={700}
