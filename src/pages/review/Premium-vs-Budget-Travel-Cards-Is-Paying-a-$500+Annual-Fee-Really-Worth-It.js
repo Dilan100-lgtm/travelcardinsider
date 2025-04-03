@@ -74,7 +74,7 @@ export default function PremiumVsBudgetTravelCards2025() {
 
       {/* Header component (replaces your <header> tag) */}
       <Header />
-
+      <div className={styles.reviewGuID}>GUID:</div>
       <main style={{ fontFamily: 'Roboto, sans-serif' }}>
         {/* MAIN CONTENT WRAPPER */}
         <div className={styles.reviewContainer}>
