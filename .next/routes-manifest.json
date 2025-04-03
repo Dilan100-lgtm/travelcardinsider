@@ -1,0 +1,91 @@
+{
+  "version": 3,
+  "pages404": true,
+  "caseSensitive": false,
+  "basePath": "",
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    }
+  ],
+  "headers": [],
+  "dynamicRoutes": [],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/review/2025-Points-&-Miles-Trends-Best-Ways-to-Redeem-for-Luxury-Travel-on-a-Budget",
+      "regex": "^/review/2025\\-Points\\-&\\-Miles\\-Trends\\-Best\\-Ways\\-to\\-Redeem\\-for\\-Luxury\\-Travel\\-on\\-a\\-Budget(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/review/2025\\-Points\\-&\\-Miles\\-Trends\\-Best\\-Ways\\-to\\-Redeem\\-for\\-Luxury\\-Travel\\-on\\-a\\-Budget(?:/)?$"
+    },
+    {
+      "page": "/review/Hidden-Perks-Secret-Travel-Card-Benefits-You-Probably-Didn’t-Know-About-in-2025",
+      "regex": "^/review/Hidden\\-Perks\\-Secret\\-Travel\\-Card\\-Benefits\\-You\\-Probably\\-Didn’t\\-Know\\-About\\-in\\-2025(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/review/Hidden\\-Perks\\-Secret\\-Travel\\-Card\\-Benefits\\-You\\-Probably\\-Didn’t\\-Know\\-About\\-in\\-2025(?:/)?$"
+    },
+    {
+      "page": "/review/How-to-Improve-Your-Credit-Score-Fast-for-Premium-Travel-Cards",
+      "regex": "^/review/How\\-to\\-Improve\\-Your\\-Credit\\-Score\\-Fast\\-for\\-Premium\\-Travel\\-Cards(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/review/How\\-to\\-Improve\\-Your\\-Credit\\-Score\\-Fast\\-for\\-Premium\\-Travel\\-Cards(?:/)?$"
+    },
+    {
+      "page": "/review/Premium-vs-Budget-Travel-Cards-Is-Paying-a-$500+Annual-Fee-Really-Worth-It",
+      "regex": "^/review/Premium\\-vs\\-Budget\\-Travel\\-Cards\\-Is\\-Paying\\-a\\-\\$500\\+Annual\\-Fee\\-Really\\-Worth\\-It(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/review/Premium\\-vs\\-Budget\\-Travel\\-Cards\\-Is\\-Paying\\-a\\-\\$500\\+Annual\\-Fee\\-Really\\-Worth\\-It(?:/)?$"
+    },
+    {
+      "page": "/review/The-Best-Travel-Cards-with-No-Annual-Fee-Get-Big-Rewards-for-Free",
+      "regex": "^/review/The\\-Best\\-Travel\\-Cards\\-with\\-No\\-Annual\\-Fee\\-Get\\-Big\\-Rewards\\-for\\-Free(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/review/The\\-Best\\-Travel\\-Cards\\-with\\-No\\-Annual\\-Fee\\-Get\\-Big\\-Rewards\\-for\\-Free(?:/)?$"
+    },
+    {
+      "page": "/review/The-Ultimate-Guide-to-Lounge-Access-in-2025-How-to-Get-VIP-Treatment-at-Airports",
+      "regex": "^/review/The\\-Ultimate\\-Guide\\-to\\-Lounge\\-Access\\-in\\-2025\\-How\\-to\\-Get\\-VIP\\-Treatment\\-at\\-Airports(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/review/The\\-Ultimate\\-Guide\\-to\\-Lounge\\-Access\\-in\\-2025\\-How\\-to\\-Get\\-VIP\\-Treatment\\-at\\-Airports(?:/)?$"
+    },
+    {
+      "page": "/review/Top-5-Family-Friendly-Travel-Cards-for-2025-Maximize-Points-&-Perks-with-Kids-in-Tow",
+      "regex": "^/review/Top\\-5\\-Family\\-Friendly\\-Travel\\-Cards\\-for\\-2025\\-Maximize\\-Points\\-&\\-Perks\\-with\\-Kids\\-in\\-Tow(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/review/Top\\-5\\-Family\\-Friendly\\-Travel\\-Cards\\-for\\-2025\\-Maximize\\-Points\\-&\\-Perks\\-with\\-Kids\\-in\\-Tow(?:/)?$"
+    },
+    {
+      "page": "/review/top-new-travel-credit-card-offers-2025",
+      "regex": "^/review/top\\-new\\-travel\\-credit\\-card\\-offers\\-2025(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/review/top\\-new\\-travel\\-credit\\-card\\-offers\\-2025(?:/)?$"
+    }
+  ],
+  "dataRoutes": [],
+  "rsc": {
+    "header": "RSC",
+    "varyHeader": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Router-Segment-Prefetch",
+    "prefetchHeader": "Next-Router-Prefetch",
+    "didPostponeHeader": "x-nextjs-postponed",
+    "contentTypeHeader": "text/x-component",
+    "suffix": ".rsc",
+    "prefetchSuffix": ".prefetch.rsc",
+    "prefetchSegmentHeader": "Next-Router-Segment-Prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments"
+  },
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  },
+  "rewrites": []
+}
