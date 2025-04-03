@@ -391,6 +391,7 @@ export default function HomePage() {
                 alt: "The Ultimate Guide to Lounge Access in 2025",
                 title: "VIP Airport Lounge Access in 2025",
                 desc: "How to get premium perks and comfort while traveling.",
+                link: "/review/The-Ultimate-Guide-to-Lounge-Access-in-2025-How-to-Get-VIP-Treatment-at-Airports",
                 
                 // no link provided here, leaving as is
               },
