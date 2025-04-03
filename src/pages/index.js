@@ -405,6 +405,8 @@ export default function HomePage() {
                 alt: "Improve Your Credit Score Fast for Premium Cards",
                 title: "Boost Your Credit Score for Premium Cards",
                 desc: "Actionable tips to qualify for the best travel rewards cards.",
+                link: "/review/How-to-Improve-Your-Credit-Score-Fast-for-Premium-Travel-Cards",
+
               },
               {
                 img: "/alex-bertha-Jyg7xHRmXiU-unsplash (1).jpg",
