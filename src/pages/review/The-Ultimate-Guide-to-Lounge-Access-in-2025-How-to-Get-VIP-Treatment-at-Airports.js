@@ -213,6 +213,7 @@ export default function LoungeAccess2025() {
               independent. Offers are subject to change.
             </p>
             <p className={styles.reviewIntro}>
+            <h2>Intrduction</h2>
               Looking to elevate your travel experience? Airport lounges can transform a hectic
               pre-flight scramble into a calm, comfortable oasis. In 2025, lounge access options
               have expanded more than ever—from exclusive airline lounges to premium credit card
