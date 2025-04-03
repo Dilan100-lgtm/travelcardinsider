@@ -10,7 +10,7 @@ import Footer from '../../components/Footer';
 
 export default function HiddenPerksTravelCardBenefits2025() {
   return (
-    <>
+    <React.Fragment>
       <Head>
         {/* Basic Meta */}
         <meta charSet="UTF-8" />
@@ -83,17 +83,17 @@ export default function HiddenPerksTravelCardBenefits2025() {
 
       {/* Header component (replaces the <header> section) */}
       <Header />
-<main style={{ fontFamily: 'Roboto, sans-serif' }}>
-        {/* The main container for the review article */}
-        <article
-          className={styles.reviewContainer}
-          style={{
-            maxWidth: '1200px',
-            margin: '0 auto',
-            padding: '1rem',
-            marginTop: '3rem'
-          }}
-        >
+      <main style={{ fontFamily: 'Roboto, sans-serif' }}>
+  {/* The main container for the review article */}
+  <article
+    className={styles.reviewContainer}
+    style={{
+      maxWidth: '1200px',
+      margin: '0 auto',
+      padding: '1rem',
+      marginTop: '3rem',
+    }}
+  >
           {/* TITLE & INTRO */}
           <div className={styles.reviewGuID}>GUID:</div>
           <header className={styles.reviewHeader}>
@@ -139,7 +139,6 @@ export default function HiddenPerksTravelCardBenefits2025() {
             In this we’ll unearth the hidden <em>gem benefits</em> of travel credit cards,
             explaining how each works and why 2025 might be the year to maximize them.
           </p>
-        </section>
 
         {/* Table of Contents */}
         <nav className={styles.reviewToc}>
@@ -534,10 +533,10 @@ export default function HiddenPerksTravelCardBenefits2025() {
             For personalized advice, consult a licensed financial professional.
           </p>
         </section>
-      </main>
+        </main>
 
       {/* Footer component (replaces the <footer> section) */}
       <Footer />
-    </>
+    </React.Fragment> {/* Closing JSX fragment */}
   );
 }
