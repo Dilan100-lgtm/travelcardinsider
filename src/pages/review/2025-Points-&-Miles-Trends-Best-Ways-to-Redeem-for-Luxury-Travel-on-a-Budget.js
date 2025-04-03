@@ -104,7 +104,7 @@ export default function PointsMilesTrends2025LuxuryTravel() {
         <article className={styles.reviewContainer}>
           {/* A placeholder for GUID if needed: 
               (Mirrors the example usage of reviewGuID) */}
-          
+          <div className={styles.reviewGuID}>GUID:</div>
 
           {/* ARTICLE HEADER */}
           <div className={styles.reviewGuID}>GUID:</div>
