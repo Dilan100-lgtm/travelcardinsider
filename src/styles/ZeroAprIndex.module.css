@@ -1,0 +1,187 @@
+/* File: styles/ZeroAprIndex.module.css */
+
+.container {
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 1200px;
+  box-sizing: border-box;
+  background-color: #f9f9f9; /* If you'd like a background for the body section */
+}
+
+/* HERO SECTION */
+.hero {
+  background: #11118f url('/hero_background.jpg') center/cover no-repeat;
+  color: #fff;
+  padding: 80px 20px;
+  text-align: center;
+  position: relative;
+}
+
+.heroContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.heroTitle {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  color: white;
+}
+
+.heroDescription {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #f4f4f4;
+}
+
+.disclaimer {
+  font-size: 0.9rem;
+  color: white;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.heroCta {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.ctaButton {
+  padding: 15px 25px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.ctaPrimary {
+  background: #1add14;
+  color: #fff;
+}
+.ctaPrimary:hover {
+  background: #0e4f1f;
+}
+
+.heroImage {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.heroImage img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* TABLE SECTION */
+.cardTableSection {
+  margin-top: 2rem;
+}
+
+.tableResponsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.cardTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.cardTable thead tr {
+  background-color: #009879;
+  color: black;
+  text-align: left;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.cardTable th,
+.cardTable td {
+  border: 1px solid #ddd;
+  padding: 12px 15px;
+  text-align: center;
+  background-color: #fafafa;
+  font-size: 1rem;
+}
+
+.cardTable tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.cardTable tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.applyBtn {
+  display: block;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  text-align: center;
+  font-size: 1rem;
+  margin: 0 auto;
+  width: fit-content;
+}
+.applyBtn:hover {
+  background-color: #0056b3;
+}
+
+.aply {
+  display: block;
+  font-size: 0.7rem;
+  text-align: center;
+  color: #222222;
+  margin-top: 5px;
+}
+
+.learnMoreBtn,
+.rateFeesBtn {
+  display: inline-block;
+  margin-top: 5px;
+  color: #1add14;
+  text-align: center;
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-right: 6px;
+  cursor: pointer;
+}
+.learnMoreBtn:hover,
+.rateFeesBtn:hover {
+  text-decoration: underline;
+  color: #0e4f1f;
+}
+
+.rating {
+  font-size: 1rem;
+  color: #150363;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 2rem;
+  }
+  .heroDescription {
+    font-size: 1rem;
+  }
+  .ctaButton {
+    font-size: 0.9rem;
+    padding: 10px 15px;
+  }
+}
