@@ -43,27 +43,28 @@ export default function HomePage() {
   type="font/ttf"
   crossOrigin="anonymous"
 />
+<link
+  rel="preload"
+  href="/fonts/Roboto_Condensed-bold.ttf"
+  as="font"
+  type="font/ttf"
+  crossOrigin="anonymous"
+/>
+      
         <link
-          rel="preload"
-          href="/fonts/roboto-bold.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/playfair-display-regular.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/playfair-display-bold.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
+  rel="preload"
+  href="/fonts/playfair-display-regular.woff2"
+  as="font"
+  type="font/woff2"
+  crossOrigin="anonymous"
+/>
+<link
+  rel="preload"
+  href="/fonts/playfair-display-bold.woff2"
+  as="font"
+  type="font/woff2"
+  crossOrigin="anonymous"
+/>
 
         <script type="application/ld+json">
           {`

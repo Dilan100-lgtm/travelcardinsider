@@ -116,7 +116,7 @@ export default function PointsMilesTrends2025LuxuryTravel() {
             {/* Hero Image (converted to Next.js <Image>) */}
             <div style={{ marginTop: '1rem' }}>
               <Image
-                src="/AdobeStock_323303711.jpeg"
+                src="/alex-bertha-Jyg7xHRmXiU-unsplash (1).jpg"
                 alt="2025 Points &amp; Miles for Luxury Travel"
                 width={1200}
                 height={700}
