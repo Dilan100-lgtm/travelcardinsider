@@ -186,13 +186,22 @@ export default function LoungeAccess2025() {
       </Head>
 
       <Header />
-      <div className={styles.reviewGuID}>GUID:</div>
       <main style={{ fontFamily: 'Roboto, sans-serif' }}>
-        <article className={styles.reviewContainer}>
-          {/* TITLE & INTRO */}
-          <header className={styles.reviewHeader}>
-            <div className={styles.reviewGuID}>GUID:</div>
-            <h1>The Ultimate Guide to Lounge Access in 2025: How to Get VIP Treatment at Airports</h1>
+              {/* The main container for the review article */}
+              <article
+                className={styles.reviewContainer}
+                style={{
+                  maxWidth: '1200px',
+                  margin: '0 auto',
+                  padding: '1rem',
+                  marginTop: '3rem'
+                }}
+              >
+                {/* TITLE & INTRO */}
+                <div className={styles.reviewGuID}>GUID:</div>
+                <header className={styles.reviewHeader}>
+                  <h1 className={styles.reviewTitle}>
+            The Ultimate Guide to Lounge Access in 2025: How to Get VIP Treatment at Airports</h1>
             <b>
               <u>By TravelCardInsider</u>
             </b>
