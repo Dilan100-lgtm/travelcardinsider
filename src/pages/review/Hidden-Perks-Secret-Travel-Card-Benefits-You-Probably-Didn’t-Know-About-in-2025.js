@@ -87,7 +87,7 @@ export default function HiddenPerksTravelCardBenefits2025() {
       {/* MAIN CONTENT */}
       <main className={styles.reviewContainer}>
         {/* Intro / Article Title */}
-        <div className={styles.reviewGuID}>GUID:</div>
+        
         <section className={styles.reviewHeader}>
           <h1 className={styles.reviewTitle}>
             Hidden Perks Secret Travel Card Benefits You Probably Didn’t Know About in 2025
