@@ -527,7 +527,7 @@ export default function PremiumVsBudgetTravelCards2025() {
               specific situation.
             </p>
           </section>
-        </div>
+        </article>
       </main>
 
       {/* FOOTER COMPONENT */}
