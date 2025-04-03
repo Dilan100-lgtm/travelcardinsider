@@ -126,7 +126,7 @@
 }
 
 .reviewSection h3 {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
   color: #555;
@@ -189,6 +189,9 @@
   .reviewToc h2 {
     font-size: 1rem;
   }
+  .reviewSection {
+    font-size: 1rem;
+  }
 
   .reviewToc ol {
     margin-left: 1rem;
@@ -196,6 +199,9 @@
 
 .reviewSection h2 {
     font-size: 1.2rem;
+  }
+  .reviewSection h3 {
+    font-size: 1.1rem;
   }
 }
 
