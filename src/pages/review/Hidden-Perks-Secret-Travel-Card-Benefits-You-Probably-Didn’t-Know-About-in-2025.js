@@ -83,18 +83,28 @@ export default function HiddenPerksTravelCardBenefits2025() {
 
       {/* Header component (replaces the <header> section) */}
       <Header />
-<div className={`${styles.reviewGuID}`} style={{ marginTop: '1rem' }}>GUID:</div>
-      {/* MAIN CONTENT */}
-      <main className={styles.reviewContainer}>
-        {/* Intro / Article Title */}
-        
-        <section className={styles.reviewHeader}>
-          <h1 className={styles.reviewTitle}>
+<main style={{ fontFamily: 'Roboto, sans-serif' }}>
+        {/* The main container for the review article */}
+        <article
+          className={styles.reviewContainer}
+          style={{
+            maxWidth: '1200px',
+            margin: '0 auto',
+            padding: '1rem',
+            marginTop: '3rem'
+          }}
+        >
+          {/* TITLE & INTRO */}
+          <div className={styles.reviewGuID}>GUID:</div>
+          <header className={styles.reviewHeader}>
+            <h1 className={styles.reviewTitle}>
             Hidden Perks Secret Travel Card Benefits You Probably Didn’t Know About in 2025
           </h1>
           <strong>
             <u>By TravelCardInsider</u>
           </strong>
+          </header>
+        </article>
 
           <div className={styles.reviewImage}>
             <div style={{ marginTop: '1rem' }}>
