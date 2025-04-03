@@ -533,10 +533,11 @@ export default function HiddenPerksTravelCardBenefits2025() {
             For personalized advice, consult a licensed financial professional.
           </p>
         </section>
-        </main>
-
-      {/* Footer component (replaces the <footer> section) */}
-      <Footer />
-    </React.Fragment> {/* Closing JSX fragment */}
+          </main>
+  
+        {/* Footer component (replaces the <footer> section) */}
+        <Footer />
+{/* Closing JSX fragment */}
+</React.Fragment>
   );
 }
