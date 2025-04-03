@@ -527,7 +527,7 @@ export default function LoungeAccess2025() {
           {/* 5. COMPARISON TABLE */}
           <section id="compareTable" className={styles.reviewSection}>
             <h2>5. Comparison Table</h2>
-            <div className="table-responsive">
+            <div className=".tablereviewSection">
               <table>
                 <thead>
                   <tr>
