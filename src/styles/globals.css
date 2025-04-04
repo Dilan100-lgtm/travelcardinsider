@@ -99,7 +99,7 @@ body {
 .menu-toggle.open .bar:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
 
 .site-logo img {
-  height: 2.5rem;
+  height: auto;
   width: auto;
   display: block; /* Prevents extra space below image */
 }
