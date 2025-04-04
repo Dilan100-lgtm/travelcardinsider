@@ -4,6 +4,10 @@ import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../../styles/ZeroAprIndex.module.css';
+import Footer from '../../components/Footer';
+import Header from '../../components/Header';
+
+
 
 export default function ZeroAprIndexPage() {
   return (
