@@ -46,7 +46,7 @@ export default function Header() {
         { label: "Hotel Credit Cards", href: "#Hotel_Credit_Cards" },
         { label: "No Annual Fee Credit Cards", href: "#No_Annual_Fee_Credit_Cards" },
         { label: "Business Credit Cards", href: "#Business_Credit_Cards" },
-        { label: "0% APR & Balance Transfer", href: "/zeroapr/Best-10-0%-APR-And-Balance-Transfer-Credit -Cards-of-2025" },
+        { label: "0% APR & Balance Transfer", href: "/zeroapr/Best-10-0%-APR-And-Balance-Transfer-Credit-Cards-of-2025" },
         { label: "Cards With Lounge Access", href: "#Cards_With_Lounge_Access" },
         { label: "No Foreign Transaction Fee Cards", href: "#No_Foreign_Trans_Fees" },
         { label: "Beginners Travel Cards", href: "#Beginners_Travel_Credit_Cards" },
