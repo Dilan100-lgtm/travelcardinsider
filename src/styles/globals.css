@@ -313,6 +313,24 @@ body {
   .has-dropdown:hover > .dropdown-menu { /* Show on hover */
     display: block;
   }
+  .nav-list li.has-dropdown {
+    /* Ensure the parent li is the positioning context */
+    position: relative;
+  }
+  
+  /* Invisible Bridge Pseudo-Element */
+  .nav-list li.has-dropdown::after {
+    content: ''; /* Required for pseudo-elements */
+    position: absolute;
+    top: 100%;    /* Starts directly below the li */
+    left: 0;
+    width: 100%;  /* Spans the width of the li */
+    height: 5px;  /* <<< MATCH THIS to the gap size in your calc() (e.g., 5px) */
+    background: transparent; /* Make it invisible */
+    /* Optional: Helps debugging, remove later */
+    /* background: rgba(255, 0, 0, 0.2); */
+  }
+  
 }
 
 /* =============== HERO SECTION =============== */
