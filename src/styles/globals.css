@@ -732,3 +732,28 @@ body {
 .footer-bottom p {
   margin: 0;
 }
+.submenu-toggle-button {
+  /* Basic mobile styles */
+  background: transparent;
+  border: 1px solid #ccc;
+  padding: 2px 6px;
+  cursor: pointer;
+  margin-left: 8px; /* Space from link */
+  /* Add more styles as needed */
+}
+
+@media (min-width: 1100px) { /* Your desktop breakpoint */
+  .submenu-toggle-button {
+    display: none;
+  }
+  /* Ensure desktop hover dropdown still works */
+   .has-dropdown:hover > .dropdown-menu {
+       display: block; /* Or your preferred method */
+       visibility: visible;
+       opacity: 1;
+   }
+   .dropdown-menu {
+       /* Reset mobile aria-hidden effect if needed */
+       /* CSS hover handles desktop visibility */
+   }
+}
