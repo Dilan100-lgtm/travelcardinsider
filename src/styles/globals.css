@@ -643,20 +643,34 @@ body {
   flex-grow: 1; /* Allow paragraph to take space */
 }
 
-.reviews-grid .card .cta-button { /* Style button within review card */
-  display: inline-block;
-  margin-top: auto; /* Push button to bottom */
+/* Inside your REVIEW SECTION CSS */
+
+.reviews-grid .card .cta-button {
+  display: inline-block; /* Keep as inline-block or block */
+  margin-top: auto;    /* Pushes button to bottom if content above varies */
   padding: 8px 15px;
   background: #0073e6;
   color: #fff;
   text-decoration: none;
   border-radius: 5px;
-  align-self: flex-start; /* Align button left */
-}
-.reviews-grid .card .cta-button:hover {
-   background-color: #0056b3;
+  align-self: center;  /* <--- CHANGE THIS LINE */
+  /* Remove width constraints if you want it to size naturally */
+  /* width: auto; */
 }
 
+.reviews-grid .card .cta-button:hover {
+   background-color: #0056b3;
+   /* Add other hover styles if needed */
+}
+
+/* Ensure the parent (.card-content) is a flex container */
+.reviews-grid .card-content {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Allow content to fill space */
+    /* No align-items needed here if you want items left-aligned by default except button */
+}
 /* No extra media queries needed for reviews if using auto-fit effectively */
 
 /* =============== FOOTER =============== */
