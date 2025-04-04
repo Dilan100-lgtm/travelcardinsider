@@ -269,7 +269,7 @@ export default function ZeroAprIndexPage() {
             
           
       </Head>
-
+      <Header />
       {/* MAIN CONTENT (no <Header /> or <Footer />) */}
       <main className={styles.container}>
         {/* HERO SECTION */}
