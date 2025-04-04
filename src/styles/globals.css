@@ -50,7 +50,7 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  background: white; /* Ensure solid background */
+  background: white;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   z-index: 999;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -98,7 +98,7 @@ body {
 .menu-toggle.open .bar:nth-child(2) { opacity: 0; }
 .menu-toggle.open .bar:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
 
-.site-logo img { /* Or styles for next/image if used */
+.site-logo img {
   height: 2.5rem;
   width: auto;
   display: block; /* Prevents extra space below image */
@@ -132,7 +132,7 @@ body {
 }
 
 .nav-list li {
-  margin: 0.5rem 0; /* Only applies on mobile view effectively */
+  margin: 0.5rem 0;
 }
 
 .nav-list a {
@@ -144,21 +144,14 @@ body {
   padding: 0.5rem 0; /* Easier tap target */
   transition: color 0.3s;
 }
-/* Specific link styling (like nav-link class from React Component) */
-.nav-list a.nav-link {
-   display: inline-block; /* Adjust if needed based on React structure */
-   padding: 0; /* Reset mobile padding */
-}
-
 
 .nav-list a:hover {
   color: #0056b3;
 }
 
 /* Dropdowns (Mobile) */
-/* Style hidden by default, relies on JS adding/removing submenu-open class */
 .has-dropdown .dropdown-menu {
-  display: none;
+  display: none; /* Hidden by default */
   list-style: none;
   margin: 0.5rem 0 0 1rem; /* Indent dropdown */
   padding: 0;
@@ -178,7 +171,6 @@ body {
   padding: 0.4rem 0.8rem; /* Padding inside dropdown */
   font-size: 0.9rem;
   color: #444;
-  display: block; /* Ensure block for padding */
 }
 
 /* Backdrop for mobile menu */
@@ -191,7 +183,7 @@ body {
   background: rgba(0,0,0,0.4);
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.0s 0.3s linear; /* Delay visibility transition */
+  transition: opacity 0.3s ease, visibility 0s 0.3s linear; /* Delay visibility transition */
   z-index: 2500;
 }
 
@@ -202,11 +194,9 @@ body {
 }
 
 /* Header Actions (Search, etc.) */
-/* Ensure this matches HTML structure (e.g., if it's an li) */
 .header-actions {
   display: flex;
   align-items: center;
-  /* Remove margin if it's an li getting default margin */
 }
 
 .search-container {
@@ -255,26 +245,16 @@ body {
   .header-actions .search-container { /* Maybe hide search on small screens */
      /* display: none; */
   }
+  /* Hide desktop nav elements */
    .main-nav { /* Ensure mobile nav styles apply */
       position: fixed;
       /* other mobile styles */
    }
-   /* Styles for mobile submenu toggle button if used */
-   .submenu-toggle-button {
-      background: transparent;
-      border: 1px solid #ccc;
-      padding: 2px 6px;
-      cursor: pointer;
-      margin-left: 8px; /* Space from link */
-      font-size: 1.1em;
-      line-height: 1;
-   }
-
 }
 
 /* Desktop Header/Nav Layout */
 @media (min-width: 1100px) {
-  .menu-toggle, .menu-backdrop, .submenu-toggle-button {
+  .menu-toggle, .menu-backdrop {
     display: none; /* Hide mobile elements */
   }
 
@@ -288,7 +268,6 @@ body {
     padding: 0;
     margin-left: 1rem; /* Space between logo and nav */
     background: transparent; /* Override mobile background */
-    display: flex; /* Added for alignment */
     flex-direction: row; /* Align items horizontally */
     align-items: center;
     transition: none; /* Remove transition */
@@ -299,90 +278,60 @@ body {
   .nav-list {
     display: flex; /* Align list items horizontally */
     flex-direction: row;
-    align-items: center; /* Vertically center items in the nav list */
-    height: 100%; /* Make list take full header height if needed */
+    align-items: center;
   }
 
   .nav-list li {
     margin: 0 1rem; /* Horizontal spacing */
-    height: 100%; /* Make list items take full header height */
-    display: flex; /* Allow vertical centering of link */
-    align-items: center; /* Vertically center link within li */
   }
-  .nav-list a.nav-link { /* Target specific links if needed */
+  .nav-list a {
      display: inline-block; /* Adjust display */
      padding: 0; /* Reset mobile padding */
-     /* Add padding top/bottom if needed for hover area */
   }
 
-  /* --- DROPDOWN POSITIONING & FIX --- */
+  /* Desktop Dropdowns */
+  .has-dropdown { position: relative; } /* Needed for absolute positioning */
 
-  /* 1. Ensure parent LI is the positioning context */
-  .nav-list li.has-dropdown {
-     position: relative;
-  }
-
-  /* 2. Position the dropdown menu with the VISUAL gap */
   .has-dropdown .dropdown-menu {
     position: absolute;
     background: white;
     margin-left: 0;
     padding: 0.5rem;
-    border: 1px solid #eee; /* Optional border */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     border-left: none;
-    display: none; /* Hidden by default */
-    /* The visual gap using calc() */
-    top: calc(100% + 5px); /* Adjust '5px' for desired gap */
+    display: none;
+    /* --- MODIFIED LINE --- */
+  
+    /* --- ------------- --- */
     left: 0;
+    
     min-width: 180px;
-    z-index: 1000; /* Should be above header */
-    list-style: none; /* Ensure no list bullets */
+    z-index: 1000;
   }
+  .dropdown-menu li { margin: 0; } /* Reset mobile margin */
+  .dropdown-menu a { display: block; padding: 0.5rem 1rem;} /* Style dropdown links */
 
-  /* 3. Create the INVISIBLE BRIDGE pseudo-element */
-  .nav-list li.has-dropdown::after {
-    content: '';
-    position: absolute;
-    /* Starts right below the parent li */
-    top: 100%;
-    left: 0;
-    width: 100%;
-    /* Height MUST match the gap added in calc() above */
-    height: 5px;
-    background: transparent; /* Invisible */
-    /* Optional for debugging: background: rgba(0, 255, 0, 0.3); */
-    z-index: 1001; /* Ensure bridge is above header, below dropdown if needed */
-    pointer-events: none; /* <<< TRY ADDING THIS */
-  }
-
-  /* 4. Show the dropdown on hover of the PARENT LI */
-  .nav-list li.has-dropdown:hover > .dropdown-menu {
+  .has-dropdown:hover > .dropdown-menu { /* Show on hover */
     display: block;
   }
-
-   /* 5. Style items inside the dropdown */
-  .dropdown-menu li {
-      margin: 0; /* Reset list item margin */
-      height: auto; /* Override parent li height setting */
-      display: block; /* Reset flex alignment */
-   }
-  .dropdown-menu a {
-      display: block;
-      padding: 0.5rem 1rem;
-      font-size: 0.9rem;
-      color: #444;
-      white-space: nowrap; /* Prevent wrapping */
-   }
-   .dropdown-menu a:hover {
-       color: #0056b3;
-       background-color: #f0f0f0; /* Add hover background */
-   }
-
-  /* --- END DROPDOWN FIX --- */
-
-} /* End Desktop Media Query */
-
+  .nav-list li.has-dropdown {
+    /* Ensure the parent li is the positioning context */
+    position: relative;
+  }
+  
+  /* Invisible Bridge Pseudo-Element */
+  .nav-list li.has-dropdown::after {
+    content: ''; /* Required for pseudo-elements */
+    position: absolute;
+    top: 100%;    /* Starts directly below the li */
+    left: 0;
+    width: 100%;  /* Spans the width of the li */
+    height: 5px;  /* <<< MATCH THIS to the gap size in your calc() (e.g., 5px) */
+    background: transparent; /* Make it invisible */
+    /* Optional: Helps debugging, remove later */
+    /* background: rgba(255, 0, 0, 0.2); */
+  }
+  
+}
 
 /* =============== HERO SECTION =============== */
 #product-overview .img { /* Target .img within its section */
@@ -400,6 +349,8 @@ body {
 .hero {
   text-align: center;
   padding: 1rem; /* Add some padding */
+  /* Removed margin-top, handled by section spacing or direct element margin */
+  /* color: black; Inherited from body or can be set explicitly */
 }
 
 .hero .container { /* Style the containers within hero if needed */
@@ -421,7 +372,7 @@ body {
 .cta-button,
 .Apply-button,
 .submit {
-  display: inline-block;
+  display: inline-block; /* Or block if they should take full width */
   padding: 10px 15px;
   border-radius: 5px;
   font-weight: bold;
@@ -429,13 +380,15 @@ body {
   text-align: center;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.1s ease;
-  border: none;
-  margin: 0.5rem 0.5rem 0.5rem 0;
+  border: none; /* Ensure buttons don't have default borders */
+  /* width: auto; /* Let content or specific rules define width */
+  /* max-width: 200px; /* Optional max-width */
+  margin: 0.5rem 0.5rem 0.5rem 0; /* Consistent margin */
 }
 .cta-button:active,
 .Apply-button:active,
 .submit:active {
-  transform: scale(0.98);
+  transform: scale(0.98); /* Slight press effect */
 }
 
 /* Specific Button Colors */
@@ -448,13 +401,14 @@ body {
 .submit { background: #1add14; color: #fff; }
 .submit:hover { background: #0e4f1f; }
 
-/* Adjust button width if needed */
-.hero .cta-button {
-   padding: 12px 25px;
+/* Adjust button width if needed within specific contexts */
+.hero .cta-button { /* Example: Wider button in hero */
+   /* width: 50%; */ /* Reconsider % width, maybe use padding? */
+   padding: 12px 25px; /* Larger padding for hero */
 }
 .featured-card__description .cta-button,
 .featured-card__description .Apply-button {
-    width: calc(50% - 5px);
+    width: calc(50% - 5px); /* Example: Two buttons side-by-side */
     margin-right: 5px;
 }
 .featured-card__description .Apply-button {
@@ -466,46 +420,48 @@ body {
 #featured-cards {
   margin-top: 3rem;
   padding: 1rem;
-  background-color: #FFD700;
+  background-color: #FFD700; /* Gold background */
   border-radius: 10px;
+  /* text-align: center; Not needed if grid centers content */
 }
 
-.H2_featured-cards {
+.H2_featured-cards { /* More specific selector */
   text-align: center;
   color: black;
-  font-size: clamp(2rem, 6vw, 3rem);
+  font-size: clamp(2rem, 6vw, 3rem); /* Responsive H2 */
   margin-bottom: 2rem;
 }
 
-#featured-cards .card-grid {
+#featured-cards .card-grid { /* Target grid within this section */
   display: grid;
+  /* Use auto-fit for responsiveness */
   grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: 30px;
-  padding: 20px 0;
+  padding: 20px 0; /* Padding top/bottom, let gap handle sides */
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: 1200px; /* Limit grid width */
 }
 
-.featured-card {
+.featured-card { /* Common class for featured cards */
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: white;
-  padding: 1rem;
+  padding: 1rem; /* Use rem for padding */
   border-radius: 10px;
   font-size: 1rem;
-  color: #333;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  min-width: 0;
+  color: #333; /* Explicit text color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+  overflow: hidden; /* Ensure content stays within borders */
+  min-width: 0; /* Allow flex/grid shrinking */
 }
 
 .featured-card__image {
   width: 90%;
-  max-width: 300px;
+  max-width: 300px; /* Limit image max width */
   height: auto;
-  object-fit: contain;
-  border-radius: 8px;
+  object-fit: contain; /* Use contain to show full card */
+  border-radius: 8px; /* Slightly smaller radius for image */
   margin-bottom: 1rem;
 }
 
@@ -514,10 +470,10 @@ body {
   flex-direction: column;
   text-align: center;
   align-items: center;
-  width: 100%;
+  width: 100%; /* Take full width of card padding */
   font-size: 1rem;
-  margin-top: auto;
-  padding-top: 1rem;
+  margin-top: auto; /* Push description down if card height varies */
+  padding-top: 1rem; /* Space above description */
 }
 .featured-card__description h3 {
     margin-bottom: 0.5rem;
@@ -526,37 +482,39 @@ body {
 .featured-card__description p {
     margin-bottom: 1rem;
     line-height: 1.5;
-    flex-grow: 1;
+    flex-grow: 1; /* Allow paragraph to take up space */
 }
 .featured-card__description .cta-button,
 .featured-card__description .Apply-button {
-    width: 80%;
+    width: 80%; /* Adjust button width */
     margin-top: 0.5rem;
 }
+
 
 /* Responsive stacking for featured cards */
 @media (max-width: 988px) {
   #featured-cards .card-grid {
+     /* Change to single column */
      grid-template-columns: 1fr;
-     gap: 20px;
-     padding: 10px;
+     gap: 20px; /* Adjust gap for stacked layout */
+     padding: 10px; /* Adjust padding */
   }
   .featured-card {
-      max-width: 500px;
-      margin: 0 auto;
+      max-width: 500px; /* Allow cards to be wider when stacked */
+      margin: 0 auto; /* Center cards in the single column */
   }
 }
 
 /* =============== COMPARISON SECTION =============== */
 #compare {
   margin-top: 3rem;
-  padding: 2rem 1rem;
+  padding: 2rem 1rem; /* More padding */
   background-color: #f4f4f4;
   border-radius: 10px;
   margin-bottom: 1rem;
 }
 
-#compare .container {
+#compare .container { /* Add container for centering content */
    max-width: 800px;
    margin: 0 auto;
    text-align: center;
@@ -570,7 +528,7 @@ body {
 
 #compare form {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
   justify-content: center;
   align-items: center;
   gap: 1rem;
@@ -585,18 +543,19 @@ body {
   padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 5px;
-  min-width: 200px;
+  min-width: 200px; /* Ensure select is wide enough */
 }
 
 #compare .submit {
-   margin-top: 0;
+   margin-top: 0; /* Align button with selects */
 }
 
 .comparison-result {
   margin-top: 30px;
+  /* display: block; Default for div */
   color: #333;
-  font-weight: normal;
-  font-size: 1rem;
+  font-weight: normal; /* Reset bold from section */
+  font-size: 1rem; /* Reset font size from section */
 }
 
 .comparison-result h3 {
@@ -608,24 +567,24 @@ body {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  background-color: #fff; /* White background for table */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Subtle shadow */
 }
 
 .comparison-result th,
 .comparison-result td {
   border: 1px solid #ddd;
-  padding: 10px 12px;
-  text-align: left;
+  padding: 10px 12px; /* Adjust padding */
+  text-align: left; /* Align text left for readability */
   font-size: 1rem;
 }
-.comparison-result td:not(:first-child),
+.comparison-result td:not(:first-child), /* Center non-header columns if needed */
 .comparison-result th:not(:first-child) {
   text-align: center;
 }
 
 .comparison-result th {
-  background-color: #e9e9e9;
+  background-color: #e9e9e9; /* Slightly darker header */
   font-weight: bold;
 }
 
@@ -636,34 +595,35 @@ body {
   background: #fff;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  margin: 3rem auto;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  margin: 3rem auto; /* Centered with top/bottom margin */
 }
 
 .reviews-container h2 {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 30px; /* More space below heading */
   font-size: clamp(1.8rem, 5vw, 2.5rem);
   color: #333;
 }
 
 .reviews-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Use auto-fit */
+  gap: 25px; /* Adjust gap */
 }
 
-.reviews-grid .card {
+/* Review Card Styling (using .card class as originally intended here) */
+.reviews-grid .card { /* Specific to review cards */
   background: #fff;
-  padding: 0;
+  padding: 0; /* Remove padding here, apply to content */
   border-radius: 8px;
-  text-align: left;
+  text-align: left; /* Align text left */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
-  display: flex;
+  display: flex; /* Use flex for better structure */
   flex-direction: column;
-  overflow: hidden;
-  color: #555;
+  overflow: hidden; /* Keep content contained */
+  color: #555; /* Reset color from featured cards if .card was shared */
 }
 
 .reviews-grid .card:hover {
@@ -671,25 +631,26 @@ body {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
-.review_img {
+.review_img { /* Renamed from .card img for clarity */
   width: 100%;
-  height: 180px;
+  height: 180px; /* Slightly reduced height */
   object-fit: cover;
   object-position: center;
-  display: block;
+  display: block; /* Remove extra space */
+  /* border-radius: 10px; Remove radius if image is flush top */
 }
 
-.reviews-grid .card-content {
+.reviews-grid .card-content { /* Wrapper for text content */
     padding: 15px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+    flex-grow: 1; /* Allow content to fill space */
 }
 
 .reviews-grid .card h3 {
   color: #0073e6;
   font-size: 1.2rem;
-  margin: 0 0 10px 0;
+  margin: 0 0 10px 0; /* Adjusted margin */
   line-height: 1.3;
 }
 
@@ -698,32 +659,47 @@ body {
   color: #555;
   line-height: 1.5;
   margin-bottom: 15px;
-  flex-grow: 1;
+  flex-grow: 1; /* Allow paragraph to take space */
 }
 
+/* Inside your REVIEW SECTION CSS */
+
 .reviews-grid .card .cta-button {
-  display: inline-block;
-  margin-top: auto;
+  display: inline-block; /* Keep as inline-block or block */
+  margin-top: auto;    /* Pushes button to bottom if content above varies */
   padding: 8px 15px;
   background: #0073e6;
   color: #fff;
   text-decoration: none;
   border-radius: 5px;
-  align-self: center; /* Centered button */
+  align-self: center;  /* <--- CHANGE THIS LINE */
+  /* Remove width constraints if you want it to size naturally */
+  /* width: auto; */
 }
 
 .reviews-grid .card .cta-button:hover {
    background-color: #0056b3;
+   /* Add other hover styles if needed */
 }
+
+/* Ensure the parent (.card-content) is a flex container */
+.reviews-grid .card-content {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Allow content to fill space */
+    /* No align-items needed here if you want items left-aligned by default except button */
+}
+/* No extra media queries needed for reviews if using auto-fit effectively */
 
 /* =============== FOOTER =============== */
 .site-footer {
-  background: #000080;
-  color: #f0f0f0;
-  margin-top: 3rem;
-  padding: 2rem 1rem;
-  border-top: 4px solid #FFD700;
-  font-family: 'Playfair Display', serif;
+  background: #000080; /* Dark Blue */
+  color: #f0f0f0; /* Slightly off-white for readability */
+  margin-top: 3rem; /* Increased margin */
+  padding: 2rem 1rem; /* Padding top/bottom and sides */
+  border-top: 4px solid #FFD700; /* Accent border matching featured section */
+  font-family: 'Playfair Display', serif; /* Use defined font */
 }
 
 .footer-inner {
@@ -733,15 +709,15 @@ body {
 
 .footer-columns {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
-  margin-bottom: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust min width */
+  gap: 2rem; /* Increased gap */
+  margin-bottom: 2rem; /* Space before disclaimer */
 }
 
 .footer-col h3 {
-  margin-bottom: 1rem;
-  color: #fff;
-  font-weight: 700;
+  margin-bottom: 1rem; /* More space below headings */
+  color: #fff; /* Ensure heading is white */
+  font-weight: 700; /* Use bold variant */
   font-size: 1.2rem;
 }
 
@@ -752,11 +728,11 @@ body {
 }
 
 .footer-col li {
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.6rem; /* Slightly more space */
 }
 
-.footlink a {
-  color: #d0d0d0;
+.footlink a { /* Target links within .footlink class if used */
+  color: #d0d0d0; /* Lighter grey for links */
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -768,24 +744,49 @@ body {
 
 .footer-disclaimer {
   margin-top: 2rem;
-  font-size: 0.85rem;
+  font-size: 0.85rem; /* Slightly smaller */
   line-height: 1.5;
-  color: #ccc;
-  text-align: center;
-  max-width: 800px;
+  color: #ccc; /* Lighter color for disclaimer */
+  text-align: center; /* Center disclaimer */
+  max-width: 800px; /* Limit width */
   margin-left: auto;
   margin-right: auto;
 }
 
 .footer-bottom {
-  margin-top: 2rem;
-  padding: 1rem 0;
+  margin-top: 2rem; /* Space above bottom bar */
+  padding: 1rem 0; /* Padding top/bottom */
   text-align: center;
   font-size: 0.9rem;
   color: #ccc;
-  border-top: 1px solid #444;
+  border-top: 1px solid #444; /* Separator line */
 }
 
 .footer-bottom p {
   margin: 0;
+}
+.submenu-toggle-button {
+  /* Basic mobile styles */
+  background: transparent;
+  border: 1px solid #ccc;
+  padding: 2px 6px;
+  cursor: pointer;
+  margin-left: 8px; /* Space from link */
+  /* Add more styles as needed */
+}
+
+@media (min-width: 1100px) { /* Your desktop breakpoint */
+  .submenu-toggle-button {
+    display: none;
+  }
+  /* Ensure desktop hover dropdown still works */
+   .has-dropdown:hover > .dropdown-menu {
+       display: block; /* Or your preferred method */
+       visibility: visible;
+       opacity: 1;
+   }
+   .dropdown-menu {
+       /* Reset mobile aria-hidden effect if needed */
+       /* CSS hover handles desktop visibility */
+   }
 }
