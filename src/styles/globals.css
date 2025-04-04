@@ -303,8 +303,7 @@ body {
     top: calc(100% + 5px); /* Pushes dropdown 5px below the parent li */
     /* --- ------------- --- */
     left: 0;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    border: 1px solid #eee;
+    
     min-width: 180px;
     z-index: 1000;
   }
