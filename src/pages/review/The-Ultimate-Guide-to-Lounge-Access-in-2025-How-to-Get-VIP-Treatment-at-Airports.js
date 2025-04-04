@@ -32,23 +32,23 @@ export default function LoungeAccess2025() {
          />
         <link
           rel="preload"
-          href="/fonts/roboto-bold.woff2"
+          href="/fonts/roboto-bold.ttf"
           as="font"
-          type="font/woff2"
+          type="font/ttf"
           crossOrigin="anonymous"
         />
         <link
           rel="preload"
-          href="/fonts/playfair-display-regular.woff2"
+          href="/fonts/playfair-display-regular.ttf"
           as="font"
-          type="font/woff2"
+          type="font/ttf"
           crossOrigin="anonymous"
         />
         <link
           rel="preload"
-          href="/fonts/playfair-display-bold.woff2"
+          href="/fonts/playfair-display-bold.ttf"
           as="font"
-          type="font/woff2"
+          type="font/ttf"
           crossOrigin="anonymous"
         />
 
@@ -221,8 +221,11 @@ export default function LoungeAccess2025() {
               site. This may influence the manner in which products appear, but our reviews are
               independent. Offers are subject to change.
             </p>
-            <p className={styles.reviewIntro}>
+
             <h2>Intrduction</h2>
+            <p className={styles.reviewIntro}>
+            
+
               Looking to elevate your travel experience? Airport lounges can transform a hectic
               pre-flight scramble into a calm, comfortable oasis. In 2025, lounge access options
               have expanded more than ever—from exclusive airline lounges to premium credit card

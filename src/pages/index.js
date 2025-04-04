@@ -53,16 +53,16 @@ export default function HomePage() {
       
         <link
   rel="preload"
-  href="/fonts/playfair-display-regular.woff2"
+  href="/fonts/playfair-display-regular.ttf"
   as="font"
-  type="font/woff2"
+  type="font/ttf"
   crossOrigin="anonymous"
 />
 <link
   rel="preload"
-  href="/fonts/playfair-display-bold.woff2"
+  href="/fonts/playfair-display-bold.ttf"
   as="font"
-  type="font/woff2"
+  type="font/ttf"
   crossOrigin="anonymous"
 />
 

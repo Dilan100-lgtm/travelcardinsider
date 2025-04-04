@@ -4,10 +4,8 @@ import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../../styles/ZeroAprIndex.module.css';
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-
-
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 
 export default function ZeroAprIndexPage() {
   return (
@@ -53,16 +51,16 @@ export default function ZeroAprIndexPage() {
       
         <link
   rel="preload"
-  href="/fonts/playfair-display-regular.woff2"
+  href="/fonts/playfair-display-regular.ttf"
   as="font"
-  type="font/woff2"
+  type="font/ttf"
   crossOrigin="anonymous"
 />
 <link
   rel="preload"
-  href="/fonts/playfair-display-bold.woff2"
+  href="/fonts/playfair-display-bold.ttf"
   as="font"
-  type="font/woff2"
+  type="font/ttf"
   crossOrigin="anonymous"
 />
 
