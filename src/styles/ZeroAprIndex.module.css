@@ -1,63 +1,60 @@
-/* Styles specific to the ZeroAprIndexPage component */
+/* zeroAprPage.module.css */
 
-/* Hero Section */
+/* Keep Font Imports or use next/font */
+/* Example if keeping CSS import (adjust path if needed):
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Playfair+Display:wght@400..900&display=swap');
+*/
+
+/* --- Hero Section --- */
 .hero {
-  /* Using a fallback color + image */
-  background-color: #11118f;
-  /* !!! UPDATE path to be relative to /public or use CSS variables !!! */
-  /* background-image: url('/images/hero_background.jpg'); */
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  /* background: #11118f url('/images/hero_background.jpg') center/cover no-repeat; */ /* Assuming image is in public/images */
+  background-color: #11118f; /* Fallback color */
   color: #fff;
-  padding: clamp(40px, 10vw, 80px) 20px; /* Responsive padding */
+  padding: 60px 20px; /* Adjusted padding */
   text-align: center;
-  position: relative; /* If needed for pseudo-elements */
+  position: relative;
+  margin-bottom: 2rem; /* Add space below hero */
 }
 
-.container { /* General purpose container, might be global */
+.container { /* This might be too generic, consider renaming if it conflicts */
   max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 15px;
-  padding-right: 15px;
+  margin: 0 auto;
+  padding: 0 15px;
 }
 
-.heroTitle { /* Renamed for clarity */
-  font-size: clamp(2rem, 6vw, 2.8rem); /* Responsive font size */
+.heroTitle {
+  font-family: 'Playfair Display', serif; /* Example: Using specific font */
+  font-size: clamp(2rem, 5vw, 2.8rem); /* Responsive font size */
   font-weight: bold;
   margin-bottom: 20px;
   line-height: 1.2;
   color: white; /* Ensure contrast */
 }
 
-.heroDescription { /* Renamed */
-  font-size: clamp(1rem, 4vw, 1.2rem); /* Responsive */
-  margin: 0 auto 30px auto; /* Center block */
+.heroDescription {
+  font-family: 'Roboto', sans-serif; /* Example */
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  margin: 0 auto 30px auto; /* Center text block */
+  max-width: 70ch; /* Readability */
   color: #f0f0f0; /* Slightly off-white */
-  max-width: 70ch; /* Improve readability */
-  line-height: 1.7;
 }
-.disclaimer { /* Renamed */
+.Disclaimer {
   font-size: 0.85rem;
-  color: #ccc; /* Lighter color */
-  margin-top: 30px; /* Space above disclaimer */
-  line-height: 1.5;
-  max-width: 60ch;
-  margin-left: auto;
-  margin-right: auto;
+  color: #ccc; /* Lighter for disclaimer */
+  margin: 2rem auto 0 auto; /* Space above */
+  max-width: 70ch;
+  line-height: 1.4;
 }
 
-.heroCta { /* Renamed */
+.heroCta {
   display: flex;
   justify-content: center;
   gap: 15px;
-  margin-bottom: 30px; /* Space below CTA */
+  margin-bottom: 30px; /* Space before image */
 }
 
-/* General Button - could be global or duplicated if needed */
-.ctaButton {
-  padding: 15px 25px;
+.ctaButton { /* General button style for hero */
+  padding: 12px 25px;
   font-size: 1rem;
   border: none;
   border-radius: 5px;
@@ -65,421 +62,520 @@
   transition: background-color 0.3s ease, transform 0.1s ease;
   font-weight: bold;
   cursor: pointer;
-  line-height: 1.4;
 }
 .ctaButton:active {
   transform: scale(0.98);
 }
 .ctaButton:focus-visible {
-  outline: 3px solid #0d6efd;
-  outline-offset: 1px;
+   outline: 3px solid #0d6efd;
+   outline-offset: 1px;
 }
 
+
 .ctaPrimary {
-  composes: ctaButton; /* Inherit base button styles */
-  background: #15a310; /* Check contrast */
+  background: #1add14; /* Green */
   color: #fff;
 }
 .ctaPrimary:hover {
-  background: #117d0d;
+  background: #14a210; /* Darker Green */
 }
 
-.ctaSecondary { /* If used */
-  composes: ctaButton;
-  background: #007bff; /* Check contrast */
-  color: #fff;
-}
-.ctaSecondary:hover {
-  background: #0056b3;
-}
+/* .ctaSecondary { ... }  If you have other button types */
 
-.heroImage { /* Renamed */
+.heroImage {
   margin-top: 20px;
+  line-height: 0; /* Prevent extra space below image */
 }
-.heroImage img { /* Style the Next Image component if needed */
-  max-width: min(600px, 100%); /* Limit hero image size */
+.heroImage img { /* Style the Next/Image component if needed via parent */
+  max-width: 100%;
+  width: 600px; /* Example max width */
   height: auto;
+  margin: 0 auto; /* Center image */
   border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  display: block; /* Prevent extra space */
-  margin: 0 auto; /* Center */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 
-/* Card Section Styles */
+/* --- Card Section (Detailed View) --- */
 .card {
   display: flex;
   flex-direction: column;
-  background: #ffffff; /* Changed background for better contrast potentially */
+  background: #ffffff; /* White background for cards */
+  border: 1px solid #e0e0e0; /* Subtle border */
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Softer shadow */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  margin: 30px 0; /* Increased margin */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin: 30px auto; /* Center cards */
+  max-width: 900px; /* Max width for detailed cards */
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
 }
 
-.cardImage { /* Renamed */
+.cardImage {
   width: 100%;
-  /* Removed fixed height, let content decide or use aspect-ratio */
-  /* height: 200px; */
+  /* height: 200px; Let Image component control height based on aspect ratio */
   overflow: hidden;
-  background: #f4f4f4; /* Placeholder bg */
+  background: #f8f9fa; /* Light background for image area */
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem; /* Padding around image */
-  box-sizing: border-box;
+  padding: 1rem 0; /* Padding around image */
+  border-bottom: 1px solid #e0e0e0;
 }
 
-.cardImage img { /* Styling for Next Image component */
-  display: block;
-  max-width: 100%;
-  max-height: 180px; /* Limit image height */
-  width: auto;
+.cardImage img { /* Style Next/Image */
+  max-width: 60%; /* Control image size within container */
   height: auto;
-  object-fit: contain; /* Use contain for card logos */
+  max-height: 180px; /* Max height */
+  object-fit: contain;
 }
 
-.cardContent { /* Renamed */
-  padding: 25px; /* Consistent padding */
-  flex-grow: 1; /* Allow content to grow */
+.cardContent {
+  padding: 25px;
+  flex-grow: 1; /* Allow content to fill space */
   display: flex;
   flex-direction: column;
 }
 
-.cardTitle { /* Renamed */
-  font-size: 1.4rem; /* Adjusted size */
-  color: #1a1a1a; /* Darker color */
-  margin: 0 0 15px 0; /* Adjusted margin */
-  line-height: 1.3;
+.cardTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.4rem, 4vw, 1.8rem);
+  color: #222; /* Darker title */
+  margin-bottom: 15px;
 }
 
-.rating { /* Style for rating container */
-  font-size: 0.9rem;
+.rating {
+  font-size: 0.95rem;
   color: #555;
   margin-bottom: 15px;
   display: flex;
   align-items: center;
   gap: 5px;
 }
-.ratingValue { /* Class for the number */
+.rating .infoIcon {
+  display: inline-block;
+  line-height: 0; /* Align SVG better */
+  color: #555;
+  text-decoration: none;
+}
+.rating .infoIcon:hover {
+  color: #007bff;
+}
+.rating span { /* Target the rating value span if needed */
   font-weight: bold;
-  color: #150363; /* Original color */
+  color: #150363;
 }
 
-.infoIcon { /* Style for info button */
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 0;
-  cursor: pointer;
-  display: inline-flex; /* Align icon */
-  vertical-align: middle;
-}
-.infoIcon svg {
-  width: 16px; /* Consistent size */
-  height: 16px;
-  fill: #555; /* Adjust color */
-}
 
-.cardBonus { /* Renamed */
+.cardBonus {
   font-size: 1rem;
   margin-bottom: 15px;
   color: #333;
-  line-height: 1.5;
+  background-color: #e9f5ff; /* Light blue background for bonus */
+  padding: 10px 15px;
+  border-radius: 5px;
+  border-left: 4px solid #007bff;
 }
+.cardBonus strong {
+  color: #0056b3;
+}
+
 .cardBonus em {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: #555;
   display: block;
   margin-top: 5px;
-  font-style: normal; /* Reset emphasis italics if not desired */
 }
 
-.cardEarning, /* Renamed */
-.cardRedemption, /* Renamed */
-.cardPerks, /* Renamed */
-.cardBestFor { /* Renamed */
-  margin-top: 20px; /* Increased space */
-  color: #333;
+.cardEarning,
+.cardLuxuryFeatures, /* Using this class name from HTML */
+.cardPerks,
+.cardBestFor {
+  margin-top: 20px;
+  color: #333; /* Base text color */
+  font-family: 'Roboto', sans-serif;
   font-size: 0.95rem;
-}
-
-.cardEarning ul,
-.cardRedemption ul,
-.cardPerks ul {
-  margin: 10px 0 0 20px; /* Top margin and indent */
-  padding: 0;
-  list-style: disc;
-}
-.cardEarning li,
-.cardRedemption li,
-.cardPerks li {
-  margin-bottom: 8px; /* Space between list items */
-  line-height: 1.5;
-}
-
-
-.cardEarning strong,
-.cardRedemption strong,
-.cardPerks strong,
-.cardBestFor strong {
-  font-size: 1.1rem; /* Slightly larger */
-  color: #1a1a1a; /* Darker */
-  display: block; /* Ensure block */
-  margin-bottom: 8px; /* Space below strong tag */
-}
-
-.cardBestFor p {
-  margin: 0; /* Reset margin */
-  font-size: 1rem; /* Adjusted size */
-  color: #444;
   line-height: 1.6;
 }
 
-/* Card Buttons Section */
-.cardActions { /* Renamed */
+.cardEarning strong,
+.cardLuxuryFeatures strong,
+.cardPerks strong,
+.cardBestFor strong {
+  font-size: 1.1rem;
+  font-weight: bold; /* Ensure strong is bold */
+  color: #333;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.cardEarning ul,
+.cardLuxuryFeatures ul,
+.cardPerks ul {
+  margin-left: 20px;
+  list-style: disc;
+  padding-left: 5px; /* Add a little space for bullets */
+}
+.cardEarning li,
+.cardLuxuryFeatures li,
+.cardPerks li {
+  margin-bottom: 5px;
+}
+
+.cardBestFor p {
+  margin-top: 5px; /* Space below heading */
+  font-size: 0.95rem;
+  color: #444;
+}
+
+/* --- Buttons Section (Detailed Card) --- */
+.cardActions {
   display: flex;
-  flex-wrap: wrap; /* Allow wrapping */
+  flex-wrap: wrap; /* Allow wrapping on small screens */
   justify-content: center; /* Center buttons */
   gap: 10px; /* Space between buttons */
-  padding: 20px 25px; /* Consistent padding */
+  padding: 20px;
   background: #f8f9fa; /* Light background */
-  border-top: 1px solid #e9ecef;
+  border-top: 1px solid #e0e0e0;
   margin-top: auto; /* Push actions to bottom */
 }
 
-/* Base Button style within card actions */
-.btn {
+.cardActions .btn { /* General styles for action buttons */
   padding: 10px 20px;
   font-size: 0.9rem;
+  font-weight: bold;
   border: none;
   border-radius: 5px;
   text-decoration: none;
   text-align: center;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-  font-weight: 600;
+  transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
   flex-grow: 1; /* Allow buttons to grow */
-  min-width: 120px; /* Minimum width */
+  min-width: 150px; /* Minimum width */
+  max-width: 200px; /* Maximum width */
 }
-.btn:active {
+.cardActions .btn:active {
   transform: scale(0.98);
 }
-.btn:focus-visible {
+.cardActions .btn:focus-visible {
   outline: 3px solid #0d6efd;
   outline-offset: 1px;
+  box-shadow: 0 0 0 1px #fff inset; /* Contrast for focus */
 }
 
 
-.btnApply { /* Renamed */
-  composes: btn;
-  background-color: #28a745; /* Check contrast */
+.btnApply {
+  background-color: #28a745; /* Green */
   color: #fff;
 }
 .btnApply:hover {
   background-color: #218838;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
 }
 
-.btnLearnMore { /* Renamed */
-  composes: btn;
-  background-color: #007BFF; /* Check contrast */
+.btnLearnMore {
+  background-color: #007BFF; /* Blue */
   color: #fff;
 }
 .btnLearnMore:hover {
   background-color: #0056b3;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
 }
 
-.btnRatesFees { /* Renamed */
-  composes: btn;
-  background-color: #6c757d; /* Grey - Check contrast */
-  color: #fff; /* Contrast OK */
+.btnRatesFees {
+  background-color: #6c757d; /* Grey */
+  color: #fff;
 }
 .btnRatesFees:hover {
   background-color: #5a6268;
-}
-
-/* Card Section Responsive */
-@media (max-width: 768px) {
-  .card {
-      margin: 20px 0; /* Adjust margin */
-  }
-  .cardActions {
-      flex-direction: column; /* Stack buttons */
-      gap: 10px;
-  }
-  .btn { /* Buttons take full width when stacked */
-      width: 100%;
-      padding: 12px;
-  }
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
 }
 
 
-/* Table Section */
-.cardTableSection { /* Renamed */
-  margin: 40px 0; /* Add vertical margin */
+/* --- Card Table Section --- */
+.cardTableSection {
+  margin: 40px auto;
+  max-width: 1200px; /* Max width for table container */
+  padding: 0 15px; /* Padding on sides */
 }
 
-.tableResponsive { /* Renamed */
+.tableResponsive {
   width: 100%;
   overflow-x: auto; /* Enable horizontal scroll on small screens */
   -webkit-overflow-scrolling: touch; /* Smoother scrolling on iOS */
+  border: 1px solid #ccc; /* Border around the scrollable area */
+  border-radius: 8px;
 }
 
-.cardTable { /* Renamed */
-  width: 100%; /* Full width within responsive container */
+.cardTable {
+  width: 100%; /* Make table take full width of container */
   border-collapse: collapse;
-  font-size: 1rem; /* Adjusted base size */
-  font-family: system-ui, sans-serif;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  font-size: 0.95rem; /* Slightly smaller base font for table */
+  font-family: 'Roboto', sans-serif;
+  min-width: 800px; /* Minimum width before scrollbar appears */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
   color: #333;
-  /* Removed min-width, handled by responsive container */
+  background-color: #fff;
 }
 
 .cardTable thead tr {
-  background-color: #007bff; /* Use primary blue */
-  color: #ffffff; /* White text - check contrast */
+  background-color: #007bff; /* Blue header */
+  color: #ffffff;
   text-align: left;
   font-weight: bold;
-  font-size: 1.05rem; /* Slightly larger */
+  font-size: 1rem;
 }
 
 .cardTable th,
 .cardTable td {
   padding: 12px 15px;
-  border: 1px solid #ddd;
+  border: 1px solid #ddd; /* Lighter border */
   vertical-align: middle; /* Align content vertically */
 }
 
 .cardTable tbody tr {
   border-bottom: 1px solid #ddd;
-  background-color: #fff; /* Default white */
 }
 
 .cardTable tbody tr:nth-of-type(even) {
-  background-color: #f8f9fa; /* Light grey for even rows */
+  background-color: #f8f9fa; /* Very light grey for even rows */
 }
 
 .cardTable tbody tr:last-of-type {
-  border-bottom: 2px solid #007bff; /* Match header color */
+  border-bottom: 2px solid #007bff; /* Thicker bottom border */
 }
 
 .cardTable tbody tr:hover {
-  background-color: #f1f5f9; /* Subtle hover */
+  background-color: #e9ecef; /* Slightly darker hover */
 }
 
-.cardTable tbody td[data-label="Card Name & Rating"] { /* Target specific cell if needed */
+.cardTable tbody td:first-child {
   font-weight: bold;
-  font-size: 1.05rem;
+  /* display: flex; Removed flex for simplicity, manage layout inside td */
+  /* flex-direction: column; */
+  /* gap: 8px; */
+  font-size: 1rem; /* Slightly larger for card name */
   line-height: 1.4;
-  /* Removed flex, structure within cell */
 }
-.cardTable .rating { /* Rating specific styles in table */
-  font-size: 0.85rem;
-  font-weight: normal;
-  margin-top: 5px;
+
+.cardTable .rating { /* Rating style specific to table */
+   font-size: 0.85rem;
+   margin-top: 5px;
+   color: #555;
 }
-.cardTable .applyBtn { /* Renamed */
-  display: inline-block; /* Changed display */
-  background-color: #007bff;
+.cardTable .rating .infoIcon {
+   width: 13px; height: 13px; /* Smaller icon in table */
+}
+.cardTable .rating span {
+   font-weight: bold;
+   color: #150363;
+}
+
+
+/* Table Buttons */
+.cardTable .applyBtn { /* Using applyBtn to avoid conflict with generic btn */
+  display: inline-block; /* Changed to inline-block */
+  width: auto; /* Auto width */
+  background-color: #007bff; /* Blue color */
   color: white;
   padding: 8px 12px; /* Smaller padding */
-  border-radius: 5px;
+  border-radius: 4px;
   font-weight: bold;
   text-decoration: none;
-  transition: background 0.3s ease;
+  transition: background-color 0.3s ease;
   text-align: center;
   font-size: 0.9rem; /* Smaller font */
-  margin-top: 8px;
+  margin-bottom: 5px; /* Space below button */
 }
-.applyBtn:hover {
-  background-color: #0056b3;
-}
-
-.aplyText { /* Renamed */
+.APly { /* Style for the subtext */
   display: block;
   font-size: 0.7rem;
   text-align: center;
-  color: #555; /* Check contrast */
-  font-weight: normal;
-  margin-top: 3px;
+  color: #666;
+  margin-top: 3px; /* Space above */
+  margin-bottom: 8px; /* Space below */
 }
 
-.cardTable .learnMoreBtn, /* Renamed */
-.cardTable .rateFeesBtn { /* Renamed */
-  display: block;
-  margin-top: 8px;
-  color: #007bff; /* Link color */
-  text-align: left; /* Align left below name */
+.cardTable .learnMoreBtn,
+.cardTable .rateFeesBtn {
+  display: block; /* Stack links */
+  margin-top: 4px;
+  color: #0056b3; /* Link color */
+  text-align: left; /* Align left */
   text-decoration: none;
-  padding: 5px 0; /* Vertical padding only */
+  padding: 2px 0; /* Minimal padding */
   font-size: 0.85rem;
   font-weight: normal;
 }
-.cardTable .learnMoreBtn:hover,
-.cardTable .rateFeesBtn:hover {
-  text-decoration: underline;
-  color: #0056b3;
+
+.cardTable .applyBtn:hover,
+.cardTable .applyBtn:active {
+  background-color: #0056b3;
 }
 
-/* Rewards Calculator (If used) */
-.rewardsCalculator { /* Renamed */
-  max-width: 800px;
-  margin: 40px auto; /* Consistent margin */
+.cardTable .learnMoreBtn:hover,
+.cardTable .learnMoreBtn:active,
+.cardTable .rateFeesBtn:hover,
+.cardTable .rateFeesBtn:active {
+  text-decoration: underline;
+  color: #003f7f; /* Darker blue on hover */
+}
+
+
+/* --- Responsive Design --- */
+
+@media (max-width: 992px) {
+   .card {
+       max-width: 700px;
+   }
+   .cardTable {
+       min-width: 700px; /* Adjust min-width */
+   }
+   .cardActions {
+       justify-content: space-around; /* Better spacing on medium screens */
+   }
+    .cardActions .btn {
+       min-width: 130px;
+   }
+}
+
+
+@media (max-width: 768px) {
+  .hero { padding: 40px 15px; }
+  .heroTitle { font-size: clamp(1.8rem, 6vw, 2.2rem); }
+  .heroDescription { font-size: clamp(0.9rem, 4vw, 1rem); }
+
+  .card {
+      margin: 20px 0; /* Remove horizontal auto margin */
+      max-width: 100%; /* Full width */
+  }
+   .cardImage { padding: 0.5rem 0; }
+   .cardImage img { max-width: 50%; }
+   .cardContent { padding: 20px; }
+   .cardActions {
+      flex-direction: column; /* Stack buttons */
+      gap: 10px;
+      align-items: center;
+   }
+    .cardActions .btn {
+       width: 100%; /* Full width buttons */
+       max-width: 300px; /* Max width */
+       padding: 12px;
+   }
+
+  .cardTable {
+       min-width: 600px; /* Further reduce */
+  }
+   .cardTable th,
+   .cardTable td {
+       padding: 10px 12px; /* Adjust padding */
+   }
+    .cardTable tbody td:first-child {
+       font-size: 0.95rem;
+   }
+    .cardTable .applyBtn { font-size: 0.85rem; padding: 6px 10px; }
+    .cardTable .learnMoreBtn, .cardTable .rateFeesBtn { font-size: 0.8rem; }
+
+}
+
+@media (max-width: 480px) {
+   .hero { padding: 30px 10px; }
+   .heroCta { flex-direction: column; gap: 10px; } /* Stack hero buttons */
+   .ctaButton { width: 100%; max-width: 280px; margin: 0 auto; }
+
+  .cardContent { padding: 15px; }
+  .cardTitle { font-size: clamp(1.2rem, 5vw, 1.5rem); }
+
+  .cardTable {
+      min-width: 100%; /* Allow table to shrink */
+      font-size: 0.85rem; /* Smaller font */
+  }
+   /* Optional: Stack table content on very small screens */
+   /* .cardTable thead { display: none; }
+   .cardTable tr { display: block; margin-bottom: .625em; }
+   .cardTable td { display: block; text-align: right; border-bottom: 1px dotted #ccc; }
+   .cardTable td::before { content: attr(data-label); float: left; font-weight: bold; text-transform: uppercase; }
+   .cardTable td:last-child { border-bottom: 0; }
+   .cardTable tbody td:first-child { text-align: right; } */
+}
+
+
+/* --- Rewards Calculator Styles (Keep if implementing) --- */
+.rewardsCalculator {
+  max-width: 800px; /* Or adjust */
+  margin: 40px auto;
   background: #fff;
   padding: 25px;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e0e0;
 }
 
-/* Styles for elements within calculator IF used */
-.calculatorForm { /* Renamed */
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+.rewardsCalculator h2 {
+  color: #333;
   margin-bottom: 20px;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
 }
 
-/* Make calculator styles more specific */
-.rewardsCalculator label {
+.calculatorForm {
+  display: grid; /* Use grid for better alignment */
+  grid-template-columns: auto 1fr; /* Labels and inputs */
+  gap: 15px 10px; /* Row and column gap */
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.calculatorForm label {
   font-weight: bold;
-  margin-bottom: 5px; /* Space below label */
-  display: block;
+  text-align: right;
+  font-size: 0.9rem;
 }
 
-.rewardsCalculator input[type="text"], /* Example */
-.rewardsCalculator input[type="number"] {
+.calculatorForm input {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  width: 100%; /* Full width */
+  font-size: 1rem;
+  width: 100%;
+}
+.calculatorForm input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }
 
-.rewardsCalculator button[type="submit"] { /* Specific button */
+
+.calculatorForm button {
+  grid-column: 1 / -1; /* Span across both columns */
   padding: 12px 20px;
-  background: #28a745; /* Green button */
+  background: #007bff;
   color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 1rem; /* Adjusted size */
+  font-size: 1rem;
   font-weight: bold;
   transition: background-color 0.3s ease;
-}
-.rewardsCalculator button[type="submit"]:hover {
-  background: #218838;
+  justify-self: center; /* Center button */
+  width: auto; /* Auto width */
+  min-width: 150px;
 }
 
-/* Calculator results table - make specific */
-.calculatorResultsTable { /* Renamed */
+.calculatorForm button:hover {
+  background: #0056b3;
+}
+
+/* Calculator Results Table */
+.calculatorResultsTable { /* Specific class for calc table */
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
+  margin-top: 25px;
+  font-size: 0.9rem;
 }
 
 .calculatorResultsTable th,
@@ -490,15 +586,10 @@
 }
 
 .calculatorResultsTable th {
-  background-color: #f4f4f4; /* Check contrast */
-  color: #333;
+  background-color: #f8f9fa;
+  font-weight: bold;
 }
 
 .calculatorResultsTable tbody tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-/* Add media queries for table if needed */
-@media (max-width: 600px) {
-  /* Potentially adapt table display for very small screens */
+  background-color: #fdfdfd;
 }
