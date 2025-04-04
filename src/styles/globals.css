@@ -355,22 +355,17 @@ body {
 
   /* 2. Position the dropdown menu with the VISUAL gap */
   .has-dropdown .dropdown-menu {
-    position: absolute;
-    background: white;
-    margin-left: 0;
-    padding: 0.5rem;
-    border: 1px solid #eee; /* Optional border */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    border-left: none;
     display: none; /* Hidden by default */
-    /* The visual gap using calc() */
-   
+    position: absolute;
+    top: 100%; /* Position below parent */
     left: 0;
-    min-width: 180px;
-    z-index: 1000; /* Should be above header */
-    list-style: none; /* Ensure no list bullets */
-  }
-
+    background: white;
+    
+    border-left: none; /* Remove mobile border */
+    padding: 0.5rem;
+    margin: 0; /* Reset mobile margin */
+    min-width: 180px; /* Set a min width */
+    z-index: 1000; /* Ensure dropdown is above other content */
   
 
   /* 4. Show the dropdown on hover of the PARENT LI */
