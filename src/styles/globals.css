@@ -364,27 +364,14 @@ body {
     border-left: none;
     display: none; /* Hidden by default */
     /* The visual gap using calc() */
-    top: calc(100% + 5px); /* Adjust '5px' for desired gap */
+   
     left: 0;
     min-width: 180px;
     z-index: 1000; /* Should be above header */
     list-style: none; /* Ensure no list bullets */
   }
 
-  /* 3. Create the INVISIBLE BRIDGE pseudo-element */
-  .nav-list li.has-dropdown::after {
-    content: '';
-    position: absolute;
-    /* Starts right below the parent li */
-    top: 100%;
-    left: 0;
-    width: 100%;
-    /* Height MUST match the gap added in calc() above */
-    height: 5px;
-    background: transparent; /* Invisible */
-    /* pointer-events: none; /* Generally not needed here */
-    z-index: 1001;
-  }
+  
 
   /* 4. Show the dropdown on hover of the PARENT LI */
   .nav-list li.has-dropdown:hover > .dropdown-menu {
