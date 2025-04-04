@@ -1,471 +1,170 @@
-/* Copy the entire content of your original "0% APR Index.css" exactly as is */
-:global(*) {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-:global(html) {
-  height: 100%;
-}
-
-:global(body) {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  line-height: 1.6;
-  font-size: 1.1rem;
-  color: #333;
-  padding: 10px;
-  margin: 20px;
-  background-color: #f9f9f9;
-}
-
-.hero {
-  background: #11118f url('hero_background.jpg') center/cover no-repeat;
-  color: #fff;
-  padding: 80px 20px;
-  text-align: center;
-  position: relative;
-}
-
-.hero .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-
-.hero-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 20px;
-  line-height: 1.2;
-  color: white;
-}
-
-.hero-description {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-  color: #f4f4f4;
-}
-
-.Disclaimer {
-  font-size: 0.9rem;
-  color: white;
-  margin-bottom: 1rem;
-  line-height: 1.4;
-}
-
-.hero-cta {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-}
-
-.cta-button {
-  padding: 15px 25px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 5px;
-  text-decoration: none;
-  transition: background 0.3s ease;
-  font-weight: bold;
-}
-
-.cta-primary {
-  background: #1add14;
-  color: #fff;
-}
-
-.cta-primary:hover {
-  background: #0e4f1f;
-}
-
-.cta-secondary {
-  background: #007bff;
-  color: #fff;
-}
-
-.cta-secondary:hover {
-  background: #0056b3;
-}
-
-.hero-image img {
-  max-width: 100%;
-  height: auto;
-  margin-top: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-.card {
-  display: flex;
-  flex-direction: column;
-  background: #dbe2f7;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  margin: 20px 0;
-}
-
-.card-image {
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-  background: #f4f4f4;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.card-image img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: cover;
-}
-
-.card-content {
-  padding: 20px;
-}
-
-.card-title {
-  font-size: 1.5rem;
-  color: #77f351;
-  margin-bottom: 10px;
-}
-
-.card-bonus {
-  font-size: 1.1rem;
-  margin-bottom: 15px;
-  color: #333;
-}
-
-.card-bonus em {
-  font-size: 0.9rem;
-  color: #555;
-  display: block;
-  margin-top: 5px;
-}
-
-.card-earning,
-.card-redemption,
-.card-perks,
-.card-best-for {
-  margin-top: 15px;
-  color: #000;
-}
-
-.card-earning ul,
-.card-redemption ul,
-.card-perks ul {
-  margin-left: 20px;
-  list-style: disc;
-}
-
-.card-earning strong,
-.card-redemption strong,
-.card-perks strong,
-.card-best-for strong {
-  font-size: 1.2rem;
-  color: #333;
-}
-
-.card-best-for p {
-  margin-top: 10px;
-  font-size: 1.1rem;
-  color: #555;
-}
-
-.card-actions {
-  display: flex;
-  justify-content: space-between;
-  padding: 15px 20px;
-  background: #f4f4f9;
-  border-top: 1px solid #ddd;
-}
-
-.card-actions .btn {
-  padding: 10px 20px;
-  font-size: 0.9rem;
-  border: none;
-  border-radius: 5px;
-  text-decoration: none;
-  text-align: center;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.btn-apply {
-  background-color: #28a745;
-  color: #fff;
-}
-
-.btn-apply:hover {
-  background-color: #218838;
-  transform: scale(1.05);
-}
-
-.btn-learn-more {
-  background-color: #007BFF;
-  color: #fff;
-}
-
-.btn-learn-more:hover {
-  background-color: #0056b3;
-  transform: scale(1.05);
-}
-
-.btn-rates-fees {
-  background-color: #ffc107;
-  color: #333;
-}
-
-.btn-rates-fees:hover {
-  background-color: #e0a800;
-  transform: scale(1.05);
-}
-
-@media (max-width: 768px) {
-  .card {
-    flex-direction: column;
+:global {
+  /* Copy the entire content of your original "0% APR Index.css" exactly as is */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
-  .card-actions {
-    flex-direction: column;
-    gap: 10px;
+
+  html {
+    height: 100%;
   }
-  .btn {
-    width: 100%;
-    padding: 12px;
+
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    line-height: 1.6;
+    font-size: 1.1rem;
+    color: #333;
+    padding: 10px;
+    margin: 20px;
+    background-color: #f9f9f9;
   }
-}
 
-.card:hover .btn-apply {
-  background-color: #1e7e34;
-}
-
-.card:hover .btn-learn-more {
-  background-color: #004085;
-}
-
-.card:hover .btn-rates-fees {
-  background-color: #d39e00;
-}
-
-.card-table {
-  border-collapse: collapse;
-  font-size: 1.2rem;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  min-width: 400px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-  color: black;
-  padding: 3px;
-  align-items: center;
-  box-sizing: border-box;
-}
-
-.table-responsive {
-  width: 100%;
-  overflow-x: auto;
-}
-
-.table-responsive table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.card-table thead tr {
-  background-color: #009879;
-  color: black;
-  text-align: left;
-  font-weight: bold;
-  font-size: 1.5rem;
-}
-
-.card-table th,
-.card-table td {
-  padding: 12px 15px;
-  border: 1px solid #dddddd;
-}
-
-.card-table tbody tr {
-  border-bottom: 1px solid #dddddd;
-}
-
-.card-table tbody tr:nth-of-type(even) {
-  background-color: #f3f3f3;
-}
-
-.card-table tbody tr:last-of-type {
-  border-bottom: 2px solid #009879;
-}
-
-.card-table tbody tr:hover {
-  background-color: #f1f1f1;
-}
-
-.card-table tbody td:first-child {
-  font-weight: bold;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  font-size: 1.3rem;
-}
-
-.card-table .apply-btn {
-  display: block;
-  background-color: #007bff;
-  color: white;
-  padding: 10px 15px;
-  border-radius: 5px;
-  font-weight: bold;
-  text-decoration: none;
-  transition: background 0.3s ease;
-  text-align: center;
-  font-size: 1rem;
-}
-
-.APly {
-  display: block;
-  font-size: 0.7rem;
-  text-align: center;
-  color: #222222;
-}
-
-.card-table .learn-more-btn,
-.card-table .rate-fees-btn {
-  display: block;
-  margin-top: 5px;
-  color: #1add14;
-  text-align: center;
-  text-decoration: none;
-  padding: 10px 20px;
-  font-size: 0.7rem;
-}
-
-.card-table .apply-btn:hover,
-.card-table .apply-btn:active {
-  background-color: #0056b3;
-}
-
-.card-table .learn-more-btn:hover,
-.card-table .learn-more-btn:active,
-.card-table .rate-fees-btn:hover,
-.card-table .rate-fees-btn:active {
-  text-decoration: underline;
-  color: #0e4f1f;
-}
-
-.card-table .learn-more-btn,
-.card-table .rate-fees-btn {
-  font-size: 0.9rem;
-  text-decoration: none;
-}
-
-@media (max-width: 768px) {
-  .card-table {
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
+  .hero {
+    background: #11118f url('hero_background.jpg') center/cover no-repeat;
+    color: #fff;
+    padding: 80px 20px;
+    text-align: center;
+    position: relative;
   }
-  .card-table th,
-  .card-table td {
-    padding: 8px;
-  }
-  .card-table tbody td:first-child {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
 
-@media (max-width: 480px) {
-  .card-table {
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
+  .hero .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    color: white;
+  }
+
+  .hero-description {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #f4f4f4;
+  }
+
+  .Disclaimer {
     font-size: 0.9rem;
+    color: white;
+    margin-bottom: 1rem;
+    line-height: 1.4;
   }
-  .card-table th,
-  .card-table td {
-    padding: 6px;
+
+  .hero-cta {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
   }
-  .card-table tbody td:first-child {
+
+  .cta-button {
+    padding: 15px 25px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    font-weight: bold;
+  }
+
+  .cta-primary {
+    background: #1add14;
+    color: #fff;
+  }
+
+  .cta-primary:hover {
+    background: #0e4f1f;
+  }
+
+  .cta-secondary {
+    background: #007bff;
+    color: #fff;
+  }
+
+  .cta-secondary:hover {
+    background: #0056b3;
+  }
+
+  .hero-image img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .card {
+    display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    background: #dbe2f7;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 20px 0;
   }
-}
 
-.rewards-calculator {
-  max-width: 800px;
-  margin: 0 auto;
-  background: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+  .card-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-h1,
-h2 {
-  color: #333;
-}
+  .card-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
 
-.calculator-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-bottom: 20px;
-}
+  .card-content {
+    padding: 20px;
+  }
 
-label {
-  font-weight: bold;
-}
+  .card-title {
+    font-size: 1.5rem;
+    color: #77f351;
+    margin-bottom: 10px;
+  }
 
-input {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
+  .card-bonus {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: #333;
+  }
 
-button {
-  padding: 10px 20px;
-  background: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-}
+  .card-bonus em {
+    font-size: 0.9rem;
+    color: #555;
+    display: block;
+    margin-top: 5px;
+  }
 
-button:hover {
-  background: #0056b3;
-}
+  .card-earning,
+  .card-redemption,
+  .card-perks,
+  .card-best-for {
+    margin-top: 15px;
+    color: #000;
+  }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
+  .card-earning ul,
+  .card-redemption ul,
+  .card-perks ul {
+    margin-left: 20px;
+    list-style: disc;
+  }
 
-th,
-td {
-  text-align: left;
-  padding: 10px;
-  border: 1px solid #ddd;
-}
-
-th {
-  background-color: #f4f4f4;
-}
-
-tbody tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-.rating {
-  font-size: 1rem;
-  color: #150363;
-}
-
-.mainWrapper {}
+  .card-earning
