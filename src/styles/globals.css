@@ -1,14 +1,18 @@
 /* =============== GLOBALS & DEFAULTS =============== */
 html {
   height: 100%;
+  /* Consider setting scroll-behavior: smooth; */
 }
 
 body {
   margin: 0;
-  /* Consider using 'Roboto Condensed' as your default if desired */
-  font-family: 'Arial', sans-serif;
-  color: #333;
-  min-width: 374px; /* Prevents layout break on very small screens */
+  /* Consider using 'Roboto Condensed' as your default font if you prefer it over Arial */
+  font-family: 'Roboto Condensed', 'Arial', sans-serif; /* Example: Prioritize loaded font */
+  color: #222; /* Slightly darker for better base contrast */
+  background-color: #fff; /* Ensure default background */
+  min-width: 374px;
+  -webkit-font-smoothing: antialiased; /* Smoother text rendering */
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* =============== FONT DEFINITIONS =============== */
@@ -17,7 +21,7 @@ body {
   src: url('/fonts/Roboto_Condensed-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
-  font-display: swap; /* Added for performance */
+  font-display: swap; /* Good for performance */
 }
 
 @font-face {
@@ -25,7 +29,7 @@ body {
   src: url('/fonts/Roboto_Condensed-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
-  font-display: swap; /* Added for performance */
+  font-display: swap; /* Good for performance */
 }
 
 @font-face {
@@ -50,73 +54,76 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  background: #fff;
+  background: white; /* Check contrast if header color changes */
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  z-index: 999;
+  z-index: 999; /* Ensure header is above most content */
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight: 500;
   font-size: 1rem;
-  line-height: 1rem;
+  line-height: 1; /* Set base line-height */
 }
 
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0 auto; /* Centered header content */
-  max-width: 1200px; /* Optional: Limit header width */
-  height: 3.5rem;
+  margin: 0 auto;
+  max-width: 1200px;
+  height: 3.5rem; /* Define header height */
   padding: 0 1rem;
 }
 
 .logo-toggle-container {
   display: flex;
   align-items: center;
+  flex-shrink: 0; /* Prevent shrinking */
 }
 
 .menu-toggle {
-  display: none; /* Hidden by default, shown in media query */
+  display: none;
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 0;
-  margin-right: 1rem;
-  /* flex styles moved to media query where it's displayed */
+  padding: 0.5rem; /* Add padding for easier tapping */
+  margin: 0 1rem 0 -0.5rem; /* Adjust margin */
 }
 
 .bar {
-  display: block; /* Ensure bars are block for margin/transform */
+  display: block;
   width: 1.5rem;
   height: 0.2rem;
-  background: #000;
-  margin: 3px 0;
-  transition: 0.3s;
+  background: #000; /* Ensure high contrast */
+  margin: 4px 0; /* Slightly increased spacing */
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Added opacity */
 }
 
-/* Hamburger animation */
-.menu-toggle.open .bar:nth-child(1) { transform: translateY(5px) rotate(45deg); }
+.menu-toggle.open .bar:nth-child(1) { transform: translateY(6px) rotate(45deg); } /* Adjusted transform */
 .menu-toggle.open .bar:nth-child(2) { opacity: 0; }
-.menu-toggle.open .bar:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
+.menu-toggle.open .bar:nth-child(3) { transform: translateY(-6px) rotate(-45deg); } /* Adjusted transform */
 
-.site-logo img {
-  height: auto;
+.site-logo {
+    display: inline-block; /* Allows vertical alignment */
+}
+/* Ensure Next.js <Image> component is used for logo */
+.site-logo img { /* Styling might differ slightly for Next Image */
+  display: block;
+  height: auto; /* Let width/height props control size */
   width: auto;
-  display: block; /* Prevents extra space below image */
+  max-height: calc(3.5rem - 1rem); /* Example: Limit height based on header */
 }
 
 /* Main Navigation (Mobile - Slide out) */
 .main-nav {
   position: fixed;
-  top: 3.5rem; /* Align below header */
+  top: 3.5rem;
   left: 0;
-  width: 70vw;
-  max-width: 300px; /* Max width for mobile nav */
-  height: calc(100vh - 3.5rem); /* Full height below header */
+  width: min(70vw, 300px); /* Use min() for responsiveness */
+  height: calc(100vh - 3.5rem);
   background: #fff;
   box-shadow: 2px 0 10px rgba(0,0,0,0.2);
   transform: translateX(-100%);
   transition: transform 0.3s ease;
-  z-index: 3000;
+  z-index: 3000; /* Above backdrop */
   overflow-y: auto;
   padding: 1rem;
 }
@@ -132,45 +139,55 @@ body {
 }
 
 .nav-list li {
-  margin: 0.5rem 0;
+  margin: 0; /* Reset margin for consistency */
 }
 
-.nav-list a {
+.nav-list a,
+.nav-list button { /* Style buttons similarly if used */
   text-decoration: none;
-  color: #333;
+  color: #333; /* Check contrast */
   font-weight: 500;
-  font-size: 0.95rem; /* Base size for mobile */
-  display: block; /* Make links take full width */
-  padding: 0.5rem 0; /* Easier tap target */
-  transition: color 0.3s;
+  font-size: 0.95rem;
+  display: block;
+  padding: 0.75rem 0; /* Consistent padding */
+  transition: color 0.3s ease, background-color 0.3s ease;
+  border-bottom: 1px solid #eee; /* Separator */
+}
+.nav-list li:last-child > a,
+.nav-list li:last-child > button {
+    border-bottom: none; /* Remove border from last item */
 }
 
-.nav-list a:hover {
+
+.nav-list a:hover,
+.nav-list button:hover {
   color: #0056b3;
+  background-color: #f8f8f8;
 }
 
-/* Dropdowns (Mobile) */
+/* Mobile Submenu Styles */
 .has-dropdown .dropdown-menu {
-  display: none; /* Hidden by default */
+  display: none;
   list-style: none;
-  margin: 0.5rem 0 0 1rem; /* Indent dropdown */
-  padding: 0;
-  background: #fafafa;
-  border-left: 2px solid #ddd;
+  margin: 0;
+  padding: 0 0 0 1rem; /* Padding left for indent */
+  background: #f8f8f8; /* Slightly different background */
+  border-left: none; /* Remove side border */
 }
-
-.has-dropdown.submenu-open > .dropdown-menu { /* Direct child selector */
+.has-dropdown.submenu-open > .dropdown-menu {
   display: block;
 }
-
 .dropdown-menu li {
   margin: 0;
 }
-
 .dropdown-menu a {
-  padding: 0.4rem 0.8rem; /* Padding inside dropdown */
+  padding: 0.5rem 0.8rem;
   font-size: 0.9rem;
-  color: #444;
+  color: #444; /* Check contrast */
+  border-bottom: 1px solid #ddd; /* Separator inside submenu */
+}
+.dropdown-menu li:last-child a {
+    border-bottom: none;
 }
 
 /* Backdrop for mobile menu */
@@ -183,82 +200,92 @@ body {
   background: rgba(0,0,0,0.4);
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0s 0.3s linear; /* Delay visibility transition */
-  z-index: 2500;
+  transition: opacity 0.3s ease, visibility 0.0s 0.3s linear;
+  z-index: 2500; /* Below nav, above content */
 }
-
 .menu-backdrop.open {
   opacity: 1;
   visibility: visible;
   transition: opacity 0.3s ease;
 }
 
-/* Header Actions (Search, etc.) */
+/* Header Actions (Search etc.) */
 .header-actions {
   display: flex;
   align-items: center;
+  padding: 0.5rem 0; /* Padding for search li on mobile */
+  border-bottom: 1px solid #eee;
 }
 
 .search-container {
-  margin-left: 1rem; /* Use margin-left for spacing from nav/logo */
+  margin: 0; /* Remove margin if inside padded li */
+  width: 100%;
 }
-
 .search-container input[type="search"] {
   border: 1px solid #ccc;
   border-radius: 1.5rem;
-  padding: 0.3rem 0.8rem;
+  padding: 0.5rem 1rem; /* Increased padding */
   font-size: 0.9rem;
-  width: 150px; /* Adjust default width as needed */
-  transition: width 0.3s ease;
+  width: 100%; /* Take full width */
+  box-sizing: border-box; /* Include padding in width */
+  transition: border-color 0.3s ease; /* Subtle transition */
 }
-
 .search-container input[type="search"]:focus {
   outline: none;
-  width: 180px; /* Expand width on focus */
+  border-color: #007bff; /* Focus indicator */
 }
 
-/* Special Nav links like Subscribe */
+/* Mobile Subscribe Button */
 .nav-list li a[href="#subscribe"] {
-  display: inline-block; /* Allow padding/margins */
+  display: inline-block;
   background-color: #007bff;
-  color: white;
+  color: white; /* Check contrast: White on blue is good */
   padding: 10px 15px;
   border-radius: 5px;
   font-weight: bold;
   text-decoration: none;
-  transition: background 0.3s ease;
-  margin-top: 1rem; /* Space above special buttons */
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+  border-bottom: none; /* Remove border */
+  text-align: center;
 }
-
 .nav-list li a[href="#subscribe"]:hover {
   background-color: #0056b3;
 }
 
-/* Mobile Header/Nav Activation */
-@media (max-width: 1099px) { /* Breakpoint just before desktop */
+
+/* ====== MOBILE HEADER STYLES ====== */
+@media (max-width: 1099px) {
   .menu-toggle {
-    display: flex; /* Show hamburger */
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  .header-actions .search-container { /* Maybe hide search on small screens */
-     /* display: none; */
+  .main-nav {
+     position: fixed; /* Keep fixed positioning */
   }
-  /* Hide desktop nav elements */
-   .main-nav { /* Ensure mobile nav styles apply */
-      position: fixed;
-      /* other mobile styles */
+  /* Mobile Submenu Toggle Button Styles */
+   .submenu-toggle-button {
+      background: transparent;
+      border: none;
+      padding: 0.5rem;
+      cursor: pointer;
+      margin-left: auto; /* Push to right */
+      font-size: 1.2em;
+      line-height: 1;
+      color: #555; /* Check contrast */
    }
 }
 
-/* Desktop Header/Nav Layout */
+/* ====== DESKTOP HEADER STYLES ====== */
 @media (min-width: 1100px) {
-  .menu-toggle, .menu-backdrop {
-    display: none; /* Hide mobile elements */
+  .menu-toggle, .menu-backdrop, .submenu-toggle-button {
+    display: none; /* Hide mobile-only elements */
   }
 
-  .main-nav { /* Override mobile styles */
+  /* Override mobile nav styles */
+  .main-nav {
     position: static;
     width: auto;
     height: auto;
@@ -266,170 +293,252 @@ body {
     box-shadow: none;
     overflow: visible;
     padding: 0;
-    margin-left: 1rem; /* Space between logo and nav */
-    background: transparent; /* Override mobile background */
-    flex-direction: row; /* Align items horizontally */
+    margin-left: auto; /* Push nav towards the right */
+    background: transparent;
+    display: flex;
+    flex-direction: row;
     align-items: center;
-    transition: none; /* Remove transition */
-    max-width: none; /* Remove max-width */
-    z-index: auto; /* Reset z-index */
+    transition: none;
+    max-width: none;
+    z-index: auto;
   }
 
   .nav-list {
-    display: flex; /* Align list items horizontally */
+    display: flex;
     flex-direction: row;
-    align-items: center;
+    /* FIXED: Use baseline alignment for better button/text alignment */
+    align-items: baseline;
+    height: 100%; /* Ensure full height for baseline context */
+    list-style: none;
+    padding: 0;
+    margin: 0;
   }
 
   .nav-list li {
-    margin: 0 1rem; /* Horizontal spacing */
-  }
-  .nav-list a {
-     display: inline-block; /* Adjust display */
-     padding: 0; /* Reset mobile padding */
+    margin: 0 0.8rem; /* Adjust spacing */
+    /* Remove height and align from LI when using baseline on UL */
+    /* height: 100%; */
+    /* display: flex; */
+    /* align-items: center; */
   }
 
-  /* Desktop Dropdowns */
-  .has-dropdown { position: relative; } /* Needed for absolute positioning */
+  /* General desktop link styling */
+  .nav-list a,
+  .nav-list a.nav-link {
+     display: inline-block;
+     padding: 0.5rem 0.2rem; /* Minimal padding for text links */
+     border-bottom: none; /* Override mobile border */
+     font-weight: 500;
+     position: relative; /* For potential hover effects */
+  }
+  /* Simple hover underline effect */
+   .nav-list a:not([href="#subscribe"])::after {
+       content: '';
+       position: absolute;
+       width: 0;
+       height: 2px;
+       display: block;
+       margin-top: 4px; /* Space below text */
+       right: 0;
+       background: #0056b3;
+       transition: width .3s ease;
+       -webkit-transition: width .3s ease;
+   }
+   .nav-list a:not([href="#subscribe"]):hover::after {
+       width: 100%;
+       left: 0;
+       background-color: #0056b3;
+   }
+
+
+  /* Desktop Subscribe Button Styles */
+  .nav-list li a[href="#subscribe"] {
+     display: inline-flex;
+     align-items: center;
+     background-color: #007bff; /* Check contrast */
+     color: white;
+     padding: 8px 15px; /* Adjust vertical padding if needed */
+     border-radius: 5px;
+     font-weight: bold;
+     text-decoration: none;
+     transition: background-color 0.3s ease;
+     margin-top: 0; /* Override mobile margin */
+     margin-left: 1rem; /* Space before subscribe button */
+     border-bottom: none;
+  }
+  .nav-list li a[href="#subscribe"]:hover {
+    background-color: #0056b3;
+  }
+
+  /* Hide mobile search bar placement */
+   .main-nav .header-actions {
+       display: none;
+   }
+   /* Optional: Show search in header actions area on desktop */
+   .header-actions .search-container {
+       display: block; /* Assuming .header-actions is outside .main-nav */
+   }
+
+
+  /* --- DESKTOP DROPDOWN POSITIONING & FIX --- */
+  .nav-list li.has-dropdown {
+     position: relative; /* Positioning context for dropdown */
+  }
 
   .has-dropdown .dropdown-menu {
-    display: none; /* Hidden by default */
     position: absolute;
-    top: 100%; /* Position below parent */
-    left: 0;
     background: white;
-    
-    border-left: none; /* Remove mobile border */
-    padding: 0.5rem;
-    margin: 0; /* Reset mobile margin */
-    min-width: 180px; /* Set a min width */
-    z-index: 1000; /* Ensure dropdown is above other content */
+    margin-left: 0; /* Reset margin */
+    padding: 0.5rem 0; /* Padding top/bottom, no side padding on ul */
+    border: 1px solid #eee;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Softer shadow */
+    border-radius: 4px; /* Add slight rounding */
+    border-left: none;
+    display: none;
+    /* Visual gap using calc() */
+    top: calc(100% + 8px); /* Increased gap slightly */
+    left: 0;
+    min-width: 220px; /* Increase min width */
+    z-index: 1000;
+    list-style: none;
   }
-  .dropdown-menu li { margin: 0; } /* Reset mobile margin */
-  .dropdown-menu a { display: block; padding: 0.5rem 1rem;} /* Style dropdown links */
 
-  .has-dropdown:hover > .dropdown-menu { /* Show on hover */
+  /* Invisible Bridge pseudo-element */
+  .nav-list li.has-dropdown::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    /* Height MUST match the gap added in calc() above */
+    height: 8px; /* Match the gap */
+    background: transparent;
+    z-index: 1001; /* Above potential elements, below dropdown */
+    /* pointer-events: none; /* Usually not needed, can interfere */
+  }
+
+  /* Show dropdown on hover */
+  .nav-list li.has-dropdown:hover > .dropdown-menu {
     display: block;
   }
-  .submenu-toggle-button {
-    /* Basic mobile styles */
-    background: transparent;
-    border: 1px solid #ccc;
-    padding: 2px 6px;
-    cursor: pointer;
-    margin-left: 8px; /* Space from link */
-    /* Add more styles as needed */
+
+  /* Styling for items INSIDE dropdown */
+  .dropdown-menu li {
+      margin: 0;
+      height: auto;
+      display: block;
   }
-  
-  @media (min-width: 1100px) { /* Your desktop breakpoint */
-    .submenu-toggle-button {
-      display: none;
-    }
-    /* Ensure desktop hover dropdown still works */
-     .has-dropdown:hover > .dropdown-menu {
-         display: block; /* Or your preferred method */
-         visibility: visible;
-         opacity: 1;
-     }
-     .dropdown-menu {
-         /* Reset mobile aria-hidden effect if needed */
-         /* CSS hover handles desktop visibility */
-     }
+  .dropdown-menu a {
+      display: block;
+      padding: 0.6rem 1.2rem; /* Adjust padding */
+      font-size: 0.9rem;
+      color: #444; /* Check contrast */
+      white-space: nowrap;
+      border: none; /* Remove mobile border */
+      transition: background-color 0.2s ease, color 0.2s ease;
   }
-  /* Style for the specific Subscribe button link */
-  .nav-list li a[href="#subscribe"] {
-    display: inline-flex; /* Use inline-flex for button */
-    align-items: center;   /* Vertically center text *within* the button */
-    background-color: #007bff;
-    color: white;
-    padding: 8px 15px; /* Adjust vertical padding (8px) for visual alignment */
-    border-radius: 5px;
-    font-weight: bold;
-    text-decoration: none;
-    transition: background 0.3s ease;
-    margin-top: 0; /* Override mobile margin-top */
- }
- .nav-list li a[href="#subscribe"]:hover {
-   background-color: #0056b3;
- }
-}
+   .dropdown-menu a:hover {
+       color: #0056b3;
+       background-color: #f5f5f5; /* Subtle hover background */
+   }
+  /* --- END DESKTOP DROPDOWN --- */
+
+} /* End Desktop Media Query */
+
 
 /* =============== HERO SECTION =============== */
-#product-overview .img { /* Target .img within its section */
-  /* Combined background with gradient overlay */
+#product-overview .img {
+  /* LCP Candidate: Ensure this image is optimized! */
+  /* Consider using AVIF/WebP format. Preload link is in index.js <Head> */
   background:
     linear-gradient(to top, rgba(80, 68, 18, 0.6) 10%, transparent),
     url('/AdobeStock_299190080_result.webp') no-repeat center center/cover;
-  background-position: left 10% bottom 40%; /* Position after combined background */
-  width: 100%; /* Use 100% instead of 100vw to avoid potential overflow */
+  background-position: left 10% bottom 40%;
+  width: 100%;
   height: 70vh;
   position: relative;
-  margin-top: 3.5rem; /* Adjust if header height changes */
+  margin-top: 3.5rem; /* Match header height */
 }
 
 .hero {
   text-align: center;
-  padding: 1rem; /* Add some padding */
-  /* Removed margin-top, handled by section spacing or direct element margin */
-  /* color: black; Inherited from body or can be set explicitly */
+  padding: 1rem;
 }
 
-.hero .container { /* Style the containers within hero if needed */
-  margin-bottom: 2rem; /* Space between the hero blocks */
+.hero .container {
+  margin-bottom: 2rem;
 }
 
 .hero h1 {
-  font-size: clamp(2em, 5vw, 3em); /* Responsive font size */
+  font-size: clamp(2em, 5vw, 3em);
   margin-bottom: 0.5rem;
+  color: #111; /* Darker heading color */
 }
 
 .hero p {
-  margin: 0 0 1.5rem 0; /* Adjusted margin */
-  font-size: clamp(1em, 3vw, 1.2em); /* Responsive font size */
+  margin: 0 0 1.5rem 0;
+  font-size: clamp(1em, 3vw, 1.2em);
   line-height: 1.6;
+  color: #444; /* Slightly darker paragraph */
 }
 
 /* =============== BUTTONS (General) =============== */
 .cta-button,
 .Apply-button,
 .submit {
-  display: inline-block; /* Or block if they should take full width */
+  display: inline-block;
   padding: 10px 15px;
   border-radius: 5px;
   font-weight: bold;
   text-decoration: none;
   text-align: center;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.1s ease;
-  border: none; /* Ensure buttons don't have default borders */
-  /* width: auto; /* Let content or specific rules define width */
-  /* max-width: 200px; /* Optional max-width */
-  margin: 0.5rem 0.5rem 0.5rem 0; /* Consistent margin */
+  transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.2s ease;
+  border: none;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+  line-height: 1.4; /* Ensure consistent line height */
 }
 .cta-button:active,
 .Apply-button:active,
 .submit:active {
-  transform: scale(0.98); /* Slight press effect */
+  transform: scale(0.98);
+}
+.cta-button:focus-visible, /* Better focus indicator */
+.Apply-button:focus-visible,
+.submit:focus-visible {
+    outline: 2px solid #0056b3;
+    outline-offset: 2px;
 }
 
-/* Specific Button Colors */
-.cta-button { background-color: #1add14; color: white; }
-.cta-button:hover { background-color: #1ebb52; }
 
-.Apply-button { background-color: #007bff; color: white; }
+/* Specific Button Colors - CHECK CONTRAST RATIOS */
+.cta-button {
+    background-color: #15a310; /* Slightly darker green for better contrast */
+    color: white; /* White on green: OK */
+}
+.cta-button:hover { background-color: #117d0d; }
+
+.Apply-button {
+    background-color: #007bff; /* Blue */
+    color: white; /* White on blue: OK */
+}
 .Apply-button:hover { background-color: #0056b3; }
 
-.submit { background: #1add14; color: #fff; }
-.submit:hover { background: #0e4f1f; }
+.submit {
+    background: #15a310; /* Match CTA button */
+    color: #fff;
+ }
+.submit:hover { background: #117d0d; }
 
-/* Adjust button width if needed within specific contexts */
-.hero .cta-button { /* Example: Wider button in hero */
-   /* width: 50%; */ /* Reconsider % width, maybe use padding? */
-   padding: 12px 25px; /* Larger padding for hero */
+
+/* Button Widths in Context */
+.hero .cta-button {
+   padding: 12px 25px;
+   font-size: 1.1em; /* Slightly larger */
 }
 .featured-card__description .cta-button,
 .featured-card__description .Apply-button {
-    width: calc(50% - 5px); /* Example: Two buttons side-by-side */
+    width: calc(50% - 5px);
     margin-right: 5px;
 }
 .featured-card__description .Apply-button {
@@ -440,173 +549,186 @@ body {
 /* =============== FEATURED CARDS SECTION =============== */
 #featured-cards {
   margin-top: 3rem;
-  padding: 1rem;
-  background-color: #FFD700; /* Gold background */
+  padding: 2rem 1rem; /* More vertical padding */
+  background-color: #FFD700;
   border-radius: 10px;
-  /* text-align: center; Not needed if grid centers content */
 }
 
-.H2_featured-cards { /* More specific selector */
+.H2_featured-cards {
   text-align: center;
-  color: black;
-  font-size: clamp(2rem, 6vw, 3rem); /* Responsive H2 */
-  margin-bottom: 2rem;
+  color: #111; /* Use dark color on yellow bg */
+  font-size: clamp(2rem, 6vw, 3rem);
+  margin: 0 0 2rem 0; /* Remove default H1 margin */
 }
 
-#featured-cards .card-grid { /* Target grid within this section */
+#featured-cards .card-grid {
   display: grid;
-  /* Use auto-fit for responsiveness */
   grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: 30px;
-  padding: 20px 0; /* Padding top/bottom, let gap handle sides */
+  padding: 0; /* Remove padding if section has it */
   margin: 0 auto;
-  max-width: 1200px; /* Limit grid width */
+  max-width: 1200px;
 }
 
-.featured-card { /* Common class for featured cards */
+.featured-card {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; Remove this if text should be left-aligned */
   background-color: white;
-  padding: 1rem; /* Use rem for padding */
+  padding: 1.5rem; /* Increased padding */
   border-radius: 10px;
   font-size: 1rem;
-  color: #333; /* Explicit text color */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
-  overflow: hidden; /* Ensure content stays within borders */
-  min-width: 0; /* Allow flex/grid shrinking */
+  color: #333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  overflow: hidden;
+  min-width: 0;
+  text-align: center; /* Center content inside card */
 }
 
 .featured-card__image {
   width: 90%;
-  max-width: 300px; /* Limit image max width */
+  max-width: 280px; /* Slightly smaller max-width */
   height: auto;
-  object-fit: contain; /* Use contain to show full card */
-  border-radius: 8px; /* Slightly smaller radius for image */
-  margin-bottom: 1rem;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 1.5rem; /* More space */
+  margin-left: auto; /* Center image */
+  margin-right: auto; /* Center image */
 }
 
 .featured-card__description {
   display: flex;
   flex-direction: column;
-  text-align: center;
-  align-items: center;
-  width: 100%; /* Take full width of card padding */
+  text-align: center; /* Ensure text is centered */
+  align-items: center; /* Center buttons */
+  width: 100%;
   font-size: 1rem;
-  margin-top: auto; /* Push description down if card height varies */
-  padding-top: 1rem; /* Space above description */
+  margin-top: auto; /* Push to bottom */
+  padding-top: 1rem;
+  flex-grow: 1; /* Allow description to grow */
 }
 .featured-card__description h3 {
-    margin-bottom: 0.5rem;
+    margin: 0 0 0.75rem 0; /* Adjusted margin */
     font-size: 1.3rem;
+    line-height: 1.3;
 }
 .featured-card__description p {
-    margin-bottom: 1rem;
+    margin: 0 0 1.5rem 0; /* Adjusted margin */
     line-height: 1.5;
-    flex-grow: 1; /* Allow paragraph to take up space */
+    flex-grow: 1; /* Allow paragraph to fill space */
+    min-height: 60px; /* Example min-height for alignment */
 }
 .featured-card__description .cta-button,
 .featured-card__description .Apply-button {
-    width: 80%; /* Adjust button width */
-    margin-top: 0.5rem;
+    width: auto; /* Let padding define width */
+    max-width: 180px; /* Limit max width */
+    padding: 10px 20px; /* Adjust padding */
+    margin-bottom: 0.5rem;
 }
-
+/* Stack buttons if needed */
+.featured-card__description .cta-button { margin-right: 0; }
+.featured-card__description .Apply-button { margin-right: 0; }
 
 /* Responsive stacking for featured cards */
 @media (max-width: 988px) {
   #featured-cards .card-grid {
-     /* Change to single column */
      grid-template-columns: 1fr;
-     gap: 20px; /* Adjust gap for stacked layout */
-     padding: 10px; /* Adjust padding */
+     gap: 20px;
+     padding: 10px;
   }
   .featured-card {
-      max-width: 500px; /* Allow cards to be wider when stacked */
-      margin: 0 auto; /* Center cards in the single column */
+      max-width: 500px;
+      margin: 0 auto;
   }
 }
 
 /* =============== COMPARISON SECTION =============== */
 #compare {
   margin-top: 3rem;
-  padding: 2rem 1rem; /* More padding */
-  background-color: #f4f4f4;
+  padding: 2rem 1rem;
+  background-color: #f4f4f4; /* Check contrast of content */
   border-radius: 10px;
   margin-bottom: 1rem;
 }
 
-#compare .container { /* Add container for centering content */
+#compare .container {
    max-width: 800px;
    margin: 0 auto;
    text-align: center;
 }
 
 .H2_comparison {
-  color: black;
+  color: #111; /* Ensure contrast */
   margin-bottom: 1.5rem;
   font-size: clamp(1.8rem, 5vw, 2.5rem);
 }
 
 #compare form {
   display: flex;
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 1rem 1.5rem; /* Row and column gap */
 }
 
 #compare label {
   margin-right: 0.5rem;
   font-weight: bold;
+  color: #333; /* Check contrast */
 }
 
 #compare select {
-  padding: 0.5rem;
+  padding: 0.6rem 1rem; /* More padding */
   border: 1px solid #ccc;
   border-radius: 5px;
-  min-width: 200px; /* Ensure select is wide enough */
+  min-width: 220px;
+  background-color: #fff;
+  font-size: 1rem;
 }
 
 #compare .submit {
-   margin-top: 0; /* Align button with selects */
+   margin-top: 0; /* Align button */
 }
 
 .comparison-result {
   margin-top: 30px;
-  /* display: block; Default for div */
   color: #333;
-  font-weight: normal; /* Reset bold from section */
-  font-size: 1rem; /* Reset font size from section */
+  font-weight: normal;
+  font-size: 1rem;
+  text-align: left; /* Align result text left */
 }
 
 .comparison-result h3 {
    font-size: 1.5rem;
    margin-bottom: 1rem;
+   text-align: center; /* Center heading */
 }
 
 .comparison-result table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
-  background-color: #fff; /* White background for table */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Subtle shadow */
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .comparison-result th,
 .comparison-result td {
   border: 1px solid #ddd;
-  padding: 10px 12px; /* Adjust padding */
-  text-align: left; /* Align text left for readability */
+  padding: 10px 12px;
+  text-align: left;
   font-size: 1rem;
+  vertical-align: middle; /* Align content vertically */
 }
-.comparison-result td:not(:first-child), /* Center non-header columns if needed */
+.comparison-result td:not(:first-child),
 .comparison-result th:not(:first-child) {
   text-align: center;
 }
 
 .comparison-result th {
-  background-color: #e9e9e9; /* Slightly darker header */
+  background-color: #e9e9e9; /* Check contrast */
   font-weight: bold;
+  color: #333;
 }
 
 /* =============== REVIEWS SECTION =============== */
@@ -614,37 +736,37 @@ body {
   width: 90%;
   max-width: 1200px;
   background: #fff;
-  padding: 20px;
+  padding: 2rem; /* Increased padding */
   border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Softer shadow */
-  margin: 3rem auto; /* Centered with top/bottom margin */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin: 3rem auto;
 }
 
 .reviews-container h2 {
   text-align: center;
-  margin-bottom: 30px; /* More space below heading */
+  margin: 0 0 30px 0; /* Remove default margin */
   font-size: clamp(1.8rem, 5vw, 2.5rem);
   color: #333;
 }
 
 .reviews-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Use auto-fit */
-  gap: 25px; /* Adjust gap */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
 }
 
-/* Review Card Styling (using .card class as originally intended here) */
-.reviews-grid .card { /* Specific to review cards */
+/* Review Card Styling */
+.reviews-grid .card {
   background: #fff;
-  padding: 0; /* Remove padding here, apply to content */
+  padding: 0;
   border-radius: 8px;
-  text-align: left; /* Align text left */
+  text-align: left;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
-  display: flex; /* Use flex for better structure */
+  display: flex;
   flex-direction: column;
-  overflow: hidden; /* Keep content contained */
-  color: #555; /* Reset color from featured cards if .card was shared */
+  overflow: hidden;
+  color: #555;
 }
 
 .reviews-grid .card:hover {
@@ -652,21 +774,25 @@ body {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
-.review_img { /* Renamed from .card img for clarity */
+.review_img {
   width: 100%;
-  height: 180px; /* Slightly reduced height */
+  height: 180px;
   object-fit: cover;
   object-position: center;
-  display: block; /* Remove extra space */
-  /* border-radius: 10px; Remove radius if image is flush top */
+  display: block;
 }
 
-
+.reviews-grid .card-content {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
 
 .reviews-grid .card h3 {
   color: #0073e6;
   font-size: 1.2rem;
-  margin: 0 0 10px 0; /* Adjusted margin */
+  margin: 0 0 10px 0;
   line-height: 1.3;
 }
 
@@ -674,48 +800,35 @@ body {
   font-size: 0.9rem;
   color: #555;
   line-height: 1.5;
-  margin-bottom: 15px;
-  flex-grow: 1; /* Allow paragraph to take space */
+  margin: 0 0 15px 0; /* Remove default p margin */
+  flex-grow: 1;
 }
 
-/* Inside your REVIEW SECTION CSS */
-
+/* Review Card Button */
 .reviews-grid .card .cta-button {
-  display: inline-block; /* Keep as inline-block or block */
-  margin-top: auto;    /* Pushes button to bottom if content above varies */
+  display: inline-block;
+  margin-top: auto; /* Push to bottom */
   padding: 8px 15px;
-  background: #0073e6;
-  color: #fff;
+  background: #0073e6; /* Check contrast */
+  color: #fff; /* Contrast OK */
   text-decoration: none;
   border-radius: 5px;
-  align-self: center;  /* <--- CHANGE THIS LINE */
-  /* Remove width constraints if you want it to size naturally */
-  /* width: auto; */
+  align-self: center; /* Centered button */
+  font-weight: bold;
 }
 
 .reviews-grid .card .cta-button:hover {
    background-color: #0056b3;
-   /* Add other hover styles if needed */
 }
-
-/* Ensure the parent (.card-content) is a flex container */
-.reviews-grid .card-content {
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1; /* Allow content to fill space */
-    /* No align-items needed here if you want items left-aligned by default except button */
-}
-/* No extra media queries needed for reviews if using auto-fit effectively */
 
 /* =============== FOOTER =============== */
 .site-footer {
-  background: #000080; /* Dark Blue */
-  color: #f0f0f0; /* Slightly off-white for readability */
-  margin-top: 3rem; /* Increased margin */
-  padding: 2rem 1rem; /* Padding top/bottom and sides */
-  border-top: 4px solid #FFD700; /* Accent border matching featured section */
-  font-family: 'Playfair Display', serif; /* Use defined font */
+  background: #000080;
+  color: #f0f0f0; /* Good contrast on dark blue */
+  margin-top: 3rem;
+  padding: 2rem 1rem;
+  border-top: 4px solid #FFD700;
+  font-family: 'Playfair Display', serif;
 }
 
 .footer-inner {
@@ -725,15 +838,15 @@ body {
 
 .footer-columns {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust min width */
-  gap: 2rem; /* Increased gap */
-  margin-bottom: 2rem; /* Space before disclaimer */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
 }
 
 .footer-col h3 {
-  margin-bottom: 1rem; /* More space below headings */
-  color: #fff; /* Ensure heading is white */
-  font-weight: 700; /* Use bold variant */
+  margin: 0 0 1rem 0; /* Remove default margin */
+  color: #fff;
+  font-weight: 700;
   font-size: 1.2rem;
 }
 
@@ -744,11 +857,12 @@ body {
 }
 
 .footer-col li {
-  margin-bottom: 0.6rem; /* Slightly more space */
+  margin-bottom: 0.6rem;
 }
 
-.footlink a { /* Target links within .footlink class if used */
-  color: #d0d0d0; /* Lighter grey for links */
+/* Footer Links */
+.footlink a { /* Selector might need adjustment based on HTML */
+  color: #d0d0d0; /* Check contrast - OK on #000080 */
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -760,22 +874,22 @@ body {
 
 .footer-disclaimer {
   margin-top: 2rem;
-  font-size: 0.85rem; /* Slightly smaller */
+  font-size: 0.85rem;
   line-height: 1.5;
-  color: #ccc; /* Lighter color for disclaimer */
-  text-align: center; /* Center disclaimer */
-  max-width: 800px; /* Limit width */
+  color: #ccc; /* Check contrast - OK on #000080 */
+  text-align: center;
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .footer-bottom {
-  margin-top: 2rem; /* Space above bottom bar */
-  padding: 1rem 0; /* Padding top/bottom */
+  margin-top: 2rem;
+  padding: 1rem 0;
   text-align: center;
   font-size: 0.9rem;
-  color: #ccc;
-  border-top: 1px solid #444; /* Separator line */
+  color: #ccc; /* Check contrast - OK */
+  border-top: 1px solid #4a4a9c; /* Lighter border */
 }
 
 .footer-bottom p {
