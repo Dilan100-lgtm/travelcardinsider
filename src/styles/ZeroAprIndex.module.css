@@ -1,170 +1,236 @@
-:global {
-  /* Copy the entire content of your original "0% APR Index.css" exactly as is */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+/* General Reset */
+.reset {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  html {
-    height: 100%;
-  }
+/* Main Wrapper */
+.mainWrapper {
+  padding: 20px;
+}
 
-  body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    line-height: 1.6;
-    font-size: 1.1rem;
-    color: #333;
-    padding: 10px;
-    margin: 20px;
-    background-color: #f9f9f9;
-  }
+/* Hero Section */
+.hero {
+  background: #11118f url('/hero_background.jpg') center/cover no-repeat;
+  color: #fff;
+  padding: 80px 20px;
+  text-align: center;
+  position: relative;
+}
 
-  .hero {
-    background: #11118f url('hero_background.jpg') center/cover no-repeat;
-    color: #fff;
-    padding: 80px 20px;
-    text-align: center;
-    position: relative;
-  }
+.heroContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
 
-  .hero .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
-  }
+.heroTitle {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  color: white;
+}
 
-  .hero-title {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-    line-height: 1.2;
-    color: white;
-  }
+.heroDescription {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #f4f4f4;
+}
 
-  .hero-description {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-    color: #f4f4f4;
-  }
+.disclaimer {
+  font-size: 0.9rem;
+  color: white;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
 
-  .Disclaimer {
-    font-size: 0.9rem;
-    color: white;
-    margin-bottom: 1rem;
-    line-height: 1.4;
-  }
+.heroCta {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
 
-  .hero-cta {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-  }
+.ctaButton {
+  padding: 15px 25px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  font-weight: bold;
+}
 
-  .cta-button {
-    padding: 15px 25px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background 0.3s ease;
-    font-weight: bold;
-  }
+.ctaPrimary {
+  background: #1add14;
+  color: #fff;
+}
 
-  .cta-primary {
-    background: #1add14;
-    color: #fff;
-  }
+.ctaPrimary:hover {
+  background: #0e4f1f;
+}
 
-  .cta-primary:hover {
-    background: #0e4f1f;
-  }
+.ctaSecondary {
+  background: #007bff;
+  color: #fff;
+}
 
-  .cta-secondary {
-    background: #007bff;
-    color: #fff;
-  }
+.ctaSecondary:hover {
+  background: #0056b3;
+}
 
-  .cta-secondary:hover {
-    background: #0056b3;
-  }
+.heroImage img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
 
-  .hero-image img {
-    max-width: 100%;
-    height: auto;
-    margin-top: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  }
+/* Card Table Section */
+.cardTableSection {
+  margin-top: 40px;
+}
 
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  }
+.tableResponsive {
+  overflow-x: auto;
+}
 
-  .card {
-    display: flex;
-    flex-direction: column;
-    background: #dbe2f7;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin: 20px 0;
-  }
+.cardTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
 
-  .card-image {
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-    background: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.cardTable th,
+.cardTable td {
+  padding: 15px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
 
-  .card-image img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: cover;
-  }
+.cardTable th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
 
-  .card-content {
-    padding: 20px;
-  }
+.cardTable tbody tr:hover {
+  background-color: #f9f9f9;
+}
 
-  .card-title {
-    font-size: 1.5rem;
-    color: #77f351;
-    margin-bottom: 10px;
-  }
+/* Card Component */
+.card {
+  display: flex;
+  flex-direction: column;
+  background: #dbe2f7;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 20px 0;
+}
 
-  .card-bonus {
-    font-size: 1.1rem;
-    margin-bottom: 15px;
-    color: #333;
-  }
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
 
-  .card-bonus em {
-    font-size: 0.9rem;
-    color: #555;
-    display: block;
-    margin-top: 5px;
-  }
+.cardImage {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .card-earning,
-  .card-redemption,
-  .card-perks,
-  .card-best-for {
-    margin-top: 15px;
-    color: #000;
-  }
+.cardImage img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
 
-  .card-earning ul,
-  .card-redemption ul,
-  .card-perks ul {
-    margin-left: 20px;
-    list-style: disc;
-  }
+.cardContent {
+  padding: 20px;
+}
 
-  .card-earning
+.cardTitle {
+  font-size: 1.5rem;
+  color: #77f351;
+  margin-bottom: 10px;
+}
+
+.cardBonus {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.cardBonus em {
+  font-size: 0.9rem;
+  color: #555;
+  display: block;
+  margin-top: 5px;
+}
+
+.cardEarning,
+.cardRedemption,
+.cardPerks,
+.cardBestFor {
+  margin-top: 15px;
+  color: #000;
+}
+
+.cardEarning ul,
+.cardRedemption ul,
+.cardPerks ul {
+  margin-left: 20px;
+  list-style: disc;
+}
+
+.cardActions {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.btnApply {
+  background: #1add14;
+  color: #fff;
+}
+
+.btnApply:hover {
+  background: #0e4f1f;
+}
+
+.btnLearnMore {
+  background: #007bff;
+  color: #fff;
+}
+
+.btnLearnMore:hover {
+  background: #0056b3;
+}
+
+.btnRatesFees {
+  background: #f4f4f4;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+.btnRatesFees:hover {
+  background: #eaeaea;
+}
