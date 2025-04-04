@@ -1,739 +1,33 @@
+/* =============== GLOBALS & DEFAULTS =============== */
 html {
   height: 100%;
 }
 
 body {
   margin: 0;
+  /* Consider using 'Roboto Condensed' as your default if desired */
   font-family: 'Arial', sans-serif;
   color: #333;
-  min-width: 374px;
+  min-width: 374px; /* Prevents layout break on very small screens */
 }
 
-.img {
-  background: linear-gradient(to top, rgba(80, 68, 18, 0.6) 10%, transparent);
-  background: url('/AdobeStock_299190080_result.webp') no-repeat center center/cover;
-  background-position: left 10% bottom 40%;
-  width: 100vw;
-  height: 70vh;
-  position: relative;
-  margin-top: 3rem;
-}
-
-.hero {
-  text-align: center;
-  margin-top: 10px;
-  color: black;
-}
-
-.hero h1 {
-  font-size: 3em;
-}
-.H2_featured-cards {
-  text-align: center;
-  color: black;
-  font-size: 3rem;
-}
-#featured-cards {
-  margin-top: 3rem;
-  padding: 1rem;
-  background-color: #FFD700;
-  text-align: center;
-  color: black;
-  font-size: 1.5rem;
-  font-weight: bold;
-  border-radius: 10px;
-  margin-bottom: 0;
-  display: grid;
-  min-width: 374px;
-}
-
-.card1 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 70vh;
-  background-size: cover;
-  background-position: center;
-  background-color: white;
-  grid-column-start: 1;
-  grid-column-end: 2;
-  justify-self: center; 
-  margin-top: 1rem;
-  padding: 0.7rem;
-  border-radius: 10px;
-  margin-bottom: 1rem;
-  font-size: 1rem;
-  max-width: 400px;
-  max-height: 488px;
-}
-.img1 {
-width: 90%;
-height: auto;
-object-fit: cover;
-border-radius: 10px;
-}
-.card2 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 70vh;
-  background-size: cover;
-  background-position: center;
-  background-color: white;
-  grid-column-start: 2;
-  grid-column-end: 3;
-  justify-self: center;
-  margin-top: 1rem;
-  padding: 0.7rem;
-  border-radius: 10px;
-  margin-bottom: 1rem;
-  font-size: 1rem;
-  max-width: 400px;
-  max-height: 488px;
-}
-.img2 {
-  width: 90%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 10px;
-}
-.card3 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 70vh;
-  background-size: cover;
-  background-position: center;
-  background-color: white;
-  justify-self: center;
-  grid-column-start: 3;
-  grid-column-end: 4;
-  margin-top: 1rem;
-  padding: 0.7rem;
-  border-radius: 10px;
-  margin-bottom: 1rem;
-  max-width: 400px;
-  max-height: 488px;
-}
-.img3 {
-  width: 90%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-@media (max-width: 988px) {
-  .card1 {
-    height: 50vh;
-    grid-row-start: 1;
-    grid-row-end: 2;
-    grid-column-start: 1;
-    grid-column-end: 2;
-    width: 80vw;
-    min-width: 374px;
-    min-height: 500px;
-  }
-  .card2 {
-    height: 50vh;
-    grid-row-start: 2;
-    grid-row-end: 3;
-    grid-column-start: 1;
-    grid-column-end: 2;
-    width: 80vw;
-    min-width: 374px;
-    min-height: 500px;
-  }
-  .card3 {
-    height: 50vh;
-    grid-row-start: 3;
-    grid-row-end: 4;
-    grid-column-start: 1;
-    grid-column-end: 2;
-    width: 80vw;
-    min-width: 374px;
-    min-height: 500px;
-  }
-}
-@media (max-height: 500px) {
-  .card1 {
-      grid-row-start: 1;
-      grid-row-end: 2;
-      grid-column-start: 1;
-      grid-column-end: 2;
-      width: 80vw;
-      min-width: 374px;
-      min-height: 500px;
-  }
-  .card2 {
-      grid-row-start: 2;
-      grid-row-end: 3;
-      grid-column-start: 1;
-      grid-column-end: 2;
-      width: 80vw;
-      min-width: 374px;
-      min-height: 500px;
-  }
-  .card3 {
-      grid-row-start: 3;
-      grid-row-end: 4;
-      grid-column-start: 1;
-      grid-column-end: 2;
-      width: 80vw;
-      min-width: 374px;
-      min-height: 500px;
-  }
-}
-.Crad_discription1 {
-  display: flex;
-  flex-direction: column;
-  justify-self: center;
-  text-align: center;
-  align-items: center;
-  width: 50vw;
-  color: black;
-  font-size: 1rem;
-  background-size: cover;
-  width: 80%;
-  height: 200px;
-}
-.Crad_discription2 {
-  display: flex;
-  flex-direction: column;
-  justify-self: center;
-  text-align: center;
-  align-items: center;
-  width: 50vw;
-  color: black;
-  font-size: 1rem;
-  width: 80%;
-  height: 200px;
-}
-.Crad_discription3 {
-  display: flex;
-  flex-direction: column;
-  justify-self: center;
-  text-align: center;
-  align-items: center;
-  width: 50vw;
-  color: black;
-  font-size: 1rem;
-  width: 80%;
-  height: 200px;
-}
-.H2_comparison {
-  text-align: center;
-  color: black;
-}
-#compare {
-  margin-top: 3rem;
-  padding: 1rem;
-  background-color: #f4f4f4;
-  text-align: center;
-  color: black;
-  font-size: 1.5rem;
-  font-weight: bold;
-  border-radius: 10px;
-  margin-bottom: 1rem;
-}
-
-.submit {
-  padding: 0.7rem 1.5rem;
-  background: #1add14;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 10px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin-top: 1rem;
-  cursor: pointer;
-}
-.submit:hover,
-.submit:active {
-  background: #0e4f1f;
-}
-.hero p {
-  margin: 20px 0;
-  font-size: 1.2em;
-}
-
-.cta-button {
-  background-color: #1add14;
-  color: white;
-  padding: 10px 15px;
-  border-radius: 5px;
-  font-weight: bold;
-  text-decoration: none;
-  transition: background 0.3s ease;
-  width: 50%;
-  margin-bottom: 1rem;
-}
-.cta-button:hover {
-background-color: #1ebb52;
-}
-.Apply-button {
-background-color: #007bff;
-color: white;
-padding: 10px 15px;
-border-radius: 5px;
-font-weight: bold;
-text-decoration: none;
-transition: background 0.3s ease;
-width: 50%;
-align-self: center;
-}
-
-.Apply-button:hover {
-background-color: #0056b3;
-}
-
-.card { 
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 7px 7px rgba(36, 50, 250, 0.5);
-  color: blanchedalmond;
-}
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  padding: 20px;
-  margin: 0 auto;
-  color: blanchedalmond;
-}
-
-.comparison-result {
-  margin-top: 30px;
-  display: block;
-}
-.comparison-result table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-.comparison-result th,
-.comparison-result td {
-  border: 1px solid #ddd;
-  padding: 10px;
-  text-align: center;
-  background-color: #fafafa;
-  font-size: 1rem;
-}
-.comparison-result th {
-  background-color: #f4f4f4;
-}
-
-/* =============== HEADER =============== */
-.site-header {
-position: fixed;
-top: 0;
-left: 0;
-right: 0;
-background: #fff;
-box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-z-index: 999;
-font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-font-weight: 500;
-font-size: 1rem;
-line-height: 1rem;
-}
-.header-inner {
-display: flex;
-align-items: center;
-justify-content: space-between;
-margin: 0 1rem;
-height: 3.5rem;
-padding: 0 1rem;
-margin-right: 1rem;
-}
-.logo-toggle-container {
-display: flex;
-align-items: center;
-}
-.menu-toggle {
-display: none;
-background: transparent;
-border: none;
-cursor: pointer;
-margin-right: 1rem;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-left: 0;
-margin-left: 0;
-padding: 0;
-}
-.bar {
-width: 1.5rem;
-height: 0.2rem;
-background: #000;
-margin: 3px 0;
-transition: 0.3s;
-}
-.menu-toggle.open .bar:nth-child(1) {
-transform: translateY(5px) rotate(45deg);
-}
-.menu-toggle.open .bar:nth-child(2) {
-opacity: 0;
-}
-.menu-toggle.open .bar:nth-child(3) {
-transform: translateY(-5px) rotate(-45deg);
-}
-.site-logo img {
-height: 2.5rem;
-width: auto;
-margin-left: 0;
-justify-self: start;
-}
-
-/* MAIN NAV STYLES */
-.main-nav {
-position: fixed;
-top: 3.5rem;
-left: 0;
-width: 70vw;
-max-width: 900px;
-height: 100vh;
-background: #fff;
-box-shadow: 2px 0 10px rgba(0,0,0,0.2);
-transform: translateX(-100%);
-transition: transform 0.3s ease;
-z-index: 3000;
-overflow-y: auto;
-padding: 1rem;
-display: flex;
-flex-direction: column;
-font-size: 2rem;
-}
-.main-nav.open {
-transform: translateX(0);
-}
-.nav-list {
-list-style: none;
-padding: 0;
-margin: 0;
-}
-.nav-list li {
-position: relative;
-margin: 0.5rem 0;
-padding: 0;
-}
-.nav-list a {
-text-decoration: none;
-color: #333;
-font-weight: 500;
-font-size: 0.95rem;
-transition: color 0.3s;
-padding-bottom: 1rem;
-}
-.nav-list a:hover {
-color: #0056b3;
-}
-/* DROPDOWNS */
-.has-dropdown .dropdown-menu {
-display: none;
-list-style: none;
-margin-top: 0.5rem;
-margin-left: 0;
-padding: 0.5rem 0;
-background: #fafafa;
-border-left: 2px solid #ddd;
-transition: opacity 0.3s ease;
-width: 200px;
-height: auto;
-font-size: 1rem;
-}
-.has-dropdown .dropdown-menu .Blog {
-width: 100px !important;
-}
-.has-dropdown.submenu-open .dropdown-menu {
-display: block;
-}
-.dropdown-menu li {
-margin: 0.4rem 0;
-padding: 0;
-}
-.dropdown-menu a {
-display: inline-block;
-color: #444;
-font-size: 0.9rem;
-}
-.dropdown-menu a:hover {
-background-color: transparent;
-color: #0056b3;
-}
-/* BACKDROP */
-.menu-backdrop {
-position: fixed;
-top: 0;
-left: 0;
-height: 100%;
-width: 100vw;
-background: rgba(0,0,0,0.4);
-opacity: 0;
-visibility: hidden;
-transition: opacity 0.3s;
-z-index: 2500;
-}
-.menu-backdrop.open {
-opacity: 1;
-visibility: visible;
-}
-/* HEADER ACTIONS */
-.header-actions {
-display: flex;
-align-items: center;
-}
-.search-container {
-position: relative;
-margin-right: 1rem;
-}
-.search-container input[type="search"] {
-border: 1px solid #ccc;
-border-radius: 1.5rem;
-padding: 0.3rem 0.8rem;
-font-size: 0.9rem;
-width: 180px;
-transition: width 0.3s ease;
-}
-.search-container input[type="search"]:focus {
-outline: none;
-width: 200px;
-}
-.nav-list li a[href="#subscribe"] {
-background-color: #007bff;
-color: white;
-padding: 10px 15px;
-border-radius: 5px;
-font-weight: bold;
-text-decoration: none;
-transition: background 0.3s ease;
-}
-.nav-list li a[href="#subscribe"]:hover {
-background-color: #0056b3;
-}
-/* MOBILE FIRST => Hide hamburger & side-drawer on large screens */
-@media (max-width: 1100px) {
-.menu-toggle {
-  display: flex;
-}
-}
-/* DESKTOP LAYOUT => Show inline nav, hide side-drawer approach */
-@media (min-width: 1100px) {
-.menu-toggle {
-  display: none;
-}
-.menu-backdrop {
-  display: none;
-}
-.main-nav {
-  position: static;
-  width: auto;
-  height: auto;
-  transform: none;
-  box-shadow: none;
-  overflow: visible;
-  font-size: 2rem;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-right: 4.5rem;
-  padding: 0;
-}
-.nav-list {
-  display: flex;
-  flex-direction: row;
-  margin-left: 1rem;
-}
-.nav-list li {
-  margin: 0 1rem;
-}
-.nav-list li .dropdown-menu {
-  position: absolute;
-  background: white;
-  margin-left: 0;
-  padding: 0.5rem;
-  border-left: none;
-  display: none;
-}
-.has-dropdown:hover .dropdown-menu {
-  display: block;
-}
-.dropdown-menu li {
-  margin: 0.4rem 0;
-}
-.search-container {
-  position: relative;
-  margin-right: 1rem;
-  display: flex;
-}
-.header-inner {
-  margin-right: 0 auto;
-  width: 100%;
-}
-.search-container input[type="search"] {
-  border: 1px solid #ccc;
-  border-radius: 1.5rem;
-  padding: 0.3rem 0.8rem;
-  font-size: 0.9rem;
-  width: 200px;
-  transition: width 0.3s ease;
-  height: 2rem;
-}
-.search-container input[type="search"]:focus {
-  outline: none;
-  width: 220px;
-}
-.dropdown-menu.Blog {
-  width: 100px !important;
-}
-}
-
-/* ========== FOOTER ========== */
-.site-footer {
-background: #000080;
-color: white;
-margin-top: 2rem;
-border-top: 1px solid #ddd;
-font-family: playfair display;
-}
-.footer-inner {
-max-width: 1200px;
-margin: 0 auto;
-padding: 2rem;
-}
-.footer-columns {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-gap: 1.5rem;
-}
-.footer-col h3 {
-margin-bottom: 0.5rem;
-}
-.footer-col ul {
-list-style: none;
-padding: 0;
-color: white;
-}
-.footer-col li {
-margin-bottom: 0.4rem;
-color: white;
-}
-.footer-disclaimer {
-margin-top: 2rem;
-font-size: 0.9rem;
-line-height: 1.4;
-}
-.footer-bottom {
-background: #f1f1f1;
-padding: 0.8rem;
-text-align: center;
-font-size: 0.9rem;
-color: #666;
-}
-.footer-bottom p {
-margin: 0;
-}
-.footlink a {
-color: white;
-text-decoration: none;
-}
-
-/* REVIEW SECTION */
-.reviews-container {
-width: 90%;
-max-width: 1200px;
-background: #fff;
-padding: 20px;
-border-radius: 10px;
-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-text-align: center;
-margin-right: 3rem;
-margin-left: auto;
-}
-.reviews-container h2 {
-margin-bottom: 20px;
-font-size: 1.8rem;
-color: #333;
-}
-.reviews-grid {
-display: grid;
-grid-template-columns: repeat(4, 1fr);
-gap: 20px;
-}
-.card {
-background: #fff;
-padding: 20px;
-border-radius: 8px;
-text-align: center;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-transition: transform 0.3s ease-in-out;
-}
-.review_img {
-width: 100%;
-height: 200px;
-object-fit: cover;
-object-position: center;
-border-radius: 10px;
-margin-bottom: 1rem;
-}
-.card:hover {
-transform: translateY(-5px);
-}
-.card h3 {
-color: #0073e6;
-font-size: 1.2rem;
-margin-bottom: 10px;
-}
-.card p {
-font-size: 0.9rem;
-color: #555;
-}
-.card a {
-display: inline-block;
-margin-bottom: 10px;
-padding: 8px 15px;
-background: #0073e6;
-color: #fff;
-text-decoration: none;
-border-radius: 5px;
-}
-
-/* RESPONSIVE REVIEW GRID */
-@media screen and (max-width: 1024px) {
-.reviews-grid {
-  grid-template-columns: repeat(3, 1fr);
-}
-}
-@media screen and (max-width: 768px) {
-.reviews-grid {
-  grid-template-columns: repeat(2, 1fr);
-}
-}
-@media screen and (max-width: 500px) {
-.reviews-grid {
-  grid-template-columns: repeat(1, 1fr);
-}
-}
-
-/* Example for Roboto Condensed Regular */
+/* =============== FONT DEFINITIONS =============== */
 @font-face {
   font-family: 'Roboto Condensed';
   src: url('/fonts/Roboto_Condensed-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
+  font-display: swap; /* Added for performance */
 }
 
-/* Optional: Add more weights/styles as needed */
 @font-face {
   font-family: 'Roboto Condensed';
   src: url('/fonts/Roboto_Condensed-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
+  font-display: swap; /* Added for performance */
 }
 
-
-/* Playfair Display Regular */
 @font-face {
   font-family: 'Playfair Display';
   font-style: normal;
@@ -742,7 +36,6 @@ border-radius: 5px;
   src: url('/fonts/playfair-display-regular.ttf') format('truetype');
 }
 
-/* Playfair Display Bold */
 @font-face {
   font-family: 'Playfair Display';
   font-style: normal;
@@ -751,3 +44,691 @@ border-radius: 5px;
   src: url('/fonts/playfair-display-bold.ttf') format('truetype');
 }
 
+/* =============== HEADER =============== */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 999;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1rem;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto; /* Centered header content */
+  max-width: 1200px; /* Optional: Limit header width */
+  height: 3.5rem;
+  padding: 0 1rem;
+}
+
+.logo-toggle-container {
+  display: flex;
+  align-items: center;
+}
+
+.menu-toggle {
+  display: none; /* Hidden by default, shown in media query */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-right: 1rem;
+  /* flex styles moved to media query where it's displayed */
+}
+
+.bar {
+  display: block; /* Ensure bars are block for margin/transform */
+  width: 1.5rem;
+  height: 0.2rem;
+  background: #000;
+  margin: 3px 0;
+  transition: 0.3s;
+}
+
+/* Hamburger animation */
+.menu-toggle.open .bar:nth-child(1) { transform: translateY(5px) rotate(45deg); }
+.menu-toggle.open .bar:nth-child(2) { opacity: 0; }
+.menu-toggle.open .bar:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
+
+.site-logo img {
+  height: 2.5rem;
+  width: auto;
+  display: block; /* Prevents extra space below image */
+}
+
+/* Main Navigation (Mobile - Slide out) */
+.main-nav {
+  position: fixed;
+  top: 3.5rem; /* Align below header */
+  left: 0;
+  width: 70vw;
+  max-width: 300px; /* Max width for mobile nav */
+  height: calc(100vh - 3.5rem); /* Full height below header */
+  background: #fff;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 3000;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+.main-nav.open {
+  transform: translateX(0);
+}
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-list li {
+  margin: 0.5rem 0;
+}
+
+.nav-list a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 0.95rem; /* Base size for mobile */
+  display: block; /* Make links take full width */
+  padding: 0.5rem 0; /* Easier tap target */
+  transition: color 0.3s;
+}
+
+.nav-list a:hover {
+  color: #0056b3;
+}
+
+/* Dropdowns (Mobile) */
+.has-dropdown .dropdown-menu {
+  display: none; /* Hidden by default */
+  list-style: none;
+  margin: 0.5rem 0 0 1rem; /* Indent dropdown */
+  padding: 0;
+  background: #fafafa;
+  border-left: 2px solid #ddd;
+}
+
+.has-dropdown.submenu-open > .dropdown-menu { /* Direct child selector */
+  display: block;
+}
+
+.dropdown-menu li {
+  margin: 0;
+}
+
+.dropdown-menu a {
+  padding: 0.4rem 0.8rem; /* Padding inside dropdown */
+  font-size: 0.9rem;
+  color: #444;
+}
+
+/* Backdrop for mobile menu */
+.menu-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.4);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0s 0.3s linear; /* Delay visibility transition */
+  z-index: 2500;
+}
+
+.menu-backdrop.open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease;
+}
+
+/* Header Actions (Search, etc.) */
+.header-actions {
+  display: flex;
+  align-items: center;
+}
+
+.search-container {
+  margin-left: 1rem; /* Use margin-left for spacing from nav/logo */
+}
+
+.search-container input[type="search"] {
+  border: 1px solid #ccc;
+  border-radius: 1.5rem;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.9rem;
+  width: 150px; /* Adjust default width as needed */
+  transition: width 0.3s ease;
+}
+
+.search-container input[type="search"]:focus {
+  outline: none;
+  width: 180px; /* Expand width on focus */
+}
+
+/* Special Nav links like Subscribe */
+.nav-list li a[href="#subscribe"] {
+  display: inline-block; /* Allow padding/margins */
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  margin-top: 1rem; /* Space above special buttons */
+}
+
+.nav-list li a[href="#subscribe"]:hover {
+  background-color: #0056b3;
+}
+
+/* Mobile Header/Nav Activation */
+@media (max-width: 1099px) { /* Breakpoint just before desktop */
+  .menu-toggle {
+    display: flex; /* Show hamburger */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .header-actions .search-container { /* Maybe hide search on small screens */
+     /* display: none; */
+  }
+  /* Hide desktop nav elements */
+   .main-nav { /* Ensure mobile nav styles apply */
+      position: fixed;
+      /* other mobile styles */
+   }
+}
+
+/* Desktop Header/Nav Layout */
+@media (min-width: 1100px) {
+  .menu-toggle, .menu-backdrop {
+    display: none; /* Hide mobile elements */
+  }
+
+  .main-nav { /* Override mobile styles */
+    position: static;
+    width: auto;
+    height: auto;
+    transform: none;
+    box-shadow: none;
+    overflow: visible;
+    padding: 0;
+    margin-left: 1rem; /* Space between logo and nav */
+    background: transparent; /* Override mobile background */
+    flex-direction: row; /* Align items horizontally */
+    align-items: center;
+    transition: none; /* Remove transition */
+    max-width: none; /* Remove max-width */
+    z-index: auto; /* Reset z-index */
+  }
+
+  .nav-list {
+    display: flex; /* Align list items horizontally */
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .nav-list li {
+    margin: 0 1rem; /* Horizontal spacing */
+  }
+  .nav-list a {
+     display: inline-block; /* Adjust display */
+     padding: 0; /* Reset mobile padding */
+  }
+
+  /* Desktop Dropdowns */
+  .has-dropdown { position: relative; } /* Needed for absolute positioning */
+
+  .has-dropdown .dropdown-menu {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 100%; /* Position below parent */
+    left: 0;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Add shadow */
+    border: 1px solid #eee; /* Optional border */
+    border-left: none; /* Remove mobile border */
+    padding: 0.5rem;
+    margin: 0; /* Reset mobile margin */
+    min-width: 180px; /* Set a min width */
+    z-index: 1000; /* Ensure dropdown is above other content */
+  }
+  .dropdown-menu li { margin: 0; } /* Reset mobile margin */
+  .dropdown-menu a { display: block; padding: 0.5rem 1rem;} /* Style dropdown links */
+
+  .has-dropdown:hover > .dropdown-menu { /* Show on hover */
+    display: block;
+  }
+}
+
+/* =============== HERO SECTION =============== */
+#product-overview .img { /* Target .img within its section */
+  /* Combined background with gradient overlay */
+  background:
+    linear-gradient(to top, rgba(80, 68, 18, 0.6) 10%, transparent),
+    url('/AdobeStock_299190080_result.webp') no-repeat center center/cover;
+  background-position: left 10% bottom 40%; /* Position after combined background */
+  width: 100%; /* Use 100% instead of 100vw to avoid potential overflow */
+  height: 70vh;
+  position: relative;
+  margin-top: 3.5rem; /* Adjust if header height changes */
+}
+
+.hero {
+  text-align: center;
+  padding: 1rem; /* Add some padding */
+  /* Removed margin-top, handled by section spacing or direct element margin */
+  /* color: black; Inherited from body or can be set explicitly */
+}
+
+.hero .container { /* Style the containers within hero if needed */
+  margin-bottom: 2rem; /* Space between the hero blocks */
+}
+
+.hero h1 {
+  font-size: clamp(2em, 5vw, 3em); /* Responsive font size */
+  margin-bottom: 0.5rem;
+}
+
+.hero p {
+  margin: 0 0 1.5rem 0; /* Adjusted margin */
+  font-size: clamp(1em, 3vw, 1.2em); /* Responsive font size */
+  line-height: 1.6;
+}
+
+/* =============== BUTTONS (General) =============== */
+.cta-button,
+.Apply-button,
+.submit {
+  display: inline-block; /* Or block if they should take full width */
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  border: none; /* Ensure buttons don't have default borders */
+  /* width: auto; /* Let content or specific rules define width */
+  /* max-width: 200px; /* Optional max-width */
+  margin: 0.5rem 0.5rem 0.5rem 0; /* Consistent margin */
+}
+.cta-button:active,
+.Apply-button:active,
+.submit:active {
+  transform: scale(0.98); /* Slight press effect */
+}
+
+/* Specific Button Colors */
+.cta-button { background-color: #1add14; color: white; }
+.cta-button:hover { background-color: #1ebb52; }
+
+.Apply-button { background-color: #007bff; color: white; }
+.Apply-button:hover { background-color: #0056b3; }
+
+.submit { background: #1add14; color: #fff; }
+.submit:hover { background: #0e4f1f; }
+
+/* Adjust button width if needed within specific contexts */
+.hero .cta-button { /* Example: Wider button in hero */
+   /* width: 50%; */ /* Reconsider % width, maybe use padding? */
+   padding: 12px 25px; /* Larger padding for hero */
+}
+.featured-card__description .cta-button,
+.featured-card__description .Apply-button {
+    width: calc(50% - 5px); /* Example: Two buttons side-by-side */
+    margin-right: 5px;
+}
+.featured-card__description .Apply-button {
+    margin-right: 0;
+}
+
+
+/* =============== FEATURED CARDS SECTION =============== */
+#featured-cards {
+  margin-top: 3rem;
+  padding: 1rem;
+  background-color: #FFD700; /* Gold background */
+  border-radius: 10px;
+  /* text-align: center; Not needed if grid centers content */
+}
+
+.H2_featured-cards { /* More specific selector */
+  text-align: center;
+  color: black;
+  font-size: clamp(2rem, 6vw, 3rem); /* Responsive H2 */
+  margin-bottom: 2rem;
+}
+
+#featured-cards .card-grid { /* Target grid within this section */
+  display: grid;
+  /* Use auto-fit for responsiveness */
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: 30px;
+  padding: 20px 0; /* Padding top/bottom, let gap handle sides */
+  margin: 0 auto;
+  max-width: 1200px; /* Limit grid width */
+}
+
+.featured-card { /* Common class for featured cards */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  padding: 1rem; /* Use rem for padding */
+  border-radius: 10px;
+  font-size: 1rem;
+  color: #333; /* Explicit text color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+  overflow: hidden; /* Ensure content stays within borders */
+  min-width: 0; /* Allow flex/grid shrinking */
+}
+
+.featured-card__image {
+  width: 90%;
+  max-width: 300px; /* Limit image max width */
+  height: auto;
+  object-fit: contain; /* Use contain to show full card */
+  border-radius: 8px; /* Slightly smaller radius for image */
+  margin-bottom: 1rem;
+}
+
+.featured-card__description {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  width: 100%; /* Take full width of card padding */
+  font-size: 1rem;
+  margin-top: auto; /* Push description down if card height varies */
+  padding-top: 1rem; /* Space above description */
+}
+.featured-card__description h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+.featured-card__description p {
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    flex-grow: 1; /* Allow paragraph to take up space */
+}
+.featured-card__description .cta-button,
+.featured-card__description .Apply-button {
+    width: 80%; /* Adjust button width */
+    margin-top: 0.5rem;
+}
+
+
+/* Responsive stacking for featured cards */
+@media (max-width: 988px) {
+  #featured-cards .card-grid {
+     /* Change to single column */
+     grid-template-columns: 1fr;
+     gap: 20px; /* Adjust gap for stacked layout */
+     padding: 10px; /* Adjust padding */
+  }
+  .featured-card {
+      max-width: 500px; /* Allow cards to be wider when stacked */
+      margin: 0 auto; /* Center cards in the single column */
+  }
+}
+
+/* =============== COMPARISON SECTION =============== */
+#compare {
+  margin-top: 3rem;
+  padding: 2rem 1rem; /* More padding */
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+#compare .container { /* Add container for centering content */
+   max-width: 800px;
+   margin: 0 auto;
+   text-align: center;
+}
+
+.H2_comparison {
+  color: black;
+  margin-bottom: 1.5rem;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+}
+
+#compare form {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+#compare label {
+  margin-right: 0.5rem;
+  font-weight: bold;
+}
+
+#compare select {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  min-width: 200px; /* Ensure select is wide enough */
+}
+
+#compare .submit {
+   margin-top: 0; /* Align button with selects */
+}
+
+.comparison-result {
+  margin-top: 30px;
+  /* display: block; Default for div */
+  color: #333;
+  font-weight: normal; /* Reset bold from section */
+  font-size: 1rem; /* Reset font size from section */
+}
+
+.comparison-result h3 {
+   font-size: 1.5rem;
+   margin-bottom: 1rem;
+}
+
+.comparison-result table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #fff; /* White background for table */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Subtle shadow */
+}
+
+.comparison-result th,
+.comparison-result td {
+  border: 1px solid #ddd;
+  padding: 10px 12px; /* Adjust padding */
+  text-align: left; /* Align text left for readability */
+  font-size: 1rem;
+}
+.comparison-result td:not(:first-child), /* Center non-header columns if needed */
+.comparison-result th:not(:first-child) {
+  text-align: center;
+}
+
+.comparison-result th {
+  background-color: #e9e9e9; /* Slightly darker header */
+  font-weight: bold;
+}
+
+/* =============== REVIEWS SECTION =============== */
+.reviews-container {
+  width: 90%;
+  max-width: 1200px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  margin: 3rem auto; /* Centered with top/bottom margin */
+}
+
+.reviews-container h2 {
+  text-align: center;
+  margin-bottom: 30px; /* More space below heading */
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  color: #333;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Use auto-fit */
+  gap: 25px; /* Adjust gap */
+}
+
+/* Review Card Styling (using .card class as originally intended here) */
+.reviews-grid .card { /* Specific to review cards */
+  background: #fff;
+  padding: 0; /* Remove padding here, apply to content */
+  border-radius: 8px;
+  text-align: left; /* Align text left */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+  display: flex; /* Use flex for better structure */
+  flex-direction: column;
+  overflow: hidden; /* Keep content contained */
+  color: #555; /* Reset color from featured cards if .card was shared */
+}
+
+.reviews-grid .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.review_img { /* Renamed from .card img for clarity */
+  width: 100%;
+  height: 180px; /* Slightly reduced height */
+  object-fit: cover;
+  object-position: center;
+  display: block; /* Remove extra space */
+  /* border-radius: 10px; Remove radius if image is flush top */
+}
+
+.reviews-grid .card-content { /* Wrapper for text content */
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Allow content to fill space */
+}
+
+.reviews-grid .card h3 {
+  color: #0073e6;
+  font-size: 1.2rem;
+  margin: 0 0 10px 0; /* Adjusted margin */
+  line-height: 1.3;
+}
+
+.reviews-grid .card p {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  flex-grow: 1; /* Allow paragraph to take space */
+}
+
+.reviews-grid .card .cta-button { /* Style button within review card */
+  display: inline-block;
+  margin-top: auto; /* Push button to bottom */
+  padding: 8px 15px;
+  background: #0073e6;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  align-self: flex-start; /* Align button left */
+}
+.reviews-grid .card .cta-button:hover {
+   background-color: #0056b3;
+}
+
+/* No extra media queries needed for reviews if using auto-fit effectively */
+
+/* =============== FOOTER =============== */
+.site-footer {
+  background: #000080; /* Dark Blue */
+  color: #f0f0f0; /* Slightly off-white for readability */
+  margin-top: 3rem; /* Increased margin */
+  padding: 2rem 1rem; /* Padding top/bottom and sides */
+  border-top: 4px solid #FFD700; /* Accent border matching featured section */
+  font-family: 'Playfair Display', serif; /* Use defined font */
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust min width */
+  gap: 2rem; /* Increased gap */
+  margin-bottom: 2rem; /* Space before disclaimer */
+}
+
+.footer-col h3 {
+  margin-bottom: 1rem; /* More space below headings */
+  color: #fff; /* Ensure heading is white */
+  font-weight: 700; /* Use bold variant */
+  font-size: 1.2rem;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col li {
+  margin-bottom: 0.6rem; /* Slightly more space */
+}
+
+.footlink a { /* Target links within .footlink class if used */
+  color: #d0d0d0; /* Lighter grey for links */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footlink a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.footer-disclaimer {
+  margin-top: 2rem;
+  font-size: 0.85rem; /* Slightly smaller */
+  line-height: 1.5;
+  color: #ccc; /* Lighter color for disclaimer */
+  text-align: center; /* Center disclaimer */
+  max-width: 800px; /* Limit width */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer-bottom {
+  margin-top: 2rem; /* Space above bottom bar */
+  padding: 1rem 0; /* Padding top/bottom */
+  text-align: center;
+  font-size: 0.9rem;
+  color: #ccc;
+  border-top: 1px solid #444; /* Separator line */
+}
+
+.footer-bottom p {
+  margin: 0;
+}
