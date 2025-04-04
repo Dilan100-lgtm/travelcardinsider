@@ -293,17 +293,20 @@ body {
   .has-dropdown { position: relative; } /* Needed for absolute positioning */
 
   .has-dropdown .dropdown-menu {
-    display: none; /* Hidden by default */
     position: absolute;
-    top: 100%; /* Position below parent */
-    left: 0;
     background: white;
-    
-    border-left: none; /* Remove mobile border */
+    margin-left: 0;
     padding: 0.5rem;
-    margin: 0; /* Reset mobile margin */
-    min-width: 180px; /* Set a min width */
-    z-index: 1000; /* Ensure dropdown is above other content */
+    border-left: none;
+    display: none;
+    /* --- MODIFIED LINE --- */
+    top: calc(100% + 5px); /* Pushes dropdown 5px below the parent li */
+    /* --- ------------- --- */
+    left: 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border: 1px solid #eee;
+    min-width: 180px;
+    z-index: 1000;
   }
   .dropdown-menu li { margin: 0; } /* Reset mobile margin */
   .dropdown-menu a { display: block; padding: 0.5rem 1rem;} /* Style dropdown links */
