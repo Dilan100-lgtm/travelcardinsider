@@ -222,7 +222,7 @@ export default function HomePage() {
                 </p>
                 {/* SEO & A11y FIXED: Descriptive Link Text */}
                 <Link href="/reviews/chase-sapphire-preferred" className="cta-button">
-                  Learn More: Chase Sapphire Preferred
+                  Learn More
                 </Link>
                 {/* Ensure affiliate links have rel="noopener sponsored" */}
                 <a href="https://www.chase.com/apply?partner=YOUR_AFFILIATE_ID" className="Apply-button" target="_blank" rel="noopener sponsored">
@@ -249,7 +249,7 @@ export default function HomePage() {
                 </p>
                  {/* SEO & A11y FIXED: Descriptive Link Text */}
                 <Link href="/reviews/amex-platinum" className="cta-button">
-                   Learn More: Amex Platinum
+                   Learn More
                 </Link>
                 <a href="https://www.americanexpress.com/apply?partner=YOUR_AFFILIATE_ID" className="Apply-button" target="_blank" rel="noopener sponsored">
                   Apply Now
@@ -275,7 +275,7 @@ export default function HomePage() {
                 </p>
                  {/* SEO & A11y FIXED: Descriptive Link Text */}
                 <Link href="/reviews/capital-one-venture-x" className="cta-button">
-                   Learn More: Capital One Venture X
+                   Learn More
                 </Link>
                 <a href="https://www.capitalone.com/apply?partner=YOUR_AFFILIATE_ID" className="Apply-button" target="_blank" rel="noopener sponsored">
                   Apply Now
@@ -362,7 +362,7 @@ export default function HomePage() {
                    {/* Consider making this link text more descriptive too */}
                    {review.link && (
                      <Link href={review.link} className="cta-button">
-                       Read: {review.title} {/* More descriptive text */}
+                       Read Review
                      </Link>
                    )}
                  </div>
