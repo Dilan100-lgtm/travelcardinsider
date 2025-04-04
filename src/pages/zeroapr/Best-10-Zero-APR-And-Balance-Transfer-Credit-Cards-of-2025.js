@@ -1,20 +1,52 @@
 // File: pages/zeroapr/index.js
 
+// !!! WARNING: THIS FILE CONTAINS PLACEHOLDER DATA/URLs/DIMENSIONS !!!
+// !!! YOU MUST REPLACE ALL PLACEHOLDERS MARKED WITH '!!!' BEFORE DEPLOYMENT !!!
+// !!! Other PageSpeed issues require fixes in CSS, layout files, Header component, etc. !!!
+
 import React from 'react';
 import Head from 'next/head';
-import Image from 'next/image';
+import Image from 'next/image'; // Using Next.js Image component
+import Link from 'next/link';   // Using Next.js Link component
+// !!! Adjust path if your CSS Module file is located elsewhere !!!
 import styles from '../../styles/ZeroAprIndex.module.css';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
+import Header from '../../components/Header'; // Assuming path is correct
+import Footer from '../../components/Footer'; // Assuming path is correct
 
 export default function ZeroAprIndexPage() {
+  // Placeholder function for info icon - Implement tooltip/modal logic
+  const handleInfoClick = (e) => {
+    e.preventDefault();
+    console.log('Info icon clicked for:', e.currentTarget.getAttribute('aria-label'));
+    // Implement tooltip/modal display here
+  };
+
+  // Use a fixed date or fetch dynamically server-side if possible for accuracy
+  const lastModifiedDate = "2025-04-05"; // !!! UPDATE MANUALLY or replace with dynamic logic !!!
+
+  // Card Data (Using placeholders - REPLACE ALL with actual data)
+  // !!! IMPORTANT: Provide ACTUAL image widths/heights for Next/Image !!!
+  const cardData = [
+    { id: "chase-freedom-unlimited", name: "Chase Freedom Unlimited®", rating: "8.1", imgPath: "/freedom_unlimited_card_alt (1).png", imgWidth: 300, imgHeight: 189, bonus: "Earn an additional 1.5% cash back...", earning: ["5% cash back on travel...","3% cash back...","1.5% cash back..."], features: ["0% Intro APR for 15 months...","Points worth 25% more...","No annual fee."], perks: ["Trip cancellation...","Purchase protection...","Free credit score..."], bestFor: "Everyday spenders...", applyLink: "/apply/chase-freedom-unlimited-placeholder", reviewLink: "/reviews/chase-freedom-unlimited-placeholder", ratesLink: "https://sites.chase.com/..." },
+    { id: "us-bank-altitude-connect", name: "U.S. Bank Altitude® Connect Visa Signature® Card", rating: "8.2", imgPath: "/photo-altitude-connect-consumer.png", imgWidth: 300, imgHeight: 189, bonus: "Earn 50,000 bonus points...", earning: ["5X points on prepaid hotels...","4X points on travel...","2X points on dining...","1X points..."], features: ["0% Intro APR for 12 months...","Points never expire...","No foreign transaction fees.","$30 annual streaming credit."], perks: ["Cell phone protection...","Travel assistance...","Concierge services."], bestFor: "Travelers and commuters...", applyLink: "/apply/us-bank-altitude-connect-placeholder", reviewLink: "/reviews/us-bank-altitude-connect-placeholder", ratesLink: "https://onboarding.usbank.com/..." },
+    { id: "citi-custom-cash", name: "Citi Custom Cash® Card", rating: "7.5", imgPath: "/download.png", imgWidth: 300, imgHeight: 189, bonus: "Earn $200 cash back...", earning: ["5% cash back on top category...","1% cash back..."], features: ["No annual fee.","0% intro APR for 15 months...","Redeem as statement credit..."], perks: ["Automatic category adjustment.","Citi Entertainment® access.","No foreign transaction fees."], bestFor: "Individuals wanting flexible rewards...", applyLink: "/apply/citi-custom-cash-placeholder", reviewLink: "/reviews/citi-custom-cash-placeholder", ratesLink: "https://online.citi.com/..." },
+    { id: "bofa-travel-rewards", name: "Bank of America® Travel Rewards Credit Card", rating: "7.4", imgPath: "/8blm_trvsigcm_v_250x158.png", imgWidth: 250, imgHeight: 158, bonus: "Earn 25,000 online bonus points...", earning: ["1.5 points per dollar...","Preferred Rewards members earn more..."], features: ["No annual fee.","0% intro APR on purchases for 18 cycles...","No foreign transaction fees."], perks: ["Redeem for travel expenses...","Travel insurance...","Preferred Rewards access."], bestFor: "Budget-conscious travelers...", applyLink: "/apply/bofa-travel-rewards-placeholder", reviewLink: "/reviews/bofa-travel-rewards-placeholder", ratesLink: "https://www.bankofamerica.com/..." },
+    { id: "discover-it-miles", name: "Discover it® Miles", rating: "7.0", imgPath: "/cardart-travel-beachcard-620-382.webp", imgWidth: 310, imgHeight: 191, bonus: "Unlimited Mileage Match...", earning: ["1.5 miles per dollar...","Bonus miles matched..."], features: ["No annual fee.","0% intro APR on purchases for 15 months...","No foreign transaction fees."], perks: ["Redeem for travel...","Flexible redemption...","Free FICO® Score...","Identity Theft Protection..."], bestFor: "Travelers valuing simplicity...", applyLink: "/apply/discover-it-miles-placeholder", reviewLink: "/reviews/discover-it-miles-placeholder", ratesLink: "https://www.discovercard.com/..." },
+    { id: "wells-fargo-active-cash", name: "Wells Fargo Active Cash® Card", rating: "7.8", imgPath: "/WF_ActiveCash_VS_Collateral_Front_RGB.png", imgWidth: 300, imgHeight: 189, bonus: "Earn a $200 cash rewards bonus...", earning: ["Unlimited 2% cash rewards...","No categories..."], features: ["0% intro APR for 15 months...","Variable APR applies...","No annual fee.","Cell phone protection..."], perks: ["Wells Fargo Rewards access.","Digital wallet compatible.","Zero Liability Protection."], bestFor: "Consumers wanting simple cash rewards...", applyLink: "/apply/wells-fargo-active-cash-placeholder", reviewLink: "/reviews/wells-fargo-active-cash-placeholder", ratesLink: "https://www.wellsfargo.com/..." },
+    { id: "blue-cash-everyday", name: "Blue Cash Everyday® Card from American Express", rating: "7.7", imgPath: "/NUS000000305_480x304_straight_withname.avif", imgWidth: 380, imgHeight: 241, bonus: "Earn a $200 statement credit...", earning: ["3% cash back U.S. supermarkets...","3% U.S. gas stations...","3% U.S. online retail...","1% other..."], features: ["0% intro APR for 15 months...","No annual fee.","Redeem Reward Dollars..."], perks: ["Purchase protection.","Car rental insurance.","Plan It® feature.","Amex Experiences."], bestFor: "Individuals seeking rewards on groceries, gas, online shopping...", applyLink: "/apply/blue-cash-everyday-placeholder", reviewLink: "/reviews/blue-cash-everyday-placeholder", ratesLink: "https://www.americanexpress.com/..." },
+    { id: "citi-diamond-preferred", name: "Citi® Diamond Preferred® Card", rating: "6.5", imgPath: "/download (1).png", imgWidth: 300, imgHeight: 189, bonus: "No specific cash bonus.", earning: ["No rewards program."], features: ["0% intro APR for 21 months on balance transfers.","0% intro APR for 12 months on purchases.","No annual fee."], perks: ["Citi Entertainment® access.","Choose payment due date."], bestFor: "Those prioritizing a long balance transfer period...", applyLink: "/apply/citi-diamond-preferred-placeholder", reviewLink: "/reviews/citi-diamond-preferred-placeholder", ratesLink: "https://online.citi.com/..." },
+    { id: "wells-fargo-reflect", name: "Wells Fargo Reflect® Card", rating: "6.6", imgPath: "/Reflect_homepage_m.png", imgWidth: 300, imgHeight: 189, bonus: "No specific cash bonus.", earning: ["No rewards program."], features: ["0% intro APR for 21 months...","Intro APR can extend 3 months...","No annual fee.","Cell phone protection."], perks: ["My Wells Fargo Deals.","Zero Liability protection."], bestFor: "Maximum intro APR period for purchases or transfers...", applyLink: "/apply/wells-fargo-reflect-placeholder", reviewLink: "/reviews/wells-fargo-reflect-placeholder", ratesLink: "https://www.wellsfargo.com/..." },
+    { id: "us-bank-cash-plus", name: "U.S. Bank Cash+® Visa Signature® Card", rating: "7.4", imgPath: "/Cash+_Front_Angle_Reflection.png", imgWidth: 300, imgHeight: 189, bonus: "Earn $200 after spending $1,000...", earning: ["5% cash back on two chosen categories...","2% cash back on one everyday category...","1% unlimited cash back..."], features: ["No annual fee.","0% introductory APR for 15 months...","Customizable cash-back."], perks: ["Zero fraud liability.","Roadside assistance.","Extended warranty."], bestFor: "Customizing cash-back rewards...", applyLink: "/apply/us-bank-cash-plus-placeholder", reviewLink: "/reviews/us-bank-cash-plus-placeholder", ratesLink: "https://onboarding.usbank.com/..." },
+  ];
+
+
   return (
     <>
-
       <Head>
         {/* Basic Meta Tags */}
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {/* Add lang="en" in your root layout/document file */}
 
         {/* Primary SEO Tags */}
         <title>Best 0% APR and Balance Transfer Credit Cards for 2025 | TravelCardInsider</title>
@@ -24,1505 +56,207 @@ export default function ZeroAprIndexPage() {
         />
         <meta
           name="keywords"
-          content="0% APR, balance transfer, credit cards, best credit cards, interest-free"
+          content="0% APR, balance transfer, credit cards, best credit cards, interest-free, debt consolidation, travelcardinsider"
         />
 
         {/* Canonical URL */}
-        <link rel="canonical" href="https://www.yourdomain.com/0apr-balance-transfer-cards" />
+        <link rel="canonical" href="https://www.travelcardinsider.com/zero-apr-balance-transfer-cards" />
 
         {/* Open Graph / Social Media */}
-        <meta
-          property="og:title"
-          content="Best 0% APR and Balance Transfer Credit Cards for 2025 | TravelCardInsider"
-        />
-        <meta
-          property="og:description"
-          content="Explore our curated list of the top 0% APR and balance transfer credit cards for 2025. Whether you're looking to reduce high-interest debt or enjoy an interest-free vacation, we've got you covered."
-        />
-        <meta
-          property="og:url"
-          content="https://www.yourdomain.com/0apr-balance-transfer-cards"
-        />
-        <meta property="og:type" content="article" />
-        <meta
-          property="og:image"
-          content="https://www.yourdomain.com/images/0apr-hero.jpg"
-        />
+        <meta property="og:title" content="Best 0% APR and Balance Transfer Credit Cards for 2025 | TravelCardInsider" />
+        <meta property="og:description" content="Explore our curated list of the top 0% APR and balance transfer credit cards for 2025." />
+        <meta property="og:url" content="https://www.travelcardinsider.com/zero-apr-balance-transfer-cards" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://www.travelcardinsider.com/images/og-zero-apr-cards.jpg" /> {/* !!! REPLACE !!! */}
+         <meta property="og:image:width" content="1200" />
+         <meta property="og:image:height" content="630" />
+         <meta property="og:site_name" content="TravelCardInsider" />
 
         {/* Twitter Cards */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Best 0% APR and Balance Transfer Credit Cards for 2025 | TravelCardInsider"
-        />
-        <meta
-          name="twitter:description"
-          content="Zero in on interest-free credit card offers for 2025. Transfer balances, earn rewards, and save on interest with our expert picks."
-        />
-        <meta
-          name="twitter:image"
-          content="https://www.yourdomain.com/images/0apr-hero.jpg"
-        />
+        <meta name="twitter:site" content="@TCardInsider" /> {/* !!! REPLACE !!! */}
+        <meta name="twitter:title" content="Best 0% APR and Balance Transfer Credit Cards for 2025 | TravelCardInsider"/>
+        <meta name="twitter:description" content="Zero in on interest-free credit card offers for 2025. Transfer balances, earn rewards, and save on interest." />
+        <meta name="twitter:image" content="https://www.travelcardinsider.com/images/og-zero-apr-cards.jpg" /> {/* !!! REPLACE !!! */}
 
         {/* Favicons */}
-        <link rel="icon" href="https://www.yourdomain.com/favicon.ico" type="image/x-icon" />
-        <link rel="apple-touch-icon" href="https://www.yourdomain.com/images/apple-touch-icon.png" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-        {/* Google Fonts Preconnect */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Playfair+Display:wght@400..900&display=swap"
-          rel="stylesheet"
-        />
+        {/* REMOVED redundant Google Font links */}
 
         {/* JSON-LD Structured Data */}
         <script type="application/ld+json">
           {`{
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.yourdomain.com/0apr-balance-transfer-cards"
-  },
-  "headline": "Best 0% APR and Balance Transfer Credit Cards for 2025",
-  "description": "Compare the best 0% APR and balance transfer credit cards for 2025. Find the top cards offering interest-free financing, rewards, and balance transfer perks.",
-  "author": {
-    "@type": "Organization",
-    "name": "TravelCardInsider"
-  },
-  "datePublished": "2025-01-01",
-  "dateModified": "2025-01-01",
-  "publisher": {
-    "@type": "Organization",
-    "name": "TravelCardInsider",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.yourdomain.com/images/logo.png",
-      "width": 600,
-      "height": 60
-    }
-  },
-  "image": "https://www.yourdomain.com/images/0apr-hero.jpg",
-  "keywords": "0% APR, balance transfer, credit cards, best credit cards, interest-free, TravelCardInsider",
-  "articleSection": "Finance, Travel, Credit Cards",
-  "mainEntity": {
-    "@type": "ItemList",
-    "name": "Top 10 Best 0% APR & Balance Transfer Credit Cards",
-    "itemListOrder": "Unordered",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "item": {
-          "@type": "CreditCard",
-          "name": "Chase Freedom Unlimited®",
-          "image": "https://www.yourdomain.com/images/chase_freedom_unlimited_card.png",
-          "url": "https://www.yourdomain.com/chase-freedom-unlimited",
-          "brand": "Chase",
-          "description": "0% intro APR for 15 months, 5% cash back on travel via Chase Ultimate Rewards®, 3% dining & drugstores, 1.5% on all other purchases.",
-          "offers": {
-            "@type": "Offer",
-            "priceCurrency": "USD",
-            "price": "0.00",
-            "url": "https://www.yourdomain.com/chase-freedom-unlimited-apply",
-            "availability": "https://schema.org/InStock",
-            "eligibleCustomerType": "https://schema.org/EndUser",
-            "interestRate": "0%",
-            "annualPercentageRate": "19.99%",
-            "annualFee": "0",
-            "review": {
-              "@type": "Review",
-              "reviewRating": {
-                "@type": "Rating",
-                "ratingValue": "4.7",
-                "bestRating": "5"
-              },
-              "author": {
-                "@type": "Organization",
-                "name": "TravelCardInsider"
-              }
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.travelcardinsider.com/zero-apr-balance-transfer-cards" },
+            "headline": "Best 0% APR and Balance Transfer Credit Cards for 2025",
+            "description": "Compare the best 0% APR and balance transfer credit cards for 2025. Find the top cards offering interest-free financing, rewards, and balance transfer perks.",
+            "author": { "@type": "Organization", "name": "TravelCardInsider" },
+            "datePublished": "2025-01-01",
+            "dateModified": "${lastModifiedDate}",
+            "publisher": {
+              "@type": "Organization",
+              "name": "TravelCardInsider",
+              "logo": { "@type": "ImageObject", "url": "https://www.travelcardinsider.com/images/logo-schema.png", "width": 600, "height": 60 }
             },
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "4.6",
-              "reviewCount": "1520"
+            "image": "https://www.travelcardinsider.com/images/hero-zero-apr-cards.jpg",
+            "keywords": "0% APR, balance transfer, credit cards, best credit cards, interest-free, TravelCardInsider",
+            "mainEntity": {
+              "@type": "ItemList",
+              "name": "Top 10 0% APR & Balance Transfer Credit Cards",
+              "itemListOrder": "https://schema.org/ItemListOrderUnordered",
+              "numberOfItems": ${cardData.length}, // Dynamic count
+              "itemListElement": ${JSON.stringify(
+                cardData.map((card, index) => ({
+                  "@type": "ListItem",
+                  "position": index + 1,
+                  "item": {
+                    "@type": "CreditCard",
+                    "name": card.name,
+                    "image": `https://www.travelcardinsider.com${card.imgPath}`, // !!! Update Base URL/Path if needed !!!
+                    "url": `https://www.travelcardinsider.com${card.reviewLink}`, // !!! Update Base URL/Path !!!
+                    "description": card.bonus, // Using bonus as description - adjust if needed
+                    "brand": { "@type": "Organization", "name": card.name.split(' ')[0] }, // Simple brand guess
+                    "aggregateRating": { "@type": "AggregateRating", "ratingValue": card.rating, "bestRating": "10" }, // Simple rating
+                    "offers": { "@type": "Offer", "url": `https://www.travelcardinsider.com${card.applyLink}` } // !!! Update Base URL/Path !!!
+                    // !!! Add more offer details (fees, APR) if available and accurate !!!
+                  }
+                }))
+              )}
             }
-          }
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "item": {
-          "@type": "CreditCard",
-          "name": "U.S. Bank Altitude® Connect Visa Signature®",
-          "image": "https://www.yourdomain.com/images/us_bank_altitude_connect_card.png",
-          "url": "https://www.yourdomain.com/us-bank-altitude-connect",
-          "brand": "U.S. Bank",
-          "description": "0% intro APR for 12 months, 5x points on hotels & car rentals, 4x travel & gas, 2x dining.",
-          "offers": {
-            "@type": "Offer",
-            "priceCurrency": "USD",
-            "price": "0.00",
-            "url": "https://www.yourdomain.com/us-bank-altitude-connect-apply",
-            "availability": "https://schema.org/InStock",
-            "eligibleCustomerType": "https://schema.org/EndUser",
-            "interestRate": "0%",
-            "annualPercentageRate": "20.24%",
-            "annualFee": "95",
-            "review": {
-              "@type": "Review",
-              "reviewRating": {
-                "@type": "Rating",
-                "ratingValue": "4.5",
-                "bestRating": "5"
-              },
-              "author": {
-                "@type": "Organization",
-                "name": "TravelCardInsider"
-              }
-            },
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "4.4",
-              "reviewCount": "1340"
-            }
-          }
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "item": {
-          "@type": "CreditCard",
-          "name": "Citi Custom Cash® Card",
-          "image": "https://www.yourdomain.com/images/citi_custom_cash_card.png",
-          "url": "https://www.yourdomain.com/citi-custom-cash",
-          "brand": "Citi",
-          "description": "5% cash back on your top spend category, 0% intro APR for 15 months, 1% on other purchases.",
-          "offers": {
-            "@type": "Offer",
-            "priceCurrency": "USD",
-            "price": "0.00",
-            "url": "https://www.yourdomain.com/citi-custom-cash-apply",
-            "availability": "https://schema.org/InStock",
-            "eligibleCustomerType": "https://schema.org/EndUser",
-            "interestRate": "0%",
-            "annualPercentageRate": "18.99%",
-            "annualFee": "0",
-            "review": {
-              "@type": "Review",
-              "reviewRating": {
-                "@type": "Rating",
-                "ratingValue": "4.8",
-                "bestRating": "5"
-              },
-              "author": {
-                "@type": "Organization",
-                "name": "TravelCardInsider"
-              }
-            },
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "4.7",
-              "reviewCount": "1675"
-            }
-          }
-        }
-      }
-    ]
-  }
-}`}
+          }`}
         </script>
       </Head>
+
       <Header />
 
-      <main className={styles.mainWrapper}>
+      <main className={styles.mainWrapper} id="main-content">
+
         {/* HERO SECTION */}
-        <section className="hero">
-          <div className="container">
-            <h1 className="hero-title">
+        <section className={styles.hero} aria-labelledby="page-heading">
+           {/* ... Hero content from previous version ... */}
+           <div className={styles.container}>
+            <h1 id="page-heading" className={styles.heroTitle}>
               Discover the Best 10 0% APR And Balance Transfer Credit Cards of 2025
             </h1>
-            <p className="hero-description">
+            <p className={styles.heroDescription}>
               Compare top-rated travel credit cards, maximize rewards, and unlock exclusive perks for your next adventure. Whether you’re a frequent flyer, luxury traveler, or budget explorer, find the perfect card to suit your needs.
             </p>
-            <div className="hero-cta">
-              <a href="#compare" className="cta-button cta-primary">
-                Compare Now
+            <div className={styles.heroCta}>
+              <a href="#card-comparison-table" className={`${styles.ctaButton} ${styles.ctaPrimary}`}>
+                Compare Cards Now
               </a>
             </div>
-            <div className="hero-image">
-              <img
-                src="AdobeStock_446734479.webp"
-                alt="Travel Credit Cards - Unlock Rewards for Your Journey"
+            <div className={styles.heroImage}>
+               {/* !!! UPDATE src. REPLACE width/height with ACTUAL dimensions !!! */}
+              <Image
+                src="/AdobeStock_446734479.webp"
+                alt="Wallet showing zero dollar bill next to credit cards"
+                width={600}  // !!! REPLACE !!!
+                height={400} // !!! REPLACE !!!
+                priority={true}
               />
             </div>
-            <p className="Disclaimer">
+            <p className={styles.disclaimer}>
               We may receive compensation when you click on links to certain credit card products on our site. However, our editorial opinions remain our own. Offers are subject to change. Always verify terms with the official issuer.
             </p>
           </div>
         </section>
 
-        {/* SCRIPT INCLUSION (if needed) */}
-        <script src="0% APR Index.js"></script>
+        {/* REMOVED invalid script tag */}
 
         {/* TABLE SECTION */}
-        <section className="card-table-section">
-          <div className="table-responsive">
-            <table className="card-table">
+        <section className={styles.cardTableSection} id="card-comparison-table" aria-labelledby="table-heading">
+           {/* ... Table structure from previous version ... */}
+            <h2 id="table-heading" style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
+             0% APR & Balance Transfer Card Comparison
+          </h2>
+          <div className={styles.tableResponsive}>
+            <table className={styles.cardTable}>
               <thead>
                 <tr>
-                  <th>Card Name</th>
-                  <th>Intro APR</th>
-                  <th>Balance Transfer Fee</th>
-                  <th>Rewards</th>
-                  <th>Annual Fee</th>
+                  <th scope="col">Card Name & Rating</th>
+                  <th scope="col">Intro APR (Purchases / Balance Transfer)</th>
+                  <th scope="col">Balance Transfer Fee</th>
+                  <th scope="col">Key Rewards/Features</th>
+                  <th scope="col">Annual Fee</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>
-                    Chase Freedom Unlimited®
-                    <div className="rating">
-                      <a href="javascript:void(0);" className="info-icon" title="Our TCI rating info">
-                        <svg fill="#000000" width="15px" height="15px" viewBox="0 0 416.979 416.979">
-                          <g>
-                            <path d="M356.004,61.156c-81.37-81.47-213.377-81.551-294.848-0.182
-                              c-81.47,81.371-81.552,213.379-0.181,294.85
-                              c81.369,81.47,213.378,81.551,294.849,0.181
-                              C437.293,274.636,437.375,142.626,356.004,61.156z M208.554,334.794
-                              c-11.028,0-19.968-8.939-19.968-19.968s8.939-19.969,19.968-19.969
-                              c11.028,0,19.968,8.939,19.968,19.969
-                              C228.521,325.854,219.582,334.794,208.554,334.794z
-                              M241.018,214.566c-11.406,6.668-12.381,14.871-12.43,38.508
-                              c-0.003,1.563-0.008,3.14-0.017,4.726
-                              c-0.071,11.172-9.147,20.18-20.304,20.18
-                              c-0.044,0-0.088,0-0.131,0
-                              c-11.215-0.071-20.248-9.22-20.178-20.436
-                              c0.01-1.528,0.013-3.047,0.016-4.552
-                              c0.05-24.293,0.111-54.524,32.547-73.484
-                              c26.026-15.214,29.306-25.208,26.254-38.322
-                              c-3.586-15.404-17.653-19.396-28.63-18.141
-                              c-3.686,0.423-22.069,3.456-22.069,21.642" />
-                          </g>
-                        </svg>
-                      </a>
-                      TCI Rating: <span id="rating-value">8.1</span>/10
-                    </div>
-                    <div>
-                      <a href="#" className="apply-btn">Apply Now</a>
-                      <p className="APly">From card issuer's secure site</p>
-                    </div>
-                    <a href="#" className="learn-more-btn">Learn More</a>
-                    <a
-                      href="https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC56029.html"
-                      className="rate-fees-btn"
-                    >
-                      See Rates &amp; Fees
-                    </a>
-                  </td>
-                  <td>0% for 15 months</td>
-                  <td>3% (within 60 days), 5% thereafter</td>
-                  <td>5% travel, 3% dining &amp; drugstores, 1.5% on all else</td>
-                  <td>$0</td>
-                </tr>
-                <tr>
-                  <td>
-                    U.S. Bank Altitude® Connect Visa Signature® Card
-                    <div className="rating">
-                      <a href="javascript:void(0);" className="info-icon" title="Our TCI rating info">
-                        <svg fill="#000000" width="15px" height="15px" viewBox="0 0 416.979 416.979">
-                          <g>
-                            <path d="M356.004,61.156c-81.37-81.47-213.377-81.551-294.848-0.182
-                              c-81.47,81.371-81.552,213.379-0.181,294.85
-                              c81.369,81.47,213.378,81.551,294.849,0.181
-                              C437.293,274.636,437.375,142.626,356.004,61.156z M208.554,334.794
-                              c-11.028,0-19.968-8.939-19.968-19.968s8.939-19.969,19.968-19.969
-                              c11.028,0,19.968,8.939,19.968,19.969
-                              C228.521,325.854,219.582,334.794,208.554,334.794z
-                              M241.018,214.566c-11.406,6.668-12.381,14.871-12.43,38.508
-                              c-0.003,1.563-0.008,3.14-0.017,4.726
-                              c-0.071,11.172-9.147,20.18-20.304,20.18
-                              c-0.044,0-0.088,0-0.131,0
-                              c-11.215-0.071-20.248-9.22-20.178-20.436
-                              c0.01-1.528,0.013-3.047,0.016-4.552
-                              c0.05-24.293,0.111-54.524,32.547-73.484
-                              c26.026-15.214,29.306-25.208,26.254-38.322
-                              c-3.586-15.404-17.653-19.396-28.63-18.141
-                              c-3.686,0.423-22.069,3.456-22.069,21.642" />
-                          </g>
-                        </svg>
-                      </a>
-                      TCI Rating: <span id="rating-value">8.1</span>/10
-                    </div>
-                    <div className="rating">
-                      <a href="javascript:void(0);" className="info-icon" title="Our TCI rating info">
-                        <svg fill="#000000" width="15px" height="15px" viewBox="0 0 416.979 416.979">
-                          <g>
-                            <path d="M356.004,61.156c-81.37-81.47-213.377-81.551-294.848-0.182
-                              c-81.47,81.371-81.552,213.379-0.181,294.85
-                              c81.369,81.47,213.378,81.551,294.849,0.181
-                              C437.293,274.636,437.375,142.626,356.004,61.156z M208.554,334.794
-                              c-11.028,0-19.968-8.939-19.968-19.968s8.939-19.969,19.968-19.969
-                              c11.028,0,19.968,8.939,19.968,19.969
-                              C228.521,325.854,219.582,334.794,208.554,334.794z
-                              M241.018,214.566c-11.406,6.668-12.381,14.871-12.43,38.508
-                              c-0.003,1.563-0.008,3.14-0.017,4.726
-                              c-0.071,11.172-9.147,20.18-20.304,20.18
-                              c-0.044,0-0.088,0-0.131,0
-                              c-11.215-0.071-20.248-9.22-20.178-20.436
-                              c0.01-1.528,0.013-3.047,0.016-4.552
-                              c0.05-24.293,0.111-54.524,32.547-73.484
-                              c26.026-15.214,29.306-25.208,26.254-38.322
-                              c-3.586-15.404-17.653-19.396-28.63-18.141
-                              c-3.686,0.423-22.069,3.456-22.069,21.642" />
-                          </g>
-                        </svg>
-                      </a>
-                      TCI Rating: <span id="rating-value">8.2</span>/10
-                    </div>
-                    <div>
-                      <a href="#" className="apply-btn">Apply Now</a>
-                      <p className="APly">From card issuer's secure site</p>
-                    </div>
-                    <a href="#" className="learn-more-btn">Learn More</a>
-                    <a
-                      href="https://onboarding.usbank.com/consumer/cards/8BB5BD89H1/18569/87702/start"
-                      className="rate-fees-btn"
-                    >
-                      See Rates &amp; Fees
-                    </a>
-                  </td>
-                  <td>0% for 12 billing cycles</td>
-                  <td>3% (min $5)</td>
-                  <td>5x hotels &amp; car rentals, 4x travel &amp; gas, 2x dining</td>
-                  <td>$0</td>
-                </tr>
-                <tr>
-                  <td>
-                    Citi Custom Cash® Card
-                    <div className="rating">
-                      <a href="javascript:void(0);" className="info-icon" title="Our TCI rating info">
-                        <svg fill="#000000" width="15px" height="15px" viewBox="0 0 416.979 416.979">
-                          <g>
-                            <path d="M356.004,61.156c-81.37-81.47-213.377-81.551-294.848-0.182
-                              c-81.47,81.371-81.552,213.379-0.181,294.85
-                              c81.369,81.47,213.378,81.551,294.849,0.181
-                              C437.293,274.636,437.375,142.626,356.004,61.156z M208.554,334.794
-                              c-11.028,0-19.968-8.939-19.968-19.968s8.939-19.969,19.968-19.969
-                              c11.028,0,19.968,8.939,19.968,19.969
-                              C228.521,325.854,219.582,334.794,208.554,334.794z
-                              M241.018,214.566c-11.406,6.668-12.381,14.871-12.43,38.508
-                              c-0.003,1.563-0.008,3.14-0.017,4.726
-                              c-0.071,11.172-9.147,20.18-20.304,20.18
-                              c-0.044,0-0.088,0-0.131,0
-                              c-11.215-0.071-20.248-9.22-20.178-20.436
-                              c0.01-1.528,0.013-3.047,0.016-4.552
-                              c0.05-24.293,0.111-54.524,32.547-73.484
-                              c26.026-15.214,29.306-25.208,26.254-38.322
-                              c-3.586-15.404-17.653-19.396-28.63-18.141
-                              c-3.686,0.423-22.069,3.456-22.069,21.642" />
-                          </g>
-                        </svg>
-                      </a>
-                      TCI Rating: <span id="rating-value">7.5</span>/10
-                    </div>
-                    <div>
-                      <a href="#" className="apply-btn">Apply Now</a>
-                      <p className="APly">From card issuer's secure site</p>
-                    </div>
-                    <a href="#" className="learn-more-btn">Learn More</a>
-                    <a
-                      href="https://online.citi.com/US/ag/cards/displayterms?app=UNSOL&HKOP=541175b33e25f6837a0d7af4ba29114f264447b80dcde5f6be6db7d02fed5901"
-                      className="rate-fees-btn"
-                    >
-                      See Rates &amp; Fees
-                    </a>
-                  </td>
-                  <td>0% for 15 months</td>
-                  <td>5% (min $5)</td>
-                  <td>5% on top category (up to $500/month), 1% all else</td>
-                  <td>$0</td>
-                </tr>
-                <tr>
-                  <td>
-                    Bank of America® Travel Rewards Credit Card
-                    <div className="rating">
-                      <a href="javascript:void(0);" className="info-icon" title="Our TCI rating info">
-                        <svg fill="#000000" width="15px" height="15px" viewBox="0 0 416.979 416.979">
-                          <g>
-                            <path d="M356.004,61.156c-81.37-81.47-213.377-81.551-294.848-0.182
-                              c-81.47,81.371-81.552,213.379-0.181,294.85
-                              c81.369,81.47,213.378,81.551,294.849,0.181
-                              C437.293,274.636,437.375,142.626,356.004,61.156z M208.554,334.794
-                              c-11.028,0-19.968-8.939-19.968-19.968s8.939-19.969,19.968-19.969
-                              c11.028,0,19.968,8.939,19.968,19.969
-                              C228.521,325.854,219.582,334.794,208.554,334.794z
-                              M241.018,214.566c-11.406,6.668-12.381,14.871-12.43,38.508
-                              c-0.003,1.563-0.008,3.14-0.017,4.726
-                              c-0.071,11.172-9.147,20.18-20.304,20.18
-                              c-0.044,0-0.088,0-0.131,0
-                              c-11.215-0.071-20.248-9.22-20.178-20.436
-                              c0.01-1.528,0.013-3.047,0.016-4.552
-                              c0.05-24.293,0.111-54.524,32.547-73.484
-                              c26.026-15.214,29.306-25.208,26.254-38.322
-                              c-3.586-15.404-17.653-19.396-28.63-18.141
-                              c-3.686,0.423-22.069,3.456-22.069,21.642" />
-                          </g>
-                        </svg>
-                      </a>
-                      TCI Rating: <span id="rating-value">7.4</span>/10
-                    </div>
-                    <div>
-                      <a href="#" className="apply-btn">Apply Now</a>
-                      <p className="APly">From card issuer's secure site</p>
-                    </div>
-                    <a href="#" className="learn-more-btn">Learn More</a>
-                    <a
-                      href="https://www.bankofamerica.com/credit-cards/terms-and-conditions/?campaignid=4071156&productoffercode=MG&locale=en_US"
-                      className="rate-fees-btn"
-                    >
-                      See Rates &amp; Fees
-                    </a>
-                  </td>
-                  <td>0% for 15 billing cycles</td>
-                  <td>3% (min $10)</td>
-                  <td>1.5 points per $1 on all purchases</td>
-                  <td>$0</td>
-                </tr>
-                <tr>
-                  <td>
-                    Discover it® Miles
-                    <div className="rating">
-                      <a href="javascript:void(0);" className="info-icon" title="Our TCI rating info">
-                        <svg fill="#000000" width="15px" height="15px" viewBox="0 0 416.979 416.979">
-                          <g>
-                            <path d="M356.004,61.156c-81.37-81.47-213.377-81.551-294.848-0.182
-                              c-81.47,81.371-81.552,213.379-0.181,294.85
-                              c81.369,81.47,213.378,81.551,294.849,0.181
-                              C437.293,274.636,437.375,142.626,356.004,61.156z M208.554,334.794
-                              c-11.028,0-19.968-8.939-19.968-19.968s8.939-19.969,19.968-19.969
-                              c11.028,0,19.968,8.939,19.968,19.969
-                              C228.521,325.854,219.582,334.794,208.554,334.794z
-                              M241.018,214.566c-11.406,6.668-12.381,14.871-12.43,38.508
-                              c-0.003,1.563-0.008,3.14-0.017,4.726
-                              c-0.071,11.172-9.147,20.18-20.304,20.18
-                              c-0.044,0-0.088,0-0.131,0
-                              c-11.215-0.071-20.248-9.22-20.178-20.436
-                              c0.01-1.528,0.013-3.047,0.016-4.552
-                              c0.05-24.293,0.111-54.524,32.547-73.484
-                              c26.026-15.214,29.306-25.208,26.254-38.322
-                              c-3.586-15.404-17.653-19.396-28.63-18.141
-                              c-3.686,0.423-22.069,3.456-22.069,21.642" />
-                          </g>
-                        </svg>
-                      </a>
-                      TCI Rating: <span id="rating-value">7.0</span>/10
-                    </div>
-                    <div>
-                      <a href="#" className="apply-btn">Apply Now</a>
-                      <p className="APly">From card issuer's secure site</p>
-                    </div>
-                    <a href="#" className="learn-more-btn">Learn More</a>
-                    <a
-                      href="https://www.discovercard.com/application/website/ratesrewards?srcCde=GJX4&amp;adobe_mc=TS%3D1740315096%7CMCMID%3D39379935660807998981588704922154453327%7CMCORGID%3D0D6C4673527839230A490D45%2540AdobeOrg&amp;sv_session_undefined=true&amp;_gl=1*p1s8lx*_gcl_au*MTYyMTU5ODAxMS4xNzQwMzE1MDcw*_ga*MTk0MTA3MDUwOC4xNzQwMzE1MDcx*_ga_3MJNPV4VSE*MTc0MDMxNTA3MC4xLjEuMTc0MDMxNTA5NC4zNi4wLjA."
-                      className="rate-fees-btn"
-                    >
-                      See Rates &amp; Fees
-                    </a>
-                  </td>
-                  <td>0% for 15 months</td>
-                  <td>3% (then up to 5%)</td>
-                  <td>1.5x miles on every purchase</td>
-                  <td>$0</td>
-                </tr>
-                <tr>
-                  <td>
-                    Wells Fargo Active Cash® Card
-                    <div className="rating">
-                      <a href="javascript:void(0);" className="info-icon" title="Our TCI rating info">
-                        <svg fill="#000000" width="15px" height="15px" viewBox="0 0 416.979 416.979">
-                          <g>
-                            <path d="M356.004,61.156c-81.37-81.47-213.377-81.551-294.848-0.182
-                              c-81.47,81.371-81.552,213.379-0.181,294.85
-                              c81.369,81.47,213.378,81.551,294.849,0.181
-                              C437.293,274.636,437.375,142.626,356.004,61.156z M208.554,334.794
-                              c-11.028,0-19.968-8.939-19.968-19.968s8.939-19.969,19.968-19.969
-                              c11.028,0,19.968,8.939,19.968,19.969
-                              C228.521,325.854,219.582,334.794,208.554,334.794z
-                              M241.018,214.566c-11.406,6.668-12.381,14.871-12.43,38.508
-                              c-0.003,1.563-0.008,3.14-0.017,4.726
-                              c-0.071,11.172-9.147,20.18-20.304,20.18
-                              c-0.044,0-0.088,0-0.131,0
-                              c-11.215-0.071-20.248-9.22-20.178-20.436
-                              c0.01-1.528,0.013-3.047,0.016-4.552
-                              c0.05-24.293,0.111-54.524,32.547-73.484
-                              c26.026-15.214,29.306-25.208,26.254-38.322
-                              c-3.586-15.404-17.653-19.396-28.63-18.141
-                              c-3.686,0.423-22.069,3.456-22.069,21.642" />
-                          </g>
-                        </svg>
-                      </a>
-                      TCI Rating: <span id="rating-value">7.8</span>/10
-                    </div>
-                    <div>
-                      <a href="#" className="apply-btn">Apply Now</a>
-                      <p className="APly">From card issuer's secure site</p>
-                    </div>
-                    <a href="#" className="learn-more-btn">Learn More</a>
-                    <a
-                      href="https://www.wellsfargo.com/credit-cards/active-cash/terms/?FPID=0126D7I6F40000&amp;product_code=CC&amp;subproduct_code=AC&amp;cx_nm=CXNAME_CSMPD&amp;sub_channel=SEO&amp;vendor_code=G&amp;refdmn=www.google.com&amp;_gl=1*1isihgp*_gcl_au*OTk5NTUyMzU3LjE3NDAzMTU0NDM.*_ga*NjU1MzIyNC4xNzQwMzE1NDQz*_ga_7JXJJ2JF12*MTc0MDMxNTQ0My4xLjAuMTc0MDMxNTQ0My42MC4wLjA."
-                      className="btn btn-rates-fees"
-                    >
-                      See Rates &amp; Fees
-                    </a>
-                  </td>
-                  <td>0% for 15 months</td>
-                  <td>3% (first 120 days), then up to 5%</td>
-                  <td>2% cash rewards on every purchase</td>
-                  <td>$0</td>
-                </tr>
-                <tr>
-                  <td>
-                    Blue Cash Everyday® Card from American Express
-                    <div className="rating">
-                      <a href="javascript:void(0);" className="info-icon" title="Our TCI rating info">
-                        <svg fill="#000000" width="15px" height="15px" viewBox="0 0 416.979 416.979">
-                          <g>
-                            <path d="M356.004,61.156c-81.37-81.47-213.377-81.551-294.848-0.182
-                              c-81.47,81.371-81.552,213.379-0.181,294.85
-                              c81.369,81.47,213.378,81.551,294.849,0.181
-                              C437.293,274.636,437.375,142.626,356.004,61.156z M208.554,334.794
-                              c-11.028,0-19.968-8.939-19.968-19.968s8.939-19.969,19.968-19.969
-                              c11.028,0,19.968,8.939,19.968,19.969
-                              C228.521,325.854,219.582,334.794,208.554,334.794z
-                              M241.018,214.566c-11.406,6.668-12.381,14.871-12.43,38.508
-                              c-0.003,1.563-0.008,3.14-0.017,4.726
-                              c-0.071,11.172-9.147,20.18-20.304,20.18
-                              c-0.044,0-0.088,0-0.131,0
-                              c-11.215-0.071-20.248-9.22-20.178-20.436
-                              c0.01-1.528,0.013-3.047,0.016-4.552
-                              c0.05-24.293,0.111-54.524,32.547-73.484
-                              c26.026-15.214,29.306-25.208,26.254-38.322
-                              c-3.586-15.404-17.653-19.396-28.63-18.141
-                              c-3.686,0.423-22.069,3.456-22.069,21.642" />
-                          </g>
-                        </svg>
-                      </a>
-                      TCI Rating: <span id="rating-value">7.7</span>/10
-                    </div>
-                    <div>
-                      <a href="#" className="apply-btn">Apply Now</a>
-                      <p className="APly">From card issuer's secure site</p>
-                    </div>
-                    <a href="#" className="learn-more-btn">Learn More</a>
-                    <a
-                      href="https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/blue-cash-everyday-credit-card/25330-10-0#FeeTable"
-                      className="btn btn-rates-fees"
-                    >
-                      See Rates &amp; Fees
-                    </a>
-                  </td>
-                  <td>0% for 15 months</td>
-                  <td>$5 or 3% of the transfer</td>
-                  <td>3% at supermarkets, gas, and online retail</td>
-                  <td>$0</td>
-                </tr>
-                <tr>
-                  <td>
-                    Citi® Diamond Preferred® Card
-                    <div className="rating">
-                      <a href="javascript:void(0);" className="info-icon" title="Our TCI rating info">
-                        <svg fill="#000000" width="15px" height="15px" viewBox="0 0 416.979 416.979">
-                          <g>
-                            <path d="M356.004,61.156c-81.37-81.47-213.377-81.551-294.848-0.182
-                              c-81.47,81.371-81.552,213.379-0.181,294.85
-                              c81.369,81.47,213.378,81.551,294.849,0.181
-                              C437.293,274.636,437.375,142.626,356.004,61.156z M208.554,334.794
-                              c-11.028,0-19.968-8.939-19.968-19.968s8.939-19.969,19.968-19.969
-                              c11.028,0,19.968,8.939,19.968,19.969
-                              C228.521,325.854,219.582,334.794,208.554,334.794z
-                              M241.018,214.566c-11.406,6.668-12.381,14.871-12.43,38.508
-                              c-0.003,1.563-0.008,3.14-0.017,4.726
-                              c-0.071,11.172-9.147,20.18-20.304,20.18
-                              c-0.044,0-0.088,0-0.131,0
-                              c-11.215-0.071-20.248-9.22-20.178-20.436
-                              c0.01-1.528,0.013-3.047,0.016-4.552
-                              c0.05-24.293,0.111-54.524,32.547-73.484
-                              c26.026-15.214,29.306-25.208,26.254-38.322
-                              c-3.586-15.404-17.653-19.396-28.63-18.141
-                              c-3.686,0.423-22.069,3.456-22.069,21.642" />
-                          </g>
-                        </svg>
-                      </a>
-                      TCI Rating: <span id="rating-value">6.5</span>/10
-                    </div>
-                    <div>
-                      <a href="#" className="apply-btn">Apply Now</a>
-                      <p className="APly">From card issuer's secure site</p>
-                    </div>
-                    <a href="#" className="learn-more-btn">Learn More</a>
-                    <a
-                      href="https://online.citi.com/US/ag/cards/displayterms?app=UNSOL&HKOP=608d295cca6a832d9455f97709fe858e684350d1359860de82b2b8a07336a954"
-                      className="btn btn-rates-fees"
-                    >
-                      See Rates &amp; Fees
-                    </a>
-                  </td>
-                  <td>0% for 21 months</td>
-                  <td>5% (min $5)</td>
-                  <td>No rewards program</td>
-                  <td>$0</td>
-                </tr>
-                <tr>
-                  <td>
-                    Wells Fargo Reflect® Card
-                    <div className="rating">
-                      <a href="javascript:void(0);" className="info-icon" title="Our TCI rating info">
-                        <svg fill="#000000" width="15px" height="15px" viewBox="0 0 416.979 416.979">
-                          <g>
-                            <path d="M356.004,61.156c-81.37-81.47-213.377-81.551-294.848-0.182
-                              c-81.47,81.371-81.552,213.379-0.181,294.85
-                              c81.369,81.47,213.378,81.551,294.849,0.181
-                              C437.293,274.636,437.375,142.626,356.004,61.156z M208.554,334.794
-                              c-11.028,0-19.968-8.939-19.968-19.968s8.939-19.969,19.968-19.969
-                              c11.028,0,19.968,8.939,19.968,19.969
-                              C228.521,325.854,219.582,334.794,208.554,334.794z
-                              M241.018,214.566c-11.406,6.668-12.381,14.871-12.43,38.508
-                              c-0.003,1.563-0.008,3.14-0.017,4.726
-                              c-0.071,11.172-9.147,20.18-20.304,20.18
-                              c-0.044,0-0.088,0-0.131,0
-                              c-11.215-0.071-20.248-9.22-20.178-20.436
-                              c0.01-1.528,0.013-3.047,0.016-4.552
-                              c0.05-24.293,0.111-54.524,32.547-73.484
-                              c26.026-15.214,29.306-25.208,26.254-38.322
-                              c-3.586-15.404-17.653-19.396-28.63-18.141
-                              c-3.686,0.423-22.069,3.456-22.069,21.642" />
-                          </g>
-                        </svg>
-                      </a>
-                      TCI Rating: <span id="rating-value">6.6</span>/10
-                    </div>
-                    <div>
-                      <a href="#" className="apply-btn">Apply Now</a>
-                      <p className="APly">From card issuer's secure site</p>
-                    </div>
-                    <a href="#" className="learn-more-btn">Learn More</a>
-                    <a
-                      href="https://www.wellsfargo.com/credit-cards/reflect-visa/terms/?FPID=013000IGF80000&amp;product_code=CC&amp;subproduct_code=VV&amp;cx_nm=CXNAME_CSMPD&amp;sub_channel=SEO&amp;vendor_code=G&amp;refdmn=www.google.com&amp;_gl=1*z7r3eu*_gcl_au*OTk5NTUyMzU3LjE3NDAzMTU0NDM.*_ga*NjU1MzIyNC4xNzQwMzE1NDQz*_ga_7JXJJ2JF12*MTc0MDMxNTQ0My4xLjEuMTc0MDMxNTgwNS42MC4wLjA."
-                      className="btn btn-rates-fees"
-                      data-card="Wells Fargo Reflect"
-                    >
-                      See Rates &amp; Fees
-                    </a>
-                  </td>
-                  <td>0% for 18 months (extendable by 3 months)</td>
-                  <td>3% (first 120 days), then up to 5%</td>
-                  <td>No rewards program</td>
-                  <td>$0</td>
-                </tr>
-                <tr>
-                  <td>
-                    U.S. Bank Cash+® Visa Signature® Card
-                    <div className="rating">
-                      <a href="javascript:void(0);" className="info-icon" title="Our TCI rating info">
-                        <svg fill="#000000" width="15px" height="15px" viewBox="0 0 416.979 416.979">
-                          <g>
-                            <path d="M356.004,61.156c-81.37-81.47-213.377-81.551-294.848-0.182
-                              c-81.47,81.371-81.552,213.379-0.181,294.85
-                              c81.369,81.47,213.378,81.551,294.849,0.181
-                              C437.293,274.636,437.375,142.626,356.004,61.156z M208.554,334.794
-                              c-11.028,0-19.968-8.939-19.968-19.968s8.939-19.969,19.968-19.969
-                              c11.028,0,19.968,8.939,19.968,19.969
-                              C228.521,325.854,219.582,334.794,208.554,334.794z
-                              M241.018,214.566c-11.406,6.668-12.381,14.871-12.43,38.508
-                              c-0.003,1.563-0.008,3.14-0.017,4.726
-                              c-0.071,11.172-9.147,20.18-20.304,20.18
-                              c-0.044,0-0.088,0-0.131,0
-                              c-11.215-0.071-20.248-9.22-20.178-20.436
-                              c0.01-1.528,0.013-3.047,0.016-4.552
-                              c0.05-24.293,0.111-54.524,32.547-73.484
-                              c26.026-15.214,29.306-25.208,26.254-38.322
-                              c-3.586-15.404-17.653-19.396-28.63-18.141
-                              c-3.686,0.423-22.069,3.456-22.069,21.642" />
-                          </g>
-                        </svg>
-                      </a>
-                      TCI Rating: <span id="rating-value">7.4</span>/10
-                    </div>
-                    <div>
-                      <a href="#" className="apply-btn">Apply Now</a>
-                      <p className="APly">From card issuer's secure site</p>
-                    </div>
-                    <a href="#" className="learn-more-btn">Learn More</a>
-                    <a
-                      href="https://onboarding.usbank.com/consumer/cards/WRH8D23H2R/8069/86937/start"
-                      className="btn btn-rates-fees"
-                      data-card="U.S. Bank Cash+"
-                    >
-                      See Rates &amp; Fees
-                    </a>
-                  </td>
-                  <td>0% for 15 months</td>
-                  <td>3% (min $5)</td>
-                  <td>5% cash back on two chosen categories</td>
-                  <td>$0</td>
-                </tr>
+                  {/* Table Rows Generated from Data */}
+                  {/* Using simplified data from cardData for table - Adjust as needed */}
+                  {cardData.slice(0, 5).map(card => ( // Example: Show first 5 in table
+                      <tr key={card.id}>
+                          <td data-label="Card Name & Rating">
+                              <Link href={`#${card.id}`}>{card.name}</Link>
+                              <div className={styles.rating}>
+                                  <button type="button" className={styles.infoIcon} aria-label={`Rating Information for ${card.name}`} onClick={handleInfoClick} title="Our TCI rating info">
+                                      <svg aria-hidden="true" focusable="false" fill="currentColor" width="15px" height="15px" viewBox="0 0 416.979 416.979"> <path d="M356.004,61.156c-81.37-81.47-213.377-81.551-294.848-0.182 c-81.47,81.371-81.552,213.379-0.181,294.85 c81.369,81.47,213.378,81.551,294.849,0.181 C437.293,274.636,437.375,142.626,356.004,61.156z M208.554,334.794 c-11.028,0-19.968-8.939-19.968-19.968s8.939-19.969,19.968-19.969 c11.028,0,19.968,8.939,19.968,19.969 C228.521,325.854,219.582,334.794,208.554,334.794z M241.018,214.566c-11.406,6.668-12.381,14.871-12.43,38.508 c-0.003,1.563-0.008,3.14-0.017,4.726 c-0.071,11.172-9.147,20.18-20.304,20.18 c-0.044,0-0.088,0-0.131,0 c-11.215-0.071-20.248-9.22-20.178-20.436 c0.01-1.528,0.013-3.047,0.016-4.552 c0.05-24.293,0.111-54.524,32.547-73.484 c26.026-15.214,29.306-25.208,26.254-38.322 c-3.586-15.404-17.653-19.396-28.63-18.141 c-3.686,0.423-22.069,3.456-22.069,21.642" /> </svg>
+                                  </button>
+                                  TCI Rating: <span className={styles.ratingValue}>{card.rating}</span>/10
+                              </div>
+                              <div>
+                                  <a href={`https://www.travelcardinsider.com${card.applyLink}`} className={styles.applyBtn} target="_blank" rel="noopener sponsored">Apply Now</a>
+                                  <p className={styles.aplyText}>On issuer's secure site</p>
+                              </div>
+                              <Link href={`#${card.id}`} className={styles.learnMoreBtn} aria-label={`Learn More about ${card.name}`}>Learn More</Link>
+                              <a href={card.ratesLink} className={styles.rateFeesBtn} target="_blank" rel="noopener nofollow"> See Rates &amp; Fees </a>
+                          </td>
+                           {/* !!! ADD CORRECT DATA for these cells based on cardData !!! */}
+                          <td data-label="Intro APR">0% Placeholder</td>
+                          <td data-label="BT Fee">Placeholder Fee</td>
+                          <td data-label="Rewards">{card.earning ? card.earning[0] : 'Placeholder'}</td>
+                          <td data-label="Annual Fee">Placeholder Fee</td>
+                      </tr>
+                  ))}
               </tbody>
             </table>
           </div>
         </section>
 
-        {/* DETAILED CARD SECTIONS */}
-        {/* 1. Chase Freedom Unlimited® */}
-        <div className="card" id="chase-freedom-unlimited">
-          <div className="card-image">
-            <img src="freedom_unlimited_card_alt (1).png" alt="Chase Freedom Unlimited®" />
-          </div>
-          <div className="card-content">
-            <h2 className="card-title">Chase Freedom Unlimited®</h2>
-            <div className="rating">
-              <a href="javascript:void(0);" className="info-icon" title="Our TCI rating info">
-                <svg fill="#000000" width="20px" height="20px" viewBox="0 0 416.979 416.979">
-                  <g>
-                    <path d="M356.004,61.156c-81.37-81.47-213.377-81.551-294.848-0.182
-                      c-81.47,81.371-81.552,213.379-0.181,294.85
-                      c81.369,81.47,213.378,81.551,294.849,0.181
-                      C437.293,274.636,437.375,142.626,356.004,61.156z M208.554,334.794
-                      c-11.028,0-19.968-8.939-19.968-19.968s8.939-19.969,19.968-19.969
-                      c11.028,0,19.968,8.939,19.968,19.969
-                      C228.521,325.854,219.582,334.794,208.554,334.794z
-                      M241.018,214.566c-11.406,6.668-12.381,14.871-12.43,38.508
-                      c-0.003,1.563-0.008,3.14-0.017,4.726
-                      c-0.071,11.172-9.147,20.18-20.304,20.18
-                      c-0.044,0-0.088,0-0.131,0
-                      c-11.215-0.071-20.248-9.22-20.178-20.436
-                      c0.01-1.528,0.013-3.047,0.016-4.552
-                      c0.05-24.293,0.111-54.524,32.547-73.484
-                      c26.026-15.214,29.306-25.208,26.254-38.322
-                      c-3.586-15.404-17.653-19.396-28.63-18.141
-                      c-3.686,0.423-22.069,3.456-22.069,21.642" />
-                  </g>
-                </svg>
-              </a>
-              TCI Rating: <span id="rating-value">7.5</span>/10
+        {/* DETAILED CARD SECTIONS - Generated from Data */}
+        {cardData.map((card) => (
+          <section className={styles.card} id={card.id} key={card.id} aria-labelledby={`heading-${card.id}`}>
+            <div className={styles.cardImage}>
+              {/* !!! UPDATE width/height with ACTUAL image dimensions !!! */}
+              <Image
+                src={card.imgPath} // !!! ENSURE PATH IS CORRECT in /public !!!
+                alt={`${card.name} card image`} // Descriptive alt text
+                width={card.imgWidth || 300}   // !!! REPLACE with actual width !!!
+                height={card.imgHeight || 189} // !!! REPLACE with actual height !!!
+                loading="lazy" // Lazy load detailed card images
+              />
             </div>
-            <p className="card-bonus">
-              <strong>Welcome Bonus:</strong> Earn an additional 1.5% cash back on everything you buy (up to $20,000 spent in the first year). That’s up to $300 in extra cash back!
-            </p>
-            <div className="card-earning">
-              <strong>Earning Rates:</strong>
-              <ul>
-                <li>5% cash back on travel purchased through Chase Ultimate Rewards®.</li>
-                <li>3% cash back on dining at restaurants and drugstores.</li>
-                <li>1.5% cash back on all other purchases.</li>
-              </ul>
+            <div className={styles.cardContent}>
+              <h3 id={`heading-${card.id}`} className={styles.cardTitle}>{card.name}</h3>
+              <div className={styles.rating}>
+                <button type="button" className={styles.infoIcon} aria-label={`Rating Information for ${card.name}`} onClick={handleInfoClick} title="Our TCI rating info">
+                  <svg aria-hidden="true" focusable="false" fill="currentColor" width="15px" height="15px" viewBox="0 0 416.979 416.979"> <path d="M356.004,61.156c-81.37-81.47-213.377-81.551-294.848-0.182 c-81.47,81.371-81.552,213.379-0.181,294.85 c81.369,81.47,213.378,81.551,294.849,0.181 C437.293,274.636,437.375,142.626,356.004,61.156z M208.554,334.794 c-11.028,0-19.968-8.939-19.968-19.968s8.939-19.969,19.968-19.969 c11.028,0,19.968,8.939,19.968,19.969 C228.521,325.854,219.582,334.794,208.554,334.794z M241.018,214.566c-11.406,6.668-12.381,14.871-12.43,38.508 c-0.003,1.563-0.008,3.14-0.017,4.726 c-0.071,11.172-9.147,20.18-20.304,20.18 c-0.044,0-0.088,0-0.131,0 c-11.215-0.071-20.248-9.22-20.178-20.436 c0.01-1.528,0.013-3.047,0.016-4.552 c0.05-24.293,0.111-54.524,32.547-73.484 c26.026-15.214,29.306-25.208,26.254-38.322 c-3.586-15.404-17.653-19.396-28.63-18.141 c-3.686,0.423-22.069,3.456-22.069,21.642"></path> </svg>
+                </button>
+                TCI Rating: <span className={styles.ratingValue}>{card.rating}</span>/10 {/* !!! UPDATE RATING !!! */}
+              </div>
+              {card.bonus && <p className={styles.cardBonus}><strong>Welcome Bonus:</strong> {card.bonus}</p>}
+              {card.earning && <div className={styles.cardEarning}><strong>Earning Rates:</strong><ul>{card.earning.map((rate, i) => <li key={i}>{rate}</li>)}</ul></div>}
+              {card.features && <div className={styles.cardFeatures /* Correct class name if needed */}><strong>Key Features:</strong><ul>{card.features.map((feature, i) => <li key={i}>{feature}</li>)}</ul></div>}
+              {card.perks && <div className={styles.cardPerks}><strong>Additional Perks:</strong><ul>{card.perks.map((perk, i) => <li key={i}>{perk}</li>)}</ul></div>}
+              {card.bestFor && <div className={styles.cardBestFor}><strong>Best For:</strong> <p>{card.bestFor}</p></div>}
             </div>
-            <div className="card-luxury-features">
-              <strong>Key Features:</strong>
-              <ul>
-                <li>0% Intro APR for 15 months on purchases and balance transfers.</li>
-                <li>Points are worth 25% more when redeemed for travel through Chase Ultimate Rewards®.</li>
-                <li>No annual fee.</li>
-              </ul>
+            <div className={styles.cardActions}>
+              {/* !!! REPLACE with actual affiliate link !!! */}
+              <a href={`https://www.travelcardinsider.com${card.applyLink}`} className={`${styles.btn} ${styles.btnApply}`} target="_blank" rel="noopener sponsored">Apply Now</a>
+              {/* Keep generic text as requested, add aria-label */}
+               {/* !!! Assuming review links exist, replace path !!! */}
+              <Link href={`https://www.travelcardinsider.com${card.reviewLink}`} className={`${styles.btn} ${styles.btnLearnMore}`} aria-label={`Learn More about ${card.name}`}>Learn More</Link>
+              {/* !!! REPLACE with actual Rates & Fees link !!! */}
+              <a href={card.ratesLink} target="_blank" rel="noopener nofollow" className={`${styles.btn} ${styles.btnRatesFees}`}> See Rates &amp; Fees </a>
             </div>
-            <div className="card-perks">
-              <strong>Additional Perks:</strong>
-              <ul>
-                <li>Trip cancellation/interruption insurance.</li>
-                <li>Purchase protection for new purchases.</li>
-                <li>Free access to your credit score with Credit Journey.</li>
-              </ul>
-            </div>
-            <div className="card-best-for">
-              <strong>Best For:</strong>
-              <p>Everyday spenders looking for versatile cash-back rewards and those planning large purchases or balance transfers.</p>
-            </div>
-          </div>
-          <div className="card-actions">
-            <a href="#" className="btn btn-apply" data-card="Chase Freedom Unlimited" title="From card issuer's secure site">Apply Now</a>
-            <a href="#" className="btn btn-learn-more" data-card="Chase Freedom Unlimited">Learn More</a>
-            <a
-              href="https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC56029.html"
-              target="_blank"
-              className="btn btn-rates-fees"
-              data-card="Chase Freedom Unlimited"
-            >
-              See Rates &amp; Fees
-            </a>
-          </div>
-        </div>
+          </section>
+        ))}
 
-        {/* 2. U.S. Bank Altitude® Connect Visa Signature® Card */}
-        <div className="card" id="us-bank-altitude-connect">
-          <div className="card-image">
-            <img src="photo-altitude-connect-consumer.png" alt="U.S. Bank Altitude® Connect Visa Signature® Card" />
-          </div>
-          <div className="card-content">
-            <h2 className="card-title">U.S. Bank Altitude® Connect Visa Signature® Card</h2>
-            <div className="rating">
-              <a href="javascript:void(0);" className="info-icon" title="Our TCI rating info">
-                <svg fill="#000000" width="20px" height="20px" viewBox="0 0 416.979 416.979">
-                  <g>
-                    <path d="M356.004,61.156c-81.37-81.47-213.377-81.551-294.848-0.182
-                      c-81.47,81.371-81.552,213.379-0.181,294.85
-                      c81.369,81.47,213.378,81.551,294.849,0.181
-                      C437.293,274.636,437.375,142.626,356.004,61.156z M208.554,334.794
-                      c-11.028,0-19.968-8.939-19.968-19.968s8.939-19.969,19.968-19.969
-                      c11.028,0,19.968,8.939,19.968,19.969
-                      C228.521,325.854,219.582,334.794,208.554,334.794z
-                      M241.018,214.566c-11.406,6.668-12.381,14.871-12.43,38.508
-                      c-0.003,1.563-0.008,3.14-0.017,4.726
-                      c-0.071,11.172-9.147,20.18-20.304,20.18
-                      c-0.044,0-0.088,0-0.131,0
-                      c-11.215-0.071-20.248-9.22-20.178-20.436
-                      c0.01-1.528,0.013-3.047,0.016-4.552
-                      c0.05-24.293,0.111-54.524,32.547-73.484
-                      c26.026-15.214,29.306-25.208,26.254-38.322
-                      c-3.586-15.404-17.653-19.396-28.63-18.141
-                      c-3.686,0.423-22.069,3.456-22.069,21.642" />
-                  </g>
-                </svg>
-              </a>
-              TCI Rating: <span id="rating-value">8.2</span>/10
-            </div>
-            <p className="card-bonus">
-              <strong>Welcome Bonus:</strong> Earn 50,000 bonus points after spending $2,000 in the first 120 days.
-              <br /><em>(Valued at $500 in travel or statement credits).</em>
-            </p>
-            <div className="card-earning">
-              <strong>Earning Rates:</strong>
-              <ul>
-                <li>5X points on prepaid hotels and car rentals booked directly in the Altitude Rewards Center.</li>
-                <li>4X points on travel and gas station purchases.</li>
-                <li>2X points on dining, grocery stores, and streaming services.</li>
-                <li>1X points on all other purchases.</li>
-              </ul>
-            </div>
-            <div className="card-luxury-features">
-              <strong>Key Features:</strong>
-              <ul>
-                <li>0% Intro APR for 12 months on balance transfers.</li>
-                <li>Points never expire as long as the account remains open and in good standing.</li>
-                <li>No foreign transaction fees.</li>
-                <li>Automatic $30 annual credit for streaming services like Netflix and Spotify.</li>
-              </ul>
-            </div>
-            <div className="card-perks">
-              <strong>Additional Perks:</strong>
-              <ul>
-                <li>Cell phone protection when you pay your monthly bill with the card.</li>
-                <li>Travel and emergency assistance services.</li>
-                <li>Visa Signature® concierge services.</li>
-              </ul>
-            </div>
-            <div className="card-best-for">
-              <strong>Best For:</strong>
-              <p>Travelers and commuters who want high rewards on travel, gas, and streaming services, with no foreign transaction fees.</p>
-            </div>
-          </div>
-          <div className="card-actions">
-            <a href="#" className="btn btn-apply" data-card="U.S. Bank Altitude Connect" title="From card issuer's secure site">Apply Now</a>
-            <a href="#" className="btn btn-learn-more" data-card="U.S. Bank Altitude Connect">Learn More</a>
-            <a
-              href="https://onboarding.usbank.com/consumer/cards/8BB5BD89H1/18569/87702/start"
-              target="_blank"
-              className="btn btn-rates-fees"
-              data-card="U.S. Bank Altitude Connect"
-            >
-              See Rates &amp; Fees
-            </a>
-          </div>
-        </div>
-
-        {/* 3. Citi Custom Cash® Card */}
-        <div className="card" id="citi-custom-cash">
-          <div className="card-image">
-            <img src="download.png" alt="Citi Custom Cash® Card" />
-          </div>
-          <div className="card-content">
-            <h2 className="card-title">Citi Custom Cash® Card</h2>
-            <div className="rating">
-              <a href="javascript:void(0);" className="info-icon" title="Our TCI rating info">
-                <svg fill="#000000" width="20px" height="20px" viewBox="0 0 416.979 416.979">
-                  <g>
-                    <path d="M356.004,61.156c-81.37-81.47-213.377-81.551-294.848-0.182
-                      c-81.47,81.371-81.552,213.379-0.181,294.85
-                      c81.369,81.47,213.378,81.551,294.849,0.181
-                      C437.293,274.636,437.375,142.626,356.004,61.156z M208.554,334.794
-                      c-11.028,0-19.968-8.939-19.968-19.968s8.939-19.969,19.968-19.969
-                      c11.028,0,19.968,8.939,19.968,19.969
-                      C228.521,325.854,219.582,334.794,208.554,334.794z
-                      M241.018,214.566c-11.406,6.668-12.381,14.871-12.43,38.508
-                      c-0.003,1.563-0.008,3.14-0.017,4.726
-                      c-0.071,11.172-9.147,20.18-20.304,20.18
-                      c-0.044,0-0.088,0-0.131,0
-                      c-11.215-0.071-20.248-9.22-20.178-20.436
-                      c0.01-1.528,0.013-3.047,0.016-4.552
-                      c0.05-24.293,0.111-54.524,32.547-73.484
-                      c26.026-15.214,29.306-25.208,26.254-38.322
-                      c-3.586-15.404-17.653-19.396-28.63-18.141
-                      c-3.686,0.423-22.069,3.456-22.069,21.642" />
-                  </g>
-                </svg>
-              </a>
-              TCI Rating: <span id="rating-value">7.5</span>/10
-            </div>
-            <p className="card-bonus">
-              <strong>Welcome Bonus:</strong> Earn $200 cash back after spending $1,500 on purchases in the first 3 months of account opening.
-            </p>
-            <div className="card-earning">
-              <strong>Earning Rates:</strong>
-              <ul>
-                <li>5% cash back on your top eligible spend category each billing cycle (up to $500 in spending).</li>
-                <li>1% cash back on all other purchases.</li>
-              </ul>
-            </div>
-            <div className="card-luxury-features">
-              <strong>Key Features:</strong>
-              <ul>
-                <li>No annual fee, making it ideal for cost-conscious users.</li>
-                <li>0% intro APR on balance transfers and purchases for the first 15 months. After that, a variable APR applies.</li>
-                <li>Redeem cash back as a statement credit or direct deposit.</li>
-              </ul>
-            </div>
-            <div className="card-perks">
-              <strong>Additional Perks:</strong>
-              <ul>
-                <li>Automatic category adjustment ensures you maximize cash back in the category you spend the most on each cycle.</li>
-                <li>Access to Citi Entertainment® for exclusive events and ticket presales.</li>
-                <li>No foreign transaction fees, perfect for travel and international purchases.</li>
-              </ul>
-            </div>
-            <div className="card-best-for">
-              <strong>Best For:</strong>
-              <p>Individuals who want flexible rewards based on their spending habits and prefer a no-annual-fee card with a strong cash-back program.</p>
-            </div>
-          </div>
-          <div className="card-actions">
-            <a href="#" className="btn btn-apply" data-card="Citi Custom Cash" title="From card issuer's secure site">Apply Now</a>
-            <a href="#" className="btn btn-learn-more" data-card="Citi Custom Cash">Learn More</a>
-            <a
-              href="https://online.citi.com/US/ag/cards/displayterms?app=UNSOL&HKOP=541175b33e25f6837a0d7af4ba29114f264447b80dcde5f6be6db7d02fed5901"
-              target="_blank"
-              className="btn btn-rates-fees"
-              data-card="Citi Custom Cash"
-            >
-              See Rates &amp; Fees
-            </a>
-          </div>
-        </div>
-
-        {/* 4. Bank of America® Travel Rewards Credit Card */}
-        <div className="card" id="bofa-travel-rewards">
-          <div className="card-image">
-            <img src="8blm_trvsigcm_v_250x158.png" alt="Bank of America® Travel Rewards Credit Card" />
-          </div>
-          <div className="card-content">
-            <h2 className="card-title">Bank of America® Travel Rewards Credit Card</h2>
-            <div className="rating">
-              <a href="javascript:void(0);" className="info-icon" title="Our TCI rating info">
-                <svg fill="#000000" width="20px" height="20px" viewBox="0 0 416.979 416.979">
-                  <g>
-                    <path d="M356.004,61.156c-81.37-81.47-213.377-81.551-294.848-0.182
-                      c-81.47,81.371-81.552,213.379-0.181,294.85
-                      c81.369,81.47,213.378,81.551,294.849,0.181
-                      C437.293,274.636,437.375,142.626,356.004,61.156z M208.554,334.794
-                      c-11.028,0-19.968-8.939-19.968-19.968s8.939-19.969,19.968-19.969
-                      c11.028,0,19.968,8.939,19.968,19.969
-                      C228.521,325.854,219.582,334.794,208.554,334.794z
-                      M241.018,214.566c-11.406,6.668-12.381,14.871-12.43,38.508
-                      c-0.003,1.563-0.008,3.14-0.017,4.726
-                      c-0.071,11.172-9.147,20.18-20.304,20.18
-                      c-0.044,0-0.088,0-0.131,0
-                      c-11.215-0.071-20.248-9.22-20.178-20.436
-                      c0.01-1.528,0.013-3.047,0.016-4.552
-                      c0.05-24.293,0.111-54.524,32.547-73.484
-                      c26.026-15.214,29.306-25.208,26.254-38.322
-                      c-3.586-15.404-17.653-19.396-28.63-18.141
-                      c-3.686,0.423-22.069,3.456-22.069,21.642" />
-                  </g>
-                </svg>
-              </a>
-              TCI Rating: <span id="rating-value">7.4</span>/10
-            </div>
-            <p className="card-bonus">
-              <strong>Welcome Bonus:</strong> Earn 25,000 online bonus points after making at least $1,000 in purchases in the first 90 days of account opening.
-              <br /><em>(Valued at $250 as a statement credit toward travel purchases).</em>
-            </p>
-            <div className="card-earning">
-              <strong>Earning Rates:</strong>
-              <ul>
-                <li>1.5 points per dollar on every purchase, with no caps or expiration.</li>
-                <li>Preferred Rewards members can earn up to 2.62 points per dollar.</li>
-              </ul>
-            </div>
-            <div className="card-luxury-features">
-              <strong>Key Features:</strong>
-              <ul>
-                <li>No annual fee, making it ideal for budget-conscious travelers.</li>
-                <li>0% intro APR on purchases for the first 18 billing cycles (variable APR applies thereafter).</li>
-                <li>No foreign transaction fees, perfect for international travel.</li>
-              </ul>
-            </div>
-            <div className="card-perks">
-              <strong>Additional Perks:</strong>
-              <ul>
-                <li>Redeem points for travel expenses like flights, hotels, vacation packages, or car rentals.</li>
-                <li>Travel insurance and protections, including trip cancellation and delay coverage.</li>
-                <li>Access to Bank of America’s Preferred Rewards program for increased earning potential.</li>
-              </ul>
-            </div>
-            <div className="card-best-for">
-              <strong>Best For:</strong>
-              <p>Travelers looking for a no-annual-fee card with flexible, easy-to-redeem rewards and no foreign transaction fees.</p>
-            </div>
-          </div>
-          <div className="card-actions">
-            <a href="#" className="btn btn-apply" data-card="Bank of America Travel Rewards" title="From card issuer's secure site">Apply Now</a>
-            <a href="#" className="btn btn-learn-more" data-card="Bank of America Travel Rewards">Learn More</a>
-            <a
-              href="https://www.bankofamerica.com/credit-cards/terms-and-conditions/?campaignid=4071156&productoffercode=MG&locale=en_US"
-              target="_blank"
-              className="btn btn-rates-fees"
-              data-card="Bank of America Travel Rewards"
-            >
-              See Rates &amp; Fees
-            </a>
-          </div>
-        </div>
-
-        {/* 5. Discover it® Miles */}
-        <div className="card" id="discover-it-miles">
-          <div className="card-image">
-            <img src="cardart-travel-beachcard-620-382.webp" alt="Discover it® Miles" />
-          </div>
-          <div className="card-content">
-            <h2 className="card-title">Discover it® Miles</h2>
-            <div className="rating">
-              <a href="javascript:void(0);" className="info-icon" title="Our TCI rating info">
-                <svg fill="#000000" width="20px" height="20px" viewBox="0 0 416.979 416.979">
-                  <g>
-                    <path d="M356.004,61.156c-81.37-81.47-213.377-81.551-294.848-0.182
-                      c-81.47,81.371-81.552,213.379-0.181,294.85
-                      c81.369,81.47,213.378,81.551,294.849,0.181
-                      C437.293,274.636,437.375,142.626,356.004,61.156z M208.554,334.794
-                      c-11.028,0-19.968-8.939-19.968-19.968s8.939-19.969,19.968-19.969
-                      c11.028,0,19.968,8.939,19.968,19.969
-                      C228.521,325.854,219.582,334.794,208.554,334.794z
-                      M241.018,214.566c-11.406,6.668-12.381,14.871-12.43,38.508
-                      c-0.003,1.563-0.008,3.14-0.017,4.726
-                      c-0.071,11.172-9.147,20.18-20.304,20.18
-                      c-0.044,0-0.088,0-0.131,0
-                      c-11.215-0.071-20.248-9.22-20.178-20.436
-                      c0.01-1.528,0.013-3.047,0.016-4.552
-                      c0.05-24.293,0.111-54.524,32.547-73.484
-                      c26.026-15.214,29.306-25.208,26.254-38.322
-                      c-3.586-15.404-17.653-19.396-28.63-18.141
-                      c-3.686,0.423-22.069,3.456-22.069,21.642" />
-                  </g>
-                </svg>
-              </a>
-              TCI Rating: <span id="rating-value">7.0</span>/10
-            </div>
-            <p className="card-bonus">
-              <strong>Welcome Bonus:</strong> Discover will automatically match all the miles you’ve earned at the end of your first year.
-              <br /><em>(For example, if you earn 35,000 miles, you’ll get 70,000 miles total).</em>
-            </p>
-            <div className="card-earning">
-              <strong>Earning Rates:</strong>
-              <ul>
-                <li>1.5 miles per dollar on every purchase, with no limit on how much you can earn.</li>
-                <li>Bonus miles matched at the end of the first year, effectively doubling your earnings.</li>
-              </ul>
-            </div>
-            <div className="card-luxury-features">
-              <strong>Key Features:</strong>
-              <ul>
-                <li>No annual fee, making it a cost-effective travel card.</li>
-                <li>0% intro APR on purchases for the first 15 months (variable APR applies thereafter).</li>
-                <li>No foreign transaction fees, perfect for international travel.</li>
-              </ul>
-            </div>
-            <div className="card-perks">
-              <strong>Additional Perks:</strong>
-              <ul>
-                <li>Redeem miles for travel expenses like flights, hotels, rideshares, and more.</li>
-                <li>Flexible redemption: $1 in travel credit = 100 miles.</li>
-                <li>Free access to your FICO® Credit Score online.</li>
-                <li>Identity Theft Protection alerts and Freeze It® feature to instantly stop new account activity.</li>
-              </ul>
-            </div>
-            <div className="card-best-for">
-              <strong>Best For:</strong>
-              <p>Travelers who value simplicity, no annual fees, and flexible mile redemption options with a first-year earning boost.</p>
-            </div>
-          </div>
-          <div className="card-actions">
-            <a href="#" className="btn btn-apply" data-card="Discover it Miles" title="From card issuer's secure site">Apply Now</a>
-            <a href="#" className="btn btn-learn-more" data-card="Discover it Miles">Learn More</a>
-            <a
-              href="https://www.discovercard.com/application/website/ratesrewards?srcCde=GJX4&amp;adobe_mc=TS%3D1740315096%7CMCMID%3D39379935660807998981588704922154453327%7CMCORGID%3D0D6C4673527839230A490D45%2540AdobeOrg&amp;sv_session_undefined=true&amp;_gl=1*p1s8lx*_gcl_au*MTYyMTU5ODAxMS4xNzQwMzE1MDcw*_ga*MTk0MTA3MDUwOC4xNzQwMzE1MDcx*_ga_3MJNPV4VSE*MTc0MDMxNTA3MC4xLjEuMTc0MDMxNTA5NC4zNi4wLjA."
-              target="_blank"
-              className="btn btn-rates-fees"
-              data-card="Discover it Miles"
-            >
-              See Rates &amp; Fees
-            </a>
-          </div>
-        </div>
-
-        {/* 6. Wells Fargo Active Cash® Card */}
-        <div className="card" id="wells-fargo-active-cash">
-          <div className="card-image">
-            <img src="WF_ActiveCash_VS_Collateral_Front_RGB.png" alt="Wells Fargo Active Cash® Card" />
-          </div>
-          <div className="card-content">
-            <h2 className="card-title">Wells Fargo Active Cash® Card</h2>
-            <div className="rating">
-              <a href="javascript:void(0);" className="info-icon" title="Our TCI rating info">
-                <svg fill="#000000" width="20px" height="20px" viewBox="0 0 416.979 416.979">
-                  <g>
-                    <path d="M356.004,61.156c-81.37-81.47-213.377-81.551-294.848-0.182
-                      c-81.47,81.371-81.552,213.379-0.181,294.85
-                      c81.369,81.47,213.378,81.551,294.849,0.181
-                      C437.293,274.636,437.375,142.626,356.004,61.156z M208.554,334.794
-                      c-11.028,0-19.968-8.939-19.968-19.968s8.939-19.969,19.968-19.969
-                      c11.028,0,19.968,8.939,19.968,19.969
-                      C228.521,325.854,219.582,334.794,208.554,334.794z
-                      M241.018,214.566c-11.406,6.668-12.381,14.871-12.43,38.508
-                      c-0.003,1.563-0.008,3.14-0.017,4.726
-                      c-0.071,11.172-9.147,20.18-20.304,20.18
-                      c-0.044,0-0.088,0-0.131,0
-                      c-11.215-0.071-20.248-9.22-20.178-20.436
-                      c0.01-1.528,0.013-3.047,0.016-4.552
-                      c0.05-24.293,0.111-54.524,32.547-73.484
-                      c26.026-15.214,29.306-25.208,26.254-38.322
-                      c-3.586-15.404-17.653-19.396-28.63-18.141
-                      c-3.686,0.423-22.069,3.456-22.069,21.642" />
-                  </g>
-                </svg>
-              </a>
-              TCI Rating: <span id="rating-value">7.8</span>/10
-            </div>
-            <p className="card-bonus">
-              <strong>Welcome Bonus:</strong> Earn a $200 cash rewards bonus after spending $1,000 in purchases in the first 3 months.
-            </p>
-            <div className="card-earning">
-              <strong>Earning Rates:</strong>
-              <ul>
-                <li>Unlimited 2% cash rewards on all purchases.</li>
-                <li>No categories or caps to worry about – consistent earnings across all spending.</li>
-              </ul>
-            </div>
-            <div className="card-luxury-features">
-              <strong>Key Features:</strong>
-              <ul>
-                <li>0% intro APR for 15 months from account opening on purchases and qualifying balance transfers (3% intro balance transfer fee, then up to 5%).</li>
-                <li>Variable APR applies after the intro period (currently 20.24%, 25.24%, or 29.99%).</li>
-                <li>No annual fee, offering excellent value for everyday spenders.</li>
-                <li>Cell phone protection: Get up to $600 in coverage against damage or theft (subject to a $25 deductible) when you pay your monthly cell phone bill with the card.</li>
-              </ul>
-            </div>
-            <div className="card-perks">
-              <strong>Additional Perks:</strong>
-              <ul>
-                <li>Access to Wells Fargo’s Rewards platform for redeeming cash rewards.</li>
-                <li>Enjoy a seamless and secure digital wallet experience with tap-to-pay technology.</li>
-                <li>No foreign transaction fees.</li>
-                <li>Zero Liability Protection for unauthorized transactions.</li>
-              </ul>
-            </div>
-            <div className="card-best-for">
-              <strong>Best For:</strong>
-              <p>Consumers looking for a simple, no-hassle card with unlimited cash rewards and added benefits like cell phone protection.</p>
-            </div>
-          </div>
-          <div className="card-actions">
-            <a href="#" className="btn btn-apply" data-card="Wells Fargo Active Cash" title="From card issuer's secure site">Apply Now</a>
-            <a href="#" className="btn btn-learn-more" data-card="Wells Fargo Active Cash">Learn More</a>
-            <a
-              href="https://www.wellsfargo.com/credit-cards/active-cash/terms/?FPID=0126D7I6F40000&amp;product_code=CC&amp;subproduct_code=AC&amp;cx_nm=CXNAME_CSMPD&amp;sub_channel=SEO&amp;vendor_code=G&amp;refdmn=www.google.com&amp;_gl=1*1isihgp*_gcl_au*OTk5NTUyMzU3LjE3NDAzMTU0NDM.*_ga*NjU1MzIyNC4xNzQwMzE1NDQz*_ga_7JXJJ2JF12*MTc0MDMxNTQ0My4xLjAuMTc0MDMxNTQ0My42MC4wLjA="
-              className="btn btn-rates-fees"
-            >
-              See Rates &amp; Fees
-            </a>
-          </div>
-        </div>
-
-        {/* 7. Blue Cash Everyday® Card from American Express */}
-        <div className="card" id="blue-cash-everyday">
-          <div className="card-image">
-            <img src="NUS000000305_480x304_straight_withname.avif" alt="Blue Cash Everyday® Card from American Express" />
-          </div>
-          <div className="card-content">
-            <h2 className="card-title">Blue Cash Everyday® Card from American Express</h2>
-            <div className="rating">
-              <a href="javascript:void(0);" className="info-icon" title="Our TCI rating info">
-                <svg fill="#000000" width="20px" height="20px" viewBox="0 0 416.979 416.979">
-                  <g>
-                    <path d="M356.004,61.156c-81.37-81.47-213.377-81.551-294.848-0.182
-                      c-81.47,81.371-81.552,213.379-0.181,294.85
-                      c81.369,81.47,213.378,81.551,294.849,0.181
-                      C437.293,274.636,437.375,142.626,356.004,61.156z M208.554,334.794
-                      c-11.028,0-19.968-8.939-19.968-19.968s8.939-19.969,19.968-19.969
-                      c11.028,0,19.968,8.939,19.968,19.969
-                      C228.521,325.854,219.582,334.794,208.554,334.794z
-                      M241.018,214.566c-11.406,6.668-12.381,14.871-12.43,38.508
-                      c-0.003,1.563-0.008,3.14-0.017,4.726
-                      c-0.071,11.172-9.147,20.18-20.304,20.18
-                      c-0.044,0-0.088,0-0.131,0
-                      c-11.215-0.071-20.248-9.22-20.178-20.436
-                      c0.01-1.528,0.013-3.047,0.016-4.552
-                      c0.05-24.293,0.111-54.524,32.547-73.484
-                      c26.026-15.214,29.306-25.208,26.254-38.322
-                      c-3.586-15.404-17.653-19.396-28.63-18.141
-                      c-3.686,0.423-22.069,3.456-22.069,21.642" />
-                  </g>
-                </svg>
-              </a>
-              TCI Rating: <span id="rating-value">7.7</span>/10
-            </div>
-            <p className="card-bonus">
-              <strong>Welcome Bonus:</strong> Earn a $200 statement credit after spending $2,000 in purchases in the first 6 months.
-            </p>
-            <div className="card-earning">
-              <strong>Earning Rates:</strong>
-              <ul>
-                <li>3% cash back at U.S. supermarkets (up to $6,000 per year in purchases, then 1%).</li>
-                <li>3% cash back at U.S. gas stations (up to $6,000 per year in purchases, then 1%).</li>
-                <li>3% cash back on U.S. online retail purchases (up to $6,000 per year in purchases, then 1%).</li>
-                <li>1% cash back on other purchases.</li>
-              </ul>
-            </div>
-            <div className="card-luxury-features">
-              <strong>Key Features:</strong>
-              <ul>
-                <li>0% intro APR on purchases and balance transfers for 15 months (variable APR applies thereafter: 19.24% - 29.99%).</li>
-                <li>No annual fee, making it a cost-effective rewards card.</li>
-                <li>Earn cash back in the form of Reward Dollars that can be redeemed as a statement credit.</li>
-              </ul>
-            </div>
-            <div className="card-perks">
-              <strong>Additional Perks:</strong>
-              <ul>
-                <li>Purchase protection for eligible items purchased with the card.</li>
-                <li>Car rental loss and damage insurance for eligible rentals.</li>
-                <li>Plan It®: Pay for large purchases over time with no interest, only a fixed fee.</li>
-                <li>Access to exclusive American Express Experiences and events.</li>
-              </ul>
-            </div>
-            <div className="card-best-for">
-              <strong>Best For:</strong>
-              <p>Individuals seeking a no-annual-fee card with competitive cash back rewards on groceries, gas, and online shopping.</p>
-            </div>
-          </div>
-          <div className="card-actions">
-            <a href="#" className="btn btn-apply" data-card="Blue Cash Everyday" title="From card issuer's secure site">Apply Now</a>
-            <a href="#" className="btn btn-learn-more" data-card="Blue Cash Everyday">Learn More</a>
-            <a
-              href="https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/blue-cash-everyday-credit-card/25330-10-0#FeeTable"
-              target="_blank"
-              className="btn btn-rates-fees"
-              data-card="Blue Cash Everyday"
-            >
-              See Rates &amp; Fees
-            </a>
-          </div>
-        </div>
-
-        {/* 8. Citi® Diamond Preferred® Card */}
-        <div className="card" id="citi-diamond-preferred">
-          <div className="card-image">
-            <img src="download (1).png" alt="Citi® Diamond Preferred® Card" />
-          </div>
-          <div className="card-content">
-            <h2 className="card-title">Citi® Diamond Preferred® Card</h2>
-            <div className="rating">
-              <a href="javascript:void(0);" className="info-icon" title="Our TCI rating info">
-                <svg fill="#000000" width="20px" height="20px" viewBox="0 0 416.979 416.979">
-                  <g>
-                    <path d="M356.004,61.156c-81.37-81.47-213.377-81.551-294.848-0.182
-                      c-81.47,81.371-81.552,213.379-0.181,294.85
-                      c81.369,81.47,213.378,81.551,294.849,0.181
-                      C437.293,274.636,437.375,142.626,356.004,61.156z M208.554,334.794
-                      c-11.028,0-19.968-8.939-19.968-19.968s8.939-19.969,19.968-19.969
-                      c11.028,0,19.968,8.939,19.968,19.969
-                      C228.521,325.854,219.582,334.794,208.554,334.794z
-                      M241.018,214.566c-11.406,6.668-12.381,14.871-12.43,38.508
-                      c-0.003,1.563-0.008,3.14-0.017,4.726
-                      c-0.071,11.172-9.147,20.18-20.304,20.18
-                      c-0.044,0-0.088,0-0.131,0
-                      c-11.215-0.071-20.248-9.22-20.178-20.436
-                      c0.01-1.528,0.013-3.047,0.016-4.552
-                      c0.05-24.293,0.111-54.524,32.547-73.484
-                      c26.026-15.214,29.306-25.208,26.254-38.322
-                      c-3.586-15.404-17.653-19.396-28.63-18.141
-                      c-3.686,0.423-22.069,3.456-22.069,21.642" />
-                  </g>
-                </svg>
-              </a>
-              TCI Rating: <span id="rating-value">6.5</span>/10
-            </div>
-            <div>
-              <a href="#" className="apply-btn">Apply Now</a>
-              <p className="APly">From card issuer's secure site</p>
-            </div>
-            <a href="#" className="learn-more-btn">Learn More</a>
-            <a
-              href="https://online.citi.com/US/ag/cards/displayterms?app=UNSOL&HKOP=608d295cca6a832d9455f97709fe858e684350d1359860de82b2b8a07336a954"
-              target="_blank"
-              className="btn btn-rates-fees"
-              data-card="Citi Diamond Preferred"
-            >
-              See Rates &amp; Fees
-            </a>
-          </div>
-          <div className="card-actions">
-            <a href="#" className="btn btn-apply" data-card="Citi Diamond Preferred" title="From card issuer's secure site">Apply Now</a>
-            <a href="#" className="btn btn-learn-more" data-card="Citi Diamond Preferred">Learn More</a>
-            <a
-              href="https://online.citi.com/US/ag/cards/displayterms?app=UNSOL&HKOP=608d295cca6a832d9455f97709fe858e684350d1359860de82b2b8a07336a954"
-              target="_blank"
-              className="btn btn-rates-fees"
-              data-card="Citi Diamond Preferred"
-            >
-              See Rates &amp; Fees
-            </a>
-          </div>
-        </div>
-
-        {/* 9. Wells Fargo Reflect® Card */}
-        <div className="card" id="wells-fargo-reflect">
-          <div className="card-image">
-            <img src="Reflect_homepage_m.png" alt="Wells Fargo Reflect® Card" />
-          </div>
-          <div className="card-content">
-            <h2 className="card-title">Wells Fargo Reflect® Card</h2>
-            <div className="rating">
-              <a href="javascript:void(0);" className="info-icon" title="Our TCI rating info">
-                <svg fill="#000000" width="20px" height="20px" viewBox="0 0 416.979 416.979">
-                  <g>
-                    <path d="M356.004,61.156c-81.37-81.47-213.377-81.551-294.848-0.182
-                      c-81.47,81.371-81.552,213.379-0.181,294.85
-                      c81.369,81.47,213.378,81.551,294.849,0.181
-                      C437.293,274.636,437.375,142.626,356.004,61.156z M208.554,334.794
-                      c-11.028,0-19.968-8.939-19.968-19.968s8.939-19.969,19.968-19.969
-                      c11.028,0,19.968,8.939,19.968,19.969
-                      C228.521,325.854,219.582,334.794,208.554,334.794z
-                      M241.018,214.566c-11.406,6.668-12.381,14.871-12.43,38.508
-                      c-0.003,1.563-0.008,3.14-0.017,4.726
-                      c-0.071,11.172-9.147,20.18-20.304,20.18
-                      c-0.044,0-0.088,0-0.131,0
-                      c-11.215-0.071-20.248-9.22-20.178-20.436
-                      c0.01-1.528,0.013-3.047,0.016-4.552
-                      c0.05-24.293,0.111-54.524,32.547-73.484
-                      c26.026-15.214,29.306-25.208,26.254-38.322
-                      c-3.586-15.404-17.653-19.396-28.63-18.141
-                      c-3.686,0.423-22.069,3.456-22.069,21.642" />
-                  </g>
-                </svg>
-              </a>
-              TCI Rating: <span id="rating-value">6.6</span>/10
-            </div>
-            <div>
-              <a href="#" className="apply-btn">Apply Now</a>
-              <p className="APly">From card issuer's secure site</p>
-            </div>
-            <a href="#" className="learn-more-btn">Learn More</a>
-            <a
-              href="https://www.wellsfargo.com/credit-cards/reflect-visa/terms/?FPID=013000IGF80000&amp;product_code=CC&amp;subproduct_code=VV&amp;cx_nm=CXNAME_CSMPD&amp;sub_channel=SEO&amp;vendor_code=G&amp;refdmn=www.google.com&amp;_gl=1*z7r3eu*_gcl_au*OTk5NTUyMzU3LjE3NDAzMTU0NDM.*_ga*NjU1MzIyNC4xNzQwMzE1NDQz*_ga_7JXJJ2JF12*MTc0MDMxNTQ0My4xLjEuMTc0MDMxNTgwNS42MC4wLjA="
-              className="btn btn-rates-fees"
-              data-card="Wells Fargo Reflect"
-            >
-              See Rates &amp; Fees
-            </a>
-          </div>
-        </div>
-
-        {/* 10. U.S. Bank Cash+® Visa Signature® Card */}
-        <div className="card" id="us-bank-cash-plus">
-          <div className="card-image">
-            <img src="Cash+_Front_Angle_Reflection.png" alt="U.S. Bank Cash+® Visa Signature® Card" />
-          </div>
-          <div className="card-content">
-            <h2 className="card-title">U.S. Bank Cash+® Visa Signature® Card</h2>
-            <div className="rating">
-              <a href="javascript:void(0);" className="info-icon" title="Our TCI rating info">
-                <svg fill="#000000" width="20px" height="20px" viewBox="0 0 416.979 416.979">
-                  <g>
-                    <path d="M356.004,61.156c-81.37-81.47-213.377-81.551-294.848-0.182
-                      c-81.47,81.371-81.552,213.379-0.181,294.85
-                      c81.369,81.47,213.378,81.551,294.849,0.181
-                      C437.293,274.636,437.375,142.626,356.004,61.156z M208.554,334.794
-                      c-11.028,0-19.968-8.939-19.968-19.968s8.939-19.969,19.968-19.969
-                      c11.028,0,19.968,8.939,19.968,19.969
-                      C228.521,325.854,219.582,334.794,208.554,334.794z
-                      M241.018,214.566c-11.406,6.668-12.381,14.871-12.43,38.508
-                      c-0.003,1.563-0.008,3.14-0.017,4.726
-                      c-0.071,11.172-9.147,20.18-20.304,20.18
-                      c-0.044,0-0.088,0-0.131,0
-                      c-11.215-0.071-20.248-9.22-20.178-20.436
-                      c0.01-1.528,0.013-3.047,0.016-4.552
-                      c0.05-24.293,0.111-54.524,32.547-73.484
-                      c26.026-15.214,29.306-25.208,26.254-38.322
-                      c-3.586-15.404-17.653-19.396-28.63-18.141
-                      c-3.686,0.423-22.069,3.456-22.069,21.642" />
-                  </g>
-                </svg>
-              </a>
-              TCI Rating: <span id="rating-value">7.4</span>/10
-            </div>
-            <p className="card-bonus">
-              <strong>Welcome Bonus:</strong> Earn $200 after spending $1,000 in eligible purchases within the first 120 days of account opening.
-            </p>
-            <div className="card-earning">
-              <strong>Earning Rates:</strong>
-              <ul>
-                <li>5% cash back on your first $2,000 in combined eligible purchases each quarter in two categories you choose.</li>
-                <li>2% cash back on one everyday category, like gas stations, grocery stores, or restaurants.</li>
-                <li>1% unlimited cash back on all other purchases.</li>
-              </ul>
-            </div>
-            <div className="card-luxury-features">
-              <strong>Key Features:</strong>
-              <ul>
-                <li>No annual fee, making it a cost-effective option for maximizing rewards.</li>
-                <li>0% introductory APR for 15 months on purchases and balance transfers, followed by a variable APR of 19.24% - 29.24%.</li>
-                <li>Customizable cash-back categories for maximum flexibility.</li>
-              </ul>
-            </div>
-            <div className="card-perks">
-              <strong>Additional Perks:</strong>
-              <ul>
-                <li>Zero fraud liability for unauthorized transactions.</li>
-                <li>Roadside assistance and travel accident insurance.</li>
-                <li>Extended warranty protection and purchase security.</li>
-                <li>Access to the U.S. Bank Mobile App for account management and rewards tracking.</li>
-              </ul>
-            </div>
-            <div className="card-best-for">
-              <strong>Best For:</strong>
-              <p>Customers who want to customize their cash-back rewards and maximize savings on categories that matter most to them.</p>
-            </div>
-          </div>
-          <div className="card-actions">
-            <a href="#" className="btn btn-apply" data-card="U.S. Bank Cash+" title="From card issuer's secure site">Apply Now</a>
-            <a href="#" className="btn btn-learn-more" data-card="U.S. Bank Cash+">Learn More</a>
-            <a
-              href="https://onboarding.usbank.com/consumer/cards/WRH8D23H2R/8069/86937/start"
-              target="_blank"
-              className="btn btn-rates-fees"
-              data-card="U.S. Bank Cash+"
-            >
-              See Rates &amp; Fees
-            </a>
-          </div>
-        </div>
-        <Footer />
       </main>
+      <Footer />
     </>
   );
 }

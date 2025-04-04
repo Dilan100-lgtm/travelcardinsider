@@ -1,236 +1,504 @@
-/* General Reset */
-.reset {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Main Wrapper */
-.mainWrapper {
-  padding: 20px;
-}
+/* Styles specific to the ZeroAprIndexPage component */
 
 /* Hero Section */
 .hero {
-  background: #11118f url('/hero_background.jpg') center/cover no-repeat;
+  /* Using a fallback color + image */
+  background-color: #11118f;
+  /* !!! UPDATE path to be relative to /public or use CSS variables !!! */
+  /* background-image: url('/images/hero_background.jpg'); */
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   color: #fff;
-  padding: 80px 20px;
+  padding: clamp(40px, 10vw, 80px) 20px; /* Responsive padding */
   text-align: center;
-  position: relative;
+  position: relative; /* If needed for pseudo-elements */
 }
 
-.heroContainer {
+.container { /* General purpose container, might be global */
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
-.heroTitle {
-  font-size: 2.5rem;
+.heroTitle { /* Renamed for clarity */
+  font-size: clamp(2rem, 6vw, 2.8rem); /* Responsive font size */
   font-weight: bold;
   margin-bottom: 20px;
   line-height: 1.2;
-  color: white;
+  color: white; /* Ensure contrast */
 }
 
-.heroDescription {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-  color: #f4f4f4;
+.heroDescription { /* Renamed */
+  font-size: clamp(1rem, 4vw, 1.2rem); /* Responsive */
+  margin: 0 auto 30px auto; /* Center block */
+  color: #f0f0f0; /* Slightly off-white */
+  max-width: 70ch; /* Improve readability */
+  line-height: 1.7;
+}
+.disclaimer { /* Renamed */
+  font-size: 0.85rem;
+  color: #ccc; /* Lighter color */
+  margin-top: 30px; /* Space above disclaimer */
+  line-height: 1.5;
+  max-width: 60ch;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.disclaimer {
-  font-size: 0.9rem;
-  color: white;
-  margin-bottom: 1rem;
-  line-height: 1.4;
-}
-
-.heroCta {
+.heroCta { /* Renamed */
   display: flex;
   justify-content: center;
   gap: 15px;
+  margin-bottom: 30px; /* Space below CTA */
 }
 
+/* General Button - could be global or duplicated if needed */
 .ctaButton {
   padding: 15px 25px;
   font-size: 1rem;
   border: none;
   border-radius: 5px;
   text-decoration: none;
-  transition: background 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.1s ease;
   font-weight: bold;
+  cursor: pointer;
+  line-height: 1.4;
+}
+.ctaButton:active {
+  transform: scale(0.98);
+}
+.ctaButton:focus-visible {
+  outline: 3px solid #0d6efd;
+  outline-offset: 1px;
 }
 
 .ctaPrimary {
-  background: #1add14;
+  composes: ctaButton; /* Inherit base button styles */
+  background: #15a310; /* Check contrast */
   color: #fff;
 }
-
 .ctaPrimary:hover {
-  background: #0e4f1f;
+  background: #117d0d;
 }
 
-.ctaSecondary {
-  background: #007bff;
+.ctaSecondary { /* If used */
+  composes: ctaButton;
+  background: #007bff; /* Check contrast */
   color: #fff;
 }
-
 .ctaSecondary:hover {
   background: #0056b3;
 }
 
-.heroImage img {
-  max-width: 100%;
-  height: auto;
+.heroImage { /* Renamed */
   margin-top: 20px;
+}
+.heroImage img { /* Style the Next Image component if needed */
+  max-width: min(600px, 100%); /* Limit hero image size */
+  height: auto;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  display: block; /* Prevent extra space */
+  margin: 0 auto; /* Center */
 }
 
-/* Card Table Section */
-.cardTableSection {
-  margin-top: 40px;
-}
 
-.tableResponsive {
-  overflow-x: auto;
-}
-
-.cardTable {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 20px 0;
-}
-
-.cardTable th,
-.cardTable td {
-  padding: 15px;
-  text-align: left;
-  border: 1px solid #ddd;
-}
-
-.cardTable th {
-  background-color: #f4f4f4;
-  font-weight: bold;
-}
-
-.cardTable tbody tr:hover {
-  background-color: #f9f9f9;
-}
-
-/* Card Component */
+/* Card Section Styles */
 .card {
   display: flex;
   flex-direction: column;
-  background: #dbe2f7;
+  background: #ffffff; /* Changed background for better contrast potentially */
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Softer shadow */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  margin: 20px 0;
+  margin: 30px 0; /* Increased margin */
 }
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
-.cardImage {
+.cardImage { /* Renamed */
   width: 100%;
-  height: 200px;
+  /* Removed fixed height, let content decide or use aspect-ratio */
+  /* height: 200px; */
   overflow: hidden;
-  background: #f4f4f4;
+  background: #f4f4f4; /* Placeholder bg */
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1rem; /* Padding around image */
+  box-sizing: border-box;
 }
 
-.cardImage img {
+.cardImage img { /* Styling for Next Image component */
+  display: block;
   max-width: 100%;
-  max-height: 100%;
-  object-fit: cover;
+  max-height: 180px; /* Limit image height */
+  width: auto;
+  height: auto;
+  object-fit: contain; /* Use contain for card logos */
 }
 
-.cardContent {
-  padding: 20px;
+.cardContent { /* Renamed */
+  padding: 25px; /* Consistent padding */
+  flex-grow: 1; /* Allow content to grow */
+  display: flex;
+  flex-direction: column;
 }
 
-.cardTitle {
-  font-size: 1.5rem;
-  color: #77f351;
-  margin-bottom: 10px;
+.cardTitle { /* Renamed */
+  font-size: 1.4rem; /* Adjusted size */
+  color: #1a1a1a; /* Darker color */
+  margin: 0 0 15px 0; /* Adjusted margin */
+  line-height: 1.3;
 }
 
-.cardBonus {
-  font-size: 1.1rem;
+.rating { /* Style for rating container */
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.ratingValue { /* Class for the number */
+  font-weight: bold;
+  color: #150363; /* Original color */
+}
+
+.infoIcon { /* Style for info button */
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  display: inline-flex; /* Align icon */
+  vertical-align: middle;
+}
+.infoIcon svg {
+  width: 16px; /* Consistent size */
+  height: 16px;
+  fill: #555; /* Adjust color */
+}
+
+.cardBonus { /* Renamed */
+  font-size: 1rem;
   margin-bottom: 15px;
   color: #333;
+  line-height: 1.5;
 }
-
 .cardBonus em {
   font-size: 0.9rem;
   color: #555;
   display: block;
   margin-top: 5px;
+  font-style: normal; /* Reset emphasis italics if not desired */
 }
 
-.cardEarning,
-.cardRedemption,
-.cardPerks,
-.cardBestFor {
-  margin-top: 15px;
-  color: #000;
+.cardEarning, /* Renamed */
+.cardRedemption, /* Renamed */
+.cardPerks, /* Renamed */
+.cardBestFor { /* Renamed */
+  margin-top: 20px; /* Increased space */
+  color: #333;
+  font-size: 0.95rem;
 }
 
 .cardEarning ul,
 .cardRedemption ul,
 .cardPerks ul {
-  margin-left: 20px;
+  margin: 10px 0 0 20px; /* Top margin and indent */
+  padding: 0;
   list-style: disc;
 }
-
-.cardActions {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.cardEarning li,
+.cardRedemption li,
+.cardPerks li {
+  margin-bottom: 8px; /* Space between list items */
+  line-height: 1.5;
 }
 
+
+.cardEarning strong,
+.cardRedemption strong,
+.cardPerks strong,
+.cardBestFor strong {
+  font-size: 1.1rem; /* Slightly larger */
+  color: #1a1a1a; /* Darker */
+  display: block; /* Ensure block */
+  margin-bottom: 8px; /* Space below strong tag */
+}
+
+.cardBestFor p {
+  margin: 0; /* Reset margin */
+  font-size: 1rem; /* Adjusted size */
+  color: #444;
+  line-height: 1.6;
+}
+
+/* Card Buttons Section */
+.cardActions { /* Renamed */
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping */
+  justify-content: center; /* Center buttons */
+  gap: 10px; /* Space between buttons */
+  padding: 20px 25px; /* Consistent padding */
+  background: #f8f9fa; /* Light background */
+  border-top: 1px solid #e9ecef;
+  margin-top: auto; /* Push actions to bottom */
+}
+
+/* Base Button style within card actions */
 .btn {
-  display: inline-block;
   padding: 10px 20px;
-  font-size: 1rem;
-  text-align: center;
+  font-size: 0.9rem;
+  border: none;
   border-radius: 5px;
   text-decoration: none;
-  transition: background 0.3s ease;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  font-weight: 600;
+  flex-grow: 1; /* Allow buttons to grow */
+  min-width: 120px; /* Minimum width */
+}
+.btn:active {
+  transform: scale(0.98);
+}
+.btn:focus-visible {
+  outline: 3px solid #0d6efd;
+  outline-offset: 1px;
 }
 
-.btnApply {
-  background: #1add14;
+
+.btnApply { /* Renamed */
+  composes: btn;
+  background-color: #28a745; /* Check contrast */
   color: #fff;
 }
-
 .btnApply:hover {
-  background: #0e4f1f;
+  background-color: #218838;
 }
 
-.btnLearnMore {
-  background: #007bff;
+.btnLearnMore { /* Renamed */
+  composes: btn;
+  background-color: #007BFF; /* Check contrast */
   color: #fff;
 }
-
 .btnLearnMore:hover {
-  background: #0056b3;
+  background-color: #0056b3;
 }
 
-.btnRatesFees {
-  background: #f4f4f4;
+.btnRatesFees { /* Renamed */
+  composes: btn;
+  background-color: #6c757d; /* Grey - Check contrast */
+  color: #fff; /* Contrast OK */
+}
+.btnRatesFees:hover {
+  background-color: #5a6268;
+}
+
+/* Card Section Responsive */
+@media (max-width: 768px) {
+  .card {
+      margin: 20px 0; /* Adjust margin */
+  }
+  .cardActions {
+      flex-direction: column; /* Stack buttons */
+      gap: 10px;
+  }
+  .btn { /* Buttons take full width when stacked */
+      width: 100%;
+      padding: 12px;
+  }
+}
+
+
+/* Table Section */
+.cardTableSection { /* Renamed */
+  margin: 40px 0; /* Add vertical margin */
+}
+
+.tableResponsive { /* Renamed */
+  width: 100%;
+  overflow-x: auto; /* Enable horizontal scroll on small screens */
+  -webkit-overflow-scrolling: touch; /* Smoother scrolling on iOS */
+}
+
+.cardTable { /* Renamed */
+  width: 100%; /* Full width within responsive container */
+  border-collapse: collapse;
+  font-size: 1rem; /* Adjusted base size */
+  font-family: system-ui, sans-serif;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   color: #333;
+  /* Removed min-width, handled by responsive container */
+}
+
+.cardTable thead tr {
+  background-color: #007bff; /* Use primary blue */
+  color: #ffffff; /* White text - check contrast */
+  text-align: left;
+  font-weight: bold;
+  font-size: 1.05rem; /* Slightly larger */
+}
+
+.cardTable th,
+.cardTable td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  vertical-align: middle; /* Align content vertically */
+}
+
+.cardTable tbody tr {
+  border-bottom: 1px solid #ddd;
+  background-color: #fff; /* Default white */
+}
+
+.cardTable tbody tr:nth-of-type(even) {
+  background-color: #f8f9fa; /* Light grey for even rows */
+}
+
+.cardTable tbody tr:last-of-type {
+  border-bottom: 2px solid #007bff; /* Match header color */
+}
+
+.cardTable tbody tr:hover {
+  background-color: #f1f5f9; /* Subtle hover */
+}
+
+.cardTable tbody td[data-label="Card Name & Rating"] { /* Target specific cell if needed */
+  font-weight: bold;
+  font-size: 1.05rem;
+  line-height: 1.4;
+  /* Removed flex, structure within cell */
+}
+.cardTable .rating { /* Rating specific styles in table */
+  font-size: 0.85rem;
+  font-weight: normal;
+  margin-top: 5px;
+}
+.cardTable .applyBtn { /* Renamed */
+  display: inline-block; /* Changed display */
+  background-color: #007bff;
+  color: white;
+  padding: 8px 12px; /* Smaller padding */
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  text-align: center;
+  font-size: 0.9rem; /* Smaller font */
+  margin-top: 8px;
+}
+.applyBtn:hover {
+  background-color: #0056b3;
+}
+
+.aplyText { /* Renamed */
+  display: block;
+  font-size: 0.7rem;
+  text-align: center;
+  color: #555; /* Check contrast */
+  font-weight: normal;
+  margin-top: 3px;
+}
+
+.cardTable .learnMoreBtn, /* Renamed */
+.cardTable .rateFeesBtn { /* Renamed */
+  display: block;
+  margin-top: 8px;
+  color: #007bff; /* Link color */
+  text-align: left; /* Align left below name */
+  text-decoration: none;
+  padding: 5px 0; /* Vertical padding only */
+  font-size: 0.85rem;
+  font-weight: normal;
+}
+.cardTable .learnMoreBtn:hover,
+.cardTable .rateFeesBtn:hover {
+  text-decoration: underline;
+  color: #0056b3;
+}
+
+/* Rewards Calculator (If used) */
+.rewardsCalculator { /* Renamed */
+  max-width: 800px;
+  margin: 40px auto; /* Consistent margin */
+  background: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for elements within calculator IF used */
+.calculatorForm { /* Renamed */
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+/* Make calculator styles more specific */
+.rewardsCalculator label {
+  font-weight: bold;
+  margin-bottom: 5px; /* Space below label */
+  display: block;
+}
+
+.rewardsCalculator input[type="text"], /* Example */
+.rewardsCalculator input[type="number"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%; /* Full width */
+}
+
+.rewardsCalculator button[type="submit"] { /* Specific button */
+  padding: 12px 20px;
+  background: #28a745; /* Green button */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem; /* Adjusted size */
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+.rewardsCalculator button[type="submit"]:hover {
+  background: #218838;
+}
+
+/* Calculator results table - make specific */
+.calculatorResultsTable { /* Renamed */
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.calculatorResultsTable th,
+.calculatorResultsTable td {
+  text-align: left;
+  padding: 10px;
   border: 1px solid #ddd;
 }
 
-.btnRatesFees:hover {
-  background: #eaeaea;
+.calculatorResultsTable th {
+  background-color: #f4f4f4; /* Check contrast */
+  color: #333;
+}
+
+.calculatorResultsTable tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Add media queries for table if needed */
+@media (max-width: 600px) {
+  /* Potentially adapt table display for very small screens */
 }
