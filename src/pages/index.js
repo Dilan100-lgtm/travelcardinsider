@@ -422,7 +422,7 @@ export default function HomePage() {
                 alt: "Hidden Perks: Secret Travel Card Benefits",
                 title: "Secret Travel Card Benefits",
                 desc: "Little-known perks you might already have but never used.",
-                link: "/review/Hidden-Perks-Secret-Travel-Card-Benefits-You-Probably-Didn’t-Know-About-in-2025",
+                link: "/review/Hidden-Perks-Secret-Travel-Card-Benefits-You-Probably-Didnt-Know-About-in-2025",
               },
               {
                 img: "/AdobeStock_446734479.webp",
