@@ -29,7 +29,7 @@
       /* Dark overlay gradient for text contrast */
       linear-gradient(rgba(13, 27, 62, 0.75), rgba(13, 27, 62, 0.85)),
       /* *** VERIFY this path and file format (jpg/webp) *** */
-      url('/images/AdobeStock_446734479.webp');
+      url('/AdobeStock_446734479.webp');
   background-size: cover; /* Cover the entire section */
   background-position: center center; /* Center the image */
   background-repeat: no-repeat;
