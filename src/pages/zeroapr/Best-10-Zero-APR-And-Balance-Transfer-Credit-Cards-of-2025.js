@@ -237,7 +237,7 @@ const schemaData = {
             "@id": pageUrl, // Use the page URL as the ID
             "url": pageUrl,
             "name": "Premier 0% APR & Balance Transfer Credit Cards 2025 | TravelCardInsider",
-            "headline": "Unlock 0% APR & Balance Transfer Savings in 2025",
+            "headline": "Discover the Best 10 0% APR And Balance Transfer Credit Cards of 2025",
             "description": "Discover expertly curated 0% APR and balance transfer credit cards for 2025. Compare interest-free offers, rewards, and benefits to save money.",
             "inLanguage": "en-US",
             "isPartOf": { "@id": `${siteUrl}/#website` },
@@ -313,16 +313,19 @@ export default function ZeroAprPremiumPage() {
                  <meta name="description" content="Discover expertly curated 0% APR and balance transfer credit cards for 2025. Compare interest-free offers, rewards, and benefits to save money."/>
                  <link rel="canonical" href={pageUrl}/>
                  {/* Add other relevant meta tags (OG, Twitter) */}
-                  <meta property="og:title" content="Premier 0% APR & Balance Transfer Cards 2025 | TravelCardInsider" />
+                  <meta property="og:title" content="Discover the Best 10 0% APR And Balance Transfer Credit Cards of 2025 | TravelCardInsider" />
                   <meta property="og:description" content="Discover expertly curated 0% APR and balance transfer credit cards for 2025. Compare interest-free offers, rewards, and benefits to save money." />
                   <meta property="og:url" content={pageUrl} />
                   <meta property="og:image" content={heroImageUrl} /> {/* *** Use actual hero image *** */}
                   <meta property="og:type" content="website" />
                   {/* Add Twitter card meta tags */}
                  {/* Add Favicons if not global */}
-                  <link rel="preconnect" href="https://fonts.googleapis.com" />
-                  <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-                  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+                  {/* Preload critical fonts */}
+        <link rel="preload" href="/fonts/Roboto_Condensed-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/Roboto_Condensed-bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/playfair-display-regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/playfair-display-bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+
                  <script
                      type="application/ld+json"
                      dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
