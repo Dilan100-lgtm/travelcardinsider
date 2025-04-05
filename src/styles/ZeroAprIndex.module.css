@@ -23,15 +23,12 @@
   text-align: center;
   position: relative;
   overflow: hidden;
-
-  /* --- Background Image --- */
   background-image:
-      /* Dark overlay gradient for text contrast */
       linear-gradient(rgba(13, 27, 62, 0.75), rgba(13, 27, 62, 0.85)),
       /* *** VERIFY this path and file format (jpg/webp) *** */
       url('/AdobeStock_446734479.webp');
-  background-size: cover; /* Cover the entire section */
-  background-position: center center; /* Center the image */
+  background-size: cover;
+  background-position: center center;
   background-repeat: no-repeat;
 }
 
@@ -49,7 +46,7 @@
   line-height: 1.2;
   margin-bottom: 1rem;
   color: #ffffff;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.3); /* Optional readability aid */
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
 }
 
 .heroDescription {
@@ -59,7 +56,7 @@
   max-width: 65ch;
   color: #f0f0f0;
   opacity: 0.95;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Optional readability aid */
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
 }
 
 .heroCta {
@@ -75,7 +72,7 @@
   margin-right: auto;
   line-height: 1.5;
   opacity: 0.9;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Optional readability aid */
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
 }
 
 /* --- General CTA Button Styles --- */
@@ -100,7 +97,7 @@
 }
 
 .ctaPrimary {
-  background-color: #198754; /* Bootstrap Green */
+  background-color: #198754;
   color: #ffffff;
   box-shadow: 0 4px 10px rgba(25, 135, 84, 0.3);
 }
@@ -112,7 +109,7 @@
 
 .ctaSecondary {
   background-color: transparent;
-  color: #0d6efd; /* Bootstrap Blue */
+  color: #0d6efd;
   border: 1px solid #dee2e6;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
@@ -123,10 +120,10 @@
 }
 
 .ctaButtonSmall { /* For table button */
-   padding: 8px 16px; /* Adjusted padding */
-   font-size: 0.9rem; /* Adjusted font size */
+   padding: 8px 16px;
+   font-size: 0.9rem;
    border-radius: 5px;
-   display: inline-block; /* Ensure it behaves well in flex */
+   display: inline-block;
    width: auto;
    min-width: 100px;
 }
@@ -157,7 +154,7 @@
 .comparisonTable {
   width: 100%;
   min-width: 900px;
-  border-collapse: collapse; /* Use collapse for standard table behavior */
+  border-collapse: collapse;
   font-size: 0.9rem;
 }
 
@@ -174,7 +171,7 @@
   text-transform: uppercase;
   font-size: 0.75rem;
   letter-spacing: 0.5px;
-  vertical-align: middle; /* Align header text middle */
+  vertical-align: middle;
 }
 
 .comparisonTable tbody tr {
@@ -187,29 +184,23 @@
   background-color: #f1f3f5;
 }
 
-/* CORRECTED Table Cell Styles */
+/* Table Cell Styles (Desktop) */
 .comparisonTable td {
   padding: 1rem 1.2rem;
-  vertical-align: middle; /* Vertically center content */
+  vertical-align: middle;
   line-height: 1.5;
-  text-align: left; /* Default to left align */
-  border: none; /* Remove internal borders if using collapse + row borders */
-  /* display: flex; */ /* !!! REMOVED - Let it behave as table-cell !!! */
+  text-align: left;
+  border: none;
 }
 
-/* Center text alignment specifically for middle columns */
 .comparisonTable td:not([data-label="Credit Card"]):not([data-label="Apply / Details"]) {
   text-align: center;
 }
-
-/* Keep styles for the first cell (Card Name) */
 .comparisonTable td[data-label="Credit Card"] {
   text-align: left;
 }
-
-/* Align the content (the wrapper div) in the last cell */
 .comparisonTable td[data-label="Apply / Details"] {
-   text-align: center; /* This will center the inline-flex wrapper */
+   text-align: center;
 }
 
 /* Table Card Name & Rating */
@@ -227,17 +218,43 @@
   align-items: center;
   gap: 4px;
 }
-.infoIcon {
+.infoIcon { /* Style for the SVG icon */
   display: inline-block;
   fill: currentColor;
   opacity: 0.7;
   width: 13px;
   height: 13px;
+  vertical-align: middle; /* Align icon better */
 }
+
+/* Style for the button WRAPPING the icon */
+.infoIconButton {
+    background: none;
+    border: none;
+    padding: 2px; /* Minimal padding */
+    margin: 0 3px 0 0;
+    cursor: pointer;
+    line-height: 0; /* Prevent extra height */
+    border-radius: 3px;
+    vertical-align: middle; /* Align button with text */
+}
+.infoIconButton:focus-visible {
+    outline: 2px solid #0d6efd;
+    outline-offset: 1px;
+    background-color: rgba(13, 110, 253, 0.1);
+}
+.infoIconButton .infoIcon { /* Target SVG inside button */
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+.infoIconButton:hover .infoIcon {
+    opacity: 1;
+}
+
 
 /* Table Action Group (Wrapper INSIDE the last TD) */
 .tableActionGroup {
-  display: inline-flex; /* Use inline-flex to allow text-align on parent TD */
+  display: inline-flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -271,6 +288,7 @@
 }
 
 /* --- Detailed Cards Section --- */
+/* ... (Keep detailed card styles: .detailedCardsSection, .cardsGrid, .detailedCard, etc.) ... */
 .detailedCardsSection {
   padding: clamp(1.5rem, 4vw, 3rem) 1.5rem;
   background-color: #ffffff;
@@ -344,11 +362,26 @@
   margin: 0 0 0.5rem 0;
   font-weight: 700;
 }
-.detailedCard .rating {
+.detailedCard .rating { /* Rating within detailed card */
    font-size: 0.9rem; color: #495057;
+   display: flex; /* Align icon and text */
+   align-items: center;
+   gap: 4px;
+}
+@media (min-width: 600px) {
+  .detailedCard .rating { justify-content: flex-start; } /* Align left on desktop */
 }
 .detailedCard .rating strong {
    color: #0d1b3e;
+}
+/* Use the same button style for consistency */
+.detailedCard .infoIconButton {
+   width: 15px; /* Adjust size if needed */
+   height: 15px;
+}
+.detailedCard .infoIconButton .infoIcon {
+    width: 15px;
+    height: 15px;
 }
 
 .cardBody {
@@ -433,63 +466,109 @@
   font-size: 0.8rem;
 }
 
+/* --- Rating Tooltip Styles --- */
+.ratingTooltip {
+  position: absolute;
+  background-color: #ffffff;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  padding: 10px 15px;
+  width: 250px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  z-index: 1050;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #343a40;
+  pointer-events: auto;
+}
+
+.ratingTooltip strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #212529;
+  font-weight: 700;
+}
+
+.ratingTooltip .tooltipIntro { /* Added class for paragraph */
+  margin: 0.5rem 0 0.3rem 0;
+  font-weight: 500;
+}
+
+.ratingTooltip .tooltipList { /* Added class for list */
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin: 0;
+}
+
+.ratingTooltip .tooltipList li {
+  margin-bottom: 0.25rem;
+}
+
+
 /* --- Responsive Adjustments --- */
 @media (max-width: 768px) {
   .sectionTitle { margin-bottom: 2rem; }
-  .comparisonTable { min-width: 100%; }
+  .comparisonTable { min-width: 100%; } /* Allow table to use full width */
   .comparisonTable thead { display: none; }
 
   .comparisonTable tr {
      display: block;
-     margin-bottom: 1rem;
-     border-bottom: 2px solid #0d6efd;
-     padding-bottom: 1rem;
+     margin-bottom: 1.5rem; /* More space between stacked rows */
+     border-bottom: none; /* Remove default bottom border */
+     padding: 0; /* Remove padding if any */
      background-color: #fff !important;
-     border: 1px solid #dee2e6; /* Add border for separation */
-     border-radius: 6px; /* Slightly round corners */
+     border: 1px solid #dee2e6;
+     border-radius: 8px; /* Round corners */
      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+     overflow: hidden; /* Clip content */
   }
-   .comparisonTable tbody tr:last-child { border-bottom: 2px solid #0d6efd; }
-   .comparisonTable tbody tr:hover { background-color: #fff !important; } /* Prevent hover effect */
+   .comparisonTable tbody tr:last-child { border-bottom: none; } /* Remove thick border */
+   .comparisonTable tbody tr:hover { background-color: #fff !important; }
 
   .comparisonTable td {
      display: block;
-     text-align: right !important; /* Override text-align for stacked view */
+     text-align: right !important;
      border: none;
-     border-bottom: 1px dashed #eee;
+     border-bottom: 1px solid #e9ecef; /* Separator line inside */
      padding: 0.8rem 1rem;
-     padding-left: 45%; /* Adjust space for label */
+     padding-left: 45%;
      position: relative;
-     vertical-align: initial; /* Reset */
+     min-height: 40px; /* Ensure minimum height */
+     vertical-align: initial;
   }
    .comparisonTable td:last-child { border-bottom: none; }
   .comparisonTable td::before {
      content: attr(data-label);
      position: absolute;
      left: 1rem;
-     width: calc(45% - 1.5rem); /* Adjust width based on padding */
+     top: 50%; /* Center label vertically */
+     transform: translateY(-50%);
+     width: calc(45% - 1.5rem);
      padding-right: 10px;
      white-space: nowrap;
-     text-align: left !important; /* Ensure label is left aligned */
-     font-weight: bold;
-     color: #343a40;
-     font-size: 0.8rem;
+     text-align: left !important;
+     font-weight: 700; /* Bolder label */
+     color: #495057; /* Darker grey label */
+     font-size: 0.75rem; /* Slightly smaller label */
      text-transform: uppercase;
+     letter-spacing: 0.5px;
   }
 
+   /* Adjust Action Cell in Stacked View */
    .comparisonTable td[data-label="Apply / Details"] {
-       padding-left: 1rem;
+       padding: 1rem; /* More padding */
+       background-color: #f8f9fa; /* Slight background */
    }
    .comparisonTable td[data-label="Apply / Details"]::before {
        display: none;
    }
    .comparisonTable td[data-label="Apply / Details"] .tableActionGroup {
-       align-items: flex-end; /* Align right */
-       display: flex; /* Ensure flex is applied */
+       align-items: center; /* Center button/links */
+       width: 100%;
    }
 
 
-   .cardsGrid { gap: 2rem; }
+   .cardsGrid { gap: 1.5rem; } /* Reduce gap slightly */
    .detailedCard { border-radius: 8px; }
    .cardHeader, .cardBody, .cardActions { padding: 1.2rem; }
 }
@@ -499,16 +578,16 @@
    .heroTitle { font-size: clamp(1.8rem, 7vw, 2.5rem); }
    .heroDescription { font-size: 0.95rem; }
 
+   /* Refine stacked table labels */
   .comparisonTable td { padding-left: 1rem; text-align: left !important; }
-  .comparisonTable td::before { position: static; display: block; font-weight: bold; margin-bottom: 5px; text-align: left !important; width: auto; white-space: normal;}
+  .comparisonTable td::before { position: static; display: block; font-weight: bold; margin-bottom: 6px; text-align: left !important; width: auto; white-space: normal; transform: none; top: auto; left: auto; }
   .comparisonTable td[data-label="Apply / Details"] .tableActionGroup {
-      align-items: flex-start; /* Align left */
+      align-items: center; /* Center actions */
   }
 
-
-  .cardHeader { padding: 1rem; flex-direction: column; text-align: center; }
-  .cardImageContainer { width: 150px; margin: 0 auto 1rem auto; }
-  .cardTitleGroup { text-align: center; }
+  /* Refine detailed cards for mobile */
+  .cardHeader { padding: 1rem; }
+  .cardImageContainer { width: 150px; }
   .cardTitle { font-size: 1.2rem; }
   .cardBody { padding: 1rem; }
   .cardFeatureBlock { margin-bottom: 1.5rem; }
@@ -517,4 +596,7 @@
   .cardActions { padding: 1rem; }
   .cardActions .ctaButton { font-size: 0.9rem; padding: 10px 15px; flex-basis: 100%; max-width: none; }
   .ctaSubtext { font-size: 0.65rem; }
+
+  /* Tooltip adjustments if needed */
+  .ratingTooltip { width: 90%; max-width: 280px; }
 }
