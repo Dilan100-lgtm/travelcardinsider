@@ -131,88 +131,60 @@
 }
 
 
+/* styles/ZeroAprIndex.module.css */
+
+/* ... (keep all styles above the media queries exactly as they are) ... */
+
+
 /* --- Responsive Adjustments --- */
 @media (max-width: 768px) {
   .sectionTitle { margin-bottom: 2rem; }
-  .comparisonTable { min-width: 100%; }
-  .comparisonTable thead { display: none; }
+  /* Keep the table layout, don't stack */
+  .comparisonTable { min-width: 900px; } /* Keep min-width to force scroll */
 
-  .comparisonTable tr {
-     display: block;
-     margin-bottom: 1rem;
-     border-bottom: none;
-     padding: 0;
-     background-color: #fff !important;
-     border: 1px solid #dee2e6;
-     border-radius: 8px;
-     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-     overflow: hidden;
-  }
-   .comparisonTable tbody tr:last-child { border-bottom: none; }
-   .comparisonTable tbody tr:hover { background-color: #fff !important; }
+  /* REMOVED stacking rules for thead, tr, td, td::before */
 
-  /* CORRECTED Mobile Table Cell */
+  /* Add styles for better horizontal scrolling */
+  .comparisonTable th,
   .comparisonTable td {
-     display: block;
-     text-align: right !important;
-     border: none;
-     border-bottom: 1px solid #e9ecef; /* Use solid */
-     padding: 0.8rem 1rem;
-     padding-left: 45%;
-     position: relative;
-     min-height: 44px;
-     vertical-align: initial;
-  }
-   .comparisonTable td:last-child { border-bottom: none; }
-
-   /* CORRECTED Mobile Table Label */
-  .comparisonTable td::before {
-     content: attr(data-label);
-     position: absolute;
-     left: 1rem;
-     top: 0;
-     bottom: 0;
-     display: flex;
-     align-items: center;
-     width: calc(45% - 1.5rem);
-     padding-right: 10px;
-     white-space: nowrap;
-     overflow: hidden;
-     text-overflow: ellipsis;
-     text-align: left !important;
-     font-weight: 700;
-     color: #495057;
-     font-size: 0.75rem;
-     text-transform: uppercase;
-     letter-spacing: 0.5px;
+      white-space: nowrap; /* Prevent text wrapping */
+      padding: 0.7rem 0.9rem; /* Slightly reduce padding on mobile */
+      font-size: 0.85rem; /* Slightly smaller font on mobile table */
   }
 
+  /* Optional: Set minimum widths for key columns */
+  .comparisonTable th:first-child,
+  .comparisonTable td[data-label="Credit Card"] {
+      min-width: 170px; /* Ensure card name has space */
+      /* For Sticky Column (Advanced - requires careful testing & possibly JS) */
+      /* position: sticky;
+      left: 0;
+      z-index: 1; */
+      /* background-color: #ffffff; */ /* Need background for sticky */
+  }
+   .comparisonTable th:last-child,
    .comparisonTable td[data-label="Apply / Details"] {
-       padding-left: 1rem;
+      min-width: 130px; /* Ensure action buttons fit well */
    }
-   .comparisonTable td[data-label="Apply / Details"]::before {
-       display: none;
+   .comparisonTable th:nth-child(2), /* Intro APR */
+   .comparisonTable td[data-label="Intro APR Offer"] {
+      min-width: 110px;
    }
-   .comparisonTable td[data-label="Apply / Details"] .tableActionGroup {
-       display: flex;
-       justify-content: flex-end;
-       align-items: center;
-       flex-wrap: wrap;
-       gap: 5px 10px;
-       padding: 5px 0;
+   .comparisonTable th:nth-child(3), /* BT Fee */
+   .comparisonTable td[data-label="BT Fee"] {
+      min-width: 130px;
    }
-    .comparisonTable td[data-label="Apply / Details"] .ctaButtonSmall {
-        flex-grow: 1;
-        min-width: 90px;
-    }
-    .comparisonTable td[data-label="Apply / Details"] .detailsLink,
-    .comparisonTable td[data-label="Apply / Details"] .ratesFeesLink {
-        flex-basis: auto;
-        margin: 0;
-        padding: 0 5px;
-        text-align: right;
-    }
+   .comparisonTable th:nth-child(4), /* Rewards */
+   .comparisonTable td[data-label="Key Reward/Feature"] {
+      min-width: 160px;
+   }
+    .comparisonTable th:nth-child(5), /* Annual Fee */
+   .comparisonTable td[data-label="Annual Fee"] {
+      min-width: 80px;
+      text-align: center; /* Center annual fee */
+   }
 
+   /* --- Keep other mobile styles for non-table elements --- */
    .cardsGrid { gap: 1.5rem; }
    .detailedCard { border-radius: 8px; }
    .cardHeader, .cardBody, .cardActions { padding: 1.2rem; }
@@ -223,26 +195,32 @@
    .heroTitle { font-size: clamp(1.8rem, 7vw, 2.5rem); }
    .heroDescription { font-size: 0.95rem; }
 
-  /* Simplify label further for very small screens */
-  .comparisonTable td { padding-left: 1rem; text-align: left !important; }
-  .comparisonTable td::before { position: static; display: block; font-weight: bold; margin-bottom: 6px; text-align: left !important; width: auto; white-space: normal;}
-  .comparisonTable td[data-label="Apply / Details"] .tableActionGroup {
-      align-items: flex-start; /* Align left */
-      justify-content: flex-start;
-  }
+   /* Further adjust table for very small screens if needed */
+   .comparisonTable { min-width: 800px; } /* Adjust min-width if needed */
+   .comparisonTable th,
+   .comparisonTable td {
+       padding: 0.6rem 0.8rem; /* Further reduce padding */
+       font-size: 0.8rem; /* Smaller font */
+   }
+    /* Adjust min-widths if needed for very small screens */
+    .comparisonTable th:first-child,
+    .comparisonTable td[data-label="Credit Card"] { min-width: 150px; }
+    .comparisonTable th:last-child,
+    .comparisonTable td[data-label="Apply / Details"] { min-width: 120px; }
+    /* ... potentially adjust other columns ... */
 
-  /* Detailed card adjustments */
-  .cardHeader { padding: 1rem; }
-  .cardImageContainer { width: 130px; }
-  .cardTitle { font-size: 1.1rem; }
-  .cardBody { padding: 1rem; }
-  .cardFeatureBlock { margin-bottom: 1.3rem; }
-  .cardFeatureBlock h4 { font-size: 0.9rem; }
-  .featureList li { font-size: 0.8rem; }
-  .cardActions { padding: 1rem; }
-  .cardActions .ctaButton { font-size: 0.9rem; padding: 10px 15px; flex-basis: 100%; max-width: none; }
-  .ctaSubtext { font-size: 0.65rem; }
 
-  /* Tooltip adjustments */
-  .ratingTooltip { width: calc(100% - 2rem); max-width: 300px; left: 1rem !important; right: 1rem; }
+    /* --- Keep other mobile styles for non-table elements --- */
+   .cardHeader { padding: 1rem; }
+   .cardImageContainer { width: 130px; }
+   .cardTitle { font-size: 1.1rem; }
+   .cardBody { padding: 1rem; }
+   .cardFeatureBlock { margin-bottom: 1.3rem; }
+   .cardFeatureBlock h4 { font-size: 0.9rem; }
+   .featureList li { font-size: 0.8rem; }
+   .cardActions { padding: 1rem; }
+   .cardActions .ctaButton { font-size: 0.9rem; padding: 10px 15px; flex-basis: 100%; max-width: none; }
+   .ctaSubtext { font-size: 0.65rem; }
+
+   .ratingTooltip { width: calc(100% - 2rem); max-width: 300px; left: 1rem !important; right: 1rem; }
 }
