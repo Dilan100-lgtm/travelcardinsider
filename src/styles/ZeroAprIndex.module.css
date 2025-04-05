@@ -5,7 +5,7 @@
 .sectionTitle { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.5rem); color: #212529; text-align: center; margin-bottom: 2.5rem; font-weight: 700; }
 
 /* --- Hero Section --- */
-.hero { color: #ffffff; padding: clamp(4rem, 10vw, 8rem) 1.5rem; text-align: center; position: relative; overflow: hidden; background-image: linear-gradient(rgba(13, 27, 62, 0.75), rgba(13, 27, 62, 0.85)), url('/images/AdobeStock_446734479.webp'); /* *** VERIFY PATH/FORMAT *** */ background-size: cover; background-position: center center; background-repeat: no-repeat; }
+.hero { color: #ffffff; padding: clamp(4rem, 10vw, 8rem) 1.5rem; text-align: center; position: relative; overflow: hidden; background-image: linear-gradient(rgba(13, 27, 62, 0.75), rgba(13, 27, 62, 0.85)), url('/AdobeStock_446734479.webp'); /* *** VERIFY PATH/FORMAT *** */ background-size: cover; background-position: center center; background-repeat: no-repeat; }
 .heroContent { max-width: 800px; margin: 0 auto; position: relative; z-index: 1; }
 .heroTitle { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 6vw, 3.5rem); font-weight: 700; line-height: 1.2; margin-bottom: 1rem; color: #ffffff; text-shadow: 1px 1px 3px rgba(0,0,0,0.3); }
 .heroDescription { font-size: clamp(1rem, 2.5vw, 1.2rem); line-height: 1.7; margin: 0 auto 2rem auto; max-width: 65ch; color: #f0f0f0; opacity: 0.95; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
