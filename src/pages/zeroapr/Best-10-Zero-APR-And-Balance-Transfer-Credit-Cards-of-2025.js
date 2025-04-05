@@ -508,7 +508,7 @@ const cardsData = [
                           <div className={styles.heroImage}>
                               {/* *** REPLACE width/height with actual dimensions *** */}
                               <Image
-                                  src="/images/AdobeStock_446734479.webp" // Relative to /public
+                                  src="/AdobeStock_446734479.webp" // Relative to /public
                                   alt="Travel Credit Cards - Unlock Rewards for Your Journey"
                                   width={600} // Placeholder
                                   height={400} // Placeholder
