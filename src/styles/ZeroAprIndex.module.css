@@ -5,7 +5,7 @@
 .sectionTitle { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.5rem); color: #212529; text-align: center; margin-bottom: 2.5rem; font-weight: 700; }
 
 /* --- Hero Section --- */
-.hero { color: #ffffff; padding: clamp(4rem, 10vw, 8rem) 1.5rem; text-align: center; position: relative; overflow: hidden; background-image: linear-gradient(rgba(13, 27, 62, 0.75), rgba(13, 27, 62, 0.85)), url('/AdobeStock_446734479.webp'); /* *** VERIFY PATH/FORMAT *** */ background-size: cover; background-position: center center; background-repeat: no-repeat; }
+.hero { color: #ffffff; padding: clamp(4rem, 10vw, 8rem) 1.5rem; text-align: center; position: relative; overflow: hidden; background-image: linear-gradient(rgba(13, 27, 62, 0.75), rgba(13, 27, 62, 0.85)), url('/images/AdobeStock_446734479.webp'); /* *** VERIFY PATH/FORMAT *** */ background-size: cover; background-position: center center; background-repeat: no-repeat; }
 .heroContent { max-width: 800px; margin: 0 auto; position: relative; z-index: 1; }
 .heroTitle { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 6vw, 3.5rem); font-weight: 700; line-height: 1.2; margin-bottom: 1rem; color: #ffffff; text-shadow: 1px 1px 3px rgba(0,0,0,0.3); }
 .heroDescription { font-size: clamp(1rem, 2.5vw, 1.2rem); line-height: 1.7; margin: 0 auto 2rem auto; max-width: 65ch; color: #f0f0f0; opacity: 0.95; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
@@ -26,15 +26,29 @@
 
 /* --- Comparison Table Section --- */
 .comparisonSection { padding: clamp(2.5rem, 6vw, 4rem) 1.5rem; max-width: 1300px; margin: 0 auto; }
-.tableResponsive { width: 100%; overflow-x: auto; border: 1px solid #dee2e6; border-radius: 8px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06); background-color: #ffffff; }
-.comparisonTable { width: 100%; min-width: 900px; border-collapse: collapse; font-size: 0.9rem; }
+/* Ensure the responsive container enables horizontal scrolling */
+.tableResponsive {
+  width: 100%;
+  overflow-x: auto; /* This enables horizontal scroll */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+  background-color: #ffffff;
+}
+.comparisonTable {
+  width: 100%;
+  min-width: 900px; /* Force horizontal scroll on smaller screens */
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
 .comparisonTable thead tr { background-color: #f8f9fa; border-bottom: 2px solid #dee2e6; }
 .comparisonTable th { padding: 1rem 1.2rem; text-align: left; font-weight: 700; color: #495057; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.5px; vertical-align: middle; }
 .comparisonTable tbody tr { border-bottom: 1px solid #e9ecef; }
 .comparisonTable tbody tr:last-child { border-bottom: none; }
 .comparisonTable tbody tr:hover { background-color: #f1f3f5; }
 
-/* Table Cell Styles (Desktop) */
+/* Table Cell Styles (Desktop & Default) */
 .comparisonTable td { padding: 1rem 1.2rem; vertical-align: middle; line-height: 1.5; text-align: left; border: none; }
 .comparisonTable td:not([data-label="Credit Card"]):not([data-label="Apply / Details"]) { text-align: center; }
 .comparisonTable td[data-label="Credit Card"] { text-align: left; }
@@ -62,7 +76,6 @@
 .ratesFeesLink:hover { text-decoration: underline; color: #5a6268; }
 
 /* --- Detailed Cards Section --- */
-/* ... (Keep detailed card styles: .detailedCardsSection, .cardsGrid, .detailedCard, etc.) ... */
 .detailedCardsSection { padding: clamp(1.5rem, 4vw, 3rem) 1.5rem; background-color: #ffffff; border-top: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6; }
 .cardsGrid { display: grid; gap: 2.5rem; max-width: 1100px; margin: 0 auto; }
 .detailedCard { background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07); display: flex; flex-direction: column; transition: box-shadow 0.3s ease; }
@@ -90,101 +103,62 @@
 .featureList { list-style: none; padding-left: 0; }
 .featureList li { position: relative; padding-left: 1.5em; margin-bottom: 0.6em; font-size: 0.9rem; line-height: 1.6; color: #495057; }
 .featureList li::before { content: '✓'; position: absolute; left: 0; color: #198754; font-weight: bold; }
-.cardActions { padding: 1.5rem; border-top: 1px solid #e9ecef; background-color: #f8f9fa; display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; }
-.cardActions .ctaButton { flex-basis: 200px; flex-grow: 1; max-width: 280px; }
+.cardActions { padding: 1.5rem; border-top: 1px solid #e9ecef; background-color: #f8f9fa; display: flex; flex-wrap: wrap; gap: 0.8rem 1rem; justify-content: center; align-items: center; } /* Adjusted from previous */
+/* --- Corrected styles for buttons within cardActions --- */
+.cardActions .ctaButton, .cardActions .ratesFeesLink { flex-grow: 0; flex-shrink: 0; width: clamp(150px, 45%, 250px); max-width: 250px; text-align: center; padding: 12px 20px; font-size: 1rem; font-weight: 500; border-radius: 6px; text-decoration: none; transition: all 0.3s ease; cursor: pointer; border: none; line-height: 1.5; }
+.cardActions .ctaApply { background-color: #0d6efd; color: #fff; }
+.cardActions .ctaApply:hover { background-color: #0b5ed7; }
+.cardActions .ctaSecondary { background-color: #6c757d; color: #fff; }
+.cardActions .ctaSecondary:hover { background-color: #5a6268; }
+.cardActions .ratesFeesLink { flex-basis: 100%; width: auto; max-width: none; margin-top: 0.5rem; color: #6c757d; font-size: 0.8rem; font-weight: 400; background-color: transparent; border: none; box-shadow: none; padding: 5px; }
+.cardActions .ratesFeesLink:hover { background-color: transparent; color: #5a6268; text-decoration: underline; transform: none; }
+.cardActions .ctaButton:focus-visible { outline: 3px solid #7abaff; outline-offset: 2px; }
+.cardActions .ratesFeesLink:focus-visible { outline: 2px solid #7abaff; outline-offset: 1px; border-radius: 3px; }
 .ctaSubtext { display: block; font-size: 0.7rem; font-weight: 400; opacity: 0.8; margin-top: 2px; }
-.cardActions .ratesFeesLink { flex-basis: 100%; text-align: center; margin-top: 0.5rem; color: #6c757d; font-size: 0.8rem; }
-
 
 /* --- Rating Tooltip Styles --- */
-.ratingTooltip {
-  position: absolute;
-  background-color: #ffffff;
-  border: 1px solid #ced4da;
-  border-radius: 6px;
-  padding: 10px 15px;
-  width: 250px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-  z-index: 1050; /* High z-index */
-  font-size: 0.85rem;
-  line-height: 1.5;
-  color: #343a40;
-  pointer-events: auto; /* Allow interaction if needed */
-}
-.ratingTooltip strong {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: #212529;
-  font-weight: 700;
-}
-.tooltipIntro {
-  margin: 0.5rem 0 0.3rem 0;
-  font-weight: 500;
-}
-.tooltipList {
-  list-style: disc;
-  padding-left: 1.5rem;
-  margin: 0;
-}
-.tooltipList li {
-  margin-bottom: 0.25rem;
-}
-
-
-/* styles/ZeroAprIndex.module.css */
-
-/* ... (keep all styles above the media queries exactly as they are) ... */
+.ratingTooltip { position: absolute; background-color: #ffffff; border: 1px solid #ced4da; border-radius: 6px; padding: 10px 15px; width: 250px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); z-index: 1050; font-size: 0.85rem; line-height: 1.5; color: #343a40; pointer-events: auto; }
+.ratingTooltip strong { display: block; margin-bottom: 0.5rem; color: #212529; font-weight: 700; }
+.tooltipIntro { margin: 0.5rem 0 0.3rem 0; font-weight: 500; }
+.tooltipList { list-style: disc; padding-left: 1.5rem; margin: 0; }
+.tooltipList li { margin-bottom: 0.25rem; }
 
 
 /* --- Responsive Adjustments --- */
 @media (max-width: 768px) {
   .sectionTitle { margin-bottom: 2rem; }
-  /* Keep the table layout, don't stack */
-  .comparisonTable { min-width: 900px; } /* Keep min-width to force scroll */
 
-  /* REMOVED stacking rules for thead, tr, td, td::before */
+  /* --- MOBILE TABLE: HORIZONTAL SCROLL --- */
+  /* Remove stacking styles that were previously here */
+  .comparisonTable { min-width: 900px; } /* Ensure table forces scroll */
 
-  /* Add styles for better horizontal scrolling */
   .comparisonTable th,
   .comparisonTable td {
       white-space: nowrap; /* Prevent text wrapping */
-      padding: 0.7rem 0.9rem; /* Slightly reduce padding on mobile */
-      font-size: 0.85rem; /* Slightly smaller font on mobile table */
+      padding: 0.7rem 0.9rem; /* Adjust padding */
+      font-size: 0.85rem; /* Adjust font size */
   }
 
-  /* Optional: Set minimum widths for key columns */
+  /* Optional: Set minimum widths for key columns on mobile */
   .comparisonTable th:first-child,
   .comparisonTable td[data-label="Credit Card"] {
-      min-width: 170px; /* Ensure card name has space */
-      /* For Sticky Column (Advanced - requires careful testing & possibly JS) */
-      /* position: sticky;
-      left: 0;
-      z-index: 1; */
-      /* background-color: #ffffff; */ /* Need background for sticky */
-  }
+      min-width: 170px;
+       /* position: sticky; left: 0; background-color: #ffffff; z-index: 1; */ /* Uncomment for sticky first column */
+   }
    .comparisonTable th:last-child,
-   .comparisonTable td[data-label="Apply / Details"] {
-      min-width: 130px; /* Ensure action buttons fit well */
-   }
-   .comparisonTable th:nth-child(2), /* Intro APR */
-   .comparisonTable td[data-label="Intro APR Offer"] {
-      min-width: 110px;
-   }
-   .comparisonTable th:nth-child(3), /* BT Fee */
-   .comparisonTable td[data-label="BT Fee"] {
-      min-width: 130px;
-   }
-   .comparisonTable th:nth-child(4), /* Rewards */
-   .comparisonTable td[data-label="Key Reward/Feature"] {
-      min-width: 160px;
-   }
-    .comparisonTable th:nth-child(5), /* Annual Fee */
-   .comparisonTable td[data-label="Annual Fee"] {
-      min-width: 80px;
-      text-align: center; /* Center annual fee */
-   }
+   .comparisonTable td[data-label="Apply / Details"] { min-width: 130px; }
+   .comparisonTable th:nth-child(2),
+   .comparisonTable td[data-label="Intro APR Offer"] { min-width: 110px; }
+   .comparisonTable th:nth-child(3),
+   .comparisonTable td[data-label="BT Fee"] { min-width: 130px; }
+   .comparisonTable th:nth-child(4),
+   .comparisonTable td[data-label="Key Reward/Feature"] { min-width: 160px; }
+   .comparisonTable th:nth-child(5),
+   .comparisonTable td[data-label="Annual Fee"] { min-width: 80px; text-align: center; }
+   /* --- END MOBILE TABLE --- */
 
-   /* --- Keep other mobile styles for non-table elements --- */
+
+   /* Keep other mobile styles */
    .cardsGrid { gap: 1.5rem; }
    .detailedCard { border-radius: 8px; }
    .cardHeader, .cardBody, .cardActions { padding: 1.2rem; }
@@ -195,22 +169,20 @@
    .heroTitle { font-size: clamp(1.8rem, 7vw, 2.5rem); }
    .heroDescription { font-size: 0.95rem; }
 
-   /* Further adjust table for very small screens if needed */
-   .comparisonTable { min-width: 800px; } /* Adjust min-width if needed */
+   /* Further adjust horizontal scroll table for very small screens */
+   .comparisonTable { min-width: 800px; }
    .comparisonTable th,
    .comparisonTable td {
-       padding: 0.6rem 0.8rem; /* Further reduce padding */
-       font-size: 0.8rem; /* Smaller font */
+       padding: 0.6rem 0.8rem;
+       font-size: 0.8rem;
    }
-    /* Adjust min-widths if needed for very small screens */
     .comparisonTable th:first-child,
-    .comparisonTable td[data-label="Credit Card"] { min-width: 150px; }
+    .comparisonTable td[data-label="Credit Card"] { min-width: 150px; /* position: sticky; left: 0; background-color: #ffffff; z-index: 1; */ }
     .comparisonTable th:last-child,
     .comparisonTable td[data-label="Apply / Details"] { min-width: 120px; }
     /* ... potentially adjust other columns ... */
 
-
-    /* --- Keep other mobile styles for non-table elements --- */
+   /* Keep other mobile styles */
    .cardHeader { padding: 1rem; }
    .cardImageContainer { width: 130px; }
    .cardTitle { font-size: 1.1rem; }
@@ -219,7 +191,9 @@
    .cardFeatureBlock h4 { font-size: 0.9rem; }
    .featureList li { font-size: 0.8rem; }
    .cardActions { padding: 1rem; }
-   .cardActions .ctaButton { font-size: 0.9rem; padding: 10px 15px; flex-basis: 100%; max-width: none; }
+   /* Make buttons stack full width on small screens */
+   .cardActions .ctaButton, .cardActions .ratesFeesLink { width: 100%; max-width: 300px; flex-basis: auto; }
+   .cardActions .ratesFeesLink { margin-top: 0.8rem; }
    .ctaSubtext { font-size: 0.65rem; }
 
    .ratingTooltip { width: calc(100% - 2rem); max-width: 300px; left: 1rem !important; right: 1rem; }
