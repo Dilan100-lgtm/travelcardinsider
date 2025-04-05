@@ -24,7 +24,7 @@ const cardsData = [
         applyUrl: '#', // *** REPLACE with ACTUAL affiliate link ***
         learnMoreUrl: '/reviews/chase-freedom-unlimited', // *** REPLACE with actual internal link ***
         ratesFeesUrl: 'https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC56029.html',
-        imageUrl: '/images/freedom_unlimited_card_alt (1).png', // Path relative to public folder
+        imageUrl: '/freedom_unlimited_card_alt (1).png', // Path relative to public folder
         imageAlt: 'Chase Freedom Unlimited®',
         imageWidth: 250, // *** REPLACE WITH ACTUAL WIDTH ***
         imageHeight: 158, // *** REPLACE WITH ACTUAL HEIGHT ***
@@ -299,7 +299,7 @@ const cardsData = [
         applyUrl: '#', // *** REPLACE with ACTUAL affiliate link ***
         learnMoreUrl: '/reviews/wells-fargo-reflect', // *** REPLACE with actual internal link ***
         ratesFeesUrl: 'https://www.wellsfargo.com/credit-cards/reflect-visa/terms/?FPID=013000IGF80000&product_code=CC&subproduct_code=VV&cx_nm=CXNAME_CSMPD&sub_channel=SEO&vendor_code=G&refdmn=www.google.com&_gl=1*z7r3eu*_gcl_au*OTk5NTUyMzU3LjE3NDAzMTU0NDM.*_ga*NjU1MzIyNC4xNzQwMzE1NDQz*_ga_7JXJJ2JF12*MTc0MDMxNTQ0My4xLjEuMTc0MDMxNTgwNS42MC4wLjA.',
-        imageUrl: '/images/Reflect_homepage_m.png',
+        imageUrl: '/Reflect_homepage_m.png',
         imageAlt: 'Wells Fargo Reflect® Card',
         imageWidth: 250, // *** REPLACE WITH ACTUAL WIDTH ***
         imageHeight: 158, // *** REPLACE WITH ACTUAL HEIGHT ***
