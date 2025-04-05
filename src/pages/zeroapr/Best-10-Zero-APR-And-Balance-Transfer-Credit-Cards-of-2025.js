@@ -306,6 +306,7 @@ export default function ZeroAprPremiumPage() {
 
     return (
         <>
+        <Header /> {/* Assuming Header component is set up correctly */}
             <Head>
                  {/* --- Standard Meta/Link/Schema Tags --- */}
                  <title>Premier 0% APR & Balance Transfer Cards 2025 | TravelCardInsider</title>
@@ -440,7 +441,7 @@ export default function ZeroAprPremiumPage() {
                         ))}
                     </div>
                  </section>
-
+                    <Footer /> {/* *** Add your footer component here *** */}
             </main>
         </>
     );
