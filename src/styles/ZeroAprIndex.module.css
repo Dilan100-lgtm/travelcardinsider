@@ -17,30 +17,24 @@
 }
 
 /* --- Hero Section --- */
-/* zeroAprPremium.module.css */
-
-/* --- Hero Section --- */
 .hero {
-  /* background-color: #0d1b3e; */ /* Comment out or remove the solid background color */
   color: #ffffff;
-  padding: clamp(4rem, 10vw, 8rem) 1.5rem; /* Increased padding for background visibility */
+  padding: clamp(4rem, 10vw, 8rem) 1.5rem; /* Padding for background visibility */
   text-align: center;
   position: relative;
   overflow: hidden;
 
-  /* --- NEW BACKGROUND IMAGE RULES --- */
+  /* --- Background Image --- */
   background-image:
       /* Dark overlay gradient for text contrast */
       linear-gradient(rgba(13, 27, 62, 0.75), rgba(13, 27, 62, 0.85)),
-      /* Your uploaded image */
-      url('/AdobeStock_446734479.webp'); /* Adjust path if needed */
+      /* *** VERIFY this path and file format (jpg/webp) *** */
+      url('/images/AdobeStock_446734479.webp');
   background-size: cover; /* Cover the entire section */
   background-position: center center; /* Center the image */
   background-repeat: no-repeat;
-   /* --- End NEW BACKGROUND IMAGE RULES --- */
 }
 
-/* Keep the rest of the .heroContent, .heroTitle, etc. styles as they were */
 .heroContent {
   max-width: 800px;
   margin: 0 auto;
@@ -54,8 +48,8 @@
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 1rem;
-  color: #ffffff; /* Ensure text is white for contrast */
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.3); /* Optional: slight shadow for readability */
+  color: #ffffff;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3); /* Optional readability aid */
 }
 
 .heroDescription {
@@ -63,9 +57,9 @@
   line-height: 1.7;
   margin: 0 auto 2rem auto;
   max-width: 65ch;
-  color: #f0f0f0; /* Light color for contrast */
+  color: #f0f0f0;
   opacity: 0.95;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Optional */
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Optional readability aid */
 }
 
 .heroCta {
@@ -74,23 +68,22 @@
 
 .heroDisclaimer {
   font-size: 0.75rem;
-  color: #ced4da; /* Adjust color for readability */
+  color: #ced4da;
   margin-top: 2.5rem;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
   line-height: 1.5;
   opacity: 0.9;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Optional */
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Optional readability aid */
 }
-
 
 /* --- General CTA Button Styles --- */
 .ctaButton {
   display: inline-block;
   padding: 12px 28px;
   font-size: 1rem;
-  font-weight: 500; /* Medium weight */
+  font-weight: 500;
   border-radius: 6px;
   text-decoration: none;
   transition: all 0.3s ease;
@@ -99,7 +92,7 @@
   line-height: 1.5;
 }
 .ctaButton:focus-visible {
-   outline: 3px solid #7abaff; /* Lighter blue focus */
+   outline: 3px solid #7abaff;
    outline-offset: 2px;
 }
 .ctaButton:active {
@@ -129,13 +122,16 @@
    transform: translateY(-1px);
 }
 
-.ctaButtonSmall { /* For table */
-   padding: 6px 12px;
-   font-size: 0.85rem;
-   border-radius: 4px;
+.ctaButtonSmall { /* For table button */
+   padding: 8px 16px; /* Adjusted padding */
+   font-size: 0.9rem; /* Adjusted font size */
+   border-radius: 5px;
+   display: inline-block; /* Ensure it behaves well in flex */
+   width: auto;
+   min-width: 100px;
 }
 .ctaApply {
-   background-color: #0d6efd; /* Blue */
+   background-color: #0d6efd;
    color: #fff;
 }
 .ctaApply:hover {
@@ -160,45 +156,63 @@
 
 .comparisonTable {
   width: 100%;
-  min-width: 900px; /* Min width before scroll */
+  min-width: 900px;
   border-collapse: collapse;
   font-size: 0.9rem;
 }
 
 .comparisonTable thead tr {
-  background-color: #f8f9fa; /* Light header */
+  background-color: #f8f9fa;
   border-bottom: 2px solid #dee2e6;
 }
 
 .comparisonTable th {
   padding: 1rem 1.2rem;
   text-align: left;
-  font-weight: 700; /* Bolder */
-  color: #495057; /* Grey header text */
+  font-weight: 700;
+  color: #495057;
   text-transform: uppercase;
   font-size: 0.75rem;
   letter-spacing: 0.5px;
 }
 
 .comparisonTable tbody tr {
-  border-bottom: 1px solid #e9ecef; /* Lighter row separator */
+  border-bottom: 1px solid #e9ecef;
 }
 .comparisonTable tbody tr:last-child {
   border-bottom: none;
 }
-
 .comparisonTable tbody tr:hover {
-  background-color: #f1f3f5; /* Subtle hover */
+  background-color: #f1f3f5;
 }
 
+/* Table Cell Alignment */
 .comparisonTable td {
   padding: 1rem 1.2rem;
   vertical-align: middle;
   line-height: 1.5;
+  display: flex; /* Use Flex for alignment within cell */
+  align-items: center; /* Vertically center content */
+}
+/* Align first cell content left */
+.comparisonTable td[data-label="Credit Card"] {
+  justify-content: flex-start;
+  text-align: left;
+}
+/* Center content in middle cells */
+.comparisonTable td:not([data-label="Credit Card"]):not([data-label="Apply / Details"]) {
+  justify-content: center;
+  text-align: center;
+}
+/* Center content in the action cell */
+.comparisonTable td[data-label="Apply / Details"] {
+   justify-content: center;
+   text-align: center;
 }
 
+/* Table Card Name & Rating */
 .cardTableName {
-  font-weight: 700; /* Bold card name */
+  font-weight: 700;
   color: #212529;
   display: block;
   margin-bottom: 4px;
@@ -213,43 +227,60 @@
 }
 .infoIcon {
   display: inline-block;
-  fill: currentColor; /* Inherit color */
+  fill: currentColor;
   opacity: 0.7;
+  width: 13px; /* Explicit size */
+  height: 13px;
 }
 
-.detailsLink {
+/* Table Action Group (Button + Links) */
+.tableActionGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center block vertically */
+  gap: 5px; /* Space between button and first link */
+  width: 100%;
+}
+
+/* Table Links Styling */
+.detailsLink,
+.ratesFeesLink {
   display: block;
+  text-decoration: none;
+  text-align: center;
+  margin-top: 0; /* Use gap from parent */
+  padding: 2px 0;
+}
+.detailsLink {
   font-size: 0.85rem;
   color: #0d6efd;
-  text-decoration: none;
-  margin-top: 8px;
+  font-weight: 500;
 }
 .detailsLink:hover {
   text-decoration: underline;
 }
 .ratesFeesLink {
-  display: block;
   font-size: 0.75rem;
   color: #6c757d;
-  text-decoration: none;
-  margin-top: 4px;
 }
 .ratesFeesLink:hover {
    text-decoration: underline;
+   color: #5a6268;
 }
 
 /* --- Detailed Cards Section --- */
 .detailedCardsSection {
   padding: clamp(1.5rem, 4vw, 3rem) 1.5rem;
-  background-color: #ffffff; /* White background for this section */
+  background-color: #ffffff;
   border-top: 1px solid #dee2e6;
   border-bottom: 1px solid #dee2e6;
 }
 
 .cardsGrid {
   display: grid;
-  gap: 2.5rem; /* Generous gap */
-  max-width: 1100px; /* Control max width */
+  gap: 2.5rem;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -274,7 +305,7 @@
   gap: 1rem;
   padding: 1.5rem 1.5rem 1rem 1.5rem;
   border-bottom: 1px solid #e9ecef;
-  background-color: #f8f9fa; /* Slight header background */
+  background-color: #f8f9fa;
 }
 @media (min-width: 600px) {
   .cardHeader {
@@ -285,16 +316,16 @@
 
 .cardImageContainer {
   flex-shrink: 0;
-  width: 180px; /* Fixed width for image container */
+  width: 180px;
   height: auto;
-  line-height: 0; /* Remove extra space */
+  line-height: 0;
 }
 .cardImage {
   display: block;
   width: 100%;
   height: auto;
   object-fit: contain;
-  border-radius: 6px; /* Slightly rounded image */
+  border-radius: 6px;
 }
 
 .cardTitleGroup {
@@ -305,7 +336,6 @@
   .cardTitleGroup { text-align: left; }
 }
 
-
 .cardTitle {
   font-family: 'Playfair Display', serif;
   font-size: clamp(1.3rem, 3vw, 1.6rem);
@@ -313,14 +343,12 @@
   margin: 0 0 0.5rem 0;
   font-weight: 700;
 }
-/* Use .rating class from table styles if applicable, or redefine */
-.detailedCard .rating {
+.detailedCard .rating { /* Style rating in detailed card */
    font-size: 0.9rem; color: #495057;
 }
 .detailedCard .rating strong {
-   color: #0d1b3e; /* Dark blue rating value */
+   color: #0d1b3e;
 }
-
 
 .cardBody {
   padding: 1.5rem;
@@ -345,33 +373,32 @@
 }
 
 .bonusBlock {
-  background-color: #e7f5ff; /* Lighter blue for bonus block */
+  background-color: #e7f5ff;
   padding: 1rem;
   border-radius: 8px;
-  border-left: 4px solid #0d6efd; /* Blue accent */
+  border-left: 4px solid #0d6efd;
 }
 .bonusBlock h4 { border-bottom: none; margin-bottom: 0.5rem; color: #0a58ca; }
 .bonusBlock p { font-size: 0.95rem; line-height: 1.6; margin: 0; }
-/* Style the em tag rendered by dangerouslySetInnerHTML */
 .bonusBlock p em { font-size: 0.85rem; color: #555; font-style: italic; }
 
 .featureList {
-  list-style: none; /* Remove default bullets */
+  list-style: none;
   padding-left: 0;
 }
 .featureList li {
   position: relative;
-  padding-left: 1.5em; /* Space for custom bullet */
+  padding-left: 1.5em;
   margin-bottom: 0.6em;
   font-size: 0.9rem;
   line-height: 1.6;
   color: #495057;
 }
 .featureList li::before {
-  content: '✓'; /* Custom bullet */
+  content: '✓';
   position: absolute;
   left: 0;
-  color: #198754; /* Green checkmark */
+  color: #198754;
   font-weight: bold;
 }
 
@@ -382,13 +409,13 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.8rem;
-  justify-content: center; /* Center actions */
+  justify-content: center;
 }
 
-.cardActions .ctaButton {
-  flex-basis: 200px; /* Base width */
+.cardActions .ctaButton { /* Buttons in detailed card footer */
+  flex-basis: 200px;
   flex-grow: 1;
-  max-width: 280px; /* Max width per button */
+  max-width: 280px;
 }
 .ctaSubtext {
    display: block;
@@ -397,8 +424,8 @@
    opacity: 0.8;
    margin-top: 2px;
 }
-.cardActions .ratesFeesLink { /* Style the text link */
-  flex-basis: 100%; /* Take full width */
+.cardActions .ratesFeesLink { /* Text link in detailed card footer */
+  flex-basis: 100%;
   text-align: center;
   margin-top: 0.5rem;
   color: #6c757d;
@@ -408,43 +435,59 @@
 /* --- Responsive Adjustments --- */
 @media (max-width: 768px) {
   .sectionTitle { margin-bottom: 2rem; }
-  .comparisonTable { min-width: 700px; }
-  .comparisonTable th, .comparisonTable td { padding: 0.8rem 1rem; }
+  .comparisonTable { min-width: 100%; } /* Allow table to use full width before stacking */
+  .comparisonTable th { display: none; } /* Hide headers only in stacked view */
+  .comparisonTable thead { display: none; }
 
-  /* Stack table cells nicely */
-  .comparisonTable thead { display: none; } /* Hide headers */
   .comparisonTable tr {
-       display: block;
-       margin-bottom: 1rem;
-       border-bottom: 2px solid #0d6efd;
-       padding-bottom: 1rem;
-       border-radius: 0;
-       box-shadow: none;
-       background-color: #fff !important; /* Override hover/even */
+     display: block;
+     margin-bottom: 1rem;
+     border-bottom: 2px solid #0d6efd;
+     padding-bottom: 1rem;
+     border-radius: 0;
+     box-shadow: none;
+     background-color: #fff !important;
   }
    .comparisonTable tbody tr:last-child { border-bottom: 2px solid #0d6efd; }
    .comparisonTable tbody tr:hover { background-color: transparent !important; }
 
   .comparisonTable td {
-       display: block;
-       text-align: right;
-       border: none;
-       border-bottom: 1px dashed #eee; /* Dotted line between "fields" */
-       padding-left: 50%; /* Make space for label */
-       position: relative;
+     display: block;
+     text-align: right;
+     border: none;
+     border-bottom: 1px dashed #eee;
+     padding: 0.8rem 1rem; /* Consistent padding */
+     padding-left: 50%; /* Make space for label */
+     position: relative;
+     /* Reset flex from desktop */
+     align-items: initial;
+     justify-content: initial;
   }
    .comparisonTable td:last-child { border-bottom: none; }
   .comparisonTable td::before {
-       content: attr(data-label); /* Use data-label for header */
-       position: absolute;
-       left: 10px; /* Adjust */
-       width: calc(50% - 20px); /* Adjust */
-       padding-right: 10px;
-       white-space: nowrap;
-       text-align: left;
-       font-weight: bold;
-       color: #343a40;
+     content: attr(data-label);
+     position: absolute;
+     left: 1rem; /* Consistent padding */
+     width: calc(50% - 2rem); /* Consistent padding */
+     padding-right: 10px;
+     white-space: nowrap;
+     text-align: left;
+     font-weight: bold;
+     color: #343a40;
+     font-size: 0.8rem; /* Smaller label */
+     text-transform: uppercase;
   }
+  /* Special handling for action cell in stacked */
+  .comparisonTable td[data-label="Apply / Details"] {
+      padding-left: 1rem; /* Reset padding */
+  }
+  .comparisonTable td[data-label="Apply / Details"]::before {
+      display: none; /* Hide label for actions */
+  }
+   .comparisonTable td[data-label="Apply / Details"] .tableActionGroup {
+      align-items: flex-end; /* Align button/links right */
+   }
+
 
    .cardsGrid { gap: 2rem; }
    .detailedCard { border-radius: 8px; }
@@ -456,8 +499,13 @@
    .heroTitle { font-size: clamp(1.8rem, 7vw, 2.5rem); }
    .heroDescription { font-size: 0.95rem; }
 
-  .comparisonTable td { padding-left: 10px; text-align: left; } /* Adjust stacking */
-  .comparisonTable td::before { position: static; display: block; font-weight: bold; margin-bottom: 5px; text-align: left; width: auto;} /* Simpler stacking */
+  /* Further simplify stacked table */
+  .comparisonTable td { padding-left: 1rem; text-align: left; }
+  .comparisonTable td::before { position: static; display: block; font-weight: bold; margin-bottom: 5px; text-align: left; width: auto; white-space: normal;}
+  .comparisonTable td[data-label="Apply / Details"] .tableActionGroup {
+      align-items: flex-start; /* Align left */
+  }
+
 
   .cardHeader { padding: 1rem; flex-direction: column; text-align: center; }
   .cardImageContainer { width: 150px; margin: 0 auto 1rem auto; }

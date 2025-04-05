@@ -382,14 +382,17 @@ export default function ZeroAprPremiumPage() {
                                         <td data-label="Key Reward/Feature">{card.rewards || 'N/A'}</td>
                                         <td data-label="Annual Fee">{card.annualFee}</td>
                                         <td data-label="Apply / Details">
+                                            {/* Add this wrapper div */}
+                                         <div className={styles.tableActionGroup}>
                                             <a href={card.applyUrl} className={`${styles.ctaButtonSmall} ${styles.ctaApply}`} target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
-                                            {/* *** Use actual internal link in href *** */}
-                                            <Link href={card.learnMoreUrl} legacyBehavior>
+                                        {/* Use actual internal link in href */}
+                                                 <Link href={card.learnMoreUrl} legacyBehavior>
                                                 <a className={styles.detailsLink}>Details</a>
-                                            </Link>
-                                             {/* *** Use actual rates link in href *** */}
-                                            <a href={card.ratesFeesUrl} className={styles.ratesFeesLink} target="_blank" rel="noopener noreferrer sponsored">Rates & Fees</a>
-                                        </td>
+        </Link>
+         {/* Use actual rates link in href */}
+        <a href={card.ratesFeesUrl} className={styles.ratesFeesLink} target="_blank" rel="noopener noreferrer sponsored">Rates & Fees</a>
+    </div>
+</td>
                                     </tr>
                                 ))}
                             </tbody>
