@@ -1,470 +1,100 @@
 /* styles/ZeroAprIndex.module.css */
 
 /* --- Base & Wrapper --- */
-.pageWrapper {
-  background-color: #f8f9fa; /* Light grey background */
-  color: #343a40; /* Dark grey text */
-  font-family: 'Roboto', sans-serif;
-}
-
-.sectionTitle {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
-  color: #212529; /* Near black */
-  text-align: center;
-  margin-bottom: 2.5rem;
-  font-weight: 700;
-}
+.pageWrapper { background-color: #f8f9fa; color: #343a40; font-family: 'Roboto', sans-serif; }
+.sectionTitle { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.5rem); color: #212529; text-align: center; margin-bottom: 2.5rem; font-weight: 700; }
 
 /* --- Hero Section --- */
-.hero {
-  color: #ffffff;
-  padding: clamp(4rem, 10vw, 8rem) 1.5rem; /* Padding for background visibility */
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  background-image:
-      linear-gradient(rgba(13, 27, 62, 0.75), rgba(13, 27, 62, 0.85)),
-      /* *** VERIFY this path and file format (jpg/webp) *** */
-      url('/AdobeStock_446734479.webp');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-
-.heroContent {
-  max-width: 800px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-}
-
-.heroTitle {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2.2rem, 6vw, 3.5rem);
-  font-weight: 700;
-  line-height: 1.2;
-  margin-bottom: 1rem;
-  color: #ffffff;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-}
-
-.heroDescription {
-  font-size: clamp(1rem, 2.5vw, 1.2rem);
-  line-height: 1.7;
-  margin: 0 auto 2rem auto;
-  max-width: 65ch;
-  color: #f0f0f0;
-  opacity: 0.95;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-}
-
-.heroCta {
-  margin-bottom: 2rem;
-}
-
-.heroDisclaimer {
-  font-size: 0.75rem;
-  color: #ced4da;
-  margin-top: 2.5rem;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.5;
-  opacity: 0.9;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-}
+.hero { color: #ffffff; padding: clamp(4rem, 10vw, 8rem) 1.5rem; text-align: center; position: relative; overflow: hidden; background-image: linear-gradient(rgba(13, 27, 62, 0.75), rgba(13, 27, 62, 0.85)), url('/images/AdobeStock_446734479.webp'); /* *** VERIFY PATH/FORMAT *** */ background-size: cover; background-position: center center; background-repeat: no-repeat; }
+.heroContent { max-width: 800px; margin: 0 auto; position: relative; z-index: 1; }
+.heroTitle { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 6vw, 3.5rem); font-weight: 700; line-height: 1.2; margin-bottom: 1rem; color: #ffffff; text-shadow: 1px 1px 3px rgba(0,0,0,0.3); }
+.heroDescription { font-size: clamp(1rem, 2.5vw, 1.2rem); line-height: 1.7; margin: 0 auto 2rem auto; max-width: 65ch; color: #f0f0f0; opacity: 0.95; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
+.heroCta { margin-bottom: 2rem; }
+.heroDisclaimer { font-size: 0.75rem; color: #ced4da; margin-top: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.5; opacity: 0.9; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
 
 /* --- General CTA Button Styles --- */
-.ctaButton {
-  display: inline-block;
-  padding: 12px 28px;
-  font-size: 1rem;
-  font-weight: 500;
-  border-radius: 6px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  border: none;
-  line-height: 1.5;
-}
-.ctaButton:focus-visible {
-   outline: 3px solid #7abaff;
-   outline-offset: 2px;
-}
-.ctaButton:active {
-   transform: scale(0.97);
-}
-
-.ctaPrimary {
-  background-color: #198754;
-  color: #ffffff;
-  box-shadow: 0 4px 10px rgba(25, 135, 84, 0.3);
-}
-.ctaPrimary:hover {
-  background-color: #157347;
-  box-shadow: 0 6px 12px rgba(25, 135, 84, 0.4);
-  transform: translateY(-2px);
-}
-
-.ctaSecondary {
-  background-color: transparent;
-  color: #0d6efd;
-  border: 1px solid #dee2e6;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-.ctaSecondary:hover {
-  background-color: #e9ecef;
-  border-color: #ced4da;
-   transform: translateY(-1px);
-}
-
-.ctaButtonSmall { /* For table button */
-   padding: 8px 16px;
-   font-size: 0.9rem;
-   border-radius: 5px;
-   display: inline-block;
-   width: auto;
-   min-width: 100px;
-}
-.ctaApply {
-   background-color: #0d6efd;
-   color: #fff;
-}
-.ctaApply:hover {
-   background-color: #0b5ed7;
-}
+.ctaButton { display: inline-block; padding: 12px 28px; font-size: 1rem; font-weight: 500; border-radius: 6px; text-decoration: none; transition: all 0.3s ease; cursor: pointer; border: none; line-height: 1.5; }
+.ctaButton:focus-visible { outline: 3px solid #7abaff; outline-offset: 2px; }
+.ctaButton:active { transform: scale(0.97); }
+.ctaPrimary { background-color: #198754; color: #ffffff; box-shadow: 0 4px 10px rgba(25, 135, 84, 0.3); }
+.ctaPrimary:hover { background-color: #157347; box-shadow: 0 6px 12px rgba(25, 135, 84, 0.4); transform: translateY(-2px); }
+.ctaSecondary { background-color: transparent; color: #0d6efd; border: 1px solid #dee2e6; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+.ctaSecondary:hover { background-color: #e9ecef; border-color: #ced4da; transform: translateY(-1px); }
+.ctaButtonSmall { padding: 8px 16px; font-size: 0.9rem; border-radius: 5px; display: inline-block; width: auto; min-width: 100px; }
+.ctaApply { background-color: #0d6efd; color: #fff; }
+.ctaApply:hover { background-color: #0b5ed7; }
 
 /* --- Comparison Table Section --- */
-.comparisonSection {
-  padding: clamp(2.5rem, 6vw, 4rem) 1.5rem;
-  max-width: 1300px;
-  margin: 0 auto;
-}
-
-.tableResponsive {
-  width: 100%;
-  overflow-x: auto;
-  border: 1px solid #dee2e6;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-  background-color: #ffffff;
-}
-
-.comparisonTable {
-  width: 100%;
-  min-width: 900px;
-  border-collapse: collapse;
-  font-size: 0.9rem;
-}
-
-.comparisonTable thead tr {
-  background-color: #f8f9fa;
-  border-bottom: 2px solid #dee2e6;
-}
-
-.comparisonTable th {
-  padding: 1rem 1.2rem;
-  text-align: left;
-  font-weight: 700;
-  color: #495057;
-  text-transform: uppercase;
-  font-size: 0.75rem;
-  letter-spacing: 0.5px;
-  vertical-align: middle;
-}
-
-.comparisonTable tbody tr {
-  border-bottom: 1px solid #e9ecef;
-}
-.comparisonTable tbody tr:last-child {
-  border-bottom: none;
-}
-.comparisonTable tbody tr:hover {
-  background-color: #f1f3f5;
-}
+.comparisonSection { padding: clamp(2.5rem, 6vw, 4rem) 1.5rem; max-width: 1300px; margin: 0 auto; }
+.tableResponsive { width: 100%; overflow-x: auto; border: 1px solid #dee2e6; border-radius: 8px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06); background-color: #ffffff; }
+.comparisonTable { width: 100%; min-width: 900px; border-collapse: collapse; font-size: 0.9rem; }
+.comparisonTable thead tr { background-color: #f8f9fa; border-bottom: 2px solid #dee2e6; }
+.comparisonTable th { padding: 1rem 1.2rem; text-align: left; font-weight: 700; color: #495057; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.5px; vertical-align: middle; }
+.comparisonTable tbody tr { border-bottom: 1px solid #e9ecef; }
+.comparisonTable tbody tr:last-child { border-bottom: none; }
+.comparisonTable tbody tr:hover { background-color: #f1f3f5; }
 
 /* Table Cell Styles (Desktop) */
-.comparisonTable td {
-  padding: 1rem 1.2rem;
-  vertical-align: middle;
-  line-height: 1.5;
-  text-align: left;
-  border: none;
-}
-
-.comparisonTable td:not([data-label="Credit Card"]):not([data-label="Apply / Details"]) {
-  text-align: center;
-}
-.comparisonTable td[data-label="Credit Card"] {
-  text-align: left;
-}
-.comparisonTable td[data-label="Apply / Details"] {
-   text-align: center;
-}
+.comparisonTable td { padding: 1rem 1.2rem; vertical-align: middle; line-height: 1.5; text-align: left; border: none; }
+.comparisonTable td:not([data-label="Credit Card"]):not([data-label="Apply / Details"]) { text-align: center; }
+.comparisonTable td[data-label="Credit Card"] { text-align: left; }
+.comparisonTable td[data-label="Apply / Details"] { text-align: center; }
 
 /* Table Card Name & Rating */
-.cardTableName {
-  font-weight: 700;
-  color: #212529;
-  display: block;
-  margin-bottom: 4px;
-  font-size: 0.95rem;
-}
-.tableRating {
-  font-size: 0.8rem;
-  color: #6c757d;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-.infoIcon { /* Style for the SVG icon */
-  display: inline-block;
-  fill: currentColor;
-  opacity: 0.7;
-  width: 13px;
-  height: 13px;
-  vertical-align: middle; /* Align icon better */
-}
+.cardTableName { font-weight: 700; color: #212529; display: block; margin-bottom: 4px; font-size: 0.95rem; }
+.tableRating { font-size: 0.8rem; color: #6c757d; display: flex; align-items: center; gap: 4px; }
+.infoIcon { display: inline-block; fill: currentColor; opacity: 0.7; width: 13px; height: 13px; vertical-align: middle; }
 
-/* Style for the button WRAPPING the icon */
-.infoIconButton {
-    background: none;
-    border: none;
-    padding: 2px; /* Minimal padding */
-    margin: 0 3px 0 0;
-    cursor: pointer;
-    line-height: 0; /* Prevent extra height */
-    border-radius: 3px;
-    vertical-align: middle; /* Align button with text */
-}
-.infoIconButton:focus-visible {
-    outline: 2px solid #0d6efd;
-    outline-offset: 1px;
-    background-color: rgba(13, 110, 253, 0.1);
-}
-.infoIconButton .infoIcon { /* Target SVG inside button */
-    opacity: 0.7;
-    transition: opacity 0.2s ease;
-}
-.infoIconButton:hover .infoIcon {
-    opacity: 1;
-}
-
+/* Rating Icon Button */
+.infoIconButton { background: none; border: none; padding: 2px; margin: 0 3px 0 0; cursor: pointer; line-height: 0; border-radius: 3px; vertical-align: middle; }
+.infoIconButton:focus-visible { outline: 2px solid #0d6efd; outline-offset: 1px; background-color: rgba(13, 110, 253, 0.1); }
+.infoIconButton .infoIcon { opacity: 0.7; transition: opacity 0.2s ease; }
+.infoIconButton:hover .infoIcon { opacity: 1; }
 
 /* Table Action Group (Wrapper INSIDE the last TD) */
-.tableActionGroup {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-}
+.tableActionGroup { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; }
 
 /* Table Links Styling */
-.detailsLink,
-.ratesFeesLink {
-  display: block;
-  text-decoration: none;
-  text-align: center;
-  margin-top: 0;
-  padding: 2px 0;
-}
-.detailsLink {
-  font-size: 0.85rem;
-  color: #0d6efd;
-  font-weight: 500;
-}
-.detailsLink:hover {
-  text-decoration: underline;
-}
-.ratesFeesLink {
-  font-size: 0.75rem;
-  color: #6c757d;
-}
-.ratesFeesLink:hover {
-   text-decoration: underline;
-   color: #5a6268;
-}
+.detailsLink, .ratesFeesLink { display: block; text-decoration: none; text-align: center; margin-top: 0; padding: 2px 0; }
+.detailsLink { font-size: 0.85rem; color: #0d6efd; font-weight: 500; }
+.detailsLink:hover { text-decoration: underline; }
+.ratesFeesLink { font-size: 0.75rem; color: #6c757d; }
+.ratesFeesLink:hover { text-decoration: underline; color: #5a6268; }
 
 /* --- Detailed Cards Section --- */
 /* ... (Keep detailed card styles: .detailedCardsSection, .cardsGrid, .detailedCard, etc.) ... */
-.detailedCardsSection {
-  padding: clamp(1.5rem, 4vw, 3rem) 1.5rem;
-  background-color: #ffffff;
-  border-top: 1px solid #dee2e6;
-  border-bottom: 1px solid #dee2e6;
-}
-
-.cardsGrid {
-  display: grid;
-  gap: 2.5rem;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.detailedCard {
-  background-color: #ffffff;
-  border: 1px solid #e0e0e0;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
-  display: flex;
-  flex-direction: column;
-  transition: box-shadow 0.3s ease;
-}
-.detailedCard:hover {
-   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-}
-
-.cardHeader {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  padding: 1.5rem 1.5rem 1rem 1.5rem;
-  border-bottom: 1px solid #e9ecef;
-  background-color: #f8f9fa;
-}
-@media (min-width: 600px) {
-  .cardHeader {
-      flex-direction: row;
-      gap: 1.5rem;
-  }
-}
-
-.cardImageContainer {
-  flex-shrink: 0;
-  width: 180px;
-  height: auto;
-  line-height: 0;
-}
-.cardImage {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  border-radius: 6px;
-}
-
-.cardTitleGroup {
-  flex-grow: 1;
-  text-align: center;
-}
-@media (min-width: 600px) {
-  .cardTitleGroup { text-align: left; }
-}
-
-.cardTitle {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.3rem, 3vw, 1.6rem);
-  color: #212529;
-  margin: 0 0 0.5rem 0;
-  font-weight: 700;
-}
-.detailedCard .rating { /* Rating within detailed card */
-   font-size: 0.9rem; color: #495057;
-   display: flex; /* Align icon and text */
-   align-items: center;
-   gap: 4px;
-}
-@media (min-width: 600px) {
-  .detailedCard .rating { justify-content: flex-start; } /* Align left on desktop */
-}
-.detailedCard .rating strong {
-   color: #0d1b3e;
-}
-/* Use the same button style for consistency */
-.detailedCard .infoIconButton {
-   width: 15px; /* Adjust size if needed */
-   height: 15px;
-}
-.detailedCard .infoIconButton .infoIcon {
-    width: 15px;
-    height: 15px;
-}
-
-.cardBody {
-  padding: 1.5rem;
-  flex-grow: 1;
-}
-
-.cardFeatureBlock {
-  margin-bottom: 1.8rem;
-}
-.cardFeatureBlock:last-child {
-  margin-bottom: 0;
-}
-
-.cardFeatureBlock h4 {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 700;
-  font-size: 1rem;
-  color: #343a40;
-  margin-bottom: 0.8rem;
-  padding-bottom: 0.4rem;
-  border-bottom: 1px solid #e9ecef;
-}
-
-.bonusBlock {
-  background-color: #e7f5ff;
-  padding: 1rem;
-  border-radius: 8px;
-  border-left: 4px solid #0d6efd;
-}
+.detailedCardsSection { padding: clamp(1.5rem, 4vw, 3rem) 1.5rem; background-color: #ffffff; border-top: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6; }
+.cardsGrid { display: grid; gap: 2.5rem; max-width: 1100px; margin: 0 auto; }
+.detailedCard { background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07); display: flex; flex-direction: column; transition: box-shadow 0.3s ease; }
+.detailedCard:hover { box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); }
+.cardHeader { display: flex; flex-direction: column; align-items: center; gap: 1rem; padding: 1.5rem 1.5rem 1rem 1.5rem; border-bottom: 1px solid #e9ecef; background-color: #f8f9fa; }
+@media (min-width: 600px) { .cardHeader { flex-direction: row; gap: 1.5rem; } }
+.cardImageContainer { flex-shrink: 0; width: 180px; height: auto; line-height: 0; }
+.cardImage { display: block; width: 100%; height: auto; object-fit: contain; border-radius: 6px; }
+.cardTitleGroup { flex-grow: 1; text-align: center; }
+@media (min-width: 600px) { .cardTitleGroup { text-align: left; } }
+.cardTitle { font-family: 'Playfair Display', serif; font-size: clamp(1.3rem, 3vw, 1.6rem); color: #212529; margin: 0 0 0.5rem 0; font-weight: 700; }
+.detailedCard .rating { font-size: 0.9rem; color: #495057; display: flex; align-items: center; gap: 4px; }
+@media (min-width: 600px) { .detailedCard .rating { justify-content: flex-start; } }
+.detailedCard .rating strong { color: #0d1b3e; }
+.detailedCard .infoIconButton { width: 15px; height: 15px; }
+.detailedCard .infoIconButton .infoIcon { width: 15px; height: 15px; }
+.cardBody { padding: 1.5rem; flex-grow: 1; }
+.cardFeatureBlock { margin-bottom: 1.8rem; }
+.cardFeatureBlock:last-child { margin-bottom: 0; }
+.cardFeatureBlock h4 { font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 1rem; color: #343a40; margin-bottom: 0.8rem; padding-bottom: 0.4rem; border-bottom: 1px solid #e9ecef; }
+.bonusBlock { background-color: #e7f5ff; padding: 1rem; border-radius: 8px; border-left: 4px solid #0d6efd; }
 .bonusBlock h4 { border-bottom: none; margin-bottom: 0.5rem; color: #0a58ca; }
 .bonusBlock p { font-size: 0.95rem; line-height: 1.6; margin: 0; }
 .bonusBlock p em { font-size: 0.85rem; color: #555; font-style: italic; }
+.featureList { list-style: none; padding-left: 0; }
+.featureList li { position: relative; padding-left: 1.5em; margin-bottom: 0.6em; font-size: 0.9rem; line-height: 1.6; color: #495057; }
+.featureList li::before { content: '✓'; position: absolute; left: 0; color: #198754; font-weight: bold; }
+.cardActions { padding: 1.5rem; border-top: 1px solid #e9ecef; background-color: #f8f9fa; display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; }
+.cardActions .ctaButton { flex-basis: 200px; flex-grow: 1; max-width: 280px; }
+.ctaSubtext { display: block; font-size: 0.7rem; font-weight: 400; opacity: 0.8; margin-top: 2px; }
+.cardActions .ratesFeesLink { flex-basis: 100%; text-align: center; margin-top: 0.5rem; color: #6c757d; font-size: 0.8rem; }
 
-.featureList {
-  list-style: none;
-  padding-left: 0;
-}
-.featureList li {
-  position: relative;
-  padding-left: 1.5em;
-  margin-bottom: 0.6em;
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: #495057;
-}
-.featureList li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: #198754;
-  font-weight: bold;
-}
-
-.cardActions {
-  padding: 1.5rem;
-  border-top: 1px solid #e9ecef;
-  background-color: #f8f9fa;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-  justify-content: center;
-}
-
-.cardActions .ctaButton {
-  flex-basis: 200px;
-  flex-grow: 1;
-  max-width: 280px;
-}
-.ctaSubtext {
-   display: block;
-   font-size: 0.7rem;
-   font-weight: 400;
-   opacity: 0.8;
-   margin-top: 2px;
-}
-.cardActions .ratesFeesLink {
-  flex-basis: 100%;
-  text-align: center;
-  margin-top: 0.5rem;
-  color: #6c757d;
-  font-size: 0.8rem;
-}
 
 /* --- Rating Tooltip Styles --- */
 .ratingTooltip {
@@ -475,32 +105,28 @@
   padding: 10px 15px;
   width: 250px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-  z-index: 1050;
+  z-index: 1050; /* High z-index */
   font-size: 0.85rem;
   line-height: 1.5;
   color: #343a40;
-  pointer-events: auto;
+  pointer-events: auto; /* Allow interaction if needed */
 }
-
 .ratingTooltip strong {
   display: block;
   margin-bottom: 0.5rem;
   color: #212529;
   font-weight: 700;
 }
-
-.ratingTooltip .tooltipIntro { /* Added class for paragraph */
+.tooltipIntro {
   margin: 0.5rem 0 0.3rem 0;
   font-weight: 500;
 }
-
-.ratingTooltip .tooltipList { /* Added class for list */
+.tooltipList {
   list-style: disc;
   padding-left: 1.5rem;
   margin: 0;
 }
-
-.ratingTooltip .tooltipList li {
+.tooltipList li {
   margin-bottom: 0.25rem;
 }
 
@@ -508,67 +134,86 @@
 /* --- Responsive Adjustments --- */
 @media (max-width: 768px) {
   .sectionTitle { margin-bottom: 2rem; }
-  .comparisonTable { min-width: 100%; } /* Allow table to use full width */
+  .comparisonTable { min-width: 100%; }
   .comparisonTable thead { display: none; }
 
   .comparisonTable tr {
      display: block;
-     margin-bottom: 1.5rem; /* More space between stacked rows */
-     border-bottom: none; /* Remove default bottom border */
-     padding: 0; /* Remove padding if any */
+     margin-bottom: 1rem;
+     border-bottom: none;
+     padding: 0;
      background-color: #fff !important;
      border: 1px solid #dee2e6;
-     border-radius: 8px; /* Round corners */
+     border-radius: 8px;
      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-     overflow: hidden; /* Clip content */
+     overflow: hidden;
   }
-   .comparisonTable tbody tr:last-child { border-bottom: none; } /* Remove thick border */
+   .comparisonTable tbody tr:last-child { border-bottom: none; }
    .comparisonTable tbody tr:hover { background-color: #fff !important; }
 
+  /* CORRECTED Mobile Table Cell */
   .comparisonTable td {
      display: block;
      text-align: right !important;
      border: none;
-     border-bottom: 1px solid #e9ecef; /* Separator line inside */
+     border-bottom: 1px solid #e9ecef; /* Use solid */
      padding: 0.8rem 1rem;
      padding-left: 45%;
      position: relative;
-     min-height: 40px; /* Ensure minimum height */
+     min-height: 44px;
      vertical-align: initial;
   }
    .comparisonTable td:last-child { border-bottom: none; }
+
+   /* CORRECTED Mobile Table Label */
   .comparisonTable td::before {
      content: attr(data-label);
      position: absolute;
      left: 1rem;
-     top: 50%; /* Center label vertically */
-     transform: translateY(-50%);
+     top: 0;
+     bottom: 0;
+     display: flex;
+     align-items: center;
      width: calc(45% - 1.5rem);
      padding-right: 10px;
      white-space: nowrap;
+     overflow: hidden;
+     text-overflow: ellipsis;
      text-align: left !important;
-     font-weight: 700; /* Bolder label */
-     color: #495057; /* Darker grey label */
-     font-size: 0.75rem; /* Slightly smaller label */
+     font-weight: 700;
+     color: #495057;
+     font-size: 0.75rem;
      text-transform: uppercase;
      letter-spacing: 0.5px;
   }
 
-   /* Adjust Action Cell in Stacked View */
    .comparisonTable td[data-label="Apply / Details"] {
-       padding: 1rem; /* More padding */
-       background-color: #f8f9fa; /* Slight background */
+       padding-left: 1rem;
    }
    .comparisonTable td[data-label="Apply / Details"]::before {
        display: none;
    }
    .comparisonTable td[data-label="Apply / Details"] .tableActionGroup {
-       align-items: center; /* Center button/links */
-       width: 100%;
+       display: flex;
+       justify-content: flex-end;
+       align-items: center;
+       flex-wrap: wrap;
+       gap: 5px 10px;
+       padding: 5px 0;
    }
+    .comparisonTable td[data-label="Apply / Details"] .ctaButtonSmall {
+        flex-grow: 1;
+        min-width: 90px;
+    }
+    .comparisonTable td[data-label="Apply / Details"] .detailsLink,
+    .comparisonTable td[data-label="Apply / Details"] .ratesFeesLink {
+        flex-basis: auto;
+        margin: 0;
+        padding: 0 5px;
+        text-align: right;
+    }
 
-
-   .cardsGrid { gap: 1.5rem; } /* Reduce gap slightly */
+   .cardsGrid { gap: 1.5rem; }
    .detailedCard { border-radius: 8px; }
    .cardHeader, .cardBody, .cardActions { padding: 1.2rem; }
 }
@@ -578,25 +223,26 @@
    .heroTitle { font-size: clamp(1.8rem, 7vw, 2.5rem); }
    .heroDescription { font-size: 0.95rem; }
 
-   /* Refine stacked table labels */
+  /* Simplify label further for very small screens */
   .comparisonTable td { padding-left: 1rem; text-align: left !important; }
-  .comparisonTable td::before { position: static; display: block; font-weight: bold; margin-bottom: 6px; text-align: left !important; width: auto; white-space: normal; transform: none; top: auto; left: auto; }
+  .comparisonTable td::before { position: static; display: block; font-weight: bold; margin-bottom: 6px; text-align: left !important; width: auto; white-space: normal;}
   .comparisonTable td[data-label="Apply / Details"] .tableActionGroup {
-      align-items: center; /* Center actions */
+      align-items: flex-start; /* Align left */
+      justify-content: flex-start;
   }
 
-  /* Refine detailed cards for mobile */
+  /* Detailed card adjustments */
   .cardHeader { padding: 1rem; }
-  .cardImageContainer { width: 150px; }
-  .cardTitle { font-size: 1.2rem; }
+  .cardImageContainer { width: 130px; }
+  .cardTitle { font-size: 1.1rem; }
   .cardBody { padding: 1rem; }
-  .cardFeatureBlock { margin-bottom: 1.5rem; }
-  .cardFeatureBlock h4 { font-size: 0.95rem; }
-  .featureList li { font-size: 0.85rem; }
+  .cardFeatureBlock { margin-bottom: 1.3rem; }
+  .cardFeatureBlock h4 { font-size: 0.9rem; }
+  .featureList li { font-size: 0.8rem; }
   .cardActions { padding: 1rem; }
   .cardActions .ctaButton { font-size: 0.9rem; padding: 10px 15px; flex-basis: 100%; max-width: none; }
   .ctaSubtext { font-size: 0.65rem; }
 
-  /* Tooltip adjustments if needed */
-  .ratingTooltip { width: 90%; max-width: 280px; }
+  /* Tooltip adjustments */
+  .ratingTooltip { width: calc(100% - 2rem); max-width: 300px; left: 1rem !important; right: 1rem; }
 }
