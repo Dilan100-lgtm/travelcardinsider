@@ -147,8 +147,8 @@
 .cardActions .ctaButton, .cardActions .ratesFeesLink { flex-grow: 0; flex-shrink: 0; width: clamp(150px, 45%, 250px); max-width: 250px; text-align: center; padding: 12px 20px; font-size: 1rem; font-weight: 500; border-radius: 6px; text-decoration: none; transition: all 0.3s ease; cursor: pointer; border: none; line-height: 1.5; }
 .cardActions .ctaApply { background-color: #0d6efd; color: #fff; }
 .cardActions .ctaApply:hover { background-color: #0b5ed7; }
-.cardActions .ctaSecondary { background-color: #6c757d; color: #fff; }
-.cardActions .ctaSecondary:hover { background-color: #5a6268; }
+.cardActions .ctaSecondary { background-color: #198754; color: #fff; }
+.cardActions .ctaSecondary:hover { background-color: #157347; }
 .cardActions .ratesFeesLink { flex-basis: 100%; width: auto; max-width: none; margin-top: 0.5rem; color: #6c757d; font-size: 0.8rem; font-weight: 400; background-color: transparent; border: none; box-shadow: none; padding: 5px; }
 .cardActions .ratesFeesLink:hover { background-color: transparent; color: #5a6268; text-decoration: underline; transform: none; }
 .cardActions .ctaButton:focus-visible { outline: 3px solid #7abaff; outline-offset: 2px; }
