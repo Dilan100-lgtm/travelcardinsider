@@ -1,4 +1,4 @@
-/* zeroAprPremium.module.css */
+/* styles/ZeroAprIndex.module.css */
 
 /* --- Base & Wrapper --- */
 .pageWrapper {
@@ -157,7 +157,7 @@
 .comparisonTable {
   width: 100%;
   min-width: 900px;
-  border-collapse: collapse;
+  border-collapse: collapse; /* Use collapse for standard table behavior */
   font-size: 0.9rem;
 }
 
@@ -174,6 +174,7 @@
   text-transform: uppercase;
   font-size: 0.75rem;
   letter-spacing: 0.5px;
+  vertical-align: middle; /* Align header text middle */
 }
 
 .comparisonTable tbody tr {
@@ -186,28 +187,29 @@
   background-color: #f1f3f5;
 }
 
-/* Table Cell Alignment */
+/* CORRECTED Table Cell Styles */
 .comparisonTable td {
   padding: 1rem 1.2rem;
-  vertical-align: middle;
+  vertical-align: middle; /* Vertically center content */
   line-height: 1.5;
-  display: flex; /* Use Flex for alignment within cell */
-  align-items: center; /* Vertically center content */
+  text-align: left; /* Default to left align */
+  border: none; /* Remove internal borders if using collapse + row borders */
+  /* display: flex; */ /* !!! REMOVED - Let it behave as table-cell !!! */
 }
-/* Align first cell content left */
-.comparisonTable td[data-label="Credit Card"] {
-  justify-content: flex-start;
-  text-align: left;
-}
-/* Center content in middle cells */
+
+/* Center text alignment specifically for middle columns */
 .comparisonTable td:not([data-label="Credit Card"]):not([data-label="Apply / Details"]) {
-  justify-content: center;
   text-align: center;
 }
-/* Center content in the action cell */
+
+/* Keep styles for the first cell (Card Name) */
+.comparisonTable td[data-label="Credit Card"] {
+  text-align: left;
+}
+
+/* Align the content (the wrapper div) in the last cell */
 .comparisonTable td[data-label="Apply / Details"] {
-   justify-content: center;
-   text-align: center;
+   text-align: center; /* This will center the inline-flex wrapper */
 }
 
 /* Table Card Name & Rating */
@@ -229,18 +231,17 @@
   display: inline-block;
   fill: currentColor;
   opacity: 0.7;
-  width: 13px; /* Explicit size */
+  width: 13px;
   height: 13px;
 }
 
-/* Table Action Group (Button + Links) */
+/* Table Action Group (Wrapper INSIDE the last TD) */
 .tableActionGroup {
-  display: flex;
+  display: inline-flex; /* Use inline-flex to allow text-align on parent TD */
   flex-direction: column;
-  align-items: center; /* Center items horizontally */
-  justify-content: center; /* Center block vertically */
-  gap: 5px; /* Space between button and first link */
-  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
 
 /* Table Links Styling */
@@ -249,7 +250,7 @@
   display: block;
   text-decoration: none;
   text-align: center;
-  margin-top: 0; /* Use gap from parent */
+  margin-top: 0;
   padding: 2px 0;
 }
 .detailsLink {
@@ -343,7 +344,7 @@
   margin: 0 0 0.5rem 0;
   font-weight: 700;
 }
-.detailedCard .rating { /* Style rating in detailed card */
+.detailedCard .rating {
    font-size: 0.9rem; color: #495057;
 }
 .detailedCard .rating strong {
@@ -412,7 +413,7 @@
   justify-content: center;
 }
 
-.cardActions .ctaButton { /* Buttons in detailed card footer */
+.cardActions .ctaButton {
   flex-basis: 200px;
   flex-grow: 1;
   max-width: 280px;
@@ -424,7 +425,7 @@
    opacity: 0.8;
    margin-top: 2px;
 }
-.cardActions .ratesFeesLink { /* Text link in detailed card footer */
+.cardActions .ratesFeesLink {
   flex-basis: 100%;
   text-align: center;
   margin-top: 0.5rem;
@@ -435,8 +436,7 @@
 /* --- Responsive Adjustments --- */
 @media (max-width: 768px) {
   .sectionTitle { margin-bottom: 2rem; }
-  .comparisonTable { min-width: 100%; } /* Allow table to use full width before stacking */
-  .comparisonTable th { display: none; } /* Hide headers only in stacked view */
+  .comparisonTable { min-width: 100%; }
   .comparisonTable thead { display: none; }
 
   .comparisonTable tr {
@@ -444,48 +444,48 @@
      margin-bottom: 1rem;
      border-bottom: 2px solid #0d6efd;
      padding-bottom: 1rem;
-     border-radius: 0;
-     box-shadow: none;
      background-color: #fff !important;
+     border: 1px solid #dee2e6; /* Add border for separation */
+     border-radius: 6px; /* Slightly round corners */
+     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
   }
    .comparisonTable tbody tr:last-child { border-bottom: 2px solid #0d6efd; }
-   .comparisonTable tbody tr:hover { background-color: transparent !important; }
+   .comparisonTable tbody tr:hover { background-color: #fff !important; } /* Prevent hover effect */
 
   .comparisonTable td {
      display: block;
-     text-align: right;
+     text-align: right !important; /* Override text-align for stacked view */
      border: none;
      border-bottom: 1px dashed #eee;
-     padding: 0.8rem 1rem; /* Consistent padding */
-     padding-left: 50%; /* Make space for label */
+     padding: 0.8rem 1rem;
+     padding-left: 45%; /* Adjust space for label */
      position: relative;
-     /* Reset flex from desktop */
-     align-items: initial;
-     justify-content: initial;
+     vertical-align: initial; /* Reset */
   }
    .comparisonTable td:last-child { border-bottom: none; }
   .comparisonTable td::before {
      content: attr(data-label);
      position: absolute;
-     left: 1rem; /* Consistent padding */
-     width: calc(50% - 2rem); /* Consistent padding */
+     left: 1rem;
+     width: calc(45% - 1.5rem); /* Adjust width based on padding */
      padding-right: 10px;
      white-space: nowrap;
-     text-align: left;
+     text-align: left !important; /* Ensure label is left aligned */
      font-weight: bold;
      color: #343a40;
-     font-size: 0.8rem; /* Smaller label */
+     font-size: 0.8rem;
      text-transform: uppercase;
   }
-  /* Special handling for action cell in stacked */
-  .comparisonTable td[data-label="Apply / Details"] {
-      padding-left: 1rem; /* Reset padding */
-  }
-  .comparisonTable td[data-label="Apply / Details"]::before {
-      display: none; /* Hide label for actions */
-  }
+
+   .comparisonTable td[data-label="Apply / Details"] {
+       padding-left: 1rem;
+   }
+   .comparisonTable td[data-label="Apply / Details"]::before {
+       display: none;
+   }
    .comparisonTable td[data-label="Apply / Details"] .tableActionGroup {
-      align-items: flex-end; /* Align button/links right */
+       align-items: flex-end; /* Align right */
+       display: flex; /* Ensure flex is applied */
    }
 
 
@@ -499,9 +499,8 @@
    .heroTitle { font-size: clamp(1.8rem, 7vw, 2.5rem); }
    .heroDescription { font-size: 0.95rem; }
 
-  /* Further simplify stacked table */
-  .comparisonTable td { padding-left: 1rem; text-align: left; }
-  .comparisonTable td::before { position: static; display: block; font-weight: bold; margin-bottom: 5px; text-align: left; width: auto; white-space: normal;}
+  .comparisonTable td { padding-left: 1rem; text-align: left !important; }
+  .comparisonTable td::before { position: static; display: block; font-weight: bold; margin-bottom: 5px; text-align: left !important; width: auto; white-space: normal;}
   .comparisonTable td[data-label="Apply / Details"] .tableActionGroup {
       align-items: flex-start; /* Align left */
   }
