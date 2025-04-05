@@ -299,6 +299,71 @@ const schemaData = {
         }
     ]
 };
+const ratingCriteria = [
+    'Rewards & multipliers',
+    'Fees & sign-up bonus',
+    'Travel perks & lounge access', // Adjust if not relevant to 0% APR cards
+    'Redemption flexibility',      // Adjust if not relevant
+    'User experience & synergy' // Adjust if not relevant
+];
+
+
+export default function ZeroAprPremiumPage() {
+    // State for the currently active tooltip
+    const [activeTooltip, setActiveTooltip] = useState(null); // null or { id: string, rating: string, top: number, left: number }
+    const tooltipRef = useRef(null); // Ref for the tooltip element
+
+    // Function to handle info icon click
+    const handleIconClick = (event, card) => {
+        event.preventDefault(); // Prevent default anchor behavior if using <a>
+        event.stopPropagation(); // Stop click from immediately closing tooltip
+
+        // If clicking the *same* icon that's already open, close it
+        if (activeTooltip && activeTooltip.id === card.id) {
+            setActiveTooltip(null);
+        } else {
+            // Position near the click event coordinates
+            // NOTE: This simple pageX/Y might have issues with complex layouts or scrolling.
+            // A library or getBoundingClientRect calculation is more robust.
+            const top = event.pageY + 10;
+            const left = event.pageX + 10;
+
+            setActiveTooltip({
+                id: card.id,
+                rating: card.tciRating,
+                top: top,
+                left: left,
+            });
+        }
+    };
+
+    // Function to close tooltip
+    const closeTooltip = useCallback(() => {
+        setActiveTooltip(null);
+    }, []);
+
+    // Effect to add/remove global click listener for closing tooltip
+    useEffect(() => {
+        // Only add listener if tooltip is visible
+        if (!activeTooltip) {
+            return;
+        }
+
+        const handleClickOutside = (event) => {
+            // Check if the click is outside the tooltip element itself
+            if (tooltipRef.current && !tooltipRef.current.contains(event.target)) {
+                 closeTooltip();
+            }
+        };
+
+        // Add listener
+        document.addEventListener('mousedown', handleClickOutside);
+
+        // Cleanup function: remove listener when component unmounts or tooltip closes
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [activeTooltip, closeTooltip]); // Dependency array
 
 
 export default function ZeroAprPremiumPage() {
