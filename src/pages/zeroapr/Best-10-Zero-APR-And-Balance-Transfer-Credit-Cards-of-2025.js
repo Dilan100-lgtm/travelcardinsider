@@ -304,7 +304,8 @@ const ratingCriteria = [ 'Rewards & multipliers', 'Fees & sign-up bonus', 'Trave
 
 
 // *** ENSURE THIS IS THE ONLY 'export default' in the file ***
-export default function BestZeroAprCardsPage() { // Use new function name
+export default function BestZeroAprCardsPage() { // Use correct function name
+    // --- Tooltip State and Logic ---
     const [activeTooltip, setActiveTooltip] = useState(null);
     const tooltipRef = useRef(null);
 
@@ -336,8 +337,7 @@ export default function BestZeroAprCardsPage() { // Use new function name
         document.addEventListener('mousedown', handleClickOutside);
         return () => { document.removeEventListener('mousedown', handleClickOutside); };
     }, [activeTooltip, closeTooltip]);
-    // Add state/effect hooks here if calculator or other JS interactivity is needed
-
+    // --- End Tooltip State and Logic ---
     return (
         <>
         <Header /> {/* Assuming Header component is set up correctly */}
