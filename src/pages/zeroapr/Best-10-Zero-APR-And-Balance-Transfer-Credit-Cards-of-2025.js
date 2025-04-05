@@ -236,7 +236,7 @@ const schemaData = {
             "@type": "CollectionPage", // The main entity for this specific page
             "@id": pageUrl, // Use the page URL as the ID
             "url": pageUrl,
-            "name": "Premier 0% APR & Balance Transfer Credit Cards 2025 | TravelCardInsider",
+            "name": " 0% APR & Balance Transfer Credit Cards 2025 | TravelCardInsider",
             "headline": "Discover the Best 10 0% APR And Balance Transfer Credit Cards of 2025",
             "description": "Discover expertly curated 0% APR and balance transfer credit cards for 2025. Compare interest-free offers, rewards, and benefits to save money.",
             "inLanguage": "en-US",
