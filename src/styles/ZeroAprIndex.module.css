@@ -17,18 +17,34 @@
 }
 
 /* --- Hero Section --- */
+/* zeroAprPremium.module.css */
+
+/* --- Hero Section --- */
 .hero {
-  background-color: #0d1b3e; /* Deep Navy Blue */
+  /* background-color: #0d1b3e; */ /* Comment out or remove the solid background color */
   color: #ffffff;
-  padding: clamp(3rem, 8vw, 6rem) 1.5rem;
+  padding: clamp(4rem, 10vw, 8rem) 1.5rem; /* Increased padding for background visibility */
   text-align: center;
   position: relative;
-  overflow: hidden; /* For potential pseudo-element backgrounds */
+  overflow: hidden;
+
+  /* --- NEW BACKGROUND IMAGE RULES --- */
+  background-image:
+      /* Dark overlay gradient for text contrast */
+      linear-gradient(rgba(13, 27, 62, 0.75), rgba(13, 27, 62, 0.85)),
+      /* Your uploaded image */
+      url('/images/AdobeStock_446734479.jpg'); /* Adjust path if needed */
+  background-size: cover; /* Cover the entire section */
+  background-position: center center; /* Center the image */
+  background-repeat: no-repeat;
+   /* --- End NEW BACKGROUND IMAGE RULES --- */
 }
+
+/* Keep the rest of the .heroContent, .heroTitle, etc. styles as they were */
 .heroContent {
   max-width: 800px;
   margin: 0 auto;
-  position: relative; /* Above potential pseudo-elements */
+  position: relative;
   z-index: 1;
 }
 
@@ -38,7 +54,8 @@
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 1rem;
-  color: #ffffff;
+  color: #ffffff; /* Ensure text is white for contrast */
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3); /* Optional: slight shadow for readability */
 }
 
 .heroDescription {
@@ -46,8 +63,9 @@
   line-height: 1.7;
   margin: 0 auto 2rem auto;
   max-width: 65ch;
-  color: #e0e0e0; /* Lighter grey for description */
-  opacity: 0.9;
+  color: #f0f0f0; /* Light color for contrast */
+  opacity: 0.95;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Optional */
 }
 
 .heroCta {
@@ -56,15 +74,18 @@
 
 .heroDisclaimer {
   font-size: 0.75rem;
-  color: #adb5bd; /* Lighter grey */
+  color: #ced4da; /* Adjust color for readability */
   margin-top: 2.5rem;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
   line-height: 1.5;
-  opacity: 0.8;
+  opacity: 0.9;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Optional */
 }
 
+/* --- Keep other styles (.ctaButton, .comparisonSection, .detailedCard, etc.) --- */
+/* ... */
 /* --- General CTA Button Styles --- */
 .ctaButton {
   display: inline-block;
