@@ -4,7 +4,7 @@
 // !!! YOU MUST REPLACE ALL PLACEHOLDERS MARKED WITH '!!!' BEFORE DEPLOYMENT !!!
 // !!! Other PageSpeed issues require fixes in CSS, layout files, Header component, etc. !!!
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import React from 'react';
+
 import Head from 'next/head';
 import Image from 'next/image'; // Using Next.js Image component
 import Link from 'next/link';   // Using Next.js Link component
