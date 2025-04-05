@@ -1,7 +1,18 @@
+// File: pages/zeroapr/index.js
+
+// !!! WARNING: THIS FILE CONTAINS PLACEHOLDER DATA/URLs/DIMENSIONS !!!
+// !!! YOU MUST REPLACE ALL PLACEHOLDERS MARKED WITH '!!!' BEFORE DEPLOYMENT !!!
+// !!! Other PageSpeed issues require fixes in CSS, layout files, Header component, etc. !!!
+
+import React from 'react';
 import Head from 'next/head';
-import Image from 'next/image';
-import Link from 'next/link';
-import styles from './zeroAprPremium.module.css'; // Ensure this path is correct
+import Image from 'next/image'; // Using Next.js Image component
+import Link from 'next/link';   // Using Next.js Link component
+// !!! Adjust path if your CSS Module file is located elsewhere !!!
+import styles from '../../styles/ZeroAprIndex.module.css';
+import Header from '../../components/Header'; // Assuming path is correct
+import Footer from '../../components/Footer'; // Assuming path is correct
+
 
 // --- COMPLETE Card Data (VERIFY ALL DETAILS & REPLACE PLACEHOLDERS!) ---
 const cardsData = [
