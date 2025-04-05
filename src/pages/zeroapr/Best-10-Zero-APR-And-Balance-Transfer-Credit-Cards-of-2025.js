@@ -23,7 +23,7 @@ const cardsData = [
         applyUrl: '#', // *** REPLACE: Affiliate Link ***
         learnMoreUrl: '/reviews/chase-freedom-unlimited', // *** REPLACE: Internal Link ***
         ratesFeesUrl: 'https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC56029.html',
-        imageUrl: '/images/freedom_unlimited_card_alt (1).png',
+        imageUrl: '/freedom_unlimited_card_alt (1).png',
         imageAlt: 'Chase Freedom Unlimited® Card',
         imageWidth: 250, // *** REPLACE: Actual Width ***
         imageHeight: 158, // *** REPLACE: Actual Height ***
@@ -41,7 +41,7 @@ const cardsData = [
         applyUrl: '#', // *** REPLACE: Affiliate Link ***
         learnMoreUrl: '/reviews/us-bank-altitude-connect', // *** REPLACE: Internal Link ***
         ratesFeesUrl: 'https://onboarding.usbank.com/consumer/cards/8BB5BD89H1/18569/87702/start',
-        imageUrl: '/images/photo-altitude-connect-consumer.png',
+        imageUrl: '/photo-altitude-connect-consumer.png',
         imageAlt: 'U.S. Bank Altitude® Connect Visa Signature® Card',
         imageWidth: 250, // *** REPLACE: Actual Width ***
         imageHeight: 158, // *** REPLACE: Actual Height ***
@@ -59,7 +59,7 @@ const cardsData = [
         applyUrl: '#', // *** REPLACE: Affiliate Link ***
         learnMoreUrl: '/reviews/citi-custom-cash', // *** REPLACE: Internal Link ***
         ratesFeesUrl: 'https://online.citi.com/US/ag/cards/displayterms?app=UNSOL&HKOP=541175b33e25f6837a0d7af4ba29114f264447b80dcde5f6be6db7d02fed5901',
-        imageUrl: '/images/download.png',
+        imageUrl: '/download.png',
         imageAlt: 'Citi Custom Cash® Card',
         imageWidth: 250, // *** REPLACE: Actual Width ***
         imageHeight: 158, // *** REPLACE: Actual Height ***
@@ -77,7 +77,7 @@ const cardsData = [
         applyUrl: '#', // *** REPLACE: Affiliate Link ***
         learnMoreUrl: '/reviews/bofa-travel-rewards', // *** REPLACE: Internal Link ***
         ratesFeesUrl: 'https://www.bankofamerica.com/credit-cards/terms-and-conditions/?campaignid=4071156&productoffercode=MG&locale=en_US',
-        imageUrl: '/images/8blm_trvsigcm_v_250x158.png',
+        imageUrl: '/8blm_trvsigcm_v_250x158.png',
         imageAlt: 'Bank of America® Travel Rewards Credit Card',
         imageWidth: 250, // *** REPLACE: Actual Width ***
         imageHeight: 158, // *** REPLACE: Actual Height ***
@@ -95,7 +95,7 @@ const cardsData = [
         applyUrl: '#', // *** REPLACE: Affiliate Link ***
         learnMoreUrl: '/reviews/discover-it-miles', // *** REPLACE: Internal Link ***
         ratesFeesUrl: 'https://www.discovercard.com/application/website/ratesrewards?srcCde=GJX4&adobe_mc=TS%3D1740315096%7CMCMID%3D39379935660807998981588704922154453327%7CMCORGID%3D0D6C4673527839230A490D45%2540AdobeOrg&sv_session_undefined=true&_gl=1*p1s8lx*_gcl_au*MTYyMTU5ODAxMS4xNzQwMzE1MDcw*_ga*MTk0MTA3MDUwOC4xNzQwMzE1MDcx*_ga_3MJNPV4VSE*MTc0MDMxNTA3MC4xLjEuMTc0MDMxNTA5NC4zNi4wLjA.',
-        imageUrl: '/images/cardart-travel-beachcard-620-382.webp',
+        imageUrl: '/cardart-travel-beachcard-620-382.webp',
         imageAlt: 'Discover it® Miles',
         imageWidth: 620, // *** REPLACE: Actual Width ***
         imageHeight: 382, // *** REPLACE: Actual Height ***
@@ -113,7 +113,7 @@ const cardsData = [
         applyUrl: '#', // *** REPLACE: Affiliate Link ***
         learnMoreUrl: '/reviews/wells-fargo-active-cash', // *** REPLACE: Internal Link ***
         ratesFeesUrl: 'https://www.wellsfargo.com/credit-cards/active-cash/terms/?FPID=0126D7I6F40000&product_code=CC&subproduct_code=AC&cx_nm=CXNAME_CSMPD&sub_channel=SEO&vendor_code=G&refdmn=www.google.com&_gl=1*1isihgp*_gcl_au*OTk5NTUyMzU3LjE3NDAzMTU0NDM.*_ga*NjU1MzIyNC4xNzQwMzE1NDQz*_ga_7JXJJ2JF12*MTc0MDMxNTQ0My4xLjAuMTc0MDMxNTQ0My42MC4wLjA.',
-        imageUrl: '/images/WF_ActiveCash_VS_Collateral_Front_RGB.png',
+        imageUrl: '/WF_ActiveCash_VS_Collateral_Front_RGB.png',
         imageAlt: 'Wells Fargo Active Cash® Card',
         imageWidth: 250, // *** REPLACE: Actual Width ***
         imageHeight: 158, // *** REPLACE: Actual Height ***
@@ -131,7 +131,7 @@ const cardsData = [
         applyUrl: '#', // *** REPLACE: Affiliate Link ***
         learnMoreUrl: '/reviews/blue-cash-everyday', // *** REPLACE: Internal Link ***
         ratesFeesUrl: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/blue-cash-everyday-credit-card/25330-10-0#FeeTable',
-        imageUrl: '/images/NUS000000305_480x304_straight_withname.avif',
+        imageUrl: '/NUS000000305_480x304_straight_withname.avif',
         imageAlt: 'Blue Cash Everyday® Card from American Express',
         imageWidth: 480, // *** REPLACE: Actual Width ***
         imageHeight: 304, // *** REPLACE: Actual Height ***
@@ -149,7 +149,7 @@ const cardsData = [
         applyUrl: '#', // *** REPLACE: Affiliate Link ***
         learnMoreUrl: '/reviews/citi-diamond-preferred', // *** REPLACE: Internal Link ***
         ratesFeesUrl: 'https://online.citi.com/US/ag/cards/displayterms?app=UNSOL&HKOP=608d295cca6a832d9455f97709fe858e684350d1359860de82b2b8a07336a954',
-        imageUrl: '/images/download (1).png',
+        imageUrl: '/download (1).png',
         imageAlt: 'Citi® Diamond Preferred® Card',
         imageWidth: 250, // *** REPLACE: Actual Width ***
         imageHeight: 158, // *** REPLACE: Actual Height ***
@@ -167,7 +167,7 @@ const cardsData = [
         applyUrl: '#', // *** REPLACE: Affiliate Link ***
         learnMoreUrl: '/reviews/wells-fargo-reflect', // *** REPLACE: Internal Link ***
         ratesFeesUrl: 'https://www.wellsfargo.com/credit-cards/reflect-visa/terms/?FPID=013000IGF80000&product_code=CC&subproduct_code=VV&cx_nm=CXNAME_CSMPD&sub_channel=SEO&vendor_code=G&refdmn=www.google.com&_gl=1*z7r3eu*_gcl_au*OTk5NTUyMzU3LjE3NDAzMTU0NDM.*_ga*NjU1MzIyNC4xNzQwMzE1NDQz*_ga_7JXJJ2JF12*MTc0MDMxNTQ0My4xLjEuMTc0MDMxNTgwNS42MC4wLjA.',
-        imageUrl: '/images/Reflect_homepage_m.png',
+        imageUrl: '/Reflect_homepage_m.png',
         imageAlt: 'Wells Fargo Reflect® Card',
         imageWidth: 250, // *** REPLACE: Actual Width ***
         imageHeight: 158, // *** REPLACE: Actual Height ***
@@ -185,7 +185,7 @@ const cardsData = [
         applyUrl: '#', // *** REPLACE: Affiliate Link ***
         learnMoreUrl: '/reviews/us-bank-cash-plus', // *** REPLACE: Internal Link ***
         ratesFeesUrl: 'https://onboarding.usbank.com/consumer/cards/WRH8D23H2R/8069/86937/start',
-        imageUrl: '/images/Cash+_Front_Angle_Reflection.png',
+        imageUrl: '/Cash+_Front_Angle_Reflection.png',
         imageAlt: 'U.S. Bank Cash+® Visa Signature® Card',
         imageWidth: 250, // *** REPLACE: Actual Width ***
         imageHeight: 158, // *** REPLACE: Actual Height ***
@@ -203,8 +203,8 @@ const cardsData = [
 // *** Replace yourdomain.com and verify/update all URLs ***
 const siteUrl = "https://www.travelcardinsider.com";
 const pageUrl = `${siteUrl}/premium-zero-apr-balance-transfer`; // *** Adjust if path is different ***
-const logoUrl = `${siteUrl}/images/logo-optimized.png`; // *** Use your actual logo URL ***
-const heroImageUrl = `${siteUrl}/images/0apr-hero.jpg`; // *** Use your actual hero image URL ***
+const logoUrl = `${siteUrl}/logo-optimized.png`; // *** Use your actual logo URL ***
+const heroImageUrl = `${siteUrl}/0apr-hero.jpg`; // *** Use your actual hero image URL ***
 
 // Get current date in ISO format (using context provided)
 const dateModifiedISO = new Date("2025-04-05T11:46:44+05:30").toISOString();
