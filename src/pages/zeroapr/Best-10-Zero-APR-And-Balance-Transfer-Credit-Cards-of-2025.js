@@ -363,7 +363,8 @@ export default function ZeroAprPremiumPage() {
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, [activeTooltip, closeTooltip]); // Dependency array
+        }, [activeTooltip, closeTooltip]); // Dependency array
+    }
 
 
 export default function ZeroAprPremiumPage() {
