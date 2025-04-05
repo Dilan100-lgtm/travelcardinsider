@@ -304,12 +304,13 @@ const ratingCriteria = [ 'Rewards & multipliers', 'Fees & sign-up bonus', 'Trave
 
 
 // *** ENSURE THIS IS THE ONLY 'export default' in the file ***
-export default function BestZeroAprCardsPage() { // Use correct function name
+export default function BestZeroAprCardsPage() {
     // --- Tooltip State and Logic ---
     const [activeTooltip, setActiveTooltip] = useState(null);
     const tooltipRef = useRef(null);
 
     const handleIconClick = useCallback((event, card) => {
+        console.log('Icon clicked! Card ID:', card.id); // DEBUG LOG 1
         event.preventDefault();
         event.stopPropagation();
         if (activeTooltip && activeTooltip.id === card.id) {
@@ -318,6 +319,7 @@ export default function BestZeroAprCardsPage() { // Use correct function name
             const rect = event.currentTarget.getBoundingClientRect();
             const top = window.scrollY + rect.bottom + 5;
             const left = window.scrollX + rect.left;
+             console.log('Setting activeTooltip state:', { id: card.id, rating: card.tciRating, top: top, left: left }); // DEBUG LOG 2
             setActiveTooltip({ id: card.id, rating: card.tciRating, top: top, left: left });
         }
     }, [activeTooltip]);
