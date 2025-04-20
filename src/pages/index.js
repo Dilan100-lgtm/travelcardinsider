@@ -6,7 +6,6 @@
 // and blurry logo (asset replacement) need to be addressed in their respective files/areas.
 // This file incorporates fixes for descriptive links and uses Next.js Image best practices.
 // pages/_document.js
-<Html lang="en"></Html>
 
 import React from 'react';
 import Head from "next/head";
