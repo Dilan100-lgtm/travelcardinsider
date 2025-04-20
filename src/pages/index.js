@@ -213,8 +213,7 @@ export default function HomePage() {
           <Image
             src="/AdobeStock_299190080_result.webp"
             alt="A scenic travel background representing adventure"
-            width={1920}
-            height={1080}
+            
             priority
             placeholder="blur"
             className="hero-image"
