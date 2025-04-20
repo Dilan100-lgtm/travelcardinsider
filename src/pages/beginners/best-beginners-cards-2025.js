@@ -230,8 +230,8 @@ const cardsData = [
         id: 'wells-fargo-autograph',
         name: 'Wells Fargo Autograph℠ Card',
         tciRating: '7.1', // From HTML table rating
-        applyUrl: '#', // *** REPLACE ***
-        learnMoreUrl: '/reviews/wells-fargo-autograph', // *** REPLACE ***
+        applyUrl: 'https://creditcards.wellsfargo.com/autograph-visa-credit-card/?SGNTST=SHINYLP&sub_channel=SEO&vendor_code=G', // *** REPLACE ***
+        learnMoreUrl: '/cards/wells-fargo-autograph', // *** REPLACE ***
         ratesFeesUrl: 'https://www.wellsfargo.com/credit-cards/autograph-visa/terms/?FPID=012988I6P10000...', // Shortened for brevity
         imageUrl: '/Autograph-No-Fee-Card-RGB_d.png', // *** VERIFY PATH & ADD TO PUBLIC ***
         imageAlt: 'Wells Fargo Autograph℠ Card',
@@ -254,8 +254,8 @@ const cardsData = [
         id: 'delta-skymiles-blue',
         name: 'Delta SkyMiles® Blue American Express Card',
         tciRating: '6.3', // From HTML table rating
-        applyUrl: '#', // *** REPLACE ***
-        learnMoreUrl: '/reviews/delta-skymiles-blue', // *** REPLACE ***
+        applyUrl: 'https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-blue-american-express-card/', // *** REPLACE ***
+        learnMoreUrl: '/cards/delta-skymiles-blue', // *** REPLACE ***
         ratesFeesUrl: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/delta-skymiles-blue-american-express-card/25330-10-0#FeeTable',
         imageUrl: '/NUS000000267_480x304_straight_withname.webp', // *** VERIFY PATH & ADD TO PUBLIC ***
         imageAlt: 'Delta SkyMiles® Blue American Express Card',
@@ -278,8 +278,8 @@ const cardsData = [
         id: 'united-gateway-card',
         name: 'United Gateway℠ Card',
         tciRating: '6.1', // From HTML table rating
-        applyUrl: '#', // *** REPLACE ***
-        learnMoreUrl: '/reviews/united-gateway', // *** REPLACE ***
+        applyUrl: 'https://creditcards.chase.com/travel-credit-cards/united/united-gateway', // *** REPLACE ***
+        learnMoreUrl: '/cards/united-gateway', // *** REPLACE ***
         ratesFeesUrl: 'https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC56764.html_rates_fees.pdf',
         imageUrl: '/united_gateway_card.png', // *** VERIFY PATH & ADD TO PUBLIC ***
         imageAlt: 'United Gateway℠ Card',
@@ -302,8 +302,8 @@ const cardsData = [
         id: 'citi-custom-cash-table', // Different ID from detailed list version if needed
         name: 'Citi Custom Cash℠ Card',
         tciRating: '7.5', // From HTML table rating
-        applyUrl: '#', // *** REPLACE ***
-        learnMoreUrl: '/reviews/citi-custom-cash', // *** REPLACE ***
+        applyUrl: 'https://www.citi.com/credit-cards/citi-custom-cash-credit-card', // *** REPLACE ***
+        learnMoreUrl: '/cards/citi-custom-cash', // *** REPLACE ***
         ratesFeesUrl: 'https://online.citi.com/US/ag/cards/displayterms?app=UNSOL&HKOP=541175b33e25f6837a0d7af4ba29114f264447b80dcde5f6be6db7d02fed5901',
         imageUrl: '/download.png', // *** VERIFY PATH *** (Duplicate image name?)
         imageAlt: 'Citi Custom Cash® Card',
