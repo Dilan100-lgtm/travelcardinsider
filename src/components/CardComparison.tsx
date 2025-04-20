@@ -1,7 +1,8 @@
-import React from 'react';
-import styles from './CardComparison.module.css';
-
 export default function CardComparison({ cards, selectedCards, onCardSelect }) {
+  if (!Array.isArray(cards)) {
+    return <p>Loading cards...</p>;
+  }
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.cardGrid}>

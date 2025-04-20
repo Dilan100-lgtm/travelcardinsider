@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import creditCardData from '@/data/creditCards.json'; // Adjust path if needed
+import creditCardData from '@/data/creditCards.json'; // Make sure this path is correct
 
 export interface CreditCard {
   "Card Name": string;
@@ -31,12 +31,20 @@ export interface CreditCard {
   "Multipliers Explained": string | null;
 }
 
-export function useCreditCards(): CreditCard[] {
+interface UseCreditCardsResult {
+  cards: CreditCard[];
+}
+
+export function useCreditCards(): UseCreditCardsResult {
   const [cards, setCards] = useState<CreditCard[]>([]);
 
   useEffect(() => {
-    setCards(creditCardData.cards);
+    if (creditCardData && Array.isArray(creditCardData.cards)) {
+      setCards(creditCardData.cards);
+    } else {
+      console.warn("Card data is not an array or missing 'cards' key.");
+    }
   }, []);
 
-  return cards;
+  return { cards };
 }
