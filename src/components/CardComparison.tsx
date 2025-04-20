@@ -1,9 +1,6 @@
-// Inside components/CardComparison.tsx
-
-// Define the fields you want to compare here - CONFIRMED LIST WITH >20 ROWS
 const fieldsToCompare = [
   // Card Identity & Cost
-  { label: 'Card Image', key: 'image', type: 'image' }, // Assuming 'image' key exists
+  { label: 'Card Image', key: 'image', type: 'image' },
   { label: 'Card Name', key: 'Card Name' },
   { label: 'Issuer', key: 'Issuer' },
   { label: 'Card Type', key: 'Card Type' },
@@ -39,8 +36,4 @@ const fieldsToCompare = [
   { label: 'Airline Benefits', key: 'Airline Benefits' },
   { label: 'Hotel Benefits', key: 'Hotel Benefits' },
   { label: 'Travel Insurance', key: 'Travel Insurance' },
-
-  // Add/remove/reorder fields as needed
 ];
-
-// ... rest of the CardComparison.tsx component ...
