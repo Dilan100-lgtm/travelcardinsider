@@ -1,32 +1,17 @@
 // File: components/CardComparison.tsx
-// Simplified - manages its own selection state entirely
+// Conceptual restructuring for column layout
 
-import React, { useState } from 'react'; // Removed useEffect
-import styles from './CardComparison.module.css';
-import { CreditCard } from '@/hooks/useCreditCards'; // Assuming interface is exported from hook file
-import Image from 'next/image'; // Import Image if not already done
+import React, { useState } from 'react';
+import styles from './CardComparison.module.css'; // We will heavily modify this CSS
+import { CreditCard } from '@/hooks/useCreditCards';
+import Image from 'next/image';
 
-// Define props interface - only needs all cards now
 interface CardComparisonProps {
   cards: CreditCard[];
-  // initiallySelectedCards?: CreditCard[]; // REMOVED this prop
 }
 
-export default function CardComparison({ cards }: CardComparisonProps) { // Removed initiallySelectedCards from destructuring
-
-  // Initialize state directly - starts empty
+export default function CardComparison({ cards }: CardComparisonProps) {
   const [selected, setSelected] = useState<(CreditCard | null)[]>([null, null, null]);
-
-  /* useEffect(() => { // REMOVED this effect
-      const newSelection = [null, null, null];
-      initiallySelectedCards.slice(0, 3).forEach((card, index) => {
-          newSelection[index] = card;
-      });
-      if (JSON.stringify(newSelection) !== JSON.stringify(selected)) {
-          setSelected(newSelection);
-      }
-  }, [initiallySelectedCards]); */
-
 
   const handleChange = (index: number, cardName: string) => {
     const card = cards.find(c => c["Card Name"] === cardName);
@@ -35,93 +20,85 @@ export default function CardComparison({ cards }: CardComparisonProps) { // Remo
     setSelected(updated);
   };
 
-  // Define the fields you want to compare here (same as before)
-   const fieldsToCompare = [
-     { label: 'Card Image', key: 'Image', type: 'image' },
-     { label: 'Card Name', key: 'Card Name' },
-     { label: 'Issuer', key: 'Issuer' },
+  // Keep your expanded list of fields from the previous step
+  const fieldsToCompare = [
+     // Example subset - use your full list from the previous step
      { label: 'Annual Fee', key: 'Annual Fee' },
      { label: 'Sign-Up Bonus', key: 'Sign-Up Bonus' },
-     { label: 'Minimum Spend', key: 'Minimum Spend for Bonus'},
-     { label: 'Bonus Value ($)', key: 'Bonus Redemption Value ($)'},
      { label: 'Reward Program', key: 'Reward Program' },
-     { label: 'Base Earning Rate', key: 'Base Earning Rate (pts/$)' },
-     { label: 'Bonus Categories', key: 'Bonus Categories'},
-     { label: 'Category Rates', key: 'Bonus Category Rates'},
-     { label: 'Lounge Access', key: 'Lounge Access'},
-     { label: 'Specific Lounge', key: 'Specific Lounge Program'},
+     { label: 'Purchase APR', key: 'APR Range (Purchases)' },
      { label: 'Foreign Transaction Fee', key: 'Foreign Transaction Fee' },
-     { label: 'Travel Insurance', key: 'Travel Insurance'},
-     { label: 'APR', key: 'APR Range (Purchases)' },
-     // Add more fields as needed
+      // ... add all other desired rows here
    ];
 
-
   return (
-    <div className={styles.wrapper}>
-      {/* Dropdown Row - this is where selection now happens */}
-      <div className={styles.dropdownRow}>
-        {[0, 1, 2].map((index) => (
-          <div key={index} className={styles.dropdownWrapper}>
-            <label htmlFor={`compare-card-select-${index}`}>Select Card {index + 1}</label>
-            <select
-              id={`compare-card-select-${index}`}
-              value={selected[index]?.["Card Name"] || ''} // Value is based on internal state
-              onChange={(e) => handleChange(index, e.target.value)}
-            >
-              <option value="">-- Select a Card --</option> {/* Default option */}
-              {cards.map(card => (
-                <option key={card["Card Name"]} value={card["Card Name"]}>
-                  {card["Card Name"]}
-                </option>
-              ))}
-            </select>
-          </div>
-        ))}
+    <div className={styles.comparisonContainer}> {/* Main container */}
+
+      {/* --- Header Row for Selection & Card Headers --- */}
+      <div className={styles.headerRow}>
+         {/* Placeholder for Feature labels column header (optional) */}
+         <div className={styles.featureHeader}></div>
+
+         {/* Card Selection / Header Columns */}
+         {[0, 1, 2].map((index) => (
+           <div key={`header-${index}`} className={styles.cardColumnHeader}>
+             <div className={styles.dropdownWrapper}> {/* Keep dropdowns */}
+               <label htmlFor={`compare-card-select-${index}`}>Card {index + 1}</label>
+               <select
+                 id={`compare-card-select-${index}`}
+                 value={selected[index]?.["Card Name"] || ''}
+                 onChange={(e) => handleChange(index, e.target.value)}
+               >
+                 <option value="">-- Select a Card --</option>
+                 {cards.map(card => (
+                   <option key={card["Card Name"]} value={card["Card Name"]}>
+                     {card["Card Name"]}
+                   </option>
+                 ))}
+               </select>
+             </div>
+             {selected[index] && ( // Display card info if selected
+               <div className={styles.cardInfo}>
+                  <Image
+                     src={selected[index]?.['image'] || '/placeholder-card.png'}
+                     alt={`${selected[index]?.['Card Name']} image`}
+                     width={180} // Adjust size
+                     height={113} // Adjust size
+                     style={{ objectFit: 'contain', marginBottom: '0.5rem' }}
+                  />
+                  <h3 className={styles.cardName}>{selected[index]?.['Card Name']}</h3>
+                  {/* Add Rating Here if you have it in data */}
+                  <a
+                     href={selected[index]?.['applyLink'] || '#'} // Use actual apply link
+                     target="_blank"
+                     rel="noopener sponsored"
+                     className={`Apply-button ${styles.applyButton}`} // Use your button style + module style
+                  >
+                     Apply Now
+                  </a>
+               </div>
+             )}
+           </div>
+         ))}
       </div>
 
-      {/* Comparison Table (structure remains the same) */}
-      <div className={styles.tableWrapper}>
-        <table className={styles.compareTable}>
-          <tbody>
-            {fieldsToCompare.map(({ label, key, type }) => (
-              <tr key={key}>
-                <td><strong>{label}</strong></td>
-                {selected.map((card, i) => (
-                  <td key={i}>
-                     {card ?
-                       (type === 'image' ?
-                         // Make sure card objects have an 'image' property or adjust key
-                         <Image src={card['image'] || '/placeholder-card.png'} alt={`${card['Card Name']} image`} width={150} height={94} style={{ objectFit: 'contain' }} />
-                         : (card[key] || '—'))
-                       : '—'}
-                  </td>
-                ))}
-              </tr>
-            ))}
-             {/* Optional: Add Apply Now button row (structure remains the same) */}
-              <tr>
-                 <td><strong>Apply</strong></td>
-                 {selected.map((card, i) => (
-                    <td key={`apply-${i}`}>
-                        {card ? (
-                            <a
-                                href={`#`} /* Replace with actual affiliate link */
-                                target="_blank"
-                                rel="noopener sponsored"
-                                className="Apply-button" // Use your button style
-                            >
-                                Apply Now
-                            </a>
-                        ) : (
-                            "—"
-                        )}
-                    </td>
-                 ))}
-              </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+      {/* --- Feature Rows --- */}
+      {fieldsToCompare.map(({ label, key }) => (
+        <div key={key} className={styles.featureRow}>
+          {/* Feature Label Column */}
+          <div className={styles.featureLabelCell}>
+            <strong>{label}</strong>
+          </div>
+
+          {/* Card Value Columns */}
+          {[0, 1, 2].map((index) => (
+            <div key={`value-${index}-${key}`} className={styles.cardValueCell}>
+              {selected[index]?.[key as keyof CreditCard] || '—'}
+            </div>
+          ))}
+        </div>
+      ))}
+
+    </div> // End comparisonContainer
   );
 }
