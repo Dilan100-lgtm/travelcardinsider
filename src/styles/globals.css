@@ -472,7 +472,7 @@ p, h1, h2, h3, h4, h5, h6, li, div {
   /* LCP Candidate: Ensure image file is optimized! */
   background:
     linear-gradient(to top, rgba(80, 68, 18, 0.6) 10%, transparent),
-    url('/AdobeStock_299190080_result.webp') no-repeat center center/cover;
+     no-repeat center center/cover;
   background-position: left 10% bottom 40%;
   /* FIXED: Use 100% instead of 100vw */
   width: 100%;

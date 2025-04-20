@@ -5,6 +5,8 @@
 // unused JS (code splitting/optimization), optimizing the true LCP element (often hero image/text),
 // and blurry logo (asset replacement) need to be addressed in their respective files/areas.
 // This file incorporates fixes for descriptive links and uses Next.js Image best practices.
+// pages/_document.js
+<Html lang="en"></Html>
 
 import React from 'react';
 import Head from "next/head";
@@ -213,9 +215,18 @@ export default function HomePage() {
       <main>
         {/* Section for Hero Background Image */}
         {/* LCP Optimization: Preloaded above. Image itself needs optimization. */}
-        <section id="product-overview" aria-labelledby="hero-heading"> {/* Added aria-label */}
-          <div className="img"></div> {/* Styled via CSS background */}
-        </section>
+        <section id="product-overview" aria-labelledby="hero-heading">
+  <Image
+    src="/AdobeStock_299190080_result.webp"
+    alt="A scenic travel background representing adventure"
+    width={1920}
+    height={1080}
+    priority
+    placeholder="blur"
+    className="hero-image"
+  />
+</section>
+
 
         {/* Hero Text Section(s) */}
         <section className="hero">
