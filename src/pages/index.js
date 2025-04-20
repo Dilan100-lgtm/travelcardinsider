@@ -279,7 +279,8 @@ export default function HomePage() {
                 alt="Chase Sapphire Preferred Card shown on a blue background" // More descriptive alt text
                 width={400} // Ensure aspect ratio matches source
                 height={250} // Ensure aspect ratio matches source
-                priority={true} // Prioritize if above the fold
+                priority={true}
+                loading="lazy" // Prioritize if above the fold
               />
               <div className="featured-card__description">
                 <h3>Chase Sapphire Preferred</h3>
