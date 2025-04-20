@@ -6,8 +6,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { CardComparison } from "@/components/CardComparison"; // Added import for the comparison component
-import { useCreditCards } from "@/hooks/useCreditCards"; // Added import for the hook
+import { useCreditCards } from '@/hooks/useCreditCards';
+import CardComparison from '@/components/CardComparison';
+
 
 export default function HomePage() {
   // --- Comparison Logic Integration ---
