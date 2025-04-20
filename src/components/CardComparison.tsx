@@ -95,7 +95,15 @@ export default function CardComparison({ cards, initiallySelectedCards = [] }: C
                   <td key={i}>
                      {card ?
                        (type === 'image' ?
-                         <Image src={card['image'] || '/placeholder-card.png'} alt={`${card['Card Name']} image`} width={150} height={94} style={{ objectFit: 'contain' }} />
+                        <Image
+  src={card['image'] as string || '/placeholder-card.png'}
+  alt={`${card['Card Name']} image`}
+  width={150}
+  height={94}
+  style={{ objectFit: 'contain' }}
+  unoptimized
+/>
+
                          : (card[key] || '—'))
                        : '—'}
                   </td>
