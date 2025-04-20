@@ -1,0 +1,32 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Wells Fargo Active Cash\u00ae Card",
+  "image": "https://www.travelcardinsider.com/WF_ActiveCash_VS_Collateral_Front_RGB.png",
+  "description": "Wells Fargo Active Cash\u00ae Card is rated 7.8/10 for its unlimited 2% cash rewards, 0% APR offer, and no annual fee.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Wells Fargo"
+  },
+  "url": "https://www.travelcardinsider.com/reviews/wells-fargo-active-cash",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "7.8",
+    "bestRating": "10",
+    "worstRating": "1",
+    "ratingCount": 53
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "7.8",
+      "bestRating": "10"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "TravelCardInsider"
+    },
+    "reviewBody": "Wells Fargo Active Cash\u00ae Card is rated 7.8/10 for its unlimited 2% cash rewards, 0% APR offer, and no annual fee."
+  }
+}

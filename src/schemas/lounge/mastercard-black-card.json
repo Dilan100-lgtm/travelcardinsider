@@ -1,0 +1,17 @@
+{
+  "@context": "https://schema.org",
+  "@type": "CreditCard",
+  "@id": "https://www.travelcardinsider.com/mastercard-black-card",
+  "name": "Mastercard\u00ae Black Card\u2122",
+  "brand": "Luxury Card",
+  "description": "Priority Pass Select membership, 24/7 luxury concierge, and premium metal design.",
+  "url": "https://www.travelcardinsider.com/mastercard-black-card",
+  "image": "https://www.travelcardinsider.com/images/mastercard_black_card.png",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "USD",
+    "price": "495",
+    "url": "https://www.travelcardinsider.com/apply/mastercard-black-card",
+    "annualFee": "495"
+  }
+}

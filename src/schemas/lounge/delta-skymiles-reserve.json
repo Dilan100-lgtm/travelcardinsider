@@ -1,0 +1,17 @@
+{
+  "@context": "https://schema.org",
+  "@type": "CreditCard",
+  "@id": "https://www.travelcardinsider.com/delta-skymiles-reserve",
+  "name": "Delta SkyMiles\u00ae Reserve American Express Card",
+  "brand": "American Express",
+  "description": "Delta Sky Club\u00ae and Centurion Lounge access for Delta loyalists seeking elite benefits.",
+  "url": "https://www.travelcardinsider.com/delta-skymiles-reserve",
+  "image": "https://www.travelcardinsider.com/images/delta_skymiles_reserve_card.png",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "USD",
+    "price": "550",
+    "url": "https://www.travelcardinsider.com/apply/delta-skymiles-reserve",
+    "annualFee": "550"
+  }
+}

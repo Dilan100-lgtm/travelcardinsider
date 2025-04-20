@@ -1,0 +1,32 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Chase Freedom Unlimited\u00ae",
+  "image": "https://www.travelcardinsider.com/freedom_unlimited_card_alt%20(1).png",
+  "description": "Chase Freedom Unlimited\u00ae offers versatile cash-back rewards, balance transfer options, and no annual fee.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Chase"
+  },
+  "url": "https://www.travelcardinsider.com/reviews/chase-freedom-unlimited",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "7.5",
+    "bestRating": "10",
+    "worstRating": "1",
+    "ratingCount": 48
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "7.5",
+      "bestRating": "10"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "TravelCardInsider"
+    },
+    "reviewBody": "Chase Freedom Unlimited\u00ae is rated 7.5/10 for its features and benefits, including rewards, balance transfer offers, and no annual fee."
+  }
+}

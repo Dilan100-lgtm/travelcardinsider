@@ -1,0 +1,32 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Capital One QuicksilverOne Rewards Credit Card",
+  "image": "https://www.travelcardinsider.com/images/qs1_cardart_prim_1290x812.avif",
+  "description": "Capital One QuicksilverOne is rated 7.2/10 for its 1.5% cashback and accessibility for average credit profiles.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Capital One"
+  },
+  "url": "https://www.travelcardinsider.com/capital-one-quicksilverone",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "7.2",
+    "bestRating": "10",
+    "worstRating": "1",
+    "ratingCount": 33
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "7.2",
+      "bestRating": "10"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "TravelCardInsider"
+    },
+    "reviewBody": "Capital One QuicksilverOne is rated 7.2/10 for its 1.5% cashback and accessibility for average credit profiles."
+  }
+}

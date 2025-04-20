@@ -1,0 +1,30 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Capital One Venture X Rewards Credit Card",
+  "image": "https://www.travelcardinsider.com/images/venturex-cg-static-card-1000x630-2.avif",
+  "description": "Premium Capital One card with lounge access, travel credits, and 10X rewards.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Capital One"
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "9.0",
+      "bestRating": "10"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "TravelCardInsider"
+    }
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "395",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.capitalone.com/credit-cards/venture-x/"
+  }
+}

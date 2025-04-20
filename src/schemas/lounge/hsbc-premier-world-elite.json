@@ -1,0 +1,17 @@
+{
+  "@context": "https://schema.org",
+  "@type": "CreditCard",
+  "@id": "https://www.travelcardinsider.com/hsbc-premier-world-elite",
+  "name": "HSBC Premier World Elite Mastercard\u00ae",
+  "brand": "HSBC",
+  "description": "LoungeKey access for global travelers, plus accelerated points on travel purchases.",
+  "url": "https://www.travelcardinsider.com/hsbc-premier-world-elite",
+  "image": "https://www.travelcardinsider.com/images/hsbc_premier_world_elite.png",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "USD",
+    "price": "395",
+    "url": "https://www.travelcardinsider.com/apply/hsbc-premier-world-elite",
+    "annualFee": "395"
+  }
+}

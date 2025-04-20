@@ -1,0 +1,17 @@
+{
+  "@context": "https://schema.org",
+  "@type": "CreditCard",
+  "@id": "https://www.travelcardinsider.com/united-club-infinite",
+  "name": "United Club\u2120 Infinite Card",
+  "brand": "Chase / United",
+  "description": "Unlimited United Club access and Star Alliance lounge perks for frequent United flyers.",
+  "url": "https://www.travelcardinsider.com/united-club-infinite",
+  "image": "https://www.travelcardinsider.com/images/united_club_infinite_card.png",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "USD",
+    "price": "525",
+    "url": "https://www.travelcardinsider.com/apply/united-club-infinite",
+    "annualFee": "525"
+  }
+}

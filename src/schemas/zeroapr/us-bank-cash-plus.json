@@ -1,0 +1,32 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "U.S. Bank Cash+\u00ae Visa Signature\u00ae Card",
+  "image": "https://www.travelcardinsider.com/Cash+_Front_Angle_Reflection.png",
+  "description": "U.S. Bank Cash+\u00ae Visa Signature\u00ae Card is rated 7.4/10 for customizable 5% cash back and $0 annual fee.",
+  "brand": {
+    "@type": "Brand",
+    "name": "U.S. Bank"
+  },
+  "url": "https://www.travelcardinsider.com/reviews/us-bank-cash-plus",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "7.4",
+    "bestRating": "10",
+    "worstRating": "1",
+    "ratingCount": 57
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "7.4",
+      "bestRating": "10"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "TravelCardInsider"
+    },
+    "reviewBody": "U.S. Bank Cash+\u00ae Visa Signature\u00ae Card is rated 7.4/10 for customizable 5% cash back and $0 annual fee."
+  }
+}

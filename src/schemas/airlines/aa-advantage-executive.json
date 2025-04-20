@@ -1,0 +1,30 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "American Airlines AAdvantage\u00ae Executive World Elite Mastercard\u00ae",
+  "image": "https://www.travelcardinsider.com/images/executive-credit-card.png.webp",
+  "description": "Luxury card for AA flyers with Admirals Club\u00ae membership, EQMs, and elite perks. 2x miles on AA purchases and exclusive status benefits.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Citi"
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "8.6",
+      "bestRating": "10"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "TravelCardInsider"
+    }
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "450",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://creditcards.aa.com/exec_standard/"
+  }
+}

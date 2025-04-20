@@ -1,0 +1,30 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Hilton Honors American Express Aspire Card",
+  "image": "https://www.travelcardinsider.com/images/NUS000000329_480x304_straight_withname.avif",
+  "description": "Luxury Hilton card with Diamond status, resort credits, and lounge access.",
+  "brand": {
+    "@type": "Brand",
+    "name": "American Express"
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "9.0",
+      "bestRating": "10"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "TravelCardInsider"
+    }
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "450",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/hilton-honors-aspire-credit-card/25330-10-0#FeeTable"
+  }
+}

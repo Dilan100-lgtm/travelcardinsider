@@ -1,0 +1,17 @@
+{
+  "@context": "https://schema.org",
+  "@type": "CreditCard",
+  "@id": "https://www.travelcardinsider.com/chase-sapphire-reserve",
+  "name": "Chase Sapphire Reserve\u00ae",
+  "brand": "Chase",
+  "description": "Priority Pass Select lounge membership with flexible points and premium travel perks.",
+  "url": "https://www.travelcardinsider.com/chase-sapphire-reserve",
+  "image": "https://www.travelcardinsider.com/images/sapphire_reserve_card.png",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "USD",
+    "price": "550",
+    "url": "https://www.travelcardinsider.com/apply/chase-sapphire-reserve",
+    "annualFee": "550"
+  }
+}

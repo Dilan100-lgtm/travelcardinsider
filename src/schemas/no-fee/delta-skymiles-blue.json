@@ -1,0 +1,30 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Delta SkyMiles\u00ae Blue American Express Card",
+  "image": "https://www.travelcardinsider.com/images/delta_skymiles_blue_card.png",
+  "description": "No-fee Delta card with 2x miles on Delta and dining, plus no foreign transaction fees.",
+  "brand": {
+    "@type": "Brand",
+    "name": "American Express"
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "6.3",
+      "bestRating": "10"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "TravelCardInsider"
+    }
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/delta-skymiles-blue-american-express-card/25330-10-0#FeeTable"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "@context": "https://schema.org",
+  "@type": "CreditCard",
+  "@id": "https://www.travelcardinsider.com/capital-one-venture-x",
+  "name": "Capital One Venture X Rewards Credit Card",
+  "brand": "Capital One",
+  "description": "Enjoy unlimited Priority Pass and Capital One Lounges access, plus high-earning travel rewards.",
+  "url": "https://www.travelcardinsider.com/capital-one-venture-x",
+  "image": "https://www.travelcardinsider.com/images/venture-x-card.png",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "USD",
+    "price": "395",
+    "url": "https://www.travelcardinsider.com/apply/capital-one-venture-x",
+    "annualFee": "395"
+  }
+}

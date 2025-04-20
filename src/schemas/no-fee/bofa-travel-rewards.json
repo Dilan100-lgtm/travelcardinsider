@@ -1,0 +1,30 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Bank of America\u00ae Travel Rewards Credit Card",
+  "image": "https://www.travelcardinsider.com/images/bofa_travel_rewards_card.png",
+  "description": "Earn 1.5x points on every purchase, with no annual fee or foreign transaction fees.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Bank of America"
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "7.4",
+      "bestRating": "10"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "TravelCardInsider"
+    }
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.bankofamerica.com/credit-cards/products/travel-rewards-credit-card/"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Capital One Venture X Rewards Credit Card",
+  "brand": "Capital One",
+  "description": "Luxury perks at an affordable fee, $300 travel credit, and high earning via Capital One Travel.",
+  "image": "https://www.yourdomain.com/images/venturex-cg-static-card-1000x630-2.avif",
+  "url": "https://www.yourdomain.com/capital-one-venture-x",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "USD",
+    "price": "395",
+    "url": "https://www.yourdomain.com/apply/capital-one-venture-x"
+  }
+}

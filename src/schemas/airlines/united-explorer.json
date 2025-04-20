@@ -1,0 +1,30 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "United\u2120 Explorer Card",
+  "image": "https://www.travelcardinsider.com/images/united_explorer_card.png",
+  "description": "Earn 2x on United, dining, and hotels. Includes free checked bags, lounge passes, and priority boarding with United Airlines.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Chase"
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "8.1",
+      "bestRating": "10"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "TravelCardInsider"
+    }
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "95",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC56768.html"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Product",
+      "@id": "https://www.travelcardinsider.com/cards/capital-one-venture#product",
+      "name": "Capital One Venture Rewards Credit Card",
+      "image": "https://www.yourdomain.com/images/capital_one_venture.png",
+      "description": "2025 review of the Capital One Venture Rewards Credit Card, including welcome bonus, perks, and earning structure.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Capital One"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": 8.2,
+        "reviewCount": 980,
+        "bestRating": 10,
+        "worstRating": 0
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.travelcardinsider.com/cards/capital-one-venture",
+        "priceCurrency": "USD",
+        "price": "95",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition"
+      }
+    },
+    {
+      "@type": "Review",
+      "@id": "https://www.travelcardinsider.com/cards/capital-one-venture#review",
+      "reviewBody": "The Capital One Venture is a strong mid-tier travel rewards card offering 2x miles on all purchases, solid transfer partners, and an accessible annual fee.",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 8.2,
+        "bestRating": 10,
+        "worstRating": 0
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "TravelCardInsider"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "TravelCardInsider",
+        "url": "https://www.travelcardinsider.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.travelcardinsider.com/logo-optimized.png",
+          "width": 600,
+          "height": 60
+        }
+      },
+      "datePublished": "2025-01-15",
+      "dateModified": "2025-04-14",
+      "itemReviewed": {
+        "@id": "https://www.travelcardinsider.com/cards/capital-one-venture#product"
+      }
+    }
+  ]
+}

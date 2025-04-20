@@ -1,0 +1,30 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Alaska Airlines Visa\u00ae Signature Card",
+  "image": "https://www.travelcardinsider.com/images/1bbt_sigcm_v_mileageplan_250x158.png",
+  "description": "3x on Alaska Airlines, famous Companion Fare\u2122, and free bags. Great for travelers to and from the West Coast and Alaska.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Bank of America"
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "7.9",
+      "bestRating": "10"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "TravelCardInsider"
+    }
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "95",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.alaskaair.com/content/credit-card/visa-signature"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "@context": "https://schema.org",
+  "@type": "CreditCard",
+  "@id": "https://www.travelcardinsider.com/marriott-bonvoy-brilliant",
+  "name": "Marriott Bonvoy Brilliant\u00ae American Express\u00ae Card",
+  "brand": "American Express",
+  "description": "Priority Pass access and Platinum Elite status for Marriott loyalists.",
+  "url": "https://www.travelcardinsider.com/marriott-bonvoy-brilliant",
+  "image": "https://www.travelcardinsider.com/images/marriott_bonvoy_brilliant_card.png",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "USD",
+    "price": "650",
+    "url": "https://www.travelcardinsider.com/apply/marriott-bonvoy-brilliant",
+    "annualFee": "650"
+  }
+}

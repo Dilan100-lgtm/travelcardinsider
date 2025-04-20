@@ -1,0 +1,32 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Capital One Venture Rewards Credit Card",
+  "image": "https://www.travelcardinsider.com/images/venture_cardart_prim_323x203-1.avif",
+  "description": "Capital One Venture Rewards Credit Card is rated 8.2/10 for its simple 2x miles on every purchase and travel perks.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Capital One"
+  },
+  "url": "https://www.travelcardinsider.com/capital-one-venture",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "8.2",
+    "bestRating": "10",
+    "worstRating": "1",
+    "ratingCount": 71
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "8.2",
+      "bestRating": "10"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "TravelCardInsider"
+    },
+    "reviewBody": "Capital One Venture Rewards Credit Card is rated 8.2/10 for its simple 2x miles on every purchase and travel perks."
+  }
+}

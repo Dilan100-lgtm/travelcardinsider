@@ -1,0 +1,30 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Delta SkyMiles\u00ae Platinum American Express Card",
+  "image": "https://www.travelcardinsider.com/images/delta-skymiles-card.webp",
+  "description": "Premium Delta travel rewards card with 3x miles on Delta, 2x on dining and groceries, and exclusive travel perks like lounge access and companion certificate.",
+  "brand": {
+    "@type": "Brand",
+    "name": "American Express"
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "8.3",
+      "bestRating": "10"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "TravelCardInsider"
+    }
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "250",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/delta-skymiles-platinum-american-express-card/25330-10-0#FeeTable"
+  }
+}

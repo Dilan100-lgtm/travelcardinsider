@@ -1,0 +1,30 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Hilton Honors American Express Card",
+  "image": "https://www.travelcardinsider.com/images/hilton_honors_amex_card.png",
+  "description": "Earn up to 7x Hilton points, plus no annual fee. Great for casual Hilton guests.",
+  "brand": {
+    "@type": "Brand",
+    "name": "American Express"
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "6.8",
+      "bestRating": "10"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "TravelCardInsider"
+    }
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/hilton-honors-credit-card/25330-10-0#FeeTable"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Capital One VentureOne Rewards Credit Card",
+  "image": "https://www.travelcardinsider.com/images/ventureone_card.png",
+  "description": "No annual fee card offering 1.25x miles on every purchase, plus 5x on hotels and rentals via Capital One Travel.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Capital One"
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "8.8",
+      "bestRating": "10"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "TravelCardInsider"
+    }
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.capitalone.com/credit-cards/ventureone/"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Capital One Quicksilver Cash Rewards Credit Card",
+  "image": "https://www.travelcardinsider.com/images/capital_one_quicksilverone_card.png",
+  "description": "Unlimited 1.5% cash back on all purchases, no foreign transaction fees, and no annual fee.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Capital One"
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "7.8",
+      "bestRating": "10"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "TravelCardInsider"
+    }
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.capitalone.com/credit-cards/quicksilverone/"
+  }
+}

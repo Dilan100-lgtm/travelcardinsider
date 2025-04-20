@@ -1,0 +1,30 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "United Gateway\u2120 Card",
+  "image": "https://www.travelcardinsider.com/images/united_gateway_card.png",
+  "description": "No annual fee United card with 2x miles on United, gas, and transit. Ideal for occasional flyers.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Chase / United"
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "6.1",
+      "bestRating": "10"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "TravelCardInsider"
+    }
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC56764.html"
+  }
+}

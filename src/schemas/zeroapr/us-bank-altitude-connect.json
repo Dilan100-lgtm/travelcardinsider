@@ -1,0 +1,32 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "U.S. Bank Altitude\u00ae Connect Visa Signature\u00ae Card",
+  "image": "https://www.travelcardinsider.com/photo-altitude-connect-consumer.png",
+  "description": "U.S. Bank Altitude\u00ae Connect Card offers generous travel rewards and intro APR on balance transfers.",
+  "brand": {
+    "@type": "Brand",
+    "name": "U.S. Bank"
+  },
+  "url": "https://www.travelcardinsider.com/reviews/us-bank-altitude-connect",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "8.2",
+    "bestRating": "10",
+    "worstRating": "1",
+    "ratingCount": 49
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "8.2",
+      "bestRating": "10"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "TravelCardInsider"
+    },
+    "reviewBody": "U.S. Bank Altitude\u00ae Connect Visa Signature\u00ae Card is rated 8.2/10 for its features and benefits, including rewards, balance transfer offers, and no annual fee."
+  }
+}

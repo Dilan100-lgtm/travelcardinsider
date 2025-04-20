@@ -1,0 +1,17 @@
+{
+  "@context": "https://schema.org",
+  "@type": "CreditCard",
+  "@id": "https://www.travelcardinsider.com/hilton-honors-aspire",
+  "name": "Hilton Honors American Express Aspire Card",
+  "brand": "American Express",
+  "description": "Priority Pass Select membership, Diamond status, and top-tier Hilton perks.",
+  "url": "https://www.travelcardinsider.com/hilton-aspire",
+  "image": "https://www.travelcardinsider.com/images/hilton_honors_aspire_card.png",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "USD",
+    "price": "450",
+    "url": "https://www.travelcardinsider.com/apply/hilton-aspire",
+    "annualFee": "450"
+  }
+}

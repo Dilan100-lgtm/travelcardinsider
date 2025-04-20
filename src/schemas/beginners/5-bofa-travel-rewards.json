@@ -1,0 +1,32 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Bank of America\u00ae Travel Rewards Credit Card",
+  "image": "https://www.travelcardinsider.com/images/8blm_trvsigcm_v_250x158.png",
+  "description": "Bank of America\u00ae Travel Rewards Credit Card is rated 7.4/10 for no annual fee and flat-rate 1.5x points on all purchases.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Bank of America"
+  },
+  "url": "https://www.travelcardinsider.com/bank-of-america-travel-rewards",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "7.4",
+    "bestRating": "10",
+    "worstRating": "1",
+    "ratingCount": 45
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "7.4",
+      "bestRating": "10"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "TravelCardInsider"
+    },
+    "reviewBody": "Bank of America\u00ae Travel Rewards Credit Card is rated 7.4/10 for no annual fee and flat-rate 1.5x points on all purchases."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Discover it\u00ae Miles",
+  "image": "https://www.travelcardinsider.com/cardart-travel-beachcard-620-382.webp",
+  "description": "Discover it\u00ae Miles offers unlimited 1.5x miles and mile match at year-end.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Discover"
+  },
+  "url": "https://www.travelcardinsider.com/reviews/discover-it-miles",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "7.0",
+    "bestRating": "10",
+    "worstRating": "1",
+    "ratingCount": 52
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "7.0",
+      "bestRating": "10"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "TravelCardInsider"
+    },
+    "reviewBody": "Discover it\u00ae Miles is rated 7.0/10 for its features and benefits, including rewards, balance transfer offers, and no annual fee."
+  }
+}

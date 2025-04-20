@@ -1,0 +1,32 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Citi Custom Cash\u00ae Card",
+  "image": "https://www.travelcardinsider.com/download.png",
+  "description": "Citi Custom Cash\u00ae Card provides 5% cash back on your top eligible spending category.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Citi"
+  },
+  "url": "https://www.travelcardinsider.com/reviews/citi-custom-cash",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "7.5",
+    "bestRating": "10",
+    "worstRating": "1",
+    "ratingCount": 50
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "7.5",
+      "bestRating": "10"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "TravelCardInsider"
+    },
+    "reviewBody": "Citi Custom Cash\u00ae Card is rated 7.5/10 for its features and benefits, including rewards, balance transfer offers, and no annual fee."
+  }
+}

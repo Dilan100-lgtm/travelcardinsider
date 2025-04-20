@@ -1,0 +1,30 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "JetBlue Plus Card",
+  "image": "https://www.travelcardinsider.com/images/JBE_JB3_LP_Card_Plus_WE_360x227.png",
+  "description": "6x JetBlue, 2x dining & groceries. Get Mosaic perks, 10% points back, and a $100 JetBlue Vacations credit annually.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Barclays"
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "7.8",
+      "bestRating": "10"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "TravelCardInsider"
+    }
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "99",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.barclaycardus.com/applycontent/TnCs.jsp?tc46682"
+  }
+}

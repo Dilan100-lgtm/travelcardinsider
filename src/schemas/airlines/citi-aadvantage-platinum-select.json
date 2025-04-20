@@ -1,0 +1,30 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Citi\u00ae / AAdvantage\u00ae Platinum Select\u00ae World Elite Mastercard\u00ae",
+  "image": "https://www.travelcardinsider.com/images/CardArt.png.webp",
+  "description": "Earn 2x on AA, gas, and dining. Includes Group 1 boarding, free bags, no foreign transaction fees, and a $125 flight discount annually.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Citi"
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "7.8",
+      "bestRating": "10"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "TravelCardInsider"
+    }
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "99",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://creditcards.aa.com/plat_standard/"
+  }
+}

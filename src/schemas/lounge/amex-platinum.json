@@ -1,0 +1,17 @@
+{
+  "@context": "https://schema.org",
+  "@type": "CreditCard",
+  "@id": "https://www.travelcardinsider.com/amex-platinum",
+  "name": "The Platinum Card\u00ae from American Express",
+  "brand": "American Express",
+  "description": "Access 1,400+ lounges including Centurion, Delta Sky Clubs\u00ae, and Priority Pass Select. Ideal for luxury travelers.",
+  "url": "https://www.travelcardinsider.com/amex-platinum",
+  "image": "https://www.travelcardinsider.com/images/platinum-card-amex.png",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "USD",
+    "price": "695",
+    "url": "https://www.travelcardinsider.com/apply/amex-platinum",
+    "annualFee": "695"
+  }
+}

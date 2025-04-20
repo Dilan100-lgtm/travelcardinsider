@@ -1,0 +1,32 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "United Gateway\u2120 Card",
+  "image": "https://www.travelcardinsider.com/images/united_gateway_card.png",
+  "description": "United Gateway\u2120 Card is rated 6.1/10 for no annual fee and United miles earning with 2x bonus categories.",
+  "brand": {
+    "@type": "Brand",
+    "name": "United"
+  },
+  "url": "https://www.travelcardinsider.com/united-gateway",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "6.1",
+    "bestRating": "10",
+    "worstRating": "1",
+    "ratingCount": 29
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "6.1",
+      "bestRating": "10"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "TravelCardInsider"
+    },
+    "reviewBody": "United Gateway\u2120 Card is rated 6.1/10 for no annual fee and United miles earning with 2x bonus categories."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Citi\u00ae Diamond Preferred\u00ae Card",
+  "image": "https://www.travelcardinsider.com/download%20(1).png",
+  "description": "Citi\u00ae Diamond Preferred\u00ae Card is rated 6.5/10 for its extended 0% balance transfer offer and no annual fee.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Citi"
+  },
+  "url": "https://www.travelcardinsider.com/reviews/citi-diamond-preferred",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "6.5",
+    "bestRating": "10",
+    "worstRating": "1",
+    "ratingCount": 55
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "6.5",
+      "bestRating": "10"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "TravelCardInsider"
+    },
+    "reviewBody": "Citi\u00ae Diamond Preferred\u00ae Card is rated 6.5/10 for its extended 0% balance transfer offer and no annual fee."
+  }
+}

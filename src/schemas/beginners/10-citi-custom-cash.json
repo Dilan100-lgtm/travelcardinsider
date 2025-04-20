@@ -1,0 +1,32 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Citi Custom Cash\u2120 Card",
+  "image": "https://www.travelcardinsider.com/images/download.png",
+  "description": "Citi Custom Cash\u2120 Card is rated 7.5/10 for automatic 5% cashback in your top spend category, great for daily use.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Citi"
+  },
+  "url": "https://www.travelcardinsider.com/citi-custom-cash",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "7.5",
+    "bestRating": "10",
+    "worstRating": "1",
+    "ratingCount": 41
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "7.5",
+      "bestRating": "10"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "TravelCardInsider"
+    },
+    "reviewBody": "Citi Custom Cash\u2120 Card is rated 7.5/10 for automatic 5% cashback in your top spend category, great for daily use."
+  }
+}

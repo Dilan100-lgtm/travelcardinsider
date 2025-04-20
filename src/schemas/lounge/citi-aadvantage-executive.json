@@ -1,0 +1,17 @@
+{
+  "@context": "https://schema.org",
+  "@type": "CreditCard",
+  "@id": "https://www.travelcardinsider.com/citi-aadvantage-executive",
+  "name": "Citi\u00ae / AAdvantage\u00ae Executive World Elite Mastercard\u00ae",
+  "brand": "Citi / American Airlines",
+  "description": "Admirals Club membership and premium AA perks for loyal American Airlines travelers.",
+  "url": "https://www.travelcardinsider.com/citi-aadvantage-executive",
+  "image": "https://www.travelcardinsider.com/images/citi_aadvantage_executive_card.png",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "USD",
+    "price": "595",
+    "url": "https://www.travelcardinsider.com/apply/citi-aadvantage-executive",
+    "annualFee": "595"
+  }
+}

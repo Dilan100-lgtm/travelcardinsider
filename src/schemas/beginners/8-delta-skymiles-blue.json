@@ -1,0 +1,32 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Delta SkyMiles\u00ae Blue American Express Card",
+  "image": "https://www.travelcardinsider.com/images/NUS000000267_480x304_straight_withname.webp",
+  "description": "Delta SkyMiles\u00ae Blue is rated 6.3/10 for no annual fee and 2x miles on Delta and dining.",
+  "brand": {
+    "@type": "Brand",
+    "name": "American Express"
+  },
+  "url": "https://www.travelcardinsider.com/delta-skymiles-blue",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "6.3",
+    "bestRating": "10",
+    "worstRating": "1",
+    "ratingCount": 36
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "6.3",
+      "bestRating": "10"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "TravelCardInsider"
+    },
+    "reviewBody": "Delta SkyMiles\u00ae Blue is rated 6.3/10 for no annual fee and 2x miles on Delta and dining."
+  }
+}

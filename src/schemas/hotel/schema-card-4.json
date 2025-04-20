@@ -1,0 +1,30 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "World of Hyatt Credit Card",
+  "image": "https://www.travelcardinsider.com/images/world_of_hyatt_card.png",
+  "description": "Hyatt card with elite perks, free nights, and bonus points on travel and dining.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Chase"
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "8.5",
+      "bestRating": "10"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "TravelCardInsider"
+    }
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "95",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC60391.html"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Wells Fargo Autograph\u2120 Card",
+  "image": "https://www.travelcardinsider.com/images/Autograph-No-Fee-Card-RGB_d.png",
+  "description": "Wells Fargo Autograph\u2120 Card is rated 7.1/10 for no annual fee and bonus 3x points on popular categories.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Wells Fargo"
+  },
+  "url": "https://www.travelcardinsider.com/wells-fargo-autograph",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "7.1",
+    "bestRating": "10",
+    "worstRating": "1",
+    "ratingCount": 48
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "7.1",
+      "bestRating": "10"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "TravelCardInsider"
+    },
+    "reviewBody": "Wells Fargo Autograph\u2120 Card is rated 7.1/10 for no annual fee and bonus 3x points on popular categories."
+  }
+}

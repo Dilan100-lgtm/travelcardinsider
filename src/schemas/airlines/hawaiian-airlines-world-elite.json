@@ -1,0 +1,30 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Hawaiian Airlines\u00ae World Elite Mastercard\u00ae",
+  "image": "https://www.travelcardinsider.com/images/20181128-landing-cardArt.png",
+  "description": "3x miles on Hawaiian Airlines, 2x on gas/dining/groceries, priority boarding, companion ticket discounts, and no foreign transaction fees.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Barclays"
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "7.6",
+      "bestRating": "10"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "TravelCardInsider"
+    }
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "99",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.barclaycardus.com/applycontent/TnCs.jsp?tc46491"
+  }
+}

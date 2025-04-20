@@ -1,0 +1,37 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Hilton Honors American Express Business Card",
+  "image": "https://www.yourdomain.com/images/hilton_honors_business_card.png",
+  "brand": {
+    "@type": "Brand",
+    "name": "American Express"
+  },
+  "description": "Official review and details of the Hilton Honors American Express Business Card including rewards, perks, and annual fee.",
+  "url": "https://www.yourdomain.com/hilton-honors-business",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "USD",
+    "price": "95",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.yourdomain.com/hilton-honors-business"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "8.5",
+    "reviewCount": "173"
+  },
+  "review": {
+    "@type": "Review",
+    "author": {
+      "@type": "Organization",
+      "name": "TravelCardInsider"
+    },
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "8.5",
+      "bestRating": "10"
+    },
+    "reviewBody": "Comprehensive review of the Hilton Honors American Express Business Card for business travel needs in 2025."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "@type": "Organization",
+  "@id": "https://www.travelcardinsider.com/#organization",
+  "name": "TravelCardInsider",
+  "url": "https://www.travelcardinsider.com",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://www.travelcardinsider.com/6.jpg",
+    "width": 600,
+    "height": 60
+  },
+  "sameAs": [
+    "https://www.facebook.com/YourPage",
+    "https://twitter.com/YourHandle",
+    "https://www.instagram.com/YourProfile"
+  ]
+}

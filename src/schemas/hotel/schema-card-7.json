@@ -1,0 +1,30 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Wyndham Rewards Earner\u00ae Plus Card",
+  "image": "https://www.travelcardinsider.com/images/download.png",
+  "description": "Rewards card for Wyndham guests with high earn rates and elite status.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Barclays"
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "7.2",
+      "bestRating": "10"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "TravelCardInsider"
+    }
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "75",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.barclaycardus.com/applycontent/TnCs.jsp?tc46850"
+  }
+}

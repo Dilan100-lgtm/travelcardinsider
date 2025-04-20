@@ -1,0 +1,37 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Capital One Venture X Rewards Credit Card",
+  "image": "https://www.yourdomain.com/images/venturex-cg-static-card-1000x630-2.avif",
+  "description": "2025 review of the Capital One Venture X Rewards Credit Card, including welcome bonus, perks, and earning structure.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Capital One"
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": 9.0,
+	"worstRating": "1",
+      "bestRating": "10"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "TravelCardInsider"
+    }
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": 9.0,
+    "reviewCount": 1340
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://www.yourdomain.com/capital-one-venture-x",
+    "priceCurrency": "USD",
+    "price": "395",
+    "availability": "https://schema.org/InStock",
+    "itemCondition": "https://schema.org/NewCondition"
+  }
+}

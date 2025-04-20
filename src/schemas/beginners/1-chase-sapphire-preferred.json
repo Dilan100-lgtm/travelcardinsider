@@ -1,0 +1,32 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Chase Sapphire Preferred\u00ae Card",
+  "image": "https://www.travelcardinsider.com/images/sapphire_preferred_card.png",
+  "description": "Chase Sapphire Preferred\u00ae Card is rated 8.4/10 for its strong rewards on travel and dining and flexible Ultimate Rewards points.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Chase"
+  },
+  "url": "https://www.travelcardinsider.com/chase-sapphire-preferred",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "8.4",
+    "bestRating": "10",
+    "worstRating": "1",
+    "ratingCount": 89
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "8.4",
+      "bestRating": "10"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "TravelCardInsider"
+    },
+    "reviewBody": "Chase Sapphire Preferred\u00ae Card is rated 8.4/10 for its strong rewards on travel and dining and flexible Ultimate Rewards points."
+  }
+}

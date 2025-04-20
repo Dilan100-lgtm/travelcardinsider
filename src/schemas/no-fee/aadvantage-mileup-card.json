@@ -1,0 +1,30 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "American Airlines AAdvantage\u00ae MileUp\u00ae Card",
+  "image": "https://www.travelcardinsider.com/images/aadvantage_mileup_card.png",
+  "description": "Earn AAdvantage miles without an annual fee, featuring 2x miles on groceries and AA purchases.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Citi / American Airlines"
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "6.1",
+      "bestRating": "10"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "TravelCardInsider"
+    }
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://creditcards.aa.com/credit-cards/citi-mileup-card-american-airlines-direct/#pricing"
+  }
+}
