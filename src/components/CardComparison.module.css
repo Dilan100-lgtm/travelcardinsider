@@ -1,40 +1,106 @@
 /* File: components/CardComparison.module.css */
-.wrapper {
-  padding: 2rem 0;
+/* Basic Grid Layout - NEEDS SIGNIFICANT STYLING */
+
+.comparisonContainer {
+  width: 100%;
+  overflow-x: auto; /* Allow horizontal scrolling on small screens */
+  padding: 1rem 0;
 }
 
-.dropdownRow {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 1.5rem;
+.headerRow,
+.featureRow {
+  display: grid;
+  /* 1fr for feature label/header, then 3 equal columns for cards */
+  grid-template-columns: minmax(150px, 1fr) repeat(3, minmax(200px, 1fr));
+  gap: 1px; /* Thin gap acting like borders */
+  background-color: #e0e0e0; /* Background for gaps */
+  border-bottom: 1px solid #e0e0e0; /* Row border */
+}
+
+.featureHeader, /* Empty cell in header row above feature labels */
+.cardColumnHeader,
+.featureLabelCell,
+.cardValueCell {
+  background-color: #ffffff; /* Cell background */
+  padding: 0.75rem;
+  display: flex; /* Use flex for alignment within cells */
+  flex-direction: column; /* Stack content vertically in header */
+  align-items: flex-start; /* Align content to start */
+}
+
+.cardColumnHeader {
+  align-items: center; /* Center dropdown/header info */
+  min-height: 250px; /* Ensure header has some height */
+  border-left: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+}
+
+.featureLabelCell {
+  font-weight: bold;
+  background-color: #f9f9f9; /* Slightly different background for labels */
+  justify-content: center; /* Vertically center label text */
+}
+
+.cardValueCell {
+  justify-content: center; /* Vertically center value text */
+  border-left: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+}
+
+
+/* Styling within Card Header */
+.dropdownWrapper {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.dropdownWrapper label {
+ display: block;
+ margin-bottom: 0.25rem;
+ font-size: 0.9em;
 }
 
 .dropdownWrapper select {
-  padding: 0.5rem;
-  font-size: 1rem;
-}
-
-.compareTable {
   width: 100%;
-  border-collapse: collapse;
-  margin-top: 1rem;
-}
-
-.compareTable th,
-.compareTable td {
+  padding: 0.5rem;
+  font-size: 0.9rem;
   border: 1px solid #ccc;
-  padding: 0.75rem;
-  text-align: left;
-  vertical-align: top;
+  border-radius: 4px;
 }
 
-.compareTable th {
-  background-color: #f9f9f9;
+.cardInfo {
+  text-align: center; /* Center card image, name, button */
+  width: 100%;
+}
+
+.cardName {
+  font-size: 1.1em;
   font-weight: bold;
+  margin: 0.5rem 0;
 }
 
-.tableWrapper {
-  overflow-x: auto;
+.applyButton { /* Target apply button */
+  margin-top: 0.75rem;
+  padding: 0.6rem 1rem; /* Adjust padding */
+  /* Add other button styles */
+}
+
+/* --- Add More Styles --- */
+/* - Hover effects */
+/* - Typography */
+/* - Borders */
+/* - Specific spacing */
+/* - Responsive adjustments using @media queries */
+
+/* Example Media Query for smaller screens */
+@media (max-width: 768px) {
+  .headerRow,
+  .featureRow {
+      /* Adjust grid for smaller screens if needed, or rely on overflow-x */
+      /* Example: maybe just show 2 cards clearly */
+      grid-template-columns: minmax(120px, 1fr) repeat(3, minmax(180px, 1fr));
+  }
+   .cardColumnHeader {
+     min-height: auto; /* Allow header to shrink */
+   }
 }
