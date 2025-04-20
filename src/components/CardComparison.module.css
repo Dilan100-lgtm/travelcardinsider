@@ -1,29 +1,38 @@
+/* File: components/CardComparison.module.css */
+
 .wrapper {
-  margin-top: 20px;
+  margin-top: 2rem;
+  padding: 1rem;
+  border: 2px dashed #0070f3;
+  border-radius: 8px;
+  background-color: #f9f9f9;
 }
 
 .cardGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
+  justify-content: center;
 }
 
 .card {
-  border: 1px solid #ddd;
+  border: 2px solid #ddd;
+  border-radius: 8px;
   padding: 1rem;
-  border-radius: 10px;
-  background: #f9f9f9;
+  width: 250px;
+  background: #ffffff;
+  transition: all 0.2s ease;
   cursor: pointer;
-  transition: transform 0.2s ease;
 }
 
 .card:hover {
-  transform: scale(1.02);
+  border-color: #0070f3;
+  box-shadow: 0 0 8px rgba(0, 112, 243, 0.1);
 }
 
 .selected {
-  border: 2px solid #0070f3;
-  background-color: #e6f0ff;
+  border-color: #0070f3;
+  background-color: #e6f2ff;
 }
 
 .compareBox {
@@ -31,19 +40,22 @@
   padding: 1rem;
   border: 2px dashed #0070f3;
   border-radius: 8px;
-  background: #fff;
+  background-color: #ffffff;
 }
 
 .compareGrid {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+  justify-content: center;
 }
 
 .compareCard {
-  flex: 1 1 30%;
-  padding: 1rem;
-  background: #fafafa;
+  flex: 1;
+  min-width: 250px;
+  max-width: 320px;
   border: 1px solid #ccc;
-  border-radius: 6px;
+  border-radius: 8px;
+  padding: 1rem;
+  background: #ffffff;
 }
