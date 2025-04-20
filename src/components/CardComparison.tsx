@@ -1,4 +1,24 @@
-export default function CardComparison({ cards, selectedCards, onCardSelect }) {
+// File: components/CardComparison.tsx
+
+import React from 'react';
+import styles from './CardComparison.module.css'; // ✅ This import was missing!
+
+interface CreditCard {
+  "Card Name": string;
+  "Issuer": string;
+  "Sign-Up Bonus": string | null;
+  "Annual Fee": string;
+  "Reward Program": string | null;
+  "Multipliers Explained": string | null;
+}
+
+interface Props {
+  cards: CreditCard[];
+  selectedCards: CreditCard[];
+  onCardSelect: (card: CreditCard) => void;
+}
+
+export default function CardComparison({ cards, selectedCards, onCardSelect }: Props) {
   if (!Array.isArray(cards)) {
     return <p>Loading cards...</p>;
   }
