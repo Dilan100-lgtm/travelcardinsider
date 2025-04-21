@@ -25,7 +25,7 @@ export default function CardComparison({ cards }: CardComparisonProps) {
 // Define the fields you want to compare here - CONFIRMED LIST WITH >20 ROWS
 const fieldsToCompare = [
   // Card Identity & Cost
-  { label: 'Card Image', key: 'image', type: 'image' }, // Assuming 'image' key exists
+  
   { label: 'Card Name', key: 'Card Name' },
   { label: 'Issuer', key: 'Issuer' },
   { label: 'Card Type', key: 'Card Type' },
