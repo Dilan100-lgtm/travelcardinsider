@@ -1,9 +1,3 @@
-import json
-import re
-import os
-
-# Define the input JSON data as a string
-json_data_string = """
 {
   "cards": [
     {
@@ -12,8 +6,8 @@ json_data_string = """
       "image": "/8blm_trvsigcm_v_250x158.png" ,
       "ratingValue": 7.4,
       "applyLink": "https://www.bankofamerica.com/credit-cards/products/travel-rewards-credit-card/",
-      "reviewLink": "/reviews/chase-sapphire-preferred",
-      "ratesandfees": "https://www.chase.com/prequalified",
+        "reviewLink": "/cards/boa-travel-rewards",
+      "ratesandfees": "https://www.bankofamerica.com/credit-cards/products/travel-rewards-credit-card/",
       "Card Type": "Personal",
       "Annual Fee": "$0 ",
       "APR Range (Purchases)": "15.74%–25.74% variable",
@@ -29,7 +23,7 @@ json_data_string = """
       "Intro APR": "0% intro APR on purchases for 15 months",
       "Credit Score Requirement": "Good–Excellent (670+)",
       "Airline Benefits": "None",
-      "Hotel Benefits": "None  ",
+      "Hotel Benefits": "None  ",
       "Base Earning Rate (pts/$)": "1.5",
       "Bonus Categories": "None",
       "Bonus Category Rates": "Unknown",
@@ -46,9 +40,9 @@ json_data_string = """
       "image": "/NUS000000305_480x304_straight_withname.avif" ,
       "ratingValue": 7.7,
        "applyLink": "https://www.americanexpress.com/us/credit-cards/card/blue-cash-everyday/",
-      "reviewLink": "/reviews/blue-cash-everyday-card-from-american-express",
-      "ratesandfees": "https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/blue-cash-everyday-credit-card/12345-10-0#offer-terms",
-      "Card Type": "Personal",
+      "ratesandfees": "https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/blue-cash-everyday-credit-card/25330-10-0#FeeTable",
+      "reviewLink": "/cards/blue-cash-everyday",
+       "Card Type": "Personal",
       "Annual Fee": "$0 ",
       "APR Range (Purchases)": "18.49%–29.49% variable",
       "Balance Transfer APR": "Matches purchase",
@@ -63,7 +57,7 @@ json_data_string = """
       "Intro APR": "0% intro on purchases for 15 months",
       "Credit Score Requirement": "Good–Excellent (670+)",
       "Airline Benefits": "None",
-      "Hotel Benefits": "None  ",
+      "Hotel Benefits": "None  ",
       "Base Earning Rate (pts/$)": "1.0",
       "Bonus Categories": "U.S. supermarkets, U.S. gas stations, U.S. online retail (up to $6,000/year)",
       "Bonus Category Rates": "3% groceries, 3% gas, 3% online retail (up to $6K/year), then 1%",
@@ -77,6 +71,11 @@ json_data_string = """
     {
       "Card Name": "Chase Freedom Unlimited® Credit Card",
       "Issuer": "Chase",
+      "image": "/freedom_unlimited_card_alt (1).png" ,
+      "ratingValue": 9.0,
+       "applyLink": "https://creditcards.chase.com/cash-back-credit-cards/freedom/unlimited",
+      "ratesandfees": "https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC56029.html",
+      "reviewLink": "/cards/chase-freedom-unlimited",
       "Card Type": "Personal",
       "Annual Fee": "$0 ",
       "APR Range (Purchases)": "19.49%–27.24% variable",
@@ -92,7 +91,7 @@ json_data_string = """
       "Intro APR": "0% intro on purchases for 15 months",
       "Credit Score Requirement": "Good–Excellent (670+)",
       "Airline Benefits": "None",
-      "Hotel Benefits": "None  ",
+      "Hotel Benefits": "None  ",
       "Base Earning Rate (pts/$)": "1.5",
       "Bonus Categories": "Travel through Chase, dining, drugstores",
       "Bonus Category Rates": "5% travel via Chase, 3% dining & drugstores, 1.5% others",
@@ -106,6 +105,11 @@ json_data_string = """
     {
       "Card Name": "CITI CUSTOM CASH® CARD",
       "Issuer": "Citi",
+      "image": "/download.png" ,
+      "ratingValue": 7.5,
+       "applyLink": "https://www.citi.com/credit-cards/citi-custom-cash-credit-card",
+      "ratesandfees": "https://online.citi.com/US/ag/cards/displayterms?app=UNSOL&HKOP=541175b33e25f6837a0d7af4ba29114f264447b80dcde5f6be6db7d02fed5901",
+      "reviewLink": "/cards/citi-custom-cash",
       "Card Type": "Personal",
       "Annual Fee": "$0 ",
       "APR Range (Purchases)": "18.99%–28.99% variable",
@@ -121,7 +125,7 @@ json_data_string = """
       "Intro APR": "0% intro APR on purchases and BT for 15 months",
       "Credit Score Requirement": "Good–Excellent (670+)",
       "Airline Benefits": "None",
-      "Hotel Benefits": "None  ",
+      "Hotel Benefits": "None  ",
       "Base Earning Rate (pts/$)": null,
       "Bonus Categories": "5% (up to $500/month), 1% others",
       "Bonus Category Rates": "Top eligible category (auto-selected monthly)",
@@ -135,6 +139,11 @@ json_data_string = """
     {
       "Card Name": "CITI® DIAMOND PREFERRED® CARD",
       "Issuer": "Citi",
+      "image": "/download.png" ,
+      "ratingValue": 6.5,
+       "applyLink": "https://www.citi.com/credit-cards/citi-diamond-preferred-credit-card",
+      "ratesandfees": "https://online.citi.com/US/ag/cards/displayterms?app=UNSOL&HKOP=608d295cca6a832d9455f97709fe858e684350d1359860de82b2b8a07336a954",
+      "reviewLink": "/cards/citi-diamond-preferred",
       "Card Type": "Personal",
       "Annual Fee": "$0 ",
       "APR Range (Purchases)": "17.99%–28.74% variable",
@@ -150,7 +159,7 @@ json_data_string = """
       "Intro APR": "0% for 21 months on BT",
       "Credit Score Requirement": "Good–Excellent (670+)",
       "Airline Benefits": "None",
-      "Hotel Benefits": "None  ",
+      "Hotel Benefits": "None  ",
       "Base Earning Rate (pts/$)": null,
       "Bonus Categories": null,
       "Bonus Category Rates": null,
@@ -164,6 +173,11 @@ json_data_string = """
     {
       "Card Name": "Discover it® Miles Credit Card",
       "Issuer": "Discover",
+      "image": "/cardart-travel-beachcard-620-382.webp" ,
+      "ratingValue": 7.0,
+       "applyLink": "https://www.discover.com/credit-cards/travel/",
+      "ratesandfees": "https://www.discovercard.com/application/website/ratesrewards?srcCde=GJX4&adobe_mc=TS%3D1741447882%7CMCMID%3D39379935660807998981588704922154453327%7CMCORGID%3D0D6C4673527839230A490D45%2540AdobeOrg&sv_session_undefined=true&_gl=1*1ec64ug*_gcl_au*MTYyMTU5ODAxMS4xNzQwMzE1MDcw*_ga*MTk0MTA3MDUwOC4xNzQwMzE1MDcx*_ga_3MJNPV4VSE*MTc0MTQ0Nzg3NS40LjAuMTc0MTQ0Nzg3NS42MC4wLjA.",
+      "reviewLink": "/cards/discover-it-miles",
       "Card Type": "Personal",
       "Annual Fee": "$0 ",
       "APR Range (Purchases)": "15.99%–26.99% variable",
@@ -179,7 +193,7 @@ json_data_string = """
       "Intro APR": "0% on purchases for 14 months",
       "Credit Score Requirement": "Good–Excellent (670+)",
       "Airline Benefits": "None",
-      "Hotel Benefits": "None  ",
+      "Hotel Benefits": "None  ",
       "Base Earning Rate (pts/$)": "1.5",
       "Bonus Categories": "None",
       "Bonus Category Rates": "Unknown",
@@ -193,6 +207,11 @@ json_data_string = """
     {
       "Card Name": "U.S. Bank Cash+® Visa Signature® Card",
       "Issuer": "U.S. Bank",
+      "image": "/Cash+_Front_Angle_Reflection.png" ,
+      "ratingValue": 7.4,
+       "applyLink": "https://www.usbank.com/credit-cards/cash-plus-visa-signature-credit-card.html",
+      "ratesandfees": "https://www.usbank.com/credit-cards/cash-plus-visa-signature-credit-card.html",
+      "reviewLink": "/cards/us-bank-cash-plus",
       "Card Type": "Personal",
       "Annual Fee": "$0 ",
       "APR Range (Purchases)": "18.24%–28.24% variable",
@@ -208,7 +227,7 @@ json_data_string = """
       "Intro APR": "0% for 15 months on purchases/BT",
       "Credit Score Requirement": "Good–Excellent (670+)",
       "Airline Benefits": "None",
-      "Hotel Benefits": "None  ",
+      "Hotel Benefits": "None  ",
       "Base Earning Rate (pts/$)": "1.0",
       "Bonus Categories": "Choose two 5% categories, one 2% category",
       "Bonus Category Rates": "5% on 2 chosen categories (up to $2,000/quarter), 2% on 1 everyday category, 1% on all other purchases",
@@ -222,6 +241,11 @@ json_data_string = """
     {
       "Card Name": "Wells Fargo Active Cash® Card",
       "Issuer": "Wells Fargo",
+      "image": "/Cash+_Front_Angle_Reflection.png" ,
+      "ratingValue": 7.4,
+       "applyLink": "https://www.usbank.com/credit-cards/cash-plus-visa-signature-credit-card.html",
+      "ratesandfees": "https://www.usbank.com/credit-cards/cash-plus-visa-signature-credit-card.html",
+      "reviewLink": "/cards/us-bank-cash-plus",
       "Card Type": "Personal",
       "Annual Fee": "$0 ",
       "APR Range (Purchases)": "19.99%–29.99% variable",
@@ -237,7 +261,7 @@ json_data_string = """
       "Intro APR": "0% for 15 months on purchases/BT",
       "Credit Score Requirement": "Good–Excellent (670+)",
       "Airline Benefits": "None",
-      "Hotel Benefits": "None  ",
+      "Hotel Benefits": "None  ",
       "Base Earning Rate (pts/$)": "2.0",
       "Bonus Categories": "None",
       "Bonus Category Rates": "Unknown",
@@ -251,6 +275,11 @@ json_data_string = """
     {
       "Card Name": "Wells Fargo Reflect® Card",
       "Issuer": "Wells Fargo",
+      "image": "/Reflect_homepage_m.png" ,
+      "ratingValue": 6.6,
+       "applyLink": "https://creditcards.wellsfargo.com/reflect-visa-credit-card/?SGNTST=SGNCTL1&sub_channel=SEO&vendor_code=G",
+      "ratesandfees": "https://www.wellsfargo.com/credit-cards/reflect-visa/terms/?FPID=013000IGF80000&product_code=CC&subproduct_code=VV&cx_nm=CXNAME_CSMPD&sub_channel=SEO&vendor_code=G&refdmn=www.google.com&_gl=1*10scd1y*_gcl_au*OTk5NTUyMzU3LjE3NDAzMTU0NDM.*_ga*NjU1MzIyNC4xNzQwMzE1NDQz*_ga_7JXJJ2JF12*MTc0MjEwOTc5My42LjEuMTc0MjExMDc1MS41OS4wLjA..",
+      "reviewLink": "/cards/wells-fargo-reflect",
       "Card Type": "Personal",
       "Annual Fee": "$0 ",
       "APR Range (Purchases)": "17.99%–29.99% variable",
@@ -266,7 +295,7 @@ json_data_string = """
       "Intro APR": "0% up to 18 months purchases/BT",
       "Credit Score Requirement": "Good–Excellent (670+)",
       "Airline Benefits": "None",
-      "Hotel Benefits": "None  ",
+      "Hotel Benefits": "None  ",
       "Base Earning Rate (pts/$)": null,
       "Bonus Categories": null,
       "Bonus Category Rates": null,
@@ -280,6 +309,11 @@ json_data_string = """
     {
       "Card Name": "U.S. Bank Altitude® Connect Visa Signature® Card",
       "Issuer": "U.S. Bank",
+      "image": "/Reflect_homepage_m.png" ,
+      "ratingValue": 6.6,
+       "applyLink": "https://creditcards.wellsfargo.com/reflect-visa-credit-card/?SGNTST=SGNCTL1&sub_channel=SEO&vendor_code=G",
+      "ratesandfees": "https://www.wellsfargo.com/credit-cards/reflect-visa/terms/?FPID=013000IGF80000&product_code=CC&subproduct_code=VV&cx_nm=CXNAME_CSMPD&sub_channel=SEO&vendor_code=G&refdmn=www.google.com&_gl=1*10scd1y*_gcl_au*OTk5NTUyMzU3LjE3NDAzMTU0NDM.*_ga*NjU1MzIyNC4xNzQwMzE1NDQz*_ga_7JXJJ2JF12*MTc0MjEwOTc5My42LjEuMTc0MjExMDc1MS41OS4wLjA..",
+      "reviewLink": "/cards/wells-fargo-reflect",
       "Card Type": "Personal",
       "Annual Fee": "$95 (waived first year)",
       "APR Range (Purchases)": "18.24%–26.74% variable",
@@ -295,7 +329,7 @@ json_data_string = """
       "Intro APR": "0% for 12 months on BT",
       "Credit Score Requirement": "Good–Excellent (700+)",
       "Airline Benefits": "None",
-      "Hotel Benefits": "None  ",
+      "Hotel Benefits": "None  ",
       "Base Earning Rate (pts/$)": "1.0",
       "Bonus Categories": "Travel, gas stations, dining, streaming",
       "Bonus Category Rates": "4x on travel and gas stations, 2x on dining and streaming, 1x on other purchases",
@@ -309,6 +343,11 @@ json_data_string = """
     {
       "Card Name": "Aeroplan® Card",
       "Issuer": "Chase",
+      "image": "/Reflect_homepage_m.png" ,
+      "ratingValue": 6.6,
+       "applyLink": "https://creditcards.wellsfargo.com/reflect-visa-credit-card/?SGNTST=SGNCTL1&sub_channel=SEO&vendor_code=G",
+      "ratesandfees": "https://www.wellsfargo.com/credit-cards/reflect-visa/terms/?FPID=013000IGF80000&product_code=CC&subproduct_code=VV&cx_nm=CXNAME_CSMPD&sub_channel=SEO&vendor_code=G&refdmn=www.google.com&_gl=1*10scd1y*_gcl_au*OTk5NTUyMzU3LjE3NDAzMTU0NDM.*_ga*NjU1MzIyNC4xNzQwMzE1NDQz*_ga_7JXJJ2JF12*MTc0MjEwOTc5My42LjEuMTc0MjExMDc1MS41OS4wLjA..",
+      "reviewLink": "/cards/aeroplan-card",
       "Card Type": "Personal",
       "Annual Fee": "$95 ",
       "APR Range (Purchases)": "20.24%–27.74% variable",
@@ -324,7 +363,7 @@ json_data_string = """
       "Intro APR": "None",
       "Credit Score Requirement": "Good–Excellent (700+)",
       "Airline Benefits": "Free checked bag on Air Canada",
-      "Hotel Benefits": "None  ",
+      "Hotel Benefits": "None  ",
       "Base Earning Rate (pts/$)": "3x groceries, dining, Air Canada; 1x others",
       "Bonus Categories": "None",
       "Bonus Category Rates": "Unknown",
@@ -353,7 +392,7 @@ json_data_string = """
       "Intro APR": "None",
       "Credit Score Requirement": "Good–Excellent",
       "Airline Benefits": "Free checked bag + Companion Fare",
-      "Hotel Benefits": "None  ",
+      "Hotel Benefits": "None  ",
       "Base Earning Rate (pts/$)": "3x Alaska Airlines; 2x gas, transit; 1x others",
       "Bonus Categories": "None",
       "Bonus Category Rates": "Unknown",
@@ -382,7 +421,7 @@ json_data_string = """
       "Intro APR": "None",
       "Credit Score Requirement": "Good–Excellent",
       "Airline Benefits": "Avios + Travel Together ticket",
-      "Hotel Benefits": "None  ",
+      "Hotel Benefits": "None  ",
       "Base Earning Rate (pts/$)": "3x British Airways; 2x hotel stays; 1x others",
       "Bonus Categories": "None",
       "Bonus Category Rates": "Unknown",
@@ -411,7 +450,7 @@ json_data_string = """
       "Intro APR": "None",
       "Credit Score Requirement": "Good–Excellent",
       "Airline Benefits": "1st checked bag free on AA",
-      "Hotel Benefits": "None  ",
+      "Hotel Benefits": "None  ",
       "Base Earning Rate (pts/$)": "2x American Airlines, gas stations, restaurants; 1x others",
       "Bonus Categories": "None",
       "Bonus Category Rates": "Unknown",
@@ -440,7 +479,7 @@ json_data_string = """
       "Intro APR": "None",
       "Credit Score Requirement": "Good–Excellent",
       "Airline Benefits": "Free checked bag + Companion ticket",
-      "Hotel Benefits": "None  ",
+      "Hotel Benefits": "None  ",
       "Base Earning Rate (pts/$)": "3x Delta; 2x dining, U.S. supermarkets; 1x others",
       "Bonus Categories": "None",
       "Bonus Category Rates": "Unknown",
@@ -469,7 +508,7 @@ json_data_string = """
       "Intro APR": "None",
       "Credit Score Requirement": "Good–Excellent",
       "Airline Benefits": "Free checked bag on Hawaiian",
-      "Hotel Benefits": "None  ",
+      "Hotel Benefits": "None  ",
       "Base Earning Rate (pts/$)": "3x Hawaiian Airlines; 2x gas, grocery, restaurants; 1x others",
       "Bonus Categories": "None",
       "Bonus Category Rates": "Unknown",
@@ -498,7 +537,7 @@ json_data_string = """
       "Intro APR": "Occasionally 0% on BT",
       "Credit Score Requirement": "Good–Excellent",
       "Airline Benefits": "1st bag free + 50% inflight savings",
-      "Hotel Benefits": "None  ",
+      "Hotel Benefits": "None  ",
       "Base Earning Rate (pts/$)": "6x JetBlue; 2x grocery, dining; 1x others",
       "Bonus Categories": "None",
       "Bonus Category Rates": "Unknown",
@@ -556,7 +595,7 @@ json_data_string = """
       "Intro APR": "None",
       "Credit Score Requirement": "Excellent (720+)",
       "Airline Benefits": "Admirals Club membership",
-      "Hotel Benefits": "None  ",
+      "Hotel Benefits": "None  ",
       "Base Earning Rate (pts/$)": "4x American Airlines; 1x others",
       "Bonus Categories": "None",
       "Bonus Category Rates": "Unknown",
@@ -614,7 +653,7 @@ json_data_string = """
       "Intro APR": "None",
       "Credit Score Requirement": "Good–Excellent (670+)",
       "Airline Benefits": "Airline fee credit (baggage/seat fees)",
-      "Hotel Benefits": "No built-in hotel status  ",
+      "Hotel Benefits": "No built-in hotel status  ",
       "Base Earning Rate (pts/$)": "4x restaurants, 4x U.S. supermarkets (up to $25K/yr), 3x flights, 1x others",
       "Bonus Categories": "None",
       "Bonus Category Rates": "Unknown",
@@ -643,7 +682,7 @@ json_data_string = """
       "Intro APR": "0% for 15 months",
       "Credit Score Requirement": "Good–Excellent (670+)",
       "Airline Benefits": "None",
-      "Hotel Benefits": "None  ",
+      "Hotel Benefits": "None  ",
       "Base Earning Rate (pts/$)": "1.5",
       "Bonus Categories": "None",
       "Bonus Category Rates": "Unknown",
@@ -672,7 +711,7 @@ json_data_string = """
       "Intro APR": "None",
       "Credit Score Requirement": "Good–Excellent (700+)",
       "Airline Benefits": "Transfer miles to partners",
-      "Hotel Benefits": "None  ",
+      "Hotel Benefits": "None  ",
       "Base Earning Rate (pts/$)": "1.0",
       "Bonus Categories": "All Purchases",
       "Bonus Category Rates": "2x",
@@ -730,7 +769,7 @@ json_data_string = """
       "Intro APR": "None",
       "Credit Score Requirement": "Good–Excellent (670+)",
       "Airline Benefits": "Earn SkyMiles",
-      "Hotel Benefits": "None  ",
+      "Hotel Benefits": "None  ",
       "Base Earning Rate (pts/$)": "2x Delta purchases; 1x others",
       "Bonus Categories": "None",
       "Bonus Category Rates": "Unknown",
@@ -759,7 +798,7 @@ json_data_string = """
       "Intro APR": "None",
       "Credit Score Requirement": "Good–Excellent (670+)",
       "Airline Benefits": "Earn United miles",
-      "Hotel Benefits": "None  ",
+      "Hotel Benefits": "None  ",
       "Base Earning Rate (pts/$)": "2x United, gas, transit; 1x others",
       "Bonus Categories": "None",
       "Bonus Category Rates": "Unknown",
@@ -788,7 +827,7 @@ json_data_string = """
       "Intro APR": "0% for 12mo",
       "Credit Score Requirement": "Good–Excellent (670+)",
       "Airline Benefits": "None",
-      "Hotel Benefits": "None  ",
+      "Hotel Benefits": "None  ",
       "Base Earning Rate (pts/$)": "3x travel, gas, dining, transit, phone plans, streaming; 1x others",
       "Bonus Categories": "None",
       "Bonus Category Rates": "Unknown",
@@ -817,7 +856,7 @@ json_data_string = """
       "Intro APR": "None",
       "Credit Score Requirement": "Good–Excellent (700+)",
       "Airline Benefits": "Airline fee credit (select)",
-      "Hotel Benefits": "Amex Offers  ",
+      "Hotel Benefits": "Amex Offers  ",
       "Base Earning Rate (pts/$)": "4x top 2 categories (from 6), up to $150K/year; 1x others",
       "Bonus Categories": "None",
       "Bonus Category Rates": "Unknown",
@@ -846,7 +885,7 @@ json_data_string = """
       "Intro APR": "0% for 9mo",
       "Credit Score Requirement": "Good–Excellent",
       "Airline Benefits": "None",
-      "Hotel Benefits": "None  ",
+      "Hotel Benefits": "None  ",
       "Base Earning Rate (pts/$)": "1.5x on all purchases",
       "Bonus Categories": "None",
       "Bonus Category Rates": "Unknown",
@@ -875,7 +914,7 @@ json_data_string = """
       "Intro APR": "None",
       "Credit Score Requirement": "Good–Excellent (700+)",
       "Airline Benefits": "Transfer miles to partners",
-      "Hotel Benefits": "None  ",
+      "Hotel Benefits": "None  ",
       "Base Earning Rate (pts/$)": "2x on all purchases",
       "Bonus Categories": "None",
       "Bonus Category Rates": "Unknown",
@@ -904,7 +943,7 @@ json_data_string = """
       "Intro APR": "None",
       "Credit Score Requirement": "Excellent (720+)",
       "Airline Benefits": "Miles transfer to airlines",
-      "Hotel Benefits": "$300 travel credit  ",
+      "Hotel Benefits": "$300 travel credit  ",
       "Base Earning Rate (pts/$)": "10x hotels & car rentals, 5x flights (via Capital One Travel), 2x all other purchases",
       "Bonus Categories": "Hotels, rental cars, flights (Cap One Travel)",
       "Bonus Category Rates": "10x hotels & car rentals via Cap One Travel, 5x flights via Cap One Travel, 2x everywhere else",
@@ -933,7 +972,7 @@ json_data_string = """
       "Intro APR": "None",
       "Credit Score Requirement": "Excellent (720+)",
       "Airline Benefits": "Sky Club access",
-      "Hotel Benefits": "None  ",
+      "Hotel Benefits": "None  ",
       "Base Earning Rate (pts/$)": "3x Delta purchases; 1x others",
       "Bonus Categories": "None",
       "Bonus Category Rates": "Unknown",
@@ -962,7 +1001,7 @@ json_data_string = """
       "Intro APR": "None",
       "Credit Score Requirement": "Good–Excellent (700+)",
       "Airline Benefits": "Transfer points",
-      "Hotel Benefits": "Transfer points  ",
+      "Hotel Benefits": "Transfer points  ",
       "Base Earning Rate (pts/$)": "3x shipping, advertising, travel, telecom (up to $150K/year); 1x others",
       "Bonus Categories": "None",
       "Bonus Category Rates": "Unknown",
@@ -991,7 +1030,7 @@ json_data_string = """
       "Intro APR": "None",
       "Credit Score Requirement": "Excellent (720+)",
       "Airline Benefits": "Lounge access",
-      "Hotel Benefits": "Marriott/Hilton Gold  ",
+      "Hotel Benefits": "Marriott/Hilton Gold  ",
       "Base Earning Rate (pts/$)": "5x flights & hotels via Amex Travel; 1.5x on $5K+ purchases; 1x others",
       "Bonus Categories": "None",
       "Bonus Category Rates": "Unknown",
@@ -1020,7 +1059,7 @@ json_data_string = """
       "Intro APR": "None",
       "Credit Score Requirement": "Good–Excellent (700+)",
       "Airline Benefits": "None",
-      "Hotel Benefits": "Hilton Gold status  ",
+      "Hotel Benefits": "Hilton Gold status  ",
       "Base Earning Rate (pts/$)": "12x Hilton; 6x gas, shipping, flights, dining; 3x others",
       "Bonus Categories": "None",
       "Bonus Category Rates": "Unknown",
@@ -1049,7 +1088,7 @@ json_data_string = """
       "Intro APR": "None",
       "Credit Score Requirement": "Good–Excellent (700+)",
       "Airline Benefits": "1st bag free",
-      "Hotel Benefits": "None  ",
+      "Hotel Benefits": "None  ",
       "Base Earning Rate (pts/$)": "2x United, dining, gas stations, office supplies, local transit; 1x others",
       "Bonus Categories": "None",
       "Bonus Category Rates": "Unknown",
@@ -1107,7 +1146,7 @@ json_data_string = """
       "Intro APR": "None",
       "Credit Score Requirement": "Excellent (720+)",
       "Airline Benefits": "$300 travel credit",
-      "Hotel Benefits": "Priority Pass restaurants  ",
+      "Hotel Benefits": "Priority Pass restaurants  ",
       "Base Earning Rate (pts/$)": "1.0",
       "Bonus Categories": "Travel, dining",
       "Bonus Category Rates": "10x hotels and car rentals through Chase Travel, 5x flights through Chase Travel, 3x other travel, 3x dining",
@@ -1136,7 +1175,7 @@ json_data_string = """
       "Intro APR": "None",
       "Credit Score Requirement": "Excellent (720+)",
       "Airline Benefits": "$300 travel credit",
-      "Hotel Benefits": "10X on hotels via portal  ",
+      "Hotel Benefits": "10X on hotels via portal  ",
       "Base Earning Rate (pts/$)": "10x hotels & car rentals, 5x flights (via Capital One Travel), 2x all other purchases",
       "Bonus Categories": "All Purchases",
       "Bonus Category Rates": "2x",
@@ -1149,125 +1188,3 @@ json_data_string = """
     }
   ]
 }
-"""
-
-# Load the JSON data
-data = json.loads(json_data_string)
-
-# Mapping from Card Name to file path (case-insensitive matching might be needed)
-# Using lowercase keys for easier lookup
-card_file_map = {
-    "chase freedom unlimited® credit card": "cards/chase-freedom-unlimited.js",
-    "citi custom cash® card": "cards/citi-custom-cash.js",
-    "citi® diamond preferred® card": "cards/citi-diamond-preferred.js",
-    "discover it® miles credit card": "cards/discover-it-miles.js",
-    "u.s. bank cash+® visa signature® card": "cards/us-bank-cash-plus.js",
-    "wells fargo active cash® card": "cards/wells-fargo-active-cash.js",
-    "wells fargo reflect® card": "cards/wells-fargo-reflect.js",
-    # "u.s. bank altitude® connect visa signature® card": None, # No file found
-    "aeroplan® card": "cards/aeroplan-card.js",
-    "alaska airlines visa signature® card": "cards/alaska-visa-signature.js",
-    "british airways visa signature card": "cards/british-airways-visa.js",
-    "citi® aadvantage® platinum select® world elite mastercard®": "cards/citi-aadvantage-platinum.js",
-    "delta skymiles® platinum american express card": "cards/delta-skymiles-platinum.js",
-    "hawaiian airlines® world elite mastercard®": "cards/hawaiian-airlines-mastercard.js",
-    "jetblue plus card": "cards/jetblue-plus.js",
-    "southwest rapid rewards priority credit card": "cards/southwest-priority.js",
-    "the citi aadvantage executive world elite mastercard": "cards/citi-aadvantage-executive.js",
-    "unitedsm explorer card": "cards/united-explorer.js",
-    "american express® gold card": "cards/american-express-gold.js",
-    "capital one quicksilver cash rewards credit card": "cards/capital-one-quicksilver.js",
-    "capital one venture rewards credit card": "cards/capital-one-venture.js",
-    "chase sapphire preferred® credit card": "cards/chase-sapphire-preferred.js",
-    "delta skymiles® blue american express card": "cards/delta-skymiles-blue.js",
-    "united gatewaysm credit card": "cards/united-gateway.js",
-    "wells fargo autograph℠ card": "cards/wells-fargo-autograph.js",
-    # "american express business gold card": None, # No file found
-    "bank of america business advantage travel rewards world mastercard®": "cards/boa-business-advantage-travel.js",
-    "capital one spark miles for business": "cards/capital-one-spark-miles.js",
-    "capital one venture x business card": "cards/capital-one-venture-x-business.js",
-    "delta skymiles® reserve business american express card": "cards/delta-reserve-business.js",
-    "ink business preferred® credit card": "cards/ink-business-preferred.js",
-    "the business platinum card® from american express": "cards/amex-business-platinum.js",
-    "the hilton honors american express business card": "cards/hilton-honors-amex-business.js",
-    "unitedsm business card": "cards/united-business-card.js",
-    "world of hyatt business credit card": "cards/world-of-hyatt-business.js",
-    "chase sapphire reserve® card": "cards/chase-sapphire-reserve.js",
-    "capital one venture x rewards credit card": "cards/capital-one-venture-x.js"
-}
-
-# Define regex patterns for extraction (flexible with quotes and assignment operator)
-patterns = {
-    "image": re.compile(r"image\s*[:=]\s*['\"](.*?)['\"]", re.IGNORECASE),
-    "ratingValue": re.compile(r"rating(?:Value)?\s*[:=]\s*([\d.]+)", re.IGNORECASE),
-    "applyLink": re.compile(r"apply(?:Link)?\s*[:=]\s*['\"](.*?)['\"]", re.IGNORECASE),
-    "reviewLink": re.compile(r"review(?:Link)?\s*[:=]\s*['\"](.*?)['\"]", re.IGNORECASE),
-    "ratesandfees": re.compile(r"rates(?:and|&)fees(?:Link)?\s*[:=]\s*['\"](.*?)['\"]", re.IGNORECASE)
-}
-
-# Iterate through cards starting from index 2 (the third card)
-for i in range(2, len(data['cards'])):
-    card = data['cards'][i]
-    card_name = card.get("Card Name", "").lower().strip()
-
-    file_path = card_file_map.get(card_name)
-
-    if file_path and os.path.exists(file_path):
-        try:
-            with open(file_path, 'r', encoding='utf-8') as f:
-                content = f.read()
-
-            extracted_data = {}
-            for key, pattern in patterns.items():
-                match = pattern.search(content)
-                if match:
-                    value = match.group(1).strip()
-                    if key == "ratingValue":
-                        try:
-                           extracted_data[key] = float(value)
-                        except ValueError:
-                            extracted_data[key] = None # Handle if rating is not a number
-                    else:
-                         extracted_data[key] = value
-                else:
-                    # Set default value if not found in file
-                    extracted_data[key] = None if key != "ratingValue" else None
-
-            # Add extracted data to the card, preserving order (insert after Issuer)
-            # Create a new dict to maintain order somewhat better
-            new_card_data = {}
-            added_new_fields = False
-            for k, v in card.items():
-                new_card_data[k] = v
-                if k == "Issuer" and not added_new_fields:
-                    new_card_data['image'] = extracted_data.get('image')
-                    new_card_data['ratingValue'] = extracted_data.get('ratingValue')
-                    new_card_data['applyLink'] = extracted_data.get('applyLink')
-                    new_card_data['reviewLink'] = extracted_data.get('reviewLink')
-                    new_card_data['ratesandfees'] = extracted_data.get('ratesandfees')
-                    added_new_fields = True
-
-            # If 'Issuer' wasn't found, add fields at the end (less ideal)
-            if not added_new_fields:
-                 new_card_data['image'] = extracted_data.get('image')
-                 new_card_data['ratingValue'] = extracted_data.get('ratingValue')
-                 new_card_data['applyLink'] = extracted_data.get('applyLink')
-                 new_card_data['reviewLink'] = extracted_data.get('reviewLink')
-                 new_card_data['ratesandfees'] = extracted_data.get('ratesandfees')
-
-            data['cards'][i] = new_card_data
-
-        except FileNotFoundError:
-            print(f"Warning: File not found for card '{card.get('Card Name')}': {file_path}")
-        except Exception as e:
-            print(f"Error processing file for card '{card.get('Card Name')}': {e}")
-    elif file_path:
-        print(f"Warning: File path specified but not found for card '{card.get('Card Name')}': {file_path}")
-    else:
-         print(f"Warning: No file mapping found for card '{card.get('Card Name')}'")
-
-
-# Convert back to JSON string with indentation
-updated_json_string = json.dumps(data, indent=2)
-
-print(updated_json_string)
