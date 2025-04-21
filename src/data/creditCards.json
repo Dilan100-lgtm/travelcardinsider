@@ -5,6 +5,7 @@
       "Issuer": "Bank of America",
       "image": "/8blm_trvsigcm_v_250x158.png" ,
       "ratingValue": 7.4,
+      "applyLink": "https://www.bankofamerica.com/credit-cards/products/travel-rewards-credit-card/",
       "Card Type": "Personal",
       "Annual Fee": "$0 ",
       "APR Range (Purchases)": "15.74%–25.74% variable",
@@ -34,6 +35,9 @@
     {
       "Card Name": "Blue Cash Everyday® Card",
       "Issuer": "American Express",
+      "image": "/NUS000000305_480x304_straight_withname.avif" ,
+      "ratingValue": 7.7,
+       "applyLink": "https://www.americanexpress.com/us/credit-cards/card/blue-cash-everyday/",
       "Card Type": "Personal",
       "Annual Fee": "$0 ",
       "APR Range (Purchases)": "18.49%–29.49% variable",
