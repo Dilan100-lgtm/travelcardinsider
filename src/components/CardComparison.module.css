@@ -1,37 +1,48 @@
 /* File: components/CardComparison.module.css */
-/* Enhanced styles for a more premium look */
+/* Complete Enhanced Styles for Premium Comparison Tool */
 
+/* --- Base Container & Font --- */
 .comparisonContainer {
   width: 100%;
   overflow-x: auto; /* Allow horizontal scrolling on small screens */
-  padding: 1rem 0;
-  font-family: 'Inter', sans-serif; /* Apply base font */
-  color: #333; /* Default text color */
-  background-color: #f9fafb; /* Slightly off-white background for the whole section */
+  padding: 2rem 0; /* More vertical padding for the section */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: #374151; /* Slightly softer default text (Gray 700) */
+  background-color: #ffffff; /* Clean white background */
+  border: 1px solid #e5e7eb; /* Add a border around the whole container */
+  border-radius: 8px; /* Slightly rounded corners for the container */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05); /* Subtle shadow */
 }
 
+/* --- Grid Layout --- */
 .headerRow,
 .featureRow {
   display: grid;
-   /* More space for labels, defined width for cards */
-  grid-template-columns: minmax(180px, 1.2fr) repeat(3, minmax(220px, 1fr));
-  gap: 0; /* Remove gap, use borders instead */
-  border-bottom: 1px solid #e5e7eb; /* Lighter border between rows */
+  /* Slightly more space for labels, defined min/max for cards */
+  grid-template-columns: minmax(200px, 1.3fr) repeat(3, minmax(240px, 1fr));
+  gap: 0; /* Use borders */
+  border-bottom: 1px solid #e5e7eb; /* Lighter border between rows (Gray 200) */
 }
 .headerRow {
-    border-top: 1px solid #e5e7eb; /* Add top border to header */
+   border-top: none; /* Remove top border if container has one */
+}
+/* No bottom border on the last feature row */
+.featureRow:last-of-type {
+    border-bottom: none;
 }
 
-.featureHeader,
+/* --- Cell Styling --- */
+.featureHeader, /* Empty cell in header row above feature labels */
 .cardColumnHeader,
 .featureLabelCell,
 .cardValueCell {
-  background-color: #ffffff; /* White cell background */
-  padding: 1rem 1.25rem; /* Increase padding */
+  background-color: #ffffff;
+  padding: 1rem 1.5rem; /* Consistent padding */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  border-right: 1px solid #e5e7eb; /* Vertical border */
+  border-right: 1px solid #e5e7eb;
+  min-height: 60px; /* Minimum height for data rows */
 }
 
 /* Remove right border on the very last cell of each row */
@@ -40,54 +51,54 @@
     border-right: none;
 }
 
-
-.cardColumnHeader {
-  align-items: center;
-  min-height: 280px; /* Slightly taller header */
-  text-align: center;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.04); /* Subtle shadow */
-  border-right: 1px solid #e5e7eb;
-  border-left: 1px solid #e5e7eb; /* Add left border for consistency */
-  position: relative; /* For potential absolute elements if needed */
-  background-color: #fff; /* Ensure background for shadow */
-  margin: -1px; /* Overlap borders slightly */
-}
-.cardColumnHeader:first-of-type {
-     border-left: none; /* No left border on first card header */
-}
-
-
 .featureLabelCell {
-  font-weight: 600; /* Slightly bolder labels */
-  background-color: #f9fafb; /* Match container background or keep slightly different */
-  justify-content: flex-start; /* Align label text to top */
-  padding-top: 1.25rem; /* Align top padding with value cells */
-  padding-bottom: 1.25rem;
-  color: #4b5563; /* Darker grey for labels */
-  font-size: 0.9rem;
+  font-weight: 600;
+  background-color: #f9fafb; /* Very light grey for label column bg (Gray 50) */
+  justify-content: flex-start;
+  padding-top: 1rem; /* Consistent padding */
+  padding-bottom: 1rem;
+  color: #4b5563; /* Darker grey for labels (Gray 600) */
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.4;
 }
 
 .cardValueCell {
-  justify-content: flex-start; /* Align value text to top */
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: #1f2937; /* Darker text for values */
+  justify-content: flex-start;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-size: 0.9375rem; /* 15px */
+  line-height: 1.6;
+  color: #1f2937; /* Darker text for values (Gray 800) */
 }
 
-/* Styling within Card Header */
+/* --- Card Header Column --- */
+.cardColumnHeader {
+  align-items: center;
+  min-height: 320px; /* Adjusted height for content */
+  text-align: center;
+  border-right: 1px solid #e5e7eb;
+  border-left: 1px solid #e5e7eb;
+  position: relative;
+  background-color: #fff;
+  margin: 0 -1px -1px -1px; /* Overlap borders nicely */
+  box-shadow: inset 0 -1px 0 #e5e7eb; /* Inner bottom border */
+}
+.cardColumnHeader:first-of-type {
+     border-left: none;
+}
+
+/* --- Content Inside Header --- */
 .dropdownWrapper {
-  width: 90%; /* Slightly less than 100% */
-  margin-bottom: 1.25rem; /* More space below dropdown */
+  width: 90%;
+  margin-bottom: 1.25rem;
 }
 
 .dropdownWrapper label {
  display: block;
  margin-bottom: 0.3rem;
- font-size: 0.85em;
+ font-size: 0.8rem;
  font-weight: 500;
- color: #6b7280; /* Lighter text for label */
+ color: #6b7280; /* Gray 500 */
 }
 
 .dropdownWrapper select {
@@ -95,153 +106,180 @@
   padding: 0.6rem 0.8rem;
   font-size: 0.9rem;
   font-family: 'Inter', sans-serif;
-  border: 1px solid #d1d5db; /* Slightly lighter border */
-  border-radius: 6px; /* More rounded corners */
+  border: 1px solid #d1d5db; /* Gray 300 */
+  border-radius: 6px;
   background-color: #fff;
-  appearance: none; /* Remove default arrow */
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e"); /* Custom arrow */
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
   background-position: right 0.5rem center;
   background-repeat: no-repeat;
   background-size: 1.5em 1.5em;
+  cursor: pointer;
 }
 .dropdownWrapper select:focus {
     outline: 2px solid transparent;
     outline-offset: 2px;
-    border-color: #3b82f6; /* Highlight border on focus */
+    border-color: #3b82f6; /* Blue 500 */
     box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.4);
 }
-
 
 .cardInfo {
   text-align: center;
   width: 100%;
-  margin-top: 0.5rem; /* Space above image */
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1; /* Allow info to take remaining space */
+  justify-content: space-between; /* Distribute space */
+  padding-bottom: 1rem; /* Add padding at the bottom */
 }
 
 .cardName {
-  font-family: 'Poppins', sans-serif; /* Use Poppins for card name */
-  font-size: 1.15em; /* Slightly larger */
-  font-weight: 600; /* Bolder */
-  margin: 0.75rem 0; /* More vertical margin */
-  color: #111827; /* Even darker for name */
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem; /* Adjusted size */
+  font-weight: 600;
+  margin: 0.75rem 0 0.5rem 0; /* Adjusted margin */
+  color: #111827; /* Gray 900 */
   line-height: 1.3;
 }
 
 .cardPlaceholder {
-    color: #9ca3af;
+    color: #9ca3af; /* Gray 400 */
     font-style: italic;
-    margin-top: 2rem;
+    font-size: 0.9rem;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Enhanced Apply Button Styles */
-.applyButton {
-  display: inline-block; /* Allow margin/padding */
+/* --- Button Group --- */
+.buttonGroup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
   margin-top: 1rem;
-  padding: 0.75rem 1.5rem; /* More padding */
+  width: 90%; /* Constrain width */
+  flex-wrap: wrap; /* Allow wrapping if needed */
+}
+
+/* Base style for header buttons */
+.cardButton {
+  flex-grow: 1; /* Allow buttons to grow */
+  flex-basis: auto; /* Default basis */
+  display: inline-block;
+  padding: 0.6rem 0.5rem; /* Adjusted padding */
   font-family: 'Inter', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 600; /* Bolder text */
-  color: #ffffff; /* White text */
-  background-color: #10b981; /* Example: Emerald green */
+  font-size: 0.8rem; /* Smaller font */
+  font-weight: 600;
+  color: #ffffff;
   border: none;
-  border-radius: 6px; /* Match dropdown */
+  border-radius: 5px;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-  height: 50px; /* Set a fixed height for uniformity */
-  line-height: 1.5; /* Ensure text is vertically centered */
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+  white-space: nowrap;
 }
-
-.applyButtonRow {
-  display: flex; /* Use flexbox for horizontal alignment */
-  justify-content: space-between; /* Space out the buttons evenly */
-  align-items: center; /* Align buttons vertically */
-  margin-top: 1rem; /* Add spacing above the row */
-  padding: 0.5rem 0; /* Add padding for better spacing */
-  background-color: #f9fafb; /* Optional: Background for the row */
+.cardButton:hover {
+   transform: translateY(-1px); /* Slight lift on hover */
+   filter: brightness(1.05);
 }
-
-.applyButton:hover {
-  background-color: #059669; /* Darker shade on hover */
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+.cardButton:active {
+    transform: translateY(0px); /* Press down effect */
+    filter: brightness(0.95);
 }
-.applyButton:focus {
+.cardButton:focus {
     outline: 2px solid transparent;
     outline-offset: 2px;
-    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.4); /* Focus ring */
-}
-.applyButtonWrapper {
-  flex: 1; /* Ensure equal width for each button wrapper */
-  text-align: center; /* Center-align the button within the wrapper */
 }
 
+/* Specific Button Styles */
+.applyButton {
+  background-color: #10b981; /* Emerald 500 */
+}
+.applyButton:hover {
+  background-color: #059669; /* Emerald 600 */
+}
+.applyButton:focus {
+     box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.4);
+}
 
-/* Star Rating Styles */
+.reviewButton {
+  background-color: #3b82f6; /* Blue 500 */
+}
+.reviewButton:hover {
+  background-color: #2563eb; /* Blue 600 */
+}
+.reviewButton:focus {
+     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4);
+}
+
+.eligibilityButton {
+  background-color: #6b7280; /* Gray 500 */
+}
+.eligibilityButton:hover {
+  background-color: #4b5563; /* Gray 600 */
+}
+.eligibilityButton:focus {
+    box-shadow: 0 0 0 3px rgba(107, 114, 128, 0.4);
+}
+
+/* --- Star Rating --- */
 .starRating {
-  color: #f59e0b; /* Amber/Gold color */
-  font-size: 1.1em; /* Adjust size */
+  color: #f59e0b; /* Amber 500 */
+  font-size: 1.1em;
   line-height: 1;
   white-space: nowrap;
-  margin-top: 0.25rem; /* Add some space if used in header */
+  margin-top: 0.5rem; /* Space if used below name */
 }
-
 .starRating span {
-  color: #4b5563; /* Dark grey for numerical value */
+  color: #4b5563; /* Gray 600 */
   font-size: 0.85em;
   font-weight: 500;
   margin-left: 0.4em;
   vertical-align: middle;
 }
 
-
-/* Responsive Adjustments */
-@media (max-width: 900px) { /* Adjust breakpoint as needed */
+/* --- Responsive Adjustments --- */
+@media (max-width: 900px) {
   .headerRow,
   .featureRow {
-      /* Keep 3 card columns but allow them to shrink more */
-      grid-template-columns: minmax(140px, 1.2fr) repeat(3, minmax(180px, 1fr));
+      grid-template-columns: minmax(160px, 1.2fr) repeat(3, minmax(200px, 1fr));
   }
    .cardColumnHeader {
-     min-height: auto; /* Allow header height to adjust */
-     padding: 0.75rem;
+     min-height: auto;
+     padding: 1rem;
    }
     .featureLabelCell, .cardValueCell {
-        padding: 0.75rem 1rem;
-        font-size: 0.9rem;
+        padding: 0.8rem 1rem;
+        font-size: 0.875rem; /* 14px */
     }
-    .cardName {
-        font-size: 1.05em;
-    }
-    .applyButton {
-        padding: 0.6rem 1.2rem;
-        font-size: 0.9rem;
-    }
+    .cardName { font-size: 1rem; }
+    .cardButton { font-size: 0.75rem; padding: 0.5rem 0.6rem; }
 }
 
-@media (max-width: 640px) { /* Example for smaller screens */
+@media (max-width: 700px) {
     .headerRow,
     .featureRow {
-        /* Force minimum width more aggressively, rely on horizontal scroll */
-        grid-template-columns: minmax(110px, 1fr) repeat(3, minmax(160px, 1fr));
+        grid-template-columns: minmax(120px, 1fr) repeat(3, minmax(180px, 1fr));
     }
      .featureLabelCell, .cardValueCell {
-        font-size: 0.85rem;
-        padding: 0.6rem 0.8rem;
+        font-size: 0.8rem;
+        padding: 0.7rem 0.8rem;
     }
-    .cardName {
-        font-size: 1em;
-    }
-    /* Consider hiding less critical rows on very small screens if needed */
+    .cardName { font-size: 0.95rem; }
+    .buttonGroup { flex-direction: column; align-items: stretch; gap: 0.4rem; width: 95%;} /* Stack buttons */
+    .cardButton { width: 100%; } /* Make stacked buttons full width */
 }
-@media (max-width: 768px) {
-  .applyButtonRow {
-    flex-direction: column; /* Stack buttons vertically */
-    gap: 0.5rem; /* Add spacing between buttons */
-  }
 
-  .applyButtonWrapper {
-    text-align: center; /* Center-align buttons */
-  }
+@media (max-width: 500px) {
+   /* On very small screens, you might consider hiding the label column */
+   /* or further reducing font sizes / padding */
+    .headerRow,
+    .featureRow {
+        grid-template-columns: minmax(100px, 1fr) repeat(3, minmax(150px, 1fr));
+    }
 }

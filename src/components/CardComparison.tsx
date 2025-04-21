@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import styles from './CardComparison.module.css'; // Ensure this CSS file has column layout styles (Grid/Flexbox)
 import { CreditCard } from '@/hooks/useCreditCards'; // Make sure path is correct
 import Image from 'next/image';
+import Link from 'next/link';
 
 // --- Helper Component for Star Rating (Scales 10-pt input to 5-star output) ---
 interface StarRatingProps {
@@ -153,24 +154,46 @@ export default function CardComparison({ cards }: CardComparisonProps) {
                   {/* Card Name */}
                   <h3 className={styles.cardName}>{selected[index]?.['Card Name']}</h3>
                  {/* Apply Button Row */}
-<div className={styles.applyButtonRow}>
-  {[0, 1, 2].map((index) => (
-    <div key={`apply-button-${index}`} className={styles.applyButtonWrapper}>
-      {selected[index] ? (
-        <a
-          href={selected[index]?.applyLink || '#'}
-          target="_blank"
-          rel="noopener sponsored"
-          className={styles.applyButton}
-        >
-          Apply Now
-        </a>
-      ) : (
-        <span className={styles.placeholderText}>Select a card</span>
-      )}
-    </div>
-  ))}
-</div>
+                 <div className={styles.buttonGroup}>
+                       {/* Apply Button */}
+                       <a
+                           href={selected[index]?.applyLink || '#'}
+                           target="_blank"
+                           rel="noopener sponsored"
+                           className={`${styles.cardButton} ${styles.applyButton}`} // Use base and specific styles
+                       >
+                           Apply Now
+                       </a>
+
+                       {/* Review Button - Use Link if internal */}
+                       {selected[index]?.reviewLink?.startsWith('/') ? (
+                           <Link href={selected[index]?.reviewLink || '#'} passHref legacyBehavior>
+                               <a className={`${styles.cardButton} ${styles.reviewButton}`}>
+                                   Read Review
+                               </a>
+                           </Link>
+                       ) : (
+                           <a
+                               href={selected[index]?.reviewLink || '#'}
+                               target="_blank" // Assume external if not starting with /
+                               rel="noopener" // No sponsor needed for reviews?
+                               className={`${styles.cardButton} ${styles.reviewButton}`}
+                           >
+                               Read Review
+                           </a>
+                       )}
+
+
+                       {/* Eligibility Button */}
+                       <a
+                           href={selected[index]?.eligibilityLink || '#'}
+                           target="_blank"
+                           rel="noopener" // Usually not sponsored
+                           className={`${styles.cardButton} ${styles.eligibilityButton}`}
+                       >
+                           Check eligibility
+                       </a>
+                   </div>
                </div>
              )}
               {/* Show placeholder if no card is selected */}
