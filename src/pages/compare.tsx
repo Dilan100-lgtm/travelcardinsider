@@ -58,11 +58,7 @@ export default function ComparePage() {
              // No initiallySelectedCards prop needed anymore
            />
         )}
-        <div className="cardActions">
-  <a href="#" className="applyButton">Apply Now</a>
-  <a href="#" className="applyButton">Apply Now</a>
-  <a href="#" className="applyButton">Apply Now</a>
-</div>
+        
 
       </main>
 

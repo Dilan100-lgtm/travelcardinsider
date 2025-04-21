@@ -152,15 +152,25 @@ export default function CardComparison({ cards }: CardComparisonProps) {
                   />
                   {/* Card Name */}
                   <h3 className={styles.cardName}>{selected[index]?.['Card Name']}</h3>
-                  {/* Apply Button */}
-                  <a
-                     href={selected[index]?.applyLink || '#'} // Use actual apply link property from your JSON
-                     target="_blank"
-                     rel="noopener sponsored"
-                     className={`Apply-button ${styles.applyButton}`} // Combine global and module styles if needed
-                  >
-                     Apply Now
-                  </a>
+                 {/* Apply Button Row */}
+<div className={styles.applyButtonRow}>
+  {[0, 1, 2].map((index) => (
+    <div key={`apply-button-${index}`} className={styles.applyButtonWrapper}>
+      {selected[index] ? (
+        <a
+          href={selected[index]?.applyLink || '#'}
+          target="_blank"
+          rel="noopener sponsored"
+          className={styles.applyButton}
+        >
+          Apply Now
+        </a>
+      ) : (
+        <span className={styles.placeholderText}>Select a card</span>
+      )}
+    </div>
+  ))}
+</div>
                </div>
              )}
               {/* Show placeholder if no card is selected */}

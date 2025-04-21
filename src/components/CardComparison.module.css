@@ -154,12 +154,13 @@
   line-height: 1.5; /* Ensure text is vertically centered */
 }
 
-.cardActions {
+.applyButtonRow {
   display: flex; /* Use flexbox for horizontal alignment */
-  justify-content: space-between; /* Add space between buttons */
+  justify-content: space-between; /* Space out the buttons evenly */
   align-items: center; /* Align buttons vertically */
-  gap: 1rem; /* Add spacing between buttons */
-  margin-top: 1rem; /* Add some space above the buttons */
+  margin-top: 1rem; /* Add spacing above the row */
+  padding: 0.5rem 0; /* Add padding for better spacing */
+  background-color: #f9fafb; /* Optional: Background for the row */
 }
 
 .applyButton:hover {
@@ -170,6 +171,10 @@
     outline: 2px solid transparent;
     outline-offset: 2px;
     box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.4); /* Focus ring */
+}
+.applyButtonWrapper {
+  flex: 1; /* Ensure equal width for each button wrapper */
+  text-align: center; /* Center-align the button within the wrapper */
 }
 
 
@@ -229,4 +234,14 @@
         font-size: 1em;
     }
     /* Consider hiding less critical rows on very small screens if needed */
+}
+@media (max-width: 768px) {
+  .applyButtonRow {
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 0.5rem; /* Add spacing between buttons */
+  }
+
+  .applyButtonWrapper {
+    text-align: center; /* Center-align buttons */
+  }
 }
