@@ -8,7 +8,7 @@ export interface CreditCard {
   image?: string;
   ratingValue?: number;
   reviewLink?: string;      
-  eligibilityLink?: string;
+  ratesandfees?: string;
   "Card Type": string;
   "Annual Fee": string;
   "APR Range (Purchases)": string;

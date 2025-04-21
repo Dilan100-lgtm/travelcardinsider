@@ -186,12 +186,12 @@ export default function CardComparison({ cards }: CardComparisonProps) {
 
                        {/* Eligibility Button */}
                        <a
-                           href={selected[index]?.eligibilityLink || '#'}
+                           href={selected[index]?.ratesandfees || '#'}
                            target="_blank"
                            rel="noopener" // Usually not sponsored
                            className={`${styles.cardButton} ${styles.eligibilityButton}`}
                        >
-                           Check eligibility
+                           see rates and fees
                        </a>
                    </div>
                </div>
