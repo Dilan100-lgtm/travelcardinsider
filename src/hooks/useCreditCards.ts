@@ -5,6 +5,8 @@ import creditCardData from '@/data/creditCards.json'; // Ensure this file exists
 export interface CreditCard {
   "Card Name": string;
   "Issuer": string;
+  image?: string;
+  ratingValue?: number;
   "Card Type": string;
   "Annual Fee": string;
   "APR Range (Purchases)": string;
@@ -30,6 +32,7 @@ export interface CreditCard {
   "Reward Program": string | null;
   "Redemption Rate (cents/pt)": string | null;
   "Multipliers Explained": string | null;
+  applyLink?: string;
 }
 
 export function useCreditCards(): { cards: CreditCard[] } {
