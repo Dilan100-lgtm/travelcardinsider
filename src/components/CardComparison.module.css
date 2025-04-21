@@ -104,3 +104,17 @@
      min-height: auto; /* Allow header to shrink */
    }
 }
+/* components/CardComparison.module.css */
+
+/* ... (keep all your existing styles) ... */
+
+.starRating {
+  color: #f8d64e; /* Gold color for stars */
+  font-size: 1.2em; /* Adjust size as needed */
+  line-height: 1;
+  white-space: nowrap; /* Prevent stars from wrapping */
+}
+
+.starRating span {
+  color: #666; /* Color for the numerical value */
+}
