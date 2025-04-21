@@ -150,6 +150,16 @@
   cursor: pointer;
   transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  height: 50px; /* Set a fixed height for uniformity */
+  line-height: 1.5; /* Ensure text is vertically centered */
+}
+
+.cardActions {
+  display: flex; /* Use flexbox for horizontal alignment */
+  justify-content: space-between; /* Add space between buttons */
+  align-items: center; /* Align buttons vertically */
+  gap: 1rem; /* Add spacing between buttons */
+  margin-top: 1rem; /* Add some space above the buttons */
 }
 
 .applyButton:hover {
