@@ -30,6 +30,11 @@ export default function ComparePage() {
         {/* Add other necessary Head elements */}
         <link rel="canonical" href="https://www.travelcardinsider.com/compare" />
          <meta name="robots" content="noindex" /> {/* Keep this if desired */}
+          {/* Preload critical fonts */}
+        <link rel="preload" href="/fonts/Roboto_Condensed-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/Roboto_Condensed-bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/playfair-display-regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/playfair-display-bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
       </Head>
 
       <Header />
