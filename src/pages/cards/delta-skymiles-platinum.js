@@ -22,7 +22,7 @@ const reviewData = {
   author: 'TravelCardInsider', // *** REPLACE with your actual author/site name ***
   imageUrl: '/NUS000000269_480x304_straight_withname.avif', // *** VERIFY PATH in /public ***
   ratingValue: 8.3, // From Delta Platinum HTML
-  applyLink: '/https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-platinum-american-express-card/', // *** REPLACE with actual Delta Platinum APPLY URL ***
+  applyLink: 'https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-platinum-american-express-card/', // *** REPLACE with actual Delta Platinum APPLY URL ***
   ratesLink: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/delta-skymiles-platinum-american-express-card/25330-10-0#FeeTable', // *** VERIFY URL ***
   // Image dimensions (MUST BE ACCURATE for next/image) - Guessed from filename
   imageWidth: 480, // *** REPLACE with actual image width ***

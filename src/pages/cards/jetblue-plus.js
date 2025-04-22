@@ -23,7 +23,7 @@ const reviewData = {
   imageUrl: '/JBE_card_Plus_WE_Angle_359x246_L.png', // *** VERIFY PATH in /public ***
   ratingValue: 7.8, // From JetBlue Plus HTML
   applyLink: 'https://www.jetblue.com/trueblue/credit-cards/jetblue-card-comparison', // *** REPLACE with actual JetBlue Plus APPLY URL ***
-  ratesLink: 'https://www.barclaycardus.com/applycontent/TnCs.jsp?tc46682', // *** VERIFY URL - seems generic ***
+  ratesLink: 'https://www.jetblue.com/trueblue/credit-cards/jetblue-card-comparison', // *** VERIFY URL - seems generic ***
   // Image dimensions (MUST BE ACCURATE for next/image) - Guessed from filename
   imageWidth: 359, // *** REPLACE with actual image width ***
   imageHeight: 246, // *** REPLACE with actual image height ***
