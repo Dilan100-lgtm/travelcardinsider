@@ -315,7 +315,7 @@
   .featureHeader,
   .cardColumnHeader {
     position: sticky;
-    top: 0;
+    top: 10rem;
     z-index: 10;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0,0,0,0.06);
