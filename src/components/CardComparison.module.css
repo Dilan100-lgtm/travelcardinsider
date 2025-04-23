@@ -113,7 +113,6 @@
   box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.4);
 }
 
-/* --- Card Info --- */
 .cardInfo {
   width: 100%;
   display: flex;
@@ -137,7 +136,6 @@
   margin-bottom: 0.5rem;
 }
 
-/* --- Card Name --- */
 .cardName {
   font-family: 'Poppins', sans-serif;
   font-size: 1.05rem;
@@ -149,7 +147,6 @@
   word-break: break-word;
 }
 
-/* --- Placeholder --- */
 .cardPlaceholder {
   color: #9ca3af;
   font-style: italic;
@@ -162,7 +159,6 @@
   min-height: 150px;
 }
 
-/* --- Button Group --- */
 .buttonGroup {
   display: flex;
   flex-direction: column;
@@ -208,7 +204,6 @@
 .eligibilityButton:hover { background-color: #4b5563; }
 .eligibilityButton:focus-visible { box-shadow: 0 0 0 3px rgba(107, 114, 128, 0.5); }
 
-/* --- Star Rating --- */
 .starRating {
   color: #f59e0b;
   font-size: 1rem;
@@ -226,22 +221,19 @@
   vertical-align: middle;
 }
 
-/* --- Responsive --- */
 @media (min-width: 640px) {
   .buttonGroup {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    align-items: stretch;
   }
   .cardButton {
-    width: auto;
-    flex-grow: 1;
+    width: 100%;
   }
 }
 
 @media (max-width: 900px) {
   .headerRow, .featureRow {
-    grid-template-columns: minmax(0, 1.1fr) repeat(3, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1.2fr) repeat(3, minmax(0, 1fr));
   }
   .featureLabelCell { min-width: 140px; font-size: 0.8rem; }
   .cardColumnHeader, .cardValueCell { min-width: 160px; font-size: 0.85rem; }
@@ -252,7 +244,7 @@
 
 @media (max-width: 700px) {
   .headerRow, .featureRow {
-    grid-template-columns: minmax(0, 1fr) repeat(3, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1.2fr) repeat(2, minmax(0, 1fr));
   }
   .featureLabelCell { min-width: 110px; font-size: 0.75rem; }
   .cardColumnHeader, .cardValueCell { min-width: 140px; font-size: 0.8rem; }
@@ -267,7 +259,7 @@
 
 @media (max-width: 500px) {
   .headerRow, .featureRow {
-    grid-template-columns: minmax(0, 0.8fr) repeat(3, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr) repeat(2, minmax(0, 1fr));
   }
   .featureLabelCell { min-width: 80px; font-size: 0.7rem; }
   .cardColumnHeader, .cardValueCell { min-width: 110px; font-size: 0.75rem; }
