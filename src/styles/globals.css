@@ -18,7 +18,7 @@ body {
   /* min-width: 374px; */
   -webkit-font-smoothing: antialiased; /* Smoother text rendering */
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden; /* Prevent horizontal scroll caused by minor overflows */
+  
 }
 
 /* Add word wrapping globally for safety */
