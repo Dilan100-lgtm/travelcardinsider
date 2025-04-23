@@ -99,10 +99,7 @@
 
 /* --- Card Header Column Specific --- */
 .cardColumnHeader {
-  position: sticky !important;
-  top: 0 !important;
-  background: white !important;
-  z-index: 999 !important;
+ 
   align-items: center; /* Center content horizontally */
   height: 100%; /* Fill height */
   text-align: center;
@@ -319,6 +316,9 @@
     z-index: 10;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+    border-bottom: 1px solid #e5e7eb;
+    overflow-x: auto;
+    overflow-y: auto;
     border-bottom: 1px solid #e5e7eb;
    
   }
