@@ -321,8 +321,10 @@
        padding: 0.5rem;
    }
    .cardImage {
-       max-height: 70px; /* Further reduce max height */
-   }
+    max-height: 60px; /* Further reduce image height */
+    max-width: 100%; /* Ensure image fits within the container */
+    height: auto; /* Maintain aspect ratio */
+  }
 }
 
 /* Very Small Mobile View */
