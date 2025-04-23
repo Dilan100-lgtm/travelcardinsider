@@ -20,7 +20,7 @@ const reviewData = {
   description: 'A 2000-word review of the Citi® Diamond Preferred® Card, focusing on balance transfers, fees, 2025 updates, pros, cons, and tips for maximizing 0% APR offers.',
   keywords: 'Citi Diamond Preferred, balance transfer, 0% APR, no annual fee, low interest, 2025 updates',
   author: 'TravelCardInsider', // *** REPLACE with your actual author/site name ***
-  imageUrl: '/download.png', // *** VERIFY PATH & FILENAME in /public (Duplicate?) ***
+  imageUrl: '/download (1).png', // *** VERIFY PATH & FILENAME in /public (Duplicate?) ***
   ratingValue: 6.5, // From Citi Diamond Preferred HTML
   applyLink: 'https://www.citi.com/credit-cards/citi-diamond-preferred-credit-card', // *** REPLACE with actual Diamond Preferred APPLY URL ***
   ratesLink: 'https://online.citi.com/US/ag/cards/displayterms?app=UNSOL&HKOP=608d295cca6a832d9455f97709fe858e684350d1359860de82b2b8a07336a954', // *** VERIFY URL ***
