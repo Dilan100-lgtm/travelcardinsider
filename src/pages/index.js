@@ -242,7 +242,7 @@ export default function HomePage() {
               with top travel credit cards.
             </p>
             {/* Ensure these links go to actual calculator/finder pages or sections */}
-            <Link href="/rewards/index">Rewards Calculator</Link>
+            <Link href="/rewards">Rewards Calculator</Link>
           </div>
 
           <div className="container">
