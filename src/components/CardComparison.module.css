@@ -241,7 +241,7 @@
 /* --- Star Rating --- */
 .starRating {
   color: #f59e0b;
-  font-size: 0.9rem; /* Mobile size */
+  font-size: 0.8rem; /* Mobile size */
   line-height: 1;
   white-space: nowrap;
   margin: 0.4rem 0;
