@@ -22,7 +22,7 @@ const reviewData = {
   author: 'TravelCardInsider', // *** REPLACE with your actual author/site name ***
   imageUrl: '/HYCOM-090821-WOH-Business-Card.webp', // *** VERIFY PATH in /public ***
   ratingValue: 8.5, // From Hyatt Business HTML
-  applyLink: 'https://creditcards.chase.com/travel-credit-cards/world-of-hyatt-credit-card', // *** REPLACE with actual Hyatt Biz APPLY URL ***
+  applyLink: 'https://world.hyatt.com/content/gp/en/rewards/hyatt-credit-card.html', // *** REPLACE with actual Hyatt Biz APPLY URL ***
   ratesLink: 'https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC61034.html', // *** VERIFY URL ***
   // Image dimensions (MUST BE ACCURATE for next/image)
   imageWidth: 480, // *** REPLACE with actual image width *** (Example Placeholder)
