@@ -196,8 +196,22 @@
 .eligibilityButton:focus-visible { box-shadow: 0 0 0 3px rgba(107, 114, 128, 0.5); }
 
 /* --- Star Rating --- */
-.starRating { /* ... */ }
-.starRating span { /* ... */ }
+.starRating {
+  color: #f59e0b;
+  font-size: 0.8rem; /* Mobile size */
+  line-height: 1;
+  white-space: nowrap;
+  margin: 0.3rem 0;
+  text-align: center;
+  width: 100%;
+}
+.starRating span {
+  color: #4b5563;
+  font-size: 0.8em;
+  font-weight: 500;
+  margin-left: 0.2em;
+  vertical-align: middle;
+}
 
 /* --- Tablet & Desktop Styles (min-width: 768px) --- */
 @media (min-width: 768px) {
