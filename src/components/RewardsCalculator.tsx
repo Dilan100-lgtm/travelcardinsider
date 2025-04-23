@@ -62,28 +62,37 @@ export default function RewardsCalculator() {
   };
 
   const results = useMemo(() => {
-    return cards.map((card) => {
-      const baseRate = card["Base Earning Rate (pts/$)"];
-      const redemption = card["Redemption Rate (cents/pt)"] / 100; // Convert cents to dollars
-
-      const totalPoints =
-        spend.travel * baseRate +
-        spend.dining * baseRate +
-        spend.groceries * baseRate +
-        spend.gas * baseRate +
-        spend.onlineShopping * baseRate +
-        spend.other * baseRate;
-
-      const totalValue = totalPoints * redemption;
-
-      return {
-        name: card["Card Name"],
-        image: card.image,
-        value: totalValue,
-        link: card.reviewLink,
-      };
-    }).sort((a, b) => b.value - a.value);
-  }, [spend]);
+    return cards
+      .map(card => {
+        const rewardMultiplier = card["Bonus Category Rates"]
+          .split(',')
+          .reduce((acc, rate, index) => {
+            const category = card["Bonus Categories"].split(',')[index]?.trim();
+            if (category) {
+              acc[category] = parseFloat(rate.trim()) || 1;
+            }
+            return acc;
+          }, {} as Record<string, number>);
+        const pointValue = card["Redemption Rate (cents/pt)"] / 100 || 0.01;
+  
+        let totalPoints = 0;
+        for (const category in spend) {
+          const multiplier = rewardMultiplier[category] || rewardMultiplier["other"] || 1;
+          totalPoints += spend[category] * multiplier * 12; // 12 months
+        }
+  
+        const totalValue = totalPoints * pointValue;
+  
+        return {
+          ...card,
+          totalPoints,
+          totalValue
+        };
+      })
+      .sort((a, b) => b.totalValue - a.totalValue) // 🔥 Sort by best value
+      .slice(0, 10); // ✅ Show top 10 only
+  }, [cards, spend]);
+  
 
   return (
     <div style={{ padding: '2rem' }}>
@@ -111,10 +120,10 @@ export default function RewardsCalculator() {
         <h3>Top Cards Based on Your Spend:</h3>
         <ul style={{ listStyle: 'none', padding: 0 }}>
           {results.slice(0, 10).map((result) => (
-            <li key={result.name} style={{ marginBottom: '1rem' }}>
-              <img src={result.image} alt={result.name} style={{ maxHeight: '40px' }} />
-              <strong> {result.name}:</strong> ${result.value.toFixed(2)} per year
-              <a href={result.link} target="_blank" rel="noopener noreferrer" style={{ marginLeft: '1rem' }}>
+            <li key={result["Card Name"]} style={{ marginBottom: '1rem' }}>
+              <img src={result.image} alt={result["Card Name"]} style={{ maxHeight: '40px' }} />
+              <strong> {result["Card Name"]}:</strong> ${result.totalValue.toFixed(2)} per year
+              <a href={result.reviewLink} target="_blank" rel="noopener noreferrer" style={{ marginLeft: '1rem' }}>
                 View Review
               </a>
             </li>
