@@ -1,4 +1,3 @@
-
 import React, { useState, useMemo } from 'react';
 import cardData from '@/data/creditCards.json';
 
@@ -26,16 +25,14 @@ interface CreditCard {
   "Redemption Rate (cents/pt)": number;
 }
 
-const cards: CreditCard[] = cardData.cards.map((card) => ({
+const cards: CreditCard[] = cardData.cards.map(card => ({
   ...card,
   "Bonus Redemption Value ($)": parseFloat(card["Bonus Redemption Value ($)"]),
   "Base Earning Rate (pts/$)": parseFloat(card["Base Earning Rate (pts/$)"]),
   "Redemption Rate (cents/pt)": parseFloat(card["Redemption Rate (cents/pt)"]),
 }));
 
-const categoryList = [
-  'travel', 'dining', 'groceries', 'gas', 'onlineShopping', 'other'
-] as const;
+const categoryList = ['travel', 'dining', 'groceries', 'gas', 'onlineShopping', 'other'] as const;
 
 type SpendInput = {
   [key in typeof categoryList[number]]: number;
@@ -50,12 +47,31 @@ const defaultSpend: SpendInput = {
   other: 0,
 };
 
+// Normalize categories to match input keys
+const normalize = (str: string): string => {
+  const map: Record<string, string> = {
+    supermarkets: 'groceries',
+    grocery: 'groceries',
+    supermarket: 'groceries',
+    restaurants: 'dining',
+    dining: 'dining',
+    travel: 'travel',
+    gas: 'gas',
+    fuel: 'gas',
+    online: 'onlineShopping',
+    shopping: 'onlineShopping',
+    'online shopping': 'onlineShopping',
+    other: 'other',
+  };
+  return map[str.trim().toLowerCase()] || 'other';
+};
+
 export default function RewardsCalculator() {
   const [spend, setSpend] = useState<SpendInput>(defaultSpend);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setSpend((prev) => ({
+    setSpend(prev => ({
       ...prev,
       [name]: parseFloat(value) || 0,
     }));
@@ -64,35 +80,33 @@ export default function RewardsCalculator() {
   const results = useMemo(() => {
     return cards
       .map(card => {
-        const rewardMultiplier = card["Bonus Category Rates"]
-          .split(',')
-          .reduce((acc, rate, index) => {
-            const category = card["Bonus Categories"].split(',')[index]?.trim();
-            if (category) {
-              acc[category] = parseFloat(rate.trim()) || 1;
-            }
-            return acc;
-          }, {} as Record<string, number>);
+        const categories = card["Bonus Categories"].split(',');
+        const rates = card["Bonus Category Rates"].split(',');
+        const multiplierMap: Partial<Record<keyof SpendInput, number>> = {};
+
+        categories.forEach((cat, i) => {
+          const key = normalize(cat) as keyof SpendInput;
+          const rate = parseFloat(rates[i]?.trim()) || card["Base Earning Rate (pts/$)"] || 1;
+          multiplierMap[key] = rate;
+        });
+
         const pointValue = card["Redemption Rate (cents/pt)"] / 100 || 0.01;
-  
         let totalPoints = 0;
-        for (const category in spend) {
-          const multiplier = rewardMultiplier[category] || rewardMultiplier["other"] || 1;
-          totalPoints += spend[category] * multiplier * 12; // 12 months
+
+        for (const category of categoryList) {
+          const multiplier = multiplierMap[category] || card["Base Earning Rate (pts/$)"];
+          totalPoints += spend[category] * multiplier * 12;
         }
-  
-        const totalValue = totalPoints * pointValue;
-  
+
         return {
           ...card,
           totalPoints,
-          totalValue
+          totalValue: totalPoints * pointValue,
         };
       })
-      .sort((a, b) => b.totalValue - a.totalValue) // 🔥 Sort by best value
-      .slice(0, 10); // ✅ Show top 10 only
-  }, [cards, spend]);
-  
+      .sort((a, b) => b.totalValue - a.totalValue) // Top value first
+      .slice(0, 10); // Top 10 only
+  }, [spend]);
 
   return (
     <div style={{ padding: '2rem' }}>
@@ -101,7 +115,7 @@ export default function RewardsCalculator() {
         {categoryList.map((category) => (
           <div key={category}>
             <label htmlFor={category}>
-              {category.charAt(0).toUpperCase() + category.slice(1)} Spend ($):
+              {category.charAt(0).toUpperCase() + category.slice(1)} Spend ($/month):
             </label>
             <input
               type="number"
@@ -119,11 +133,11 @@ export default function RewardsCalculator() {
       <div style={{ marginTop: '2rem' }}>
         <h3>Top Cards Based on Your Spend:</h3>
         <ul style={{ listStyle: 'none', padding: 0 }}>
-          {results.slice(0, 10).map((result) => (
-            <li key={result["Card Name"]} style={{ marginBottom: '1rem' }}>
-              <img src={result.image} alt={result["Card Name"]} style={{ maxHeight: '40px' }} />
-              <strong> {result["Card Name"]}:</strong> ${result.totalValue.toFixed(2)} per year
-              <a href={result.reviewLink} target="_blank" rel="noopener noreferrer" style={{ marginLeft: '1rem' }}>
+          {results.map(card => (
+            <li key={card["Card Name"]} style={{ marginBottom: '1rem' }}>
+              <img src={card.image} alt={card["Card Name"]} style={{ maxHeight: '40px' }} />
+              <strong> {card["Card Name"]}</strong>: ${card.totalValue.toFixed(2)} / year
+              <a href={card.reviewLink} target="_blank" rel="noopener noreferrer" style={{ marginLeft: '1rem' }}>
                 View Review
               </a>
             </li>
