@@ -1,4 +1,4 @@
-// File: src/components/RewardsCalculator.tsx
+// File: components/RewardsCalculator.tsx
 
 import React, { useState, useMemo } from 'react';
 import cardData from '@/data/creditCards.json';
@@ -53,6 +53,8 @@ const defaultSpend: SpendInput = {
 
 export default function RewardsCalculator() {
   const [spend, setSpend] = useState<SpendInput>(defaultSpend);
+  const [aiSuggestion, setAiSuggestion] = useState<string>('');
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -64,73 +66,92 @@ export default function RewardsCalculator() {
 
   const results = useMemo(() => {
     return cards.map(card => {
-      const rewardMultiplier: Record<string, number> = {};
+      const rewardMultiplier = card["Bonus Category Rates"]?.split(',')?.reduce((acc, rate, index) => {
+        const category = card["Bonus Categories"].split(',')[index]?.trim();
+        if (category) acc[category] = parseFloat(rate.trim()) || 1;
+        return acc;
+      }, {} as Record<string, number>) || {};
 
-      const categories = card["Bonus Categories"]?.split(',') || [];
-      const rates = card["Bonus Category Rates"]?.split(',') || [];
-
-      categories.forEach((cat, i) => {
-        const key = cat.trim().toLowerCase();
-        const rate = parseFloat(rates[i]?.trim() || '1');
-        if (key) rewardMultiplier[key] = rate;
-      });
-
-      const pointValue = (card["Redemption Rate (cents/pt)"] || 1) / 100;
+      const pointValue = card["Redemption Rate (cents/pt)"] / 100 || 0.01;
       let totalPoints = 0;
-      const matchedCategories: string[] = [];
-
-      for (const cat of categoryList) {
-        const multiplier = rewardMultiplier[cat] || rewardMultiplier["other"] || 1;
-        if (multiplier > 1 && spend[cat] > 0) {
-          matchedCategories.push(`${cat} (${multiplier}x)`);
-        }
-        totalPoints += spend[cat] * multiplier * 12;
+      for (const category in spend) {
+        const multiplier = rewardMultiplier[category] || rewardMultiplier["other"] || 1;
+        totalPoints += spend[category] * multiplier * 12;
       }
 
       return {
         ...card,
         totalPoints,
         totalValue: totalPoints * pointValue,
-        matchedCategories
       };
     }).sort((a, b) => b.totalValue - a.totalValue);
   }, [spend]);
 
-  return (
-    <div style={{ padding: '2rem', maxWidth: '1000px', margin: '0 auto' }}>
-      <h2 style={{ fontSize: '1.8rem', marginBottom: '1rem' }}>AI-Powered Travel Rewards Calculator</h2>
+  const getAiRecommendation = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch('/api/gpt-recommend', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ topCards: results.slice(0, 10), spend }),
+      });
+      const data = await res.json();
+      setAiSuggestion(data.recommendation);
+    } catch (err) {
+      setAiSuggestion('Sorry, failed to get recommendation.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
-      <form style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '2rem' }}>
-        {categoryList.map((cat) => (
-          <div key={cat}>
-            <label htmlFor={cat}>
-              {cat.charAt(0).toUpperCase() + cat.slice(1)} Spend ($/mo):
+  return (
+    <div style={{ padding: '2rem' }}>
+      <h2>AI-Powered Travel Rewards Calculator</h2>
+
+      <form style={{ display: 'grid', gap: '1rem', maxWidth: '400px' }}>
+        {categoryList.map((category) => (
+          <div key={category}>
+            <label htmlFor={category}>
+              {category.charAt(0).toUpperCase() + category.slice(1)} Spend ($):
             </label>
             <input
               type="number"
-              name={cat}
-              value={spend[cat]}
+              id={category}
+              name={category}
+              value={spend[category]}
               onChange={handleChange}
               min="0"
               step="10"
-              style={{ width: '100%', padding: '0.5rem' }}
             />
           </div>
         ))}
       </form>
 
       <div style={{ marginTop: '2rem' }}>
-        <h3 style={{ fontSize: '1.4rem' }}>Top 3 Personalized Card Recommendations</h3>
-        {results.slice(0, 3).map((card, index) => (
-          <div key={card["Card Name"]} style={{ border: '1px solid #ccc', borderRadius: '10px', padding: '1rem', marginBottom: '1rem', backgroundColor: '#f9fafb' }}>
-            <h4>{index + 1}. {card["Card Name"]}</h4>
-            <img src={card.image} alt={card["Card Name"]} style={{ maxHeight: '60px' }} />
-            <p><strong>Estimated Annual Rewards:</strong> ${card.totalValue.toFixed(2)}</p>
-            <p><strong>Matched Categories:</strong> {card.matchedCategories.length ? card.matchedCategories.join(', ') : 'Base rate only'}</p>
-            <p><a href={card.reviewLink} target="_blank" rel="noopener noreferrer">View Full Review</a></p>
-          </div>
-        ))}
+        <h3>Top Cards Based on Your Spend:</h3>
+        <ul style={{ listStyle: 'none', padding: 0 }}>
+          {results.slice(0, 10).map((result) => (
+            <li key={result["Card Name"]} style={{ marginBottom: '1rem' }}>
+              <img src={result.image} alt={result["Card Name"]} style={{ maxHeight: '40px' }} />
+              <strong> {result["Card Name"]}:</strong> ${result.totalValue.toFixed(2)} per year
+              <a href={result.reviewLink} target="_blank" rel="noopener noreferrer" style={{ marginLeft: '1rem' }}>
+                View Review
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
+
+      <button onClick={getAiRecommendation} style={{ marginTop: '2rem', padding: '0.5rem 1rem' }}>
+        {loading ? 'Generating AI Recommendation...' : 'Get AI Recommendation'}
+      </button>
+
+      {aiSuggestion && (
+        <div style={{ marginTop: '2rem', background: '#f0f0f0', padding: '1rem', borderRadius: '5px' }}>
+          <h4>AI Suggestion:</h4>
+          <p>{aiSuggestion}</p>
+        </div>
+      )}
     </div>
   );
 }
