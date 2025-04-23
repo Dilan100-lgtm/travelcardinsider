@@ -291,7 +291,7 @@ const cardsData = [
         name: 'American Express® Business Gold Card',
         tciRating: '8.4', // From HTML rating span
         applyUrl: '#', // *** REPLACE: Affiliate Link ***
-        learnMoreUrl: '/reviews/amex-business-gold', // *** REPLACE: Internal Link ***
+        learnMoreUrl: '/cards/amex-business-gold', // *** REPLACE: Internal Link ***
         ratesFeesUrl: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/businessgold-card/45094-9-0?key=tncBody&rwdFlag=rwd',
         imageUrl: '/business-gold.avif', // *** VERIFY PATH & FORMAT ***
         imageAlt: 'American Express® Business Gold Card',
