@@ -16,27 +16,25 @@ interface CreditCard {
   "Foreign Transaction Fee": string;
   "Sign-Up Bonus": string;
   "Minimum Spend for Bonus": string;
-  "Bonus Redemption Value ($)": number;
+  "Bonus Redemption Value ($)": string;
   "Reward Program": string;
-  "Base Earning Rate (pts/$)": number;
+  "Base Earning Rate (pts/$)": string;
   "Bonus Categories": string;
   "Bonus Category Rates": string;
   "Multipliers Explained": string;
-  "Redemption Rate (cents/pt)": number;
+  "Redemption Rate (cents/pt)": string;
 }
 
-const cards: CreditCard[] = cardData.cards.map(card => ({
-  ...card,
-  "Bonus Redemption Value ($)": parseFloat(card["Bonus Redemption Value ($)"]),
-  "Base Earning Rate (pts/$)": parseFloat(card["Base Earning Rate (pts/$)"]),
-  "Redemption Rate (cents/pt)": parseFloat(card["Redemption Rate (cents/pt)"]),
-}));
+const categoryList = [
+  'travel',
+  'dining',
+  'groceries',
+  'gas',
+  'onlineShopping',
+  'other'
+] as const;
 
-const categoryList = ['travel', 'dining', 'groceries', 'gas', 'onlineShopping', 'other'] as const;
-
-type SpendInput = {
-  [key in typeof categoryList[number]]: number;
-};
+type SpendInput = Record<typeof categoryList[number], number>;
 
 const defaultSpend: SpendInput = {
   travel: 0,
@@ -47,75 +45,52 @@ const defaultSpend: SpendInput = {
   other: 0,
 };
 
-// Normalize categories to match input keys
-const normalize = (str: string): string => {
-  const map: Record<string, string> = {
-    supermarkets: 'groceries',
-    grocery: 'groceries',
-    supermarket: 'groceries',
-    restaurants: 'dining',
-    dining: 'dining',
-    travel: 'travel',
-    gas: 'gas',
-    fuel: 'gas',
-    online: 'onlineShopping',
-    shopping: 'onlineShopping',
-    'online shopping': 'onlineShopping',
-    other: 'other',
-  };
-  return map[str.trim().toLowerCase()] || 'other';
-};
-
 export default function RewardsCalculator() {
   const [spend, setSpend] = useState<SpendInput>(defaultSpend);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setSpend(prev => ({
+    setSpend((prev) => ({
       ...prev,
       [name]: parseFloat(value) || 0,
     }));
   };
 
   const results = useMemo(() => {
-    return cards
-      .map(card => {
-        const rawCategories = card["Bonus Categories"] || '';
-        const rawRates = card["Bonus Category Rates"] || '';
-  
-        const categories = rawCategories.split(',');
-        const rates = rawRates.split(',');
-        const multiplierMap: Partial<Record<keyof SpendInput, number>> = {};
-  
-        categories.forEach((cat, i) => {
-          const key = normalize(cat) as keyof SpendInput;
-          const rate = parseFloat(rates[i]?.trim()) || card["Base Earning Rate (pts/$)"] || 1;
-          multiplierMap[key] = rate;
-        });
-  
-        const pointValue = (card["Redemption Rate (cents/pt)"] ?? 1) / 100;
+    return cardData.cards
+      .map((card: CreditCard) => {
+        const baseRate = parseFloat(card["Base Earning Rate (pts/$)"]) || 1;
+        const redemptionRate = parseFloat(card["Redemption Rate (cents/pt)"]) / 100 || 0.01;
+
+        // Bonus multipliers per category
+        const bonusCategories = card["Bonus Categories"]?.split(',').map(c => c.trim().toLowerCase()) || [];
+        const bonusRates = card["Bonus Category Rates"]?.split(',').map(r => parseFloat(r.trim()) || 0) || [];
+        const bonusMap = new Map<string, number>();
+        bonusCategories.forEach((cat, idx) => bonusMap.set(cat, bonusRates[idx] || baseRate));
+
         let totalPoints = 0;
-  
-        for (const category of categoryList) {
-          const multiplier = multiplierMap[category] || card["Base Earning Rate (pts/$)"];
-          totalPoints += spend[category] * multiplier * 12;
+        for (const cat of categoryList) {
+          const rate = bonusMap.get(cat) || baseRate;
+          totalPoints += spend[cat] * rate * 12; // 12 months spend
         }
-  
+
+        const totalValue = totalPoints * redemptionRate;
+
         return {
           ...card,
           totalPoints,
-          totalValue: totalPoints * pointValue,
+          totalValue,
         };
       })
+      .filter(card => card.totalValue > 0)
       .sort((a, b) => b.totalValue - a.totalValue)
       .slice(0, 10);
   }, [spend]);
-  
 
   return (
-    <div style={{ padding: '2rem' }}>
-      <h2>Travel Rewards Calculator</h2>
-      <form style={{ display: 'grid', gap: '1rem', maxWidth: '400px' }}>
+    <div style={{ padding: '2rem', maxWidth: '700px', margin: '0 auto' }}>
+      <h2>AI-Powered Travel Credit Card Rewards Calculator</h2>
+      <form style={{ display: 'grid', gap: '1rem', marginBottom: '2rem' }}>
         {categoryList.map((category) => (
           <div key={category}>
             <label htmlFor={category}>
@@ -129,25 +104,34 @@ export default function RewardsCalculator() {
               onChange={handleChange}
               min="0"
               step="10"
+              style={{ width: '100%', padding: '0.4rem' }}
             />
           </div>
         ))}
       </form>
 
-      <div style={{ marginTop: '2rem' }}>
-        <h3>Top Cards Based on Your Spend:</h3>
-        <ul style={{ listStyle: 'none', padding: 0 }}>
-          {results.map(card => (
-            <li key={card["Card Name"]} style={{ marginBottom: '1rem' }}>
-              <img src={card.image} alt={card["Card Name"]} style={{ maxHeight: '40px' }} />
-              <strong> {card["Card Name"]}</strong>: ${card.totalValue.toFixed(2)} / year
-              <a href={card.reviewLink} target="_blank" rel="noopener noreferrer" style={{ marginLeft: '1rem' }}>
-                View Review
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <h3>Top Smart Recommendations</h3>
+      <ul style={{ listStyle: 'none', padding: 0 }}>
+        {results.map((card) => (
+          <li key={card["Card Name"]} style={{ marginBottom: '1.5rem', borderBottom: '1px solid #ccc', paddingBottom: '1rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+              <img src={card.image} alt={card["Card Name"]} style={{ height: '50px' }} />
+              <div>
+                <strong>{card["Card Name"]}</strong>
+                <div>Estimated Yearly Value: <strong>${card.totalValue.toFixed(2)}</strong></div>
+                <div style={{ marginTop: '0.3rem' }}>
+                  <a href={card.reviewLink} target="_blank" rel="noopener noreferrer" style={{ marginRight: '1rem' }}>
+                    View Review
+                  </a>
+                  <a href={card.applyLink} target="_blank" rel="noopener sponsored">
+                    Apply Now
+                  </a>
+                </div>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
