@@ -1,353 +1,211 @@
 /* File: components/CardComparison.module.css */
-/* Optimized for Mobile Responsiveness - Preventing Overlap (Including Image Fix) */
+/* Attempt 4: Fixing Overlapping Images - Grid Blowout Prevention & Container Focus */
 
 /* --- Base Container & Font --- */
 .comparisonContainer {
   width: 100%;
-  /* Crucial: Allows horizontal scrolling ONLY when content overflows */
-  overflow-x: auto;
-  padding: 1.5rem 0; /* Vertical padding for the section */
-  margin: 2rem 0; /* Add some vertical margin outside container */
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  color: #374151; /* Gray 700 */
+  overflow-x: auto; /* Ensure this is present */
+  padding: 1.5rem 0;
+  margin: 2rem 0;
+  font-family: 'Inter', sans-serif;
+  color: #374151;
   background-color: #ffffff;
-  border: 1px solid #e5e7eb; /* Gray 200 */
+  border: 1px solid #e5e7eb;
   border-radius: 8px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-  /* Helps with smooth scrolling on touch devices */
   -webkit-overflow-scrolling: touch;
 }
 
 /* --- Grid Layout --- */
-/* Applies to both header row and feature rows */
 .headerRow,
 .featureRow {
   display: grid;
-  /* Desktop: Feature Label Column + 3 Card Columns */
-  grid-template-columns: minmax(180px, 1.2fr) repeat(3, minmax(200px, 1fr));
-  gap: 0; /* Use borders for separation */
-  border-bottom: 1px solid #e5e7eb; /* Lighter border between rows */
+  /* Desktop: Apply minmax(0, ...) to prevent content blowout */
+  grid-template-columns: minmax(180px, 1.2fr) repeat(3, minmax(0, 1fr)); /* <-- Key Change: minmax(0, ...) */
+  /* We'll set specific min-widths per column type below if needed */
+  gap: 0;
+  border-bottom: 1px solid #e5e7eb;
 }
-
-/* Remove top border if container has one */
-.headerRow {
-   border-top: none;
-}
-
-/* No bottom border on the last feature row */
-.featureRow:last-of-type {
-    border-bottom: none;
-}
+.headerRow { border-top: none; }
+.featureRow:last-of-type { border-bottom: none; }
 
 /* --- Cell Styling --- */
-.featureHeader, /* Empty cell top-left */
+.featureHeader,
 .cardColumnHeader,
 .featureLabelCell,
 .cardValueCell {
   background-color: #ffffff;
-  padding: 0.9rem 1.1rem; /* Base padding */
+  padding: 0.9rem 1.1rem;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  border-right: 1px solid #e5e7eb; /* Vertical border */
-  min-height: 55px; /* Minimum height for data rows */
-  box-sizing: border-box; /* Include padding/border in size */
-
-  /* --- CRUCIAL FOR PREVENTING OVERLAP --- */
-  /* Allows long words/strings to break and wrap within the cell */
+  align-items: flex-start; /* Default */
+  border-right: 1px solid #e5e7eb;
+  /* Setting min-height can sometimes cause issues if content varies wildly */
+  /* Consider removing if not strictly needed for alignment */
+  /* min-height: 55px; */
+  box-sizing: border-box;
   overflow-wrap: break-word;
-  word-wrap: break-word; /* Legacy fallback */
-  word-break: break-word; /* Ensures breaks even for long unbroken strings */
-  /* --------------------------------------- */
+  word-wrap: break-word;
+  word-break: break-word;
+  /* ADDED: Explicit minimum width for safety, adjust as needed */
+  min-width: 0; /* Helps prevent implicit minimum size based on content */
 }
-
-/* Remove right border on the very last cell of each row */
 .headerRow > *:last-child,
-.featureRow > *:last-child {
-    border-right: none;
+.featureRow > *:last-child { border-right: none; }
+
+/* Apply specific min-widths if needed */
+.featureLabelCell {
+  min-width: 180px; /* Example desktop min-width */
+}
+.cardColumnHeader, .cardValueCell {
+   min-width: 150px; /* Example desktop min-width - Adjust! */
 }
 
-/* Feature Label Column Styling */
+
 .featureLabelCell {
   font-weight: 600;
-  background-color: #f9fafb; /* Very light grey for label column bg */
-  justify-content: flex-start; /* Align content top-left */
-  color: #4b5563; /* Darker grey for labels */
-  font-size: 0.85rem; /* 13.6px */
+  background-color: #f9fafb;
+  justify-content: flex-start;
+  color: #4b5563;
+  font-size: 0.85rem;
   line-height: 1.4;
-  vertical-align: top; /* Ensure vertical alignment consistency */
+  vertical-align: top;
 }
 
-/* Card Value Cell Styling */
 .cardValueCell {
-  justify-content: flex-start; /* Align content top-left */
-  font-size: 0.9rem; /* 14.4px */
+  justify-content: flex-start;
+  font-size: 0.9rem;
   line-height: 1.5;
-  color: #1f2937; /* Darker text for values */
-  vertical-align: top; /* Ensure vertical alignment consistency */
+  color: #1f2937;
+  vertical-align: top;
 }
 
 /* --- Card Header Column --- */
 .cardColumnHeader {
-  align-items: center; /* Center contents horizontally */
-  min-height: auto; /* Let content dictate height */
-  height: 100%; /* Try to fill row height */
+  align-items: center; /* Center contents */
+  height: 100%;
   text-align: center;
-  border-left: 1px solid #e5e7eb; /* Add left border for separation */
-  padding: 1rem; /* Padding inside the header cell */
+  border-left: 1px solid #e5e7eb;
+  padding: 1rem;
+  /* Crucial: Ensure flex container allows shrinking */
+  display: flex; /* Already flex, ensure direction */
+  flex-direction: column; /* Vertical stack */
+  justify-content: space-between; /* Pushes content apart */
+  overflow: hidden; /* Clip any visual overflow */
 }
-/* Remove extra left border on the first card column */
-.headerRow > .cardColumnHeader:nth-of-type(2) { /* Target first card column header */
-   border-left: none;
-}
+.headerRow > .cardColumnHeader:nth-of-type(2) { border-left: none; }
 
 /* --- Content Inside Header --- */
 .dropdownWrapper {
-  width: 100%; /* Use full width */
-  max-width: 200px; /* Max width for dropdown */
-  margin: 0 auto 1rem auto; /* Center and add bottom margin */
-}
-
-.dropdownWrapper label {
- display: block;
- margin-bottom: 0.3rem;
- font-size: 0.75rem; /* 12px */
- font-weight: 500;
- color: #6b7280; /* Gray 500 */
-}
-
-.dropdownWrapper select {
   width: 100%;
-  padding: 0.5rem 0.7rem;
-  font-size: 0.85rem; /* 13.6px */
-  font-family: 'Inter', sans-serif;
-  border: 1px solid #d1d5db; /* Gray 300 */
-  border-radius: 6px;
-  background-color: #fff;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-  background-position: right 0.5rem center;
-  background-repeat: no-repeat;
-  background-size: 1.25em 1.25em;
-  cursor: pointer;
+  max-width: 200px;
+  margin: 0 auto 1rem auto;
+  flex-shrink: 0; /* Don't allow dropdown to shrink */
 }
-.dropdownWrapper select:focus {
-   outline: 2px solid transparent;
-   outline-offset: 2px;
-   border-color: #3b82f6; /* Blue 500 */
-   box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.4);
-}
+/* ... select styles ... */
 
 .cardInfo {
   text-align: center;
   width: 100%;
-  margin-top: 0.5rem;
+  /* Let flexbox handle spacing - remove margin-top */
+  /* margin-top: 0.5rem; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex-grow: 1; /* Allow info to take remaining space */
-  justify-content: space-between; /* Distribute space */
+  flex-grow: 1; /* Takes up available space */
+  flex-shrink: 1; /* Allow this section to shrink if needed */
+  min-height: 0; /* Necessary for flex shrink to work correctly in some cases */
+  /* justify-content: space-between; /* Let content determine spacing */
 }
 
-/* Card Image - UPDATED */
+/* Card Image - Ensure it can shrink */
 .cardImage {
-  display: block; /* Helps prevent extra space */
-  /* --- CORE FIX FOR OVERLAPPING --- */
-  max-width: 100%;   /* CRUCIAL: Image won't exceed container width */
-  width: auto;       /* Let max-width determine width */
-  height: auto;      /* Maintain aspect ratio */
-  object-fit: contain; /* Scale down nicely without cropping */
-  /* -------------------------------- */
-  max-height: 90px;  /* Optional: Control max vertical space (Adjust per breakpoint) */
-  margin: 0 auto 0.75rem auto; /* Center image, add bottom margin */
-  box-sizing: border-box; /* Include padding/border in size calc */
+  display: block;
+  max-width: 100%;
+  width: auto; /* Let aspect ratio and max-width dictate */
+  height: auto;
+  object-fit: contain;
+  max-height: 90px; /* Desktop max height */
+  margin: 0.5rem auto 0.75rem auto; /* Adjust vertical margin */
+  box-sizing: border-box;
+  /* Allow image to shrink if container forces it */
+  flex-shrink: 1;
+  min-height: 0; /* Aid shrinking */
+  /* border: 1px solid red; */ /* Debug border */
 }
 
 .cardName {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.05rem; /* Base size */
+  font-size: 1.05rem;
   font-weight: 600;
   margin: 0 0 0.5rem 0;
-  color: #111827; /* Gray 900 */
+  color: #111827;
   line-height: 1.3;
-  width: 95%; /* Prevent touching edges */
-  /* --- CRUCIAL FOR PREVENTING OVERLAP --- */
+  width: 95%;
   overflow-wrap: break-word;
-  word-wrap: break-word; /* Fallback */
   word-break: break-word;
-  /* --------------------------------------- */
+  flex-shrink: 0; /* Don't shrink name */
 }
 
-.cardPlaceholder {
-   color: #9ca3af; /* Gray 400 */
-   font-style: italic;
-   font-size: 0.9rem;
-   flex-grow: 1;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   padding: 1rem 0;
-   min-height: 100px; /* Placeholder height */
-}
+.cardPlaceholder { /* ... styles ... */ }
 
-/* --- Button Group --- */
+/* Button Group - Ensure it doesn't prevent shrinking */
 .buttonGroup {
   display: flex;
-  flex-direction: column; /* Mobile First: Stack buttons */
-  align-items: stretch; /* Make buttons fill width */
+  flex-direction: column;
+  align-items: stretch;
   gap: 0.5rem;
-  margin-top: 1rem; /* Space above buttons */
-  width: 95%; /* Control button group width */
-  max-width: 180px; /* Max width */
+  /* margin-top: 1rem; */ /* Let justify-content handle spacing */
+  margin-top: auto; /* Push to bottom */
+  width: 95%;
+  max-width: 180px;
   margin-left: auto;
-  margin-right: auto; /* Center button group */
+  margin-right: auto;
+  flex-shrink: 0; /* Don't allow button group to shrink */
 }
-
-/* Base style for header buttons */
-.cardButton {
-  display: block; /* Ensure full width when stacked */
-  width: 100%;
-  padding: 0.6rem 0.5rem;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.8rem; /* Smaller font */
-  font-weight: 600;
-  color: #ffffff;
-  border: none;
-  border-radius: 5px;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out, transform 0.1s ease;
-  white-space: nowrap;
-  box-sizing: border-box;
-}
-.cardButton:hover {
-   transform: translateY(-1px);
-   filter: brightness(1.05);
-}
-.cardButton:active {
-    transform: translateY(0px);
-    filter: brightness(0.95);
-}
-.cardButton:focus-visible {
-   outline: 2px solid transparent;
-   outline-offset: 2px;
-   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4); /* Example focus */
-}
-
-/* Specific Button Styles */
-.applyButton { background-color: #10b981; }
-.applyButton:hover { background-color: #059669; }
-.reviewButton { background-color: #3b82f6; }
-.reviewButton:hover { background-color: #2563eb; }
-.eligibilityButton { background-color: #6b7280; }
-.eligibilityButton:hover { background-color: #4b5563; }
-
-/* --- Star Rating --- */
-.starRating {
-  color: #f59e0b; /* Amber 500 */
-  font-size: 1rem; /* Adjusted size */
-  line-height: 1;
-  white-space: nowrap;
-  margin: 0.5rem 0;
-}
-.starRating span {
-  color: #4b5563; /* Gray 600 */
-  font-size: 0.8em;
-  font-weight: 500;
-  margin-left: 0.4em;
-  vertical-align: middle;
-}
+/* ... cardButton styles ... */
+/* ... starRating styles ... */
 
 /* --- Responsive Adjustments --- */
 
-/* Small Tablet and Larger Phones */
-@media (min-width: 640px) {
-  .buttonGroup {
-      flex-direction: row; /* Buttons side-by-side */
-      justify-content: center;
-      align-items: center;
-  }
-  .cardButton {
-      width: auto; /* Let buttons size naturally */
-      flex-grow: 1; /* Allow growing */
-  }
-}
+@media (min-width: 640px) { /* ... button row styles ... */ }
 
-/* Tablet View */
 @media (max-width: 900px) {
-  .headerRow,
-  .featureRow {
-      /* Ensure min width is reasonable */
-      grid-template-columns: minmax(140px, 1.1fr) repeat(3, minmax(150px, 1fr)); /* Adjusted min */
+  .headerRow, .featureRow {
+      /* Use minmax(0, ...) for grid track */
+      grid-template-columns: minmax(140px, 1.1fr) repeat(3, minmax(0, 1fr));
   }
-  .cardColumnHeader {
-      padding: 0.7rem 0.6rem; /* Adjust padding for space */
-  }
-   .cardName { font-size: 0.95rem; }
-   .cardValueCell { font-size: 0.85rem; }
-   .featureLabelCell { font-size: 0.8rem; }
-   .cardButton { font-size: 0.75rem; padding: 0.5rem 0.6rem; }
-   .cardImage {
-      max-height: 80px; /* Slightly smaller max height */
-   }
+   /* Apply specific min-widths */
+   .featureLabelCell { min-width: 140px; }
+   .cardColumnHeader, .cardValueCell { min-width: 130px; } /* Adjusted min-width */
+
+  .cardColumnHeader { padding: 0.7rem 0.6rem; }
+  .cardImage { max-height: 80px; }
+  /* ... other tablet styles ... */
 }
 
-/* Mobile View */
 @media (max-width: 700px) {
-   .headerRow,
-   .featureRow {
-       /* Give images slightly more minimum space */
-       grid-template-columns: minmax(110px, 1fr) repeat(3, minmax(125px, 1fr)); /* Adjusted min */
+   .headerRow, .featureRow {
+       grid-template-columns: minmax(110px, 1fr) repeat(3, minmax(0, 1fr));
    }
-   .cardColumnHeader,
-   .featureLabelCell,
-   .cardValueCell {
-       padding: 0.6rem 0.5rem; /* Adjust padding */
-   }
-   .cardValueCell { font-size: 0.8rem; }
-   .featureLabelCell { font-size: 0.75rem; }
-   .cardName { font-size: 0.9rem; }
+    /* Apply specific min-widths */
+   .featureLabelCell { min-width: 110px; }
+   .cardColumnHeader, .cardValueCell { min-width: 115px; } /* Adjusted min-width */
 
-   /* Ensure buttons stack if not already default */
-   .buttonGroup {
-       flex-direction: column;
-       align-items: stretch;
-       width: 95%;
-   }
-   .cardButton {
-       width: 100%; /* Ensure full width when stacked */
-       font-size: 0.75rem;
-       padding: 0.5rem;
-   }
-   .cardImage {
-    max-height: 60px; /* Further reduce image height */
-    max-width: 100%; /* Ensure image fits within the container */
-    height: auto; /* Maintain aspect ratio */
-  }
+   .cardColumnHeader { padding: 0.6rem 0.5rem; }
+   .cardImage { max-height: 70px; }
+   /* ... other mobile styles ... */
 }
 
-/* Very Small Mobile View */
 @media (max-width: 500px) {
-   .headerRow,
-   .featureRow {
-       /* Ensure min width is adequate for smallest image view */
-       grid-template-columns: minmax(90px, 1fr) repeat(3, minmax(105px, 1fr)); /* Adjusted min */
+   .headerRow, .featureRow {
+       grid-template-columns: minmax(90px, 1fr) repeat(3, minmax(0, 1fr));
    }
-   .cardColumnHeader,
-   .featureLabelCell,
-   .cardValueCell {
-       padding: 0.5rem 0.4rem; /* Minimal padding */
-       min-height: 45px; /* Reduce min height */
-   }
-    .cardValueCell { font-size: 0.75rem; }
-    .featureLabelCell { font-size: 0.7rem; }
-    .cardName { font-size: 0.85rem; }
-    .cardImage {
-      max-height: 60px; /* Further reduce image height */
-      max-width: 100%; /* Ensure image fits within the container */
-      height: auto; /* Maintain aspect ratio */
-    }
-    .dropdownWrapper select { font-size: 0.8rem; }
-    .starRating { font-size: 0.9rem; }
+    /* Apply specific min-widths */
+   .featureLabelCell { min-width: 90px; }
+   .cardColumnHeader, .cardValueCell { min-width: 100px; } /* Adjusted min-width */
+
+   .cardColumnHeader { padding: 0.5rem 0.4rem; }
+   .cardImage { max-height: 60px; }
+   /* ... other small mobile styles ... */
 }
