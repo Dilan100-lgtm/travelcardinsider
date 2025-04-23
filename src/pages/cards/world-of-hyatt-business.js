@@ -184,8 +184,8 @@ function HyattBusinessReviewPage() {
                    <Image
                      src={reviewData.imageUrl}
                      alt={"World of Hyatt Business Credit Card"}
-                     width={reviewData.imageWidth} // *** REPLACE or use data ***
-                     height={reviewData.imageHeight} // *** REPLACE or use data ***
+                     width={480} // *** REPLACE or use data ***
+                     height={300} // *** REPLACE or use data ***
                      className={styles.cardImage}
                      priority
                    />
