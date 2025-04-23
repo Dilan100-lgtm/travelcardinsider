@@ -329,7 +329,8 @@
      box-shadow: 0 2px 4px rgba(0,0,0,0.06);
      border-bottom: 1px solid #e5e7eb;
      overflow-x: auto;
-     overflow-y: auto; /* Ensure white background persists */
+     overflow-y: auto;
+     max-height: 90vh; /* Ensure white background persists */
   }
   /* --- END STICKY HEADER IMPLEMENTATION --- */
 
