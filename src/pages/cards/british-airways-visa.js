@@ -20,7 +20,7 @@ const reviewData = {
   description: 'A 2000-word review of the British Airways Visa Signature® Card from Chase, covering airline perks, Avios earning, 2025 updates, disclaimers, pros, cons, and advanced tips for frequent BA travelers.',
   keywords: 'British Airways, BA, Visa Signature, Avios, airline credit card, 2025 updates',
   author: 'TravelCardInsider', // *** REPLACE with your actual author/site name ***
-  imageUrl: '/British Airways Visa Signature® Card.png', // *** VERIFY PATH in /public ***
+  imageUrl: '/hero_Card.png', // *** VERIFY PATH in /public ***
   ratingValue: 7.7, // From BA Visa HTML
   applyLink: 'https://creditcards.chase.com/avios/britishairways', // *** REPLACE with actual BA Visa APPLY URL ***
   ratesLink: 'https://creditcards.chase.com/avios/britishairways', // *** VERIFY URL ***
