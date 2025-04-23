@@ -80,33 +80,37 @@ export default function RewardsCalculator() {
   const results = useMemo(() => {
     return cards
       .map(card => {
-        const categories = card["Bonus Categories"].split(',');
-        const rates = card["Bonus Category Rates"].split(',');
+        const rawCategories = card["Bonus Categories"] || '';
+        const rawRates = card["Bonus Category Rates"] || '';
+  
+        const categories = rawCategories.split(',');
+        const rates = rawRates.split(',');
         const multiplierMap: Partial<Record<keyof SpendInput, number>> = {};
-
+  
         categories.forEach((cat, i) => {
           const key = normalize(cat) as keyof SpendInput;
           const rate = parseFloat(rates[i]?.trim()) || card["Base Earning Rate (pts/$)"] || 1;
           multiplierMap[key] = rate;
         });
-
-        const pointValue = card["Redemption Rate (cents/pt)"] / 100 || 0.01;
+  
+        const pointValue = (card["Redemption Rate (cents/pt)"] ?? 1) / 100;
         let totalPoints = 0;
-
+  
         for (const category of categoryList) {
           const multiplier = multiplierMap[category] || card["Base Earning Rate (pts/$)"];
           totalPoints += spend[category] * multiplier * 12;
         }
-
+  
         return {
           ...card,
           totalPoints,
           totalValue: totalPoints * pointValue,
         };
       })
-      .sort((a, b) => b.totalValue - a.totalValue) // Top value first
-      .slice(0, 10); // Top 10 only
+      .sort((a, b) => b.totalValue - a.totalValue)
+      .slice(0, 10);
   }, [spend]);
+  
 
   return (
     <div style={{ padding: '2rem' }}>
