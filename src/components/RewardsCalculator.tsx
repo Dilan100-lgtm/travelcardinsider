@@ -1,92 +1,124 @@
+
 import React, { useState, useMemo } from 'react';
 import cardData from '@/data/creditCards.json';
 
 interface CreditCard {
-  id: string;
-  name: string;
-  rewards: {
-    category: string;
-    rate: number; // Points per dollar
-  }[];
-  pointValue: number; // Value per point in dollars (e.g., 0.01 = 1 cent)
+  "Card Name": string;
+  Issuer: string;
+  image: string;
+  ratingValue: number;
+  applyLink: string;
+  reviewLink: string;
+  ratesandfees: string;
+  "Card Type": string;
+  "Annual Fee": string;
+  "APR Range (Purchases)": string;
+  "Credit Score Requirement": string;
+  "Foreign Transaction Fee": string;
+  "Sign-Up Bonus": string;
+  "Minimum Spend for Bonus": string;
+  "Bonus Redemption Value ($)": number;
+  "Reward Program": string;
+  "Base Earning Rate (pts/$)": number;
+  "Bonus Categories": string;
+  "Bonus Category Rates": string;
+  "Multipliers Explained": string;
+  "Redemption Rate (cents/pt)": number;
 }
 
-const categories = [
-  'Travel',
-  'Dining',
-  'Groceries',
-  'Gas',
-  'Online Shopping',
-  'Other',
-];
+const cards: CreditCard[] = cardData.cards.map((card) => ({
+  ...card,
+  "Bonus Redemption Value ($)": parseFloat(card["Bonus Redemption Value ($)"]),
+  "Base Earning Rate (pts/$)": parseFloat(card["Base Earning Rate (pts/$)"]),
+  "Redemption Rate (cents/pt)": parseFloat(card["Redemption Rate (cents/pt)"]),
+}));
+
+const categoryList = [
+  'travel', 'dining', 'groceries', 'gas', 'onlineShopping', 'other'
+] as const;
+
+type SpendInput = {
+  [key in typeof categoryList[number]]: number;
+};
+
+const defaultSpend: SpendInput = {
+  travel: 0,
+  dining: 0,
+  groceries: 0,
+  gas: 0,
+  onlineShopping: 0,
+  other: 0,
+};
 
 export default function RewardsCalculator() {
-  const [spending, setSpending] = useState(
-    Object.fromEntries(categories.map((cat) => [cat, 0]))
-  );
+  const [spend, setSpend] = useState<SpendInput>(defaultSpend);
 
-  const handleChange = (category: string, value: string) => {
-    setSpending((prev) => ({
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setSpend((prev) => ({
       ...prev,
-      [category]: parseFloat(value) || 0,
+      [name]: parseFloat(value) || 0,
     }));
   };
 
-  const cards: CreditCard[] = cardData.cards.map((card) => ({
-    id: card["Card Name"], // Assuming "Card Name" is unique and can serve as an ID
-    name: card["Card Name"],
-    rewards: card["Rewards"].map((reward: { category: string; rate: number }) => ({
-      category: reward.category,
-      rate: reward.rate,
-    })),
-    pointValue: card["Point Value"], // Assuming "Point Value" exists in the data
-  }));
-
   const results = useMemo(() => {
     return cards.map((card) => {
-      let totalPoints = 0;
-      for (const cat of categories) {
-        const reward = card.rewards.find((r) => r.category === cat);
-        const rate = reward ? reward.rate : 1;
-        totalPoints += spending[cat] * rate;
-      }
-      const estimatedValue = totalPoints * card.pointValue;
+      const baseRate = card["Base Earning Rate (pts/$)"];
+      const redemption = card["Redemption Rate (cents/pt)"] / 100; // Convert cents to dollars
+
+      const totalPoints =
+        spend.travel * baseRate +
+        spend.dining * baseRate +
+        spend.groceries * baseRate +
+        spend.gas * baseRate +
+        spend.onlineShopping * baseRate +
+        spend.other * baseRate;
+
+      const totalValue = totalPoints * redemption;
+
       return {
-        id: card.id,
-        name: card.name,
-        estimatedValue: estimatedValue.toFixed(2),
+        name: card["Card Name"],
+        image: card.image,
+        value: totalValue,
+        link: card.reviewLink,
       };
-    });
-  }, [spending, cards]);
+    }).sort((a, b) => b.value - a.value);
+  }, [spend]);
 
   return (
-    <div className="rewards-calculator">
-      <h2>Travel Credit Card Rewards Calculator</h2>
-
-      <form className="spending-form">
-        {categories.map((cat) => (
-          <div key={cat} className="spending-input">
-            <label>{cat} ($/month)</label>
+    <div style={{ padding: '2rem' }}>
+      <h2>Travel Rewards Calculator</h2>
+      <form style={{ display: 'grid', gap: '1rem', maxWidth: '400px' }}>
+        {categoryList.map((category) => (
+          <div key={category}>
+            <label htmlFor={category}>
+              {category.charAt(0).toUpperCase() + category.slice(1)} Spend ($):
+            </label>
             <input
               type="number"
+              id={category}
+              name={category}
+              value={spend[category]}
+              onChange={handleChange}
               min="0"
-              value={spending[cat]}
-              onChange={(e) => handleChange(cat, e.target.value)}
+              step="10"
             />
           </div>
         ))}
       </form>
 
-      <div className="results">
-        <h3>Estimated Yearly Rewards Value</h3>
-        <ul>
-          {results
-            .sort((a, b) => parseFloat(b.estimatedValue) - parseFloat(a.estimatedValue))
-            .map((card) => (
-              <li key={card.id}>
-                <strong>{card.name}</strong>: ${card.estimatedValue} per year
-              </li>
-            ))}
+      <div style={{ marginTop: '2rem' }}>
+        <h3>Top Cards Based on Your Spend:</h3>
+        <ul style={{ listStyle: 'none', padding: 0 }}>
+          {results.slice(0, 10).map((result) => (
+            <li key={result.name} style={{ marginBottom: '1rem' }}>
+              <img src={result.image} alt={result.name} style={{ maxHeight: '40px' }} />
+              <strong> {result.name}:</strong> ${result.value.toFixed(2)} per year
+              <a href={result.link} target="_blank" rel="noopener noreferrer" style={{ marginLeft: '1rem' }}>
+                View Review
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
     </div>
