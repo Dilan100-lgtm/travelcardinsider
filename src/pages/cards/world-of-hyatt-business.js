@@ -187,7 +187,7 @@ function HyattBusinessReviewPage() {
                      width={480} // *** REPLACE or use data ***
                      height={300} // *** REPLACE or use data ***
                      className={styles.cardImage}
-                     priority
+                     lazy-load
                    />
                  </div>
 
