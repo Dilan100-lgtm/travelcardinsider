@@ -32,7 +32,15 @@ export default function RewardsCalculator() {
     }));
   };
 
-  const cards: CreditCard[] = cardData.cards as CreditCard[];
+  const cards: CreditCard[] = cardData.cards.map((card) => ({
+    id: card["Card Name"], // Assuming "Card Name" is unique and can serve as an ID
+    name: card["Card Name"],
+    rewards: card["Rewards"].map((reward: { category: string; rate: number }) => ({
+      category: reward.category,
+      rate: reward.rate,
+    })),
+    pointValue: card["Point Value"], // Assuming "Point Value" exists in the data
+  }));
 
   const results = useMemo(() => {
     return cards.map((card) => {
