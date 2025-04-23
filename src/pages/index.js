@@ -242,9 +242,7 @@ export default function HomePage() {
               with top travel credit cards.
             </p>
             {/* Ensure these links go to actual calculator/finder pages or sections */}
-            <a href="#Calculate" className="cta-button" aria-label="Calculate potential travel rewards"> {/* Added aria-label */}
-              Calculate
-            </a>
+            <Link href="/rewards/index.tsx">Rewards Calculator</Link>
           </div>
 
           <div className="container">
