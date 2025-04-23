@@ -311,14 +311,6 @@
   /* --- STICKY HEADER IMPLEMENTATION --- */
   .featureHeader,
   .cardColumnHeader {
-    position: sticky;
-    top: 10rem;
-    z-index: 10;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.06);
-    border-bottom: 1px solid #e5e7eb;
-    overflow-x: auto;
-    overflow-y: auto;
     border-bottom: 1px solid #e5e7eb;
    
   }
