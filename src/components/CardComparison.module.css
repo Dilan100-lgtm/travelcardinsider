@@ -1,4 +1,8 @@
 /* File: components/CardComparison.module.css */
+/* CSS Module for CardComparison Component */
+/* Mobile First: 2 Cards, Stacked Buttons */
+/* Tablet: 3 Cards, Stacked Buttons */
+/* Desktop: 3 Cards, Horizontal Buttons */
 
 /* --- Base Container --- */
 .comparisonContainer {
@@ -6,7 +10,7 @@
   overflow-x: auto;
   padding: 0;
   margin: 2rem 0;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   color: #374151;
   background-color: #ffffff;
   border: 1px solid #e5e7eb;
@@ -15,22 +19,30 @@
   -webkit-overflow-scrolling: touch;
 }
 
-/* --- Grid Layout --- */
+/* --- Grid Layout (Mobile First: 2 Cards) --- */
 .headerRow,
 .featureRow {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) repeat(3, minmax(0, 1fr));
+  /* Mobile: Label Col + 2 Card Cols */
+  grid-template-columns: minmax(0, 1fr) repeat(2, minmax(0, 1fr)); /* Label gets more flexible space */
+  gap: 0;
   border-bottom: 1px solid #e5e7eb;
 }
 .headerRow { border-top: none; }
 .featureRow:last-of-type { border-bottom: none; }
+
+/* --- Hide 3rd Card Column Elements on Mobile --- */
+.headerRow > *:nth-child(4),  /* Hides 3rd Card Header */
+.featureRow > *:nth-child(4) { /* Hides 3rd Card Value Cell */
+  display: none;
+}
 
 /* --- Base Cell Styling --- */
 .featureHeader,
 .cardColumnHeader,
 .featureLabelCell,
 .cardValueCell {
-  padding: 0.9rem 1.1rem;
+  padding: 0.6rem 0.6rem; /* Mobile padding */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -38,65 +50,80 @@
   box-sizing: border-box;
   background-color: #ffffff;
   overflow-wrap: break-word;
+  word-wrap: break-word;
   word-break: break-word;
-  min-width: 0;
+  min-width: 0; /* Prevent content determining min size */
 }
-.headerRow > *:last-child,
-.featureRow > *:last-child {
+
+/* Remove right border on the last VISIBLE cell */
+/* Mobile: 3rd item is last */
+.headerRow > *:nth-child(3),
+.featureRow > *:nth-child(3) {
   border-right: none;
 }
 
-/* --- Specific Cell Widths --- */
-.featureLabelCell { min-width: 180px; }
-.cardColumnHeader, .cardValueCell { min-width: 200px; }
+/* --- Specific Cell Min-Widths (Mobile First) --- */
+.featureLabelCell { min-width: 90px; } /* Mobile */
+.cardColumnHeader, .cardValueCell { min-width: 125px; } /* Mobile - more space with only 2 cards */
 
-/* --- Feature Label --- */
+/* --- Feature Label Cell --- */
 .featureLabelCell {
   font-weight: 600;
   background-color: #f9fafb;
   color: #4b5563;
-  font-size: 0.85rem;
+  font-size: 0.75rem; /* Mobile size */
   line-height: 1.4;
+  justify-content: flex-start;
+  vertical-align: top;
 }
 
-/* --- Card Value --- */
+/* --- Card Value Cell --- */
 .cardValueCell {
-  font-size: 0.9rem;
+  font-size: 0.8rem; /* Mobile size */
   line-height: 1.5;
   color: #1f2937;
+  justify-content: flex-start;
+  vertical-align: top;
 }
 
-/* --- Card Column Header --- */
+/* --- Card Header Column Specific --- */
 .cardColumnHeader {
   align-items: center;
-  padding: 1rem;
+  height: 100%;
   text-align: center;
+  border-left: 1px solid #e5e7eb;
+  padding: 0.8rem 0.5rem; /* Mobile padding */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-left: 1px solid #e5e7eb;
+  overflow: hidden;
 }
+/* Remove double border on first card */
 .headerRow > .cardColumnHeader:nth-of-type(2) {
   border-left: none;
 }
 
-/* --- Dropdown --- */
+/* --- Content Inside Card Header --- */
 .dropdownWrapper {
   width: 100%;
-  max-width: 200px;
-  margin-bottom: 1rem;
+  max-width: 180px; /* Slightly narrower on mobile */
+  margin: 0 0 0.8rem 0;
   flex-shrink: 0;
 }
+
 .dropdownWrapper label {
-  font-size: 0.75rem;
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 0.7rem; /* Smaller label */
   font-weight: 500;
   color: #6b7280;
-  margin-bottom: 0.3rem;
 }
+
 .dropdownWrapper select {
   width: 100%;
-  padding: 0.5rem 0.7rem;
-  font-size: 0.85rem;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.8rem;
+  font-family: 'Inter', sans-serif;
   border: 1px solid #d1d5db;
   border-radius: 6px;
   background-color: #fff;
@@ -109,6 +136,7 @@
 }
 .dropdownWrapper select:focus {
   outline: 2px solid transparent;
+  outline-offset: 2px;
   border-color: #3b82f6;
   box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.4);
 }
@@ -119,61 +147,71 @@
   flex-direction: column;
   align-items: center;
   flex-grow: 1;
-  min-height: 280px;
+  flex-shrink: 1;
+  min-height: 0;
 }
-.cardInfo > span {
+
+/* --- Image Styling (for next/image) --- */
+.cardInfo > span { /* Target wrapper */
   display: block !important;
   max-width: 100%;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem; /* Less margin on mobile */
   line-height: 0;
 }
-.cardInfo img {
+.cardInfo img { /* Target image */
   display: block;
-  width: 100% !important;
+  max-width: 100%;
+  width: auto !important;
   height: auto !important;
-  max-height: 90px;
   object-fit: contain;
-  margin-bottom: 0.5rem;
+  max-height: 60px; /* Mobile max height */
 }
 
 .cardName {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.05rem;
+  font-size: 0.9rem; /* Mobile size */
   font-weight: 600;
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.5rem 0;
   color: #111827;
   line-height: 1.3;
   width: 95%;
+  overflow-wrap: break-word;
   word-break: break-word;
+  flex-shrink: 0;
 }
 
 .cardPlaceholder {
-  color: #9ca3af;
-  font-style: italic;
-  font-size: 0.9rem;
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem 0;
-  min-height: 150px;
+   color: #9ca3af;
+   font-style: italic;
+   font-size: 0.85rem;
+   flex-grow: 1;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 1rem 0;
+   min-height: 120px; /* Mobile placeholder height */
 }
 
+/* --- Button Group (Mobile First: Stacked) --- */
 .buttonGroup {
   display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 0.5rem;
+  flex-direction: column; /* Stacked */
+  align-items: stretch;   /* Full width */
+  gap: 0.4rem;            /* Space between */
   margin-top: auto;
   width: 95%;
-  max-width: 180px;
-  padding-top: 0.5rem;
+  max-width: 160px;       /* Mobile max width */
+  flex-shrink: 0;
+  padding-top: 0.4rem;
 }
+
+/* Base style for header buttons */
 .cardButton {
   display: block;
-  width: 100%;
-  padding: 0.6rem 0.5rem;
-  font-size: 0.8rem;
+  width: 100%; /* Full width when stacked */
+  padding: 0.5rem; /* Mobile padding */
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem; /* Mobile font size */
   font-weight: 600;
   color: #ffffff;
   border: none;
@@ -181,32 +219,29 @@
   text-align: center;
   text-decoration: none;
   cursor: pointer;
-  transition: all 0.2s ease;
-  white-space: normal;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+  box-sizing: border-box;
 }
-.cardButton:hover {
-  transform: translateY(-1px);
-  filter: brightness(1.05);
-}
-.cardButton:active {
-  transform: translateY(0px);
-  filter: brightness(0.95);
-}
+/* --- Hover, Active, Focus Styles --- */
+.cardButton:hover { transform: translateY(-1px); filter: brightness(1.05); }
+.cardButton:active { transform: translateY(0px); filter: brightness(0.95); }
+.cardButton:focus-visible { outline: 2px solid transparent; outline-offset: 2px; }
+/* --- Specific Button Colors & Focus --- */
 .applyButton { background-color: #10b981; }
 .applyButton:hover { background-color: #059669; }
 .applyButton:focus-visible { box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.5); }
-
 .reviewButton { background-color: #3b82f6; }
 .reviewButton:hover { background-color: #2563eb; }
 .reviewButton:focus-visible { box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5); }
-
 .eligibilityButton { background-color: #6b7280; }
 .eligibilityButton:hover { background-color: #4b5563; }
 .eligibilityButton:focus-visible { box-shadow: 0 0 0 3px rgba(107, 114, 128, 0.5); }
 
+/* --- Star Rating --- */
 .starRating {
   color: #f59e0b;
-  font-size: 1rem;
+  font-size: 0.9rem; /* Mobile size */
   line-height: 1;
   white-space: nowrap;
   margin: 0.4rem 0;
@@ -221,50 +256,83 @@
   vertical-align: middle;
 }
 
-@media (min-width: 640px) {
+/* --- Tablet Styles (min-width: 768px) --- */
+@media (min-width: 768px) {
+  .headerRow, .featureRow {
+      /* Show 3 Card Columns */
+      grid-template-columns: minmax(0, 1.1fr) repeat(3, minmax(0, 1fr));
+  }
+  /* Show 3rd card column elements */
+  .headerRow > *:nth-child(4),
+  .featureRow > *:nth-child(4) {
+    display: flex; /* Revert display: none */
+  }
+
+  /* Remove border override for 3rd item, apply to 4th */
+  .headerRow > *:nth-child(3),
+  .featureRow > *:nth-child(3) {
+    border-right: 1px solid #e5e7eb; /* Restore border */
+  }
+  .headerRow > *:nth-child(4),
+  .featureRow > *:nth-child(4) {
+    border-right: none; /* Remove border from new last item */
+  }
+
+  /* Adjust cell min-widths for 3 columns */
+  .featureLabelCell { min-width: 140px; }
+  .cardColumnHeader, .cardValueCell { min-width: 160px; }
+
+  /* Adjust padding & fonts */
+  .featureHeader, .cardColumnHeader, .featureLabelCell, .cardValueCell {
+      padding: 0.7rem 0.8rem;
+  }
+   .cardName { font-size: 0.95rem; }
+   .cardValueCell { font-size: 0.85rem; }
+   .featureLabelCell { font-size: 0.8rem; }
+   .cardInfo img { max-height: 80px; }
+
+  /* --- Button Group (Tablet: Still Stacked Vertically) --- */
+  /* (No changes needed here as mobile-first already stacks them) */
   .buttonGroup {
-    flex-direction: column;
-    align-items: stretch;
+      max-width: 180px; /* Allow slightly wider button group */
   }
   .cardButton {
-    width: 100%;
+      font-size: 0.8rem; /* Slightly larger button text */
+      padding: 0.6rem 0.5rem;
   }
 }
 
-@media (max-width: 900px) {
+/* --- Desktop Styles (min-width: 1024px) --- */
+@media (min-width: 1024px) {
   .headerRow, .featureRow {
-    grid-template-columns: minmax(0, 1.2fr) repeat(3, minmax(0, 1fr));
+      /* Desktop: 3 columns, potentially wider base */
+      grid-template-columns: minmax(0, 1.2fr) repeat(3, minmax(0, 1fr));
   }
-  .featureLabelCell { min-width: 140px; font-size: 0.8rem; }
-  .cardColumnHeader, .cardValueCell { min-width: 160px; font-size: 0.85rem; }
-  .cardInfo img { max-height: 80px; }
-  .cardName { font-size: 0.95rem; }
-  .cardButton { font-size: 0.75rem; }
-}
+  /* Adjust cell min-widths for desktop */
+  .featureLabelCell { min-width: 180px; }
+  .cardColumnHeader, .cardValueCell { min-width: 200px; }
 
-@media (max-width: 700px) {
-  .headerRow, .featureRow {
-    grid-template-columns: minmax(0, 1.2fr) repeat(2, minmax(0, 1fr));
+  /* Adjust padding & fonts */
+  .featureHeader, .cardColumnHeader, .featureLabelCell, .cardValueCell {
+      padding: 0.9rem 1.1rem; /* Restore larger padding */
   }
-  .featureLabelCell { min-width: 110px; font-size: 0.75rem; }
-  .cardColumnHeader, .cardValueCell { min-width: 140px; font-size: 0.8rem; }
+   .cardName { font-size: 1.05rem; }
+   .cardValueCell { font-size: 0.9rem; }
+   .featureLabelCell { font-size: 0.85rem; }
+   .cardInfo img { max-height: 90px; } /* Restore larger max height */
+
+  /* --- Button Group (Desktop: Horizontal) --- */
   .buttonGroup {
-    flex-direction: column;
-    align-items: stretch;
+    flex-direction: row; /* Side-by-side */
+    align-items: center;
+    max-width: none; /* Remove max-width */
+    width: 100%; /* Take full available width */
   }
-  .cardButton { width: 100%; }
-  .cardName { font-size: 0.9rem; }
-  .cardInfo img { max-height: 70px; }
-}
-
-@media (max-width: 500px) {
-  .headerRow, .featureRow {
-    grid-template-columns: minmax(0, 1fr) repeat(2, minmax(0, 1fr));
+  .cardButton {
+    width: auto; /* Let flexbox handle width */
+    flex-grow: 1; /* Distribute space */
+    /* Keep font size and padding from tablet or adjust slightly */
+    /* font-size: 0.8rem; */
+    /* padding: 0.6rem 0.5rem; */
   }
-  .featureLabelCell { min-width: 80px; font-size: 0.7rem; }
-  .cardColumnHeader, .cardValueCell { min-width: 110px; font-size: 0.75rem; }
-  .cardName { font-size: 0.85rem; }
-  .cardInfo img { max-height: 60px; }
-  .dropdownWrapper select { font-size: 0.8rem; }
-  .starRating { font-size: 0.9rem; }
 }
