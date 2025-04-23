@@ -202,6 +202,7 @@
 /* --- Tablet & Desktop Styles (min-width: 768px) --- */
 @media (min-width: 768px) {
   /* --- Grid Layout: Show 3 Cards --- */
+  /* These grid styles remain unchanged from the previous version */
   .headerRow, .featureRow {
       grid-template-columns: minmax(0, 1.1fr) repeat(3, minmax(0, 1fr));
   }
@@ -219,6 +220,7 @@
   }
 
   /* --- Cell Min-Widths & Styles --- */
+  /* These cell styles remain unchanged from the previous version */
   .featureLabelCell { min-width: 140px; }
   .cardColumnHeader, .cardValueCell { min-width: 160px; }
   .featureHeader, .cardColumnHeader, .featureLabelCell, .cardValueCell {
@@ -230,37 +232,105 @@
    .cardInfo img { max-height: 80px; }
 
   /* --- Button Group (Tablet/Desktop: 2+1 Layout) --- */
+  /* --- THIS IS THE MODIFIED SECTION --- */
   .buttonGroup {
-    flex-direction: row;   /* Allow items side-by-side */
-    flex-wrap: wrap;       /* Allow wrapping to next line */
-    justify-content: space-between; /* Distribute space */
-    row-gap: 0.5rem;       /* Vertical gap between button rows */
-    max-width: none;       /* Allow group to fill space */
-    width: 100%;           /* Take full width */
-    padding-top: 0.5rem;   /* Ensure consistent top padding */
+    flex-direction: row;   /* Arrange buttons initially in a row */
+    flex-wrap: wrap;       /* Allow wrapping */
+    justify-content: space-between; /* Space out first two buttons */
+    align-items: center;   /* Align items vertically in the center */
+    row-gap: 0.5rem;       /* Vertical gap ONLY when wrapping occurs */
+    max-width: none;       /* Allow group to use container width */
+    width: 100%;           /* Use full container width */
+    padding-top: 0.5rem;   /* Consistent top padding */
+    /* Remove align-items:stretch if set previously for column layout */
+    /* Remove max-width limitation if set previously */
   }
 
   .cardButton {
-    width: auto;           /* Reset width from mobile */
-    flex-grow: 0;          /* Don't grow by default */
-    flex-shrink: 0;        /* Don't shrink by default */
-    text-align: center;
+    width: auto;           /* Reset width from mobile's 100% */
+    flex-grow: 0;          /* Prevent growing */
+    flex-shrink: 0;        /* Prevent shrinking */
+    text-align: center;    /* Ensure text is centered */
     font-size: 0.8rem;     /* Tablet/Desktop button font size */
     padding: 0.6rem 0.5rem; /* Tablet/Desktop button padding */
+    /* Ensure width: 100% is removed if set previously */
   }
 
   /* First two buttons take ~half width each */
   .applyButton,
   .reviewButton {
-    /* Adjust the gap subtraction (0.25rem) if row-gap changes */
+    /* Calculate width for 2 buttons side-by-side, accounting for gap */
+    /* 0.25rem is half of a potential 0.5rem effective horizontal gap */
+    /* Adjust subtraction if your effective horizontal gap is different */
     width: calc(50% - 0.25rem);
   }
 
-  /* Third button takes full width, forced to next line */
+  /* Third button takes full width, forcing it to the next line */
   .eligibilityButton {
     width: 100%;
-    /* margin-top is not needed because row-gap handles spacing */
+    /* No margin-top needed; row-gap handles the spacing */
   }
+  /* --- END OF MODIFIED BUTTON SECTION --- */
+}
+
+/* --- Desktop Only Styles (min-width: 1024px) --- */
+/* KEEP THIS SECTION AS IT WAS in the previous version */
+/* It mostly adjusts fonts/padding/min-widths */
+/* The button layout (2+1) is INHERITED from the 768px breakpoint */
+@media (min-width: 1024px) {
+  .headerRow, .featureRow {
+      grid-template-columns: minmax(0, 1.2fr) repeat(3, minmax(0, 1fr));
+  }
+  .featureLabelCell { min-width: 180px; }
+  .cardColumnHeader, .cardValueCell { min-width: 200px; }
+  .featureHeader, .cardColumnHeader, .featureLabelCell, .cardValueCell {
+      padding: 0.9rem 1.1rem;
+  }
+   .cardName { font-size: 1.05rem; }
+   .cardValueCell { font-size: 0.9rem; }
+   .featureLabelCell { font-size: 0.85rem; }
+   .cardInfo img { max-height: 90px; }
+
+  /* Optional: Fine-tune button text size etc. for desktop if needed */
+  /* .cardButton { font-size: 0.85rem; } */
+}
+
+/* --- Styles for mobile (< 768px) --- */
+/* KEEP ALL BASE STYLES AND ANY @media queries for */
+/* max-width: 700px or max-width: 500px EXACTLY AS THEY WERE */
+/* in the previous complete CSS file. */
+/* For reference, the mobile button styles should look like: */
+
+.buttonGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.4rem;
+  margin-top: auto;
+  width: 95%;
+  max-width: 160px;
+  flex-shrink: 0;
+  padding-top: 0.4rem;
+}
+.cardButton {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 0.75rem;
+ 
+  font-family: 'Inter', sans-serif;
+  
+  font-weight: 600;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+  box-sizing: border-box;
+  
 }
 
 /* --- Desktop Only Styles (min-width: 1024px) --- */
