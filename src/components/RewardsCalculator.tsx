@@ -1,98 +1,86 @@
-import React, { useState } from 'react';
-import creditCardData from '@/data/creditCards.json';
+import React, { useState, useMemo } from 'react';
+import cardData from '@/data/creditCards.json';
 
-interface SpendInput {
-  travel: number;
-  dining: number;
-  groceries: number;
-  gas: number;
-  other: number;
+interface CreditCard {
+  id: string;
+  name: string;
+  rewards: {
+    category: string;
+    rate: number; // Points per dollar
+  }[];
+  pointValue: number; // Value per point in dollars (e.g., 0.01 = 1 cent)
 }
 
-interface RewardResult {
-  cardName: string;
-  totalRewardsValue: number;
-}
+const categories = [
+  'Travel',
+  'Dining',
+  'Groceries',
+  'Gas',
+  'Online Shopping',
+  'Other',
+];
 
 export default function RewardsCalculator() {
-  const [spend, setSpend] = useState<SpendInput>({
-    travel: 0,
-    dining: 0,
-    groceries: 0,
-    gas: 0,
-    other: 0,
-  });
+  const [spending, setSpending] = useState(
+    Object.fromEntries(categories.map((cat) => [cat, 0]))
+  );
 
-  const [results, setResults] = useState<RewardResult[]>([]);
-
-  const handleChange = (category: keyof SpendInput, value: string) => {
-    setSpend({ ...spend, [category]: parseFloat(value) || 0 });
+  const handleChange = (category: string, value: string) => {
+    setSpending((prev) => ({
+      ...prev,
+      [category]: parseFloat(value) || 0,
+    }));
   };
 
-  const calculateRewards = () => {
-    const output: RewardResult[] = creditCardData.cards.map((card: any) => {
-      const earnRates = card['Bonus Category Rates'] || {};
-      const baseRate = parseFloat(card['Base Earning Rate (pts/$)']) || 1;
-      const redemptionRate = parseFloat(card['Redemption Rate (cents/pt)']) || 1;
+  const cards: CreditCard[] = cardData.cards as CreditCard[];
 
+  const results = useMemo(() => {
+    return cards.map((card) => {
       let totalPoints = 0;
-      totalPoints += spend.travel * (earnRates.travel || baseRate);
-      totalPoints += spend.dining * (earnRates.dining || baseRate);
-      totalPoints += spend.groceries * (earnRates.groceries || baseRate);
-      totalPoints += spend.gas * (earnRates.gas || baseRate);
-      totalPoints += spend.other * baseRate;
-
-      const yearlyPoints = totalPoints * 12;
-      const totalRewardsValue = (yearlyPoints * redemptionRate) / 100;
-
+      for (const cat of categories) {
+        const reward = card.rewards.find((r) => r.category === cat);
+        const rate = reward ? reward.rate : 1;
+        totalPoints += spending[cat] * rate;
+      }
+      const estimatedValue = totalPoints * card.pointValue;
       return {
-        cardName: card['Card Name'],
-        totalRewardsValue: parseFloat(totalRewardsValue.toFixed(2)),
+        id: card.id,
+        name: card.name,
+        estimatedValue: estimatedValue.toFixed(2),
       };
     });
-
-    // Sort by best value
-    setResults(output.sort((a, b) => b.totalRewardsValue - a.totalRewardsValue));
-  };
+  }, [spending, cards]);
 
   return (
-    <div className="p-4 max-w-3xl mx-auto">
-      <h2 className="text-2xl font-bold mb-4">Travel Card Rewards Calculator</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {['travel', 'dining', 'groceries', 'gas', 'other'].map((category) => (
-          <div key={category}>
-            <label className="block text-sm font-medium mb-1 capitalize">
-              {category} (monthly $)
-            </label>
+    <div className="rewards-calculator">
+      <h2>Travel Credit Card Rewards Calculator</h2>
+
+      <form className="spending-form">
+        {categories.map((cat) => (
+          <div key={cat} className="spending-input">
+            <label>{cat} ($/month)</label>
             <input
               type="number"
-              value={spend[category as keyof SpendInput]}
-              onChange={(e) => handleChange(category as keyof SpendInput, e.target.value)}
-              className="w-full p-2 border rounded"
+              min="0"
+              value={spending[cat]}
+              onChange={(e) => handleChange(cat, e.target.value)}
             />
           </div>
         ))}
-      </div>
+      </form>
 
-      <button
-        onClick={calculateRewards}
-        className="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-      >
-        Calculate Rewards
-      </button>
-
-      {results.length > 0 && (
-        <div className="mt-6">
-          <h3 className="text-xl font-semibold mb-2">Top Cards by Estimated Yearly Value:</h3>
-          <ul className="space-y-2">
-            {results.slice(0, 5).map((res, index) => (
-              <li key={index} className="border p-3 rounded shadow">
-                <strong>{res.cardName}</strong>: ${res.totalRewardsValue.toLocaleString()}
+      <div className="results">
+        <h3>Estimated Yearly Rewards Value</h3>
+        <ul>
+          {results
+            .sort((a, b) => parseFloat(b.estimatedValue) - parseFloat(a.estimatedValue))
+            .map((card) => (
+              <li key={card.id}>
+                <strong>{card.name}</strong>: ${card.estimatedValue} per year
               </li>
             ))}
-          </ul>
-        </div>
-      )}
+        </ul>
+      </div>
     </div>
   );
 }
