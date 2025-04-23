@@ -217,11 +217,8 @@ function AmexBusinessGoldReviewPage() {
                         aria-live="polite"
                       >
                         <strong>TCI Rating: {reviewData.ratingValue.toFixed(1)}/10</strong>
-                        <p className={styles.tooltipIntro}>Key rating factors include:</p>
-                        {/* Using ratingCriteria Array */}
-                         <ul className={styles.tooltipList}>
-                              {ratingCriteria.map((criterion, index) => <li key={index}>{criterion}</li>)}
-                         </ul>
+                        <p className={styles.tooltipIntro}>Our TCI rating system criteria including rewards, welcome bonus, annual fee, redemption flexibility, travel benefits, APR, foreign transaction fees, user experience, and other features.</p>
+                       
                       </div>
                     )}
                   </span>
@@ -665,14 +662,50 @@ function AmexBusinessGoldReviewPage() {
                 <p>For businesses that can leverage both the adaptable 4X categories and the new statement credits, the Amex Business Gold offers a compelling blend of high rewards potential and tangible annual savings, positioning it as an excellent tool for turning business expenses into valuable travel experiences.</p>
             </section>
 
+            {/* CTA Section - Placeholders */}
+            <section id="cta" className={styles.ctaSection}>
+              <h2>Get the <b>American Express® Business Gold Card</b> Today!</h2>
+              <div className={styles.ctaButtons}>
+                <a href={reviewData.applyLink} className={`${styles.btn} ${styles.btnApply}`} title="From card issuer's secure site" target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
+                <a href={reviewData.ratesLink} className={`${styles.btn} ${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored">See Rates & Fees</a>
+              </div>
+            </section>
+
             {/* Section 20: Disclaimer */}
             <section id="section-20" className={styles.reviewSection}>
                 <h2>20. Disclaimer</h2>
                  <p style={{fontSize: '0.85rem', color: '#666'}}>
                     Card terms, welcome offers, points valuations, earning rates, annual fees, benefits (including insurance coverage, transfer partners, credits like the Flexible Business Credit and Walmart+ Credit, perks like The Hotel Collection), and APRs are subject to change at any time without notice. Information presented here is accurate to the best of our knowledge as of April 2025 but should be verified directly with American Express before applying.
                  </p>
-                 {/* Optionally add E-A-T section here if desired, similar to the example */}
-                 {/* <section id="eat-expertise-authority-trustworthiness" className={`${styles.reviewSection} ${styles.eatSection}`}> ... </section> */}
+            </section>
+
+
+            {/* E-A-T Section - Adapted for Amex Business Gold */}
+             <section id="eat-expertise-authority-trustworthiness" className={`${styles.reviewSection} ${styles.eatSection}`}>
+                 <h2 dangerouslySetInnerHTML={{ __html: "Our Commitment to E-A-T: Expertise, Authority & Trustworthiness"}}></h2>
+                <p>
+                    At <strong>{reviewData.author}</strong>, we prioritize reliable, unbiased reviews so you can make informed credit decisions. We adhere to Google’s E‑A‑T (Expertise, Authority, and Trustworthiness) guidelines through:
+                </p>
+                <h3>1. Expertise</h3>
+                <ul className={styles.featureList}>
+                    <li><strong>Specialized Research:</strong> Our writers and analysts have years of experience in business credit cards and Membership Rewards®, understanding the nuances of the 4X adaptive categories and partner transfers.</li>
+                    <li><strong>Real-Time Updates:</strong> We continually check official issuer materials (American Express) and user data to maintain current rates, terms, credits (like Flex Business and Walmart+), and benefit details.</li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Practical Testing:</strong> We verify how categories code, how statement credits post, and the usability of perks like The Hotel Collection based on real-world data and user reports."}}></li>
+                </ul>
+                <h3>2. Authority</h3>
+                <ul className={styles.featureList}>
+                    <li><strong>Detailed Coverage:</strong> This review offers an exhaustive look at the American Express® Business Gold Card, from the $375 fee justification to advanced redemption strategies.</li>
+                    <li><strong>Trusted By Major Outlets:</strong> Our articles are frequently cited by national finance and travel news sites for Amex card analysis and Membership Rewards® insights.</li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Full Disclosure:</strong> If affiliate links or promotions exist, we clearly state them, ensuring objective editorial content."}}></li>
+                </ul>
+                <h3>3. Trustworthiness</h3>
+                <ul className={styles.featureList}>
+                    <li><strong>Independent Analysis:</strong> We never let advertisers influence our ratings or opinions on the card's value proposition or comparison points.</li>
+                    <li><strong>Frequent Revisions:</strong> We revise reviews whenever new offers appear or American Express adjusts card benefits, categories, or partner details.</li>
+                    <li><strong>Community Feedback:</strong> We encourage open discussion in comments, fostering transparency and additional user insights on Amex business card usage.</li>
+                    <li><strong>Data Security:</strong> We prioritize user privacy and follow best practices, outlined in our <Link href="/privacy-policy"><a>Privacy Policy</a></Link>.</li>
+                </ul>
+                <p dangerouslySetInnerHTML={{ __html: `By following these E‑A‑T principles, we aim to guide you responsibly toward a credit card that fits your business needs and maximizes your travel rewards with the <strong>${reviewData.cardName}</strong>.` }}></p>
             </section>
 
           </article>
