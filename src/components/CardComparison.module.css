@@ -7,7 +7,7 @@
 /* --- Base Container --- */
 .comparisonContainer {
   width: 100%;
-  overflow-x: auto; /* Allows horizontal scroll ONLY when needed */
+  overflow-x: visible; /* Allows horizontal scroll ONLY when needed */
   /* If you intend the container ITSELF to scroll vertically, add overflow-y: auto; */
   /* Otherwise, sticky will work relative to window scroll */
   padding: 0; /* Padding applied internally or via parent */
