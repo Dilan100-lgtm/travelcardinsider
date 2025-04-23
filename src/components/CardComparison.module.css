@@ -1,115 +1,127 @@
 /* File: components/CardComparison.module.css */
 /* CSS Module for CardComparison Component */
+/* FINAL VERSION */
 /* Mobile First: 2 Cards, Stacked Buttons */
-/* Tablet/Desktop: 3 Cards, Buttons 2+1 Layout */
+/* Tablet/Desktop: 3 Cards, Buttons 2+1 Layout, Sticky Header */
 
 /* --- Base Container --- */
 .comparisonContainer {
   width: 100%;
-  overflow-x: auto;
-  padding: 0;
-  margin: 2rem 0;
+  overflow-x: auto; /* Allows horizontal scroll ONLY when needed */
+  /* If you intend the container ITSELF to scroll vertically, add overflow-y: auto; */
+  /* Otherwise, sticky will work relative to window scroll */
+  padding: 0; /* Padding applied internally or via parent */
+  margin: 2rem 0; /* Space above/below the comparison tool */
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  color: #374151;
+  color: #374151; /* Default text color (Gray 700) */
   background-color: #ffffff;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #e5e7eb; /* Container border (Gray 200) */
   border-radius: 8px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-  -webkit-overflow-scrolling: touch;
+  -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
 }
 
 /* --- Grid Layout (Mobile First: 2 Cards) --- */
 .headerRow,
 .featureRow {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) repeat(2, minmax(0, 1fr));
-  gap: 0;
-  border-bottom: 1px solid #e5e7eb;
+  /* Mobile: Label Col + 2 Card Cols */
+  grid-template-columns: minmax(0, 1fr) repeat(2, minmax(0, 1fr)); /* Label gets more flexible space */
+  gap: 0; /* Use borders for separation */
+  border-bottom: 1px solid #e5e7eb; /* Row separator */
 }
-.headerRow { border-top: none; }
-.featureRow:last-of-type { border-bottom: none; }
+.headerRow { border-top: none; } /* No top border on header */
+.featureRow:last-of-type { border-bottom: none; } /* No bottom border on last row */
 
 /* --- Hide 3rd Card Column Elements on Mobile --- */
-.headerRow > *:nth-child(4),
-.featureRow > *:nth-child(4) {
+.headerRow > *:nth-child(4),  /* Hides 3rd Card Header */
+.featureRow > *:nth-child(4) { /* Hides 3rd Card Value Cell */
   display: none;
 }
 
 /* --- Base Cell Styling --- */
-.featureHeader,
-.cardColumnHeader,
-.featureLabelCell,
-.cardValueCell {
+.featureHeader,     /* Empty top-left */
+.cardColumnHeader,  /* Header cell for a card */
+.featureLabelCell,  /* Cell containing feature name */
+.cardValueCell      /* Cell containing card's value for a feature */
+{
   padding: 0.6rem 0.6rem; /* Mobile padding */
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  border-right: 1px solid #e5e7eb;
+  align-items: flex-start; /* Default alignment */
+  border-right: 1px solid #e5e7eb; /* Vertical separator */
   box-sizing: border-box;
-  background-color: #ffffff;
+  background-color: #ffffff; /* Default background */
+
+  /* Text wrapping */
   overflow-wrap: break-word;
-  word-wrap: break-word;
-  word-break: break-word;
+  word-wrap: break-word; /* Fallback */
+  word-break: break-word; /* Force breaks */
+
+  /* Prevent content from determining implicit minimum size */
   min-width: 0;
+  /* Base position is static */
+  position: static;
 }
 
 /* Remove right border on the last VISIBLE cell */
+/* Mobile: 3rd item is last */
 .headerRow > *:nth-child(3),
 .featureRow > *:nth-child(3) {
   border-right: none;
 }
 
 /* --- Specific Cell Min-Widths (Mobile First) --- */
-.featureLabelCell { min-width: 90px; }
-.cardColumnHeader, .cardValueCell { min-width: 125px; }
+/* These ensure columns don't collapse too much */
+.featureLabelCell { min-width: 90px; } /* Mobile */
+.cardColumnHeader, .cardValueCell { min-width: 125px; } /* Mobile - more space with only 2 cards */
 
 /* --- Feature Label Cell --- */
 .featureLabelCell {
   font-weight: 600;
-  background-color: #f9fafb;
-  color: #4b5563;
-  font-size: 0.75rem;
+  background-color: #f9fafb; /* Label background */
+  color: #4b5563; /* Darker grey text */
+  font-size: 0.75rem; /* Mobile size */
   line-height: 1.4;
-  justify-content: flex-start;
+  justify-content: flex-start; /* Align text top */
   vertical-align: top;
 }
 
 /* --- Card Value Cell --- */
 .cardValueCell {
-  font-size: 0.8rem;
+  font-size: 0.8rem; /* Mobile size */
   line-height: 1.5;
-  color: #1f2937;
-  justify-content: flex-start;
+  color: #1f2937; /* Darker value text */
+  justify-content: flex-start; /* Align content top */
   vertical-align: top;
 }
 
 /* --- Card Header Column Specific --- */
 .cardColumnHeader {
-  align-items: center;
-  height: 100%;
+  align-items: center; /* Center content horizontally */
+  height: 100%; /* Fill height */
   text-align: center;
-  border-left: 1px solid #e5e7eb;
-  padding: 0.8rem 0.5rem;
+  border-left: 1px solid #e5e7eb; /* Left separator for cards */
+  padding: 0.8rem 0.5rem; /* Mobile padding */
+  /* Ensure flex properties for vertical stacking */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  overflow: hidden;
+  justify-content: space-between; /* Distribute space vertically */
+  overflow: hidden; /* Clip any potential overflow */
+  /* Base (mobile) background */
+  background-color: #ffffff;
 }
-.headerRow > .cardColumnHeader:nth-of-type(2) { border-left: none; }
+/* Remove double border on first card */
+.headerRow > .cardColumnHeader:nth-of-type(2) {
+  border-left: none;
+}
 
 /* --- Content Inside Card Header --- */
 .dropdownWrapper {
   width: 100%;
-  max-width: 180px;
-  margin: 0 0 0.8rem 0;
-  flex-shrink: 0;
-}
-/* --- Content Inside Card Header --- */
-.dropdownWrapper {
-  width: 100%;
   max-width: 180px; /* Slightly narrower on mobile */
-  margin: 0 0 0.8rem 0;
-  flex-shrink: 0;
+  margin: 0 0 0.8rem 0; /* Top/Bottom margin */
+  flex-shrink: 0; /* Prevent shrinking */
 }
 
 .dropdownWrapper label {
@@ -147,30 +159,34 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex-grow: 1;
-  flex-shrink: 1;
-  min-height: 0;
+  flex-grow: 1; /* Takes up available space */
+  flex-shrink: 1; /* Allow shrinking */
+  min-height: 0; /* Important for flex shrinking */
 }
 
 /* --- Image Styling (for next/image) --- */
-.cardInfo > span { /* Target wrapper */
-  display: block !important;
+/* Target the wrapper Next/Image might create (often span) */
+.cardInfo > span {
+  display: block !important; /* Override potential inline-block */
   max-width: 100%;
-  margin-bottom: 0.5rem;
-  line-height: 0;
+  margin-bottom: 0.5rem; /* Space below image */
+  line-height: 0; /* Prevent extra space from span */
 }
-.cardInfo img { /* Target image */
+/* Target the actual <img> tag rendered by Next/Image */
+.cardInfo img {
   display: block;
-  max-width: 100%;
+  max-width: 100%; /* Scale with container */
+  /* Use !important cautiously, but might be needed if Next/Image sets inline width/height */
   width: auto !important;
   height: auto !important;
-  object-fit: contain;
+  object-fit: contain; /* Scale nicely */
+  /* Max height prevents image getting too tall */
   max-height: 60px; /* Mobile max height */
 }
 
 .cardName {
   font-family: 'Poppins', sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.9rem; /* Mobile size */
   font-weight: 600;
   margin: 0 0 0.5rem 0;
   color: #111827;
@@ -178,19 +194,19 @@
   width: 95%;
   overflow-wrap: break-word;
   word-break: break-word;
-  flex-shrink: 0;
+  flex-shrink: 0; /* Prevent name from shrinking */
 }
 
 .cardPlaceholder {
-  color: #9ca3af;
-  font-style: italic;
-  font-size: 0.85rem;
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem 0;
-  min-height: 120px; /* Mobile placeholder height */
+   color: #9ca3af; /* Gray 400 */
+   font-style: italic;
+   font-size: 0.85rem;
+   flex-grow: 1;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 1rem 0;
+   min-height: 120px; /* Give placeholder some height */
 }
 
 /* --- Button Group (Mobile First: Stacked) --- */
@@ -201,7 +217,7 @@
   gap: 0.4rem;            /* Space between */
   margin-top: auto;       /* Push to bottom */
   width: 95%;             /* Container width */
-  max-width: 160px;
+  max-width: 160px;       /* Mobile max width */
   flex-shrink: 0;
   padding-top: 0.4rem;
 }
@@ -210,9 +226,9 @@
 .cardButton {
   display: block;
   width: 100%; /* Full width when stacked */
-  padding: 0.5rem;
+  padding: 0.5rem; /* Mobile padding */
   font-family: 'Inter', sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.75rem; /* Mobile font size */
   font-weight: 600;
   color: #ffffff;
   border: none;
@@ -224,11 +240,11 @@
   white-space: nowrap;
   box-sizing: border-box;
 }
+/* --- Hover, Active, Focus Styles --- */
 .cardButton:hover { transform: translateY(-1px); filter: brightness(1.05); }
 .cardButton:active { transform: translateY(0px); filter: brightness(0.95); }
 .cardButton:focus-visible { outline: 2px solid transparent; outline-offset: 2px; }
-
-/* Specific Button Colors & Focus */
+/* --- Specific Button Colors & Focus --- */
 .applyButton { background-color: #10b981; }
 .applyButton:hover { background-color: #059669; }
 .applyButton:focus-visible { box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.5); }
@@ -241,26 +257,25 @@
 
 /* --- Star Rating --- */
 .starRating {
-  color: #f59e0b;
+  color: #f59e0b; /* Amber 500 */
   font-size: 0.8rem; /* Mobile size */
   line-height: 1;
   white-space: nowrap;
-  margin: 0.3rem 0;
-  text-align: center;
-  width: 100%;
+  margin: 0.3rem 0; /* Mobile margin */
+  text-align: center; /* Center stars */
+  width: 100%; /* Ensure it takes width for centering */
 }
 .starRating span {
-  color: #4b5563;
+  color: #4b5563; /* Gray 600 */
   font-size: 0.8em;
   font-weight: 500;
-  margin-left: 0.2em;
+  margin-left: 0.2em; /* Mobile margin */
   vertical-align: middle;
 }
 
 /* --- Tablet & Desktop Styles (min-width: 768px) --- */
 @media (min-width: 768px) {
   /* --- Grid Layout: Show 3 Cards --- */
-  /* These grid styles remain unchanged from the previous version */
   .headerRow, .featureRow {
       grid-template-columns: minmax(0, 1.1fr) repeat(3, minmax(0, 1fr));
   }
@@ -268,6 +283,7 @@
   .featureRow > *:nth-child(4) {
     display: flex; /* Show 3rd column */
   }
+  /* Adjust border removal */
   .headerRow > *:nth-child(3),
   .featureRow > *:nth-child(3) {
     border-right: 1px solid #e5e7eb; /* Restore border */
@@ -278,122 +294,78 @@
   }
 
   /* --- Cell Min-Widths & Styles --- */
-  /* These cell styles remain unchanged from the previous version */
   .featureLabelCell { min-width: 140px; }
   .cardColumnHeader, .cardValueCell { min-width: 160px; }
   .featureHeader, .cardColumnHeader, .featureLabelCell, .cardValueCell {
-      padding: 0.7rem 0.8rem;
+      padding: 0.7rem 0.8rem; /* Tablet padding */
   }
    .cardName { font-size: 0.95rem; }
    .cardValueCell { font-size: 0.85rem; }
    .featureLabelCell { font-size: 0.8rem; }
-   .cardInfo img { max-height: 80px; }
+   .cardInfo img { max-height: 80px; } /* Tablet max height */
+   .starRating { font-size: 1rem; } /* Tablet star size */
+   .starRating span { margin-left: 0.3em; }
+
+  /* --- STICKY HEADER IMPLEMENTATION --- */
+  .featureHeader,
+  .cardColumnHeader {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0; /* Stick to the top of the scrolling container */
+    z-index: 10; /* Ensure header is above scrolling rows */
+    /* Explicitly set backgrounds for sticky elements */
+    border-bottom: 1px solid #e5e7eb; /* Ensure bottom border is visible */
+  }
+
+  .featureHeader {
+     /* Top-left empty cell */
+     background-color: #f9fafb; /* Match feature label background */
+  }
+  .cardColumnHeader {
+     /* Card header cells */
+     background-color: #ffffff; /* Ensure white background persists */
+  }
+  /* --- END STICKY HEADER IMPLEMENTATION --- */
 
   /* --- Button Group (Tablet/Desktop: 2+1 Layout) --- */
-  /* --- THIS IS THE MODIFIED SECTION --- */
   .buttonGroup {
     flex-direction: row;   /* Arrange buttons initially in a row */
     flex-wrap: wrap;       /* Allow wrapping */
-    justify-content: space-between; /* Space out first two buttons */
-    align-items: center;   /* Align items vertically in the center */
+    justify-content: space-between; /* Distribute space horizontally */
+    align-items: center;   /* Align items vertically center */
     row-gap: 0.5rem;       /* Vertical gap ONLY when wrapping occurs */
     max-width: none;       /* Allow group to use container width */
     width: 100%;           /* Use full container width */
     padding-top: 0.5rem;   /* Consistent top padding */
-    /* Remove align-items:stretch if set previously for column layout */
-    /* Remove max-width limitation if set previously */
   }
 
   .cardButton {
     width: auto;           /* Reset width from mobile's 100% */
-    flex-grow: 0;          /* Prevent growing */
-    flex-shrink: 0;        /* Prevent shrinking */
-    text-align: center;    /* Ensure text is centered */
+    flex-grow: 0;          /* Prevent growing by default */
+    flex-shrink: 0;        /* Prevent shrinking by default */
+    text-align: center;
     font-size: 0.8rem;     /* Tablet/Desktop button font size */
     padding: 0.6rem 0.5rem; /* Tablet/Desktop button padding */
-    /* Ensure width: 100% is removed if set previously */
   }
 
   /* First two buttons take ~half width each */
   .applyButton,
   .reviewButton {
     /* Calculate width for 2 buttons side-by-side, accounting for gap */
-    /* 0.25rem is half of a potential 0.5rem effective horizontal gap */
-    /* Adjust subtraction if your effective horizontal gap is different */
+    /* 0.25rem is half of the effective 0.5rem horizontal gap */
     width: calc(50% - 0.25rem);
   }
 
-  /* Third button takes full width, forcing it to the next line */
+  /* Third button takes full width, forced to the next line */
   .eligibilityButton {
     width: 100%;
     /* No margin-top needed; row-gap handles the spacing */
   }
-  /* --- END OF MODIFIED BUTTON SECTION --- */
-}
-
-/* --- Desktop Only Styles (min-width: 1024px) --- */
-/* KEEP THIS SECTION AS IT WAS in the previous version */
-/* It mostly adjusts fonts/padding/min-widths */
-/* The button layout (2+1) is INHERITED from the 768px breakpoint */
-@media (min-width: 1024px) {
-  .headerRow, .featureRow {
-      grid-template-columns: minmax(0, 1.2fr) repeat(3, minmax(0, 1fr));
-  }
-  .featureLabelCell { min-width: 180px; }
-  .cardColumnHeader, .cardValueCell { min-width: 200px; }
-  .featureHeader, .cardColumnHeader, .featureLabelCell, .cardValueCell {
-      padding: 0.9rem 1.1rem;
-  }
-   .cardName { font-size: 1.05rem; }
-   .cardValueCell { font-size: 0.9rem; }
-   .featureLabelCell { font-size: 0.85rem; }
-   .cardInfo img { max-height: 90px; }
-
-  /* Optional: Fine-tune button text size etc. for desktop if needed */
-  /* .cardButton { font-size: 0.85rem; } */
-}
-
-/* --- Styles for mobile (< 768px) --- */
-/* KEEP ALL BASE STYLES AND ANY @media queries for */
-/* max-width: 700px or max-width: 500px EXACTLY AS THEY WERE */
-/* in the previous complete CSS file. */
-/* For reference, the mobile button styles should look like: */
-
-.buttonGroup {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 0.4rem;
-  margin-top: auto;
-  width: 95%;
-  max-width: 160px;
-  flex-shrink: 0;
-  padding-top: 0.4rem;
-}
-.cardButton {
-  display: block;
-  width: 100%;
-  padding: 0.5rem;
-  font-size: 0.75rem;
- 
-  font-family: 'Inter', sans-serif;
-  
-  font-weight: 600;
-  color: #ffffff;
-  border: none;
-  border-radius: 5px;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out, transform 0.1s ease, box-shadow 0.2s ease;
-  white-space: nowrap;
-  box-sizing: border-box;
-  
 }
 
 /* --- Desktop Only Styles (min-width: 1024px) --- */
 @media (min-width: 1024px) {
-  /* Adjust grid/cells for wider screens if desired */
+  /* Grid & Cell Adjustments */
   .headerRow, .featureRow {
       grid-template-columns: minmax(0, 1.2fr) repeat(3, minmax(0, 1fr));
   }
@@ -405,9 +377,9 @@
    .cardName { font-size: 1.05rem; }
    .cardValueCell { font-size: 0.9rem; }
    .featureLabelCell { font-size: 0.85rem; }
-   .cardInfo img { max-height: 90px; }
+   .cardInfo img { max-height: 90px; } /* Restore larger max height */
 
-  /* Button layout (2+1) is inherited from the 768px breakpoint */
-  /* Only add specific overrides if needed, e.g., slightly larger font */
+  /* Sticky header and 2+1 Button layout are inherited */
+  /* Only add specific desktop overrides if needed, e.g., slightly larger button font */
   /* .cardButton { font-size: 0.85rem; } */
 }
