@@ -310,7 +310,7 @@
   .featureHeader,
   .cardColumnHeader {
     position: -webkit-sticky; /* Safari */
-    position: sticky;
+    position: sticky !important; /* Sticky positioning */
     top: 0; /* Stick to the top of the scrolling container */
     z-index: 10; /* Ensure header is above scrolling rows */
     /* Explicitly set backgrounds for sticky elements */
