@@ -20,10 +20,10 @@ const reviewData = {
   description: 'A comprehensive 20-section review of the American Express® Business Gold Card, focusing on its adaptive 4X rewards, travel benefits, $375 annual fee, new statement credits, and competitor analysis for 2025.',
   keywords: 'American Express, Business Gold, Amex, Membership Rewards, business credit card, travel rewards, 4X points, 2025',
   author: 'TravelCardInsider', // *** REPLACE with your actual author/site name ***
-  imageUrl: '/placeholder-amex-biz-gold.png', // *** REPLACE with actual Amex Biz Gold image PATH in /public ***
+  imageUrl: '/business-gold.avif', // *** REPLACE with actual Amex Biz Gold image PATH in /public ***
   ratingValue: 8.5, // From Amex Business Gold Review Text (Hypothetical TCI Rating)
-  applyLink: 'https://www.americanexpress.com/us/credit-cards/business/business-gold-card/', // *** REPLACE/VERIFY actual Amex Biz Gold APPLY URL ***
-  ratesLink: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/business-gold-card/terms/controller?Src=US&ReqType=RFA', // *** REPLACE/VERIFY actual Rates & Fees URL ***
+  applyLink: 'https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/american-express-business-gold-card-amex/', // *** REPLACE/VERIFY actual Amex Biz Gold APPLY URL ***
+  ratesLink: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/businessgold-card/45094-9-0?key=tncBody&rwdFlag=rwd', // *** REPLACE/VERIFY actual Rates & Fees URL ***
   // Image dimensions (MUST BE ACCURATE for next/image) - PLACEHOLDERS
   imageWidth: 480, // *** REPLACE with actual image width *** (Example Placeholder)
   imageHeight: 304, // *** REPLACE with actual image height *** (Example Placeholder)
