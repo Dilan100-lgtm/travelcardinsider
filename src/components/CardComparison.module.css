@@ -104,9 +104,43 @@
   margin: 0 0 0.8rem 0;
   flex-shrink: 0;
 }
-.dropdownWrapper label { /* ... */ }
-.dropdownWrapper select { /* ... */ }
-.dropdownWrapper select:focus { /* ... */ }
+/* --- Content Inside Card Header --- */
+.dropdownWrapper {
+  width: 100%;
+  max-width: 180px; /* Slightly narrower on mobile */
+  margin: 0 0 0.8rem 0;
+  flex-shrink: 0;
+}
+
+.dropdownWrapper label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 0.7rem; /* Smaller label */
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.dropdownWrapper select {
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.8rem;
+  font-family: 'Inter', sans-serif;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background-color: #fff;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.25em 1.25em;
+  cursor: pointer;
+}
+.dropdownWrapper select:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.4);
+}
 
 .cardInfo {
   width: 100%;
@@ -147,7 +181,17 @@
   flex-shrink: 0;
 }
 
-.cardPlaceholder { /* ... */ }
+.cardPlaceholder {
+  color: #9ca3af;
+  font-style: italic;
+  font-size: 0.85rem;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0;
+  min-height: 120px; /* Mobile placeholder height */
+}
 
 /* --- Button Group (Mobile First: Stacked) --- */
 .buttonGroup {
