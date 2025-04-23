@@ -25,6 +25,7 @@ export default function RewardsPage() {
         </p>
 
         <RewardsCalculator />
+        return <RewardsCalculator />
       </main>
 
       {/* Footer is optional here */}
