@@ -48,12 +48,14 @@ export default function RewardsCalculator() {
 
   const results = useMemo(() => {
     return cards.map((card) => {
-      const pointValue = card["Redemption Rate (cents/pt)"] / 100;
-      const rewardMultiplier = card["Bonus Category Rates"].split(',').reduce((acc, rate, idx) => {
-        const category = card["Bonus Categories"].split(',')[idx]?.trim();
-        if (category) acc[category] = parseFloat(rate.trim()) || 1;
-        return acc;
-      }, {} as Record<string, number>);
+      const bonusRates = card["Bonus Category Rates"] || '';
+const bonusCategories = card["Bonus Categories"] || '';
+const rewardMultiplier = bonusRates.split(',').reduce((acc, rate, index) => {
+  const category = bonusCategories.split(',')[index]?.trim();
+  if (category) acc[category] = parseFloat(rate.trim()) || 1;
+  return acc;
+}, {} as Record<string, number>);
+
 
       let totalPoints = 0;
       for (const category of categoryList) {
