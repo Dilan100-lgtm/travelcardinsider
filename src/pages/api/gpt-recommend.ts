@@ -19,7 +19,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     const response = await openai.chat.completions.create({
-model: 'gpt-4-1106-preview',
+      model: 'gpt-4',
 
       messages: [
         {
