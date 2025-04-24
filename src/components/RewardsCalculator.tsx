@@ -47,22 +47,24 @@ export default function RewardsCalculator() {
   };
 
   const results = useMemo(() => {
-    return cards.map((card) => {
+    return cards.map(card => {
       const bonusRates = card["Bonus Category Rates"] || '';
-const bonusCategories = card["Bonus Categories"] || '';
-const rewardMultiplier = bonusRates.split(',').reduce((acc, rate, index) => {
-  const category = bonusCategories.split(',')[index]?.trim();
-  if (category) acc[category] = parseFloat(rate.trim()) || 1;
-  return acc;
-}, {} as Record<string, number>);
-
-
+      const bonusCategories = card["Bonus Categories"] || '';
+      
+      const rewardMultiplier = bonusRates.split(',').reduce((acc, rate, index) => {
+        const category = bonusCategories.split(',')[index]?.trim();
+        if (category) acc[category] = parseFloat(rate.trim()) || 1;
+        return acc;
+      }, {} as Record<string, number>);
+  
+      const pointValue = card["Redemption Rate (cents/pt)"] / 100 || 0.01;
+  
       let totalPoints = 0;
-      for (const category of categoryList) {
-        const multiplier = rewardMultiplier[category] || 1;
+      for (const category in spend) {
+        const multiplier = rewardMultiplier[category] || rewardMultiplier["other"] || 1;
         totalPoints += spend[category] * multiplier * 12;
       }
-
+  
       return {
         ...card,
         totalPoints,
@@ -70,6 +72,7 @@ const rewardMultiplier = bonusRates.split(',').reduce((acc, rate, index) => {
       };
     }).sort((a, b) => b.totalValue - a.totalValue);
   }, [spend]);
+  
 
   const getAiRecommendation = async () => {
     setLoading(true);
