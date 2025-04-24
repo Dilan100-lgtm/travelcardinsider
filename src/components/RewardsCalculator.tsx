@@ -5,7 +5,7 @@ import React, { useState, useMemo } from 'react';
 import cardDataRaw from '@/data/finalcreditcard.json'; // Use the actual path to your detailed JSON
 
 // --- Define Interfaces based on finalcreditcard.json structure ---
-// (Interfaces: CardCap, CardReward, CardSignUpBonus, CardRedemptionOptions, CardPerk, DetailedCreditCard - remain the same as before)
+// (Interfaces: CardCap, CardReward, CardSignUpBonus, CardRedemptionOptions, CardPerk remain the same)
 interface CardCap {
   amount_usd: number;
   period: 'month' | 'quarter' | 'year';
@@ -42,6 +42,8 @@ interface CardPerk {
   notes?: string;
   estimated_value_usd?: number | null;
 }
+
+// Update DetailedCreditCard interface to include new calculated values
 interface DetailedCreditCard {
   "Card Name": string;
   Issuer: string;
@@ -61,13 +63,17 @@ interface DetailedCreditCard {
   rewards: CardReward[];
   redemptionOptions: CardRedemptionOptions;
   perks: CardPerk[];
+
+  // Calculated fields
   calculatedPoints?: number;
-  calculatedTotalValue?: number;
-  calculatedNetValue?: number;
+  calculatedRewardsValue?: number; // Renamed from calculatedTotalValue for clarity
+  calculatedAnnualPerkValue?: number;
+  calculatedNetValue?: number; // Net value including annual perks (Ongoing Value)
+  calculatedFirstYearNetValue?: number; // Net value including perks and signup bonus
 }
 
 // --- Load and Type the Data ---
-// (Data loading logic remains the same as before)
+// (Data loading logic remains the same)
 let allCards: DetailedCreditCard[] = [];
 if (cardDataRaw && Array.isArray((cardDataRaw as any).cards)) {
    allCards = (cardDataRaw as any).cards as DetailedCreditCard[];
@@ -87,94 +93,57 @@ const cards: DetailedCreditCard[] = allCards.filter(card => card && card["Card N
 
 
 // --- Define Granular User Input Categories and State ---
-// (categoryList remains the same as before)
-const categoryList = [
-  'dining', 'groceries', 'gas', 'flights', 'hotels', 'streaming',
-  'transit', 'onlineShopping', 'drugstores', 'other'
-] as const;
-
-type SpendInput = {
-  [key in typeof categoryList[number]]: number;
-};
-
-// (defaultSpend remains the same as before)
-const defaultSpend: SpendInput = {
-  dining: 0, groceries: 0, gas: 0, flights: 0, hotels: 0, streaming: 0,
-  transit: 0, onlineShopping: 0, drugstores: 0, other: 0,
-};
+// (categoryList remains the same)
+const categoryList = [ 'dining', 'groceries', 'gas', 'flights', 'hotels', 'streaming', 'transit', 'onlineShopping', 'drugstores', 'other'] as const;
+type SpendInput = { [key in typeof categoryList[number]]: number; };
+// (defaultSpend remains the same)
+const defaultSpend: SpendInput = { dining: 0, groceries: 0, gas: 0, flights: 0, hotels: 0, streaming: 0, transit: 0, onlineShopping: 0, drugstores: 0, other: 0, };
 
 // --- Define Redemption Strategy Types ---
 type RedemptionStrategy = 'default' | 'cash_back' | 'travel_portal' | 'transfer_partners';
 
-
 // --- React Component ---
 export default function RewardsCalculator() {
   const [spend, setSpend] = useState<SpendInput>(defaultSpend);
-  // Add state for redemption strategy
   const [redemptionStrategy, setRedemptionStrategy] = useState<RedemptionStrategy>('default');
+  // Add state to control sorting preference (optional)
+  // const [sortBy, setSortBy] = useState<'firstYear' | 'ongoing'>('firstYear');
   const [aiSuggestion, setAiSuggestion] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
   // --- Helper Functions ---
-
-  // Helper function to get Cents Per Point (CPP) based on selected strategy
-  const getSelectedCpp = (card: DetailedCreditCard, strategy: RedemptionStrategy): number => {
-      const options = card.redemptionOptions;
-      if (!options) return 1.0; // Fallback if no redemption options defined
-
+  // (getSelectedCpp remains the same as before)
+  const getSelectedCpp = (card: DetailedCreditCard, strategy: RedemptionStrategy): number => { /* ... same logic ... */
+      const options = card.redemptionOptions; if (!options) return 1.0;
       switch (strategy) {
-          case 'cash_back':
-              // Prioritize cash back, then travel statement credit, then 1.0
-              return options.cash_back_cpp ?? options.travel_statement_credit_cpp ?? 1.0;
-          case 'travel_portal':
-              // Prioritize specific portals, then general travel credit, then 1.0
-              return options.chase_travel_portal_cpp ?? options.amex_travel_cpp ??
-                     options.cap_one_travel_cpp ?? options.travel_statement_credit_cpp ?? 1.0;
-          case 'transfer_partners':
-              // Use estimated average if available, otherwise fallback (e.g., to portal value or a higher default)
-              // Using 1.5 as a generic fallback if specific portal/cash values aren't high
-              return options.transfer_partner_average_cpp ??
-                     options.chase_travel_portal_cpp ?? // Fallback to known good portal
-                     1.5; // Generic higher value fallback for transfers
-          case 'default':
-          default:
-               // Prioritize transfer partners > specific portals > generic travel credit > cash back > default 1.0
-               // Choose a reasonable default valuation order
-               return options.transfer_partner_average_cpp ??
-                      options.chase_travel_portal_cpp ??
-                      options.amex_travel_cpp ??
-                      options.cap_one_travel_cpp ??
-                      options.travel_statement_credit_cpp ??
-                      options.cash_back_cpp ??
-                      1.0;
+          case 'cash_back': return options.cash_back_cpp ?? options.travel_statement_credit_cpp ?? 1.0;
+          case 'travel_portal': return options.chase_travel_portal_cpp ?? options.amex_travel_cpp ?? options.cap_one_travel_cpp ?? options.travel_statement_credit_cpp ?? 1.0;
+          case 'transfer_partners': return options.transfer_partner_average_cpp ?? options.chase_travel_portal_cpp ?? 1.5;
+          case 'default': default: return options.transfer_partner_average_cpp ?? options.chase_travel_portal_cpp ?? options.amex_travel_cpp ?? options.cap_one_travel_cpp ?? options.travel_statement_credit_cpp ?? options.cash_back_cpp ?? 1.0;
       }
   }
 
   // --- Event Handlers ---
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setSpend((prev) => ({
-      ...prev,
-      [name]: parseFloat(value) || 0,
-    }));
+  // (handleChange remains the same)
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => { /* ... same logic ... */
+      const { name, value } = e.target; setSpend((prev) => ({ ...prev, [name]: parseFloat(value) || 0, }));
   };
-
-  // Handle redemption strategy change
-  const handleRedemptionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-      setRedemptionStrategy(e.target.value as RedemptionStrategy);
-  }
+  // (handleRedemptionChange remains the same)
+  const handleRedemptionChange = (e: React.ChangeEvent<HTMLSelectElement>) => { setRedemptionStrategy(e.target.value as RedemptionStrategy); }
+  // Handler for sort preference (optional)
+  // const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => { setSortBy(e.target.value as 'firstYear' | 'ongoing'); }
 
   // --- Core Calculation Logic (useMemo Hook) ---
   const results: DetailedCreditCard[] = useMemo(() => {
-    // (Category Map and Helper functions: getOtherMultiplier, findBestRuleForInput remain the same as previous version)
-    const categoryMap: { [key in keyof SpendInput]?: string[] } = { /* ... same as before ... */
+    // (Category Map and Cap Logic Helpers: getOtherMultiplier, findBestRuleForInput remain the same)
+     const categoryMap: { [key in keyof SpendInput]?: string[] } = { /* ... same as before ... */
         dining: ['dining'], groceries: ['groceries_us', 'groceries', 'online_grocery'], gas: ['gas_us', 'gas'], flights: ['flights_direct', 'flights_amex_travel', 'flights_chase_portal', 'flights_capital_one_portal', 'airlines', 'southwest_airlines', 'united_airlines', 'jetblue', 'hawaiian_airlines', 'delta_airlines', 'american_airlines', 'british_airways', 'alaska_airlines', 'aircanada'], hotels: ['hotel', 'hotel_amex_travel', 'hotel_chase_portal', 'hotel_capital_one_portal', 'hilton_hotels', 'hyatt_hotels'], streaming: ['streaming'], transit: ['transit'], onlineShopping: ['online_retail_us'], drugstores: ['drugstores'], other: ['other'],
     };
-    const getOtherMultiplier = (card: DetailedCreditCard): number => { /* ... same as before ... */
-        const otherRule = card.rewards.find(r => r.category === 'other'); return otherRule?.multiplier ?? 1;
-    }
-    const findBestRuleForInput = (card: DetailedCreditCard, uiCategory: keyof SpendInput): CardReward | undefined => { /* ... same as before ... */
+     const getOtherMultiplier = (card: DetailedCreditCard): number => { /* ... same logic ... */
+         const otherRule = card.rewards.find(r => r.category === 'other'); return otherRule?.multiplier ?? 1;
+     }
+     const findBestRuleForInput = (card: DetailedCreditCard, uiCategory: keyof SpendInput): CardReward | undefined => { /* ... same logic ... */
         const targetJsonCategories = categoryMap[uiCategory] || []; let bestRule: CardReward | undefined = undefined; let bestMultiplier = 0;
         for (const jsonCat of targetJsonCategories) { const rule = Array.isArray(card.rewards) ? card.rewards.find(r => r.category === jsonCat) : undefined; if (rule && rule.multiplier > bestMultiplier) { bestMultiplier = rule.multiplier; bestRule = rule; } }
         const otherMultiplier = getOtherMultiplier(card); const otherRule = Array.isArray(card.rewards) ? card.rewards.find(r => r.category === 'other') : undefined;
@@ -182,17 +151,17 @@ export default function RewardsCalculator() {
     };
 
     return cards.map(card => {
-      // (Card validation remains the same)
+       // (Card validation remains the same)
        if (!card || !Array.isArray(card.rewards)) { /* ... same console warning and placeholder return ... */
-           console.warn(`Skipping card due to missing data: ${card?.["Card Name"]}`); return { ...card, calculatedPoints: 0, calculatedTotalValue: 0, calculatedNetValue: -(card?.["Annual Fee"] ?? 0) } as DetailedCreditCard;
+           console.warn(`Skipping card due to missing data: ${card?.["Card Name"]}`); return { ...card, calculatedPoints: 0, calculatedRewardsValue: 0, calculatedAnnualPerkValue: 0, calculatedNetValue: -(card?.["Annual Fee"] ?? 0), calculatedFirstYearNetValue: -(card?.["Annual Fee"] ?? 0) } as DetailedCreditCard;
        }
 
       let totalAnnualPoints = 0;
       const otherMultiplier = getOtherMultiplier(card);
       const capSpendTracker: { [capKey: string]: number } = {};
 
-      // (Loop through spend categories and cap logic remains the same as previous version)
-       for (const uiCategory of categoryList) {
+      // (Loop through spend categories and cap logic remains the same)
+       for (const uiCategory of categoryList) { /* ... same cap logic ... */
            const monthlySpend = spend[uiCategory as keyof SpendInput]; if (monthlySpend <= 0) continue;
            const annualSpendInCategory = monthlySpend * 12; const rule = findBestRuleForInput(card, uiCategory as keyof SpendInput); const multiplier = rule?.multiplier ?? otherMultiplier;
            if (!rule || rule.category === 'other' || !rule.cap) { totalAnnualPoints += annualSpendInCategory * multiplier; continue; }
@@ -205,47 +174,82 @@ export default function RewardsCalculator() {
        } // End loop through user spend categories
 
       // --- Apply Selected Redemption Rate ---
-      const selectedCpp = getSelectedCpp(card, redemptionStrategy); // Use the helper function
-      const totalValue = (totalAnnualPoints * selectedCpp) / 100; // Value in dollars
-      const netValue = totalValue - card["Annual Fee"];
+      const selectedCpp = getSelectedCpp(card, redemptionStrategy);
+      const rewardsValue = (totalAnnualPoints * selectedCpp) / 100; // Value in dollars
+
+      // --- Calculate Annual Perk Value ---
+      let annualPerkValue = 0;
+      if (Array.isArray(card.perks)) {
+          card.perks.forEach(perk => {
+              // Include perks with a direct annual value
+              if (perk.value_usd && perk.frequency === 'annual') {
+                  annualPerkValue += perk.value_usd;
+              }
+              // Estimate value for things like Global Entry credit (prorated)
+              else if (perk.type === 'global_entry_tsa_precheck_credit' && perk.value_usd && perk.frequency?.includes('years')) {
+                   // Basic proration - assumes value every 4 or 5 years typically
+                   const years = parseInt(perk.frequency.split('_')[1]) || 4; // Extract years or default to 4
+                   annualPerkValue += perk.value_usd / years;
+              }
+              // Add other quantifiable annual perk estimations here if desired (e.g., anniversary points/miles)
+              else if ((perk.type === 'anniversary_points' || perk.type === 'anniversary_miles') && perk.estimated_value_usd) {
+                    annualPerkValue += perk.estimated_value_usd;
+              }
+          });
+      }
+
+      // --- Calculate Final Values ---
+      const netValueIncludingPerks = rewardsValue + annualPerkValue - card["Annual Fee"];
+      const signUpBonusValue = card.signUpBonus?.estimated_value_usd ?? 0;
+      const firstYearNetValue = netValueIncludingPerks + signUpBonusValue;
 
       return {
         ...card,
         calculatedPoints: Math.round(totalAnnualPoints),
-        calculatedTotalValue: parseFloat(totalValue.toFixed(2)),
-        calculatedNetValue: parseFloat(netValue.toFixed(2)),
+        calculatedRewardsValue: parseFloat(rewardsValue.toFixed(2)),
+        calculatedAnnualPerkValue: parseFloat(annualPerkValue.toFixed(2)),
+        calculatedNetValue: parseFloat(netValueIncludingPerks.toFixed(2)), // This is the ongoing net value
+        calculatedFirstYearNetValue: parseFloat(firstYearNetValue.toFixed(2)),
       };
-    }).sort((a, b) => (b.calculatedNetValue ?? -Infinity) - (a.calculatedNetValue ?? -Infinity));
+      // Sort by First Year Value by default
+    }).sort((a, b) => (b.calculatedFirstYearNetValue ?? -Infinity) - (a.calculatedFirstYearNetValue ?? -Infinity));
 
-  // Add redemptionStrategy to dependency array
-  }, [spend, redemptionStrategy]);
+  // Update dependency array
+  }, [spend, redemptionStrategy]); // Add sortBy here if implementing sort state
 
 
-  // --- AI Recommendation Fetching (Optional: Add redemption context) ---
+  // --- AI Recommendation Fetching ---
   const getAiRecommendation = async () => {
     setLoading(true);
     setError('');
     try {
+        // Prepare data for AI - Add First Year Value, Perk Value
         const topCardsContext = results.slice(0, 5).map(card => {
-             const selectedCpp = getSelectedCpp(card, redemptionStrategy); // Get CPP used
+             const selectedCpp = getSelectedCpp(card, redemptionStrategy);
              return {
                 name: card["Card Name"],
                 issuer: card.Issuer,
                 annualFee: card["Annual Fee"],
-                netValue: card.calculatedNetValue,
+                firstYearNetValue: card.calculatedFirstYearNetValue, // Add First Year
+                ongoingNetValue: card.calculatedNetValue, // Add Ongoing
+                rewardsValue: card.calculatedRewardsValue,
+                annualPerkValue: card.calculatedAnnualPerkValue, // Add Perk Value
                 points: card.calculatedPoints,
-                cppUsed: selectedCpp, // Add CPP used
-                redemptionStrategyUsed: redemptionStrategy, // Add strategy used
+                cppUsed: selectedCpp,
+                redemptionStrategyUsed: redemptionStrategy,
+                // Refine topRewards based on actual structure
                 topRewards: Array.isArray(card.rewards) ? card.rewards
                     .filter(r => r.multiplier > 1 && r.category !== 'other')
                     .sort((a, b) => b.multiplier - a.multiplier)
                     .slice(0, 3)
                     .map(r => `${r.multiplier}x on ${r.category}${r.cap ? ` (up to $${r.cap.amount_usd}/${r.cap.period})` : ''}`) : [],
-                keyPerks: Array.isArray(card.perks) ? card.perks
-                    .filter(p => p.type !== 'tier_qualifying_boost' && p.type !== 'points_back')
-                    .map(p => p.description || p.type)
-                    .slice(0, 3) : [],
-                signupBonus: card.signUpBonus?.description || "N/A",
+                 // Send more detailed perk info
+                 keyPerks: Array.isArray(card.perks) ? card.perks
+                    .filter(p => ['lounge_access', 'free_checked_bag', 'travel_credit', 'companion_fare', 'companion_certificate', 'global_entry_tsa_precheck_credit', 'annual_hotel_credit'].includes(p.type)) // Filter for key perk types
+                    .map(p => `${p.description || p.type}${p.value_usd ? ` ($${p.value_usd}${p.frequency ? '/'+p.frequency : ''})` : ''}`) // Add value/frequency if available
+                    .slice(0, 4) : [], // Show slightly more perks
+                signupBonusValue: card.signUpBonus?.estimated_value_usd ?? 0,
+                signupBonusDesc: card.signUpBonus?.description || "N/A",
              };
         });
 
@@ -259,7 +263,8 @@ export default function RewardsCalculator() {
         body: JSON.stringify({
             spend: spend,
             annualSpend: currentAnnualSpend,
-            redemptionStrategy: redemptionStrategy, // Send selected strategy to AI
+            redemptionStrategy: redemptionStrategy,
+            // sortByPreference: sortBy, // Add if implementing sort preference
             topCards: topCardsContext
         }),
       });
@@ -280,55 +285,80 @@ export default function RewardsCalculator() {
     <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
       <h2>AI-Powered Travel Rewards Calculator</h2>
 
-      {/* Redemption Strategy Selector */}
-      <div style={{ marginBottom: '1.5rem', maxWidth: '400px' }}>
-          <label htmlFor="redemptionStrategy" style={{ marginRight: '1rem', fontWeight: 'bold' }}>Value Points As:</label>
-          <select
-              id="redemptionStrategy"
-              value={redemptionStrategy}
-              onChange={handleRedemptionChange}
-              style={{ padding: '0.5rem', border: '1px solid #ccc', borderRadius: '4px' }}
-          >
-              <option value="default">Best Default Value</option>
-              <option value="cash_back">Cash Back / Statement Credit</option>
-              <option value="travel_portal">Travel Portal Booking</option>
-              <option value="transfer_partners">Transfer Partners (Est. Avg.)</option>
-          </select>
-      </div>
+        {/* Redemption Strategy Selector */}
+        <div style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+            <div>
+                <label htmlFor="redemptionStrategy" style={{ marginRight: '0.5rem', fontWeight: 'bold' }}>Value Points As:</label>
+                <select id="redemptionStrategy" value={redemptionStrategy} onChange={handleRedemptionChange} style={{ padding: '0.5rem', border: '1px solid #ccc', borderRadius: '4px' }}>
+                    <option value="default">Best Default Value</option>
+                    <option value="cash_back">Cash Back / Statement Credit</option>
+                    <option value="travel_portal">Travel Portal Booking</option>
+                    <option value="transfer_partners">Transfer Partners (Est. Avg.)</option>
+                </select>
+            </div>
+           {/* Optional: Sort preference selector */}
+           {/* <div>
+               <label htmlFor="sortBy" style={{ marginRight: '0.5rem', fontWeight: 'bold' }}>Sort By:</label>
+               <select id="sortBy" value={sortBy} onChange={handleSortChange} style={{ padding: '0.5rem', border: '1px solid #ccc', borderRadius: '4px' }}>
+                   <option value="firstYear">First Year Value</option>
+                   <option value="ongoing">Ongoing Value</option>
+               </select>
+           </div> */}
+        </div>
+
 
       <p>Enter your estimated *monthly* spending per category.</p>
 
-      {/* Spending Input Form (remains the same as previous version) */}
+      {/* Spending Input Form */}
       <form style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '2rem', maxWidth: '1000px' }}>
-        {categoryList.map((category) => (
-          <div key={category} style={{ display: 'flex', flexDirection: 'column' }}>
-            <label htmlFor={category} style={{ marginBottom: '0.5rem', textTransform: 'capitalize' }}>
-              {category === 'onlineShopping' ? 'Online Shopping (US)' : category.replace(/([A-Z])/g, ' $1')} Spend ($):
-            </label>
-            <input
-              type="number" id={category} name={category}
-              value={spend[category as keyof SpendInput]} onChange={handleChange}
-              min={0} step={10} style={{ padding: '0.5rem', border: '1px solid #ccc', borderRadius: '4px' }}
-            />
-          </div>
-        ))}
+        { /* (Form generation code remains the same) */ }
+         {categoryList.map((category) => ( <div key={category} style={{ display: 'flex', flexDirection: 'column' }}> <label htmlFor={category} style={{ marginBottom: '0.5rem', textTransform: 'capitalize' }}> {category === 'onlineShopping' ? 'Online Shopping (US)' : category.replace(/([A-Z])/g, ' $1')} Spend ($): </label> <input type="number" id={category} name={category} value={spend[category as keyof SpendInput]} onChange={handleChange} min={0} step={10} style={{ padding: '0.5rem', border: '1px solid #ccc', borderRadius: '4px' }} /> </div> ))}
       </form>
 
-      {/* Results List (remains the same as previous version) */}
+      {/* Results List - Updated Display */}
       <div style={{ marginTop: '2rem' }}>
-        <h3>Top Cards Based on Your Spend:</h3>
-        {/* (Results list rendering code remains the same) */}
-         <ul style={{ listStyle: 'none', padding: 0 }}>
-           {results && results.length > 0 ? (
-              results.slice(0, 10).map((card) => (
+        <h3>Top Cards Based on Your Spend (Sorted by Est. First Year Value)</h3>
+        <ul style={{ listStyle: 'none', padding: 0 }}>
+          {results && results.length > 0 ? (
+             results.slice(0, 10).map((card) => (
                card && card["Card Name"] ? (
-                 <li key={card["Card Name"]} style={{ border: '1px solid #eee', borderRadius: '4px', padding: '1rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-                   <img src={card.image || 'placeholder.png'} alt={card["Card Name"]} style={{ height: '50px', objectFit: 'contain', flexShrink: 0 }} onError={(e) => { (e.target as HTMLImageElement).src = 'placeholder.png'; }} />
+                 <li key={card["Card Name"]} style={{ border: '1px solid #eee', borderRadius: '4px', padding: '1rem', marginBottom: '1rem', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                   <img src={card.image || 'placeholder.png'} alt={card["Card Name"]} style={{ height: '50px', width: '80px', objectFit: 'contain', flexShrink: 0, alignSelf: 'flex-start' }} onError={(e) => { (e.target as HTMLImageElement).src = 'placeholder.png'; }} />
                    <div style={{ flexGrow: 1 }}>
-                     <strong>{card.Issuer} - {card["Card Name"]}</strong>
-                     <div>Net Value: <span style={{ color: (card.calculatedNetValue ?? 0) >= 0 ? 'green' : 'red', fontWeight: 'bold' }}>${(card.calculatedNetValue ?? 0).toFixed(2)}</span>/year</div>
-                     <small> (Est. Rewards: ${(card.calculatedTotalValue ?? 0).toFixed(2)}, Fee: ${card["Annual Fee"]}, Points: {card.calculatedPoints ?? 0}) </small>
-                      <div style={{marginTop: '0.5rem'}}> <a href={card.reviewLink} target="_blank" rel="noopener noreferrer" style={{ marginRight: '1rem', fontSize: '0.9em' }}>Review</a> <a href={card.applyLink} target="_blank" rel="noopener noreferrer" style={{ fontSize: '0.9em' }}>Apply</a> </div>
+                     <strong>{card.Issuer} - {card["Card Name"]}</strong> ({card["Card Type"]})
+                     <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', margin: '0.5rem 0' }}>
+                         <div><strong>Est. First Year Value:</strong> <span style={{ color: (card.calculatedFirstYearNetValue ?? 0) >= 0 ? 'green' : 'red', fontWeight: 'bold', fontSize: '1.1em' }}>${(card.calculatedFirstYearNetValue ?? 0).toFixed(2)}</span></div>
+                         <div><strong>Est. Ongoing Value:</strong> <span style={{ fontWeight: 'bold' }}>${(card.calculatedNetValue ?? 0).toFixed(2)}</span>/year</div>
+                     </div>
+                     <small style={{ display: 'block', marginBottom: '0.5rem' }}>
+                        (Rewards: ${(card.calculatedRewardsValue ?? 0).toFixed(2)} + Perks: ${(card.calculatedAnnualPerkValue ?? 0).toFixed(2)} - Fee: ${card["Annual Fee"]}) | Points: {card.calculatedPoints ?? 0}
+                     </small>
+                     {/* Bonus Info */}
+                     {card.signUpBonus && card.signUpBonus.estimated_value_usd > 0 && (
+                         <div style={{ fontSize: '0.9em', background: '#fff8e1', padding: '0.3rem 0.6rem', borderRadius: '4px', margin: '0.5rem 0' }}>
+                            <strong>Bonus:</strong> {card.signUpBonus.description} (Est. Value: ${card.signUpBonus.estimated_value_usd})
+                         </div>
+                     )}
+                     {/* Key Perks */}
+                     {Array.isArray(card.perks) && card.perks.length > 0 && (
+                        <div style={{ fontSize: '0.9em', marginTop: '0.5rem' }}>
+                           <strong>Key Perks:</strong>
+                           <ul style={{ margin: '0.2rem 0 0 1.2rem', padding: 0, listStyle: 'disc' }}>
+                              {card.perks
+                                 .filter(p => ['lounge_access', 'free_checked_bag', 'travel_credit', 'companion_fare', 'companion_certificate', 'global_entry_tsa_precheck_credit', 'annual_hotel_credit', 'anniversary_points', 'anniversary_miles', 'hilton_status'].includes(p.type) || p.value_usd > 0) // Filter for important/valuable perks
+                                 .slice(0, 4) // Limit displayed perks
+                                 .map(perk => (
+                                    <li key={perk.type + (perk.description || '')}>{perk.description || perk.type.replace(/_/g, ' ')} {perk.value_usd ? `($${perk.value_usd}${perk.frequency ? '/'+perk.frequency : ''})` : ''}</li>
+                                 ))
+                              }
+                           </ul>
+                        </div>
+                     )}
+                     {/* Links */}
+                      <div style={{marginTop: '0.8rem'}}>
+                         <a href={card.reviewLink} target="_blank" rel="noopener noreferrer" style={{ marginRight: '1rem', fontSize: '0.9em' }}>Review</a>
+                         <a href={card.applyLink} target="_blank" rel="noopener noreferrer" style={{ fontSize: '0.9em' }}>Apply</a>
+                      </div>
                    </div>
                  </li>
                ) : null
@@ -337,10 +367,12 @@ export default function RewardsCalculator() {
          </ul>
       </div>
 
-        {/* AI Button and Suggestion Section (remains the same as previous version) */}
-        <button onClick={getAiRecommendation} disabled={loading} style={{ marginTop: '1rem', padding: '0.8rem 1.5rem', cursor: 'pointer', background: '#007bff', color: 'white', border: 'none', borderRadius: '4px', fontSize: '1rem' }}> {loading ? 'Generating Recommendation...' : 'Get AI Recommendation'} </button>
-        {error && <p style={{ color: 'red', marginTop: '1rem' }}>{error}</p>}
-        {aiSuggestion && ( <div style={{ marginTop: '2rem', background: '#f0f8ff', padding: '1.5rem', borderRadius: '4px', border: '1px solid #e0f0ff' }}> <h4>AI Suggestion:</h4> <p style={{ whiteSpace: 'pre-wrap' }}>{aiSuggestion}</p> </div> )}
+      {/* AI Button and Suggestion Section */}
+      {/* (Remains the same) */}
+      <button onClick={getAiRecommendation} disabled={loading} style={{ marginTop: '1rem', padding: '0.8rem 1.5rem', cursor: 'pointer', background: '#007bff', color: 'white', border: 'none', borderRadius: '4px', fontSize: '1rem' }}> {loading ? 'Generating Recommendation...' : 'Get AI Recommendation'} </button>
+      {error && <p style={{ color: 'red', marginTop: '1rem' }}>{error}</p>}
+      {aiSuggestion && ( <div style={{ marginTop: '2rem', background: '#f0f8ff', padding: '1.5rem', borderRadius: '4px', border: '1px solid #e0f0ff' }}> <h4>AI Suggestion:</h4> <p style={{ whiteSpace: 'pre-wrap' }}>{aiSuggestion}</p> </div> )}
+
     </div>
   );
 }
