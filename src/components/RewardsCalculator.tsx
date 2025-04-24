@@ -83,45 +83,63 @@ interface DetailedCreditCard {
 
 // --- Load and Type the Data ---
 
-// The JSON file might contain multiple root 'cards' arrays if concatenated incorrectly.
-// Assuming the file structure is actually like { "cards": [...] } or an array of { "cards": [...] }
+// Assuming the file structure is { "cards": [...] }
 let allCards: DetailedCreditCard[] = [];
-if (Array.isArray(cardDataRaw)) {
-  // If cardDataRaw is [{cards: [...]}, {cards: [...]}, ...]
-  cardDataRaw.forEach((dataPart: any) => {
-    if (dataPart && Array.isArray(dataPart.cards)) {
-      allCards = allCards.concat(dataPart.cards as DetailedCreditCard[]);
-    }
-  });
-} else if (cardDataRaw && Array.isArray((cardDataRaw as any).cards)) {
+if (cardDataRaw && Array.isArray((cardDataRaw as any).cards)) {
    // If cardDataRaw is {cards: [...]}
    allCards = (cardDataRaw as any).cards as DetailedCreditCard[];
 } else {
-  console.error("Unexpected structure in finalcreditcard.json. Expected { cards: [...] } or [{ cards: [...] }, ...]");
-  // Handle the error appropriately, maybe set allCards to an empty array
+  // Attempt to handle if it's an array of {cards: [...]} - less likely if fixed
+  if (Array.isArray(cardDataRaw)) {
+      cardDataRaw.forEach((dataPart: any) => {
+          if (dataPart && Array.isArray(dataPart.cards)) {
+              allCards = allCards.concat(dataPart.cards as DetailedCreditCard[]);
+          }
+      });
+  }
+  if (allCards.length === 0) { // Check if still empty after trying array method
+     console.error("Unexpected structure in finalcreditcard.json. Expected { cards: [...] }.");
+  }
 }
 
 // Filter out any potentially invalid card entries if necessary (basic check)
 const cards: DetailedCreditCard[] = allCards.filter(card => card && card["Card Name"]);
 
-// --- Define User Input Categories and State ---
-const categoryList = ['travel', 'dining', 'groceries', 'gas', 'onlineShopping', 'other'] as const;
+
+// --- Define MORE GRANULAR User Input Categories and State ---
+// Match common high-value categories from your data more closely
+const categoryList = [
+  'dining',
+  'groceries', // Consider clarifying US vs non-US if needed often
+  'gas',       // Consider clarifying US vs non-US if needed often
+  'flights',   // For portal/direct flights
+  'hotels',    // For portal/direct hotels
+  'streaming',
+  'transit',   // Includes rideshare in some card data
+  'onlineShopping', // Specify US online retail if that's usually the case
+  'drugstores',
+  'other'      // Catch-all
+] as const;
 
 type SpendInput = {
   [key in typeof categoryList[number]]: number;
 };
 
+// Update default spend to include new categories
 const defaultSpend: SpendInput = {
-  travel: 0,
   dining: 0,
   groceries: 0,
   gas: 0,
+  flights: 0,
+  hotels: 0,
+  streaming: 0,
+  transit: 0,
   onlineShopping: 0,
+  drugstores: 0,
   other: 0,
 };
 
 // --- React Component ---
-
 export default function RewardsCalculator() {
   const [spend, setSpend] = useState<SpendInput>(defaultSpend);
   const [aiSuggestion, setAiSuggestion] = useState('');
@@ -129,15 +147,6 @@ export default function RewardsCalculator() {
   const [error, setError] = useState('');
 
   // --- Helper Functions ---
-
-  // Helper function to get the best reward rule for a specific JSON category
-  const getRewardRule = (card: DetailedCreditCard, targetCategory: string): CardReward | undefined => {
-      // Find exact match first
-      let rule = card.rewards.find(r => r.category === targetCategory);
-      if (rule) return rule;
-      // Fallback to 'other' category if no specific match
-      return card.rewards.find(r => r.category === 'other');
-  };
 
    // Helper function to get a default Cents Per Point (CPP) - prioritizing cash back or 1.0
   const getDefaultCpp = (card: DetailedCreditCard): number => {
@@ -156,115 +165,171 @@ export default function RewardsCalculator() {
     }));
   };
 
-  // --- Core Calculation Logic ---
-
+  // --- Core Calculation Logic (Refactored useMemo Hook) ---
   const results: DetailedCreditCard[] = useMemo(() => {
-    // 1. Define Category Mapping (User Input -> JSON Categories)
-    // This needs careful consideration and customization based on your data categories
-    const categoryMap: { [userInputCategory: string]: string[] } = {
-      travel: ['travel_portal', 'travel_other', 'flights_direct', 'hotel', 'flights_amex_travel', 'hotel_amex_travel', 'hotel_chase_portal', 'car_rental_chase_portal', 'flights_chase_portal', 'hotel_capital_one_portal', 'flights_capital_one_portal', 'airlines', 'transit', 'gas', 'southwest_airlines', 'united_airlines', 'jetblue', 'hawaiian_airlines', 'delta_airlines', 'american_airlines', 'british_airways', 'alaska_airlines', 'aircanada'],
+
+    // 1. Define Category Mapping (Granular Input -> JSON Categories)
+    // Map UI input category to potential JSON category names
+    const categoryMap: { [key in keyof SpendInput]?: string[] } = {
       dining: ['dining'],
       groceries: ['groceries_us', 'groceries', 'online_grocery'],
       gas: ['gas_us', 'gas'],
+      flights: ['flights_direct', 'flights_amex_travel', 'flights_chase_portal', 'flights_capital_one_portal', 'airlines', 'southwest_airlines', 'united_airlines', 'jetblue', 'hawaiian_airlines', 'delta_airlines', 'american_airlines', 'british_airways', 'alaska_airlines', 'aircanada'],
+      hotels: ['hotel', 'hotel_amex_travel', 'hotel_chase_portal', 'hotel_capital_one_portal', 'hilton_hotels', 'hyatt_hotels'],
+      streaming: ['streaming'],
+      transit: ['transit'],
       onlineShopping: ['online_retail_us'],
-      // Specific card categories not easily mapped to broad inputs:
-      // 'drugstores', 'streaming', 'phone_plans', 'shipping', 'wireless_phone', 'office_supplies',
-      // 'fitness_clubs', 'partner_merchants', 'custom_top_category', 'chosen_category_5pct',
-      // 'chosen_everyday_2pct', 'business_top_category', 'business_bonus_category',
-      // 'business_category_boost', 'hilton_hotels', 'hyatt_hotels'
-      // These might need separate inputs or be handled via 'other' unless mapped specifically
+      drugstores: ['drugstores'],
+      other: ['other'], // 'other' input maps directly to 'other' JSON category
+      // Categories from JSON not directly mapped (handled by 'other' rule):
+      // travel_portal, travel_other, custom_top_category, chosen_category_5pct,
+      // chosen_everyday_2pct, phone_plans, shipping, wireless_phone, office_supplies,
+      // fitness_clubs, partner_merchants, business_top_category, business_bonus_category,
+      // business_category_boost, car_rental_chase_portal
     };
 
+    // Helper to get the default 'other' multiplier for a card
+    const getOtherMultiplier = (card: DetailedCreditCard): number => {
+        const otherRule = card.rewards.find(r => r.category === 'other');
+        return otherRule?.multiplier ?? 1; // Default to 1x if no explicit 'other' rule
+    }
+
+    // Helper to find the best reward rule matching *any* of the target JSON categories
+    const findBestRuleForInput = (card: DetailedCreditCard, uiCategory: keyof SpendInput): CardReward | undefined => {
+        const targetJsonCategories = categoryMap[uiCategory] || [];
+        let bestRule: CardReward | undefined = undefined;
+        let bestMultiplier = 0; // Start below default 'other' rate initially
+
+        for (const jsonCat of targetJsonCategories) {
+            // Ensure card.rewards is an array before finding
+            const rule = Array.isArray(card.rewards) ? card.rewards.find(r => r.category === jsonCat) : undefined;
+            if (rule && rule.multiplier > bestMultiplier) {
+                bestMultiplier = rule.multiplier;
+                bestRule = rule;
+            }
+        }
+
+        // If no specific rule found better than default, return the 'other' rule (or undefined if no 'other')
+        const otherMultiplier = getOtherMultiplier(card);
+        const otherRule = Array.isArray(card.rewards) ? card.rewards.find(r => r.category === 'other') : undefined;
+
+        if (!bestRule || bestMultiplier <= otherMultiplier) {
+            return otherRule;
+        }
+
+        return bestRule;
+    };
+
+
     return cards.map(card => {
-      let totalPoints = 0;
-      // Track spending towards caps (Simplified: assumes annual caps & annualizes monthly spend)
-      const capTracker: { [capKey: string]: number } = {};
-      const annualSpend = Object.entries(spend).reduce((acc, [key, monthlySpend]) => {
-         acc[key as keyof SpendInput] = monthlySpend * 12;
-         return acc;
-      }, {} as { [key in keyof SpendInput]: number });
+      // Ensure card and rewards are valid before processing
+      if (!card || !Array.isArray(card.rewards)) {
+          console.warn(`Skipping card due to missing data: ${card?.["Card Name"]}`);
+          return {
+              ...card,
+              calculatedPoints: 0,
+              calculatedTotalValue: 0,
+              calculatedNetValue: -(card?.["Annual Fee"] ?? 0)
+          } as DetailedCreditCard; // Return a placeholder to avoid breaking sort/map
+      }
 
-      // Iterate through each USER INPUT spending category (travel, dining, etc.)
-      for (const [userInputCategory, userAnnualSpend] of Object.entries(annualSpend)) {
-          if (userAnnualSpend <= 0) continue;
+      let totalAnnualPoints = 0;
+      const otherMultiplier = getOtherMultiplier(card);
 
-          // Find corresponding JSON categories from mapping
-          const targetJsonCategories = categoryMap[userInputCategory] || [];
+      // Cap trackers: Track *annual* spending applied against caps for specific categories/groups
+      // Key: cap identifier (e.g., categories joined, or just category name if solo)
+      // Value: amount of *annual* spend already counted towards this cap at bonus rates
+      const capSpendTracker: { [capKey: string]: number } = {};
 
-          if (userInputCategory === 'other' || targetJsonCategories.length === 0) {
-              // Handle 'other' spend or unmapped categories
-              const rule = getRewardRule(card, 'other');
-              const multiplier = rule?.multiplier ?? 1; // Default to 1x if no 'other' rule somehow
-              totalPoints += userAnnualSpend * multiplier;
-          } else {
-              // Find the best multiplier available for this user category among mapped JSON categories
-              let bestMultiplier = 1; // Start with base rate
-              let appliedRule: CardReward | undefined = getRewardRule(card, 'other'); // Default to 'other' rule
+      // Iterate through each USER INPUT spending category (dining, groceries, etc.)
+      for (const uiCategory of categoryList) {
+          const monthlySpend = spend[uiCategory as keyof SpendInput]; // Ensure correct typing
+          if (monthlySpend <= 0) continue;
 
-              for (const jsonCategory of targetJsonCategories) {
-                   const rule = card.rewards.find(r => r.category === jsonCategory);
-                   if (rule && rule.multiplier > bestMultiplier) {
-                      bestMultiplier = rule.multiplier;
-                      appliedRule = rule;
-                   }
-              }
+          const annualSpendInCategory = monthlySpend * 12;
+          const rule = findBestRuleForInput(card, uiCategory as keyof SpendInput); // Ensure correct typing
+          const multiplier = rule?.multiplier ?? otherMultiplier; // Use rule's multiplier or fallback to 'other'
 
-              // Apply Cap Logic (Simplified for Annual Caps)
-              let spendToAdd = userAnnualSpend;
-              if (appliedRule?.cap && appliedRule.cap.period === 'year') {
-                 const capKey = appliedRule.cap.applies_to_categories.sort().join(',');
-                 const capLimit = appliedRule.cap.amount_usd;
-                 const spentTowardsCap = capTracker[capKey] || 0;
-                 const remainingCap = Math.max(0, capLimit - spentTowardsCap);
-
-                 const spendAtBonusRate = Math.min(userAnnualSpend, remainingCap);
-                 const spendAtOtherRate = Math.max(0, userAnnualSpend - spendAtBonusRate);
-
-                 // Add points at bonus rate (up to cap)
-                 totalPoints += spendAtBonusRate * bestMultiplier;
-                 capTracker[capKey] = spentTowardsCap + spendAtBonusRate; // Update tracker
-
-                 // Add remaining points at 'other' rate
-                 if (spendAtOtherRate > 0) {
-                    const otherRule = getRewardRule(card, 'other');
-                    const otherMultiplier = otherRule?.multiplier ?? 1;
-                    totalPoints += spendAtOtherRate * otherMultiplier;
-                 }
-                 // Reset spendToAdd as it's handled
-                 spendToAdd = 0;
-              } else if (appliedRule?.cap && (appliedRule.cap.period === 'month' || appliedRule.cap.period === 'quarter')) {
-                  // --- Placeholder for Monthly/Quarterly Cap Logic ---
-                  // This requires more complex handling - assuming annual for now
-                  // For a simple monthly cap: check if (userAnnualSpend / 12) > capLimit
-                  // For quarterly: check if (userAnnualSpend / 4) > capLimit
-                  // This basic version applies the bestMultiplier to all spendToAdd here
-                  // --- End Placeholder ---
-                  totalPoints += spendToAdd * bestMultiplier;
-                  spendToAdd = 0; // Mark as handled (even if simplified)
-              }
-
-
-              // If no cap applied or spend remains after cap logic
-              if (spendToAdd > 0) {
-                  totalPoints += spendToAdd * bestMultiplier;
-              }
+          // If the best rule is just the 'other' rule, no cap applies (usually)
+          // Also check if rule or rule.cap is null/undefined
+          if (!rule || rule.category === 'other' || !rule.cap) {
+              totalAnnualPoints += annualSpendInCategory * multiplier;
+              continue; // Move to next spend category
           }
+
+          // --- Handle Caps ---
+          const capInfo = rule.cap;
+          // Ensure applies_to_categories exists and is an array before joining
+          const capKey = Array.isArray(capInfo.applies_to_categories)
+                         ? capInfo.applies_to_categories.sort().join(',') || rule.category
+                         : rule.category; // Use category name if applies_to is missing/invalid
+          const capLimit = capInfo.amount_usd;
+          const capPeriod = capInfo.period;
+
+          let annualPointsAtBonusRate = 0;
+          let annualPointsAtOtherRate = 0;
+
+          const spentTowardsCapSoFar = capSpendTracker[capKey] || 0;
+
+          if (capPeriod === 'year') {
+              const remainingAnnualCapRoom = Math.max(0, capLimit - spentTowardsCapSoFar);
+              const annualSpendAppliedAtBonus = Math.min(annualSpendInCategory, remainingAnnualCapRoom);
+              const annualSpendAppliedAtOther = Math.max(0, annualSpendInCategory - annualSpendAppliedAtBonus);
+
+              annualPointsAtBonusRate = annualSpendAppliedAtBonus * multiplier;
+              annualPointsAtOtherRate = annualSpendAppliedAtOther * otherMultiplier;
+              capSpendTracker[capKey] = spentTowardsCapSoFar + annualSpendAppliedAtBonus; // Update tracker
+
+          } else if (capPeriod === 'month') {
+              const monthlyCapLimit = capLimit;
+              // Calculate points month by month for the whole year
+              for (let month = 0; month < 12; month++) {
+                  const monthlySpendAtBonusRate = Math.min(monthlySpend, monthlyCapLimit);
+                  const monthlySpendAtOtherRate = Math.max(0, monthlySpend - monthlySpendAtBonusRate);
+                  annualPointsAtBonusRate += monthlySpendAtBonusRate * multiplier;
+                  annualPointsAtOtherRate += monthlySpendAtOtherRate * otherMultiplier;
+              }
+              // Note: Monthly caps usually apply *per category* unless specified otherwise in applies_to_categories.
+              // This logic assumes the cap applies independently to spend in this category each month.
+
+          } else if (capPeriod === 'quarter') {
+               // Calculate points quarter by quarter for the whole year
+              const quarterlyCapLimit = capLimit;
+              for (let quarter = 0; quarter < 4; quarter++) {
+                   // Estimate spend in this quarter
+                   const quarterlySpendEstimate = monthlySpend * 3;
+                   // Calculate spend at bonus/other rate for this quarter
+                   const quarterlySpendAtBonusRate = Math.min(quarterlySpendEstimate, quarterlyCapLimit);
+                   const quarterlySpendAtOtherRate = Math.max(0, quarterlySpendEstimate - quarterlySpendAtBonusRate);
+                   // Add this quarter's contribution to annual points
+                   annualPointsAtBonusRate += quarterlySpendAtBonusRate * multiplier;
+                   annualPointsAtOtherRate += quarterlySpendAtOtherRate * otherMultiplier;
+              }
+              // Note: Assumes even spend across months within the quarter. A more precise approach
+              // might track cumulative quarterly spend if categories share a quarterly cap.
+          }
+
+          // Add calculated annual points from this category to the total
+          totalAnnualPoints += annualPointsAtBonusRate + annualPointsAtOtherRate;
+
       } // End loop through user spend categories
 
-      // Calculate initial values
+      // Calculate final values using a default CPP for now
+      // (Integrate dynamic redemption selection later)
       const defaultCpp = getDefaultCpp(card);
-      const totalValue = (totalPoints * defaultCpp) / 100; // Value in dollars
+      const totalValue = (totalAnnualPoints * defaultCpp) / 100; // Value in dollars
       const netValue = totalValue - card["Annual Fee"];
 
       return {
         ...card,
-        calculatedPoints: Math.round(totalPoints), // Store calculated points
-        calculatedTotalValue: parseFloat(totalValue.toFixed(2)), // Store calculated value
-        calculatedNetValue: parseFloat(netValue.toFixed(2)), // Store calculated net value
+        calculatedPoints: Math.round(totalAnnualPoints),
+        calculatedTotalValue: parseFloat(totalValue.toFixed(2)),
+        calculatedNetValue: parseFloat(netValue.toFixed(2)),
       };
-    }).sort((a, b) => (b.calculatedNetValue ?? -Infinity) - (a.calculatedNetValue ?? -Infinity)); // Sort by net value
+    }).sort((a, b) => (b.calculatedNetValue ?? -Infinity) - (a.calculatedNetValue ?? -Infinity));
 
-  }, [spend]); // Dependency array includes spend state
+  }, [spend]); // Recalculate when spend changes
+
 
   // --- AI Recommendation Fetching ---
 
@@ -272,24 +337,29 @@ export default function RewardsCalculator() {
     setLoading(true);
     setError('');
     try {
-        // Prepare data for AI - Send richer context than before
+        // Prepare data for AI - Send richer context
         const topCardsContext = results.slice(0, 5).map(card => ({ // Send top 5 for context
             name: card["Card Name"],
             issuer: card.Issuer,
             annualFee: card["Annual Fee"],
             netValue: card.calculatedNetValue,
             points: card.calculatedPoints,
-            topRewards: card.rewards // Send reward rules
-                .filter(r => r.multiplier > 1 && r.category !== 'other') // Filter for bonus categories
-                .sort((a, b) => b.multiplier - a.multiplier) // Sort by multiplier
-                .slice(0, 3) // Get top 3 bonus categories
-                .map(r => `${r.multiplier}x on ${r.category}${r.cap ? ` (up to $${r.cap.amount_usd}/${r.cap.period})` : ''}`),
-            keyPerks: card.perks // Send perk info
-                .filter(p => p.type !== 'tier_qualifying_boost' && p.type !== 'points_back') // Filter out less tangible perks for brevity
+            // Refine topRewards based on actual structure
+            topRewards: Array.isArray(card.rewards) ? card.rewards
+                .filter(r => r.multiplier > 1 && r.category !== 'other')
+                .sort((a, b) => b.multiplier - a.multiplier)
+                .slice(0, 3)
+                .map(r => `${r.multiplier}x on ${r.category}${r.cap ? ` (up to $${r.cap.amount_usd}/${r.cap.period})` : ''}`) : [],
+            keyPerks: Array.isArray(card.perks) ? card.perks
+                .filter(p => p.type !== 'tier_qualifying_boost' && p.type !== 'points_back')
                 .map(p => p.description || p.type)
-                .slice(0, 3), // Limit perks shown
-            signupBonus: card.signUpBonus.description, // Include bonus description
+                .slice(0, 3) : [],
+            signupBonus: card.signUpBonus?.description || "N/A", // Handle potential missing bonus
         }));
+
+      const currentAnnualSpend = Object.entries(spend).reduce((acc, [key, monthlySpend]) => {
+           acc[key as keyof SpendInput] = monthlySpend * 12; return acc;
+      }, {} as { [key in keyof SpendInput]: number });
 
 
       const res = await fetch('/api/gpt-recommend', { // Ensure this API route exists and works
@@ -298,9 +368,7 @@ export default function RewardsCalculator() {
         // Send structured data including calculated values and richer card context
         body: JSON.stringify({
             spend: spend, // Send monthly spend
-            annualSpend: Object.entries(spend).reduce((acc, [key, monthlySpend]) => {
-                acc[key as keyof SpendInput] = monthlySpend * 12; return acc;
-            }, {} as { [key in keyof SpendInput]: number }),
+            annualSpend: currentAnnualSpend, // Send annual spend
             topCards: topCardsContext // Send the richer context
         }),
       });
@@ -324,18 +392,20 @@ export default function RewardsCalculator() {
       <h2>AI-Powered Travel Rewards Calculator</h2>
       <p>Enter your estimated *monthly* spending per category.</p>
 
-      <form style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '2rem', maxWidth: '800px' }}>
+      {/* Updated Form with Granular Categories */}
+      <form style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '2rem', maxWidth: '1000px' }}>
         {categoryList.map((category) => (
           <div key={category} style={{ display: 'flex', flexDirection: 'column' }}>
             <label htmlFor={category} style={{ marginBottom: '0.5rem', textTransform: 'capitalize' }}>
-              {/* Add spaces for camelCase */}
-              {category.replace(/([A-Z])/g, ' $1')} Spend ($):
+              {/* Add spaces for camelCase or specific labels */}
+              {category === 'onlineShopping' ? 'Online Shopping (US)' : category.replace(/([A-Z])/g, ' $1')} Spend ($):
             </label>
             <input
               type="number"
               id={category}
               name={category}
-              value={spend[category]}
+              // Ensure spend[category] is accessed correctly
+              value={spend[category as keyof SpendInput]}
               onChange={handleChange}
               min={0}
               step={10}
@@ -345,34 +415,36 @@ export default function RewardsCalculator() {
         ))}
       </form>
 
+      {/* Results List */}
       <div style={{ marginTop: '2rem' }}>
         <h3>Top Cards Based on Your Spend:</h3>
         <ul style={{ listStyle: 'none', padding: 0 }}>
-          {/* Check if results exist before mapping */}
           {results && results.length > 0 ? (
              results.slice(0, 10).map((card) => (
-              <li key={card["Card Name"]} style={{ border: '1px solid #eee', borderRadius: '4px', padding: '1rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-                <img
-                  src={card.image || 'placeholder.png'} // Add a fallback image if needed
-                  alt={card["Card Name"]}
-                  style={{ height: '50px', objectFit: 'contain', flexShrink: 0 }}
-                  onError={(e) => { (e.target as HTMLImageElement).src = 'placeholder.png'; }} // Handle broken images
-                 />
-                <div style={{ flexGrow: 1 }}>
-                  <strong>{card.Issuer} - {card["Card Name"]}</strong>
-                  <div>Net Value: <span style={{ color: (card.calculatedNetValue ?? 0) >= 0 ? 'green' : 'red', fontWeight: 'bold' }}>${(card.calculatedNetValue ?? 0).toFixed(2)}</span>/year</div>
-                  <small>
-                     (Est. Rewards: ${(card.calculatedTotalValue ?? 0).toFixed(2)},
-                      Fee: ${card["Annual Fee"]},
-                      Points: {card.calculatedPoints ?? 0})
-                  </small>
-                   {/* Optional: Add links */}
-                   <div style={{marginTop: '0.5rem'}}>
-                      <a href={card.reviewLink} target="_blank" rel="noopener noreferrer" style={{ marginRight: '1rem', fontSize: '0.9em' }}>Review</a>
-                      <a href={card.applyLink} target="_blank" rel="noopener noreferrer" style={{ fontSize: '0.9em' }}>Apply</a>
-                   </div>
-                </div>
-              </li>
+              // Ensure card is valid before rendering
+              card && card["Card Name"] ? (
+                <li key={card["Card Name"]} style={{ border: '1px solid #eee', borderRadius: '4px', padding: '1rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+                  <img
+                    src={card.image || 'placeholder.png'}
+                    alt={card["Card Name"]}
+                    style={{ height: '50px', objectFit: 'contain', flexShrink: 0 }}
+                    onError={(e) => { (e.target as HTMLImageElement).src = 'placeholder.png'; }}
+                   />
+                  <div style={{ flexGrow: 1 }}>
+                    <strong>{card.Issuer} - {card["Card Name"]}</strong>
+                    <div>Net Value: <span style={{ color: (card.calculatedNetValue ?? 0) >= 0 ? 'green' : 'red', fontWeight: 'bold' }}>${(card.calculatedNetValue ?? 0).toFixed(2)}</span>/year</div>
+                    <small>
+                       (Est. Rewards: ${(card.calculatedTotalValue ?? 0).toFixed(2)},
+                        Fee: ${card["Annual Fee"]},
+                        Points: {card.calculatedPoints ?? 0})
+                    </small>
+                     <div style={{marginTop: '0.5rem'}}>
+                        <a href={card.reviewLink} target="_blank" rel="noopener noreferrer" style={{ marginRight: '1rem', fontSize: '0.9em' }}>Review</a>
+                        <a href={card.applyLink} target="_blank" rel="noopener noreferrer" style={{ fontSize: '0.9em' }}>Apply</a>
+                     </div>
+                  </div>
+                </li>
+              ) : null // Render nothing if card data is incomplete/invalid
              ))
           ) : (
              <li>Enter spending values to see results.</li>
@@ -380,6 +452,7 @@ export default function RewardsCalculator() {
         </ul>
       </div>
 
+        {/* AI Button and Suggestion Section */}
       <button onClick={getAiRecommendation} disabled={loading} style={{ marginTop: '1rem', padding: '0.8rem 1.5rem', cursor: 'pointer', background: '#007bff', color: 'white', border: 'none', borderRadius: '4px', fontSize: '1rem' }}>
         {loading ? 'Generating Recommendation...' : 'Get AI Recommendation'}
       </button>
@@ -388,7 +461,6 @@ export default function RewardsCalculator() {
       {aiSuggestion && (
         <div style={{ marginTop: '2rem', background: '#f0f8ff', padding: '1.5rem', borderRadius: '4px', border: '1px solid #e0f0ff' }}>
           <h4>AI Suggestion:</h4>
-          {/* Use pre-wrap to respect whitespace/newlines from AI */}
           <p style={{ whiteSpace: 'pre-wrap' }}>{aiSuggestion}</p>
         </div>
       )}
