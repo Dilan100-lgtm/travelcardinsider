@@ -1,18 +1,21 @@
-// File: pages/api/gpt-recommend.ts
+// File: src/pages/api/gpt-recommend.ts
 
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { OpenAI } from 'openai';
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY, // Put your key in .env.local
+  apiKey: process.env.OPENAI_API_KEY!,
 });
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Only POST requests are allowed' });
-  }
+  if (req.method !== 'POST') return res.status(405).end();
 
   const { topCards, spend } = req.body;
+
+  // ✅ Move logs inside the function and after declaration
+  console.log("API Call Triggered");
+  console.log("Spend:", spend);
+  console.log("Top Cards:", topCards);
 
   try {
     const response = await openai.chat.completions.create({
@@ -20,21 +23,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       messages: [
         {
           role: 'system',
-          content:
-            'You are a travel credit card expert. Given a user\'s monthly spending and a list of top-matching credit cards, recommend the best 1-2 cards and explain why based on reward potential.',
+          content: 'You are a credit card rewards expert. Recommend the best cards based on user monthly spend and reward types.',
         },
         {
           role: 'user',
-          content: `User's monthly spend: ${JSON.stringify(spend, null, 2)}\n\nTop 10 credit cards: ${JSON.stringify(topCards, null, 2)}`,
+          content: `Here are the user inputs:\nSpend: ${JSON.stringify(spend)}\nTop 10 Cards: ${JSON.stringify(topCards)}`,
         },
       ],
       temperature: 0.7,
     });
 
-    const message = response.choices[0]?.message?.content ?? 'No recommendation generated.';
+    const message = response.choices[0]?.message?.content ?? 'No response';
     res.status(200).json({ recommendation: message });
-  } catch (error: any) {
-    console.error('OpenAI Error:', error.message);
-    res.status(500).json({ error: 'AI failed to generate a response. Check API key or usage quota.' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'GPT API error' });
   }
 }

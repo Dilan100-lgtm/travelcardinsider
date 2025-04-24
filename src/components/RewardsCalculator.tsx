@@ -129,8 +129,8 @@ export default function RewardsCalculator() {
         </ul>
       </div>
 
-      <button onClick={getAiRecommendation} style={{ marginTop: '2rem', padding: '0.5rem 1rem' }}>
-        {loading ? 'Generating AI Recommendation...' : 'Get AI Recommendation'}
+      <button onClick={getAiRecommendation} style={{ marginTop: '1rem' }}>
+        {loading ? 'Generating...' : 'Get AI Recommendation'}
       </button>
 
       {error && <p style={{ color: 'red', marginTop: '1rem' }}>{error}</p>}
