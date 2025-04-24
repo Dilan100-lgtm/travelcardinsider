@@ -223,35 +223,51 @@ export default function RewardsCalculator() {
     setLoading(true);
     setError('');
     try {
-        // Prepare data for AI - Add First Year Value, Perk Value
-        const topCardsContext = results.slice(0, 5).map(card => {
-             const selectedCpp = getSelectedCpp(card, redemptionStrategy);
-             return {
-                name: card["Card Name"],
-                issuer: card.Issuer,
-                annualFee: card["Annual Fee"],
-                firstYearNetValue: card.calculatedFirstYearNetValue, // Add First Year
-                ongoingNetValue: card.calculatedNetValue, // Add Ongoing
-                rewardsValue: card.calculatedRewardsValue,
-                annualPerkValue: card.calculatedAnnualPerkValue, // Add Perk Value
-                points: card.calculatedPoints,
-                cppUsed: selectedCpp,
-                redemptionStrategyUsed: redemptionStrategy,
-                // Refine topRewards based on actual structure
-                topRewards: Array.isArray(card.rewards) ? card.rewards
-                    .filter(r => r.multiplier > 1 && r.category !== 'other')
-                    .sort((a, b) => b.multiplier - a.multiplier)
-                    .slice(0, 3)
-                    .map(r => `${r.multiplier}x on ${r.category}${r.cap ? ` (up to $${r.cap.amount_usd}/${r.cap.period})` : ''}`) : [],
-                 // Send more detailed perk info
-                 keyPerks: Array.isArray(card.perks) ? card.perks
-                    .filter(p => ['lounge_access', 'free_checked_bag', 'travel_credit', 'companion_fare', 'companion_certificate', 'global_entry_tsa_precheck_credit', 'annual_hotel_credit'].includes(p.type)) // Filter for key perk types
-                    .map(p => `${p.description || p.type}${p.value_usd ? ` ($${p.value_usd}${p.frequency ? '/'+p.frequency : ''})` : ''}`) // Add value/frequency if available
-                    .slice(0, 4) : [], // Show slightly more perks
-                signupBonusValue: card.signUpBonus?.estimated_value_usd ?? 0,
-                signupBonusDesc: card.signUpBonus?.description || "N/A",
-             };
-        });
+        // Inside RewardsCalculator component -> getAiRecommendation function
+
+  // Prepare data for AI - Ensure clear field names
+  const topCardsContext = results.slice(0, 5).map(card => { // Send top 5-7 for better context
+    const selectedCpp = getSelectedCpp(card, redemptionStrategy);
+    return {
+       // Card Identification
+       cardName: card["Card Name"],
+       issuer: card.Issuer,
+       cardType: card["Card Type"], // Personal or Business
+
+       // Calculated Values (Crucial Context)
+       annualFee: card["Annual Fee"],
+       estimatedFirstYearNetValue: card.calculatedFirstYearNetValue,
+       estimatedOngoingNetValue: card.calculatedNetValue, // (Rewards + Perks - Fee)
+       calculatedAnnualRewardsValue: card.calculatedRewardsValue,
+       calculatedAnnualPerkValue: card.calculatedAnnualPerkValue,
+       calculatedAnnualPoints: card.calculatedPoints,
+       cppUsedForValue: selectedCpp, // CPP used in calculation
+
+       // Key Features for AI Analysis
+       signUpBonusValue: card.signUpBonus?.estimated_value_usd ?? 0,
+       signUpBonusDescription: card.signUpBonus?.description || "N/A",
+       topRewardCategories: Array.isArray(card.rewards) ? card.rewards
+           .filter(r => r.multiplier > 1 && r.category !== 'other')
+           .sort((a, b) => b.multiplier - a.multiplier)
+           .slice(0, 4) // Send maybe top 4 bonus categories
+           .map(r => ({
+               category: r.category,
+               multiplier: r.multiplier,
+               notes: r.notes,
+               cap: r.cap ? `$${r.cap.amount_usd}/${r.cap.period}` : null
+           })) : [],
+        keyPerks: Array.isArray(card.perks) ? card.perks
+           .filter(p => ['lounge_access', 'free_checked_bag', 'travel_credit', 'companion_fare', 'companion_certificate', 'global_entry_tsa_precheck_credit', 'annual_hotel_credit', 'anniversary_points', 'anniversary_miles', 'hilton_status'].includes(p.type) || p.value_usd > 0 || p.estimated_value_usd > 0) // Keep valuable perks
+           .map(p => ({
+               type: p.type,
+               description: p.description || p.type.replace(/_/g, ' '),
+               value: p.value_usd || p.estimated_value_usd, // Combine value fields
+               frequency: p.frequency
+           }))
+           .slice(0, 5) : [], // Limit displayed perks slightly
+    };
+});
+// ... rest of the fetch call sending spend, annualSpend, redemptionStrategy, and topCards: topCardsContext
 
       const currentAnnualSpend = Object.entries(spend).reduce((acc, [key, monthlySpend]) => {
            acc[key as keyof SpendInput] = monthlySpend * 12; return acc;
