@@ -1,16 +1,21 @@
-// File: pages/api/gpt-recommend.ts
+// File: src/pages/api/gpt-recommend.ts
 
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { OpenAI } from 'openai';
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY, // Put your key in .env.local
+  apiKey: process.env.OPENAI_API_KEY!,
 });
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') return res.status(405).end();
 
   const { topCards, spend } = req.body;
+
+  // ✅ Move logs inside the function and after declaration
+  console.log("API Call Triggered");
+  console.log("Spend:", spend);
+  console.log("Top Cards:", topCards);
 
   try {
     const response = await openai.chat.completions.create({
