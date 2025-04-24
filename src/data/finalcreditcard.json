@@ -1,462 +1,6 @@
 {
   "cards": [
     {
-      "Card Name": "Bank of America\u00ae Travel Rewards Credit Card",
-      "Issuer": "Bank of America",
-      "image": "/8blm_trvsigcm_v_250x158.png",
-      "ratingValue": 7.4,
-      "applyLink": "https://www.bankofamerica.com/credit-cards/products/travel-rewards-credit-card/",
-      "ratesandfees": "https://www.bankofamerica.com/credit-cards/products/travel-rewards-credit-card/",
-      "reviewLink": "/cards/boa-travel-rewards",
-      "Card Type": "Personal",
-      "Annual Fee": 0.0,
-      "APR Range (Purchases)": "15.74%\u201325.74% Variable",
-      "Foreign Transaction Fee": 0.0,
-      "Intro APR": "0% intro APR on purchases for 15 months",
-      "Credit Score Requirement": "Good\u2013Excellent (670+)",
-      "signUpBonus": {
-        "points": 25000,
-        "description": "Earn 25,000 online bonus points after spending $1,000 in 90 days",
-        "minSpend": 1000,
-        "durationDays": 90,
-        "estimated_value_usd": 250
-      },
-      "rewardProgram": "Bank of America\u00ae Travel Rewards",
-      "rewards": [
-        {
-          "multiplier": 3,
-          "category": "travel_portal",
-          "notes": "3x points on travel purchases booked through Bank of America\u00ae Travel Center",
-          "cap": null
-        },
-        {
-          "multiplier": 1.5,
-          "category": "other",
-          "notes": "1.5x points on all other purchases",
-          "cap": null
-        }
-      ],
-      "redemptionOptions": {
-        "travel_statement_credit_cpp": 1.0,
-        "cash_back_cpp": 0.6
-      },
-      "perks": []
-    },
-    {
-      "Card Name": "Blue Cash Everyday\u00ae Card",
-      "Issuer": "American Express",
-      "image": "/NUS000000305_480x304_straight_withname.avif",
-      "ratingValue": 7.7,
-      "applyLink": "https://www.americanexpress.com/us/credit-cards/card/blue-cash-everyday/",
-      "ratesandfees": "https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/blue-cash-everyday-credit-card/25330-10-0#FeeTable",
-      "reviewLink": "/cards/blue-cash-everyday",
-      "Card Type": "Personal",
-      "Annual Fee": 0.0,
-      "APR Range (Purchases)": "18.49%\u201329.49% Variable",
-      "Foreign Transaction Fee": 2.7,
-      "Intro APR": "0% intro APR on purchases for 15 months",
-      "Credit Score Requirement": "Good\u2013Excellent (670+)",
-      "signUpBonus": {
-        "points": null,
-        "description": "Earn $200 statement credit after spending $2,000 in 6 months",
-        "minSpend": 2000,
-        "durationDays": 180,
-        "estimated_value_usd": 200
-      },
-      "rewardProgram": "Blue Cash Rewards",
-      "rewards": [
-        {
-          "multiplier": 3,
-          "category": "groceries_us",
-          "notes": "3% cash back at U.S. supermarkets (up to $6,000 per year, then 1%)",
-          "cap": {
-            "amount_usd": 6000,
-            "period": "year",
-            "applies_to_categories": [
-              "groceries_us"
-            ]
-          }
-        },
-        {
-          "multiplier": 3,
-          "category": "gas_us",
-          "notes": "3% cash back at U.S. gas stations",
-          "cap": null
-        },
-        {
-          "multiplier": 3,
-          "category": "online_retail_us",
-          "notes": "3% cash back on U.S. online retail purchases (up to $6,000 per year, then 1%)",
-          "cap": {
-            "amount_usd": 6000,
-            "period": "year",
-            "applies_to_categories": [
-              "online_retail_us"
-            ]
-          }
-        },
-        {
-          "multiplier": 1,
-          "category": "other",
-          "notes": "1% cash back on other purchases",
-          "cap": null
-        }
-      ],
-      "redemptionOptions": {
-        "cash_back_cpp": 1.0
-      },
-      "perks": []
-    },
-    {
-      "Card Name": "Chase Freedom Unlimited\u00ae Credit Card",
-      "Issuer": "Chase",
-      "image": "/freedom_unlimited_card_alt (1).png",
-      "ratingValue": 9.0,
-      "applyLink": "https://creditcards.chase.com/cash-back-credit-cards/freedom/unlimited",
-      "ratesandfees": "https://creditcards.chase.com/cash-back-credit-cards/freedom/unlimited",
-      "reviewLink": "/cards/chase-freedom-unlimited",
-      "Card Type": "Personal",
-      "Annual Fee": 0.0,
-      "APR Range (Purchases)": "19.49%\u201327.24% Variable",
-      "Foreign Transaction Fee": 3.0,
-      "Intro APR": "0% intro APR on purchases for 15 months",
-      "Credit Score Requirement": "Good\u2013Excellent (670+)",
-      "signUpBonus": {
-        "points": 20000,
-        "description": "Earn $200 bonus (20,000 points) after spending $500 in 3 months",
-        "minSpend": 500,
-        "durationDays": 90,
-        "estimated_value_usd": 200
-      },
-      "rewardProgram": "Chase Ultimate Rewards",
-      "rewards": [
-        {
-          "multiplier": 5,
-          "category": "travel_portal",
-          "notes": "5% cash back on travel purchased through Chase Travel\u2120",
-          "cap": null
-        },
-        {
-          "multiplier": 3,
-          "category": "dining",
-          "notes": "3% cash back on dining at restaurants, including takeout and delivery services",
-          "cap": null
-        },
-        {
-          "multiplier": 3,
-          "category": "drugstores",
-          "notes": "3% cash back on drugstore purchases",
-          "cap": null
-        },
-        {
-          "multiplier": 1.5,
-          "category": "other",
-          "notes": "1.5% cash back on all other purchases",
-          "cap": null
-        }
-      ],
-      "redemptionOptions": {
-        "cash_back_cpp": 1.0,
-        "chase_travel_portal_cpp": 1.0
-      },
-      "perks": []
-    },
-    {
-      "Card Name": "Citi Custom Cash\u00ae Card",
-      "Issuer": "Citi",
-      "image": "/download.png",
-      "ratingValue": 7.5,
-      "applyLink": "https://www.citi.com/credit-cards/citi-custom-cash-credit-card",
-      "ratesandfees": "https://www.citi.com/credit-cards/citi-custom-cash-credit-card",
-      "reviewLink": "/cards/citi-custom-cash",
-      "Card Type": "Personal",
-      "Annual Fee": 0.0,
-      "APR Range (Purchases)": "18.99%\u201328.99% Variable",
-      "Foreign Transaction Fee": 3.0,
-      "Intro APR": "0% intro APR on purchases and balance transfers for 15 months",
-      "Credit Score Requirement": "Good\u2013Excellent (670+)",
-      "signUpBonus": {
-        "points": 20000,
-        "description": "Earn 20,000 ThankYou\u00ae Points after spending $1,500 in 6 months",
-        "minSpend": 1500,
-        "durationDays": 180,
-        "estimated_value_usd": 200
-      },
-      "rewardProgram": "Citi ThankYou Points",
-      "rewards": [
-        {
-          "multiplier": 5,
-          "category": "custom_top_category",
-          "notes": "5% back (as ThankYou\u00ae Points) on up to $500 in your highest eligible spend category each billing cycle",
-          "cap": {
-            "amount_usd": 500,
-            "period": "month",
-            "applies_to_categories": [
-              "custom_top_category"
-            ]
-          }
-        },
-        {
-          "multiplier": 1,
-          "category": "other",
-          "notes": "1% back on all other purchases",
-          "cap": null
-        }
-      ],
-      "redemptionOptions": {
-        "cash_back_cpp": 1.0
-      },
-      "perks": []
-    },
-    {
-      "Card Name": "Citi\u00ae Diamond Preferred\u00ae Card",
-      "Issuer": "Citi",
-      "image": "/download (1).png",
-      "ratingValue": 6.5,
-      "applyLink": "https://www.citi.com/credit-cards/citi-diamond-preferred-credit-card",
-      "ratesandfees": "https://www.citi.com/credit-cards/citi-diamond-preferred-credit-card",
-      "reviewLink": "/cards/citi-diamond-preferred",
-      "Card Type": "Personal",
-      "Annual Fee": 0.0,
-      "APR Range (Purchases)": "17.99%\u201328.74% Variable",
-      "Foreign Transaction Fee": 3.0,
-      "Intro APR": "0% intro APR for 21 months on balance transfers",
-      "Credit Score Requirement": "Good\u2013Excellent (670+)",
-      "signUpBonus": {
-        "points": null,
-        "description": "No sign\u2011up bonus currently",
-        "minSpend": null,
-        "durationDays": null,
-        "estimated_value_usd": 0
-      },
-      "rewardProgram": null,
-      "rewards": [],
-      "redemptionOptions": {
-        "cash_back_cpp": 0
-      },
-      "perks": []
-    },
-    {
-      "Card Name": "Discover it\u00ae Miles Credit Card",
-      "Issuer": "Discover",
-      "image": "/cardart-travel-beachcard-620-382.webp",
-      "ratingValue": 7.0,
-      "applyLink": "https://www.discover.com/credit-cards/travel/",
-      "ratesandfees": "https://www.discover.com/credit-cards/travel/",
-      "reviewLink": "/cards/discover-it-miles",
-      "Card Type": "Personal",
-      "Annual Fee": 0.0,
-      "APR Range (Purchases)": "15.99%\u201326.99% Variable",
-      "Foreign Transaction Fee": 0.0,
-      "Intro APR": "0% intro APR on purchases for 14 months",
-      "Credit Score Requirement": "Good\u2013Excellent (670+)",
-      "signUpBonus": {
-        "points": null,
-        "description": "Unlimited Mile\u2011for\u2011Mile Match at the end of your first year",
-        "minSpend": 0,
-        "durationDays": 365,
-        "estimated_value_usd": null
-      },
-      "rewardProgram": "Discover Miles",
-      "rewards": [
-        {
-          "multiplier": 1.5,
-          "category": "other",
-          "notes": "1.5x Miles on all purchases",
-          "cap": null
-        }
-      ],
-      "redemptionOptions": {
-        "travel_statement_credit_cpp": 1.0,
-        "cash_back_cpp": 1.0
-      },
-      "perks": [
-        {
-          "type": "first_year_match",
-          "description": "Discover will match all Miles earned at the end of the first year",
-          "estimated_value_usd": null
-        }
-      ]
-    },
-    {
-      "Card Name": "U.S. Bank Cash+\u00ae Visa Signature\u00ae Card",
-      "Issuer": "U.S. Bank",
-      "image": "/Cash+_Front_Angle_Reflection.png",
-      "ratingValue": 7.4,
-      "applyLink": "https://www.usbank.com/credit-cards/cash-plus-visa-signature-credit-card.html",
-      "ratesandfees": "https://www.usbank.com/credit-cards/cash-plus-visa-signature-credit-card.html",
-      "reviewLink": "/cards/us-bank-cash-plus",
-      "Card Type": "Personal",
-      "Annual Fee": 0.0,
-      "APR Range (Purchases)": "18.24%\u201328.24% Variable",
-      "Foreign Transaction Fee": 3.0,
-      "Intro APR": "0% intro APR for 15 months on purchases and balance transfers",
-      "Credit Score Requirement": "Good\u2013Excellent (670+)",
-      "signUpBonus": {
-        "points": null,
-        "description": "Earn $200 bonus after spending $1,000 in 90 days",
-        "minSpend": 1000,
-        "durationDays": 90,
-        "estimated_value_usd": 200
-      },
-      "rewardProgram": "U.S. Bank Cash+ Rewards",
-      "rewards": [
-        {
-          "multiplier": 5,
-          "category": "chosen_category_5pct",
-          "notes": "5% cash back on your selected two categories (combined up to $2,000 each quarter)",
-          "cap": {
-            "amount_usd": 2000,
-            "period": "quarter",
-            "applies_to_categories": [
-              "chosen_category_5pct"
-            ]
-          }
-        },
-        {
-          "multiplier": 2,
-          "category": "chosen_everyday_2pct",
-          "notes": "2% cash back on your chosen everyday category (e.g., gas, groceries or restaurants) each quarter",
-          "cap": null
-        },
-        {
-          "multiplier": 1,
-          "category": "other",
-          "notes": "1% cash back on all other purchases",
-          "cap": null
-        }
-      ],
-      "redemptionOptions": {
-        "cash_back_cpp": 1.0
-      },
-      "perks": []
-    },
-    {
-      "Card Name": "Wells Fargo Active Cash\u00ae Card",
-      "Issuer": "Wells Fargo",
-      "image": "/Cash+_Front_Angle_Reflection.png",
-      "ratingValue": 7.4,
-      "applyLink": "https://creditcards.wellsfargo.com/active-cash-credit-card/",
-      "ratesandfees": "https://creditcards.wellsfargo.com/active-cash-credit-card/",
-      "reviewLink": "/cards/wells-fargo-active-cash",
-      "Card Type": "Personal",
-      "Annual Fee": 0.0,
-      "APR Range (Purchases)": "19.99%\u201329.99% Variable",
-      "Foreign Transaction Fee": 3.0,
-      "Intro APR": "0% intro APR for 15 months on purchases and qualifying balance transfers",
-      "Credit Score Requirement": "Good\u2013Excellent (670+)",
-      "signUpBonus": {
-        "points": null,
-        "description": "Earn $200 cash rewards bonus after spending $500 in 3 months",
-        "minSpend": 500,
-        "durationDays": 90,
-        "estimated_value_usd": 200
-      },
-      "rewardProgram": "Cash Rewards",
-      "rewards": [
-        {
-          "multiplier": 2,
-          "category": "other",
-          "notes": "Unlimited 2% cash rewards on purchases",
-          "cap": null
-        }
-      ],
-      "redemptionOptions": {
-        "cash_back_cpp": 1.0
-      },
-      "perks": []
-    }
-  ]
-}
-{
-  "cards": [
-    {
-      "Card Name": "Wells Fargo Reflect\u00ae Card",
-      "Issuer": "Wells Fargo",
-      "image": "/Reflect_homepage_m.png",
-      "ratingValue": 6.6,
-      "applyLink": "https://creditcards.wellsfargo.com/reflect-visa-credit-card/",
-      "ratesandfees": "https://creditcards.wellsfargo.com/reflect-visa-credit-card/terms/",
-      "reviewLink": "/cards/wells-fargo-reflect",
-      "Card Type": "Personal",
-      "Annual Fee": 0.0,
-      "APR Range (Purchases)": "17.99%\u201329.99% Variable",
-      "Foreign Transaction Fee": 3.0,
-      "Intro APR": "0% intro APR up to 21 months from account opening",
-      "Credit Score Requirement": "Good\u2013Excellent (670+)",
-      "signUpBonus": {
-        "points": null,
-        "description": "No rewards program",
-        "minSpend": null,
-        "durationDays": null,
-        "estimated_value_usd": 0
-      },
-      "rewardProgram": null,
-      "rewards": [],
-      "redemptionOptions": {},
-      "perks": []
-    },
-    {
-      "Card Name": "U.S. Bank Altitude\u00ae Connect Visa Signature\u00ae Card",
-      "Issuer": "U.S. Bank",
-      "image": "/Reflect_homepage_m.png",
-      "ratingValue": 7.6,
-      "applyLink": "https://www.usbank.com/credit-cards/altitude-connect-visa-signature-credit-card.html",
-      "ratesandfees": "https://www.usbank.com/credit-cards/altitude-connect-visa-signature-credit-card.html",
-      "reviewLink": "/cards/us-bank-altitude-connect",
-      "Card Type": "Personal",
-      "Annual Fee": 95.0,
-      "APR Range (Purchases)": "18.24%\u201326.74% Variable",
-      "Foreign Transaction Fee": 0.0,
-      "Intro APR": "0% intro APR on balance transfers for 12 months",
-      "Credit Score Requirement": "Good\u2013Excellent (700+)",
-      "signUpBonus": {
-        "points": 20000,
-        "description": "Earn 20,000 bonus points after spending $1,000 in 90 days",
-        "minSpend": 1000,
-        "durationDays": 90,
-        "estimated_value_usd": 200
-      },
-      "rewardProgram": "U.S. Bank Altitude Rewards",
-      "rewards": [
-        {
-          "multiplier": 4,
-          "category": "travel_other",
-          "notes": "4x points on travel purchases",
-          "cap": null
-        },
-        {
-          "multiplier": 4,
-          "category": "gas",
-          "notes": "4x points at gas stations",
-          "cap": null
-        },
-        {
-          "multiplier": 2,
-          "category": "dining",
-          "notes": "2x points on dining",
-          "cap": null
-        },
-        {
-          "multiplier": 2,
-          "category": "streaming",
-          "notes": "2x points on select streaming services",
-          "cap": null
-        },
-        {
-          "multiplier": 1,
-          "category": "other",
-          "notes": "1x points on all other purchases",
-          "cap": null
-        }
-      ],
-      "redemptionOptions": {
-        "travel_statement_credit_cpp": 1.0,
-        "cash_back_cpp": 1.0
-      },
-      "perks": []
-    },
-    {
       "Card Name": "Aeroplan\u00ae Card",
       "Issuer": "Chase",
       "image": "/aeroplan_card.png",
@@ -587,6 +131,277 @@
       ]
     },
     {
+      "Card Name": "American Express Business Gold Card",
+      "Issuer": "American Express",
+      "image": "/Autograph-No-Fee-Card-RGB_d.png",
+      "ratingValue": 7.1,
+      "applyLink": "https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/american-express-business-gold-card-amex/",
+      "ratesandfees": "https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/businessgold-card/45094-9-0?key=tncBody&rwdFlag=rwd",
+      "reviewLink": "/cards/amex-business-gold",
+      "Card Type": "Business",
+      "Annual Fee": 295,
+      "APR Range (Purchases)": "18%\u201326% Variable (Pay Over Time)",
+      "Foreign Transaction Fee": 0.0,
+      "Intro APR": null,
+      "Credit Score Requirement": "Good\u2013Excellent (700+)",
+      "signUpBonus": {
+        "description": "Earn 100,000 Membership Rewards\u00ae points after spending $15,000 in 3 months",
+        "points": 100000,
+        "minSpend": 15000,
+        "durationDays": 90,
+        "estimated_value_usd": 2000
+      },
+      "rewardProgram": "American Express Membership Rewards",
+      "rewards": [
+        {
+          "multiplier": 4,
+          "category": "business_top_category",
+          "notes": "4x points on the 2 categories where your business spends the most each billing cycle (up to $150K per year)",
+          "cap": {
+            "amount_usd": 150000,
+            "period": "year",
+            "applies_to_categories": [
+              "business_top_category"
+            ]
+          }
+        },
+        {
+          "multiplier": 1,
+          "category": "other",
+          "notes": "1x points on other purchases",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "amex_travel_cpp": 1.0,
+        "transfer_partner_average_cpp": 2.0,
+        "cash_back_cpp": 0.6
+      },
+      "perks": []
+    },
+    {
+      "Card Name": "American Express\u00ae Gold Card",
+      "Issuer": "American Express",
+      "image": "/NUS000000174_480x304_straight_withname.avif",
+      "ratingValue": 8.8,
+      "applyLink": "https://www.americanexpress.com/us/credit-cards/card/gold-card/",
+      "ratesandfees": "https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/gold-card/25330-10-0#FeeTable",
+      "reviewLink": "/cards/american-express-gold",
+      "Card Type": "Personal",
+      "Annual Fee": 250.0,
+      "APR Range (Purchases)": "20.24%\u201327.24% Variable",
+      "Foreign Transaction Fee": 0.0,
+      "Intro APR": null,
+      "Credit Score Requirement": "Good\u2013Excellent (700+)",
+      "signUpBonus": {
+        "points": 60000,
+        "description": "Earn 60,000 Membership Rewards points after spending $6,000 in 6 months",
+        "minSpend": 6000,
+        "durationDays": 180,
+        "estimated_value_usd": 900
+      },
+      "rewardProgram": "Membership Rewards",
+      "rewards": [
+        {
+          "multiplier": 4,
+          "category": "dining",
+          "notes": "4x points at restaurants worldwide, including takeout and delivery",
+          "cap": null
+        },
+        {
+          "multiplier": 4,
+          "category": "groceries_us",
+          "notes": "4x points at U.S. supermarkets (up to $25,000 per year)",
+          "cap": {
+            "amount_usd": 25000,
+            "period": "year",
+            "applies_to_categories": [
+              "groceries_us"
+            ]
+          }
+        },
+        {
+          "multiplier": 3,
+          "category": "flights_direct",
+          "notes": "3x points on flights booked directly with airlines or through Amex Travel",
+          "cap": null
+        },
+        {
+          "multiplier": 1,
+          "category": "other",
+          "notes": "1x points on other purchases",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "amex_travel_cpp": 1.0,
+        "transfer_partner_average_cpp": 2.0,
+        "cash_back_cpp": 0.6
+      },
+      "perks": [
+        {
+          "type": "dining_credit",
+          "value_usd": 120,
+          "frequency": "annual",
+          "notes": "$10 monthly dining credit (select partners)"
+        },
+        {
+          "type": "uber_cash",
+          "value_usd": 120,
+          "frequency": "annual",
+          "notes": "$10 monthly Uber Cash for rides or eats in the U.S."
+        }
+      ]
+    },
+    {
+      "Card Name": "Bank of America Business Advantage Travel Rewards World Mastercard\u00ae",
+      "Issuer": "Bank of America",
+      "image": "/assets-images-site-sb-credit-cards-card-arts-en-bofa_trvbuswldcm_mc-CSX44dee15a.png",
+      "ratingValue": 7.3,
+      "applyLink": "https://www.bankofamerica.com/smallbusiness/credit-cards/products/travel-rewards-business-credit-card/",
+      "ratesandfees": "https://www.bankofamerica.com/smallbusiness/credit-cards/terms-and-conditions/?campaignid=4069740&productoffercode=GU&locale=en_US",
+      "reviewLink": "/cards/boa-business-advantage-travel",
+      "Card Type": "Business",
+      "Annual Fee": 0,
+      "APR Range (Purchases)": "12.24%\u201322.24% Variable",
+      "Foreign Transaction Fee": 0.0,
+      "Intro APR": "0% for 9mo",
+      "Credit Score Requirement": "Good\u2013Excellent",
+      "signUpBonus": {
+        "description": "Earn 30,000 bonus points after spending $3,000 in 90 days",
+        "points": 30000,
+        "minSpend": 3000,
+        "durationDays": 90,
+        "estimated_value_usd": 300
+      },
+      "rewardProgram": "Bank of America Travel Center",
+      "rewards": [
+        {
+          "multiplier": 3,
+          "category": "travel_portal",
+          "notes": "3x points on travel purchases booked via the Bank of America Travel Center",
+          "cap": null
+        },
+        {
+          "multiplier": 1.5,
+          "category": "other",
+          "notes": "1.5x points on all other purchases",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "cash_back_cpp": 1.0
+      },
+      "perks": []
+    },
+    {
+      "Card Name": "Bank of America\u00ae Travel Rewards Credit Card",
+      "Issuer": "Bank of America",
+      "image": "/8blm_trvsigcm_v_250x158.png",
+      "ratingValue": 7.4,
+      "applyLink": "https://www.bankofamerica.com/credit-cards/products/travel-rewards-credit-card/",
+      "ratesandfees": "https://www.bankofamerica.com/credit-cards/products/travel-rewards-credit-card/",
+      "reviewLink": "/cards/boa-travel-rewards",
+      "Card Type": "Personal",
+      "Annual Fee": 0.0,
+      "APR Range (Purchases)": "15.74%\u201325.74% Variable",
+      "Foreign Transaction Fee": 0.0,
+      "Intro APR": "0% intro APR on purchases for 15 months",
+      "Credit Score Requirement": "Good\u2013Excellent (670+)",
+      "signUpBonus": {
+        "points": 25000,
+        "description": "Earn 25,000 online bonus points after spending $1,000 in 90 days",
+        "minSpend": 1000,
+        "durationDays": 90,
+        "estimated_value_usd": 250
+      },
+      "rewardProgram": "Bank of America\u00ae Travel Rewards",
+      "rewards": [
+        {
+          "multiplier": 3,
+          "category": "travel_portal",
+          "notes": "3x points on travel purchases booked through Bank of America\u00ae Travel Center",
+          "cap": null
+        },
+        {
+          "multiplier": 1.5,
+          "category": "other",
+          "notes": "1.5x points on all other purchases",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "travel_statement_credit_cpp": 1.0,
+        "cash_back_cpp": 0.6
+      },
+      "perks": []
+    },
+    {
+      "Card Name": "Blue Cash Everyday\u00ae Card",
+      "Issuer": "American Express",
+      "image": "/NUS000000305_480x304_straight_withname.avif",
+      "ratingValue": 7.7,
+      "applyLink": "https://www.americanexpress.com/us/credit-cards/card/blue-cash-everyday/",
+      "ratesandfees": "https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/blue-cash-everyday-credit-card/25330-10-0#FeeTable",
+      "reviewLink": "/cards/blue-cash-everyday",
+      "Card Type": "Personal",
+      "Annual Fee": 0.0,
+      "APR Range (Purchases)": "18.49%\u201329.49% Variable",
+      "Foreign Transaction Fee": 2.7,
+      "Intro APR": "0% intro APR on purchases for 15 months",
+      "Credit Score Requirement": "Good\u2013Excellent (670+)",
+      "signUpBonus": {
+        "points": null,
+        "description": "Earn $200 statement credit after spending $2,000 in 6 months",
+        "minSpend": 2000,
+        "durationDays": 180,
+        "estimated_value_usd": 200
+      },
+      "rewardProgram": "Blue Cash Rewards",
+      "rewards": [
+        {
+          "multiplier": 3,
+          "category": "groceries_us",
+          "notes": "3% cash back at U.S. supermarkets (up to $6,000 per year, then 1%)",
+          "cap": {
+            "amount_usd": 6000,
+            "period": "year",
+            "applies_to_categories": [
+              "groceries_us"
+            ]
+          }
+        },
+        {
+          "multiplier": 3,
+          "category": "gas_us",
+          "notes": "3% cash back at U.S. gas stations",
+          "cap": null
+        },
+        {
+          "multiplier": 3,
+          "category": "online_retail_us",
+          "notes": "3% cash back on U.S. online retail purchases (up to $6,000 per year, then 1%)",
+          "cap": {
+            "amount_usd": 6000,
+            "period": "year",
+            "applies_to_categories": [
+              "online_retail_us"
+            ]
+          }
+        },
+        {
+          "multiplier": 1,
+          "category": "other",
+          "notes": "1% cash back on other purchases",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "cash_back_cpp": 1.0
+      },
+      "perks": []
+    },
+    {
       "Card Name": "British Airways Visa Signature\u00ae Card",
       "Issuer": "Chase",
       "image": "/hero_Card.png",
@@ -637,6 +452,578 @@
           "type": "travel_together_ticket",
           "description": "Travel Together Ticket after $30,000 spend per calendar year",
           "estimated_value_usd": 500
+        }
+      ]
+    },
+    {
+      "Card Name": "Capital One Quicksilver Cash Rewards Credit Card",
+      "Issuer": "Capital One",
+      "image": "/qs_cardart_prim_1290x812.avif",
+      "ratingValue": 7.8,
+      "applyLink": "https://www.capitalone.com/credit-cards/quicksilver/",
+      "ratesandfees": "https://www.capitalone.com/credit-cards/quicksilver/",
+      "reviewLink": "/cards/capital-one-quicksilver",
+      "Card Type": "Personal",
+      "Annual Fee": 0.0,
+      "APR Range (Purchases)": "19.74%\u201329.74% Variable",
+      "Foreign Transaction Fee": 0.0,
+      "Intro APR": "0% intro APR for 15 months on purchases and balance transfers",
+      "Credit Score Requirement": "Good\u2013Excellent (670+)",
+      "signUpBonus": {
+        "points": null,
+        "description": "Earn $200 cash bonus after spending $500 in 3 months",
+        "minSpend": 500,
+        "durationDays": 90,
+        "estimated_value_usd": 200
+      },
+      "rewardProgram": "Cash Rewards",
+      "rewards": [
+        {
+          "multiplier": 1.5,
+          "category": "other",
+          "notes": "Unlimited 1.5% cash back on every purchase",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "cash_back_cpp": 1.0
+      },
+      "perks": []
+    },
+    {
+      "Card Name": "Capital One Spark Miles for Business",
+      "Issuer": "Capital One",
+      "image": "/miles_new_2021.avif",
+      "ratingValue": 8.0,
+      "applyLink": "https://www.capitalone.com/small-business/credit-cards/spark-miles/",
+      "ratesandfees": "https://www.capitalone.com/small-business/credit-cards/spark-miles/",
+      "reviewLink": "/cards/capital-one-spark-miles",
+      "Card Type": "Business",
+      "Annual Fee": 95,
+      "APR Range (Purchases)": "21.74%\u201329.74% Variable",
+      "Foreign Transaction Fee": 0.0,
+      "Intro APR": null,
+      "Credit Score Requirement": "Good\u2013Excellent (700+)",
+      "signUpBonus": {
+        "description": "Earn 50,000 bonus miles after spending $4,500 in 3 months",
+        "points": 50000,
+        "minSpend": 4500,
+        "durationDays": 90,
+        "estimated_value_usd": 60000
+      },
+      "rewardProgram": "Capital One Miles",
+      "rewards": [
+        {
+          "multiplier": 2,
+          "category": "other",
+          "notes": "2x miles on every purchase",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "program_cpp": 1.8,
+        "cash_back_cpp": 1.0
+      },
+      "perks": [
+        {
+          "type": "global_entry_tsa_precheck_credit",
+          "value_usd": 100,
+          "frequency": "every_4_years",
+          "notes": "Credit for Global Entry or TSA PreCheck"
+        }
+      ]
+    },
+    {
+      "Card Name": "Capital One Venture Rewards Credit Card",
+      "Issuer": "Capital One",
+      "image": "/venture_cardart_prim_323x203-1.avif",
+      "ratingValue": 8.2,
+      "applyLink": "https://www.capitalone.com/credit-cards/venture/",
+      "ratesandfees": "https://www.capitalone.com/credit-cards/venture/",
+      "reviewLink": "/cards/capital-one-venture",
+      "Card Type": "Personal",
+      "Annual Fee": 95.0,
+      "APR Range (Purchases)": "21.74%\u201328.74% Variable",
+      "Foreign Transaction Fee": 0.0,
+      "Intro APR": null,
+      "Credit Score Requirement": "Good\u2013Excellent (700+)",
+      "signUpBonus": {
+        "points": 75000,
+        "description": "Earn 75,000 bonus miles after spending $4,000 in 3 months",
+        "minSpend": 4000,
+        "durationDays": 90,
+        "estimated_value_usd": 1125
+      },
+      "rewardProgram": "Capital One Miles",
+      "rewards": [
+        {
+          "multiplier": 2,
+          "category": "other",
+          "notes": "2x miles on every purchase",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "cap_one_travel_cpp": 1.0,
+        "transfer_partner_average_cpp": 1.8,
+        "cash_back_cpp": 0.5
+      },
+      "perks": [
+        {
+          "type": "global_entry_tsa_precheck_credit",
+          "value_usd": 100,
+          "frequency": "every_4_years",
+          "notes": "Credit for Global Entry or TSA PreCheck"
+        },
+        {
+          "type": "lounge_access",
+          "description": "2 complimentary visits annually to Capital One Lounges or Plaza Premium Lounges",
+          "estimated_value_usd": 80
+        }
+      ]
+    },
+    {
+      "Card Name": "Capital One Venture X Business Card",
+      "Issuer": "Capital One",
+      "image": "/vxb-card-alt-at-2x.avif",
+      "ratingValue": 8.8,
+      "applyLink": "http://capitalone.com/small-business/credit-cards/venture-x-business/",
+      "ratesandfees": "http://capitalone.com/small-business/credit-cards/venture-x-business/",
+      "reviewLink": "/cards/capital-one-venture-x-business",
+      "Card Type": "Business",
+      "Annual Fee": 395,
+      "APR Range (Purchases)": "22.24%\u201129.24% Variable",
+      "Foreign Transaction Fee": 0.0,
+      "Intro APR": null,
+      "Credit Score Requirement": "Excellent (720+)",
+      "signUpBonus": {
+        "description": "Earn 150,000 miles after spending $30,000 in 3 months; earn an additional 200,000 miles after spending $200,000 total in 6 months",
+        "points": 150000,
+        "minSpend": 30000,
+        "durationDays": 180,
+        "estimated_value_usd": 270000
+      },
+      "rewardProgram": "Capital One Miles",
+      "rewards": [
+        {
+          "multiplier": 10,
+          "category": "hotel_capital_one_portal",
+          "notes": "10x miles on hotels and car rentals booked through Capital One Travel",
+          "cap": null
+        },
+        {
+          "multiplier": 5,
+          "category": "flights_capital_one_portal",
+          "notes": "5x miles on flights booked through Capital One Travel",
+          "cap": null
+        },
+        {
+          "multiplier": 2,
+          "category": "other",
+          "notes": "2x miles on other purchases",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "program_cpp": 1.8,
+        "cash_back_cpp": 1.0
+      },
+      "perks": [
+        {
+          "type": "travel_credit",
+          "value_usd": 300,
+          "frequency": "annual",
+          "notes": "$300 annual credit for bookings through Capital One Travel"
+        },
+        {
+          "type": "lounge_access",
+          "description": "Access to Capital One Lounges and Priority Pass Select",
+          "estimated_value_usd": null
+        }
+      ]
+    },
+    {
+      "Card Name": "Capital One Venture X Rewards Credit Card",
+      "Issuer": "Capital One",
+      "image": "/venture_x_card.png",
+      "ratingValue": 8.8,
+      "applyLink": "https://www.capitalone.com/credit-cards/venture-x/",
+      "ratesandfees": "https://www.capitalone.com/credit-cards/venture-x/",
+      "reviewLink": "/cards/capital-one-venture-x",
+      "Card Type": "Personal",
+      "Annual Fee": 395.0,
+      "APR Range (Purchases)": "22.24%\u201329.24% Variable",
+      "Foreign Transaction Fee": 0.0,
+      "Intro APR": null,
+      "Credit Score Requirement": "Excellent (720+)",
+      "signUpBonus": {
+        "points": 75000,
+        "description": "Earn 75,000 bonus miles after spending $4,000 in 3 months",
+        "minSpend": 4000,
+        "durationDays": 90,
+        "estimated_value_usd": 135000
+      },
+      "rewardProgram": "Capital One Miles",
+      "rewards": [
+        {
+          "multiplier": 10,
+          "category": "hotel_capital_one_portal",
+          "notes": "10x miles on hotels and car rentals booked via Capital One Travel",
+          "cap": null
+        },
+        {
+          "multiplier": 5,
+          "category": "flights_capital_one_portal",
+          "notes": "5x miles on flights booked via Capital One Travel",
+          "cap": null
+        },
+        {
+          "multiplier": 2,
+          "category": "other",
+          "notes": "2x miles on other purchases",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "cap_one_travel_cpp": 1.0,
+        "transfer_partner_average_cpp": 1.8,
+        "cash_back_cpp": 0.5
+      },
+      "perks": [
+        {
+          "type": "travel_credit",
+          "value_usd": 300,
+          "frequency": "annual",
+          "notes": "$300 annual travel credit through Capital One Travel"
+        },
+        {
+          "type": "lounge_access",
+          "description": "Unlimited access to Capital One Lounges + Priority Pass Select",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "anniversary_miles",
+          "description": "10,000 bonus miles every account anniversary",
+          "estimated_value_usd": 100
+        }
+      ]
+    },
+    {
+      "Card Name": "Chase Freedom Unlimited\u00ae Credit Card",
+      "Issuer": "Chase",
+      "image": "/freedom_unlimited_card_alt (1).png",
+      "ratingValue": 9.0,
+      "applyLink": "https://creditcards.chase.com/cash-back-credit-cards/freedom/unlimited",
+      "ratesandfees": "https://creditcards.chase.com/cash-back-credit-cards/freedom/unlimited",
+      "reviewLink": "/cards/chase-freedom-unlimited",
+      "Card Type": "Personal",
+      "Annual Fee": 0.0,
+      "APR Range (Purchases)": "19.49%\u201327.24% Variable",
+      "Foreign Transaction Fee": 3.0,
+      "Intro APR": "0% intro APR on purchases for 15 months",
+      "Credit Score Requirement": "Good\u2013Excellent (670+)",
+      "signUpBonus": {
+        "points": 20000,
+        "description": "Earn $200 bonus (20,000 points) after spending $500 in 3 months",
+        "minSpend": 500,
+        "durationDays": 90,
+        "estimated_value_usd": 200
+      },
+      "rewardProgram": "Chase Ultimate Rewards",
+      "rewards": [
+        {
+          "multiplier": 5,
+          "category": "travel_portal",
+          "notes": "5% cash back on travel purchased through Chase Travel\u2120",
+          "cap": null
+        },
+        {
+          "multiplier": 3,
+          "category": "dining",
+          "notes": "3% cash back on dining at restaurants, including takeout and delivery services",
+          "cap": null
+        },
+        {
+          "multiplier": 3,
+          "category": "drugstores",
+          "notes": "3% cash back on drugstore purchases",
+          "cap": null
+        },
+        {
+          "multiplier": 1.5,
+          "category": "other",
+          "notes": "1.5% cash back on all other purchases",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "cash_back_cpp": 1.0,
+        "chase_travel_portal_cpp": 1.0
+      },
+      "perks": []
+    },
+    {
+      "Card Name": "Chase Sapphire Preferred\u00ae Credit Card",
+      "Issuer": "Chase",
+      "image": "/sapphire_preferred_card.png",
+      "ratingValue": 8.4,
+      "applyLink": "https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred",
+      "ratesandfees": "https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred",
+      "reviewLink": "/cards/chase-sapphire-preferred",
+      "Card Type": "Personal",
+      "Annual Fee": 95.0,
+      "APR Range (Purchases)": "20.49%\u201327.49% Variable",
+      "Foreign Transaction Fee": 0.0,
+      "Intro APR": null,
+      "Credit Score Requirement": "Good\u2013Excellent (700+)",
+      "signUpBonus": {
+        "points": 60000,
+        "description": "Earn 60,000 bonus points after spending $4,000 in 3 months",
+        "minSpend": 4000,
+        "durationDays": 90,
+        "estimated_value_usd": 750
+      },
+      "rewardProgram": "Chase Ultimate Rewards",
+      "rewards": [
+        {
+          "multiplier": 5,
+          "category": "travel_portal",
+          "notes": "5x points on travel purchased through Chase Travel\u2120",
+          "cap": null
+        },
+        {
+          "multiplier": 3,
+          "category": "dining",
+          "notes": "3x points on dining",
+          "cap": null
+        },
+        {
+          "multiplier": 3,
+          "category": "streaming",
+          "notes": "3x points on select streaming services",
+          "cap": null
+        },
+        {
+          "multiplier": 3,
+          "category": "online_grocery",
+          "notes": "3x points on online grocery purchases (excludes Target/Walmart)",
+          "cap": null
+        },
+        {
+          "multiplier": 2,
+          "category": "travel_other",
+          "notes": "2x points on other travel purchases",
+          "cap": null
+        },
+        {
+          "multiplier": 1,
+          "category": "other",
+          "notes": "1x points on all other purchases",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "chase_travel_portal_cpp": 1.25,
+        "cash_back_cpp": 1.0,
+        "transfer_partner_average_cpp": 2.0
+      },
+      "perks": [
+        {
+          "type": "annual_hotel_credit",
+          "value_usd": 50,
+          "frequency": "annual",
+          "notes": "$50 Annual Ultimate Rewards Hotel Credit"
+        },
+        {
+          "type": "travel_insurance",
+          "description": "Built\u2011in trip cancellation/interruption insurance",
+          "estimated_value_usd": null
+        }
+      ]
+    },
+    {
+      "Card Name": "Chase Sapphire Reserve\u00ae Card",
+      "Issuer": "Chase",
+      "image": "/sapphire_reserve_card.png",
+      "ratingValue": 9.2,
+      "applyLink": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "ratesandfees": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "reviewLink": "/cards/chase-sapphire-reserve",
+      "Card Type": "Personal",
+      "Annual Fee": 550.0,
+      "APR Range (Purchases)": "22.49%\u201329.49% Variable",
+      "Foreign Transaction Fee": 0.0,
+      "Intro APR": null,
+      "Credit Score Requirement": "Excellent (720+)",
+      "signUpBonus": {
+        "points": 60000,
+        "description": "Earn 60,000 bonus points after spending $4,000 in 3 months",
+        "minSpend": 4000,
+        "durationDays": 90,
+        "estimated_value_usd": 120000
+      },
+      "rewardProgram": "Chase Ultimate Rewards",
+      "rewards": [
+        {
+          "multiplier": 10,
+          "category": "hotel_chase_portal",
+          "notes": "10x points on hotels booked through Chase Travel\u2120",
+          "cap": null
+        },
+        {
+          "multiplier": 10,
+          "category": "car_rental_chase_portal",
+          "notes": "10x points on car rentals booked through Chase Travel\u2120",
+          "cap": null
+        },
+        {
+          "multiplier": 5,
+          "category": "flights_chase_portal",
+          "notes": "5x points on flights booked through Chase Travel\u2120",
+          "cap": null
+        },
+        {
+          "multiplier": 3,
+          "category": "travel_other",
+          "notes": "3x points on other travel purchases after $300 travel credit",
+          "cap": null
+        },
+        {
+          "multiplier": 3,
+          "category": "dining",
+          "notes": "3x points on dining",
+          "cap": null
+        },
+        {
+          "multiplier": 1,
+          "category": "other",
+          "notes": "1x points on other purchases",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "chase_travel_portal_cpp": 1.5,
+        "transfer_partner_average_cpp": 2.0,
+        "cash_back_cpp": 1.0
+      },
+      "perks": [
+        {
+          "type": "travel_credit",
+          "value_usd": 300,
+          "frequency": "annual",
+          "notes": "$300 Annual Travel Credit"
+        },
+        {
+          "type": "lounge_access",
+          "description": "Priority Pass Select + Chase Sapphire Lounge access",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "global_entry_tsa_precheck_credit",
+          "value_usd": 100,
+          "frequency": "every_4_years",
+          "notes": "GE/TSA PreCheck credit"
+        }
+      ]
+    },
+    {
+      "Card Name": "Citi Custom Cash\u00ae Card",
+      "Issuer": "Citi",
+      "image": "/download.png",
+      "ratingValue": 7.5,
+      "applyLink": "https://www.citi.com/credit-cards/citi-custom-cash-credit-card",
+      "ratesandfees": "https://www.citi.com/credit-cards/citi-custom-cash-credit-card",
+      "reviewLink": "/cards/citi-custom-cash",
+      "Card Type": "Personal",
+      "Annual Fee": 0.0,
+      "APR Range (Purchases)": "18.99%\u201328.99% Variable",
+      "Foreign Transaction Fee": 3.0,
+      "Intro APR": "0% intro APR on purchases and balance transfers for 15 months",
+      "Credit Score Requirement": "Good\u2013Excellent (670+)",
+      "signUpBonus": {
+        "points": 20000,
+        "description": "Earn 20,000 ThankYou\u00ae Points after spending $1,500 in 6 months",
+        "minSpend": 1500,
+        "durationDays": 180,
+        "estimated_value_usd": 200
+      },
+      "rewardProgram": "Citi ThankYou Points",
+      "rewards": [
+        {
+          "multiplier": 5,
+          "category": "custom_top_category",
+          "notes": "5% back (as ThankYou\u00ae Points) on up to $500 in your highest eligible spend category each billing cycle",
+          "cap": {
+            "amount_usd": 500,
+            "period": "month",
+            "applies_to_categories": [
+              "custom_top_category"
+            ]
+          }
+        },
+        {
+          "multiplier": 1,
+          "category": "other",
+          "notes": "1% back on all other purchases",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "cash_back_cpp": 1.0
+      },
+      "perks": []
+    },
+    {
+      "Card Name": "Citi\u00ae / AAdvantage\u00ae Executive World Elite Mastercard\u00ae",
+      "Issuer": "Citi",
+      "image": "/CardArt-8.webp",
+      "ratingValue": 8.6,
+      "applyLink": "https://creditcards.aa.com/credit-cards/citi-executive-card-american-airlines-direct/",
+      "ratesandfees": "https://creditcards.aa.com/credit-cards/citi-executive-card-american-airlines-direct/",
+      "reviewLink": "/cards/citi-aadvantage-executive",
+      "Card Type": "Personal",
+      "Annual Fee": 595.0,
+      "APR Range (Purchases)": "20.24%\u201329.24% Variable",
+      "Foreign Transaction Fee": 0.0,
+      "Intro APR": null,
+      "Credit Score Requirement": "Excellent (720+)",
+      "signUpBonus": {
+        "points": 70000,
+        "description": "Earn 70,000 AAdvantage miles after spending $7,000 in 3 months",
+        "minSpend": 7000,
+        "durationDays": 90,
+        "estimated_value_usd": 910
+      },
+      "rewardProgram": "AAdvantage Miles",
+      "rewards": [
+        {
+          "multiplier": 4,
+          "category": "american_airlines",
+          "notes": "4x miles on eligible American Airlines purchases",
+          "cap": null
+        },
+        {
+          "multiplier": 1,
+          "category": "other",
+          "notes": "1x miles on other purchases",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "program_cpp": 1.3,
+        "cash_back_cpp": 1.0
+      },
+      "perks": [
+        {
+          "type": "lounge_access",
+          "description": "Admirals Club membership for primary cardholder and authorized users",
+          "estimated_value_usd": 650
+        },
+        {
+          "type": "global_entry_tsa_precheck_credit",
+          "value_usd": 100,
+          "frequency": "every_4_years",
+          "notes": "Statement credit for Global Entry or TSA PreCheck"
         }
       ]
     },
@@ -706,6 +1093,76 @@
       ]
     },
     {
+      "Card Name": "Citi\u00ae Diamond Preferred\u00ae Card",
+      "Issuer": "Citi",
+      "image": "/download (1).png",
+      "ratingValue": 6.5,
+      "applyLink": "https://www.citi.com/credit-cards/citi-diamond-preferred-credit-card",
+      "ratesandfees": "https://www.citi.com/credit-cards/citi-diamond-preferred-credit-card",
+      "reviewLink": "/cards/citi-diamond-preferred",
+      "Card Type": "Personal",
+      "Annual Fee": 0.0,
+      "APR Range (Purchases)": "17.99%\u201328.74% Variable",
+      "Foreign Transaction Fee": 3.0,
+      "Intro APR": "0% intro APR for 21 months on balance transfers",
+      "Credit Score Requirement": "Good\u2013Excellent (670+)",
+      "signUpBonus": {
+        "points": null,
+        "description": "No sign\u2011up bonus currently",
+        "minSpend": null,
+        "durationDays": null,
+        "estimated_value_usd": 0
+      },
+      "rewardProgram": null,
+      "rewards": [],
+      "redemptionOptions": {
+        "cash_back_cpp": 0
+      },
+      "perks": []
+    },
+    {
+      "Card Name": "Delta SkyMiles\u00ae Blue American Express Card",
+      "Issuer": "American Express",
+      "image": "/NUS000000267_480x304_straight_withname.webp",
+      "ratingValue": 6.3,
+      "applyLink": "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-blue-american-express-card/",
+      "ratesandfees": "https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/delta-skymiles-blue-american-express-card/25330-10-0#FeeTable",
+      "reviewLink": "/cards/delta-skymiles-blue",
+      "Card Type": "Personal",
+      "Annual Fee": 0,
+      "APR Range (Purchases)": "20.24%\u201329.24% Variable",
+      "Foreign Transaction Fee": 0.0,
+      "Intro APR": null,
+      "Credit Score Requirement": "Good\u2013Excellent (670+)",
+      "signUpBonus": {
+        "description": "Earn 10,000 bonus miles after spending $1,000 in 6 months",
+        "points": 10000,
+        "minSpend": 1000,
+        "durationDays": 180,
+        "estimated_value_usd": 12000
+      },
+      "rewardProgram": "Delta SkyMiles",
+      "rewards": [
+        {
+          "multiplier": 2,
+          "category": "delta_airlines",
+          "notes": "2x miles on Delta purchases",
+          "cap": null
+        },
+        {
+          "multiplier": 1,
+          "category": "other",
+          "notes": "1x miles on other purchases",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "program_cpp": 1.2,
+        "cash_back_cpp": 1.0
+      },
+      "perks": []
+    },
+    {
       "Card Name": "Delta SkyMiles\u00ae Platinum American Express Card",
       "Issuer": "American Express",
       "image": "/NUS000000269_480x304_straight_withname.avif",
@@ -768,6 +1225,101 @@
           "value_usd": 100,
           "frequency": "every_4_years",
           "notes": "Global Entry/TSA PreCheck fee credit"
+        }
+      ]
+    },
+    {
+      "Card Name": "Delta SkyMiles\u00ae Reserve Business American Express Card",
+      "Issuer": "American Express",
+      "image": "/NUS000000270_480x304_straight_withname.avif",
+      "ratingValue": 8.8,
+      "applyLink": "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-reserve-american-express-card/",
+      "ratesandfees": "https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/delta-skymiles-reserve-american-express-card/25330-10-0#FeeTable",
+      "reviewLink": "/cards/delta-skymiles-reserve",
+      "Card Type": "Business",
+      "Annual Fee": 550,
+      "APR Range (Purchases)": "20.24%\u201329.24% Variable",
+      "Foreign Transaction Fee": 0.0,
+      "Intro APR": null,
+      "Credit Score Requirement": "Excellent (720+)",
+      "signUpBonus": {
+        "description": "Earn 80,000 bonus miles after spending $10,000 in 6 months",
+        "points": 80000,
+        "minSpend": 10000,
+        "durationDays": 180,
+        "estimated_value_usd": 96000
+      },
+      "rewardProgram": "Delta SkyMiles",
+      "rewards": [
+        {
+          "multiplier": 3,
+          "category": "delta_airlines",
+          "notes": "3x miles on Delta purchases",
+          "cap": null
+        },
+        {
+          "multiplier": 1,
+          "category": "other",
+          "notes": "1x miles on other purchases",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "program_cpp": 1.2,
+        "cash_back_cpp": 1.0
+      },
+      "perks": [
+        {
+          "type": "lounge_access",
+          "description": "Complimentary Delta Sky Club and Centurion Lounge access when traveling on Delta flights",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "companion_certificate",
+          "description": "Annual Companion Certificate (First Class, Delta Comfort+ or Main Cabin)",
+          "estimated_value_usd": 400
+        }
+      ]
+    },
+    {
+      "Card Name": "Discover it\u00ae Miles Credit Card",
+      "Issuer": "Discover",
+      "image": "/cardart-travel-beachcard-620-382.webp",
+      "ratingValue": 7.0,
+      "applyLink": "https://www.discover.com/credit-cards/travel/",
+      "ratesandfees": "https://www.discover.com/credit-cards/travel/",
+      "reviewLink": "/cards/discover-it-miles",
+      "Card Type": "Personal",
+      "Annual Fee": 0.0,
+      "APR Range (Purchases)": "15.99%\u201326.99% Variable",
+      "Foreign Transaction Fee": 0.0,
+      "Intro APR": "0% intro APR on purchases for 14 months",
+      "Credit Score Requirement": "Good\u2013Excellent (670+)",
+      "signUpBonus": {
+        "points": null,
+        "description": "Unlimited Mile\u2011for\u2011Mile Match at the end of your first year",
+        "minSpend": 0,
+        "durationDays": 365,
+        "estimated_value_usd": null
+      },
+      "rewardProgram": "Discover Miles",
+      "rewards": [
+        {
+          "multiplier": 1.5,
+          "category": "other",
+          "notes": "1.5x Miles on all purchases",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "travel_statement_credit_cpp": 1.0,
+        "cash_back_cpp": 1.0
+      },
+      "perks": [
+        {
+          "type": "first_year_match",
+          "description": "Discover will match all Miles earned at the end of the first year",
+          "estimated_value_usd": null
         }
       ]
     },
@@ -841,11 +1393,59 @@
           "estimated_value_usd": 30
         }
       ]
-    }
-  ]
-}
-{
-  "cards": [
+    },
+    {
+      "Card Name": "Ink Business Preferred\u00ae Credit Card",
+      "Issuer": "Chase",
+      "image": "/ink_preferred_card.png",
+      "ratingValue": 8.6,
+      "applyLink": "https://creditcards.chase.com/business-credit-cards/ink/business-preferred",
+      "ratesandfees": "https://creditcards.chase.com/business-credit-cards/ink/business-preferred",
+      "reviewLink": "/cards/ink-business-preferred",
+      "Card Type": "Business",
+      "Annual Fee": 95.0,
+      "APR Range (Purchases)": "20.24%\u201325.24% Variable",
+      "Foreign Transaction Fee": 0.0,
+      "Intro APR": null,
+      "Credit Score Requirement": "Good\u2013Excellent (700+)",
+      "signUpBonus": {
+        "points": 90000,
+        "description": "Earn 90,000 bonus points after spending $8,000 in 3 months",
+        "minSpend": 8000,
+        "durationDays": 90,
+        "estimated_value_usd": 180000
+      },
+      "rewardProgram": "Chase Ultimate Rewards",
+      "rewards": [
+        {
+          "multiplier": 3,
+          "category": "business_bonus_category",
+          "notes": "3x points on the first $150,000 spent each year on shipping, advertising on social media and search engines, travel, and telecom services",
+          "cap": {
+            "amount_usd": 150000,
+            "period": "year",
+            "applies_to_categories": [
+              "shipping",
+              "advertising_online",
+              "travel_other",
+              "telecom"
+            ]
+          }
+        },
+        {
+          "multiplier": 1,
+          "category": "other",
+          "notes": "1x points on other purchases",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "chase_travel_portal_cpp": 1.25,
+        "transfer_partner_average_cpp": 2.0,
+        "cash_back_cpp": 1.0
+      },
+      "perks": []
+    },
     {
       "Card Name": "JetBlue Plus Card",
       "Issuer": "Barclays",
@@ -981,835 +1581,6 @@
           "estimated_value_usd": null
         }
       ]
-    },
-    {
-      "Card Name": "Citi\u00ae / AAdvantage\u00ae Executive World Elite Mastercard\u00ae",
-      "Issuer": "Citi",
-      "image": "/CardArt-8.webp",
-      "ratingValue": 8.6,
-      "applyLink": "https://creditcards.aa.com/credit-cards/citi-executive-card-american-airlines-direct/",
-      "ratesandfees": "https://creditcards.aa.com/credit-cards/citi-executive-card-american-airlines-direct/",
-      "reviewLink": "/cards/citi-aadvantage-executive",
-      "Card Type": "Personal",
-      "Annual Fee": 595.0,
-      "APR Range (Purchases)": "20.24%\u201329.24% Variable",
-      "Foreign Transaction Fee": 0.0,
-      "Intro APR": null,
-      "Credit Score Requirement": "Excellent (720+)",
-      "signUpBonus": {
-        "points": 70000,
-        "description": "Earn 70,000 AAdvantage miles after spending $7,000 in 3 months",
-        "minSpend": 7000,
-        "durationDays": 90,
-        "estimated_value_usd": 910
-      },
-      "rewardProgram": "AAdvantage Miles",
-      "rewards": [
-        {
-          "multiplier": 4,
-          "category": "american_airlines",
-          "notes": "4x miles on eligible American Airlines purchases",
-          "cap": null
-        },
-        {
-          "multiplier": 1,
-          "category": "other",
-          "notes": "1x miles on other purchases",
-          "cap": null
-        }
-      ],
-      "redemptionOptions": {
-        "program_cpp": 1.3,
-        "cash_back_cpp": 1.0
-      },
-      "perks": [
-        {
-          "type": "lounge_access",
-          "description": "Admirals Club membership for primary cardholder and authorized users",
-          "estimated_value_usd": 650
-        },
-        {
-          "type": "global_entry_tsa_precheck_credit",
-          "value_usd": 100,
-          "frequency": "every_4_years",
-          "notes": "Statement credit for Global Entry or TSA PreCheck"
-        }
-      ]
-    },
-    {
-      "Card Name": "United\u2120 Explorer Card",
-      "Issuer": "Chase",
-      "image": "/united_explorer_card.png",
-      "ratingValue": 8.0,
-      "applyLink": "https://creditcards.chase.com/travel-credit-cards/united/united-explorer",
-      "ratesandfees": "https://creditcards.chase.com/travel-credit-cards/united/united-explorer",
-      "reviewLink": "/cards/united-explorer",
-      "Card Type": "Personal",
-      "Annual Fee": 95.0,
-      "APR Range (Purchases)": "21.99%\u201328.99% Variable",
-      "Foreign Transaction Fee": 0.0,
-      "Intro APR": null,
-      "Credit Score Requirement": "Good\u2013Excellent (700+)",
-      "signUpBonus": {
-        "points": 80000,
-        "description": "Earn 80,000 MileagePlus miles after spending $3,000 in 3 months",
-        "minSpend": 3000,
-        "durationDays": 90,
-        "estimated_value_usd": 960
-      },
-      "rewardProgram": "MileagePlus",
-      "rewards": [
-        {
-          "multiplier": 2,
-          "category": "united_airlines",
-          "notes": "2x miles on United purchases",
-          "cap": null
-        },
-        {
-          "multiplier": 2,
-          "category": "dining",
-          "notes": "2x miles at restaurants",
-          "cap": null
-        },
-        {
-          "multiplier": 2,
-          "category": "gas",
-          "notes": "2x miles at gas stations",
-          "cap": null
-        },
-        {
-          "multiplier": 1,
-          "category": "other",
-          "notes": "1x miles on other purchases",
-          "cap": null
-        }
-      ],
-      "redemptionOptions": {
-        "program_cpp": 1.2,
-        "cash_back_cpp": 1.0
-      },
-      "perks": [
-        {
-          "type": "lounge_access_passes",
-          "description": "2 United Club one\u2011time passes each account anniversary",
-          "estimated_value_usd": 118
-        },
-        {
-          "type": "free_checked_bag",
-          "description": "First checked bag free for cardholder and companion",
-          "estimated_value_usd": 35
-        }
-      ]
-    },
-    {
-      "Card Name": "American Express\u00ae Gold Card",
-      "Issuer": "American Express",
-      "image": "/NUS000000174_480x304_straight_withname.avif",
-      "ratingValue": 8.8,
-      "applyLink": "https://www.americanexpress.com/us/credit-cards/card/gold-card/",
-      "ratesandfees": "https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/gold-card/25330-10-0#FeeTable",
-      "reviewLink": "/cards/american-express-gold",
-      "Card Type": "Personal",
-      "Annual Fee": 250.0,
-      "APR Range (Purchases)": "20.24%\u201327.24% Variable",
-      "Foreign Transaction Fee": 0.0,
-      "Intro APR": null,
-      "Credit Score Requirement": "Good\u2013Excellent (700+)",
-      "signUpBonus": {
-        "points": 60000,
-        "description": "Earn 60,000 Membership Rewards points after spending $6,000 in 6 months",
-        "minSpend": 6000,
-        "durationDays": 180,
-        "estimated_value_usd": 900
-      },
-      "rewardProgram": "Membership Rewards",
-      "rewards": [
-        {
-          "multiplier": 4,
-          "category": "dining",
-          "notes": "4x points at restaurants worldwide, including takeout and delivery",
-          "cap": null
-        },
-        {
-          "multiplier": 4,
-          "category": "groceries_us",
-          "notes": "4x points at U.S. supermarkets (up to $25,000 per year)",
-          "cap": {
-            "amount_usd": 25000,
-            "period": "year",
-            "applies_to_categories": [
-              "groceries_us"
-            ]
-          }
-        },
-        {
-          "multiplier": 3,
-          "category": "flights_direct",
-          "notes": "3x points on flights booked directly with airlines or through Amex Travel",
-          "cap": null
-        },
-        {
-          "multiplier": 1,
-          "category": "other",
-          "notes": "1x points on other purchases",
-          "cap": null
-        }
-      ],
-      "redemptionOptions": {
-        "amex_travel_cpp": 1.0,
-        "transfer_partner_average_cpp": 2.0,
-        "cash_back_cpp": 0.6
-      },
-      "perks": [
-        {
-          "type": "dining_credit",
-          "value_usd": 120,
-          "frequency": "annual",
-          "notes": "$10 monthly dining credit (select partners)"
-        },
-        {
-          "type": "uber_cash",
-          "value_usd": 120,
-          "frequency": "annual",
-          "notes": "$10 monthly Uber Cash for rides or eats in the U.S."
-        }
-      ]
-    },
-    {
-      "Card Name": "Capital One Quicksilver Cash Rewards Credit Card",
-      "Issuer": "Capital One",
-      "image": "/qs_cardart_prim_1290x812.avif",
-      "ratingValue": 7.8,
-      "applyLink": "https://www.capitalone.com/credit-cards/quicksilver/",
-      "ratesandfees": "https://www.capitalone.com/credit-cards/quicksilver/",
-      "reviewLink": "/cards/capital-one-quicksilver",
-      "Card Type": "Personal",
-      "Annual Fee": 0.0,
-      "APR Range (Purchases)": "19.74%\u201329.74% Variable",
-      "Foreign Transaction Fee": 0.0,
-      "Intro APR": "0% intro APR for 15 months on purchases and balance transfers",
-      "Credit Score Requirement": "Good\u2013Excellent (670+)",
-      "signUpBonus": {
-        "points": null,
-        "description": "Earn $200 cash bonus after spending $500 in 3 months",
-        "minSpend": 500,
-        "durationDays": 90,
-        "estimated_value_usd": 200
-      },
-      "rewardProgram": "Cash Rewards",
-      "rewards": [
-        {
-          "multiplier": 1.5,
-          "category": "other",
-          "notes": "Unlimited 1.5% cash back on every purchase",
-          "cap": null
-        }
-      ],
-      "redemptionOptions": {
-        "cash_back_cpp": 1.0
-      },
-      "perks": []
-    },
-    {
-      "Card Name": "Capital One Venture Rewards Credit Card",
-      "Issuer": "Capital One",
-      "image": "/venture_cardart_prim_323x203-1.avif",
-      "ratingValue": 8.2,
-      "applyLink": "https://www.capitalone.com/credit-cards/venture/",
-      "ratesandfees": "https://www.capitalone.com/credit-cards/venture/",
-      "reviewLink": "/cards/capital-one-venture",
-      "Card Type": "Personal",
-      "Annual Fee": 95.0,
-      "APR Range (Purchases)": "21.74%\u201328.74% Variable",
-      "Foreign Transaction Fee": 0.0,
-      "Intro APR": null,
-      "Credit Score Requirement": "Good\u2013Excellent (700+)",
-      "signUpBonus": {
-        "points": 75000,
-        "description": "Earn 75,000 bonus miles after spending $4,000 in 3 months",
-        "minSpend": 4000,
-        "durationDays": 90,
-        "estimated_value_usd": 1125
-      },
-      "rewardProgram": "Capital One Miles",
-      "rewards": [
-        {
-          "multiplier": 2,
-          "category": "other",
-          "notes": "2x miles on every purchase",
-          "cap": null
-        }
-      ],
-      "redemptionOptions": {
-        "cap_one_travel_cpp": 1.0,
-        "transfer_partner_average_cpp": 1.8,
-        "cash_back_cpp": 0.5
-      },
-      "perks": [
-        {
-          "type": "global_entry_tsa_precheck_credit",
-          "value_usd": 100,
-          "frequency": "every_4_years",
-          "notes": "Credit for Global Entry or TSA PreCheck"
-        },
-        {
-          "type": "lounge_access",
-          "description": "2 complimentary visits annually to Capital One Lounges or Plaza Premium Lounges",
-          "estimated_value_usd": 80
-        }
-      ]
-    },
-    {
-      "Card Name": "Chase Sapphire Preferred\u00ae Credit Card",
-      "Issuer": "Chase",
-      "image": "/sapphire_preferred_card.png",
-      "ratingValue": 8.4,
-      "applyLink": "https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred",
-      "ratesandfees": "https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred",
-      "reviewLink": "/cards/chase-sapphire-preferred",
-      "Card Type": "Personal",
-      "Annual Fee": 95.0,
-      "APR Range (Purchases)": "20.49%\u201327.49% Variable",
-      "Foreign Transaction Fee": 0.0,
-      "Intro APR": null,
-      "Credit Score Requirement": "Good\u2013Excellent (700+)",
-      "signUpBonus": {
-        "points": 60000,
-        "description": "Earn 60,000 bonus points after spending $4,000 in 3 months",
-        "minSpend": 4000,
-        "durationDays": 90,
-        "estimated_value_usd": 750
-      },
-      "rewardProgram": "Chase Ultimate Rewards",
-      "rewards": [
-        {
-          "multiplier": 5,
-          "category": "travel_portal",
-          "notes": "5x points on travel purchased through Chase Travel\u2120",
-          "cap": null
-        },
-        {
-          "multiplier": 3,
-          "category": "dining",
-          "notes": "3x points on dining",
-          "cap": null
-        },
-        {
-          "multiplier": 3,
-          "category": "streaming",
-          "notes": "3x points on select streaming services",
-          "cap": null
-        },
-        {
-          "multiplier": 3,
-          "category": "online_grocery",
-          "notes": "3x points on online grocery purchases (excludes Target/Walmart)",
-          "cap": null
-        },
-        {
-          "multiplier": 2,
-          "category": "travel_other",
-          "notes": "2x points on other travel purchases",
-          "cap": null
-        },
-        {
-          "multiplier": 1,
-          "category": "other",
-          "notes": "1x points on all other purchases",
-          "cap": null
-        }
-      ],
-      "redemptionOptions": {
-        "chase_travel_portal_cpp": 1.25,
-        "cash_back_cpp": 1.0,
-        "transfer_partner_average_cpp": 2.0
-      },
-      "perks": [
-        {
-          "type": "annual_hotel_credit",
-          "value_usd": 50,
-          "frequency": "annual",
-          "notes": "$50 Annual Ultimate Rewards Hotel Credit"
-        },
-        {
-          "type": "travel_insurance",
-          "description": "Built\u2011in trip cancellation/interruption insurance",
-          "estimated_value_usd": null
-        }
-      ]
-    }
-  ]
-}
-{
-  "cards": [
-    {
-      "Card Name": "Delta SkyMiles\u00ae Blue American Express Card",
-      "Issuer": "American Express",
-      "image": "/NUS000000267_480x304_straight_withname.webp",
-      "ratingValue": 6.3,
-      "applyLink": "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-blue-american-express-card/",
-      "ratesandfees": "https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/delta-skymiles-blue-american-express-card/25330-10-0#FeeTable",
-      "reviewLink": "/cards/delta-skymiles-blue",
-      "Card Type": "Personal",
-      "Annual Fee": 0,
-      "APR Range (Purchases)": "20.24%\u201329.24% Variable",
-      "Foreign Transaction Fee": 0.0,
-      "Intro APR": null,
-      "Credit Score Requirement": "Good\u2013Excellent (670+)",
-      "signUpBonus": {
-        "description": "Earn 10,000 bonus miles after spending $1,000 in 6 months",
-        "points": 10000,
-        "minSpend": 1000,
-        "durationDays": 180,
-        "estimated_value_usd": 12000
-      },
-      "rewardProgram": "Delta SkyMiles",
-      "rewards": [
-        {
-          "multiplier": 2,
-          "category": "delta_airlines",
-          "notes": "2x miles on Delta purchases",
-          "cap": null
-        },
-        {
-          "multiplier": 1,
-          "category": "other",
-          "notes": "1x miles on other purchases",
-          "cap": null
-        }
-      ],
-      "redemptionOptions": {
-        "program_cpp": 1.2,
-        "cash_back_cpp": 1.0
-      },
-      "perks": []
-    },
-    {
-      "Card Name": "United GatewaySM Credit Card",
-      "Issuer": "Chase",
-      "image": "/united_gateway_card.png",
-      "ratingValue": 6.1,
-      "applyLink": "https://creditcards.chase.com/travel-credit-cards/united/united-gateway",
-      "ratesandfees": "https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC56764.html",
-      "reviewLink": "/cards/united-gateway",
-      "Card Type": "Personal",
-      "Annual Fee": 0,
-      "APR Range (Purchases)": "20.24%\u201327.74% Variable",
-      "Foreign Transaction Fee": 0.0,
-      "Intro APR": null,
-      "Credit Score Requirement": "Good\u2013Excellent (670+)",
-      "signUpBonus": {
-        "description": "Earn 30,000 bonus miles after spending $1,000 in 3 months",
-        "points": 30000,
-        "minSpend": 1000,
-        "durationDays": 90,
-        "estimated_value_usd": 36000
-      },
-      "rewardProgram": "MileagePlus\u00ae",
-      "rewards": [
-        {
-          "multiplier": 2,
-          "category": "united_airlines",
-          "notes": "2x miles on United purchases",
-          "cap": null
-        },
-        {
-          "multiplier": 2,
-          "category": "gas",
-          "notes": "2x miles at gas stations",
-          "cap": null
-        },
-        {
-          "multiplier": 2,
-          "category": "transit",
-          "notes": "2x miles on local transit",
-          "cap": null
-        },
-        {
-          "multiplier": 1,
-          "category": "other",
-          "notes": "1x miles on other purchases",
-          "cap": null
-        }
-      ],
-      "redemptionOptions": {
-        "program_cpp": 1.2,
-        "cash_back_cpp": 1.0
-      },
-      "perks": []
-    },
-    {
-      "Card Name": "Wells Fargo Autograph\u2120 Card",
-      "Issuer": "Wells Fargo",
-      "image": "/Autograph-No-Fee-Card-RGB_d.png",
-      "ratingValue": 7.1,
-      "applyLink": "https://creditcards.wellsfargo.com/autograph-visa-credit-card/?SGNTST=SHINYLP&sub_channel=SEO&vendor_code=G",
-      "ratesandfees": "https://www.wellsfargo.com/credit-cards/autograph-visa/terms/?FPID=012988I6P10000&product_code=CC&subproduct_code=AU&cx_nm=CXNAME_CSMPD&sub_channel=SEO&vendor_code=G&refdmn=www.google.com&_gl=1*1qpj6ry*_gcl_au*OTk5NTUyMzU3LjE3NDAzMTU0NDM.*_ga*NjU1MzIyNC4xNzQwMzE1NDQz*_ga_7JXJJ2JF12*MTc0MTQ1MzE2Ny41LjAuMTc0MTQ1MzIyMy40LjAuMA..",
-      "reviewLink": "/cards/wells-fargo-autograph",
-      "Card Type": "Personal",
-      "Annual Fee": 0,
-      "APR Range (Purchases)": "19.99%\u201329.99% Variable",
-      "Foreign Transaction Fee": 0.0,
-      "Intro APR": "0% for 12mo",
-      "Credit Score Requirement": "Good\u2013Excellent (670+)",
-      "signUpBonus": {
-        "description": "Earn 20,000 bonus points after spending $1,000 in 3 months",
-        "points": 20000,
-        "minSpend": 1000,
-        "durationDays": 90,
-        "estimated_value_usd": 200
-      },
-      "rewardProgram": "Autograph Rewards",
-      "rewards": [
-        {
-          "multiplier": 3,
-          "category": "travel_other",
-          "notes": "3x points on travel other purchases",
-          "cap": null
-        },
-        {
-          "multiplier": 3,
-          "category": "gas",
-          "notes": "3x points on gas purchases",
-          "cap": null
-        },
-        {
-          "multiplier": 3,
-          "category": "dining",
-          "notes": "3x points on dining purchases",
-          "cap": null
-        },
-        {
-          "multiplier": 3,
-          "category": "transit",
-          "notes": "3x points on transit purchases",
-          "cap": null
-        },
-        {
-          "multiplier": 3,
-          "category": "phone_plans",
-          "notes": "3x points on phone plans purchases",
-          "cap": null
-        },
-        {
-          "multiplier": 3,
-          "category": "streaming",
-          "notes": "3x points on streaming purchases",
-          "cap": null
-        },
-        {
-          "multiplier": 1,
-          "category": "other",
-          "notes": "1x points on other purchases",
-          "cap": null
-        }
-      ],
-      "redemptionOptions": {
-        "cash_back_cpp": 1.0
-      },
-      "perks": []
-    },
-    {
-      "Card Name": "American Express Business Gold Card",
-      "Issuer": "American Express",
-      "image": "/Autograph-No-Fee-Card-RGB_d.png",
-      "ratingValue": 7.1,
-      "applyLink": "https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/american-express-business-gold-card-amex/",
-      "ratesandfees": "https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/businessgold-card/45094-9-0?key=tncBody&rwdFlag=rwd",
-      "reviewLink": "/cards/amex-business-gold",
-      "Card Type": "Business",
-      "Annual Fee": 295,
-      "APR Range (Purchases)": "18%\u201326% Variable (Pay Over Time)",
-      "Foreign Transaction Fee": 0.0,
-      "Intro APR": null,
-      "Credit Score Requirement": "Good\u2013Excellent (700+)",
-      "signUpBonus": {
-        "description": "Earn 100,000 Membership Rewards\u00ae points after spending $15,000 in 3 months",
-        "points": 100000,
-        "minSpend": 15000,
-        "durationDays": 90,
-        "estimated_value_usd": 2000
-      },
-      "rewardProgram": "American Express Membership Rewards",
-      "rewards": [
-        {
-          "multiplier": 4,
-          "category": "business_top_category",
-          "notes": "4x points on the 2 categories where your business spends the most each billing cycle (up to $150K per year)",
-          "cap": {
-            "amount_usd": 150000,
-            "period": "year",
-            "applies_to_categories": [
-              "business_top_category"
-            ]
-          }
-        },
-        {
-          "multiplier": 1,
-          "category": "other",
-          "notes": "1x points on other purchases",
-          "cap": null
-        }
-      ],
-      "redemptionOptions": {
-        "amex_travel_cpp": 1.0,
-        "transfer_partner_average_cpp": 2.0,
-        "cash_back_cpp": 0.6
-      },
-      "perks": []
-    },
-    {
-      "Card Name": "Bank of America Business Advantage Travel Rewards World Mastercard\u00ae",
-      "Issuer": "Bank of America",
-      "image": "/assets-images-site-sb-credit-cards-card-arts-en-bofa_trvbuswldcm_mc-CSX44dee15a.png",
-      "ratingValue": 7.3,
-      "applyLink": "https://www.bankofamerica.com/smallbusiness/credit-cards/products/travel-rewards-business-credit-card/",
-      "ratesandfees": "https://www.bankofamerica.com/smallbusiness/credit-cards/terms-and-conditions/?campaignid=4069740&productoffercode=GU&locale=en_US",
-      "reviewLink": "/cards/boa-business-advantage-travel",
-      "Card Type": "Business",
-      "Annual Fee": 0,
-      "APR Range (Purchases)": "12.24%\u201322.24% Variable",
-      "Foreign Transaction Fee": 0.0,
-      "Intro APR": "0% for 9mo",
-      "Credit Score Requirement": "Good\u2013Excellent",
-      "signUpBonus": {
-        "description": "Earn 30,000 bonus points after spending $3,000 in 90 days",
-        "points": 30000,
-        "minSpend": 3000,
-        "durationDays": 90,
-        "estimated_value_usd": 300
-      },
-      "rewardProgram": "Bank of America Travel Center",
-      "rewards": [
-        {
-          "multiplier": 3,
-          "category": "travel_portal",
-          "notes": "3x points on travel purchases booked via the Bank of America Travel Center",
-          "cap": null
-        },
-        {
-          "multiplier": 1.5,
-          "category": "other",
-          "notes": "1.5x points on all other purchases",
-          "cap": null
-        }
-      ],
-      "redemptionOptions": {
-        "cash_back_cpp": 1.0
-      },
-      "perks": []
-    },
-    {
-      "Card Name": "Capital One Spark Miles for Business",
-      "Issuer": "Capital One",
-      "image": "/miles_new_2021.avif",
-      "ratingValue": 8.0,
-      "applyLink": "https://www.capitalone.com/small-business/credit-cards/spark-miles/",
-      "ratesandfees": "https://www.capitalone.com/small-business/credit-cards/spark-miles/",
-      "reviewLink": "/cards/capital-one-spark-miles",
-      "Card Type": "Business",
-      "Annual Fee": 95,
-      "APR Range (Purchases)": "21.74%\u201329.74% Variable",
-      "Foreign Transaction Fee": 0.0,
-      "Intro APR": null,
-      "Credit Score Requirement": "Good\u2013Excellent (700+)",
-      "signUpBonus": {
-        "description": "Earn 50,000 bonus miles after spending $4,500 in 3 months",
-        "points": 50000,
-        "minSpend": 4500,
-        "durationDays": 90,
-        "estimated_value_usd": 60000
-      },
-      "rewardProgram": "Capital One Miles",
-      "rewards": [
-        {
-          "multiplier": 2,
-          "category": "other",
-          "notes": "2x miles on every purchase",
-          "cap": null
-        }
-      ],
-      "redemptionOptions": {
-        "program_cpp": 1.8,
-        "cash_back_cpp": 1.0
-      },
-      "perks": [
-        {
-          "type": "global_entry_tsa_precheck_credit",
-          "value_usd": 100,
-          "frequency": "every_4_years",
-          "notes": "Credit for Global Entry or TSA PreCheck"
-        }
-      ]
-    },
-    {
-      "Card Name": "Capital One Venture X Business Card",
-      "Issuer": "Capital One",
-      "image": "/vxb-card-alt-at-2x.avif",
-      "ratingValue": 8.8,
-      "applyLink": "http://capitalone.com/small-business/credit-cards/venture-x-business/",
-      "ratesandfees": "http://capitalone.com/small-business/credit-cards/venture-x-business/",
-      "reviewLink": "/cards/capital-one-venture-x-business",
-      "Card Type": "Business",
-      "Annual Fee": 395,
-      "APR Range (Purchases)": "22.24%\u201129.24% Variable",
-      "Foreign Transaction Fee": 0.0,
-      "Intro APR": null,
-      "Credit Score Requirement": "Excellent (720+)",
-      "signUpBonus": {
-        "description": "Earn 150,000 miles after spending $30,000 in 3 months; earn an additional 200,000 miles after spending $200,000 total in 6 months",
-        "points": 150000,
-        "minSpend": 30000,
-        "durationDays": 180,
-        "estimated_value_usd": 270000
-      },
-      "rewardProgram": "Capital One Miles",
-      "rewards": [
-        {
-          "multiplier": 10,
-          "category": "hotel_capital_one_portal",
-          "notes": "10x miles on hotels and car rentals booked through Capital One Travel",
-          "cap": null
-        },
-        {
-          "multiplier": 5,
-          "category": "flights_capital_one_portal",
-          "notes": "5x miles on flights booked through Capital One Travel",
-          "cap": null
-        },
-        {
-          "multiplier": 2,
-          "category": "other",
-          "notes": "2x miles on other purchases",
-          "cap": null
-        }
-      ],
-      "redemptionOptions": {
-        "program_cpp": 1.8,
-        "cash_back_cpp": 1.0
-      },
-      "perks": [
-        {
-          "type": "travel_credit",
-          "value_usd": 300,
-          "frequency": "annual",
-          "notes": "$300 annual credit for bookings through Capital One Travel"
-        },
-        {
-          "type": "lounge_access",
-          "description": "Access to Capital One Lounges and Priority Pass Select",
-          "estimated_value_usd": null
-        }
-      ]
-    },
-    {
-      "Card Name": "Delta SkyMiles\u00ae Reserve Business American Express Card",
-      "Issuer": "American Express",
-      "image": "/NUS000000270_480x304_straight_withname.avif",
-      "ratingValue": 8.8,
-      "applyLink": "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-reserve-american-express-card/",
-      "ratesandfees": "https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/delta-skymiles-reserve-american-express-card/25330-10-0#FeeTable",
-      "reviewLink": "/cards/delta-skymiles-reserve",
-      "Card Type": "Business",
-      "Annual Fee": 550,
-      "APR Range (Purchases)": "20.24%\u201329.24% Variable",
-      "Foreign Transaction Fee": 0.0,
-      "Intro APR": null,
-      "Credit Score Requirement": "Excellent (720+)",
-      "signUpBonus": {
-        "description": "Earn 80,000 bonus miles after spending $10,000 in 6 months",
-        "points": 80000,
-        "minSpend": 10000,
-        "durationDays": 180,
-        "estimated_value_usd": 96000
-      },
-      "rewardProgram": "Delta SkyMiles",
-      "rewards": [
-        {
-          "multiplier": 3,
-          "category": "delta_airlines",
-          "notes": "3x miles on Delta purchases",
-          "cap": null
-        },
-        {
-          "multiplier": 1,
-          "category": "other",
-          "notes": "1x miles on other purchases",
-          "cap": null
-        }
-      ],
-      "redemptionOptions": {
-        "program_cpp": 1.2,
-        "cash_back_cpp": 1.0
-      },
-      "perks": [
-        {
-          "type": "lounge_access",
-          "description": "Complimentary Delta Sky Club and Centurion Lounge access when traveling on Delta flights",
-          "estimated_value_usd": null
-        },
-        {
-          "type": "companion_certificate",
-          "description": "Annual Companion Certificate (First Class, Delta Comfort+ or Main Cabin)",
-          "estimated_value_usd": 400
-        }
-      ]
-    }
-  ]
-}
-{
-  "cards": [
-    {
-      "Card Name": "Ink Business Preferred\u00ae Credit Card",
-      "Issuer": "Chase",
-      "image": "/ink_preferred_card.png",
-      "ratingValue": 8.6,
-      "applyLink": "https://creditcards.chase.com/business-credit-cards/ink/business-preferred",
-      "ratesandfees": "https://creditcards.chase.com/business-credit-cards/ink/business-preferred",
-      "reviewLink": "/cards/ink-business-preferred",
-      "Card Type": "Business",
-      "Annual Fee": 95.0,
-      "APR Range (Purchases)": "20.24%\u201325.24% Variable",
-      "Foreign Transaction Fee": 0.0,
-      "Intro APR": null,
-      "Credit Score Requirement": "Good\u2013Excellent (700+)",
-      "signUpBonus": {
-        "points": 90000,
-        "description": "Earn 90,000 bonus points after spending $8,000 in 3 months",
-        "minSpend": 8000,
-        "durationDays": 90,
-        "estimated_value_usd": 180000
-      },
-      "rewardProgram": "Chase Ultimate Rewards",
-      "rewards": [
-        {
-          "multiplier": 3,
-          "category": "business_bonus_category",
-          "notes": "3x points on the first $150,000 spent each year on shipping, advertising on social media and search engines, travel, and telecom services",
-          "cap": {
-            "amount_usd": 150000,
-            "period": "year",
-            "applies_to_categories": [
-              "shipping",
-              "advertising_online",
-              "travel_other",
-              "telecom"
-            ]
-          }
-        },
-        {
-          "multiplier": 1,
-          "category": "other",
-          "notes": "1x points on other purchases",
-          "cap": null
-        }
-      ],
-      "redemptionOptions": {
-        "chase_travel_portal_cpp": 1.25,
-        "transfer_partner_average_cpp": 2.0,
-        "cash_back_cpp": 1.0
-      },
-      "perks": []
     },
     {
       "Card Name": "The Business Platinum Card\u00ae from American Express",
@@ -1968,6 +1739,173 @@
       ]
     },
     {
+      "Card Name": "U.S. Bank Altitude\u00ae Connect Visa Signature\u00ae Card",
+      "Issuer": "U.S. Bank",
+      "image": "/Reflect_homepage_m.png",
+      "ratingValue": 7.6,
+      "applyLink": "https://www.usbank.com/credit-cards/altitude-connect-visa-signature-credit-card.html",
+      "ratesandfees": "https://www.usbank.com/credit-cards/altitude-connect-visa-signature-credit-card.html",
+      "reviewLink": "/cards/us-bank-altitude-connect",
+      "Card Type": "Personal",
+      "Annual Fee": 95.0,
+      "APR Range (Purchases)": "18.24%\u201326.74% Variable",
+      "Foreign Transaction Fee": 0.0,
+      "Intro APR": "0% intro APR on balance transfers for 12 months",
+      "Credit Score Requirement": "Good\u2013Excellent (700+)",
+      "signUpBonus": {
+        "points": 20000,
+        "description": "Earn 20,000 bonus points after spending $1,000 in 90 days",
+        "minSpend": 1000,
+        "durationDays": 90,
+        "estimated_value_usd": 200
+      },
+      "rewardProgram": "U.S. Bank Altitude Rewards",
+      "rewards": [
+        {
+          "multiplier": 4,
+          "category": "travel_other",
+          "notes": "4x points on travel purchases",
+          "cap": null
+        },
+        {
+          "multiplier": 4,
+          "category": "gas",
+          "notes": "4x points at gas stations",
+          "cap": null
+        },
+        {
+          "multiplier": 2,
+          "category": "dining",
+          "notes": "2x points on dining",
+          "cap": null
+        },
+        {
+          "multiplier": 2,
+          "category": "streaming",
+          "notes": "2x points on select streaming services",
+          "cap": null
+        },
+        {
+          "multiplier": 1,
+          "category": "other",
+          "notes": "1x points on all other purchases",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "travel_statement_credit_cpp": 1.0,
+        "cash_back_cpp": 1.0
+      },
+      "perks": []
+    },
+    {
+      "Card Name": "U.S. Bank Cash+\u00ae Visa Signature\u00ae Card",
+      "Issuer": "U.S. Bank",
+      "image": "/Cash+_Front_Angle_Reflection.png",
+      "ratingValue": 7.4,
+      "applyLink": "https://www.usbank.com/credit-cards/cash-plus-visa-signature-credit-card.html",
+      "ratesandfees": "https://www.usbank.com/credit-cards/cash-plus-visa-signature-credit-card.html",
+      "reviewLink": "/cards/us-bank-cash-plus",
+      "Card Type": "Personal",
+      "Annual Fee": 0.0,
+      "APR Range (Purchases)": "18.24%\u201328.24% Variable",
+      "Foreign Transaction Fee": 3.0,
+      "Intro APR": "0% intro APR for 15 months on purchases and balance transfers",
+      "Credit Score Requirement": "Good\u2013Excellent (670+)",
+      "signUpBonus": {
+        "points": null,
+        "description": "Earn $200 bonus after spending $1,000 in 90 days",
+        "minSpend": 1000,
+        "durationDays": 90,
+        "estimated_value_usd": 200
+      },
+      "rewardProgram": "U.S. Bank Cash+ Rewards",
+      "rewards": [
+        {
+          "multiplier": 5,
+          "category": "chosen_category_5pct",
+          "notes": "5% cash back on your selected two categories (combined up to $2,000 each quarter)",
+          "cap": {
+            "amount_usd": 2000,
+            "period": "quarter",
+            "applies_to_categories": [
+              "chosen_category_5pct"
+            ]
+          }
+        },
+        {
+          "multiplier": 2,
+          "category": "chosen_everyday_2pct",
+          "notes": "2% cash back on your chosen everyday category (e.g., gas, groceries or restaurants) each quarter",
+          "cap": null
+        },
+        {
+          "multiplier": 1,
+          "category": "other",
+          "notes": "1% cash back on all other purchases",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "cash_back_cpp": 1.0
+      },
+      "perks": []
+    },
+    {
+      "Card Name": "United GatewaySM Credit Card",
+      "Issuer": "Chase",
+      "image": "/united_gateway_card.png",
+      "ratingValue": 6.1,
+      "applyLink": "https://creditcards.chase.com/travel-credit-cards/united/united-gateway",
+      "ratesandfees": "https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC56764.html",
+      "reviewLink": "/cards/united-gateway",
+      "Card Type": "Personal",
+      "Annual Fee": 0,
+      "APR Range (Purchases)": "20.24%\u201327.74% Variable",
+      "Foreign Transaction Fee": 0.0,
+      "Intro APR": null,
+      "Credit Score Requirement": "Good\u2013Excellent (670+)",
+      "signUpBonus": {
+        "description": "Earn 30,000 bonus miles after spending $1,000 in 3 months",
+        "points": 30000,
+        "minSpend": 1000,
+        "durationDays": 90,
+        "estimated_value_usd": 36000
+      },
+      "rewardProgram": "MileagePlus\u00ae",
+      "rewards": [
+        {
+          "multiplier": 2,
+          "category": "united_airlines",
+          "notes": "2x miles on United purchases",
+          "cap": null
+        },
+        {
+          "multiplier": 2,
+          "category": "gas",
+          "notes": "2x miles at gas stations",
+          "cap": null
+        },
+        {
+          "multiplier": 2,
+          "category": "transit",
+          "notes": "2x miles on local transit",
+          "cap": null
+        },
+        {
+          "multiplier": 1,
+          "category": "other",
+          "notes": "1x miles on other purchases",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "program_cpp": 1.2,
+        "cash_back_cpp": 1.0
+      },
+      "perks": []
+    },
+    {
       "Card Name": "United\u2120 Business Card",
       "Issuer": "Chase",
       "image": "/united_business_card.png",
@@ -2045,6 +1983,203 @@
       ]
     },
     {
+      "Card Name": "United\u2120 Explorer Card",
+      "Issuer": "Chase",
+      "image": "/united_explorer_card.png",
+      "ratingValue": 8.0,
+      "applyLink": "https://creditcards.chase.com/travel-credit-cards/united/united-explorer",
+      "ratesandfees": "https://creditcards.chase.com/travel-credit-cards/united/united-explorer",
+      "reviewLink": "/cards/united-explorer",
+      "Card Type": "Personal",
+      "Annual Fee": 95.0,
+      "APR Range (Purchases)": "21.99%\u201328.99% Variable",
+      "Foreign Transaction Fee": 0.0,
+      "Intro APR": null,
+      "Credit Score Requirement": "Good\u2013Excellent (700+)",
+      "signUpBonus": {
+        "points": 80000,
+        "description": "Earn 80,000 MileagePlus miles after spending $3,000 in 3 months",
+        "minSpend": 3000,
+        "durationDays": 90,
+        "estimated_value_usd": 960
+      },
+      "rewardProgram": "MileagePlus",
+      "rewards": [
+        {
+          "multiplier": 2,
+          "category": "united_airlines",
+          "notes": "2x miles on United purchases",
+          "cap": null
+        },
+        {
+          "multiplier": 2,
+          "category": "dining",
+          "notes": "2x miles at restaurants",
+          "cap": null
+        },
+        {
+          "multiplier": 2,
+          "category": "gas",
+          "notes": "2x miles at gas stations",
+          "cap": null
+        },
+        {
+          "multiplier": 1,
+          "category": "other",
+          "notes": "1x miles on other purchases",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "program_cpp": 1.2,
+        "cash_back_cpp": 1.0
+      },
+      "perks": [
+        {
+          "type": "lounge_access_passes",
+          "description": "2 United Club one\u2011time passes each account anniversary",
+          "estimated_value_usd": 118
+        },
+        {
+          "type": "free_checked_bag",
+          "description": "First checked bag free for cardholder and companion",
+          "estimated_value_usd": 35
+        }
+      ]
+    },
+    {
+      "Card Name": "Wells Fargo Active Cash\u00ae Card",
+      "Issuer": "Wells Fargo",
+      "image": "/Cash+_Front_Angle_Reflection.png",
+      "ratingValue": 7.4,
+      "applyLink": "https://creditcards.wellsfargo.com/active-cash-credit-card/",
+      "ratesandfees": "https://creditcards.wellsfargo.com/active-cash-credit-card/",
+      "reviewLink": "/cards/wells-fargo-active-cash",
+      "Card Type": "Personal",
+      "Annual Fee": 0.0,
+      "APR Range (Purchases)": "19.99%\u201329.99% Variable",
+      "Foreign Transaction Fee": 3.0,
+      "Intro APR": "0% intro APR for 15 months on purchases and qualifying balance transfers",
+      "Credit Score Requirement": "Good\u2013Excellent (670+)",
+      "signUpBonus": {
+        "points": null,
+        "description": "Earn $200 cash rewards bonus after spending $500 in 3 months",
+        "minSpend": 500,
+        "durationDays": 90,
+        "estimated_value_usd": 200
+      },
+      "rewardProgram": "Cash Rewards",
+      "rewards": [
+        {
+          "multiplier": 2,
+          "category": "other",
+          "notes": "Unlimited 2% cash rewards on purchases",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "cash_back_cpp": 1.0
+      },
+      "perks": []
+    },
+    {
+      "Card Name": "Wells Fargo Autograph\u2120 Card",
+      "Issuer": "Wells Fargo",
+      "image": "/Autograph-No-Fee-Card-RGB_d.png",
+      "ratingValue": 7.1,
+      "applyLink": "https://creditcards.wellsfargo.com/autograph-visa-credit-card/?SGNTST=SHINYLP&sub_channel=SEO&vendor_code=G",
+      "ratesandfees": "https://www.wellsfargo.com/credit-cards/autograph-visa/terms/?FPID=012988I6P10000&product_code=CC&subproduct_code=AU&cx_nm=CXNAME_CSMPD&sub_channel=SEO&vendor_code=G&refdmn=www.google.com&_gl=1*1qpj6ry*_gcl_au*OTk5NTUyMzU3LjE3NDAzMTU0NDM.*_ga*NjU1MzIyNC4xNzQwMzE1NDQz*_ga_7JXJJ2JF12*MTc0MTQ1MzE2Ny41LjAuMTc0MTQ1MzIyMy40LjAuMA..",
+      "reviewLink": "/cards/wells-fargo-autograph",
+      "Card Type": "Personal",
+      "Annual Fee": 0,
+      "APR Range (Purchases)": "19.99%\u201329.99% Variable",
+      "Foreign Transaction Fee": 0.0,
+      "Intro APR": "0% for 12mo",
+      "Credit Score Requirement": "Good\u2013Excellent (670+)",
+      "signUpBonus": {
+        "description": "Earn 20,000 bonus points after spending $1,000 in 3 months",
+        "points": 20000,
+        "minSpend": 1000,
+        "durationDays": 90,
+        "estimated_value_usd": 200
+      },
+      "rewardProgram": "Autograph Rewards",
+      "rewards": [
+        {
+          "multiplier": 3,
+          "category": "travel_other",
+          "notes": "3x points on travel other purchases",
+          "cap": null
+        },
+        {
+          "multiplier": 3,
+          "category": "gas",
+          "notes": "3x points on gas purchases",
+          "cap": null
+        },
+        {
+          "multiplier": 3,
+          "category": "dining",
+          "notes": "3x points on dining purchases",
+          "cap": null
+        },
+        {
+          "multiplier": 3,
+          "category": "transit",
+          "notes": "3x points on transit purchases",
+          "cap": null
+        },
+        {
+          "multiplier": 3,
+          "category": "phone_plans",
+          "notes": "3x points on phone plans purchases",
+          "cap": null
+        },
+        {
+          "multiplier": 3,
+          "category": "streaming",
+          "notes": "3x points on streaming purchases",
+          "cap": null
+        },
+        {
+          "multiplier": 1,
+          "category": "other",
+          "notes": "1x points on other purchases",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "cash_back_cpp": 1.0
+      },
+      "perks": []
+    },
+    {
+      "Card Name": "Wells Fargo Reflect\u00ae Card",
+      "Issuer": "Wells Fargo",
+      "image": "/Reflect_homepage_m.png",
+      "ratingValue": 6.6,
+      "applyLink": "https://creditcards.wellsfargo.com/reflect-visa-credit-card/",
+      "ratesandfees": "https://creditcards.wellsfargo.com/reflect-visa-credit-card/terms/",
+      "reviewLink": "/cards/wells-fargo-reflect",
+      "Card Type": "Personal",
+      "Annual Fee": 0.0,
+      "APR Range (Purchases)": "17.99%\u201329.99% Variable",
+      "Foreign Transaction Fee": 3.0,
+      "Intro APR": "0% intro APR up to 21 months from account opening",
+      "Credit Score Requirement": "Good\u2013Excellent (670+)",
+      "signUpBonus": {
+        "points": null,
+        "description": "No rewards program",
+        "minSpend": null,
+        "durationDays": null,
+        "estimated_value_usd": 0
+      },
+      "rewardProgram": null,
+      "rewards": [],
+      "redemptionOptions": {},
+      "perks": []
+    },
+    {
       "Card Name": "World of Hyatt Business Credit Card",
       "Issuer": "Chase",
       "image": "/hyatt_business_card.png",
@@ -2112,157 +2247,6 @@
           "type": "annual_free_night",
           "description": "2,000 Bonus Points after card anniversary when you spend $50K",
           "estimated_value_usd": null
-        }
-      ]
-    },
-    {
-      "Card Name": "Chase Sapphire Reserve\u00ae Card",
-      "Issuer": "Chase",
-      "image": "/sapphire_reserve_card.png",
-      "ratingValue": 9.2,
-      "applyLink": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
-      "ratesandfees": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
-      "reviewLink": "/cards/chase-sapphire-reserve",
-      "Card Type": "Personal",
-      "Annual Fee": 550.0,
-      "APR Range (Purchases)": "22.49%\u201329.49% Variable",
-      "Foreign Transaction Fee": 0.0,
-      "Intro APR": null,
-      "Credit Score Requirement": "Excellent (720+)",
-      "signUpBonus": {
-        "points": 60000,
-        "description": "Earn 60,000 bonus points after spending $4,000 in 3 months",
-        "minSpend": 4000,
-        "durationDays": 90,
-        "estimated_value_usd": 120000
-      },
-      "rewardProgram": "Chase Ultimate Rewards",
-      "rewards": [
-        {
-          "multiplier": 10,
-          "category": "hotel_chase_portal",
-          "notes": "10x points on hotels booked through Chase Travel\u2120",
-          "cap": null
-        },
-        {
-          "multiplier": 10,
-          "category": "car_rental_chase_portal",
-          "notes": "10x points on car rentals booked through Chase Travel\u2120",
-          "cap": null
-        },
-        {
-          "multiplier": 5,
-          "category": "flights_chase_portal",
-          "notes": "5x points on flights booked through Chase Travel\u2120",
-          "cap": null
-        },
-        {
-          "multiplier": 3,
-          "category": "travel_other",
-          "notes": "3x points on other travel purchases after $300 travel credit",
-          "cap": null
-        },
-        {
-          "multiplier": 3,
-          "category": "dining",
-          "notes": "3x points on dining",
-          "cap": null
-        },
-        {
-          "multiplier": 1,
-          "category": "other",
-          "notes": "1x points on other purchases",
-          "cap": null
-        }
-      ],
-      "redemptionOptions": {
-        "chase_travel_portal_cpp": 1.5,
-        "transfer_partner_average_cpp": 2.0,
-        "cash_back_cpp": 1.0
-      },
-      "perks": [
-        {
-          "type": "travel_credit",
-          "value_usd": 300,
-          "frequency": "annual",
-          "notes": "$300 Annual Travel Credit"
-        },
-        {
-          "type": "lounge_access",
-          "description": "Priority Pass Select + Chase Sapphire Lounge access",
-          "estimated_value_usd": null
-        },
-        {
-          "type": "global_entry_tsa_precheck_credit",
-          "value_usd": 100,
-          "frequency": "every_4_years",
-          "notes": "GE/TSA PreCheck credit"
-        }
-      ]
-    },
-    {
-      "Card Name": "Capital One Venture X Rewards Credit Card",
-      "Issuer": "Capital One",
-      "image": "/venture_x_card.png",
-      "ratingValue": 8.8,
-      "applyLink": "https://www.capitalone.com/credit-cards/venture-x/",
-      "ratesandfees": "https://www.capitalone.com/credit-cards/venture-x/",
-      "reviewLink": "/cards/capital-one-venture-x",
-      "Card Type": "Personal",
-      "Annual Fee": 395.0,
-      "APR Range (Purchases)": "22.24%\u201329.24% Variable",
-      "Foreign Transaction Fee": 0.0,
-      "Intro APR": null,
-      "Credit Score Requirement": "Excellent (720+)",
-      "signUpBonus": {
-        "points": 75000,
-        "description": "Earn 75,000 bonus miles after spending $4,000 in 3 months",
-        "minSpend": 4000,
-        "durationDays": 90,
-        "estimated_value_usd": 135000
-      },
-      "rewardProgram": "Capital One Miles",
-      "rewards": [
-        {
-          "multiplier": 10,
-          "category": "hotel_capital_one_portal",
-          "notes": "10x miles on hotels and car rentals booked via Capital One Travel",
-          "cap": null
-        },
-        {
-          "multiplier": 5,
-          "category": "flights_capital_one_portal",
-          "notes": "5x miles on flights booked via Capital One Travel",
-          "cap": null
-        },
-        {
-          "multiplier": 2,
-          "category": "other",
-          "notes": "2x miles on other purchases",
-          "cap": null
-        }
-      ],
-      "redemptionOptions": {
-        "cap_one_travel_cpp": 1.0,
-        "transfer_partner_average_cpp": 1.8,
-        "cash_back_cpp": 0.5
-      },
-      "perks": [
-        {
-          "type": "travel_credit",
-          "value_usd": 300,
-          "frequency": "annual",
-          "notes": "$300 annual travel credit through Capital One Travel"
-        },
-        {
-          "type": "lounge_access",
-          "description": "Unlimited access to Capital One Lounges + Priority Pass Select",
-          "estimated_value_usd": null
-        },
-        {
-          "type": "anniversary_miles",
-          "description": "10,000 bonus miles every account anniversary",
-          "estimated_value_usd": 100
         }
       ]
     }
