@@ -25,7 +25,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     const response = await openai.chat.completions.create({
       // Consider using gpt-4-turbo or newer for potentially better results if budget allows
-      model: 'gpt-4-turbo', // Or 'gpt-3.5-turbo' if preferred
+      model: 'gpt-3.5-turbo', // Or 'gpt-3.5-turbo' if preferred
       temperature: 0.6, // Slightly lower temp for more focused recommendations
       max_tokens: 500, // Adjust token limit as needed
 
