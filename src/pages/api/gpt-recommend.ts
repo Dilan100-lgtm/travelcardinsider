@@ -1,3 +1,6 @@
+console.log("API Call Triggered");
+console.log("Spend:", spend);
+console.log("Top Cards:", topCards);
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { OpenAI } from 'openai';
 
