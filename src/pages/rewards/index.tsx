@@ -1,7 +1,9 @@
+// File: src/pages/rewards/index.tsx
+
 import Head from 'next/head';
 import RewardsCalculator from '@/components/RewardsCalculator';
-import Header from '@/components/Header'; // optional if you use global layout
-import Footer from '@/components/Footer'; // optional if you use global layout
+import Header from '@/components/Header'; // optional
+import Footer from '@/components/Footer'; // optional
 
 export default function RewardsPage() {
   return (
@@ -15,6 +17,9 @@ export default function RewardsPage() {
         <meta name="robots" content="index, follow" />
       </Head>
 
+      {/* Header (optional) */}
+      <Header />
+
       <main style={{ padding: '2rem 1rem', maxWidth: '900px', margin: '0 auto' }}>
         <h1 style={{ fontSize: '2rem', marginBottom: '1rem' }}>
           Travel Credit Card Rewards Calculator
@@ -25,10 +30,10 @@ export default function RewardsPage() {
         </p>
 
         <RewardsCalculator />
-        return <RewardsCalculator />
       </main>
 
-      {/* Footer is optional here */}
+      {/* Footer (optional) */}
+      <Footer />
     </>
   );
 }
