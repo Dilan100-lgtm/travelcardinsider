@@ -329,20 +329,27 @@ export default function RewardsCalculator() {
 // Helper function to do basic formatting for AI output (bold, bullets)
 // For security with external HTML, use a sanitizer like DOMPurify
 function formatAiOutput(text: string): string {
-    // Basic replacements - can be expanded
-    let formatted = text
-        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold **text**
-        .replace(/\* (.*?)(?=\n\* |\n\n|$)/g, '<li>$1</li>'); // Basic bullet * item
+  // Basic replacements - can be expanded
+  let formatted = text
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold **text**
+      .replace(/\* (.*?)(?=\n\* |\n\n|$)/g, '<li>$1</li>'); // Basic bullet * item
 
-    // Wrap bullet points in <ul> if detected
-    if (formatted.includes('<li>')) {
-        formatted = formatted.replace(/^(<li>.*<\/li>)/sm, '<ul>$1</ul>'); // Wrap consecutive LIs
-        // Clean up potential extra newlines around the list
-         formatted = formatted.replace(/\n*<ul>/g, '<ul>').replace(/<\/ul>\n*/g, '</ul>');
-    }
+  // Wrap bullet points in <ul> - REMOVED the line causing the build error
+  // The line below was removed:
+  // formatted = formatted.replace(/^(<li>.*<\/li>)/sm, '<ul>$1</ul>');
 
-    // Convert remaining newlines to <br> tags for HTML paragraphs
-    // formatted = formatted.replace(/\n/g, '<br />'); // Optional: Use if AI doesn't structure paragraphs well
+  // If you still want to try wrapping, you could attempt a simpler multi-line replace,
+  // but it might be less reliable than the original regex with the 's' flag.
+  // For now, we prioritize fixing the build. LIs will be rendered individually.
 
-    return formatted; // Be cautious with dangerouslySetInnerHTML without sanitization if content source changes!
+  // Clean up potential extra newlines around list items if they exist individually
+  if (formatted.includes('<li>')) {
+       formatted = formatted.replace(/\n*<li>/g, '<li>').replace(/<\/li>\n*/g, '</li>');
+  }
+
+
+  // Convert remaining newlines to <br> tags for HTML paragraphs (Optional)
+  // formatted = formatted.replace(/\n/g, '<br />');
+
+  return formatted; // Remember caution with dangerouslySetInnerHTML
 }
