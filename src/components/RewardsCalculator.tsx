@@ -142,9 +142,7 @@ export default function RewardsCalculator() {
         </ul>
       </div>
 
-      <button onClick={getAiRecommendation} style={{ marginTop: '2rem', padding: '0.5rem 1rem' }}>
-        {loading ? 'Generating AI Recommendation...' : 'Get AI Recommendation'}
-      </button>
+      <button onClick={getAiRecommendation}>Get AI Recommendation</button>
 
       {aiSuggestion && (
         <div style={{ marginTop: '2rem', background: '#f0f0f0', padding: '1rem', borderRadius: '5px' }}>
