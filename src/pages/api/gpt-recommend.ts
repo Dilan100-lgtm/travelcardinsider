@@ -1,93 +1,81 @@
-// File: src/pages/api/gpt-recommend.ts
+// Backend API Pseudocode (e.g., in pages/api/gpt-recommend.js or similar)
 
-import type { NextApiRequest, NextApiResponse } from 'next';
-import { OpenAI } from 'openai';
+import OpenAI from 'openai'; // Or your preferred AI SDK
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY!,
-});
+// Assume openai is configured with your API key
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== 'POST') return res.status(405).end();
+export default async function handler(req, res) {
+  if (req.method === 'POST') {
+    try {
+      const { spend, annualSpend, redemptionStrategy, topCards } = req.body;
 
-  // Destructure payload from the front-end
-  const { spend, annualSpend, redemptionStrategy, topCards } = req.body;
+      // --- Construct the Prompt ---
 
-  // Basic validation (optional but good practice)
-  if (!spend || !annualSpend || !redemptionStrategy || !topCards || !Array.isArray(topCards)) {
-      return res.status(400).json({ error: 'Missing required data in request body' });
-  }
+      const systemMessage = `You are a world-class travel credit card expert. Your job is to analyze a user's monthly spend and recommend the top 1-2 cards based on realistic net value, perks, and fit. Focus on the *why* behind the recommendation, considering the user's specific spending patterns against the card's strengths. Be honest, helpful, precise, and avoid overly generic statements. Mention specific high-value perks if applicable to the recommendation. Format the output clearly using markdown (bolding, bullet points).`;
 
-  console.log("API Call Triggered - gpt-recommend");
-  // console.log("Spend:", spend); // Log if needed for debugging
-  // console.log("Top Cards Context:", JSON.stringify(topCards, null, 2)); // Log rich context if needed
+      // Format the top cards data clearly for the prompt
+      const topCardsFormatted = topCards.map((c, i) => `
+Card #${i + 1}: ${c.cardName} (${c.issuer})
+- Type: ${c.cardType}
+- Annual Fee: $${c.annualFee}
+- Est. 1st Year Net Value: $${c.estimatedFirstYearNetValue?.toFixed(2) ?? 'N/A'} (Based on your spend)
+- Est. Ongoing Net Value: $${c.estimatedOngoingNetValue?.toFixed(2) ?? 'N/A'} (Based on your spend)
+- Sign-Up Bonus: ${c.signUpBonusDescription || 'N/A'} (~$${c.signUpBonusValue?.toFixed(2) ?? '0'})
+- Calculated Annual Rewards Value: $${c.calculatedAnnualRewardsValue?.toFixed(2) ?? 'N/A'} (From your spend)
+- Calculated Annual Perk Value: $${c.calculatedAnnualPerkValue?.toFixed(2) ?? 'N/A'}
+- Key Reward Categories (Calculated for you): ${Array.isArray(c.topRewardCategories) && c.topRewardCategories.length > 0 ? c.topRewardCategories.map(r => `${r.multiplier}x on ${r.category.replace(/_/g, ' ')}${r.cap ? ` (Cap: $${r.cap.amount_usd}/${r.cap.period})` : ''}`).join(', ') : 'Standard 1x or specific base rate'}
+- Key Perks: ${Array.isArray(c.keyPerks) && c.keyPerks.length > 0 ? c.keyPerks.map(p => `${p.description}${p.value ? ` (~$${p.value}/yr)` : ''}`).join('; ') : 'None notable'}
+- Point Value Used (CPP): ${c.cppUsedForValue?.toFixed(2)} based on '${c.redemptionStrategyUsed.replace('_', ' ')}' strategy
+`).trim(); // Use trim() to remove leading/trailing whitespace if needed
 
-  try {
-    const response = await openai.chat.completions.create({
-      // Consider using gpt-4-turbo or newer for potentially better results if budget allows
-      model: 'gpt-3.5-turbo', // Or 'gpt-3.5-turbo' if preferred
-      temperature: 0.6, // Slightly lower temp for more focused recommendations
-      max_tokens: 500, // Adjust token limit as needed
+      const userMessageContent = `
+A user is looking for credit card recommendations based on their estimated *monthly* spending:
+${JSON.stringify(spend, null, 2)}
 
-      messages: [
-        {
-          role: 'system',
-          content: `You are a sophisticated and objective Credit Card Rewards Expert AI, specializing in maximizing travel value and benefits for users based on their specific spending patterns.
+Their total estimated *annual* spending based on this is:
+${JSON.stringify(annualSpend, null, 2)}
 
-          **Your Goal:** Provide highly personalized, clear, and actionable credit card recommendations. Analyze the user's spending, their preferred point valuation strategy, and the detailed data provided for the top-ranked cards. Identify the 1-2 best cards for this specific user.
+They are currently valuing points using the '${redemptionStrategy.replace('_', ' ')}' redemption strategy.
 
-          **Analysis Requirements:**
-          1.  **Personalization:** Directly reference the user's highest spending categories when justifying recommendations.
-          2.  **Value Assessment:** Compare cards based on both 'estimatedFirstYearNetValue' (including bonus) and 'estimatedOngoingNetValue' (rewards + annual perks - fee). Acknowledge the difference.
-          3.  **Rewards Matching:** Explicitly mention how a card's 'topRewardCategories' align (or don't align) with the user's spending.
-          4.  **Perk Relevance:** Highlight 'keyPerks' that are particularly relevant to travel (lounge access, credits, free bags, status, companion passes) or that significantly contribute to the card's value ('calculatedAnnualPerkValue').
-          5.  **Fee Justification:** If recommending a card with a high annual fee, explain how its rewards and perks potentially offset that fee based on the provided data.
-          6.  **Objectivity:** Base recommendations *strictly* on the provided 'Top Cards Analysis' data. Do *not* invent card details or recommend cards not listed in the input. Avoid promotional language.
+Based on their spending and selected strategy, here are the top ${topCards.length} cards calculated by our tool:
+--- START CARD DATA ---
+${topCardsFormatted}
+--- END CARD DATA ---
 
-          **Output Format:**
-          * Start with a brief summary acknowledging the user's spending profile (e.g., "Based on your spending, especially in [Category X] and [Category Y]...").
-          * Recommend the top 1 or 2 cards.
-          * For **each** recommended card:
-              * Use **bold** for the Card Name.
-              * Provide a concise paragraph explaining *why* it's a strong fit for *this specific user*, linking its features (rewards/perks) to their spending and the calculated values. Use bullet points within the explanation for key reasons if helpful.
-              * Briefly state the estimated first-year and ongoing net values.
-              * Mention 1-2 most relevant key perks.
-              * Note any significant considerations (e.g., high fee, specific redemption value via chosen strategy).
-          * If recommending two cards, briefly explain how they might complement each other (e.g., one for travel, one for everyday) or why one might be slightly better depending on priorities (first year vs. ongoing).
-          * Keep the overall tone helpful, expert, and objective. Ensure the response is easy to read.`,
-        },
-        {
-          role: 'user',
-          // Provide the data in a clear, structured format
-          content: `Here is the user's data and the analysis of their top calculated cards:
+Instructions:
+1.  Analyze the user's spending profile (e.g., "high dining spend", "significant travel costs", "balanced spending").
+2.  Compare the top 2-3 cards from the list provided.
+3.  Recommend the single best card, OR potentially the top two if they serve very different purposes or if the second is a close competitor. Justify your recommendation clearly.
+4.  Explain *why* the chosen card(s) are a good fit based on the user's specific spending, the card's reward multipliers in relevant categories, the overall value (considering fees), and any standout perks mentioned in the data.
+5.  If recommending two cards, briefly explain the key difference or trade-off (e.g., "Card A for pure rewards, Card B for premium travel perks").
+6.  Maintain an expert yet approachable tone. Use Markdown for formatting (like **bolding** and bullet points *).
+7.  Focus solely on the cards and data provided. Do not suggest cards not on the list.
+`;
 
-          **User Monthly Spend:**
-          \`\`\`json
-          ${JSON.stringify(spend, null, 2)}
-          \`\`\`
+      // --- Call the AI Model ---
+      const response = await openai.chat.completions.create({
+        model: 'gpt-4o', // Or 'gpt-3.5-turbo', 'gpt-4' etc. Consider newer models if available.
+        messages: [
+          { role: 'system', content: systemMessage },
+          { role: 'user', content: userMessageContent }
+        ],
+        temperature: 0.6, // Adjust temperature for creativity vs. precision (0.5-0.8 often works well)
+        // max_tokens: 500, // Optional: Limit response length
+        // top_p: 1, // Optional
+        // frequency_penalty: 0, // Optional
+        // presence_penalty: 0, // Optional
+      });
 
-          **User Annual Spend:**
-          \`\`\`json
-          ${JSON.stringify(annualSpend, null, 2)}
-          \`\`\`
+      const recommendation = response.choices[0]?.message?.content || 'No recommendation available.';
 
-          **User Preferred Point Valuation Strategy:** ${redemptionStrategy}
+      res.status(200).json({ recommendation });
 
-          **Top Cards Analysis (Sorted by First Year Value):**
-          \`\`\`json
-          ${JSON.stringify(topCards, null, 2)}
-          \`\`\`
-
-          Please provide your expert recommendation based *only* on the data above, strictly following the analysis requirements and output format specified in the system prompt. Focus on the best 1-2 cards for this user's profile.`,
-        },
-      ],
-    });
-
-    const message = response.choices[0]?.message?.content?.trim() ?? 'No recommendation available.';
-    res.status(200).json({ recommendation: message });
-
-  } catch (err: any) {
-    console.error("Error calling OpenAI:", err.message); // Log the actual error message
-    res.status(500).json({ error: 'Failed to get AI recommendation.' });
+    } catch (error) {
+      console.error('AI recommendation API error:', error);
+      res.status(500).json({ error: 'Failed to get AI recommendation.' });
+    }
+  } else {
+    res.setHeader('Allow', ['POST']);
+    res.status(405).end(`Method ${req.method} Not Allowed`);
   }
 }
