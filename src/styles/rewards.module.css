@@ -4,7 +4,7 @@
 .container {
   padding: 2rem clamp(1rem, 5vw, 3rem); /* Responsive padding */
   max-width: 1100px; /* Slightly wider max-width */
-  margin: auto;
+  margin-top: 3rem;
   background: #f9fafb; /* Use actual hex code or ensure var is global */
   color: #374151; /* Use actual hex code or ensure var is global */
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* Modern font stack */
