@@ -3,7 +3,7 @@
 import React, { useState, useMemo } from 'react';
 // Assuming your data file is correctly named and placed
 import cardDataRaw from '@/data/finalcreditcard.json'; // Use the actual path to your detailed JSON
-
+import styles from '@/styles/rewards.module.css';
 // --- Define Interfaces ---
 // (Interfaces remain the same)
 interface CardCap { amount_usd: number; period: 'month' | 'quarter' | 'year'; applies_to_categories: string[]; }
