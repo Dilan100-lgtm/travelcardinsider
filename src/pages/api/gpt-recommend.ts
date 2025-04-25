@@ -51,7 +51,7 @@ Calculated Annual Perk Value: $${c.calculatedAnnualPerkValue?.toFixed(2) ?? 'N/A
 Point Value Used (CPP): ${c.cppUsedForValue?.toFixed(2)} via '${c.redemptionStrategyUsed}' strategy
 Key Reward Categories: ${Array.isArray(c.topRewardCategories) && c.topRewardCategories.length > 0 ? c.topRewardCategories.map(r => `${r.multiplier}x on ${r.category.replace(/_/g, ' ')}${r.cap ? ` (Cap: $${r.cap.amount_usd}/${r.cap.period})` : ''}`).join('; ') : 'Base rate'}
 Key Perks: ${Array.isArray(c.keyPerks) && c.keyPerks.length > 0 ? c.keyPerks.map(p => `${p.description}${p.value ? ` (~$${p.value?.toFixed(0)}/yr)` : ''}`).join('; ') : 'None notable'}
-`).trim(); // Use trim()
+`).join('\n').trim(); // Join array into a single string and then trim
 
 
     // Construct the Prompt Messages
