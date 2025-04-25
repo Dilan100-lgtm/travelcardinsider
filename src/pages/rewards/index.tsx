@@ -32,12 +32,13 @@ export default function RewardsPage() {
             Our intelligent calculator analyzes your monthly expenses and ranks cards by estimated first-year value—
             factoring in bonuses, perks, and real-world reward redemptions.
           </p>
-          <small className={styles.heroNote}>
-            Updated for 2025. Covers 100+ U.S. travel credit cards with accurate rewards logic.
-          </small>
+          
         </section>
 
         <RewardsCalculator />
+        <small className={styles.heroNote}>
+            Updated for 2025. Covers 100+ U.S. travel credit cards with accurate rewards logic.
+          </small>
       </main>
 
       <Footer />
