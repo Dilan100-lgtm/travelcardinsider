@@ -629,14 +629,18 @@
       padding: 1rem 1.5rem;
    }
 }
+/* File: styles/rewards.module.css */
+
+/* --- Existing Styles ... --- */
+
 /* --- Filter Section --- */
 .filterContainer {
   padding: 1.5rem;
   margin: 2.5rem auto; /* Position between form and results */
-  max-width: 1000px; /* Match form width */
-  background-color: var(--bg-white); /* Ensure var is global or replace */
+  max-width: 1000px; /* Match form width or adjust as needed */
+  background-color: #ffffff; /* White */
   border-radius: 8px;
-  border: 1px solid var(--border-color); /* Ensure var is global or replace */
+  border: 1px solid #d1d5db; /* Gray-300 */
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
@@ -646,32 +650,32 @@
   align-items: center;
   margin-bottom: 1.5rem;
   padding-bottom: 0.8rem;
-  border-bottom: 1px solid var(--border-color); /* Ensure var is global or replace */
+  border-bottom: 1px solid #e5e7eb; /* Gray-200 */
 }
 
 .filterHeader h4 {
   margin: 0;
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--text-color); /* Ensure var is global or replace */
+  color: #111827; /* Gray-900 */
 }
 
 .filterGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Responsive grid */
-  gap: 1.5rem;
+  gap: 1rem 1.5rem; /* Row gap, Column gap */
 }
 
 .filterGroup {
   display: flex;
   flex-direction: column; /* Stack label and controls */
-  gap: 0.8rem; /* Space between controls in a group (like annual fee) */
+  gap: 0.8rem; /* Space between controls in a group (like annual fee checkboxes) */
 }
 
 .filterGroup label.groupLabel { /* Label for the whole group like "Annual Fee" */
   font-weight: 600;
   font-size: 0.95em;
-  color: var(--text-color); /* Ensure var is global or replace */
+  color: #1f2937; /* Gray-800 */
   margin-bottom: 0.2rem; /* Small space before first control */
 }
 
@@ -685,19 +689,20 @@
   width: 1rem;
   height: 1rem;
   border-radius: 4px;
-  border: 1px solid var(--border-color); /* Ensure var is global or replace */
+  border: 1px solid #d1d5db; /* Gray-300 */
   cursor: pointer;
-  accent-color: var(--primary-color); /* Ensure var is global or replace */
+  accent-color: #2563eb; /* Blue-600 */
+  margin-top: 1px; /* Align better with label */
 }
 .filterControl input[type="checkbox"]:focus {
-   outline: 2px solid rgba(59, 130, 246, 0.3); /* Focus ring */
-   outline-offset: 1px;
+    outline: 2px solid rgba(59, 130, 246, 0.3); /* Focus ring */
+    outline-offset: 1px;
 }
 
 
 .filterControl label { /* Label specific to a checkbox/dropdown */
   font-size: 0.9em;
-  color: var(--muted-color); /* Ensure var is global or replace */
+  color: #4b5563; /* Gray-600 */
   font-weight: 400;
   cursor: pointer; /* Make label clickable */
   user-select: none; /* Prevent text selection on click */
@@ -706,22 +711,24 @@
 .filterDropdown { /* Style for the Card Type dropdown */
   padding: 0.5rem 0.8rem;
   border-radius: 6px;
-  border: 1px solid var(--border-color); /* Ensure var is global or replace */
-  background: var(--bg-white); /* Ensure var is global or replace */
+  border: 1px solid #d1d5db; /* Gray-300 */
+  background: #ffffff; /* White */
   font-size: 0.9em;
   width: 100%; /* Make dropdown fill its grid cell */
   cursor: pointer;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.03);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 .filterDropdown:focus {
-   border-color: var(--primary-color); /* Ensure var is global or replace */
-   outline: 2px solid rgba(59, 130, 246, 0.3);
-   outline-offset: 1px;
+    border-color: #3b82f6; /* Blue-500 */
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2); /* Focus ring */
+    outline: none;
 }
 
 .clearButton {
   background: none;
   border: none;
-  color: var(--primary-color); /* Ensure var is global or replace */
+  color: #3b82f6; /* Blue-500 */
   font-size: 0.85rem;
   font-weight: 500;
   cursor: pointer;
@@ -734,15 +741,172 @@
   text-decoration: underline;
 }
 
-/* Responsive stacking for filters */
+
+/* --- Add Responsive Styles for Filters --- */
+/* Inside existing @media screen and (max-width: 640px) or create new one */
 @media screen and (max-width: 640px) {
-  .filterGrid {
-    grid-template-columns: 1fr; /* Stack to single column */
-    gap: 1.2rem;
+    .filterGrid {
+        grid-template-columns: 1fr; /* Stack to single column */
+        gap: 1.2rem;
+    }
+    .filterHeader {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    .filterHeader h4 {
+      margin-bottom: 0.5rem; /* Add space below title when stacked */
+    }
+}
+
+/* --- Ensure Comparison Table Wrapper Styles are added if not present --- */
+.comparisonTableWrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 10px; /* Space for scrollbar */
+  margin-bottom: 1rem;
+  border: 1px solid #e5e7eb; /* Gray-200 */
+  border-radius: 8px;
+}
+.comparisonGrid {
+    display: grid;
+    /* gridTemplateColumns set dynamically in JSX */
+    gap: 0px; /* Cells touch */
+    /* removed border/radius/overflow from grid itself */
+    font-size: 0.9em;
+    min-width: fit-content; /* Important for horizontal scroll */
+}
+.compareCell {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #e5e7eb; /* Gray-200 */
+    border-right: 1px solid #e5e7eb; /* Gray-200 */
+    vertical-align: top;
+    font-size: 0.9em; /* Reduced from 1em */
+    line-height: 1.5;
+}
+/* Remove right border from last cell in any row (assumes max 4 columns: Label + 3 cards) */
+.comparisonGrid > div:last-child,
+.comparisonGrid > div:nth-child(4n) {
+    border-right: none;
+}
+/* Remove bottom border from cells in the last row */
+.comparisonGrid > div:nth-last-child(-n+4) { /* Adjust '4' if max cards change */
+    border-bottom: none;
+}
+
+.compareCellHeader {
+    background-color: #f3f4f6; /* Gray-100 */
+    font-weight: 600;
+    text-align: center;
+    position: sticky; /* Make header sticky */
+    top: 0; /* Stick to top of scrollable container */
+    z-index: 10;
+    border-bottom: 1px solid #d1d5db; /* Gray-300 - Stronger border */
+    /* Ensure header background covers scrolled content */
+    /* background-clip: padding-box; may not be needed if parent scrolls */
+}
+.compareCardImage {
+    height: 45px;
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #eee;
+}
+.compareIssuer {
+    font-size: 0.9em;
+    color: #6b7280; /* Gray-500 */
+    font-weight: 400;
+}
+
+.compareCellLabel {
+    background-color: #f9fafb; /* Gray-50 */
+    font-weight: 600;
+    text-align: right;
+    border-right: 1px solid #d1d5db !important; /* Gray-300 - Stronger border */
+    color: #374151; /* Gray-700 */
+    position: sticky; /* Make label column sticky */
+    left: 0;
+    z-index: 5; /* Lower than header */
+    /* Ensure label background covers scrolled content */
+    /* background-clip: padding-box; */
+}
+.compareCellData {
+    background-color: white;
+    text-align: left;
+    color: #374151; /* Gray-700 */
+}
+.compareList {
+    margin: 0;
+    padding-left: 1.1em;
+    text-align: left;
+    font-size: 1em;
+    list-style-position: outside;
+}
+.compareList li {
+    margin-bottom: 0.3em;
+}
+.compareLink {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    margin-bottom: 0.4rem;
+    margin-right: 0.4rem;
+    text-align: center;
+    min-width: 70px;
+    text-decoration: none;
+    color: white;
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    cursor: pointer;
+}
+.compareLink:active {
+    transform: scale(0.97);
+}
+.compareLink.reviewLink {
+    background-color: #6b7280; /* Gray-500 */
+    border: 1px solid #6b7280;
+}
+.compareLink.reviewLink:hover {
+    background-color: #4b5563; /* Gray-600 */
+    text-decoration: none;
+    color: white;
+}
+.compareLink.applyLink {
+    background-color: #2563eb; /* Blue-600 */
+    color: white;
+    border: 1px solid #2563eb;
+}
+.compareLink.applyLink:hover {
+    background-color: #1d4ed8; /* Blue-700 */
+    text-decoration: none;
+    color: white;
+}
+.smallText { font-size: 0.9em; }
+.italicText { font-style: italic; color: #6b7280; /* Gray-500 */ }
+
+/* --- Media Queries (Adjust existing or add these) --- */
+/* Ensure comparison stickiness works */
+@media screen and (max-width: 768px) {
+  /* ... other 768px styles ... */
+  .comparisonGrid {
+      font-size: 0.85em;
+      /* Remove fixed columns for mobile */
+      /* Consider if label column should remain sticky on mobile */
   }
-  .filterHeader {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
+  .compareCell {
+      padding: 0.6rem;
+      /* Ensure sticky positioning behaves */
+  }
+}
+@media screen and (max-width: 480px) {
+  /* ... other 480px styles ... */
+  .comparisonGrid {
+      font-size: 0.8em;
+  }
+  .compareCell {
+      padding: 0.5rem;
+      min-width: 100px; /* Adjust min-width for small screens */
   }
 }
