@@ -2,12 +2,12 @@
 
 /* --- Base & Layout --- */
 .container {
-  padding: 2rem clamp(1rem, 5vw, 3rem); /* Responsive padding */
-  max-width: 1100px; /* Slightly wider max-width */
+  padding: 2rem clamp(1rem, 5vw, 3rem);
+  max-width: 1100px;
   margin: auto;
   background: #f9fafb; /* Light Gray BG */
   color: #374151; /* Gray-700 Text */
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* Modern font stack */
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 /* --- Hero/Header --- */
@@ -39,7 +39,7 @@
 .selectorGroup {
   display: flex;
   justify-content: center;
-  margin: 2rem auto 2.5rem auto; /* Consistent margin */
+  margin: 2rem auto 2.5rem auto;
   flex-wrap: wrap;
   gap: 1.5rem;
   padding: 1rem 1.5rem;
@@ -49,12 +49,12 @@
   box-shadow: 0 1px 3px rgba(0,0,0,0.05);
   border: 1px solid #d1d5db; /* Gray-300 */
 }
-.selectorGroup label { /* Style label within the group */
+.selectorGroup label {
   margin-right: 0.5rem;
   font-weight: 500;
   color: #111827; /* Gray-900 */
   font-size: 0.9em;
-  display: inline-block; /* Ensure vertical alignment */
+  display: inline-block;
   vertical-align: middle;
 }
 .selectBox {
@@ -66,6 +66,14 @@
   min-width: 240px;
   cursor: pointer;
   vertical-align: middle;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem; /* Space for arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 /* --- Input Form --- */
@@ -73,7 +81,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1.5rem 1.8rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem; /* Reduced margin */
   max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
@@ -92,7 +100,8 @@
   text-transform: capitalize;
 }
 
-.inputGroup input {
+.inputGroup input,
+.inputField { /* Apply consistent input styling */
   padding: 0.8rem;
   border: 1px solid #d1d5db; /* Gray-300 */
   border-radius: 6px;
@@ -100,19 +109,145 @@
   background-color: #ffffff; /* White */
   box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  width: 100%; /* Ensure inputs fill container */
+  box-sizing: border-box; /* Include padding and border in width */
 }
 
-.inputGroup input:focus {
-   border-color: #3b82f6; /* Blue-500 */
-   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2); /* Focus ring */
-   outline: none;
+.inputGroup input:focus,
+.inputField:focus {
+  border-color: #3b82f6; /* Blue-500 */
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+  outline: none;
 }
+
+/* --- Filter Section --- */
+.filterContainer {
+  padding: 1.5rem;
+  margin: 0 auto 2.5rem auto; /* Position between form and results */
+  max-width: 1000px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.filterHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Allow wrapping */
+  gap: 0.5rem; /* Add gap */
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.filterHeader h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.filterGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem 1.5rem;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.filterGroup label.groupLabel {
+  font-weight: 600;
+  font-size: 0.95em;
+  color: #1f2937; /* Gray-800 */
+  margin-bottom: 0.2rem;
+}
+
+.filterControl {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filterControl input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 4px;
+  border: 1px solid #d1d5db;
+  cursor: pointer;
+  accent-color: #2563eb; /* Blue-600 */
+  margin-top: 1px;
+  flex-shrink: 0; /* Prevent checkbox shrinking */
+}
+.filterControl input[type="checkbox"]:focus {
+    outline: 2px solid rgba(59, 130, 246, 0.3);
+    outline-offset: 1px;
+}
+
+.filterControl label {
+  font-size: 0.9em;
+  color: #4b5563; /* Gray-600 */
+  font-weight: 400;
+  cursor: pointer;
+  user-select: none;
+  line-height: 1.3; /* Prevent text wrapping weirdly */
+}
+
+.filterDropdown {
+  padding: 0.6rem 1rem; /* Match selectBox padding */
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  font-size: 0.9em;
+  width: 100%;
+  cursor: pointer;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.03);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+  /* Add dropdown arrow */
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem; /* Space for arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.filterDropdown:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    outline: none;
+}
+
+.clearButton {
+  background: none;
+  border: none;
+  color: #3b82f6;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+  white-space: nowrap; /* Prevent wrapping */
+}
+.clearButton:hover {
+  background-color: rgba(59, 130, 246, 0.1);
+  text-decoration: underline;
+}
+
 
 /* --- Results Section --- */
 .resultsTitle {
   text-align: center;
   margin-bottom: 1.5rem;
-  color: #111827; /* Gray-900 */
+  color: #111827;
   font-weight: 600;
   font-size: 1.5rem;
 }
@@ -149,8 +284,8 @@
   background-color: #1d4ed8; /* Blue-700 */
 }
 .primaryBtn:disabled {
-   background-color: #9ca3af; /* Gray-400 */
-   cursor: not-allowed;
+  background-color: #9ca3af; /* Gray-400 */
+  cursor: not-allowed;
 }
 
 .secondaryBtn {
@@ -160,7 +295,7 @@
   background-color: #4b5563; /* Gray-600 */
 }
 .secondaryBtn:disabled {
-   background-color: #9ca3af; /* Gray-400 */
+   background-color: #9ca3af;
    cursor: not-allowed;
 }
 
@@ -182,20 +317,20 @@
 }
 
 .cardItem {
-  background-color: #ffffff; /* White */
-  border: 1px solid #d1d5db; /* Gray-300 */
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb; /* Slightly lighter border */
   border-radius: 10px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
   display: flex;
   gap: 1.5rem;
-  align-items: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  align-items: flex-start; /* Align items top */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   transition: box-shadow 0.2s ease-in-out;
 }
 
 .cardItem:hover {
-   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
 }
 
 .cardImage {
@@ -205,75 +340,84 @@
   flex-shrink: 0;
   border-radius: 6px;
   border: 1px solid #eee;
+  margin-top: 5px; /* Align better */
 }
 
 .cardDetails {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.7rem; /* Increased gap slightly */
 }
 
 .cardTitle {
-  margin-bottom: 0.2rem; /* Add slight space below title */
+ /* Remove bottom margin, rely on gap */
 }
 
-.cardTitle strong { /* Actual title text */
+.cardTitle strong {
   font-size: 1.15em;
   font-weight: 600;
-  color: #111827; /* Gray-900 */
+  color: #111827;
   line-height: 1.3;
 }
 
-.cardTitle span { /* (Personal/Business) */
+.cardTitle span {
   font-size: 0.8em;
   font-weight: 400;
-  color: #6b7280; /* Gray-500 */
+  color: #6b7280;
   margin-left: 0.5rem;
+  vertical-align: middle;
 }
 
 .cardValues {
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem 1.5rem; /* Row gap, Column gap */
   flex-wrap: wrap;
   font-size: 1em;
-  padding-bottom: 0.6rem;
-  margin-bottom: 0.6rem;
-  border-bottom: 1px solid #eee;
+  padding-bottom: 0.7rem; /* Increased padding */
+  margin-bottom: 0.7rem; /* Increased margin */
+  border-bottom: 1px solid #f3f4f6; /* Lighter separator */
 }
 
-.cardValues strong { /* Label like "Est. 1st Year:" */
+.cardValues div { /* Ensure items wrap nicely */
+  display: flex;
+  align-items: center;
+}
+
+.cardValues strong {
    font-weight: 500;
-   color: #6b7280; /* Gray-500 */
+   color: #6b7280;
    margin-right: 0.4rem;
+   white-space: nowrap; /* Prevent label wrapping */
 }
 
 .valueGood {
   color: #16a34a; /* Green-600 */
   font-weight: 700;
-  font-size: 1.1em;
+  font-size: 1.05em; /* Slightly reduced */
 }
 
 .valueBad {
   color: #dc2626; /* Red-600 */
   font-weight: 700;
-  font-size: 1.1em;
+  font-size: 1.05em; /* Slightly reduced */
 }
 
 .valueOngoing {
-   font-weight: 700;
-   font-size: 1.05em;
+    font-weight: 700;
+    font-size: 1.05em;
+    color: #374151; /* Gray-700 */
 }
 
 .cardSubtext {
   color: #4b5563; /* Gray-600 */
-  font-size: 0.88em;
+  font-size: 0.85em; /* Slightly smaller */
   line-height: 1.4;
 }
 
 .bonusBox {
   background: #fefce8; /* Yellow-50 */
-  padding: 0.5rem 0.8rem;
+  padding: 0.6rem 0.9rem; /* Adjusted padding */
   border-radius: 6px;
   border: 1px solid #fef08a; /* Yellow-200 */
   color: #854d0e; /* Yellow-900 */
@@ -291,23 +435,37 @@
 }
 
 .perksSection strong {
-   color: #374151; /* Gray-700 */
-   font-weight: 600;
-   display: block;
-   margin-bottom: 0.2rem;
+    color: #374151; /* Gray-700 */
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.3rem; /* Increased space */
 }
 
 .perksSection ul {
-  margin: 0.1rem 0 0 1rem;
+  margin: 0 0 0 0.5rem; /* Adjust margin */
   padding: 0;
-  list-style: disc;
-  color: #4b5563; /* Gray-600 */
+  list-style: none; /* Remove default list style */
 }
 
 .perksSection li {
-   margin-bottom: 0.3rem;
-   line-height: 1.4;
+    margin-bottom: 0.4rem; /* Increased space */
+    line-height: 1.4;
+    color: #4b5563; /* Gray-600 */
+    padding-left: 1rem; /* Add padding for pseudo-element */
+    position: relative;
 }
+/* Add custom bullet */
+.perksSection li::before {
+  content: '\2022'; /* Bullet character */
+  color: #9ca3af; /* Gray-400 */
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1.2em; /* Position before text */
+  position: absolute;
+  left: 0.5em;
+}
+
 
 .cardLinks {
   margin-top: 0.8rem;
@@ -324,205 +482,226 @@
   font-size: 0.9em;
   font-weight: 500;
   text-align: center;
-  transition: background-color 0.2s ease, transform 0.1s ease;
+  transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
   cursor: pointer;
   display: inline-block;
+  border: 1px solid transparent; /* Base border */
 }
 .cardLinks a:active {
   transform: scale(0.97);
 }
+.cardLinks a:focus-visible { /* Add focus style */
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
 
 .reviewLink {
   background-color: #6b7280; /* Gray-500 */
-  border: 1px solid #6b7280;
+  border-color: #6b7280;
 }
 .reviewLink:hover {
   background-color: #4b5563; /* Gray-600 */
-  color: white;
+  border-color: #4b5563;
+  color: white; /* Ensure text stays white */
 }
 
 .applyLink {
   background-color: #2563eb; /* Blue-600 */
-  border: 1px solid #2563eb;
+  border-color: #2563eb;
 }
 .applyLink:hover {
   background-color: #1d4ed8; /* Blue-700 */
-  color: white;
+  border-color: #1d4ed8;
+  color: white; /* Ensure text stays white */
 }
 
 .noResults {
     text-align: center;
-    color: #6b7280; /* Gray-500 */
-    padding: 2rem 0;
+    color: #6b7280;
+    padding: 3rem 1rem; /* More padding */
     font-style: italic;
+    font-size: 1.05em;
+    background-color: #ffffff;
+    border: 1px dashed #d1d5db;
+    border-radius: 8px;
 }
 
 
 /* --- Comparison Modal Styles --- */
 .comparisonOverlay {
     position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(17, 24, 39, 0.8); /* Darker overlay (Gray-900 at 80%) */
     display: flex; justify-content: center; align-items: center;
     z-index: 1000; overflow-y: auto; padding: 1rem;
 }
 .comparisonContent {
-    background-color: white; border-radius: 12px; padding: 2rem 2.5rem;
+    background-color: white; border-radius: 12px; padding: 1.5rem 2rem 2rem 2rem; /* Adjusted padding */
     width: 95%; max-width: 1200px; max-height: 90vh; overflow-y: auto;
     position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 .closeButton {
-    position: absolute; top: 15px; right: 20px; background: none; border: none;
-    font-size: 2rem; cursor: pointer; color: #9ca3af; line-height: 1; padding: 0.2rem;
-    transition: color 0.2s ease;
+    position: absolute; top: 10px; right: 15px; background: none; border: none;
+    font-size: 2.2rem; cursor: pointer; color: #9ca3af; line-height: 1; padding: 0.2rem;
+    transition: color 0.2s ease; z-index: 15; /* Ensure button is above sticky headers */
 }
 .closeButton:hover {
-    color: #6b7280; /* Gray-500 */
+    color: #4b5563; /* Gray-600 */
 }
 .comparisonContent h3 {
-    text-align: center; margin-top: 0; margin-bottom: 2rem; font-size: 1.6rem; font-weight: 600;
+    text-align: center; margin-top: 0; margin-bottom: 1.5rem; font-size: 1.6rem; font-weight: 600;
+    padding-right: 30px; /* Space for close button */
 }
 
 .comparisonTableWrapper {
   width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  overflow-x: auto; /* Enable horizontal scroll */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
   padding-bottom: 10px;
   margin-bottom: 1rem;
-  border: 1px solid #e5e7eb; /* Add border to wrapper */
-  border-radius: 8px; /* Add radius to wrapper */
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
 }
 
 .comparisonGrid {
     display: grid;
     /* gridTemplateColumns set dynamically in JSX */
     gap: 0px;
-    /* Removed border/radius/overflow from grid itself */
     font-size: 0.9em;
-    min-width: fit-content;
+    min-width: fit-content; /* Crucial for horizontal scroll */
+    border-collapse: collapse; /* Helps with borders */
 }
 
 .compareCell {
   padding: 0.8rem 1rem;
-  border-bottom: 1px solid #e5e7eb; /* Gray-200 */
-  border-right: 1px solid #e5e7eb; /* Gray-200 */
-  vertical-align: top;
-  font-size: 0.9em;
+  border-bottom: 1px solid #e5e7eb;
+  border-right: 1px solid #e5e7eb;
+  vertical-align: top; /* Default alignment */
+  font-size: 1em; /* Inherit from grid or set base */
   line-height: 1.5;
+  text-align: center; /* Default center */
 }
-/* Remove right border from last cell in any row */
-.comparisonGrid > div:nth-child(4n) { /* Adjust '4n' based on max columns (label + 3 cards = 4) */
-   border-right: none;
+/* Last cell in any row */
+.comparisonGrid > div:last-child,
+.comparisonGrid > div:nth-child(4n) { /* Adjust '4n' if max cards change (label + 3 cards) */
+    border-right: none;
 }
-/* Remove bottom border from cells in the last row */
-/* This is trickier with dynamic rows, might need JS or more complex CSS */
-/* Simple approach: remove all bottom borders and add top borders instead */
-/* .compareCell { border-top: 1px solid #e5e7eb; border-bottom: none; } */
-/* .comparisonGrid > div:nth-child(-n+4) { border-top: none; } */ /* Remove top border from first row */
+/* Cells in the last row */
+.comparisonGrid > div:nth-last-child(-n+4) { /* Adjust '4' if max cards change */
+    border-bottom: none;
+}
 
 
 .compareCellHeader {
   background-color: #f3f4f6; /* Gray-100 */
   font-weight: 600;
   text-align: center;
-  position: sticky; /* Make header sticky */
-  top: 0;
+  position: sticky;
+  top: 0; /* Stick to top of wrapper */
   z-index: 10;
-  border-bottom: 1px solid #d1d5db; /* Stronger border below header */
+  border-bottom: 1px solid #d1d5db;
 }
 .compareCardImage {
-   height: 45px;
-   object-fit: contain;
-   margin-bottom: 0.5rem;
-   border-radius: 4px;
+    height: 45px;
+    max-width: 72px; /* Limit width */
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #e5e7eb;
+    background-color: white; /* BG for transparent PNGs */
 }
 .compareIssuer {
-   font-size: 0.9em;
-   color: #6b7280; /* Gray-500 */
-   font-weight: 400;
+    font-size: 0.9em;
+    color: #6b7280;
+    font-weight: 400;
 }
 
 .compareCellLabel {
   background-color: #f9fafb; /* Gray-50 */
   font-weight: 600;
   text-align: right;
-  border-right: 1px solid #d1d5db !important; /* Gray-300 - Stronger border */
+  border-right: 1px solid #d1d5db !important; /* Stronger border */
   color: #374151; /* Gray-700 */
-  position: sticky; /* Make label column sticky */
-  left: 0;
-  z-index: 5;
+  position: sticky;
+  left: 0; /* Stick to left of wrapper */
+  z-index: 5; /* Below header */
+  vertical-align: middle; /* Align label text middle */
 }
 
 .compareCellData {
   background-color: white;
-  text-align: left;
-  color: #374151; /* Gray-700 */
+  text-align: left; /* Align data left */
+  color: #374151;
+  vertical-align: top; /* Align data top */
 }
 .compareList {
-   margin: 0;
-   padding-left: 1.1em;
-   text-align: left;
-   font-size: 1em;
-   list-style-position: outside;
+    margin: 0;
+    padding-left: 1.2em; /* Indent list */
+    text-align: left;
+    font-size: 1em; /* Match cell font size */
+    list-style-position: outside;
+    list-style-type: disc; /* Ensure bullets show */
 }
 .compareList li {
-   margin-bottom: 0.3em;
+    margin-bottom: 0.4em; /* Space list items */
 }
 
-/* Apply button-like styles to comparison links */
 .compareLink {
-   display: inline-block;
-   padding: 0.4rem 0.8rem;
-   border-radius: 4px;
-   margin-bottom: 0.4rem;
-   margin-right: 0.4rem;
-   text-align: center;
-   min-width: 70px;
-   text-decoration: none;
-   color: white;
-   font-size: 0.9em;
-   font-weight: 500;
-   transition: background-color 0.2s ease, transform 0.1s ease;
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    margin-bottom: 0.4rem;
+    margin-right: 0.4rem;
+    text-align: center;
+    min-width: 70px;
+    text-decoration: none;
+    color: white;
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    border: 1px solid transparent;
 }
 .compareLink:active {
     transform: scale(0.97);
 }
 
 .compareLink.reviewLink {
-   background-color: #6b7280; /* Gray-500 */
-   border: 1px solid #6b7280;
+    background-color: #6b7280;
+    border-color: #6b7280;
 }
 .compareLink.reviewLink:hover {
-    background-color: #4b5563; /* Gray-600 */
+    background-color: #4b5563;
+    border-color: #4b5563;
     text-decoration: none;
     color: white;
 }
 
 .compareLink.applyLink {
-   background-color: #2563eb; /* Blue-600 */
+    background-color: #2563eb;
     color: white;
-    border: 1px solid #2563eb;
+    border-color: #2563eb;
 }
 .compareLink.applyLink:hover {
-    background-color: #1d4ed8; /* Blue-700 */
+    background-color: #1d4ed8;
+    border-color: #1d4ed8;
     text-decoration: none;
     color: white;
 }
+.compareLink:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
 
 
-.smallText { /* Utility class if needed */
-    font-size: 0.9em;
-}
-.italicText { /* Utility class if needed */
-    font-style: italic;
-    color: #6b7280; /* Gray-500 */
-}
+.smallText { font-size: 0.9em; }
+.italicText { font-style: italic; color: #6b7280; }
 
 
 /* --- AI Section Styles --- */
 .aiSection {
    text-align: center;
    margin-top: 3rem;
-   border-top: 1px solid #e5e7eb; /* Gray-200 */
+   border-top: 1px solid #e5e7eb;
    padding-top: 2.5rem;
 }
 .aiSuggestionBox {
@@ -537,30 +716,41 @@
    color: #1f2937; /* Gray-800 */
    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
 }
-.aiSuggestionBox h4 {
-    margin-top: 0;
-    margin-bottom: 1rem;
-    color: #111827; /* Gray-900 */
-    border-bottom: 1px solid #bfdbfe; /* Blue-200 */
-    padding-bottom: 0.6rem;
+/* Styles applied via formatAiOutput (h3, strong, ul, li, hr) */
+.aiSuggestionBox h3 {
+    margin-top: 0; /* Remove default margin if needed */
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #dbeafe; /* Lighter blue */
     font-size: 1.2em;
     font-weight: 600;
+    color: #1e3a8a; /* Blue-800 */
+}
+.aiSuggestionBox strong {
+    font-weight: 600;
+    color: #1f2937;
 }
 .aiSuggestionBox ul {
     margin-top: 0.5rem;
-    margin-left: 1.5rem;
-    padding-left: 0.5rem;
+    margin-bottom: 1rem;
+    padding-left: 1.5rem; /* Indent lists */
     list-style: disc;
 }
 .aiSuggestionBox li {
     margin-bottom: 0.5rem;
 }
-.aiSuggestionBox p { /* Add spacing between paragraphs */
+.aiSuggestionBox hr {
+    border: none;
+    border-top: 1px dashed #bfdbfe; /* Dashed blue line */
+    margin: 1.5rem 0;
+}
+.aiSuggestionBox p { /* Add space between paragraphs if AI generates them */
     margin-bottom: 1rem;
 }
-.aiSuggestionBox strong {
-   font-weight: 600;
-   color: #111827; /* Gray-900 */
+.aiPlaceholder { /* Style for placeholder text */
+  color: #6b7280; /* Gray-500 */
+  font-style: italic;
+  margin-top: 1rem;
 }
 
 
@@ -571,6 +761,10 @@
     align-items: center;
     gap: 1rem;
     padding: 1.2rem;
+    text-align: center;
+  }
+  .cardImage {
+    margin-top: 0;
   }
   .cardDetails {
     text-align: center;
@@ -579,22 +773,51 @@
   }
   .cardValues {
     justify-content: center;
+    gap: 0.8rem 1.2rem; /* Tighter gap */
   }
-   .cardLinks {
-     justify-content: center;
-   }
-   .comparisonGrid {
-     font-size: 0.85em;
-     grid-template-columns: 0.3fr 1fr;
-   }
-   .compareCell {
-     padding: 0.6rem;
-   }
+  .cardLinks {
+      justify-content: center;
+  }
+  .perksSection ul {
+    margin-left: 0; /* Center list */
+    padding-left: 0;
+    list-style-position: inside; /* Keep bullets closer */
+    text-align: center;
+  }
+  .perksSection li::before { /* Hide custom bullet, rely on inside */
+    display: none;
+  }
+  .perksSection li {
+     padding-left: 0;
+     position: static;
+  }
+
+  .comparisonGrid {
+      font-size: 0.85em;
+      /* Label column might become too wide, let it scroll */
+  }
+  .compareCell {
+      padding: 0.6rem 0.8rem; /* Reduce padding */
+  }
+  .compareCellLabel {
+      font-size: 0.95em; /* Make labels slightly smaller */
+      padding: 0.6rem 0.5rem; /* Adjust label padding */
+  }
+}
+
+@media screen and (max-width: 640px) {
+    .filterGrid {
+        grid-template-columns: 1fr; /* Stack filters */
+        gap: 1.2rem;
+    }
+    .filterHeader {
+        /* Already handles wrap, looks ok */
+    }
 }
 
 @media screen and (max-width: 480px) {
   .container {
-     padding: 1.5rem 0.8rem;
+      padding: 1.5rem 0.8rem;
   }
   .heroTitle {
     font-size: 1.6rem;
@@ -603,310 +826,44 @@
     font-size: 1rem;
   }
   .cardImage {
-    width: 75px;
-    height: 47px;
+    width: 80px; /* Slightly larger */
+    height: 50px;
   }
   .inputGrid {
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr; /* Stack inputs */
   }
   .buttonGroup button {
-     width: 90%;
-     font-size: 0.95rem;
-     padding: 0.8rem 1rem;
+      width: 90%;
+      font-size: 0.95rem;
+      padding: 0.8rem 1rem;
+  }
+  .filterGrid {
+      grid-template-columns: 1fr; /* Already stacked */
   }
   .comparisonContent {
-     padding: 1.5rem 1rem;
+      padding: 1rem; /* Reduce padding */
   }
-  .comparisonGrid {
-     font-size: 0.8em;
-     grid-template-columns: 0.3fr 1fr; /* First column smaller than the second */
+  .comparisonContent h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
   }
-  .compareCell {
-     padding: 0.5rem;
-     min-width: 120px;
-  }
-  .aiSuggestionBox {
-      padding: 1rem 1.5rem;
-   }
-}
-/* File: styles/rewards.module.css */
 
-/* --- Existing Styles ... --- */
-
-/* --- Filter Section --- */
-.filterContainer {
-  padding: 1.5rem;
-  margin: 2.5rem auto; /* Position between form and results */
-  max-width: 1000px; /* Match form width or adjust as needed */
-  background-color: #ffffff; /* White */
-  border-radius: 8px;
-  border: 1px solid #d1d5db; /* Gray-300 */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-.filterHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.8rem;
-  border-bottom: 1px solid #e5e7eb; /* Gray-200 */
-}
-
-.filterHeader h4 {
-  margin: 0;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #111827; /* Gray-900 */
-}
-
-.filterGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Responsive grid */
-  gap: 1rem 1.5rem; /* Row gap, Column gap */
-}
-
-.filterGroup {
-  display: flex;
-  flex-direction: column; /* Stack label and controls */
-  gap: 0.8rem; /* Space between controls in a group (like annual fee checkboxes) */
-}
-
-.filterGroup label.groupLabel { /* Label for the whole group like "Annual Fee" */
-  font-weight: 600;
-  font-size: 0.95em;
-  color: #1f2937; /* Gray-800 */
-  margin-bottom: 0.2rem; /* Small space before first control */
-}
-
-.filterControl { /* Wrapper for a single checkbox/dropdown + label */
-  display: flex;
-  align-items: center;
-  gap: 0.5rem; /* Space between checkbox and its label */
-}
-
-.filterControl input[type="checkbox"] {
-  width: 1rem;
-  height: 1rem;
-  border-radius: 4px;
-  border: 1px solid #d1d5db; /* Gray-300 */
-  cursor: pointer;
-  accent-color: #2563eb; /* Blue-600 */
-  margin-top: 1px; /* Align better with label */
-}
-.filterControl input[type="checkbox"]:focus {
-    outline: 2px solid rgba(59, 130, 246, 0.3); /* Focus ring */
-    outline-offset: 1px;
-}
-
-
-.filterControl label { /* Label specific to a checkbox/dropdown */
-  font-size: 0.9em;
-  color: #4b5563; /* Gray-600 */
-  font-weight: 400;
-  cursor: pointer; /* Make label clickable */
-  user-select: none; /* Prevent text selection on click */
-}
-
-.filterDropdown { /* Style for the Card Type dropdown */
-  padding: 0.5rem 0.8rem;
-  border-radius: 6px;
-  border: 1px solid #d1d5db; /* Gray-300 */
-  background: #ffffff; /* White */
-  font-size: 0.9em;
-  width: 100%; /* Make dropdown fill its grid cell */
-  cursor: pointer;
-  box-shadow: inset 0 1px 2px rgba(0,0,0,0.03);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-.filterDropdown:focus {
-    border-color: #3b82f6; /* Blue-500 */
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2); /* Focus ring */
-    outline: none;
-}
-
-.clearButton {
-  background: none;
-  border: none;
-  color: #3b82f6; /* Blue-500 */
-  font-size: 0.85rem;
-  font-weight: 500;
-  cursor: pointer;
-  padding: 0.3rem 0.5rem;
-  border-radius: 4px;
-  transition: background-color 0.2s ease;
-}
-.clearButton:hover {
-  background-color: rgba(59, 130, 246, 0.1); /* Light blue background on hover */
-  text-decoration: underline;
-}
-
-
-/* --- Add Responsive Styles for Filters --- */
-/* Inside existing @media screen and (max-width: 640px) or create new one */
-@media screen and (max-width: 640px) {
-    .filterGrid {
-        grid-template-columns: 1fr; /* Stack to single column */
-        gap: 1.2rem;
-    }
-    .filterHeader {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-    }
-    .filterHeader h4 {
-      margin-bottom: 0.5rem; /* Add space below title when stacked */
-    }
-}
-
-/* --- Ensure Comparison Table Wrapper Styles are added if not present --- */
-.comparisonTableWrapper {
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  padding-bottom: 10px; /* Space for scrollbar */
-  margin-bottom: 1rem;
-  border: 1px solid #e5e7eb; /* Gray-200 */
-  border-radius: 8px;
-}
-.comparisonGrid {
-    display: grid;
-    /* gridTemplateColumns set dynamically in JSX */
-    gap: 0px; /* Cells touch */
-    /* removed border/radius/overflow from grid itself */
-    font-size: 0.9em;
-    min-width: fit-content; /* Important for horizontal scroll */
-}
-.compareCell {
-    padding: 0.8rem 1rem;
-    border-bottom: 1px solid #e5e7eb; /* Gray-200 */
-    border-right: 1px solid #e5e7eb; /* Gray-200 */
-    vertical-align: top;
-    font-size: 0.9em; /* Reduced from 1em */
-    line-height: 1.5;
-}
-/* Remove right border from last cell in any row (assumes max 4 columns: Label + 3 cards) */
-.comparisonGrid > div:last-child,
-.comparisonGrid > div:nth-child(4n) {
-    border-right: none;
-}
-/* Remove bottom border from cells in the last row */
-.comparisonGrid > div:nth-last-child(-n+4) { /* Adjust '4' if max cards change */
-    border-bottom: none;
-}
-
-.compareCellHeader {
-    background-color: #f3f4f6; /* Gray-100 */
-    font-weight: 600;
-    text-align: center;
-    position: sticky; /* Make header sticky */
-    top: 0; /* Stick to top of scrollable container */
-    z-index: 10;
-    border-bottom: 1px solid #d1d5db; /* Gray-300 - Stronger border */
-    /* Ensure header background covers scrolled content */
-    /* background-clip: padding-box; may not be needed if parent scrolls */
-}
-.compareCardImage {
-    height: 45px;
-    object-fit: contain;
-    margin-bottom: 0.5rem;
-    border-radius: 4px;
-    border: 1px solid #eee;
-}
-.compareIssuer {
-    font-size: 0.9em;
-    color: #6b7280; /* Gray-500 */
-    font-weight: 400;
-}
-
-.compareCellLabel {
-    background-color: #f9fafb; /* Gray-50 */
-    font-weight: 600;
-    text-align: right;
-    border-right: 1px solid #d1d5db !important; /* Gray-300 - Stronger border */
-    color: #374151; /* Gray-700 */
-    position: sticky; /* Make label column sticky */
-    left: 0;
-    z-index: 5; /* Lower than header */
-    /* Ensure label background covers scrolled content */
-    /* background-clip: padding-box; */
-}
-.compareCellData {
-    background-color: white;
-    text-align: left;
-    color: #374151; /* Gray-700 */
-}
-.compareList {
-    margin: 0;
-    padding-left: 1.1em;
-    text-align: left;
-    font-size: 1em;
-    list-style-position: outside;
-}
-.compareList li {
-    margin-bottom: 0.3em;
-}
-.compareLink {
-    display: inline-block;
-    padding: 0.4rem 0.8rem;
-    border-radius: 4px;
-    margin-bottom: 0.4rem;
-    margin-right: 0.4rem;
-    text-align: center;
-    min-width: 70px;
-    text-decoration: none;
-    color: white;
-    font-size: 0.9em;
-    font-weight: 500;
-    transition: background-color 0.2s ease, transform 0.1s ease;
-    cursor: pointer;
-}
-.compareLink:active {
-    transform: scale(0.97);
-}
-.compareLink.reviewLink {
-    background-color: #6b7280; /* Gray-500 */
-    border: 1px solid #6b7280;
-}
-.compareLink.reviewLink:hover {
-    background-color: #4b5563; /* Gray-600 */
-    text-decoration: none;
-    color: white;
-}
-.compareLink.applyLink {
-    background-color: #2563eb; /* Blue-600 */
-    color: white;
-    border: 1px solid #2563eb;
-}
-.compareLink.applyLink:hover {
-    background-color: #1d4ed8; /* Blue-700 */
-    text-decoration: none;
-    color: white;
-}
-.smallText { font-size: 0.9em; }
-.italicText { font-style: italic; color: #6b7280; /* Gray-500 */ }
-
-/* --- Media Queries (Adjust existing or add these) --- */
-/* Ensure comparison stickiness works */
-@media screen and (max-width: 768px) {
-  /* ... other 768px styles ... */
-  .comparisonGrid {
-      font-size: 0.85em;
-      /* Remove fixed columns for mobile */
-      /* Consider if label column should remain sticky on mobile */
-  }
-  .compareCell {
-      padding: 0.6rem;
-      /* Ensure sticky positioning behaves */
-  }
-}
-@media screen and (max-width: 480px) {
-  /* ... other 480px styles ... */
   .comparisonGrid {
       font-size: 0.8em;
   }
   .compareCell {
       padding: 0.5rem;
-      min-width: 100px; /* Adjust min-width for small screens */
+      min-width: 90px; /* Further reduce min-width */
+      line-height: 1.4;
+  }
+  .compareCellLabel {
+     padding: 0.5rem 0.3rem;
+     font-size: 0.9em;
+  }
+  .aiSuggestionBox {
+      padding: 1rem 1.2rem;
+  }
+  .aiSuggestionBox h3 {
+    font-size: 1.1em;
   }
 }
