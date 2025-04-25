@@ -19,7 +19,7 @@
         "description": "Earn 60,000 Aeroplan points after spending $3,000 in 3 months",
         "minSpend": 3000,
         "durationDays": 90,
-        "estimated_value_usd": 750
+        "estimated_value_usd": 840
       },
       "rewardProgram": "Aeroplan",
       "rewards": [
@@ -84,7 +84,7 @@
         "description": "Earn 60,000 bonus miles plus Companion Fare after $3,000 in 90 days",
         "minSpend": 3000,
         "durationDays": 90,
-        "estimated_value_usd": 700
+        "estimated_value_usd": 900
       },
       "rewardProgram": "Alaska Mileage Plan",
       "rewards": [
@@ -509,7 +509,7 @@
         "points": 50000,
         "minSpend": 4500,
         "durationDays": 90,
-        "estimated_value_usd": 60000
+        "estimated_value_usd": 925
       },
       "rewardProgram": "Capital One Miles",
       "rewards": [
@@ -601,7 +601,7 @@
         "points": 150000,
         "minSpend": 30000,
         "durationDays": 180,
-        "estimated_value_usd": 270000
+        "estimated_value_usd": 2775
       },
       "rewardProgram": "Capital One Miles",
       "rewards": [
@@ -661,7 +661,7 @@
         "description": "Earn 75,000 bonus miles after spending $4,000 in 3 months",
         "minSpend": 4000,
         "durationDays": 90,
-        "estimated_value_usd": 135000
+        "estimated_value_usd": 1388
       },
       "rewardProgram": "Capital One Miles",
       "rewards": [
@@ -860,7 +860,7 @@
         "description": "Earn 60,000 bonus points after spending $4,000 in 3 months",
         "minSpend": 4000,
         "durationDays": 90,
-        "estimated_value_usd": 120000
+        "estimated_value_usd": 1230
       },
       "rewardProgram": "Chase Ultimate Rewards",
       "rewards": [
@@ -1139,7 +1139,7 @@
         "points": 10000,
         "minSpend": 1000,
         "durationDays": 180,
-        "estimated_value_usd": 12000
+        "estimated_value_usd": 120
       },
       "rewardProgram": "Delta SkyMiles",
       "rewards": [
@@ -1247,7 +1247,7 @@
         "points": 80000,
         "minSpend": 10000,
         "durationDays": 180,
-        "estimated_value_usd": 96000
+        "estimated_value_usd": 960
       },
       "rewardProgram": "Delta SkyMiles",
       "rewards": [
@@ -1342,7 +1342,7 @@
         "description": "Earn 60,000 HawaiianMiles after $2,000 in 90 days",
         "minSpend": 2000,
         "durationDays": 90,
-        "estimated_value_usd": 600
+        "estimated_value_usd": 720
       },
       "rewardProgram": "HawaiianMiles",
       "rewards": [
@@ -1413,7 +1413,7 @@
         "description": "Earn 90,000 bonus points after spending $8,000 in 3 months",
         "minSpend": 8000,
         "durationDays": 90,
-        "estimated_value_usd": 180000
+        "estimated_value_usd": 1845
       },
       "rewardProgram": "Chase Ultimate Rewards",
       "rewards": [
@@ -1465,7 +1465,7 @@
         "description": "Earn 70,000 bonus TrueBlue points after spending $1,000 and paying the annual fee in 90 days",
         "minSpend": 1000,
         "durationDays": 90,
-        "estimated_value_usd": 700
+        "estimated_value_usd": 945
       },
       "rewardProgram": "TrueBlue",
       "rewards": [
@@ -1601,7 +1601,7 @@
         "description": "Earn 120,000 Membership Rewards points after spending $15,000 in 3 months",
         "minSpend": 15000,
         "durationDays": 90,
-        "estimated_value_usd": 240000
+        "estimated_value_usd": 2400
       },
       "rewardProgram": "Membership Rewards",
       "rewards": [
@@ -1870,7 +1870,7 @@
         "points": 30000,
         "minSpend": 1000,
         "durationDays": 90,
-        "estimated_value_usd": 36000
+        "estimated_value_usd": 360
       },
       "rewardProgram": "MileagePlus\u00ae",
       "rewards": [
@@ -1924,7 +1924,7 @@
         "description": "Earn 75,000 MileagePlus miles after spending $5,000 in 3 months",
         "minSpend": 5000,
         "durationDays": 90,
-        "estimated_value_usd": 90000
+        "estimated_value_usd": 900
       },
       "rewardProgram": "MileagePlus",
       "rewards": [
@@ -2198,7 +2198,7 @@
         "description": "Earn 60,000 Bonus Points after spending $5,000 in 3 months",
         "minSpend": 5000,
         "durationDays": 90,
-        "estimated_value_usd": 90000
+        "estimated_value_usd": 1020
       },
       "rewardProgram": "World of Hyatt",
       "rewards": [
