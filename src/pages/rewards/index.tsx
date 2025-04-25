@@ -2,37 +2,44 @@
 
 import Head from 'next/head';
 import RewardsCalculator from '@/components/RewardsCalculator';
-import Header from '@/components/Header'; // optional
-import Footer from '@/components/Footer'; // optional
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import styles from '@/styles/rewards.module.css'; // Make sure you create this CSS module
 
 export default function RewardsPage() {
   return (
     <>
       <Head>
-        <title>Travel Card Rewards Calculator | TravelCardInsider</title>
+        <title>AI-Powered Travel Credit Card Rewards Calculator | TravelCardInsider</title>
         <meta
           name="description"
-          content="Use our AI-powered calculator to estimate your total yearly rewards across all travel credit cards. Compare and find the best card for your real spending."
+          content="Get a personalized ranking of the best travel credit cards based on your actual spending habits. Instantly estimate first-year value, rewards, and perks using real-world data."
         />
         <meta name="robots" content="index, follow" />
+        <meta property="og:title" content="AI Travel Rewards Calculator | TravelCardInsider" />
+        <meta property="og:description" content="Find the most valuable travel credit card for you. Our AI-based calculator analyzes your monthly spend and shows top cards by estimated value." />
+        <meta property="og:url" content="https://www.travelcardinsider.com/rewards" />
+        <meta property="og:type" content="website" />
       </Head>
 
-      {/* Header (optional) */}
       <Header />
 
-      <main style={{ padding: '2rem 1rem', maxWidth: '900px', margin: '0 auto' }}>
-        <h1 style={{ fontSize: '2rem', marginBottom: '1rem' }}>
-          Travel Credit Card Rewards Calculator
-        </h1>
-        <p style={{ marginBottom: '2rem' }}>
-          Enter your average monthly spend to see how much each travel card on our site could earn you
-          in rewards per year—instantly calculated using real reward rates and values.
-        </p>
+      <main className={styles.calculatorContainer}>
+        <section className={styles.hero}>
+          <h1 className={styles.heroTitle}>Travel Credit Card Rewards Calculator</h1>
+          <p className={styles.heroDescription}>
+            Discover which travel credit cards deliver the most value for your real-life spending.
+            Our intelligent calculator analyzes your monthly expenses and ranks cards by estimated first-year value—
+            factoring in bonuses, perks, and real-world reward redemptions.
+          </p>
+          <small className={styles.heroNote}>
+            Updated for 2025. Covers 100+ U.S. travel credit cards with accurate rewards logic.
+          </small>
+        </section>
 
         <RewardsCalculator />
       </main>
 
-      {/* Footer (optional) */}
       <Footer />
     </>
   );
