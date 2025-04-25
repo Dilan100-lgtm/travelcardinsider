@@ -925,27 +925,26 @@ p, h1, h2, h3, h4, h5, h6, li, div {
 /* Existing globals.css content... */
 
 :root {
-  --bg-light-gray: #f9fafb;
-  --bg-white: #ffffff;
-  --bg-light: #f3f4f6; /* Added for selected card items */
-  --text-dark: #111827;
-  --text-medium: #374151;
-  --text-light: #6b7280;
-  --text-muted: #4b5563; /* Added for breakdown */
-  --border-color: #d1d5db;
-  --border-color-light: #e5e7eb;
-  --primary-blue: #2563eb;
-  --primary-blue-dark: #1d4ed8;
-  --primary-blue-focus: rgba(59, 130, 246, 0.2);
-  --primary-blue-light-bg: #eff6ff; /* Added for AI box */
-  --primary-blue-light-border: #bfdbfe; /* Added for AI box */
-  --primary-blue-text-dark: #1e3a8a; /* Added for AI h3 */
-  --secondary-gray: #6b7280;
-  --secondary-gray-dark: #4b5563;
-  --value-good: #16a34a;
-  --value-bad: #dc2626;
-  --info-bg: #eff6ff; /* Example for chips */
-  --info-heading: #1e40af; /* Example for chips */
-  --info-border: #bfdbfe; /* Example for chips */
-  --danger-color: #dc2626; /* For chip remove button */
+  --font-body: 'Inter', sans-serif;
+  --font-heading: 'Playfair Display', serif;
+
+  --color-background: #f8f9fa; /* Very light gray */
+  --color-card-bg: #ffffff;
+  --color-card-bg-subtle: #fafafa; /* For input groups */
+  --color-text-primary: #212529;
+  --color-text-secondary: #495057;
+  --color-text-muted: #6c757d;
+  --color-border: #dee2e6;
+  --color-border-light: #e9ecef;
+  --color-primary: #007bff; /* Example primary blue */
+  --color-primary-dark: #0056b3;
+  --color-secondary: #6c757d;
+  --color-secondary-dark: #5a6268;
+  --color-success: #28a745;
+  --color-danger: #dc3545;
+  --color-warning: #ffc107;
+
+  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --shadow-medium: 0 6px 16px rgba(0, 0, 0, 0.08);
+  --border-radius: 12px;
 }
