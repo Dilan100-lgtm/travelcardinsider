@@ -1,514 +1,950 @@
-/* ======================================== */
-/* REWARDS CALCULATOR MODULE         */
-/* ======================================== */
-
-/* --- Main Layout --- */
-/* Base styles are in globals.css, no need to repeat body styles */
-.container {
-  /* Keep container max-width and padding if desired, */
-  /* otherwise remove if handled globally */
-  padding: 2rem clamp(1rem, 5vw, 3rem);
-  max-width: 1300px; /* From previous redesign */
-  margin: 0 auto; /* Center container */
+/* =============== GLOBALS & DEFAULTS =============== */
+html {
+  height: 100%;
+  /* Consider setting scroll-behavior: smooth; */
+  box-sizing: border-box; /* Better box model */
+}
+*, *::before, *::after {
+  box-sizing: inherit; /* Inherit box model */
 }
 
-.mainLayout {
-  display: grid;
-  grid-template-columns: 1fr; /* Default stack */
-  gap: 3rem;
-  margin-top: 2rem; /* Space below potentially existing global header/hero */
+
+body {
+  margin: 0;
+  font-family: 'Roboto Condensed', 'Arial', sans-serif; /* Example: Prioritize loaded font */
+  color: #222; /* Slightly darker for better base contrast */
+  background-color: #fff; /* Ensure default background */
+  /* FIXED: Removed min-width to prevent mobile overflow */
+  /* min-width: 374px; */
+  -webkit-font-smoothing: antialiased; /* Smoother text rendering */
+  -moz-osx-font-smoothing: grayscale;
+  
 }
 
-.calculatorColumn {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
+/* Add word wrapping globally for safety */
+p, h1, h2, h3, h4, h5, h6, li, div {
+    overflow-wrap: break-word;
 }
 
-.aiColumn {
-  /* Styles specific to the right column (AI analysis) */
+
+/* =============== FONT DEFINITIONS =============== */
+@font-face {
+  font-family: 'Roboto Condensed';
+  src: url('/fonts/Roboto_Condensed-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap; /* Good for performance */
 }
 
-.sectionTitle {
-  font-family: var(--font-heading);
-  color: var(--color-text-primary);
-  font-size: clamp(1.8rem, 5vw, 2.2rem); /* Use clamp */
-  margin-bottom: 2rem;
-  font-weight: 700; /* Heading weight */
-  text-align: center; /* Default center */
-}
-
-.aiColumn .sectionTitle,
-.calculatorColumn .sectionTitle {
-  text-align: left; /* Override center for column titles */
-  margin-bottom: 1.5rem;
-  font-size: 1.8rem; /* Slightly smaller for columns */
-}
-
-.subSectionTitle {
-  font-family: var(--font-body); /* Use body font for subtitles */
-  color: var(--color-text-primary);
-  font-size: 1.3rem;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.8rem;
-  border-bottom: 1px solid var(--color-border-light);
-  font-weight: 600; /* Bold subtitle */
-}
-
-/* --- Hero Section (If specific to this page) --- */
-/* Assuming hero is handled globally or in _app, otherwise use previous styles */
-.heroSection {
-  text-align: center;
-  padding: clamp(3rem, 10vh, 6rem) 1rem clamp(2rem, 8vh, 4rem) 1rem;
-  background-color: var(--color-border-light); /* Use variable */
-  margin-bottom: 3rem;
-}
-.heroTitle {
-  font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 6vw, 3.5rem); /* Adjusted size */
+@font-face {
+  font-family: 'Roboto Condensed';
+  src: url('/fonts/Roboto_Condensed-Bold.ttf') format('truetype');
   font-weight: 700;
-  margin-bottom: 1rem;
-  line-height: 1.2;
-  color: var(--color-text-primary);
-}
-.heroSubtitle {
-  font-family: var(--font-body);
-  font-size: clamp(1rem, 3vw, 1.2rem); /* Adjusted size */
-  max-width: 650px;
-  margin: 0 auto 2rem auto;
-  color: var(--color-text-secondary);
-}
-.heroButton {
-  background-color: var(--color-primary); /* Use global var */
-  color: white;
-  border: none;
-  padding: 0.8rem 2rem;
-  font-size: 1rem;
-  font-family: var(--font-body);
-  font-weight: 700; /* Match global button weight */
-  border-radius: 6px; /* Smaller radius for buttons */
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
-  text-decoration: none;
-}
-.heroButton:hover {
-  background-color: var(--color-primary-dark);
-  transform: translateY(-2px);
+  font-style: normal;
+  font-display: swap; /* Good for performance */
 }
 
-/* --- Top Picks Section --- */
-.topPicksSection {
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/playfair-display-regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/playfair-display-bold.ttf') format('truetype');
+}
+
+/* =============== HEADER =============== */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: white; /* Check contrast if header color changes */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 999; /* Ensure header is above most content */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1; /* Set base line-height */
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
   max-width: 1200px;
-  margin: 0 auto 4rem auto;
+  height: 3.5rem; /* Define header height */
   padding: 0 1rem;
 }
-.topPicksGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
-}
-.cardBlock {
-  background-color: var(--color-card-bg);
-  border-radius: var(--border-radius); /* Use global radius */
-  box-shadow: var(--shadow-soft);
-  overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+.logo-toggle-container {
   display: flex;
-  flex-direction: column;
-}
-.cardBlock:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-medium);
-}
-.cardBlockImage {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  background-color: var(--color-border-light);
-}
-.cardBlockContent {
-  padding: 1.2rem;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-.cardBlockTitle {
-  font-family: var(--font-body); /* Use body font */
-  font-size: 1.1rem; /* Slightly smaller */
-  margin-bottom: 0.5rem;
-  font-weight: 700; /* Bold */
-  color: var(--color-text-primary);
-}
-.cardBlockDesc {
-  font-size: 0.9rem;
-  color: var(--color-text-secondary);
-  margin-bottom: 1rem;
-  flex-grow: 1;
-  min-height: 50px; /* Adjust if needed */
-}
-.cardBlockButton {
-  display: inline-block;
-  background-color: var(--color-secondary);
-  color: white;
-  text-align: center;
-  padding: 0.5rem 1rem;
-  border-radius: 6px; /* Button radius */
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-family: var(--font-body);
-  font-weight: 700; /* Bold */
-  transition: background-color 0.2s ease;
-  margin-top: auto;
-}
-.cardBlockButton:hover {
-  background-color: var(--color-secondary-dark);
+  align-items: center;
+  flex-shrink: 0; /* Prevent shrinking */
 }
 
-/* --- Spend Input Section --- */
-.spendInputSection {
-  /* Container if needed */
-}
-.inputGroupsContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-.categoryGroupCard {
-  background-color: var(--color-card-bg-subtle);
-  border: 1px solid var(--color-border-light);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-soft);
-  overflow: hidden;
-}
-.categoryGroupTitle {
-  padding: 1rem 1.2rem;
-  font-size: 1.1rem;
-  font-weight: 700; /* Bold group title */
-  font-family: var(--font-body);
-  color: var(--color-text-primary);
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
   cursor: pointer;
-  list-style: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: background-color 0.2s ease;
-}
-.categoryGroupTitle::-webkit-details-marker { display: none; }
-.categoryGroupTitle::after {
-  content: '\\25B6';
-  font-size: 0.8em;
-  transition: transform 0.2s ease;
-  color: var(--color-text-muted);
-}
-.categoryGroupCard[open] > .categoryGroupTitle::after {
-  transform: rotate(90deg);
-}
-.categoryGroupCard[open] > .categoryGroupTitle {
-  border-bottom: 1px solid var(--color-border-light);
-  background-color: #f1f3f5; /* Light highlight when open */
-}
-.categoryGroupCard:not([open]):hover .categoryGroupTitle {
-    background-color: #f8f9fa; /* Hover when closed */
-}
-.inputGrid {
-  padding: 1.2rem 1.5rem 1.5rem 1.5rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1.2rem 1rem;
-}
-.inputGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-.inputGroup label {
-  font-size: 0.9em;
-  font-weight: 700; /* Bold labels */
-  color: var(--color-text-secondary);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem; /* Increased gap */
-  text-transform: capitalize;
-}
-.inputField {
-  padding: 0.7rem 0.9rem;
-  border: 1px solid var(--color-border);
-  border-radius: 6px; /* Input radius */
-  font-size: 1rem;
-  font-family: var(--font-body);
-  background-color: var(--color-card-bg);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  width: 100%;
-  box-sizing: border-box;
-  color: var(--color-text-primary);
-}
-.inputField:focus {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Use primary color alpha */
-  outline: none;
+  padding: 0.5rem; /* Add padding for easier tapping */
+  margin: 0 1rem 0 -0.5rem; /* Adjust margin */
 }
 
-/* --- Selected Card Section --- */
-.selectedCardSection {
-  margin-top: 1rem;
+.bar {
+  display: block;
+  width: 1.5rem;
+  height: 0.2rem;
+  background: #000; /* Ensure high contrast */
+  margin: 4px 0; /* Slightly increased spacing */
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Added opacity */
 }
-.cardSelectorContainer {
+
+.menu-toggle.open .bar:nth-child(1) { transform: translateY(6px) rotate(45deg); } /* Adjusted transform */
+.menu-toggle.open .bar:nth-child(2) { opacity: 0; }
+.menu-toggle.open .bar:nth-child(3) { transform: translateY(-6px) rotate(-45deg); } /* Adjusted transform */
+
+.site-logo {
+    display: inline-block; /* Allows vertical alignment */
+}
+.site-logo img { /* Styling might differ slightly for Next Image */
+  display: block;
+  height: auto; /* Let width/height props control size */
+  width: auto;
+  max-height: calc(3.5rem - 1rem); /* Example: Limit height based on header */
+}
+
+/* Main Navigation (Mobile - Slide out) */
+.main-nav {
+  position: fixed;
+  top: 3.5rem;
+  left: 0;
+  width: min(70vw, 300px); /* Use min() for responsiveness */
+  height: calc(100vh - 3.5rem);
+  background: #fff;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 3000; /* Above backdrop */
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+.main-nav.open {
+  transform: translateX(0);
+}
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-list li {
+  margin: 0; /* Reset margin for consistency */
+}
+
+.nav-list a,
+.nav-list button { /* Style buttons similarly if used */
+  text-decoration: none;
+  color: #333; /* Check contrast */
+  font-weight: 500;
+  font-size: 0.95rem;
+  display: block;
+  padding: 0.75rem 0; /* Consistent padding */
+  transition: color 0.3s ease, background-color 0.3s ease;
+  border-bottom: 1px solid #eee; /* Separator */
+}
+.nav-list li:last-child > a,
+.nav-list li:last-child > button {
+    border-bottom: none; /* Remove border from last item */
+}
+
+
+.nav-list a:hover,
+.nav-list button:hover {
+  color: #0056b3;
+  background-color: #f8f8f8;
+}
+
+/* Mobile Submenu Styles */
+.has-dropdown .dropdown-menu {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 1rem; /* Padding left for indent */
+  background: #f8f8f8; /* Slightly different background */
+  border-left: none; /* Remove side border */
+}
+.has-dropdown.submenu-open > .dropdown-menu {
+  display: block;
+}
+.dropdown-menu li {
+  margin: 0;
+}
+.dropdown-menu a {
+  padding: 0.5rem 0.8rem;
+  font-size: 0.9rem;
+  color: #444; /* Check contrast */
+  border-bottom: 1px solid #ddd; /* Separator inside submenu */
+}
+.dropdown-menu li:last-child a {
+    border-bottom: none;
+}
+
+/* Backdrop for mobile menu */
+.menu-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.4);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.0s 0.3s linear;
+  z-index: 2500; /* Below nav, above content */
+}
+.menu-backdrop.open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease;
+}
+
+/* Header Actions (Search etc.) */
+/* This LI contains the search bar */
+.header-actions {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0; /* Padding for search li on mobile */
+  border-bottom: 1px solid #eee;
+}
+
+.search-container {
+  margin: 0; /* Remove margin if inside padded li */
+  width: 100%;
+}
+.search-container input[type="search"] {
+  border: 1px solid #ccc;
+  border-radius: 1.5rem;
+  padding: 0.5rem 1rem; /* Increased padding */
+  font-size: 0.9rem;
+  width: 100%; /* Take full width */
+  box-sizing: border-box; /* Include padding in width */
+  transition: border-color 0.3s ease; /* Subtle transition */
+}
+.search-container input[type="search"]:focus {
+  outline: none;
+  border-color: #007bff; /* Focus indicator */
+}
+
+/* Mobile Subscribe Button */
+.nav-list li a[href="#subscribe"] {
+  display: inline-block;
+  background-color: #007bff;
+  color: white; /* Check contrast: White on blue is good */
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+  border-bottom: none; /* Remove border */
+  text-align: center;
+}
+.nav-list li a[href="#subscribe"]:hover {
+  background-color: #0056b3;
+}
+
+
+/* ====== MOBILE HEADER STYLES ====== */
+@media (max-width: 1099px) {
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .main-nav {
+     position: fixed; /* Keep fixed positioning */
+  }
+  /* Mobile Submenu Toggle Button Styles */
+   .submenu-toggle-button {
+      background: transparent;
+      border: none;
+      padding: 0.5rem;
+      cursor: pointer;
+      margin-left: auto; /* Push to right */
+      font-size: 1.2em;
+      line-height: 1;
+      color: #555; /* Check contrast */
+   }
+}
+
+/* ====== DESKTOP HEADER STYLES ====== */
+@media (min-width: 1100px) {
+  .menu-toggle, .menu-backdrop, .submenu-toggle-button {
+    display: none; /* Hide mobile-only elements */
+  }
+
+  /* Override mobile nav styles */
+  .main-nav {
+    position: static;
+    width: auto;
+    height: auto;
+    transform: none;
+    box-shadow: none;
+    overflow: visible;
+    padding: 0;
+    margin-left: 1rem; /* Adjusted margin logic */
+    background: transparent;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    transition: none;
+    max-width: none;
+    z-index: auto;
+  }
+
+  /* Keep search container separate if desired outside nav-list in HTML */
+  /* This assumes search stays INSIDE nav-list based on user req */
+   .header-inner .search-container { /* Example if search moved */
+        /* margin-left: auto; */ /* Push to right? */
+   }
+
+
+  .nav-list {
+    display: flex;
+    flex-direction: row;
+    /* FIXED: Use baseline alignment */
+    align-items: baseline;
+    height: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav-list li {
+    margin: 0 0.8rem;
+    /* REMOVED height: 100%; */
+  }
+
+   /* Search bar styling within nav list on desktop */
+  .nav-list li.header-actions {
+      margin-right: 1.5rem; /* More space after search */
+      /* Reset mobile padding/border */
+      padding: 0;
+      border: none;
+  }
+  .nav-list li.header-actions .search-container {
+      margin: 0;
+  }
+   .nav-list li.header-actions input[type="search"] {
+       width: 180px; /* Set desired desktop width */
+       padding: 0.4rem 0.8rem;
+   }
+   .nav-list li.header-actions input[type="search"]:focus {
+       width: 200px;
+   }
+
+  /* General desktop link styling */
+  .nav-list a,
+  .nav-list a.nav-link {
+     display: inline-block;
+     padding: 0.5rem 0.2rem;
+     border-bottom: none;
+     font-weight: 500;
+     position: relative;
+  }
+  /* Simple hover underline effect */
+   .nav-list a:not([href="#subscribe"])::after {
+       content: '';
+       position: absolute;
+       width: 0;
+       height: 2px;
+       display: block;
+       margin-top: 4px;
+       right: 0;
+       background: #0056b3;
+       transition: width .3s ease;
+       -webkit-transition: width .3s ease;
+   }
+   .nav-list a:not([href="#subscribe"]):hover::after {
+       width: 100%;
+       left: 0;
+       background-color: #0056b3;
+   }
+
+  /* Desktop Subscribe Button Styles */
+  .nav-list li a[href="#subscribe"] {
+     display: inline-flex;
+     align-items: center;
+     background-color: #007bff;
+     color: white;
+     padding: 8px 15px;
+     border-radius: 5px;
+     font-weight: bold;
+     text-decoration: none;
+     transition: background-color 0.3s ease;
+     margin-top: 0;
+     margin-left: 1rem;
+     border-bottom: none;
+  }
+  .nav-list li a[href="#subscribe"]:hover {
+    background-color: #0056b3;
+  }
+
+
+  /* --- DESKTOP DROPDOWN POSITIONING & FIX --- */
+  .nav-list li.has-dropdown {
+     position: relative;
+  }
+
+  .has-dropdown .dropdown-menu {
+    position: absolute;
+    background: white;
+    margin-left: 0;
+    padding: 0.5rem 0;
+    border: 1px solid #eee;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    border-left: none;
+    display: none;
+    top: calc(100% + 8px); /* Visual gap */
+    left: 0;
+    min-width: 220px;
+    z-index: 1000;
+    list-style: none;
+  }
+
+  /* Invisible Bridge pseudo-element */
+  .nav-list li.has-dropdown::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 8px; /* Match the gap */
+    background: transparent;
+    z-index: 1001;
+  }
+
+  /* Show dropdown on hover */
+  .nav-list li.has-dropdown:hover > .dropdown-menu {
+    display: block;
+  }
+
+   /* Styling for items INSIDE dropdown */
+  .dropdown-menu li {
+      margin: 0;
+      height: auto;
+      display: block;
+  }
+  .dropdown-menu a {
+      display: block;
+      padding: 0.6rem 1.2rem;
+      font-size: 0.9rem;
+      color: #444;
+      white-space: nowrap;
+      border: none;
+      transition: background-color 0.2s ease, color 0.2s ease;
+  }
+   .dropdown-menu a:hover {
+       color: #0056b3;
+       background-color: #f5f5f5;
+   }
+  /* --- END DESKTOP DROPDOWN --- */
+
+} /* End Desktop Media Query */
+
+
+/* =============== HERO SECTION =============== */
+#product-overview .img {
+  /* LCP Candidate: Ensure image file is optimized! */
+  background:
+    linear-gradient(to top, rgba(80, 68, 18, 0.6) 10%, transparent),
+     no-repeat center center/cover;
+  background-position: left 10% bottom 40%;
+  /* FIXED: Use 100% instead of 100vw */
+  width: 100%;
+  height: 70vh;
+  position: relative;
+  margin-top: 3.5rem; /* Match header height */
+  display: block; /* Ensure it behaves like a block */
+}
+
+.hero {
+  text-align: center;
+  padding: 1rem;
+}
+
+.hero .container {
   margin-bottom: 2rem;
 }
-.cardSelectorContainer label {
-  display: block;
-  font-weight: 700; /* Bold */
-  margin-bottom: 0.6rem;
-  font-size: 0.95em;
-  color: var(--color-text-secondary);
-}
-.cardSelectorDropdown {
-  width: 100%;
-  padding: 0.8rem 1rem;
-  border-radius: 8px;
-  border: 1px solid var(--color-border);
-  background-color: var(--color-card-bg);
-  font-size: 1rem;
-  font-family: var(--font-body);
-  color: var(--color-text-primary);
-  cursor: pointer;
-  margin-bottom: 1rem;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236c757d' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-  background-position: right 0.8rem center;
-  background-repeat: no-repeat;
-  background-size: 1.2em 1.2em;
-  padding-right: 2.8rem;
-  appearance: none;
-}
-.cardSelectorDropdown:focus {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
-  outline: none;
-}
-.selectedCardChips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  min-height: 2.5rem;
-  margin-top: 0.5rem;
-}
-.selectedCardChip {
-  display: inline-flex; align-items: center; gap: 0.4rem;
-  background-color: #e7f1ff; /* Lighter primary */
-  color: var(--color-primary-dark); /* Darker primary */
-  padding: 0.3rem 0.8rem; border-radius: 16px; /* Pill shape */
-  font-size: 0.85em; font-weight: 700; /* Bold chip text */
-  font-family: var(--font-body);
-  border: 1px solid #cfe2ff; /* Primary border */
-  transition: background-color 0.2s ease;
-}
-.selectedCardChip:hover {
-  background-color: #cfe2ff;
-}
-.selectedCardChip button {
-  background: none; border: none; color: var(--color-secondary);
-  font-size: 1.1em; font-weight: bold; line-height: 1;
-  padding: 0 0.1rem; margin-left: 0.2rem; cursor: pointer;
-  opacity: 0.7; transition: opacity 0.2s ease, color 0.2s ease;
-}
-.selectedCardChip button:hover {
-  opacity: 1; color: var(--color-danger);
+
+.hero h1 {
+  font-size: clamp(2em, 5vw, 3em);
+  margin-bottom: 0.5rem;
+  color: #111; /* Darker heading color */
 }
 
-/* Results for Selected Cards Display */
-.selectedCardResultsContainer {
-  margin-top: 1rem;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
+.hero p {
+  margin: 0 auto 1.5rem auto; /* Center paragraph text block */
+  max-width: 65ch; /* Limit line length for readability */
+  font-size: clamp(1em, 3vw, 1.2em);
+  line-height: 1.6;
+  color: #444; /* Slightly darker paragraph */
 }
-.selectedCardResultItem {
-  border: 1px solid var(--color-border-light);
-  border-radius: var(--border-radius);
-  padding: 1.2rem;
-  background-color: var(--color-card-bg);
-  box-shadow: var(--shadow-soft);
+
+/* =============== BUTTONS (General) =============== */
+.cta-button,
+.Apply-button,
+.submit {
+  display: inline-block;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.2s ease;
+  border: none;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+  line-height: 1.4; /* Ensure consistent line height */
+}
+.cta-button:active,
+.Apply-button:active,
+.submit:active {
+  transform: scale(0.98);
+}
+/* Accessibility: Improve focus visibility */
+.cta-button:focus-visible,
+.Apply-button:focus-visible,
+.submit:focus-visible {
+    outline: 3px solid #0d6efd; /* Clearer focus outline */
+    outline-offset: 1px;
+    box-shadow: 0 0 0 1px #fff; /* Inner shadow for contrast */
+}
+
+
+/* Specific Button Colors - CHECK CONTRAST RATIOS */
+.cta-button {
+    background-color: #15a310; /* Slightly darker green */
+    color: white;
+}
+.cta-button:hover { background-color: #117d0d; }
+
+.Apply-button {
+    background-color: #007bff; /* Blue */
+    color: white;
+}
+.Apply-button:hover { background-color: #0056b3; }
+
+.submit {
+    background: #15a310; /* Match CTA button */
+    color: #fff;
+ }
+.submit:hover { background: #117d0d; }
+
+
+/* Button Widths in Context */
+.hero .cta-button {
+   padding: 12px 25px;
+   font-size: 1.1em;
+}
+/* Ensure buttons stack nicely on smaller views if needed */
+.featured-card__description .cta-button,
+.featured-card__description .Apply-button {
+    width: auto; /* Let padding define width */
+    max-width: calc(50% - 5px); /* Allow two buttons side-by-side */
+    margin-right: 5px;
+    padding: 10px 15px; /* Consistent padding */
+}
+.featured-card__description .Apply-button {
+    margin-right: 0;
+}
+
+
+/* =============== FEATURED CARDS SECTION =============== */
+#featured-cards {
+  margin-top: 3rem;
+  padding: 2rem 1rem;
+  background-color: #FFD700; /* Check contrast of content on this bg */
+  border-radius: 10px;
+}
+
+.H2_featured-cards {
+  text-align: center;
+  color: #111; /* Ensure dark text on yellow */
+  font-size: clamp(2rem, 6vw, 3rem);
+  margin: 0 0 2rem 0;
+}
+
+#featured-cards .card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: 30px;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.featured-card {
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  color: #333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  min-width: 0;
+  text-align: center;
 }
-.selectedCardResultItem:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-medium);
+
+.featured-card__image {
+  width: 90%;
+  max-width: 280px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
 }
-.selectedCardHeader {
-  display: flex; align-items: center; gap: 1rem; /* Increased gap */
+
+.featured-card__description {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  width: 100%;
+  font-size: 1rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  flex-grow: 1;
+}
+.featured-card__description h3 {
+    margin: 0 0 0.75rem 0;
+    font-size: 1.3rem;
+    line-height: 1.3;
+}
+.featured-card__description p {
+    margin: 0 0 1.5rem 0;
+    line-height: 1.5;
+    flex-grow: 1;
+    min-height: 60px; /* Adjust as needed for consistent card height */
+}
+.featured-card__description .cta-button,
+.featured-card__description .Apply-button {
+    width: auto;
+    max-width: 180px;
+    padding: 10px 20px;
+    margin-bottom: 0.5rem;
+}
+.featured-card__description .cta-button { margin-right: 0; } /* Stack vertically */
+.featured-card__description .Apply-button { margin-right: 0; }
+
+
+/* Responsive stacking for featured cards */
+@media (max-width: 988px) {
+  #featured-cards .card-grid {
+     grid-template-columns: 1fr;
+     gap: 20px;
+     padding: 10px;
+  }
+  .featured-card {
+      max-width: 500px;
+      margin: 0 auto;
+  }
+}
+
+/* =============== COMPARISON SECTION =============== */
+#compare {
+  margin-top: 3rem;
+  padding: 2rem 1rem;
+  background-color: #f4f4f4;
+  border-radius: 10px;
   margin-bottom: 1rem;
 }
-.selectedCardImage {
-  height: 36px; /* Slightly larger */
-  width: 56px;
-  object-fit: contain; border-radius: 4px;
-  border: 1px solid var(--color-border-light);
-  flex-shrink: 0; background-color: #fff;
+
+#compare .container {
+   max-width: 800px;
+   margin: 0 auto;
+   text-align: center;
 }
-.selectedCardInfo { flex-grow: 1; }
-.selectedCardTitle {
-  font-weight: 700; /* Bold */
-  color: var(--color-text-primary);
-  font-family: var(--font-body);
-  font-size: 1.1em; margin: 0; line-height: 1.3;
+
+.H2_comparison {
+  color: #111; /* Ensure contrast */
+  margin-bottom: 1.5rem;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
 }
-.selectedCardIssuer {
-  font-size: 0.85em; color: var(--color-text-muted); display: block;
+
+#compare form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem 1.5rem;
 }
-.selectedValueGrid {
+
+#compare label {
+  margin-right: 0.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+#compare select {
+  padding: 0.6rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  min-width: 220px;
+  background-color: #fff;
+  font-size: 1rem;
+}
+
+#compare .submit {
+   margin-top: 0;
+}
+
+.comparison-result {
+  margin-top: 30px;
+  color: #333;
+  font-weight: normal;
+  font-size: 1rem;
+  text-align: left;
+}
+
+.comparison-result h3 {
+   font-size: 1.5rem;
+   margin-bottom: 1rem;
+   text-align: center;
+}
+
+.comparison-result table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.comparison-result th,
+.comparison-result td {
+  border: 1px solid #ddd;
+  padding: 10px 12px;
+  text-align: left;
+  font-size: 1rem;
+  vertical-align: middle;
+}
+.comparison-result td:not(:first-child),
+.comparison-result th:not(:first-child) {
+  text-align: center;
+}
+
+.comparison-result th {
+  background-color: #e9e9e9;
+  font-weight: bold;
+  color: #333; /* Check contrast */
+}
+
+/* =============== REVIEWS SECTION =============== */
+.reviews-container {
+  width: 90%;
+  max-width: 1200px;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin: 3rem auto;
+}
+
+.reviews-container h2 {
+  text-align: center;
+  margin: 0 0 30px 0;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  color: #333;
+}
+
+.reviews-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Responsive columns */
-  gap: 1rem 0.8rem;
-  margin-bottom: 1.2rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--color-border-light);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
 }
-.selectedValueGrid div { display: flex; flex-direction: column; text-align: center;}
-.selectedValueGrid span {
-  font-size: 0.7rem; color: var(--color-text-muted);
-  text-transform: uppercase; margin-bottom: 0.2rem; font-weight: 700;
-}
-.selectedValueGrid strong {
-  font-size: 1.15em; font-weight: 700; /* Bold value */
-  color: var(--color-text-primary); line-height: 1.2;
-}
-.selectedValueGrid strong.valueGood { color: var(--color-success); }
-.selectedValueGrid strong.valueBad { color: var(--color-danger); }
 
-.selectedCardButton {
+/* Review Card Styling */
+.reviews-grid .card {
+  background: #fff;
+  padding: 0;
+  border-radius: 8px;
+  text-align: left;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: #555; /* Check contrast */
+}
+
+.reviews-grid .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.review_img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  object-position: center;
   display: block;
-  background-color: var(--color-primary);
-  color: white; border: none; padding: 0.6rem 1rem; font-size: 0.9rem;
-  font-family: var(--font-body); font-weight: 700; /* Bold */
-  border-radius: 6px; cursor: pointer; transition: background-color 0.2s ease;
-  text-align: center; text-decoration: none; margin-top: auto;
-}
-.selectedCardButton:hover { background-color: var(--color-primary-dark); }
-
-.emptyStateText {
-  color: var(--color-text-muted); text-align: center; padding: 2rem 1rem;
-  font-style: italic; background-color: var(--color-card-bg-subtle);
-  border: 1px dashed var(--color-border); border-radius: var(--border-radius);
-  grid-column: 1 / -1;
 }
 
-/* --- AI Column & Card --- */
-.aiCard {
-  background-color: var(--color-card-bg);
-  border-radius: var(--border-radius);
-  border: 1px solid var(--color-border-light);
-  box-shadow: var(--shadow-soft);
-  padding: 1.5rem;
-  position: sticky;
-  top: calc(3.5rem + 1.5rem); /* Adjust based on header height + desired gap */
-  /* Max height to prevent overflowing viewport if content is long */
-  max-height: calc(100vh - 3.5rem - 3rem); /* header - top gap - bottom gap */
-  overflow-y: auto; /* Allow scrolling within the card if needed */
-}
-.aiControls {
-  display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem;
-  padding-bottom: 1.5rem; border-bottom: 1px solid var(--color-border-light);
-}
-.aiLabel { font-weight: 700; font-size: 0.9em; color: var(--color-text-secondary); }
-.aiSelectBox {
-  width: 100%; padding: 0.7rem 0.9rem; border-radius: 6px;
-  border: 1px solid var(--color-border); background-color: var(--color-card-bg);
-  font-size: 0.95rem; font-family: var(--font-body); color: var(--color-text-primary);
-  cursor: pointer;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236c757d' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-  background-position: right 0.8rem center; background-repeat: no-repeat;
-  background-size: 1.2em 1.2em; padding-right: 2.8rem; appearance: none;
-}
-.aiSelectBox:focus {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); outline: none;
-}
-.aiButtonPrimary, .aiButtonSecondary {
-  border: none; padding: 0.8rem 1rem; font-size: 1rem;
-  font-family: var(--font-body); font-weight: 700; /* Bold */
-  border-radius: 6px; cursor: pointer;
-  transition: background-color 0.2s ease, opacity 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-}
-.aiButtonPrimary { width: 100%; background-color: var(--color-primary); color: white; }
-.aiButtonPrimary:hover { background-color: var(--color-primary-dark); }
-.aiButtonPrimary:disabled { background-color: var(--color-border); color: var(--color-text-muted); cursor: not-allowed; opacity: 0.7; }
-
-.aiButtonSecondary {
-  background-color: transparent;
-  color: var(--color-secondary);
-  border: 1px solid var(--color-border);
-  font-size: 1.1rem; /* Icon size */
-  padding: 0.5rem; line-height: 1;
-  width: auto; /* Fit content */
-  position: absolute; /* Position next to primary */
-  right: 1.5rem; /* Align with padding */
-  bottom: 1.5rem; /* Align with padding - primary button bottom */
-  /* Adjust bottom based on primary button height + gap if needed */
-}
-.aiButtonSecondary:hover { background-color: var(--color-border-light); border-color: var(--color-secondary); color: var(--color-secondary-dark); }
-.aiButtonSecondary:disabled { opacity: 0.5; cursor: not-allowed; background-color: transparent; }
-
-/* Adjust wrapper for buttons if secondary is absolutely positioned */
-.aiControls { position: relative; padding-bottom: 4rem; /* Space for secondary button */ }
-
-/* Loading Spinner */
-.spinnerContainer { text-align: center; padding: 2rem 1rem; color: var(--color-text-muted); }
-.spinner {
-  border: 4px solid var(--color-border-light); border-top: 4px solid var(--color-primary);
-  border-radius: 50%; width: 36px; height: 36px; /* Slightly smaller */
-  animation: spin 1s linear infinite; margin: 0 auto 1rem auto;
-}
-@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-.aiSuggestionBox { line-height: 1.7; font-size: 0.95rem; color: var(--color-text-secondary); }
-.aiSuggestionBox h3 {
-  margin-top: 1.5rem; margin-bottom: 0.8rem; padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--color-border-light); font-size: 1.1em;
-  font-weight: 700; /* Bold */ color: var(--color-text-primary); font-family: var(--font-body);
-}
-.aiSuggestionBox h3:first-child { margin-top: 0; }
-.aiSuggestionBox strong { font-weight: 700; color: var(--color-text-primary); }
-.aiSuggestionBox ul { margin-top: 0.5rem; margin-bottom: 1rem; padding-left: 1.2rem; list-style: disc; }
-.aiSuggestionBox li { margin-bottom: 0.5rem; }
-.aiSuggestionBox hr { border: none; border-top: 1px dashed var(--color-border); margin: 1.5rem 0; }
-.aiSuggestionBox p { margin-bottom: 1rem; }
-.aiPlaceholder { color: var(--color-text-muted); font-style: italic; text-align: center; padding: 1rem; }
-
-/* --- Responsive Adjustments --- */
-@media screen and (max-width: 991px) { /* Breakpoint for stacking main columns */
-  .mainLayout { grid-template-columns: 1fr; }
-  .aiColumn { /* No specific stacking styles needed */ }
-  .aiCard { position: static; max-height: none; overflow-y: visible; }
+.reviews-grid .card-content {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
-@media screen and (max-width: 768px) {
-  .sectionTitle { font-size: 1.8rem; margin-bottom: 1.5rem; }
-  .topPicksGrid { gap: 1.5rem; }
-  .calculatorColumn, .aiColumn { gap: 2rem; }
-  .selectedValueGrid { grid-template-columns: 1fr; text-align: left; gap: 0.6rem;}
-  .selectedValueGrid div {
-    flex-direction: row; justify-content: space-between; align-items: center;
-    border-bottom: 1px solid var(--color-border-light); padding-bottom: 0.6rem;
-  }
-  .selectedValueGrid div:last-child { border-bottom: none; }
-  .selectedValueGrid span { margin-bottom: 0; }
+.reviews-grid .card h3 {
+  color: #0073e6; /* Check contrast */
+  font-size: 1.2rem;
+  margin: 0 0 10px 0;
+  line-height: 1.3;
 }
 
-@media screen and (max-width: 600px) {
-  .selectedCardResultsContainer { grid-template-columns: 1fr; } /* Stack selected cards earlier */
+.reviews-grid .card p {
+  font-size: 0.9rem;
+  color: #555; /* Check contrast */
+  line-height: 1.5;
+  margin: 0 0 15px 0;
+  flex-grow: 1;
 }
 
-@media screen and (max-width: 480px) {
-  .container { padding: 1rem 0.8rem; } /* Reduce container padding */
-  .heroSection { padding: 3rem 1rem 2rem 1rem; }
-  .heroTitle { font-size: 1.8rem; }
-  .heroSubtitle { font-size: 0.95rem; }
-  .sectionTitle { font-size: 1.6rem; margin-bottom: 1.5rem; }
-  .topPicksGrid { grid-template-columns: 1fr; }
-  .inputGrid { grid-template-columns: 1fr; }
-  .categoryGroupTitle { font-size: 1rem; padding: 0.8rem 1rem;}
-  .inputGrid { padding: 1rem; }
-  .aiCard { padding: 1rem; }
+/* Review Card Button */
+.reviews-grid .card .cta-button {
+  display: inline-block;
+  margin-top: auto;
+  padding: 8px 15px;
+  background: #0073e6;
+  color: #fff; /* Contrast OK */
+  text-decoration: none;
+  border-radius: 5px;
+  align-self: center;
+  font-weight: bold;
+}
+
+.reviews-grid .card .cta-button:hover {
+   background-color: #0056b3;
+}
+
+/* =============== FOOTER =============== */
+.site-footer {
+  background: #000080;
+  color: #f0f0f0; /* Good contrast */
+  margin-top: 3rem;
+  padding: 2rem 1rem;
+  border-top: 4px solid #FFD700;
+  font-family: 'Playfair Display', serif;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-col h3 {
+  margin: 0 0 1rem 0;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col li {
+  margin-bottom: 0.6rem;
+}
+
+/* Footer Links */
+.footlink a {
+  color: #d0d0d0; /* Contrast OK */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footlink a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.footer-disclaimer {
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #ccc; /* Contrast OK */
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer-bottom {
+  margin-top: 2rem;
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #ccc; /* Contrast OK */
+  border-top: 1px solid #4a4a9c;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+/* Existing globals.css content... */
+
+:root {
+  --font-body: 'Inter', sans-serif;
+  --font-heading: 'Playfair Display', serif;
+
+  --color-background: #f8f9fa; /* Very light gray */
+  --color-card-bg: #ffffff;
+  --color-card-bg-subtle: #fafafa; /* For input groups */
+  --color-text-primary: #212529;
+  --color-text-secondary: #495057;
+  --color-text-muted: #6c757d;
+  --color-border: #dee2e6;
+  --color-border-light: #e9ecef;
+  --color-primary: #007bff; /* Example primary blue */
+  --color-primary-dark: #0056b3;
+  --color-secondary: #6c757d;
+  --color-secondary-dark: #5a6268;
+  --color-success: #28a745;
+  --color-danger: #dc3545;
+  --color-warning: #ffc107;
+
+  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --shadow-medium: 0 6px 16px rgba(0, 0, 0, 0.08);
+  --border-radius: 12px;
 }
