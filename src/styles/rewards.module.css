@@ -1,254 +1,869 @@
-/* File: styles/rewards.module.css (Optimized & Layout Adjusted) */
-
-/* --- Base & Variables --- */
-
+/* File: styles/rewards.module.css */
 
 /* --- Base & Layout --- */
 .container {
-  padding: 2rem clamp(1rem, 4vw, 2.5rem);
-  max-width: 1200px; /* Wider max-width for two columns */
+  padding: 2rem clamp(1rem, 5vw, 3rem);
+  max-width: 1100px;
   margin: auto;
-  background: var(--bg-light);
-  color: var(--text-medium);
-  font-family: var(--font-sans);
-  font-size: 16px;
-  line-height: 1.6;
+  background: #f9fafb; /* Light Gray BG */
+  color: #374151; /* Gray-700 Text */
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* --- Typography Hierarchy --- */
+/* --- Hero/Header --- */
 .heroTitle {
   text-align: center;
-  font-size: clamp(2rem, 6vw, 2.5rem); /* Increased max size */
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
   font-weight: 700;
-  margin-bottom: 1.5rem; /* More space */
-  color: var(--text-dark);
-  line-height: 1.2;
-}
-/* Combined results title */
-.resultsTitle {
-  font-weight: 600;
-  color: var(--text-dark);
-  line-height: 1.3;
-  margin-bottom: 1.5rem;
-  font-size: clamp(1.5rem, 5vw, 1.75rem); /* Title size */
-}
-.resultsCount {
-  font-size: 0.8em;
-  font-weight: 400;
-  color: var(--text-light);
-  margin-left: 0.5rem;
+  margin-bottom: 1rem;
+  color: #111827; /* Gray-900 */
 }
 
-/* --- Main Layout --- */
-.mainLayout {
-  display: grid;
-  grid-template-columns: 2fr 1.1fr; /* Adjust ratio if needed */
-  gap: 2.5rem;
-  margin-top: 2rem;
+.heroDescription {
+  text-align: center;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  max-width: 720px;
+  margin: 0 auto 1rem;
+  color: #6b7280; /* Gray-500 */
 }
-.leftColumn {
+
+.heroNote {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #6b7280; /* Gray-500 */
+  margin-bottom: 2rem;
+}
+
+/* --- Controls (Dropdown) --- */
+.selectorGroup {
+  display: flex;
+  justify-content: center;
+  margin: 2rem auto 2.5rem auto;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 1rem 1.5rem;
+  background-color: #ffffff; /* White */
+  border-radius: 8px;
+  max-width: 600px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  border: 1px solid #d1d5db; /* Gray-300 */
+}
+.selectorGroup label {
+  margin-right: 0.5rem;
+  font-weight: 500;
+  color: #111827; /* Gray-900 */
+  font-size: 0.9em;
+  display: inline-block;
+  vertical-align: middle;
+}
+.selectBox {
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #d1d5db; /* Gray-300 */
+  background: #ffffff; /* White */
+  font-size: 0.95rem;
+  min-width: 240px;
+  cursor: pointer;
+  vertical-align: middle;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem; /* Space for arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* --- Input Form --- */
+.inputGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem 1.8rem;
+  margin-bottom: 2.5rem; /* Reduced margin */
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.inputGroup {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
 }
-.rightColumn {
-  position: relative;
-}
-.rightColumn .resultsTitle {
-  text-align: left;
-  font-size: 1.6rem; /* Sidebar title size */
-  position: sticky;
-  top: -1px; /* Stick slightly above viewport top */
-  background: var(--bg-light);
-  padding: 0.5rem 0 1rem 0; /* Add padding for spacing */
-  z-index: 10;
-  margin-bottom: 0.5rem; /* Reduce margin below sticky title */
-}
-.leftColumn .heroDescription { margin-bottom: 0; text-align: left; max-width: none; } /* Adjust description in left col */
-.leftColumn .inputGrid { margin-bottom: 0; }
-.leftColumn .filterContainer { margin-top: 0; margin-bottom: 0; }
-.leftColumn .stickyButtonContainer { margin-top: 0; margin-bottom: 0; }
-.leftColumn > .errorMessage { margin-top: 0; } /* Adjust error margin */
-.leftColumn .aiSection { margin-top: 0; }
 
-
-/* --- Controls & Inputs --- */
-.selectorGroup { max-width: none; margin: 0 auto 2.5rem auto; padding: 1.5rem; background-color: var(--bg-white); border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid var(--border-color); display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; }
-.selectorGroup label { margin-right: 0.5rem; font-weight: 500; color: var(--text-dark); font-size: 0.95em; display: inline-block; vertical-align: middle; }
-.selectBox, .filterDropdown {
-  padding: 0.7rem 1.2rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-white); font-size: 0.95rem;
-  min-width: 220px; cursor: pointer; vertical-align: middle;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-  background-position: right 0.7rem center; background-repeat: no-repeat; background-size: 1.5em 1.5em; padding-right: 3rem;
-  -webkit-appearance: none; -moz-appearance: none; appearance: none; box-shadow: inset 0 1px 2px rgba(0,0,0,0.03);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease; width: 100%; box-sizing: border-box;
+.inputGroup label {
+  font-size: 0.9em;
+  font-weight: 500;
+  color: #111827; /* Gray-900 */
+  margin-bottom: 0.5rem;
+  text-transform: capitalize;
 }
-.selectBox:focus, .filterDropdown:focus { border-color: var(--primary-color); box-shadow: 0 0 0 3px var(--focus-ring-color); outline: none; }
-.inputGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem 1.8rem; max-width: 1000px; margin-left: auto; margin-right: auto; }
-.inputGroup { display: flex; flex-direction: column; }
-.inputGroup label { font-size: 0.9em; font-weight: 500; color: var(--text-dark); margin-bottom: 0.5rem; text-transform: capitalize; }
-.inputField { padding: 0.8rem 1rem; border: 1px solid var(--border-color); border-radius: 6px; font-size: 1rem; background-color: var(--bg-white); box-shadow: inset 0 1px 2px rgba(0,0,0,0.05); transition: border-color 0.2s ease, box-shadow 0.2s ease; width: 100%; box-sizing: border-box; }
-.inputField:focus { border-color: var(--primary-color); box-shadow: 0 0 0 3px var(--focus-ring-color); outline: none; }
+
+.inputGroup input,
+.inputField { /* Apply consistent input styling */
+  padding: 0.8rem;
+  border: 1px solid #d1d5db; /* Gray-300 */
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: #ffffff; /* White */
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  width: 100%; /* Ensure inputs fill container */
+  box-sizing: border-box; /* Include padding and border in width */
+}
+
+.inputGroup input:focus,
+.inputField:focus {
+  border-color: #3b82f6; /* Blue-500 */
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+  outline: none;
+}
 
 /* --- Filter Section --- */
-.filterContainer { padding: 1.5rem 2rem; background-color: var(--bg-white); border-radius: 10px; border: 1px solid var(--border-color-light); box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
-.filterHeader { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color-light); }
-.filterHeader h4 { margin: 0; font-size: 1.15rem; font-weight: 600; color: var(--text-dark); }
-.filterGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem 2rem; }
-.filterGroup { display: flex; flex-direction: column; gap: 0.8rem; }
-.filterGroup label.groupLabel { font-weight: 600; font-size: 1rem; color: var(--text-medium); margin-bottom: 0.2rem; }
-.filterControl { display: flex; align-items: center; gap: 0.6rem; }
-.filterControl input[type="checkbox"] { width: 1.1rem; height: 1.1rem; border-radius: 4px; border: 1px solid var(--border-color); cursor: pointer; accent-color: var(--primary-color); margin-top: 1px; flex-shrink: 0; }
-.filterControl input[type="checkbox"]:focus { outline: 2px solid var(--focus-ring-color); outline-offset: 2px; }
-.filterControl label { font-size: 0.95em; color: var(--text-muted); font-weight: 400; cursor: pointer; user-select: none; line-height: 1.4; }
-.clearButton { background: none; border: none; color: var(--primary-color); font-size: 0.9rem; font-weight: 500; cursor: pointer; padding: 0.4rem 0.8rem; border-radius: 6px; transition: background-color 0.2s ease, color 0.2s ease; white-space: nowrap; }
-.clearButton:hover { background-color: rgba(59, 130, 246, 0.1); color: var(--primary-color-dark); text-decoration: none; }
-
-/* --- Buttons --- */
-.buttonGroup { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
-/* Base Button Styles */
-.primaryBtn, .secondaryBtn, .cardLinks a, .compareLink { padding: 0.7rem 1.4rem; border-radius: 6px; font-size: 0.95rem; font-weight: 500; cursor: pointer; border: 1px solid transparent; text-align: center; text-decoration: none; display: inline-block; transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease; }
-.primaryBtn:active, .secondaryBtn:active, .cardLinks a:active, .compareLink:active { transform: scale(0.98); }
-.primaryBtn:focus-visible, .secondaryBtn:focus-visible, .cardLinks a:focus-visible, .compareLink:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--focus-ring-color); }
-/* Primary Button */
-.primaryBtn { background-color: var(--primary-color); border-color: var(--primary-color); color: var(--bg-white); }
-.primaryBtn:hover { background-color: var(--primary-color-dark); border-color: var(--primary-color-dark); color: var(--bg-white); }
-.primaryBtn:disabled { background-color: #9ca3af; border-color: #9ca3af; color: var(--bg-white); cursor: not-allowed; transform: none; }
-/* Secondary Button */
-.secondaryBtn { background-color: var(--secondary-color); border-color: var(--secondary-color); color: var(--bg-white); }
-.secondaryBtn:hover { background-color: var(--secondary-color-dark); border-color: var(--secondary-color-dark); color: var(--bg-white); }
-.secondaryBtn:disabled { background-color: #9ca3af; border-color: #9ca3af; color: var(--bg-white); cursor: not-allowed; transform: none; }
-/* Card Links Specific */
-.cardLinks { margin-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap; }
-.cardLinks a { padding: 0.6rem 1.2rem; font-size: 0.9em; } /* Inherit primary/secondary styles */
-.reviewLink { background-color: var(--secondary-color); border-color: var(--secondary-color); }
-.reviewLink:hover { background-color: var(--secondary-color-dark); border-color: var(--secondary-color-dark); }
-.applyLink { background-color: var(--primary-color); border-color: var(--primary-color); }
-.applyLink:hover { background-color: var(--primary-color-dark); border-color: var(--primary-color-dark); }
-
-/* --- Sticky Button Container (Mobile Only) --- */
-.stickyButtonContainer { position: static; /* Static on desktop */ }
-.stickyButtonContainer .buttonGroup { margin: 2rem 0; } /* Restore margin on desktop */
-
-/* --- Error Message --- */
-.errorMessage { color: var(--danger-color); margin-top: -1rem; margin-bottom: 1.5rem; font-weight: 500; text-align: center; font-size: 0.95em; }
-
-/* --- Card Results List --- */
-.cardList { list-style: none; padding: 0; margin: 0; }
-.cardItem { background-color: var(--bg-white); border: 1px solid var(--border-color-light); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; display: flex; gap: 1.5rem; align-items: flex-start; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04); transition: box-shadow 0.3s ease, transform 0.2s ease; }
-.cardItem:hover { box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07); transform: translateY(-3px); }
-.cardImage { height: 60px; width: 95px; object-fit: contain; flex-shrink: 0; border-radius: 6px; border: 1px solid var(--border-color-light); margin-top: 5px; }
-.cardDetails { flex: 1; display: flex; flex-direction: column; gap: 0.8rem; }
-.cardTitle { margin-bottom: 0.2rem; }
-.cardTitle strong { font-size: 1.2rem; font-weight: 600; color: var(--text-dark); line-height: 1.3; }
-.cardTitle span { font-size: 0.85em; font-weight: 400; color: var(--text-light); margin-left: 0.5rem; vertical-align: middle; }
-.cardValues { display: flex; gap: 1rem 1.5rem; flex-wrap: wrap; font-size: 1rem; padding-bottom: 0.8rem; margin-bottom: 0.8rem; border-bottom: 1px solid var(--border-color-light); }
-.cardValues div { display: flex; align-items: center; }
-.cardValues strong { font-weight: 500; color: var(--text-light); margin-right: 0.4rem; white-space: nowrap; }
-.cardSubtext { color: var(--text-muted); font-size: 0.9em; line-height: 1.4; }
-/* Badge Styles */
-.valueGood, .valueBad { font-weight: 600; font-size: 1em; padding: 0.2rem 0.6rem; border-radius: 4px; display: inline-block; line-height: 1.3; }
-.valueGood { color: var(--success-dark); background-color: var(--success-light-bg); }
-.valueBad { color: var(--danger-dark); background-color: var(--danger-light-bg); }
-.valueOngoing { font-weight: 600; font-size: 1em; color: var(--text-medium); }
-.bonusBox { background: var(--warning-bg); padding: 0.5rem 0.8rem; border-radius: 6px; border: 1px solid var(--warning-border); color: var(--warning-text); font-size: 0.9em; line-height: 1.5; display: inline-block; margin-top: 0.2rem; }
-.bonusBox strong { color: var(--warning-text-strong); font-weight: 600; }
-/* Perks Section */
-.perksSection { font-size: 0.9em; }
-.perksSection strong { color: var(--text-medium); font-weight: 600; display: block; margin-bottom: 0.4rem; }
-.perksSection ul { margin: 0 0 0 0.5rem; padding: 0; list-style: none; }
-.perksSection li { margin-bottom: 0.4rem; line-height: 1.4; color: var(--text-muted); padding-left: 1.2rem; position: relative; }
-.perksSection li::before { content: '\2022'; color: #cbd5e1; font-weight: bold; display: inline-block; width: 1em; margin-left: -1.2em; position: absolute; left: 0.5em; }
-/* No Results */
-.noResults { text-align: center; color: var(--text-light); padding: 3rem 1rem; font-style: italic; font-size: 1.05em; background-color: var(--bg-white); border: 1px dashed var(--border-color); border-radius: 8px; }
-
-/* --- Comparison Modal Styles --- */
-.comparisonOverlay { position: fixed; inset: 0; background-color: rgba(17, 24, 39, 0.85); display: flex; justify-content: center; align-items: center; z-index: 1000; overflow-y: auto; padding: 1.5rem; }
-.comparisonContent { background-color: var(--bg-white); border-radius: 12px; padding: 2rem 2.5rem; width: 95%; max-width: 1200px; max-height: 90vh; overflow-y: auto; position: relative; box-shadow: 0 15px 30px rgba(0,0,0,0.25); }
-.closeButton { position: absolute; top: 15px; right: 20px; background: none; border: none; font-size: 2.2rem; cursor: pointer; color: var(--text-light); line-height: 1; padding: 0.2rem; transition: color 0.2s ease, transform 0.2s ease; z-index: 15; }
-.closeButton:hover { color: var(--text-medium); transform: scale(1.1); }
-.comparisonContent h3 { text-align: center; margin-top: 0; margin-bottom: 1.5rem; font-size: clamp(1.5rem, 5vw, 1.75rem); font-weight: 600; padding-right: 30px; }
-.comparisonTableWrapper { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 10px; margin: 1.5rem 0; border: 1px solid var(--border-color-light); border-radius: 8px; position: relative; }
-.comparisonGrid { display: grid; gap: 0px; font-size: 0.95em; min-width: fit-content; border-collapse: collapse; }
-.compareCell { padding: 0.9rem 1.1rem; border-bottom: 1px solid var(--border-color-light); border-right: 1px solid var(--border-color-light); vertical-align: top; font-size: 1em; line-height: 1.5; text-align: center; transition: background-color 0.2s ease; }
-.comparisonGrid > div:last-child, .comparisonGrid > div:nth-child(4n) { border-right: none; }
-.comparisonGrid > div:nth-last-child(-n+4) { border-bottom: none; }
-.compareCellHeader { background-color: #f9fafb; font-weight: 600; position: sticky; top: 0; z-index: 10; border-bottom: 1px solid var(--border-color); }
-.compareCardImage { height: 50px; max-width: 80px; object-fit: contain; margin-bottom: 0.6rem; border-radius: 4px; border: 1px solid var(--border-color-light); background-color: var(--bg-white); }
-.compareIssuer { font-size: 0.9em; color: var(--text-light); font-weight: 400; }
-.compareCellLabel { background-color: #f9fafb; font-weight: 600; text-align: right; padding-right: 1.5rem; border-right: 1px solid var(--border-color) !important; color: var(--text-medium); position: sticky; left: 0; z-index: 5; vertical-align: middle; }
-.compareCellData { background-color: var(--bg-white); text-align: left; color: var(--text-medium); vertical-align: top; }
-.compareCellData:hover, .compareCellLabel:hover { background-color: #fdfdfe; }
-.compareList { margin: 0.2rem 0 0 0; padding-left: 1.3em; text-align: left; font-size: 1em; list-style-position: outside; list-style-type: disc; }
-.compareList li { margin-bottom: 0.4em; }
-.compareLink { padding: 0.5rem 0.9rem; min-width: 75px; margin: 0.2rem; /* Inherits base button styles */ }
-.smallText { font-size: 0.9em; }
-.italicText { font-style: italic; color: var(--text-light); }
-
-/* --- AI Section Styles --- */
-.aiSection { text-align: center; /* border-top: 1px solid var(--border-color-light); */ /* Removed top border */ padding-top: 0; }
-.aiSuggestionBox { max-width: 800px; margin: 0 auto; background: var(--info-bg); padding: 2rem 2.5rem; border-radius: 8px; border: 1px solid var(--info-border); text-align: left; line-height: 1.7; color: var(--info-text); box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
-.aiSuggestionBox h3 { margin-top: 0; margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--info-border); font-size: 1.3em; font-weight: 600; color: var(--info-heading); }
-.aiSuggestionBox strong { font-weight: 600; color: var(--text-dark); }
-.aiSuggestionBox ul { margin-top: 0.6rem; margin-bottom: 1.2rem; padding-left: 1.6rem; list-style: disc; }
-.aiSuggestionBox li { margin-bottom: 0.6rem; }
-.aiSuggestionBox hr { border: none; border-top: 1px dashed var(--info-border); margin: 1.5rem 0; }
-.aiSuggestionBox p { margin-bottom: 1rem; }
-.aiPlaceholder { color: var(--text-light); font-style: italic; margin-top: 1rem; padding: 1rem; background-color: var(--bg-white); border-radius: 8px; max-width: none; margin-left: 0; margin-right: 0; border: 1px dashed var(--border-color); }
-
-/* --- Media Queries --- */
-@media screen and (max-width: 992px) { /* Breakpoint for stacking */
-  .mainLayout { grid-template-columns: 1fr; gap: 2.5rem; }
-  .rightColumn .resultsTitle { position: static; text-align: center; font-size: 1.6rem; }
-  .leftColumn .heroDescription { text-align: center; }
-
-  /* Activate Sticky Buttons */
-  .stickyButtonContainer {
-    position: sticky; bottom: 0; left: 0; right: 0; padding: 1rem;
-    background: linear-gradient(to top, rgba(255,255,255,1) 70%, rgba(255,255,255,0));
-    z-index: 500; pointer-events: none; margin: 0;
-  }
-  .stickyButtonContainer .buttonGroup {
-    margin: 0; pointer-events: auto; box-shadow: 0 -4px 10px rgba(0,0,0,0.05);
-    background: var(--bg-white); padding: 1rem; border-radius: 8px 8px 0 0;
-    border-top: 1px solid var(--border-color-light);
-  }
-   .stickyButtonContainer .buttonGroup button { width: 48%; max-width: 200px; }
+.filterContainer {
+  padding: 1.5rem;
+  margin: 0 auto 2.5rem auto; /* Position between form and results */
+  max-width: 1000px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
+.filterHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Allow wrapping */
+  gap: 0.5rem; /* Add gap */
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.filterHeader h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.filterGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem 1.5rem;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.filterGroup label.groupLabel {
+  font-weight: 600;
+  font-size: 0.95em;
+  color: #1f2937; /* Gray-800 */
+  margin-bottom: 0.2rem;
+}
+
+.filterControl {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filterControl input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 4px;
+  border: 1px solid #d1d5db;
+  cursor: pointer;
+  accent-color: #2563eb; /* Blue-600 */
+  margin-top: 1px;
+  flex-shrink: 0; /* Prevent checkbox shrinking */
+}
+.filterControl input[type="checkbox"]:focus {
+    outline: 2px solid rgba(59, 130, 246, 0.3);
+    outline-offset: 1px;
+}
+
+.filterControl label {
+  font-size: 0.9em;
+  color: #4b5563; /* Gray-600 */
+  font-weight: 400;
+  cursor: pointer;
+  user-select: none;
+  line-height: 1.3; /* Prevent text wrapping weirdly */
+}
+
+.filterDropdown {
+  padding: 0.6rem 1rem; /* Match selectBox padding */
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  font-size: 0.9em;
+  width: 100%;
+  cursor: pointer;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.03);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+  /* Add dropdown arrow */
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem; /* Space for arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.filterDropdown:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    outline: none;
+}
+
+.clearButton {
+  background: none;
+  border: none;
+  color: #3b82f6;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+  white-space: nowrap; /* Prevent wrapping */
+}
+.clearButton:hover {
+  background-color: rgba(59, 130, 246, 0.1);
+  text-decoration: underline;
+}
+
+
+/* --- Results Section --- */
+.resultsTitle {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #111827;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+/* --- Buttons --- */
+.buttonGroup {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.primaryBtn,
+.secondaryBtn {
+  padding: 0.7rem 1.5rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  color: white;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.primaryBtn:active,
+.secondaryBtn:active {
+  transform: scale(0.98);
+}
+
+.primaryBtn {
+  background-color: #2563eb; /* Blue-600 */
+}
+.primaryBtn:hover {
+  background-color: #1d4ed8; /* Blue-700 */
+}
+.primaryBtn:disabled {
+  background-color: #9ca3af; /* Gray-400 */
+  cursor: not-allowed;
+}
+
+.secondaryBtn {
+  background-color: #6b7280; /* Gray-500 */
+}
+.secondaryBtn:hover {
+  background-color: #4b5563; /* Gray-600 */
+}
+.secondaryBtn:disabled {
+   background-color: #9ca3af;
+   cursor: not-allowed;
+}
+
+/* --- Error Message --- */
+.errorMessage {
+    color: #dc2626; /* Red-600 */
+    margin-top: -1rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* --- Card Results List --- */
+.cardList {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 850px;
+}
+
+.cardItem {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb; /* Slightly lighter border */
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start; /* Align items top */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.cardItem:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
+}
+
+.cardImage {
+  height: 60px;
+  width: 95px;
+  object-fit: contain;
+  flex-shrink: 0;
+  border-radius: 6px;
+  border: 1px solid #eee;
+  margin-top: 5px; /* Align better */
+}
+
+.cardDetails {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem; /* Increased gap slightly */
+}
+
+.cardTitle {
+ /* Remove bottom margin, rely on gap */
+}
+
+.cardTitle strong {
+  font-size: 1.15em;
+  font-weight: 600;
+  color: #111827;
+  line-height: 1.3;
+}
+
+.cardTitle span {
+  font-size: 0.8em;
+  font-weight: 400;
+  color: #6b7280;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+.cardValues {
+  display: flex;
+  gap: 1rem 1.5rem; /* Row gap, Column gap */
+  flex-wrap: wrap;
+  font-size: 1em;
+  padding-bottom: 0.7rem; /* Increased padding */
+  margin-bottom: 0.7rem; /* Increased margin */
+  border-bottom: 1px solid #f3f4f6; /* Lighter separator */
+}
+
+.cardValues div { /* Ensure items wrap nicely */
+  display: flex;
+  align-items: center;
+}
+
+.cardValues strong {
+   font-weight: 500;
+   color: #6b7280;
+   margin-right: 0.4rem;
+   white-space: nowrap; /* Prevent label wrapping */
+}
+
+.valueGood {
+  color: #16a34a; /* Green-600 */
+  font-weight: 700;
+  font-size: 1.05em; /* Slightly reduced */
+}
+
+.valueBad {
+  color: #dc2626; /* Red-600 */
+  font-weight: 700;
+  font-size: 1.05em; /* Slightly reduced */
+}
+
+.valueOngoing {
+    font-weight: 700;
+    font-size: 1.05em;
+    color: #374151; /* Gray-700 */
+}
+
+.cardSubtext {
+  color: #4b5563; /* Gray-600 */
+  font-size: 0.85em; /* Slightly smaller */
+  line-height: 1.4;
+}
+
+.bonusBox {
+  background: #fefce8; /* Yellow-50 */
+  padding: 0.6rem 0.9rem; /* Adjusted padding */
+  border-radius: 6px;
+  border: 1px solid #fef08a; /* Yellow-200 */
+  color: #854d0e; /* Yellow-900 */
+  font-size: 0.88em;
+  line-height: 1.5;
+}
+
+.bonusBox strong {
+  color: #a16207; /* Amber-700 */
+  font-weight: 600;
+}
+
+.perksSection {
+  font-size: 0.88em;
+}
+
+.perksSection strong {
+    color: #374151; /* Gray-700 */
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.3rem; /* Increased space */
+}
+
+.perksSection ul {
+  margin: 0 0 0 0.5rem; /* Adjust margin */
+  padding: 0;
+  list-style: none; /* Remove default list style */
+}
+
+.perksSection li {
+    margin-bottom: 0.4rem; /* Increased space */
+    line-height: 1.4;
+    color: #4b5563; /* Gray-600 */
+    padding-left: 1rem; /* Add padding for pseudo-element */
+    position: relative;
+}
+/* Add custom bullet */
+.perksSection li::before {
+  content: '\2022'; /* Bullet character */
+  color: #9ca3af; /* Gray-400 */
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1.2em; /* Position before text */
+  position: absolute;
+  left: 0.5em;
+}
+
+
+.cardLinks {
+  margin-top: 0.8rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.cardLinks a {
+  text-decoration: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9em;
+  font-weight: 500;
+  text-align: center;
+  transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  display: inline-block;
+  border: 1px solid transparent; /* Base border */
+}
+.cardLinks a:active {
+  transform: scale(0.97);
+}
+.cardLinks a:focus-visible { /* Add focus style */
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+
+.reviewLink {
+  background-color: #6b7280; /* Gray-500 */
+  border-color: #6b7280;
+}
+.reviewLink:hover {
+  background-color: #4b5563; /* Gray-600 */
+  border-color: #4b5563;
+  color: white; /* Ensure text stays white */
+}
+
+.applyLink {
+  background-color: #2563eb; /* Blue-600 */
+  border-color: #2563eb;
+}
+.applyLink:hover {
+  background-color: #1d4ed8; /* Blue-700 */
+  border-color: #1d4ed8;
+  color: white; /* Ensure text stays white */
+}
+
+.noResults {
+    text-align: center;
+    color: #6b7280;
+    padding: 3rem 1rem; /* More padding */
+    font-style: italic;
+    font-size: 1.05em;
+    background-color: #ffffff;
+    border: 1px dashed #d1d5db;
+    border-radius: 8px;
+}
+
+
+/* --- Comparison Modal Styles --- */
+.comparisonOverlay {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(17, 24, 39, 0.8); /* Darker overlay (Gray-900 at 80%) */
+    display: flex; justify-content: center; align-items: center;
+    z-index: 1000; overflow-y: auto; padding: 1rem;
+}
+.comparisonContent {
+    background-color: white; border-radius: 12px; padding: 1.5rem 2rem 2rem 2rem; /* Adjusted padding */
+    width: 95%; max-width: 1200px; max-height: 90vh; overflow-y: auto;
+    position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+.closeButton {
+    position: absolute; top: 10px; right: 15px; background: none; border: none;
+    font-size: 2.2rem; cursor: pointer; color: #9ca3af; line-height: 1; padding: 0.2rem;
+    transition: color 0.2s ease; z-index: 15; /* Ensure button is above sticky headers */
+}
+.closeButton:hover {
+    color: #4b5563; /* Gray-600 */
+}
+.comparisonContent h3 {
+    text-align: center; margin-top: 0; margin-bottom: 1.5rem; font-size: 1.6rem; font-weight: 600;
+    padding-right: 30px; /* Space for close button */
+}
+
+.comparisonTableWrapper {
+  width: 100%;
+  overflow-x: auto; /* Enable horizontal scroll */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  padding-bottom: 10px;
+  margin-bottom: 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.comparisonGrid {
+    display: grid;
+    /* gridTemplateColumns set dynamically in JSX */
+    gap: 0px;
+    font-size: 0.9em;
+    min-width: fit-content; /* Crucial for horizontal scroll */
+    border-collapse: collapse; /* Helps with borders */
+}
+
+.compareCell {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  border-right: 1px solid #e5e7eb;
+  vertical-align: top; /* Default alignment */
+  font-size: 1em; /* Inherit from grid or set base */
+  line-height: 1.5;
+  text-align: center; /* Default center */
+}
+/* Last cell in any row */
+.comparisonGrid > div:last-child,
+.comparisonGrid > div:nth-child(4n) { /* Adjust '4n' if max cards change (label + 3 cards) */
+    border-right: none;
+}
+/* Cells in the last row */
+.comparisonGrid > div:nth-last-child(-n+4) { /* Adjust '4' if max cards change */
+    border-bottom: none;
+}
+
+
+.compareCellHeader {
+  background-color: #f3f4f6; /* Gray-100 */
+  font-weight: 600;
+  text-align: center;
+  position: sticky;
+  top: 0; /* Stick to top of wrapper */
+  z-index: 10;
+  border-bottom: 1px solid #d1d5db;
+}
+.compareCardImage {
+    height: 45px;
+    max-width: 72px; /* Limit width */
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #e5e7eb;
+    background-color: white; /* BG for transparent PNGs */
+}
+.compareIssuer {
+    font-size: 0.9em;
+    color: #6b7280;
+    font-weight: 400;
+}
+
+.compareCellLabel {
+  background-color: #f9fafb; /* Gray-50 */
+  font-weight: 600;
+  text-align: right;
+  border-right: 1px solid #d1d5db !important; /* Stronger border */
+  color: #374151; /* Gray-700 */
+  position: sticky;
+  left: 0; /* Stick to left of wrapper */
+  z-index: 5; /* Below header */
+  vertical-align: middle; /* Align label text middle */
+}
+
+.compareCellData {
+  background-color: white;
+  text-align: left; /* Align data left */
+  color: #374151;
+  vertical-align: top; /* Align data top */
+}
+.compareList {
+    margin: 0;
+    padding-left: 1.2em; /* Indent list */
+    text-align: left;
+    font-size: 1em; /* Match cell font size */
+    list-style-position: outside;
+    list-style-type: disc; /* Ensure bullets show */
+}
+.compareList li {
+    margin-bottom: 0.4em; /* Space list items */
+}
+
+.compareLink {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    margin-bottom: 0.4rem;
+    margin-right: 0.4rem;
+    text-align: center;
+    min-width: 70px;
+    text-decoration: none;
+    color: white;
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    border: 1px solid transparent;
+}
+.compareLink:active {
+    transform: scale(0.97);
+}
+
+.compareLink.reviewLink {
+    background-color: #6b7280;
+    border-color: #6b7280;
+}
+.compareLink.reviewLink:hover {
+    background-color: #4b5563;
+    border-color: #4b5563;
+    text-decoration: none;
+    color: white;
+}
+
+.compareLink.applyLink {
+    background-color: #2563eb;
+    color: white;
+    border-color: #2563eb;
+}
+.compareLink.applyLink:hover {
+    background-color: #1d4ed8;
+    border-color: #1d4ed8;
+    text-decoration: none;
+    color: white;
+}
+.compareLink:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+
+.smallText { font-size: 0.9em; }
+.italicText { font-style: italic; color: #6b7280; }
+
+
+/* --- AI Section Styles --- */
+.aiSection {
+   text-align: center;
+   margin-top: 3rem;
+   border-top: 1px solid #e5e7eb;
+   padding-top: 2.5rem;
+}
+.aiSuggestionBox {
+   max-width: 800px;
+   margin: 0 auto;
+   background: #eff6ff; /* Blue-50 */
+   padding: 1.5rem 2rem;
+   border-radius: 8px;
+   border: 1px solid #bfdbfe; /* Blue-200 */
+   text-align: left;
+   line-height: 1.65;
+   color: #1f2937; /* Gray-800 */
+   box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+}
+/* Styles applied via formatAiOutput (h3, strong, ul, li, hr) */
+.aiSuggestionBox h3 {
+    margin-top: 0; /* Remove default margin if needed */
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #dbeafe; /* Lighter blue */
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #1e3a8a; /* Blue-800 */
+}
+.aiSuggestionBox strong {
+    font-weight: 600;
+    color: #1f2937;
+}
+.aiSuggestionBox ul {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    padding-left: 1.5rem; /* Indent lists */
+    list-style: disc;
+}
+.aiSuggestionBox li {
+    margin-bottom: 0.5rem;
+}
+.aiSuggestionBox hr {
+    border: none;
+    border-top: 1px dashed #bfdbfe; /* Dashed blue line */
+    margin: 1.5rem 0;
+}
+.aiSuggestionBox p { /* Add space between paragraphs if AI generates them */
+    margin-bottom: 1rem;
+}
+.aiPlaceholder { /* Style for placeholder text */
+  color: #6b7280; /* Gray-500 */
+  font-style: italic;
+  margin-top: 1rem;
+}
+
+
+/* --- Media Queries --- */
 @media screen and (max-width: 768px) {
-  .cardItem { flex-direction: column; align-items: center; padding: 1.5rem; text-align: center; }
-  .cardImage { margin-top: 0; }
-  .cardDetails { text-align: center; width: 100%; align-items: center; }
-  .cardValues { justify-content: center; gap: 0.8rem 1.2rem; }
-  .cardLinks { justify-content: center; }
-  .perksSection ul { margin-left: 0; padding-left: 0; list-style-position: inside; text-align: center; }
-  .perksSection li::before { display: none; }
-  .perksSection li { padding-left: 0; position: static; }
-  .comparisonGrid { font-size: 0.9em; }
-  .compareCell { padding: 0.7rem 0.8rem; }
-  .compareCellLabel { padding: 0.7rem 0.5rem; font-size: 0.9em; }
+  .cardItem {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem;
+    text-align: center;
+  }
+  .cardImage {
+    margin-top: 0;
+  }
+  .cardDetails {
+    text-align: center;
+    width: 100%;
+    align-items: center;
+  }
+  .cardValues {
+    justify-content: center;
+    gap: 0.8rem 1.2rem; /* Tighter gap */
+  }
+  .cardLinks {
+      justify-content: center;
+  }
+  .perksSection ul {
+    margin-left: 0; /* Center list */
+    padding-left: 0;
+    list-style-position: inside; /* Keep bullets closer */
+    text-align: center;
+  }
+  .perksSection li::before { /* Hide custom bullet, rely on inside */
+    display: none;
+  }
+  .perksSection li {
+     padding-left: 0;
+     position: static;
+  }
+
+  .comparisonGrid {
+      font-size: 0.85em;
+      /* Label column might become too wide, let it scroll */
+  }
+  .compareCell {
+      padding: 0.6rem 0.8rem; /* Reduce padding */
+  }
+  .compareCellLabel {
+      font-size: 0.95em; /* Make labels slightly smaller */
+      padding: 0.6rem 0.5rem; /* Adjust label padding */
+  }
 }
 
 @media screen and (max-width: 640px) {
-    .filterGrid { grid-template-columns: 1fr; gap: 1.5rem; }
-    .mainLayout { gap: 2rem; }
-    .leftColumn { gap: 2rem; }
+    .filterGrid {
+        grid-template-columns: 1fr; /* Stack filters */
+        gap: 1.2rem;
+    }
+    .filterHeader {
+        /* Already handles wrap, looks ok */
+    }
 }
 
 @media screen and (max-width: 480px) {
-  .container { padding: 1.5rem 1rem; }
-  .heroTitle { font-size: 1.75rem; }
-  .heroDescription { font-size: 1rem; }
-  .cardImage { width: 80px; height: 50px; }
-  .inputGrid { grid-template-columns: 1fr; }
-  .stickyButtonContainer .buttonGroup button { width: 100%; max-width: none; }
-  .filterGrid { grid-template-columns: 1fr; }
-  .comparisonContent { padding: 1.5rem 1rem; }
-  .comparisonContent h3 { font-size: 1.4rem; }
-  .comparisonGrid { font-size: 0.85em; }
-  .compareCell { padding: 0.6rem; min-width: 90px; }
-  .compareCellLabel { padding: 0.6rem 0.4rem; font-size: 0.85em;}
-  .aiSuggestionBox { padding: 1.5rem; }
-  .aiSuggestionBox h3 { font-size: 1.2em; }
+  .container {
+      padding: 1.5rem 0.8rem;
+  }
+  .heroTitle {
+    font-size: 1.6rem;
+  }
+  .heroDescription {
+    font-size: 1rem;
+  }
+  .cardImage {
+    width: 80px; /* Slightly larger */
+    height: 50px;
+  }
+  .inputGrid {
+      grid-template-columns: 1fr; /* Stack inputs */
+  }
+  .buttonGroup button {
+      width: 90%;
+      font-size: 0.95rem;
+      padding: 0.8rem 1rem;
+  }
+  .filterGrid {
+      grid-template-columns: 1fr; /* Already stacked */
+  }
+  .comparisonContent {
+      padding: 1rem; /* Reduce padding */
+  }
+  .comparisonContent h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+
+  .comparisonGrid {
+      font-size: 0.8em;
+  }
+  .compareCell {
+      padding: 0.5rem;
+      min-width: 90px; /* Further reduce min-width */
+      line-height: 1.4;
+  }
+  .compareCellLabel {
+     padding: 0.5rem 0.3rem;
+     font-size: 0.9em;
+  }
+  .aiSuggestionBox {
+      padding: 1rem 1.2rem;
+  }
+  .aiSuggestionBox h3 {
+    font-size: 1.1em;
+  }
 }
