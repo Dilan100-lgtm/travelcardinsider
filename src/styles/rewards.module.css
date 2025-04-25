@@ -28,27 +28,7 @@
   color: #888;
   font-size: 0.9rem;
 }
-/* File: styles/rewardsCalculatorPremium.module.css */
 
-:root {
-  --primary-color: #2563eb;
-  --primary-hover: #1d4ed8;
-  --secondary-color: #6b7280;
-  --secondary-hover: #4b5563;
-  --success-color: #16a34a;
-  --danger-color: #dc2626;
-  --input-bg: #ffffff;
-  --border-color: #d1d5db;
-  --text-color: #374151;
-  --muted-color: #6b7280;
-  --bg-light: #f9fafb;
-  --bg-white: #ffffff;
-  --note-bg: #eff6ff;
-  --note-border: #bfdbfe;
-  --warning-bg: #fefce8;
-  --warning-border: #fef08a;
-  --warning-text: #854d0e;
-}
 
 .container {
   padding: 2rem 1rem;
