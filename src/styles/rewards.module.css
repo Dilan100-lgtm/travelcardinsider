@@ -1,49 +1,22 @@
-.calculatorContainer {
-  padding: 2rem 1rem;
-  max-width: 900px;
-  margin: 0 auto;
-}
+/* File: styles/rewards.module.css */
 
-.hero {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.heroTitle {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #1a1a1a;
-  margin-bottom: 1rem;
-}
-
-.heroDescription {
-  font-size: 1.15rem;
-  color: #444;
-  line-height: 1.6;
-  max-width: 720px;
-  margin: 0 auto 1rem;
-}
-
-.heroNote {
-  color: #888;
-  font-size: 0.9rem;
-}
-
-
+/* --- Base & Layout --- */
 .container {
-  padding: 2rem 1rem;
-  max-width: 1024px;
+  padding: 2rem clamp(1rem, 5vw, 3rem); /* Responsive padding */
+  max-width: 1100px; /* Slightly wider max-width */
   margin: auto;
-  background: var(--bg-light);
-  color: var(--text-color);
-  font-family: 'Inter', sans-serif;
+  background: #f9fafb; /* Use actual hex code or ensure var is global */
+  color: #374151; /* Use actual hex code or ensure var is global */
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* Modern font stack */
 }
 
+/* --- Hero/Header --- */
 .heroTitle {
   text-align: center;
   font-size: clamp(1.8rem, 5vw, 2.5rem);
   font-weight: 700;
   margin-bottom: 1rem;
+  color: #111827; /* Use actual hex code or ensure var is global */
 }
 
 .heroDescription {
@@ -52,60 +25,97 @@
   line-height: 1.6;
   max-width: 720px;
   margin: 0 auto 1rem;
-  color: var(--muted-color);
+  color: #6b7280; /* Use actual hex code or ensure var is global */
 }
 
-.heroNote {
+.heroNote { /* Added from original CSS snippet */
   text-align: center;
   font-size: 0.875rem;
-  color: var(--muted-color);
+  color: #6b7280; /* Use actual hex code or ensure var is global */
+  margin-bottom: 2rem;
 }
 
+/* --- Controls (Dropdown) --- */
 .selectorGroup {
   display: flex;
   justify-content: center;
-  margin: 2rem auto;
+  margin: 2rem auto 2.5rem auto; /* Consistent margin */
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.5rem;
+  padding: 1rem 1.5rem;
+  background-color: #ffffff; /* Use actual hex code or ensure var is global */
+  border-radius: 8px;
+  max-width: 600px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  border: 1px solid #d1d5db; /* Use actual hex code or ensure var is global */
 }
 
 .selectBox {
   padding: 0.6rem 1rem;
   border-radius: 6px;
-  border: 1px solid var(--border-color);
-  background: var(--bg-white);
+  border: 1px solid #d1d5db; /* Use actual hex code or ensure var is global */
+  background: #ffffff; /* Use actual hex code or ensure var is global */
   font-size: 0.95rem;
   min-width: 240px;
+  cursor: pointer;
 }
 
+/* --- Input Form --- */
 .inputGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem 1.8rem;
+  margin-bottom: 3rem;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.inputGroup { /* Added based on JSX structure */
+  display: flex;
+  flex-direction: column;
 }
 
 .inputGroup label {
-  font-size: 0.95rem;
+  font-size: 0.9em; /* Adjusted size */
   font-weight: 500;
-  color: var(--text-color);
+  color: #111827; /* Use actual hex code or ensure var is global */
   margin-bottom: 0.5rem;
+  text-transform: capitalize;
 }
 
 .inputGroup input {
   padding: 0.8rem;
-  border: 1px solid var(--border-color);
+  border: 1px solid #d1d5db; /* Use actual hex code or ensure var is global */
   border-radius: 6px;
   font-size: 1rem;
-  background-color: var(--bg-white);
+  background-color: #ffffff; /* Use actual hex code or ensure var is global */
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+.inputGroup input:focus {
+   border-color: #3b82f6; /* Use actual hex code or ensure var is global */
+   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2); /* Focus ring */
+   outline: none;
+}
+
+/* --- Results Section --- */
+.resultsTitle { /* Added based on JSX structure */
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #111827; /* Use actual hex code or ensure var is global */
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+/* --- Buttons --- */
 .buttonGroup {
   display: flex;
   justify-content: center;
   gap: 1rem;
   flex-wrap: wrap;
-  margin: 2rem 0;
+  margin-bottom: 2rem; /* Combined margin definition */
 }
 
 .primaryBtn,
@@ -117,40 +127,68 @@
   cursor: pointer;
   border: none;
   color: white;
-  transition: background 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.primaryBtn:active,
+.secondaryBtn:active {
+  transform: scale(0.98);
 }
 
 .primaryBtn {
-  background-color: var(--primary-color);
+  background-color: #2563eb; /* Use actual hex code or ensure var is global */
 }
 .primaryBtn:hover {
-  background-color: var(--primary-hover);
+  background-color: #1d4ed8; /* Use actual hex code or ensure var is global */
 }
+.primaryBtn:disabled {
+   background-color: #9ca3af; /* Gray-400 */
+   cursor: not-allowed;
+}
+
 
 .secondaryBtn {
-  background-color: var(--secondary-color);
+  background-color: #6b7280; /* Use actual hex code or ensure var is global */
 }
 .secondaryBtn:hover {
-  background-color: var(--secondary-hover);
+  background-color: #4b5563; /* Use actual hex code or ensure var is global */
+}
+.secondaryBtn:disabled {
+   background-color: #9ca3af;
+   cursor: not-allowed;
 }
 
+/* --- Error Message --- */
+.errorMessage {
+    color: #dc2626; /* Use actual hex code or ensure var is global */
+    margin-top: -1rem; /* Adjust spacing relative to buttons */
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* --- Card Results List --- */
 .cardList {
   list-style: none;
   padding: 0;
   margin: 0 auto;
-  max-width: 850px;
+  max-width: 850px; /* Adjust as needed */
 }
 
 .cardItem {
-  background-color: var(--bg-white);
-  border: 1px solid var(--border-color);
+  background-color: #ffffff; /* Use actual hex code or ensure var is global */
+  border: 1px solid #d1d5db; /* Use actual hex code or ensure var is global */
   border-radius: 10px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
   display: flex;
   gap: 1.5rem;
-  align-items: flex-start;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  align-items: center; /* Vertically center image with top line of text */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06); /* Softer shadow */
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.cardItem:hover {
+   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08); /* Subtle hover effect */
 }
 
 .cardImage {
@@ -158,57 +196,341 @@
   width: 95px;
   object-fit: contain;
   flex-shrink: 0;
-  border-radius: 4px;
+  border-radius: 6px;
+  border: 1px solid #eee;
 }
 
 .cardDetails {
-  flex: 1;
+  flex: 1; /* Take remaining space */
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem; /* Vertical gap between detail sections */
 }
 
-.cardDetails strong {
+.cardTitle { /* Wrap the <strong> tag in the JSX with <div className={styles.cardTitle}>...</div> */
   font-size: 1.15em;
-  color: var(--text-color);
+  font-weight: 600;
+  color: #111827; /* Use actual hex code or ensure var is global */
+  line-height: 1.3;
 }
 
-.valueGood {
-  color: var(--success-color);
-  font-weight: bold;
+.cardTitle span { /* Style for the (Personal/Business) part */
+  font-size: 0.8em;
+  font-weight: 400;
+  color: #6b7280; /* Use actual hex code or ensure var is global */
+  margin-left: 0.5rem;
 }
 
-.valueBad {
-  color: var(--danger-color);
-  font-weight: bold;
+.cardValues { /* Wrapper for Est. Values */
+  display: flex;
+  gap: 1.5rem; /* Spacing between values */
+  flex-wrap: wrap; /* Allow wrapping if needed */
+  font-size: 1em;
+  padding-bottom: 0.6rem;
+  margin-bottom: 0.6rem;
+  border-bottom: 1px solid #eee; /* Subtle separator */
+}
+
+.cardValues strong { /* Label like "Est. 1st Year:" */
+   font-weight: 500;
+   color: #6b7280; /* Use actual hex code or ensure var is global */
+   margin-right: 0.4rem;
+}
+
+.valueGood { /* Class for the value span */
+  color: #16a34a; /* Use actual hex code or ensure var is global */
+  font-weight: 700; /* Bolder value */
+  font-size: 1.1em; /* Slightly larger value */
+}
+
+.valueBad { /* Class for the value span */
+  color: #dc2626; /* Use actual hex code or ensure var is global */
+  font-weight: 700;
+  font-size: 1.1em;
+}
+
+.valueOngoing { /* Class for ongoing value span */
+   font-weight: 700;
+   font-size: 1.05em;
+}
+
+.cardSubtext { /* Class for the small text below values */
+  color: #4b5563; /* Use actual hex code or ensure var is global */
+  font-size: 0.88em; /* Adjusted size */
+  line-height: 1.4;
 }
 
 .bonusBox {
-  background: var(--warning-bg);
-  padding: 0.4rem 0.8rem;
+  background: #fefce8; /* Use actual hex code or ensure var is global */
+  padding: 0.5rem 0.8rem;
   border-radius: 6px;
-  border: 1px solid var(--warning-border);
-  color: var(--warning-text);
-  font-size: 0.9rem;
+  border: 1px solid #fef08a; /* Use actual hex code or ensure var is global */
+  color: #854d0e; /* Use actual hex code or ensure var is global */
+  font-size: 0.88em;
+  line-height: 1.5;
 }
 
+.bonusBox strong {
+  color: #a16207; /* Darker yellow/brown for label */
+  font-weight: 600;
+}
+
+.perksSection { /* Wrapper for perks */
+  font-size: 0.88em;
+}
+
+.perksSection strong { /* "Key Perks:" label */
+   color: #374151; /* Use actual hex code or ensure var is global */
+   font-weight: 600;
+   display: block; /* Ensure it's on its own line */
+   margin-bottom: 0.2rem;
+}
+
+.perksSection ul { /* Perk list */
+  margin: 0.1rem 0 0 1rem;
+  padding: 0;
+  list-style: disc;
+  color: #4b5563; /* Use actual hex code or ensure var is global */
+}
+
+.perksSection li {
+   margin-bottom: 0.3rem; /* Spacing between perks */
+   line-height: 1.4;
+}
+
+.cardLinks { /* Wrapper for links */
+  margin-top: 0.6rem;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.cardLinks a {
+  font-size: 0.9em;
+  color: #2563eb; /* Use actual hex code or ensure var is global */
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.cardLinks a:hover {
+  color: #1d4ed8; /* Use actual hex code or ensure var is global */
+  text-decoration: underline;
+}
+
+.noResults {
+    text-align: center;
+    color: #6b7280; /* Use actual hex code or ensure var is global */
+    padding: 2rem 0;
+    font-style: italic;
+}
+
+
+/* --- Comparison Modal Styles --- */
+.comparisonOverlay {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 1000; overflow-y: auto; padding: 1rem;
+}
+.comparisonContent {
+    background-color: white; border-radius: 12px; padding: 2rem 2.5rem;
+    width: 95%; max-width: 1200px; max-height: 90vh; overflow-y: auto;
+    position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+.closeButton {
+    position: absolute; top: 15px; right: 20px; background: none; border: none;
+    font-size: 2rem; cursor: pointer; color: #9ca3af; line-height: 1; padding: 0.2rem;
+    transition: color 0.2s ease;
+}
+.closeButton:hover {
+    color: #6b7280; /* Use actual hex code or ensure var is global */
+}
+.comparisonContent h3 { /* Style title inside modal */
+    text-align: center; margin-top: 0; margin-bottom: 2rem; font-size: 1.6rem; font-weight: 600;
+}
+
+.comparisonGrid {
+    display: grid;
+    /* gridTemplateColumns set dynamically in JSX */
+    gap: 0px;
+    border: 1px solid #e5e7eb;
+    font-size: 0.9em;
+    border-radius: 8px;
+    overflow: hidden; /* Clip borders */
+}
+
+.compareCell {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid #e5e7eb; /* Gray-200 */
+  border-right: 1px solid #e5e7eb; /* Gray-200 */
+  vertical-align: top;
+  font-size: 0.9em; /* Relative to parent grid */
+  line-height: 1.5; /* Improve readability */
+}
+/* Remove border from last cell in row/column */
+.comparisonGrid > div:nth-child(4n) { /* Target last cell in a 4-col grid */
+   border-right: none;
+}
+/* Add more specific selectors if row count is fixed to remove last row border */
+
+.compareCellHeader {
+  background-color: #f3f4f6; /* Gray-100 */
+  font-weight: 600;
+  text-align: center;
+}
+.compareCardImage {
+   height: 45px;
+   object-fit: contain;
+   margin-bottom: 0.5rem;
+   border-radius: 4px;
+}
+.compareIssuer {
+   font-size: 0.9em;
+   color: #6b7280; /* Use actual hex code or ensure var is global */
+   font-weight: 400;
+}
+
+.compareCellLabel {
+  background-color: #f9fafb; /* Gray-50 */
+  font-weight: 600;
+  text-align: right;
+  border-right: 1px solid #d1d5db !important; /* Gray-300 - Stronger border */
+  color: #374151;
+}
+
+.compareCellData {
+  background-color: white;
+  text-align: left;
+  color: #374151;
+}
+.compareList { /* Style lists within comparison */
+   margin: 0;
+   padding-left: 1.1em;
+   text-align: left;
+   font-size: 1em; /* Reset font size */
+   list-style-position: outside;
+}
+.compareList li {
+   margin-bottom: 0.3em;
+}
+
+.compareLink {
+   display: block;
+   margin-bottom: 0.4rem;
+   color: #2563eb; /* Use actual hex code or ensure var is global */
+   text-decoration: none;
+   font-weight: 500;
+   transition: color 0.2s ease;
+}
+.compareLink:hover {
+    text-decoration: underline;
+    color: #1d4ed8; /* Use actual hex code or ensure var is global */
+}
+.smallText {
+    font-size: 0.9em;
+}
+.italicText {
+    font-style: italic;
+    color: #6b7280; /* Muted color for strategy name */
+}
+
+/* --- AI Section Styles --- */
+.aiSection {
+   text-align: center;
+   margin-top: 3rem;
+   border-top: 1px solid #e5e7eb; /* Gray-200 */
+   padding-top: 2.5rem;
+}
+.aiSuggestionBox {
+   max-width: 800px;
+   margin: 0 auto;
+   background: #eff6ff; /* Use actual hex code or ensure var is global */
+   padding: 1.5rem 2rem;
+   border-radius: 8px;
+   border: 1px solid #bfdbfe; /* Use actual hex code or ensure var is global */
+   text-align: left;
+   line-height: 1.65;
+   color: #1f2937; /* Gray-800 */
+   box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+}
+.aiSuggestionBox h4 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #111827; /* Use actual hex code or ensure var is global */
+    border-bottom: 1px solid #bfdbfe; /* Use actual hex code or ensure var is global */
+    padding-bottom: 0.6rem;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+/* Styles for lists potentially generated by AI inside the box */
+.aiSuggestionBox ul {
+    margin-left: 1.5rem;
+    padding-left: 0.5rem;
+    list-style: disc;
+}
+.aiSuggestionBox li {
+    margin-bottom: 0.5rem;
+}
+.aiSuggestionBox strong { /* Ensure bold text from AI is styled */
+   font-weight: 600;
+   color: #111827;
+}
+
+/* --- Media Queries --- */
 @media screen and (max-width: 768px) {
   .cardItem {
     flex-direction: column;
-    align-items: center;
+    align-items: center; /* Center items when stacked */
+    gap: 1rem;
+    padding: 1.2rem;
   }
   .cardDetails {
-    text-align: center;
+    text-align: center; /* Center text within details */
+    width: 100%;
+    align-items: center; /* Center items like bonus box */
   }
+  .cardValues {
+    justify-content: center; /* Center values when wrapping */
+  }
+   .cardLinks {
+     justify-content: center; /* Center links */
+   }
+   .comparisonGrid {
+     font-size: 0.85em; /* Slightly smaller font in comparison on mobile */
+   }
+   .compareCell {
+     padding: 0.6rem;
+   }
+   .compareCellLabel {
+      text-align: left; /* Stack labels above on mobile? Or keep right? */
+   }
 }
 
 @media screen and (max-width: 480px) {
   .heroTitle {
-    font-size: 1.5rem;
+    font-size: 1.8rem; /* Adjust title size */
   }
   .heroDescription {
-    font-size: 0.95rem;
+    font-size: 1rem; /* Adjust description size */
   }
   .cardImage {
     width: 80px;
-    height: auto;
+    height: 50px; /* Adjust image size */
   }
+  .inputGrid {
+      grid-template-columns: 1fr; /* Stack inputs */
+  }
+  .buttonGroup button { /* Make buttons full width on small screens */
+     width: 100%;
+  }
+  .comparisonContent {
+     padding: 1.5rem 1rem; /* Less padding on small modal */
+  }
+  .comparisonGrid {
+     /* Consider stacking columns or allowing horizontal scroll on very small screens */
+     font-size: 0.8em;
+  }
+   .compareCell {
+     padding: 0.5rem;
+   }
 }
-
