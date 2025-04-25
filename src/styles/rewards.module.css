@@ -1,79 +1,120 @@
-/* File: styles/rewards.module.css */
+/* File: styles/rewards.module.css (Optimized) */
+
+/* --- Base & Variables (Optional: Define reusable colors/fonts) --- */
+
+
 
 /* --- Base & Layout --- */
 .container {
-  padding: 2rem clamp(1rem, 5vw, 3rem);
-  max-width: 1100px;
+  padding: 2rem clamp(1rem, 4vw, 2.5rem); /* Slightly reduced max padding */
+  max-width: 1000px; /* Adjusted Max Width */
   margin: auto;
-  background: #f9fafb; /* Light Gray BG */
-  color: #374151; /* Gray-700 Text */
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: var(--bg-light);
+  color: var(--text-medium);
+  font-family: var(--font-sans);
+  font-size: 16px; /* Base font size for rem calculations */
+  line-height: 1.6;
 }
 
-/* --- Hero/Header --- */
+/* --- Typography Hierarchy --- */
 .heroTitle {
   text-align: center;
-  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  /* 32-36px range ~ 2rem - 2.25rem */
+  font-size: clamp(2rem, 6vw, 2.25rem);
   font-weight: 700;
   margin-bottom: 1rem;
-  color: #111827; /* Gray-900 */
+  color: var(--text-dark);
+  line-height: 1.2;
 }
 
+.resultsTitle,
+.comparisonContent h3 { /* Group similar headings */
+  text-align: center;
+  /* 26-30px range ~ 1.625rem - 1.875rem */
+  font-size: clamp(1.5rem, 5vw, 1.75rem);
+  font-weight: 600; /* Slightly less than main title */
+  margin-bottom: 1.5rem;
+  color: var(--text-dark);
+  line-height: 1.3;
+}
+.comparisonContent h3 { margin-top: 0; padding-right: 30px; }
+
+.filterHeader h4 {
+  margin: 0;
+  font-size: 1.15rem; /* Slightly larger */
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.cardTitle strong {
+  /* ~18-20px */
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  line-height: 1.3;
+}
+
+/* Body text defaults to .container settings (16px, 400-500 weight implied by Inter) */
 .heroDescription {
   text-align: center;
-  font-size: 1.05rem;
+  font-size: 1.05rem; /* ~17px */
   line-height: 1.6;
   max-width: 720px;
-  margin: 0 auto 1rem;
-  color: #6b7280; /* Gray-500 */
+  margin: 0 auto 1.5rem; /* Increased margin */
+  color: var(--text-light);
 }
 
-.heroNote {
-  text-align: center;
-  font-size: 0.875rem;
-  color: #6b7280; /* Gray-500 */
-  margin-bottom: 2rem;
-}
 
-/* --- Controls (Dropdown) --- */
+/* --- Controls (Dropdowns) --- */
 .selectorGroup {
   display: flex;
   justify-content: center;
   margin: 2rem auto 2.5rem auto;
   flex-wrap: wrap;
   gap: 1.5rem;
-  padding: 1rem 1.5rem;
-  background-color: #ffffff; /* White */
+  padding: 1.5rem; /* Increased padding */
+  background-color: var(--bg-white);
   border-radius: 8px;
   max-width: 600px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  border: 1px solid #d1d5db; /* Gray-300 */
+  border: 1px solid var(--border-color);
 }
 .selectorGroup label {
   margin-right: 0.5rem;
   font-weight: 500;
-  color: #111827; /* Gray-900 */
-  font-size: 0.9em;
+  color: var(--text-dark);
+  font-size: 0.95em; /* Slightly larger */
   display: inline-block;
   vertical-align: middle;
 }
-.selectBox {
-  padding: 0.6rem 1rem;
+.selectBox,
+.filterDropdown { /* Combine styles */
+  padding: 0.7rem 1.2rem; /* Consistent padding */
   border-radius: 6px;
-  border: 1px solid #d1d5db; /* Gray-300 */
-  background: #ffffff; /* White */
-  font-size: 0.95rem;
-  min-width: 240px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-white);
+  font-size: 0.95rem; /* Consistent size */
+  min-width: 220px; /* Slightly reduced min-width */
   cursor: pointer;
   vertical-align: middle;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-  background-position: right 0.5rem center;
+  background-position: right 0.7rem center;
   background-repeat: no-repeat;
   background-size: 1.5em 1.5em;
-  padding-right: 2.5rem; /* Space for arrow */
+  padding-right: 3rem; /* Ensure space for arrow */
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.03);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  width: 100%; /* Ensure dropdowns fill container in filter grid */
+  box-sizing: border-box;
+}
+.selectBox:focus,
+.filterDropdown:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--focus-ring-color);
+  outline: none;
 }
 
 /* --- Input Form --- */
@@ -81,175 +122,119 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1.5rem 1.8rem;
-  margin-bottom: 2.5rem; /* Reduced margin */
-  max-width: 1000px;
+  margin-bottom: 2.5rem;
+  max-width: 1000px; /* Matches container */
   margin-left: auto;
   margin-right: auto;
 }
-
 .inputGroup {
   display: flex;
   flex-direction: column;
 }
-
 .inputGroup label {
   font-size: 0.9em;
   font-weight: 500;
-  color: #111827; /* Gray-900 */
+  color: var(--text-dark);
   margin-bottom: 0.5rem;
   text-transform: capitalize;
 }
-
-.inputGroup input,
-.inputField { /* Apply consistent input styling */
-  padding: 0.8rem;
-  border: 1px solid #d1d5db; /* Gray-300 */
+.inputField { /* Style applied in JSX */
+  padding: 0.8rem 1rem; /* Match guideline more closely */
+  border: 1px solid var(--border-color);
   border-radius: 6px;
   font-size: 1rem;
-  background-color: #ffffff; /* White */
+  background-color: var(--bg-white);
   box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  width: 100%; /* Ensure inputs fill container */
-  box-sizing: border-box; /* Include padding and border in width */
+  width: 100%;
+  box-sizing: border-box;
 }
-
-.inputGroup input:focus,
 .inputField:focus {
-  border-color: #3b82f6; /* Blue-500 */
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--focus-ring-color); /* Adjusted ring thickness */
   outline: none;
 }
 
+
 /* --- Filter Section --- */
 .filterContainer {
-  padding: 1.5rem;
-  margin: 0 auto 2.5rem auto; /* Position between form and results */
+  padding: 1.5rem 2rem; /* More padding */
+  margin: 0 auto 2.5rem auto;
   max-width: 1000px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  border: 1px solid #d1d5db;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  background-color: var(--bg-white);
+  border-radius: 12px; /* Softer radius */
+  border: 1px solid var(--border-color-light); /* Lighter border */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04); /* Subtle shadow */
 }
-
 .filterHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap; /* Allow wrapping */
-  gap: 0.5rem; /* Add gap */
+  flex-wrap: wrap;
+  gap: 1rem;
   margin-bottom: 1.5rem;
-  padding-bottom: 0.8rem;
-  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color-light);
 }
-
-.filterHeader h4 {
-  margin: 0;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #111827;
-}
-
 .filterGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1rem 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust min-width */
+  gap: 1.5rem 2rem; /* Row gap, Column gap */
 }
-
 .filterGroup {
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
 }
-
 .filterGroup label.groupLabel {
   font-weight: 600;
-  font-size: 0.95em;
-  color: #1f2937; /* Gray-800 */
+  font-size: 1rem; /* Larger label */
+  color: var(--text-medium);
   margin-bottom: 0.2rem;
 }
-
 .filterControl {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem; /* Slightly more space */
 }
-
 .filterControl input[type="checkbox"] {
-  width: 1rem;
-  height: 1rem;
+  width: 1.1rem; /* Slightly larger */
+  height: 1.1rem;
   border-radius: 4px;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--border-color);
   cursor: pointer;
-  accent-color: #2563eb; /* Blue-600 */
+  accent-color: var(--primary-color);
   margin-top: 1px;
-  flex-shrink: 0; /* Prevent checkbox shrinking */
+  flex-shrink: 0;
 }
 .filterControl input[type="checkbox"]:focus {
-    outline: 2px solid rgba(59, 130, 246, 0.3);
-    outline-offset: 1px;
+    outline: 2px solid var(--focus-ring-color);
+    outline-offset: 2px;
 }
-
 .filterControl label {
-  font-size: 0.9em;
-  color: #4b5563; /* Gray-600 */
+  font-size: 0.95em; /* Match dropdown font size */
+  color: var(--text-muted);
   font-weight: 400;
   cursor: pointer;
   user-select: none;
-  line-height: 1.3; /* Prevent text wrapping weirdly */
+  line-height: 1.4;
 }
-
-.filterDropdown {
-  padding: 0.6rem 1rem; /* Match selectBox padding */
-  border-radius: 6px;
-  border: 1px solid #d1d5db;
-  background: #ffffff;
-  font-size: 0.9em;
-  width: 100%;
-  cursor: pointer;
-  box-shadow: inset 0 1px 2px rgba(0,0,0,0.03);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  box-sizing: border-box;
-  /* Add dropdown arrow */
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-  background-position: right 0.5rem center;
-  background-repeat: no-repeat;
-  background-size: 1.5em 1.5em;
-  padding-right: 2.5rem; /* Space for arrow */
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-.filterDropdown:focus {
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-    outline: none;
-}
-
 .clearButton {
   background: none;
   border: none;
-  color: #3b82f6;
-  font-size: 0.85rem;
+  color: var(--primary-color);
+  font-size: 0.9rem; /* Slightly larger */
   font-weight: 500;
   cursor: pointer;
-  padding: 0.3rem 0.5rem;
-  border-radius: 4px;
-  transition: background-color 0.2s ease;
-  white-space: nowrap; /* Prevent wrapping */
+  padding: 0.4rem 0.8rem; /* More padding */
+  border-radius: 6px; /* Match button radius */
+  transition: background-color 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
 }
 .clearButton:hover {
   background-color: rgba(59, 130, 246, 0.1);
-  text-decoration: underline;
-}
-
-
-/* --- Results Section --- */
-.resultsTitle {
-  text-align: center;
-  margin-bottom: 1.5rem;
-  color: #111827;
-  font-weight: 600;
-  font-size: 1.5rem;
+  color: var(--primary-color-dark);
+  text-decoration: none; /* Remove underline */
 }
 
 /* --- Buttons --- */
@@ -258,54 +243,121 @@
   justify-content: center;
   gap: 1rem;
   flex-wrap: wrap;
-  margin-bottom: 2rem;
+  margin: 2rem 0; /* Consistent vertical margin */
 }
 
+/* Sticky Buttons Container for Mobile */
+.stickyButtonContainer {
+  /* Initially hidden or static */
+}
+
+
 .primaryBtn,
-.secondaryBtn {
-  padding: 0.7rem 1.5rem;
+.secondaryBtn,
+.cardLinks a,
+.compareLink { /* Base Button Styles */
+  padding: 0.7rem 1.4rem; /* Guideline padding */
   border-radius: 6px;
-  font-size: 1rem;
+  font-size: 0.95rem; /* Adjust as needed */
   font-weight: 500;
   cursor: pointer;
-  border: none;
-  color: white;
-  transition: background-color 0.2s ease, transform 0.1s ease;
+  border: 1px solid transparent; /* Use border for consistency */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease; /* Added transforms/shadow */
 }
 .primaryBtn:active,
-.secondaryBtn:active {
-  transform: scale(0.98);
+.secondaryBtn:active,
+.cardLinks a:active,
+.compareLink:active {
+  transform: scale(0.98); /* Guideline click effect */
+}
+.primaryBtn:focus-visible,
+.secondaryBtn:focus-visible,
+.cardLinks a:focus-visible,
+.compareLink:focus-visible { /* Add focus style */
+  outline: none;
+  box-shadow: 0 0 0 3px var(--focus-ring-color);
 }
 
 .primaryBtn {
-  background-color: #2563eb; /* Blue-600 */
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--bg-white);
 }
 .primaryBtn:hover {
-  background-color: #1d4ed8; /* Blue-700 */
+  background-color: var(--primary-color-dark);
+  border-color: var(--primary-color-dark);
+  color: var(--bg-white);
 }
 .primaryBtn:disabled {
   background-color: #9ca3af; /* Gray-400 */
+  border-color: #9ca3af;
+  color: var(--bg-white);
   cursor: not-allowed;
+  transform: none; /* Disable active scale */
 }
 
 .secondaryBtn {
-  background-color: #6b7280; /* Gray-500 */
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+  color: var(--bg-white);
 }
 .secondaryBtn:hover {
-  background-color: #4b5563; /* Gray-600 */
+  background-color: var(--secondary-color-dark);
+  border-color: var(--secondary-color-dark);
+  color: var(--bg-white);
 }
 .secondaryBtn:disabled {
    background-color: #9ca3af;
+   border-color: #9ca3af;
+   color: var(--bg-white);
    cursor: not-allowed;
+   transform: none;
 }
+
+/* Card Link specific overrides if needed */
+.cardLinks {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.cardLinks a {
+  padding: 0.6rem 1.2rem; /* Slightly smaller for card links */
+  font-size: 0.9em;
+}
+.reviewLink { /* Inherits secondary styles */
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+  color: var(--bg-white);
+}
+.reviewLink:hover {
+  background-color: var(--secondary-color-dark);
+  border-color: var(--secondary-color-dark);
+  color: var(--bg-white);
+}
+.applyLink { /* Inherits primary styles */
+   background-color: var(--primary-color);
+   border-color: var(--primary-color);
+   color: var(--bg-white);
+}
+.applyLink:hover {
+   background-color: var(--primary-color-dark);
+   border-color: var(--primary-color-dark);
+   color: var(--bg-white);
+}
+
 
 /* --- Error Message --- */
 .errorMessage {
-    color: #dc2626; /* Red-600 */
+    color: var(--danger-color);
     margin-top: -1rem;
     margin-bottom: 1.5rem;
     font-weight: 500;
     text-align: center;
+    font-size: 0.95em;
 }
 
 /* --- Card Results List --- */
@@ -317,553 +369,385 @@
 }
 
 .cardItem {
-  background-color: #ffffff;
-  border: 1px solid #e5e7eb; /* Slightly lighter border */
-  border-radius: 10px;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
+  background-color: var(--bg-white);
+  border: 1px solid var(--border-color-light);
+  border-radius: 12px; /* Guideline */
+  padding: 1.5rem; /* Guideline */
+  margin-bottom: 1.5rem; /* Guideline */
   display: flex;
-  gap: 1.5rem;
-  align-items: flex-start; /* Align items top */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  transition: box-shadow 0.2s ease-in-out;
+  gap: 1.5rem; /* Guideline */
+  align-items: flex-start;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04); /* Softer shadow */
+  transition: box-shadow 0.3s ease, transform 0.2s ease; /* Guideline motion */
 }
-
 .cardItem:hover {
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07); /* Elevate shadow on hover */
+    transform: translateY(-3px); /* Slight lift */
 }
-
 .cardImage {
   height: 60px;
   width: 95px;
   object-fit: contain;
   flex-shrink: 0;
   border-radius: 6px;
-  border: 1px solid #eee;
-  margin-top: 5px; /* Align better */
+  border: 1px solid var(--border-color-light);
+  margin-top: 5px;
 }
-
 .cardDetails {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 0.7rem; /* Increased gap slightly */
+  gap: 0.8rem; /* Increased gap */
 }
-
-.cardTitle {
- /* Remove bottom margin, rely on gap */
-}
-
-.cardTitle strong {
-  font-size: 1.15em;
-  font-weight: 600;
-  color: #111827;
-  line-height: 1.3;
-}
-
+.cardTitle { margin-bottom: 0.2rem; }
 .cardTitle span {
-  font-size: 0.8em;
+  font-size: 0.85em; /* Slightly larger */
   font-weight: 400;
-  color: #6b7280;
+  color: var(--text-light);
   margin-left: 0.5rem;
   vertical-align: middle;
 }
-
 .cardValues {
   display: flex;
-  gap: 1rem 1.5rem; /* Row gap, Column gap */
+  gap: 1rem 1.5rem;
   flex-wrap: wrap;
-  font-size: 1em;
-  padding-bottom: 0.7rem; /* Increased padding */
-  margin-bottom: 0.7rem; /* Increased margin */
-  border-bottom: 1px solid #f3f4f6; /* Lighter separator */
+  font-size: 1rem;
+  padding-bottom: 0.8rem;
+  margin-bottom: 0.8rem;
+  border-bottom: 1px solid var(--border-color-light);
 }
-
-.cardValues div { /* Ensure items wrap nicely */
-  display: flex;
-  align-items: center;
-}
-
+.cardValues div { display: flex; align-items: center; }
 .cardValues strong {
    font-weight: 500;
-   color: #6b7280;
+   color: var(--text-light); /* Use lighter gray */
    margin-right: 0.4rem;
-   white-space: nowrap; /* Prevent label wrapping */
+   white-space: nowrap;
 }
-
-.valueGood {
-  color: #16a34a; /* Green-600 */
-  font-weight: 700;
-  font-size: 1.05em; /* Slightly reduced */
-}
-
-.valueBad {
-  color: #dc2626; /* Red-600 */
-  font-weight: 700;
-  font-size: 1.05em; /* Slightly reduced */
-}
-
-.valueOngoing {
-    font-weight: 700;
-    font-size: 1.05em;
-    color: #374151; /* Gray-700 */
-}
-
 .cardSubtext {
-  color: #4b5563; /* Gray-600 */
-  font-size: 0.85em; /* Slightly smaller */
+  color: var(--text-muted);
+  font-size: 0.9em; /* Larger */
   line-height: 1.4;
 }
 
-.bonusBox {
-  background: #fefce8; /* Yellow-50 */
-  padding: 0.6rem 0.9rem; /* Adjusted padding */
-  border-radius: 6px;
-  border: 1px solid #fef08a; /* Yellow-200 */
-  color: #854d0e; /* Yellow-900 */
-  font-size: 0.88em;
-  line-height: 1.5;
+/* Badge Styles */
+.valueGood,
+.valueBad {
+  font-weight: 600; /* Semi-bold */
+  font-size: 1em; /* Base size */
+  padding: 0.2rem 0.6rem; /* Badge padding */
+  border-radius: 4px; /* Badge radius */
+  display: inline-block; /* Make it behave like a badge */
+  line-height: 1.3;
+}
+.valueGood {
+  color: #057a55; /* Darker Green */
+  background-color: #def7ec; /* Lighter Green BG */
+}
+.valueBad {
+  color: #a02d2d; /* Darker Red */
+  background-color: #fde8e8; /* Lighter Red BG */
+}
+.valueOngoing {
+  font-weight: 600;
+  font-size: 1em;
+  color: var(--text-medium);
+  /* No badge style */
 }
 
+.bonusBox {
+  background: var(--warning-bg);
+  padding: 0.5rem 0.8rem; /* Badge-like padding */
+  border-radius: 6px; /* Match button radius */
+  border: 1px solid var(--warning-border);
+  color: var(--warning-text);
+  font-size: 0.9em;
+  line-height: 1.5;
+  display: inline-block; /* Make it badge-like */
+  margin-top: 0.2rem; /* Space if below subtext */
+}
 .bonusBox strong {
-  color: #a16207; /* Amber-700 */
+  color: var(--warning-text-strong);
   font-weight: 600;
 }
 
-.perksSection {
-  font-size: 0.88em;
-}
-
+.perksSection { font-size: 0.9em; }
 .perksSection strong {
-    color: #374151; /* Gray-700 */
-    font-weight: 600;
-    display: block;
-    margin-bottom: 0.3rem; /* Increased space */
+  color: var(--text-medium);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.4rem;
 }
-
-.perksSection ul {
-  margin: 0 0 0 0.5rem; /* Adjust margin */
-  padding: 0;
-  list-style: none; /* Remove default list style */
-}
-
+.perksSection ul { margin: 0 0 0 0.5rem; padding: 0; list-style: none; }
 .perksSection li {
-    margin-bottom: 0.4rem; /* Increased space */
-    line-height: 1.4;
-    color: #4b5563; /* Gray-600 */
-    padding-left: 1rem; /* Add padding for pseudo-element */
-    position: relative;
+  margin-bottom: 0.4rem;
+  line-height: 1.4;
+  color: var(--text-muted);
+  padding-left: 1.2rem; /* Space for bullet */
+  position: relative;
 }
-/* Add custom bullet */
 .perksSection li::before {
-  content: '\2022'; /* Bullet character */
-  color: #9ca3af; /* Gray-400 */
+  content: '\2022';
+  color: #cbd5e1; /* Lighter gray bullet */
   font-weight: bold;
   display: inline-block;
   width: 1em;
-  margin-left: -1.2em; /* Position before text */
+  margin-left: -1.2em;
   position: absolute;
   left: 0.5em;
 }
-
-
-.cardLinks {
-  margin-top: 0.8rem;
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.cardLinks a {
-  text-decoration: none;
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  font-size: 0.9em;
-  font-weight: 500;
-  text-align: center;
-  transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
-  cursor: pointer;
-  display: inline-block;
-  border: 1px solid transparent; /* Base border */
-}
-.cardLinks a:active {
-  transform: scale(0.97);
-}
-.cardLinks a:focus-visible { /* Add focus style */
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
-}
-
-
-.reviewLink {
-  background-color: #6b7280; /* Gray-500 */
-  border-color: #6b7280;
-}
-.reviewLink:hover {
-  background-color: #4b5563; /* Gray-600 */
-  border-color: #4b5563;
-  color: white; /* Ensure text stays white */
-}
-
-.applyLink {
-  background-color: #2563eb; /* Blue-600 */
-  border-color: #2563eb;
-}
-.applyLink:hover {
-  background-color: #1d4ed8; /* Blue-700 */
-  border-color: #1d4ed8;
-  color: white; /* Ensure text stays white */
-}
-
 .noResults {
-    text-align: center;
-    color: #6b7280;
-    padding: 3rem 1rem; /* More padding */
-    font-style: italic;
-    font-size: 1.05em;
-    background-color: #ffffff;
-    border: 1px dashed #d1d5db;
-    border-radius: 8px;
-}
-
-
-/* --- Comparison Modal Styles --- */
-.comparisonOverlay {
-    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-    background-color: rgba(17, 24, 39, 0.8); /* Darker overlay (Gray-900 at 80%) */
-    display: flex; justify-content: center; align-items: center;
-    z-index: 1000; overflow-y: auto; padding: 1rem;
-}
-.comparisonContent {
-    background-color: white; border-radius: 12px; padding: 1.5rem 2rem 2rem 2rem; /* Adjusted padding */
-    width: 95%; max-width: 1200px; max-height: 90vh; overflow-y: auto;
-    position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-.closeButton {
-    position: absolute; top: 10px; right: 15px; background: none; border: none;
-    font-size: 2.2rem; cursor: pointer; color: #9ca3af; line-height: 1; padding: 0.2rem;
-    transition: color 0.2s ease; z-index: 15; /* Ensure button is above sticky headers */
-}
-.closeButton:hover {
-    color: #4b5563; /* Gray-600 */
-}
-.comparisonContent h3 {
-    text-align: center; margin-top: 0; margin-bottom: 1.5rem; font-size: 1.6rem; font-weight: 600;
-    padding-right: 30px; /* Space for close button */
-}
-
-.comparisonTableWrapper {
-  width: 100%;
-  overflow-x: auto; /* Enable horizontal scroll */
-  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-  padding-bottom: 10px;
-  margin-bottom: 1rem;
-  border: 1px solid #e5e7eb;
+  text-align: center;
+  color: var(--text-light);
+  padding: 3rem 1rem;
+  font-style: italic;
+  font-size: 1.05em;
+  background-color: var(--bg-white);
+  border: 1px dashed var(--border-color);
   border-radius: 8px;
 }
 
+/* --- Comparison Modal Styles --- */
+.comparisonOverlay {
+    position: fixed; inset: 0; /* Shortcut for top/left/right/bottom */
+    background-color: rgba(17, 24, 39, 0.85); /* Darker overlay */
+    display: flex; justify-content: center; align-items: center;
+    z-index: 1000; overflow-y: auto; padding: 1.5rem; /* More padding */
+}
+.comparisonContent {
+    background-color: var(--bg-white); border-radius: 12px;
+    padding: 2rem 2.5rem; /* Adjusted padding */
+    width: 95%; max-width: 1200px; max-height: 90vh;
+    overflow-y: auto; position: relative; box-shadow: 0 15px 30px rgba(0,0,0,0.25); /* Stronger shadow */
+}
+.closeButton {
+    position: absolute; top: 15px; right: 20px; background: none; border: none;
+    font-size: 2.2rem; cursor: pointer; color: var(--text-light); line-height: 1; padding: 0.2rem;
+    transition: color 0.2s ease, transform 0.2s ease; z-index: 15;
+}
+.closeButton:hover {
+    color: var(--text-medium); transform: scale(1.1);
+}
+.comparisonTableWrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 10px;
+  margin: 1.5rem 0; /* Add vertical margin */
+  border: 1px solid var(--border-color-light);
+  border-radius: 8px;
+  position: relative; /* Needed for sticky elements */
+}
 .comparisonGrid {
     display: grid;
-    /* gridTemplateColumns set dynamically in JSX */
     gap: 0px;
-    font-size: 0.9em;
-    min-width: fit-content; /* Crucial for horizontal scroll */
-    border-collapse: collapse; /* Helps with borders */
+    font-size: 0.95em; /* Slightly larger base */
+    min-width: fit-content;
+    border-collapse: collapse;
 }
-
 .compareCell {
-  padding: 0.8rem 1rem;
-  border-bottom: 1px solid #e5e7eb;
-  border-right: 1px solid #e5e7eb;
-  vertical-align: top; /* Default alignment */
-  font-size: 1em; /* Inherit from grid or set base */
+  padding: 0.9rem 1.1rem; /* Increased padding */
+  border-bottom: 1px solid var(--border-color-light);
+  border-right: 1px solid var(--border-color-light);
+  vertical-align: top;
+  font-size: 1em;
   line-height: 1.5;
-  text-align: center; /* Default center */
+  text-align: center;
+  transition: background-color 0.2s ease; /* Hover effect */
 }
-/* Last cell in any row */
 .comparisonGrid > div:last-child,
-.comparisonGrid > div:nth-child(4n) { /* Adjust '4n' if max cards change (label + 3 cards) */
-    border-right: none;
-}
-/* Cells in the last row */
-.comparisonGrid > div:nth-last-child(-n+4) { /* Adjust '4' if max cards change */
-    border-bottom: none;
-}
-
+.comparisonGrid > div:nth-child(4n) { border-right: none; }
+.comparisonGrid > div:nth-last-child(-n+4) { border-bottom: none; }
 
 .compareCellHeader {
-  background-color: #f3f4f6; /* Gray-100 */
+  background-color: #f9fafb; /* Lighter Header */
   font-weight: 600;
-  text-align: center;
   position: sticky;
-  top: 0; /* Stick to top of wrapper */
+  top: 0;
   z-index: 10;
-  border-bottom: 1px solid #d1d5db;
+  border-bottom: 1px solid var(--border-color); /* Stronger separator */
 }
 .compareCardImage {
-    height: 45px;
-    max-width: 72px; /* Limit width */
+    height: 50px; /* Slightly larger */
+    max-width: 80px;
     object-fit: contain;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.6rem;
     border-radius: 4px;
-    border: 1px solid #e5e7eb;
-    background-color: white; /* BG for transparent PNGs */
+    border: 1px solid var(--border-color-light);
+    background-color: var(--bg-white);
 }
 .compareIssuer {
     font-size: 0.9em;
-    color: #6b7280;
+    color: var(--text-light);
     font-weight: 400;
 }
-
 .compareCellLabel {
-  background-color: #f9fafb; /* Gray-50 */
+  background-color: #f9fafb; /* Match header */
   font-weight: 600;
   text-align: right;
-  border-right: 1px solid #d1d5db !important; /* Stronger border */
-  color: #374151; /* Gray-700 */
+  padding-right: 1.5rem; /* More padding */
+  border-right: 1px solid var(--border-color) !important;
+  color: var(--text-medium);
   position: sticky;
-  left: 0; /* Stick to left of wrapper */
-  z-index: 5; /* Below header */
-  vertical-align: middle; /* Align label text middle */
+  left: 0;
+  z-index: 5;
+  vertical-align: middle;
 }
-
 .compareCellData {
-  background-color: white;
-  text-align: left; /* Align data left */
-  color: #374151;
-  vertical-align: top; /* Align data top */
+  background-color: var(--bg-white);
+  text-align: left;
+  color: var(--text-medium);
+  vertical-align: top;
+}
+.compareCellData:hover,
+.compareCellLabel:hover { /* Subtle hover for rows */
+  background-color: #f9fafb;
 }
 .compareList {
-    margin: 0;
-    padding-left: 1.2em; /* Indent list */
+    margin: 0.2rem 0 0 0; /* Adjust margin */
+    padding-left: 1.3em;
     text-align: left;
-    font-size: 1em; /* Match cell font size */
+    font-size: 1em;
     list-style-position: outside;
-    list-style-type: disc; /* Ensure bullets show */
+    list-style-type: disc;
 }
-.compareList li {
-    margin-bottom: 0.4em; /* Space list items */
-}
+.compareList li { margin-bottom: 0.4em; }
 
-.compareLink {
-    display: inline-block;
-    padding: 0.4rem 0.8rem;
-    border-radius: 4px;
-    margin-bottom: 0.4rem;
-    margin-right: 0.4rem;
-    text-align: center;
-    min-width: 70px;
-    text-decoration: none;
-    color: white;
-    font-size: 0.9em;
-    font-weight: 500;
-    transition: background-color 0.2s ease, transform 0.1s ease;
-    border: 1px solid transparent;
+.compareLink { /* Inherits base button style */
+  padding: 0.5rem 0.9rem; /* Adjust size */
+  min-width: 75px;
+  margin: 0.2rem; /* Ensure spacing */
 }
-.compareLink:active {
-    transform: scale(0.97);
-}
-
-.compareLink.reviewLink {
-    background-color: #6b7280;
-    border-color: #6b7280;
-}
-.compareLink.reviewLink:hover {
-    background-color: #4b5563;
-    border-color: #4b5563;
-    text-decoration: none;
-    color: white;
-}
-
-.compareLink.applyLink {
-    background-color: #2563eb;
-    color: white;
-    border-color: #2563eb;
-}
-.compareLink.applyLink:hover {
-    background-color: #1d4ed8;
-    border-color: #1d4ed8;
-    text-decoration: none;
-    color: white;
-}
-.compareLink:focus-visible {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
-}
-
-
-.smallText { font-size: 0.9em; }
-.italicText { font-style: italic; color: #6b7280; }
 
 
 /* --- AI Section Styles --- */
 .aiSection {
    text-align: center;
    margin-top: 3rem;
-   border-top: 1px solid #e5e7eb;
+   border-top: 1px solid var(--border-color-light);
    padding-top: 2.5rem;
 }
 .aiSuggestionBox {
    max-width: 800px;
    margin: 0 auto;
-   background: #eff6ff; /* Blue-50 */
-   padding: 1.5rem 2rem;
+   background: var(--info-bg);
+   padding: 2rem 2.5rem; /* More padding */
    border-radius: 8px;
-   border: 1px solid #bfdbfe; /* Blue-200 */
+   border: 1px solid var(--info-border);
    text-align: left;
-   line-height: 1.65;
-   color: #1f2937; /* Gray-800 */
-   box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+   line-height: 1.7; /* More line height */
+   color: var(--info-text);
+   box-shadow: 0 4px 12px rgba(0,0,0,0.04);
 }
-/* Styles applied via formatAiOutput (h3, strong, ul, li, hr) */
-.aiSuggestionBox h3 {
-    margin-top: 0; /* Remove default margin if needed */
-    margin-bottom: 0.8rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid #dbeafe; /* Lighter blue */
-    font-size: 1.2em;
+.aiSuggestionBox h3 { /* Style generated H3 */
+    margin-top: 0;
+    margin-bottom: 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--info-border);
+    font-size: 1.3em; /* Larger heading */
     font-weight: 600;
-    color: #1e3a8a; /* Blue-800 */
+    color: var(--info-heading);
 }
 .aiSuggestionBox strong {
     font-weight: 600;
-    color: #1f2937;
+    color: var(--text-dark); /* Darker bold text */
 }
 .aiSuggestionBox ul {
-    margin-top: 0.5rem;
-    margin-bottom: 1rem;
-    padding-left: 1.5rem; /* Indent lists */
+    margin-top: 0.6rem;
+    margin-bottom: 1.2rem;
+    padding-left: 1.6rem;
     list-style: disc;
 }
 .aiSuggestionBox li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.6rem;
 }
 .aiSuggestionBox hr {
     border: none;
-    border-top: 1px dashed #bfdbfe; /* Dashed blue line */
+    border-top: 1px dashed var(--info-border);
     margin: 1.5rem 0;
 }
-.aiSuggestionBox p { /* Add space between paragraphs if AI generates them */
-    margin-bottom: 1rem;
-}
-.aiPlaceholder { /* Style for placeholder text */
-  color: #6b7280; /* Gray-500 */
+.aiSuggestionBox p { margin-bottom: 1rem; }
+.aiPlaceholder {
+  color: var(--text-light);
   font-style: italic;
   margin-top: 1rem;
+  padding: 1rem;
+  background-color: var(--bg-white);
+  border-radius: 8px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 
 /* --- Media Queries --- */
 @media screen and (max-width: 768px) {
   .cardItem {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    padding: 1.2rem;
-    text-align: center;
+    flex-direction: column; align-items: center;
+    gap: 1rem; padding: 1.5rem; text-align: center;
   }
-  .cardImage {
-    margin-top: 0;
-  }
-  .cardDetails {
-    text-align: center;
-    width: 100%;
-    align-items: center;
-  }
-  .cardValues {
-    justify-content: center;
-    gap: 0.8rem 1.2rem; /* Tighter gap */
-  }
-  .cardLinks {
-      justify-content: center;
-  }
-  .perksSection ul {
-    margin-left: 0; /* Center list */
-    padding-left: 0;
-    list-style-position: inside; /* Keep bullets closer */
-    text-align: center;
-  }
-  .perksSection li::before { /* Hide custom bullet, rely on inside */
-    display: none;
-  }
-  .perksSection li {
-     padding-left: 0;
-     position: static;
-  }
+  .cardImage { margin-top: 0; }
+  .cardDetails { text-align: center; width: 100%; align-items: center; }
+  .cardValues { justify-content: center; gap: 0.8rem 1.2rem; }
+  .cardLinks { justify-content: center; }
+  .perksSection ul { margin-left: 0; padding-left: 0; list-style-position: inside; text-align: center; }
+  .perksSection li::before { display: none; }
+  .perksSection li { padding-left: 0; position: static; }
+  .comparisonGrid { font-size: 0.9em; } /* Smaller font */
+  .compareCell { padding: 0.7rem 0.8rem; }
+  .compareCellLabel { padding: 0.7rem 0.5rem; font-size: 0.9em; }
 
-  .comparisonGrid {
-      font-size: 0.85em;
-      /* Label column might become too wide, let it scroll */
+  /* Sticky Buttons Styling for Mobile */
+  .stickyButtonContainer {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background: linear-gradient(to top, rgba(255,255,255,1) 70%, rgba(255,255,255,0)); /* Fade background */
+    z-index: 500; /* Ensure above content */
+    pointer-events: none; /* Allow clicks through padding */
   }
-  .compareCell {
-      padding: 0.6rem 0.8rem; /* Reduce padding */
+  .stickyButtonContainer .buttonGroup {
+    margin: 0;
+    pointer-events: auto; /* Enable clicks on buttons */
+    box-shadow: 0 -4px 10px rgba(0,0,0,0.05); /* Add shadow for separation */
+    background: var(--bg-white); /* Solid background for buttons themselves */
+    padding: 1rem;
+    border-radius: 8px 8px 0 0; /* Rounded top corners */
+    border-top: 1px solid var(--border-color-light);
   }
-  .compareCellLabel {
-      font-size: 0.95em; /* Make labels slightly smaller */
-      padding: 0.6rem 0.5rem; /* Adjust label padding */
-  }
+   .stickyButtonContainer .buttonGroup button {
+     width: 48%; /* Make buttons take half width */
+     max-width: 200px; /* Limit max width */
+   }
 }
 
 @media screen and (max-width: 640px) {
-    .filterGrid {
-        grid-template-columns: 1fr; /* Stack filters */
-        gap: 1.2rem;
-    }
-    .filterHeader {
-        /* Already handles wrap, looks ok */
-    }
+    .filterGrid { grid-template-columns: 1fr; gap: 1.5rem; } /* Ensure stacking */
+    .filterHeader { /* Looks ok */ }
 }
 
 @media screen and (max-width: 480px) {
-  .container {
-      padding: 1.5rem 0.8rem;
+  .container { padding: 1.5rem 1rem; }
+  .heroTitle { font-size: 1.75rem; }
+  .heroDescription { font-size: 1rem; }
+  .cardImage { width: 80px; height: 50px; }
+  .inputGrid { grid-template-columns: 1fr; }
+  .buttonGroup button:not(.compareLink):not(.cardLinks a) { /* Target main action buttons */
+      width: 100%; /* Full width inside container */
+      font-size: 1rem;
   }
-  .heroTitle {
-    font-size: 1.6rem;
-  }
-  .heroDescription {
-    font-size: 1rem;
-  }
-  .cardImage {
-    width: 80px; /* Slightly larger */
-    height: 50px;
-  }
-  .inputGrid {
-      grid-template-columns: 1fr; /* Stack inputs */
-  }
-  .buttonGroup button {
-      width: 90%;
-      font-size: 0.95rem;
-      padding: 0.8rem 1rem;
-  }
-  .filterGrid {
-      grid-template-columns: 1fr; /* Already stacked */
-  }
-  .comparisonContent {
-      padding: 1rem; /* Reduce padding */
-  }
-  .comparisonContent h3 {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-  }
+   .stickyButtonContainer .buttonGroup button {
+     width: 100%; /* Full width */
+     max-width: none;
+   }
 
-  .comparisonGrid {
-      font-size: 0.8em;
-  }
-  .compareCell {
-      padding: 0.5rem;
-      min-width: 90px; /* Further reduce min-width */
-      line-height: 1.4;
-  }
-  .compareCellLabel {
-     padding: 0.5rem 0.3rem;
-     font-size: 0.9em;
-  }
-  .aiSuggestionBox {
-      padding: 1rem 1.2rem;
-  }
-  .aiSuggestionBox h3 {
-    font-size: 1.1em;
-  }
+  .filterGrid { grid-template-columns: 1fr; }
+  .comparisonContent { padding: 1.5rem 1rem; }
+  .comparisonContent h3 { font-size: 1.4rem; }
+  .comparisonGrid { font-size: 0.85em; }
+  .compareCell { padding: 0.6rem; min-width: 90px; }
+  .compareCellLabel { padding: 0.6rem 0.4rem; font-size: 0.85em;}
+  .aiSuggestionBox { padding: 1.5rem; }
+  .aiSuggestionBox h3 { font-size: 1.2em; }
 }
