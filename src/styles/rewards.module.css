@@ -585,6 +585,7 @@
    }
    .comparisonGrid {
      font-size: 0.85em;
+     grid-template-columns: 0.3fr 1fr;
    }
    .compareCell {
      padding: 0.6rem;
@@ -618,7 +619,7 @@
   }
   .comparisonGrid {
      font-size: 0.8em;
-     grid-template-columns: 0.5fr 1fr; /* First column smaller than the second */
+     grid-template-columns: 0.3fr 1fr; /* First column smaller than the second */
   }
   .compareCell {
      padding: 0.5rem;
