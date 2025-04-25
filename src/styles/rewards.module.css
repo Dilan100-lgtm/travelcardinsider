@@ -618,12 +618,13 @@
   }
   .comparisonGrid {
      font-size: 0.8em;
+     grid-template-columns: 0.5fr 1fr; /* First column smaller than the second */
   }
-   .compareCell {
+  .compareCell {
      padding: 0.5rem;
      min-width: 120px;
-   }
-   .aiSuggestionBox {
+  }
+  .aiSuggestionBox {
       padding: 1rem 1.5rem;
    }
 }
