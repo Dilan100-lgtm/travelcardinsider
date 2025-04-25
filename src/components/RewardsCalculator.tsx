@@ -1,13 +1,10 @@
 // File: src/components/RewardsCalculator.tsx
 
 import React, { useState, useMemo } from 'react';
-// Assuming your data file is correctly named and placed
-import cardDataRaw from '@/data/finalcreditcard.json'; // Use the actual path to your detailed JSON
-// Import the CSS module
-import styles from '@/styles/rewards.module.css'; // Adjust path if needed
+import cardDataRaw from '@/data/finalcreditcard.json';
+import styles from '@/styles/rewards.module.css'; // Ensure path is correct
 
 // --- Define Interfaces ---
-// (Interfaces remain the same)
 interface CardCap { amount_usd: number; period: 'month' | 'quarter' | 'year'; applies_to_categories: string[]; }
 interface CardReward { multiplier: number; category: string; notes: string | null; cap: CardCap | null; }
 interface CardSignUpBonus { points: number | null; description: string; minSpend: number | null; durationDays: number | null; estimated_value_usd: number | null; }
@@ -16,13 +13,11 @@ interface CardPerk { type: string; description?: string; value_usd?: number; fre
 interface DetailedCreditCard { "Card Name": string; Issuer: string; image: string; ratingValue?: number; applyLink: string; ratesandfees: string; reviewLink: string; "Card Type": "Personal" | "Business"; "Annual Fee": number; "APR Range (Purchases)": string | null; "Foreign Transaction Fee": number | null; "Intro APR": string | null; "Credit Score Requirement": string | null; signUpBonus: CardSignUpBonus; rewardProgram: string | null; rewards: CardReward[]; redemptionOptions: CardRedemptionOptions; perks: CardPerk[]; calculatedPoints?: number; calculatedRewardsValue?: number; calculatedAnnualPerkValue?: number; calculatedNetValue?: number; calculatedFirstYearNetValue?: number; }
 
 // --- Load and Type the Data ---
-// (Data loading logic remains the same)
 let allCards: DetailedCreditCard[] = [];
 if (cardDataRaw && Array.isArray((cardDataRaw as any).cards)) { allCards = (cardDataRaw as any).cards as DetailedCreditCard[]; } else { if (Array.isArray(cardDataRaw)) { cardDataRaw.forEach((dataPart: any) => { if (dataPart && Array.isArray(dataPart.cards)) { allCards = allCards.concat(dataPart.cards as DetailedCreditCard[]); } }); } if (allCards.length === 0) { console.error("Unexpected structure in finalcreditcard.json. Expected { cards: [...] }."); } }
 const cards: DetailedCreditCard[] = allCards.filter(card => card && card["Card Name"]);
 
 // --- Define Granular User Input Categories and State ---
-// (categoryList and defaultSpend remain the same)
 const categoryList = [ 'dining', 'groceries', 'gas', 'flights', 'hotels', 'streaming', 'transit', 'onlineShopping', 'drugstores', 'other'] as const;
 type SpendInput = { [key in typeof categoryList[number]]: number; };
 const defaultSpend: SpendInput = { dining: 0, groceries: 0, gas: 0, flights: 0, hotels: 0, streaming: 0, transit: 0, onlineShopping: 0, drugstores: 0, other: 0, };
@@ -41,33 +36,27 @@ export default function RewardsCalculator() {
   const [cardsToCompare, setCardsToCompare] = useState<DetailedCreditCard[]>([]);
 
   // --- Helper Functions ---
-  // (getSelectedCpp remains the same)
-  const getSelectedCpp = (card: DetailedCreditCard, strategy: RedemptionStrategy): number => { /* ... same logic ... */
-    const options = card.redemptionOptions; if (!options) return 1.0;
-    switch (strategy) {
-        case 'cash_back': return options.cash_back_cpp ?? options.travel_statement_credit_cpp ?? 1.0;
-        case 'travel_portal': return options.chase_travel_portal_cpp ?? options.amex_travel_cpp ?? options.cap_one_travel_cpp ?? options.travel_statement_credit_cpp ?? 1.0;
-        case 'transfer_partners': return options.transfer_partner_average_cpp ?? options.chase_travel_portal_cpp ?? 1.5;
-        case 'default': default: return options.transfer_partner_average_cpp ?? options.chase_travel_portal_cpp ?? options.amex_travel_cpp ?? options.cap_one_travel_cpp ?? options.travel_statement_credit_cpp ?? options.cash_back_cpp ?? 1.0;
-    }
-  }
-  // (formatPerkForCompare remains the same)
-  const formatPerkForCompare = (perk: CardPerk): string => { /* ... same logic ... */
-      let text = perk.description || perk.type.replace(/_/g, ' '); if (perk.value_usd) { text += ` ($${perk.value_usd}${perk.frequency ? '/'+perk.frequency.replace('_',' ') : ''})`; } else if (perk.estimated_value_usd) { text += ` (~$${perk.estimated_value_usd} value)`; } return text;
-  }
+   const getSelectedCpp = (card: DetailedCreditCard, strategy: RedemptionStrategy): number => {
+        const options = card.redemptionOptions; if (!options) return 1.0;
+        switch (strategy) {
+            case 'cash_back': return options.cash_back_cpp ?? options.travel_statement_credit_cpp ?? 1.0;
+            case 'travel_portal': return options.chase_travel_portal_cpp ?? options.amex_travel_cpp ?? options.cap_one_travel_cpp ?? options.travel_statement_credit_cpp ?? 1.0;
+            case 'transfer_partners': return options.transfer_partner_average_cpp ?? options.chase_travel_portal_cpp ?? 1.5;
+            case 'default': default: return options.transfer_partner_average_cpp ?? options.chase_travel_portal_cpp ?? options.amex_travel_cpp ?? options.cap_one_travel_cpp ?? options.travel_statement_credit_cpp ?? options.cash_back_cpp ?? 1.0;
+        }
+   }
+   const formatPerkForCompare = (perk: CardPerk): string => {
+       let text = perk.description || perk.type.replace(/_/g, ' '); if (perk.value_usd) { text += ` ($${perk.value_usd}${perk.frequency ? '/'+perk.frequency.replace('_',' ') : ''})`; } else if (perk.estimated_value_usd) { text += ` (~$${perk.estimated_value_usd} value)`; } return text;
+   }
 
   // --- Event Handlers ---
-  // (handleChange remains the same)
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => { /* ... same logic ... */
-      const { name, value } = e.target; setSpend((prev) => ({ ...prev, [name]: parseFloat(value) || 0, }));
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+       const { name, value } = e.target; setSpend((prev) => ({ ...prev, [name]: parseFloat(value) || 0, }));
   };
-  // (handleRedemptionChange remains the same)
   const handleRedemptionChange = (e: React.ChangeEvent<HTMLSelectElement>) => { setRedemptionStrategy(e.target.value as RedemptionStrategy); }
-  // (handleCompareClick remains the same)
   const handleCompareClick = () => { setCardsToCompare(results.slice(0, 3)); setShowComparison(true); }
 
   // --- Core Calculation Logic (useMemo Hook) ---
-  // (useMemo hook remains the same)
    const results: DetailedCreditCard[] = useMemo(() => {
         const categoryMap: { [key in keyof SpendInput]?: string[] } = { dining: ['dining'], groceries: ['groceries_us', 'groceries', 'online_grocery'], gas: ['gas_us', 'gas'], flights: ['flights_direct', 'flights_amex_travel', 'flights_chase_portal', 'flights_capital_one_portal', 'airlines', 'southwest_airlines', 'united_airlines', 'jetblue', 'hawaiian_airlines', 'delta_airlines', 'american_airlines', 'british_airways', 'alaska_airlines', 'aircanada'], hotels: ['hotel', 'hotel_amex_travel', 'hotel_chase_portal', 'hotel_capital_one_portal', 'hilton_hotels', 'hyatt_hotels'], streaming: ['streaming'], transit: ['transit'], onlineShopping: ['online_retail_us'], drugstores: ['drugstores'], other: ['other'], };
         const getOtherMultiplier = (card: DetailedCreditCard): number => { const otherRule = Array.isArray(card.rewards) ? card.rewards.find(r => r.category === 'other') : undefined; return otherRule?.multiplier ?? 1; }
@@ -92,8 +81,7 @@ export default function RewardsCalculator() {
 
 
   // --- AI Recommendation Fetching ---
-  // (getAiRecommendation remains the same)
-   const getAiRecommendation = async () => { /* ... same logic ... */
+   const getAiRecommendation = async () => {
        setLoading(true); setError(''); try {
            const topCardsContext = results.slice(0, 5).map(card => { const selectedCpp = getSelectedCpp(card, redemptionStrategy); return { cardName: card["Card Name"], issuer: card.Issuer, cardType: card["Card Type"], annualFee: card["Annual Fee"], estimatedFirstYearNetValue: card.calculatedFirstYearNetValue, estimatedOngoingNetValue: card.calculatedNetValue, calculatedAnnualRewardsValue: card.calculatedRewardsValue, calculatedAnnualPerkValue: card.calculatedAnnualPerkValue, calculatedAnnualPoints: card.calculatedPoints, cppUsedForValue: selectedCpp, redemptionStrategyUsed: redemptionStrategy, signUpBonusValue: card.signUpBonus?.estimated_value_usd ?? 0, signUpBonusDescription: card.signUpBonus?.description || "N/A", topRewardCategories: Array.isArray(card.rewards) ? card.rewards .filter(r => r.multiplier > 1 && r.category !== 'other') .sort((a, b) => b.multiplier - a.multiplier) .slice(0, 4) .map(r => ({ category: r.category, multiplier: r.multiplier, notes: r.notes, cap: r.cap ? `$${r.cap.amount_usd}/${r.cap.period}` : null })) : [], keyPerks: Array.isArray(card.perks) ? card.perks .filter(p => ['lounge_access', 'free_checked_bag', 'travel_credit', 'companion_fare', 'companion_certificate', 'global_entry_tsa_precheck_credit', 'annual_hotel_credit', 'anniversary_points', 'anniversary_miles', 'hilton_status'].includes(p.type) || p.value_usd > 0 || p.estimated_value_usd > 0) .map(p => ({ type: p.type, description: p.description || p.type.replace(/_/g, ' '), value: p.value_usd || p.estimated_value_usd, frequency: p.frequency })) .slice(0, 5) : [], }; });
            const currentAnnualSpend = Object.entries(spend).reduce((acc, [key, monthlySpend]) => { acc[key as keyof SpendInput] = monthlySpend * 12; return acc; }, {} as { [key in keyof SpendInput]: number });
@@ -102,24 +90,22 @@ export default function RewardsCalculator() {
        } catch (err: any) { console.error('AI request failed:', err); setError('AI recommendation failed.'); } finally { setLoading(false); }
    };
 
-   // (formatAiOutput helper function remains the same)
-   function formatAiOutput(text: string): string { /* ... same logic ... */
+   // --- formatAiOutput helper ---
+   function formatAiOutput(text: string): string {
         let formatted = text .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') .replace(/\* (.*?)(?=\n\* |\n\n|$)/g, '<li>$1</li>');
         if (formatted.includes('<li>')) { formatted = formatted.replace(/\n*<li>/g, '<li>').replace(/<\/li>\n*/g, '</li>'); }
         return formatted;
    }
 
   // --- Render JSX ---
-  // Apply CSS module classes instead of inline styles
   return (
-    <div className={styles.container}> {/* Use .container class */}
+    <div className={styles.container}>
 
-      <h2 className={styles.heroTitle}> {/* Use .heroTitle class */}
+      <h2 className={styles.heroTitle}>
           AI-Powered Travel Rewards Calculator
       </h2>
 
        {/* Controls Section */}
-       {/* Assuming a generic group class or specific selector class */}
        <div className={styles.selectorGroup}>
             <div>
                 <label htmlFor="redemptionStrategy">Value Points As:</label>
@@ -127,7 +113,7 @@ export default function RewardsCalculator() {
                     id="redemptionStrategy"
                     value={redemptionStrategy}
                     onChange={handleRedemptionChange}
-                    className={styles.selectBox} // Use .selectBox class
+                    className={styles.selectBox}
                 >
                     <option value="default">Best Default Value</option>
                     <option value="cash_back">Cash Back / Statement Credit</option>
@@ -137,44 +123,38 @@ export default function RewardsCalculator() {
             </div>
        </div>
 
-      <p className={styles.heroDescription}> {/* Use .heroDescription or similar */}
+      <p className={styles.heroDescription}>
           Enter your estimated <strong>monthly</strong> spending per category:
       </p>
 
       {/* Spending Input Form */}
-      <form className={styles.inputGrid}> {/* Use .inputGrid class */}
+      <form className={styles.inputGrid}>
         {categoryList.map((category) => (
-          <div key={category} className={styles.inputGroup}> {/* Use .inputGroup class */}
+          <div key={category} className={styles.inputGroup}>
             <label htmlFor={category}>
               {category === 'onlineShopping' ? 'Online Shopping (US)' : category.replace(/([A-Z])/g, ' $1')} (Monthly $):
             </label>
             <input
-                type="number"
-                id={category}
-                name={category}
-                value={spend[category as keyof SpendInput]}
-                onChange={handleChange}
-                min={0}
-                step={10}
-                placeholder="$0"
-                // Input gets default styling via .inputGrid input or a specific class if defined
+                type="number" id={category} name={category}
+                value={spend[category as keyof SpendInput]} onChange={handleChange}
+                min={0} step={10} placeholder="$0"
             />
           </div>
         ))}
       </form>
 
       {/* --- Results Section --- */}
-      <div> {/* Assuming no specific container class needed here, direct child of .container */}
-        <h3 className={styles.resultsTitle}> {/* Assuming a .resultsTitle class */}
+      <div>
+        <h3 className={styles.resultsTitle}>
             Top Cards Based on Your Spend
         </h3>
-        {/* Buttons Container - Use .buttonGroup */}
+        {/* Buttons Container */}
          <div className={styles.buttonGroup}>
              {results && results.length > 0 && (
                  <button
                      onClick={getAiRecommendation}
                      disabled={loading}
-                     className={styles.primaryBtn} // Use .primaryBtn class
+                     className={styles.primaryBtn}
                  >
                      {loading ? 'Generating AI Suggestion...' : 'Get AI Suggestion'}
                  </button>
@@ -182,7 +162,7 @@ export default function RewardsCalculator() {
              {results && results.length >= 3 && !showComparison && (
                  <button
                      onClick={handleCompareClick}
-                     className={styles.secondaryBtn} // Use .secondaryBtn class
+                     className={styles.secondaryBtn}
                  >
                      Compare Top 3 Cards
                  </button>
@@ -190,36 +170,32 @@ export default function RewardsCalculator() {
          </div>
 
          {/* Display Error Below Buttons */}
-         {/* Assuming an error class like .errorMessage */}
          {error && <p className={styles.errorMessage}>{error}</p>}
 
-        <ul className={styles.cardList}> {/* Use .cardList class */}
+        <ul className={styles.cardList}>
              {results && results.length > 0 ? ( results.slice(0, 10).map((card, index) => ( card && card["Card Name"] ? (
-                 <li key={card["Card Name"]} className={styles.cardItem}> {/* Use .cardItem class */}
-                   <img
-                       src={card.image || 'placeholder.png'}
-                       alt={card["Card Name"]}
-                       className={styles.cardImage} // Use .cardImage class
-                       onError={(e) => { (e.target as HTMLImageElement).src = 'placeholder.png'; }}
-                    />
-                   <div className={styles.cardDetails}> {/* Use .cardDetails class */}
-                     <strong>{index + 1}. {card.Issuer} - {card["Card Name"]} <span>({card["Card Type"]})</span></strong>
-                     <div className={styles.cardValues}> {/* Assuming .cardValues class */}
-                         <div><strong>Est. 1st Year:</strong> <span className={(card.calculatedFirstYearNetValue ?? 0) >= 0 ? styles.valueGood : styles.valueBad}>${(card.calculatedFirstYearNetValue ?? 0).toFixed(2)}</span></div>
-                         <div><strong>Ongoing:</strong> <span className={styles.valueOngoing}>${(card.calculatedNetValue ?? 0).toFixed(2)}</span>/yr</div> {/* Assuming .valueOngoing */}
+                 <li key={card["Card Name"]} className={styles.cardItem}>
+                   <img src={card.image || 'placeholder.png'} alt={card["Card Name"]} className={styles.cardImage} onError={(e) => { (e.target as HTMLImageElement).src = 'placeholder.png'; }} />
+                   <div className={styles.cardDetails}>
+                     <div className={styles.cardTitle}> {/* Added wrapper div */}
+                        <strong>{index + 1}. {card.Issuer} - {card["Card Name"]} <span>({card["Card Type"]})</span></strong>
                      </div>
-                     <small className={styles.cardSubtext}> {/* Assuming .cardSubtext */}
+                     <div className={styles.cardValues}>
+                         <div><strong>Est. 1st Year:</strong> <span className={(card.calculatedFirstYearNetValue ?? 0) >= 0 ? styles.valueGood : styles.valueBad}>${(card.calculatedFirstYearNetValue ?? 0).toFixed(2)}</span></div>
+                         <div><strong>Ongoing:</strong> <span className={styles.valueOngoing}>${(card.calculatedNetValue ?? 0).toFixed(2)}</span>/yr</div>
+                     </div>
+                     <small className={styles.cardSubtext}>
                         (Rewards: ${(card.calculatedRewardsValue ?? 0).toFixed(2)} + Perks: ${(card.calculatedAnnualPerkValue ?? 0).toFixed(2)} - Fee: ${card["Annual Fee"]}) | Est. Points: {card.calculatedPoints ?? 0}
                      </small>
                      {card.signUpBonus && card.signUpBonus.estimated_value_usd > 0 && (
-                         <div className={styles.bonusBox}> {/* Use .bonusBox class */}
+                         <div className={styles.bonusBox}>
                             <strong>Bonus:</strong> {card.signUpBonus.description} (Value: ~${card.signUpBonus.estimated_value_usd})
                          </div>
                      )}
                      {Array.isArray(card.perks) && card.perks.filter(p => ['lounge_access', 'free_checked_bag', 'travel_credit', 'companion_fare', 'companion_certificate', 'global_entry_tsa_precheck_credit', 'annual_hotel_credit', 'anniversary_points', 'anniversary_miles', 'hilton_status'].includes(p.type) || p.value_usd > 0 || p.estimated_value_usd > 0).length > 0 && (
-                         <div className={styles.perksSection}> {/* Assuming .perksSection */}
+                         <div className={styles.perksSection}>
                             <strong>Key Perks:</strong>
-                            <ul> {/* Assuming default ul/li styling or specific .perkList .perkItem */}
+                            <ul>
                                {card.perks
                                  .filter(p => ['lounge_access', 'free_checked_bag', 'travel_credit', 'companion_fare', 'companion_certificate', 'global_entry_tsa_precheck_credit', 'annual_hotel_credit', 'anniversary_points', 'anniversary_miles', 'hilton_status'].includes(p.type) || p.value_usd > 0 || p.estimated_value_usd > 0)
                                  .slice(0, 3)
@@ -228,103 +204,84 @@ export default function RewardsCalculator() {
                             </ul>
                          </div>
                      )}
-                      <div className={styles.cardLinks}> {/* Assuming .cardLinks */}
-                         <a href={card.reviewLink} target="_blank" rel="noopener noreferrer">Read Review</a>
-                         <a href={card.applyLink} target="_blank" rel="noopener noreferrer">Apply Now</a>
+                      {/* ADDED CLASSES TO LINKS */}
+                      <div className={styles.cardLinks}>
+                         <a href={card.reviewLink} target="_blank" rel="noopener noreferrer" className={styles.reviewLink}>
+                             Read Review
+                         </a>
+                         <a href={card.applyLink} target="_blank" rel="noopener noreferrer" className={styles.applyLink}>
+                             Apply Now
+                         </a>
                       </div>
                    </div>
-                 </li> ) : null )) ) : ( <li className={styles.noResults}>Enter your spending details above to see card recommendations.</li> /* Assuming .noResults */ )}
+                 </li> ) : null )) ) : ( <li className={styles.noResults}>Enter your spending details above to see card recommendations.</li> )}
         </ul>
       </div>
 
        {/* --- Comparison Modal/Section --- */}
        {showComparison && cardsToCompare.length > 0 && (
-          <div className={styles.comparisonOverlay}> {/* Use .comparisonOverlay */}
-              <div className={styles.comparisonContent}> {/* Use .comparisonContent */}
-                  <button onClick={() => setShowComparison(false)} className={styles.closeButton}> &times; </button> {/* Use .closeButton */}
+          <div className={styles.comparisonOverlay}>
+              <div className={styles.comparisonContent}>
+                  <button onClick={() => setShowComparison(false)} className={styles.closeButton}> &times; </button>
                   <h3>Compare Top {cardsToCompare.length} Cards</h3>
-                  {/* Use comparison grid classes */}
-                  <div className={styles.comparisonGrid} style={{ gridTemplateColumns: `minmax(160px, 1.2fr) repeat(${cardsToCompare.length}, minmax(180px, 1fr))`}}>
-                      {/* --- Header Row --- */}
-                      <div className={`${styles.compareCell} ${styles.compareCellHeader} ${styles.compareCellLabel}`}>Feature</div>
-                      {cardsToCompare.map(card => (
-                          <div key={card["Card Name"]} className={`${styles.compareCell} ${styles.compareCellHeader}`}>
-                              <img src={card.image || 'placeholder.png'} alt={card["Card Name"]} className={styles.compareCardImage} onError={(e) => { (e.target as HTMLImageElement).src = 'placeholder.png'; }}/> {/* Assuming .compareCardImage */}
-                              <div>{card["Card Name"]}</div>
-                              <div className={styles.compareIssuer}>{card.Issuer}</div> {/* Assuming .compareIssuer */}
-                          </div>
-                      ))}
+                  {/* ADDED WRAPPER DIV */}
+                  <div className={styles.comparisonTableWrapper}>
+                      <div className={styles.comparisonGrid} style={{ gridTemplateColumns: `minmax(160px, 1.2fr) repeat(${cardsToCompare.length}, minmax(180px, 1fr))`}}>
+                          {/* Header Row */}
+                          <div className={`${styles.compareCell} ${styles.compareCellHeader} ${styles.compareCellLabel}`}>Feature</div>
+                          {cardsToCompare.map(card => ( <div key={card["Card Name"]} className={`${styles.compareCell} ${styles.compareCellHeader}`}> <img src={card.image || 'placeholder.png'} alt={card["Card Name"]} className={styles.compareCardImage} onError={(e) => { (e.target as HTMLImageElement).src = 'placeholder.png'; }}/> <div>{card["Card Name"]}</div> <div className={styles.compareIssuer}>{card.Issuer}</div> </div> ))}
+                          {/* Data Rows */}
+                          {/* Annual Fee */}
+                          <div className={`${styles.compareCell} ${styles.compareCellLabel}`}>Annual Fee</div>
+                          {cardsToCompare.map((c, i) => <div key={i} className={`${styles.compareCell} ${styles.compareCellData}`}>{`$${c["Annual Fee"].toFixed(2)}`}</div>)}
+                          {Array.from({ length: 3 - cardsToCompare.length }).map((_, i) => <div key={`empty-fee-${i}`} className={`${styles.compareCell} ${styles.compareCellData}`}>-</div>)}
+                          {/* Est. First Year */}
+                          <div className={`${styles.compareCell} ${styles.compareCellLabel}`}>Est. First Year Value</div>
+                          {cardsToCompare.map((c,i) => <div key={i} className={`${styles.compareCell} ${styles.compareCellData}`}><span className={(c.calculatedFirstYearNetValue ?? 0) >= 0 ? styles.valueGood : styles.valueBad}>${(c.calculatedFirstYearNetValue ?? 0).toFixed(2)}</span></div>)}
+                          {Array.from({ length: 3 - cardsToCompare.length }).map((_, i) => <div key={`empty-fyv-${i}`} className={`${styles.compareCell} ${styles.compareCellData}`}>-</div>)}
+                           {/* Est. Ongoing Value */}
+                           <div className={`${styles.compareCell} ${styles.compareCellLabel}`}>Est. Ongoing Value</div>
+                           {cardsToCompare.map((c,i) => <div key={i} className={`${styles.compareCell} ${styles.compareCellData}`}><span className={styles.valueOngoing}>${(c.calculatedNetValue ?? 0).toFixed(2)}</span></div>)}
+                           {Array.from({ length: 3 - cardsToCompare.length }).map((_, i) => <div key={`empty-ogv-${i}`} className={`${styles.compareCell} ${styles.compareCellData}`}>-</div>)}
+                           {/* Sign-Up Bonus */}
+                           <div className={`${styles.compareCell} ${styles.compareCellLabel}`}>Sign-Up Bonus</div>
+                           {cardsToCompare.map((c,i) => <div key={i} className={`${styles.compareCell} ${styles.compareCellData} ${styles.smallText}`}>{c.signUpBonus?.description || 'N/A'} <span>(~$${c.signUpBonus?.estimated_value_usd ?? 0})</span></div>)}
+                           {Array.from({ length: 3 - cardsToCompare.length }).map((_, i) => <div key={`empty-bonus-${i}`} className={`${styles.compareCell} ${styles.compareCellData}`}>-</div>)}
+                           {/* Top Rewards */}
+                           <div className={`${styles.compareCell} ${styles.compareCellLabel}`}>Top Reward Rates</div>
+                           {cardsToCompare.map((c,i) => <div key={i} className={`${styles.compareCell} ${styles.compareCellData}`}> <ul className={styles.compareList}> {(Array.isArray(c.rewards) ? c.rewards.filter(r => r.multiplier > 1 && r.category !== 'other').sort((a,b) => b.multiplier - a.multiplier).slice(0, 3) : []) .map(r => <li key={r.category}>{r.multiplier}x {r.category.replace(/_/g,' ')}{r.cap ? ` ($${r.cap.amount_usd}/${r.cap.period})`:''}</li>)} <li>{c.rewards.find(r => r.category === 'other')?.multiplier ?? 1}x Other</li> </ul> </div>)}
+                           {Array.from({ length: 3 - cardsToCompare.length }).map((_, i) => <div key={`empty-rewards-${i}`} className={`${styles.compareCell} ${styles.compareCellData}`}>-</div>)}
+                           {/* Key Perks */}
+                            <div className={`${styles.compareCell} ${styles.compareCellLabel}`}>Key Perks</div>
+                            {cardsToCompare.map((c,i) => <div key={i} className={`${styles.compareCell} ${styles.compareCellData}`}> <ul className={styles.compareList}> {(Array.isArray(c.perks) ? c.perks.filter(p => ['lounge_access', 'free_checked_bag', 'travel_credit', 'companion_fare', 'companion_certificate', 'global_entry_tsa_precheck_credit', 'annual_hotel_credit', 'anniversary_points', 'anniversary_miles', 'hilton_status'].includes(p.type) || p.value_usd > 0 || p.estimated_value_usd > 0).slice(0, 4) : []) .map(p => <li key={p.type+(p.description || '')}>{formatPerkForCompare(p)}</li>)} </ul> </div>)}
+                            {Array.from({ length: 3 - cardsToCompare.length }).map((_, i) => <div key={`empty-perks-${i}`} className={`${styles.compareCell} ${styles.compareCellData}`}>-</div>)}
+                            {/* Redemption Strategy */}
+                            <div className={`${styles.compareCell} ${styles.compareCellLabel}`}>Redemption Strategy</div>
+                            {cardsToCompare.map((c,i) => <div key={i} className={`${styles.compareCell} ${styles.compareCellData} ${styles.italicText}`}>{redemptionStrategy.replace('_', ' ')}</div>)}
+                            {Array.from({ length: 3 - cardsToCompare.length }).map((_, i) => <div key={`empty-strat-${i}`} className={`${styles.compareCell} ${styles.compareCellData}`}>-</div>)}
+                            {/* CPP Used */}
+                            <div className={`${styles.compareCell} ${styles.compareCellLabel}`}>CPP Used</div>
+                            {cardsToCompare.map((c,i) => <div key={i} className={`${styles.compareCell} ${styles.compareCellData}`}>{getSelectedCpp(c, redemptionStrategy).toFixed(2)}</div>)}
+                            {Array.from({ length: 3 - cardsToCompare.length }).map((_, i) => <div key={`empty-cpp-${i}`} className={`${styles.compareCell} ${styles.compareCellData}`}>-</div>)}
+                            {/* Links */}
+                            <div className={`${styles.compareCell} ${styles.compareCellLabel}`}>Links</div>
+                            {cardsToCompare.map((c,i) => <div key={i} className={`${styles.compareCell} ${styles.compareCellData}`}>
+                                {/* ADDED CLASSES TO COMPARISON LINKS */}
+                                <a href={c.reviewLink} target="_blank" rel="noopener noreferrer" className={`${styles.compareLink} ${styles.reviewLink}`}>Review</a>
+                                <a href={c.applyLink} target="_blank" rel="noopener noreferrer" className={`${styles.compareLink} ${styles.applyLink}`}>Apply</a>
+                            </div>)}
+                            {Array.from({ length: 3 - cardsToCompare.length }).map((_, i) => <div key={`empty-links-${i}`} className={`${styles.compareCell} ${styles.compareCellData}`}>-</div>)}
 
-                      {/* --- Data Rows (Using CSS classes directly) --- */}
-                      {/* Row: Annual Fee */}
-                      <div className={`${styles.compareCell} ${styles.compareCellLabel}`}>Annual Fee</div>
-                      {cardsToCompare.map((c, i) => <div key={i} className={`${styles.compareCell} ${styles.compareCellData}`}>{`$${c["Annual Fee"].toFixed(2)}`}</div>)}
-                      {/* Fill empty cells if needed */}
-                      {Array.from({ length: 3 - cardsToCompare.length }).map((_, i) => <div key={`empty-fee-${i}`} className={`${styles.compareCell} ${styles.compareCellData}`}>-</div>)}
-
-                      {/* Row: Est. First Year Value */}
-                      <div className={`${styles.compareCell} ${styles.compareCellLabel}`}>Est. First Year Value</div>
-                      {cardsToCompare.map((c,i) => <div key={i} className={`${styles.compareCell} ${styles.compareCellData}`}><span className={(c.calculatedFirstYearNetValue ?? 0) >= 0 ? styles.valueGood : styles.valueBad}>${(c.calculatedFirstYearNetValue ?? 0).toFixed(2)}</span></div>)}
-                      {Array.from({ length: 3 - cardsToCompare.length }).map((_, i) => <div key={`empty-fyv-${i}`} className={`${styles.compareCell} ${styles.compareCellData}`}>-</div>)}
-
-                      {/* Row: Est. Ongoing Value */}
-                      <div className={`${styles.compareCell} ${styles.compareCellLabel}`}>Est. Ongoing Value</div>
-                      {cardsToCompare.map((c,i) => <div key={i} className={`${styles.compareCell} ${styles.compareCellData}`}><span className={styles.valueOngoing}>${(c.calculatedNetValue ?? 0).toFixed(2)}</span></div>)}
-                      {Array.from({ length: 3 - cardsToCompare.length }).map((_, i) => <div key={`empty-ogv-${i}`} className={`${styles.compareCell} ${styles.compareCellData}`}>-</div>)}
-
-                       {/* Row: Sign-Up Bonus */}
-                       <div className={`${styles.compareCell} ${styles.compareCellLabel}`}>Sign-Up Bonus</div>
-                       {cardsToCompare.map((c,i) => <div key={i} className={`${styles.compareCell} ${styles.compareCellData} ${styles.smallText}`}>{c.signUpBonus?.description || 'N/A'} <span>(~$${c.signUpBonus?.estimated_value_usd ?? 0})</span></div>)}
-                       {Array.from({ length: 3 - cardsToCompare.length }).map((_, i) => <div key={`empty-bonus-${i}`} className={`${styles.compareCell} ${styles.compareCellData}`}>-</div>)}
-
-                       {/* Row: Top Reward Rates */}
-                       <div className={`${styles.compareCell} ${styles.compareCellLabel}`}>Top Reward Rates</div>
-                       {cardsToCompare.map((c,i) => <div key={i} className={`${styles.compareCell} ${styles.compareCellData}`}>
-                           <ul className={styles.compareList}>
-                               {(Array.isArray(c.rewards) ? c.rewards.filter(r => r.multiplier > 1 && r.category !== 'other').sort((a,b) => b.multiplier - a.multiplier).slice(0, 3) : [])
-                                   .map(r => <li key={r.category}>{r.multiplier}x {r.category.replace(/_/g,' ')}{r.cap ? ` ($${r.cap.amount_usd}/${r.cap.period})`:''}</li>)}
-                                <li>{c.rewards.find(r => r.category === 'other')?.multiplier ?? 1}x Other</li>
-                           </ul>
-                       </div>)}
-                       {Array.from({ length: 3 - cardsToCompare.length }).map((_, i) => <div key={`empty-rewards-${i}`} className={`${styles.compareCell} ${styles.compareCellData}`}>-</div>)}
-
-                       {/* Row: Key Perks */}
-                        <div className={`${styles.compareCell} ${styles.compareCellLabel}`}>Key Perks</div>
-                        {cardsToCompare.map((c,i) => <div key={i} className={`${styles.compareCell} ${styles.compareCellData}`}>
-                            <ul className={styles.compareList}>
-                                {(Array.isArray(c.perks) ? c.perks.filter(p => ['lounge_access', 'free_checked_bag', 'travel_credit', 'companion_fare', 'companion_certificate', 'global_entry_tsa_precheck_credit', 'annual_hotel_credit', 'anniversary_points', 'anniversary_miles', 'hilton_status'].includes(p.type) || p.value_usd > 0 || p.estimated_value_usd > 0).slice(0, 4) : [])
-                                    .map(p => <li key={p.type+(p.description || '')}>{formatPerkForCompare(p)}</li>)}
-                            </ul>
-                        </div>)}
-                        {Array.from({ length: 3 - cardsToCompare.length }).map((_, i) => <div key={`empty-perks-${i}`} className={`${styles.compareCell} ${styles.compareCellData}`}>-</div>)}
-
-                        {/* Row: Redemption Strategy */}
-                        <div className={`${styles.compareCell} ${styles.compareCellLabel}`}>Redemption Strategy</div>
-                        {cardsToCompare.map((c,i) => <div key={i} className={`${styles.compareCell} ${styles.compareCellData} ${styles.italicText}`}>{redemptionStrategy.replace('_', ' ')}</div>)}
-                        {Array.from({ length: 3 - cardsToCompare.length }).map((_, i) => <div key={`empty-strat-${i}`} className={`${styles.compareCell} ${styles.compareCellData}`}>-</div>)}
-
-                        {/* Row: CPP Used */}
-                        <div className={`${styles.compareCell} ${styles.compareCellLabel}`}>CPP Used</div>
-                        {cardsToCompare.map((c,i) => <div key={i} className={`${styles.compareCell} ${styles.compareCellData}`}>{getSelectedCpp(c, redemptionStrategy).toFixed(2)}</div>)}
-                        {Array.from({ length: 3 - cardsToCompare.length }).map((_, i) => <div key={`empty-cpp-${i}`} className={`${styles.compareCell} ${styles.compareCellData}`}>-</div>)}
-
-                        {/* Row: Links */}
-                        <div className={`${styles.compareCell} ${styles.compareCellLabel}`}>Links</div>
-                        {cardsToCompare.map((c,i) => <div key={i} className={`${styles.compareCell} ${styles.compareCellData}`}>
-                            <a href={c.reviewLink} target="_blank" rel="noopener noreferrer" className={styles.compareLink}>Review</a>
-                            <a href={c.applyLink} target="_blank" rel="noopener noreferrer" className={styles.compareLink}>Apply</a>
-                        </div>)}
-                        {Array.from({ length: 3 - cardsToCompare.length }).map((_, i) => <div key={`empty-links-${i}`} className={`${styles.compareCell} ${styles.compareCellData}`}>-</div>)}
-
-                  </div> {/* End Comparison Grid */}
+                      </div> {/* End Comparison Grid */}
+                  </div> {/* End Wrapper Div */}
               </div> {/* End Comparison Content Box */}
           </div> // End Overlay
        )}
 
       {/* --- AI Section --- */}
-       <div className={styles.aiSection}> {/* Assuming .aiSection */}
+       <div className={styles.aiSection}>
            {aiSuggestion && (
-           <div className={styles.aiSuggestionBox}> {/* Use .aiSuggestionBox */}
+           <div className={styles.aiSuggestionBox}>
              <h4> Personalized AI Suggestion </h4>
              <div dangerouslySetInnerHTML={{ __html: formatAiOutput(aiSuggestion) }} ></div>
            </div>
@@ -335,12 +292,8 @@ export default function RewardsCalculator() {
 }
 
 
-// // --- Helper Components / Functions for Comparison ---
-// // REMOVED compareCellStyleEnhanced and renderCompareRowEnhanced as styling is now via CSS Modules
-
-
 // (formatAiOutput helper function remains the same)
-function formatAiOutput(text: string): string { /* ... same logic ... */
+function formatAiOutput(text: string): string {
     let formatted = text .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') .replace(/\* (.*?)(?=\n\* |\n\n|$)/g, '<li>$1</li>');
     if (formatted.includes('<li>')) { formatted = formatted.replace(/\n*<li>/g, '<li>').replace(/<\/li>\n*/g, '</li>'); }
     return formatted;
