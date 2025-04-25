@@ -502,7 +502,7 @@ export default function RewardsCalculator() {
             {results && results.length > 0 ? ( results.slice(0, 10).map((card, index) => ( card && card["Card Name"] ? (
               <li key={card["Card Name"] + '-' + index} className={styles.cardItem}> {/* Added index to key for safety if names aren't unique */}
                  <img
-                     src={card.image || '/placeholder.png'} // Ensure placeholder path is correct
+                     src={card.image || '/6.jpg'} // Ensure placeholder path is correct
                      alt={card["Card Name"]}
                      className={styles.cardImage}
                      onError={(e) => { (e.target as HTMLImageElement).src = '/placeholder.png'; }} // Ensure placeholder path is correct
