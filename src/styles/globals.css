@@ -922,3 +922,28 @@ p, h1, h2, h3, h4, h5, h6, li, div {
 .footer-bottom p {
   margin: 0;
 }
+/* Existing globals.css content... */
+
+:root {
+  /* Other global variables might be here */
+
+  /* Paste the variables here: */
+  --primary-color: #2563eb;
+  --primary-hover: #1d4ed8;
+  --secondary-color: #6b7280;
+  --secondary-hover: #4b5563;
+  --success-color: #16a34a;
+  --danger-color: #dc2626;
+  --input-bg: #ffffff;
+  --border-color: #d1d5db;
+  --text-color: #374151;
+  --muted-color: #6b7280;
+  --bg-light: #f9fafb;
+  --bg-white: #ffffff;
+  --note-bg: #eff6ff;
+  --note-border: #bfdbfe;
+  --warning-bg: #fefce8;
+  --warning-border: #fef08a;
+  --warning-text: #854d0e;
+}
+
