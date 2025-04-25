@@ -629,3 +629,120 @@
       padding: 1rem 1.5rem;
    }
 }
+/* --- Filter Section --- */
+.filterContainer {
+  padding: 1.5rem;
+  margin: 2.5rem auto; /* Position between form and results */
+  max-width: 1000px; /* Match form width */
+  background-color: var(--bg-white); /* Ensure var is global or replace */
+  border-radius: 8px;
+  border: 1px solid var(--border-color); /* Ensure var is global or replace */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.filterHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--border-color); /* Ensure var is global or replace */
+}
+
+.filterHeader h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-color); /* Ensure var is global or replace */
+}
+
+.filterGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Responsive grid */
+  gap: 1.5rem;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column; /* Stack label and controls */
+  gap: 0.8rem; /* Space between controls in a group (like annual fee) */
+}
+
+.filterGroup label.groupLabel { /* Label for the whole group like "Annual Fee" */
+  font-weight: 600;
+  font-size: 0.95em;
+  color: var(--text-color); /* Ensure var is global or replace */
+  margin-bottom: 0.2rem; /* Small space before first control */
+}
+
+.filterControl { /* Wrapper for a single checkbox/dropdown + label */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Space between checkbox and its label */
+}
+
+.filterControl input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-color); /* Ensure var is global or replace */
+  cursor: pointer;
+  accent-color: var(--primary-color); /* Ensure var is global or replace */
+}
+.filterControl input[type="checkbox"]:focus {
+   outline: 2px solid rgba(59, 130, 246, 0.3); /* Focus ring */
+   outline-offset: 1px;
+}
+
+
+.filterControl label { /* Label specific to a checkbox/dropdown */
+  font-size: 0.9em;
+  color: var(--muted-color); /* Ensure var is global or replace */
+  font-weight: 400;
+  cursor: pointer; /* Make label clickable */
+  user-select: none; /* Prevent text selection on click */
+}
+
+.filterDropdown { /* Style for the Card Type dropdown */
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-color); /* Ensure var is global or replace */
+  background: var(--bg-white); /* Ensure var is global or replace */
+  font-size: 0.9em;
+  width: 100%; /* Make dropdown fill its grid cell */
+  cursor: pointer;
+}
+.filterDropdown:focus {
+   border-color: var(--primary-color); /* Ensure var is global or replace */
+   outline: 2px solid rgba(59, 130, 246, 0.3);
+   outline-offset: 1px;
+}
+
+.clearButton {
+  background: none;
+  border: none;
+  color: var(--primary-color); /* Ensure var is global or replace */
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+.clearButton:hover {
+  background-color: rgba(59, 130, 246, 0.1); /* Light blue background on hover */
+  text-decoration: underline;
+}
+
+/* Responsive stacking for filters */
+@media screen and (max-width: 640px) {
+  .filterGrid {
+    grid-template-columns: 1fr; /* Stack to single column */
+    gap: 1.2rem;
+  }
+  .filterHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
