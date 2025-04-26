@@ -1,39 +1,13 @@
 /* File: styles/rewards.module.css */
 
-/* --- CSS Variables (Example - Adjust to your theme) --- */
-
-
-
 /* --- Base & Layout --- */
 .container {
   padding: 2rem clamp(1rem, 5vw, 3rem);
-  max-width: 1300px; /* Increased max-width for two columns */
+  max-width: 1100px;
   margin: auto;
-  background: var(--bg-light-gray);
-  color: var(--text-medium);
+  background: #f9fafb; /* Light Gray BG */
+  color: #374151; /* Gray-700 Text */
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-}
-
-/* --- NEW Main Layout Grid --- */
-.mainLayout {
-  display: grid;
-  grid-template-columns: minmax(450px, 1fr) minmax(400px, 1fr); /* Two columns */
-  gap: 2.5rem; /* Gap between columns */
-  margin-top: 2rem;
-}
-
-.leftColumn {
-  /* Styles specific to the left column (input form, filters, AI) */
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem; /* Space between elements in the left column */
-}
-
-.rightColumn {
-  /* Styles specific to the right column (selected cards, main results) */
-  display: flex;
-  flex-direction: column;
-  gap: 1rem; /* Smaller gap within right column */
 }
 
 /* --- Hero/Header --- */
@@ -42,39 +16,43 @@
   font-size: clamp(1.8rem, 5vw, 2.5rem);
   font-weight: 700;
   margin-bottom: 1rem;
-  color: var(--text-dark);
+  color: #111827; /* Gray-900 */
 }
 
 .heroDescription {
-  /* Removed text-align: center */
+  text-align: center;
   font-size: 1.05rem;
   line-height: 1.6;
-  /* Removed max-width and margin */
-  color: var(--text-light);
-  margin-bottom: 0; /* Rely on column gap */
+  max-width: 720px;
+  margin: 0 auto 1rem;
+  color: #6b7280; /* Gray-500 */
 }
-.heroDescription strong {
-    color: var(--text-medium);
+
+.heroNote {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #6b7280; /* Gray-500 */
+  margin-bottom: 2rem;
 }
 
 /* --- Controls (Dropdown) --- */
 .selectorGroup {
   display: flex;
   justify-content: center;
-  margin: 2rem auto 0 auto; /* Adjusted margin */
+  margin: 2rem auto 2.5rem auto;
   flex-wrap: wrap;
   gap: 1.5rem;
   padding: 1rem 1.5rem;
-  background-color: var(--bg-white);
+  background-color: #ffffff; /* White */
   border-radius: 8px;
   max-width: 600px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  border: 1px solid var(--border-color);
+  border: 1px solid #d1d5db; /* Gray-300 */
 }
 .selectorGroup label {
   margin-right: 0.5rem;
   font-weight: 500;
-  color: var(--text-dark);
+  color: #111827; /* Gray-900 */
   font-size: 0.9em;
   display: inline-block;
   vertical-align: middle;
@@ -82,8 +60,8 @@
 .selectBox {
   padding: 0.6rem 1rem;
   border-radius: 6px;
-  border: 1px solid var(--border-color);
-  background: var(--bg-white);
+  border: 1px solid #d1d5db; /* Gray-300 */
+  background: #ffffff; /* White */
   font-size: 0.95rem;
   min-width: 240px;
   cursor: pointer;
@@ -96,22 +74,17 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  box-sizing: border-box; /* Added for consistency */
-  width: auto; /* Let it size naturally or set max-width */
-}
-.selectBox:focus {
-    border-color: var(--primary-blue);
-    box-shadow: 0 0 0 3px var(--primary-blue-focus);
-    outline: none;
 }
 
 /* --- Input Form --- */
 .inputGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Adjust minmax */
-  gap: 1rem 1.2rem; /* Adjust gap */
-  margin-bottom: 0; /* Rely on column gap */
-  /* Removed max-width and margin auto */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem 1.8rem;
+  margin-bottom: 2.5rem; /* Reduced margin */
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .inputGroup {
@@ -122,7 +95,7 @@
 .inputGroup label {
   font-size: 0.9em;
   font-weight: 500;
-  color: var(--text-dark);
+  color: #111827; /* Gray-900 */
   margin-bottom: 0.5rem;
   text-transform: capitalize;
 }
@@ -130,31 +103,31 @@
 .inputGroup input,
 .inputField { /* Apply consistent input styling */
   padding: 0.8rem;
-  border: 1px solid var(--border-color);
+  border: 1px solid #d1d5db; /* Gray-300 */
   border-radius: 6px;
   font-size: 1rem;
-  background-color: var(--bg-white);
+  background-color: #ffffff; /* White */
   box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  width: 100%;
-  box-sizing: border-box;
+  width: 100%; /* Ensure inputs fill container */
+  box-sizing: border-box; /* Include padding and border in width */
 }
 
 .inputGroup input:focus,
 .inputField:focus {
-  border-color: var(--primary-blue);
-  box-shadow: 0 0 0 3px var(--primary-blue-focus);
+  border-color: #3b82f6; /* Blue-500 */
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
   outline: none;
 }
 
 /* --- Filter Section --- */
 .filterContainer {
   padding: 1.5rem;
-  margin: 0; /* Remove auto margins */
-  /* Removed max-width */
-  background-color: var(--bg-white);
+  margin: 0 auto 2.5rem auto; /* Position between form and results */
+  max-width: 1000px;
+  background-color: #ffffff;
   border-radius: 8px;
-  border: 1px solid var(--border-color);
+  border: 1px solid #d1d5db;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
@@ -162,23 +135,23 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+  flex-wrap: wrap; /* Allow wrapping */
+  gap: 0.5rem; /* Add gap */
   margin-bottom: 1.5rem;
   padding-bottom: 0.8rem;
-  border-bottom: 1px solid var(--border-color-light);
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .filterHeader h4 {
   margin: 0;
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--text-dark);
+  color: #111827;
 }
 
 .filterGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* Adjust minmax */
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 1rem 1.5rem;
 }
 
@@ -191,7 +164,7 @@
 .filterGroup label.groupLabel {
   font-weight: 600;
   font-size: 0.95em;
-  color: #1f2937; /* Gray-800 - Consider var(--text-medium) */
+  color: #1f2937; /* Gray-800 */
   margin-bottom: 0.2rem;
 }
 
@@ -205,66 +178,67 @@
   width: 1rem;
   height: 1rem;
   border-radius: 4px;
-  border: 1px solid var(--border-color);
+  border: 1px solid #d1d5db;
   cursor: pointer;
-  accent-color: var(--primary-blue);
+  accent-color: #2563eb; /* Blue-600 */
   margin-top: 1px;
-  flex-shrink: 0;
+  flex-shrink: 0; /* Prevent checkbox shrinking */
 }
 .filterControl input[type="checkbox"]:focus {
-    outline: 2px solid var(--primary-blue-focus);
+    outline: 2px solid rgba(59, 130, 246, 0.3);
     outline-offset: 1px;
 }
 
 .filterControl label {
   font-size: 0.9em;
-  color: var(--text-light);
+  color: #4b5563; /* Gray-600 */
   font-weight: 400;
   cursor: pointer;
   user-select: none;
-  line-height: 1.3;
+  line-height: 1.3; /* Prevent text wrapping weirdly */
 }
 
 .filterDropdown {
-  padding: 0.6rem 1rem;
+  padding: 0.6rem 1rem; /* Match selectBox padding */
   border-radius: 6px;
-  border: 1px solid var(--border-color);
-  background: var(--bg-white);
+  border: 1px solid #d1d5db;
+  background: #ffffff;
   font-size: 0.9em;
   width: 100%;
   cursor: pointer;
   box-shadow: inset 0 1px 2px rgba(0,0,0,0.03);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
   box-sizing: border-box;
+  /* Add dropdown arrow */
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
   background-position: right 0.5rem center;
   background-repeat: no-repeat;
   background-size: 1.5em 1.5em;
-  padding-right: 2.5rem;
+  padding-right: 2.5rem; /* Space for arrow */
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 .filterDropdown:focus {
-    border-color: var(--primary-blue);
-    box-shadow: 0 0 0 3px var(--primary-blue-focus);
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
     outline: none;
 }
 
 .clearButton {
   background: none;
   border: none;
-  color: var(--primary-blue);
+  color: #3b82f6;
   font-size: 0.85rem;
   font-weight: 500;
   cursor: pointer;
   padding: 0.3rem 0.5rem;
   border-radius: 4px;
   transition: background-color 0.2s ease;
-  white-space: nowrap;
+  white-space: nowrap; /* Prevent wrapping */
 }
 .clearButton:hover {
-  background-color: rgba(59, 130, 246, 0.1); /* Consider var */
+  background-color: rgba(59, 130, 246, 0.1);
   text-decoration: underline;
 }
 
@@ -273,32 +247,18 @@
 .resultsTitle {
   text-align: center;
   margin-bottom: 1.5rem;
-  margin-top: 0; /* Removed default margin */
-  color: var(--text-dark);
+  color: #111827;
   font-weight: 600;
-  font-size: 1.4rem; /* Slightly smaller title */
-}
-.resultsCount {
-  font-size: 0.8em;
-  font-weight: 400;
-  color: var(--text-light);
-  margin-left: 0.5rem;
+  font-size: 1.5rem;
 }
 
-
-/* --- Buttons (AI/Compare) --- */
-.stickyButtonContainer { /* NEW: Container for buttons */
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-top: 1rem; /* Space above buttons */
-    margin-bottom: 0; /* Rely on column gap */
-    /* position: sticky;
-    bottom: 1rem;
-    background: var(--bg-light-gray);
-    padding: 1rem 0;
-    z-index: 50; /* Optional stickiness */
+/* --- Buttons --- */
+.buttonGroup {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
 }
 
 .primaryBtn,
@@ -318,10 +278,10 @@
 }
 
 .primaryBtn {
-  background-color: var(--primary-blue);
+  background-color: #2563eb; /* Blue-600 */
 }
 .primaryBtn:hover {
-  background-color: var(--primary-blue-dark);
+  background-color: #1d4ed8; /* Blue-700 */
 }
 .primaryBtn:disabled {
   background-color: #9ca3af; /* Gray-400 */
@@ -329,21 +289,21 @@
 }
 
 .secondaryBtn {
-  background-color: var(--secondary-gray);
+  background-color: #6b7280; /* Gray-500 */
 }
 .secondaryBtn:hover {
-  background-color: var(--secondary-gray-dark);
+  background-color: #4b5563; /* Gray-600 */
 }
 .secondaryBtn:disabled {
-    background-color: #9ca3af;
-    cursor: not-allowed;
+   background-color: #9ca3af;
+   cursor: not-allowed;
 }
 
 /* --- Error Message --- */
 .errorMessage {
-    color: var(--danger-color);
-    margin-top: 1rem; /* Add space if buttons aren't sticky */
-    margin-bottom: 0; /* Rely on column gap */
+    color: #dc2626; /* Red-600 */
+    margin-top: -1rem;
+    margin-bottom: 1.5rem;
     font-weight: 500;
     text-align: center;
 }
@@ -352,19 +312,19 @@
 .cardList {
   list-style: none;
   padding: 0;
-  margin: 0; /* Remove auto margins */
-  /* Removed max-width */
+  margin: 0 auto;
+  max-width: 850px;
 }
 
 .cardItem {
-  background-color: var(--bg-white);
-  border: 1px solid var(--border-color-light);
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb; /* Slightly lighter border */
   border-radius: 10px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
   display: flex;
   gap: 1.5rem;
-  align-items: flex-start;
+  align-items: flex-start; /* Align items top */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   transition: box-shadow 0.2s ease-in-out;
 }
@@ -380,93 +340,93 @@
   flex-shrink: 0;
   border-radius: 6px;
   border: 1px solid #eee;
-  margin-top: 5px;
+  margin-top: 5px; /* Align better */
 }
 
 .cardDetails {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
+  gap: 0.7rem; /* Increased gap slightly */
 }
 
 .cardTitle {
- /* No changes needed */
+ /* Remove bottom margin, rely on gap */
 }
 
 .cardTitle strong {
   font-size: 1.15em;
   font-weight: 600;
-  color: var(--text-dark);
+  color: #111827;
   line-height: 1.3;
 }
 
 .cardTitle span {
   font-size: 0.8em;
   font-weight: 400;
-  color: var(--text-light);
+  color: #6b7280;
   margin-left: 0.5rem;
   vertical-align: middle;
 }
 
 .cardValues {
   display: flex;
-  gap: 1rem 1.5rem;
+  gap: 1rem 1.5rem; /* Row gap, Column gap */
   flex-wrap: wrap;
   font-size: 1em;
-  padding-bottom: 0.7rem;
-  margin-bottom: 0.7rem;
-  border-bottom: 1px solid var(--bg-light);
+  padding-bottom: 0.7rem; /* Increased padding */
+  margin-bottom: 0.7rem; /* Increased margin */
+  border-bottom: 1px solid #f3f4f6; /* Lighter separator */
 }
 
-.cardValues div {
+.cardValues div { /* Ensure items wrap nicely */
   display: flex;
   align-items: center;
 }
 
 .cardValues strong {
    font-weight: 500;
-   color: var(--text-light);
+   color: #6b7280;
    margin-right: 0.4rem;
-   white-space: nowrap;
+   white-space: nowrap; /* Prevent label wrapping */
 }
 
 .valueGood {
-  color: var(--value-good);
+  color: #16a34a; /* Green-600 */
   font-weight: 700;
-  font-size: 1.05em;
+  font-size: 1.05em; /* Slightly reduced */
 }
 
 .valueBad {
-  color: var(--value-bad);
+  color: #dc2626; /* Red-600 */
   font-weight: 700;
-  font-size: 1.05em;
+  font-size: 1.05em; /* Slightly reduced */
 }
 
 .valueOngoing {
     font-weight: 700;
     font-size: 1.05em;
-    color: var(--text-medium);
+    color: #374151; /* Gray-700 */
 }
 
 .cardSubtext {
-  color: var(--text-muted);
-  font-size: 0.85em;
+  color: #4b5563; /* Gray-600 */
+  font-size: 0.85em; /* Slightly smaller */
   line-height: 1.4;
 }
 
 .bonusBox {
-  background: #fefce8; /* Yellow-50 - Consider var */
-  padding: 0.6rem 0.9rem;
+  background: #fefce8; /* Yellow-50 */
+  padding: 0.6rem 0.9rem; /* Adjusted padding */
   border-radius: 6px;
-  border: 1px solid #fef08a; /* Yellow-200 - Consider var */
-  color: #854d0e; /* Yellow-900 - Consider var */
+  border: 1px solid #fef08a; /* Yellow-200 */
+  color: #854d0e; /* Yellow-900 */
   font-size: 0.88em;
   line-height: 1.5;
 }
 
 .bonusBox strong {
-  color: #a16207; /* Amber-700 - Consider var */
+  color: #a16207; /* Amber-700 */
   font-weight: 600;
 }
 
@@ -475,33 +435,33 @@
 }
 
 .perksSection strong {
-    color: var(--text-medium);
+    color: #374151; /* Gray-700 */
     font-weight: 600;
     display: block;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.3rem; /* Increased space */
 }
 
 .perksSection ul {
-  margin: 0 0 0 0.5rem;
+  margin: 0 0 0 0.5rem; /* Adjust margin */
   padding: 0;
-  list-style: none;
+  list-style: none; /* Remove default list style */
 }
 
 .perksSection li {
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.4rem; /* Increased space */
     line-height: 1.4;
-    color: var(--text-muted);
-    padding-left: 1rem;
+    color: #4b5563; /* Gray-600 */
+    padding-left: 1rem; /* Add padding for pseudo-element */
     position: relative;
 }
-
+/* Add custom bullet */
 .perksSection li::before {
-  content: '\2022';
+  content: '\2022'; /* Bullet character */
   color: #9ca3af; /* Gray-400 */
   font-weight: bold;
   display: inline-block;
   width: 1em;
-  margin-left: -1.2em;
+  margin-left: -1.2em; /* Position before text */
   position: absolute;
   left: 0.5em;
 }
@@ -525,45 +485,45 @@
   transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
   cursor: pointer;
   display: inline-block;
-  border: 1px solid transparent;
+  border: 1px solid transparent; /* Base border */
 }
 .cardLinks a:active {
   transform: scale(0.97);
 }
-.cardLinks a:focus-visible {
+.cardLinks a:focus-visible { /* Add focus style */
   outline: none;
-  box-shadow: 0 0 0 3px var(--primary-blue-focus);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
 }
 
 
 .reviewLink {
-  background-color: var(--secondary-gray);
-  border-color: var(--secondary-gray);
+  background-color: #6b7280; /* Gray-500 */
+  border-color: #6b7280;
 }
 .reviewLink:hover {
-  background-color: var(--secondary-gray-dark);
-  border-color: var(--secondary-gray-dark);
-  color: white;
+  background-color: #4b5563; /* Gray-600 */
+  border-color: #4b5563;
+  color: white; /* Ensure text stays white */
 }
 
 .applyLink {
-  background-color: var(--primary-blue);
-  border-color: var(--primary-blue);
+  background-color: #2563eb; /* Blue-600 */
+  border-color: #2563eb;
 }
 .applyLink:hover {
-  background-color: var(--primary-blue-dark);
-  border-color: var(--primary-blue-dark);
-  color: white;
+  background-color: #1d4ed8; /* Blue-700 */
+  border-color: #1d4ed8;
+  color: white; /* Ensure text stays white */
 }
 
 .noResults {
     text-align: center;
-    color: var(--text-light);
-    padding: 3rem 1rem;
+    color: #6b7280;
+    padding: 3rem 1rem; /* More padding */
     font-style: italic;
     font-size: 1.05em;
-    background-color: var(--bg-white);
-    border: 1px dashed var(--border-color);
+    background-color: #ffffff;
+    border: 1px dashed #d1d5db;
     border-radius: 8px;
 }
 
@@ -571,35 +531,35 @@
 /* --- Comparison Modal Styles --- */
 .comparisonOverlay {
     position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-    background-color: rgba(17, 24, 39, 0.8); /* Darker overlay */
+    background-color: rgba(17, 24, 39, 0.8); /* Darker overlay (Gray-900 at 80%) */
     display: flex; justify-content: center; align-items: center;
     z-index: 1000; overflow-y: auto; padding: 1rem;
 }
 .comparisonContent {
-    background-color: var(--bg-white); border-radius: 12px; padding: 1.5rem 2rem 2rem 2rem;
+    background-color: white; border-radius: 12px; padding: 1.5rem 2rem 2rem 2rem; /* Adjusted padding */
     width: 95%; max-width: 1200px; max-height: 90vh; overflow-y: auto;
     position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 .closeButton {
     position: absolute; top: 10px; right: 15px; background: none; border: none;
     font-size: 2.2rem; cursor: pointer; color: #9ca3af; line-height: 1; padding: 0.2rem;
-    transition: color 0.2s ease; z-index: 15;
+    transition: color 0.2s ease; z-index: 15; /* Ensure button is above sticky headers */
 }
 .closeButton:hover {
-    color: var(--secondary-gray-dark);
+    color: #4b5563; /* Gray-600 */
 }
 .comparisonContent h3 {
     text-align: center; margin-top: 0; margin-bottom: 1.5rem; font-size: 1.6rem; font-weight: 600;
-    padding-right: 30px; color: var(--text-dark);
+    padding-right: 30px; /* Space for close button */
 }
 
 .comparisonTableWrapper {
   width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  overflow-x: auto; /* Enable horizontal scroll */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
   padding-bottom: 10px;
   margin-bottom: 1rem;
-  border: 1px solid var(--border-color-light);
+  border: 1px solid #e5e7eb;
   border-radius: 8px;
 }
 
@@ -608,22 +568,22 @@
     /* gridTemplateColumns set dynamically in JSX */
     gap: 0px;
     font-size: 0.9em;
-    min-width: fit-content;
-    border-collapse: collapse;
+    min-width: fit-content; /* Crucial for horizontal scroll */
+    border-collapse: collapse; /* Helps with borders */
 }
 
 .compareCell {
   padding: 0.8rem 1rem;
-  border-bottom: 1px solid var(--border-color-light);
-  border-right: 1px solid var(--border-color-light);
-  vertical-align: top;
-  font-size: 1em;
+  border-bottom: 1px solid #e5e7eb;
+  border-right: 1px solid #e5e7eb;
+  vertical-align: top; /* Default alignment */
+  font-size: 1em; /* Inherit from grid or set base */
   line-height: 1.5;
-  text-align: center;
+  text-align: center; /* Default center */
 }
 /* Last cell in any row */
 .comparisonGrid > div:last-child,
-.comparisonGrid > div:nth-child(4n) { /* Adjust '4n' if max cards change */
+.comparisonGrid > div:nth-child(4n) { /* Adjust '4n' if max cards change (label + 3 cards) */
     border-right: none;
 }
 /* Cells in the last row */
@@ -633,58 +593,57 @@
 
 
 .compareCellHeader {
-  background-color: var(--bg-light);
+  background-color: #f3f4f6; /* Gray-100 */
   font-weight: 600;
   text-align: center;
   position: sticky;
-  top: 0;
+  top: 0; /* Stick to top of wrapper */
   z-index: 10;
-  border-bottom: 1px solid var(--border-color);
-  color: var(--text-dark);
+  border-bottom: 1px solid #d1d5db;
 }
 .compareCardImage {
     height: 45px;
-    max-width: 72px;
+    max-width: 72px; /* Limit width */
     object-fit: contain;
     margin-bottom: 0.5rem;
     border-radius: 4px;
-    border: 1px solid var(--border-color-light);
-    background-color: var(--bg-white);
+    border: 1px solid #e5e7eb;
+    background-color: white; /* BG for transparent PNGs */
 }
 .compareIssuer {
     font-size: 0.9em;
-    color: var(--text-light);
+    color: #6b7280;
     font-weight: 400;
 }
 
 .compareCellLabel {
-  background-color: var(--bg-light-gray);
+  background-color: #f9fafb; /* Gray-50 */
   font-weight: 600;
   text-align: right;
-  border-right: 1px solid var(--border-color) !important;
-  color: var(--text-medium);
+  border-right: 1px solid #d1d5db !important; /* Stronger border */
+  color: #374151; /* Gray-700 */
   position: sticky;
-  left: 0;
-  z-index: 5;
-  vertical-align: middle;
+  left: 0; /* Stick to left of wrapper */
+  z-index: 5; /* Below header */
+  vertical-align: middle; /* Align label text middle */
 }
 
 .compareCellData {
-  background-color: var(--bg-white);
-  text-align: left;
-  color: var(--text-medium);
-  vertical-align: top;
+  background-color: white;
+  text-align: left; /* Align data left */
+  color: #374151;
+  vertical-align: top; /* Align data top */
 }
 .compareList {
     margin: 0;
-    padding-left: 1.2em;
+    padding-left: 1.2em; /* Indent list */
     text-align: left;
-    font-size: 1em;
+    font-size: 1em; /* Match cell font size */
     list-style-position: outside;
-    list-style-type: disc;
+    list-style-type: disc; /* Ensure bullets show */
 }
 .compareList li {
-    margin-bottom: 0.4em;
+    margin-bottom: 0.4em; /* Space list items */
 }
 
 .compareLink {
@@ -707,74 +666,74 @@
 }
 
 .compareLink.reviewLink {
-    background-color: var(--secondary-gray);
-    border-color: var(--secondary-gray);
+    background-color: #6b7280;
+    border-color: #6b7280;
 }
 .compareLink.reviewLink:hover {
-    background-color: var(--secondary-gray-dark);
-    border-color: var(--secondary-gray-dark);
+    background-color: #4b5563;
+    border-color: #4b5563;
     text-decoration: none;
     color: white;
 }
 
 .compareLink.applyLink {
-    background-color: var(--primary-blue);
+    background-color: #2563eb;
     color: white;
-    border-color: var(--primary-blue);
+    border-color: #2563eb;
 }
 .compareLink.applyLink:hover {
-    background-color: var(--primary-blue-dark);
-    border-color: var(--primary-blue-dark);
+    background-color: #1d4ed8;
+    border-color: #1d4ed8;
     text-decoration: none;
     color: white;
 }
 .compareLink:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 3px var(--primary-blue-focus);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
 }
 
 
 .smallText { font-size: 0.9em; }
-.italicText { font-style: italic; color: var(--text-light); }
+.italicText { font-style: italic; color: #6b7280; }
 
 
 /* --- AI Section Styles --- */
 .aiSection {
-   /* Removed text-align center */
-   margin-top: 0; /* Rely on column gap */
-   border-top: none; /* Remove top border */
-   padding-top: 0; /* Remove top padding */
+   text-align: center;
+   margin-top: 3rem;
+   border-top: 1px solid #e5e7eb;
+   padding-top: 2.5rem;
 }
 .aiSuggestionBox {
-   max-width: 100%; /* Allow full width in column */
-   margin: 0; /* Remove auto margins */
-   background: var(--primary-blue-light-bg);
+   max-width: 800px;
+   margin: 0 auto;
+   background: #eff6ff; /* Blue-50 */
    padding: 1.5rem 2rem;
    border-radius: 8px;
-   border: 1px solid var(--primary-blue-light-border);
+   border: 1px solid #bfdbfe; /* Blue-200 */
    text-align: left;
    line-height: 1.65;
-   color: var(--text-medium);
+   color: #1f2937; /* Gray-800 */
    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
 }
-
+/* Styles applied via formatAiOutput (h3, strong, ul, li, hr) */
 .aiSuggestionBox h3 {
-    margin-top: 0;
+    margin-top: 0; /* Remove default margin if needed */
     margin-bottom: 0.8rem;
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--primary-blue-light-border);
+    border-bottom: 1px solid #dbeafe; /* Lighter blue */
     font-size: 1.2em;
     font-weight: 600;
-    color: var(--primary-blue-text-dark);
+    color: #1e3a8a; /* Blue-800 */
 }
 .aiSuggestionBox strong {
     font-weight: 600;
-    color: var(--text-dark);
+    color: #1f2937;
 }
 .aiSuggestionBox ul {
     margin-top: 0.5rem;
     margin-bottom: 1rem;
-    padding-left: 1.5rem;
+    padding-left: 1.5rem; /* Indent lists */
     list-style: disc;
 }
 .aiSuggestionBox li {
@@ -782,208 +741,20 @@
 }
 .aiSuggestionBox hr {
     border: none;
-    border-top: 1px dashed var(--primary-blue-light-border);
+    border-top: 1px dashed #bfdbfe; /* Dashed blue line */
     margin: 1.5rem 0;
 }
-.aiSuggestionBox p {
+.aiSuggestionBox p { /* Add space between paragraphs if AI generates them */
     margin-bottom: 1rem;
 }
-.aiPlaceholder {
-  color: var(--text-light);
+.aiPlaceholder { /* Style for placeholder text */
+  color: #6b7280; /* Gray-500 */
   font-style: italic;
   margin-top: 1rem;
-  text-align: center; /* Center placeholder */
-}
-
-
-/* --- NEW Selected Card Calculator Styles --- */
-.selectedCardCalculator {
-  background-color: var(--bg-white);
-  border-radius: 10px;
-  padding: 1.5rem;
-  margin-bottom: 2rem; /* Space before main results */
-  border: 1px solid var(--border-color-light);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-}
-.selectedCardCalculator h4 {
-  margin-top: 0;
-  margin-bottom: 1.5rem;
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: var(--text-dark);
-  border-bottom: 1px solid var(--border-color-light);
-  padding-bottom: 0.8rem;
-}
-.cardSelectorContainer {
-  margin-bottom: 1.5rem;
-}
-.cardSelectorContainer label {
-  display: block;
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-  font-size: 0.95em;
-  color: var(--text-medium);
-}
-.cardSelectorDropdown {
-  /* Reuses .selectBox styles */
-  width: 100%; /* Make dropdown full width */
-  margin-bottom: 1rem; /* Space before chips */
-}
-.selectedCardChips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  min-height: 2.5rem; /* Prevent layout shift */
-}
-.selectedCardChip {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  background-color: var(--info-bg); /* Light blue */
-  color: var(--info-heading); /* Darker blue */
-  padding: 0.3rem 0.8rem;
-  border-radius: 9999px; /* Pill shape */
-  font-size: 0.85em;
-  font-weight: 500;
-  border: 1px solid var(--info-border);
-}
-.selectedCardChip button {
-  background: none;
-  border: none;
-  color: var(--text-light);
-  font-size: 1.1em;
-  font-weight: bold;
-  line-height: 1;
-  padding: 0 0.1rem;
-  margin-left: 0.2rem;
-  cursor: pointer;
-  opacity: 0.7;
-  transition: opacity 0.2s ease;
-}
-.selectedCardChip button:hover {
-  opacity: 1;
-  color: var(--danger-color);
-}
-/* Results for Selected Cards */
-.selectedCardResultsContainer {
-  margin-top: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-.selectedCardResultItem {
-  border: 1px solid var(--border-color-light);
-  border-radius: 8px;
-  padding: 1rem 1.2rem;
-  background-color: var(--bg-light); /* Slightly different background */
-}
-.selectedCardHeader {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  margin-bottom: 0.8rem;
-}
-.selectedCardImage {
-  height: 30px; /* Smaller image */
-  width: 48px;
-  object-fit: contain;
-  border-radius: 4px;
-  border: 1px solid var(--border-color-light);
-  flex-shrink: 0;
-}
-.selectedCardHeader strong {
-  font-weight: 600;
-  color: var(--text-dark);
-  font-size: 1.05em;
-}
-.selectedValue {
-  font-size: 0.95em;
-  margin-bottom: 0.8rem;
-  color: var(--text-medium);
-}
-.selectedValue span { /* Good/Bad value styling */
-  font-size: 1.1em; /* Make value stand out */
-  margin-left: 0.3rem;
-  margin-right: 0.5rem;
-  /* Inherits .valueGood/.valueBad styles */
-}
-.selectedValue small {
-  display: block; /* Put details on next line */
-  font-size: 0.85em;
-  color: var(--text-light);
-  margin-top: 0.3rem;
-}
-.categoryBreakdown {
-  margin-top: 0.5rem;
-}
-.categoryBreakdown summary {
-  cursor: pointer;
-  font-weight: 500;
-  font-size: 0.9em;
-  color: var(--text-muted);
-  padding: 0.3rem 0;
-}
-.categoryBreakdown summary::marker { /* Style dropdown arrow */
-  color: var(--text-light);
-}
-.categoryBreakdown summary:hover {
-  color: var(--text-dark);
-}
-.categoryBreakdownList {
-  list-style: none;
-  padding: 0.8rem 0 0 0.5rem; /* Indent list slightly */
-  margin: 0;
-  font-size: 0.85em;
-  color: var(--text-muted);
-}
-.categoryBreakdownList li {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.4rem;
-  padding-bottom: 0.4rem;
-  border-bottom: 1px dotted var(--border-color-light);
-}
-.categoryBreakdownList li:last-child {
-  margin-bottom: 0;
-  border-bottom: none;
-}
-.categoryBreakdownList li span:first-child { /* Category Name */
-  margin-right: 1rem;
-  text-transform: capitalize;
-}
-.categoryBreakdownList li span:last-child { /* Points/Value */
-  text-align: right;
-  white-space: nowrap;
-  color: var(--text-medium);
-  font-weight: 500;
-}
-.columnSeparator { /* Style for HR between sections in right column */
-  border: none;
-  border-top: 1px solid var(--border-color);
-  margin: 2.5rem 0;
 }
 
 
 /* --- Media Queries --- */
-@media screen and (max-width: 992px) {
-  .mainLayout {
-    grid-template-columns: 1fr; /* Stack columns */
-    gap: 2rem; /* Adjust gap when stacked */
-  }
-  .leftColumn {
-    gap: 2rem; /* Adjust gap when stacked */
-  }
-  .rightColumn {
-    gap: 1.5rem; /* Adjust gap when stacked */
-  }
-  .selectedCardCalculator {
-    margin-bottom: 2.5rem; /* Ensure space when stacked */
-  }
-  .columnSeparator {
-    display: none; /* Hide separator when stacked */
-  }
-}
-
 @media screen and (max-width: 768px) {
   .cardItem {
     flex-direction: column;
@@ -1008,28 +779,29 @@
       justify-content: center;
   }
   .perksSection ul {
-    margin-left: 0;
+    margin-left: 0; /* Center list */
     padding-left: 0;
-    list-style-position: inside;
+    list-style-position: inside; /* Keep bullets closer */
     text-align: center;
   }
-  .perksSection li::before {
+  .perksSection li::before { /* Hide custom bullet, rely on inside */
     display: none;
   }
   .perksSection li {
-      padding-left: 0;
-      position: static;
+     padding-left: 0;
+     position: static;
   }
 
   .comparisonGrid {
       font-size: 0.85em;
+      /* Label column might become too wide, let it scroll */
   }
   .compareCell {
-      padding: 0.6rem 0.8rem;
+      padding: 0.6rem 0.8rem; /* Reduce padding */
   }
   .compareCellLabel {
-      font-size: 0.95em;
-      padding: 0.6rem 0.5rem;
+      font-size: 0.95em; /* Make labels slightly smaller */
+      padding: 0.6rem 0.5rem; /* Adjust label padding */
   }
 }
 
@@ -1040,9 +812,6 @@
     }
     .filterHeader {
         /* Already handles wrap, looks ok */
-    }
-    .inputGrid {
-        grid-template-columns: 1fr; /* Stack inputs */
     }
 }
 
@@ -1057,16 +826,22 @@
     font-size: 1rem;
   }
   .cardImage {
-    width: 80px;
+    width: 80px; /* Slightly larger */
     height: 50px;
   }
-  .stickyButtonContainer button { /* Make buttons wider on small screens */
+  .inputGrid {
+      grid-template-columns: 1fr; /* Stack inputs */
+  }
+  .buttonGroup button {
       width: 90%;
       font-size: 0.95rem;
       padding: 0.8rem 1rem;
   }
+  .filterGrid {
+      grid-template-columns: 1fr; /* Already stacked */
+  }
   .comparisonContent {
-      padding: 1rem;
+      padding: 1rem; /* Reduce padding */
   }
   .comparisonContent h3 {
     font-size: 1.3rem;
@@ -1078,27 +853,17 @@
   }
   .compareCell {
       padding: 0.5rem;
-      min-width: 90px;
+      min-width: 90px; /* Further reduce min-width */
       line-height: 1.4;
   }
   .compareCellLabel {
-      padding: 0.5rem 0.3rem;
-      font-size: 0.9em;
+     padding: 0.5rem 0.3rem;
+     font-size: 0.9em;
   }
   .aiSuggestionBox {
       padding: 1rem 1.2rem;
   }
   .aiSuggestionBox h3 {
     font-size: 1.1em;
-  }
-  /* Adjust selected card section padding/font */
-  .selectedCardCalculator {
-    padding: 1rem;
-  }
-  .selectedCardCalculator h4 {
-    font-size: 1.15rem;
-  }
-  .selectedCardResultItem {
-    padding: 0.8rem 1rem;
   }
 }
