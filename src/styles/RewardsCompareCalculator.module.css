@@ -1,14 +1,5 @@
 /* /styles/RewardsCompareCalculator.module.css */
 
-/*
-  Reminder: Ensure your global CSS file defines the @font-face rules
-  for 'Roboto Condensed' and 'Playfair Display', and includes
-  CSS variables (--bg-white, --text-dark, etc.).
-
-  Also, add <link rel="preload"> tags for these fonts in your HTML <head>
-  for optimal performance.
-*/
-
 
 
 .calculatorContainer {
@@ -47,6 +38,7 @@ border-bottom: 1px solid var(--border-color-light, #e5e7eb);
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem 1.5rem;
+  align-items: start; /* Keep columns aligned at the top */
 }
 
 .cardSelectorColumn {
@@ -56,6 +48,7 @@ border-bottom: 1px solid var(--border-color-light, #e5e7eb);
   padding: 1rem;
   border-radius: 8px;
   border: 1px solid var(--border-color-light, #e5e7eb);
+  overflow: visible; /* Ensure no hidden overflow */
 }
 
 .dropdownGroup {
@@ -63,6 +56,7 @@ border-bottom: 1px solid var(--border-color-light, #e5e7eb);
   display: flex;
   flex-direction: column;
   width: 100%;
+  flex-shrink: 0;
 }
 
 .dropdownGroup label {
@@ -87,22 +81,25 @@ border-bottom: 1px solid var(--border-color-light, #e5e7eb);
   box-shadow: 0 0 0 3px var(--primary-blue-focus, rgba(59, 130, 246, 0.2));
   outline: none;
 }
+.dropdownGroup select:disabled {
+  background-color: var(--bg-light-gray);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
 
 /* Sticky Header Styles */
 .stickyCardHeader {
   position: sticky;
-  /* Adjust based on your actual fixed site header height */
-  top: 4.5rem;
+  top: 4.5rem; /* Adjust based on site header */
   z-index: 10;
-  background-color: var(--bg-light-gray, #f9fafb); /* Match column */
-  padding: 0.5rem 0 1rem 0; /* Padding inside sticky area */
+  background-color: var(--bg-light-gray, #f9fafb);
+  padding: 0.5rem 0 1rem 0;
   width: 100%;
   border-radius: 6px;
-  /* Takes up remaining space in flex column */
   flex-grow: 1;
-  display: flex; /* To vertically center placeholder text */
-  flex-direction: column; /* Stack content normally */
-  justify-content: center; /* Center placeholder text */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .selectedCardInfo {
@@ -111,21 +108,20 @@ border-bottom: 1px solid var(--border-color-light, #e5e7eb);
   align-items: center;
   gap: 0.75rem;
   text-align: center;
-  width: 100%; /* Ensure it fills sticky header width */
+  width: 100%;
 }
 
 .selectedCardInfoPlaceholder {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 180px; /* Minimum height for placeholder */
+  min-height: 180px;
   color: var(--text-light);
   font-size: 0.9rem;
   text-align: center;
   width: 100%;
   flex-grow: 1;
 }
-
 
 .cardInfoImage {
   height: 80px;
@@ -201,7 +197,6 @@ border-bottom: 1px solid var(--border-color-light, #e5e7eb);
 }
 .ratesLink:hover { text-decoration: underline; }
 
-
 /* --- Input Section --- */
 .inputHeader { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; }
 .inputHeader h2 { margin: 0; padding: 0; border: none; flex-grow: 1; }
@@ -219,12 +214,12 @@ border-bottom: 1px solid var(--border-color-light, #e5e7eb);
 
 /* --- Results Section --- */
 .tableWrapper { overflow-x: auto; width: 100%; }
-.rewardsTable { width: 100%; border-collapse: separate; border-spacing: 0; background: var(--bg-white, #ffffff); font-size: 0.9rem; min-width: 600px; font-family: 'Roboto Condensed', sans-serif; }
+.rewardsTable { width: 100%; border-collapse: separate; border-spacing: 0; background: var(--bg-white, #ffffff); font-size: 0.9rem; min-width: 450px; font-family: 'Roboto Condensed', sans-serif; }
 
 .rewardsTable th, .rewardsTable td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border-color-light, #e5e7eb); border-right: 1px solid var(--border-color-light, #e5e7eb); text-align: center; vertical-align: middle; }
-.rewardsTable th:first-child, .rewardsTable td:first-child { text-align: left; font-weight: 500; color: var(--text-medium, #374151); min-width: 150px; }
+.rewardsTable th:first-child, .rewardsTable td:first-child { text-align: left; font-weight: 500; color: var(--text-medium, #374151); min-width: 140px; }
 .rewardsTable th:last-child, .rewardsTable td:last-child { border-right: none; }
-.rewardsTable thead th { background: var(--bg-light-gray, #f9fafb); font-weight: 700; font-family: 'Roboto Condensed', sans-serif; color: var(--text-dark, #111827); font-size: 0.85rem; padding: 0.8rem 0.8rem; position: sticky; top: 0; z-index: 1; white-space: nowrap; }
+.rewardsTable thead th { background: var(--bg-light-gray, #f9fafb); font-weight: 700; font-family: 'Roboto Condensed', sans-serif; color: var(--text-dark, #111827); font-size: 0.85rem; padding: 0.8rem 0.8rem; position: sticky; top: 0; z-index: 1; white-space: normal; }
 .rewardsTable tbody tr:last-child td { border-bottom: none; }
 .rewardsTable td { color: var(--text-medium, #374151); }
 .rewardsTable .valueGood { color: var(--value-good, #16a34a); }
@@ -241,18 +236,27 @@ border-bottom: 1px solid var(--border-color-light, #e5e7eb);
 .spacerRow:last-of-type td { border-bottom: 1px solid var(--border-color, #d1d5db); }
 
 .tooltip { position: relative; cursor: help; }
-.tooltip .tooltiptext { visibility: hidden; width: max-content; max-width: 250px; background-color: #333; color: #fff; text-align: center; border-radius: 6px; padding: 5px 8px; position: absolute; z-index: 10; bottom: 125%; left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.3s; font-size: 0.8rem; font-weight: 400; white-space: pre-wrap; font-family: sans-serif; }
+.tooltip .tooltiptext { visibility: hidden; width: max-content; max-width: 200px; background-color: #333; color: #fff; text-align: center; border-radius: 6px; padding: 5px 8px; position: absolute; z-index: 10; bottom: 125%; left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.3s; font-size: 0.8rem; font-weight: 400; white-space: pre-wrap; font-family: sans-serif; pointer-events: none; }
 .tooltip .tooltiptext::after { content: ""; position: absolute; top: 100%; left: 50%; margin-left: -5px; border-width: 5px; border-style: solid; border-color: #333 transparent transparent transparent; }
 .tooltip:hover .tooltiptext { visibility: visible; opacity: 1; }
 
 .disclaimer { font-size: 0.8rem; color: var(--text-light, #6b7280); margin-top: 1.5rem; text-align: center; padding: 0 1rem; line-height: 1.5; }
 
+/* --- Responsive --- */
 @media (max-width: 767px) {
   .inputHeader { flex-direction: column; align-items: flex-start; }
   .strategySelector { width: 100%; margin-top: 0.5rem; }
   .strategySelector select { width: 100%; }
-  .spendingInputsGrid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+  .spendingInputsGrid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 1rem; }
   .cardSelectorsGrid { grid-template-columns: 1fr; }
-  .stickyCardHeader { top: 4rem; /* Less top spacing on mobile */ }
+  /* Hide 3rd column visually on mobile */
+  .hideOnMobile { display: none; }
+
+  .stickyCardHeader { top: 4rem; }
   .selectedCardInfoPlaceholder { min-height: 100px; }
+  .rewardsTable { min-width: unset; }
+  .rewardsTable th:first-child, .rewardsTable td:first-child { min-width: 100px; font-size: 0.85rem;}
+  .rewardsTable th, .rewardsTable td { padding: 0.5rem; font-size: 0.85rem;}
+  .rewardsTable thead th { font-size: 0.75rem; padding: 0.6rem 0.5rem;}
+  .tooltip .tooltiptext { max-width: 150px; }
 }

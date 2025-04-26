@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import styles from '@/styles/RewardsCompareCalculator.module.css'; // Ensure this path is correct
 import cardsData from '@/data/finalcreditcard.json'; // Ensure this path is correct
 
@@ -13,6 +13,7 @@ const categoryDisplayNames = {
     onlineShopping: 'Online Shopping (US)', drugstores: 'Drugstores', other: 'Other'
 };
 const defaultSpend = spendingCategories.reduce((acc, cat) => ({ ...acc, [cat]: 0 }), {});
+const MOBILE_BREAKPOINT = 767; // Define mobile breakpoint width
 
 // --- Helper Functions ---
 const getCategoryMap = () => ({
@@ -102,17 +103,30 @@ export default function RewardsCompareCalculator() {
     const [spending, setSpending] = useState(defaultSpend);
     const [selectedCardNames, setSelectedCardNames] = useState([null, null, null]);
     const [redemptionStrategy, setRedemptionStrategy] = useState('best');
+    const [isMobile, setIsMobile] = useState(false);
 
+    // --- Effect to check screen size ---
+    useEffect(() => {
+        const checkScreenSize = () => {
+            setIsMobile(window.innerWidth <= MOBILE_BREAKPOINT);
+        };
+        // Check on mount
+        checkScreenSize();
+        // Add listener for resize
+        window.addEventListener('resize', checkScreenSize);
+        // Cleanup listener on unmount
+        return () => window.removeEventListener('resize', checkScreenSize);
+    }, []);
+
+    // --- Event Handlers ---
     const handleSpendingChange = (category, value) => {
         setSpending({ ...spending, [category]: Math.max(0, Number(value) || 0) });
     };
-
     const handleCardSelect = (index, cardName) => {
         const updated = [...selectedCardNames];
         updated[index] = cardName || null;
         setSelectedCardNames(updated);
     };
-
     const handleStrategyChange = (event) => {
         setRedemptionStrategy(event.target.value);
     };
@@ -152,7 +166,7 @@ export default function RewardsCompareCalculator() {
                     let annualPointsAtBonusRate = 0;
                     let annualPointsAtOtherRate = 0;
                     const spentTowardsCapSoFar = capSpendTracker[capKey] || 0;
-                    let totalSpendAtBonusRate = 0;
+                    let totalSpendAtBonusRate = 0; // Track how much spend got the bonus rate
 
                     if (capPeriod === 'year') {
                          const remainingAnnualCapRoom = Math.max(0, capLimit - spentTowardsCapSoFar);
@@ -169,7 +183,7 @@ export default function RewardsCompareCalculator() {
                             const monthlySpendAtOtherRate = Math.max(0, monthlySpend - monthlySpendAtBonusRate);
                             annualPointsAtBonusRate += monthlySpendAtBonusRate * currentMultiplier;
                             annualPointsAtOtherRate += monthlySpendAtOtherRate * otherMultiplier;
-                            totalSpendAtBonusRate += monthlySpendAtBonusRate;
+                            totalSpendAtBonusRate += monthlySpendAtBonusRate; // Accumulate monthly bonus spend
                          }
                      } else if (capPeriod === 'quarter') {
                          const quarterlyCapLimit = capLimit;
@@ -179,14 +193,15 @@ export default function RewardsCompareCalculator() {
                              const quarterlySpendAtOtherRate = Math.max(0, quarterlySpendEstimate - quarterlySpendAtBonusRate);
                              annualPointsAtBonusRate += quarterlySpendAtBonusRate * currentMultiplier;
                              annualPointsAtOtherRate += quarterlySpendAtOtherRate * otherMultiplier;
-                             totalSpendAtBonusRate += quarterlySpendAtBonusRate;
+                             totalSpendAtBonusRate += quarterlySpendAtBonusRate; // Accumulate quarterly bonus spend
                          }
                      }
                     categoryPoints = annualPointsAtBonusRate + annualPointsAtOtherRate;
+                    // Calculate an *average* multiplier for display if cap was hit
                     if (annualSpendInCategory > 0 && categoryPoints > 0) {
                          appliedMultiplier = categoryPoints / annualSpendInCategory;
                     } else if (annualSpendInCategory > 0) {
-                        appliedMultiplier = otherMultiplier;
+                        appliedMultiplier = otherMultiplier; // Fallback if points are zero
                     }
                 }
 
@@ -219,6 +234,7 @@ export default function RewardsCompareCalculator() {
                 firstYearNetValue: parseFloat(firstYearNetValue.toFixed(2)),
                 signUpBonusValue, annualFee, breakdown, breakdownTooltips,
                 cpp: parseFloat(cpp.toFixed(2)),
+                // Initialize best flags
                 isBestTotalPoints: false, isBestRewardsValue: false,
                 isLowestAnnualFee: false, isBestNetValue: false,
                 isBestFirstYearNetValue: false, isBestPerkValue: false
@@ -237,11 +253,10 @@ export default function RewardsCompareCalculator() {
 
             results.forEach(calc => {
                 if (calc) {
-                    // Only highlight if the value is positive and best (or fee is lowest)
                     calc.isBestTotalPoints = calc.totalPoints === maxPoints && calc.totalPoints > 0;
                     calc.isBestRewardsValue = calc.rewardsValue === maxRewards && calc.rewardsValue > 0;
                     calc.isBestPerkValue = calc.annualPerkValue === maxPerks && calc.annualPerkValue > 0;
-                    calc.isLowestAnnualFee = calc.annualFee === minFee; // Lowest fee is best
+                    calc.isLowestAnnualFee = calc.annualFee === minFee;
                     calc.isBestNetValue = calc.netValue === maxNet;
                     calc.isBestFirstYearNetValue = calc.firstYearNetValue === maxFirstYear;
                 }
@@ -251,24 +266,32 @@ export default function RewardsCompareCalculator() {
         return results;
     }, [selectedCardNames, spending, redemptionStrategy]);
 
+    // Determine which card slots/calculations to display based on screen size
+    const cardsToDisplayIndices = isMobile ? [0, 1] : [0, 1, 2];
+    const displayedCardCalculations = cardsToDisplayIndices.map(i => cardCalculations[i]);
+    const displayedSelectedCardNames = cardsToDisplayIndices.map(i => selectedCardNames[i]);
+
     // --- Render ---
     return (
         <div className={styles.calculatorContainer}>
 
             {/* --- Card Selection Area --- */}
             <section className={styles.cardSelectionSection}>
-                <h2>Select Up to 3 Cards to Compare</h2>
+                 <h2>Select Up to {isMobile ? '2' : '3'} Cards to Compare</h2>
                 <div className={styles.cardSelectorsGrid}>
-                    {selectedCardNames.map((selectedName, index) => {
+                     {/* Render 3 dropdowns, disable/hide 3rd on mobile */}
+                     {selectedCardNames.map((selectedName, index) => {
                         const card = cardsData.cards.find(c => c["Card Name"] === selectedName);
                         return (
-                            <div key={index} className={styles.cardSelectorColumn}>
+                             // Add class to hide 3rd col visually if needed via CSS
+                            <div key={index} className={`${styles.cardSelectorColumn} ${isMobile && index > 1 ? styles.hideOnMobile : ''}`}>
                                 <div className={styles.dropdownGroup}>
                                     <label htmlFor={`card-select-${index}`}>Card {index + 1}</label>
                                     <select
                                         id={`card-select-${index}`}
                                         value={selectedName || ""}
                                         onChange={(e) => handleCardSelect(index, e.target.value)}
+                                        disabled={isMobile && index > 1} // Disable 3rd selector on mobile
                                     >
                                         <option value="">-- Select a Card --</option>
                                         {cardsData.cards.map((c) => (
@@ -283,23 +306,9 @@ export default function RewardsCompareCalculator() {
                                 <div className={styles.stickyCardHeader}>
                                     {card ? (
                                         <div className={styles.selectedCardInfo}>
-                                            <img
-                                                src={card.image || '/placeholder.png'}
-                                                alt={`${card["Card Name"]} card`}
-                                                className={styles.cardInfoImage}
-                                                onError={(e) => { e.target.src = '/placeholder.png'; }}
-                                            />
+                                            <img src={card.image || '/placeholder.png'} alt={`${card["Card Name"]} card`} className={styles.cardInfoImage} onError={(e) => { e.target.src = '/placeholder.png'; }}/>
                                             <div className={styles.cardInfoRating}>
-                                                {typeof card.ratingValue === 'number' ? (
-                                                    <>
-                                                        {renderStars(card.ratingValue)}
-                                                        <span className={styles.ratingValue}>
-                                                            ({card.ratingValue.toFixed(1)} / 10)
-                                                        </span>
-                                                    </>
-                                                ) : (
-                                                    <span>No Rating</span>
-                                                )}
+                                                {typeof card.ratingValue === 'number' ? (<>{renderStars(card.ratingValue)} <span className={styles.ratingValue}>({card.ratingValue.toFixed(1)} / 10)</span></>) : (<span>No Rating</span>)}
                                             </div>
                                             <div className={styles.cardInfoLinks}>
                                                 <a href={card.reviewLink || '#'} target="_blank" rel="noopener noreferrer" className={`${styles.cardButton} ${styles.reviewButton}`}>Review</a>
@@ -309,7 +318,7 @@ export default function RewardsCompareCalculator() {
                                         </div>
                                     ) : (
                                         <div className={styles.selectedCardInfoPlaceholder}>
-                                            Select a card above
+                                            {!(isMobile && index > 1) ? 'Select a card above' : ''}
                                         </div>
                                     )}
                                 </div>
@@ -351,16 +360,19 @@ export default function RewardsCompareCalculator() {
             </section>
 
             {/* --- Results Section --- */}
-            {selectedCardNames.some(name => name !== null) && (
+             {displayedSelectedCardNames.some(name => name !== null) && (
                 <section className={styles.resultsSection}>
-                    <h2>Rewards & Value Comparison</h2>
+                    <h2>Rewards & Value Comparison {isMobile ? '(Top 2)' : ''}</h2>
                     <div className={styles.tableWrapper}>
                          <table className={styles.rewardsTable}>
                              <thead>
                                  <tr>
                                      <th>Category</th>
-                                     {selectedCardNames.map((name, index) => (
-                                         <th key={index}>{name ?? `Card ${index + 1}`}</th>
+                                     {/* Render headers only for displayed cards */}
+                                     {displayedCardCalculations.map((calc, index) => (
+                                         <th key={cardsToDisplayIndices[index]}>
+                                            {calc?.card["Card Name"] ?? `Card ${cardsToDisplayIndices[index] + 1}`}
+                                        </th>
                                      ))}
                                  </tr>
                              </thead>
@@ -369,11 +381,12 @@ export default function RewardsCompareCalculator() {
                                  {spendingCategories.map((cat) => (
                                      <tr key={cat}>
                                          <td>{categoryDisplayNames[cat]} Points</td>
-                                         {cardCalculations.map((calc, index) => {
+                                         {/* Render cells only for displayed cards */}
+                                         {displayedCardCalculations.map((calc, index) => {
                                              const points = calc?.breakdown?.[cat]?.points ?? 0;
                                              const tooltipText = calc?.breakdownTooltips?.[cat] ?? '-';
                                              return (
-                                                 <td key={index} className={points > 0 ? styles.tooltip : ''}>
+                                                 <td key={cardsToDisplayIndices[index]} className={points > 0 ? styles.tooltip : ''}>
                                                      {points > 0 ? points.toLocaleString() + ' pts' : '-'}
                                                      {points > 0 && <span className={styles.tooltiptext}>{tooltipText}</span>}
                                                  </td>
@@ -382,71 +395,41 @@ export default function RewardsCompareCalculator() {
                                      </tr>
                                  ))}
                                  {/* --- Spacer Row --- */}
-                                 <tr className={styles.spacerRow}><td colSpan={selectedCardNames.length + 1}></td></tr>
+                                 <tr className={styles.spacerRow}><td colSpan={cardsToDisplayIndices.length + 1}></td></tr>
                                  {/* --- Summary Rows with Highlighting --- */}
                                  <tr>
                                      <td>Total Annual Points</td>
-                                     {cardCalculations.map((calc, index) => (
-                                         <td key={index} className={calc?.isBestTotalPoints ? styles.bestValue : ''}>
-                                             {calc ? calc.totalPoints.toLocaleString() : '-'}
-                                         </td>
-                                     ))}
+                                     {displayedCardCalculations.map((calc, index) => ( <td key={cardsToDisplayIndices[index]} className={calc?.isBestTotalPoints ? styles.bestValue : ''}>{calc ? calc.totalPoints.toLocaleString() : '-'}</td> ))}
                                  </tr>
                                  <tr>
                                      <td>Selected Point Value (CPP)</td>
-                                      {cardCalculations.map((calc, index) => (
-                                         <td key={index}>{calc ? `${calc.cpp.toFixed(2)}¢` : '-'}</td>
-                                     ))}
+                                     {displayedCardCalculations.map((calc, index) => ( <td key={cardsToDisplayIndices[index]}>{calc ? `${calc.cpp.toFixed(2)}¢` : '-'}</td> ))}
                                  </tr>
                                   <tr>
                                      <td>Est. Annual Rewards Value</td>
-                                     {cardCalculations.map((calc, index) => (
-                                         <td key={index} className={calc?.isBestRewardsValue ? styles.bestValue : ''}>
-                                             {calc ? `$${calc.rewardsValue.toFixed(2)}` : '-'}
-                                         </td>
-                                     ))}
+                                     {displayedCardCalculations.map((calc, index) => ( <td key={cardsToDisplayIndices[index]} className={calc?.isBestRewardsValue ? styles.bestValue : ''}>{calc ? `$${calc.rewardsValue.toFixed(2)}` : '-'}</td> ))}
                                  </tr>
                                  <tr>
                                      <td>Est. Annual Perk Value</td>
-                                      {cardCalculations.map((calc, index) => (
-                                         <td key={index} className={calc?.isBestPerkValue ? styles.bestValue : ''}>
-                                             {calc ? `$${calc.annualPerkValue.toFixed(2)}` : '-'}
-                                         </td>
-                                     ))}
+                                     {displayedCardCalculations.map((calc, index) => ( <td key={cardsToDisplayIndices[index]} className={calc?.isBestPerkValue ? styles.bestValue : ''}>{calc ? `$${calc.annualPerkValue.toFixed(2)}` : '-'}</td> ))}
                                  </tr>
                                  <tr>
                                      <td>Annual Fee</td>
-                                     {cardCalculations.map((calc, index) => (
-                                         <td key={index} className={calc?.isLowestAnnualFee ? styles.bestValue : ''}>
-                                            {calc ? `-$${calc.annualFee.toFixed(2)}` : '-'}
-                                         </td>
-                                     ))}
+                                     {displayedCardCalculations.map((calc, index) => ( <td key={cardsToDisplayIndices[index]} className={calc?.isLowestAnnualFee ? styles.bestValue : ''}>{calc ? `-$${calc.annualFee.toFixed(2)}` : '-'}</td> ))}
                                  </tr>
                                  <tr className={styles.highlightRow}>
                                      <td>Est. Ongoing Net Value</td>
-                                     {cardCalculations.map((calc, index) => (
-                                         <td key={index} className={`${calc?.isBestNetValue ? styles.bestValue : ''} ${calc && calc.netValue < 0 ? styles.valueBad : ''}`}>
-                                            {calc ? `$${calc.netValue.toFixed(2)}` : '-'}
-                                         </td>
-                                     ))}
+                                     {displayedCardCalculations.map((calc, index) => ( <td key={cardsToDisplayIndices[index]} className={`${calc?.isBestNetValue ? styles.bestValue : ''} ${calc && calc.netValue < 0 ? styles.valueBad : ''}`}>{calc ? `$${calc.netValue.toFixed(2)}` : '-'}</td> ))}
                                  </tr>
-                                  {/* --- Spacer Row --- */}
-                                 <tr className={styles.spacerRow}><td colSpan={selectedCardNames.length + 1}></td></tr>
+                                 {/* --- Spacer Row --- */}
+                                 <tr className={styles.spacerRow}><td colSpan={cardsToDisplayIndices.length + 1}></td></tr>
                                  <tr>
                                      <td>Sign-up Bonus Value</td>
-                                     {cardCalculations.map((calc, index) => (
-                                         <td key={index}>
-                                             {calc ? `+$${calc.signUpBonusValue.toFixed(2)}` : '-'}
-                                         </td>
-                                     ))}
+                                     {displayedCardCalculations.map((calc, index) => ( <td key={cardsToDisplayIndices[index]}>{calc ? `+$${calc.signUpBonusValue.toFixed(2)}` : '-'}</td> ))}
                                  </tr>
                                  <tr className={styles.highlightRowBold}>
                                      <td>Est. 1st Year Net Value</td>
-                                     {cardCalculations.map((calc, index) => (
-                                          <td key={index} className={`${calc?.isBestFirstYearNetValue ? styles.bestValue : ''} ${calc && calc.firstYearNetValue < 0 ? styles.valueBad : ''}`}>
-                                            {calc ? `$${calc.firstYearNetValue.toFixed(2)}` : '-'}
-                                         </td>
-                                     ))}
+                                     {displayedCardCalculations.map((calc, index) => ( <td key={cardsToDisplayIndices[index]} className={`${calc?.isBestFirstYearNetValue ? styles.bestValue : ''} ${calc && calc.firstYearNetValue < 0 ? styles.valueBad : ''}`}>{calc ? `$${calc.firstYearNetValue.toFixed(2)}` : '-'}</td> ))}
                                  </tr>
                              </tbody>
                          </table>
