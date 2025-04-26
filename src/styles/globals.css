@@ -948,4 +948,5 @@ p, h1, h2, h3, h4, h5, h6, li, div {
   --info-heading: #1e40af; /* Example for chips */
   --info-border: #bfdbfe; /* Example for chips */
   --danger-color: #dc2626; /* For chip remove button */
+  
 }

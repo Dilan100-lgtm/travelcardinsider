@@ -9,24 +9,6 @@
   for optimal performance.
 */
 
-:root { /* Define fallbacks in case globals.css isn't loaded or variables are missing */
-  --bg-white: #ffffff;
-  --bg-light-gray: #f9fafb;
-  --border-color-light: #e5e7eb;
-  --border-color: #d1d5db;
-  --text-dark: #111827;
-  --text-medium: #374151;
-  --text-light: #6b7280;
-  --primary-blue: #2563eb;
-  --primary-blue-dark: #1d4ed8;
-  --primary-blue-focus: rgba(59, 130, 246, 0.2);
-  --secondary-gray: #6b7280;
-  --secondary-gray-dark: #4b5563;
-  --value-good: #16a34a;
-  --value-bad: #dc2626;
-  --highlight-bg: #e0f2fe;
-  --highlight-border: #7dd3fc;
-}
 
 .calculatorContainer {
 display: flex;
