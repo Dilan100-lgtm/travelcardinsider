@@ -107,8 +107,8 @@ Key Perks: ${Array.isArray(c.keyPerks) && c.keyPerks.length > 0 ? c.keyPerks.map
     const response = await openai.chat.completions.create({
       model: 'gpt-4o', // Recommended model
       // model: 'gpt-3.5-turbo', // Fallback if needed
-      temperature: 0.5, // Slightly lower temp for more structured output adherence
-      max_tokens: 700, // Increased tokens for structured format
+      temperature: 0.6, // Slightly lower temp for more structured output adherence
+      max_tokens: 600, // Increased tokens for structured format
       messages: [
         { role: 'system', content: systemMessage },
         { role: 'user', content: userMessage },
