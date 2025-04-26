@@ -130,8 +130,8 @@ Total Points Earned (for user's spend): ${c.totalPoints ?? 'N/A'} pts
     const response = await openai.chat.completions.create({
       model: 'gpt-4o', // Recommended model
       // model: 'gpt-3.5-turbo', // Fallback if needed
-      temperature: 0.7, // Slightly lower temp for more structured output adherence
-      max_tokens: 500, // Increased tokens for potentially more comparison text
+      temperature: 0.5, // Slightly lower temp for more structured output adherence
+      max_tokens: 800, // Increased tokens for potentially more comparison text
       messages: [
         { role: 'system', content: systemMessage },
         { role: 'user', content: userMessage },

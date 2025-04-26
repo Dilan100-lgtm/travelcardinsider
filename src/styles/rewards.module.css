@@ -1,514 +1,1104 @@
-/* ======================================== */
-/* REWARDS CALCULATOR MODULE         */
-/* ======================================== */
+/* File: styles/rewards.module.css */
 
-/* --- Main Layout --- */
-/* Base styles are in globals.css, no need to repeat body styles */
+/* --- CSS Variables (Example - Adjust to your theme) --- */
+
+
+
+/* --- Base & Layout --- */
 .container {
-  /* Keep container max-width and padding if desired, */
-  /* otherwise remove if handled globally */
   padding: 2rem clamp(1rem, 5vw, 3rem);
-  max-width: 1300px; /* From previous redesign */
-  margin: 0 auto; /* Center container */
+  max-width: 1300px; /* Increased max-width for two columns */
+  margin: auto;
+  background: var(--bg-light-gray);
+  color: var(--text-medium);
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
+/* --- NEW Main Layout Grid --- */
 .mainLayout {
   display: grid;
-  grid-template-columns: 1fr; /* Default stack */
-  gap: 3rem;
-  margin-top: 2rem; /* Space below potentially existing global header/hero */
+  grid-template-columns: minmax(450px, 1fr) minmax(400px, 1fr); /* Two columns */
+  gap: 2.5rem; /* Gap between columns */
+  margin-top: 2rem;
 }
 
-.calculatorColumn {
+.leftColumn {
+  /* Styles specific to the left column (input form, filters, AI) */
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 2.5rem; /* Space between elements in the left column */
 }
 
-.aiColumn {
-  /* Styles specific to the right column (AI analysis) */
+.rightColumn {
+  /* Styles specific to the right column (selected cards, main results) */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* Smaller gap within right column */
 }
 
-.sectionTitle {
-  font-family: var(--font-heading);
-  color: var(--color-text-primary);
-  font-size: clamp(1.8rem, 5vw, 2.2rem); /* Use clamp */
-  margin-bottom: 2rem;
-  font-weight: 700; /* Heading weight */
-  text-align: center; /* Default center */
-}
-
-.aiColumn .sectionTitle,
-.calculatorColumn .sectionTitle {
-  text-align: left; /* Override center for column titles */
-  margin-bottom: 1.5rem;
-  font-size: 1.8rem; /* Slightly smaller for columns */
-}
-
-.subSectionTitle {
-  font-family: var(--font-body); /* Use body font for subtitles */
-  color: var(--color-text-primary);
-  font-size: 1.3rem;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.8rem;
-  border-bottom: 1px solid var(--color-border-light);
-  font-weight: 600; /* Bold subtitle */
-}
-
-/* --- Hero Section (If specific to this page) --- */
-/* Assuming hero is handled globally or in _app, otherwise use previous styles */
-.heroSection {
-  text-align: center;
-  padding: clamp(3rem, 10vh, 6rem) 1rem clamp(2rem, 8vh, 4rem) 1rem;
-  background-color: var(--color-border-light); /* Use variable */
-  margin-bottom: 3rem;
-}
+/* --- Hero/Header --- */
 .heroTitle {
-  font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 6vw, 3.5rem); /* Adjusted size */
+  text-align: center;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
   font-weight: 700;
   margin-bottom: 1rem;
-  line-height: 1.2;
-  color: var(--color-text-primary);
-}
-.heroSubtitle {
-  font-family: var(--font-body);
-  font-size: clamp(1rem, 3vw, 1.2rem); /* Adjusted size */
-  max-width: 650px;
-  margin: 0 auto 2rem auto;
-  color: var(--color-text-secondary);
-}
-.heroButton {
-  background-color: var(--color-primary); /* Use global var */
-  color: white;
-  border: none;
-  padding: 0.8rem 2rem;
-  font-size: 1rem;
-  font-family: var(--font-body);
-  font-weight: 700; /* Match global button weight */
-  border-radius: 6px; /* Smaller radius for buttons */
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
-  text-decoration: none;
-}
-.heroButton:hover {
-  background-color: var(--color-primary-dark);
-  transform: translateY(-2px);
+  color: var(--text-dark);
 }
 
-/* --- Top Picks Section --- */
-.topPicksSection {
-  max-width: 1200px;
-  margin: 0 auto 4rem auto;
-  padding: 0 1rem;
+.heroDescription {
+  /* Removed text-align: center */
+  font-size: 1.05rem;
+  line-height: 1.6;
+  /* Removed max-width and margin */
+  color: var(--text-light);
+  margin-bottom: 0; /* Rely on column gap */
 }
-.topPicksGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
-}
-.cardBlock {
-  background-color: var(--color-card-bg);
-  border-radius: var(--border-radius); /* Use global radius */
-  box-shadow: var(--shadow-soft);
-  overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  display: flex;
-  flex-direction: column;
-}
-.cardBlock:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-medium);
-}
-.cardBlockImage {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  background-color: var(--color-border-light);
-}
-.cardBlockContent {
-  padding: 1.2rem;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-.cardBlockTitle {
-  font-family: var(--font-body); /* Use body font */
-  font-size: 1.1rem; /* Slightly smaller */
-  margin-bottom: 0.5rem;
-  font-weight: 700; /* Bold */
-  color: var(--color-text-primary);
-}
-.cardBlockDesc {
-  font-size: 0.9rem;
-  color: var(--color-text-secondary);
-  margin-bottom: 1rem;
-  flex-grow: 1;
-  min-height: 50px; /* Adjust if needed */
-}
-.cardBlockButton {
-  display: inline-block;
-  background-color: var(--color-secondary);
-  color: white;
-  text-align: center;
-  padding: 0.5rem 1rem;
-  border-radius: 6px; /* Button radius */
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-family: var(--font-body);
-  font-weight: 700; /* Bold */
-  transition: background-color 0.2s ease;
-  margin-top: auto;
-}
-.cardBlockButton:hover {
-  background-color: var(--color-secondary-dark);
+.heroDescription strong {
+    color: var(--text-medium);
 }
 
-/* --- Spend Input Section --- */
-.spendInputSection {
-  /* Container if needed */
-}
-.inputGroupsContainer {
+/* --- Controls (Dropdown) --- */
+.selectorGroup {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  margin: 2rem auto 0 auto; /* Adjusted margin */
+  flex-wrap: wrap;
   gap: 1.5rem;
+  padding: 1rem 1.5rem;
+  background-color: var(--bg-white);
+  border-radius: 8px;
+  max-width: 600px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  border: 1px solid var(--border-color);
 }
-.categoryGroupCard {
-  background-color: var(--color-card-bg-subtle);
-  border: 1px solid var(--color-border-light);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-soft);
-  overflow: hidden;
+.selectorGroup label {
+  margin-right: 0.5rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  font-size: 0.9em;
+  display: inline-block;
+  vertical-align: middle;
 }
-.categoryGroupTitle {
-  padding: 1rem 1.2rem;
-  font-size: 1.1rem;
-  font-weight: 700; /* Bold group title */
-  font-family: var(--font-body);
-  color: var(--color-text-primary);
+.selectBox {
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-white);
+  font-size: 0.95rem;
+  min-width: 240px;
   cursor: pointer;
-  list-style: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: background-color 0.2s ease;
+  vertical-align: middle;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem; /* Space for arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  box-sizing: border-box; /* Added for consistency */
+  width: auto; /* Let it size naturally or set max-width */
 }
-.categoryGroupTitle::-webkit-details-marker { display: none; }
-.categoryGroupTitle::after {
-  content: '\\25B6';
-  font-size: 0.8em;
-  transition: transform 0.2s ease;
-  color: var(--color-text-muted);
+.selectBox:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px var(--primary-blue-focus);
+    outline: none;
 }
-.categoryGroupCard[open] > .categoryGroupTitle::after {
-  transform: rotate(90deg);
-}
-.categoryGroupCard[open] > .categoryGroupTitle {
-  border-bottom: 1px solid var(--color-border-light);
-  background-color: #f1f3f5; /* Light highlight when open */
-}
-.categoryGroupCard:not([open]):hover .categoryGroupTitle {
-    background-color: #f8f9fa; /* Hover when closed */
-}
+
+/* --- Input Form --- */
 .inputGrid {
-  padding: 1.2rem 1.5rem 1.5rem 1.5rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1.2rem 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Adjust minmax */
+  gap: 1rem 1.2rem; /* Adjust gap */
+  margin-bottom: 0; /* Rely on column gap */
+  /* Removed max-width and margin auto */
 }
+
 .inputGroup {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
 }
+
 .inputGroup label {
   font-size: 0.9em;
-  font-weight: 700; /* Bold labels */
-  color: var(--color-text-secondary);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem; /* Increased gap */
+  font-weight: 500;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
   text-transform: capitalize;
 }
-.inputField {
-  padding: 0.7rem 0.9rem;
-  border: 1px solid var(--color-border);
-  border-radius: 6px; /* Input radius */
+
+.inputGroup input,
+.inputField { /* Apply consistent input styling */
+  padding: 0.8rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
   font-size: 1rem;
-  font-family: var(--font-body);
-  background-color: var(--color-card-bg);
+  background-color: var(--bg-white);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
   width: 100%;
   box-sizing: border-box;
-  color: var(--color-text-primary);
 }
+
+.inputGroup input:focus,
 .inputField:focus {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Use primary color alpha */
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px var(--primary-blue-focus);
   outline: none;
 }
 
-/* --- Selected Card Section --- */
-.selectedCardSection {
+/* --- Filter Section --- */
+.filterContainer {
+  padding: 1.5rem;
+  margin: 0; /* Remove auto margins */
+  /* Removed max-width */
+  background-color: var(--bg-white);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.filterHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--border-color-light);
+}
+
+.filterHeader h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.filterGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* Adjust minmax */
+  gap: 1rem 1.5rem;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.filterGroup label.groupLabel {
+  font-weight: 600;
+  font-size: 0.95em;
+  color: #1f2937; /* Gray-800 - Consider var(--text-medium) */
+  margin-bottom: 0.2rem;
+}
+
+.filterControl {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filterControl input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  accent-color: var(--primary-blue);
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+.filterControl input[type="checkbox"]:focus {
+    outline: 2px solid var(--primary-blue-focus);
+    outline-offset: 1px;
+}
+
+.filterControl label {
+  font-size: 0.9em;
+  color: var(--text-light);
+  font-weight: 400;
+  cursor: pointer;
+  user-select: none;
+  line-height: 1.3;
+}
+
+.filterDropdown {
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-white);
+  font-size: 0.9em;
+  width: 100%;
+  cursor: pointer;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.03);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.filterDropdown:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px var(--primary-blue-focus);
+    outline: none;
+}
+
+.clearButton {
+  background: none;
+  border: none;
+  color: var(--primary-blue);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+}
+.clearButton:hover {
+  background-color: rgba(59, 130, 246, 0.1); /* Consider var */
+  text-decoration: underline;
+}
+
+
+/* --- Results Section --- */
+.resultsTitle {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  margin-top: 0; /* Removed default margin */
+  color: var(--text-dark);
+  font-weight: 600;
+  font-size: 1.4rem; /* Slightly smaller title */
+}
+.resultsCount {
+  font-size: 0.8em;
+  font-weight: 400;
+  color: var(--text-light);
+  margin-left: 0.5rem;
+}
+
+
+/* --- Buttons (AI/Compare) --- */
+.stickyButtonContainer { /* NEW: Container for buttons */
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1rem; /* Space above buttons */
+    margin-bottom: 0; /* Rely on column gap */
+    /* position: sticky;
+    bottom: 1rem;
+    background: var(--bg-light-gray);
+    padding: 1rem 0;
+    z-index: 50; /* Optional stickiness */
+}
+
+.primaryBtn,
+.secondaryBtn {
+  padding: 0.7rem 1.5rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  color: white;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.primaryBtn:active,
+.secondaryBtn:active {
+  transform: scale(0.98);
+}
+
+.primaryBtn {
+  background-color: var(--primary-blue);
+}
+.primaryBtn:hover {
+  background-color: var(--primary-blue-dark);
+}
+.primaryBtn:disabled {
+  background-color: #9ca3af; /* Gray-400 */
+  cursor: not-allowed;
+}
+
+.secondaryBtn {
+  background-color: var(--secondary-gray);
+}
+.secondaryBtn:hover {
+  background-color: var(--secondary-gray-dark);
+}
+.secondaryBtn:disabled {
+    background-color: #9ca3af;
+    cursor: not-allowed;
+}
+
+/* --- Error Message --- */
+.errorMessage {
+    color: var(--danger-color);
+    margin-top: 1rem; /* Add space if buttons aren't sticky */
+    margin-bottom: 0; /* Rely on column gap */
+    font-weight: 500;
+    text-align: center;
+}
+
+/* --- Card Results List --- */
+.cardList {
+  list-style: none;
+  padding: 0;
+  margin: 0; /* Remove auto margins */
+  /* Removed max-width */
+}
+
+.cardItem {
+  background-color: var(--bg-white);
+  border: 1px solid var(--border-color-light);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.cardItem:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
+}
+
+.cardImage {
+  height: 60px;
+  width: 95px;
+  object-fit: contain;
+  flex-shrink: 0;
+  border-radius: 6px;
+  border: 1px solid #eee;
+  margin-top: 5px;
+}
+
+.cardDetails {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.cardTitle {
+ /* No changes needed */
+}
+
+.cardTitle strong {
+  font-size: 1.15em;
+  font-weight: 600;
+  color: var(--text-dark);
+  line-height: 1.3;
+}
+
+.cardTitle span {
+  font-size: 0.8em;
+  font-weight: 400;
+  color: var(--text-light);
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+.cardValues {
+  display: flex;
+  gap: 1rem 1.5rem;
+  flex-wrap: wrap;
+  font-size: 1em;
+  padding-bottom: 0.7rem;
+  margin-bottom: 0.7rem;
+  border-bottom: 1px solid var(--bg-light);
+}
+
+.cardValues div {
+  display: flex;
+  align-items: center;
+}
+
+.cardValues strong {
+   font-weight: 500;
+   color: var(--text-light);
+   margin-right: 0.4rem;
+   white-space: nowrap;
+}
+
+.valueGood {
+  color: var(--value-good);
+  font-weight: 700;
+  font-size: 1.05em;
+}
+
+.valueBad {
+  color: var(--value-bad);
+  font-weight: 700;
+  font-size: 1.05em;
+}
+
+.valueOngoing {
+    font-weight: 700;
+    font-size: 1.05em;
+    color: var(--text-medium);
+}
+
+.cardSubtext {
+  color: var(--text-muted);
+  font-size: 0.85em;
+  line-height: 1.4;
+}
+
+.bonusBox {
+  background: #fefce8; /* Yellow-50 - Consider var */
+  padding: 0.6rem 0.9rem;
+  border-radius: 6px;
+  border: 1px solid #fef08a; /* Yellow-200 - Consider var */
+  color: #854d0e; /* Yellow-900 - Consider var */
+  font-size: 0.88em;
+  line-height: 1.5;
+}
+
+.bonusBox strong {
+  color: #a16207; /* Amber-700 - Consider var */
+  font-weight: 600;
+}
+
+.perksSection {
+  font-size: 0.88em;
+}
+
+.perksSection strong {
+    color: var(--text-medium);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.perksSection ul {
+  margin: 0 0 0 0.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.perksSection li {
+    margin-bottom: 0.4rem;
+    line-height: 1.4;
+    color: var(--text-muted);
+    padding-left: 1rem;
+    position: relative;
+}
+
+.perksSection li::before {
+  content: '\2022';
+  color: #9ca3af; /* Gray-400 */
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1.2em;
+  position: absolute;
+  left: 0.5em;
+}
+
+
+.cardLinks {
+  margin-top: 0.8rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.cardLinks a {
+  text-decoration: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9em;
+  font-weight: 500;
+  text-align: center;
+  transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  display: inline-block;
+  border: 1px solid transparent;
+}
+.cardLinks a:active {
+  transform: scale(0.97);
+}
+.cardLinks a:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--primary-blue-focus);
+}
+
+
+.reviewLink {
+  background-color: var(--secondary-gray);
+  border-color: var(--secondary-gray);
+}
+.reviewLink:hover {
+  background-color: var(--secondary-gray-dark);
+  border-color: var(--secondary-gray-dark);
+  color: white;
+}
+
+.applyLink {
+  background-color: var(--primary-blue);
+  border-color: var(--primary-blue);
+}
+.applyLink:hover {
+  background-color: var(--primary-blue-dark);
+  border-color: var(--primary-blue-dark);
+  color: white;
+}
+
+.noResults {
+    text-align: center;
+    color: var(--text-light);
+    padding: 3rem 1rem;
+    font-style: italic;
+    font-size: 1.05em;
+    background-color: var(--bg-white);
+    border: 1px dashed var(--border-color);
+    border-radius: 8px;
+}
+
+
+/* --- Comparison Modal Styles --- */
+.comparisonOverlay {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(17, 24, 39, 0.8); /* Darker overlay */
+    display: flex; justify-content: center; align-items: center;
+    z-index: 1000; overflow-y: auto; padding: 1rem;
+}
+.comparisonContent {
+    background-color: var(--bg-white); border-radius: 12px; padding: 1.5rem 2rem 2rem 2rem;
+    width: 95%; max-width: 1200px; max-height: 90vh; overflow-y: auto;
+    position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+.closeButton {
+    position: absolute; top: 10px; right: 15px; background: none; border: none;
+    font-size: 2.2rem; cursor: pointer; color: #9ca3af; line-height: 1; padding: 0.2rem;
+    transition: color 0.2s ease; z-index: 15;
+}
+.closeButton:hover {
+    color: var(--secondary-gray-dark);
+}
+.comparisonContent h3 {
+    text-align: center; margin-top: 0; margin-bottom: 1.5rem; font-size: 1.6rem; font-weight: 600;
+    padding-right: 30px; color: var(--text-dark);
+}
+
+.comparisonTableWrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 10px;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border-color-light);
+  border-radius: 8px;
+}
+
+.comparisonGrid {
+    display: grid;
+    /* gridTemplateColumns set dynamically in JSX */
+    gap: 0px;
+    font-size: 0.9em;
+    min-width: fit-content;
+    border-collapse: collapse;
+}
+
+.compareCell {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid var(--border-color-light);
+  border-right: 1px solid var(--border-color-light);
+  vertical-align: top;
+  font-size: 1em;
+  line-height: 1.5;
+  text-align: center;
+}
+/* Last cell in any row */
+.comparisonGrid > div:last-child,
+.comparisonGrid > div:nth-child(4n) { /* Adjust '4n' if max cards change */
+    border-right: none;
+}
+/* Cells in the last row */
+.comparisonGrid > div:nth-last-child(-n+4) { /* Adjust '4' if max cards change */
+    border-bottom: none;
+}
+
+
+.compareCellHeader {
+  background-color: var(--bg-light);
+  font-weight: 600;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-dark);
+}
+.compareCardImage {
+    height: 45px;
+    max-width: 72px;
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid var(--border-color-light);
+    background-color: var(--bg-white);
+}
+.compareIssuer {
+    font-size: 0.9em;
+    color: var(--text-light);
+    font-weight: 400;
+}
+
+.compareCellLabel {
+  background-color: var(--bg-light-gray);
+  font-weight: 600;
+  text-align: right;
+  border-right: 1px solid var(--border-color) !important;
+  color: var(--text-medium);
+  position: sticky;
+  left: 0;
+  z-index: 5;
+  vertical-align: middle;
+}
+
+.compareCellData {
+  background-color: var(--bg-white);
+  text-align: left;
+  color: var(--text-medium);
+  vertical-align: top;
+}
+.compareList {
+    margin: 0;
+    padding-left: 1.2em;
+    text-align: left;
+    font-size: 1em;
+    list-style-position: outside;
+    list-style-type: disc;
+}
+.compareList li {
+    margin-bottom: 0.4em;
+}
+
+.compareLink {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    margin-bottom: 0.4rem;
+    margin-right: 0.4rem;
+    text-align: center;
+    min-width: 70px;
+    text-decoration: none;
+    color: white;
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    border: 1px solid transparent;
+}
+.compareLink:active {
+    transform: scale(0.97);
+}
+
+.compareLink.reviewLink {
+    background-color: var(--secondary-gray);
+    border-color: var(--secondary-gray);
+}
+.compareLink.reviewLink:hover {
+    background-color: var(--secondary-gray-dark);
+    border-color: var(--secondary-gray-dark);
+    text-decoration: none;
+    color: white;
+}
+
+.compareLink.applyLink {
+    background-color: var(--primary-blue);
+    color: white;
+    border-color: var(--primary-blue);
+}
+.compareLink.applyLink:hover {
+    background-color: var(--primary-blue-dark);
+    border-color: var(--primary-blue-dark);
+    text-decoration: none;
+    color: white;
+}
+.compareLink:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--primary-blue-focus);
+}
+
+
+.smallText { font-size: 0.9em; }
+.italicText { font-style: italic; color: var(--text-light); }
+
+
+/* --- AI Section Styles --- */
+.aiSection {
+   /* Removed text-align center */
+   margin-top: 0; /* Rely on column gap */
+   border-top: none; /* Remove top border */
+   padding-top: 0; /* Remove top padding */
+}
+.aiSuggestionBox {
+   max-width: 100%; /* Allow full width in column */
+   margin: 0; /* Remove auto margins */
+   background: var(--primary-blue-light-bg);
+   padding: 1.5rem 2rem;
+   border-radius: 8px;
+   border: 1px solid var(--primary-blue-light-border);
+   text-align: left;
+   line-height: 1.65;
+   color: var(--text-medium);
+   box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+}
+
+.aiSuggestionBox h3 {
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--primary-blue-light-border);
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--primary-blue-text-dark);
+}
+.aiSuggestionBox strong {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+.aiSuggestionBox ul {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    list-style: disc;
+}
+.aiSuggestionBox li {
+    margin-bottom: 0.5rem;
+}
+.aiSuggestionBox hr {
+    border: none;
+    border-top: 1px dashed var(--primary-blue-light-border);
+    margin: 1.5rem 0;
+}
+.aiSuggestionBox p {
+    margin-bottom: 1rem;
+}
+.aiPlaceholder {
+  color: var(--text-light);
+  font-style: italic;
   margin-top: 1rem;
+  text-align: center; /* Center placeholder */
+}
+
+
+/* --- NEW Selected Card Calculator Styles --- */
+.selectedCardCalculator {
+  background-color: var(--bg-white);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 2rem; /* Space before main results */
+  border: 1px solid var(--border-color-light);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+}
+.selectedCardCalculator h4 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  border-bottom: 1px solid var(--border-color-light);
+  padding-bottom: 0.8rem;
 }
 .cardSelectorContainer {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 .cardSelectorContainer label {
   display: block;
-  font-weight: 700; /* Bold */
-  margin-bottom: 0.6rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
   font-size: 0.95em;
-  color: var(--color-text-secondary);
+  color: var(--text-medium);
 }
 .cardSelectorDropdown {
-  width: 100%;
-  padding: 0.8rem 1rem;
-  border-radius: 8px;
-  border: 1px solid var(--color-border);
-  background-color: var(--color-card-bg);
-  font-size: 1rem;
-  font-family: var(--font-body);
-  color: var(--color-text-primary);
-  cursor: pointer;
-  margin-bottom: 1rem;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236c757d' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-  background-position: right 0.8rem center;
-  background-repeat: no-repeat;
-  background-size: 1.2em 1.2em;
-  padding-right: 2.8rem;
-  appearance: none;
-}
-.cardSelectorDropdown:focus {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
-  outline: none;
+  /* Reuses .selectBox styles */
+  width: 100%; /* Make dropdown full width */
+  margin-bottom: 1rem; /* Space before chips */
 }
 .selectedCardChips {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
-  min-height: 2.5rem;
-  margin-top: 0.5rem;
+  gap: 0.5rem;
+  min-height: 2.5rem; /* Prevent layout shift */
 }
 .selectedCardChip {
-  display: inline-flex; align-items: center; gap: 0.4rem;
-  background-color: #e7f1ff; /* Lighter primary */
-  color: var(--color-primary-dark); /* Darker primary */
-  padding: 0.3rem 0.8rem; border-radius: 16px; /* Pill shape */
-  font-size: 0.85em; font-weight: 700; /* Bold chip text */
-  font-family: var(--font-body);
-  border: 1px solid #cfe2ff; /* Primary border */
-  transition: background-color 0.2s ease;
-}
-.selectedCardChip:hover {
-  background-color: #cfe2ff;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: var(--info-bg); /* Light blue */
+  color: var(--info-heading); /* Darker blue */
+  padding: 0.3rem 0.8rem;
+  border-radius: 9999px; /* Pill shape */
+  font-size: 0.85em;
+  font-weight: 500;
+  border: 1px solid var(--info-border);
 }
 .selectedCardChip button {
-  background: none; border: none; color: var(--color-secondary);
-  font-size: 1.1em; font-weight: bold; line-height: 1;
-  padding: 0 0.1rem; margin-left: 0.2rem; cursor: pointer;
-  opacity: 0.7; transition: opacity 0.2s ease, color 0.2s ease;
+  background: none;
+  border: none;
+  color: var(--text-light);
+  font-size: 1.1em;
+  font-weight: bold;
+  line-height: 1;
+  padding: 0 0.1rem;
+  margin-left: 0.2rem;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
 }
 .selectedCardChip button:hover {
-  opacity: 1; color: var(--color-danger);
+  opacity: 1;
+  color: var(--danger-color);
 }
-
-/* Results for Selected Cards Display */
+/* Results for Selected Cards */
 .selectedCardResultsContainer {
-  margin-top: 1rem;
-  display: grid;
-  grid-template-columns: 1fr;
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
   gap: 1.5rem;
 }
 .selectedCardResultItem {
-  border: 1px solid var(--color-border-light);
-  border-radius: var(--border-radius);
-  padding: 1.2rem;
-  background-color: var(--color-card-bg);
-  box-shadow: var(--shadow-soft);
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.selectedCardResultItem:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-medium);
+  border: 1px solid var(--border-color-light);
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  background-color: var(--bg-light); /* Slightly different background */
 }
 .selectedCardHeader {
-  display: flex; align-items: center; gap: 1rem; /* Increased gap */
-  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
 }
 .selectedCardImage {
-  height: 36px; /* Slightly larger */
-  width: 56px;
-  object-fit: contain; border-radius: 4px;
-  border: 1px solid var(--color-border-light);
-  flex-shrink: 0; background-color: #fff;
+  height: 30px; /* Smaller image */
+  width: 48px;
+  object-fit: contain;
+  border-radius: 4px;
+  border: 1px solid var(--border-color-light);
+  flex-shrink: 0;
 }
-.selectedCardInfo { flex-grow: 1; }
-.selectedCardTitle {
-  font-weight: 700; /* Bold */
-  color: var(--color-text-primary);
-  font-family: var(--font-body);
-  font-size: 1.1em; margin: 0; line-height: 1.3;
+.selectedCardHeader strong {
+  font-weight: 600;
+  color: var(--text-dark);
+  font-size: 1.05em;
 }
-.selectedCardIssuer {
-  font-size: 0.85em; color: var(--color-text-muted); display: block;
+.selectedValue {
+  font-size: 0.95em;
+  margin-bottom: 0.8rem;
+  color: var(--text-medium);
 }
-.selectedValueGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Responsive columns */
-  gap: 1rem 0.8rem;
-  margin-bottom: 1.2rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--color-border-light);
+.selectedValue span { /* Good/Bad value styling */
+  font-size: 1.1em; /* Make value stand out */
+  margin-left: 0.3rem;
+  margin-right: 0.5rem;
+  /* Inherits .valueGood/.valueBad styles */
 }
-.selectedValueGrid div { display: flex; flex-direction: column; text-align: center;}
-.selectedValueGrid span {
-  font-size: 0.7rem; color: var(--color-text-muted);
-  text-transform: uppercase; margin-bottom: 0.2rem; font-weight: 700;
+.selectedValue small {
+  display: block; /* Put details on next line */
+  font-size: 0.85em;
+  color: var(--text-light);
+  margin-top: 0.3rem;
 }
-.selectedValueGrid strong {
-  font-size: 1.15em; font-weight: 700; /* Bold value */
-  color: var(--color-text-primary); line-height: 1.2;
+.categoryBreakdown {
+  margin-top: 0.5rem;
 }
-.selectedValueGrid strong.valueGood { color: var(--color-success); }
-.selectedValueGrid strong.valueBad { color: var(--color-danger); }
-
-.selectedCardButton {
-  display: block;
-  background-color: var(--color-primary);
-  color: white; border: none; padding: 0.6rem 1rem; font-size: 0.9rem;
-  font-family: var(--font-body); font-weight: 700; /* Bold */
-  border-radius: 6px; cursor: pointer; transition: background-color 0.2s ease;
-  text-align: center; text-decoration: none; margin-top: auto;
-}
-.selectedCardButton:hover { background-color: var(--color-primary-dark); }
-
-.emptyStateText {
-  color: var(--color-text-muted); text-align: center; padding: 2rem 1rem;
-  font-style: italic; background-color: var(--color-card-bg-subtle);
-  border: 1px dashed var(--color-border); border-radius: var(--border-radius);
-  grid-column: 1 / -1;
-}
-
-/* --- AI Column & Card --- */
-.aiCard {
-  background-color: var(--color-card-bg);
-  border-radius: var(--border-radius);
-  border: 1px solid var(--color-border-light);
-  box-shadow: var(--shadow-soft);
-  padding: 1.5rem;
-  position: sticky;
-  top: calc(3.5rem + 1.5rem); /* Adjust based on header height + desired gap */
-  /* Max height to prevent overflowing viewport if content is long */
-  max-height: calc(100vh - 3.5rem - 3rem); /* header - top gap - bottom gap */
-  overflow-y: auto; /* Allow scrolling within the card if needed */
-}
-.aiControls {
-  display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem;
-  padding-bottom: 1.5rem; border-bottom: 1px solid var(--color-border-light);
-}
-.aiLabel { font-weight: 700; font-size: 0.9em; color: var(--color-text-secondary); }
-.aiSelectBox {
-  width: 100%; padding: 0.7rem 0.9rem; border-radius: 6px;
-  border: 1px solid var(--color-border); background-color: var(--color-card-bg);
-  font-size: 0.95rem; font-family: var(--font-body); color: var(--color-text-primary);
+.categoryBreakdown summary {
   cursor: pointer;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236c757d' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-  background-position: right 0.8rem center; background-repeat: no-repeat;
-  background-size: 1.2em 1.2em; padding-right: 2.8rem; appearance: none;
+  font-weight: 500;
+  font-size: 0.9em;
+  color: var(--text-muted);
+  padding: 0.3rem 0;
 }
-.aiSelectBox:focus {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); outline: none;
+.categoryBreakdown summary::marker { /* Style dropdown arrow */
+  color: var(--text-light);
 }
-.aiButtonPrimary, .aiButtonSecondary {
-  border: none; padding: 0.8rem 1rem; font-size: 1rem;
-  font-family: var(--font-body); font-weight: 700; /* Bold */
-  border-radius: 6px; cursor: pointer;
-  transition: background-color 0.2s ease, opacity 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+.categoryBreakdown summary:hover {
+  color: var(--text-dark);
 }
-.aiButtonPrimary { width: 100%; background-color: var(--color-primary); color: white; }
-.aiButtonPrimary:hover { background-color: var(--color-primary-dark); }
-.aiButtonPrimary:disabled { background-color: var(--color-border); color: var(--color-text-muted); cursor: not-allowed; opacity: 0.7; }
+.categoryBreakdownList {
+  list-style: none;
+  padding: 0.8rem 0 0 0.5rem; /* Indent list slightly */
+  margin: 0;
+  font-size: 0.85em;
+  color: var(--text-muted);
+}
+.categoryBreakdownList li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px dotted var(--border-color-light);
+}
+.categoryBreakdownList li:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+}
+.categoryBreakdownList li span:first-child { /* Category Name */
+  margin-right: 1rem;
+  text-transform: capitalize;
+}
+.categoryBreakdownList li span:last-child { /* Points/Value */
+  text-align: right;
+  white-space: nowrap;
+  color: var(--text-medium);
+  font-weight: 500;
+}
+.columnSeparator { /* Style for HR between sections in right column */
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 2.5rem 0;
+}
 
-.aiButtonSecondary {
-  background-color: transparent;
-  color: var(--color-secondary);
-  border: 1px solid var(--color-border);
-  font-size: 1.1rem; /* Icon size */
-  padding: 0.5rem; line-height: 1;
-  width: auto; /* Fit content */
-  position: absolute; /* Position next to primary */
-  right: 1.5rem; /* Align with padding */
-  bottom: 1.5rem; /* Align with padding - primary button bottom */
-  /* Adjust bottom based on primary button height + gap if needed */
-}
-.aiButtonSecondary:hover { background-color: var(--color-border-light); border-color: var(--color-secondary); color: var(--color-secondary-dark); }
-.aiButtonSecondary:disabled { opacity: 0.5; cursor: not-allowed; background-color: transparent; }
 
-/* Adjust wrapper for buttons if secondary is absolutely positioned */
-.aiControls { position: relative; padding-bottom: 4rem; /* Space for secondary button */ }
-
-/* Loading Spinner */
-.spinnerContainer { text-align: center; padding: 2rem 1rem; color: var(--color-text-muted); }
-.spinner {
-  border: 4px solid var(--color-border-light); border-top: 4px solid var(--color-primary);
-  border-radius: 50%; width: 36px; height: 36px; /* Slightly smaller */
-  animation: spin 1s linear infinite; margin: 0 auto 1rem auto;
-}
-@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-.aiSuggestionBox { line-height: 1.7; font-size: 0.95rem; color: var(--color-text-secondary); }
-.aiSuggestionBox h3 {
-  margin-top: 1.5rem; margin-bottom: 0.8rem; padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--color-border-light); font-size: 1.1em;
-  font-weight: 700; /* Bold */ color: var(--color-text-primary); font-family: var(--font-body);
-}
-.aiSuggestionBox h3:first-child { margin-top: 0; }
-.aiSuggestionBox strong { font-weight: 700; color: var(--color-text-primary); }
-.aiSuggestionBox ul { margin-top: 0.5rem; margin-bottom: 1rem; padding-left: 1.2rem; list-style: disc; }
-.aiSuggestionBox li { margin-bottom: 0.5rem; }
-.aiSuggestionBox hr { border: none; border-top: 1px dashed var(--color-border); margin: 1.5rem 0; }
-.aiSuggestionBox p { margin-bottom: 1rem; }
-.aiPlaceholder { color: var(--color-text-muted); font-style: italic; text-align: center; padding: 1rem; }
-
-/* --- Responsive Adjustments --- */
-@media screen and (max-width: 991px) { /* Breakpoint for stacking main columns */
-  .mainLayout { grid-template-columns: 1fr; }
-  .aiColumn { /* No specific stacking styles needed */ }
-  .aiCard { position: static; max-height: none; overflow-y: visible; }
+/* --- Media Queries --- */
+@media screen and (max-width: 992px) {
+  .mainLayout {
+    grid-template-columns: 1fr; /* Stack columns */
+    gap: 2rem; /* Adjust gap when stacked */
+  }
+  .leftColumn {
+    gap: 2rem; /* Adjust gap when stacked */
+  }
+  .rightColumn {
+    gap: 1.5rem; /* Adjust gap when stacked */
+  }
+  .selectedCardCalculator {
+    margin-bottom: 2.5rem; /* Ensure space when stacked */
+  }
+  .columnSeparator {
+    display: none; /* Hide separator when stacked */
+  }
 }
 
 @media screen and (max-width: 768px) {
-  .sectionTitle { font-size: 1.8rem; margin-bottom: 1.5rem; }
-  .topPicksGrid { gap: 1.5rem; }
-  .calculatorColumn, .aiColumn { gap: 2rem; }
-  .selectedValueGrid { grid-template-columns: 1fr; text-align: left; gap: 0.6rem;}
-  .selectedValueGrid div {
-    flex-direction: row; justify-content: space-between; align-items: center;
-    border-bottom: 1px solid var(--color-border-light); padding-bottom: 0.6rem;
+  .cardItem {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem;
+    text-align: center;
   }
-  .selectedValueGrid div:last-child { border-bottom: none; }
-  .selectedValueGrid span { margin-bottom: 0; }
+  .cardImage {
+    margin-top: 0;
+  }
+  .cardDetails {
+    text-align: center;
+    width: 100%;
+    align-items: center;
+  }
+  .cardValues {
+    justify-content: center;
+    gap: 0.8rem 1.2rem; /* Tighter gap */
+  }
+  .cardLinks {
+      justify-content: center;
+  }
+  .perksSection ul {
+    margin-left: 0;
+    padding-left: 0;
+    list-style-position: inside;
+    text-align: center;
+  }
+  .perksSection li::before {
+    display: none;
+  }
+  .perksSection li {
+      padding-left: 0;
+      position: static;
+  }
+
+  .comparisonGrid {
+      font-size: 0.85em;
+  }
+  .compareCell {
+      padding: 0.6rem 0.8rem;
+  }
+  .compareCellLabel {
+      font-size: 0.95em;
+      padding: 0.6rem 0.5rem;
+  }
 }
 
-@media screen and (max-width: 600px) {
-  .selectedCardResultsContainer { grid-template-columns: 1fr; } /* Stack selected cards earlier */
+@media screen and (max-width: 640px) {
+    .filterGrid {
+        grid-template-columns: 1fr; /* Stack filters */
+        gap: 1.2rem;
+    }
+    .filterHeader {
+        /* Already handles wrap, looks ok */
+    }
+    .inputGrid {
+        grid-template-columns: 1fr; /* Stack inputs */
+    }
 }
 
 @media screen and (max-width: 480px) {
-  .container { padding: 1rem 0.8rem; } /* Reduce container padding */
-  .heroSection { padding: 3rem 1rem 2rem 1rem; }
-  .heroTitle { font-size: 1.8rem; }
-  .heroSubtitle { font-size: 0.95rem; }
-  .sectionTitle { font-size: 1.6rem; margin-bottom: 1.5rem; }
-  .topPicksGrid { grid-template-columns: 1fr; }
-  .inputGrid { grid-template-columns: 1fr; }
-  .categoryGroupTitle { font-size: 1rem; padding: 0.8rem 1rem;}
-  .inputGrid { padding: 1rem; }
-  .aiCard { padding: 1rem; }
+  .container {
+      padding: 1.5rem 0.8rem;
+  }
+  .heroTitle {
+    font-size: 1.6rem;
+  }
+  .heroDescription {
+    font-size: 1rem;
+  }
+  .cardImage {
+    width: 80px;
+    height: 50px;
+  }
+  .stickyButtonContainer button { /* Make buttons wider on small screens */
+      width: 90%;
+      font-size: 0.95rem;
+      padding: 0.8rem 1rem;
+  }
+  .comparisonContent {
+      padding: 1rem;
+  }
+  .comparisonContent h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+
+  .comparisonGrid {
+      font-size: 0.8em;
+  }
+  .compareCell {
+      padding: 0.5rem;
+      min-width: 90px;
+      line-height: 1.4;
+  }
+  .compareCellLabel {
+      padding: 0.5rem 0.3rem;
+      font-size: 0.9em;
+  }
+  .aiSuggestionBox {
+      padding: 1rem 1.2rem;
+  }
+  .aiSuggestionBox h3 {
+    font-size: 1.1em;
+  }
+  /* Adjust selected card section padding/font */
+  .selectedCardCalculator {
+    padding: 1rem;
+  }
+  .selectedCardCalculator h4 {
+    font-size: 1.15rem;
+  }
+  .selectedCardResultItem {
+    padding: 0.8rem 1rem;
+  }
 }
