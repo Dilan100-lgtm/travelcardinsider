@@ -8,263 +8,288 @@
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-  /* --- Hero/Header --- */
-  .heroTitle {
+ /* --- Hero/Header --- */
+ .heroTitle {
   text-align: center;
   font-size: clamp(1.8rem, 5vw, 2.5rem);
   font-weight: 700;
-  margin-bottom: 2rem; /* Increased margin */
+  margin-bottom: 1rem; /* Reduced margin below title */
   color: #111827; /* Gray-900 */
-  }
-  
-  /* Removed .heroDescription styling as it's handled by .columnTitle */
-  
-  /* --- Main Content Grid Layout --- */
-  .mainContentGrid {
+ }
+
+ .heroDescription {
+   text-align: center;
+   font-size: 1rem;
+   color: #4b5563; /* Gray-600 */
+   max-width: 700px;
+   margin: 0 auto 2.5rem auto; /* Center and add space below */
+   line-height: 1.6;
+ }
+
+
+ /* --- Main Content Grid Layout --- */
+ .mainContentGrid {
     display: grid;
     grid-template-columns: 1fr; /* Default single column for mobile */
     gap: 2rem 3rem; /* Row gap, Column gap */
     margin-bottom: 3rem; /* Space before buttons */
-  }
-  
-  /* Apply two columns on tablet and desktop */
-  @media screen and (min-width: 768px) {
+ }
+
+ /* Apply two columns on tablet and desktop */
+ @media screen and (min-width: 768px) {
     .mainContentGrid {
       grid-template-columns: 1fr 1fr; /* Two equal columns */
     }
-  }
-  
-  /* --- Left & Right Columns --- */
-  .leftColumn {
+ }
+
+ /* --- Left & Right Columns --- */
+ .leftColumn {
     /* Add specific styles if needed */
-  }
-  .rightColumn {
+ }
+ .rightColumn {
     display: flex;
     flex-direction: column;
     gap: 2rem; /* Space between selector and filters */
-  }
-  
-  /* Title for columns (like inputs) */
-  .columnTitle {
-      font-size: 1.2rem; /* Increased size */
-      font-weight: 600;
-      color: #111827; /* var(--text-dark) */
-      margin-bottom: 1.5rem;
-      padding-bottom: 0.75rem; /* Increased padding */
-      border-bottom: 1px solid #e5e7eb; /* var(--border-color-light) */
-  }
-  
-  /* --- Spending Inputs List (Left Column) --- */
-  .inputList {
-      display: flex;
-      flex-direction: column;
-      gap: 1.75rem; /* Increased spacing between input groups */
-  }
-  
-  .inputGroup {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem; /* Increased space between label and input */
-  }
-  
-  .inputGroup label {
-      font-size: 0.95rem; /* Slightly larger label */
-      font-weight: 500;
-      color: #374151; /* var(--text-medium) */
-      text-transform: capitalize;
-      margin-bottom: 0;
-  }
-  
-  .inputField {
-      padding: 0.8rem 1rem; /* Adjusted padding */
-      font-size: 1rem;
-      border: 1px solid #d1d5db; /* var(--border-color) */
-      border-radius: 6px;
-      background-color: #ffffff; /* var(--bg-white) */
-      box-shadow: inset 0 1px 2px rgba(0,0,0,0.04);
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
-      width: 100%;
-      box-sizing: border-box;
-  }
-  .inputField::placeholder {
-      color: #a0aec0;
-      font-size: 0.95rem;
-  }
-  .inputField:focus {
-      border-color: #3b82f6; /* var(--primary-blue) */
-      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2); /* var(--primary-blue-focus) */
-      outline: none;
-  }
-  
-  
-  /* --- Redemption Selector (Right Column) --- */
-  .rightColumn .selectorGroup {
-      justify-content: flex-start;
-      max-width: none;
-      margin: 0;
-      padding: 0;
-      background: none;
-      border: none;
-      box-shadow: none;
-      width: 100%; /* Ensure it takes available width */
-  }
-  .rightColumn .selectorGroup label {
-       font-weight: 600;
-       font-size: 1rem; /* Match filter group label */
-       color: #374151; /* var(--text-medium) */
-       margin-right: 0.75rem;
-  }
-  .rightColumn .selectBox {
-      min-width: 0;
-      width: 100%; /* Take full width */
-      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-      padding: 0.8rem 1rem; /* Match input field */
-      padding-right: 2.75rem; /* Ensure space for arrow */
-      font-size: 1rem; /* Match input field */
-      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-      background-position: right 0.75rem center;
-      background-repeat: no-repeat;
-      background-size: 1.5em 1.5em;
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-  }
-  .rightColumn .selectBox:focus {
-       border-color: #3b82f6;
-       box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-       outline: none;
-  }
-  
-  /* --- Enhanced Filter Section Styling (Right Column) --- */
-  .filterContainer {
-      margin: 0;
-      max-width: none;
-      padding: 1.75rem; /* Increased padding */
-      border: 1px solid #e5e7eb; /* var(--border-color-light) */
-      background-color: #ffffff; /* var(--bg-white) */
-      box-shadow: 0 4px 8px rgba(0,0,0,0.06); /* Slightly enhanced shadow */
-      border-radius: 8px;
-  }
-  
-  .filterHeader {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   flex-wrap: wrap;
-   gap: 0.5rem;
-   margin-bottom: 1.75rem; /* Increased space */
-   padding-bottom: 1rem; /* Increased space */
-   border-bottom: 1px solid #e5e7eb; /* var(--border-color-light) */
-  }
-  
-  .filterHeader h4 {
-      font-size: 1.25rem; /* Larger heading */
-      color: #111827; /* var(--text-dark) */
-      font-weight: 600;
-      margin: 0;
-  }
-  
-  .clearButton {
-   /* Existing style */
-   font-size: 0.9rem;
-  }
-  
-  .filterGroupsContainer {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem; /* Increased space between filter groups */
-  }
-  
-  .filterGroup {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem; /* Increased space between label and controls */
-      padding-bottom: 1.25rem; /* Space below group */
-      border-bottom: 1px solid #f3f4f6; /* Lighter separator line */
-  }
-  .filterGroupsContainer .filterGroup:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-  }
-  
-  .filterGroup .groupLabel {
-      font-weight: 600;
-      font-size: 1rem;
-      color: #374151; /* var(--text-medium) */
-      margin-bottom: 0;
-  }
-  
-  .filterDropdown {
-      padding: 0.8rem 1rem; /* Match input field */
-      padding-right: 2.75rem; /* Ensure space for arrow */
-      font-size: 1rem; /* Match input field */
-      border: 1px solid #d1d5db; /* var(--border-color) */
-      border-radius: 6px;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-      background-color: #ffffff;
-      width: 100%;
-      cursor: pointer;
-      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-      background-position: right 0.75rem center;
-      background-repeat: no-repeat;
-      background-size: 1.5em 1.5em;
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  }
-  .filterDropdown:focus {
-      border-color: #3b82f6;
-      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-      outline: none;
-  }
-  
-  .filterControl {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem; /* Increased space */
-      padding: 0.2rem 0; /* Add slight vertical padding for touch */
-  }
-  
-  .filterControl input[type="checkbox"] {
-      width: 1.15rem; /* Larger */
-      height: 1.15rem;
-      border-radius: 4px;
-      border: 1px solid #b0bec5;
-      cursor: pointer;
-      accent-color: #2563eb; /* var(--primary-blue) */
-      margin-top: 1px;
-      flex-shrink: 0;
-      transition: box-shadow 0.2s ease;
-  }
-  .filterControl input[type="checkbox"]:focus {
-     outline: 2px solid rgba(59, 130, 246, 0.3); /* var(--primary-blue-focus) */
+ }
+
+ /* Title for columns (like inputs) */
+ .columnTitle {
+     font-size: 1.2rem; /* Increased size */
+     font-weight: 600;
+     color: #111827; /* var(--text-dark) */
+     margin-bottom: 1.5rem;
+     padding-bottom: 0.75rem; /* Increased padding */
+     border-bottom: 1px solid #e5e7eb; /* var(--border-color-light) */
+ }
+
+ /* --- Spending Inputs List (Left Column) --- */
+ .inputList {
+     display: flex;
+     flex-direction: column;
+     gap: 1.75rem; /* Increased spacing between input groups */
+ }
+
+ .inputGroup {
+     display: flex;
+     flex-direction: column;
+     gap: 0.5rem; /* Increased space between label and input */
+ }
+
+ .inputGroup label {
+     font-size: 0.95rem; /* Slightly larger label */
+     font-weight: 500;
+     color: #374151; /* var(--text-medium) */
+     text-transform: capitalize;
+     margin-bottom: 0;
+ }
+
+ .inputField {
+     padding: 0.8rem 1rem; /* Adjusted padding */
+     font-size: 1rem;
+     border: 1px solid #d1d5db; /* var(--border-color) */
+     border-radius: 6px;
+     background-color: #ffffff; /* var(--bg-white) */
+     box-shadow: inset 0 1px 2px rgba(0,0,0,0.04);
+     transition: border-color 0.2s ease, box-shadow 0.2s ease;
+     width: 100%;
+     box-sizing: border-box;
+ }
+ .inputField::placeholder {
+     color: #a0aec0;
+     font-size: 0.95rem;
+ }
+ .inputField:focus {
+     border-color: #3b82f6; /* var(--primary-blue) */
+     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2); /* var(--primary-blue-focus) */
+     outline: none;
+ }
+
+
+ /* --- Redemption Selector (Right Column) --- */
+ .rightColumn .selectorGroup {
+     justify-content: flex-start;
+     max-width: none;
+     margin: 0;
+     padding: 0;
+     background: none;
+     border: none;
+     box-shadow: none;
+     width: 100%; /* Ensure it takes available width */
+ }
+ .rightColumn .selectorGroup label {
+     font-weight: 600;
+     font-size: 1rem; /* Match filter group label */
+     color: #374151; /* var(--text-medium) */
+     margin-right: 0.75rem;
+     display: block; /* Make label block for spacing */
+     margin-bottom: 0.5rem; /* Add space below label */
+ }
+ .rightColumn .selectBox {
+     min-width: 0;
+     width: 100%; /* Take full width */
+     box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+     padding: 0.8rem 1rem; /* Match input field */
+     padding-right: 2.75rem; /* Ensure space for arrow */
+     font-size: 1rem; /* Match input field */
+     border: 1px solid #d1d5db; /* Match input field border */
+     border-radius: 6px; /* Match input field border radius */
+     background-color: #ffffff; /* Match input field background */
+     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+     background-position: right 0.75rem center;
+     background-repeat: no-repeat;
+     background-size: 1.5em 1.5em;
+     appearance: none;
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     cursor: pointer;
+ }
+ .rightColumn .selectBox:focus {
+     border-color: #3b82f6;
+     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+     outline: none;
+ }
+
+ /* --- Enhanced Filter Section Styling (Right Column) --- */
+ .filterContainer {
+     margin: 0;
+     max-width: none;
+     padding: 1.75rem; /* Increased padding */
+     border: 1px solid #e5e7eb; /* var(--border-color-light) */
+     background-color: #ffffff; /* var(--bg-white) */
+     box-shadow: 0 4px 8px rgba(0,0,0,0.06); /* Slightly enhanced shadow */
+     border-radius: 8px;
+ }
+
+ .filterHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.75rem; /* Increased space */
+  padding-bottom: 1rem; /* Increased space */
+  border-bottom: 1px solid #e5e7eb; /* var(--border-color-light) */
+ }
+
+ .filterHeader h4 {
+     font-size: 1.25rem; /* Larger heading */
+     color: #111827; /* var(--text-dark) */
+     font-weight: 600;
+     margin: 0;
+ }
+
+ .clearButton {
+  font-size: 0.85rem; /* Slightly smaller */
+  font-weight: 500;
+  color: #3b82f6; /* Blue */
+  background: none;
+  border: none;
+  padding: 0.3rem 0.5rem; /* Small padding */
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+ }
+ .clearButton:hover {
+   background-color: #eff6ff; /* Light blue hover */
+   color: #1d4ed8;
+ }
+
+ .filterGroupsContainer {
+     display: flex;
+     flex-direction: column;
+     gap: 2rem; /* Increased space between filter groups */
+ }
+
+ .filterGroup {
+     display: flex;
+     flex-direction: column;
+     gap: 1rem; /* Increased space between label and controls */
+     padding-bottom: 1.25rem; /* Space below group */
+     border-bottom: 1px solid #f3f4f6; /* Lighter separator line */
+ }
+ .filterGroupsContainer .filterGroup:last-child {
+     border-bottom: none;
+     padding-bottom: 0;
+ }
+
+ .filterGroup .groupLabel {
+     font-weight: 600;
+     font-size: 1rem;
+     color: #374151; /* var(--text-medium) */
+     margin-bottom: 0;
+ }
+
+ .filterDropdown {
+     padding: 0.8rem 1rem; /* Match input field */
+     padding-right: 2.75rem; /* Ensure space for arrow */
+     font-size: 1rem; /* Match input field */
+     border: 1px solid #d1d5db; /* var(--border-color) */
+     border-radius: 6px;
+     box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+     background-color: #ffffff;
+     width: 100%;
+     cursor: pointer;
+     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+     background-position: right 0.75rem center;
+     background-repeat: no-repeat;
+     background-size: 1.5em 1.5em;
+     appearance: none;
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     transition: border-color 0.2s ease, box-shadow 0.2s ease;
+ }
+ .filterDropdown:focus {
+     border-color: #3b82f6;
+     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+     outline: none;
+ }
+
+ .filterControl {
+     display: flex;
+     align-items: center;
+     gap: 0.8rem; /* Increased space */
+     padding: 0.2rem 0; /* Add slight vertical padding for touch */
+ }
+
+ .filterControl input[type="checkbox"] {
+     width: 1.15rem; /* Larger */
+     height: 1.15rem;
+     border-radius: 4px;
+     border: 1px solid #b0bec5;
+     cursor: pointer;
+     accent-color: #2563eb; /* var(--primary-blue) */
+     margin-top: 1px;
+     flex-shrink: 0;
+     transition: box-shadow 0.2s ease;
+ }
+ .filterControl input[type="checkbox"]:focus-visible { /* Use focus-visible for better accessibility */
+     outline: 2px solid rgba(59, 130, 246, 0.5); /* More visible outline */
      outline-offset: 2px;
      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15); /* Enhanced focus shadow */
-  }
-  
-  .filterControl label {
-      font-size: 1rem; /* Standard readable size */
-      color: #374151; /* var(--text-medium) */
-      font-weight: 400;
-      cursor: pointer;
-      user-select: none;
-      line-height: 1.4;
-      flex-grow: 1; /* Allow label to take space */
-  }
-  
-  /* --- Buttons --- */
-  .buttonGroup {
+ }
+
+ .filterControl label {
+     font-size: 1rem; /* Standard readable size */
+     color: #374151; /* var(--text-medium) */
+     font-weight: 400;
+     cursor: pointer;
+     user-select: none;
+     line-height: 1.4;
+     flex-grow: 1; /* Allow label to take space */
+ }
+
+ /* --- Buttons --- */
+ .buttonGroup {
   display: flex;
   justify-content: center;
   gap: 1rem;
   flex-wrap: wrap;
   margin-top: 1rem; /* Add margin top */
   margin-bottom: 2.5rem; /* Increased margin */
-}
-  
-  .primaryBtn,
-  .secondaryBtn {
+ }
+
+ .primaryBtn,
+ .secondaryBtn {
   padding: 0.8rem 1.75rem; /* Increased padding */
   border-radius: 6px;
   font-size: 1rem;
@@ -272,156 +297,156 @@
   cursor: pointer;
   border: none;
   color: white;
-  transition: background-color 0.2s ease, transform 0.1s ease;
+  transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease, opacity 0.2s ease; /* Added opacity */
   text-align: center;
-}
-.primaryBtn:active,
-.secondaryBtn:active {
+ }
+ .primaryBtn:active,
+ .secondaryBtn:active {
   transform: scale(0.98);
-}
-  
-  .primaryBtn { background-color: #2563eb; } /* Blue-600 */
-  .primaryBtn:hover { background-color: #1d4ed8; } /* Blue-700 */
-  .primaryBtn:disabled { background-color: #9ca3af; cursor: not-allowed; } /* Gray-400 */
-  
-  .secondaryBtn { background-color: #6b7280; } /* Gray-500 */
-  .secondaryBtn:hover { background-color: #4b5563; } /* Gray-600 */
-  .secondaryBtn:disabled { background-color: #9ca3af; cursor: not-allowed; }
-  
-  /* --- Error Message --- */
-  .errorMessage {
+ }
+
+ .primaryBtn { background-color: #2563eb; } /* Blue-600 */
+ .primaryBtn:hover:not(:disabled) { background-color: #1d4ed8; } /* Blue-700 */ /* Add :not(:disabled) */
+ .primaryBtn:disabled { background-color: #9ca3af; cursor: not-allowed; opacity: 0.7; } /* Gray-400 */
+
+ .secondaryBtn { background-color: #6b7280; } /* Gray-500 */
+ .secondaryBtn:hover:not(:disabled) { background-color: #4b5563; } /* Gray-600 */ /* Add :not(:disabled) */
+ .secondaryBtn:disabled { background-color: #9ca3af; cursor: not-allowed; opacity: 0.7; }
+
+ /* ADDED: Helper text for disabled button */
+ .helperText {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #6b7280; /* Gray-500 */
+  margin-top: -1.5rem; /* Adjust position relative to button group */
+  margin-bottom: 2rem;
+ }
+
+ /* --- Error Message --- */
+ .errorMessage {
     color: #dc2626; /* Red-600 */
     margin-top: -1.5rem; /* Adjust relative to buttons */
     margin-bottom: 2rem;
     font-weight: 500;
     text-align: center;
-  }
-  
-  /* --- Card Results List --- */
-  .resultsTitle {
+ }
+
+ /* --- Card Results List --- */
+ .resultsTitle {
     text-align: center;
     margin-bottom: 2rem; /* Increased spacing */
     color: #111827;
     font-weight: 600;
     font-size: 1.6rem; /* Slightly larger */
-  }
-  .cardList { list-style: none; padding: 0; margin: 0 auto; max-width: 850px; }
-  .cardItem { background-color: #ffffff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem; display: flex; gap: 1.5rem; align-items: flex-start; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); transition: box-shadow 0.2s ease-in-out; }
-  .cardItem:hover { box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07); }
-  .cardImage { height: 60px; width: 95px; object-fit: contain; flex-shrink: 0; border-radius: 6px; border: 1px solid #eee; margin-top: 5px; }
-  .cardDetails { flex: 1; display: flex; flex-direction: column; gap: 0.7rem; }
-  .cardTitle strong { font-size: 1.15em; font-weight: 600; color: #111827; line-height: 1.3; }
-  .cardTitle span { font-size: 0.8em; font-weight: 400; color: #6b7280; margin-left: 0.5rem; vertical-align: middle; }
-  .cardValues { display: flex; gap: 1rem 1.5rem; flex-wrap: wrap; font-size: 1em; padding-bottom: 0.7rem; margin-bottom: 0.7rem; border-bottom: 1px solid #f3f4f6; }
-  .cardValues div { display: flex; align-items: center; }
-  .cardValues strong { font-weight: 500; color: #6b7280; margin-right: 0.4rem; white-space: nowrap; }
-  .valueGood { color: #16a34a; font-weight: 700; font-size: 1.05em; }
-  .valueBad { color: #dc2626; font-weight: 700; font-size: 1.05em; }
-  .valueOngoing { font-weight: 700; font-size: 1.05em; color: #374151; }
-  .cardSubtext { color: #4b5563; font-size: 0.85em; line-height: 1.4; }
-  .bonusBox { background: #fefce8; padding: 0.6rem 0.9rem; border-radius: 6px; border: 1px solid #fef08a; color: #854d0e; font-size: 0.88em; line-height: 1.5; }
-  .bonusBox strong { color: #a16207; font-weight: 600; }
-  .perksSection { font-size: 0.88em; }
-  .perksSection strong { color: #374151; font-weight: 600; display: block; margin-bottom: 0.3rem; }
-  .perksSection ul { margin: 0 0 0 0.5rem; padding: 0; list-style: none; }
-  .perksSection li { margin-bottom: 0.4rem; line-height: 1.4; color: #4b5563; padding-left: 1rem; position: relative; }
-  .perksSection li::before { content: '\2022'; color: #9ca3af; font-weight: bold; display: inline-block; width: 1em; margin-left: -1.2em; position: absolute; left: 0.5em; }
-  .cardLinks { margin-top: 0.8rem; display: flex; gap: 1rem; flex-wrap: wrap; }
-  .cardLinks a { text-decoration: none; color: white; padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.9em; font-weight: 500; text-align: center; transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease; cursor: pointer; display: inline-block; border: 1px solid transparent; }
-  .cardLinks a:active { transform: scale(0.97); }
-  .cardLinks a:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3); }
-  .reviewLink { background-color: #6b7280; border-color: #6b7280; }
-  .reviewLink:hover { background-color: #4b5563; border-color: #4b5563; color: white; }
-  .applyLink { background-color: #2563eb; border-color: #2563eb; }
-  .applyLink:hover { background-color: #1d4ed8; border-color: #1d4ed8; color: white; }
-  .noResults { text-align: center; color: #6b7280; padding: 3rem 1rem; font-style: italic; font-size: 1.05em; background-color: #ffffff; border: 1px dashed #d1d5db; border-radius: 8px; }
-  
-  
-  /* --- Comparison Modal Styles --- */
-  /* (Existing comparison modal styles remain largely the same) */
-  .comparisonOverlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(17, 24, 39, 0.8); display: flex; justify-content: center; align-items: center; z-index: 1000; overflow-y: auto; padding: 1rem; }
-  .comparisonContent { background-color: white; border-radius: 12px; padding: 1.5rem 2rem 2rem 2rem; width: 95%; max-width: 1200px; max-height: 90vh; overflow-y: auto; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
-  .closeButton { position: absolute; top: 10px; right: 15px; background: none; border: none; font-size: 2.2rem; cursor: pointer; color: #9ca3af; line-height: 1; padding: 0.2rem; transition: color 0.2s ease; z-index: 15; }
-  .closeButton:hover { color: #4b5563; }
-  .comparisonContent h3 { text-align: center; margin-top: 0; margin-bottom: 1.5rem; font-size: 1.6rem; font-weight: 600; padding-right: 30px; }
-  .comparisonTableWrapper { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 10px; margin-bottom: 1rem; border: 1px solid #e5e7eb; border-radius: 8px; }
-  .comparisonGrid { display: grid; gap: 0px; font-size: 0.9em; min-width: fit-content; border-collapse: collapse; }
-  .compareCell { padding: 0.8rem 1rem; border-bottom: 1px solid #e5e7eb; border-right: 1px solid #e5e7eb; vertical-align: top; font-size: 1em; line-height: 1.5; text-align: center; }
-  .comparisonGrid > div:last-child, .comparisonGrid > div:nth-child(4n) { border-right: none; }
-  .comparisonGrid > div:nth-last-child(-n+4) { border-bottom: none; }
-  .compareCellHeader { background-color: #f3f4f6; font-weight: 600; text-align: center; position: sticky; top: 0; z-index: 10; border-bottom: 1px solid #d1d5db; }
-  .compareCardImage { height: 45px; max-width: 72px; object-fit: contain; margin-bottom: 0.5rem; border-radius: 4px; border: 1px solid #e5e7eb; background-color: white; }
-  .compareIssuer { font-size: 0.9em; color: #6b7280; font-weight: 400; }
-  .compareCellLabel { background-color: #f9fafb; font-weight: 600; text-align: right; border-right: 1px solid #d1d5db !important; color: #374151; position: sticky; left: 0; z-index: 5; vertical-align: middle; }
-  .compareCellData { background-color: white; text-align: left; color: #374151; vertical-align: top; }
-  .compareList { margin: 0; padding-left: 1.2em; text-align: left; font-size: 1em; list-style-position: outside; list-style-type: disc; }
-  .compareList li { margin-bottom: 0.4em; }
-  .compareLink { display: inline-block; padding: 0.4rem 0.8rem; border-radius: 4px; margin-bottom: 0.4rem; margin-right: 0.4rem; text-align: center; min-width: 70px; text-decoration: none; color: white; font-size: 0.9em; font-weight: 500; transition: background-color 0.2s ease, transform 0.1s ease; border: 1px solid transparent; }
-  .compareLink:active { transform: scale(0.97); }
-  .compareLink.reviewLink { background-color: #6b7280; border-color: #6b7280; }
-  .compareLink.reviewLink:hover { background-color: #4b5563; border-color: #4b5563; text-decoration: none; color: white; }
-  .compareLink.applyLink { background-color: #2563eb; color: white; border-color: #2563eb; }
-  .compareLink.applyLink:hover { background-color: #1d4ed8; border-color: #1d4ed8; text-decoration: none; color: white; }
-  .compareLink:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3); }
-  .smallText { font-size: 0.9em; }
-  .italicText { font-style: italic; color: #6b7280; }
-  
-  
-  /* --- AI Modal Styles --- */
-  .aiModalOverlay {
+ }
+ .cardList { list-style: none; padding: 0; margin: 0 auto; max-width: 850px; }
+ .cardItem { background-color: #ffffff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem; display: flex; gap: 1.5rem; align-items: flex-start; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); transition: box-shadow 0.2s ease-in-out; }
+ .cardItem:hover { box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07); }
+ .cardImage { height: 60px; width: 95px; object-fit: contain; flex-shrink: 0; border-radius: 6px; border: 1px solid #eee; margin-top: 5px; }
+ .cardDetails { flex: 1; display: flex; flex-direction: column; gap: 0.7rem; }
+ .cardTitle strong { font-size: 1.15em; font-weight: 600; color: #111827; line-height: 1.3; }
+ .cardTitle span { font-size: 0.8em; font-weight: 400; color: #6b7280; margin-left: 0.5rem; vertical-align: middle; }
+ .cardValues { display: flex; gap: 1rem 1.5rem; flex-wrap: wrap; font-size: 1em; padding-bottom: 0.7rem; margin-bottom: 0.7rem; border-bottom: 1px solid #f3f4f6; }
+ .cardValues div { display: flex; align-items: center; }
+ .cardValues strong { font-weight: 500; color: #6b7280; margin-right: 0.4rem; white-space: nowrap; }
+ .valueGood { color: #16a34a; font-weight: 700; font-size: 1.05em; }
+ .valueBad { color: #dc2626; font-weight: 700; font-size: 1.05em; }
+ .valueOngoing { font-weight: 700; font-size: 1.05em; color: #374151; }
+ .cardSubtext { color: #4b5563; font-size: 0.85em; line-height: 1.4; }
+ .bonusBox { background: #fefce8; padding: 0.6rem 0.9rem; border-radius: 6px; border: 1px solid #fef08a; color: #854d0e; font-size: 0.88em; line-height: 1.5; }
+ .bonusBox strong { color: #a16207; font-weight: 600; }
+ .perksSection { font-size: 0.88em; }
+ .perksSection strong { color: #374151; font-weight: 600; display: block; margin-bottom: 0.3rem; }
+ .perksSection ul { margin: 0 0 0 0.5rem; padding: 0; list-style: none; }
+ .perksSection li { margin-bottom: 0.4rem; line-height: 1.4; color: #4b5563; padding-left: 1rem; position: relative; }
+ .perksSection li::before { content: '\2022'; color: #9ca3af; font-weight: bold; display: inline-block; width: 1em; margin-left: -1.2em; position: absolute; left: 0.5em; }
+ .cardLinks { margin-top: 0.8rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+ .cardLinks a { text-decoration: none; color: white; padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.9em; font-weight: 500; text-align: center; transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease; cursor: pointer; display: inline-block; border: 1px solid transparent; }
+ .cardLinks a:active { transform: scale(0.97); }
+ .cardLinks a:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3); }
+ .reviewLink { background-color: #6b7280; border-color: #6b7280; }
+ .reviewLink:hover { background-color: #4b5563; border-color: #4b5563; color: white; }
+ .applyLink { background-color: #2563eb; border-color: #2563eb; }
+ .applyLink:hover { background-color: #1d4ed8; border-color: #1d4ed8; color: white; }
+ .noResults { text-align: center; color: #6b7280; padding: 3rem 1rem; font-style: italic; font-size: 1.05em; background-color: #ffffff; border: 1px dashed #d1d5db; border-radius: 8px; }
+
+
+ /* --- Comparison Modal Styles --- */
+ .comparisonOverlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(17, 24, 39, 0.8); display: flex; justify-content: center; align-items: center; z-index: 1000; overflow-y: auto; padding: 1rem; }
+ .comparisonContent { background-color: white; border-radius: 12px; padding: 1.5rem 2rem 2rem 2rem; width: 95%; max-width: 1200px; max-height: 90vh; overflow-y: auto; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+ .closeButton { position: absolute; top: 10px; right: 15px; background: none; border: none; font-size: 2.2rem; cursor: pointer; color: #9ca3af; line-height: 1; padding: 0.2rem; transition: color 0.2s ease; z-index: 15; }
+ .closeButton:hover { color: #4b5563; }
+ .comparisonContent h3 { text-align: center; margin-top: 0; margin-bottom: 1.5rem; font-size: 1.6rem; font-weight: 600; padding-right: 30px; /* Space for close button */ }
+ .comparisonTableWrapper { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 10px; margin-bottom: 1rem; border: 1px solid #e5e7eb; border-radius: 8px; }
+ .comparisonGrid { display: grid; gap: 0px; /* No gap for table look */ font-size: 0.9em; min-width: fit-content; /* Allow horizontal scroll */ border-collapse: collapse; }
+ .compareCell { padding: 0.8rem 1rem; border-bottom: 1px solid #e5e7eb; border-right: 1px solid #e5e7eb; vertical-align: top; font-size: 1em; line-height: 1.5; text-align: center; /* Default center align */ }
+ .comparisonGrid > div:nth-child(4n) { border-right: none; } /* Remove right border on last column */
+ .comparisonGrid > div:nth-last-child(-n+4) { border-bottom: none; } /* Remove bottom border on last row */
+ .compareCellHeader { background-color: #f3f4f6; font-weight: 600; text-align: center; position: sticky; top: 0; z-index: 10; border-bottom: 1px solid #d1d5db; }
+ .compareCardImage { height: 45px; max-width: 72px; object-fit: contain; margin-bottom: 0.5rem; border-radius: 4px; border: 1px solid #e5e7eb; background-color: white; }
+ .compareIssuer { font-size: 0.9em; color: #6b7280; font-weight: 400; }
+ .compareCellLabel { background-color: #f9fafb; font-weight: 600; text-align: right; border-right: 1px solid #d1d5db !important; /* Ensure right border */ color: #374151; position: sticky; left: 0; z-index: 5; vertical-align: middle; }
+ .compareCellData { background-color: white; text-align: left; color: #374151; vertical-align: top; }
+ .compareList { margin: 0; padding-left: 1.2em; text-align: left; font-size: 1em; list-style-position: outside; list-style-type: disc; }
+ .compareList li { margin-bottom: 0.4em; }
+ .compareLink { display: inline-block; padding: 0.4rem 0.8rem; border-radius: 4px; margin-bottom: 0.4rem; margin-right: 0.4rem; text-align: center; min-width: 70px; text-decoration: none; color: white; font-size: 0.9em; font-weight: 500; transition: background-color 0.2s ease, transform 0.1s ease; border: 1px solid transparent; }
+ .compareLink:active { transform: scale(0.97); }
+ .compareLink.reviewLink { background-color: #6b7280; border-color: #6b7280; }
+ .compareLink.reviewLink:hover { background-color: #4b5563; border-color: #4b5563; text-decoration: none; color: white; }
+ .compareLink.applyLink { background-color: #2563eb; color: white; border-color: #2563eb; }
+ .compareLink.applyLink:hover { background-color: #1d4ed8; border-color: #1d4ed8; text-decoration: none; color: white; }
+ .compareLink:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3); }
+ .smallText { font-size: 0.9em; }
+ .italicText { font-style: italic; color: #6b7280; }
+
+
+ /* --- AI Modal Styles --- */
+ .aiModalOverlay {
     position: fixed; top: 0; left: 0; right: 0; bottom: 0;
     background-color: rgba(17, 24, 39, 0.8);
     display: flex; justify-content: center; align-items: center;
     z-index: 1000; overflow-y: auto; padding: 1rem;
-  }
-  .aiModalContent {
+ }
+ .aiModalContent {
     background-color: white; border-radius: 12px; padding: 1.5rem 2rem 2rem 2rem;
     width: 95%; max-width: 850px; /* Consistent max-width */
     max-height: 90vh; overflow-y: auto;
     position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  }
-  .aiModalContent .closeButton { /* Ensure close button style is applied */
-      position: absolute; top: 10px; right: 15px; background: none; border: none;
-      font-size: 2.2rem; cursor: pointer; color: #9ca3af; line-height: 1; padding: 0.2rem;
-      transition: color 0.2s ease; z-index: 15;
-  }
-  .aiModalContent .closeButton:hover { color: #4b5563; }
-  
-  /* Use existing aiSuggestionBox styles within the modal */
-  .aiSuggestionBox {
-      max-width: 100%; /* Override max-width when inside modal */
-      background: #eff6ff; /* Blue-50 */
-      padding: 1.5rem 2rem;
-      border-radius: 8px;
-      border: 1px solid #bfdbfe; /* Blue-200 */
-      text-align: left;
-      line-height: 1.65;
-      color: #1f2937; /* Gray-800 */
-      box-shadow: 0 2px 4px rgba(0,0,0,0.03);
-  }
-  /* Ensure modal override styles take precedence if needed */
-  .aiModalContent .aiSuggestionBox {
-      margin: 0; border: none; box-shadow: none; padding: 0.5rem;
-      background: transparent; /* Make background transparent inside modal */
-  }
-  
-  .aiSuggestionBox h3 { margin-top: 0; margin-bottom: 0.8rem; padding-bottom: 0.5rem; border-bottom: 1px solid #dbeafe; font-size: 1.2em; font-weight: 600; color: #1e3a8a; }
-  .aiSuggestionBox strong { font-weight: 600; color: #1f2937; }
-  .aiSuggestionBox ul { margin-top: 0.5rem; margin-bottom: 1rem; padding-left: 1.5rem; list-style: disc; }
-  .aiSuggestionBox li { margin-bottom: 0.5rem; }
-  .aiSuggestionBox hr { border: none; border-top: 1px dashed #bfdbfe; margin: 1.5rem 0; }
-  .aiSuggestionBox p { margin-bottom: 1rem; }
-  .aiPlaceholder { color: #6b7280; font-style: italic; margin-top: 1rem; }
-  
-  .heroNote {
-    font-size: 0.9rem; /* Adjusted size for mobile */
-    margin: 1rem auto; /* Space above note */
-    color: #6b7280; /* Gray-500 */
-    text-align: center;
-    /* Centered for better readability */
-    display: block;
-  }
-  /* --- NEW FAQ Section Styles --- */
+ }
+ .aiModalContent .closeButton { /* Ensure close button style is applied */
+     position: absolute; top: 10px; right: 15px; background: none; border: none;
+     font-size: 2.2rem; cursor: pointer; color: #9ca3af; line-height: 1; padding: 0.2rem;
+     transition: color 0.2s ease; z-index: 15;
+ }
+ .aiModalContent .closeButton:hover { color: #4b5563; }
+
+ /* Use existing aiSuggestionBox styles within the modal */
+ .aiSuggestionBox {
+     max-width: 100%; /* Override max-width when inside modal */
+     background: #eff6ff; /* Blue-50 */
+     padding: 1.5rem 2rem;
+     border-radius: 8px;
+     border: 1px solid #bfdbfe; /* Blue-200 */
+     text-align: left;
+     line-height: 1.65;
+     color: #1f2937; /* Gray-800 */
+     box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+ }
+ /* Ensure modal override styles take precedence if needed */
+ .aiModalContent .aiSuggestionBox {
+     margin: 0; border: none; box-shadow: none; padding: 0.5rem;
+     background: transparent; /* Make background transparent inside modal */
+ }
+
+ .aiSuggestionBox h3 { margin-top: 0; margin-bottom: 0.8rem; padding-bottom: 0.5rem; border-bottom: 1px solid #dbeafe; font-size: 1.2em; font-weight: 600; color: #1e3a8a; }
+ .aiSuggestionBox strong { font-weight: 600; color: #1f2937; }
+ .aiSuggestionBox ul { margin-top: 0.5rem; margin-bottom: 1rem; padding-left: 1.5rem; list-style: disc; }
+ .aiSuggestionBox li { margin-bottom: 0.5rem; }
+ .aiSuggestionBox hr { border: none; border-top: 1px dashed #bfdbfe; margin: 1.5rem 0; }
+ .aiSuggestionBox p { margin-bottom: 1rem; }
+ .aiPlaceholder { color: #6b7280; font-style: italic; margin-top: 1rem; }
+
+ /* --- NEW FAQ Section Styles --- */
 .faqSection {
   margin: 4rem auto 2rem auto;
   max-width: 850px;
@@ -449,14 +474,14 @@
   font-weight: 600;
   color: #1f2937;
   cursor: pointer;
-  list-style: none;
+  list-style: none; /* Remove default marker */
   position: relative;
   padding-right: 2.5rem; /* More space for icon */
   transition: color 0.2s ease;
   line-height: 1.4; /* Ensure good line height */
 }
 .faqQuestion:hover { color: #2563eb; }
-.faqQuestion::-webkit-details-marker { display: none; }
+.faqQuestion::-webkit-details-marker { display: none; } /* Hide Safari marker */
 .faqQuestion::after { /* Custom marker */
   content: '+';
   position: absolute;
@@ -469,8 +494,13 @@
   color: #9ca3af;
   transition: transform 0.3s ease, color 0.2s ease;
 }
-.faqItem[open] > .faqQuestion::after { transform: translateY(-50%) rotate(45deg); color: #6b7280; }
-.faqItem[open] > .faqQuestion { color: #1d4ed8; }
+.faqItem[open] > .faqQuestion::after {
+  transform: translateY(-50%) rotate(45deg);
+  color: #6b7280; /* Darken '+' when open */
+}
+.faqItem[open] > .faqQuestion {
+  color: #1d4ed8; /* Darker blue when open */
+}
 .faqAnswer { /* <p> */
   padding: 1.25rem 0.5rem 0 0.5rem; /* Adjusted padding */
   font-size: 1rem;
@@ -478,97 +508,107 @@
   color: #4b5563;
   animation: faqFadeIn 0.5s ease-out;
 }
-@keyframes faqFadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-/* --- Media Queries --- */
-@media screen and (max-width: 991px) { /* Tablet */
-  .mainContentGrid { grid-template-columns: 1fr; gap: 2.5rem 0; }
-  .rightColumn .selectorGroup { /* Re-apply box style for tablet */
-       padding: 1rem 1.5rem; background-color: #ffffff; border-radius: 8px;
-       max-width: 600px; margin: 0 auto; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #d1d5db; }
-  .rightColumn .selectorGroup label { margin-right: 0.5rem; }
-  .filterContainer { padding: 1.5rem; }
-  .filterGroupsContainer { gap: 1.5rem; }
-  .filterGroup { gap: 0.8rem; padding-bottom: 1rem; }
-  .faqSection { padding: 2rem 1.5rem; margin-left: 1rem; margin-right: 1rem; }
-  .faqTitle { font-size: 1.6rem; margin-bottom: 2.5rem; }
-  .faqItem { padding: 1.5rem 0; }
-  .faqQuestion { font-size: 1.1rem; }
-  .faqAnswer { font-size: 0.95rem; line-height: 1.65; }
+@keyframes faqFadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-@media screen and (max-width: 767px) { /* Mobile */
- .container { padding: 1.5rem 1rem;
-margin-top: 2rem; }
- .heroTitle { font-size: 1.8rem; margin-bottom: 2rem; }
- .columnTitle { font-size: 1.1rem; margin-bottom: 1.25rem; }
-
- .inputList { gap: 1.75rem; } /* Increased mobile spacing */
- .inputGroup label { font-size: 0.9rem; }
- .inputField, .rightColumn .selectBox, .filterDropdown {
-     font-size: 1rem; padding: 1rem 1.1rem; padding-right: 3rem; /* Increased padding */
-  }
- .rightColumn .selectBox, .filterDropdown { background-position: right 0.8rem center; }
-
- .filterContainer { padding: 1.5rem 1.25rem; box-shadow: 0 3px 8px rgba(0,0,0,0.06); }
- .filterHeader h4 { font-size: 1.2rem; }
- .filterGroupsContainer { gap: 1.75rem; } /* More spacing */
- .filterGroup { gap: 0.9rem; padding-bottom: 1.1rem; }
- .filterGroup .groupLabel { font-size: 1.05rem; }
- .filterControl { gap: 0.9rem; padding: 0.4rem 0; } /* More spacing */
- .filterControl input[type="checkbox"] { width: 1.25rem; height: 1.25rem; } /* Larger tap target */
- .filterControl label { font-size: 1rem; }
-
- .buttonGroup button {
-     font-size: 1rem; padding: 0.9rem 1.5rem; width: calc(50% - 0.6rem); /* Adjusted gap */
+ /* --- Media Queries --- */
+ @media screen and (max-width: 991px) { /* Tablet */
+    .mainContentGrid { grid-template-columns: 1fr; gap: 2.5rem 0; }
+    .rightColumn .selectorGroup { /* Re-apply box style for tablet */
+        padding: 1rem 1.5rem; background-color: #ffffff; border-radius: 8px;
+        max-width: 600px; margin: 0 auto; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #d1d5db;
+    }
+    .rightColumn .selectorGroup label { margin-right: 0.5rem; margin-bottom: 0.5rem; } /* Adjusted label spacing */
+    .filterContainer { padding: 1.5rem; }
+    .filterGroupsContainer { gap: 1.5rem; }
+    .filterGroup { gap: 0.8rem; padding-bottom: 1rem; }
+    .faqSection { padding: 2rem 1.5rem; margin-left: 1rem; margin-right: 1rem; }
+    .faqTitle { font-size: 1.6rem; margin-bottom: 2.5rem; }
+    .faqItem { padding: 1.5rem 0; }
+    .faqQuestion { font-size: 1.1rem; }
+    .faqAnswer { font-size: 0.95rem; line-height: 1.65; }
  }
- .buttonGroup button:only-child { width: 95%; margin-left: auto; margin-right: auto; display: block;}
 
- .resultsTitle { font-size: 1.5rem; margin-bottom: 1.75rem; }
- .cardItem { flex-direction: column; align-items: center; gap: 1rem; padding: 1.2rem; text-align: center; }
- .cardImage { margin-top: 0; }
- .cardDetails { text-align: center; width: 100%; align-items: center; }
- .cardValues { justify-content: center; gap: 0.8rem 1.2rem; }
- .cardLinks { justify-content: center; gap: 0.8rem; } /* Slightly reduced gap */
- .cardLinks a { padding: 0.7rem 1.3rem; } /* Adjust button padding */
- .perksSection ul { margin-left: 0; padding-left: 0; list-style-position: inside; text-align: center; }
- .perksSection li::before { display: none; }
- .perksSection li { padding-left: 0; position: static; }
+ @media screen and (max-width: 767px) { /* Mobile */
+   .container { padding: 1.5rem 1rem; margin-top: 2rem; }
+   .heroTitle { font-size: 1.8rem; margin-bottom: 0.75rem; } /* Reduced margin */
+   .heroDescription { font-size: 0.95rem; margin-bottom: 2rem; } /* Adjusted */
+   .columnTitle { font-size: 1.1rem; margin-bottom: 1.25rem; }
 
- .comparisonGrid { font-size: 0.9em; }
- .compareCell { padding: 0.7rem 0.9rem; }
- .compareCellLabel { font-size: 1em; padding: 0.7rem 0.6rem; text-align: left; }
-
- .aiModalContent, .comparisonContent { padding: 1.25rem; }
- .aiModalContent h3, .comparisonContent h3 { font-size: 1.4rem; margin-bottom: 1.25rem; }
-
- .faqSection { padding: 1.5rem 1rem; margin-top: 3rem; border-top-width: 3px; }
- .faqTitle { font-size: 1.5rem; margin-bottom: 2rem; }
- .faqItem { padding: 1.2rem 0; }
- .faqQuestion { font-size: 1.05rem; padding-right: 2rem; }
- .faqQuestion::after { font-size: 1.5rem; right: 0.3rem; }
- .faqAnswer { font-size: 0.95rem; line-height: 1.65; padding-top: 1rem; }
-}
-
-@media screen and (max-width: 480px) {
-   .container { padding: 1.5rem 0.8rem;
-  margin-top: 3rem; }
-   .heroTitle { font-size: 1.7rem; } /* Adjusted */
-   .columnTitle { font-size: 1.05rem; }
+   .inputList { gap: 1.75rem; } /* Increased mobile spacing */
    .inputGroup label { font-size: 0.9rem; }
-   .inputField, .rightColumn .selectBox, .filterDropdown { font-size: 1rem; padding: 0.8rem 1rem; padding-right: 2.75rem;} /* Ensure readability */
-   .filterHeader { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
-   .clearButton { align-self: flex-start; }
-   .filterControl label { font-size: 0.95rem; }
-   .buttonGroup button { width: 100%; }
-   .resultsTitle { font-size: 1.4rem; } /* Adjusted */
-   .cardImage { width: 80px; height: 50px; }
+   .inputField, .rightColumn .selectBox, .filterDropdown {
+       font-size: 1rem; padding: 1rem 1.1rem; padding-right: 3rem; /* Increased padding */
+   }
+   .rightColumn .selectBox, .filterDropdown { background-position: right 0.8rem center; }
+   .rightColumn .selectorGroup label { margin-bottom: 0.4rem; } /* Adjust label spacing */
 
-   .comparisonGrid { font-size: 0.85em; }
-   .compareCell { padding: 0.6rem; min-width: 95px; line-height: 1.4; }
-   .compareCellLabel { padding: 0.6rem 0.4rem; font-size: 0.95em; }
+   .filterContainer { padding: 1.5rem 1.25rem; box-shadow: 0 3px 8px rgba(0,0,0,0.06); }
+   .filterHeader h4 { font-size: 1.2rem; }
+   .filterGroupsContainer { gap: 1.75rem; } /* More spacing */
+   .filterGroup { gap: 0.9rem; padding-bottom: 1.1rem; }
+   .filterGroup .groupLabel { font-size: 1.05rem; }
+   .filterControl { gap: 0.9rem; padding: 0.4rem 0; } /* More spacing */
+   .filterControl input[type="checkbox"] { width: 1.25rem; height: 1.25rem; } /* Larger tap target */
+   .filterControl label { font-size: 1rem; }
 
-   .aiModalContent .aiSuggestionBox h3 { font-size: 1.2rem; } /* Adjusted */
-   .faqTitle { font-size: 1.4rem; }
-   .faqQuestion { font-size: 1rem; }
-   .faqAnswer { font-size: 0.9rem; }
-}
+   .buttonGroup button {
+       font-size: 1rem; padding: 0.9rem 1.5rem; width: calc(50% - 0.6rem); /* Adjusted gap */
+   }
+   /* Make buttons stack if only one is showing */
+   .buttonGroup button:only-child { width: 95%; margin-left: auto; margin-right: auto; display: block;}
+   /* Ensure helper text is below buttons */
+   .helperText { margin-top: 0.5rem; margin-bottom: 1.5rem;}
+
+
+   .resultsTitle { font-size: 1.5rem; margin-bottom: 1.75rem; }
+   .cardItem { flex-direction: column; align-items: center; gap: 1rem; padding: 1.2rem; text-align: center; }
+   .cardImage { margin-top: 0; }
+   .cardDetails { text-align: center; width: 100%; align-items: center; }
+   .cardValues { justify-content: center; gap: 0.8rem 1.2rem; }
+   .cardLinks { justify-content: center; gap: 0.8rem; } /* Slightly reduced gap */
+   .cardLinks a { padding: 0.7rem 1.3rem; } /* Adjust button padding */
+   .perksSection ul { margin-left: 0; padding-left: 0; list-style-position: inside; text-align: center; }
+   .perksSection li::before { display: none; }
+   .perksSection li { padding-left: 0; position: static; }
+
+   .comparisonGrid { font-size: 0.9em; }
+   .compareCell { padding: 0.7rem 0.9rem; }
+   .compareCellLabel { font-size: 1em; padding: 0.7rem 0.6rem; text-align: left; }
+
+   .aiModalContent, .comparisonContent { padding: 1.25rem; }
+   .aiModalContent h3, .comparisonContent h3 { font-size: 1.4rem; margin-bottom: 1.25rem; }
+
+   .faqSection { padding: 1.5rem 1rem; margin-top: 3rem; border-top-width: 3px; }
+   .faqTitle { font-size: 1.5rem; margin-bottom: 2rem; }
+   .faqItem { padding: 1.2rem 0; }
+   .faqQuestion { font-size: 1.05rem; padding-right: 2rem; }
+   .faqQuestion::after { font-size: 1.5rem; right: 0.3rem; }
+   .faqAnswer { font-size: 0.95rem; line-height: 1.65; padding-top: 1rem; }
+ }
+
+ @media screen and (max-width: 480px) {
+    .container { padding: 1.5rem 0.8rem; margin-top: 1.5rem; } /* Reduced top margin */
+    .heroTitle { font-size: 1.7rem; } /* Adjusted */
+    .heroDescription { font-size: 0.9rem; }
+    .columnTitle { font-size: 1.05rem; }
+    .inputGroup label { font-size: 0.9rem; }
+    .inputField, .rightColumn .selectBox, .filterDropdown { font-size: 1rem; padding: 0.8rem 1rem; padding-right: 2.75rem;} /* Ensure readability */
+    .filterHeader { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+    .clearButton { align-self: flex-start; }
+    .filterControl label { font-size: 0.95rem; }
+    .buttonGroup button { width: 100%; } /* Stack buttons */
+    .resultsTitle { font-size: 1.4rem; } /* Adjusted */
+    .cardImage { width: 80px; height: 50px; }
+
+    .comparisonGrid { font-size: 0.85em; }
+    .compareCell { padding: 0.6rem; min-width: 95px; line-height: 1.4; }
+    .compareCellLabel { padding: 0.6rem 0.4rem; font-size: 0.95em; }
+
+    .aiModalContent .aiSuggestionBox h3 { font-size: 1.2rem; } /* Adjusted */
+    .faqTitle { font-size: 1.4rem; }
+    .faqQuestion { font-size: 1rem; }
+    .faqAnswer { font-size: 0.9rem; }
+ }
