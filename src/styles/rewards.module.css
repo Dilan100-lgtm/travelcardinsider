@@ -513,5 +513,7 @@
     font-size: 0.9rem; /* Adjusted size for mobile */
     margin-top: 1rem; /* Space above note */
     color: #6b7280; /* Gray-500 */
-    text-align: center; /* Centered for better readability */
+    text-align: center;
+    /* Centered for better readability */
+    display: block;
   }
