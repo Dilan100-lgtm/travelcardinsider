@@ -30,7 +30,7 @@ export default function RewardsPage() {
         <meta name="geo.placename" content="United States" />
         <meta name="language" content="en-US" />
         <meta name="distribution" content="US" />
-        <link rel="alternate" href="https://www.travelcardinsider.com" hreflang="en-us" />
+        <link rel="alternate" href="https://www.travelcardinsider.com" hrefLang="en-us" />
         {/* Preload critical fonts */}
         <link rel="preload" href="/fonts/Roboto_Condensed-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/Roboto_Condensed-Bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
