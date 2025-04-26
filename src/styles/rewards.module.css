@@ -413,103 +413,6 @@
   .aiSuggestionBox p { margin-bottom: 1rem; }
   .aiPlaceholder { color: #6b7280; font-style: italic; margin-top: 1rem; }
   
-  
-  /* --- Media Queries --- */
-  
-  /* Tablet Styles & Stacking Columns */
-  @media screen and (max-width: 991px) { /* Adjust breakpoint if needed */
-     .mainContentGrid {
-         grid-template-columns: 1fr; /* Stack columns */
-         gap: 2.5rem 0; /* Adjust row gap */
-     }
-     .rightColumn .selectorGroup {
-         /* Ensure selector doesn't look out of place */
-         padding: 1rem 1.5rem;
-         background-color: #ffffff;
-         border-radius: 8px;
-         max-width: 600px; /* Optionally restrict width */
-         margin: 0 auto; /* Center if max-width is used */
-         box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-         border: 1px solid #d1d5db;
-     }
-      .rightColumn .selectorGroup label {
-          margin-right: 0.5rem; /* Restore original margin */
-      }
-     .filterContainer {
-         /* Adjust padding for tablet if needed */
-         padding: 1.5rem;
-     }
-     .filterGroupsContainer {
-          gap: 1.5rem; /* Slightly reduce gap */
-     }
-     .filterGroup {
-         gap: 0.8rem;
-         padding-bottom: 1rem;
-     }
-  }
-  
-  
-  /* Mobile Styles (Refinements) */
-  @media screen and (max-width: 767px) { /* Matches existing breakpoint */
-    .container { padding: 1.5rem 1rem; } /* Adjust padding */
-    .heroTitle { font-size: 1.8rem; margin-bottom: 1.5rem; }
-    .columnTitle { font-size: 1.1rem; margin-bottom: 1rem; }
-  
-    .inputList { gap: 1.25rem; }
-    .inputGroup label { font-size: 0.9rem; }
-    .inputField, .rightColumn .selectBox, .filterDropdown { font-size: 0.95rem; padding: 0.7rem 0.9rem; padding-right: 2.5rem; } /* Slightly smaller padding/font */
-    .rightColumn .selectBox, .filterDropdown { background-position: right 0.6rem center; }
-  
-    .filterContainer { padding: 1.25rem; }
-    .filterHeader h4 { font-size: 1.15rem; }
-    .filterGroupsContainer { gap: 1.25rem; }
-    .filterGroup { gap: 0.6rem; padding-bottom: 0.8rem; }
-    .filterGroup .groupLabel { font-size: 0.95rem; }
-    .filterControl { gap: 0.6rem; }
-    .filterControl input[type="checkbox"] { width: 1.1rem; height: 1.1rem; }
-    .filterControl label { font-size: 0.95rem; }
-  
-    .buttonGroup button { font-size: 0.95rem; padding: 0.7rem 1.2rem; width: calc(50% - 0.5rem); /* Two buttons side-by-side */ }
-    .buttonGroup button:only-child { width: 90%; } /* Full width if only one button */
-  
-    .resultsTitle { font-size: 1.4rem; margin-bottom: 1.5rem; }
-    .cardItem { flex-direction: column; align-items: center; gap: 1rem; padding: 1.2rem; text-align: center; }
-    .cardImage { margin-top: 0; }
-    .cardDetails { text-align: center; width: 100%; align-items: center; }
-    .cardValues { justify-content: center; gap: 0.8rem 1.2rem; }
-    .cardLinks { justify-content: center; }
-    .perksSection ul { margin-left: 0; padding-left: 0; list-style-position: inside; text-align: center; }
-    .perksSection li::before { display: none; }
-    .perksSection li { padding-left: 0; position: static; }
-  
-    .comparisonGrid { font-size: 0.85em; }
-    .compareCell { padding: 0.6rem 0.8rem; }
-    .compareCellLabel { font-size: 0.95em; padding: 0.6rem 0.5rem; text-align: left; } /* Align label left */
-  
-    .aiModalContent, .comparisonContent { padding: 1rem; } /* Reduce modal padding */
-    .aiModalContent h3, .comparisonContent h3 { font-size: 1.3rem; margin-bottom: 1rem; }
-  }
-  
-  @media screen and (max-width: 480px) {
-      .container { padding: 1.5rem 0.8rem;
-      margin-top: 3rem; }
-      .heroTitle { font-size: 1.6rem; }
-      .columnTitle { font-size: 1rem; }
-      .inputGroup label { font-size: 0.85rem; }
-      .inputField, .rightColumn .selectBox, .filterDropdown { font-size: 0.9rem; }
-      .filterHeader { flex-direction: column; align-items: flex-start; gap: 0.8rem; } /* Stack header */
-      .clearButton { align-self: flex-start; }
-      .filterControl label { font-size: 0.9rem; }
-      .buttonGroup button { width: 100%; } /* Stack buttons */
-      .resultsTitle { font-size: 1.2rem; }
-      .cardImage { width: 80px; height: 50px; }
-  
-      .comparisonGrid { font-size: 0.8em; }
-      .compareCell { padding: 0.5rem; min-width: 90px; line-height: 1.4; }
-      .compareCellLabel { padding: 0.5rem 0.3rem; font-size: 0.9em; }
-  
-      .aiModalContent .aiSuggestionBox h3 { font-size: 1.1em; }
-  }
   .heroNote {
     font-size: 0.9rem; /* Adjusted size for mobile */
     margin: 1rem auto; /* Space above note */
@@ -518,3 +421,152 @@
     /* Centered for better readability */
     display: block;
   }
+  /* --- NEW FAQ Section Styles --- */
+.faqSection {
+  margin: 4rem auto 2rem auto;
+  max-width: 850px;
+  padding: 2.5rem; /* Increased padding */
+  background-color: #ffffff;
+  border-radius: 10px; /* More rounding */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08); /* Slightly stronger shadow */
+  border-top: 4px solid #3b82f6; /* Blue accent */
+}
+.faqTitle {
+  text-align: center;
+  font-size: 2rem; /* Larger title */
+  font-weight: 700; /* Bolder */
+  color: #111827;
+  margin-bottom: 3rem; /* More space */
+}
+.faqItem {
+  border-bottom: 1px solid #e5e7eb;
+  padding: 1.75rem 0; /* More padding */
+}
+.faqItem:last-child { border-bottom: none; padding-bottom: 0; }
+.faqItem:first-child { padding-top: 0; }
+.faqQuestion { /* <summary> */
+  font-size: 1.15rem; /* Larger question text */
+  font-weight: 600;
+  color: #1f2937;
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+  padding-right: 2.5rem; /* More space for icon */
+  transition: color 0.2s ease;
+  line-height: 1.4; /* Ensure good line height */
+}
+.faqQuestion:hover { color: #2563eb; }
+.faqQuestion::-webkit-details-marker { display: none; }
+.faqQuestion::after { /* Custom marker */
+  content: '+';
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.8rem; /* Larger icon */
+  font-weight: 300;
+  line-height: 1;
+  color: #9ca3af;
+  transition: transform 0.3s ease, color 0.2s ease;
+}
+.faqItem[open] > .faqQuestion::after { transform: translateY(-50%) rotate(45deg); color: #6b7280; }
+.faqItem[open] > .faqQuestion { color: #1d4ed8; }
+.faqAnswer { /* <p> */
+  padding: 1.25rem 0.5rem 0 0.5rem; /* Adjusted padding */
+  font-size: 1rem;
+  line-height: 1.75; /* More line spacing */
+  color: #4b5563;
+  animation: faqFadeIn 0.5s ease-out;
+}
+@keyframes faqFadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+/* --- Media Queries --- */
+@media screen and (max-width: 991px) { /* Tablet */
+  .mainContentGrid { grid-template-columns: 1fr; gap: 2.5rem 0; }
+  .rightColumn .selectorGroup { /* Re-apply box style for tablet */
+       padding: 1rem 1.5rem; background-color: #ffffff; border-radius: 8px;
+       max-width: 600px; margin: 0 auto; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #d1d5db; }
+  .rightColumn .selectorGroup label { margin-right: 0.5rem; }
+  .filterContainer { padding: 1.5rem; }
+  .filterGroupsContainer { gap: 1.5rem; }
+  .filterGroup { gap: 0.8rem; padding-bottom: 1rem; }
+  .faqSection { padding: 2rem 1.5rem; margin-left: 1rem; margin-right: 1rem; }
+  .faqTitle { font-size: 1.6rem; margin-bottom: 2.5rem; }
+  .faqItem { padding: 1.5rem 0; }
+  .faqQuestion { font-size: 1.1rem; }
+  .faqAnswer { font-size: 0.95rem; line-height: 1.65; }
+}
+
+@media screen and (max-width: 767px) { /* Mobile */
+ .container { padding: 1.5rem 1rem; }
+ .heroTitle { font-size: 1.8rem; margin-bottom: 2rem; }
+ .columnTitle { font-size: 1.1rem; margin-bottom: 1.25rem; }
+
+ .inputList { gap: 1.75rem; } /* Increased mobile spacing */
+ .inputGroup label { font-size: 0.9rem; }
+ .inputField, .rightColumn .selectBox, .filterDropdown {
+     font-size: 1rem; padding: 1rem 1.1rem; padding-right: 3rem; /* Increased padding */
+  }
+ .rightColumn .selectBox, .filterDropdown { background-position: right 0.8rem center; }
+
+ .filterContainer { padding: 1.5rem 1.25rem; box-shadow: 0 3px 8px rgba(0,0,0,0.06); }
+ .filterHeader h4 { font-size: 1.2rem; }
+ .filterGroupsContainer { gap: 1.75rem; } /* More spacing */
+ .filterGroup { gap: 0.9rem; padding-bottom: 1.1rem; }
+ .filterGroup .groupLabel { font-size: 1.05rem; }
+ .filterControl { gap: 0.9rem; padding: 0.4rem 0; } /* More spacing */
+ .filterControl input[type="checkbox"] { width: 1.25rem; height: 1.25rem; } /* Larger tap target */
+ .filterControl label { font-size: 1rem; }
+
+ .buttonGroup button {
+     font-size: 1rem; padding: 0.9rem 1.5rem; width: calc(50% - 0.6rem); /* Adjusted gap */
+ }
+ .buttonGroup button:only-child { width: 95%; margin-left: auto; margin-right: auto; display: block;}
+
+ .resultsTitle { font-size: 1.5rem; margin-bottom: 1.75rem; }
+ .cardItem { flex-direction: column; align-items: center; gap: 1rem; padding: 1.2rem; text-align: center; }
+ .cardImage { margin-top: 0; }
+ .cardDetails { text-align: center; width: 100%; align-items: center; }
+ .cardValues { justify-content: center; gap: 0.8rem 1.2rem; }
+ .cardLinks { justify-content: center; gap: 0.8rem; } /* Slightly reduced gap */
+ .cardLinks a { padding: 0.7rem 1.3rem; } /* Adjust button padding */
+ .perksSection ul { margin-left: 0; padding-left: 0; list-style-position: inside; text-align: center; }
+ .perksSection li::before { display: none; }
+ .perksSection li { padding-left: 0; position: static; }
+
+ .comparisonGrid { font-size: 0.9em; }
+ .compareCell { padding: 0.7rem 0.9rem; }
+ .compareCellLabel { font-size: 1em; padding: 0.7rem 0.6rem; text-align: left; }
+
+ .aiModalContent, .comparisonContent { padding: 1.25rem; }
+ .aiModalContent h3, .comparisonContent h3 { font-size: 1.4rem; margin-bottom: 1.25rem; }
+
+ .faqSection { padding: 1.5rem 1rem; margin-top: 3rem; border-top-width: 3px; }
+ .faqTitle { font-size: 1.5rem; margin-bottom: 2rem; }
+ .faqItem { padding: 1.2rem 0; }
+ .faqQuestion { font-size: 1.05rem; padding-right: 2rem; }
+ .faqQuestion::after { font-size: 1.5rem; right: 0.3rem; }
+ .faqAnswer { font-size: 0.95rem; line-height: 1.65; padding-top: 1rem; }
+}
+
+@media screen and (max-width: 480px) {
+   .container { padding: 1.5rem 0.8rem; }
+   .heroTitle { font-size: 1.7rem; } /* Adjusted */
+   .columnTitle { font-size: 1.05rem; }
+   .inputGroup label { font-size: 0.9rem; }
+   .inputField, .rightColumn .selectBox, .filterDropdown { font-size: 1rem; padding: 0.8rem 1rem; padding-right: 2.75rem;} /* Ensure readability */
+   .filterHeader { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+   .clearButton { align-self: flex-start; }
+   .filterControl label { font-size: 0.95rem; }
+   .buttonGroup button { width: 100%; }
+   .resultsTitle { font-size: 1.4rem; } /* Adjusted */
+   .cardImage { width: 80px; height: 50px; }
+
+   .comparisonGrid { font-size: 0.85em; }
+   .compareCell { padding: 0.6rem; min-width: 95px; line-height: 1.4; }
+   .compareCellLabel { padding: 0.6rem 0.4rem; font-size: 0.95em; }
+
+   .aiModalContent .aiSuggestionBox h3 { font-size: 1.2rem; } /* Adjusted */
+   .faqTitle { font-size: 1.4rem; }
+   .faqQuestion { font-size: 1rem; }
+   .faqAnswer { font-size: 0.9rem; }
+}
