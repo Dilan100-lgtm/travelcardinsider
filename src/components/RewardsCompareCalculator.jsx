@@ -1,8 +1,8 @@
 import React, { useState, useMemo } from 'react';
-import styles from '@/styles/RewardsCompareCalculator.module.css'; // Using the updated CSS Module
-import cardsData from '@/data/finalcreditcard.json'; // Ensure this path is correct
+import styles from '@/styles/RewardsCompareCalculator.module.css';
+import cardsData from '@/data/finalcreditcard.json';
 
-// --- Configuration (Keep existing categories and names) ---
+// --- Configuration ---
 const spendingCategories = [
     'dining', 'groceries', 'gas', 'flights', 'hotels',
     'streaming', 'transit', 'onlineShopping', 'drugstores', 'other'
@@ -14,16 +14,16 @@ const categoryDisplayNames = {
 };
 const defaultSpend = spendingCategories.reduce((acc, cat) => ({ ...acc, [cat]: 0 }), {});
 
-// --- Helper Functions (Keep existing helpers) ---
+// --- Helper Functions ---
 const getCategoryMap = () => ({ /* ... (same as previous version) ... */
     dining: ['dining'],
     groceries: ['groceries_us', 'groceries', 'online_grocery'],
     gas: ['gas_us', 'gas'],
     flights: ['flights_direct', 'flights_amex_travel', 'flights_chase_portal', 'flights_capital_one_portal', 'airlines', 'southwest_airlines', 'united_airlines', 'jetblue', 'hawaiian_airlines', 'delta_airlines', 'american_airlines', 'british_airways', 'alaska_airlines', 'aircanada', 'travel_portal', 'travel_other'],
-    hotels: ['hotel', 'hotel_amex_travel', 'hotel_chase_portal', 'hotel_capital_one_portal', 'hilton_hotels', 'hyatt_hotels', 'travel_portal', 'travel_other', 'annual_hotel_credit'], // Added general travel
+    hotels: ['hotel', 'hotel_amex_travel', 'hotel_chase_portal', 'hotel_capital_one_portal', 'hilton_hotels', 'hyatt_hotels', 'travel_portal', 'travel_other', 'annual_hotel_credit'],
     streaming: ['streaming'],
-    transit: ['transit', 'travel_other'], // Added general travel
-    onlineShopping: ['online_retail_us', 'online_grocery'], // Includes online grocery as potential match
+    transit: ['transit', 'travel_other'],
+    onlineShopping: ['online_retail_us', 'online_grocery'],
     drugstores: ['drugstores'],
     other: ['other'],
     travel_portal: ['travel_portal', 'flights_amex_travel', 'flights_chase_portal', 'flights_capital_one_portal', 'hotel_amex_travel', 'hotel_chase_portal', 'hotel_capital_one_portal'],
@@ -77,17 +77,30 @@ const getCardCpp = (card, strategy) => { /* ... (same as previous version) ... *
             return options.transfer_partner_average_cpp ?? options.chase_travel_portal_cpp ?? options.amex_travel_cpp ?? options.cap_one_travel_cpp ?? options.travel_statement_credit_cpp ?? options.cash_back_cpp ?? 1.0;
     }
 };
-const renderStars = (rating) => { /* ... (same as previous version) ... */
+
+// *** UPDATED renderStars Function ***
+const renderStars = (ratingOutOf10) => {
+    if (typeof ratingOutOf10 !== 'number' || ratingOutOf10 < 0) {
+        return null; // Or return empty stars ☆☆☆☆☆
+    }
+    const ratingOutOf5 = ratingOutOf10 / 2.0; // Convert 10-point scale to 5-point scale
     const totalStars = 5;
-    const fullStars = Math.floor(rating / 2);
-    const halfStar = rating % 2 >= 0.5 ? 1 : 0;
+    const fullStars = Math.floor(ratingOutOf5);
+    // Determine half star: Round up to nearest 0.5 for star display
+    const halfStar = Math.round(ratingOutOf5 - fullStars) >= 0.5 ? 1 : 0;
+    // Alternative half star logic (only if exactly .5):
+    // const halfStar = (ratingOutOf5 - fullStars) === 0.5 ? 1 : 0;
+
     const emptyStars = totalStars - fullStars - halfStar;
     const stars = [];
+
     for (let i = 0; i < fullStars; i++) stars.push(<span key={`full-${i}`} className={styles.starFull}>★</span>);
-    if (halfStar) stars.push(<span key="half" className={styles.starHalf}>★</span>);
+    if (halfStar && (fullStars < 5)) stars.push(<span key="half" className={styles.starHalf}>★</span>); // Use CSS to potentially clip later if needed
     for (let i = 0; i < emptyStars; i++) stars.push(<span key={`empty-${i}`} className={styles.starEmpty}>☆</span>);
+
     return stars;
 };
+
 
 // --- Main Component ---
 export default function RewardsCompareCalculator() {
@@ -95,59 +108,57 @@ export default function RewardsCompareCalculator() {
     const [selectedCardNames, setSelectedCardNames] = useState([null, null, null]);
     const [redemptionStrategy, setRedemptionStrategy] = useState('best');
 
-    const handleSpendingChange = (category, value) => {
+    // --- Event Handlers (Keep existing) ---
+    const handleSpendingChange = (category, value) => { /* ... */
         setSpending({ ...spending, [category]: Math.max(0, Number(value) || 0) });
     };
-
-    const handleCardSelect = (index, cardName) => {
+    const handleCardSelect = (index, cardName) => { /* ... */
         const updated = [...selectedCardNames];
         updated[index] = cardName || null;
         setSelectedCardNames(updated);
     };
-
-    const handleStrategyChange = (event) => {
+    const handleStrategyChange = (event) => { /* ... */
         setRedemptionStrategy(event.target.value);
     };
 
-    // --- Main Calculation Memo ---
+    // --- Main Calculation Memo (Keep existing, including best value flags) ---
     const cardCalculations = useMemo(() => {
         const categoryMap = getCategoryMap();
         const results = selectedCardNames.map(cardName => {
-            const card = cardsData.cards.find(c => c["Card Name"] === cardName); //
+            const card = cardsData.cards.find(c => c["Card Name"] === cardName);
             if (!card) return null;
-
             // --- Perform individual card calculation (same as before) ---
             let totalAnnualPoints = 0;
             const breakdown = {};
             const capSpendTracker = {};
-            const otherMultiplier = card.rewards.find(r => r.category === 'other')?.multiplier ?? 1; //
+            const otherMultiplier = card.rewards.find(r => r.category === 'other')?.multiplier ?? 1;
 
-            for (const uiCategory of spendingCategories) { //
-                const monthlySpend = spending[uiCategory];
-                if (monthlySpend <= 0) continue;
-                const annualSpendInCategory = monthlySpend * 12;
-                const rule = findBestRuleForInput(card, uiCategory, categoryMap);
-                const currentMultiplier = rule?.multiplier ?? otherMultiplier;
-                let categoryPoints = 0;
-                let appliedMultiplier = currentMultiplier;
+             for (const uiCategory of spendingCategories) {
+                 const monthlySpend = spending[uiCategory];
+                 if (monthlySpend <= 0) continue;
+                 const annualSpendInCategory = monthlySpend * 12;
+                 const rule = findBestRuleForInput(card, uiCategory, categoryMap);
+                 const currentMultiplier = rule?.multiplier ?? otherMultiplier;
+                 let categoryPoints = 0;
+                 let appliedMultiplier = currentMultiplier;
 
-                if (!rule || rule.category === 'other' || !rule.cap) { //
-                    categoryPoints = annualSpendInCategory * currentMultiplier;
-                    appliedMultiplier = currentMultiplier;
-                } else {
+                 if (!rule || rule.category === 'other' || !rule.cap) {
+                     categoryPoints = annualSpendInCategory * currentMultiplier;
+                     appliedMultiplier = currentMultiplier;
+                 } else {
                     // Handle caps logic... (same cap logic as previous version)
-                    const capInfo = rule.cap; //
+                    const capInfo = rule.cap;
                     const capKey = Array.isArray(capInfo.applies_to_categories) && capInfo.applies_to_categories.length > 0
                                 ? capInfo.applies_to_categories.sort().join(',')
-                                : rule.category; //
-                    const capLimit = capInfo.amount_usd; //
-                    const capPeriod = capInfo.period; //
+                                : rule.category;
+                    const capLimit = capInfo.amount_usd;
+                    const capPeriod = capInfo.period;
                     let annualPointsAtBonusRate = 0;
                     let annualPointsAtOtherRate = 0;
                     const spentTowardsCapSoFar = capSpendTracker[capKey] || 0;
                     let totalSpendAtBonusRate = 0;
 
-                    if (capPeriod === 'year') { //
+                    if (capPeriod === 'year') {
                          const remainingAnnualCapRoom = Math.max(0, capLimit - spentTowardsCapSoFar);
                          const annualSpendAppliedAtBonus = Math.min(annualSpendInCategory, remainingAnnualCapRoom);
                          const annualSpendAppliedAtOther = Math.max(0, annualSpendInCategory - annualSpendAppliedAtBonus);
@@ -155,7 +166,7 @@ export default function RewardsCompareCalculator() {
                          annualPointsAtOtherRate = annualSpendAppliedAtOther * otherMultiplier;
                          capSpendTracker[capKey] = spentTowardsCapSoFar + annualSpendAppliedAtBonus;
                          totalSpendAtBonusRate = annualSpendAppliedAtBonus;
-                     } else if (capPeriod === 'month') { //
+                     } else if (capPeriod === 'month') {
                          const monthlyCapLimit = capLimit;
                          for (let month = 0; month < 12; month++) {
                             const monthlySpendAtBonusRate = Math.min(monthlySpend, monthlyCapLimit);
@@ -164,7 +175,7 @@ export default function RewardsCompareCalculator() {
                             annualPointsAtOtherRate += monthlySpendAtOtherRate * otherMultiplier;
                             totalSpendAtBonusRate += monthlySpendAtBonusRate;
                          }
-                     } else if (capPeriod === 'quarter') { //
+                     } else if (capPeriod === 'quarter') {
                          const quarterlyCapLimit = capLimit;
                          for (let quarter = 0; quarter < 4; quarter++) {
                              const quarterlySpendEstimate = monthlySpend * 3;
@@ -181,24 +192,24 @@ export default function RewardsCompareCalculator() {
                     } else if (annualSpendInCategory > 0) {
                         appliedMultiplier = otherMultiplier;
                     }
-                }
+                 }
 
-                if (categoryPoints > 0) {
-                    breakdown[uiCategory] = {
-                        points: Math.round(categoryPoints),
-                        multiplier: parseFloat(appliedMultiplier.toFixed(2)),
-                        spend: annualSpendInCategory
-                    };
-                }
-                totalAnnualPoints += categoryPoints;
-            }
+                 if (categoryPoints > 0) {
+                     breakdown[uiCategory] = {
+                         points: Math.round(categoryPoints),
+                         multiplier: parseFloat(appliedMultiplier.toFixed(2)),
+                         spend: annualSpendInCategory
+                     };
+                 }
+                 totalAnnualPoints += categoryPoints;
+             }
 
             const annualPerkValue = calculateAnnualPerkValue(card);
             const cpp = getCardCpp(card, redemptionStrategy);
             const rewardsValue = (totalAnnualPoints * cpp) / 100;
-            const annualFee = card["Annual Fee"] || 0; //
+            const annualFee = card["Annual Fee"] || 0;
             const netValue = rewardsValue + annualPerkValue - annualFee;
-            const signUpBonusValue = card.signUpBonus?.estimated_value_usd ?? 0; //
+            const signUpBonusValue = card.signUpBonus?.estimated_value_usd ?? 0;
             const firstYearNetValue = netValue + signUpBonusValue;
             const breakdownTooltips = {};
              Object.entries(breakdown).forEach(([cat, data]) => {
@@ -212,17 +223,15 @@ export default function RewardsCompareCalculator() {
                 firstYearNetValue: parseFloat(firstYearNetValue.toFixed(2)),
                 signUpBonusValue, annualFee, breakdown, breakdownTooltips,
                 cpp: parseFloat(cpp.toFixed(2)),
-                // Initialize best flags (will be set later)
                 isBestTotalPoints: false, isBestRewardsValue: false,
                 isLowestAnnualFee: false, isBestNetValue: false,
                 isBestFirstYearNetValue: false, isBestPerkValue: false
             };
         });
 
-        // --- Find Best Values Across Selected Cards ---
+        // --- Find Best Values Across Selected Cards (same as before) ---
         const validResults = results.filter(r => r !== null);
         if (validResults.length > 0) {
-            // Find Max/Min values
             const maxPoints = Math.max(...validResults.map(r => r.totalPoints));
             const maxRewards = Math.max(...validResults.map(r => r.rewardsValue));
             const maxPerks = Math.max(...validResults.map(r => r.annualPerkValue));
@@ -230,12 +239,11 @@ export default function RewardsCompareCalculator() {
             const maxNet = Math.max(...validResults.map(r => r.netValue));
             const maxFirstYear = Math.max(...validResults.map(r => r.firstYearNetValue));
 
-            // Set flags on the original results array (including nulls)
             results.forEach(calc => {
                 if (calc) {
-                    calc.isBestTotalPoints = calc.totalPoints === maxPoints;
-                    calc.isBestRewardsValue = calc.rewardsValue === maxRewards;
-                    calc.isBestPerkValue = calc.annualPerkValue === maxPerks;
+                    calc.isBestTotalPoints = calc.totalPoints === maxPoints && calc.totalPoints > 0; // Only highlight if > 0
+                    calc.isBestRewardsValue = calc.rewardsValue === maxRewards && calc.rewardsValue > 0; // Only highlight if > 0
+                    calc.isBestPerkValue = calc.annualPerkValue === maxPerks && calc.annualPerkValue > 0; // Only highlight if > 0
                     calc.isLowestAnnualFee = calc.annualFee === minFee;
                     calc.isBestNetValue = calc.netValue === maxNet;
                     calc.isBestFirstYearNetValue = calc.firstYearNetValue === maxFirstYear;
@@ -244,20 +252,20 @@ export default function RewardsCompareCalculator() {
         }
 
         return results;
-
     }, [selectedCardNames, spending, redemptionStrategy]);
 
     // --- Render ---
     return (
         <div className={styles.calculatorContainer}>
 
-            {/* --- Card Selection Area (Same as before) --- */}
+            {/* --- Card Selection Area --- */}
             <section className={styles.cardSelectionSection}>
                 <h2>Select Up to 3 Cards to Compare</h2>
                 <div className={styles.cardSelectorsGrid}>
                     {selectedCardNames.map((selectedName, index) => {
-                        // Find the corresponding card data using the name
-                        const card = cardsData.cards.find(c => c["Card Name"] === selectedName); //
+                        const card = cardsData.cards.find(c => c["Card Name"] === selectedName);
+                        // Use the calculated data if available (though not strictly needed for this section)
+                        // const cardCalc = cardCalculations[index];
                         return (
                             <div key={index} className={styles.cardSelectorColumn}>
                                 <div className={styles.dropdownGroup}>
@@ -268,14 +276,15 @@ export default function RewardsCompareCalculator() {
                                         onChange={(e) => handleCardSelect(index, e.target.value)}
                                     >
                                         <option value="">-- Select a Card --</option>
-                                        {cardsData.cards.map((c) => ( //
+                                        {cardsData.cards.map((c) => (
                                             <option key={c["Card Name"]} value={c["Card Name"]}>
                                                 {c["Card Name"]}
-                                            </option> //
+                                            </option>
                                         ))}
                                     </select>
                                 </div>
-                                {card && ( // includes image, ratingValue, reviewLink, applyLink, ratesandfees
+                                {/* Display card info if a card is selected */}
+                                {card && (
                                     <div className={styles.selectedCardInfo}>
                                         <img
                                             src={card.image || '/placeholder.png'}
@@ -283,11 +292,14 @@ export default function RewardsCompareCalculator() {
                                             className={styles.cardInfoImage}
                                             onError={(e) => { e.target.src = '/placeholder.png'; }}
                                         />
+                                        {/* *** UPDATED RATING DISPLAY *** */}
                                         <div className={styles.cardInfoRating}>
-                                            {card.ratingValue ? (
+                                            {typeof card.ratingValue === 'number' ? ( //
                                                 <>
-                                                    {renderStars(card.ratingValue)}
-                                                    <span className={styles.ratingValue}>({(card.ratingValue / 2).toFixed(1)})</span>
+                                                    {renderStars(card.ratingValue)} {/* Pass the 10pt rating */}
+                                                    <span className={styles.ratingValue}>
+                                                        ({card.ratingValue.toFixed(1)} / 10)
+                                                    </span>
                                                 </>
                                             ) : (
                                                 <span>No Rating</span>
@@ -300,6 +312,8 @@ export default function RewardsCompareCalculator() {
                                         </div>
                                     </div>
                                 )}
+                                 {/* Add placeholder if no card is selected to maintain layout */}
+                                {!card && <div className={styles.selectedCardInfoPlaceholder}></div>}
                             </div>
                         );
                     })}
@@ -308,7 +322,8 @@ export default function RewardsCompareCalculator() {
 
              {/* --- Input Section (Same as before) --- */}
             <section className={styles.inputSection}>
-                <div className={styles.inputHeader}>
+                 {/* ... content same as previous version ... */}
+                 <div className={styles.inputHeader}>
                     <h2>Enter Your Estimated Monthly Spending</h2>
                     <div className={styles.strategySelector}>
                         <label htmlFor="redemptionStrategy">Value Points As:</label>
@@ -337,16 +352,16 @@ export default function RewardsCompareCalculator() {
                 </div>
             </section>
 
-            {/* --- Results Section (Updated Table) --- */}
+            {/* --- Results Section (Same Table structure, relies on updated cardCalculations) --- */}
             {selectedCardNames.some(name => name !== null) && (
                 <section className={styles.resultsSection}>
+                    {/* ... content same as previous version, including table ... */}
                     <h2>Rewards & Value Comparison</h2>
                     <div className={styles.tableWrapper}>
                         <table className={styles.rewardsTable}>
                             <thead>
                                 <tr>
                                     <th>Category</th>
-                                    {/* Display card names in header */}
                                     {selectedCardNames.map((name, index) => (
                                         <th key={index}>{name ?? `Card ${index + 1}`}</th>
                                     ))}
@@ -376,7 +391,7 @@ export default function RewardsCompareCalculator() {
                                     <td>Total Annual Points</td>
                                     {cardCalculations.map((calc, index) => (
                                         <td key={index} className={calc?.isBestTotalPoints ? styles.bestValue : ''}>
-                                            {(calc?.totalPoints ?? 0).toLocaleString()}
+                                            {calc ? calc.totalPoints.toLocaleString() : '-'}
                                         </td>
                                     ))}
                                 </tr>
@@ -405,7 +420,6 @@ export default function RewardsCompareCalculator() {
                                 <tr>
                                     <td>Annual Fee</td>
                                     {cardCalculations.map((calc, index) => (
-                                        // Highlight lowest fee
                                         <td key={index} className={calc?.isLowestAnnualFee ? styles.bestValue : ''}>
                                            {calc ? `-$${calc.annualFee.toFixed(2)}` : '-'}
                                         </td>
@@ -424,7 +438,6 @@ export default function RewardsCompareCalculator() {
                                 <tr>
                                     <td>Sign-up Bonus Value</td>
                                     {cardCalculations.map((calc, index) => (
-                                        // Not typically highlighted as 'best' but shown for calculation
                                         <td key={index}>
                                             {calc ? `+$${calc.signUpBonusValue.toFixed(2)}` : '-'}
                                         </td>
@@ -441,7 +454,7 @@ export default function RewardsCompareCalculator() {
                             </tbody>
                         </table>
                     </div>
-                    <p className={styles.disclaimer}>Estimated values are based on your inputs and selected point valuation. Actual value may vary. Annual fees are subtracted. Highlighted cells indicate the best value in that row among selected cards.</p>
+                     <p className={styles.disclaimer}>Estimated values are based on your inputs and selected point valuation. Actual value may vary. Annual fees are subtracted. Highlighted cells indicate the best value in that row among selected cards.</p>
                 </section>
              )}
         </div>
