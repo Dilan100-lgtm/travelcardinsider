@@ -1,9 +1,8 @@
 import React, { useState, useMemo } from 'react';
-import styles from '@/styles/RewardsCompareCalculator.module.css'; // Updated CSS Module
+import styles from '@/styles/RewardsCompareCalculator.module.css'; // Using the updated CSS Module
 import cardsData from '@/data/finalcreditcard.json'; // Ensure this path is correct
 
-// --- Configuration ---
-// More granular categories for potentially better mapping
+// --- Configuration (Keep existing categories and names) ---
 const spendingCategories = [
     'dining', 'groceries', 'gas', 'flights', 'hotels',
     'streaming', 'transit', 'onlineShopping', 'drugstores', 'other'
@@ -15,10 +14,8 @@ const categoryDisplayNames = {
 };
 const defaultSpend = spendingCategories.reduce((acc, cat) => ({ ...acc, [cat]: 0 }), {});
 
-// --- Helper Functions ---
-
-// Map UI categories to potential JSON categories
-const getCategoryMap = () => ({
+// --- Helper Functions (Keep existing helpers) ---
+const getCategoryMap = () => ({ /* ... (same as previous version) ... */
     dining: ['dining'],
     groceries: ['groceries_us', 'groceries', 'online_grocery'],
     gas: ['gas_us', 'gas'],
@@ -28,20 +25,15 @@ const getCategoryMap = () => ({
     transit: ['transit', 'travel_other'], // Added general travel
     onlineShopping: ['online_retail_us', 'online_grocery'], // Includes online grocery as potential match
     drugstores: ['drugstores'],
-    other: ['other'], // Represents the base earning rate
-    // Add mappings for categories used in JSON but not direct UI inputs if needed
+    other: ['other'],
     travel_portal: ['travel_portal', 'flights_amex_travel', 'flights_chase_portal', 'flights_capital_one_portal', 'hotel_amex_travel', 'hotel_chase_portal', 'hotel_capital_one_portal'],
     travel_other: ['travel_other'],
-    // ... add others as needed based on JSON data keys ...
 });
-
-// Get the best applicable reward rule for a spending category for a specific card
-const findBestRuleForInput = (card, uiCategory, categoryMap) => {
+const findBestRuleForInput = (card, uiCategory, categoryMap) => { /* ... (same as previous version) ... */
     if (!card || !Array.isArray(card.rewards)) return undefined;
-    const targetJsonCategories = categoryMap[uiCategory] || [uiCategory]; // Fallback to self if no map
+    const targetJsonCategories = categoryMap[uiCategory] || [uiCategory];
     let bestRule = undefined;
     let bestMultiplier = 0;
-
     for (const jsonCat of targetJsonCategories) {
         const rule = card.rewards.find(r => r.category === jsonCat);
         if (rule && rule.multiplier > bestMultiplier) {
@@ -49,23 +41,14 @@ const findBestRuleForInput = (card, uiCategory, categoryMap) => {
             bestRule = rule;
         }
     }
-
     const otherRule = card.rewards.find(r => r.category === 'other');
     const otherMultiplier = otherRule?.multiplier ?? 1;
-
     if (!bestRule || bestMultiplier <= otherMultiplier) {
-        // If no specific rule better than 'other' was found explicitly for the UI category,
-        // check if any *other* rule in the card *might* cover this category implicitly
-        // e.g., uiCategory 'flights' might be covered by a card's 'travel_other' rule.
-        // This part needs careful mapping based on your data structure.
-        // For simplicity here, we'll prioritize direct matches or 'other'.
-         return otherRule; // Return 'other' if no better specific rule found
+         return otherRule;
     }
     return bestRule;
 };
-
-// Calculate annual perk value
-const calculateAnnualPerkValue = (card) => {
+const calculateAnnualPerkValue = (card) => { /* ... (same as previous version) ... */
     let annualPerkValue = 0;
     if (Array.isArray(card?.perks)) {
         card.perks.forEach(perk => {
@@ -76,57 +59,49 @@ const calculateAnnualPerkValue = (card) => {
                 annualPerkValue += perk.value_usd / years;
             } else if ((perk.type === 'anniversary_points' || perk.type === 'anniversary_miles') && perk.estimated_value_usd) {
                 annualPerkValue += perk.estimated_value_usd;
-            }
-             // Add estimated values if direct value_usd is missing but estimate exists
-             else if (!perk.value_usd && perk.estimated_value_usd && perk.frequency === 'annual') {
+            } else if (!perk.value_usd && perk.estimated_value_usd && perk.frequency === 'annual') {
                 annualPerkValue += perk.estimated_value_usd;
             }
-            // Add more perk types here (e.g., lounge pass estimates if desired)
         });
     }
     return parseFloat(annualPerkValue.toFixed(2));
 };
-
-// Get CPP based on strategy
-const getCardCpp = (card, strategy) => {
+const getCardCpp = (card, strategy) => { /* ... (same as previous version) ... */
     const options = card?.redemptionOptions;
     if (!options) return 1.0;
     switch (strategy) {
         case 'cash': return options.cash_back_cpp ?? 1.0;
         case 'portal': return options.chase_travel_portal_cpp ?? options.amex_travel_cpp ?? options.cap_one_travel_cpp ?? options.travel_statement_credit_cpp ?? 1.0;
-        case 'transfer': return options.transfer_partner_average_cpp ?? options.program_cpp ?? 1.8; // Example fallback for transfer
+        case 'transfer': return options.transfer_partner_average_cpp ?? options.program_cpp ?? 1.8;
         default: // 'best' or 'default'
             return options.transfer_partner_average_cpp ?? options.chase_travel_portal_cpp ?? options.amex_travel_cpp ?? options.cap_one_travel_cpp ?? options.travel_statement_credit_cpp ?? options.cash_back_cpp ?? 1.0;
     }
 };
-
-// Render stars based on rating
-const renderStars = (rating) => {
+const renderStars = (rating) => { /* ... (same as previous version) ... */
     const totalStars = 5;
     const fullStars = Math.floor(rating / 2);
-    const halfStar = rating % 2 >= 0.5 ? 1 : 0; // Simple half-star logic if rating is x.5 or higher
+    const halfStar = rating % 2 >= 0.5 ? 1 : 0;
     const emptyStars = totalStars - fullStars - halfStar;
     const stars = [];
     for (let i = 0; i < fullStars; i++) stars.push(<span key={`full-${i}`} className={styles.starFull}>★</span>);
-    if (halfStar) stars.push(<span key="half" className={styles.starHalf}>★</span>); // You might need CSS to clip this star
+    if (halfStar) stars.push(<span key="half" className={styles.starHalf}>★</span>);
     for (let i = 0; i < emptyStars; i++) stars.push(<span key={`empty-${i}`} className={styles.starEmpty}>☆</span>);
     return stars;
 };
-
 
 // --- Main Component ---
 export default function RewardsCompareCalculator() {
     const [spending, setSpending] = useState(defaultSpend);
     const [selectedCardNames, setSelectedCardNames] = useState([null, null, null]);
-    const [redemptionStrategy, setRedemptionStrategy] = useState('best'); // 'best', 'cash', 'portal', 'transfer'
+    const [redemptionStrategy, setRedemptionStrategy] = useState('best');
 
     const handleSpendingChange = (category, value) => {
-        setSpending({ ...spending, [category]: Math.max(0, Number(value) || 0) }); // Ensure non-negative
+        setSpending({ ...spending, [category]: Math.max(0, Number(value) || 0) });
     };
 
     const handleCardSelect = (index, cardName) => {
         const updated = [...selectedCardNames];
-        updated[index] = cardName || null; // Store null if "" selected
+        updated[index] = cardName || null;
         setSelectedCardNames(updated);
     };
 
@@ -137,83 +112,80 @@ export default function RewardsCompareCalculator() {
     // --- Main Calculation Memo ---
     const cardCalculations = useMemo(() => {
         const categoryMap = getCategoryMap();
-        return selectedCardNames.map(cardName => {
-            const card = cardsData.cards.find(c => c["Card Name"] === cardName);
+        const results = selectedCardNames.map(cardName => {
+            const card = cardsData.cards.find(c => c["Card Name"] === cardName); //
             if (!card) return null;
 
+            // --- Perform individual card calculation (same as before) ---
             let totalAnnualPoints = 0;
-            const breakdown = {}; // Store points and multiplier per category
+            const breakdown = {};
             const capSpendTracker = {};
-            const otherMultiplier = card.rewards.find(r => r.category === 'other')?.multiplier ?? 1;
+            const otherMultiplier = card.rewards.find(r => r.category === 'other')?.multiplier ?? 1; //
 
-            for (const uiCategory of spendingCategories) {
+            for (const uiCategory of spendingCategories) { //
                 const monthlySpend = spending[uiCategory];
                 if (monthlySpend <= 0) continue;
-
                 const annualSpendInCategory = monthlySpend * 12;
                 const rule = findBestRuleForInput(card, uiCategory, categoryMap);
                 const currentMultiplier = rule?.multiplier ?? otherMultiplier;
                 let categoryPoints = 0;
-                let appliedMultiplier = currentMultiplier; // Track the actual multiplier used after caps
+                let appliedMultiplier = currentMultiplier;
 
-                 if (!rule || rule.category === 'other' || !rule.cap) {
+                if (!rule || rule.category === 'other' || !rule.cap) { //
                     categoryPoints = annualSpendInCategory * currentMultiplier;
                     appliedMultiplier = currentMultiplier;
                 } else {
-                    // Handle caps (copied and adapted logic)
-                    const capInfo = rule.cap;
+                    // Handle caps logic... (same cap logic as previous version)
+                    const capInfo = rule.cap; //
                     const capKey = Array.isArray(capInfo.applies_to_categories) && capInfo.applies_to_categories.length > 0
                                 ? capInfo.applies_to_categories.sort().join(',')
-                                : rule.category;
-                    const capLimit = capInfo.amount_usd;
-                    const capPeriod = capInfo.period;
+                                : rule.category; //
+                    const capLimit = capInfo.amount_usd; //
+                    const capPeriod = capInfo.period; //
                     let annualPointsAtBonusRate = 0;
                     let annualPointsAtOtherRate = 0;
                     const spentTowardsCapSoFar = capSpendTracker[capKey] || 0;
+                    let totalSpendAtBonusRate = 0;
 
-                    let totalSpendAtBonusRate = 0; // Track how much spend got the bonus rate for avg multiplier calc
-
-                    if (capPeriod === 'year') {
-                        const remainingAnnualCapRoom = Math.max(0, capLimit - spentTowardsCapSoFar);
-                        const annualSpendAppliedAtBonus = Math.min(annualSpendInCategory, remainingAnnualCapRoom);
-                        const annualSpendAppliedAtOther = Math.max(0, annualSpendInCategory - annualSpendAppliedAtBonus);
-                        annualPointsAtBonusRate = annualSpendAppliedAtBonus * currentMultiplier;
-                        annualPointsAtOtherRate = annualSpendAppliedAtOther * otherMultiplier;
-                        capSpendTracker[capKey] = spentTowardsCapSoFar + annualSpendAppliedAtBonus;
-                        totalSpendAtBonusRate = annualSpendAppliedAtBonus;
-                    } else if (capPeriod === 'month') {
-                        const monthlyCapLimit = capLimit;
+                    if (capPeriod === 'year') { //
+                         const remainingAnnualCapRoom = Math.max(0, capLimit - spentTowardsCapSoFar);
+                         const annualSpendAppliedAtBonus = Math.min(annualSpendInCategory, remainingAnnualCapRoom);
+                         const annualSpendAppliedAtOther = Math.max(0, annualSpendInCategory - annualSpendAppliedAtBonus);
+                         annualPointsAtBonusRate = annualSpendAppliedAtBonus * currentMultiplier;
+                         annualPointsAtOtherRate = annualSpendAppliedAtOther * otherMultiplier;
+                         capSpendTracker[capKey] = spentTowardsCapSoFar + annualSpendAppliedAtBonus;
+                         totalSpendAtBonusRate = annualSpendAppliedAtBonus;
+                     } else if (capPeriod === 'month') { //
+                         const monthlyCapLimit = capLimit;
                          for (let month = 0; month < 12; month++) {
                             const monthlySpendAtBonusRate = Math.min(monthlySpend, monthlyCapLimit);
                             const monthlySpendAtOtherRate = Math.max(0, monthlySpend - monthlySpendAtBonusRate);
                             annualPointsAtBonusRate += monthlySpendAtBonusRate * currentMultiplier;
                             annualPointsAtOtherRate += monthlySpendAtOtherRate * otherMultiplier;
-                            totalSpendAtBonusRate += monthlySpendAtBonusRate; // Accumulate monthly bonus spend
-                        }
-                    } else if (capPeriod === 'quarter') {
-                        const quarterlyCapLimit = capLimit;
-                        for (let quarter = 0; quarter < 4; quarter++) {
-                            const quarterlySpendEstimate = monthlySpend * 3;
-                            const quarterlySpendAtBonusRate = Math.min(quarterlySpendEstimate, quarterlyCapLimit);
-                            const quarterlySpendAtOtherRate = Math.max(0, quarterlySpendEstimate - quarterlySpendAtBonusRate);
-                            annualPointsAtBonusRate += quarterlySpendAtBonusRate * currentMultiplier;
-                            annualPointsAtOtherRate += quarterlySpendAtOtherRate * otherMultiplier;
-                            totalSpendAtBonusRate += quarterlySpendAtBonusRate; // Accumulate quarterly bonus spend
-                        }
-                    }
+                            totalSpendAtBonusRate += monthlySpendAtBonusRate;
+                         }
+                     } else if (capPeriod === 'quarter') { //
+                         const quarterlyCapLimit = capLimit;
+                         for (let quarter = 0; quarter < 4; quarter++) {
+                             const quarterlySpendEstimate = monthlySpend * 3;
+                             const quarterlySpendAtBonusRate = Math.min(quarterlySpendEstimate, quarterlyCapLimit);
+                             const quarterlySpendAtOtherRate = Math.max(0, quarterlySpendEstimate - quarterlySpendAtBonusRate);
+                             annualPointsAtBonusRate += quarterlySpendAtBonusRate * currentMultiplier;
+                             annualPointsAtOtherRate += quarterlySpendAtOtherRate * otherMultiplier;
+                             totalSpendAtBonusRate += quarterlySpendAtBonusRate;
+                         }
+                     }
                     categoryPoints = annualPointsAtBonusRate + annualPointsAtOtherRate;
-                    // Calculate an *average* multiplier for display if cap was hit
                     if (annualSpendInCategory > 0 && categoryPoints > 0) {
                          appliedMultiplier = categoryPoints / annualSpendInCategory;
                     } else if (annualSpendInCategory > 0) {
-                        appliedMultiplier = otherMultiplier; // If somehow points are zero but spend exists
+                        appliedMultiplier = otherMultiplier;
                     }
                 }
 
                 if (categoryPoints > 0) {
                     breakdown[uiCategory] = {
                         points: Math.round(categoryPoints),
-                        // Use appliedMultiplier which accounts for caps
                         multiplier: parseFloat(appliedMultiplier.toFixed(2)),
                         spend: annualSpendInCategory
                     };
@@ -224,44 +196,68 @@ export default function RewardsCompareCalculator() {
             const annualPerkValue = calculateAnnualPerkValue(card);
             const cpp = getCardCpp(card, redemptionStrategy);
             const rewardsValue = (totalAnnualPoints * cpp) / 100;
-            const annualFee = card["Annual Fee"] || 0;
+            const annualFee = card["Annual Fee"] || 0; //
             const netValue = rewardsValue + annualPerkValue - annualFee;
-            const signUpBonusValue = card.signUpBonus?.estimated_value_usd ?? 0;
+            const signUpBonusValue = card.signUpBonus?.estimated_value_usd ?? 0; //
             const firstYearNetValue = netValue + signUpBonusValue;
-
-            // Create tooltip strings dynamically based on calculation
             const breakdownTooltips = {};
              Object.entries(breakdown).forEach(([cat, data]) => {
                 breakdownTooltips[cat] = `$${spending[cat]} × 12 × ${data.multiplier}x = ${data.points.toLocaleString()} pts`;
             });
 
             return {
-                card, // Include full card data
-                totalPoints: Math.round(totalAnnualPoints),
+                card, totalPoints: Math.round(totalAnnualPoints),
                 rewardsValue: parseFloat(rewardsValue.toFixed(2)),
-                annualPerkValue,
-                netValue: parseFloat(netValue.toFixed(2)),
+                annualPerkValue, netValue: parseFloat(netValue.toFixed(2)),
                 firstYearNetValue: parseFloat(firstYearNetValue.toFixed(2)),
-                signUpBonusValue,
-                annualFee,
-                breakdown, // Contains { points, multiplier, spend }
-                breakdownTooltips, // Contains calculation strings
+                signUpBonusValue, annualFee, breakdown, breakdownTooltips,
                 cpp: parseFloat(cpp.toFixed(2)),
+                // Initialize best flags (will be set later)
+                isBestTotalPoints: false, isBestRewardsValue: false,
+                isLowestAnnualFee: false, isBestNetValue: false,
+                isBestFirstYearNetValue: false, isBestPerkValue: false
             };
         });
-    }, [selectedCardNames, spending, redemptionStrategy]); // Recalculate when these change
+
+        // --- Find Best Values Across Selected Cards ---
+        const validResults = results.filter(r => r !== null);
+        if (validResults.length > 0) {
+            // Find Max/Min values
+            const maxPoints = Math.max(...validResults.map(r => r.totalPoints));
+            const maxRewards = Math.max(...validResults.map(r => r.rewardsValue));
+            const maxPerks = Math.max(...validResults.map(r => r.annualPerkValue));
+            const minFee = Math.min(...validResults.map(r => r.annualFee));
+            const maxNet = Math.max(...validResults.map(r => r.netValue));
+            const maxFirstYear = Math.max(...validResults.map(r => r.firstYearNetValue));
+
+            // Set flags on the original results array (including nulls)
+            results.forEach(calc => {
+                if (calc) {
+                    calc.isBestTotalPoints = calc.totalPoints === maxPoints;
+                    calc.isBestRewardsValue = calc.rewardsValue === maxRewards;
+                    calc.isBestPerkValue = calc.annualPerkValue === maxPerks;
+                    calc.isLowestAnnualFee = calc.annualFee === minFee;
+                    calc.isBestNetValue = calc.netValue === maxNet;
+                    calc.isBestFirstYearNetValue = calc.firstYearNetValue === maxFirstYear;
+                }
+            });
+        }
+
+        return results;
+
+    }, [selectedCardNames, spending, redemptionStrategy]);
 
     // --- Render ---
     return (
         <div className={styles.calculatorContainer}>
 
-            {/* --- Card Selection Area --- */}
+            {/* --- Card Selection Area (Same as before) --- */}
             <section className={styles.cardSelectionSection}>
                 <h2>Select Up to 3 Cards to Compare</h2>
                 <div className={styles.cardSelectorsGrid}>
                     {selectedCardNames.map((selectedName, index) => {
-                        const cardCalc = cardCalculations[index];
-                        const card = cardCalc?.card;
+                        // Find the corresponding card data using the name
+                        const card = cardsData.cards.find(c => c["Card Name"] === selectedName); //
                         return (
                             <div key={index} className={styles.cardSelectorColumn}>
                                 <div className={styles.dropdownGroup}>
@@ -272,14 +268,14 @@ export default function RewardsCompareCalculator() {
                                         onChange={(e) => handleCardSelect(index, e.target.value)}
                                     >
                                         <option value="">-- Select a Card --</option>
-                                        {cardsData.cards.map((c) => (
+                                        {cardsData.cards.map((c) => ( //
                                             <option key={c["Card Name"]} value={c["Card Name"]}>
                                                 {c["Card Name"]}
-                                            </option>
+                                            </option> //
                                         ))}
                                     </select>
                                 </div>
-                                {card && (
+                                {card && ( // includes image, ratingValue, reviewLink, applyLink, ratesandfees
                                     <div className={styles.selectedCardInfo}>
                                         <img
                                             src={card.image || '/placeholder.png'}
@@ -310,11 +306,10 @@ export default function RewardsCompareCalculator() {
                 </div>
             </section>
 
-            {/* --- Input Section --- */}
+             {/* --- Input Section (Same as before) --- */}
             <section className={styles.inputSection}>
                 <div className={styles.inputHeader}>
                     <h2>Enter Your Estimated Monthly Spending</h2>
-                     {/* Redemption Strategy Selector */}
                     <div className={styles.strategySelector}>
                         <label htmlFor="redemptionStrategy">Value Points As:</label>
                         <select id="redemptionStrategy" value={redemptionStrategy} onChange={handleStrategyChange}>
@@ -342,8 +337,8 @@ export default function RewardsCompareCalculator() {
                 </div>
             </section>
 
-            {/* --- Results Section --- */}
-            {selectedCardNames.some(name => name !== null) && ( // Only show results if at least one card selected
+            {/* --- Results Section (Updated Table) --- */}
+            {selectedCardNames.some(name => name !== null) && (
                 <section className={styles.resultsSection}>
                     <h2>Rewards & Value Comparison</h2>
                     <div className={styles.tableWrapper}>
@@ -351,8 +346,9 @@ export default function RewardsCompareCalculator() {
                             <thead>
                                 <tr>
                                     <th>Category</th>
-                                    {cardCalculations.map((calc, index) => (
-                                        <th key={index}>{calc?.card["Card Name"] ?? `Card ${index + 1}`}</th>
+                                    {/* Display card names in header */}
+                                    {selectedCardNames.map((name, index) => (
+                                        <th key={index}>{name ?? `Card ${index + 1}`}</th>
                                     ))}
                                 </tr>
                             </thead>
@@ -366,76 +362,88 @@ export default function RewardsCompareCalculator() {
                                             const tooltipText = calc?.breakdownTooltips?.[cat] ?? '-';
                                             return (
                                                 <td key={index} className={points > 0 ? styles.tooltip : ''}>
-                                                    {points.toLocaleString()} pts
+                                                    {points > 0 ? points.toLocaleString() + ' pts' : '-'}
                                                     {points > 0 && <span className={styles.tooltiptext}>{tooltipText}</span>}
                                                 </td>
                                             );
                                         })}
                                     </tr>
                                 ))}
-                                {/* Spacer Row */}
+                                {/* --- Spacer Row --- */}
                                 <tr className={styles.spacerRow}><td colSpan={selectedCardNames.length + 1}></td></tr>
-                                {/* Summary Rows */}
+                                {/* --- Summary Rows with Highlighting --- */}
                                 <tr>
                                     <td>Total Annual Points</td>
                                     {cardCalculations.map((calc, index) => (
-                                        <td key={index}>{(calc?.totalPoints ?? 0).toLocaleString()}</td>
+                                        <td key={index} className={calc?.isBestTotalPoints ? styles.bestValue : ''}>
+                                            {(calc?.totalPoints ?? 0).toLocaleString()}
+                                        </td>
                                     ))}
                                 </tr>
                                 <tr>
                                     <td>Selected Point Value (CPP)</td>
                                      {cardCalculations.map((calc, index) => (
-                                        <td key={index}>{calc?.cpp.toFixed(2) ?? '-'}¢</td>
+                                        <td key={index}>{calc ? `${calc.cpp.toFixed(2)}¢` : '-'}</td>
                                     ))}
                                 </tr>
                                  <tr>
                                     <td>Est. Annual Rewards Value</td>
                                     {cardCalculations.map((calc, index) => (
-                                        <td key={index}>${(calc?.rewardsValue ?? 0).toFixed(2)}</td>
+                                        <td key={index} className={calc?.isBestRewardsValue ? styles.bestValue : ''}>
+                                            {calc ? `$${calc.rewardsValue.toFixed(2)}` : '-'}
+                                        </td>
                                     ))}
                                 </tr>
                                 <tr>
                                     <td>Est. Annual Perk Value</td>
                                      {cardCalculations.map((calc, index) => (
-                                        <td key={index}>${(calc?.annualPerkValue ?? 0).toFixed(2)}</td>
+                                        <td key={index} className={calc?.isBestPerkValue ? styles.bestValue : ''}>
+                                            {calc ? `$${calc.annualPerkValue.toFixed(2)}` : '-'}
+                                        </td>
                                     ))}
                                 </tr>
                                 <tr>
                                     <td>Annual Fee</td>
                                     {cardCalculations.map((calc, index) => (
-                                        <td key={index}>-${(calc?.annualFee ?? 0).toFixed(2)}</td>
+                                        // Highlight lowest fee
+                                        <td key={index} className={calc?.isLowestAnnualFee ? styles.bestValue : ''}>
+                                           {calc ? `-$${calc.annualFee.toFixed(2)}` : '-'}
+                                        </td>
                                     ))}
                                 </tr>
                                 <tr className={styles.highlightRow}>
                                     <td>Est. Ongoing Net Value</td>
                                     {cardCalculations.map((calc, index) => (
-                                        <td key={index} className={calc && calc.netValue >= 0 ? styles.valueGood : styles.valueBad}>
-                                            ${(calc?.netValue ?? 0).toFixed(2)}
+                                        <td key={index} className={`${calc?.isBestNetValue ? styles.bestValue : ''} ${calc && calc.netValue < 0 ? styles.valueBad : ''}`}>
+                                           {calc ? `$${calc.netValue.toFixed(2)}` : '-'}
                                         </td>
                                     ))}
                                 </tr>
-                                 {/* Spacer Row */}
+                                 {/* --- Spacer Row --- */}
                                 <tr className={styles.spacerRow}><td colSpan={selectedCardNames.length + 1}></td></tr>
                                 <tr>
                                     <td>Sign-up Bonus Value</td>
                                     {cardCalculations.map((calc, index) => (
-                                        <td key={index}>+${(calc?.signUpBonusValue ?? 0).toFixed(2)}</td>
+                                        // Not typically highlighted as 'best' but shown for calculation
+                                        <td key={index}>
+                                            {calc ? `+$${calc.signUpBonusValue.toFixed(2)}` : '-'}
+                                        </td>
                                     ))}
                                 </tr>
                                 <tr className={styles.highlightRowBold}>
                                     <td>Est. 1st Year Net Value</td>
                                     {cardCalculations.map((calc, index) => (
-                                         <td key={index} className={calc && calc.firstYearNetValue >= 0 ? styles.valueGood : styles.valueBad}>
-                                            ${(calc?.firstYearNetValue ?? 0).toFixed(2)}
+                                         <td key={index} className={`${calc?.isBestFirstYearNetValue ? styles.bestValue : ''} ${calc && calc.firstYearNetValue < 0 ? styles.valueBad : ''}`}>
+                                           {calc ? `$${calc.firstYearNetValue.toFixed(2)}` : '-'}
                                         </td>
                                     ))}
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    <p className={styles.disclaimer}>Estimated values are based on your inputs and average point valuations. Actual value may vary. Annual fees are subtracted.</p>
+                    <p className={styles.disclaimer}>Estimated values are based on your inputs and selected point valuation. Actual value may vary. Annual fees are subtracted. Highlighted cells indicate the best value in that row among selected cards.</p>
                 </section>
-            )}
+             )}
         </div>
     );
 }
