@@ -612,3 +612,10 @@
     .faqQuestion { font-size: 1rem; }
     .faqAnswer { font-size: 0.9rem; }
  }
+ .heroNote {
+  display: block; /* Ensure block-level element */
+  text-align: center; /* Center the text */
+  margin: 1rem auto; /* Center the element horizontally */
+  font-size: 0.9rem; /* Adjusted size for mobile */
+  color: #6b7280; /* Gray-500 */
+}
