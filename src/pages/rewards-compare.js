@@ -7,6 +7,7 @@ import Footer from "../components/Footer"; // Assuming path is correct
 export default function RewardsComparePage() {
   return (
     <>
+      <Header /> {/* Fixed header component */}
       <Head>
         <title>Compare Credit Card Rewards - TravelCardInsider</title>
         <meta name="description" content="Compare up to 3 travel credit cards and calculate estimated yearly rewards based on your spending habits." />
@@ -20,7 +21,9 @@ export default function RewardsComparePage() {
           </h1>
           <RewardsCompareCalculator />
         </div>
+
       </main>
+      <Footer /> {/* Fixed footer component */}
     </>
   );
 }
