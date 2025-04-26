@@ -10,7 +10,7 @@ export default function RewardsPage() {
   return (
     <>
       <Head>
-        <title>AI-Powered Travel Credit Card Rewards Calculator | TravelCardInsider</title>
+        <title>Travel Credit Card Rewards Calculator | TravelCardInsider</title>
         <meta
           name="description"
           content="Get a personalized ranking of the best travel credit cards based on your actual spending habits. Instantly estimate first-year value, rewards, and perks using real-world data."
@@ -20,6 +20,16 @@ export default function RewardsPage() {
         <meta property="og:description" content="Find the most valuable travel credit card for you. Our AI-based calculator analyzes your monthly spend and shows top cards by estimated value." />
         <meta property="og:url" content="https://www.travelcardinsider.com/rewards" />
         <meta property="og:type" content="website" />
+         {/* Preload critical fonts */}
+         <link rel="preload" href="/fonts/Roboto_Condensed-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/Roboto_Condensed-bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/playfair-display-regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/playfair-display-bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+        <meta name="geo.region" content="US" />
+        <meta name="geo.placename" content="United States" />
+        <meta name="language" content="en-US" />
+        <meta name="distribution" content="US" />
+        <link rel="alternate" href="https://www.travelcardinsider.com" hrefLang="en-us" />
       </Head>
 
       <Header />
