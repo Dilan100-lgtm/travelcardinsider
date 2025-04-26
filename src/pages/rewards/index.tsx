@@ -26,8 +26,6 @@ export default function RewardsPage() {
 
       <main className={styles.calculatorContainer}>
         
-          
-       
 
         <RewardsCalculator />
         <small className={styles.heroNote}>
