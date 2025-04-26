@@ -113,7 +113,7 @@ border-bottom: 1px solid var(--border-color-light, #e5e7eb);
 }
 
 .cardInfoRating {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--text-light, #6b7280);
   display: flex;
   align-items: center;
@@ -122,7 +122,7 @@ border-bottom: 1px solid var(--border-color-light, #e5e7eb);
 
 .ratingValue {
   margin-left: 0.3rem;
-  font-size: 0.85rem;
+  font-size: 1rem;
 }
 
 /* Star Rating Styles */
@@ -142,7 +142,7 @@ border-bottom: 1px solid var(--border-color-light, #e5e7eb);
 .cardButton {
   padding: 0.4rem 0.8rem;
   border-radius: 5px;
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 700; /* Bolder buttons */
   font-family: 'Roboto Condensed', sans-serif; /* Explicit font */
   text-decoration: none;
