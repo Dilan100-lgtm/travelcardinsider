@@ -1,0 +1,76 @@
+/* File: /styles/RewardsCompareCalculator.module.css */
+.calculatorContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.inputSection, .resultsSection {
+  background: var(--bg-white);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.inputGroup, .dropdownGroup {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputGroup label, .dropdownGroup label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.inputGroup input, .dropdownGroup select {
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.resultsSection h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: var(--text-dark);
+}
+
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.rewardsTable {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.rewardsTable th, .rewardsTable td {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color-light);
+  text-align: center;
+  font-size: 1rem;
+}
+
+.rewardsTable th {
+  background: #f3f4f6;
+  font-weight: bold;
+  color: var(--text-dark);
+}
+
+.rewardsTable td {
+  color: var(--text-medium);
+}
+
+/* Responsive improvements */
+@media (min-width: 768px) {
+  .calculatorContainer {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .inputSection, .resultsSection {
+    width: 48%;
+  }
+}

@@ -230,7 +230,7 @@ export default function HomePage() {
               your next adventure.
             </p>
             {/* This links to the comparison section below */}
-            <a href="#compare" className="cta-button">
+            <a href="/specific-rewards" className="cta-button">
               Compare Now
             </a>
           </div>
