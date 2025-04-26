@@ -1,6 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
 import RewardsCompareCalculator from '@/components/RewardsCompareCalculator'; // Use the updated component path
+import Header from "../components/Header"; // Assuming path is correct
+import Footer from "../components/Footer"; // Assuming path is correct
 
 export default function RewardsComparePage() {
   return (
