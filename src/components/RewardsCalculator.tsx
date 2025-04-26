@@ -317,9 +317,15 @@ export default function RewardsCalculator() {
   return (
     <div className={styles.container}>
 
-      <h2 className={styles.heroTitle}>
-          AI-Powered Travel Rewards Calculator
-      </h2>
+<section className={styles.hero}>
+          <h1 className={styles.heroTitle}>Travel Credit Card Rewards Calculator</h1>
+          <p className={styles.heroDescription}>
+            Discover which travel credit cards deliver the most value for your real-life spending.
+            Our intelligent calculator analyzes your monthly expenses and ranks cards by estimated first-year value—
+            factoring in bonuses, perks, and real-world reward redemptions.
+          </p>
+          
+        </section>
 
       {/* --- Main Content Grid (Two Columns) --- */}
       {/* You will need to add corresponding CSS for 'mainContentGrid', 'leftColumn', 'rightColumn' */}

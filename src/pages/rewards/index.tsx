@@ -25,7 +25,15 @@ export default function RewardsPage() {
       <Header />
 
       <main className={styles.calculatorContainer}>
-        
+        <section className={styles.hero}>
+          <h1 className={styles.heroTitle}>Travel Credit Card Rewards Calculator</h1>
+          <p className={styles.heroDescription}>
+            Discover which travel credit cards deliver the most value for your real-life spending.
+            Our intelligent calculator analyzes your monthly expenses and ranks cards by estimated first-year value—
+            factoring in bonuses, perks, and real-world reward redemptions.
+          </p>
+          
+        </section>
 
         <RewardsCalculator />
         <small className={styles.heroNote}>
