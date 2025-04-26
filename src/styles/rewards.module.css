@@ -549,7 +549,8 @@
 }
 
 @media screen and (max-width: 480px) {
-   .container { padding: 1.5rem 0.8rem; }
+   .container { padding: 1.5rem 0.8rem;
+  margin-top: 3rem; }
    .heroTitle { font-size: 1.7rem; } /* Adjusted */
    .columnTitle { font-size: 1.05rem; }
    .inputGroup label { font-size: 0.9rem; }
