@@ -107,6 +107,12 @@ export default function RewardsComparePage() {
         {/* ---------- Favicon / theme ---------- */}
         <link rel="icon" href="/favicon.ico" />
         <meta name="theme-color" content="#2563eb" />
+        {/* Preload critical fonts */}
+        <link rel="preload" href="/fonts/Roboto_Condensed-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/Roboto_Condensed-bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/playfair-display-regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/playfair-display-bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+    
 
         {/* ---------- Viewport (for completeness) ---------- */}
         <meta name="viewport" content="width=device-width,initial-scale=1" />
