@@ -38,6 +38,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     // Format the top cards data clearly for the prompt
+    // *** CORRECTED LINE: Added .join('\n\n') and removed .trim() ***
     const topCardsFormatted = topCards.map((c, i) => `
 --- Card ${i + 1} ---
 Name: ${c.cardName} (${c.issuer})
@@ -51,7 +52,7 @@ Calculated Annual Perk Value: $${c.calculatedAnnualPerkValue?.toFixed(2) ?? 'N/A
 Point Value Used (CPP): ${c.cppUsedForValue?.toFixed(2)} via '${c.redemptionStrategyUsed}' strategy
 Key Reward Categories: ${Array.isArray(c.topRewardCategories) && c.topRewardCategories.length > 0 ? c.topRewardCategories.map(r => `${r.multiplier}x on ${r.category.replace(/_/g, ' ')}${r.cap ? ` (Cap: $${r.cap.amount_usd}/${r.cap.period})` : ''}`).join('; ') : 'Base rate'}
 Key Perks: ${Array.isArray(c.keyPerks) && c.keyPerks.length > 0 ? c.keyPerks.map(p => `${p.description}${p.value ? ` (~$${p.value?.toFixed(0)}/yr)` : ''}`).join('; ') : 'None notable'}
-`).trim(); // Use trim()
+`).join('\n\n'); // <-- Corrected: Join array into one string
 
 
     // Construct the Prompt Messages
@@ -118,7 +119,16 @@ Key Perks: ${Array.isArray(c.keyPerks) && c.keyPerks.length > 0 ? c.keyPerks.map
     res.status(200).json({ recommendation: message });
 
   } catch (err: any) {
-    console.error("Error calling OpenAI:", err.response ? err.response.data : err.message); // Log more detailed error if available
+    // Log more detailed error information if available
+    console.error("Error calling OpenAI:", err.response ? JSON.stringify(err.response.data, null, 2) : err.message);
+    // Optionally check for specific OpenAI error types
+    let errorMessage = 'Failed to get AI recommendation.';
+    if (err.status === 401) {
+      errorMessage = 'Authentication error: Invalid OpenAI API Key.';
+    } else if (err.status === 429) {
+      errorMessage = 'API Limit Error: You may have exceeded your OpenAI quota or rate limit.';
+    }
+    // Send generic error to frontend, but log specifics on server
     res.status(500).json({ error: 'Failed to get AI recommendation.' });
   }
 }
