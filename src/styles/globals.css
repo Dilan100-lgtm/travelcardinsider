@@ -7,6 +7,10 @@ html {
 *, *::before, *::after {
   box-sizing: inherit; /* Inherit box model */
 }
+main {
+  overflow-x: visible;
+  overflow-y: visible;
+}
 
 
 body {
