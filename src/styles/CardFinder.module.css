@@ -2,416 +2,585 @@
 /* Add these styles or modify existing ones */
 
 .finderContainer {
-  /* ... existing styles ... */
-   background: var(--bg-white, #ffffff); /* Change background? */
-   border-radius: 12px;
-   box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-   overflow: hidden; /* Contain shadows/borders */
-}
-
-.finderContainer h1 {
-    font-family: 'Playfair Display', serif;
-    color: var(--text-dark, #111827);
+    /* ... existing styles ... */
+     background: var(--bg-white, #ffffff); /* Change background? */
+     border-radius: 12px;
+     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+     overflow: hidden; /* Contain shadows/borders */
+     padding: 2rem 1.5rem; /* Add padding to container */
+  }
+  
+  .finderContainer h1 {
+     font-family: 'Playfair Display', serif;
+     color: var(--text-dark, #111827);
+     text-align: center;
+     margin-bottom: 0.5rem;
+     font-size: 2.2rem; /* Slightly larger */
+  }
+  .finderContainer > p.introParagraph { /* Target introductory paragraph specifically */
+     text-align: center;
+     color: var(--text-light, #6b7280);
+     margin-bottom: 2.5rem; /* Increased margin */
+     max-width: 65ch;
+     margin-left: auto;
+     margin-right: auto;
+     font-size: 1.05rem;
+     line-height: 1.6;
+  }
+  
+  
+  .finderForm {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem; /* Increased gap */
+  }
+  
+  .inputSection,
+  .preferenceSection {
+   /* background: #f9fafb; */ /* Lighter background for sections */
+    padding: 1.75rem; /* Increased padding */
+    border-radius: 8px;
+    border: 1px solid var(--border-color-light, #e5e7eb);
+    box-shadow: none; /* Remove individual shadows if container has one */
+  }
+  .inputSection legend,
+  .preferenceSection legend {
+      font-size: 1.4rem; /* Larger legend */
+      font-weight: 700;
+      margin-bottom: 1.5rem; /* Increased margin */
+      color: var(--primary-blue-text-dark, #1e3a8a);
+      font-family: 'Playfair Display', serif;
+      padding: 0 0.5rem;
+      border-bottom: 2px solid var(--primary-blue, #2563eb); /* Add underline */
+      display: inline-block; /* Allow padding and border */
+  }
+  
+  .inputGroup,
+  .checkboxGroup {
+    margin-bottom: 1.5rem; /* Increased spacing */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .inputGroup label,
+  .checkboxGroup label,
+  .radioGroup label {
+    margin-bottom: 0.6rem; /* Increased margin */
+    font-weight: 600;
+    color: var(--text-medium, #374151);
+    font-size: 0.95rem;
+  }
+  
+  .inputGroup input[type="text"], /* Target text inputs used for numbers */
+  .inputGroup select {
+    padding: 0.8rem 1rem; /* Slightly larger padding */
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-color, #d1d5db);
+    background: #fff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .inputGroup input[type="text"]:focus,
+  .inputGroup select:focus {
+      outline: none;
+      border-color: var(--primary-blue, #2563eb);
+      box-shadow: 0 0 0 3px var(--primary-blue-focus, rgba(59, 130, 246, 0.3)); /* Slightly larger focus shadow */
+  }
+  
+  /* Grid layout for spending inputs */
+  .gridInputGroup {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); /* Slightly wider min */
+      gap: 1.2rem 1.8rem; /* Increased gap */
+  }
+  
+  /* Styling for Radio Button Groups */
+  .radioGroup label {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem; /* Increased gap */
+      margin-bottom: 0.7rem;
+      font-weight: normal; /* Keep normal weight for options */
+      cursor: pointer;
+      font-size: 1rem; /* Slightly larger font */
+  }
+  .radioGroup input[type="radio"] {
+      accent-color: var(--primary-blue, #2563eb);
+      transform: scale(1.1); /* Slightly larger radio */
+  }
+  
+  
+  /* Styling for Checkbox Grids (Loyalty, Perks) */
+  .checkboxGrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); /* Wider min */
+      gap: 0.8rem 1.2rem; /* Increased gap */
+  }
+  .checkboxGrid label {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem; /* Increased gap */
+      font-weight: normal;
+      font-size: 0.95rem; /* Slightly larger */
+      cursor: pointer;
+      padding: 0.3rem 0; /* Add slight vertical padding */
+  }
+  .checkboxGrid input[type="checkbox"] {
+      width: 1.1em; /* Larger checkbox */
+      height: 1.1em;
+      accent-color: var(--primary-blue, #2563eb);
+  }
+  
+  
+  /* Input descriptions/help text */
+  .inputGroup small {
+      font-size: 0.85rem; /* Slightly larger help text */
+      color: var(--text-light, #6b7280);
+      margin-top: 0.5rem; /* Increased margin */
+  }
+  
+  
+  /* --- Results Section --- */
+  .resultsSection {
+    /* border-top: 2px solid var(--border-color, #d1d5db); */
+    padding-top: 2rem; /* Add space */
+    margin-top: 1rem;
+  }
+  .resultsHeader {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2rem; /* Increased margin */
+      padding: 0 0.5rem;
+      border-bottom: 1px solid var(--border-color-light);
+      padding-bottom: 1rem; /* Increased padding */
+  }
+  .resultsHeader h2 {
+      margin: 0;
+      font-size: 1.8rem; /* Larger header */
+      font-family: 'Playfair Display', serif;
+      color: var(--text-dark);
+  }
+  .lastRefreshed {
+      font-size: 0.85rem;
+      color: var(--text-light);
+  }
+  
+  .resultsGrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); /* Wider min */
+      gap: 2rem; /* Increased gap */
+  }
+  
+  .loadingIndicator {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 3rem 2rem; /* Increased padding */
+      gap: 0.8rem; /* Increased gap */
+      min-height: 150px; /* Ensure it takes some space */
+  }
+  .loadingIndicator span {
+      width: 12px; /* Larger dots */
+      height: 12px;
+      background-color: var(--primary-blue, #2563eb);
+      border-radius: 50%;
+      animation: bounce 1.4s infinite ease-in-out both;
+  }
+  .loadingIndicator span:nth-child(1) { animation-delay: -0.32s; }
+  .loadingIndicator span:nth-child(2) { animation-delay: -0.16s; }
+  @keyframes bounce {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1.0); }
+  }
+  
+  .errorMessage {
+      color: var(--danger-color, #b91c1c); /* Darker red */
+      background-color: rgba(220, 38, 38, 0.05); /* Lighter background */
+      border: 1px solid rgba(220, 38, 38, 0.2);
+      padding: 1.5rem; /* Increased padding */
+      border-radius: 8px; /* Rounded corners */
+      text-align: center;
+      font-weight: 500;
+  }
+  
+  /* --- Card Tile Styles --- */
+  .cardTile {
+      background-color: #fff;
+      border: 1px solid var(--border-color-light, #e5e7eb);
+      border-radius: 10px; /* Slightly more rounded */
+      padding: 1.2rem 1.5rem 1.5rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem; /* Increased gap */
+      box-shadow: 0 2px 5px rgba(0,0,0,0.06); /* Subtler shadow */
+      transition: box-shadow 0.25s ease, transform 0.2s ease;
+      position: relative; /* Needed for badge positioning */
+      overflow: hidden; /* Hide badge overflow */
+  }
+  .cardTile:hover {
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* More pronounced hover shadow */
+      transform: translateY(-3px); /* Slight lift effect */
+  }
+  
+  /* Badge Styles */
+  .cardTileBadge {
+      position: absolute;
+      top: 0;
+      right: -40px; /* Position outside initially */
+      background-color: var(--primary-blue);
+      color: white;
+      padding: 0.3rem 2.5rem; /* Wide padding for diagonal effect */
+      font-size: 0.7rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      transform: rotate(45deg) translateY(-18px); /* Rotate and adjust */
+      transform-origin: top right;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      white-space: nowrap;
+  }
+  /* Adjust badge specifically for Best Pick */
+  .cardTile.bestPick .cardTileBadge {
+      background-color: #10b981; /* Green for best pick */
+  }
+  
+  
+  .cardTileHeader {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem; /* Increased gap */
+      /* border-bottom: 1px dashed var(--border-color-light); */
+      padding-bottom: 0; /* Remove padding if no border */
+  }
+  .cardTileImage {
+      flex-shrink: 0;
+      /* Add a subtle border/background to image container */
+      /* background: #f9fafb;
+      border: 1px solid var(--border-color-light);
+      padding: 0.3rem;
+      border-radius: 4px; */
+  }
+  .cardTileImagePlaceholder { /* Style for placeholder */
+      flex-shrink: 0;
+      width: 120px;
+      height: 75px;
+      background: #eee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #aaa;
+      font-size: 0.8rem;
+      border-radius: 4px;
+  }
+  .cardTileInfo h3 {
+      margin: 0 0 0.25rem 0;
+      font-size: 1.2rem; /* Slightly larger */
+      color: var(--text-dark);
+      font-weight: 700; /* Bolder */
+  }
+  .cardTileIssuer {
+      font-size: 0.9rem; /* Slightly larger */
+      color: var(--text-light);
+      margin: 0;
+  }
+  .cardTileScore {
+      font-size: 0.95rem;
+      margin: 0.4rem 0 0 0;
+      color: var(--text-medium);
+  }
+  .cardTileScore strong {
+      font-size: 1.15em; /* Slightly larger */
+      color: var(--primary-blue);
+      font-weight: 700;
+  }
+  
+  .cardTileValues {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      text-align: center;
+      gap: 1rem; /* Increased gap */
+      border-top: 1px dashed var(--border-color-light);
+      border-bottom: 1px dashed var(--border-color-light);
+      padding: 1rem 0; /* Add padding */
+  }
+  .cardTileValues div span {
+      display: block;
+      font-size: 0.8rem; /* Slightly larger */
+      color: var(--text-light);
+      margin-bottom: 0.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+  }
+  .cardTileValues div strong {
+      font-size: 1.2rem; /* Larger value */
+      color: var(--text-dark);
+      font-weight: 600;
+  }
+  
+  .cardTileFeatures {
+      font-size: 0.9rem; /* Slightly larger */
+  }
+  .cardTileFeatures p strong {
+      color: var(--text-medium);
+      display: block;
+      margin-bottom: 0.6rem; /* Increased margin */
+      font-size: 0.95rem; /* Consistent font size */
+      font-weight: 600;
+  }
+  .cardTileFeatures ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.9rem; /* Increased gap */
+  }
+  .cardTileFeatures li {
+      background-color: var(--info-bg, #eff6ff);
+      color: var(--info-heading, #1e40af);
+      padding: 0.3rem 0.7rem; /* Slightly larger padding */
+      border-radius: 15px; /* Pill shape */
+      font-size: 0.8rem; /* Slightly smaller font in pill */
+      display: inline-flex; /* Use inline-flex */
+      align-items: center;
+      gap: 0.4rem; /* Gap for icon */
+      border: 1px solid var(--info-border);
+      line-height: 1.4;
+  }
+  /* Add icon styles here if using react-icons */
+  /* .cardTileFeatures li svg { margin-right: 0.3em; } */
+  
+  .cardTileActions {
+      display: flex;
+      gap: 1rem; /* Increased gap */
+      margin-top: auto; /* Push actions to bottom */
+      padding-top: 1rem; /* Add padding */
+  }
+  .cardTileButton {
+    flex: 1 1 auto; /* Allow buttons to grow/shrink but start equal */
+    padding: 0.75rem 1.2rem; /* Larger padding */
+    border-radius: 8px; /* More rounded */
     text-align: center;
-    margin-bottom: 0.5rem;
-}
-.finderContainer > p { /* Target introductory paragraph */
-    text-align: center;
-    color: var(--text-light, #6b7280);
-    margin-bottom: 2rem;
-    max-width: 60ch;
+    text-decoration: none;
+    font-weight: 700; /* Bolder */
+    font-size: 0.95rem; /* Larger font */
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    border: none;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+  .cardTileButton:hover {
+      transform: translateY(-2px); /* Lift on hover */
+      box-shadow: 0 3px 5px rgba(0,0,0,0.15);
+  }
+  .cardTileButton:active {
+      transform: translateY(-1px) scale(0.99);
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  }
+  .applyButton {
+    background-color: var(--primary-blue, #2563eb);
+    color: white;
+  }
+  .applyButton:hover {
+    background-color: var(--primary-blue-dark, #1d4ed8);
+  }
+  .reviewButton {
+    background-color: var(--secondary-gray, #6b7280);
+    color: white;
+  }
+  .reviewButton:hover {
+    background-color: var(--secondary-gray-dark, #4b5563);
+  }
+  
+  
+  /* --- AI Section Styles --- */
+  .aiActionSection {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 3rem 0 2rem 0; /* Increased margin */
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-color-light);
+  }
+  .aiButton {
+    padding: 0.9rem 2rem; /* Larger button */
+    background-color: var(--ai-button-bg, #10b981); /* Emerald green */
+    color: white;
+    font-weight: 700;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem; /* Larger font */
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  .aiButton:hover:not(:disabled) {
+    background-color: var(--ai-button-hover-bg, #059669);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+  }
+  .aiButton:disabled {
+      background-color: var(--ai-button-disabled-bg, #9ca3af); /* Gray when disabled */
+      cursor: not-allowed;
+      box-shadow: none;
+  }
+  
+  .aiSection {
+    margin-top: 2rem; /* Increased margin */
+    background: var(--primary-blue-light-bg, #eff6ff);
+    border: 1px solid var(--primary-blue-light-border, #bfdbfe);
+    padding: 2rem; /* Increased padding */
+    border-radius: 10px; /* More rounded */
+    width: 100%;
+    max-width: 800px; /* Limit width for readability */
     margin-left: auto;
     margin-right: auto;
-}
-
-
-.finderForm {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.inputSection,
-.preferenceSection {
-  background: #ffffff; /* Keep white or light bg */
-  padding: 1.5rem;
-  border-radius: 8px;
-  border: 1px solid var(--border-color-light, #e5e7eb);
-   box-shadow: none; /* Remove individual shadows if container has one */
-}
-.inputSection legend,
-.preferenceSection legend {
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
+  }
+  .aiSection h3 {
+    margin: 0 0 1.5rem 0; /* Increased margin */
     color: var(--primary-blue-text-dark, #1e3a8a);
     font-family: 'Playfair Display', serif;
-    padding: 0 0.5rem;
-}
-
-.inputGroup,
-.checkboxGroup {
-  margin-bottom: 1.2rem; /* Increased spacing */
-  display: flex;
-  flex-direction: column;
-}
-
-.inputGroup label,
-.checkboxGroup label,
-.radioGroup label {
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-  color: var(--text-medium, #374151);
-  font-size: 0.95rem;
-}
-
-.inputGroup input[type="text"], /* Target text inputs used for numbers */
-.inputGroup select,
-.preferenceSection input[type="checkbox"] {
-  padding: 0.7rem 0.9rem; /* Slightly larger padding */
-  font-size: 1rem;
-  border-radius: 6px;
-  border: 1px solid var(--border-color, #d1d5db);
-  background: #fff;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-.inputGroup input[type="text"]:focus,
-.inputGroup select:focus {
-    outline: none;
-    border-color: var(--primary-blue, #2563eb);
-    box-shadow: 0 0 0 2px var(--primary-blue-focus, rgba(59, 130, 246, 0.2));
-}
-
-/* Grid layout for spending inputs */
-.gridInputGroup {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 1rem 1.5rem;
-}
-
-/* Styling for Radio Button Groups */
-.radioGroup label {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
-    font-weight: normal;
-    cursor: pointer;
-}
-.radioGroup input[type="radio"] {
-    accent-color: var(--primary-blue, #2563eb);
-}
-
-
-/* Styling for Checkbox Grids (Loyalty, Perks) */
-.checkboxGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 0.5rem 1rem;
-}
-.checkboxGrid label {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-weight: normal;
-    font-size: 0.9rem;
-    cursor: pointer;
-}
-.checkboxGrid input[type="checkbox"] {
-    width: 1em;
-    height: 1em;
-    accent-color: var(--primary-blue, #2563eb);
-}
-
-
-/* Input descriptions/help text */
-.inputGroup small {
-    font-size: 0.8rem;
-    color: var(--text-light, #6b7280);
-    margin-top: 0.3rem;
-}
-
-
-/* --- Results Section --- */
-.resultsSection {
-  /* border-top: 2px solid var(--border-color, #d1d5db); */
-  padding-top: 1rem; /* Add space if border removed */
-}
-.resultsHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 1.5rem;
-    padding: 0 0.5rem;
-    border-bottom: 1px solid var(--border-color-light);
+    font-size: 1.6rem; /* Larger heading */
+    text-align: center;
+    border-bottom: 1px solid var(--primary-blue-light-border);
     padding-bottom: 0.8rem;
-}
-.resultsHeader h2 {
-    margin: 0;
-    font-size: 1.5rem;
-    font-family: 'Playfair Display', serif;
-    color: var(--text-dark);
-}
-.lastRefreshed {
-    font-size: 0.8rem;
-    color: var(--text-light);
-}
-
-.resultsGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
-    gap: 1.5rem;
-}
-
-.loadingIndicator {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-    gap: 0.5rem;
-}
-.loadingIndicator span {
-    width: 10px;
-    height: 10px;
-    background-color: var(--primary-blue, #2563eb);
-    border-radius: 50%;
-    animation: bounce 1.4s infinite ease-in-out both;
-}
-.loadingIndicator span:nth-child(1) { animation-delay: -0.32s; }
-.loadingIndicator span:nth-child(2) { animation-delay: -0.16s; }
-@keyframes bounce {
-  0%, 80%, 100% { transform: scale(0); }
-  40% { transform: scale(1.0); }
-}
-
-.errorMessage {
-    color: var(--danger-color, #dc2626);
-    background-color: rgba(220, 38, 38, 0.1);
-    border: 1px solid rgba(220, 38, 38, 0.3);
-    padding: 1rem;
-    border-radius: 6px;
-    text-align: center;
-}
-
-/* --- Card Tile Styles (in CardFinder.module.css or RecommendedCardTile.module.css) --- */
-.cardTile {
-    background-color: #fff;
-    border: 1px solid var(--border-color-light, #e5e7eb);
-    border-radius: 8px;
-    padding: 1rem 1.5rem 1.5rem 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    transition: box-shadow 0.2s ease;
-}
-.cardTile:hover {
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-
-.cardTileHeader {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    border-bottom: 1px dashed var(--border-color-light);
-    padding-bottom: 1rem;
-}
-.cardTileImage {
-    flex-shrink: 0;
-}
-.cardTileInfo h3 {
-    margin: 0 0 0.2rem 0;
-    font-size: 1.15rem;
-    color: var(--text-dark);
-}
-.cardTileIssuer {
-    font-size: 0.85rem;
-    color: var(--text-light);
-    margin: 0;
-}
-.cardTileScore {
-    font-size: 0.9rem;
-    margin: 0.3rem 0 0 0;
-    color: var(--text-medium);
-}
-.cardTileScore strong {
-    font-size: 1.1em;
-    color: var(--primary-blue);
-}
-
-.cardTileValues {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    text-align: center;
-    gap: 0.5rem;
-    border-bottom: 1px dashed var(--border-color-light);
-    padding-bottom: 1rem;
-}
-.cardTileValues div span {
-    display: block;
-    font-size: 0.75rem;
-    color: var(--text-light);
-    margin-bottom: 0.2rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-.cardTileValues div strong {
-    font-size: 1.1rem;
-    color: var(--text-dark);
-    font-weight: 600;
-}
-
-.cardTileFeatures {
-    font-size: 0.85rem;
-}
-.cardTileFeatures p strong {
-    color: var(--text-medium);
-    display: block;
-    margin-bottom: 0.4rem;
-}
-.cardTileFeatures ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem 0.8rem;
-}
-.cardTileFeatures li {
-    background-color: var(--info-bg, #eff6ff);
-    color: var(--info-heading, #1e40af);
-    padding: 0.2rem 0.6rem;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-    border: 1px solid var(--info-border);
-}
-/* Add icon styles here if using react-icons */
-/* .cardTileFeatures li svg { margin-right: 0.3em; } */
-
-.cardTileActions {
-    display: flex;
-    gap: 0.8rem;
-    margin-top: auto; /* Push actions to bottom */
-    padding-top: 0.5rem;
-}
-.cardTileButton {
-  flex-grow: 1; /* Make buttons share space */
-  padding: 0.6rem 1rem;
-  border-radius: 6px;
-  text-align: center;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
-  border: none;
-}
-.cardTileButton:active {
-    transform: scale(0.98);
-}
-.applyButton {
-  background-color: var(--primary-blue, #2563eb);
-  color: white;
-}
-.applyButton:hover {
-  background-color: var(--primary-blue-dark, #1d4ed8);
-}
-.reviewButton {
-  background-color: var(--secondary-gray, #6b7280);
-  color: white;
-}
-.reviewButton:hover {
-  background-color: var(--secondary-gray-dark, #4b5563);
-}
-
-
-/* --- AI Section Styles --- */
-.aiActionSection {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 2rem;
-}
-.aiButton {
-  padding: 0.8rem 1.5rem;
-  background-color: #10b981; /* Emerald green */
-  color: white;
-  font-weight: 700;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.2s ease;
-}
-.aiButton:hover:not(:disabled) {
-  background-color: #059669;
-}
-.aiButton:disabled {
-    background-color: #9ca3af; /* Gray when disabled */
-    cursor: not-allowed;
-}
-
-.aiSection {
-  margin-top: 1.5rem;
-  background: var(--primary-blue-light-bg, #eff6ff);
-  border: 1px solid var(--primary-blue-light-border, #bfdbfe);
-  padding: 1.5rem;
-  border-radius: 8px;
-  width: 100%;
-}
-.aiSection h3 {
-  margin: 0 0 1rem 0;
-  color: var(--primary-blue-text-dark, #1e3a8a);
-  font-family: 'Playfair Display', serif;
-  font-size: 1.3rem;
-}
-.aiSection ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.aiSection li {
-  margin-bottom: 0.8rem;
-  color: var(--text-medium, #374151);
-  line-height: 1.5;
-  padding-left: 1.2rem;
-  position: relative;
-}
-.aiSection li::before { /* Custom bullet */
-    content: '✦'; /* Or use an SVG icon */
-    position: absolute;
-    left: 0;
-    top: 0.1em;
-    color: var(--primary-blue, #2563eb);
-    font-size: 0.9em;
-}
-
-
-@media (max-width: 768px) {
-  .finderContainer {
-    padding: 1rem;
   }
-   .gridInputGroup {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 0.8rem 1rem;
-   }
-   .checkboxGrid {
-       grid-template-columns: 1fr 1fr; /* Stack checkboxes */
-   }
-   .resultsGrid {
-       grid-template-columns: 1fr; /* Stack results */
-   }
-   .cardTileHeader {
-       flex-direction: column;
-       align-items: flex-start;
-   }
-   .cardTileValues {
-       grid-template-columns: 1fr 1fr 1fr; /* Keep values side-by-side */
-       font-size: 0.9rem; /* Slightly smaller values on mobile */
-   }
-   .cardTileValues strong { font-size: 1rem; }
-   .cardTileActions { flex-direction: column; }
-}
+  
+  /* Styles for the structured AI output */
+  .aiBestPick, .aiRunnerUp {
+      margin-bottom: 1.8rem; /* Space between recommendations */
+  }
+  .aiBestPick h4, .aiRunnerUp h4 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin: 0 0 0.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+  }
+  .aiBestPick h4 span, .aiRunnerUp h4 span { /* Emoji prefix */
+      font-size: 1.5rem; /* Make emoji slightly larger */
+  }
+  
+  .aiExplanation {
+      color: var(--text-medium, #374151);
+      line-height: 1.7; /* Increased line height */
+      font-size: 1rem;
+      white-space: pre-wrap; /* Preserve line breaks from AI */
+      padding-left: 0.5rem; /* Indent explanation slightly */
+      border-left: 3px solid var(--primary-blue-light-border);
+  }
+  
+  
+  /* --- E-E-A-T Section Styles --- */
+  .eeatSection {
+      margin: 4rem auto 2rem auto; /* Generous margin */
+      padding: 2rem 2.5rem; /* Good padding */
+      background-color: #f9fafb; /* Light background */
+      border-top: 1px solid var(--border-color-light);
+      border-bottom: 1px solid var(--border-color-light);
+      max-width: 900px; /* Control max width for readability */
+      border-radius: 8px;
+  }
+  
+  .eeatSection h2 {
+      font-family: 'Playfair Display', serif;
+      color: var(--text-dark);
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 1.8rem;
+      border-bottom: 1px solid var(--border-color-light);
+      padding-bottom: 1rem;
+  }
+  
+  .eeatSection h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary-blue-text-dark);
+      margin: 2rem 0 1rem 0; /* Space above each sub-section */
+  }
+  
+  .eeatSection p, .eeatSection ul {
+      color: var(--text-medium);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+  }
+  .eeatSection ul {
+      list-style: disc;
+      padding-left: 1.5rem;
+  }
+  .eeatSection li {
+      margin-bottom: 0.5rem;
+  }
+  .eeatSection strong {
+      font-weight: 700;
+      color: var(--text-dark);
+  }
+  .eeatSection a {
+      color: var(--primary-blue);
+      text-decoration: underline;
+  }
+  .eeatSection a:hover {
+      color: var(--primary-blue-dark);
+  }
+  .eeatDisclaimer {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-top: 2.5rem;
+      border-top: 1px dashed var(--border-color-light);
+      padding-top: 1.5rem;
+      text-align: center;
+  }
+  
+  
+  @media (max-width: 768px) {
+    .finderContainer {
+      padding: 1rem;
+    }
+    .finderContainer h1 { font-size: 1.8rem; }
+    .finderContainer > p.introParagraph { font-size: 0.95rem; max-width: 90%; margin-bottom: 1.5rem;}
+    .inputSection legend, .preferenceSection legend { font-size: 1.2rem; }
+    .gridInputGroup {
+      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      gap: 0.8rem 1rem;
+     }
+     .checkboxGrid {
+         grid-template-columns: 1fr 1fr; /* Stack checkboxes */
+     }
+     .resultsHeader h2 { font-size: 1.5rem; }
+     .resultsGrid {
+         grid-template-columns: 1fr; /* Stack results */
+         gap: 1.5rem;
+     }
+     .cardTileHeader {
+         flex-direction: column;
+         align-items: flex-start;
+         gap: 0.8rem;
+     }
+      .cardTileImage { align-self: center; margin-bottom: 0.5rem;}
+      .cardTileImagePlaceholder { align-self: center; margin-bottom: 0.5rem;}
+     .cardTileValues {
+         grid-template-columns: 1fr 1fr 1fr; /* Keep values side-by-side */
+         font-size: 0.9rem; /* Slightly smaller values on mobile */
+         padding: 0.8rem 0;
+         gap: 0.5rem;
+     }
+     .cardTileValues strong { font-size: 1rem; }
+     .cardTileFeatures ul { gap: 0.4rem 0.6rem; }
+     .cardTileFeatures li { font-size: 0.75rem; padding: 0.25rem 0.6rem;}
+     .cardTileActions { flex-direction: column; gap: 0.8rem; }
+     .cardTileButton { font-size: 0.9rem; padding: 0.7rem 1rem;}
+  
+     .aiButton { font-size: 1rem; padding: 0.8rem 1.5rem; }
+     .aiSection { padding: 1.5rem; }
+     .aiSection h3 { font-size: 1.4rem; }
+     .aiBestPick h4, .aiRunnerUp h4 { font-size: 1.1rem; }
+     .aiExplanation { font-size: 0.95rem; line-height: 1.6; }
+  
+     .eeatSection { padding: 1.5rem 1rem; margin: 2rem auto 1rem auto;}
+     .eeatSection h2 { font-size: 1.5rem; }
+     .eeatSection h3 { font-size: 1.15rem; }
+     .eeatSection p, .eeatSection ul { font-size: 0.9rem; }
+  }
