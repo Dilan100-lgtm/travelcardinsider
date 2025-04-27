@@ -4,12 +4,12 @@
   "name": "Citi Prestige\u00ae Credit Card",
   "brand": "Citi",
   "description": "5X on airfare/dining, 4th Night Free hotel benefit, and Priority Pass lounge access.",
-  "image": "https://www.yourdomain.com/images/citi_prestige_card.png",
-  "url": "https://www.yourdomain.com/citi-prestige",
+  "image": "https://www.travelcardinsider.com/images/citi_prestige_card.png",
+  "url": "https://www.travelcardinsider.com/citi-prestige",
   "offers": {
     "@type": "Offer",
     "priceCurrency": "USD",
     "price": "495",
-    "url": "https://www.yourdomain.com/apply/citi-prestige"
+    "url": "https://www.travelcardinsider.com/apply/citi-prestige"
   }
 }

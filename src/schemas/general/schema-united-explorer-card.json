@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "United\u2120 Explorer Card",
-  "image": "https://www.yourdomain.com/images/united_explorer_card.png",
+  "image": "https://www.travelcardinsider.com/images/united_explorer_card.png",
   "description": "2025 review of the United\u2120 Explorer Card, including welcome bonus, perks, and earning structure.",
   "brand": {
     "@type": "Brand",
@@ -28,7 +28,7 @@
   },
   "offers": {
     "@type": "Offer",
-    "url": "https://www.yourdomain.com/united-explorer-card",
+    "url": "https://www.travelcardinsider.com/united-explorer-card",
     "priceCurrency": "USD",
     "price": "95",
     "availability": "https://schema.org/InStock",

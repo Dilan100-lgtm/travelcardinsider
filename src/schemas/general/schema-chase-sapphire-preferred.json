@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "Chase Sapphire Preferred\u00ae",
-  "image": "https://www.yourdomain.com/images/sapphire_preferred_card.png",
+  "image": "https://www.travelcardinsider.com/images/sapphire_preferred_card.png",
   "description": "2025 review of the Chase Sapphire Preferred\u00ae, including welcome bonus, perks, and earning structure.",
   "brand": {
     "@type": "Brand",
@@ -28,7 +28,7 @@
   },
   "offers": {
     "@type": "Offer",
-    "url": "https://www.yourdomain.com/chase-sapphire-preferred",
+    "url": "https://www.travelcardinsider.com/chase-sapphire-preferred",
     "priceCurrency": "USD",
     "price": "95",
     "availability": "https://schema.org/InStock",

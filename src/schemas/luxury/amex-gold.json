@@ -4,12 +4,12 @@
   "name": "American Express\u00ae Gold Card",
   "brand": "American Express",
   "description": "4X on dining and groceries, statement credits, and valuable Membership Rewards points.",
-  "image": "https://www.yourdomain.com/images/ntb-amex-gold-card.png",
-  "url": "https://www.yourdomain.com/amex-gold",
+  "image": "https://www.travelcardinsider.com/images/ntb-amex-gold-card.png",
+  "url": "https://www.travelcardinsider.com/amex-gold",
   "offers": {
     "@type": "Offer",
     "priceCurrency": "USD",
     "price": "250",
-    "url": "https://www.yourdomain.com/apply/amex-gold"
+    "url": "https://www.travelcardinsider.com/apply/amex-gold"
   }
 }

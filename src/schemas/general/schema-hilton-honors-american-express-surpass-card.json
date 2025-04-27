@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "Hilton Honors American Express Surpass\u00ae Card",
-  "image": "https://www.yourdomain.com/images/NUS000000328_480x304_straight_withname.avif",
+  "image": "https://www.travelcardinsider.com/images/NUS000000328_480x304_straight_withname.avif",
   "description": "2025 review of the Hilton Honors American Express Surpass\u00ae Card, including welcome bonus, perks, and earning structure.",
   "brand": {
     "@type": "Brand",
@@ -28,7 +28,7 @@
   },
   "offers": {
     "@type": "Offer",
-    "url": "https://www.yourdomain.com/hilton-honors-surpass",
+    "url": "https://www.travelcardinsider.com/hilton-honors-surpass",
     "priceCurrency": "USD",
     "price": "95",
     "availability": "https://schema.org/InStock",

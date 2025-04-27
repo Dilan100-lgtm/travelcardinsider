@@ -4,12 +4,12 @@
   "name": "United Club\u2120 Infinite Card",
   "brand": "Chase / United",
   "description": "United Club lounge access, free bags, and bonus miles on United purchases.",
-  "image": "https://www.yourdomain.com/images/united_club_infinite_card.png",
-  "url": "https://www.yourdomain.com/united-club-infinite",
+  "image": "https://www.travelcardinsider.com/images/united_club_infinite_card.png",
+  "url": "https://www.travelcardinsider.com/united-club-infinite",
   "offers": {
     "@type": "Offer",
     "priceCurrency": "USD",
     "price": "525",
-    "url": "https://www.yourdomain.com/apply/united-club-infinite"
+    "url": "https://www.travelcardinsider.com/apply/united-club-infinite"
   }
 }

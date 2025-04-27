@@ -4,12 +4,12 @@
   "name": "Marriott Bonvoy Brilliant\u00ae American Express\u00ae Card",
   "brand": "American Express",
   "description": "Platinum Elite Status, $300 annual credit, and up to 6X at Marriott properties.",
-  "image": "https://www.yourdomain.com/images/marriott_bonvoy_brilliant_card.png",
-  "url": "https://www.yourdomain.com/marriott-bonvoy-brilliant",
+  "image": "https://www.travelcardinsider.com/images/marriott_bonvoy_brilliant_card.png",
+  "url": "https://www.travelcardinsider.com/marriott-bonvoy-brilliant",
   "offers": {
     "@type": "Offer",
     "priceCurrency": "USD",
     "price": "650",
-    "url": "https://www.yourdomain.com/apply/marriott-bonvoy-brilliant"
+    "url": "https://www.travelcardinsider.com/apply/marriott-bonvoy-brilliant"
   }
 }

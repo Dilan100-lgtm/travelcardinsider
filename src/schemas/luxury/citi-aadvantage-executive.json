@@ -4,12 +4,12 @@
   "name": "Citi\u00ae / AAdvantage\u00ae Executive World Elite Mastercard\u00ae",
   "brand": "Citi / American Airlines",
   "description": "Admirals Club membership, priority boarding, free checked bags for AA loyalists.",
-  "image": "https://www.yourdomain.com/images/executive-credit-card.png.webp",
-  "url": "https://www.yourdomain.com/citi-aadvantage-executive",
+  "image": "https://www.travelcardinsider.com/images/executive-credit-card.png.webp",
+  "url": "https://www.travelcardinsider.com/citi-aadvantage-executive",
   "offers": {
     "@type": "Offer",
     "priceCurrency": "USD",
     "price": "450",
-    "url": "https://www.yourdomain.com/apply/citi-aadvantage-executive"
+    "url": "https://www.travelcardinsider.com/apply/citi-aadvantage-executive"
   }
 }

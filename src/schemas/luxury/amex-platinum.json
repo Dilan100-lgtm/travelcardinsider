@@ -4,12 +4,12 @@
   "name": "The Platinum Card\u00ae from American Express",
   "brand": "American Express",
   "description": "High-end lounge access, Fine Hotels & Resorts perks, and 5X on flights for VIP travel experiences.",
-  "image": "https://www.yourdomain.com/images/NUS000000237_480x304_straight_withname.avif",
-  "url": "https://www.yourdomain.com/amex-platinum",
+  "image": "https://www.travelcardinsider.com/images/NUS000000237_480x304_straight_withname.avif",
+  "url": "https://www.travelcardinsider.com/amex-platinum",
   "offers": {
     "@type": "Offer",
     "priceCurrency": "USD",
     "price": "695",
-    "url": "https://www.yourdomain.com/apply/amex-platinum"
+    "url": "https://www.travelcardinsider.com/apply/amex-platinum"
   }
 }

@@ -4,12 +4,12 @@
   "name": "Delta SkyMiles\u00ae Reserve American Express Card",
   "brand": "American Express",
   "description": "Sky Club access, elite status boosts, and premium perks for dedicated Delta travelers.",
-  "image": "https://www.yourdomain.com/images/delta_skymiles_reserve_card.png",
-  "url": "https://www.yourdomain.com/delta-skymiles-reserve",
+  "image": "https://www.travelcardinsider.com/images/delta_skymiles_reserve_card.png",
+  "url": "https://www.travelcardinsider.com/delta-skymiles-reserve",
   "offers": {
     "@type": "Offer",
     "priceCurrency": "USD",
     "price": "550",
-    "url": "https://www.yourdomain.com/apply/delta-skymiles-reserve"
+    "url": "https://www.travelcardinsider.com/apply/delta-skymiles-reserve"
   }
 }

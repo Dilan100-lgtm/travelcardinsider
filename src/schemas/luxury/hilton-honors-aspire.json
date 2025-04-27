@@ -4,12 +4,12 @@
   "name": "Hilton Honors American Express Aspire Card",
   "brand": "American Express",
   "description": "Diamond Status, resort credits, and top-tier Hilton perks for loyal hotel guests.",
-  "image": "https://www.yourdomain.com/images/hilton_honors_aspire_card.png",
-  "url": "https://www.yourdomain.com/hilton-honors-aspire",
+  "image": "https://www.travelcardinsider.com/images/hilton_honors_aspire_card.png",
+  "url": "https://www.travelcardinsider.com/hilton-honors-aspire",
   "offers": {
     "@type": "Offer",
     "priceCurrency": "USD",
     "price": "450",
-    "url": "https://www.yourdomain.com/apply/hilton-honors-aspire"
+    "url": "https://www.travelcardinsider.com/apply/hilton-honors-aspire"
   }
 }

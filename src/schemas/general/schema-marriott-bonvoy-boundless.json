@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "Marriott Bonvoy Boundless\u00ae",
-  "image": "https://www.yourdomain.com/images/Boundless_cardArt.png",
+  "image": "https://www.travelcardinsider.com/images/Boundless_cardArt.png",
   "description": "2025 review of the Marriott Bonvoy Boundless\u00ae, including welcome bonus, perks, and earning structure.",
   "brand": {
     "@type": "Brand",
@@ -28,7 +28,7 @@
   },
   "offers": {
     "@type": "Offer",
-    "url": "https://www.yourdomain.com/marriott-bonvoy-boundless",
+    "url": "https://www.travelcardinsider.com/marriott-bonvoy-boundless",
     "priceCurrency": "USD",
     "price": "95",
     "availability": "https://schema.org/InStock",

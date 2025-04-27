@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "Citi Premier\u00ae",
-  "image": "https://www.yourdomain.com/images/Premier-Card-400x252-pixl.webp",
+  "image": "https://www.travelcardinsider.com/images/Premier-Card-400x252-pixl.webp",
   "description": "2025 review of the Citi Premier\u00ae, including welcome bonus, perks, and earning structure.",
   "brand": {
     "@type": "Brand",
@@ -28,7 +28,7 @@
   },
   "offers": {
     "@type": "Offer",
-    "url": "https://www.yourdomain.com/citi-premier",
+    "url": "https://www.travelcardinsider.com/citi-premier",
     "priceCurrency": "USD",
     "price": "95",
     "availability": "https://schema.org/InStock",
