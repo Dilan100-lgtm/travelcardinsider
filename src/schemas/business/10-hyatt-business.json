@@ -2,23 +2,25 @@
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "World of Hyatt Business Credit Card",
-  "image": "https://www.yourdomain.com/images/world_of_hyatt_business_card.png",
+  "image": "https://www.travelcardinsider.com/images/world_of_hyatt_business_card.png",
   "brand": {
     "@type": "Brand",
     "name": "Chase"
   },
   "description": "Official review and details of the World of Hyatt Business Credit Card including rewards, perks, and annual fee.",
-  "url": "https://www.yourdomain.com/world-of-hyatt-business",
+  "url": "https://www.travelcardinsider.com/world-of-hyatt-business",
   "offers": {
     "@type": "Offer",
     "priceCurrency": "USD",
     "price": "199",
     "availability": "https://schema.org/InStock",
-    "url": "https://www.yourdomain.com/world-of-hyatt-business"
+    "url": "https://www.travelcardinsider.com/world-of-hyatt-business"
   },
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "8.5",
+    "bestRating": "10", 
+    "worstRating": "1", 
     "reviewCount": "173"
   },
   "review": {

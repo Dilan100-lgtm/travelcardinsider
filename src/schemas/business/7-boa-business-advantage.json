@@ -2,23 +2,25 @@
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "Bank of America\u00ae Business Advantage Travel Rewards Card",
-  "image": "https://www.yourdomain.com/images/boa_business_advantage_travel_rewards.png",
+  "image": "https://www.travelcardinsider.com/images/boa_business_advantage_travel_rewards.png",
   "brand": {
     "@type": "Brand",
     "name": "Bank of America"
   },
   "description": "Official review and details of the Bank of America\u00ae Business Advantage Travel Rewards Card including rewards, perks, and annual fee.",
-  "url": "https://www.yourdomain.com/boa-business-advantage-travel-rewards",
+  "url": "https://www.travelcardinsider.com/boa-business-advantage-travel-rewards",
   "offers": {
     "@type": "Offer",
     "priceCurrency": "USD",
     "price": "0",
     "availability": "https://schema.org/InStock",
-    "url": "https://www.yourdomain.com/boa-business-advantage-travel-rewards"
+    "url": "https://www.travelcardinsider.com/boa-business-advantage-travel-rewards"
   },
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "8.5",
+    "bestRating": "10", 
+    "worstRating": "1", 
     "reviewCount": "173"
   },
   "review": {

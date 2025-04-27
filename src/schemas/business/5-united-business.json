@@ -2,23 +2,25 @@
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "United\u2120 Business Card",
-  "image": "https://www.yourdomain.com/images/united_business_card.png",
+  "image": "https://www.travelcardinsider.com/images/united_business_card.png",
   "brand": {
     "@type": "Brand",
     "name": "Chase"
   },
   "description": "Official review and details of the United\u2120 Business Card including rewards, perks, and annual fee.",
-  "url": "https://www.yourdomain.com/united-business-card",
+  "url": "https://www.travelcardinsider.com/united-business-card",
   "offers": {
     "@type": "Offer",
     "priceCurrency": "USD",
     "price": "99",
     "availability": "https://schema.org/InStock",
-    "url": "https://www.yourdomain.com/united-business-card"
+    "url": "https://www.travelcardinsider.com/united-business-card"
   },
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "8.5",
+    "bestRating": "10", 
+    "worstRating": "1", 
     "reviewCount": "173"
   },
   "review": {

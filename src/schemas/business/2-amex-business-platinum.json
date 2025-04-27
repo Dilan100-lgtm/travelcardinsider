@@ -1,24 +1,26 @@
 {
   "@context": "https://schema.org",
   "@type": "Product",
-  "name": "The Business Platinum Card\u00ae from American Express",
-  "image": "https://www.yourdomain.com/images/business_amex_platinum_card.png",
+  "name": "The Business Platinum Card® from American Express",
+  "image": "https://www.travelcardinsider.com/images/business_amex_platinum_card.png",
   "brand": {
     "@type": "Brand",
     "name": "American Express"
   },
-  "description": "Official review and details of the The Business Platinum Card\u00ae from American Express including rewards, perks, and annual fee.",
-  "url": "https://www.yourdomain.com/business-amex-platinum",
+  "description": "Official review and details of the The Business Platinum Card® from American Express including rewards, perks, and annual fee.",
+  "url": "https://www.travelcardinsider.com/business-amex-platinum",
   "offers": {
     "@type": "Offer",
     "priceCurrency": "USD",
     "price": "695",
     "availability": "https://schema.org/InStock",
-    "url": "https://www.yourdomain.com/business-amex-platinum"
+    "url": "https://www.travelcardinsider.com/business-amex-platinum"
   },
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "8.5",
+    "bestRating": "10",
+    "worstRating": "1",
     "reviewCount": "173"
   },
   "review": {
@@ -32,6 +34,6 @@
       "ratingValue": "8.5",
       "bestRating": "10"
     },
-    "reviewBody": "Comprehensive review of the The Business Platinum Card\u00ae from American Express for business travel needs in 2025."
+    "reviewBody": "Comprehensive review of the The Business Platinum Card® from American Express for business travel needs in 2025."
   }
 }
