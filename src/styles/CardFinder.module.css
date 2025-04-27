@@ -583,4 +583,92 @@
      .eeatSection h2 { font-size: 1.5rem; }
      .eeatSection h3 { font-size: 1.15rem; }
      .eeatSection p, .eeatSection ul { font-size: 0.9rem; }
-  }
+  }/* File: /styles/CardFinder.module.css */
+
+.spendingGrid { /* NEW CLASS specifically for spending grid */
+    display: grid;
+    /* Try 5 columns on wider screens, wrap to fewer on smaller */
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Adjust minmax */
+    gap: 1.2rem 1.5rem; /* Adjust gap */
+}
+
+/* Make labels smaller if needed for 10 fields */
+.spendingGrid .inputGroup label {
+    font-size: 0.9rem; /* Slightly smaller label */
+    margin-bottom: 0.4rem;
+}
+
+/* --- Annual Fee Section Styles --- */
+.feeSection { /* New section style */
+  /* Matches styling of inputSection/preferenceSection */
+  padding: 1.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color-light, #e5e7eb);
+}
+
+.feeSection legend {
+    /* Matches styling of other legends */
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--primary-blue-text-dark, #1e3a8a);
+    font-family: 'Playfair Display', serif;
+    padding: 0 0.5rem;
+    border-bottom: 2px solid var(--primary-blue, #2563eb);
+    display: inline-block;
+}
+
+.feeRangeGroup { /* Container for Min/Max inputs */
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-end; /* Align items at the bottom */
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+
+.feeRangeGroup .inputGroup {
+    flex: 1; /* Allow inputs to grow */
+    min-width: 100px; /* Minimum width before wrapping */
+    margin-bottom: 0; /* Remove bottom margin as gap is handled by flex */
+}
+
+.feeRangeGroup input[type="text"] { /* Style for fee inputs */
+    /* Inherits from .inputGroup input[type="text"] */
+    /* Add specific overrides if needed */
+    max-width: 150px; /* Limit width of fee inputs */
+}
+
+.feeRangeGroup .inputGroup label {
+    /* Inherits from .inputGroup label */
+}
+
+.feeRangeGroup small { /* Help text for the section */
+    flex-basis: 100%; /* Make help text take full width */
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: var(--text-light, #6b7280);
+}
+
+
+@media (max-width: 768px) {
+    /* ... (Keep ALL previous responsive styles) ... */
+
+    /* Adjust spending grid for mobile */
+    .spendingGrid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Adjust minmax for mobile */
+        gap: 1rem 1rem;
+    }
+    /* Adjust fee range layout for mobile */
+    .feeRangeGroup {
+        flex-direction: column; /* Stack fee inputs */
+        align-items: stretch; /* Stretch items */
+        gap: 1rem;
+    }
+    .feeRangeGroup input[type="text"] {
+        max-width: none; /* Allow fee inputs to take full width */
+    }
+    .feeRangeGroup small {
+         margin-top: 0.8rem;
+    }
+}
+
+/* ... (Keep ALL other styles from the previous version: Results, Card Tile, AI, E-E-A-T etc.) ... */
