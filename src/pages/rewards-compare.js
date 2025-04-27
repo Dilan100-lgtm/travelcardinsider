@@ -1,16 +1,20 @@
-// File: /src/pages/rewards-compare.js
 import React from 'react';
 import Head from 'next/head';
 import RewardsCompareCalculator from '@/components/RewardsCompareCalculator';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import Header from '@/components/Header'; // Keep user's imports
+import Footer from '@/components/Footer'; // Keep user's imports
 import { useRouter } from 'next/router';
 
 export default function RewardsComparePage() {
   const router = useRouter();
   const canonicalUrl = `https://www.travelcardinsider.com${router.asPath}`;
 
-  /** ------------  JSON-LD STRUCTURED DATA ------------- **/
+  // --- Define the variable HERE to fix build error ---
+  // Replace with actual update date or mechanism
+  const lastDataUpdate = "April 27, 2025"; // Example Date - UPDATE THIS REGULARLY
+
+  /** ------------  JSON-LD STRUCTURED DATA ------------- **/
+  // Keep user's JSON-LD
   const jsonLdWebPage = {
     '@context': 'https://schema.org',
     '@type'   : 'WebPage',
@@ -55,22 +59,23 @@ export default function RewardsComparePage() {
     mainEntity: [
       {
         '@type': 'Question',
-        name  : 'How does this calculator estimate rewards?',
+        name   : 'How does this calculator estimate rewards?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text  :
+          text   :
             'We match your monthly spending to each card’s bonus categories, multiply by 12 months, apply the card’s point multiplier and our latest cents-per-point valuations.'
         }
       },
       {
         '@type': 'Question',
-        name  : 'Which cards are included?',
+        name   : 'Which cards are included?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text  :
+          text   :
             'The tool covers 50+ U.S. travel, airline, hotel and premium cash-back cards. We update the database weekly from issuers’ official sites.'
         }
       }
+      // Add more relevant FAQs if desired
     ]
   };
 
@@ -112,7 +117,7 @@ export default function RewardsComparePage() {
         <link rel="preload" href="/fonts/Roboto_Condensed-bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/playfair-display-regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/playfair-display-bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-    
+
 
         {/* ---------- Viewport (for completeness) ---------- */}
         <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -141,26 +146,34 @@ export default function RewardsComparePage() {
       </nav>
 
       {/* ---------- Main Content ---------- */}
-      <main style={{ marginTop: '4rem', padding: '2rem 1rem', backgroundColor: '#f9fafb', minHeight: '100vh' }}>
-        <div style={{ maxWidth: '1400px', margin: '0 auto' }}> {/* Increased max-width for wider layout */}
-
-          {/* E-E-A-T: Clear Title & Introduction */}
-          <h1 style={{ textAlign: 'center', fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', marginBottom: '1rem', color: '#111827', fontFamily: "'Playfair Display', serif" }}>
-            Compare Credit Card Rewards & Value
+      <main
+        style={{
+          marginTop: '0rem', // Adjust if breadcrumb provides enough space, or keep 4rem if header overlap needed
+          padding   : '2rem 1rem',
+          backgroundColor: 'var(--bg-light-gray, #f9fafb)',
+          minHeight: 'calc(100vh - 3.5rem)' // Adjust based on actual header/footer height
+        }}
+      >
+        <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+          <h1 style={{ textAlign: 'center', marginBottom: '1rem', color: '#111827', fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)' }}>
+            Compare Credit-Card Rewards &amp; Annual Value
           </h1>
-          <p style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 2.5rem auto', color: '#374151', lineHeight: 1.6 }}>
-            Select up to 3 cards and enter your estimated monthly spending to see which cards offer the best estimated value for *you*. Our calculator considers rewards, perks, fees, and bonuses.
-          </p>
 
-          {/* The Calculator Component */}
+          {/* Accessible subtitle */}
+          <h2 style={{ textAlign: 'center', margin: '0 auto 2.5rem auto', fontSize: '1.125rem', color: '#374151', maxWidth: '800px', lineHeight: 1.6 }}>
+             Select up to 3 cards and enter your estimated monthly spending to see which cards offer the best estimated value for *you*. Our calculator considers rewards, perks, fees, and bonuses.
+          </h2>
+
           <RewardsCompareCalculator />
+
+          {/* --- E-E-A-T SECTIONS START --- */}
 
           {/* E-E-A-T: Methodology / How We Calculate */}
           <section style={{ maxWidth: '900px', margin: '3rem auto', padding: '1.5rem', background: '#fff', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.05)' }}>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", marginBottom: '1rem', borderBottom: '1px solid #eee', paddingBottom: '0.5rem' }}>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", marginBottom: '1rem', borderBottom: '1px solid #eee', paddingBottom: '0.5rem', fontSize: '1.4rem' }}>
               How We Calculate Estimated Value
             </h2>
-            <p>This calculator estimates annual rewards by:</p>
+            <p style={{ marginTop: 0 }}>This calculator estimates annual rewards by:</p>
             <ul style={{ paddingLeft: '20px', lineHeight: 1.7, margin: '1rem 0' }}>
               <li>Annualizing your monthly spending inputs ($ Input × 12).</li>
               <li>Applying the card's reward multipliers for each category, referencing detailed card data.</li>
@@ -177,7 +190,7 @@ export default function RewardsComparePage() {
 
           {/* E-E-A-T: Data Source & Accuracy */}
           <section style={{ maxWidth: '900px', margin: '3rem auto', padding: '1.5rem', background: '#fff', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.05)' }}>
-             <h2 style={{ fontFamily: "'Playfair Display', serif", marginBottom: '1rem', borderBottom: '1px solid #eee', paddingBottom: '0.5rem' }}>
+             <h2 style={{ fontFamily: "'Playfair Display', serif", marginBottom: '1rem', borderBottom: '1px solid #eee', paddingBottom: '0.5rem', fontSize: '1.4rem' }}>
               Data Source & Accuracy
             </h2>
             <p>
@@ -189,10 +202,12 @@ export default function RewardsComparePage() {
             </p>
           </section>
 
+
           {/* E-E-A-T: Author/Expertise Info (Example Structure) */}
+          {/* Uncomment and populate this section or link to your about page */}
           {/*
           <section style={{ maxWidth: '900px', margin: '3rem auto', padding: '1.5rem', background: '#fff', borderRadius: '8px', boxShadow:'0 2px 8px rgba(0,0,0,0.05)' }}>
-              <h2 style={{ fontFamily: "'Playfair Display', serif", marginBottom: '1rem', borderBottom: '1px solid #eee', paddingBottom: '0.5rem' }}>
+              <h2 style={{ fontFamily: "'Playfair Display', serif", marginBottom: '1rem', borderBottom: '1px solid #eee', paddingBottom: '0.5rem', fontSize: '1.4rem' }}>
                   About the Analysis
               </h2>
               <p>
@@ -202,11 +217,13 @@ export default function RewardsComparePage() {
           */}
 
           {/* E-E-A-T: Disclaimers (Can be here or in a global footer) */}
-          <section style={{ maxWidth: '900px', margin: '3rem auto', fontSize: '0.85rem', color: '#6b7280', lineHeight: 1.5, textAlign: 'center' }}>
+          <section style={{ maxWidth: '900px', margin: '3rem auto 0 auto', fontSize: '0.85rem', color: '#6b7280', lineHeight: 1.5, textAlign: 'center', paddingBottom: '2rem' }}>
             <p><strong>Disclaimer:</strong> The information provided by this calculator is for informational and comparison purposes only and does not constitute financial advice. Estimated values are based on data and user inputs and are not guaranteed. Credit card offers, rates, fees, and benefits change frequently; verify all information directly with the issuer. </p>
             {/* Update with your specific disclosure */}
-            <p><strong>Advertiser Disclosure:</strong> TravelCardInsider may receive compensation through affiliate links when users apply and are approved for credit cards through links on this site. This compensation may impact how and where products appear. We strive to provide accurate comparisons, but this site does not include all available credit card offers.</p>
+            <p style={{ marginTop: '0.5rem' }}><strong>Advertiser Disclosure:</strong> TravelCardInsider may receive compensation through affiliate links when users apply and are approved for credit cards through links on this site. This compensation may impact how and where products appear. We strive to provide accurate comparisons, but this site does not include all available credit card offers.</p>
           </section>
+
+          {/* --- E-E-A-T SECTIONS END --- */}
 
         </div>
       </main>
