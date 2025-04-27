@@ -474,7 +474,7 @@ export default function CardFinder() {
              </div>
              <div>
                  <h3>About TravelCardInsider</h3>
-                 <p>TravelCardInsider is an independent credit card comparison and travel rewards platform based in Sri Lanka. Our team includes travel rewards enthusiasts, data analysts, and finance writers with a passion for helping travelers maximize their rewards and save money.</p>
+                 <p>TravelCardInsider is an independent credit card comparison and travel rewards platform. Our team includes travel rewards enthusiasts, data analysts, and finance writers with a passion for helping travelers maximize their rewards and save money.</p>
                  <p>Our goal is to provide clear, unbiased information to help you make informed decisions about your travel financing.</p>
              </div>
              <div>
