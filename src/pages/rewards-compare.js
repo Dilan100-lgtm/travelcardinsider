@@ -161,6 +161,72 @@ export default function RewardsComparePage() {
 
           <RewardsCompareCalculator />
         </div>
+        <div style={{ maxWidth: '1400px', margin: '0 auto' }}> {/* Increased max-width for wider layout */}
+
+{/* E-E-A-T: Clear Title & Introduction */}
+<h1 style={{ textAlign: 'center', fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', marginBottom: '1rem', color: '#111827', fontFamily: "'Playfair Display', serif" }}>
+  Compare Credit Card Rewards & Value
+</h1>
+<p style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 2.5rem auto', color: '#374151', lineHeight: 1.6 }}>
+  Select up to 3 cards and enter your estimated monthly spending to see which cards offer the best estimated value for *you*. Our calculator considers rewards, perks, fees, and bonuses.
+</p>
+
+{/* The Calculator Component */}
+<RewardsCompareCalculator />
+
+{/* E-E-A-T: Methodology / How We Calculate */}
+<section style={{ maxWidth: '900px', margin: '3rem auto', padding: '1.5rem', background: '#fff', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.05)' }}>
+  <h2 style={{ fontFamily: "'Playfair Display', serif", marginBottom: '1rem', borderBottom: '1px solid #eee', paddingBottom: '0.5rem' }}>
+    How We Calculate Estimated Value
+  </h2>
+  <p>This calculator estimates annual rewards by:</p>
+  <ul style={{ paddingLeft: '20px', lineHeight: 1.7, margin: '1rem 0' }}>
+    <li>Annualizing your monthly spending inputs ($ Input × 12).</li>
+    <li>Applying the card's reward multipliers for each category, referencing detailed card data.</li>
+    <li>Accounting for annual spending caps on specific reward categories where applicable.</li>
+    <li>Calculating the monetary value of points based on estimated Cents Per Point (CPP) for the selected redemption strategy (e.g., cash back, travel portal, transfer partners). You can change the strategy above the spending inputs.</li>
+    <li>Estimating the annual value of key card perks like travel credits or anniversary points.</li>
+    <li>Subtracting the card's annual fee.</li>
+    <li>Adding the estimated value of the sign-up bonus for the "1st Year Net Value" calculation.</li>
+  </ul>
+  <p style={{ marginTop: '1rem', fontSize: '0.9rem', color: '#6b7280' }}>
+    These are estimates designed for comparison. Your actual value depends on precise spending and redemption choices.
+  </p>
+</section>
+
+{/* E-E-A-T: Data Source & Accuracy */}
+<section style={{ maxWidth: '900px', margin: '3rem auto', padding: '1.5rem', background: '#fff', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.05)' }}>
+   <h2 style={{ fontFamily: "'Playfair Display', serif", marginBottom: '1rem', borderBottom: '1px solid #eee', paddingBottom: '0.5rem' }}>
+    Data Source & Accuracy
+  </h2>
+  <p>
+     Card details, including rewards, fees, perks, and bonus offers, are sourced from our internal database and publicly available issuer data. We strive for accuracy, but details can change frequently.
+  </p>
+  <p>
+    <strong>Last Data Refresh: {lastDataUpdate}.</strong> Always verify current offers, rates, fees, and benefits directly with the card issuer before applying. Links are provided above each card comparison column.
+  </p>
+</section>
+
+{/* E-E-A-T: Author/Expertise Info (Example Structure) */}
+{/*
+<section style={{ maxWidth: '900px', margin: '3rem auto', padding: '1.5rem', background: '#fff', borderRadius: '8px', boxShadow:'0 2px 8px rgba(0,0,0,0.05)' }}>
+    <h2 style={{ fontFamily: "'Playfair Display', serif", marginBottom: '1rem', borderBottom: '1px solid #eee', paddingBottom: '0.5rem' }}>
+        About the Analysis
+    </h2>
+    <p>
+        This tool and the underlying data analysis are maintained by [Author Name/Team Name], experts in credit card rewards and travel hacking with [X] years of experience... [Link to About Page]
+    </p>
+</section>
+*/}
+
+{/* E-E-A-T: Disclaimers (Can be here or in a global footer) */}
+<section style={{ maxWidth: '900px', margin: '3rem auto', fontSize: '0.85rem', color: '#6b7280', lineHeight: 1.5, textAlign: 'center' }}>
+  <p><strong>Disclaimer:</strong> The information provided by this calculator is for informational and comparison purposes only and does not constitute financial advice. Estimated values are based on data and user inputs and are not guaranteed. Credit card offers, rates, fees, and benefits change frequently; verify all information directly with the issuer. </p>
+  {/* Update with your specific disclosure */}
+  <p><strong>Advertiser Disclosure:</strong> TravelCardInsider may receive compensation through affiliate links when users apply and are approved for credit cards through links on this site. This compensation may impact how and where products appear. We strive to provide accurate comparisons, but this site does not include all available credit card offers.</p>
+</section>
+
+</div>
       </main>
 
       <Footer />

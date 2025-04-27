@@ -1,5 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import styles from '@/styles/RewardsCompareCalculator.module.css'; // Ensure this path is correct
+import styles from '@/styles/RewardsCompareCalculator.module.css';
+// Assuming cardsData is structured correctly and sourced reliably.
+// For E-E-A-T, the ultimate source and update frequency of this data is crucial.
 import cardsData from '@/data/finalcreditcard.json'; // Ensure this path is correct
 
 // --- Configuration ---
@@ -98,6 +100,7 @@ const renderStars = (ratingOutOf10) => {
     return stars;
 };
 
+
 // --- Main Component ---
 export default function RewardsCompareCalculator() {
     const [spending, setSpending] = useState(defaultSpend);
@@ -110,11 +113,8 @@ export default function RewardsCompareCalculator() {
         const checkScreenSize = () => {
             setIsMobile(window.innerWidth <= MOBILE_BREAKPOINT);
         };
-        // Check on mount
         checkScreenSize();
-        // Add listener for resize
         window.addEventListener('resize', checkScreenSize);
-        // Cleanup listener on unmount
         return () => window.removeEventListener('resize', checkScreenSize);
     }, []);
 
@@ -166,7 +166,7 @@ export default function RewardsCompareCalculator() {
                     let annualPointsAtBonusRate = 0;
                     let annualPointsAtOtherRate = 0;
                     const spentTowardsCapSoFar = capSpendTracker[capKey] || 0;
-                    let totalSpendAtBonusRate = 0; // Track how much spend got the bonus rate
+                    let totalSpendAtBonusRate = 0;
 
                     if (capPeriod === 'year') {
                          const remainingAnnualCapRoom = Math.max(0, capLimit - spentTowardsCapSoFar);
@@ -183,7 +183,7 @@ export default function RewardsCompareCalculator() {
                             const monthlySpendAtOtherRate = Math.max(0, monthlySpend - monthlySpendAtBonusRate);
                             annualPointsAtBonusRate += monthlySpendAtBonusRate * currentMultiplier;
                             annualPointsAtOtherRate += monthlySpendAtOtherRate * otherMultiplier;
-                            totalSpendAtBonusRate += monthlySpendAtBonusRate; // Accumulate monthly bonus spend
+                            totalSpendAtBonusRate += monthlySpendAtBonusRate;
                          }
                      } else if (capPeriod === 'quarter') {
                          const quarterlyCapLimit = capLimit;
@@ -193,15 +193,14 @@ export default function RewardsCompareCalculator() {
                              const quarterlySpendAtOtherRate = Math.max(0, quarterlySpendEstimate - quarterlySpendAtBonusRate);
                              annualPointsAtBonusRate += quarterlySpendAtBonusRate * currentMultiplier;
                              annualPointsAtOtherRate += quarterlySpendAtOtherRate * otherMultiplier;
-                             totalSpendAtBonusRate += quarterlySpendAtBonusRate; // Accumulate quarterly bonus spend
+                             totalSpendAtBonusRate += quarterlySpendAtBonusRate;
                          }
                      }
                     categoryPoints = annualPointsAtBonusRate + annualPointsAtOtherRate;
-                    // Calculate an *average* multiplier for display if cap was hit
                     if (annualSpendInCategory > 0 && categoryPoints > 0) {
                          appliedMultiplier = categoryPoints / annualSpendInCategory;
                     } else if (annualSpendInCategory > 0) {
-                        appliedMultiplier = otherMultiplier; // Fallback if points are zero
+                        appliedMultiplier = otherMultiplier;
                     }
                 }
 
@@ -234,7 +233,6 @@ export default function RewardsCompareCalculator() {
                 firstYearNetValue: parseFloat(firstYearNetValue.toFixed(2)),
                 signUpBonusValue, annualFee, breakdown, breakdownTooltips,
                 cpp: parseFloat(cpp.toFixed(2)),
-                // Initialize best flags
                 isBestTotalPoints: false, isBestRewardsValue: false,
                 isLowestAnnualFee: false, isBestNetValue: false,
                 isBestFirstYearNetValue: false, isBestPerkValue: false
@@ -279,11 +277,9 @@ export default function RewardsCompareCalculator() {
             <section className={styles.cardSelectionSection}>
                  <h2>Select Up to {isMobile ? '2' : '3'} Cards to Compare</h2>
                 <div className={styles.cardSelectorsGrid}>
-                     {/* Render 3 dropdowns, disable/hide 3rd on mobile */}
                      {selectedCardNames.map((selectedName, index) => {
                         const card = cardsData.cards.find(c => c["Card Name"] === selectedName);
                         return (
-                             // Add class to hide 3rd col visually if needed via CSS
                             <div key={index} className={`${styles.cardSelectorColumn} ${isMobile && index > 1 ? styles.hideOnMobile : ''}`}>
                                 <div className={styles.dropdownGroup}>
                                     <label htmlFor={`card-select-${index}`}>Card {index + 1}</label>
@@ -291,7 +287,7 @@ export default function RewardsCompareCalculator() {
                                         id={`card-select-${index}`}
                                         value={selectedName || ""}
                                         onChange={(e) => handleCardSelect(index, e.target.value)}
-                                        disabled={isMobile && index > 1} // Disable 3rd selector on mobile
+                                        disabled={isMobile && index > 1}
                                     >
                                         <option value="">-- Select a Card --</option>
                                         {cardsData.cards.map((c) => (
@@ -363,12 +359,14 @@ export default function RewardsCompareCalculator() {
              {displayedSelectedCardNames.some(name => name !== null) && (
                 <section className={styles.resultsSection}>
                     <h2>Rewards & Value Comparison {isMobile ? '(Top 2)' : ''}</h2>
+                    <p className={styles.resultsExplanation}>
+                        The table below estimates your annual rewards based on the spending you entered and the selected point valuation strategy. Net values account for calculated rewards, estimated annual perk values, and subtract the card's annual fee. The 1st Year value also includes the estimated sign-up bonus value.
+                    </p>
                     <div className={styles.tableWrapper}>
                          <table className={styles.rewardsTable}>
                              <thead>
                                  <tr>
                                      <th>Category</th>
-                                     {/* Render headers only for displayed cards */}
                                      {displayedCardCalculations.map((calc, index) => (
                                          <th key={cardsToDisplayIndices[index]}>
                                             {calc?.card["Card Name"] ?? `Card ${cardsToDisplayIndices[index] + 1}`}
@@ -381,7 +379,6 @@ export default function RewardsCompareCalculator() {
                                  {spendingCategories.map((cat) => (
                                      <tr key={cat}>
                                          <td>{categoryDisplayNames[cat]} Points</td>
-                                         {/* Render cells only for displayed cards */}
                                          {displayedCardCalculations.map((calc, index) => {
                                              const points = calc?.breakdown?.[cat]?.points ?? 0;
                                              const tooltipText = calc?.breakdownTooltips?.[cat] ?? '-';
@@ -434,7 +431,9 @@ export default function RewardsCompareCalculator() {
                              </tbody>
                          </table>
                     </div>
-                     <p className={styles.disclaimer}>Estimated values are based on your inputs and selected point valuation. Actual value may vary. Annual fees are subtracted. Highlighted cells indicate the best value in that row among selected cards.</p>
+                     <p className={styles.disclaimer}>
+                        **Important:** Calculations are estimates based on provided data and user inputs. Actual rewards may vary based on spending patterns, cap limits, and specific merchant coding. Point values (CPP) are estimates and can fluctuate. Offers, rates, fees, and benefits are subject to change; please verify all details directly with the card issuer before applying. See our full Advertiser Disclosure. Last data refresh: [Insert Date or Mechanism].
+                     </p>
                 </section>
              )}
         </div>
