@@ -251,7 +251,7 @@ export default function HomePage() {
               Find the perfect travel credit card tailored to your spending
               habits and travel goals.
             </p>
-            <a href="#Find" className="cta-button" aria-label="Find recommended travel credit cards"> {/* Added aria-label */}
+            <a href="/card-finder" className="cta-button" aria-label="Find recommended travel credit cards"> {/* Added aria-label */}
               Find
             </a>
           </div>

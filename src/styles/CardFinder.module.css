@@ -1,0 +1,113 @@
+/* File: /styles/CardFinder.module.css */
+
+.finderContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Roboto Condensed', Arial, sans-serif;
+  background: var(--bg-light-gray, #f9fafb);
+}
+
+.inputSection,
+.preferenceSection,
+.resultsSection,
+.aiSection {
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.inputGroup,
+.checkboxGroup {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputGroup label,
+.checkboxGroup label {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.inputGroup input,
+.preferenceSection input[type="checkbox"] {
+  padding: 0.6rem 0.8rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+}
+
+.resultsSection {
+  border-top: 2px solid #d1d5db;
+}
+
+.cardResult {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.cardResult h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #111827;
+}
+
+.cardResult p {
+  margin: 0.5rem 0;
+  color: #6b7280;
+}
+
+.cardResult a {
+  text-decoration: none;
+  color: white;
+  background-color: #2563eb;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+.cardResult a:hover {
+  background-color: #1d4ed8;
+}
+
+.aiButton {
+  padding: 0.8rem 1.2rem;
+  background-color: #10b981;
+  color: white;
+  font-weight: 700;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 2rem;
+  align-self: center;
+}
+
+.aiButton:hover {
+  background-color: #059669;
+}
+
+.aiSection ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+}
+
+.aiSection li {
+  margin-bottom: 0.5rem;
+  color: #374151;
+}
+
+@media (max-width: 768px) {
+  .finderContainer {
+    padding: 1rem;
+  }
+}
