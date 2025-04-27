@@ -1,83 +1,61 @@
 // File: /pages/api/cardfinder.js
-import cardsData from '@/data/finalcreditcard.json'; // Load data server-side
-import { calculateAdvancedCardScore } from '@/lib/scoring'; // Assume scoring logic is moved to a helper
+import cardsData from '@/data/finalcreditcard.json';
+// Import *both* functions from scoring lib
+import { filterCards, calculateAdvancedCardScore } from '@/lib/scoring';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
-  // Expect more inputs later (creditScore, loyalty etc.)
-  const { spendingProfile, preferences /*, add other inputs here */ } = req.body;
+  // Destructure *all* expected inputs from the request body
+  const userProfile = req.body; // Contains spendingProfile, preferences, creditScoreRange, etc.
 
-  if (!spendingProfile || !preferences) {
+  if (!userProfile || !userProfile.spendingProfile || !userProfile.preferences) {
     return res.status(400).json({ error: 'Missing required inputs' });
   }
 
-  // --- Data Refinement Reminder ---
-  // Ensure your finalcreditcard.json includes:
-  // - Standardized `perkType` (e.g., "LOUNGE_ACCESS")
-  // - `transferPartners` arrays
-  // - Standardized `Credit Score Requirement` (e.g., ["Good", "Excellent"])
-  // - Structured `Intro APR` objects
-  // ---
+  // Reminder: Ensure finalcreditcard.json data is refined as per prerequisites!
 
   try {
     if (!cardsData?.cards || !Array.isArray(cardsData.cards)) {
-       throw new Error('Invalid card data format');
+      throw new Error('Invalid card data format');
     }
 
-    // **Advanced Scoring Implementation**
-    const scoredCards = cardsData.cards
-      .map(card => {
-        // 1. Initial Filtering (Example: Credit Score - add input later)
-        // if (!checkCreditScoreMatch(card, userCreditScore)) {
-        //   return null; // Or score very low
-        // }
+    // 1. Filter Cards based on non-scoring criteria
+    const eligibleCards = filterCards(cardsData.cards, userProfile);
 
-        // 2. Calculate score using the detailed weighted logic
-        const scoreDetails = calculateAdvancedCardScore(card, { spendingProfile, preferences /*, other inputs */ });
+    // 2. Score the eligible cards
+    const scoredCards = eligibleCards
+      .map(card => {
+        const scoreResult = calculateAdvancedCardScore(card, userProfile);
         return {
-          cardId: card['Card Name'], // Use a unique ID if available
+          // Include necessary data for the RecommendedCardTile component
+          cardId: card['Card Name'], // Ideally use a real unique ID later
           name: card['Card Name'],
-          score: scoreDetails.totalScore, // Calculated score (0-100)
-          scoreBreakdown: scoreDetails.breakdown, // Optional: for transparency
+          issuer: card['Issuer'],
           imageUrl: card.image,
           annualFee: card['Annual Fee'],
           applyUrl: card.applyLink,
-          reviewUrl: card.reviewLink, // Add review link
-          keyFeatures: scoreDetails.matchedFeatures, // Key features that contributed to score
+          reviewUrl: card.reviewLink,
+          score: scoreResult.totalScore,
+          netFirstYearValue: scoreResult.netFirstYearValue,
+          ongoingValue: scoreResult.ongoingValue,
+          matchedFeatures: scoreResult.matchedFeatures,
+          // scoreBreakdown: scoreResult.breakdown, // Optional
         };
       })
-      .filter(card => card !== null) // Remove filtered-out cards
-      .sort((a, b) => b.score - a.score); // Sort by advanced score
+      .sort((a, b) => b.score - a.score); // Sort by the new advanced score
 
     const topMatches = scoredCards.slice(0, 5); // Return top 5
 
-    res.status(200).json({ matchedCards: topMatches });
+    // Include a refresh timestamp (can be build time or server time)
+    const lastRefreshed = new Date().toISOString();
+
+    res.status(200).json({ matchedCards: topMatches, lastRefreshed });
 
   } catch (error) {
     console.error('Card scoring error:', error);
     res.status(500).json({ error: 'Internal Server Error processing card matching.' });
   }
 }
-
-// --- Helper function placeholder (Create in /lib/scoring.js) ---
-// import { calculateAdvancedCardScore } from '@/lib/scoring';
-// function calculateAdvancedCardScore(card, userProfile) {
-//   // Implement the weighted scoring from the original technical plan here:
-//   // - Estimated Annual Rewards Value (40%) - Use spendingProfile & card rewards/point values
-//   // - Fit with User Loyalty (20%) - Needs loyalty inputs & transfer partner data
-//   // - Perks Match (15%) - Needs perk inputs & standardized perkType in data
-//   // - Fee Affordability (10%) - Needs budget input & card fee
-//   // - 0% APR Match (5%) - Needs APR input & structured card APR data
-//   // - (Credit Score Filter applied before this function)
-//
-//   let totalScore = 0;
-//   let breakdown = {}; // Optional: store contribution of each factor
-//   let matchedFeatures = []; // Optional: list features user liked
-//
-//   // ... detailed calculation logic ...
-//
-//   return { totalScore: Math.round(totalScore), breakdown, matchedFeatures };
-// }

@@ -1,9 +1,13 @@
-// File: /components/CardFinder.js (or similar)
-import React, { useState, useEffect, useCallback } from 'react'; // Add useEffect, useCallback
-import styles from '@/styles/CardFinder.module.css';
-// import cardsData from '@/data/finalcreditcard.json'; // REMOVE THIS LINE
+// File: /components/CardFinder.js
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import styles from '@/styles/CardFinder.module.css'; // Reuse/update styles
+import RecommendedCardTile from './RecommendedCardTile'; // Import the new tile component
+// Optional: Import libraries for better UI elements
+// import Select from 'react-select'; // Example for multi-select
+// import Slider from 'rc-slider'; // Example for range slider
+// import 'rc-slider/assets/index.css'; // Styles for slider
 
-// --- Debounce Helper (optional but recommended) ---
+// --- Debounce Helper ---
 function debounce(func, wait) {
   let timeout;
   return function executedFunction(...args) {
@@ -16,215 +20,384 @@ function debounce(func, wait) {
   };
 }
 
+// --- Constants for Inputs ---
+const SPENDING_CATEGORIES = ['travel', 'dining', 'groceries', 'gas', 'other'];
+const CREDIT_SCORE_OPTIONS = [
+    { value: 'any', label: 'Any / Unsure'},
+    { value: 'excellent', label: 'Excellent (720+)' },
+    { value: 'good', label: 'Good (670-719)' },
+    { value: 'fair', label: 'Fair (630-669)' }, // Add if cards support it
+];
+const CARD_TYPE_OPTIONS = [
+    { value: 'any', label: 'Any'},
+    { value: 'personal', label: 'Personal'},
+    { value: 'business', label: 'Business'},
+];
+const PRIORITY_OPTIONS = [
+    { value: 'rewards', label: 'Best Overall Rewards Value'},
+    { value: 'low_fee', label: 'Lowest Annual Fee'},
+    { value: 'travel_perks', label: 'Best Travel Perks'},
+    { value: 'sign_up_bonus', label: 'Highest Sign-up Bonus'},
+    { value: '0_apr', label: 'Best Intro APR Offer'},
+];
+const AIRLINE_OPTIONS = ['Delta SkyMiles', 'United MileagePlus', 'American AAdvantage', 'Southwest Rapid Rewards', 'JetBlue TrueBlue', 'Alaska Mileage Plan', 'Aeroplan', 'Avios', 'Other']; // Add more
+const HOTEL_OPTIONS = ['Marriott Bonvoy', 'Hilton Honors', 'World of Hyatt', 'IHG One Rewards', 'Other']; // Add more
+
+
 export default function CardFinder() {
-  const [spendingProfile, setSpendingProfile] = useState({
-    travel: '', // Use empty strings for potentially empty inputs
-    dining: '',
-    groceries: '',
-    gas: '',
-    other: '',
-  });
+  // --- State Management ---
+  const [spendingProfile, setSpendingProfile] = useState(
+      SPENDING_CATEGORIES.reduce((acc, cat) => ({ ...acc, [cat]: '' }), {})
+  );
+  // Consolidate preferences into one object
   const [preferences, setPreferences] = useState({
-    preferNoAnnualFee: false,
-    preferPremiumBenefits: false, // Keep simple prefs for now
-    preferCashBack: false,
-    // --- Add state for NEW inputs here later ---
-    // preferredAirlines: [],
-    // annualFeeBudget: [0, 1000],
-    // creditScoreRange: '',
-    // etc.
+    // Basic Toggles (can remove if covered by priority/perks)
+    // preferNoAnnualFee: false,
+    // preferPremiumBenefits: false,
+    // preferCashBack: false,
+
+    // Enhanced Inputs
+    creditScoreRange: 'good', // Default value
+    cardType: 'personal',
+    priority: 'rewards',
+    annualFeeBudget: [0, 695], // Default Slider Range [min, max]
+    preferredAirlines: [], // Array for multi-select
+    preferredHotels: [], // Array for multi-select
+    needsIntroAPR: false,
+
+    // Perk Priorities
+    wantsLoungeAccess: false,
+    needsRentalCarInsurance: false, // Example new perk
+    wantsGlobalEntry: false,
+    wantsEliteStatusBoost: false,
+    wantsFreeCheckedBag: false,
   });
+
   const [aiSuggestions, setAiSuggestions] = useState([]);
-  const [matchedCardsResult, setMatchedCardsResult] = useState([]); // State for API results
+  const [matchedCardsResult, setMatchedCardsResult] = useState([]);
+  const [lastRefreshed, setLastRefreshed] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isAiLoading, setIsAiLoading] = useState(false);
   const [error, setError] = useState(null);
 
 
-  // --- Function to fetch matched cards ---
-  const fetchMatchedCards = useCallback(async () => {
+  // --- API Call Logic ---
+  const fetchMatchedCards = useCallback(async (currentPrefs, currentSpending) => {
+    // Avoid fetch if essential inputs missing (e.g., credit score)
+    if (!currentPrefs.creditScoreRange) return;
+
     setIsLoading(true);
     setError(null);
     try {
-      // Convert spending profile values to numbers for API
-      const numericSpendingProfile = Object.entries(spendingProfile).reduce((acc, [key, value]) => {
-        acc[key] = Number(value) || 0; // Default to 0 if empty or invalid
+      const numericSpendingProfile = Object.entries(currentSpending).reduce((acc, [key, value]) => {
+        acc[key] = Number(value) || 0;
         return acc;
       }, {});
 
-      const response = await fetch('/api/cardfinder', { // Call your new API
+      // Combine all state into the userProfile object for the API
+      const userProfile = {
+          spendingProfile: numericSpendingProfile,
+          preferences: currentPrefs, // Send the whole preferences object
+          // Ensure preference keys match what API expects
+          creditScoreRange: currentPrefs.creditScoreRange,
+          cardType: currentPrefs.cardType,
+          priority: currentPrefs.priority,
+          // Add any other top-level keys needed by the API/scoring
+      };
+
+      const response = await fetch('/api/cardfinder', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          spendingProfile: numericSpendingProfile,
-          preferences,
-          // Pass other preference states here later
-        }),
+        body: JSON.stringify(userProfile),
       });
 
       if (!response.ok) {
-        throw new Error(`API Error: ${response.statusText}`);
+        const errData = await response.json().catch(() => ({})); // Try to get error message
+        throw new Error(`API Error ${response.status}: ${errData.error || response.statusText}`);
       }
 
       const data = await response.json();
       setMatchedCardsResult(data.matchedCards || []);
+      setLastRefreshed(data.lastRefreshed); // Store refresh timestamp
     } catch (err) {
       console.error("Failed to fetch matched cards:", err);
-      setError('Could not load card recommendations. Please try again.');
-      setMatchedCardsResult([]); // Clear results on error
+      setError(`Could not load recommendations: ${err.message}`);
+      setMatchedCardsResult([]);
     } finally {
       setIsLoading(false);
     }
-  }, [spendingProfile, preferences]); // Dependencies: trigger fetch on change
+  }, []); // No dependencies here, rely on debounced call
 
-  // --- Debounced fetcher ---
-  const debouncedFetchMatchedCards = useCallback(debounce(fetchMatchedCards, 500), [fetchMatchedCards]); // 500ms debounce
+  // Debounced fetcher, passes current state at time of call
+  const debouncedFetchMatchedCards = useMemo(() =>
+    debounce(() => fetchMatchedCards(preferences, spendingProfile), 600),
+    [fetchMatchedCards, preferences, spendingProfile] // Recreate debounce wrapper if state refs change *needed*
+  );
 
-  // --- Effect to trigger fetch ---
+  // Effect to trigger fetch on input changes
   useEffect(() => {
-    // Check if any spending value is entered to avoid fetching on initial load
     const hasSpendingInput = Object.values(spendingProfile).some(val => val !== '');
-    if (hasSpendingInput) {
+    const hasRequiredPrefs = !!preferences.creditScoreRange; // Add more checks if needed
+
+    if (hasSpendingInput && hasRequiredPrefs) {
        debouncedFetchMatchedCards();
     } else {
-       // Optionally clear results if all spending is zeroed out
-       setMatchedCardsResult([]);
+       setMatchedCardsResult([]); // Clear results if no input/required prefs
+       setLastRefreshed(null);
     }
-  }, [spendingProfile, preferences, debouncedFetchMatchedCards]); // Rerun when inputs change
+     // Cleanup debounce timer on unmount
+     return () => debouncedFetchMatchedCards.cancel?.(); // Assumes debounce returns a cancel method
 
+  }, [spendingProfile, preferences, debouncedFetchMatchedCards]);
+
+
+  // --- Input Handlers ---
   const handleSpendChange = (field, value) => {
-     // Basic validation: allow only numbers (or empty string)
     const numericValue = value.replace(/[^0-9]/g, '');
-    setSpendingProfile({ ...spendingProfile, [field]: numericValue });
+    setSpendingProfile(prev => ({ ...prev, [field]: numericValue }));
   };
 
-  const handlePreferenceChange = (field) => {
-    setPreferences({ ...preferences, [field]: !preferences[field] });
+  // Generic handler for most preference changes (checkboxes, radios, selects)
+  const handlePreferenceChange = (field, value) => {
+    setPreferences(prev => ({ ...prev, [field]: value }));
   };
 
-  // --- AI Suggestion Function (Update later in Phase 3) ---
-  const generateAiSuggestions = async () => {
-     // Will be updated to call the real AI API
-     setIsLoading(true); // Reuse loading state or add a specific one
+   // Specific handler for multi-select (example using simple checkboxes)
+   const handleMultiSelectChange = (field, value) => {
+       setPreferences(prev => {
+           const currentSelection = prev[field] || [];
+           const newSelection = currentSelection.includes(value)
+               ? currentSelection.filter(item => item !== value) // Remove if already selected
+               : [...currentSelection, value]; // Add if not selected
+           return { ...prev, [field]: newSelection };
+       });
+   };
+
+   // Handler for range slider (example assuming rc-slider)
+   // const handleSliderChange = (field, value) => {
+   //     setPreferences(prev => ({ ...prev, [field]: value }));
+   // };
+
+
+  // --- AI Suggestion Function ---
+   const generateAiSuggestions = useCallback(async () => {
+     if (!matchedCardsResult || matchedCardsResult.length === 0) return; // Don't call if no results
+
+     setIsAiLoading(true);
+     setAiSuggestions([]); // Clear previous
+     setError(null); // Clear previous errors
      try {
-         // Call /api/gpt-card-finder (or your chosen name)
-         const response = await fetch('/api/gpt-card-finder', { // Use the correct API route name
-             method: 'POST',
-             headers: { 'Content-Type': 'application/json' },
-             body: JSON.stringify({
-                 spendingProfile: Object.entries(spendingProfile).reduce((acc, [key, value]) => {
-                     acc[key] = Number(value) || 0;
-                     return acc;
-                 }, {}),
-                 preferences,
-                 // IMPORTANT: Send matchedCardsResult too for better context!
-                 recommendedCards: matchedCardsResult
-             })
-         });
-         if (!response.ok) throw new Error('AI suggestion failed');
-         const data = await response.json();
-         setAiSuggestions(data.suggestions || ["AI feature coming soon!"]); // Use real suggestions
-     } catch (err) {
-         console.error("AI suggestion error:", err);
-         setAiSuggestions(["Could not get AI suggestions at this time."]);
-     } finally {
-         setIsLoading(false);
-     }
-  };
+        const numericSpendingProfile = Object.entries(spendingProfile).reduce((acc, [key, value]) => {
+             acc[key] = Number(value) || 0;
+             return acc;
+         }, {});
 
+       const response = await fetch('/api/gpt-card-finder', {
+         method: 'POST',
+         headers: { 'Content-Type': 'application/json' },
+         body: JSON.stringify({
+           spendingProfile: numericSpendingProfile,
+           preferences,
+           recommendedCards: matchedCardsResult.map(c => ({ name: c.name, score: c.score, keyFeatures: c.matchedFeatures })), // Send key details
+         }),
+       });
+       if (!response.ok) {
+           const errData = await response.json().catch(() => ({}));
+           throw new Error(`AI Error ${response.status}: ${errData.error || response.statusText}`);
+       }
+       const data = await response.json();
+       setAiSuggestions(data.suggestions || []);
+     } catch (err) {
+       console.error("AI suggestion error:", err);
+       setError(`Could not get AI suggestions: ${err.message}`);
+     } finally {
+       setIsAiLoading(false);
+     }
+   }, [matchedCardsResult, preferences, spendingProfile]);
 
   // --- Render Logic ---
   return (
     <div className={styles.finderContainer}>
-      <h1>Find Your Best Travel Card</h1>
+      {/* Consider adding Author Bio / Methodology Link here */}
+       <h1>Find Your Perfect Travel Card</h1>
+       <p>Tailored recommendations based on your spending and preferences.</p>
 
-      {/* Spending Input Section (Existing - OK) */}
-      <section className={styles.inputSection}>
-         {/* ... your spending input map ... make sure values are strings */}
-         <h2>Monthly Spending</h2>
-         {['travel', 'dining', 'groceries', 'gas', 'other'].map(category => (
-           <div key={category} className={styles.inputGroup}>
-             <label htmlFor={category}>{category.charAt(0).toUpperCase() + category.slice(1)}</label>
-             <input
-               type="text" // Use text to allow empty input easily
-               inputMode="numeric" // Hint for mobile keyboards
-               pattern="[0-9]*" // Basic pattern validation
-               id={category}
-               value={spendingProfile[category]}
-               onChange={e => handleSpendChange(category, e.target.value)}
-               placeholder="0"
-             />
-           </div>
-         ))}
-      </section>
+      <form onSubmit={(e) => e.preventDefault()} className={styles.finderForm}> {/* Use Form */}
 
-      {/* Preference Section (Existing - OK for now, enhance later) */}
-      <section className={styles.preferenceSection}>
-        <h2>Preferences</h2>
-         {/* ... your preference checkbox map ... */}
-         {/* Example: Update label formatting */}
-          {Object.keys(preferences).map(pref => (
-            <div key={pref} className={styles.checkboxGroup} style={{ flexDirection: 'row', alignItems: 'center', gap: '0.5rem'}}>
-              <input
-                type="checkbox"
-                id={pref}
-                checked={preferences[pref]}
-                onChange={() => handlePreferenceChange(pref)}
-                style={{ width: 'auto', marginBottom: 0 }} // Adjust style for row layout
-              />
-              {/* Improved Label Generation */}
-              <label htmlFor={pref} style={{ marginBottom: 0, textTransform: 'capitalize' }}>
-                {pref.replace(/^prefer/, '').replace(/([A-Z])/g, ' $1').trim()}
-              </label>
+        {/* --- Input Sections --- */}
+        <fieldset className={styles.inputSection}>
+          <legend>1. Your Monthly Spending ($)</legend>
+          <div className={styles.gridInputGroup}> {/* Use grid for better layout */}
+              {SPENDING_CATEGORIES.map(category => (
+                  <div key={category} className={styles.inputGroup}>
+                      <label htmlFor={category}>{category.charAt(0).toUpperCase() + category.slice(1)}</label>
+                      <input
+                          type="text"
+                          inputMode="numeric"
+                          pattern="[0-9]*"
+                          id={category}
+                          value={spendingProfile[category]}
+                          onChange={e => handleSpendChange(category, e.target.value)}
+                          placeholder="0"
+                          aria-label={`Monthly spending on ${category}`}
+                      />
+                  </div>
+              ))}
+          </div>
+        </fieldset>
+
+        <fieldset className={styles.preferenceSection}>
+            <legend>2. Your Profile & Preferences</legend>
+
+             {/* Credit Score */}
+             <div className={styles.inputGroup}>
+                <label htmlFor="creditScoreRange">Estimated Credit Score:</label>
+                <select
+                    id="creditScoreRange"
+                    value={preferences.creditScoreRange}
+                    onChange={e => handlePreferenceChange('creditScoreRange', e.target.value)}
+                    aria-describedby="creditScoreDesc"
+                 >
+                     {CREDIT_SCORE_OPTIONS.map(opt => <option key={opt.value} value={opt.value}>{opt.label}</option>)}
+                 </select>
+                 <small id="creditScoreDesc">Helps filter cards you're likely eligible for.</small>
+             </div>
+
+             {/* Card Type */}
+              <div className={styles.inputGroup}>
+                  <label>Card Type:</label>
+                  <div className={styles.radioGroup}>
+                      {CARD_TYPE_OPTIONS.map(opt => (
+                          <label key={opt.value} htmlFor={`cardType-${opt.value}`}>
+                              <input
+                                  type="radio"
+                                  id={`cardType-${opt.value}`}
+                                  name="cardType"
+                                  value={opt.value}
+                                  checked={preferences.cardType === opt.value}
+                                  onChange={e => handlePreferenceChange('cardType', e.target.value)}
+                              /> {opt.label}
+                          </label>
+                      ))}
+                  </div>
+              </div>
+
+
+            {/* Primary Goal */}
+             <div className={styles.inputGroup}>
+                <label htmlFor="priority">What's Most Important?</label>
+                 <select
+                    id="priority"
+                    value={preferences.priority}
+                    onChange={e => handlePreferenceChange('priority', e.target.value)}
+                    aria-describedby="priorityDesc"
+                 >
+                     {PRIORITY_OPTIONS.map(opt => <option key={opt.value} value={opt.value}>{opt.label}</option>)}
+                 </select>
+                 <small id="priorityDesc">This helps weigh the scoring factors.</small>
+             </div>
+
+             {/* Annual Fee Slider (Example Placeholder - requires rc-slider or similar) */}
+             {/* <div className={styles.inputGroup}>
+                <label htmlFor="annualFeeBudget">Acceptable Annual Fee Range: ${preferences.annualFeeBudget[0]} - ${preferences.annualFeeBudget[1]}</label>
+                <Slider
+                    range
+                    min={0}
+                    max={1000} // Adjust max fee
+                    step={5}
+                    value={preferences.annualFeeBudget}
+                    onChange={value => handleSliderChange('annualFeeBudget', value)}
+                    ariaLabelGroupForHandles={['Minimum acceptable annual fee', 'Maximum acceptable annual fee']}
+                />
+             </div> */}
+
+
+             {/* Loyalty Preferences (Example using checkboxes) */}
+            <div className={styles.inputGroup}>
+                <label>Preferred Airlines (Optional):</label>
+                <div className={styles.checkboxGrid}>
+                     {AIRLINE_OPTIONS.map(airline => (
+                         <label key={airline} htmlFor={`airline-${airline}`}>
+                             <input
+                                 type="checkbox"
+                                 id={`airline-${airline}`}
+                                 value={airline}
+                                 checked={preferences.preferredAirlines.includes(airline)}
+                                 onChange={e => handleMultiSelectChange('preferredAirlines', e.target.value)}
+                            /> {airline}
+                         </label>
+                     ))}
+                 </div>
+             </div>
+              {/* Add similar section for Hotels */}
+
+
+             {/* Perk Priorities */}
+             <div className={styles.inputGroup}>
+                 <label>Desired Perks (Select any):</label>
+                 <div className={styles.checkboxGrid}>
+                     {/* Map over PERK_MAP keys or a dedicated perks list */}
+                     {Object.entries({ wantsLoungeAccess: 'Lounge Access', needsRentalCarInsurance: 'Rental Car Insurance', wantsGlobalEntry: 'Global Entry/TSA Credit', wantsEliteStatusBoost: 'Elite Status Boosts', wantsFreeCheckedBag: 'Free Checked Bag', needsIntroAPR: 'Intro 0% APR Offer'}).map(([key, label]) => (
+                          <label key={key} htmlFor={`perk-${key}`}>
+                             <input
+                                 type="checkbox"
+                                 id={`perk-${key}`}
+                                 checked={preferences[key]}
+                                 onChange={e => handlePreferenceChange(key, e.target.checked)} // Use checked property
+                             /> {label}
+                         </label>
+                     ))}
+                 </div>
+             </div>
+
+        </fieldset>
+
+        {/* --- Results Section --- */}
+        <section className={styles.resultsSection}>
+            <div className={styles.resultsHeader}>
+                <h2>Top Matches</h2>
+                {lastRefreshed && <span className={styles.lastRefreshed}>Last data refresh: {new Date(lastRefreshed).toLocaleDateString()}</span>}
             </div>
-         ))}
-      </section>
 
-      {/* Results Section (Updated) */}
-      <section className={styles.resultsSection}>
-        <h2>Top Matches</h2>
-        {isLoading && <p>Finding best cards...</p>}
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-        {!isLoading && !error && matchedCardsResult.length === 0 && <p>Enter your spending to see recommendations.</p>}
-        {!isLoading && !error && matchedCardsResult.length > 0 && (
-          matchedCardsResult.map((match, idx) => (
-            // --- Premium Card Result Component (Build this) ---
-            <div key={match.cardId || idx} className={styles.cardResult}>
-              {/* Add Image later */}
-              <h3>{match.name} (Score: {match.score})</h3>
-              <p>Annual Fee: ${match.annualFee ?? 'N/A'}</p>
-              {/* Display Key Features */}
-              {match.keyFeatures && match.keyFeatures.length > 0 && (
-                  <p><strong>Why it matches:</strong> {match.keyFeatures.join(', ')}</p>
-              )}
-              {/* Add Review Link */}
-              {match.reviewUrl && (
-                 <a href={match.reviewUrl} target="_blank" rel="noopener noreferrer" style={{ marginRight: '10px', backgroundColor: '#6b7280' }}>Read Review</a>
-              )}
-              <a href={match.applyUrl || '#'} target="_blank" rel="noopener noreferrer">Apply Now</a>
-               {/* Optional: Show Score Breakdown */}
-               {/* {match.scoreBreakdown && <pre>{JSON.stringify(match.scoreBreakdown, null, 2)}</pre>} */}
-            </div>
-            // --- End Premium Card Result Component ---
-          ))
-        )}
-      </section>
+             {isLoading && <div className={styles.loadingIndicator}><span></span><span></span><span></span></div>}
+             {error && !isLoading && <p className={styles.errorMessage}>{error}</p>}
+             {!isLoading && !error && matchedCardsResult.length === 0 && <p>Enter your spending and preferences above to see personalized recommendations.</p>}
 
-      {/* AI Button and Section (Existing - Updated Function) */}
-      <button onClick={generateAiSuggestions} className={styles.aiButton} disabled={isLoading || matchedCardsResult.length === 0}>
-         {isLoading ? 'Processing...' : 'Get AI Recommendations'}
-      </button>
-
-      {aiSuggestions.length > 0 && (
-        <section className={styles.aiSection}>
-           {/* ... existing AI suggestions list ... */}
-           <h2>AI Suggestions</h2>
-            <ul>
-             {aiSuggestions.map((suggestion, idx) => (
-               <li key={idx}>{suggestion}</li>
-             ))}
-            </ul>
+            {!isLoading && !error && matchedCardsResult.length > 0 && (
+              <div className={styles.resultsGrid}>
+                {matchedCardsResult.map((match) => (
+                   <RecommendedCardTile key={match.cardId} card={match} />
+                ))}
+              </div>
+            )}
         </section>
-      )}
-    </div>
+
+         {/* --- AI Section --- */}
+         <section className={styles.aiActionSection}>
+             <button
+                 type="button" // Important: prevent form submission
+                 onClick={generateAiSuggestions}
+                 className={styles.aiButton}
+                 disabled={isLoading || isAiLoading || matchedCardsResult.length === 0}
+                 aria-live="polite" // Announce loading state changes
+             >
+                 {isAiLoading ? 'Getting AI Advice...' : 'Explain These Results (AI)'}
+             </button>
+
+             {isAiLoading && <div className={styles.loadingIndicator} style={{ margin: '1rem auto' }}><span></span><span></span><span></span></div>}
+
+             {aiSuggestions.length > 0 && !isAiLoading && (
+                 <div className={styles.aiSection}>
+                     <h3>AI Advisor Summary</h3>
+                     <ul>
+                         {aiSuggestions.map((suggestion, idx) => (
+                             <li key={idx}>{suggestion}</li>
+                         ))}
+                     </ul>
+                 </div>
+             )}
+         </section>
+      </form> {/* End Form */}
+    </div> // End container
   );
 }
