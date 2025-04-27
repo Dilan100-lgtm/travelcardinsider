@@ -1,88 +1,53 @@
 // File: /components/RecommendedCardTile.js
 import React from 'react';
-import Image from 'next/image';
-import styles from '@/styles/CardFinder.module.css'; // Ensure path is correct
+import Image from 'next/image'; // Use Next.js Image component
+import styles from '@/styles/CardFinder.module.css'; // Reuse or create new styles
 
-// Optional Icon Helper (Example - requires installation: npm install react-icons)
-// import { FaPlaneDeparture, FaUtensils, FaGasPump, FaCreditCard, FaPercentage, FaCrown, FaBriefcase, FaCheckCircle, FaInfoCircle, FaShieldAlt } from 'react-icons/fa';
+// --- Helper Function for Icons (Example - Requires installing an icon library like react-icons) ---
+// import { FaPlaneDeparture, FaUtensils, FaGasPump, FaCreditCard, FaPercentage, FaCrown, FaBriefcase } from 'react-icons/fa';
 // const getIconForFeature = (feature) => {
-//     if (!feature) return null;
 //     const lowerFeature = feature.toLowerCase();
 //     if (lowerFeature.includes('lounge')) return <FaPlaneDeparture title="Lounge Access" />;
-//     if (lowerFeature.includes('dining') || lowerFeature.includes('restaurants')) return <FaUtensils title="Dining Perk/Reward" />;
+//     if (lowerFeature.includes('dining')) return <FaUtensils title="Dining Perk/Reward" />;
 //     if (lowerFeature.includes('gas')) return <FaGasPump title="Gas Perk/Reward" />;
 //     if (lowerFeature.includes('fee')) return <FaCreditCard title="Fee Related" />;
 //     if (lowerFeature.includes('apr')) return <FaPercentage title="Intro APR" />;
-//     if (lowerFeature.includes('elite') || lowerFeature.includes('status') || lowerFeature.includes('nights')) return <FaCrown title="Elite Status Perk" />;
-//     if (lowerFeature.includes('bag') || lowerFeature.includes('checked')) return <FaBriefcase title="Checked Bag Perk" />;
-//     if (lowerFeature.includes('global entry') || lowerFeature.includes('tsa')) return <FaCheckCircle title="Travel Credit Perk" />;
-//     if (lowerFeature.includes('insurance') || lowerFeature.includes('protection')) return <FaShieldAlt title="Insurance/Protection" />;
-//     // Add more specific mappings based on your data
-//     return <FaInfoCircle />; // Default icon for unmatched features
+//     if (lowerFeature.includes('elite') || lowerFeature.includes('status')) return <FaCrown title="Elite Status Perk" />;
+//     if (lowerFeature.includes('bag')) return <FaBriefcase title="Checked Bag Perk" />;
+//     // Add more mappings
+//     return null;
 // }
+// ---
 
-export default function RecommendedCardTile({ card, badge }) { // Accepts card data and optional badge text
-  if (!card) return null; // Don't render if no card data
+export default function RecommendedCardTile({ card }) {
+  if (!card) return null;
 
-  // --- Tracking & Links ---
-  // Create a safer subID, replacing non-alphanumeric chars
-  const subId = card.name ? encodeURIComponent(card.name.replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '_')) : 'unknown_card';
-  // Define campaign based on badge or general if no badge
-  const campaign = badge ? badge.toLowerCase().replace(/[^a-z0-9]/g, '_') : 'general';
-  // Construct tracked Apply URL
-  const applyLinkWithTracking = `${card.applyUrl || '#'}?utm_source=travelcardinsider&utm_medium=cardfinder&utm_campaign=recommendation_${campaign}&subid1=${subId}`;
-  // Construct tracked Review URL (if available)
-  const reviewLinkWithTracking = card.reviewUrl ? `${card.reviewUrl}?utm_source=travelcardinsider&utm_medium=cardfinder_review_link` : null;
+  // Basic UTM/SubID addition example
+  const applyLinkWithTracking = `${card.applyUrl}?utm_source=travelcardinsider&utm_medium=cardfinder&utm_campaign=recommendation&subid1=${encodeURIComponent(card.cardId)}`;
 
   return (
-    // --- Schema.org Microdata & Tile Structure ---
-    <div className={`${styles.cardTile} ${badge ? styles.hasBadge : ''}`} itemScope itemType="https://schema.org/FinancialProduct">
-      {/* Conditionally render badge if provided */}
-      {badge && (
-          <div className={`${styles.cardTileBadge} ${badge === 'Best Pick' ? styles.bestPick : ''}`}>
-              {badge}
-          </div>
-      )}
-
-      {/* --- Hidden Metadata for SEO/Crawlers --- */}
+    // Add Schema.org markup
+    <div className={styles.cardTile} itemScope itemType="https://schema.org/FinancialProduct">
       <meta itemProp="name" content={card.name} />
-      <meta itemProp="description" content={`Travel credit card recommendation based on user profile. Key features include estimated $${card.netFirstYearValue} first year value and $${card.ongoingValue} ongoing value. Score: ${card.score}/100. Annual Fee: $${card.annualFee ?? 0}.`} />
-      {/* Brand Information */}
+      <meta itemProp="description" content={`Recommended based on user profile. Score: ${card.score}/100. Est. 1st Year Value: $${card.netFirstYearValue}. Ongoing Value: $${card.ongoingValue}.`} />
       <div itemProp="brand" itemScope itemType="https://schema.org/Brand">
-          <meta itemProp="name" content={card.issuer} />
+         <meta itemProp="name" content={card.issuer} />
       </div>
-      {/* Main URL (Apply Link) */}
-      <link itemProp="url" href={card.applyUrl || '#'} />
-      {/* Annual Fee Specification */}
-       <div itemProp="feesAndPricingSpecification" itemScope itemType="https://schema.org/UnitPriceSpecification">
-          <meta itemProp="priceCurrency" content="USD" />
-          <meta itemProp="price" content={card.annualFee ?? 0} />
-          <meta itemProp="unitCode" content="ANN" /> {/* Code for Annually */}
-          <meta itemProp="valueAddedTaxIncluded" content="false" />
-          <meta itemProp="description" content="Annual Fee" />
-       </div>
-       {/* Add more schema props: category, availableTerritory, rewardsProgram, interestRate, etc. */}
-       {/* <meta itemProp="category" content="Travel Credit Card" /> */}
+       <link itemProp="url" href={card.applyUrl} />
+       {/* Add more schema props as needed: fees, rewards, etc. */}
 
-      {/* --- Visible Card Content --- */}
-      {/* Card Header: Image + Basic Info */}
       <div className={styles.cardTileHeader}>
-        {card.imageUrl ? (
+        {card.imageUrl && (
           <div className={styles.cardTileImage}>
             <Image
               src={card.imageUrl}
               alt={`${card.name} Card Art`}
-              width={120} height={75}
-              style={{ objectFit: 'contain' }} // Ensures image scales nicely
+              width={120} // Adjust size as needed
+              height={75} // Adjust size as needed
+              style={{ objectFit: 'contain' }}
               itemProp="image"
-              loading="lazy" // Lazy load images below the fold
-              priority={badge === 'Best Pick'} // Eager load the "Best Pick" image
-              unoptimized={card.imageUrl.includes('.svg')} // Add if you use SVGs directly
             />
           </div>
-        ) : (
-            // Placeholder if image URL is missing
-            <div className={styles.cardTileImagePlaceholder}>Image Unavailable</div>
         )}
         <div className={styles.cardTileInfo}>
           <h3 itemProp="name">{card.name}</h3>
@@ -91,54 +56,63 @@ export default function RecommendedCardTile({ card, badge }) { // Accepts card d
         </div>
       </div>
 
-      {/* Calculated Values Grid */}
       <div className={styles.cardTileValues}>
-        <div> <span>1st Year Value</span> <strong>~${card.netFirstYearValue}</strong> </div>
-        <div> <span>Ongoing Value</span> <strong>~${card.ongoingValue}</strong> </div>
-        <div> <span>Annual Fee</span> <strong>${card.annualFee ?? 0}</strong> </div>
+        <div>
+          <span>1st Year Value</span>
+          <strong>~${card.netFirstYearValue}</strong>
+        </div>
+        <div>
+          <span>Ongoing Value</span>
+          <strong>~${card.ongoingValue}</strong>
+        </div>
+        <div>
+          <span>Annual Fee</span>
+          <strong>${card.annualFee ?? 0}</strong>
+        </div>
       </div>
 
-       {/* Key Matched Features List */}
+       {/* Display Key Matched Features / Perks with Icons (Example) */}
        {card.matchedFeatures && card.matchedFeatures.length > 0 && (
          <div className={styles.cardTileFeatures}>
-             <p><strong>Key Features:</strong></p>
+             <p><strong>Why it matches:</strong></p>
              <ul>
-                 {/* Map through matched features from scoring */}
-                 {card.matchedFeatures.map((feature, idx) => (
+                 {card.matchedFeatures.slice(0, 4).map((feature, idx) => ( // Limit displayed features
                      <li key={idx}>
-                         {/* Optional: Add icon based on feature text */}
-                         {/* {getIconForFeature(feature)} */}
+                         {/* {getIconForFeature(feature)}  */}
                          {feature}
-                     </li>
+                    </li>
                  ))}
              </ul>
          </div>
        )}
 
-      {/* Action Buttons (Review & Apply) */}
+
       <div className={styles.cardTileActions}>
-        {/* Review Button (conditional) */}
-        {reviewLinkWithTracking && (
-          <a href={reviewLinkWithTracking} target="_blank" rel="noopener noreferrer" className={`${styles.cardTileButton} ${styles.reviewButton}`}>
+        {card.reviewUrl && (
+          <a
+            href={card.reviewUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${styles.cardTileButton} ${styles.reviewButton}`}
+          >
             Read Review
           </a>
         )}
-        {/* Apply Button */}
         <a
-          href={applyLinkWithTracking}
+          href={applyLinkWithTracking} // Use link with tracking
           target="_blank"
-          // Use 'sponsored nofollow' for affiliate links per Google guidelines
-          rel="noopener noreferrer sponsored nofollow"
+          rel="noopener noreferrer nofollow" // Add nofollow for affiliate links
           className={`${styles.cardTileButton} ${styles.applyButton}`}
-          // Schema.org Offer markup for the apply action
           itemProp="offers" itemScope itemType="https://schema.org/Offer"
         >
            <span itemProp="description">Apply Now</span>
-           <link itemProp="url" href={applyLinkWithTracking}/>
-           {/* Optional: Availability (e.g., OnlineOnly) */}
-           {/* <link itemProp="availability" href="https://schema.org/OnlineOnly"/> */}
+            <link itemProp="url" href={applyLinkWithTracking}/>
         </a>
       </div>
+       {/* Basic "Explain Why" (can be expanded into accordion) */}
+       {/* <div className={styles.cardTileExplain}>
+           <p>Based on your preferences for [mention key pref] and spending of [mention key spending], this card scores well because [mention top reason like high rewards in X category or key perk].</p>
+       </div> */}
     </div>
   );
 }
