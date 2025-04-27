@@ -34,14 +34,14 @@ const BestPickIcon = () => (
       <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354l-4.615 2.973c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clipRule="evenodd" />
     </svg>
 );
-const RunnerUp1Icon = () => ( // Silver Medal Placeholder
+const RunnerUp1Icon = () => ( // Silver Medal Placeholder - Replace with a better SVG if desired
     <svg className={`${styles.aiIcon} ${styles.runnerUp1}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm-1 14.08V18h2v-1.92c1.69-.24 3-1.66 3-3.41 0-1.84-1.48-3.33-3.33-3.33H9.5v2.67H11c.55 0 1 .45 1 1s-.45 1-1 1H9.5v2.08h1.5zm.5-9.41h1v2.67h-1V6.67z"></path> {/* Stylized '2' */}
+        <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm-1 14.08V18h2v-1.92c1.69-.24 3-1.66 3-3.41 0-1.84-1.48-3.33-3.33-3.33H9.5v2.67H11c.55 0 1 .45 1 1s-.45 1-1 1H9.5v2.08h1.5zm.5-9.41h1v2.67h-1V6.67z"></path>
     </svg>
 );
-const RunnerUp2Icon = () => ( // Bronze Medal Placeholder
+const RunnerUp2Icon = () => ( // Bronze Medal Placeholder - Replace with a better SVG if desired
     <svg className={`${styles.aiIcon} ${styles.runnerUp2}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm1.5 14.08V18h1.83c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5H13.5v-1.25c0-.69.56-1.25 1.25-1.25h1.08c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5h-2.5v6.58zm-4.5-2.08V6.67h3.33c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5H9v2.67h1.5z"></path> {/* Stylized '3' */}
+        <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm1.5 14.08V18h1.83c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5H13.5v-1.25c0-.69.56-1.25 1.25-1.25h1.08c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5h-2.5v6.58zm-4.5-2.08V6.67h3.33c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5H9v2.67h1.5z"></path>
     </svg>
 );
 
@@ -52,7 +52,7 @@ export default function CardFinder() {
   const [annualFeeRange, setAnnualFeeRange] = useState({ min: '0', max: '695' });
   const [preferences, setPreferences] = useState({
     creditScoreRange: 'good', cardType: 'personal', priority: 'rewards',
-    preferNoAnnualFee: false, // Added state
+    preferNoAnnualFee: false, // Added state for checkbox
     preferredAirlines: [], preferredHotels: [], needsIntroAPR: false,
     wantsLoungeAccess: false, needsRentalCarInsurance: false, wantsGlobalEntry: false,
     wantsEliteStatusBoost: false, wantsFreeCheckedBag: false,
@@ -75,7 +75,17 @@ export default function CardFinder() {
   // --- Input Handlers ---
   const handleSpendChange = (field, value) => { const numericValue = value.replace(/[^0-9]/g, '').slice(0, 6); setSpendingProfile(prev => ({ ...prev, [field]: numericValue })); };
   const handleFeeRangeChange = (field, value) => { const numericValue = value.replace(/[^0-9]/g, '').slice(0, 4); setAiSuggestions({ bestPick: null, runnerUps: [] }); setAiError(null); setAnnualFeeRange(prev => ({ ...prev, [field]: numericValue })); };
-  const handlePreferenceChange = (field, value, type = 'value') => { setAiSuggestions({ bestPick: null, runnerUps: [] }); setAiError(null); setPreferences(prev => ({ ...prev, [field]: type === 'checkbox' ? value : value })); }; // Uses value for select/radio, target.checked for checkbox
+  // Updated handler to properly get checkbox state
+  const handlePreferenceChange = (field, value, type = 'value') => {
+    setAiSuggestions({ bestPick: null, runnerUps: [] });
+    setAiError(null);
+    // For checkboxes, the 'value' passed is event.target.checked
+    const newValue = type === 'checkbox' ? value : value;
+    setPreferences(prev => ({
+        ...prev,
+        [field]: newValue
+    }));
+  };
   const handleMultiSelectChange = (field, value) => { setAiSuggestions({ bestPick: null, runnerUps: [] }); setAiError(null); setPreferences(prev => { const currentSelection = prev[field] || []; const newSelection = currentSelection.includes(value) ? currentSelection.filter(item => item !== value) : [...currentSelection, value]; return { ...prev, [field]: newSelection }; }); };
 
   // --- AI Suggestion Function ---
@@ -94,17 +104,31 @@ export default function CardFinder() {
 
         {/* Section 2: Profile & Preferences */}
         <fieldset className={styles.preferenceSection}> <legend>2. Your Profile & Preferences</legend>
-            {/* Credit Score */} <div className={styles.inputGroup}><label htmlFor="creditScoreRange">Estimated Credit Score:</label><select id="creditScoreRange" value={preferences.creditScoreRange} onChange={e => handlePreferenceChange('creditScoreRange', e.target.value)} aria-describedby="creditScoreDesc">{CREDIT_SCORE_OPTIONS.map(opt => <option key={opt.value} value={opt.value}>{opt.label}</option>)}</select><small id="creditScoreDesc">Most travel cards require Good or Excellent.</small></div>
-            {/* Card Type */} <div className={styles.inputGroup}><label>Card Type:</label><div className={styles.radioGroup}>{CARD_TYPE_OPTIONS.map(opt => (<label key={opt.value} htmlFor={`cardType-${opt.value}`}><input type="radio" id={`cardType-${opt.value}`} name="cardType" value={opt.value} checked={preferences.cardType === opt.value} onChange={e => handlePreferenceChange('cardType', e.target.value)} /> {opt.label}</label>))}</div></div>
-            {/* Priority */} <div className={styles.inputGroup}><label htmlFor="priority">What's Most Important?</label><select id="priority" value={preferences.priority} onChange={e => handlePreferenceChange('priority', e.target.value)} aria-describedby="priorityDesc">{PRIORITY_OPTIONS.map(opt => <option key={opt.value} value={opt.value}>{opt.label}</option>)}</select><small id="priorityDesc">Helps weigh scoring factors.</small></div>
-            {/* No Annual Fee Checkbox */} <div className={styles.inputGroup} style={{ borderTop: '1px dashed #e5e7eb', paddingTop: '1.5rem', marginTop:'1rem' }}> <label htmlFor="preferNoAnnualFee" style={{ display: 'flex', alignItems: 'center', fontWeight: 'normal', fontSize: '1rem', marginBottom: '0.3rem' }}> <input type="checkbox" id="preferNoAnnualFee" checked={preferences.preferNoAnnualFee} onChange={e => handlePreferenceChange('preferNoAnnualFee', e.target.checked, 'checkbox')} style={{ width: '1.1em', height: '1.1em', marginRight: '0.7rem', accentColor: 'var(--primary-blue)' }} /> Strongly Prefer $0 Annual Fee Cards </label> <small>Check this if avoiding an annual fee is a high priority.</small> </div>
-            {/* Loyalty: Airlines */} <div className={styles.inputGroup}><label>Preferred Airlines (Optional):</label><div className={styles.checkboxGrid}>{AIRLINE_OPTIONS.map(airline => (<label key={airline} htmlFor={`airline-${airline}`}><input type="checkbox" id={`airline-${airline}`} value={airline} checked={preferences.preferredAirlines.includes(airline)} onChange={e => handleMultiSelectChange('preferredAirlines', e.target.value)} /> {airline}</label>))}</div><small>Select airlines you fly often.</small></div>
-            {/* Loyalty: Hotels */} <div className={styles.inputGroup}><label>Preferred Hotels (Optional):</label><div className={styles.checkboxGrid}>{HOTEL_OPTIONS.map(hotel => (<label key={hotel} htmlFor={`hotel-${hotel}`}><input type="checkbox" id={`hotel-${hotel}`} value={hotel} checked={preferences.preferredHotels.includes(hotel)} onChange={e => handleMultiSelectChange('preferredHotels', e.target.value)} /> {hotel}</label>))}</div><small>Select hotel programs you stay with.</small></div>
-            {/* Perks */} <div className={styles.inputGroup}><label>Desired Perks & Features (Select any):</label><div className={styles.checkboxGrid}>{Object.entries({ wantsLoungeAccess: 'Airport Lounge Access', needsRentalCarInsurance: 'Primary Car Rental Insurance', wantsGlobalEntry: 'Global Entry / TSA PreCheck Credit', wantsEliteStatusBoost: 'Airline/Hotel Status Boosts', wantsFreeCheckedBag: 'Free Checked Bag', needsIntroAPR: 'Intro 0% APR Offer' }).map(([key, label]) => (<label key={key} htmlFor={`perk-${key}`}><input type="checkbox" id={`perk-${key}`} checked={preferences[key]} onChange={e => handlePreferenceChange(key, e.target.checked, 'checkbox')} /> {label}</label>))}</div><small>Select any specific benefits.</small></div>
+            <div className={styles.inputGroup}><label htmlFor="creditScoreRange">Estimated Credit Score:</label><select id="creditScoreRange" value={preferences.creditScoreRange} onChange={e => handlePreferenceChange('creditScoreRange', e.target.value)} aria-describedby="creditScoreDesc">{CREDIT_SCORE_OPTIONS.map(opt => <option key={opt.value} value={opt.value}>{opt.label}</option>)}</select><small id="creditScoreDesc">Most travel cards require Good or Excellent.</small></div>
+            <div className={styles.inputGroup}><label>Card Type:</label><div className={styles.radioGroup}>{CARD_TYPE_OPTIONS.map(opt => (<label key={opt.value} htmlFor={`cardType-${opt.value}`}><input type="radio" id={`cardType-${opt.value}`} name="cardType" value={opt.value} checked={preferences.cardType === opt.value} onChange={e => handlePreferenceChange('cardType', e.target.value)} /> {opt.label}</label>))}</div></div>
+            <div className={styles.inputGroup}><label htmlFor="priority">What's Most Important?</label><select id="priority" value={preferences.priority} onChange={e => handlePreferenceChange('priority', e.target.value)} aria-describedby="priorityDesc">{PRIORITY_OPTIONS.map(opt => <option key={opt.value} value={opt.value}>{opt.label}</option>)}</select><small id="priorityDesc">Helps weigh scoring factors.</small></div>
+            {/* No Annual Fee Checkbox */}
+            <div className={styles.inputGroup} style={{ borderTop: '1px dashed var(--border-color-light)', paddingTop: '1.5rem', marginTop:'1rem' }}>
+                <label htmlFor="preferNoAnnualFee"> {/* Removed redundant styles handled by CSS */}
+                     <input
+                        type="checkbox"
+                        id="preferNoAnnualFee"
+                        checked={preferences.preferNoAnnualFee}
+                        // Pass event.target.checked directly
+                        onChange={e => handlePreferenceChange('preferNoAnnualFee', e.target.checked, 'checkbox')}
+                    />
+                    Strongly Prefer $0 Annual Fee Cards
+                </label>
+                <small>Check this if avoiding an annual fee is a high priority.</small>
+            </div>
+            {/* Loyalty & Perks */}
+            <div className={styles.inputGroup}><label>Preferred Airlines (Optional):</label><div className={styles.checkboxGrid}>{AIRLINE_OPTIONS.map(airline => (<label key={airline} htmlFor={`airline-${airline}`}><input type="checkbox" id={`airline-${airline}`} value={airline} checked={preferences.preferredAirlines.includes(airline)} onChange={e => handleMultiSelectChange('preferredAirlines', e.target.value)} /> {airline}</label>))}</div><small>Select airlines you fly often.</small></div>
+            <div className={styles.inputGroup}><label>Preferred Hotels (Optional):</label><div className={styles.checkboxGrid}>{HOTEL_OPTIONS.map(hotel => (<label key={hotel} htmlFor={`hotel-${hotel}`}><input type="checkbox" id={`hotel-${hotel}`} value={hotel} checked={preferences.preferredHotels.includes(hotel)} onChange={e => handleMultiSelectChange('preferredHotels', e.target.value)} /> {hotel}</label>))}</div><small>Select hotel programs you stay with.</small></div>
+            <div className={styles.inputGroup}><label>Desired Perks & Features (Select any):</label><div className={styles.checkboxGrid}>{Object.entries({ wantsLoungeAccess: 'Airport Lounge Access', needsRentalCarInsurance: 'Primary Car Rental Insurance', wantsGlobalEntry: 'Global Entry / TSA PreCheck Credit', wantsEliteStatusBoost: 'Airline/Hotel Status Boosts', wantsFreeCheckedBag: 'Free Checked Bag', needsIntroAPR: 'Intro 0% APR Offer' }).map(([key, label]) => (<label key={key} htmlFor={`perk-${key}`}><input type="checkbox" id={`perk-${key}`} checked={preferences[key]} onChange={e => handlePreferenceChange(key, e.target.checked, 'checkbox')} /> {label}</label>))}</div><small>Select any specific benefits.</small></div>
         </fieldset>
 
         {/* Section 3: Annual Fee */}
-        <fieldset className={`${styles.inputSection} ${styles.feeSection}`}> <legend>3. Annual Fee Preference</legend> <div className={styles.feeRangeGroup}><div className={styles.inputGroup}><label htmlFor="minFee">Minimum $</label><input type="text" inputMode="numeric" pattern="[0-9]*" id="minFee" value={annualFeeRange.min} onChange={e => handleFeeRangeChange('min', e.target.value)} placeholder="0" aria-label="Minimum acceptable annual fee" maxLength="4"/></div><div className={styles.inputGroup}><label htmlFor="maxFee">Maximum $</label><input type="text" inputMode="numeric" pattern="[0-9]*" id="maxFee" value={annualFeeRange.max} onChange={e => handleFeeRangeChange('max', e.target.value)} placeholder="e.g., 695" aria-label="Maximum acceptable annual fee" maxLength="4"/></div><small>Enter your comfortable fee range (ignored if "$0 Fee" box is checked).</small></div> </fieldset>
+        <fieldset className={`${styles.inputSection} ${styles.feeSection}`}> <legend>3. Annual Fee Preference</legend> <div className={styles.feeRangeGroup}><div className={styles.inputGroup}><label htmlFor="minFee">Minimum $</label><input type="text" inputMode="numeric" pattern="[0-9]*" id="minFee" value={annualFeeRange.min} onChange={e => handleFeeRangeChange('min', e.target.value)} placeholder="0" aria-label="Minimum acceptable annual fee" maxLength="4"/></div><div className={styles.inputGroup}><label htmlFor="maxFee">Maximum $</label><input type="text" inputMode="numeric" pattern="[0-9]*" id="maxFee" value={annualFeeRange.max} onChange={e => handleFeeRangeChange('max', e.target.value)} placeholder="e.g., 695" aria-label="Maximum acceptable annual fee" maxLength="4"/></div><small>Enter your comfortable fee range (may be overridden if "$0 Fee" box is checked).</small></div> </fieldset>
 
         {/* Section 4: Results */}
         <section className={styles.resultsSection} aria-live="polite" aria-atomic="true"> <div className={styles.resultsHeader}><h2>Your Top Card Matches</h2>{lastRefreshed && <span className={styles.lastRefreshed}>Data Refreshed: {new Date(lastRefreshed).toLocaleDateString()}</span>}</div> {isLoading && <div className={styles.loadingIndicator} role="status" aria-label="Loading recommendations"><span></span><span></span><span></span></div>} {error && !isLoading && <p className={styles.errorMessage} role="alert">{error}</p>} {!isLoading && !error && matchedCardsResult.length === 0 && !Object.values(spendingProfile).some(val => Number(val) > 0) && (<p>Enter your spending and preferences above to see recommendations.</p>)} {!isLoading && !error && matchedCardsResult.length > 0 && (<div className={styles.resultsGrid}>{matchedCardsResult.map((match) => (<RecommendedCardTile key={match.cardId || match.name} card={match}/>))}</div>)} </section>
@@ -119,7 +143,9 @@ export default function CardFinder() {
                  {!isAiLoading && !aiError && aiSuggestions.bestPick && (
                      <div className={styles.aiSection} role="region" aria-labelledby="aiAdvisorHeading">
                          <h3 id="aiAdvisorHeading">AI Advisor Summary</h3>
+                         {/* Best Pick */}
                          <div className={styles.aiBestPick}> <BestPickIcon /> <h4>{aiSuggestions.bestPick.name}</h4> <p className={styles.aiExplanation}>{aiSuggestions.bestPick.explanation}</p> </div>
+                         {/* Runner Ups */}
                          {aiSuggestions.runnerUps.map((runnerUp, index) => ( <div key={index} className={styles.aiRunnerUp}> {index === 0 ? <RunnerUp1Icon /> : <RunnerUp2Icon />} <h4>{runnerUp.name}</h4> <p className={styles.aiExplanation}>{runnerUp.explanation}</p> </div> ))}
                      </div>
                  )}
@@ -127,7 +153,7 @@ export default function CardFinder() {
          )}
 
         {/* Section 6: E-E-A-T */}
-        <section className={styles.eeatSection}> <h2>How We Analyze & Recommend Cards</h2> <div><h3>Our Methodology</h3><p>Finding the right travel card involves more than just looking at points...</p><ul><li><strong>Personalized Spending Analysis:</strong> ...</li><li><strong>Real-World Point Valuations:</strong> ...</li><li><strong>Net Value Calculation:</strong> ...</li><li><strong>Perk Matching:</strong> ...</li><li><strong>Caps & Limits Awareness:</strong> ...</li><li><strong>User Priority Weighting:</strong> ...</li></ul><p>We prioritize real-world usability and value...</p></div> <div><h3>About TravelCardInsider</h3><p>TravelCardInsider is an independent credit card comparison...</p><p>Our goal is to provide clear, unbiased information...</p></div> <div><h3>Our Data Sources & Update Frequency</h3><p>We strive for accuracy by using publicly available information...</p><ul><li><strong>Point Valuations:</strong> ...</li><li><strong>Card Offers & Fees:</strong> ...</li></ul><p><strong>Always verify the latest terms...</strong></p>{lastRefreshed && <p><strong>Last Data Refresh:</strong> {new Date(lastRefreshed).toLocaleDateString()}</p>}</div> <div className={styles.eeatDisclaimer}><p><strong>Disclaimer:</strong> The information provided... does not constitute financial advice...</p><p><strong>Advertiser Disclosure:</strong> TravelCardInsider may receive compensation... <a href="/advertiser-disclosure" target="_blank" rel="noopener noreferrer">Learn More</a>.</p></div> </section>
+        <section className={styles.eeatSection}> <h2>How We Analyze & Recommend Cards</h2> <div><h3>Our Methodology</h3><p>Finding the right travel card involves more than just looking at points...</p><ul><li><strong>Personalized Spending Analysis:</strong> We calculate potential rewards based on *your* specific monthly spending...</li><li><strong>Real-World Point Valuations:</strong> We apply up-to-date, realistic cents-per-point values...</li><li><strong>Net Value Calculation:</strong> We estimate the card's value by factoring in the calculated rewards, the sign-up bonus value..., and subtracting the annual fee...</li><li><strong>Perk Matching:</strong> We score cards based on how well their key benefits...match the perks *you* selected...</li><li><strong>Caps & Limits Awareness:</strong> Our scoring considers known annual caps or limits...</li><li><strong>User Priority Weighting:</strong> Your chosen priority...adjusts the weighting...</li></ul><p>We prioritize real-world usability and value...</p></div> <div><h3>About TravelCardInsider</h3><p>TravelCardInsider is an independent credit card comparison...</p><p>Our goal is to provide clear, unbiased information...</p></div> <div><h3>Our Data Sources & Update Frequency</h3><p>We strive for accuracy by using publicly available information...</p><ul><li><strong>Point Valuations:</strong> Based on ongoing industry analysis...</li><li><strong>Card Offers & Fees:</strong> We aim to refresh data regularly...</li></ul><p><strong>Always verify the latest terms...</strong></p>{lastRefreshed && <p><strong>Last Data Refresh:</strong> {new Date(lastRefreshed).toLocaleDateString()}</p>}</div> <div className={styles.eeatDisclaimer}><p><strong>Disclaimer:</strong> The information provided... does not constitute financial advice...</p><p><strong>Advertiser Disclosure:</strong> TravelCardInsider may receive compensation... <a href="/advertiser-disclosure" target="_blank" rel="noopener noreferrer">Learn More</a>.</p></div> </section>
 
       </form> {/* End Form */}
     </div> // End container
