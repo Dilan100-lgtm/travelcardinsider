@@ -164,7 +164,9 @@ export default function RewardsComparePage() {
              Select up to 3 cards and enter your estimated monthly spending to see which cards offer the best estimated value for *you*. Our calculator considers rewards, perks, fees, and bonuses.
           </h2>
 
-          <RewardsCompareCalculator />
+          <div style={{ overflow: 'visible', position: 'relative' }}>
+  <RewardsCompareCalculator />
+                      </div>
 
           {/* --- E-E-A-T SECTIONS START --- */}
 
