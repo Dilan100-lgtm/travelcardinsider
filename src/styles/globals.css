@@ -53,7 +53,7 @@ p, h1, h2, h3, h4, h5, h6, li, div {
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('/fonts/playfair-display-regular.ttf') format('truetype');
+  src: url('/fonts/PlayfairDisplay-Regular.ttf') format('truetype');
 }
 
 @font-face {
@@ -61,7 +61,7 @@ p, h1, h2, h3, h4, h5, h6, li, div {
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('/fonts/playfair-display-bold.ttf') format('truetype');
+  src: url('/fonts/Playfair-Display-Bold.ttf') format('truetype');
 }
 
 /* =============== HEADER =============== */
