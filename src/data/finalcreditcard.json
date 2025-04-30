@@ -2158,8 +2158,8 @@
       "Issuer": "Wells Fargo",
       "image": "/Reflect_homepage_m.png",
       "ratingValue": 6.6,
-      "applyLink": "https://creditcards.wellsfargo.com/reflect-visa-credit-card/",
-      "ratesandfees": "https://creditcards.wellsfargo.com/reflect-visa-credit-card/terms/",
+      "applyLink": "https://creditcards.wellsfargo.com/reflect-visa-credit-card/?SGNTST=SGNCTL1&sub_channel=SEO&vendor_code=G",
+      "ratesandfees": "https://www.wellsfargo.com/credit-cards/reflect-visa/terms/?FPID=013000IGF80000&product_code=CC&subproduct_code=VV&cx_nm=CXNAME_CSMPD&sub_channel=SEO&vendor_code=G&refdmn=www.google.com&_gl=1*10scd1y*_gcl_au*OTk5NTUyMzU3LjE3NDAzMTU0NDM.*_ga*NjU1MzIyNC4xNzQwMzE1NDQz*_ga_7JXJJ2JF12*MTc0MjEwOTc5My42LjEuMTc0MjExMDc1MS41OS4wLjA..",
       "reviewLink": "/cards/wells-fargo-reflect",
       "Card Type": "Personal",
       "Annual Fee": 0.0,
@@ -2249,6 +2249,297 @@
           "estimated_value_usd": null
         }
       ]
+    },
+    {
+      "Card Name": "AAdvantage® MileUp® Card",
+      "Issuer": "Citi",
+      "image": "/CardArt-7.webp",
+      "ratingValue": 6.1,
+      "applyLink": "https://creditcards.aa.com/credit-cards/citi-mileup-card-american-airlines-direct/",
+      "ratesandfees": "https://creditcards.aa.com/credit-cards/citi-mileup-card-american-airlines-direct/",
+      "reviewLink": "/cards/aadvantage-mileup",
+      "Card Type": "Personal",
+      "Annual Fee": 0.0,
+      "APR Range (Purchases)": "20.24%\u201329.24% Variable",
+      "Foreign Transaction Fee": 3.0,
+      "Intro APR": null,
+      "Credit Score Requirement": "Good\u2013Excellent (700+)",
+      "signUpBonus": {
+        "points": 15000,
+        "description": "Earn 15,000 American Airlines AAdvantage\u00ae bonus miles after spending $500 in 3 months",
+        "minSpend": 500,
+        "durationDays": 90,
+        "estimated_value_usd": 210
+      },
+      "rewardProgram": "American Airlines AAdvantage",
+      "rewards": [
+        {
+          "multiplier": 2,
+          "category": "grocery",
+          "notes": "2x miles at grocery stores (including delivery services)",
+          "cap": null
+        },
+        {
+          "multiplier": 2,
+          "category": "american_airlines",
+          "notes": "2x miles on eligible American Airlines purchases",
+          "cap": null
+        },
+        {
+          "multiplier": 1,
+          "category": "other",
+          "notes": "1x miles on all other purchases",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "program_cpp": 1.4,
+        "cash_back_cpp": 1.0
+      },
+      "perks": [
+        {
+          "type": "inflight_discount",
+          "description": "25% savings on inflight food and beverage purchases on American Airlines flights when you use the card",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "loyalty_points",
+          "description": "Earn 1 Loyalty Point per eligible AAdvantage mile to accelerate elite status",
+          "estimated_value_usd": null
+        }
+      ]
+    },
+    {
+      "Card Name": "American Express® Platinum Card",
+      "Issuer": "American Express",
+      "image": "/NUS000000237_480x304_straight_withname.avif",
+      "ratingValue": 9.4,
+      "applyLink": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+      "ratesandfees": "https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/platinum-card/25330-10-0#FeeTable",
+      "reviewLink": "/cards/amex-platinum",
+      "Card Type": "Personal",
+      "Annual Fee": 695.0,
+      "APR Range (Purchases)": "20.24%–29.24% Variable (Pay Over Time feature) ",
+      "Foreign Transaction Fee": 0.0,
+      "Intro APR": null,
+      "Credit Score Requirement": "Good–Excellent (690+)",
+      "signUpBonus": {
+        "points": 80000,
+        "description": "Earn 80,000 Membership Rewards® points after spending $8,000 in 6 months",
+        "minSpend": 8000,
+        "durationDays": 180,
+        "estimated_value_usd": 1440
+      },
+      "rewardProgram": "Membership Rewards",
+      "rewards": [
+        {
+          "multiplier": 5,
+          "category": "flights",
+          "notes": "5x points on flights booked directly with airlines or via AmexTravel.com (up to $500,000 per calendar year)",
+          "cap": 500000
+        },
+        {
+          "multiplier": 5,
+          "category": "prepaid_hotels",
+          "notes": "5x points on prepaid hotels booked with AmexTravel.com",
+          "cap": null
+        },
+        {
+          "multiplier": 1,
+          "category": "other",
+          "notes": "1x points on all other eligible purchases",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "program_cpp": 1.8,
+        "cash_back_cpp": 0.6
+      },
+      "perks": [
+        {
+          "type": "lounge_access",
+          "description": "Complimentary access to Amex Centurion Lounges, Priority Pass Select (enrollment required), and Delta Sky Clubs when flying Delta same day",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "airline_fee_credit",
+          "description": "$200 statement credit per calendar year for incidental fees on a selected U.S. airline",
+          "estimated_value_usd": 200
+        },
+        {
+          "type": "uber_credit",
+          "description": "Up to $200 in annual Uber Cash ($15 per month plus $20 in December)",
+          "estimated_value_usd": 200
+        },
+        {
+          "type": "hotel_credit",
+          "description": "$200 annual credit on prepaid Fine Hotels + Resorts® or The Hotel Collection bookings (2-night minimum for TH Collection)",
+          "estimated_value_usd": 200
+        }
+      ]
+    },
+    {
+      "Card Name": "American Express® Business Platinum Card",
+      "Issuer": "American Express",
+      "image": "/platinum-card-image-alt.avif",
+      "ratingValue": 9.0,
+      "applyLink": "https://www.americanexpress.com/us/credit-cards/business/business-platinum/",
+      "ratesandfees": "https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/business-platinum-charge-card/45094-9-0?key=tncBody",
+      "reviewLink": "/cards/amex-business-platinum-2025",
+      "Card Type": "Business",
+      "Annual Fee": 695.0,
+      "APR Range (Purchases)": "18.49%–27.49% Variable (Pay Over Time) ",
+      "Foreign Transaction Fee": 0.0,
+      "Intro APR": null,
+      "Credit Score Requirement": "Good–Excellent (690+)",
+      "signUpBonus": {
+        "points": 150000,
+        "description": "Limited-time offer: Earn 150,000 Membership Rewards® points after spending $20,000 in 3 months, plus a $500 statement credit after $2,500 in qualifying flight purchases within the same period (offer ends June 30 2025)",
+        "minSpend": 20000,
+        "durationDays": 90,
+        "estimated_value_usd": 2700
+      },
+      "rewardProgram": "Membership Rewards",
+      "rewards": [
+        {
+          "multiplier": 5,
+          "category": "flights_hotels",
+          "notes": "5x points on flights and prepaid hotels booked through AmexTravel.com (no cap stated)",
+          "cap": null
+        },
+        {
+          "multiplier": 1.5,
+          "category": "business_categories_5k",
+          "notes": "1.5x points on eligible U.S. shipping, U.S. construction hardware & supply, U.S. electronics/software/cloud computing, and on any purchase $5,000+ (combined bonus up to $2 million per calendar year)",
+          "cap": 2000000
+        },
+        {
+          "multiplier": 1,
+          "category": "other",
+          "notes": "1x points on all other eligible purchases",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "program_cpp": 1.8,
+        "cash_back_cpp": 0.6
+      },
+      "perks": [
+        {
+          "type": "lounge_access",
+          "description": "American Express Global Lounge Collection® access (Centurion, Priority Pass Select‡, Delta Sky Club when flying Delta, etc.)",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "dell_credit",
+          "description": "Up to $400 back each year on U.S. Dell purchases ($200 Jan–Jun & $200 Jul–Dec, through 6/30/25)",
+          "estimated_value_usd": 400
+        },
+        {
+          "type": "airline_fee_credit",
+          "description": "$200 annual airline incidental fee statement credit on one selected airline",
+          "estimated_value_usd": 200
+        },
+        {
+          "type": "hilton_credit",
+          "description": "$200 Hilton for Business statement credit per year ($50 per quarter)",
+          "estimated_value_usd": 200
+        },
+        {
+          "type": "wireless_credit",
+          "description": "$120 annual wireless service credit ($10 per month) ",
+          "estimated_value_usd": 120
+        },
+        {
+          "type": "indeed_credit",
+          "description": "$360 Indeed advertising credit ($90 per quarter)",
+          "estimated_value_usd": 360
+        },
+        {
+          "type": "adobe_credit",
+          "description": "$150 annual Adobe Creative Cloud/Acrobat teams credit (through 6/30/25)",
+          "estimated_value_usd": 150
+        },
+        {
+          "type": "clear_plus_credit",
+          "description": "$199 CLEAR® Plus statement credit per calendar year",
+          "estimated_value_usd": 199
+        },
+        {
+          "type": "global_entry_tsa_precheck",
+          "description": "Up to $189 credit every 4 years for Global Entry or every 4.5 years for TSA PreCheck®",
+          "estimated_value_usd": 189
+        }
+      ]
+    },
+    {
+      "Card Name": "Blue Cash Everyday® Card from American Express",
+      "Issuer": "American Express",
+      "image": "/blue_cash_everyday_card.png",
+      "ratingValue": 8.1,
+      "applyLink": "https://www.americanexpress.com/us/credit-cards/card/blue-cash-everyday/",
+      "ratesandfees": "https://www.americanexpress.com/us/credit-cards/card/blue-cash-everyday/#terms",
+      "reviewLink": "/cards/blue-cash-everyday-card",
+      "Card Type": "Personal",
+      "Annual Fee": 0.0,
+      "APR Range (Purchases)": "20.24%–29.24% Variable",
+      "Foreign Transaction Fee": 2.7,
+      "Intro APR": "0% intro APR for 15 months on purchases and balance transfers (then 20.24%–29.24% Variable)",
+      "Credit Score Requirement": "Good–Excellent (690+)",
+      "signUpBonus": {
+        "points": null,
+        "description": "Earn a $200 statement credit after you spend $2,000 in purchases within the first 6 months",
+        "minSpend": 2000,
+        "durationDays": 180,
+        "estimated_value_usd": 200
+      },
+      "rewardProgram": "Cash Back (Reward Dollars)",
+      "rewards": [
+        {
+          "multiplier": 3,
+          "category": "us_supermarkets",
+          "notes": "3% cash back at U.S. supermarkets on up to $6,000 per calendar year, then 1%",
+          "cap": 6000
+        },
+        {
+          "multiplier": 3,
+          "category": "us_gas_stations",
+          "notes": "3% cash back at U.S. gas stations on up to $6,000 per calendar year, then 1%",
+          "cap": 6000
+        },
+        {
+          "multiplier": 3,
+          "category": "us_online_retail",
+          "notes": "3% cash back on U.S. online retail purchases on up to $6,000 per calendar year, then 1%",
+          "cap": 6000
+        },
+        {
+          "multiplier": 1,
+          "category": "other",
+          "notes": "1% cash back on all other eligible purchases",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "program_cpp": 1.0,
+        "cash_back_cpp": 1.0
+      },
+      "perks": [
+        {
+          "type": "statement_credit",
+          "description": "Up to $84 back per year ($7 per month) on Disney Bundle subscriptions (enrollment required)",
+          "estimated_value_usd": 84
+        },
+        {
+          "type": "statement_credit",
+          "description": "Up to $180 back per year ($15 per month) on Home Chef meal-kit purchases (enrollment required)",
+          "estimated_value_usd": 180
+        }
+      ]
     }
+    
+    
+    
+    
   ]
 }
