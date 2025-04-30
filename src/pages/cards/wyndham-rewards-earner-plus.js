@@ -22,7 +22,7 @@ const reviewData = {
   author: 'TravelCardInsider', // *** REPLACE with your actual author/site name ***
   imageUrl: '/Earner_plus.svg', // *** VERIFY PATH in /public - NOTE: SVG File ***
   ratingValue: 7.2, // From Wyndham Earner Plus HTML
-  applyLink: '/https://www.wyndhamrewardscreditcard.com/earner-plus-card/', // *** REPLACE with actual Earner Plus APPLY URL ***
+  applyLink: 'https://www.wyndhamrewardscreditcard.com/earner-plus-card/', // *** REPLACE with actual Earner Plus APPLY URL ***
   ratesLink: 'https://www.wyndhamrewardscreditcard.com/earner-plus-card/', // *** VERIFY URL ***
   // Image dimensions (MUST BE ACCURATE for next/image - Especially important for SVGs if they lack intrinsic size)
   imageWidth: 359, // *** REPLACE with actual SVG width or omit if intrinsic *** (Placeholder)

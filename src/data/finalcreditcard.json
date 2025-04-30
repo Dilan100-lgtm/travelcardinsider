@@ -3263,7 +3263,526 @@
           "estimated_value_usd": null
         }
       ]
+    },
+    {
+      "Card Name": "Marriott Bonvoy Boundless® Credit Card",
+      "Issuer": "Chase",
+      "image": "/marriott_bonvoy_boundless_card.png",
+      "ratingValue": 8.4,
+      "applyLink": "https://creditcards.chase.com/travel-credit-cards/marriott-bonvoy/boundless",
+      "ratesandfees": "https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC58145.html",
+      "reviewLink": "/cards/marriott-bonvoy-boundless",
+      "Card Type": "Personal",
+      "Annual Fee": 95.0,
+      "APR Range (Purchases)": "21.49%–28.49% Variable",
+      "Foreign Transaction Fee": 0.0,
+      "Intro APR": null,
+      "Credit Score Requirement": "Good–Excellent (690+)",
+      "signUpBonus": {
+        "points": 50000,
+        "description": "Earn 3 Free Night Awards (each night valued up to 50,000 points) after you spend $3,000 in purchases within the first 3 months, **plus** 50,000 Bonus Points after you spend $6,000 total within the first 6 months",
+        "minSpend": 3000,
+        "durationDays": 90,
+        "estimated_value_usd": 1600
+      },
+      "rewardProgram": "Marriott Bonvoy",
+      "rewards": [
+        {
+          "multiplier": 6,
+          "category": "marriott_hotels",
+          "notes": "6× points per $1 on purchases at hotels participating in Marriott Bonvoy",
+          "cap": null
+        },
+        {
+          "multiplier": 3,
+          "category": "gas_grocery_dining_combined",
+          "notes": "3× points per $1 on the first $6,000 each calendar year in combined purchases at gas stations, grocery stores, and restaurants (including delivery & take-out); then 2×",
+          "cap": 6000
+        },
+        {
+          "multiplier": 2,
+          "category": "other",
+          "notes": "2× points per $1 on all other purchases",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "program_cpp": 0.8,
+        "cash_back_cpp": 0.6
+      },
+      "perks": [
+        {
+          "type": "anniversary_free_night",
+          "description": "Annual Free Night Award (valued up to 35,000 points) every account anniversary",
+          "estimated_value_usd": 200
+        },
+        {
+          "type": "elite_nights",
+          "description": "15 Elite Night Credits each calendar year toward Marriott Bonvoy status",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "elite_status_path",
+          "description": "Earn 1 Elite Night Credit for every $5,000 spent; automatic Silver Elite status and path to Gold after $35,000 annual spend",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "dashpass_benefit",
+          "description": "12-month complimentary DoorDash DashPass (activation required; offer valid through 12/31/2027)",
+          "estimated_value_usd": 120
+        },
+        {
+          "type": "no_foreign_transaction_fee",
+          "description": "No foreign transaction fees on international purchases",
+          "estimated_value_usd": null
+        }
+      ]
+    },
+    {
+      "Card Name": "Marriott Bonvoy Brilliant® American Express® Card",
+      "Issuer": "American Express",
+      "image": "/NUS000000313_480x304_straight_withname.avif",
+      "ratingValue": 8.9,
+      "applyLink": "https://www.americanexpress.com/us/credit-cards/card/marriott-bonvoy-brilliant/",
+      "ratesandfees": "https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/marriott-bonvoy-brilliant-card/25330-10-0#FeeTable",
+      "reviewLink": "/cards/marriott-bonvoy-brilliant",
+      "Card Type": "Personal",
+      "Annual Fee": 650.0,
+      "APR Range (Purchases)": "20.24%–29.24% Variable",
+      "Foreign Transaction Fee": 0.0,
+      "Intro APR": null,
+      "Credit Score Requirement": "Good–Excellent (700+)",
+      "signUpBonus": {
+        "points": 185000,
+        "description": "Earn 185,000 Marriott Bonvoy® bonus points after you spend $6,000 in purchases within the first 6 months (limited-time offer ends May 14 2025)",
+        "minSpend": 6000,
+        "durationDays": 180,
+        "estimated_value_usd": 1295
+      },
+      "rewardProgram": "Marriott Bonvoy",
+      "rewards": [
+        {
+          "multiplier": 6,
+          "category": "marriott_hotels",
+          "notes": "6× points per $1 at hotels participating in Marriott Bonvoy",
+          "cap": null
+        },
+        {
+          "multiplier": 3,
+          "category": "restaurants_worldwide",
+          "notes": "3× points at restaurants worldwide (including take-out & delivery)",
+          "cap": null
+        },
+        {
+          "multiplier": 3,
+          "category": "flights_direct",
+          "notes": "3× points on flights booked directly with airlines",
+          "cap": null
+        },
+        {
+          "multiplier": 2,
+          "category": "other",
+          "notes": "2× points on all other eligible purchases",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "program_cpp": 0.8,
+        "cash_back_cpp": 0.6
+      },
+      "perks": [
+        {
+          "type": "dining_credit",
+          "description": "$300 annual dining credit (up to $25 in statement credits each calendar month) at restaurants worldwide",
+          "estimated_value_usd": 300
+        },
+        {
+          "type": "free_night_certificate",
+          "description": "Annual Free Night Award (redeem up to 85,000 points) after your card-renewal month",
+          "estimated_value_usd": 500
+        },
+        {
+          "type": "elite_status",
+          "description": "Complimentary Marriott Bonvoy Platinum Elite status & 25 Elite Night Credits each calendar year",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "lounge_access",
+          "description": "Priority Pass™ Select membership with unlimited visits for cardholder + 2 guests (enrollment required)",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "property_credit",
+          "description": "$100 property credit on qualifying 2-night minimum stays at Ritz-Carlton & St. Regis when booked with a special rate",
+          "estimated_value_usd": 100
+        },
+        {
+          "type": "global_entry_tsa_precheck",
+          "description": "Up to $100 statement credit every 4–4.5 years for Global Entry, TSA PreCheck® or NEXUS application fee",
+          "estimated_value_usd": 100
+        },
+        {
+          "type": "earned_choice_award",
+          "description": "Earned Choice Award after $60,000 spend each calendar year (e.g., Free Night Award up to 85k points or 5 Suite Night Awards)",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "cell_phone_protection",
+          "description": "Cell-phone protection up to $800 per claim (2 claims per 12 months; $50 deductible)",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "no_foreign_transaction_fee",
+          "description": "No foreign transaction fees on international purchases",
+          "estimated_value_usd": null
+        }
+      ]
+    },{
+      "Card Name": "Mastercard® Black Card™",
+      "Issuer": "Luxury Card / Barclays",
+      "image": "/BC_Front_480x303.png",
+      "ratingValue": 7.0,
+      "applyLink": "https://www.luxurycard.com/blackcard",
+      "ratesandfees": "https://www.luxurycard.com/blackcard",
+      "reviewLink": "/cards/mastercard-black-card",
+      "Card Type": "Personal",
+      "Annual Fee": 495.0,
+      "APR Range (Purchases)": "20.24%–28.24% Variable",
+      "Foreign Transaction Fee": 0.0,
+      "Intro APR": "0% intro APR for 15 billing cycles on balance transfers made within 45 days of account opening (then 20.24%–28.24% Variable)",
+      "Credit Score Requirement": "Excellent (740+ recommended)",
+      "signUpBonus": {
+        "points": null,
+        "description": "No current sign-up bonus",
+        "minSpend": null,
+        "durationDays": null,
+        "estimated_value_usd": null
+      },
+      "rewardProgram": "Luxury Card Rewards",
+      "rewards": [
+        {
+          "multiplier": 1,
+          "category": "all_purchases",
+          "notes": "1 point per $1 on all eligible purchases (points redeem for 2 ¢/pt toward airfare or 1.5 ¢/pt cash back)",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "program_cpp": 2.0,
+        "cash_back_cpp": 1.5
+      },
+      "perks": [
+        {
+          "type": "airline_credit",
+          "description": "$100 annual airline credit toward qualifying airfare charges",
+          "estimated_value_usd": 100
+        },
+        {
+          "type": "lounge_access",
+          "description": "Unlimited Priority Pass™ Select lounge access for card-holder plus guests",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "global_entry_tsa_precheck",
+          "description": "$120 Global Entry or TSA PreCheck® application fee credit (once every 4–4.5 years)",
+          "estimated_value_usd": 120
+        },
+        {
+          "type": "concierge_service",
+          "description": "24/7 Luxury Card Concierge® for travel, dining, shopping and lifestyle requests",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "luxury_card_travel",
+          "description": "VIP Luxury Card Travel® program with benefits at 3,000+ properties worldwide",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "no_foreign_transaction_fee",
+          "description": "No foreign transaction fees on international purchases",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "metal_card_design",
+          "description": "Black-PVD-coated stainless-steel metal card construction (22 g)",
+          "estimated_value_usd": null
+        }
+      ]
+    },
+    {
+      "Card Name": "The Ritz-Carlton™ Credit Card (Marriott Bonvoy)",
+      "Issuer": "Chase",
+      "image": "/hero_card_art_ritz.png",
+      "ratingValue": 8.3,
+      "applyLink": null,
+      "ratesandfees": "https://creditcards.chase.com/marriott/cardmember/ritz-carlton",
+      "reviewLink": "/cards/ritz-carlton-card",
+      "Card Type": "Personal",
+      "Annual Fee": 450.0,
+      "APR Range (Purchases)": "21.49%–28.49% Variable",
+      "Foreign Transaction Fee": 0.0,
+      "Intro APR": null,
+      "Credit Score Requirement": "Good–Excellent (700+)",
+      "signUpBonus": {
+        "points": null,
+        "description": "No public welcome offer (card can only be obtained via product-change from an existing Chase Marriott Bonvoy card; therefore no sign-up bonus applies)",
+        "minSpend": null,
+        "durationDays": null,
+        "estimated_value_usd": null
+      },
+      "rewardProgram": "Marriott Bonvoy",
+      "rewards": [
+        {
+          "multiplier": 6,
+          "category": "marriott_hotels",
+          "notes": "6 × points per $1 at 7,000+ Marriott Bonvoy hotels (including Ritz-Carlton)",
+          "cap": null
+        },
+        {
+          "multiplier": 3,
+          "category": "dining_air_travel_car_rentals",
+          "notes": "3 × points on dining, airfare purchased directly with airlines, and car-rental agencies",
+          "cap": null
+        },
+        {
+          "multiplier": 2,
+          "category": "other",
+          "notes": "2 × points on all other eligible purchases",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "program_cpp": 0.8,
+        "cash_back_cpp": 0.6
+      },
+      "perks": [
+        {
+          "type": "annual_travel_credit",
+          "description": "$300 annual airline travel credit for seat upgrades, baggage fees, lounge passes and more (call to apply after purchase)",
+          "estimated_value_usd": 300
+        },
+        {
+          "type": "free_night_certificate",
+          "description": "1 Free Night Award worth up to 85,000 Marriott Bonvoy points every card-membership year",
+          "estimated_value_usd": 500
+        },
+        {
+          "type": "lounge_access",
+          "description": "Unlimited Priority Pass™ Select lounge access for primary cardholder and guests, plus access to Chase Sapphire Lounges",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "elite_status",
+          "description": "Automatic Marriott Bonvoy Gold Elite status; upgrade to Platinum Elite after $75,000 calendar-year spend; 15 Elite Night Credits each year",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "club_level_upgrades",
+          "description": "3 Ritz-Carlton Club Level upgrade e-certificates each card-year (on paid stays up to 7 nights)",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "property_credit",
+          "description": "$100 property credit on 2-night+ paid stays at Ritz-Carlton or St. Regis booked with the special rate",
+          "estimated_value_usd": 100
+        },
+        {
+          "type": "global_entry_tsa_precheck",
+          "description": "$120 statement credit toward Global Entry every 4 years (or TSA PreCheck®/NEXUS every 4.5 years)",
+          "estimated_value_usd": 120
+        },
+        {
+          "type": "no_foreign_transaction_fee",
+          "description": "No foreign transaction fees on international purchases",
+          "estimated_value_usd": null
+        }
+      ]
+    },
+    {
+      "Card Name": "United Club℠ Infinite Card",
+      "Issuer": "Chase",
+      "image": "/united_club_infinite_card.png",
+      "ratingValue": 8.9,
+      "applyLink": "https://creditcards.chase.com/travel-credit-cards/united/club-infinite",
+      "ratesandfees": "https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC57973.html",
+      "reviewLink": "/cards/united-club-infinite",
+      "Card Type": "Personal",
+      "Annual Fee": 695.0,
+      "APR Range (Purchases)": "20.49%–28.99% Variable",
+      "Foreign Transaction Fee": 0.0,
+      "Intro APR": null,
+      "Credit Score Requirement": "Good–Excellent (700+)",
+      "signUpBonus": {
+        "points": 95000,
+        "description": "Earn 95,000 bonus MileagePlus® miles after spending $5,000 in the first 3 months (plus 5,000 bonus miles for adding an authorized user in the same period)",
+        "minSpend": 5000,
+        "durationDays": 90,
+        "estimated_value_usd": 1140
+      },
+      "rewardProgram": "United MileagePlus",
+      "rewards": [
+        {
+          "multiplier": 4,
+          "category": "united_purchases",
+          "notes": "4× miles on eligible United® purchases",
+          "cap": null
+        },
+        {
+          "multiplier": 2,
+          "category": "travel",
+          "notes": "2× miles on all other travel (airfare, trains, cruises, hotels, rideshares, tolls, etc.)",
+          "cap": null
+        },
+        {
+          "multiplier": 2,
+          "category": "dining",
+          "notes": "2× miles on dining (including eligible delivery services)",
+          "cap": null
+        },
+        {
+          "multiplier": 1,
+          "category": "other",
+          "notes": "1× mile on all other purchases",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "program_cpp": 1.2,
+        "cash_back_cpp": 1.0
+      },
+      "perks": [
+        {
+          "type": "lounge_access",
+          "description": "Full United Club℠ membership (unlimited visits for primary card-member + 1 adult guest or dependent children)",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "free_checked_bag",
+          "description": "First AND second checked bags free for card-member + 1 companion on United-operated flights (save up to $360 round-trip)",
+          "estimated_value_usd": 360
+        },
+        {
+          "type": "premier_access",
+          "description": "Premier Access® priority check-in, security, boarding and baggage handling",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "partner_credits",
+          "description": "Up to $890 in annual partner credits: $200 Renowned Hotels, $200 JSX flights, $150 rideshare, $100 Avis/Budget car rental, $240 Instacart credits",
+          "estimated_value_usd": 890
+        },
+        {
+          "type": "award_discount",
+          "description": "Two 10,000-mile award flight discounts each year after $20,000/$40,000 spend",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "pqp_headstart",
+          "description": "1,500 Premier Qualifying Points (PQP) head-start each program year + 1 PQP per $15 spent (max 28,000 PQP/yr)",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "global_entry_tsa_precheck",
+          "description": "Up to $120 credit every 4 years for Global Entry, TSA PreCheck® or NEXUS application fee",
+          "estimated_value_usd": 120
+        },
+        {
+          "type": "inflight_discount",
+          "description": "25% back as statement credit on inflight food, beverage and Wi-Fi purchases and premium drinks in United Clubs",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "no_foreign_transaction_fee",
+          "description": "No foreign transaction fees on purchases outside the U.S.",
+          "estimated_value_usd": null
+        }
+      ]
+    },
+    {
+      "Card Name": "Wyndham Rewards® Earner Plus Card",
+      "Issuer": "Barclays",
+      "image": "/Earner_plus.svg",
+      "ratingValue": 7.8,
+      "applyLink": "https://www.wyndhamrewardscreditcard.com/earner-plus-card/",
+      "ratesandfees": "https://www.wyndhamrewardscreditcard.com/earner-plus-card/",
+      "reviewLink": "/cards/wyndham-rewards-earner-plus",
+      "Card Type": "Personal",
+      "Annual Fee": 75.0,
+      "APR Range (Purchases)": "19.99%–29.99% Variable",
+      "Foreign Transaction Fee": 0.0,
+      "Intro APR": "0% intro APR for 15 billing cycles on balance transfers made within 45 days of account opening (then 19.99%–29.99% Variable)",
+      "Credit Score Requirement": "Good–Excellent (690+)",
+      "signUpBonus": {
+        "points": 90000,
+        "description": "Earn 90,000 Wyndham Rewards points after spending $2,000 in the first 90 days (enough for up to 12 free nights)",
+        "minSpend": 2000,
+        "durationDays": 90,
+        "estimated_value_usd": 630
+      },
+      "rewardProgram": "Wyndham Rewards",
+      "rewards": [
+        {
+          "multiplier": 6,
+          "category": "wyndham_hotels_gas",
+          "notes": "6× points per $1 on Hotels by Wyndham and qualifying gas purchases",
+          "cap": null
+        },
+        {
+          "multiplier": 4,
+          "category": "dining_grocery",
+          "notes": "4× points per $1 on dining and at grocery stores (excludes Walmart & Target)",
+          "cap": null
+        },
+        {
+          "multiplier": 1,
+          "category": "other",
+          "notes": "1× point per $1 on all other eligible purchases",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "program_cpp": 0.7,
+        "cash_back_cpp": 0.5
+      },
+      "perks": [
+        {
+          "type": "anniversary_bonus_points",
+          "description": "7,500 bonus points each anniversary year (enough for up to one free night)",
+          "estimated_value_usd": 60
+        },
+        {
+          "type": "elite_status",
+          "description": "Automatic Wyndham Rewards PLATINUM status",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "redemption_discount",
+          "description": "Redeem 10% fewer points when booking free nights",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "booking_discount",
+          "description": "Special card-member booking discount on Best Available Rate at participating Hotels by Wyndham",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "no_foreign_transaction_fee",
+          "description": "No foreign transaction fees on international purchases",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "chip_contactless",
+          "description": "EMV chip with contactless Tap-to-Pay capability and $0 fraud liability",
+          "estimated_value_usd": null
+        }
+      ]
     }
+    
+    
+    
+    
+    
+    
     
     
     
