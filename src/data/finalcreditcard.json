@@ -2475,11 +2475,11 @@
     {
       "Card Name": "Blue Cash Everyday® Card from American Express",
       "Issuer": "American Express",
-      "image": "/blue_cash_everyday_card.png",
-      "ratingValue": 8.1,
+      "image": "/NUS000000305_480x304_straight_withname.avif",
+      "ratingValue": 7.7,
       "applyLink": "https://www.americanexpress.com/us/credit-cards/card/blue-cash-everyday/",
-      "ratesandfees": "https://www.americanexpress.com/us/credit-cards/card/blue-cash-everyday/#terms",
-      "reviewLink": "/cards/blue-cash-everyday-card",
+      "ratesandfees": "https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/blue-cash-everyday-credit-card/25330-10-0#FeeTable",
+      "reviewLink": "/cards/blue-cash-everyday",
       "Card Type": "Personal",
       "Annual Fee": 0.0,
       "APR Range (Purchases)": "20.24%–29.24% Variable",
@@ -2536,7 +2536,742 @@
           "estimated_value_usd": 180
         }
       ]
+    },
+    {
+      "Card Name": "Capital One QuicksilverOne Cash Rewards Credit Card",
+      "Issuer": "Capital One",
+      "image": "/qs1_cardart_prim_1290x812.avif",
+      "ratingValue": 5.4,
+      "applyLink": "https://www.capitalone.com/credit-cards/quicksilverone/",
+      "ratesandfees": "https://www.capitalone.com/credit-cards/quicksilverone/",
+      "reviewLink": "/cards/capital-one-quicksilverone",
+      "Card Type": "Personal",
+      "Annual Fee": 39.0,
+      "APR Range (Purchases)": "29.74% Variable",
+      "Foreign Transaction Fee": 0.0,
+      "Intro APR": null,
+      "Credit Score Requirement": "Fair (580–669)",
+      "signUpBonus": {
+        "points": null,
+        "description": "No sign-up bonus",
+        "minSpend": null,
+        "durationDays": null,
+        "estimated_value_usd": null
+      },
+      "rewardProgram": "Capital One Cash Back",
+      "rewards": [
+        {
+          "multiplier": 1.5,
+          "category": "all_purchases",
+          "notes": "1.5% cash back on every purchase, every day",
+          "cap": null
+        },
+        {
+          "multiplier": 5,
+          "category": "capital_one_travel_hotels_rental_cars",
+          "notes": "5% cash back on hotels and rental cars booked through Capital One Travel",
+          "cap": null
+        },
+        {
+          "multiplier": 5,
+          "category": "capital_one_entertainment",
+          "notes": "5% cash back on purchases through Capital One Entertainment",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "program_cpp": 1.0,
+        "cash_back_cpp": 1.0
+      },
+      "perks": [
+        {
+          "type": "no_foreign_transaction_fee",
+          "description": "No foreign transaction fees on purchases outside the U.S.",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "credit_line_increase_review",
+          "description": "Automatic consideration for a higher credit line in as little as 6 months of on-time payments",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "virtual_card_numbers",
+          "description": "Virtual card numbers from Eno® for safer online shopping",
+          "estimated_value_usd": null
+        }
+      ]
+    },
+    {
+      "Card Name": "Capital One VentureOne Rewards Credit Card",
+      "Issuer": "Capital One",
+      "image": "/ventureone_cardart_prim_323x203.avif",
+      "ratingValue": 7.2,
+      "applyLink": "https://www.capitalone.com/credit-cards/ventureone/",
+      "ratesandfees": "https://www.capitalone.com/credit-cards/ventureone/",
+      "reviewLink": "/cards/capital-one-ventureone",
+      "Card Type": "Personal",
+      "Annual Fee": 0.0,
+      "APR Range (Purchases)": "19.24%–29.24% Variable",
+      "Foreign Transaction Fee": 0.0,
+      "Intro APR": "0% intro APR for 15 months on purchases and balance transfers (then 19.24%–29.24% Variable; balance-transfer fee applies)",
+      "Credit Score Requirement": "Good–Excellent (700+)",
+      "signUpBonus": {
+        "points": 20000,
+        "description": "Earn 20,000 bonus miles once you spend $500 on purchases within the first 3 months",
+        "minSpend": 500,
+        "durationDays": 90,
+        "estimated_value_usd": 280
+      },
+      "rewardProgram": "Capital One Miles",
+      "rewards": [
+        {
+          "multiplier": 1.25,
+          "category": "all_purchases",
+          "notes": "1.25 miles per dollar on every purchase",
+          "cap": null
+        },
+        {
+          "multiplier": 5,
+          "category": "capital_one_travel_hotels_rental_cars",
+          "notes": "5 miles per dollar on hotels and rental cars booked through Capital One Travel",
+          "cap": null
+        },
+        {
+          "multiplier": 5,
+          "category": "capital_one_entertainment",
+          "notes": "5 miles per dollar on Capital One Entertainment purchases through 12/31/2025",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "program_cpp": 1.4,
+        "cash_back_cpp": 1.0
+      },
+      "perks": [
+        {
+          "type": "no_foreign_transaction_fee",
+          "description": "No foreign transaction fees on purchases outside the U.S.",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "price_prediction",
+          "description": "Capital One Travel price-prediction technology—average 15% savings on flights and up to $50 credit if price drops within 10 days",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "miles_transfer_partners",
+          "description": "Transfer miles to 15+ airline and hotel loyalty partners",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "virtual_card_numbers",
+          "description": "Virtual card numbers from Eno® for safer online shopping",
+          "estimated_value_usd": null
+        }
+      ]
+    },
+    {
+      "Card Name": "Delta SkyMiles® Reserve American Express Card",
+      "Issuer": "American Express",
+      "image": "/NUS000000270_480x304_straight_withname.avif",
+      "ratingValue": 8.8,
+      "applyLink": "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-reserve-american-express-card/",
+      "ratesandfees": "https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/delta-skymiles-reserve-american-express-card/25330-10-0#FeeTable",
+      "reviewLink": "/cards/delta-skymiles-reserve",
+      "Card Type": "Personal",
+      "Annual Fee": 650.0,
+      "APR Range (Purchases)": "20.24%–29.24% Variable",
+      "Foreign Transaction Fee": 0.0,
+      "Intro APR": null,
+      "Credit Score Requirement": "Good–Excellent (690–850)",
+      "signUpBonus": {
+        "points": 70000,
+        "description": "Earn 70,000 Bonus Miles after you spend $5,000 in purchases within the first 6 months",
+        "minSpend": 5000,
+        "durationDays": 180,
+        "estimated_value_usd": 840
+      },
+      "rewardProgram": "Delta SkyMiles",
+      "rewards": [
+        {
+          "multiplier": 3,
+          "category": "delta_purchases",
+          "notes": "3 × miles on eligible purchases made directly with Delta",
+          "cap": null
+        },
+        {
+          "multiplier": 1,
+          "category": "other",
+          "notes": "1 × mile on all other eligible purchases",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "program_cpp": 1.2,
+        "cash_back_cpp": 1.0
+      },
+      "perks": [
+        {
+          "type": "lounge_access",
+          "description": "15 Delta Sky Club visits per Medallion year (unlimited after $75k spend) + Centurion Lounge access on same-day Delta tickets",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "companion_certificate",
+          "description": "Annual Companion Certificate (First Class, Delta Comfort+®, or Main Cabin round-trip) to U.S., Mexico, Caribbean, or Central America",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "resy_credit",
+          "description": "$240 Resy dining credit ($20 per month, enrollment required)",
+          "estimated_value_usd": 240
+        },
+        {
+          "type": "rideshare_credit",
+          "description": "$120 rideshare credit ($10 per month) on select U.S. providers",
+          "estimated_value_usd": 120
+        },
+        {
+          "type": "delta_stays_credit",
+          "description": "$200 annual credit on prepaid hotel or vacation rentals booked through Delta Stays",
+          "estimated_value_usd": 200
+        },
+        {
+          "type": "mqd_headstart",
+          "description": "$2,500 Medallion® Qualification Dollars (MQDs) Headstart each year + $1 MQD per $10 in purchases (MQD Boost)",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "global_entry_tsa_precheck",
+          "description": "Up to $120 statement credit for Global Entry every 4 years or TSA PreCheck® every 4.5 years",
+          "estimated_value_usd": 120
+        },
+        {
+          "type": "free_checked_bag",
+          "description": "First checked bag free for cardholder + up to 8 companions on the same reservation",
+          "estimated_value_usd": 35
+        },
+        {
+          "type": "no_foreign_transaction_fee",
+          "description": "No foreign transaction fees",
+          "estimated_value_usd": null
+        }
+      ]
+    },
+    {
+      "Card Name": "Hilton Honors American Express Card",
+      "Issuer": "American Express",
+      "image": "/NUS000000327_480x304_straight_withname.avif",
+      "ratingValue": 6.8,
+      "applyLink": "https://www.americanexpress.com/us/credit-cards/card/hilton-honors/",
+      "ratesandfees": "https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/hilton-honors-credit-card/25330-10-0#FeeTable",
+      "reviewLink": "/cards/hilton-honors-amex",
+      "Card Type": "Personal",
+      "Annual Fee": 0.0,
+      "APR Range (Purchases)": "19.99%–28.99% Variable",
+      "Foreign Transaction Fee": 0.0,
+      "Intro APR": null,
+      "Credit Score Requirement": "Good–Excellent (690–850)",
+      "signUpBonus": {
+        "points": 70000,
+        "description": "Earn 70,000 Hilton Honors Bonus Points **plus one Free Night Reward** after spending $2,000 on purchases within the first 6 months (offer ends April 29 2025)",
+        "minSpend": 2000,
+        "durationDays": 180,
+        "estimated_value_usd": 420
+      },
+      "rewardProgram": "Hilton Honors",
+      "rewards": [
+        {
+          "multiplier": 7,
+          "category": "hilton_hotels",
+          "notes": "7× Points on eligible purchases charged directly with hotels & resorts in the Hilton portfolio",
+          "cap": null
+        },
+        {
+          "multiplier": 5,
+          "category": "us_restaurants",
+          "notes": "5× Points at U.S. restaurants (including take-out & delivery)",
+          "cap": null
+        },
+        {
+          "multiplier": 5,
+          "category": "us_supermarkets",
+          "notes": "5× Points at U.S. supermarkets",
+          "cap": null
+        },
+        {
+          "multiplier": 5,
+          "category": "us_gas_stations",
+          "notes": "5× Points at U.S. gas stations",
+          "cap": null
+        },
+        {
+          "multiplier": 3,
+          "category": "other",
+          "notes": "3× Points on all other eligible purchases",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "program_cpp": 0.6,
+        "cash_back_cpp": 0.5
+      },
+      "perks": [
+        {
+          "type": "elite_status",
+          "description": "Complimentary Hilton Honors™ Silver status; earn Gold status after $20,000 spend in a calendar year",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "fifth_night_free",
+          "description": "Fifth night free on award stays (Silver status benefit)",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "no_foreign_transaction_fee",
+          "description": "No foreign transaction fees on purchases made abroad",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "elite_rollback_nights",
+          "description": "Elite rollover nights carry unused elite nights toward next-year status qualification",
+          "estimated_value_usd": null
+        }
+      ]
+    },
+    {
+      "Card Name": "Hilton Honors American Express Business Card",
+      "Issuer": "American Express",
+      "image": "/hilton-honors.avif",
+      "ratingValue": 7.8,
+      "applyLink": "https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/hilton-honors/",
+      "ratesandfees": "https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/hilton-honors-american-express-business-credit-card/45094-9-0?key=tncBody&rwdFlag=rwd",
+      "reviewLink": "/cards/hilton-honors-amex-business",
+      "Card Type": "Business",
+      "Annual Fee": 195.0,
+      "APR Range (Purchases)": "19.99%–28.99% Variable",
+      "Foreign Transaction Fee": 0.0,
+      "Intro APR": null,
+      "Credit Score Requirement": "Excellent–Good (700+)",
+      "signUpBonus": {
+        "points": 130000,
+        "description": "Earn 130,000 Hilton Honors Bonus Points after spending $6,000 in purchases within the first 6 months",
+        "minSpend": 6000,
+        "durationDays": 180,
+        "estimated_value_usd": 780
+      },
+      "rewardProgram": "Hilton Honors",
+      "rewards": [
+        {
+          "multiplier": 12,
+          "category": "hilton_hotels",
+          "notes": "12× Points on purchases made directly with hotels and resorts in the Hilton portfolio",
+          "cap": null
+        },
+        {
+          "multiplier": 5,
+          "category": "other_eligible_purchases",
+          "notes": "5× Points on other eligible purchases on the first $100,000 in purchases per calendar year, then 3× Points thereafter",
+          "cap": 100000
+        },
+        {
+          "multiplier": 3,
+          "category": "other",
+          "notes": "3× Points on other eligible purchases after $100,000 yearly threshold is met",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "program_cpp": 0.6,
+        "cash_back_cpp": 0.5
+      },
+      "perks": [
+        {
+          "type": "hilton_statement_credit",
+          "description": "Up to $240 back per year on eligible Hilton purchases (enrollment required)",
+          "estimated_value_usd": 240
+        },
+        {
+          "type": "elite_status",
+          "description": "Automatic Hilton Honors Gold status; upgrade to Diamond after $40,000 spend in a calendar year",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "national_car_rental_status",
+          "description": "Complimentary National Car Rental Emerald Club Executive® status (enrollment required)",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "no_foreign_transaction_fee",
+          "description": "No foreign transaction fees on international purchases",
+          "estimated_value_usd": null
+        }
+      ]
+    },
+    {
+      "Card Name": "Hilton Honors American Express Aspire Card",
+      "Issuer": "American Express",
+      "image": "/NUS000000329_480x304_straight_withname.avif",
+      "ratingValue": 9.0,
+      "applyLink": "https://www.americanexpress.com/us/credit-cards/card/hilton-honors-aspire/",
+      "ratesandfees": "https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/hilton-honors-aspire-credit-card/25330-10-0#FeeTable",
+      "reviewLink": "/cards/hilton-honors-aspire",
+      "Card Type": "Personal",
+      "Annual Fee": 550.0,
+      "APR Range (Purchases)": "19.99%–28.99% Variable",
+      "Foreign Transaction Fee": 0.0,
+      "Intro APR": null,
+      "Credit Score Requirement": "Good–Excellent (700+)",
+      "signUpBonus": {
+        "points": 175000,
+        "description": "Limited-time offer: Earn 175,000 Hilton Honors Bonus Points after spending $6,000 in purchases within the first 6 months (offer ends April 29 2025)",
+        "minSpend": 6000,
+        "durationDays": 180,
+        "estimated_value_usd": 1050
+      },
+      "rewardProgram": "Hilton Honors",
+      "rewards": [
+        {
+          "multiplier": 14,
+          "category": "hilton_hotels",
+          "notes": "14× Points on eligible purchases at Hilton hotels & resorts",
+          "cap": null
+        },
+        {
+          "multiplier": 7,
+          "category": "flights",
+          "notes": "7× Points on flights booked directly with airlines or AmexTravel.com",
+          "cap": null
+        },
+        {
+          "multiplier": 7,
+          "category": "car_rentals",
+          "notes": "7× Points on car rentals booked directly with select rental companies",
+          "cap": null
+        },
+        {
+          "multiplier": 7,
+          "category": "us_restaurants",
+          "notes": "7× Points at U.S. restaurants (including take-out & delivery)",
+          "cap": null
+        },
+        {
+          "multiplier": 3,
+          "category": "other",
+          "notes": "3× Points on all other eligible purchases",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "program_cpp": 0.6,
+        "cash_back_cpp": 0.5
+      },
+      "perks": [
+        {
+          "type": "elite_status",
+          "description": "Complimentary Hilton Honors Diamond status",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "free_night_certificate",
+          "description": "Annual Free Night Reward at almost any Hilton property; additional nights after $30k & $60k spend",
+          "estimated_value_usd": 500
+        },
+        {
+          "type": "hilton_resort_credit",
+          "description": "$400 Hilton Resort Credit each year (up to $200 in statement credits semi-annually)",
+          "estimated_value_usd": 400
+        },
+        {
+          "type": "flight_credit",
+          "description": "$200 annual flight credit ($50 statement credit each calendar quarter)",
+          "estimated_value_usd": 200
+        },
+        {
+          "type": "on_property_credit",
+          "description": "$100 on-property credit on 2-night minimum stays booked at Hilton luxury brands through HiltonHonors.com/aspirecard",
+          "estimated_value_usd": 100
+        },
+        {
+          "type": "clear_plus_credit",
+          "description": "$199 CLEAR® Plus membership statement credit each year",
+          "estimated_value_usd": 199
+        },
+        {
+          "type": "no_foreign_transaction_fee",
+          "description": "No foreign transaction fees on purchases abroad",
+          "estimated_value_usd": null
+        }
+      ]
+    },
+    {
+      "Card Name": "Hilton Honors American Express Surpass® Card",
+      "Issuer": "American Express",
+      "image": "/NUS000000328_480x304_straight_withname.avif",
+      "ratingValue": 8.1,
+      "applyLink": "https://www.americanexpress.com/us/credit-cards/card/hilton-honors-surpass/",
+      "ratesandfees": "https://www.americanexpress.com/us/credit-cards/card/hilton-honors-surpass/",
+      "reviewLink": "/cards/hilton-honors-surpass",
+      "Card Type": "Personal",
+      "Annual Fee": 150.0,
+      "APR Range (Purchases)": "19.99%–28.99% Variable",
+      "Foreign Transaction Fee": 0.0,
+      "Intro APR": null,
+      "Credit Score Requirement": "Good–Excellent (700+)",
+      "signUpBonus": {
+        "points": 130000,
+        "description": "Earn 130,000 Hilton Honors Bonus Points **plus one Free Night Reward** after you spend $3,000 in purchases within the first 6 months (offer ends Apr 29 2025)",
+        "minSpend": 3000,
+        "durationDays": 180,
+        "estimated_value_usd": 780
+      },
+      "rewardProgram": "Hilton Honors",
+      "rewards": [
+        {
+          "multiplier": 12,
+          "category": "hilton_hotels",
+          "notes": "12× Points on eligible purchases made directly with hotels & resorts in the Hilton portfolio",
+          "cap": null
+        },
+        {
+          "multiplier": 6,
+          "category": "us_restaurants",
+          "notes": "6× Points at U.S. restaurants (including take-out & delivery)",
+          "cap": null
+        },
+        {
+          "multiplier": 6,
+          "category": "us_supermarkets",
+          "notes": "6× Points at U.S. supermarkets",
+          "cap": null
+        },
+        {
+          "multiplier": 6,
+          "category": "us_gas_stations",
+          "notes": "6× Points at U.S. gas stations",
+          "cap": null
+        },
+        {
+          "multiplier": 4,
+          "category": "us_online_retail",
+          "notes": "4× Points on U.S. online retail purchases",
+          "cap": null
+        },
+        {
+          "multiplier": 3,
+          "category": "other",
+          "notes": "3× Points on all other eligible purchases",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "program_cpp": 0.6,
+        "cash_back_cpp": 0.5
+      },
+      "perks": [
+        {
+          "type": "hilton_statement_credit",
+          "description": "$200 Hilton statement credit per year ($50 per calendar quarter) on eligible Hilton purchases (enrollment required)",
+          "estimated_value_usd": 200
+        },
+        {
+          "type": "elite_status",
+          "description": "Complimentary Hilton Honors Gold status; earn Diamond status after $40,000 spend in a calendar year",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "free_night_certificate",
+          "description": "Earn 1 Free Night Reward after $15,000 in eligible purchases each calendar year",
+          "estimated_value_usd": 400
+        },
+        {
+          "type": "national_car_rental_status",
+          "description": "Complimentary National Car Rental Emerald Club Executive® status (enrollment required)",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "no_foreign_transaction_fee",
+          "description": "No foreign transaction fees on purchases made abroad",
+          "estimated_value_usd": null
+        }
+      ]
+    },
+    {
+      "Card Name": "HSBC Premier World Elite Mastercard®",
+      "Issuer": "HSBC",
+      "image": "/14785-hsbc-world-elite-credit-card-hex-1600x900.jpg",
+      "ratingValue": 8.2,
+      "applyLink": "https://www.us.hsbc.com/credit-cards/products/elite/",
+      "ratesandfees": "https://www.hsbc.co.uk/credit-cards/products/premier-world-elite/",
+      "reviewLink": "/cards/hsbc-premier-world-elite",
+      "Card Type": "Personal",
+      "Annual Fee": 495.0,
+      "APR Range (Purchases)": "20.24%–24.24% Variable",
+      "Foreign Transaction Fee": 0.0,
+      "Intro APR": null,
+      "Credit Score Requirement": "Good–Excellent (700+)",
+      "signUpBonus": {
+        "points": 60000,
+        "description": "Earn 60,000 Points (worth up to $900 in travel) after spending $4,000 in the first 3 months",
+        "minSpend": 4000,
+        "durationDays": 90,
+        "estimated_value_usd": 900
+      },
+      "rewardProgram": "HSBC Rewards Points",
+      "rewards": [
+        {
+          "multiplier": 5,
+          "category": "travel",
+          "notes": "5× Points on flights, hotels and car rentals booked through HSBC Travel",
+          "cap": null
+        },
+        {
+          "multiplier": 2,
+          "category": "dining",
+          "notes": "2× Points at restaurants and dining out",
+          "cap": null
+        },
+        {
+          "multiplier": 1,
+          "category": "other",
+          "notes": "1× Point on all other purchases",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "program_cpp": 1.5,
+        "cash_back_cpp": 1.0
+      },
+      "perks": [
+        {
+          "type": "travel_credit",
+          "description": "Up to $400 in annual travel credits for airfares, hotels and car rentals booked through HSBC Travel",
+          "estimated_value_usd": 400
+        },
+        {
+          "type": "lounge_access",
+          "description": "Unlimited Priority Pass™ lounge access for cardholder plus two guests",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "global_entry_tsa_precheck_credit",
+          "description": "Up to $120 credit toward Global Entry, TSA PreCheck®, TSA PreCheck by CLEAR, or NEXUS every 4.5 years",
+          "estimated_value_usd": 120
+        },
+        {
+          "type": "rideshare_credit",
+          "description": "$120 annual rideshare credit ($10 statement credit each month)",
+          "estimated_value_usd": 120
+        },
+        {
+          "type": "instacart_credit",
+          "description": "Up to $140 in annual Instacart+ benefits and monthly order credits",
+          "estimated_value_usd": 140
+        },
+        {
+          "type": "concierge_service",
+          "description": "24/7 Elite concierge for travel, dining, shopping and entertainment",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "no_foreign_transaction_fee",
+          "description": "No foreign transaction fees on international purchases",
+          "estimated_value_usd": null
+        }
+      ]
+    },
+    {
+      "Card Name": "IHG One Rewards Premier Credit Card",
+      "Issuer": "Chase",
+      "image": "/ihg_premier_card.png",
+      "ratingValue": 7.5,
+      "applyLink": "https://creditcards.chase.com/travel-credit-cards/ihg-rewards-club/premier",
+      "ratesandfees": "https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC60417.html",
+      "reviewLink": "/cards/ihg-one-rewards-premier",
+      "Card Type": "Personal",
+      "Annual Fee": 99.0,
+      "APR Range (Purchases)": "19.99%–29.99% Variable",
+      "Foreign Transaction Fee": 0.0,
+      "Intro APR": null,
+      "Credit Score Requirement": "Good–Excellent (690+)",
+      "signUpBonus": {
+        "points": 140000,
+        "description": "Earn 140,000 Bonus Points after spending $3,000 in the first 3 months",
+        "minSpend": 3000,
+        "durationDays": 90,
+        "estimated_value_usd": 980
+      },
+      "rewardProgram": "IHG One Rewards",
+      "rewards": [
+        {
+          "multiplier": 10,
+          "category": "ihg_hotels",
+          "notes": "10× points on purchases at IHG® Hotels & Resorts",
+          "cap": null
+        },
+        {
+          "multiplier": 5,
+          "category": "travel_dining_gas",
+          "notes": "5× points on travel, dining and gas stations",
+          "cap": null
+        },
+        {
+          "multiplier": 3,
+          "category": "other",
+          "notes": "3× points on all other purchases",
+          "cap": null
+        }
+      ],
+      "redemptionOptions": {
+        "program_cpp": 0.7,
+        "cash_back_cpp": 0.5
+      },
+      "perks": [
+        {
+          "type": "anniversary_free_night",
+          "description": "Annual Free Night certificate (redemption value up to 40,000 points; can top-up with points for pricier hotels)",
+          "estimated_value_usd": 200
+        },
+        {
+          "type": "fourth_night_free",
+          "description": "Fourth Reward Night free when you redeem points for 4+ consecutive nights",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "elite_status",
+          "description": "Automatic IHG One Rewards Platinum Elite status; Diamond status after $40k yearly spend",
+          "estimated_value_usd": null
+        },
+        {
+          "type": "statement_credit_points",
+          "description": "$100 statement credit + 10,000 bonus points after $20,000 spend each calendar year",
+          "estimated_value_usd": 200
+        },
+        {
+          "type": "travel_credit",
+          "description": "Up to $50 United® TravelBank cash each calendar year (registration required)",
+          "estimated_value_usd": 50
+        },
+        {
+          "type": "trusted_traveler_credit",
+          "description": "Up to $120 statement credit every 4 years for Global Entry, TSA PreCheck® or NEXUS application fee",
+          "estimated_value_usd": 120
+        },
+        {
+          "type": "no_foreign_transaction_fee",
+          "description": "No foreign transaction fees on international purchases",
+          "estimated_value_usd": null
+        }
+      ]
     }
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
