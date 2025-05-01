@@ -953,97 +953,156 @@ p, h1, h2, h3, h4, h5, h6, li, div {
   --info-border: #bfdbfe; /* Example for chips */
   --danger-color: #dc2626; /* For chip remove button */
   
-}
-/* Add or Update these styles in your src/styles/globals.css */
-
-/* --- Header Search Bar Styles --- */
+}/* --- Header Search Bar Styles --- */
 
 .search-container {
-  position: relative;
-  margin: 0 1rem;
+  position: relative; /* Needed for absolute positioning of dropdown */
+  margin: 0 1rem; /* Adjust horizontal margin */
 }
 
 .search-container input[type="search"] {
   padding: 8px 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  width: 100%;
-  max-width: 250px;
+  width: 100%; /* Expand to container width */
+  max-width: 250px; /* Limit width on desktop */
   box-sizing: border-box;
+  font-size: 1rem; /* Match base font size */
   transition: border-color 0.2s ease;
 }
 
 .search-container input[type="search"]:focus {
-  border-color: #007bff;
-  outline: none;
+  border-color: #007bff; /* Highlight border on focus (adjust color) */
+  outline: none; /* Remove default browser outline */
 }
 
+/* Base styles for dropdown-like elements positioned below input */
+.search-results-base {
+  position: absolute;
+  top: 100%; /* Position directly below the input */
+  left: 0;
+  right: 0; /* Span the width of the relative container */
+  background-color: #ffffff; /* White background */
+  border: 1px solid #ccc; /* Match input border */
+  border-top: none; /* Avoid double border */
+  border-radius: 0 0 4px 4px; /* Rounded bottom corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  z-index: 1000; /* Ensure it appears above other content */
+  padding: 0;
+  margin: 0;
+  max-width: 350px; /* Optional: Slightly wider than input for readability */
+}
+
+/* Styles for the results list */
 .search-results-dropdown {
+  /* Inherit base styles */
   position: absolute;
   top: 100%;
   left: 0;
   right: 0;
-  background-color: #fff;
+  background-color: #ffffff;
   border: 1px solid #ccc;
   border-top: none;
   border-radius: 0 0 4px 4px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  list-style: none;
   padding: 0;
   margin: 0;
-  max-height: 300px;
-  overflow-y: auto;
   max-width: 350px;
-  font-size: 0.5rem; /* Optional: Limit width slightly wider than input */
+  /* Specific list styles */
+  list-style: none;
+  max-height: 300px; /* Limit height and make scrollable */
+  overflow-y: auto; /* Add scrollbar if content overflows */
 }
 
+/* Styles for the "No results" message */
+.search-no-results {
+   /* Inherit base styles */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 0;
+  margin: 0;
+  max-width: 350px;
+  /* Specific "no results" styles */
+  padding: 10px 15px; /* Add padding */
+  color: #666; /* Grey text color */
+  font-style: italic;
+  text-align: center;
+  border-top: 1px solid #ccc; /* Re-add top border for separation */
+}
+
+/* Styles for individual list items */
 .search-results-dropdown li {
   padding: 0;
   margin: 0;
 }
 
-/* UPDATED Styles for wrapping text */
+/* Styles for the links within list items */
 .search-results-dropdown li a {
-  display: block;
-  padding: 10px 15px;
-  color: #333;
-  text-decoration: none;
-  white-space: normal; /* Allow text wrapping */
-  line-height: 1.4; /* Adjust line height for wrapped text */
-  transition: background-color 0.2s ease;
-  font-size: 0.5rem;
+  display: block; /* Make the entire area clickable */
+  padding: 10px 15px; /* Padding around text */
+  color: #333; /* Default text color */
+  text-decoration: none; /* Remove underline */
+  white-space: normal; /* Allow text wrapping for long names */
+  line-height: 1.4; /* Adjust line spacing for wrapped text */
+  transition: background-color 0.2s ease, color 0.2s ease; /* Smooth transitions */
 }
-/* END UPDATED Styles */
 
+/* Hover/focus styles for result links */
 .search-results-dropdown li a:hover,
 .search-results-dropdown li a:focus {
-  background-color: #f0f0f0;
-  color: #0056b3;
+  background-color: #f0f0f0; /* Light grey background on hover/focus */
+  color: #0056b3; /* Link color on hover/focus (adjust) */
 }
 
-/* Responsive adjustments */
-@media (max-width: 1100px) {
+/* Style for card name within the link */
+.search-result-name {
+    font-weight: 500; /* Slightly bolder name */
+    display: inline; /* Keep on same line as issuer potentially */
+}
+
+/* Style for issuer name within the link */
+.search-result-issuer {
+    color: #555; /* Darker grey for issuer */
+    font-size: 0.9em; /* Slightly smaller text */
+    margin-left: 4px; /* Space between name and issuer */
+    display: inline; /* Keep on same line */
+}
+
+/* --- Responsive adjustments for Mobile View --- */
+@media (max-width: 1100px) { /* Use the same breakpoint as your mobile menu */
   .header-actions {
-      order: -1;
-      width: 100%;
-      padding: 10px 15px;
+      order: -1; /* Move search to top in mobile menu (adjust if needed) */
+      width: 100%; /* Take full width */
+      padding: 10px 15px; /* Add padding within mobile menu */
       box-sizing: border-box;
   }
   .search-container {
-     margin: 0;
+     margin: 0; /* Remove horizontal margin */
   }
    .search-container input[type="search"] {
-     max-width: none;
+     max-width: none; /* Allow input to take full width */
    }
-  .search-results-dropdown {
-      width: 100%;
-      position: static; /* Let it flow naturally in mobile menu */
-      border: 1px solid #eee;
-      box-shadow: none;
-      max-height: 200px;
-      margin-top: 5px;
-      max-width: none; /* Remove max-width on mobile */
+
+   /* Adjust positioning for dropdown/no-results on mobile */
+  .search-results-base, /* Apply base styles adjustment */
+  .search-results-dropdown,
+  .search-no-results {
+      width: 100%; /* Full width */
+      position: static; /* Change positioning to flow naturally */
+      border: 1px solid #eee; /* Lighter border for mobile */
+      box-shadow: none; /* Remove shadow */
+      max-height: 200px; /* Reduce max height */
+      margin-top: 5px; /* Add space below input */
+      max-width: none; /* Remove max-width limit */
   }
 }
 

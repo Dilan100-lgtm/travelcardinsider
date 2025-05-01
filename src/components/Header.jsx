@@ -1,24 +1,44 @@
 // src/components/Header.jsx
 
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react"; // Added useMemo
 import Image from 'next/image';
 import Link from 'next/link';
-import cardData from '@/data/finalcreditcard.json'; // Import card data
+import Fuse from 'fuse.js'; // Import Fuse.js
+import cardData from '@/data/finalcreditcard.json';
 
 const allCards = cardData.cards;
 const MOBILE_MAX_WIDTH = 1100;
+
+// --- Fuse.js Options ---
+const fuseOptions = {
+  keys: [
+    'Card Name', // Field to search
+    'Issuer',    // Another field to search
+    'reviewLink' // Search the path too (e.g., "sapphire")
+  ],
+  includeScore: true, // Include relevance score in results
+  threshold: 0.4,    // Adjust fuzziness (0 = perfect match, 1 = match anything)
+                     // 0.3 or 0.4 is usually a good starting point
+  minMatchCharLength: 2, // Minimum characters before searching starts
+  // limit: 10 // Optional: Fuse can limit results internally too
+};
+// --------------------
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState(null);
   const [isMobileView, setIsMobileView] = useState(false);
 
-  // --- Search State ---
+  // Search State
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
-  // --------------------
+
+  // --- Memoize Fuse instance for performance ---
+  // This prevents recreating the Fuse index on every render
+  const fuse = useMemo(() => new Fuse(allCards, fuseOptions), []);
+  // --------------------------------------------
 
   useEffect(() => {
     const handleResize = () => {
@@ -50,23 +70,22 @@ export default function Header() {
     setOpenSubmenu(prev => (prev === menuKey ? null : menuKey));
   };
 
-  // --- Search Logic ---
+  // --- Updated Search Logic with Fuse.js ---
   const handleSearchChange = (event) => {
     const query = event.target.value;
     setSearchQuery(query);
 
-    if (query.length > 1) {
-        const filteredCards = allCards.filter(card =>
-            card['Card Name']?.toLowerCase().includes(query.toLowerCase())
-        );
-        setSearchResults(filteredCards.slice(0, 8)); // Show top 8 results
+    if (query.length >= fuseOptions.minMatchCharLength) {
+        const fuseResults = fuse.search(query);
+        // Limit to top 5 results and extract the original card item
+        setSearchResults(fuseResults.slice(0, 5).map(result => result.item));
     } else {
-        setSearchResults([]);
+        setSearchResults([]); // Clear results if query is too short
     }
   };
-  // --------------------
+  // -----------------------------------------
 
-  // Define menu structure (Ensure hrefs are correct)
+   // Define menu structure (Keep your existing menu items)
    const menuItems = [
       {
         label: "Featured Cards",
@@ -97,7 +116,6 @@ export default function Header() {
         links: [
           { label: "Guides", href: "#Credit_Card_Guids" },
           { label: "News", href: "#Credit_Card_News" },
-          // Add links to actual blog posts here if desired
         ],
       },
       {
@@ -128,7 +146,6 @@ export default function Header() {
         links: [{ label: "Subscribe", href: "#subscribe" }],
       },
    ];
-
 
   return (
     <header className="site-header">
@@ -181,91 +198,102 @@ export default function Header() {
                     value={searchQuery}
                     onChange={handleSearchChange}
                     onFocus={() => setIsSearchFocused(true)}
-                    // Increased delay to allow click on results
-                    onBlur={() => setTimeout(() => setIsSearchFocused(false), 300)}
+                    onBlur={() => setTimeout(() => setIsSearchFocused(false), 300)} // Keep delay
                  />
                  {/* --- Search Results Dropdown --- */}
                  {isSearchFocused && searchResults.length > 0 && (
                     <ul className="search-results-dropdown">
                         {searchResults.map(card => (
-                            card.reviewLink ? (
-                                <li key={card['Card Name']}> {/* Removed onClick here */}
-                                    <Link href={card.reviewLink} >
-                                        {card['Card Name']}
+                            // Ensure card and reviewLink exist
+                            card && card.reviewLink ? (
+                                <li key={card.reviewLink || card['Card Name']}> {/* Use reviewLink as key if available */}
+                                    <Link href={card.reviewLink}>
+                                        {/* Display Card Name and maybe Issuer for context */}
+                                        <span className="search-result-name">{card['Card Name']}</span>
+                                        {card.Issuer && <span className="search-result-issuer"> - {card.Issuer}</span>}
                                     </Link>
                                 </li>
                             ) : null
                         ))}
                     </ul>
                  )}
+                 {/* No results message (optional) */}
+                 {isSearchFocused && searchQuery.length >= fuseOptions.minMatchCharLength && searchResults.length === 0 && (
+                    <div className="search-no-results"> {/* Style this class */}
+                        No cards found.
+                    </div>
+                 )}
                  {/* ----------------------------- */}
               </div>
             </li>
              {/* --- End Updated Search Bar --- */}
 
+            {/* --- Your Menu Items Mapping (keep as is) --- */}
             {menuItems.map((item, index) => {
-              const hasSubmenu = item.submenuKey && item.links.length > (item.submenuKey === 'subscribe' ? 0 : 1);
-              const isSubmenuOpen = openSubmenu === item.submenuKey;
-              const submenuId = `submenu-${item.submenuKey}`;
+                const hasSubmenu = item.submenuKey && item.links.length > (item.submenuKey === 'subscribe' ? 0 : 1);
+                const isSubmenuOpen = openSubmenu === item.submenuKey;
+                const submenuId = `submenu-${item.submenuKey}`;
 
-              const mainLinkHref = !hasSubmenu && item.links.length > 0 ? item.links[0].href : "#";
-              const isInternalPageLink = mainLinkHref.startsWith('/') && !mainLinkHref.startsWith('//');
-              const isDirectLink = item.submenuKey === 'subscribe';
+                const mainLinkHref = !hasSubmenu && item.links.length > 0 ? item.links[0].href : "#";
+                const isInternalPageLink = mainLinkHref.startsWith('/') && !mainLinkHref.startsWith('//');
+                const isDirectLink = item.submenuKey === 'subscribe';
 
-              return (
-                <li
-                  key={item.label + index}
-                  className={hasSubmenu ? `has-dropdown ${isSubmenuOpen ? "submenu-open" : ""}` : ""}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    {isInternalPageLink || isDirectLink ? (
-                        <Link href={mainLinkHref} className="nav-link" onClick={(e) => { if (hasSubmenu && !isMobileView && !isDirectLink) e.preventDefault(); }}>
-                           {item.label}
-                        </Link>
-                    ) : (
-                        <a href={mainLinkHref} className="nav-link" onClick={(e) => { if (hasSubmenu && !isMobileView) e.preventDefault(); }}>
-                            {item.label}
-                        </a>
+                return (
+                  <li
+                    key={item.label + index}
+                    className={hasSubmenu ? `has-dropdown ${isSubmenuOpen ? "submenu-open" : ""}` : ""}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                      {isInternalPageLink || isDirectLink ? (
+                          <Link href={mainLinkHref} className="nav-link" onClick={(e) => { if (hasSubmenu && !isMobileView && !isDirectLink) e.preventDefault(); }}>
+                             {item.label}
+                          </Link>
+                      ) : (
+                          <a href={mainLinkHref} className="nav-link" onClick={(e) => { if (hasSubmenu && !isMobileView) e.preventDefault(); }}>
+                              {item.label}
+                          </a>
+                      )}
+
+                      {hasSubmenu && !isDirectLink && isMobileView && (
+                          <button
+                              className="submenu-toggle-button"
+                              onClick={() => toggleSubmenu(item.submenuKey)}
+                              aria-controls={submenuId}
+                              aria-expanded={isSubmenuOpen}
+                              aria-label={`Toggle ${item.label} Submenu`}
+                          >
+                              {isSubmenuOpen ? '−' : '+'}
+                          </button>
+                      )}
+                    </div>
+
+                    {hasSubmenu && !isDirectLink && (
+                      <ul
+                        id={submenuId}
+                        className={`dropdown-menu ${item.label === "Blog" ? "Blog" : ""}`}
+                         aria-hidden={!isSubmenuOpen && isMobileView}
+                      >
+                        {item.links.map((link, i) => {
+                          const isSubInternalLink = link.href.startsWith('/') && !link.href.startsWith('//');
+                          return (
+                              <li key={link.label + i}>
+                                  {isSubInternalLink ? (
+                                      <Link href={link.href}>
+                                          {link.label}
+                                      </Link>
+                                  ) : (
+                                      <a href={link.href}>{link.label}</a>
+                                  )}
+                              </li>
+                          );
+                        })}
+                      </ul>
                     )}
+                  </li>
+                );
+              })}
+            {/* --- End Menu Items Mapping --- */}
 
-                    {hasSubmenu && !isDirectLink && isMobileView && (
-                        <button
-                            className="submenu-toggle-button"
-                            onClick={() => toggleSubmenu(item.submenuKey)}
-                            aria-controls={submenuId}
-                            aria-expanded={isSubmenuOpen}
-                            aria-label={`Toggle ${item.label} Submenu`}
-                        >
-                            {isSubmenuOpen ? '−' : '+'}
-                        </button>
-                    )}
-                  </div>
-
-                  {hasSubmenu && !isDirectLink && (
-                    <ul
-                      id={submenuId}
-                      className={`dropdown-menu ${item.label === "Blog" ? "Blog" : ""}`}
-                       aria-hidden={!isSubmenuOpen && isMobileView}
-                    >
-                      {item.links.map((link, i) => {
-                        const isSubInternalLink = link.href.startsWith('/') && !link.href.startsWith('//');
-                        return (
-                            <li key={link.label + i}>
-                                {isSubInternalLink ? (
-                                    <Link href={link.href}>
-                                        {link.label}
-                                    </Link>
-                                ) : (
-                                    <a href={link.href}>{link.label}</a>
-                                )}
-                            </li>
-                        );
-                      })}
-                    </ul>
-                  )}
-                </li>
-              );
-            })}
           </ul>
         </nav>
       </div>
