@@ -106,8 +106,11 @@ export default function Header() {
         label: "Tools",
         submenuKey: "tools",
         links: [
-          { label: "Compare Travel Credit Cards", href: "/rewards-compare" },
-          { label: "Personalized Recommendations", href: "/card-finder" },
+          { label: "Compare Travel Credit Cards", href: "/compare" },
+          { label: "Personalized Card Finder", href: "/card-finder" },
+          { label: "Rewards Calculator", href: "/rewards-compare" },
+          { label: "RewardMax Analyzer", href: "/rewards" },
+        
         ],
       },
       {
