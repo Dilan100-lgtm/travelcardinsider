@@ -1012,6 +1012,7 @@ p, h1, h2, h3, h4, h5, h6, li, div {
   white-space: normal; /* Allow text wrapping */
   line-height: 1.4; /* Adjust line height for wrapped text */
   transition: background-color 0.2s ease;
+  font-size: 0.5rem;
 }
 /* END UPDATED Styles */
 
