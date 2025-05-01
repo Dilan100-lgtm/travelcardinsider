@@ -6,6 +6,7 @@ import Header from '@/components/Header'; // Verify path
 import Footer from '@/components/Footer'; // Verify path
 import CardFinder from '@/components/CardFinder'; // Verify path
 import { useRouter } from 'next/router';
+import RequireAuth from '@/components/RequireAuth'; // <-- 1. Import RequireAuth
 
 export default function CardFinderPage() {
   const router = useRouter();
@@ -123,11 +124,16 @@ export default function CardFinderPage() {
         />
       </Head>
 
-      <main className="card-finder-page-main">
-        <div className="card-finder-page-container">
-          <CardFinder />
-        </div>
-      </main>
+      {/* --- 2. Wrap the main content area with RequireAuth --- */}
+      <RequireAuth>
+        <main className="card-finder-page-main">
+          <div className="card-finder-page-container">
+            {/* The CardFinder component is now protected by the auth gate */}
+            <CardFinder />
+          </div>
+        </main>
+      </RequireAuth>
+      {/* --- End RequireAuth wrapper --- */}
 
       <Footer />
 
@@ -148,9 +154,15 @@ export default function CardFinderPage() {
   );
 }
 
-// Ensure SSR for personalized experience
+// Note: getServerSideProps might have limited utility now for the core CardFinder
+// component itself since it requires client-side authentication first.
+// Keep it if you need server-side data for other parts of the page *before* auth,
+// otherwise, you might consider removing it or switching to getStaticProps if
+// the non-gated parts are static. For now, leaving it as is.
 export async function getServerSideProps(context) {
+  // This runs before the client-side auth check happens.
+  // You might fetch general page data here, but not user-specific data.
   return {
-    props: {}, // You may later add props if dynamic AI personalization improves
+    props: {}, // Pass any non-user-specific props needed by the page shell
   };
 }
