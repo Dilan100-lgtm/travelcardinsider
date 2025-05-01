@@ -1,0 +1,127 @@
+/* src/styles/CreditManagement.module.css */
+
+.pageContainer {
+  max-width: 900px; /* Consistent content width */
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+}
+
+.contentArticle {
+  font-family: 'Roboto', sans-serif; /* Ensure base font */
+  color: #34495e; /* Base text color */
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+.title {
+  font-size: 2.2rem;
+  font-family: 'Playfair Display', serif; /* Use serif for titles */
+  color: #2c3e50;
+  line-height: 1.3;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.contentArticle p {
+  margin-bottom: 1.5rem;
+}
+
+.separator {
+  border: 0;
+  height: 1px;
+  background: #e0e0e0; /* Light separator color */
+  margin: 2.5rem 0; /* Generous spacing around separators */
+}
+
+.sectionTitle {
+  font-size: 1.8rem;
+  font-family: 'Playfair Display', serif;
+  color: #3498db; /* Accent color */
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem; /* Increased bottom margin */
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #ecf0f1;
+}
+
+.subHeading {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-top: 2rem; /* Space above subheading */
+  margin-bottom: 1rem; /* Space below subheading */
+}
+
+.list {
+  margin-bottom: 1.5rem;
+  padding-left: 20px; /* Standard indent */
+  list-style-position: outside; /* Ensure bullets/numbers are outside text flow */
+}
+
+.list li {
+  margin-bottom: 0.8rem; /* Space between list items */
+}
+
+/* Specific styles for nested lists */
+.nestedList {
+  margin-top: 0.8rem; /* Space between parent li and nested list */
+  margin-bottom: 0.8rem;
+  padding-left: 25px; /* Further indent nested list */
+  list-style-type: disc; /* Default bullet for unordered */
+}
+
+.list .nestedList { /* Target nested lists within any list */
+    font-size: 0.98em; /* Slightly smaller font for nested items */
+    color: #4a6075; /* Slightly lighter color for nested items */
+}
+
+.contentArticle strong {
+  font-weight: 600;
+  color: #1f2b38; /* Darker color for strong text */
+}
+
+/* Apply strong styling within lists too */
+.list li strong,
+.nestedList li strong {
+    font-weight: 600;
+    color: #1f2b38;
+}
+
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .pageContainer {
+    margin: 1rem auto;
+    padding: 1.5rem;
+  }
+  .title {
+    font-size: 1.8rem;
+  }
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+  .subHeading {
+    font-size: 1.2rem;
+  }
+  .contentArticle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+    .pageContainer {
+        padding: 1rem;
+        margin: 0.5rem auto;
+    }
+    .title {
+        font-size: 1.6rem;
+      }
+      .sectionTitle {
+        font-size: 1.4rem;
+      }
+      .nestedList {
+          padding-left: 20px; /* Reduce indent slightly on mobile */
+      }
+}
