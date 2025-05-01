@@ -18,7 +18,7 @@ import Footer from '../../components/Footer'; // Assuming you have these compone
 // Simplified data object based on the final template structure
 const reviewData = {
   cardName: 'Ritz-Carlton™ Credit Card',
-  title: 'Ritz-Carlton™ Credit Card – In-Depth 2025 Review',
+  title: 'Ritz-Carlton™ Credit Card (2025) – Premium Lounge Access, Visa Infinite Perks',
   description: 'A 2000-word review of the Ritz-Carlton™ Credit Card, analyzing premium Marriott Bonvoy perks, $450 annual fee, $300 travel credit, lounge access, 2025 updates, advanced usage tips, and synergy with the Ritz-Carlton brand.',
   keywords: 'Ritz-Carlton, Marriott Bonvoy, credit card, travel rewards, lounge access, 2025',
   author: 'TravelCardInsider', // *** REPLACE with your actual author/site name ***
@@ -126,8 +126,8 @@ function RitzCarltonReviewPage() {
     <>
       {/* ===== HEAD SECTION for Metadata & SEO ===== */}
       <Head>
-        <title dangerouslySetInnerHTML={{ __html: reviewData.title }}></title>
-        <meta name="description" content={reviewData.description} />
+      <title>Ritz-Carlton™ Credit Card (2025) – Premium Lounge Access, Visa Infinite Perks</title>
+      <meta name="description" content="Explore the luxury travel perks of the exclusive Ritz-Carlton™ Credit Card. From Priority Pass access to $100 hotel credits and Visa Infinite privileges, here's everything you need to know in 2025." />
         <meta name="keywords" content={reviewData.keywords} />
         <meta name="author" content={reviewData.author} />
         <link rel="canonical" href={pageUrl} />

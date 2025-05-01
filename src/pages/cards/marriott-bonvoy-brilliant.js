@@ -120,8 +120,8 @@ function MarriottBonvoyBrilliantReviewPage() {
     <>
       {/* ===== HEAD SECTION for Metadata & SEO ===== */}
       <Head>
-        <title dangerouslySetInnerHTML={{ __html: reviewData.title }}></title>
-        <meta name="description" content={reviewData.description} />
+      <title>Marriott Bonvoy Brilliant® Amex – 2025 Review: $300 Credit, Platinum Elite Perks</title>
+      <meta name="description" content="Get the inside scoop on Marriott’s top-tier Brilliant® Amex card. Enjoy a $300 hotel credit, automatic Platinum Elite status, 25 Elite Night Credits, and more. Worth the $650 fee in 2025? Find out now." />
         <meta name="keywords" content={reviewData.keywords} />
         <meta name="author" content={reviewData.author} />
         <link rel="canonical" href={pageUrl} />

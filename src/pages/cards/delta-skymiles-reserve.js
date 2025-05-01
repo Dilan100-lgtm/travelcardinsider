@@ -121,8 +121,8 @@ function DeltaSkyMilesReserveReviewPage() {
     <>
       {/* ===== HEAD SECTION for Metadata & SEO ===== */}
       <Head>
-        <title dangerouslySetInnerHTML={{ __html: reviewData.title }}></title>
-        <meta name="description" content={reviewData.description} />
+      <title>Delta SkyMiles® Reserve Amex – 2025 Review: Sky Club, MQD Boost, Status Fast-Track</title>
+      <meta name="description" content="Thinking of Delta SkyMiles® Reserve? This 2025 review covers MQD head starts, Sky Club access, 3x earnings on Delta flights, and elite status acceleration. See if it's worth the $550 fee." />
         <meta name="keywords" content={reviewData.keywords} />
         <meta name="author" content={reviewData.author} />
         <link rel="canonical" href={pageUrl} />

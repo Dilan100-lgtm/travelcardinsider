@@ -16,7 +16,7 @@ import Footer from '../../components/Footer'; // Assuming you have these compone
 // Simplified data object based on the final template structure
 const reviewData = {
   cardName: 'Aeroplan® Credit Card',
-  title: 'Aeroplan® Credit Card – In-Depth 2025 Review',
+  title: 'Aeroplan® Credit Card (2025 Review) – Air Canada Perks, 3x Categories, Elite Boost',
   description: 'A comprehensive 2000-word review of the Chase Aeroplan® Credit Card, covering Air Canada benefits, earning rates, 2025 updates, pros and cons, disclaimers, and advanced usage tips for Aeroplan travelers.',
   keywords: 'Aeroplan, Air Canada, Chase, airline credit card, points, 2025 updates',
   author: 'TravelCardInsider', // *** REPLACE with your actual author/site name ***
@@ -122,7 +122,7 @@ function AeroplanCardReviewPage() {
       {/* ===== HEAD SECTION for Metadata & SEO ===== */}
       <Head>
         <title dangerouslySetInnerHTML={{ __html: reviewData.title }}></title>
-        <meta name="description" content={reviewData.description} />
+        <meta name="description" content="Is the Aeroplan® Credit Card worth the $95 fee in 2025? Explore Air Canada perks, 3x earning on travel and dining, Global Entry credit, and elite status acceleration. Get the full breakdown now." />
         <meta name="keywords" content={reviewData.keywords} />
         <meta name="author" content={reviewData.author} />
         <link rel="canonical" href={pageUrl} />

@@ -120,8 +120,8 @@ function AAdvantageMileUpReviewPage() {
     <>
       {/* ===== HEAD SECTION for Metadata & SEO ===== */}
       <Head>
-        <title dangerouslySetInnerHTML={{ __html: reviewData.title }}></title>
-        <meta name="description" content={reviewData.description} />
+      <title>AAdvantage® MileUp® Card – 2025 Review: No Annual Fee, 2x on Groceries + AA</title>
+      <meta name="description" content="The no-annual-fee AAdvantage® MileUp® Card offers 2x on groceries and American Airlines purchases. Is it worth it in 2025 for light travelers? Compare rewards, perks, and redemption value." />
         <meta name="keywords" content={reviewData.keywords} />
         <meta name="author" content={reviewData.author} />
         <link rel="canonical" href={pageUrl} />
