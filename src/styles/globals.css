@@ -994,7 +994,8 @@ p, h1, h2, h3, h4, h5, h6, li, div {
   margin: 0;
   max-height: 300px;
   overflow-y: auto;
-  max-width: 350px; /* Optional: Limit width slightly wider than input */
+  max-width: 350px;
+  font-size: 0.5rem; /* Optional: Limit width slightly wider than input */
 }
 
 .search-results-dropdown li {
