@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import Header from '@/components/Header'; // Use your existing Header
 import Footer from '@/components/Footer'; // Use your existing Footer
-import styles from '@/styles/AffiliateDisclosure.module.css'; // Import CSS Module
+import styles from '@/styles/Contact.module.css'; // Import CSS Module
 
 const ContactPage = () => {
   // State for form fields
