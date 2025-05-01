@@ -124,7 +124,7 @@ export default function Header() {
         links: [
          { label: "Travel Credit Card Basics", href: "#Credit_Card_Basics" },
          { label: "Rewards & Perks", href: "#Credit_Card_Rewards" },
-         { label: "Credit Management", href: "#/learn/credit-management-guide" },
+         { label: "Credit Management", href: "/learn/credit-management-guide" },
          { label: "Advanced Strategies", href: "#Advanced_Strategies" },
          { label: "FAQs & Guides", href: "#FAQs_and_Guides" },
         ],
