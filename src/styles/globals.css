@@ -954,46 +954,47 @@ p, h1, h2, h3, h4, h5, h6, li, div {
   --danger-color: #dc2626; /* For chip remove button */
   
 }
-/* Add these styles to your src/styles/globals.css or a relevant CSS module */
+/* Add or Update these styles in your src/styles/globals.css */
 
 /* --- Header Search Bar Styles --- */
 
 .search-container {
-  position: relative; /* Needed for absolute positioning of the dropdown */
-  margin: 0 1rem; /* Adjust margin as needed */
+  position: relative;
+  margin: 0 1rem;
 }
 
 .search-container input[type="search"] {
   padding: 8px 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  width: 100%; /* Make input take full width of container */
-  max-width: 250px; /* Adjust max-width as needed */
-  box-sizing: border-box; /* Include padding and border in width */
+  width: 100%;
+  max-width: 250px;
+  box-sizing: border-box;
   transition: border-color 0.2s ease;
 }
 
 .search-container input[type="search"]:focus {
-  border-color: #007bff; /* Highlight on focus */
+  border-color: #007bff;
   outline: none;
 }
 
 .search-results-dropdown {
   position: absolute;
-  top: 100%; /* Position below the input */
+  top: 100%;
   left: 0;
-  right: 0; /* Make it span the width of the container */
+  right: 0;
   background-color: #fff;
   border: 1px solid #ccc;
-  border-top: none; /* Avoid double border with input */
+  border-top: none;
   border-radius: 0 0 4px 4px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1000; /* Ensure it's above other content */
+  z-index: 1000;
   list-style: none;
   padding: 0;
   margin: 0;
-  max-height: 300px; /* Limit height and make scrollable */
+  max-height: 300px;
   overflow-y: auto;
+  max-width: 350px; /* Optional: Limit width slightly wider than input */
 }
 
 .search-results-dropdown li {
@@ -1001,29 +1002,29 @@ p, h1, h2, h3, h4, h5, h6, li, div {
   margin: 0;
 }
 
+/* UPDATED Styles for wrapping text */
 .search-results-dropdown li a {
-  display: block; /* Make the whole item clickable */
+  display: block;
   padding: 10px 15px;
   color: #333;
   text-decoration: none;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal; /* Allow text wrapping */
+  line-height: 1.4; /* Adjust line height for wrapped text */
   transition: background-color 0.2s ease;
 }
+/* END UPDATED Styles */
 
 .search-results-dropdown li a:hover,
 .search-results-dropdown li a:focus {
-  background-color: #f0f0f0; /* Highlight on hover/focus */
+  background-color: #f0f0f0;
   color: #0056b3;
 }
 
-/* Responsive adjustments if needed */
-@media (max-width: 1100px) { /* Same breakpoint as your mobile menu */
+/* Responsive adjustments */
+@media (max-width: 1100px) {
   .header-actions {
-      /* Order search bar appropriately in mobile view if needed */
-      order: -1; /* Example: Move search to top */
-      width: 100%; /* Take full width in mobile menu */
+      order: -1;
+      width: 100%;
       padding: 10px 15px;
       box-sizing: border-box;
   }
@@ -1031,15 +1032,16 @@ p, h1, h2, h3, h4, h5, h6, li, div {
      margin: 0;
   }
    .search-container input[type="search"] {
-     max-width: none; /* Allow full width */
+     max-width: none;
    }
   .search-results-dropdown {
-      width: 100%; /* Full width */
-      position: static; /* Change positioning in mobile if needed */
+      width: 100%;
+      position: static; /* Let it flow naturally in mobile menu */
       border: 1px solid #eee;
       box-shadow: none;
-      max-height: 200px; /* Adjust height for mobile */
+      max-height: 200px;
       margin-top: 5px;
+      max-width: none; /* Remove max-width on mobile */
   }
 }
 

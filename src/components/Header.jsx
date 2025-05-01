@@ -2,11 +2,11 @@
 
 "use client";
 import { useEffect, useState } from "react";
-import Image from 'next/image'; // Import Next.js Image
-import Link from 'next/link';   // Import Next.js Link
+import Image from 'next/image';
+import Link from 'next/link';
 import cardData from '@/data/finalcreditcard.json'; // Import card data
 
-const allCards = cardData.cards; // Get the array of cards
+const allCards = cardData.cards;
 const MOBILE_MAX_WIDTH = 1100;
 
 export default function Header() {
@@ -55,26 +55,19 @@ export default function Header() {
     const query = event.target.value;
     setSearchQuery(query);
 
-    if (query.length > 1) { // Start searching after 1 character
+    if (query.length > 1) {
         const filteredCards = allCards.filter(card =>
             card['Card Name']?.toLowerCase().includes(query.toLowerCase())
         );
         setSearchResults(filteredCards.slice(0, 8)); // Show top 8 results
     } else {
-        setSearchResults([]); // Clear results if query is short
+        setSearchResults([]);
     }
-  };
-
-  const handleResultClick = () => {
-    setSearchQuery('');
-    setSearchResults([]);
-    setIsSearchFocused(false);
   };
   // --------------------
 
-
   // Define menu structure (Ensure hrefs are correct)
-  const menuItems = [
+   const menuItems = [
       {
         label: "Featured Cards",
         submenuKey: "featured",
@@ -94,15 +87,15 @@ export default function Header() {
         label: "Tools",
         submenuKey: "tools",
         links: [
-          { label: "Compare Travel Credit Cards", href: "/rewards-compare" }, // Updated href
-          { label: "Personalized Recommendations", href: "/card-finder" }, // Updated href
+          { label: "Compare Travel Credit Cards", href: "/rewards-compare" },
+          { label: "Personalized Recommendations", href: "/card-finder" },
         ],
       },
       {
         label: "Blog",
         submenuKey: "blog",
         links: [
-          { label: "Guides", href: "#Credit_Card_Guids" }, // Keep or update these hrefs as needed
+          { label: "Guides", href: "#Credit_Card_Guids" },
           { label: "News", href: "#Credit_Card_News" },
           // Add links to actual blog posts here if desired
         ],
@@ -136,6 +129,7 @@ export default function Header() {
       },
    ];
 
+
   return (
     <header className="site-header">
       <div
@@ -162,7 +156,7 @@ export default function Header() {
 
           <Link href="/" className="site-logo" aria-label="TravelCardInsider Home">
             <Image
-                src="/6.jpg" // Ensure path is correct in /public
+                src="/6.jpg"
                 alt="TravelCardInsider Logo"
                 width={180}
                 height={30}
@@ -179,7 +173,7 @@ export default function Header() {
           <ul className="nav-list">
             {/* --- Updated Search Bar --- */}
             <li className="header-actions">
-              <div className="search-container"> {/* Added relative positioning needed for dropdown */}
+              <div className="search-container">
                 <input
                     type="search"
                     placeholder="Search Cards..."
@@ -187,21 +181,20 @@ export default function Header() {
                     value={searchQuery}
                     onChange={handleSearchChange}
                     onFocus={() => setIsSearchFocused(true)}
-                    // Delay blur slightly to allow clicking on results
-                    onBlur={() => setTimeout(() => setIsSearchFocused(false), 200)}
+                    // Increased delay to allow click on results
+                    onBlur={() => setTimeout(() => setIsSearchFocused(false), 300)}
                  />
                  {/* --- Search Results Dropdown --- */}
                  {isSearchFocused && searchResults.length > 0 && (
                     <ul className="search-results-dropdown">
                         {searchResults.map(card => (
-                            // Check if reviewLink exists before creating Link
                             card.reviewLink ? (
-                                <li key={card['Card Name']} onClick={handleResultClick}>
+                                <li key={card['Card Name']}> {/* Removed onClick here */}
                                     <Link href={card.reviewLink} >
                                         {card['Card Name']}
                                     </Link>
                                 </li>
-                            ) : null // Don't render if no reviewLink
+                            ) : null
                         ))}
                     </ul>
                  )}
@@ -211,15 +204,12 @@ export default function Header() {
              {/* --- End Updated Search Bar --- */}
 
             {menuItems.map((item, index) => {
-              const hasSubmenu = item.submenuKey && item.links.length > (item.submenuKey === 'subscribe' ? 0 : 1); // Adjusted logic for Subscribe
+              const hasSubmenu = item.submenuKey && item.links.length > (item.submenuKey === 'subscribe' ? 0 : 1);
               const isSubmenuOpen = openSubmenu === item.submenuKey;
               const submenuId = `submenu-${item.submenuKey}`;
 
-              // Link target logic improved: Use first link for non-submenu items, '#' for dropdown triggers
               const mainLinkHref = !hasSubmenu && item.links.length > 0 ? item.links[0].href : "#";
               const isInternalPageLink = mainLinkHref.startsWith('/') && !mainLinkHref.startsWith('//');
-
-              // Special case for 'Subscribe' which might be a direct link even if it has only one item
               const isDirectLink = item.submenuKey === 'subscribe';
 
               return (
