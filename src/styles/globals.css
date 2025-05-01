@@ -72,7 +72,7 @@ p, h1, h2, h3, h4, h5, h6, li, div {
   right: 0;
   background: white; /* Check contrast if header color changes */
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  z-index: 999; /* Ensure header is above most content */
+  z-index: 3000; /* Ensure header is above most content */
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight: 500;
   font-size: 1rem;
@@ -316,7 +316,7 @@ p, h1, h2, h3, h4, h5, h6, li, div {
     align-items: center;
     transition: none;
     max-width: none;
-    z-index: auto;
+    z-index: 3000;
   }
 
   /* Keep search container separate if desired outside nav-list in HTML */
@@ -426,7 +426,7 @@ p, h1, h2, h3, h4, h5, h6, li, div {
     top: calc(100% + 8px); /* Visual gap */
     left: 0;
     min-width: 220px;
-    z-index: 1000;
+    z-index: 3000;
     list-style: none;
   }
 
@@ -439,7 +439,7 @@ p, h1, h2, h3, h4, h5, h6, li, div {
     width: 100%;
     height: 8px; /* Match the gap */
     background: transparent;
-    z-index: 1001;
+    z-index: 3000;
   }
 
   /* Show dropdown on hover */
@@ -987,7 +987,7 @@ p, h1, h2, h3, h4, h5, h6, li, div {
   border-top: none; /* Avoid double border */
   border-radius: 0 0 4px 4px; /* Rounded bottom corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  z-index: 1000; /* Ensure it appears above other content */
+  z-index: 3000; /* Ensure it appears above other content */
   padding: 0;
   margin: 0;
   max-width: 350px; /* Optional: Slightly wider than input for readability */
@@ -1005,7 +1005,7 @@ p, h1, h2, h3, h4, h5, h6, li, div {
   border-top: none;
   border-radius: 0 0 4px 4px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
+  z-index: 3000;
   padding: 0;
   margin: 0;
   max-width: 350px;
@@ -1027,7 +1027,7 @@ p, h1, h2, h3, h4, h5, h6, li, div {
   border-top: none;
   border-radius: 0 0 4px 4px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
+  z-index: 3000;
   padding: 0;
   margin: 0;
   max-width: 350px;
