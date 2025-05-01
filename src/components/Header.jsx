@@ -136,11 +136,11 @@ export default function Header() {
         label: "About",
         submenuKey: "about",
         links: [
-         { label: "Who We Are", href: "#Credit_Card_Who_We_Are" },
-         { label: "Our Mission", href: "#Credit_Card_Our_Mission" },
-         { label: "How We Rate Credit Cards", href: "#Credit_Card_How_We_Rate" },
-         { label: "Affiliate Disclosure", href: "#Credit_Card_Affiliate_Disclosure" },
-         { label: "Contact Us", href: "#Credit_Card_Contact_Us" },
+         { label: "Who We Are", href: "/about/who-we-are" },
+         { label: "Our Mission", href: "/about/our-mission" },
+         { label: "How We Rate Credit Cards", href: "/about/how-we-rate" },
+         { label: "Affiliate Disclosure", href: "/about/affiliate-disclosure" },
+         { label: "Contact Us", href: "/about/contact" },
         ],
       },
       {
