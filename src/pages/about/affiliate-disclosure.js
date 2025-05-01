@@ -76,7 +76,7 @@ const AffiliateDisclosurePage = () => {
               If you have any questions about our affiliate relationships or want more
               details about a specific offer, feel free to reach out via our{' '}
               {/* Use Next.js Link component */}
-              <Link href="/contact">
+              <Link href="/about/contact">
                 Contact page
               </Link>
               . We value your trust and appreciate you choosing{' '}
