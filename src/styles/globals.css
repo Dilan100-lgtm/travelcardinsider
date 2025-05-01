@@ -1054,6 +1054,7 @@ p, h1, h2, h3, h4, h5, h6, li, div {
   white-space: normal; /* Allow text wrapping for long names */
   line-height: 1.4; /* Adjust line spacing for wrapped text */
   transition: background-color 0.2s ease, color 0.2s ease; /* Smooth transitions */
+  font-size: 0.7rem;
 }
 
 /* Hover/focus styles for result links */
