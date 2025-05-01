@@ -1,65 +1,82 @@
 // File: pages/compare.js
-// Simplified version - selection happens entirely within CardComparison
 
-import React from 'react'; // Removed useState, useEffect
+import React from 'react';
 import Head from 'next/head';
-// Removed useRouter import
-import Header from '@/components/Header'; // Adjust path if needed
-import Footer from '@/components/Footer'; // Adjust path if needed
-import CardComparison from '@/components/CardComparison'; // Adjust path if needed
-import { useCreditCards } from '@/hooks/useCreditCards'; // Adjust path if needed
-// Removed CreditCard interface import if it's only used in the hook
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import CardComparison from '@/components/CardComparison';
+import { useCreditCards } from '@/hooks/useCreditCards';
 
 export default function ComparePage() {
-  // const router = useRouter(); // No longer needed
-  const { cards: allCards } = useCreditCards(); // Get all cards
-  // const [cardsToCompare, setCardsToCompare] = useState<CreditCard[]>([]); // No longer needed
-
-  /* useEffect(() => { // No longer needed - selection happens in the component
-     if (router.isReady && allCards.length > 0) {
-       const { cards: cardNames } = router.query;
-       // ... filtering logic removed ...
-     }
-   }, [router.isReady, router.query, allCards]); */
+  const { cards: allCards } = useCreditCards();
 
   return (
     <>
       <Head>
-        <title>Compare Travel Credit Cards | TravelCardInsider</title>
-        <meta name="description" content="Side-by-side comparison of selected travel credit cards." />
-        {/* Add other necessary Head elements */}
+        <title>Compare Travel Credit Cards Side by Side | TravelCardInsider</title>
+        <meta
+          name="description"
+          content="Easily compare top travel credit cards side-by-side by rewards, annual fees, lounge access, bonus offers, credit score, and more. Find your best match in seconds."
+        />
+        <meta
+          name="keywords"
+          content="compare travel credit cards, travel card comparison, best travel credit cards, side by side credit card comparison, 0% APR cards, rewards cards"
+        />
+        <meta name="author" content="TravelCardInsider" />
         <link rel="canonical" href="https://www.travelcardinsider.com/compare" />
-         <meta name="robots" content="noindex" /> {/* Keep this if desired */}
-          {/* Preload critical fonts */}
+        <meta name="robots" content="index, follow" />
+
+        {/* Font Preloading */}
         <link rel="preload" href="/fonts/Roboto_Condensed-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/Roboto_Condensed-Bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/PlayfairDisplay-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/Playfair-Display-Bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/PlayfairDisplay-Italic.ttf" as="font" type="font/ttf" crossOrigin="anonymous" /> <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preload" href="/fonts/PlayfairDisplay-Italic.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap"
           rel="stylesheet"
-        />     
+        />
+        {/* Open Graph (Facebook, LinkedIn) */}
+<meta property="og:title" content="Compare Travel Credit Cards Side by Side | TravelCardInsider" />
+<meta property="og:description" content="Compare top travel credit cards instantly. See bonus offers, rewards rates, fees, and lounge access—side-by-side. Find the best travel card today!" />
+<meta property="og:url" content="https://www.travelcardinsider.com/compare" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://www.travelcardinsider.com/og-images/compare-tool-preview.png" />
+<meta property="og:image:alt" content="Compare travel credit cards side by side" />
+<meta property="og:site_name" content="TravelCardInsider" />
+
+{/* Twitter Card */}
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Compare Travel Credit Cards Side by Side | TravelCardInsider" />
+<meta name="twitter:description" content="Side-by-side credit card comparison tool. Analyze top travel cards by rewards, fees, scores, and perks. Discover your perfect card." />
+<meta name="twitter:image" content="https://www.travelcardinsider.com/og-images/compare-tool-preview.png" />
+<meta name="twitter:image:alt" content="Travel Card Comparison Tool" />
+<meta name="twitter:site" content="@TravelCardInsider" />
+
       </Head>
 
       <Header />
 
       <main className="container" style={{ padding: '2rem 1rem' }}>
-        <h1 style={{ textAlign: 'center', marginBottom: '2rem' }}>Credit Card Comparison</h1>
+        <h1 style={{ textAlign: 'center', marginBottom: '1rem', fontSize: '2rem' }}>
+          Compare Travel Credit Cards
+        </h1>
 
-        {/* Show loading state */}
-        {allCards.length === 0 && <p style={{ textAlign: 'center' }}>Loading card data...</p>}
+        <p style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 2rem auto', fontSize: '1.125rem' }}>
+          Instantly compare up to <strong>three travel credit cards</strong> side by side to find the best fit for your travel lifestyle.
+          Analyze annual fees, points and miles earning, lounge access, bonus offers, credit score needs, and much more—all in one place.
+          Whether you're a frequent flyer, cashback seeker, or luxury traveler, our tool makes it easy to find your ideal card.
+        </p>
 
-        {/* Render comparison tool directly once cards are loaded */}
-        {allCards.length > 0 && (
-           <CardComparison
-             cards={allCards} // Pass all cards for dropdowns
-             // No initiallySelectedCards prop needed anymore
-           />
+        {allCards.length === 0 && (
+          <p style={{ textAlign: 'center', fontSize: '1rem' }}>Loading card data...</p>
         )}
-        
 
+        {allCards.length > 0 && (
+          <CardComparison cards={allCards} />
+        )}
       </main>
 
       <Footer />
