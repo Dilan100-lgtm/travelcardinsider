@@ -122,11 +122,11 @@ export default function Header() {
         label: "Learn",
         submenuKey: "learn",
         links: [
-         { label: "Travel Credit Card Basics", href: "#Credit_Card_Basics" },
-         { label: "Rewards & Perks", href: "#Credit_Card_Rewards" },
-         { label: "Credit Management", href: "/learn/credit-management-guide" },
-         { label: "Advanced Strategies", href: "#Advanced_Strategies" },
-         { label: "FAQs & Guides", href: "#FAQs_and_Guides" },
+         { label: "Travel Credit Card Basics", href: "/learn/credit-card-basics" },
+         { label: "Rewards & Perks", href: "/learn/rewards-and-perks" },
+         { label: "Credit Management", href: "/learn/credit-management" },
+         { label: "Advanced Strategies", href: "/learn/credit-management-guide" },
+         { label: "FAQs & Guides", href: "/learn/faqs-and-guides" },
         ],
       },
       {
