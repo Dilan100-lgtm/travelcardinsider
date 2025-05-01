@@ -921,8 +921,8 @@
     {
       "Card Name": "American Express Business Gold Card",
       "Issuer": "American Express",
-      "image": "/Autograph-No-Fee-Card-RGB_d.png" ,
-      "ratingValue": 7.1,
+      "image": "/business-gold.avif" ,
+      "ratingValue": 8.5,
        "applyLink": "https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/american-express-business-gold-card-amex/",
       "ratesandfees": "https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/businessgold-card/45094-9-0?key=tncBody&rwdFlag=rwd",
       "reviewLink": "/cards/amex-business-gold",
