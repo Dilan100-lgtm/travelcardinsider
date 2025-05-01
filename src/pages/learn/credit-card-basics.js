@@ -30,7 +30,7 @@ const CreditCardBasicsPage = () => {
              {/* Ensure the image path is correct relative to the 'public' directory */}
             <Image
               className={styles.heroImage} // Apply specific styles if needed
-              src="/AdobeStock_964630446.jpeg" // Assuming this path is correct in /public
+              src="/AdobeStock_964630446_result.webp" // Assuming this path is correct in /public
               alt="Abstract background representing travel and finance" // Descriptive alt text
               width={1200} // Provide width
               height={400} // Provide height
