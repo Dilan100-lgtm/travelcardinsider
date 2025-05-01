@@ -46,40 +46,40 @@ interface CreditCardDataFile {
 
 // Explicitly type the imported data using the interface
 const creditCardData: CreditCardDataFile = {
-  cards: (creditCardDataJson.cards || []).map((card) => ({
+  cards: (creditCardDataJson.cards || []).map((card) => ({ //
     ...card,
-    "Card Name": card["Card Name"] || "",
-    "Issuer": card["Issuer"] || "",
-    "Card Type": card["Card Type"] || "",
-    "Annual Fee": card["Annual Fee"] || "",
-    "APR Range (Purchases)": card["APR Range (Purchases)"] || "",
-    "Balance Transfer APR": card["Balance Transfer APR"] || "",
-    "Penalty APR": card["Penalty APR"] || "",
-    "Lounge Access": card["Lounge Access"] || "",
-    "Specific Lounge Program": card["Specific Lounge Program"] || "",
-    "Travel Insurance": card["Travel Insurance"] || "",
-    "Foreign Transaction Fee": card["Foreign Transaction Fee"] || "",
-    "Late Payment Fee": card["Late Payment Fee"] || "",
-    "Balance Transfer Fee": card["Balance Transfer Fee"] || "",
-    "Cash Advance Fee": card["Cash Advance Fee"] || "",
-    "Intro APR": card["Intro APR"] || null,
-    "Credit Score Requirement": card["Credit Score Requirement"] || "",
-    "Airline Benefits": card["Airline Benefits"] || null,
-    "Hotel Benefits": card["Hotel Benefits"] || null,
-    "Base Earning Rate (pts/$)": card["Base Earning Rate (pts/$)"] || null,
-    "Bonus Categories": card["Bonus Categories"] || null,
-    "Bonus Category Rates": card["Bonus Category Rates"] || null,
-    "Sign-Up Bonus": card["Sign-Up Bonus"] || null,
-    "Minimum Spend for Bonus": card["Minimum Spend for Bonus"] || null,
-    "Bonus Redemption Value ($)": card["Bonus Redemption Value ($)"] || null,
-    "Reward Program": card["Reward Program"] || null,
-    "Redemption Rate (cents/pt)": card["Redemption Rate (cents/pt)"] || null,
-    "Multipliers Explained": card["Multipliers Explained"] || null,
-    image: card.image || undefined,
-    ratingValue: card.ratingValue || undefined,
-    reviewLink: card.reviewLink || undefined,
-    ratesandfees: card.ratesandfees || undefined,
-    applyLink: card.applyLink || undefined,
+    "Card Name": card["Card Name"] || "", //
+    "Issuer": card["Issuer"] || "", //
+    "Card Type": card["Card Type"] || "", //
+    "Annual Fee": card["Annual Fee"] || "", //
+    "APR Range (Purchases)": card["APR Range (Purchases)"] || "", //
+    "Balance Transfer APR": card["Balance Transfer APR"] || "", //
+    "Penalty APR": card["Penalty APR"] || "", //
+    "Lounge Access": card["Lounge Access"] || "", //
+    "Specific Lounge Program": card["Specific Lounge Program"] || "", //
+    "Travel Insurance": card["Travel Insurance"] || "", //
+    "Foreign Transaction Fee": card["Foreign Transaction Fee"] || "", //
+    "Late Payment Fee": card["Late Payment Fee"] || "", //
+    "Balance Transfer Fee": card["Balance Transfer Fee"] || "", //
+    "Cash Advance Fee": card["Cash Advance Fee"] || "", //
+    "Intro APR": card["Intro APR"] || null, //
+    "Credit Score Requirement": card["Credit Score Requirement"] || "", //
+    "Airline Benefits": card["Airline Benefits"] || null, //
+    "Hotel Benefits": card["Hotel Benefits"] || null, //
+    "Base Earning Rate (pts/$)": card["Base Earning Rate (pts/$)"] || null, //
+    "Bonus Categories": card["Bonus Categories"] || null, //
+    "Bonus Category Rates": card["Bonus Category Rates"] || null, //
+    "Sign-Up Bonus": card["Sign-Up Bonus"] || null, //
+    "Minimum Spend for Bonus": card["Minimum Spend for Bonus"] || null, //
+    "Bonus Redemption Value ($)": card["Bonus Redemption Value ($)"] || null, //
+    "Reward Program": card["Reward Program"] || null, //
+    "Redemption Rate (cents/pt)": card["Redemption Rate (cents/pt)"] || null, //
+    "Multipliers Explained": card["Multipliers Explained"] || null, //
+    image: card.image || undefined, //
+    ratingValue: card.ratingValue || undefined, //
+    reviewLink: card.reviewLink || undefined, //
+    ratesandfees: card.ratesandfees || undefined, //
+    applyLink: card.applyLink || undefined, //
   })),
 };
 
@@ -87,8 +87,11 @@ export function useCreditCards(): { cards: CreditCard[] } {
   const [cards, setCards] = useState<CreditCard[]>([]);
 
   useEffect(() => {
-    // Now TypeScript knows creditCardData has a 'cards' property of type CreditCard[]
-    setCards(creditCardData.cards || []);
+    // Sort the cards alphabetically by name before setting the state
+    const sortedCards = [...(creditCardData.cards || [])].sort((a, b) => //
+      a["Card Name"].localeCompare(b["Card Name"]) //
+    );
+    setCards(sortedCards);
   }, []);
 
   return { cards };
