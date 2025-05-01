@@ -1,10 +1,12 @@
-// components/Header.js (or your file path)
+// src/components/Header.jsx
 
 "use client";
 import { useEffect, useState } from "react";
 import Image from 'next/image'; // Import Next.js Image
 import Link from 'next/link';   // Import Next.js Link
+import cardData from '@/data/finalcreditcard.json'; // Import card data
 
+const allCards = cardData.cards; // Get the array of cards
 const MOBILE_MAX_WIDTH = 1100;
 
 export default function Header() {
@@ -12,26 +14,28 @@ export default function Header() {
   const [openSubmenu, setOpenSubmenu] = useState(null);
   const [isMobileView, setIsMobileView] = useState(false);
 
+  // --- Search State ---
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
+  // --------------------
+
   useEffect(() => {
     const handleResize = () => {
       const isMobile = window.innerWidth < MOBILE_MAX_WIDTH;
       setIsMobileView(isMobile);
-      // If resizing to desktop view, close mobile menu/submenus
       if (!isMobile) {
         setIsMobileMenuOpen(false);
         setOpenSubmenu(null);
       }
     };
-    // Set initial view state
     handleResize();
     window.addEventListener("resize", handleResize);
-    // Cleanup listener on unmount
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(prev => !prev);
-     // Optionally reset submenus when opening/closing main menu
      if (isMobileMenuOpen) {
         setOpenSubmenu(null);
      }
@@ -45,6 +49,29 @@ export default function Header() {
   const toggleSubmenu = (menuKey) => {
     setOpenSubmenu(prev => (prev === menuKey ? null : menuKey));
   };
+
+  // --- Search Logic ---
+  const handleSearchChange = (event) => {
+    const query = event.target.value;
+    setSearchQuery(query);
+
+    if (query.length > 1) { // Start searching after 1 character
+        const filteredCards = allCards.filter(card =>
+            card['Card Name']?.toLowerCase().includes(query.toLowerCase())
+        );
+        setSearchResults(filteredCards.slice(0, 8)); // Show top 8 results
+    } else {
+        setSearchResults([]); // Clear results if query is short
+    }
+  };
+
+  const handleResultClick = () => {
+    setSearchQuery('');
+    setSearchResults([]);
+    setIsSearchFocused(false);
+  };
+  // --------------------
+
 
   // Define menu structure (Ensure hrefs are correct)
   const menuItems = [
@@ -67,16 +94,17 @@ export default function Header() {
         label: "Tools",
         submenuKey: "tools",
         links: [
-          { label: "Compare Travel Credit Cards", href: "#compare" },
-          { label: "Personalized Recommendations", href: "#personalized_recs" },
+          { label: "Compare Travel Credit Cards", href: "/rewards-compare" }, // Updated href
+          { label: "Personalized Recommendations", href: "/card-finder" }, // Updated href
         ],
       },
       {
         label: "Blog",
         submenuKey: "blog",
         links: [
-          { label: "Guides", href: "#Credit_Card_Guids" },
+          { label: "Guides", href: "#Credit_Card_Guids" }, // Keep or update these hrefs as needed
           { label: "News", href: "#Credit_Card_News" },
+          // Add links to actual blog posts here if desired
         ],
       },
       {
@@ -103,117 +131,130 @@ export default function Header() {
       },
       {
         label: "Subscribe",
-        submenuKey: null, // No submenu
-        links: [{ label: "Subscribe", href: "#subscribe" }], // Direct link
+        submenuKey: null,
+        links: [{ label: "Subscribe", href: "#subscribe" }],
       },
    ];
 
   return (
     <header className="site-header">
-      {/* Backdrop for mobile menu */}
       <div
         id="menuBackdrop"
         className={`menu-backdrop ${isMobileMenuOpen ? "open" : ""}`}
         onClick={handleBackdropClick}
-        // Ensures backdrop is only active when menu is open
         style={{ visibility: isMobileMenuOpen ? 'visible' : 'hidden' }}
       />
 
       <div className="header-inner">
-        {/* Logo + Toggle Container */}
         <div className="logo-toggle-container">
-          {/* Hamburger Button */}
           <button
             id="hamburgerBtn"
             className={`menu-toggle ${isMobileMenuOpen ? "open" : ""}`}
             onClick={toggleMobileMenu}
             aria-label="Toggle Menu"
-            aria-controls="mobileNav" // Controls the mobile nav container
-            aria-expanded={isMobileMenuOpen} // Indicates if the nav is open
+            aria-controls="mobileNav"
+            aria-expanded={isMobileMenuOpen}
           >
             <span className="bar"></span>
             <span className="bar"></span>
             <span className="bar"></span>
           </button>
 
-          {/* Logo using Next.js Image */}
           <Link href="/" className="site-logo" aria-label="TravelCardInsider Home">
-             {/* Replace width/height with actual logo dimensions */}
             <Image
                 src="/6.jpg" // Ensure path is correct in /public
                 alt="TravelCardInsider Logo"
-                width={180} // Example width
-                height={30} // Example height
-                priority={true} // Prioritize loading for LCP
+                width={180}
+                height={30}
+                priority={true}
             />
           </Link>
         </div>
 
-        {/* Navigation Container */}
         <nav
-          id="mobileNav" // ID for aria-controls
+          id="mobileNav"
           className={`main-nav ${isMobileMenuOpen ? "open" : ""}`}
-          aria-hidden={!isMobileMenuOpen && isMobileView} // Hide from screen reader when closed on mobile
+          aria-hidden={!isMobileMenuOpen && isMobileView}
         >
           <ul className="nav-list">
-            {/* Search Bar - moved outside mapping for structure */}
+            {/* --- Updated Search Bar --- */}
             <li className="header-actions">
-              <div className="search-container">
-                <input type="search" placeholder="Search..." aria-label="Search Site" />
+              <div className="search-container"> {/* Added relative positioning needed for dropdown */}
+                <input
+                    type="search"
+                    placeholder="Search Cards..."
+                    aria-label="Search Credit Cards"
+                    value={searchQuery}
+                    onChange={handleSearchChange}
+                    onFocus={() => setIsSearchFocused(true)}
+                    // Delay blur slightly to allow clicking on results
+                    onBlur={() => setTimeout(() => setIsSearchFocused(false), 200)}
+                 />
+                 {/* --- Search Results Dropdown --- */}
+                 {isSearchFocused && searchResults.length > 0 && (
+                    <ul className="search-results-dropdown">
+                        {searchResults.map(card => (
+                            // Check if reviewLink exists before creating Link
+                            card.reviewLink ? (
+                                <li key={card['Card Name']} onClick={handleResultClick}>
+                                    <Link href={card.reviewLink} >
+                                        {card['Card Name']}
+                                    </Link>
+                                </li>
+                            ) : null // Don't render if no reviewLink
+                        ))}
+                    </ul>
+                 )}
+                 {/* ----------------------------- */}
               </div>
             </li>
+             {/* --- End Updated Search Bar --- */}
 
-            {/* Dynamic Menu Items */}
             {menuItems.map((item, index) => {
-              const hasSubmenu = item.submenuKey && item.links.length > 1; // Check if it's a real submenu
+              const hasSubmenu = item.submenuKey && item.links.length > (item.submenuKey === 'subscribe' ? 0 : 1); // Adjusted logic for Subscribe
               const isSubmenuOpen = openSubmenu === item.submenuKey;
-              const submenuId = `submenu-${item.submenuKey}`; // Unique ID for submenu
+              const submenuId = `submenu-${item.submenuKey}`;
 
-              // Determine link target: use '#' if it's mainly a dropdown trigger, else use first link?
-              const mainLinkHref = !hasSubmenu ? item.links[0].href : "#"; // Adjust logic if top-level items should also navigate
-
-              // Check if the link is internal (starts with '/') or hash (#)
+              // Link target logic improved: Use first link for non-submenu items, '#' for dropdown triggers
+              const mainLinkHref = !hasSubmenu && item.links.length > 0 ? item.links[0].href : "#";
               const isInternalPageLink = mainLinkHref.startsWith('/') && !mainLinkHref.startsWith('//');
+
+              // Special case for 'Subscribe' which might be a direct link even if it has only one item
+              const isDirectLink = item.submenuKey === 'subscribe';
 
               return (
                 <li
-                  key={item.label + index} // Use label + index for potentially more stable key
+                  key={item.label + index}
                   className={hasSubmenu ? `has-dropdown ${isSubmenuOpen ? "submenu-open" : ""}` : ""}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}> {/* Wrapper for link + toggle */}
-                    {/* Use Next/Link for internal pages, <a> for hash links/external */}
-                    {isInternalPageLink ? (
-                      <Link href={mainLinkHref} className="nav-link">
-                          {item.label}
-                      </Link>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    {isInternalPageLink || isDirectLink ? (
+                        <Link href={mainLinkHref} className="nav-link" onClick={(e) => { if (hasSubmenu && !isMobileView && !isDirectLink) e.preventDefault(); }}>
+                           {item.label}
+                        </Link>
                     ) : (
-                      <a href={mainLinkHref} className="nav-link" onClick={ (e) => { if(mainLinkHref === "#" && !isMobileView) e.preventDefault(); }}>
-                          {item.label}
-                      </a>
+                        <a href={mainLinkHref} className="nav-link" onClick={(e) => { if (hasSubmenu && !isMobileView) e.preventDefault(); }}>
+                            {item.label}
+                        </a>
                     )}
 
-                    {/* Mobile Submenu Toggle Button */}
-                    {hasSubmenu && isMobileView && (
+                    {hasSubmenu && !isDirectLink && isMobileView && (
                         <button
-                            className="submenu-toggle-button" // Needs CSS to be styled and potentially hidden on desktop
+                            className="submenu-toggle-button"
                             onClick={() => toggleSubmenu(item.submenuKey)}
                             aria-controls={submenuId}
                             aria-expanded={isSubmenuOpen}
                             aria-label={`Toggle ${item.label} Submenu`}
                         >
-                            {/* Simple +/- indicator, replace with icon if desired */}
                             {isSubmenuOpen ? '−' : '+'}
                         </button>
                     )}
                   </div>
 
-
-                  {/* Submenu */}
-                  {hasSubmenu && (
+                  {hasSubmenu && !isDirectLink && (
                     <ul
-                      id={submenuId} // ID for aria-controls
-                      className={`dropdown-menu ${item.label === "Blog" ? "Blog" : ""}`} // Keep specific class if needed by CSS
-                      // Use aria-hidden for better screen reader support than just display:none
+                      id={submenuId}
+                      className={`dropdown-menu ${item.label === "Blog" ? "Blog" : ""}`}
                        aria-hidden={!isSubmenuOpen && isMobileView}
                     >
                       {item.links.map((link, i) => {
