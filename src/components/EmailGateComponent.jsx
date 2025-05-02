@@ -1,14 +1,20 @@
 // src/components/EmailGateComponent.jsx
-import React, { useState } from "react";
-import { auth } from "@/lib/firebase"; // db import removed
+import React, { useState, useEffect } from "react";
+import { auth } from "@/lib/firebase";
 import { sendSignInLinkToEmail } from "firebase/auth";
-// Firestore imports removed: doc, setDoc, serverTimestamp
 import toast, { Toaster } from "react-hot-toast";
+import styles from './EmailGateComponent.module.css'; // Import CSS Module
 
 export default function EmailGateComponent({ requestedUrl = '/' }) {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [isVisible, setIsVisible] = useState(false); // State for fade-in animation
+
+  // Trigger fade-in animation on mount
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   const handleSignIn = async (e) => {
     e.preventDefault();
@@ -20,74 +26,73 @@ export default function EmailGateComponent({ requestedUrl = '/' }) {
     toast.loading('Sending login link...');
 
     const actionCodeSettings = {
-      // URL to redirect back to. Make sure this domain is whitelisted in Firebase Console.
-      // Append the originally requested URL so we can redirect after sign-in.
       url: `${window.location.origin}/finish-signup?redirectTo=${encodeURIComponent(requestedUrl)}`,
-      handleCodeInApp: true, // Must be true
+      handleCodeInApp: true,
     };
 
     try {
-      // Save email temporarily for the redirect
       window.localStorage.setItem('emailForSignIn', email);
-
-      // Send the magic link
       await sendSignInLinkToEmail(auth, email, actionCodeSettings);
 
-      // --- Firestore setDoc call REMOVED from here ---
-
-      toast.dismiss(); // Dismiss loading toast
-      toast.success('Login link sent! Check your email (and spam folder).');
-      setSubmitted(true); // Show confirmation message
+      toast.dismiss();
+      toast.success('Login link sent! Check your email.');
+      setSubmitted(true);
 
     } catch (error) {
       console.error("Firebase sign-in error:", error);
       toast.dismiss();
-      // Provide more specific error messages if needed
       toast.error(`Failed to send link: ${error.message}`);
-      window.localStorage.removeItem('emailForSignIn'); // Clean up storage on error
+      window.localStorage.removeItem('emailForSignIn');
     } finally {
       setLoading(false);
     }
   };
 
+  // Combine classes for animation
+  const overlayClasses = `${styles.gateOverlay} ${isVisible ? styles.visible : ''}`;
+
   return (
-    <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center p-4 z-50">
-      <div className="bg-white p-6 md:p-8 rounded-lg shadow-xl max-w-md w-full text-center">
-        <Toaster position="top-center" />
+    // Full screen overlay for centering and background
+    <div className={overlayClasses}>
+       {/* White container box */}
+      <div className={styles.gateBox}>
+        <Toaster position="top-center" containerClassName={styles.toasterCustom} />
         {!submitted ? (
           <>
-            <h2 className="text-2xl font-semibold mb-4 text-gray-800">Unlock AI Tools</h2>
-            <p className="mb-6 text-gray-600">Enter your email to access the AI Personalized Card Finder and Rewards Max Analyzer.</p>
-            <form onSubmit={handleSignIn}>
+            <h2 className={styles.title}>Unlock Premium Tools</h2>
+            <p className={styles.description}>
+              Enter your email to access the AI Card Finder and Rewards Analyzer instantly.
+            </p>
+            <form onSubmit={handleSignIn} className={styles.form}>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="your.email@example.com"
                 required
-                className="w-full px-4 py-2 mb-4 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                className={styles.inputField}
                 aria-label="Email Address"
               />
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md transition duration-150 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed"
+                className={styles.submitButton}
               >
-                {loading ? 'Sending...' : 'Send Login Link'}
+                {loading ? 'Sending...' : 'Send Magic Link'}
               </button>
             </form>
-            <p className="text-xs text-gray-500 mt-4">
-              We'll email you a magic link for password-free login. By signing up, you also agree to receive occasional updates on new card reviews (you can unsubscribe anytime).
+            <p className={styles.helperText}>
+              We'll email you a secure, password-free login link. By signing up, you agree to receive occasional product updates (unsubscribe anytime).
             </p>
           </>
         ) : (
-          <>
-             <h2 className="text-2xl font-semibold mb-4 text-green-600">Check Your Email!</h2>
-             <p className="mb-6 text-gray-600">
-               A magic login link has been sent to <strong>{email}</strong>. Click the link in the email to sign in and access the tools.
+          <div className={styles.confirmationSection}>
+             <h2 className={styles.confirmationTitle}>Check Your Inbox!</h2>
+             <p className={styles.confirmationText}>
+               A magic login link has been sent to <strong className={styles.emailHighlight}>{email}</strong>. Click the link to sign in.
              </p>
-             <p className="text-sm text-gray-500">You can close this window.</p>
-          </>
+             <p className={styles.helperText}>You can close this window after clicking the link.</p>
+          </div>
         )}
       </div>
     </div>
