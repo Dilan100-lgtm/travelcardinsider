@@ -117,7 +117,7 @@ export default function Header() {
         label: "Blog",
         submenuKey: "blog",
         links: [
-          { label: "Guides", href: "#Credit_Card_Guids" },
+          { label: "Guides", href: "/guides" },
           { label: "News", href: "#Credit_Card_News" },
         ],
       },
