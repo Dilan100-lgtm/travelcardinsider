@@ -1,4 +1,6 @@
+// File: /lib/firebase.js or /utils/firebase.js
 import { initializeApp, getApps, getApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 import { getAnalytics, isSupported } from "firebase/analytics";
 
 const firebaseConfig = {
@@ -11,17 +13,18 @@ const firebaseConfig = {
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
 };
 
-// Initialize app (only once)
+// Initialize Firebase (once)
 const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
 
-// Analytics (only in browser)
+// Initialize Auth
+const auth = getAuth(app);
+
+// Analytics (browser only)
 let analytics = null;
 if (typeof window !== 'undefined') {
-  isSupported().then((yes) => {
-    if (yes) {
-      analytics = getAnalytics(app);
-    }
+  isSupported().then((ok) => {
+    if (ok) analytics = getAnalytics(app);
   });
 }
 
-export { app, analytics };
+export { app, auth, analytics };
