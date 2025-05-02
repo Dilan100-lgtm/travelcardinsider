@@ -42,7 +42,7 @@
 .contentWrapper {
   max-width: 1000px;
   margin: 3.5rem auto; /* Center the container */
-  padding: 2rem; /* 1rem padding for left and right */
+  padding: 2.5rem; /* 1rem padding for left and right */
   background-color: var(--color-background-container, #ffffff);
   border-radius: var(--border-radius-md, 8px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Soft shadow */
