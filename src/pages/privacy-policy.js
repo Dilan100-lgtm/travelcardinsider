@@ -1,21 +1,22 @@
 import Head from 'next/head';
-import Layout from '@/components/Layout'; // Assuming you have a Layout component
-// If no Layout component, import Header and Footer separately:
-// import Header from '@/components/Header';
-// import Footer from '@/components/Footer';
-import styles from '@/styles/PrivacyPolicy.module.css'; // Import the CSS module
-import Link from 'next/link'; // Import Link for internal navigation if needed
+// Removed Layout import
+import Header from '@/components/Header'; // Import Header
+import Footer from '@/components/Footer'; // Import Footer
+import styles from '@/styles/PrivacyPolicy.module.css';
+import Link from 'next/link';
 
 export default function PrivacyPolicyPage() {
-  const effectiveDate = "2025-03-01"; // Use ISO format for consistency
+  const effectiveDate = "2025-03-01";
 
   return (
-    <Layout> {/* Or wrap with <Header /> ... <Footer /> */}
+    // Use React Fragment as a wrapper if needed, otherwise just sequence them
+    <>
       <Head>
         <title>Privacy Policy - TravelCardInsider</title>
         <meta name="description" content="Review the Privacy Policy for TravelCardInsider to understand how we collect, use, and protect your information." />
-        {/* Add other relevant meta tags if needed */}
       </Head>
+
+      <Header /> {/* Render Header component */}
 
       <main className={styles.mainContainer}>
         <div className={styles.contentWrapper}>
@@ -36,33 +37,43 @@ export default function PrivacyPolicyPage() {
             <h2 className={styles.sectionTitle}>1. Information We Collect</h2>
             <p>We may collect information about you in a variety of ways. The information we collect includes:</p>
             <ul>
-              <li><strong>Personal Data:</strong> Information such as your name, email address, or other details you voluntarily provide.</li>
-              <li><strong>Derivative Data:</strong> Details like your IP address, browser type, and operating system when you visit the Site.</li>
-              <li><strong>Cookies and Tracking:</strong> We may use cookies, web beacons, and other tracking tools to enhance your experience.</li>
+              <li><strong>Personal Data:</strong> Information such as your name, email address, or other details you voluntarily provide when you register, subscribe, or interact with the site.</li>
+              <li><strong>Derivative Data:</strong> Information our servers automatically collect when you access the Site, such as your IP address, browser type, operating system, access times, and the pages you have viewed directly before and after accessing the Site.</li>
+              <li><strong>Cookies and Tracking:</strong> We may use cookies, web beacons, tracking pixels, and other tracking technologies to help customize the Site and improve your experience.</li>
             </ul>
           </section>
 
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>2. How We Use Your Information</h2>
-            <p>We use the information we collect to:</p>
+            <p>Having accurate information about you permits us to provide you with a smooth, efficient, and customized experience. Specifically, we may use information collected about you via the Site to:</p>
             <ul>
-              <li>Provide, maintain, and improve the Site’s functionality.</li>
-              <li>Deliver newsletters or other relevant information you request.</li>
-              <li>Analyze usage and trends to enhance your experience.</li>
-              <li>Respond to inquiries or customer service requests.</li>
-              <li>Enforce our terms, conditions, and policies.</li>
+              <li>Create and manage your account (if applicable).</li>
+              <li>Email you regarding your account or subscription.</li>
+              <li>Send you newsletters or promotional materials you have requested.</li>
+              <li>Enable user-to-user communications (if applicable).</li>
+              <li>Fulfill and manage requests related to our services.</li>
+              <li>Analyze usage and trends to improve our website and user experience.</li>
+              <li>Notify you of updates to the Site.</li>
+              <li>Offer new products, services, and/or recommendations to you.</li>
+              <li>Prevent fraudulent transactions, monitor against theft, and protect against criminal activity.</li>
+              <li>Request feedback and contact you about your use of the Site.</li>
+              <li>Resolve disputes and troubleshoot problems.</li>
+              <li>Respond to product and customer service requests.</li>
+              <li>Compile anonymous statistical data and analysis for use internally or with third parties.</li>
             </ul>
           </section>
 
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>3. Disclosure of Your Information</h2>
             <p>
-              We may share the information we’ve collected about you in certain situations:
+              We may share information we have collected about you in certain situations. Your information may be disclosed as follows:
             </p>
             <ul>
-              <li><strong>By Law or to Protect Rights:</strong> If we believe disclosure is necessary to respond to legal process, investigate potential violations of our policies, or protect the rights, property, and safety of others.</li>
-              <li><strong>Third-Party Service Providers:</strong> We may share your information with third parties that perform services for us or on our behalf, including data analysis, email delivery, hosting services, customer service, and marketing assistance.</li>
-              <li><strong>Affiliates & Partners:</strong> Information may be shared with our affiliates or partner companies in connection with affiliate links or offers displayed on the Site. These parties' use of your information will be governed by their own privacy policies.</li>
+              <li><strong>By Law or to Protect Rights:</strong> If we believe the release of information about you is necessary to respond to legal process, to investigate or remedy potential violations of our policies, or to protect the rights, property, and safety of others, we may share your information as permitted or required by any applicable law, rule, or regulation.</li>
+              <li><strong>Third-Party Service Providers:</strong> We may share your information with third parties that perform services for us or on our behalf, including payment processing, data analysis, email delivery, hosting services, customer service, and marketing assistance.</li>
+              <li><strong>Marketing Communications:</strong> With your consent, or with an opportunity for you to withdraw consent, we may share your information with third parties for marketing purposes, as permitted by law.</li>
+              <li><strong>Affiliates & Partners:</strong> We may share your information with our affiliates, in which case we will require those affiliates to honor this Privacy Policy. Affiliates include our parent company and any subsidiaries, joint venture partners or other companies that we control or that are under common control with us. This includes partners whose offers are displayed via affiliate links.</li>
+              <li><strong>Business Transfers:</strong> We may share or transfer your information in connection with, or during negotiations of, any merger, sale of company assets, financing, or acquisition of all or a portion of our business to another company.</li>
             </ul>
           </section>
 
@@ -112,7 +123,7 @@ export default function PrivacyPolicyPage() {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>7. Policy for Children</h2>
             <p>
-              We do not knowingly solicit information from or market to children under the age of 13.
+              We do not knowingly solicit information from or market to children under the age of 13 (or other age as required by local law).
               If you become aware of any data we may have collected from children under age 13, please
               contact us using the contact information provided below.
             </p>
@@ -120,10 +131,12 @@ export default function PrivacyPolicyPage() {
 
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>8. Your Choices About Your Information</h2>
+             <p>Depending on your location, you may have certain rights regarding your personal information:</p>
             <ul>
-              <li><strong>Access & Update:</strong> You may review or change the information you have provided us by contacting us at the email address below.</li>
-              <li><strong>Opt-Out:</strong> You may opt-out of future email communications by following the unsubscribe instructions in our emails.</li>
-              <li><strong>Cookie Management:</strong> As mentioned above, you can manage cookies through your browser settings.</li>
+              <li><strong>Account Information:</strong> You may at any time review or change the information in your account (if applicable) or terminate your account by contacting us using the contact information provided below.</li>
+              <li><strong>Emails and Communications:</strong> If you no longer wish to receive correspondence, emails, or other communications from us, you may opt-out by following the instructions in the communication or by contacting us using the contact information provided below.</li>
+              <li><strong>Cookie Management:</strong> As mentioned above, you can manage cookies through your browser settings. Be aware that blocking cookies may impact the functionality of the Site.</li>
+              {/* Add sections for specific rights like GDPR or CCPA if applicable */}
             </ul>
           </section>
 
@@ -145,11 +158,13 @@ export default function PrivacyPolicyPage() {
               If you have questions or comments about this Privacy Policy, please contact us at:
               <br />
               <strong>Email:</strong> TravelCardInsider@gmail.com
-              {/* Add other contact methods if desired */}
+              {/* Add other contact methods if desired, e.g., mailing address */}
             </p>
           </section>
         </div>
       </main>
-    </Layout> // Or </Footer>
+
+      <Footer /> {/* Render Footer component */}
+    </>
   );
 }
