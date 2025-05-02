@@ -100,3 +100,9 @@
     margin-top: 2rem; /* mt-8 */
     font-size: 1rem;
 }
+/* In GuidesPage.module.css */
+.filterButton.activeFilter {
+  background-color: #007bff; /* Example active background */
+  color: white;
+  border-color: #0056b3;
+}
