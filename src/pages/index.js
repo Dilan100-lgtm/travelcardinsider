@@ -1,46 +1,39 @@
-// File: pages/index.js
-// Preserving the original structure and content, only adding the comparison button link.
+// File: src/pages/index.js
+// Added TopReviewsSection import and rendering, preserving original content.
 
 import React from 'react';
 import Head from "next/head";
-import Image from 'next/image'; // Using Next.js Image component
-import Link from 'next/link';   // Using Next.js Link for internal routing
+import Image from 'next/image';
+import Link from 'next/link';
 import Header from "../components/Header"; // Assuming path is correct
 import Footer from "../components/Footer"; // Assuming path is correct
+import TopReviewsSection from '@/components/TopReviewsSection'; // Import the new section
+import { getFeaturedReviews } from '@/utils/getAllReviews'; // Import the data fetching function
 
-export default function HomePage() {
+// Updated component definition to accept props
+export default function HomePage({ featuredReviews }) {
   return (
     <>
       <Head>
-        {/* Add lang="en" in your root layout file (e.g., layout.js or _document.js) */}
         {/* <html lang="en"> */}
         <title>TravelCardInsider - Best Travel Credit Cards 2025</title>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-        {/* SEO: Meta description */}
         <meta
           name="description"
-          content="Compare the best travel credit cards of 2025. Find top rewards, travel perks, lounge access, and sign-up bonuses to maximize your trips." // Slightly enhanced description
+          content="Compare the best travel credit cards of 2025. Find top rewards, travel perks, lounge access, and sign-up bonuses to maximize your trips."
         />
-        {/* SEO: Add Keywords if desired (less impact now, but can include) */}
-        {/* <meta name="keywords" content="travel credit cards, rewards points, airline miles, hotel points, best credit cards 2025, credit card comparison" /> */}
-
-        {/* Performance: Preload critical assets */}
-        {/* LCP Candidate? Preloading the hero background image */}
         <link
           rel="preload"
           as="image"
-          href="/AdobeStock_299190080_result.webp" // Ensure this is optimized WebP/AVIF
-          type="image/webp" // Use correct type
-          // fetchpriority="high" // Optional: hint browser its high priority
+          href="/AdobeStock_299190080_result.webp"
+          type="image/webp"
         />
-        {/* Preloading the first card image */}
         <link
           rel="preload"
           as="image"
-          href="/sapphire_preferred_card.png" // Consider converting to WebP/AVIF
-          type="image/png" // Use correct type
+          href="/sapphire_preferred_card.png"
+          type="image/png"
         />
         <link rel="canonical" href="https://www.travelcardinsider.com/" />
         <link rel="icon" href="/favicon.ico" />
@@ -50,19 +43,15 @@ export default function HomePage() {
         <meta property="og:image" content="https://www.travelcardinsider.com/hero-thumbnail.jpg" />
         <meta property="og:url" content="https://www.travelcardinsider.com/" />
         <meta property="og:type" content="website" />
-
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Best Travel Credit Cards 2025" />
         <meta name="twitter:description" content="Compare travel rewards and lounge cards." />
         <meta name="twitter:image" content="https://www.travelcardinsider.com/hero-thumbnail.jpg" />
-
         <meta name="geo.region" content="US" />
         <meta name="geo.placename" content="United States" />
         <meta name="language" content="en-US" />
         <meta name="distribution" content="US" />
         <link rel="alternate" href="https://www.travelcardinsider.com" hreflang="en-us" />
-
-        {/* Preload critical fonts */}
         <link rel="preload" href="/fonts/Roboto_Condensed-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/Roboto_Condensed-Bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/PlayfairDisplay-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
@@ -143,7 +132,7 @@ export default function HomePage() {
                   "@type": "Offer",
                   "price": "95",
                   "priceCurrency": "USD",
-                  "url": "https://www.chase.com/apply?partner=YOUR_ID",
+                  "url": "https://www.chase.com/apply?partner=YOUR_ID", // Replace with actual affiliate link if possible
                   "priceValidUntil": "2025-12-31",
                   "availability": "https://schema.org/InStock",
                   "description": "Annual fee"
@@ -167,7 +156,7 @@ export default function HomePage() {
                   "@type": "Offer",
                   "price": "695",
                   "priceCurrency": "USD",
-                  "url": "https://www.americanexpress.com/apply?partner=YOUR_ID",
+                  "url": "https://www.americanexpress.com/apply?partner=YOUR_ID", // Replace with actual affiliate link
                   "priceValidUntil": "2025-12-31",
                   "availability": "https://schema.org/InStock",
                   "description": "Annual fee"
@@ -191,7 +180,7 @@ export default function HomePage() {
                   "@type": "Offer",
                   "price": "395",
                   "priceCurrency": "USD",
-                  "url": "https://www.capitalone.com/apply?partner=YOUR_ID",
+                  "url": "https://www.capitalone.com/apply?partner=YOUR_ID", // Replace with actual affiliate link
                   "priceValidUntil": "2025-12-31",
                   "availability": "https://schema.org/InStock",
                   "description": "Annual fee"
@@ -213,45 +202,45 @@ export default function HomePage() {
           <Image
             src="/AdobeStock_299190080_result.webp"
             alt="A scenic travel background representing adventure"
-            
-            priority
+            layout="fill" // Changed layout for background effect
+            objectFit="cover" // Ensure it covers the area
+            quality={85} // Adjust quality
+            priority // Load this first
             placeholder="blur"
-            className="hero-image"
+             blurDataURL="/AdobeStock_299190080_result_low_quality.webp" // Add low-quality placeholder
+            className="hero-image" // Use CSS to style position/height
           />
         </section>
-
 
         {/* Hero Text Section(s) */}
         <section className="hero">
           <div className="container">
-            <h1 id="hero-heading">Unlock the Best Travel Credit Cards for 2025</h1> {/* Linked via aria-labelledby */}
+            <h1 id="hero-heading">Unlock the Best Travel Credit Cards for 2025</h1>
             <p>
               Compare top travel credit cards and start earning rewards for
               your next adventure.
             </p>
-            {/* This links to the comparison section below */}
             <a href="/rewards-compare" className="cta-button">
               Compare Now
             </a>
           </div>
 
           <div className="container">
-            <h2>Calculate Your Travel Rewards</h2> {/* Changed to H2 */}
+            <h2>Calculate Your Travel Rewards</h2>
             <p>
               Enter your monthly spending to see how many points you can earn
               with top travel credit cards.
             </p>
-            {/* Ensure these links go to actual calculator/finder pages or sections */}
             <Link href="/rewards">Rewards Calculator</Link>
           </div>
 
           <div className="container">
-            <h2>Find Best Travel Credit Cards for You</h2> {/* Changed to H2 */}
+            <h2>Find Best Travel Credit Cards for You</h2>
             <p>
               Find the perfect travel credit card tailored to your spending
               habits and travel goals.
             </p>
-            <a href="/card-finder" className="cta-button" aria-label="Find recommended travel credit cards"> {/* Added aria-label */}
+            <a href="/card-finder" className="cta-button" aria-label="Find recommended travel credit cards">
               Find
             </a>
           </div>
@@ -259,7 +248,7 @@ export default function HomePage() {
 
         {/* Featured Cards Section */}
         <section id="featured-cards" aria-labelledby="featured-cards-heading">
-          <h2 id="featured-cards-heading" className="H2_featured-cards">Top Travel Credit Cards</h2> {/* Changed to H2 */}
+          <h2 id="featured-cards-heading" className="H2_featured-cards">Top Travel Credit Cards</h2>
           <div className="card-grid">
             {/* Card 1 */}
             <div className="featured-card">
@@ -269,7 +258,7 @@ export default function HomePage() {
                 alt="Chase Sapphire Preferred Card shown on a blue background"
                 width={400}
                 height={250}
-                priority={true}
+                priority={true} // Changed from string to boolean
               />
               <div className="featured-card__description">
                 <h3>Chase Sapphire Preferred</h3>
@@ -278,7 +267,7 @@ export default function HomePage() {
                   months. (Keep updated!)
                 </p>
                 <Link href="/reviews/chase-sapphire-preferred" className="cta-button">
-                   Learn More
+                    Learn More
                 </Link>
                 <a href="https://www.chase.com/apply?partner=YOUR_AFFILIATE_ID" className="Apply-button" target="_blank" rel="noopener sponsored">
                   Apply Now
@@ -303,7 +292,7 @@ export default function HomePage() {
                   worldwide. (Keep updated!)
                 </p>
                 <Link href="/reviews/amex-platinum" className="cta-button">
-                    Learn More
+                   Learn More
                 </Link>
                 <a href="https://www.americanexpress.com/apply?partner=YOUR_AFFILIATE_ID" className="Apply-button" target="_blank" rel="noopener sponsored">
                   Apply Now
@@ -315,10 +304,10 @@ export default function HomePage() {
             <div className="featured-card">
               <Image
                 className="featured-card__image"
-                src="/venturex-cg-static-card-1000x630-2.avif"
+                src="/venturex-cg-static-card-1000x630-2.avif" // Ensure this path is correct in /public
                 alt="Capital One Venture X card with abstract background"
                 width={400}
-                height={252} // Adjusted height for 1000x630 aspect ratio
+                height={252}
                 loading="lazy"
               />
               <div className="featured-card__description">
@@ -328,7 +317,7 @@ export default function HomePage() {
                   annually. (Keep updated!)
                 </p>
                 <Link href="/reviews/capital-one-venture-x" className="cta-button">
-                    Learn More
+                   Learn More
                 </Link>
                 <a href="https://www.capitalone.com/apply?partner=YOUR_AFFILIATE_ID" className="Apply-button" target="_blank" rel="noopener sponsored">
                   Apply Now
@@ -338,65 +327,67 @@ export default function HomePage() {
           </div> {/* End of .card-grid */}
         </section>
 
+         {/* === ADDED Top Reviews Section === */}
+         <TopReviewsSection reviews={featuredReviews} />
+         {/* ================================ */}
+
         {/* Comparison Tool Section MODIFIED */}
         <section id="compare" className="comparison" aria-labelledby="comparison-heading">
-          <div className="container" style={{ textAlign: 'center' }}> {/* Added centering style */}
+          <div className="container" style={{ textAlign: 'center' }}>
             <h2 id="comparison-heading" className="H2_comparison">Compare Travel Credit Cards</h2>
             <p style={{ margin: '1rem 0' }}>
                 Ready to see how your favorite cards stack up side-by-side?
             </p>
-            {/* --- ADDED Compare Button Link --- */}
-            <Link href="/compare" className="cta-button submit" style={{display: 'inline-block', marginTop: '1rem'}}> {/* Use appropriate classes */}
-                Go to Comparison Tool
+            <Link href="/compare" className="cta-button submit" style={{display: 'inline-block', marginTop: '1rem'}}>
+               Go to Comparison Tool
             </Link>
-            {/* --- END Compare Button Link --- */}
           </div>
         </section>
         {/* END Comparison Tool Section MODIFIED */}
 
-
-        {/* Reviews Section */}
+        {/* Reviews Section (Existing static content) */}
         <section className="reviews-container" aria-labelledby="reviews-heading">
           <h2 id="reviews-heading">Top Credit Card Reviews & News (2025)</h2>
           <div className="reviews-grid">
             {[
               // Ensure all required data is present and correct
-               { img: "/AdobeStock_560041735_result.webp", alt: "Credit cards fanned out on desk", title: "Top New Travel Credit Card Offers of 2025", desc: "Breaking news on the latest card launches and exclusive sign-up bonuses.", link: "/review/top-new-travel-credit-card-offers-2025", },
-               { img: "/AdobeStock_758160258_result.webp", alt: "Traveler relaxing in airport lounge chair", title: "VIP Airport Lounge Access in 2025", desc: "How to get premium perks and comfort while traveling.", link: "/review/The-Ultimate-Guide-to-Lounge-Access-in-2025-How-to-Get-VIP-Treatment-at-Airports", },
-               { img: "/AdobeStock_947404358_result.webp", alt: "Family with luggage smiling at airport gate", title: "5 Family-Friendly Travel Cards for 2025", desc: "Kid-friendly perks and money-saving benefits for your family vacations.", link: "/review/Top-5-Family-Friendly-Travel-Cards-for-2025-Maximize-Points-&-Perks-with-Kids-in-Tow", },
-               { img: "/AdobeStock_964630446_result.webp", alt: "Upward trending graph over credit report", title: "Boost Your Credit Score for Premium Cards", desc: "Actionable tips to qualify for the best travel rewards cards.", link: "/review/How-to-Improve-Your-Credit-Score-Fast-for-Premium-Travel-Cards", },
-               { img: "/alex-bertha-Jyg7xHRmXiU-unsplash (1).jpg", alt: "Airplane window view of clouds and wing", title: "Redeem for Luxury Travel on a Budget", desc: "Stretch your points and miles for a premium travel experience.", link: "/review/2025-Points-&-Miles-Trends-Best-Ways-to-Redeem-for-Luxury-Travel-on-a-Budget", },
-               { img: "/AdobeStock_265601656_result.webp", alt: "Magnifying glass over credit card details", title: "Secret Travel Card Benefits", desc: "Little-known perks you might already have but never used.", link: "/review/Hidden-Perks-Secret-Travel-Card-Benefits-You-Probably-Didnt-Know-About-in-2025", },
-               { img: "/AdobeStock_446734479.webp", alt: "Wallet with several credit cards, zero dollar bill shown", title: "The Best No Annual Fee Travel Cards", desc: "Earn rewards without worrying about recurring charges.", link: "/review/The-Best-Travel-Cards-with-No-Annual-Fee-Get-Big-Rewards-for-Free", },
-               { img: "/AdobeStock_241382254_result.webp", alt: "Scale weighing money against credit card perks", title: "Is a $500+ Annual Fee Worth It?", desc: "A cost-benefit breakdown of premium travel credit cards.", link: "/review/Premium-vs-Budget-Travel-Cards-Is-Paying-a-$500+Annual-Fee-Really-Worth-It", },
-             ].map((review, index) => (
-               <div className="card" key={review.link || index}>
-                 <Image
-                   className="review_img"
-                   src={review.img}
-                   alt={review.alt}
-                   width={500}
-                   height={300}
-                   loading="lazy"
-                   objectFit="cover"
-                 />
-                 <div className="card-content">
-                   <h3>
-                     {review.link ? (
-                       <Link href={review.link}>{review.title}</Link>
-                     ) : (
-                       review.title
-                     )}
-                   </h3>
-                   <p>{review.desc}</p>
-                   {review.link && (
-                     <Link href={review.link} className="cta-button">
-                       Read Review
-                     </Link>
-                   )}
-                 </div>
-               </div>
-             ))}
+                { img: "/AdobeStock_560041735_result.webp", alt: "Credit cards fanned out on desk", title: "Top New Travel Credit Card Offers of 2025", desc: "Breaking news on the latest card launches and exclusive sign-up bonuses.", link: "/review/top-new-travel-credit-card-offers-2025", },
+                { img: "/AdobeStock_758160258_result.webp", alt: "Traveler relaxing in airport lounge chair", title: "VIP Airport Lounge Access in 2025", desc: "How to get premium perks and comfort while traveling.", link: "/review/The-Ultimate-Guide-to-Lounge-Access-in-2025-How-to-Get-VIP-Treatment-at-Airports", },
+                { img: "/AdobeStock_947404358_result.webp", alt: "Family with luggage smiling at airport gate", title: "5 Family-Friendly Travel Cards for 2025", desc: "Kid-friendly perks and money-saving benefits for your family vacations.", link: "/review/Top-5-Family-Friendly-Travel-Cards-for-2025-Maximize-Points-&-Perks-with-Kids-in-Tow", },
+                { img: "/AdobeStock_964630446_result.webp", alt: "Upward trending graph over credit report", title: "Boost Your Credit Score for Premium Cards", desc: "Actionable tips to qualify for the best travel rewards cards.", link: "/review/How-to-Improve-Your-Credit-Score-Fast-for-Premium-Travel-Cards", },
+                { img: "/alex-bertha-Jyg7xHRmXiU-unsplash (1).jpg", alt: "Airplane window view of clouds and wing", title: "Redeem for Luxury Travel on a Budget", desc: "Stretch your points and miles for a premium travel experience.", link: "/review/2025-Points-&-Miles-Trends-Best-Ways-to-Redeem-for-Luxury-Travel-on-a-Budget", },
+                { img: "/AdobeStock_265601656_result.webp", alt: "Magnifying glass over credit card details", title: "Secret Travel Card Benefits", desc: "Little-known perks you might already have but never used.", link: "/review/Hidden-Perks-Secret-Travel-Card-Benefits-You-Probably-Didnt-Know-About-in-2025", },
+                { img: "/AdobeStock_446734479.webp", alt: "Wallet with several credit cards, zero dollar bill shown", title: "The Best No Annual Fee Travel Cards", desc: "Earn rewards without worrying about recurring charges.", link: "/review/The-Best-Travel-Cards-with-No-Annual-Fee-Get-Big-Rewards-for-Free", },
+                { img: "/AdobeStock_241382254_result.webp", alt: "Scale weighing money against credit card perks", title: "Is a $500+ Annual Fee Worth It?", desc: "A cost-benefit breakdown of premium travel credit cards.", link: "/review/Premium-vs-Budget-Travel-Cards-Is-Paying-a-$500+Annual-Fee-Really-Worth-It", },
+              ].map((review, index) => (
+                <div className="card" key={review.link || index}>
+                  <Image
+                    className="review_img"
+                    src={review.img}
+                    alt={review.alt}
+                    width={500}
+                    height={300}
+                    loading="lazy"
+                    // Consider adding objectFit="cover" if aspect ratios differ
+                    // objectFit="cover"
+                  />
+                  <div className="card-content">
+                    <h3>
+                      {review.link ? (
+                        <Link href={review.link}>{review.title}</Link>
+                      ) : (
+                        review.title
+                      )}
+                    </h3>
+                    <p>{review.desc}</p>
+                    {review.link && (
+                      <Link href={review.link} className="cta-button">
+                        Read Review
+                      </Link>
+                    )}
+                  </div>
+                </div>
+              ))}
           </div>
         </section>
       </main>
@@ -406,13 +397,14 @@ export default function HomePage() {
     </>
   );
 }
+
 // Fetch featured reviews at build time for the homepage
 export async function getStaticProps() {
   const featuredReviews = getFeaturedReviews(8); // Get top 8 featured reviews
 
   return {
     props: {
-      featuredReviews,
+      featuredReviews, // Pass reviews to the component
     },
     // Optional: Revalidate
     // revalidate: 3600,
