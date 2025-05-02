@@ -157,7 +157,7 @@ export default function PrivacyPolicyPage() {
             <p>
               If you have questions or comments about this Privacy Policy, please contact us at:
               <br />
-              <strong>Email:</strong> TravelCardInsider@gmail.com
+              <strong>Email:</strong> team@travelcardinsider.com
               {/* Add other contact methods if desired, e.g., mailing address */}
             </p>
           </section>
