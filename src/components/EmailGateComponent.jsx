@@ -1,8 +1,8 @@
 // src/components/EmailGateComponent.jsx
 import React, { useState } from "react";
-import { auth, db } from "@/lib/firebase";             // ✅ db now exists
+import { auth } from "@/lib/firebase"; // db import removed
 import { sendSignInLinkToEmail } from "firebase/auth";
-import { doc, setDoc, serverTimestamp } from "firebase/firestore";
+// Firestore imports removed: doc, setDoc, serverTimestamp
 import toast, { Toaster } from "react-hot-toast";
 
 export default function EmailGateComponent({ requestedUrl = '/' }) {
@@ -33,15 +33,7 @@ export default function EmailGateComponent({ requestedUrl = '/' }) {
       // Send the magic link
       await sendSignInLinkToEmail(auth, email, actionCodeSettings);
 
-      // Save email to Firestore (optional: check if user exists first)
-      // Using email as doc ID for simplicity, consider using UID after login for robustness
-      const userRef = doc(db, 'users', email);
-      await setDoc(userRef, {
-        email: email,
-        createdAt: serverTimestamp(),
-        lastLoginAt: serverTimestamp(),
-        // Add any other initial user data here
-      }, { merge: true }); // Merge true updates existing doc or creates new one
+      // --- Firestore setDoc call REMOVED from here ---
 
       toast.dismiss(); // Dismiss loading toast
       toast.success('Login link sent! Check your email (and spam folder).');
