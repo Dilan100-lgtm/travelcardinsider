@@ -20,7 +20,7 @@ export default function ReviewCard({ review }) {
   });
 
   return (
-    <Link href={`/cards/${review.slug}`} passHref legacyBehavior>
+    <Link href={`/review/${review.slug}`} passHref legacyBehavior>
       <a className={styles.card}>
         {/* Optional Image Placeholder - Add later if needed
         <div className={styles.imageContainer} style={{ backgroundImage: `url(${review.imageUrl || '/placeholder.jpg'})` }}></div> */}
