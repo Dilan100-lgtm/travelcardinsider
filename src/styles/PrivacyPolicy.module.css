@@ -38,7 +38,7 @@
 }
 
 .contentWrapper {
-  max-width: 800px; /* Optimal reading width */
+  max-width: 1000px;
   margin: 0 auto; /* Center the container */
   padding: var(--spacing-xl) var(--spacing-xxl);
   background-color: var(--color-background-container, #ffffff);
