@@ -30,7 +30,7 @@
 
 /* --- Main Content Area --- */
 .mainContainer {
-  padding: var(--spacing-xl) 0; /* Vertical padding */
+  padding: var(--spacing-xxl) 0; /* Vertical padding */
   background-color: var(--color-background-body, #f8f9fa); /* Use variable or default */
   font-family: var(--font-family-sans, sans-serif);
   color: var(--color-text-secondary, #42526e);
@@ -39,8 +39,8 @@
 
 .contentWrapper {
   max-width: 1000px;
-  margin: 0 auto; /* Center the container */
-  padding: var(--spacing-xl) var(--spacing-xxl);
+  margin: 3.5rem auto; /* Center the container */
+  padding: var(--spacing-xxl) var(--spacing-xxl);
   background-color: var(--color-background-container, #ffffff);
   border-radius: var(--border-radius-md, 8px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Soft shadow */
