@@ -406,3 +406,15 @@ export default function HomePage() {
     </>
   );
 }
+// Fetch featured reviews at build time for the homepage
+export async function getStaticProps() {
+  const featuredReviews = getFeaturedReviews(8); // Get top 8 featured reviews
+
+  return {
+    props: {
+      featuredReviews,
+    },
+    // Optional: Revalidate
+    // revalidate: 3600,
+  };
+}

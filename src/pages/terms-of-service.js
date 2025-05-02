@@ -145,7 +145,7 @@ export default function TermsOfServicePage() {
             <h2 className={styles.sectionTitle}>12. Contact Us</h2>
             <p>
               If you have any questions about these Terms, please contact us at:
-              <br /><strong>Email:</strong> TravelCardInsider@gmail.com
+              <br /><strong>Email:</strong> team@travelcardinsider.com
             </p>
           </section>
         </div>

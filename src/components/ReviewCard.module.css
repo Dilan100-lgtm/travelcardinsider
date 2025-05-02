@@ -1,0 +1,89 @@
+/* /components/ReviewCard.module.css */
+.card {
+  display: block; /* Make the whole card clickable via Link */
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  border: 1px solid #e5e7eb; /* Subtle border */
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.content {
+  padding: 1.25rem; /* p-5 */
+}
+
+.title {
+  font-size: 1.125rem; /* text-lg */
+  font-weight: 600; /* font-semibold */
+  color: #1f2937; /* text-gray-800 */
+  line-height: 1.4;
+  margin-bottom: 0.5rem; /* mb-2 */
+  /* Clamp text to 2 lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: calc(1.4em * 2); /* Ensure space for 2 lines */
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem; /* mt-4 */
+  font-size: 0.875rem; /* text-sm */
+  color: #6b7280; /* text-gray-500 */
+}
+
+.publishedDate {
+  /* Style for date */
+}
+
+.rating {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 500;
+  color: #10b981; /* text-emerald-600 */
+  background-color: #d1fae5; /* bg-emerald-100 */
+  padding: 0.25rem 0.6rem; /* px-2.5 py-1 */
+  border-radius: 9999px; /* rounded-full */
+  font-size: 0.8rem;
+}
+
+.ratingStar {
+  width: 0.8rem; /* Adjust size */
+  height: 0.8rem; /* Adjust size */
+  margin-right: 0.25rem; /* mr-1 */
+  fill: currentColor;
+}
+
+.tags {
+    margin-top: 0.75rem; /* mt-3 */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem; /* gap-2 */
+}
+
+.tag {
+    background-color: #f3f4f6; /* bg-gray-100 */
+    color: #4b5563; /* text-gray-700 */
+    font-size: 0.75rem; /* text-xs */
+    font-weight: 500;
+    padding: 0.25rem 0.5rem; /* px-2 py-1 */
+    border-radius: 4px; /* rounded */
+    text-transform: capitalize;
+}
+
+/* You might want to add an image section later */
+/* .imageContainer {
+  height: 150px;
+  background-color: #f3f4f6; / * Placeholder * /
+  background-size: cover;
+  background-position: center;
+} */
