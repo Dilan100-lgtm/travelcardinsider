@@ -43,7 +43,7 @@ export default function Footer() {
                 <a href="/terms-of-service">Terms of Service</a>
               </li>
               <li className="footlink">
-                <a href="/affiliate-disclosure">Affiliate Disclosure</a>
+                <a href="/about/affiliate-disclosure">Affiliate Disclosure</a>
               </li>
             </ul>
           </div>
