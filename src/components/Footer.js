@@ -53,7 +53,7 @@ export default function Footer() {
             <ul>
               <li className="footlink">
                 <a
-                  href="https://www.facebook.com/YourPage"
+                  href="https://web.facebook.com/profile.php?id=61575699458544"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Follow us on Facebook"
