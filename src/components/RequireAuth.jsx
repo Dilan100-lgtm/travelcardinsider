@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/lib/firebase'; // Adjust path
-import EmailGateComponent from './EmailGateComponent'; // Adjust path
+import EmailGateComponent from "@/components/EmailGateComponent"; // Adjust path
 import { useRouter } from 'next/router';
 
 export default function RequireAuth({ children }) {

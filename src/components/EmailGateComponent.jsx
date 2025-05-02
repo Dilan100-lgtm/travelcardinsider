@@ -1,9 +1,9 @@
 // src/components/EmailGateComponent.jsx
-import React, { useState } from 'react';
-import { auth, db } from '@/lib/firebase'; // Adjust path if needed
-import { sendSignInLinkToEmail } from 'firebase/auth';
-import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
-import toast, { Toaster } from 'react-hot-toast';
+import React, { useState } from "react";
+import { auth, db } from "@/lib/firebase";             // ✅ db now exists
+import { sendSignInLinkToEmail } from "firebase/auth";
+import { doc, setDoc, serverTimestamp } from "firebase/firestore";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function EmailGateComponent({ requestedUrl = '/' }) {
   const [email, setEmail] = useState('');
