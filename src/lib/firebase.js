@@ -1,7 +1,6 @@
-// File: /lib/firebase.js or /utils/firebase.js
 import { initializeApp, getApps, getApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
 import { getAnalytics, isSupported } from "firebase/analytics";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -13,18 +12,18 @@ const firebaseConfig = {
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
 };
 
-// Initialize Firebase (once)
-const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
+// Only initialize once
+const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
 
-// Initialize Auth
-const auth = getAuth(app);
-
-// Analytics (browser only)
+// Initialize analytics only in browser
 let analytics = null;
 if (typeof window !== 'undefined') {
-  isSupported().then((ok) => {
-    if (ok) analytics = getAnalytics(app);
+  isSupported().then((yes) => {
+    if (yes) analytics = getAnalytics(app);
   });
 }
 
-export { app, auth, analytics };
+// 🔧 FIX: Initialize Firestore and export it
+const db = getFirestore(app);
+
+export { app, analytics, db };
