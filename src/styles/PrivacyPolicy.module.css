@@ -35,6 +35,8 @@
   font-family: var(--font-family-sans, sans-serif);
   color: var(--color-text-secondary, #42526e);
   line-height: var(--line-height-base, 1.65);
+  padding-left: 1rem; /* Left padding for better readability */
+  padding-right: 1rem; /* Right padding for better readability */
 }
 
 .contentWrapper {

@@ -19,7 +19,7 @@ export default function Footer() {
             <h3>Quick Links</h3>
             <ul>
               <li className="footlink">
-                <a href="/about">About</a>
+                <a href="/about/who-we-are">About</a>
               </li>
               <li className="footlink">
                 <a href="/blog">Blog</a>
@@ -28,7 +28,7 @@ export default function Footer() {
                 <a href="/compare">Compare Cards</a>
               </li>
               <li className="footlink">
-                <a href="/contact">Contact Us</a>
+                <a href="/about/contact">Contact Us</a>
               </li>
             </ul>
           </div>
