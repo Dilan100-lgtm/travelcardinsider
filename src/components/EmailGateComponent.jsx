@@ -23,7 +23,7 @@ export default function EmailGateComponent({ requestedUrl = '/' }) {
       return;
     }
     setLoading(true);
-    toast.loading('Sending login link...');
+    toast.loading('Sending login link...'); // Keep toast for general feedback
 
     const actionCodeSettings = {
       url: `${window.location.origin}/finish-signup?redirectTo=${encodeURIComponent(requestedUrl)}`,
@@ -34,17 +34,17 @@ export default function EmailGateComponent({ requestedUrl = '/' }) {
       window.localStorage.setItem('emailForSignIn', email);
       await sendSignInLinkToEmail(auth, email, actionCodeSettings);
 
-      toast.dismiss();
+      toast.dismiss(); // Dismiss loading toast
       toast.success('Login link sent! Check your email.');
-      setSubmitted(true);
+      setSubmitted(true); // Move to confirmation view
 
     } catch (error) {
       console.error("Firebase sign-in error:", error);
-      toast.dismiss();
+      toast.dismiss(); // Dismiss loading toast
       toast.error(`Failed to send link: ${error.message}`);
       window.localStorage.removeItem('emailForSignIn');
     } finally {
-      setLoading(false);
+      setLoading(false); // Ensure loading stops
     }
   };
 
@@ -72,13 +72,18 @@ export default function EmailGateComponent({ requestedUrl = '/' }) {
                 required
                 className={styles.inputField}
                 aria-label="Email Address"
+                disabled={loading} // Disable input while loading
               />
               <button
                 type="submit"
                 disabled={loading}
-                className={styles.submitButton}
+                className={`${styles.submitButton} ${loading ? styles.loading : ''}`} // Add loading class
               >
-                {loading ? 'Sending...' : 'Send Magic Link'}
+                {loading ? (
+                  <span className={styles.spinner}></span> // Use a span for the spinner
+                ) : (
+                  'Send Magic Link'
+                )}
               </button>
             </form>
             <p className={styles.helperText}>
