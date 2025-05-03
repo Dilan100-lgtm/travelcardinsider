@@ -47,7 +47,7 @@ function MyApp({ Component, pageProps }) {
         </main>
 
         {/* Render Footer */}
-        <Footer />
+        
       </div>
     </>
   );
