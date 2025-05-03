@@ -1294,3 +1294,83 @@ p, h1, h2, h3, h4, h5, h6, li, div, span { /* Added span */
 /* Removed styles like #product-overview .img, .hero, .H2_featured-cards, */
 /* .H2_comparison, .reviews-container, .reviews-grid .card, .review_img etc. */
 /* as they are replaced by the new section/card/title classes */
+/* =============== STAR RATING STYLES (Update for SVG) =============== */
+.star-rating {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center align rating block */
+  gap: var(--spacing-sm, 8px); /* Space between number and SVG stars */
+  margin-bottom: var(--spacing-md, 16px); /* More space below stars */
+  color: var(--text-medium);
+  line-height: 1; /* Ensure consistent alignment */
+}
+
+.rating-value {
+  font-weight: 600;
+  font-size: 0.9rem; /* Slightly smaller number */
+  color: var(--text-secondary); /* Use secondary text color */
+}
+
+/* Styling for the SVG icons */
+.star-rating .star {
+  display: inline-block; /* Treat SVGs like characters */
+  font-size: 1rem; /* Control SVG size via font-size */
+  color: #d1d5db; /* Default empty star color (light gray) */
+  vertical-align: middle; /* Align stars nicely with text */
+}
+
+.star-rating .star.filled {
+  color: #facc15; /* Yellow/Gold color for filled/half stars */
+}
+
+/* Optional: specific color for empty if different from default gray */
+.star-rating .star.empty {
+   color: #e5e7eb; /* Even lighter gray for empty */
+}
+
+/* --- Ensure Featured Card Description Alignment --- */
+
+/* Ensure the card itself uses flex column */
+.featured-card {
+  display: flex; /* Keep or add */
+  flex-direction: column; /* Keep or add */
+  /* rest of card styles... */
+}
+
+/* Ensure the description area grows and uses flex column */
+.featured-card__description {
+  display: flex; /* Keep or add */
+  flex-direction: column; /* Keep or add */
+  flex-grow: 1; /* Allows this section to expand vertically */
+  /* align-items: center; Replaced with below for better text alignment */
+  text-align: center; /* Center text elements */
+  /* rest of description styles... */
+}
+
+/* Ensure paragraph grows to push actions down, REMOVE fixed min-height */
+.featured-card__description .featured-card__text { /* Use specific class if needed */
+  flex-grow: 1; /* Allows paragraph to take up available space */
+  margin-top: var(--spacing-sm); /* Ensure space above paragraph */
+  margin-bottom: var(--spacing-md); /* Space below paragraph */
+  min-height: initial; /* REMOVE fixed min-height */
+  /* rest of paragraph styles... */
+}
+
+/* Ensure actions stay at the bottom */
+.featured-card__actions {
+  margin-top: auto; /* Keep or add, pushes actions to bottom */
+  /* rest of action styles... */
+}
+
+/* Add accessibility helper class if not already global */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
