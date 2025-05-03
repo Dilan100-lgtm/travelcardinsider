@@ -487,8 +487,21 @@ p, h1, h2, h3, h4, h5, h6, li, div {
 }
 
 .hero {
-  text-align: center;
-  padding: 1rem;
+  position: relative;
+  z-index: 2; /* Higher z-index to appear above the image */
+  padding: 2rem 1rem; /* Add padding for spacing */
+  text-align: center; /* Center-align text */
+}
+
+.hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the image covers the area */
+  z-index: 1; /* Lower z-index to stay behind the hero section */
+  opacity: 0.8; /* Optional: Add transparency for better readability */
 }
 
 .hero .container {
