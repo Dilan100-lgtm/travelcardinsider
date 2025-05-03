@@ -50,6 +50,9 @@
     --spacing-section: 4rem; /* 64px */
     --spacing-section-lg: 6rem; /* 96px */
   
+    /* ADDED: Define space between sections */
+    --spacing-section-gap: var(--spacing-section); /* 4rem (64px), adjust as needed */
+  
     /* Borders & Shadows */
     --border-radius-sm: 4px;
     --border-radius-md: 8px;
@@ -107,6 +110,7 @@
   @font-face { font-family: 'Playfair Display'; src: url('/fonts/PlayfairDisplay-Regular.woff2') format('woff2'), url('/fonts/PlayfairDisplay-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
   @font-face { font-family: 'Playfair Display'; src: url('/fonts/Playfair-Display-Bold.woff2') format('woff2'), url('/fonts/Playfair-Display-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
   
+  
   /* --- Header Styles --- */
   /* Includes mobile and desktop, search, dropdowns */
   .site-header { position: fixed; top: 0; left: 0; right: 0; background: var(--color-background-body); box-shadow: var(--shadow-soft); z-index: 1000; height: 3.5rem; font-weight: 500; font-size: var(--font-size-sm); line-height: 1; }
@@ -146,19 +150,16 @@
   @media (max-width: 1099px) { .menu-toggle { display: flex; } .main-nav { position: fixed; } .submenu-toggle-button { display: inline-block; } .search-results-base, .search-results-dropdown, .search-no-results { position: static; box-shadow: none; max-height: 200px; margin-top: var(--spacing-sm); max-width: none; } .header-actions { order: -1; border-bottom: 1px solid var(--color-border); padding-bottom: var(--spacing-md); margin-bottom: var(--spacing-md); } .search-container { margin: 0; } .search-container input[type="search"] { max-width: none; } }
   @media (min-width: 1100px) { .menu-toggle, .menu-backdrop, .submenu-toggle-button { display: none; } .main-nav { position: static; width: auto; height: 100%; transform: none; box-shadow: none; overflow: visible; padding: 0; margin: 0; background: transparent; display: flex; flex-direction: row; align-items: center; transition: none; } .nav-list { display: flex; flex-direction: row; align-items: center; height: 100%; list-style: none; padding: 0; margin: 0 0 0 var(--spacing-md); } .nav-list li { margin: 0 var(--spacing-sm); height: 100%; display: flex; align-items: center; } .nav-list li.header-actions { margin: 0 var(--spacing-md) 0 auto; padding: 0; border: none; height: auto; } .nav-list li.header-actions .search-container input[type="search"] { width: 200px; font-size: var(--font-size-sm); padding: var(--spacing-xs) var(--spacing-sm); transition: width var(--transition-speed-normal) ease; } .nav-list li.header-actions .search-container input[type="search"]:focus { width: 250px; } .nav-list li.header-actions .search-container input[type="search"]:focus ~ .search-results-base, .nav-list li.header-actions .search-container input[type="search"]:focus ~ .search-results-dropdown, .nav-list li.header-actions .search-container input[type="search"]:focus ~ .search-no-results { left: 0; width: 250px; } .nav-list a.nav-link { display: flex; align-items: center; height: 100%; padding: 0 var(--spacing-sm); border-bottom: none; font-weight: 500; position: relative; color: var(--color-text-secondary); font-size: var(--font-size-sm); } .nav-list a.nav-link:hover { color: var(--color-primary); background-color: transparent; } .nav-list a.nav-link::after { content: ''; position: absolute; width: 0; height: 2px; display: block; left: 50%; transform: translateX(-50%); bottom: 10px; background: var(--color-primary); transition: width var(--transition-speed-normal) ease; } .nav-list a.nav-link:hover::after { width: 80%; } .nav-list li a.desktop-subscribe-button { display: inline-flex; align-items: center; background-color: var(--color-primary); color: var(--color-text-on-primary); padding: var(--spacing-xs) var(--spacing-md); border-radius: var(--border-radius-md); font-weight: bold; text-decoration: none; transition: background-color var(--transition-speed-normal) ease; margin-left: var(--spacing-md); font-size: var(--font-size-sm); } .nav-list li a.desktop-subscribe-button:hover { background-color: var(--color-primary-dark); text-decoration: none; } .nav-list li a.desktop-subscribe-button::after { display: none; } .nav-list li.has-dropdown { position: relative; } .has-dropdown .dropdown-menu { position: absolute; background: var(--color-background-body); margin: 0; padding: var(--spacing-sm) 0; border: 1px solid var(--color-border); box-shadow: var(--shadow-medium); border-radius: var(--border-radius-md); display: none; top: 100%; left: 0; min-width: 220px; z-index: 1000; list-style: none; opacity: 0; visibility: hidden; transform: translateY(10px); transition: opacity var(--transition-speed-normal) ease, visibility var(--transition-speed-normal) ease, transform var(--transition-speed-normal) ease; } .nav-list li.has-dropdown:hover > .dropdown-menu { display: block; opacity: 1; visibility: visible; transform: translateY(0); } .dropdown-menu li { margin: 0; height: auto; display: block; } .dropdown-menu a { display: block; padding: var(--spacing-sm) var(--spacing-md); font-size: var(--font-size-sm); color: var(--color-text-secondary); white-space: nowrap; border: none; transition: background-color var(--transition-speed-fast) ease, color var(--transition-speed-fast) ease; } .dropdown-menu a:hover { color: var(--color-primary-dark); background-color: var(--color-primary-light); text-decoration: none; } .dropdown-menu a::after { display: none; } }
   
-  
   /* --- Page Background & Content Wrapper --- */
   .page-background-image-container { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden; }
-  /* Ensure the div generated by next/image inside the container fills it */
-  .page-background-image-container > div { height: 100%; }
+  .page-background-image-container > div { height: 100%; /* Ensure next/image wrapper fills container */ }
   .main-content-wrapper { position: relative; z-index: 1; background-color: transparent; }
   
   /* --- Hero Content Area (Over Background) --- */
   .hero-content-container { position: relative; z-index: 2; padding: var(--spacing-section-lg) var(--spacing-md); min-height: 60vh; display: flex; align-items: center; justify-content: center; }
-  .hero-content-overlay { max-width: 900px; /* background: rgba(0, 0, 0, 0.3); */ /* Uncomment for overlay */ /* padding: var(--spacing-xl); */ /* Uncomment for overlay */ /* border-radius: var(--border-radius-md); */ /* Uncomment for overlay */ }
-  .hero-content-container h1 { color: #ffffff; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Sizes/font via Tailwind */ }
-  .hero-content-container p { color: #e0e0e0; text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); /* Sizes via Tailwind */ }
-  /* .hero-content-container .cta-button, .hero-content-container .cta-button-secondary { } */ /* Base button styles apply */
+  .hero-content-overlay { max-width: 900px; /* background: rgba(0, 0, 0, 0.3); padding: var(--spacing-xl); border-radius: var(--border-radius-md); */ /* Optional overlay styles */ }
+  .hero-content-container h1 { color: #ffffff; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); }
+  .hero-content-container p { color: #e0e0e0; text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); }
   
   /* --- Buttons --- */
   .button-base { display: inline-block; padding: var(--spacing-sm) var(--spacing-lg); border-radius: var(--border-radius-md); font-weight: bold; text-decoration: none; text-align: center; cursor: pointer; transition: background-color var(--transition-speed-normal) ease, transform var(--transition-speed-fast) ease, box-shadow var(--transition-speed-normal) ease; border: 1px solid transparent; line-height: 1.4; }
@@ -166,11 +167,11 @@
   .button-base:focus { outline: none; }
   .button-base:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
   .button-base:hover { text-decoration: none; }
-  .cta-button, .Apply-button, .submit { /* Inherits .button-base potentially */ display: inline-block; padding: var(--spacing-sm) var(--spacing-lg); border-radius: var(--border-radius-md); font-weight: bold; text-decoration: none; text-align: center; cursor: pointer; transition: background-color var(--transition-speed-normal) ease, transform var(--transition-speed-fast) ease, box-shadow var(--transition-speed-normal) ease; border: 1px solid transparent; line-height: 1.4; background-color: var(--color-primary); color: var(--color-text-on-primary); border-color: var(--color-primary); }
+  .cta-button, .Apply-button, .submit { display: inline-block; padding: var(--spacing-sm) var(--spacing-lg); border-radius: var(--border-radius-md); font-weight: bold; text-decoration: none; text-align: center; cursor: pointer; transition: background-color var(--transition-speed-normal) ease, transform var(--transition-speed-fast) ease, box-shadow var(--transition-speed-normal) ease; border: 1px solid transparent; line-height: 1.4; background-color: var(--color-primary); color: var(--color-text-on-primary); border-color: var(--color-primary); }
   .cta-button:hover, .Apply-button:hover, .submit:hover { background-color: var(--color-primary-dark); border-color: var(--color-primary-dark); color: var(--color-text-on-primary); text-decoration: none; }
   .cta-button:active, .Apply-button:active, .submit:active { transform: scale(0.98); }
   .cta-button:focus-visible, .Apply-button:focus-visible, .submit:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
-  .cta-button-secondary { /* Inherits .button-base potentially */ display: inline-block; padding: var(--spacing-sm) var(--spacing-lg); border-radius: var(--border-radius-md); font-weight: bold; text-decoration: none; text-align: center; cursor: pointer; transition: background-color var(--transition-speed-normal) ease, color var(--transition-speed-normal) ease, transform var(--transition-speed-fast) ease, box-shadow var(--transition-speed-normal) ease; border: 1px solid var(--color-primary); line-height: 1.4; background-color: transparent; color: var(--color-primary); }
+  .cta-button-secondary { display: inline-block; padding: var(--spacing-sm) var(--spacing-lg); border-radius: var(--border-radius-md); font-weight: bold; text-decoration: none; text-align: center; cursor: pointer; transition: background-color var(--transition-speed-normal) ease, color var(--transition-speed-normal) ease, transform var(--transition-speed-fast) ease, box-shadow var(--transition-speed-normal) ease; border: 1px solid var(--color-primary); line-height: 1.4; background-color: transparent; color: var(--color-primary); }
   .cta-button-secondary:hover { background-color: var(--color-primary-light); color: var(--color-primary-dark); border-color: var(--color-primary-dark); text-decoration: none; }
   .cta-button-secondary:active { transform: scale(0.98); }
   .cta-button-secondary:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
@@ -179,8 +180,14 @@
   @media (max-width: 640px) { .featured-card__description .flex { flex-direction: column; align-items: stretch; } .featured-card__description .flex > * { width: 100%; } }
   
   /* --- Featured Cards Section --- */
-  #featured-cards { background-color: var(--color-background-light); /* Ensure background color */ position: relative; z-index: 2; /* Padding via Tailwind */ }
-  #featured-cards h2 { color: var(--color-text-primary); /* Styles via Tailwind */ }
+  #featured-cards {
+    background-color: var(--color-background-light); /* Ensure background */
+    position: relative;
+    z-index: 2;
+    /* Padding via Tailwind py-16 lg:py-24 */
+    margin-bottom: var(--spacing-section-gap); /* ADDED SPACE */
+  }
+  #featured-cards h2 { color: var(--color-text-primary); }
   .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: var(--spacing-xl); padding: 0; margin: 0 auto; }
   .featured-card { display: flex; flex-direction: column; background-color: var(--color-background-body); padding: var(--spacing-lg); border-radius: var(--border-radius-lg); color: var(--color-text-secondary); box-shadow: var(--shadow-soft); overflow: hidden; text-align: center; transition: transform var(--transition-speed-normal) ease, box-shadow var(--transition-speed-normal) ease; }
   .featured-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-medium); }
@@ -191,24 +198,36 @@
   .featured-card__description .flex { margin-top: auto; padding-top: var(--spacing-sm); }
   
   /* --- Top Reviews Section Wrapper --- */
-  /* Add styles for the dynamic component wrapper */
   .top-reviews-section-wrapper {
      background-color: var(--color-background-body); /* Example background */
      position: relative;
      z-index: 2;
-     /* Add padding as needed within the component itself or here */
+     margin-bottom: var(--spacing-section-gap); /* ADDED SPACE */
+     /* Add padding within the component or here if needed */
      /* padding: var(--spacing-section) 0; */
   }
   
   /* --- Comparison Section --- */
-  #compare { background-color: var(--color-primary-light); /* Ensure background color */ position: relative; z-index: 2; /* Padding/text styles via Tailwind */ }
+  #compare {
+    background-color: var(--color-primary-light); /* Ensure background */
+    position: relative;
+    z-index: 2;
+    margin-bottom: var(--spacing-section-gap); /* ADDED SPACE */
+    /* Padding/text styles via Tailwind */
+  }
   #compare .container { text-align: center; }
   #compare h2 { color: var(--color-text-primary); }
   #compare p { color: var(--color-text-secondary); }
   
   /* --- Reviews Section --- */
-  .reviews-container { background-color: var(--color-background-body); /* Ensure background color */ position: relative; z-index: 2; /* Padding via Tailwind */ }
-  .reviews-container h2 { color: var(--color-text-primary); /* Styles via Tailwind */ }
+  .reviews-container {
+    background-color: var(--color-background-body); /* Ensure background */
+    position: relative;
+    z-index: 2;
+    margin-bottom: var(--spacing-section-gap); /* ADDED SPACE */
+    /* Padding via Tailwind */
+  }
+  .reviews-container h2 { color: var(--color-text-primary); }
   .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: var(--spacing-xl); }
   .reviews-grid .card { background: var(--color-background-body); padding: 0; border-radius: var(--border-radius-lg); text-align: left; box-shadow: var(--shadow-soft); transition: transform var(--transition-speed-normal) ease, box-shadow var(--transition-speed-normal) ease; display: flex; flex-direction: column; overflow: hidden; color: var(--color-text-secondary); }
   .reviews-grid .card:hover { transform: translateY(-5px); box-shadow: var(--shadow-medium); }
@@ -217,11 +236,21 @@
   .reviews-grid .card h3 { color: var(--color-text-primary); font-size: var(--font-size-lg); margin: 0 0 var(--spacing-sm) 0; line-height: var(--line-height-heading); font-family: var(--font-family-base); }
   .reviews-grid .card h3 a { color: inherit; transition: color var(--transition-speed-normal) ease; }
   .reviews-grid .card h3 a:hover { color: var(--color-primary); text-decoration: none; }
-  .reviews-grid .card p { font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: var(--line-height-base); margin: 0 0 var(--spacing-md) 0; flex-grow: 1; }
+  .reviews-grid .card p { font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: var(--line-height-base); margin: 0 0 var(--spacing-md) 0; flex-grow: 1; /* line-clamp via Tailwind */ }
   .reviews-grid .card .cta-button-secondary { margin-top: auto; align-self: flex-start; }
   
   /* --- Footer --- */
-  .site-footer { background: var(--color-background-footer); color: var(--color-text-on-dark); margin-top: var(--spacing-section); padding: var(--spacing-section) var(--spacing-md); border-top: 4px solid var(--color-border-accent); font-family: var(--font-family-serif); position: relative; z-index: 2; }
+  .site-footer {
+    background: var(--color-background-footer);
+    color: var(--color-text-on-dark);
+    /* Footer already has margin-top */
+    margin-top: var(--spacing-section);
+    padding: var(--spacing-section) var(--spacing-md);
+    border-top: 4px solid var(--color-border-accent);
+    font-family: var(--font-family-serif);
+    position: relative;
+    z-index: 2; /* Ensure footer is above background */
+  }
   .footer-inner { max-width: 1200px; margin: 0 auto; }
   .footer-columns { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-xl); margin-bottom: var(--spacing-xl); }
   .footer-col h3 { margin: 0 0 var(--spacing-md) 0; color: #ffffff; font-weight: 700; font-size: var(--font-size-lg); font-family: var(--font-family-serif); }
@@ -232,5 +261,3 @@
   .footer-disclaimer { margin-top: var(--spacing-xl); font-size: var(--font-size-sm); line-height: 1.5; color: #ccc; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto; font-family: var(--font-family-sans); }
   .footer-bottom { margin-top: var(--spacing-xl); padding-top: var(--spacing-lg); text-align: center; font-size: var(--font-size-sm); color: #ccc; border-top: 1px solid rgba(255, 255, 255, 0.2); font-family: var(--font-family-sans); }
   .footer-bottom p { margin: 0; }
-  
-  /* Add any overrides for Tailwind classes here if necessary */
