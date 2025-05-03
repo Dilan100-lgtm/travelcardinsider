@@ -1,0 +1,122 @@
+/* =========  GLOBAL DESIGN TOKENS  ========= */
+:root {
+  --brand-primary: #0014a8;      /* rich navy */
+  --brand-accent:  #e30d5c;      /* accent red (logo underline) */
+  --brand-bg:      #f6f8fc;      /* light paper */
+  --radius-outer:  12px;
+  --radius-inner:  8px;
+  --shadow-lg: 0 20px 40px rgba(0, 13, 64, 0.12);
+  --transition-fast: 150ms ease;
+}
+
+/* =========  PAGE WRAPPER  ========= */
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 1.25rem 6rem;
+  background: var(--brand-bg);
+  min-height: calc(100vh - 110px); /* header + footer ≈110 px */
+}
+
+/* =========  CARD  ========= */
+.card {
+  background: #fff;
+  border-radius: var(--radius-outer);
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 520px;
+  padding: 3rem 2.25rem 2.75rem;
+  text-align: center;
+  position: relative;
+}
+
+/* =========  HEADING  ========= */
+.heading {
+  font-size: 1.875rem;           /* 30 px */
+  letter-spacing: -0.015em;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--brand-primary);
+}
+
+.sub {
+  font-size: 0.95rem;
+  color: #4b5563;                /* slate-600 */
+  margin-bottom: 2.25rem;
+}
+
+/* =========  FORM CONTROLS  ========= */
+.inputWrap {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.input {
+  flex: 1;
+  font-size: 0.95rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid #d1d5db;     /* gray-300 */
+  border-radius: var(--radius-inner);
+  transition: border var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 3px rgba(0, 20, 168, 0.15);
+}
+
+.btn {
+  flex-shrink: 0;
+  padding: 0.85rem 1.35rem;
+  font-weight: 600;
+  border-radius: var(--radius-inner);
+  color: #fff;
+  background: linear-gradient(135deg, var(--brand-primary) 0%, #0023ff 60%);
+  cursor: pointer;
+  border: none;
+  transition: filter var(--transition-fast), transform var(--transition-fast);
+}
+
+.btn:hover { filter: brightness(1.1); }
+.btn:active { transform: translateY(1px); }
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* =========  STATUS MESSAGES  ========= */
+.success,
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  font-size: 0.95rem;
+  border-radius: var(--radius-inner);
+  padding: 0.85rem 1rem;
+}
+
+.success { background: #ecfdf5; color: #026e55; }     /* emerald-100 / emerald-700 */
+.error   { background: #fef2f2; color: #b91c1c; }     /* red-50 / red-700 */
+
+/* =========  SPINNER  ========= */
+.spinner {
+  width: 1.15rem;
+  height: 1.15rem;
+  border: 3px solid #c7ccff;
+  border-top-color: var(--brand-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-left: 0.6rem;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* =========  RESPONSIVE  ========= */
+@media (max-width: 480px) {
+  .heading { font-size: 1.65rem; }
+  .inputWrap { flex-direction: column; }
+  .btn      { width: 100%; }
+}
