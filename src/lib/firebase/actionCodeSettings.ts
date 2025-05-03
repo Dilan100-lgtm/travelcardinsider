@@ -9,7 +9,7 @@ import { ActionCodeSettings } from 'firebase/auth';
  */
 export default function getActionCodeSettings(): ActionCodeSettings {
   // Use environment variables for URLs to easily switch between dev and prod
-  const callbackUrl = process.env.NEXT_PUBLIC_FIREBASE_CALLBACK_URL || 'http://localhost:3000/auth/callback';
+  const callbackUrl = process.env.NEXT_PUBLIC_FIREBASE_CALLBACK_URL || 'https://www.travelcardinsider.com/auth/callback';
   const dynamicLinkDomain = process.env.NEXT_PUBLIC_FIREBASE_DYNAMIC_LINK_DOMAIN || 'www.travelcardinsider.com'; // Replace with your domain if using
 
   return {
