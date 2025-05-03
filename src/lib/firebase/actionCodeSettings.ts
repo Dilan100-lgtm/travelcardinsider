@@ -8,30 +8,18 @@ import { ActionCodeSettings } from 'firebase/auth';
  * cross-platform handling. Otherwise, adjust the URL as needed.
  */
 export default function getActionCodeSettings(): ActionCodeSettings {
-  // Use environment variables for URLs to easily switch between dev and prod
-  const callbackUrl = process.env.NEXT_PUBLIC_FIREBASE_CALLBACK_URL || 'https://www.travelcardinsider.com/auth/callback';
-  const dynamicLinkDomain = process.env.NEXT_PUBLIC_FIREBASE_DYNAMIC_LINK_DOMAIN || 'www.travelcardinsider.com'; // Replace with your domain if using
+  const callbackUrl =
+    process.env.NEXT_PUBLIC_FIREBASE_CALLBACK_URL ||
+    'http://localhost:3000/auth/callback';
 
   return {
-    // URL must be whitelisted in the Firebase Console > Authentication > Settings > Authorized domains
-    url: callbackUrl, // Your production or local callback URL
-
-    // This must be true.
+    url: callbackUrl,
     handleCodeInApp: true,
-
-    // Optional: iOS bundle ID and Android package name if using mobile apps.
-    // iOS: { bundleId: 'com.example.ios' },
-    // android: {
-    //   packageName: 'com.example.android',
-    //   installApp: true,
-    //   minimumVersion: '12'
-    // },
-
-    // Optional: Firebase Dynamic Link domain for shorter/more robust links.
-    // Requires setting up Dynamic Links in Firebase console. Comment out if not using.
-    dynamicLinkDomain: dynamicLinkDomain
+    // Uncomment the next line only if you set up Dynamic Links in Firebase:
+    // dynamicLinkDomain: process.env.NEXT_PUBLIC_FIREBASE_DYNAMIC_LINK_DOMAIN || 'travelcardinsider.page.link'
   };
 }
+
 
 /*
  * Usage Example in pages/subscribe.tsx:
