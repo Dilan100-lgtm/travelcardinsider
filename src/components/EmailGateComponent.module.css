@@ -69,7 +69,7 @@
   border-radius: var(--border-radius-md);
   margin-bottom: var(--spacing-md);
   box-sizing: border-box;
-  transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease, background-color var(--transition-speed) ease; /* Added background transition */
+  transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
 }
 
 .inputField::placeholder {
@@ -82,11 +82,6 @@
   box-shadow: var(--shadow-focus);
 }
 
-.inputField:disabled {
-  background-color: var(--bg-light-gray); /* Slightly grey out disabled input */
-  cursor: not-allowed;
-}
-
 .submitButton {
   width: 100%;
   padding: 14px var(--spacing-lg); /* Large padding */
@@ -97,12 +92,8 @@
   border: none;
   border-radius: var(--border-radius-md); /* Consistent radius */
   cursor: pointer;
-  transition: background-color var(--transition-speed) ease, transform 0.1s ease, opacity var(--transition-speed) ease; /* Added opacity transition */
+  transition: background-color var(--transition-speed) ease, transform 0.1s ease;
   margin-bottom: var(--spacing-md);
-  min-height: 50px; /* Ensure minimum height for spinner layout */
-  display: inline-flex; /* Helps center spinner */
-  align-items: center;
-  justify-content: center;
 }
 
 .submitButton:hover:not(:disabled) {
@@ -115,35 +106,8 @@
 }
 
 .submitButton:disabled {
-  opacity: 0.7; /* Keep general disabled opacity */
+  opacity: 0.6;
   cursor: not-allowed;
-}
-
-/* --- Loading State and Spinner --- */
-.submitButton.loading {
-  background-color: var(--color-primary-hover); /* Optional: Darker background */
-  cursor: wait;
-}
-
-.submitButton.loading:disabled {
-   opacity: 1; /* Don't apply extra opacity when disabled *because* it's loading */
-   cursor: wait;
-}
-
-/* Simple CSS Spinner */
-.spinner {
-  display: inline-block;
-  width: 1.2em; /* Adjust size as needed */
-  height: 1.2em;
-  border: 3px solid rgba(255, 255, 255, 0.3); /* Slightly thicker border */
-  border-radius: 50%;
-  border-top-color: #fff; /* Spinner color (white for dark button) */
-  animation: spin 1s ease-in-out infinite;
-  /* vertical-align: middle; Removed, handled by flexbox on button */
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
 }
 
 .helperText {
@@ -179,20 +143,6 @@
 
 /* --- Toaster Customization (Optional) --- */
 .toasterCustom {
-  position: fixed;
-  bottom: 20px; /* Adjust as needed */
-  right: 20px; /* Adjust as needed */
-  background-color: var(--color-background-light); /* Light background */
-  color: var(--color-text-primary); /* Primary text color */
-  padding: var(--spacing-md); /* Padding for toaster */
-  border-radius: var(--border-radius-md); /* Rounded corners */
-  box-shadow: var(--shadow-medium); /* Shadow for depth */
-  z-index: 2000; /* Ensure it's above other elements */
-  transition: opacity var(--transition-speed) ease-in-out; /* Smooth transition */
-  opacity: 0; /* Start hidden for animation */
-  animation: fadeIn var(--transition-speed) ease-in-out forwards; /* Fade in animation */
-  /* Optional: Add a slide-in effect from the bottom */
-  
   /* Adjust toaster position if needed, relative to the modal */
   /* Example: move it slightly higher */
   /* top: calc(50% - 250px); */
@@ -218,7 +168,6 @@
   .submitButton {
     padding: 12px var(--spacing-md); /* Adjust padding */
     font-size: 0.95rem;
-    min-height: 46px; /* Adjust min height */
   }
 
   .confirmationTitle {
