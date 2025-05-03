@@ -1,88 +1,142 @@
-/* ----------  Design Tokens  ---------- */
+/* ----------  Design Tokens (Premium)  ---------- */
+
 
 
 /* ----------  Layout Wrapper  ---------- */
 .page {
-  min-height: calc(100vh - 110px);       /* remove header+footer height */
-  background: var(--bg-paper);
+  /* Keep existing height calculation */
+  min-height: calc(100vh - 110px);
+  background: var(--color-background-page); /* Use variable */
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  padding: 5rem 1.25rem 6rem;
+  align-items: center; /* Center vertically for shorter content */
+  padding: var(--spacing-xxl) var(--spacing-lg); /* Use spacing variables, more top/bottom padding */
 }
 
 /* ----------  Card  ---------- */
 .card {
-  background: #fff;
-  border-radius: var(--radius-out);
-  box-shadow: var(--shadow-lg);
+  background: var(--color-background-card); /* Use variable */
+  border-radius: var(--border-radius-md);   /* Use variable */
+  box-shadow: var(--shadow-lg);             /* Use variable */
+  border: 1px solid var(--color-border);     /* Add subtle border */
   width: 100%;
-  max-width: 520px;
-  padding: 3rem 2.25rem 2.75rem;
+  max-width: 480px; /* Slightly smaller max-width for cleaner look */
+  padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-lg); /* Use variables, adjust padding */
   text-align: center;
 }
 
 /* ----------  Headings  ---------- */
 .h1 {
-  font-size: 1.9rem;
-  font-weight: 700;
-  color: var(--brand-primary);
-  margin-bottom: 1rem;
+  font-size: 1.75rem; /* Adjusted size */
+  font-weight: 600; /* Slightly less heavy */
+  color: var(--color-text-primary); /* Use variable */
+  margin-bottom: var(--spacing-sm); /* Use variable */
+  line-height: 1.3;
+  letter-spacing: -0.01em; /* Subtle tightening */
 }
 
 .sub {
-  font-size: 0.95rem;
-  color: #4b5563;
-  margin-bottom: 2.25rem;
+  font-size: 1rem; /* Slightly larger */
+  color: var(--color-text-secondary); /* Use variable */
+  margin-bottom: var(--spacing-xl); /* More space below sub */
+  line-height: 1.6;
+  max-width: 90%; /* Prevent full width */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ----------  Form Controls  ---------- */
 .inputGroup {
   display: flex;
-  gap: 0.55rem;
-  margin-bottom: 1.65rem;
+  gap: var(--spacing-sm); /* Use variable */
+  margin-bottom: var(--spacing-lg); /* Use variable */
 }
 
 .input {
   flex: 1;
-  font-size: 0.95rem;
-  border: 1px solid #d1d5db;
-  padding: 0.85rem 1rem;
-  border-radius: var(--radius-in);
-  transition: border var(--trans-fast), box-shadow var(--trans-fast);
+  font-size: 1rem; /* Standardize font size */
+  border: 1px solid var(--color-border); /* Use variable */
+  padding: var(--spacing-sm) var(--spacing-md); /* Use variables */
+  border-radius: var(--border-radius-sm); /* Use variable */
+  background-color: var(--color-background-card); /* Match card bg */
+  color: var(--color-text-primary);
+  transition: border-color var(--transition-speed) var(--transition-timing),
+              box-shadow var(--transition-speed) var(--transition-timing);
+}
+
+.input::placeholder {
+  color: var(--color-text-light);
+  opacity: 0.8;
 }
 
 .input:focus {
   outline: none;
-  border-color: var(--brand-primary);
-  box-shadow: 0 0 0 3px rgba(0, 20, 168, 0.2);
+  border-color: var(--color-border-focus); /* Use variable */
+  box-shadow: 0 0 0 3px var(--color-primary-light); /* Use variable */
 }
 
 .btn {
   flex-shrink: 0;
-  padding: 0.85rem 1.35rem;
+  padding: var(--spacing-sm) var(--spacing-lg); /* Use variables */
+  font-size: 1rem; /* Match input */
   font-weight: 600;
-  color: #fff;
-  background: linear-gradient(135deg, var(--brand-primary) 0%, #0023ff 70%);
+  color: var(--color-text-on-primary); /* Use variable */
+  /* Option 1: Refined Gradient */
+  background: linear-gradient(135deg, var(--color-primary-gradient-start) 0%, var(--color-primary-gradient-end) 100%);
+  /* Option 2: Solid Color (uncomment to use) */
+  /* background: var(--color-primary); */
   border: none;
-  border-radius: var(--radius-in);
+  border-radius: var(--border-radius-sm); /* Match input */
   cursor: pointer;
-  transition: filter var(--trans-fast), transform var(--trans-fast);
+  display: inline-flex; /* Align spinner nicely */
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm); /* Space between text and spinner */
+  transition: background var(--transition-speed) var(--transition-timing),
+              filter var(--transition-speed) var(--transition-timing),
+              transform var(--transition-speed) var(--transition-timing),
+              box-shadow var(--transition-speed) var(--transition-timing);
+  box-shadow: var(--shadow-sm); /* Add subtle shadow */
 }
 
-.btn:hover   { filter: brightness(1.1); }
-.btn:active  { transform: translateY(1px); }
-.btn:disabled{ opacity: 0.55; cursor: not-allowed; }
+.btn:hover {
+  /* Option 1: Refined Gradient Hover */
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+  /* Option 2: Solid Color Hover */
+  /* background: var(--color-primary-hover); */
+  filter: none; /* Remove brightness filter if using color change */
+  box-shadow: var(--shadow-md); /* Enhance shadow on hover */
+}
+.btn:active {
+  transform: translateY(1px);
+  box-shadow: none; /* Remove shadow on press */
+}
+.btn:focus-visible { /* Improved focus style */
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-primary-light); /* Use variable */
+}
+
+.btn:disabled {
+  opacity: 0.6; /* Slightly more visible when disabled */
+  cursor: not-allowed;
+  background: var(--color-primary); /* Keep base color but faded */
+  box-shadow: none;
+  filter: none;
+}
+.btn:disabled:hover {
+    background: var(--color-primary); /* Prevent hover change when disabled */
+}
+
 
 /* ----------  Spinner  ---------- */
 .spinner {
-  width: 1.15rem;
-  height: 1.15rem;
-  border: 3px solid #c7ccff;
-  border-top-color: var(--brand-primary);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin-left: 0.6rem;
+  width: 1rem; /* Slightly smaller */
+  height: 1rem;
+  border: 2px solid var(--color-spinner-base); /* Use variable */
+  border-top-color: var(--color-spinner-accent); /* Use variable */
+  border-radius: var(--border-radius-full); /* Use variable */
+  animation: spin 0.8s linear infinite; /* Slightly faster */
+  /* margin-left: 0.6rem; Removed, handled by gap in .btn */
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
@@ -91,20 +145,67 @@
 .error {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.55rem;
-  font-size: 0.95rem;
-  border-radius: var(--radius-in);
-  padding: 0.85rem 1rem;
-  margin-bottom: 1.5rem;
+  justify-content: center; /* Center content */
+  gap: var(--spacing-sm); /* Use variable */
+  font-size: 0.9rem; /* Slightly smaller */
+  font-weight: 500; /* Medium weight */
+  border-radius: var(--border-radius-sm); /* Use variable */
+  padding: var(--spacing-sm) var(--spacing-md); /* Use variables */
+  margin-bottom: var(--spacing-lg); /* Use variable */
+  text-align: left; /* Align text left within centered container */
+  width: 100%; /* Ensure full width */
 }
 
-.success { background: #ecfdf5; color: #026e55; }
-.error   { background: #fef2f2; color: #b91c1c; }
+.success {
+  background: var(--color-success-background); /* Use variable */
+  color: var(--color-success);                 /* Use variable */
+  border: 1px solid rgba(0, 102, 68, 0.2);     /* Subtle border */
+}
+.error {
+  background: var(--color-error-background);   /* Use variable */
+  color: var(--color-error);                   /* Use variable */
+  border: 1px solid rgba(191, 38, 0, 0.2);     /* Subtle border */
+}
+
+/* Optional: Add icons using pseudo-elements if you don't add them in JSX */
+/* .success::before { content: '✅'; margin-right: var(--spacing-sm); } */
+/* .error::before { content: '⚠️'; margin-right: var(--spacing-sm); } */
+
+
+/* ----------  Small Text Below Form ---------- */
+.card > p:last-of-type { /* Target the last paragraph in the card */
+    font-size: 0.8rem;
+    color: var(--color-text-light); /* Use variable */
+    margin-top: var(--spacing-lg); /* Add space above */
+}
 
 /* ----------  Responsive  ---------- */
 @media (max-width: 480px) {
-  .h1        { font-size: 1.7rem; }
-  .inputGroup{ flex-direction: column; }
-  .btn       { width: 100%; }
+  .page {
+      padding: var(--spacing-xl) var(--spacing-md); /* Reduce padding on mobile */
+      align-items: flex-start; /* Align card to top on mobile */
+  }
+  .card {
+      padding: var(--spacing-lg) var(--spacing-md); /* Reduce card padding */
+  }
+  .h1 {
+      font-size: 1.6rem; /* Adjust heading size */
+  }
+  .sub {
+      font-size: 0.95rem;
+      margin-bottom: var(--spacing-lg);
+  }
+  .inputGroup {
+      flex-direction: column; /* Stack input and button */
+      gap: var(--spacing-md); /* Increase gap when stacked */
+  }
+  .btn {
+      width: 100%; /* Make button full width */
+      padding: var(--spacing-md) var(--spacing-lg); /* Larger padding for easier tapping */
+  }
+  .success,
+  .error {
+      font-size: 0.85rem;
+      padding: var(--spacing-sm) var(--spacing-sm);
+  }
 }
