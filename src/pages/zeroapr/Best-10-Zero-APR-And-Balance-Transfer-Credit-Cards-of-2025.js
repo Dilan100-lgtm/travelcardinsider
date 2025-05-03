@@ -498,7 +498,7 @@ export default function BestZeroAprCardsPage() {
                     <div className={styles.heroContent}>
                         <h1 className={styles.heroTitle}>Best 0% APR & Balance Transfer Savings in 2025</h1>
                         <p className={styles.heroDescription}>Eliminate interest charges and simplify debt. Explore our premier selection of credit cards offering introductory 0% APR periods for purchases and balance transfers.</p>
-                        <div className={styles.heroCta}><a href="#comparison-table" className={`${styles.ctaButton} ${styles.ctaPrimary}`}>Compare Top Cards</a></div>
+                        <div className={styles.heroCta}><a href="/compare" className={`${styles.ctaButton} ${styles.ctaPrimary}`}>Compare Top Cards</a></div>
                         <p className={styles.heroDisclaimer}>Advertiser Disclosure: We may receive compensation via links on this page. Opinions are our own. Offers are subject to change; verify terms with the issuer.</p>
                     </div>
                 </section>

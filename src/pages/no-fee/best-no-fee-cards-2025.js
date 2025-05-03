@@ -481,7 +481,7 @@ export default function BestNoFeeCardsPage() { // Renamed component function
                     <div className={styles.heroContent}>
                         <h1 className={styles.heroTitle}>Discover the Best 10 No Annual Fee Travel Credit Cards of 2025</h1>
                         <p className={styles.heroDescription}>Compare top-rated travel credit cards, maximize rewards, and unlock exclusive perks for your next adventure. Whether you’re a frequent flyer, luxury traveler, or budget explorer, find the perfect card to suit your needs.</p>
-                        <div className={styles.heroCta}><a href="#comparison-table" className={`${styles.ctaButton} ${styles.ctaPrimary}`}>Compare Now</a></div>
+                        <div className={styles.heroCta}><a href="/compare" className={`${styles.ctaButton} ${styles.ctaPrimary}`}>Compare Now</a></div>
                         <p className={styles.heroDisclaimer}>We may receive compensation when you click on links to certain credit card products on our site. However, our editorial opinions remain our own. Offers are subject to change. Always verify terms with the official issuer.</p>
                     </div>
                 </section>

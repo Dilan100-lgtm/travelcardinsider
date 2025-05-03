@@ -122,7 +122,7 @@ export default function FamilyFriendlyTravelCards2025() {
                 <a href="#top-five-cards">The Top 5 Family-Friendly Travel Cards for 2025</a>
               </li>
               <li>
-                <a href="#comparison-table">Comparison Table</a>
+                <a href="/compare">Comparison Table</a>
               </li>
               <li>
                 <a href="#faqs-families">FAQs: Family Travel &amp; Credit Cards</a>

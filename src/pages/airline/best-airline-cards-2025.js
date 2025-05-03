@@ -345,7 +345,7 @@ export default function BestAirlineCardsPage() {
                         {/* Use content from Airline HTML */}
                         <h1 className={styles.heroTitle}>Discover the Best 10 Airline Travel Credit Cards of 2025</h1>
                         <p className={styles.heroDescription}>Compare top-rated travel credit cards, maximize rewards, and unlock exclusive perks for your next adventure. Whether you’re a frequent flyer, luxury traveler, or budget explorer, find the perfect card to suit your needs.</p>
-                        <div className={styles.heroCta}><a href="#comparison-table" className={`${styles.ctaButton} ${styles.ctaPrimary}`}>Compare Now</a></div>
+                        <div className={styles.heroCta}><a href="/compare" className={`${styles.ctaButton} ${styles.ctaPrimary}`}>Compare Now</a></div>
                         <p className={styles.heroDisclaimer}>Advertiser Disclosure: We may receive compensation via links on this page. Opinions are our own. Offers are subject to change; verify terms with the issuer.</p>
                          {/* Add disclaimer if present in source HTML */}
                     </div>
