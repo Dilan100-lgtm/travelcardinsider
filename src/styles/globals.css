@@ -3,11 +3,11 @@
    ========================================================================== */
    :root {
     /* Colors */
-    --color-primary: #0052cc; /* Professional Blue */
+    --color-primary: #0052cc;
     --color-primary-dark: #0041a3;
     --color-primary-light: #e7f0ff;
-    --color-secondary: #172b4d; /* Dark Slate for text */
-    --color-accent: #FFD700; /* Gold accent */
+    --color-secondary: #172b4d;
+    --color-accent: #FFD700;
     --color-accent-dark: #e6c200;
     --color-text-primary: #172b4d;
     --color-text-secondary: #42526e;
@@ -17,14 +17,14 @@
     --color-text-link: var(--color-primary);
     --color-text-link-hover: var(--color-primary-dark);
     --color-background-body: #ffffff;
-    --color-background-light: #f8f9fa; /* Light grey sections */
+    --color-background-light: #f8f9fa;
     --color-background-medium: #e9ecef;
     --color-background-overlay: rgba(23, 43, 77, 0.6);
-    --color-background-footer: #000080; /* Navy */
-    --color-border: #dfe1e6;
+    --color-background-footer: #000080;
+    --color-border: #dfe1e6; /* Lighter border */
     --color-border-medium: #c1c7d0;
     --color-border-focus: var(--color-primary);
-    --color-border-accent: var(--color-accent); /* Gold */
+    --color-border-accent: var(--color-accent);
     --color-success: #006644;
     --color-success-light: #e3fcef;
     --color-danger: #dc2626;
@@ -34,33 +34,32 @@
     --font-family-serif: 'Playfair Display', Georgia, serif;
     --font-family-base: var(--font-family-sans);
     --font-family-heading: var(--font-family-serif);
-    --font-size-base: 1rem; /* 16px */
-    --font-size-sm: 0.875rem; /* 14px */
-    --font-size-lg: 1.125rem; /* 18px */
+    --font-size-base: 1rem;
+    --font-size-sm: 0.875rem;
+    --font-size-lg: 1.125rem;
     --line-height-base: 1.6;
     --line-height-heading: 1.3;
   
     /* Spacing */
-    --spacing-xs: 0.25rem; /* 4px */
-    --spacing-sm: 0.5rem;  /* 8px */
-    --spacing-md: 1rem;    /* 16px */
-    --spacing-lg: 1.5rem;  /* 24px */
-    --spacing-xl: 2rem;    /* 32px */
-    --spacing-xxl: 3rem;   /* 48px */
-    --spacing-section: 4rem; /* 64px */
-    --spacing-section-lg: 6rem; /* 96px */
-  
-    /* ADDED: Define space between sections */
-    --spacing-section-gap: var(--spacing-section); /* 4rem (64px), adjust as needed */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-xxl: 3rem;
+    --spacing-section: 4rem;
+    --spacing-section-lg: 6rem;
+    --spacing-section-gap: var(--spacing-section); /* Space between sections */
   
     /* Borders & Shadows */
     --border-radius-sm: 4px;
     --border-radius-md: 8px;
     --border-radius-lg: 12px;
     --border-radius-pill: 9999px;
-    --shadow-soft: 0 4px 8px rgba(9, 30, 66, 0.08);
-    --shadow-medium: 0 6px 16px rgba(9, 30, 66, 0.12);
-    --shadow-focus: 0 0 0 3px rgba(0, 82, 204, 0.2);
+    /* CLEANER LOOK: Softer shadows */
+    --shadow-soft: 0 2px 6px rgba(9, 30, 66, 0.07);
+    --shadow-medium: 0 4px 12px rgba(9, 30, 66, 0.1);
+    --shadow-focus: 0 0 0 3px rgba(0, 82, 204, 0.2); /* Keep focus clear */
   
     /* Transitions */
     --transition-speed-fast: 0.15s;
@@ -90,9 +89,9 @@
   }
   
   main {
-    position: relative;
+    position: relative; /* Crucial for absolute background */
     overflow-x: hidden;
-    padding-top: 3.5rem; /* Adjust if header height changes */
+    padding-top: 3.5rem;
   }
   
   /* Basic Reset / Normalization */
@@ -112,7 +111,7 @@
   
   
   /* --- Header Styles --- */
-  /* Includes mobile and desktop, search, dropdowns */
+  /* Unchanged from previous version */
   .site-header { position: fixed; top: 0; left: 0; right: 0; background: var(--color-background-body); box-shadow: var(--shadow-soft); z-index: 1000; height: 3.5rem; font-weight: 500; font-size: var(--font-size-sm); line-height: 1; }
   .header-inner { display: flex; align-items: center; justify-content: space-between; height: 100%; max-width: 1280px; margin: 0 auto; padding: 0 var(--spacing-md); }
   .logo-toggle-container { display: flex; align-items: center; flex-shrink: 0; }
@@ -150,16 +149,54 @@
   @media (max-width: 1099px) { .menu-toggle { display: flex; } .main-nav { position: fixed; } .submenu-toggle-button { display: inline-block; } .search-results-base, .search-results-dropdown, .search-no-results { position: static; box-shadow: none; max-height: 200px; margin-top: var(--spacing-sm); max-width: none; } .header-actions { order: -1; border-bottom: 1px solid var(--color-border); padding-bottom: var(--spacing-md); margin-bottom: var(--spacing-md); } .search-container { margin: 0; } .search-container input[type="search"] { max-width: none; } }
   @media (min-width: 1100px) { .menu-toggle, .menu-backdrop, .submenu-toggle-button { display: none; } .main-nav { position: static; width: auto; height: 100%; transform: none; box-shadow: none; overflow: visible; padding: 0; margin: 0; background: transparent; display: flex; flex-direction: row; align-items: center; transition: none; } .nav-list { display: flex; flex-direction: row; align-items: center; height: 100%; list-style: none; padding: 0; margin: 0 0 0 var(--spacing-md); } .nav-list li { margin: 0 var(--spacing-sm); height: 100%; display: flex; align-items: center; } .nav-list li.header-actions { margin: 0 var(--spacing-md) 0 auto; padding: 0; border: none; height: auto; } .nav-list li.header-actions .search-container input[type="search"] { width: 200px; font-size: var(--font-size-sm); padding: var(--spacing-xs) var(--spacing-sm); transition: width var(--transition-speed-normal) ease; } .nav-list li.header-actions .search-container input[type="search"]:focus { width: 250px; } .nav-list li.header-actions .search-container input[type="search"]:focus ~ .search-results-base, .nav-list li.header-actions .search-container input[type="search"]:focus ~ .search-results-dropdown, .nav-list li.header-actions .search-container input[type="search"]:focus ~ .search-no-results { left: 0; width: 250px; } .nav-list a.nav-link { display: flex; align-items: center; height: 100%; padding: 0 var(--spacing-sm); border-bottom: none; font-weight: 500; position: relative; color: var(--color-text-secondary); font-size: var(--font-size-sm); } .nav-list a.nav-link:hover { color: var(--color-primary); background-color: transparent; } .nav-list a.nav-link::after { content: ''; position: absolute; width: 0; height: 2px; display: block; left: 50%; transform: translateX(-50%); bottom: 10px; background: var(--color-primary); transition: width var(--transition-speed-normal) ease; } .nav-list a.nav-link:hover::after { width: 80%; } .nav-list li a.desktop-subscribe-button { display: inline-flex; align-items: center; background-color: var(--color-primary); color: var(--color-text-on-primary); padding: var(--spacing-xs) var(--spacing-md); border-radius: var(--border-radius-md); font-weight: bold; text-decoration: none; transition: background-color var(--transition-speed-normal) ease; margin-left: var(--spacing-md); font-size: var(--font-size-sm); } .nav-list li a.desktop-subscribe-button:hover { background-color: var(--color-primary-dark); text-decoration: none; } .nav-list li a.desktop-subscribe-button::after { display: none; } .nav-list li.has-dropdown { position: relative; } .has-dropdown .dropdown-menu { position: absolute; background: var(--color-background-body); margin: 0; padding: var(--spacing-sm) 0; border: 1px solid var(--color-border); box-shadow: var(--shadow-medium); border-radius: var(--border-radius-md); display: none; top: 100%; left: 0; min-width: 220px; z-index: 1000; list-style: none; opacity: 0; visibility: hidden; transform: translateY(10px); transition: opacity var(--transition-speed-normal) ease, visibility var(--transition-speed-normal) ease, transform var(--transition-speed-normal) ease; } .nav-list li.has-dropdown:hover > .dropdown-menu { display: block; opacity: 1; visibility: visible; transform: translateY(0); } .dropdown-menu li { margin: 0; height: auto; display: block; } .dropdown-menu a { display: block; padding: var(--spacing-sm) var(--spacing-md); font-size: var(--font-size-sm); color: var(--color-text-secondary); white-space: nowrap; border: none; transition: background-color var(--transition-speed-fast) ease, color var(--transition-speed-fast) ease; } .dropdown-menu a:hover { color: var(--color-primary-dark); background-color: var(--color-primary-light); text-decoration: none; } .dropdown-menu a::after { display: none; } }
   
+  
   /* --- Page Background & Content Wrapper --- */
-  .page-background-image-container { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden; }
-  .page-background-image-container > div { height: 100%; /* Ensure next/image wrapper fills container */ }
-  .main-content-wrapper { position: relative; z-index: 1; background-color: transparent; }
+  .page-background-image-container {
+    /* CHANGE: Position absolute relative to main */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Cover the height of the main element */
+    z-index: -1; /* Behind content */
+    overflow: hidden;
+  }
+  .page-background-image-container > div {
+      height: 100%; /* Ensure next/image wrapper fills container */
+      /* Apply object-fit directly to the Image component or its wrapper if needed */
+      & > img { object-fit: cover; }
+  }
+  .main-content-wrapper {
+    position: relative;
+    z-index: 1; /* Above background */
+    background-color: transparent; /* Allow section backgrounds to show */
+  }
   
   /* --- Hero Content Area (Over Background) --- */
-  .hero-content-container { position: relative; z-index: 2; padding: var(--spacing-section-lg) var(--spacing-md); min-height: 60vh; display: flex; align-items: center; justify-content: center; }
-  .hero-content-overlay { max-width: 900px; /* background: rgba(0, 0, 0, 0.3); padding: var(--spacing-xl); border-radius: var(--border-radius-md); */ /* Optional overlay styles */ }
-  .hero-content-container h1 { color: #ffffff; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); }
-  .hero-content-container p { color: #e0e0e0; text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); }
+  .hero-content-container {
+    position: relative;
+    z-index: 2; /* Above background */
+    padding: var(--spacing-section-lg) var(--spacing-md);
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-content-overlay {
+      max-width: 900px;
+      /* Optional: Add a subtle background to overlay if needed */
+      /* background: rgba(0, 0, 0, 0.2); */
+      /* padding: var(--spacing-xl); */
+      /* border-radius: var(--border-radius-md); */
+  }
+  .hero-content-container h1 {
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  .hero-content-container p {
+    color: #e0e0e0;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  }
   
   /* --- Buttons --- */
   .button-base { display: inline-block; padding: var(--spacing-sm) var(--spacing-lg); border-radius: var(--border-radius-md); font-weight: bold; text-decoration: none; text-align: center; cursor: pointer; transition: background-color var(--transition-speed-normal) ease, transform var(--transition-speed-fast) ease, box-shadow var(--transition-speed-normal) ease; border: 1px solid transparent; line-height: 1.4; }
@@ -181,16 +218,16 @@
   
   /* --- Featured Cards Section --- */
   #featured-cards {
-    background-color: var(--color-background-light); /* Ensure background */
+    background-color: var(--color-background-light); /* Solid background required */
     position: relative;
-    z-index: 2;
-    /* Padding via Tailwind py-16 lg:py-24 */
-    margin-bottom: var(--spacing-section-gap); /* ADDED SPACE */
+    z-index: 2; /* Above scrolling background */
+    margin-bottom: var(--spacing-section-gap); /* Space below */
+    /* Padding via Tailwind */
   }
   #featured-cards h2 { color: var(--color-text-primary); }
   .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: var(--spacing-xl); padding: 0; margin: 0 auto; }
-  .featured-card { display: flex; flex-direction: column; background-color: var(--color-background-body); padding: var(--spacing-lg); border-radius: var(--border-radius-lg); color: var(--color-text-secondary); box-shadow: var(--shadow-soft); overflow: hidden; text-align: center; transition: transform var(--transition-speed-normal) ease, box-shadow var(--transition-speed-normal) ease; }
-  .featured-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-medium); }
+  .featured-card { display: flex; flex-direction: column; background-color: var(--color-background-body); padding: var(--spacing-lg); border-radius: var(--border-radius-lg); color: var(--color-text-secondary); box-shadow: var(--shadow-soft); /* Softer shadow */ overflow: hidden; text-align: center; transition: transform var(--transition-speed-normal) ease, box-shadow var(--transition-speed-normal) ease; }
+  .featured-card:hover { transform: translateY(-4px); /* Slightly less lift */ box-shadow: var(--shadow-medium); }
   .featured-card__image { width: 100%; max-width: 280px; height: auto; aspect-ratio: 400 / 252; object-fit: contain; border-radius: var(--border-radius-md); margin: 0 auto var(--spacing-lg) auto; }
   .featured-card__description { display: flex; flex-direction: column; text-align: center; align-items: center; flex-grow: 1; margin-top: auto; }
   .featured-card__description h3 { margin: 0 0 var(--spacing-sm) 0; font-size: var(--font-size-lg); line-height: var(--line-height-heading); color: var(--color-text-primary); font-family: var(--font-family-base); }
@@ -199,21 +236,21 @@
   
   /* --- Top Reviews Section Wrapper --- */
   .top-reviews-section-wrapper {
-     background-color: var(--color-background-body); /* Example background */
+     background-color: var(--color-background-body); /* Example: Solid background required */
      position: relative;
-     z-index: 2;
-     margin-bottom: var(--spacing-section-gap); /* ADDED SPACE */
-     /* Add padding within the component or here if needed */
+     z-index: 2; /* Above scrolling background */
+     margin-bottom: var(--spacing-section-gap); /* Space below */
+     /* Add internal padding via the component's styles or here */
      /* padding: var(--spacing-section) 0; */
   }
   
   /* --- Comparison Section --- */
   #compare {
-    background-color: var(--color-primary-light); /* Ensure background */
+    background-color: var(--color-primary-light); /* Solid background required */
     position: relative;
-    z-index: 2;
-    margin-bottom: var(--spacing-section-gap); /* ADDED SPACE */
-    /* Padding/text styles via Tailwind */
+    z-index: 2; /* Above scrolling background */
+    margin-bottom: var(--spacing-section-gap); /* Space below */
+    /* Padding via Tailwind */
   }
   #compare .container { text-align: center; }
   #compare h2 { color: var(--color-text-primary); }
@@ -221,35 +258,34 @@
   
   /* --- Reviews Section --- */
   .reviews-container {
-    background-color: var(--color-background-body); /* Ensure background */
+    background-color: var(--color-background-body); /* Solid background required */
     position: relative;
-    z-index: 2;
-    margin-bottom: var(--spacing-section-gap); /* ADDED SPACE */
+    z-index: 2; /* Above scrolling background */
+    margin-bottom: var(--spacing-section-gap); /* Space below */
     /* Padding via Tailwind */
   }
   .reviews-container h2 { color: var(--color-text-primary); }
   .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: var(--spacing-xl); }
   .reviews-grid .card { background: var(--color-background-body); padding: 0; border-radius: var(--border-radius-lg); text-align: left; box-shadow: var(--shadow-soft); transition: transform var(--transition-speed-normal) ease, box-shadow var(--transition-speed-normal) ease; display: flex; flex-direction: column; overflow: hidden; color: var(--color-text-secondary); }
-  .reviews-grid .card:hover { transform: translateY(-5px); box-shadow: var(--shadow-medium); }
+  .reviews-grid .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-medium); }
   .review_img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: center; display: block; }
   .reviews-grid .card-content { padding: var(--spacing-lg); display: flex; flex-direction: column; flex-grow: 1; }
   .reviews-grid .card h3 { color: var(--color-text-primary); font-size: var(--font-size-lg); margin: 0 0 var(--spacing-sm) 0; line-height: var(--line-height-heading); font-family: var(--font-family-base); }
   .reviews-grid .card h3 a { color: inherit; transition: color var(--transition-speed-normal) ease; }
   .reviews-grid .card h3 a:hover { color: var(--color-primary); text-decoration: none; }
-  .reviews-grid .card p { font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: var(--line-height-base); margin: 0 0 var(--spacing-md) 0; flex-grow: 1; /* line-clamp via Tailwind */ }
+  .reviews-grid .card p { font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: var(--line-height-base); margin: 0 0 var(--spacing-md) 0; flex-grow: 1; }
   .reviews-grid .card .cta-button-secondary { margin-top: auto; align-self: flex-start; }
   
   /* --- Footer --- */
   .site-footer {
     background: var(--color-background-footer);
     color: var(--color-text-on-dark);
-    /* Footer already has margin-top */
-    margin-top: var(--spacing-section);
+    margin-top: 0; /* Removed margin-top as last section now has margin-bottom */
     padding: var(--spacing-section) var(--spacing-md);
     border-top: 4px solid var(--color-border-accent);
     font-family: var(--font-family-serif);
     position: relative;
-    z-index: 2; /* Ensure footer is above background */
+    z-index: 2; /* Above scrolling background */
   }
   .footer-inner { max-width: 1200px; margin: 0 auto; }
   .footer-columns { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-xl); margin-bottom: var(--spacing-xl); }
