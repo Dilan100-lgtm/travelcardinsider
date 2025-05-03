@@ -1,223 +1,296 @@
-// File: src/pages/index.js
-// FINAL - Adjusted for background image covering content sections
-
+// src/pages/index.js
 import React from 'react';
-import Head from "next/head";
+import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
 
-import { getFeaturedReviews } from '@/utils/getAllReviews'; // Ensure this path is correct
+// Optional: Import dynamic components if sections become very heavy
+// import dynamic from 'next/dynamic';
+// const FeaturedCardsSection = dynamic(() => import('../components/FeaturedCardsSection'));
 
-// --- Dynamic Imports ---
-const TopReviewsSection = dynamic(() => import('@/components/TopReviewsSection'), {
-  // loading: () => <div className="container mx-auto px-4 py-16"><p>Loading top reviews...</p></div>,
-});
-// const ComparisonToolSection = dynamic(() => import('@/components/ComparisonToolSection'), {});
-// const ReviewsGridSection = dynamic(() => import('@/components/ReviewsGridSection'), {});
+// Assume data is fetched or defined here. Replace with actual data fetching (getStaticProps/getServerSideProps)
+// For demonstration, using placeholder data structures.
+const featuredCards = [
+    { id: 'csp', name: 'Chase Sapphire Preferred®', img: '/images/placeholder-card-csp.png', alt: 'Chase Sapphire Preferred Card', desc: 'Best for points beginners & flexible rewards.', offer: 'Earn 60,000 bonus points after spending $4,000 in 3 months.', applyLink: 'YOUR_AFFILIATE_LINK_CSP', reviewLink: '/reviews/chase-sapphire-preferred', offerBg: 'bg-blue-50' },
+    { id: 'amexplat', name: 'The Platinum Card®', img: '/images/placeholder-card-amex-plat.png', alt: 'Amex Platinum Card', desc: 'Best for luxury travel perks & lounge access.', offer: 'Earn 80,000 points after spending $6,000 in 6 months.', applyLink: 'YOUR_AFFILIATE_LINK_AMEXPLAT', reviewLink: '/reviews/amex-platinum', offerBg: 'bg-green-50' },
+    { id: 'venturex', name: 'Capital One Venture X', img: '/images/placeholder-card-venture-x.png', alt: 'Capital One Venture X Card', desc: 'Best for simple rewards & premium travel credits.', offer: 'Earn 75,000 miles after spending $4,000 in 3 months.', applyLink: 'YOUR_AFFILIATE_LINK_VENTUREX', reviewLink: '/reviews/capital-one-venture-x', offerBg: 'bg-indigo-50' },
+    { id: 'citi', name: 'Citi Premier® Card', img: '/images/placeholder-card-citi-premier.png', alt: 'Citi Premier Card', desc: 'Best for everyday spending rewards.', offer: 'Earn 60,000 ThankYou® Points after spending $4,000 in 3 months.', applyLink: 'YOUR_AFFILIATE_LINK_CITI', reviewLink: '/reviews/citi-premier', offerBg: 'bg-orange-50' },
+];
 
-export default function HomePage({ featuredReviews }) {
+const recentReviews = [
+    { slug: 'top-new-travel-credit-card-offers-2025', title: 'Top New Travel Credit Card Offers of 2025', img: '/images/placeholder-review-1.jpg', alt: 'Credit cards fanned out', excerpt: 'Breaking news on the latest card launches and exclusive sign-up bonuses you won\'t want to miss...' },
+    { slug: 'The-Ultimate-Guide-to-Lounge-Access-in-2025-How-to-Get-VIP-Treatment-at-Airports', title: 'Ultimate Guide to Lounge Access in 2025', img: '/images/placeholder-review-2.jpg', alt: 'Airport lounge', excerpt: 'How to get premium perks and comfort while traveling, covering Priority Pass, Centurion Lounges, and more...' },
+    { slug: 'Top-5-Family-Friendly-Travel-Cards-for-2025-Maximize-Points-&-Perks-with-Kids-in-Tow', title: '5 Best Family-Friendly Travel Cards', img: '/images/placeholder-review-3.jpg', alt: 'Family traveling', excerpt: 'Discover kid-friendly perks and money-saving benefits for your family vacations, from bonus points to free bags...' },
+];
 
-  const staticReviewsData = [
-      { img: "/AdobeStock_560041735_result.webp", alt: "Credit cards fanned out on desk showing various offers", title: "Top New Travel Credit Card Offers of 2025", desc: "Breaking news on the latest card launches and exclusive sign-up bonuses.", link: "/review/top-new-travel-credit-card-offers-2025", },
-      { img: "/AdobeStock_758160258_result.webp", alt: "Traveler relaxing comfortably in an airport lounge chair", title: "VIP Airport Lounge Access in 2025", desc: "How to get premium perks and comfort while traveling.", link: "/review/The-Ultimate-Guide-to-Lounge-Access-in-2025-How-to-Get-VIP-Treatment-at-Airports", },
-      { img: "/AdobeStock_947404358_result.webp", alt: "Happy family with luggage smiling at airport departure gate", title: "5 Family-Friendly Travel Cards for 2025", desc: "Kid-friendly perks and money-saving benefits for your family vacations.", link: "/review/Top-5-Family-Friendly-Travel-Cards-for-2025-Maximize-Points-&-Perks-with-Kids-in-Tow", },
-      { img: "/AdobeStock_964630446_result.webp", alt: "Upward trending graph overlaid on a credit report document", title: "Boost Your Credit Score for Premium Cards", desc: "Actionable tips to qualify for the best travel rewards cards.", link: "/review/How-to-Improve-Your-Credit-Score-Fast-for-Premium-Travel-Cards", },
-      { img: "/alex-bertha-Jyg7xHRmXiU-unsplash (1).jpg", alt: "Airplane window view overlooking clouds and plane wing during flight", title: "Redeem for Luxury Travel on a Budget", desc: "Stretch your points and miles for a premium travel experience.", link: "/review/2025-Points-&-Miles-Trends-Best-Ways-to-Redeem-for-Luxury-Travel-on-a-Budget", },
-      { img: "/AdobeStock_265601656_result.webp", alt: "Magnifying glass hovering over fine print details of a credit card", title: "Secret Travel Card Benefits", desc: "Little-known perks you might already have but never used.", link: "/review/Hidden-Perks-Secret-Travel-Card-Benefits-You-Probably-Didnt-Know-About-in-2025", },
-      { img: "/AdobeStock_446734479.webp", alt: "Open wallet showing several credit cards and a zero dollar bill", title: "The Best No Annual Fee Travel Cards", desc: "Earn rewards without worrying about recurring charges.", link: "/review/The-Best-Travel-Cards-with-No-Annual-Fee-Get-Big-Rewards-for-Free", },
-      { img: "/AdobeStock_241382254_result.webp", alt: "Balancing scale weighing money against credit card perks symbol", title: "Is a $500+ Annual Fee Worth It?", desc: "A cost-benefit breakdown of premium travel credit cards.", link: "/review/Premium-vs-Budget-Travel-Cards-Is-Paying-a-$500+Annual-Fee-Really-Worth-It", },
-    ];
+const trustLogos = [
+    { src: "/images/logo-placeholder-forbes.svg", alt: "Forbes logo" },
+    { src: "/images/logo-placeholder-cnbc.svg", alt: "CNBC logo" },
+    { src: "/images/logo-placeholder-wsj.svg", alt: "Wall Street Journal logo" },
+    { src: "/images/logo-placeholder-nerdwallet.svg", alt: "NerdWallet logo" },
+    { src: "/images/logo-placeholder-thepointsquy.svg", alt: "The Points Guy logo" },
+];
 
 
-  return (
-    <>
-      <Head>
-        <meta charSet="UTF-8" />
-        <title>Best Travel Credit Cards 2025 | TravelCardInsider</title>
-        <meta name="description" content="Compare the best travel credit cards of 2025. Find top rewards, points, travel perks, lounge access, and sign-up bonuses. Maximize your trips with TravelCardInsider."/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="canonical" href="https://www.travelcardinsider.com/" /> {/* TODO: Update URL */}
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" /> {/* TODO: Add sizes */}
-        <link rel="preload" as="image" href="/AdobeStock_299190080_result.webp"/> {/* TODO: Verify image path */}
-        <link rel="preload" href="/fonts/Roboto_Condensed-Regular.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/Roboto_Condensed-Bold.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/PlayfairDisplay-Regular.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-        <meta property="og:title" content="Best Travel Credit Cards 2025 | TravelCardInsider" />
-        <meta property="og:description" content="Compare top travel credit cards. Find the best rewards, perks, lounge access & bonuses to maximize your 2025 trips." />
-        <meta property="og:image" content="https://www.travelcardinsider.com/og-image-homepage.jpg" /> {/* TODO: Update OG image */}
-        <meta property="og:url" content="https://www.travelcardinsider.com/" /> {/* TODO: Update URL */}
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="TravelCardInsider" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Best Travel Credit Cards 2025 | TravelCardInsider" />
-        <meta name="twitter:description" content="Compare top travel rewards and lounge cards. Find the best bonuses & perks for 2025." />
-        <meta name="twitter:image" content="https://www.travelcardinsider.com/twitter-image-homepage.jpg" /> {/* TODO: Update Twitter image */}
-        {/* <meta name="twitter:site" content="@YourTwitterHandle" /> */}{/* TODO: Add Twitter handle */}
-        <meta name="geo.region" content="US" /> {/* TODO: Update region */}
-        <meta name="geo.placename" content="United States" /> {/* TODO: Update placename */}
-        <meta name="language" content="en-US" />
-        <meta name="distribution" content="US" /> {/* TODO: Update distribution */}
-        <link rel="alternate" href="https://www.travelcardinsider.com" hrefLang="en-us" /> {/* TODO: Update URL/lang */}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@graph": [ { "@type": "WebSite", "@id": "https://www.travelcardinsider.com/#website", "url": "https://www.travelcardinsider.com/", "name": "TravelCardInsider", "description": "Explore the best U.S. travel credit cards in 2025. Compare rewards, benefits, and find your perfect travel companion.", "publisher": { "@id": "https://www.travelcardinsider.com/#organization" }, "inLanguage": "en-US", "potentialAction": { "@type": "SearchAction", "target": "https://www.travelcardinsider.com/search?q={search_term_string}", "query-input": "required name=search_term_string" } }, { "@type": "Organization", "@id": "https://www.travelcardinsider.com/#organization", "name": "TravelCardInsider", "url": "https://www.travelcardinsider.com/", "logo": { "@type": "ImageObject", "@id": "https://www.travelcardinsider.com/#logo", "url": "https://www.travelcardinsider.com/logo-for-schema.png", "width": 180, "height": 30, "caption": "TravelCardInsider Logo" }, "sameAs": [ /* TODO: Add social links */ ] }, { "@type": "WebPage", "@id": "https://www.travelcardinsider.com/#webpage", "url": "https://www.travelcardinsider.com/", "name": "TravelCardInsider – Best Travel Credit Cards 2025", "isPartOf": { "@id": "https://www.travelcardinsider.com/#website" }, "about": { "@id": "https://www.travelcardinsider.com/#organization" }, "primaryImageOfPage": { "@type": "ImageObject", "@id": "https://www.travelcardinsider.com/#heroImage", "url": "https://www.travelcardinsider.com/AdobeStock_299190080_result.webp", "width": 1920, "height": 1080, "caption": "Scenic travel background representing adventure and rewards through travel credit cards" }, "datePublished": "2025-01-01T00:00:00+00:00", "dateModified": new Date().toISOString(), "inLanguage": "en-US", }, { "@type": "Product", "@id": "https://www.travelcardinsider.com/reviews/chase-sapphire-preferred/#product", "name": "Chase Sapphire Preferred® Card", "image": "https://www.travelcardinsider.com/sapphire_preferred_card.png", "description": "Top pick for travel rewards beginners. Earn valuable Chase Ultimate Rewards® points on travel & dining. Bonus: 60,000 points after $4,000 spend in 3 months. $95 annual fee.", "brand": { "@type": "Brand", "name": "Chase" }, "sku": "CSP-001", "mpn": "CSP2025", "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "255" /* TODO: Update dynamically */ }, "offers": { "@type": "Offer", "url": "YOUR_AFFILIATE_LINK_CSP" /* TODO: Add link */, "price": "95", "priceCurrency": "USD", "priceValidUntil": "2025-12-31", "availability": "https://schema.org/OnlineOnly", "description": "$95 Annual Fee" }, "category": "Travel Credit Card" }, /* TODO: Add other product schemas */ ] })}} />
-      </Head>
+export default function HomePage() {
+    // TODO: Replace hardcoded data above with data fetched via getStaticProps or getServerSideProps
 
-      {/* Assumes Header/Footer are in _app.js Layout */}
-      <main className="relative"> {/* Sets positioning context for children */}
+    return (
+        <>
+            <Head>
+                <title>Travel Card Insider - Best Travel Credit Cards 2025</title>
+                <meta name="description" content="Compare the best travel credit cards of 2025. Find top rewards, points, travel perks, lounge access, and sign-up bonuses. Maximize your trips with TravelCardInsider."/>
+                {/* Add other essential meta tags, links (favicon, canonical), fonts, and structured data here */}
+                {/* Example Font Links */}
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+                <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+                 {/* Add Preload for LCP image if known */}
+                <link rel="preload" as="image" href="/images/placeholder-hero-travel.jpg" />
+                 {/* Favicons, Canonical, etc. */}
+                <link rel="icon" href="/favicon.ico" />
+                {/* <link rel="canonical" href="https://www.travelcardinsider.com/" /> */}
+                 {/* Add JSON-LD Schema here */}
 
-        {/* --- Background Image Container --- */}
-        {/* Positioned fixed behind all content via CSS */}
-        <div className="page-background-image-container">
-            <Image
-                src="/AdobeStock_299190080_result.webp" // TODO: Verify image path
-                alt="" // Decorative background image
-                layout="fill"
-                objectFit="cover"
-                quality={80}
-                priority
-                placeholder="blur"
-                blurDataURL="/AdobeStock_299190080_result_low_quality.webp" // TODO: Verify placeholder path
-                aria-hidden="true"
-            />
-        </div>
+            </Head>
 
-        {/* --- Main Content Wrapper --- */}
-        {/* Sits above the background image (z-index: 1) */}
-        <div className="main-content-wrapper">
+            {/* Assumes Header is part of a Layout component in _app.js */}
+            {/* Ensure the main content has padding-top equal to header height */}
+            <main className="pt-[/* Add height of your fixed header here, e.g., pt-16 */]">
 
-            {/* --- Hero Content Section (Over the Background) --- */}
-            <div className="hero-content-container text-white text-center">
-                 <div className="hero-content-overlay"> {/* Optional inner overlay */}
-                    <h1 id="hero-heading" className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight font-playfair">
-                        Unlock the Best Travel Credit Cards for 2025
-                    </h1>
-                    <p className="text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto mb-8">
-                        Compare top travel cards effortlessly. Start earning valuable points & miles for your next adventure.
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                      <Link href="/compare" className="cta-button text-lg px-8 py-3">
-                          Compare Cards Now
-                      </Link>
-                      <Link href="/card-finder" className="cta-button-secondary text-lg px-8 py-3" aria-label="Find recommended travel credit cards using our tool">
-                          Find Your Perfect Card
-                      </Link>
+                {/* 1. Hero Section */}
+                <section className="relative bg-navy-900 text-white overflow-hidden min-h-[75vh] md:min-h-[85vh] flex items-center">
+                    {/* Background Image */}
+                    <Image
+                        src="/images/placeholder-hero-travel.jpg" // TODO: Replace with actual hero image path
+                        alt="" // Decorative background
+                        layout="fill"
+                        objectFit="cover"
+                        className="absolute inset-0 z-0 opacity-30"
+                        priority // Load this image first (LCP candidate)
+                        quality={85}
+                        aria-hidden="true"
+                    />
+                    {/* Optional Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/70 to-transparent z-10"></div>
+
+                    {/* Content */}
+                    <div className="relative z-20 container max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-24 md:py-32">
+                        <h1 className="font-playfair text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-4">
+                            Find Your Perfect <span className="text-gold-500">Travel Card</span> for 2025
+                        </h1>
+                        <p className="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto mb-8">
+                            Unlock maximum rewards, points, and perks. Compare the best travel credit cards side-by-side and elevate your journeys.
+                        </p>
+                        <Link href="/compare" legacyBehavior>
+                           <a className="inline-block bg-gold-500 text-navy-900 font-bold py-3 px-8 rounded-lg text-lg hover:bg-opacity-90 transition duration-200">
+                                Compare Travel Cards
+                           </a>
+                        </Link>
                     </div>
-                </div>
-            </div>
+                </section>
 
-            {/* --- Featured Cards Section --- */}
-            {/* Requires a solid background color (e.g., bg-gray-50) */}
-            <section id="featured-cards" className="relative z-10 py-16 lg:py-24 bg-gray-50" aria-labelledby="featured-cards-heading">
-                <div className="container mx-auto px-4">
-                    <h2 id="featured-cards-heading" className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
-                        Top Travel Credit Card Picks
-                    </h2>
-                    <div className="card-grid">
-                        {/* Card 1: Chase Sapphire Preferred */}
-                        <div className="featured-card">
-                            <Image className="featured-card__image" src="/sapphire_preferred_card.png" alt="Chase Sapphire Preferred Card" width={400} height={252} loading="lazy" quality={75} />
-                            <div className="featured-card__description">
-                                <h3 className="text-xl font-semibold mb-2">Chase Sapphire Preferred®</h3>
-                                <p className="text-sm text-gray-600 mb-4">Great for beginners! Earn 60k bonus points after $4k spend in 3 months. Strong travel & dining rewards.</p>
-                                <div className="flex flex-col sm:flex-row gap-2 w-full justify-center mt-auto">
-                                    <Link href="/reviews/chase-sapphire-preferred" className="cta-button w-full sm:w-auto">Learn More</Link>
-                                    <a href="YOUR_AFFILIATE_LINK_CSP" className="Apply-button w-full sm:w-auto" target="_blank" rel="noopener sponsored">Apply Now</a> {/* TODO: Add link */}
-                                </div>
-                            </div>
-                        </div>
-                        {/* Card 2: Amex Platinum */}
-                        <div className="featured-card">
-                            <Image className="featured-card__image" src="/ntb-amex-platinum-card.png" alt="The Platinum Card® from American Express" width={400} height={252} loading="lazy" quality={75} />
-                            <div className="featured-card__description">
-                                <h3 className="text-xl font-semibold mb-2">The Platinum Card® from Amex</h3>
-                                <p className="text-sm text-gray-600 mb-4">Premium travel perks! 5x points on flights, extensive lounge access, and valuable statement credits.</p>
-                                <div className="flex flex-col sm:flex-row gap-2 w-full justify-center mt-auto">
-                                    <Link href="/reviews/amex-platinum" className="cta-button w-full sm:w-auto">Learn More</Link>
-                                    <a href="YOUR_AFFILIATE_LINK_AMEXPLAT" className="Apply-button w-full sm:w-auto" target="_blank" rel="noopener sponsored">Apply Now</a> {/* TODO: Add link */}
-                                </div>
-                            </div>
-                        </div>
-                        {/* Card 3: Capital One Venture X */}
-                        <div className="featured-card">
-                            <Image className="featured-card__image" src="/venturex-cg-static-card-1000x630-2.avif" alt="Capital One Venture X Rewards Credit Card" width={400} height={252} loading="lazy" quality={75} />
-                            <div className="featured-card__description">
-                                <h3 className="text-xl font-semibold mb-2">Capital One Venture X</h3>
-                                <p className="text-sm text-gray-600 mb-4">Simple & rewarding! Unlimited 2x miles on everything, $300 annual travel credit, and lounge access.</p>
-                                <div className="flex flex-col sm:flex-row gap-2 w-full justify-center mt-auto">
-                                    <Link href="/reviews/capital-one-venture-x" className="cta-button w-full sm:w-auto">Learn More</Link>
-                                    <a href="YOUR_AFFiliate_LINK_VENTUREX" className="Apply-button w-full sm:w-auto" target="_blank" rel="noopener sponsored">Apply Now</a> {/* TODO: Add link */}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* --- Top Reviews Section --- */}
-            {/* Needs background color defined in its component or wrapper CSS */}
-            <div className="relative z-10 top-reviews-section-wrapper"> {/* Add wrapper class for styling */}
-                <TopReviewsSection reviews={featuredReviews} />
-            </div>
-
-            {/* --- Comparison Tool Section --- */}
-            {/* Requires a solid background color (e.g., bg-blue-50) */}
-            <section id="compare" className="relative z-10 py-16 lg:py-24 bg-blue-50" aria-labelledby="comparison-heading">
-                <div className="container mx-auto px-4 text-center">
-                    <h2 id="comparison-heading" className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
-                        Compare Your Favorite Cards
-                    </h2>
-                    <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-                        Ready to see how your top picks stack up side-by-side? Dive into detailed comparisons.
-                    </p>
-                    <Link href="/compare" className="cta-button text-lg px-8 py-3 inline-block">
-                        Go to Comparison Tool
-                    </Link>
-                </div>
-            </section>
-
-            {/* --- Latest Reviews & Guides Section --- */}
-            {/* Requires a solid background color (e.g., bg-white) */}
-            <section className="reviews-container relative z-10 py-16 lg:py-24 bg-white" aria-labelledby="reviews-heading">
-                <div className="container mx-auto px-4">
-                    <h2 id="reviews-heading" className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
-                        Latest Reviews & Guides
-                    </h2>
-                    <div className="reviews-grid">
-                        {staticReviewsData.map((review, index) => (
-                        <div className="card" key={review.link || index}>
-                            <Image className="review_img" src={review.img} alt={review.alt} width={500} height={300} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" loading="lazy" quality={75} />
-                            <div className="card-content flex flex-col flex-grow p-4">
-                                <h3 className="text-lg font-semibold mb-2 hover:text-blue-600 transition-colors">
-                                    {review.link ? (<Link href={review.link}>{review.title}</Link>) : (review.title)}
-                                </h3>
-                                <p className="text-sm text-gray-600 mb-4 flex-grow line-clamp-3">{review.desc}</p>
-                                {review.link && (
-                                    <div className="mt-auto pt-2 self-start">
-                                        <Link href={review.link} className="cta-button-secondary text-sm px-4 py-2">Read More</Link>
+                {/* 2. Top 4 Featured Travel Credit Cards */}
+                <section id="featured-cards" className="py-16 lg:py-24 bg-gray-50">
+                    <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <h2 className="text-3xl lg:text-4xl font-bold text-center text-gray-900 mb-12">
+                            Top Travel Card Picks for May 2025
+                        </h2>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                            {featuredCards.map((card) => (
+                                <div key={card.id} className="bg-white rounded-lg shadow-md border border-gray-100 p-6 flex flex-col hover:shadow-lg transition-shadow duration-200">
+                                    <div className="relative h-40 w-full mb-4"> {/* Added relative container for Image */}
+                                       <Image
+                                            src={card.img} // TODO: Replace placeholder
+                                            alt={card.alt}
+                                            layout="fill" // Fill the container
+                                            objectFit="contain" // Fit card image without stretching
+                                            className="mx-auto"
+                                        />
                                     </div>
-                                )}
+                                    <h3 className="text-xl font-semibold text-gray-900 mb-2 text-center">{card.name}</h3>
+                                    <p className="text-sm text-slate-500 mb-3 text-center">{card.desc}</p>
+                                    <p className={`text-sm font-medium text-gray-700 p-2 rounded text-center mb-4 ${card.offerBg}`}>
+                                        {card.offer}
+                                    </p>
+                                    <div className="mt-auto flex flex-col sm:flex-row gap-3 justify-center">
+                                        {/* External link - use <a> */}
+                                        <a href={card.applyLink} target="_blank" rel="noopener sponsored" className="w-full sm:w-auto text-center bg-blue-600 text-white text-sm font-semibold py-2 px-4 rounded-md hover:bg-blue-700 transition duration-200">
+                                            Apply Now
+                                        </a>
+                                         {/* Internal link - use <Link> */}
+                                        <Link href={card.reviewLink} legacyBehavior>
+                                            <a className="w-full sm:w-auto text-center bg-white text-blue-600 border border-blue-600 text-sm font-semibold py-2 px-4 rounded-md hover:bg-blue-50 transition duration-200">
+                                                Learn More
+                                            </a>
+                                        </Link>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* 3. Comparison Tool Preview */}
+                <section id="compare-preview" className="py-16 lg:py-24 bg-white">
+                    <div className="container max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                        <svg className="mx-auto h-12 w-12 text-blue-600 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 0 0-3.7-3.7 48.678 48.678 0 0 0-7.324 0 4.006 4.006 0 0 0-3.7 3.7c-.092 1.21-.138 2.43-.138 3.662 0 1.232.046 2.453.138 3.662a4.006 4.006 0 0 0 3.7 3.7 48.656 48.656 0 0 0 7.324 0 4.006 4.006 0 0 0 3.7-3.7c.092-1.21.138-2.43.138-3.662z M16.5 12a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0z" /></svg>
+                        <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                            Compare Cards Side-by-Side
+                        </h2>
+                        <p className="text-lg text-slate-500 mb-8">
+                            Unsure which card fits your travel style? Our comparison tool breaks down fees, rewards, perks, and more. Find your perfect match in minutes.
+                        </p>
+                        <Link href="/compare" legacyBehavior>
+                           <a className="inline-block bg-blue-600 text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-blue-700 transition duration-200">
+                                Start Comparing
+                           </a>
+                        </Link>
+                    </div>
+                </section>
+
+                {/* 4. AI Tools Preview */}
+                <section id="ai-tools" className="py-16 lg:py-24 bg-gray-50">
+                    <div className="container max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <h2 className="text-3xl lg:text-4xl font-bold text-center text-gray-900 mb-4">
+                            Smarter Travel Starts Here
+                        </h2>
+                        <p className="text-lg text-slate-500 text-center mb-12 max-w-2xl mx-auto">
+                            Leverage our AI-powered tools to get personalized card recommendations and maximize your reward earnings.
+                        </p>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                            {/* Tool 1: Personalized Finder */}
+                            <div className="bg-white p-8 rounded-lg shadow-md border border-gray-100 text-center hover:shadow-lg transition-shadow duration-200">
+                                <svg className="mx-auto h-12 w-12 text-blue-600 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L1.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L24 5.25l-.813 2.846a4.5 4.5 0 0 0-3.09 3.09L18.25 12ZM18.25 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09L12 18.75l.813-2.846a4.5 4.5 0 0 0 3.09-3.09L18.25 12Z" /></svg>
+                                <h3 className="text-xl font-semibold text-gray-900 mb-2">Personalized Card Finder</h3>
+                                <p className="text-slate-500 mb-6">Answer a few questions about your spending and travel habits, and our AI will recommend the best cards for you.</p>
+                                <Link href="/card-finder" legacyBehavior>
+                                   <a className="font-semibold text-blue-600 hover:text-blue-800 transition duration-200">Find My Match &rarr;</a>
+                                </Link>
+                            </div>
+                            {/* Tool 2: RewardMax */}
+                            <div className="bg-white p-8 rounded-lg shadow-md border border-gray-100 text-center hover:shadow-lg transition-shadow duration-200">
+                                <svg className="mx-auto h-12 w-12 text-blue-600 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.75A.75.75 0 0 1 3 4.5h.75m0 0H21m-18 0h18M3 9v.75A.75.75 0 0 0 3.75 10.5h16.5a.75.75 0 0 0 .75-.75V9M3.75 15a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 .75.75v.75a.75.75 0 0 1-.75.75H4.5a.75.75 0 0 1-.75-.75V15Z" /></svg>
+                                <h3 className="text-xl font-semibold text-gray-900 mb-2">RewardMax™ Optimizer</h3>
+                                <p className="text-slate-500 mb-6">Connect your cards (securely) and let RewardMax tell you the optimal card to use for every purchase to maximize points.</p>
+                                <Link href="/reward-max" legacyBehavior>
+                                    <a className="font-semibold text-blue-600 hover:text-blue-800 transition duration-200">Maximize Rewards &rarr;</a>
+                                </Link>
                             </div>
                         </div>
-                        ))}
                     </div>
-                </div>
-            </section>
+                </section>
 
-        </div> {/* End .main-content-wrapper */}
-      </main>
-    </>
-  );
+                {/* 5. Recent Reviews Section */}
+                <section id="reviews" className="py-16 lg:py-24 bg-white">
+                    <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="flex justify-between items-center mb-12">
+                            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
+                                Latest Insights & Reviews
+                            </h2>
+                             <Link href="/reviews" legacyBehavior>
+                               <a className="font-semibold text-blue-600 hover:text-blue-800 transition duration-200 hidden sm:block">View All Reviews &rarr;</a>
+                            </Link>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                           {recentReviews.map((review) =>(
+                                <div key={review.slug} className="bg-white rounded-lg shadow-md border border-gray-100 overflow-hidden group hover:shadow-lg transition-shadow duration-200">
+                                    <Link href={`/review/${review.slug}`} legacyBehavior>
+                                        <a className="block aspect-w-16 aspect-h-9"> {/* Aspect ratio container */}
+                                            <Image
+                                                src={review.img} // TODO: Replace placeholder
+                                                alt={review.alt}
+                                                layout="fill" // Fill aspect ratio container
+                                                objectFit="cover" // Cover the area
+                                                className="group-hover:opacity-90 transition-opacity duration-200"
+                                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                            />
+                                        </a>
+                                    </Link>
+                                    <div className="p-6">
+                                        <h3 className="text-lg font-semibold text-gray-900 mb-2 hover:text-blue-700 transition duration-200">
+                                            <Link href={`/review/${review.slug}`} legacyBehavior><a>{review.title}</a></Link>
+                                        </h3>
+                                        <p className="text-sm text-slate-500 mb-4 line-clamp-3">{review.excerpt}</p>
+                                        <Link href={`/review/${review.slug}`} legacyBehavior>
+                                           <a className="text-sm font-semibold text-blue-600 hover:text-blue-800 transition duration-200">Read More &rarr;</a>
+                                        </Link>
+                                    </div>
+                                </div>
+                           ))}
+                        </div>
+                        <Link href="/reviews" legacyBehavior>
+                           <a className="mt-8 block sm:hidden text-center font-semibold text-blue-600 hover:text-blue-800 transition duration-200">View All Reviews &rarr;</a>
+                        </Link>
+                    </div>
+                </section>
+
+                {/* 7. Trust Badges / Featured In */}
+                <section id="trust-elements" className="py-12 lg:py-16 bg-gray-50">
+                    <div className="container max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <h3 className="text-center text-lg font-semibold text-slate-500 mb-8">
+                            As Featured In
+                        </h3>
+                        <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-4 md:gap-x-12 lg:gap-x-16">
+                            {trustLogos.map((logo) => (
+                                <div key={logo.alt} className="relative h-8 sm:h-9 lg:h-10 aspect-[3/1] opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition duration-200"> {/* Adjust aspect ratio/height */}
+                                    <Image
+                                        src={logo.src} // TODO: Replace placeholder
+                                        alt={logo.alt}
+                                        layout="fill"
+                                        objectFit="contain"
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                 {/* 6. Subscribe CTA */}
+                <section id="subscribe" className="py-16 lg:py-20 bg-navy-700 text-white">
+                    <div className="container max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                        <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+                            Stay Ahead of the Curve
+                        </h2>
+                        <p className="text-lg text-slate-300 mb-8">
+                            Get the latest travel card deals, news, and strategies delivered straight to your inbox.
+                        </p>
+                        <form action="#" method="POST" className="max-w-lg mx-auto"> {/* TODO: Update form action */}
+                            <div className="flex flex-col sm:flex-row gap-4">
+                                <label htmlFor="email-subscribe" className="sr-only">Email address</label>
+                                <input
+                                    type="email"
+                                    name="email-subscribe"
+                                    id="email-subscribe"
+                                    required
+                                    className="flex-grow px-4 py-3 rounded-md text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-transparent"
+                                    placeholder="Enter your email address"
+                                />
+                                <button type="submit" className="bg-gold-500 text-navy-900 font-bold py-3 px-6 rounded-md text-lg hover:bg-opacity-90 transition duration-200 shrink-0">
+                                    Subscribe
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+            </main>
+
+            {/* Assumes Footer is part of a Layout component in _app.js */}
+        </>
+    );
 }
 
-// --- Data Fetching ---
-export async function getStaticProps() {
-  // Ensure getFeaturedReviews only fetches needed data
-  const featuredReviews = getFeaturedReviews(3); // Fetch top 3 reviews
-  return {
-    props: {
-      featuredReviews,
-    },
-    // revalidate: 3600, // Optional: Enable ISR if content updates frequently
-  };
-}
+// Optional: Add getStaticProps or getServerSideProps for data fetching
+// export async function getStaticProps() {
+//   // Fetch featuredCardsData, recentReviewsData, etc.
+//   // const featuredCards = await fetchFeaturedCards();
+//   // const recentReviews = await fetchRecentReviews(3);
+//   return {
+//     props: {
+//       // featuredCards,
+//       // recentReviews,
+//     },
+//     revalidate: 3600, // Optional: Revalidate every hour
+//   };
+// }
