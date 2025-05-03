@@ -43,7 +43,7 @@ const AuthCallbackPage = () => {
             // Signed in successfully.
             console.log('Successfully signed in:', result.user);
             // Redirect to the intended protected page
-            router.replace(''); // Adjust target route (e.g., /dashboard, /account)
+            router.replace('/rewards'); // Adjust target route (e.g., /dashboard, /account)
             // Loading state is implicitly ended by the redirect
           })
           .catch((err) => {
