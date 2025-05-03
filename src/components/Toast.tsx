@@ -4,54 +4,41 @@ import React, { useState, useEffect } from 'react';
 interface ToastProps {
   message: string;
   type: 'success' | 'error';
-  onDismiss: () => void;
+  onDismiss: () => void; // Callback to clear the message in the parent state
 }
 
 const Toast: React.FC<ToastProps> = ({ message, type, onDismiss }) => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
-  // Timer for auto-dismissal and fade-in
   useEffect(() => {
-    setIsVisible(true); // Start fade-in
-
     const timer = setTimeout(() => {
-      handleDismiss();
-    }, 4000); // 4 seconds
+      setIsVisible(false);
+      // Allow time for fade-out transition before calling dismiss
+      setTimeout(onDismiss, 300); // Should match transition duration
+    }, 4000); // Auto-dismiss after 4 seconds
 
-    // Cleanup timer on component unmount or if dismissed early
     return () => clearTimeout(timer);
-  }, []); // Run only once on mount
+  }, [onDismiss]);
 
-  // Handle dismiss action (called by button or timer)
-  const handleDismiss = () => {
-    setIsVisible(false); // Start fade-out
-    // Allow time for fade-out animation before calling onDismiss
-    setTimeout(() => {
-      onDismiss();
-    }, 300); // Match the transition duration
-  };
-
-  // Determine background color based on type
-  const bgColor = type === 'success' ? 'bg-green-600' : 'bg-red-600';
+  const baseClasses = "fixed p-4 rounded-md shadow-lg text-white transition-opacity duration-300 ease-in-out text-sm z-50 max-w-sm"; // Added max-w-sm
+  const typeClasses = type === 'success' ? 'bg-green-600' : 'bg-red-600';
+  // Position: bottom-4 on all screens, right-4 on sm+, center horizontal mobile
+  const positionClasses = "bottom-4 left-1/2 sm:left-auto transform -translate-x-1/2 sm:transform-none sm:right-4";
+  const visibilityClasses = isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'; // Hide from interaction when invisible
 
   return (
     <div
-      // Positioning: fixed, bottom-right on medium screens and up, bottom-center on small screens
-      className={`fixed bottom-4 right-4 left-auto md:left-auto md:right-4 transform md:translate-x-0 sm:left-1/2 sm:-translate-x-1/2 sm:w-auto w-11/12 max-w-sm z-50 transition-opacity duration-300 ease-in-out ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+      className={`${baseClasses} ${typeClasses} ${positionClasses} ${visibilityClasses}`}
       role="alert"
-      aria-live="assertive"
-      aria-atomic="true"
     >
-      <div
-        className={`${bgColor} text-white font-medium px-4 py-3 rounded-lg shadow-xl flex items-center justify-between space-x-4`}
-      >
+      <div className="flex items-center justify-between">
         <span>{message}</span>
         <button
-          onClick={handleDismiss}
-          className="text-xl font-semibold leading-none opacity-80 hover:opacity-100 transition-opacity focus:outline-none"
-          aria-label="Dismiss"
-        >
-          &times; {/* Simple 'X' character */}
+           onClick={() => { setIsVisible(false); setTimeout(onDismiss, 300); }}
+           className="-mr-1 ml-2 p-1 text-white hover:bg-white/20 rounded-full text-xs leading-none"
+           aria-label="Dismiss"
+         >
+           ✕
         </button>
       </div>
     </div>
