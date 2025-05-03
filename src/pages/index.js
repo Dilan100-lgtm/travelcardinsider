@@ -56,7 +56,7 @@ export default function HomePage({ featuredReviews }) {
       imageWidth: 400,
       imageHeight: 250,
       applyUrl: "https://www.chase.com/apply?partner=YOUR_AFFILIATE_ID",
-      rating: 9.6, // Rating out of 10
+      rating: 8.4, // Rating out of 10
       priority: true,
     },
     {
@@ -68,7 +68,7 @@ export default function HomePage({ featuredReviews }) {
       imageWidth: 400,
       imageHeight: 250,
       applyUrl: "https://www.americanexpress.com/apply?partner=YOUR_AFFILIATE_ID",
-      rating: 9.2, // Rating out of 10
+      rating: 9.4, // Rating out of 10
       priority: false,
     },
     {
@@ -79,8 +79,8 @@ export default function HomePage({ featuredReviews }) {
       imageAlt: "Capital One Venture X Card",
       imageWidth: 400,
       imageHeight: 252,
-      applyUrl: "https://www.capitalone.com/apply?partner=YOUR_AFFILIATE_ID",
-      rating: 9.4, // Rating out of 10
+      applyUrl: "https://www.capitalone.com/credit-cards/venture-x/",
+      rating: 9.0, // Rating out of 10
       priority: false,
     },
   ];
@@ -285,7 +285,7 @@ export default function HomePage({ featuredReviews }) {
 
                     {/* Actions pushed to the bottom */}
                     <div className="featured-card__actions">
-                       <Link href={`/reviews/${card.slug}`} className="cta-button learn-more-button">
+                       <Link href={`/cards/${card.slug}`} className="cta-button learn-more-button">
                          Learn More
                        </Link>
                        <a href={card.applyUrl} className="Apply-button" target="_blank" rel="noopener sponsored">
