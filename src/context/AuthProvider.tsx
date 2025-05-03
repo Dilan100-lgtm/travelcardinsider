@@ -7,68 +7,71 @@ import React, {
   ReactNode,
 } from 'react';
 import { onAuthStateChanged, signOut, User } from 'firebase/auth';
-import { auth } from '@/lib/firebase'; // Adjust path to your Firebase init file
+import { auth } from '@/lib/firebase'; // Adjust path if needed
 
-// Define the shape of the context data
 interface AuthContextType {
-  user: User | null; // Firebase User object or null
-  loading: boolean; // Added loading state
+  user: User | null;
+  loading: boolean;
   logout: () => Promise<void>;
 }
 
-// Create the context with a default value (can be undefined or null)
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 interface AuthProviderProps {
   children: ReactNode;
 }
 
-// Create the provider component
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true); // Track initial auth state loading
+  const [loading, setLoading] = useState(true);
+
+  console.log('AuthProvider Rendering - Loading:', loading, 'User:', user?.email); // <-- Log on every render
 
   useEffect(() => {
-    // Subscribe to Firebase auth state changes
+    console.log('AuthProvider useEffect Mounting...'); // <-- Log when effect runs
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      console.log('onAuthStateChanged triggered - User:', currentUser?.email); // <-- Log when auth state changes
       setUser(currentUser);
-      setLoading(false); // Auth state resolved
-      console.log('Auth State Changed:', currentUser?.email || 'Logged out');
+      setLoading(false); // <-- This MUST be called
+      console.log('AuthProvider - Setting loading to false'); // <-- Log before setting loading false
+    }, (error) => { // Add error handling for the listener itself
+        console.error('onAuthStateChanged Error:', error);
+        setLoading(false); // Also set loading false on error to prevent lockup
     });
 
-    // Cleanup subscription on unmount
-    return () => unsubscribe();
-  }, []); // Empty dependency array ensures this runs only once on mount
+    return () => {
+        console.log('AuthProvider useEffect Cleaning up...'); // <-- Log on unmount
+        unsubscribe();
+    };
+  }, []);
 
-  // Logout function
   const logout = async (): Promise<void> => {
     try {
       await signOut(auth);
-      setUser(null); // Explicitly set user to null on logout
+      setUser(null);
       console.log('User signed out successfully.');
     } catch (error) {
       console.error('Error signing out:', error);
-      // Optionally handle logout errors (e.g., show a notification)
     }
   };
 
-  // Value provided by the context
-  const value: AuthContextType = {
-    user,
-    loading, // Expose loading state
-    logout,
-  };
+  const value: AuthContextType = { user, loading, logout };
 
-  // Provide the context value to children
-  // Don't render children until auth state is resolved to avoid flicker
+  // Conditional Rendering Logic
+  if (loading) {
+    console.log('AuthProvider RETURN - Still loading, rendering null (or a loader)');
+    // Optionally return a loading spinner/skeleton here instead of null
+    return null; // Or return <YourGlobalLoader />;
+  }
+
+  console.log('AuthProvider RETURN - Loading false, rendering children');
   return (
     <AuthContext.Provider value={value}>
-      {!loading && children}
+      {children}
     </AuthContext.Provider>
   );
 };
 
-// Custom hook to consume the Auth context
 export const useAuth = (): AuthContextType => {
   const context = useContext(AuthContext);
   if (context === undefined) {
