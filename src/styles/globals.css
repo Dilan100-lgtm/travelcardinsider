@@ -1,1138 +1,1186 @@
-/* =============== GLOBALS & DEFAULTS =============== */
-html {
-  height: 100%;
-  /* Consider setting scroll-behavior: smooth; */
-  box-sizing: border-box; /* Better box model */
-}
-*, *::before, *::after {
-  box-sizing: inherit; /* Inherit box model */
-}
-main {
-  overflow-x: visible;
-  overflow-y: visible;
-}
+/* ==========================================================================
+   Globals & Variables
+   ========================================================================== */
 
-
-body {
-  margin: 0;
-  font-family: 'Roboto Condensed', 'Arial', sans-serif; /* Example: Prioritize loaded font */
-  color: #222; /* Slightly darker for better base contrast */
-  background-color: #fff; /* Ensure default background */
-  /* FIXED: Removed min-width to prevent mobile overflow */
-  /* min-width: 374px; */
-  -webkit-font-smoothing: antialiased; /* Smoother text rendering */
-  -moz-osx-font-smoothing: grayscale;
+   :root {
+    /* Premium Look: Define a cohesive color palette */
+    --color-primary: #0052cc; /* Example: Professional Blue */
+    --color-primary-dark: #0041a3;
+    --color-primary-light: #e7f0ff; /* Lighter shade for backgrounds */
+    --color-secondary: #172b4d; /* Example: Dark Slate for text */
+    --color-accent: #FFD700; /* Example: Gold accent (used sparingly) */
+    --color-accent-dark: #e6c200;
   
-}
-
-/* Add word wrapping globally for safety */
-p, h1, h2, h3, h4, h5, h6, li, div {
-    overflow-wrap: break-word;
-}
-
-
-/* =============== FONT DEFINITIONS =============== */
-@font-face {
-  font-family: 'Roboto Condensed';
-  src: url('/fonts/Roboto_Condensed-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap; /* Good for performance */
-}
-
-@font-face {
-  font-family: 'Roboto Condensed';
-  src: url('/fonts/Roboto_Condensed-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap; /* Good for performance */
-}
-
-@font-face {
-  font-family: 'Playfair Display';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('/fonts/PlayfairDisplay-Regular.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Playfair Display';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('/fonts/Playfair-Display-Bold.ttf') format('truetype');
-}
-
-/* =============== HEADER =============== */
-.site-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: white; /* Check contrast if header color changes */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  z-index: 3000; /* Ensure header is above most content */
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-weight: 500;
-  font-size: 1rem;
-  line-height: 1; /* Set base line-height */
-}
-
-.header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0 auto;
-  max-width: 1200px;
-  height: 3.5rem; /* Define header height */
-  padding: 0 1rem;
-}
-
-.logo-toggle-container {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0; /* Prevent shrinking */
-}
-
-.menu-toggle {
-  display: none;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem; /* Add padding for easier tapping */
-  margin: 0 1rem 0 -0.5rem; /* Adjust margin */
-}
-
-.bar {
-  display: block;
-  width: 1.5rem;
-  height: 0.2rem;
-  background: #000; /* Ensure high contrast */
-  margin: 4px 0; /* Slightly increased spacing */
-  transition: transform 0.3s ease, opacity 0.3s ease; /* Added opacity */
-}
-
-.menu-toggle.open .bar:nth-child(1) { transform: translateY(6px) rotate(45deg); } /* Adjusted transform */
-.menu-toggle.open .bar:nth-child(2) { opacity: 0; }
-.menu-toggle.open .bar:nth-child(3) { transform: translateY(-6px) rotate(-45deg); } /* Adjusted transform */
-
-.site-logo {
-    display: inline-block; /* Allows vertical alignment */
-}
-.site-logo img { /* Styling might differ slightly for Next Image */
-  display: block;
-  height: auto; /* Let width/height props control size */
-  width: auto;
-  max-height: calc(3.5rem - 1rem); /* Example: Limit height based on header */
-}
-
-/* Main Navigation (Mobile - Slide out) */
-.main-nav {
-  position: fixed;
-  top: 3.5rem;
-  left: 0;
-  width: min(70vw, 300px); /* Use min() for responsiveness */
-  height: calc(100vh - 3.5rem);
-  background: #fff;
-  box-shadow: 2px 0 10px rgba(0,0,0,0.2);
-  transform: translateX(-100%);
-  transition: transform 0.3s ease;
-  z-index: 3000; /* Above backdrop */
-  overflow-y: auto;
-  padding: 1rem;
-}
-
-.main-nav.open {
-  transform: translateX(0);
-}
-
-.nav-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.nav-list li {
-  margin: 0; /* Reset margin for consistency */
-}
-
-.nav-list a,
-.nav-list button { /* Style buttons similarly if used */
-  text-decoration: none;
-  color: #333; /* Check contrast */
-  font-weight: 500;
-  font-size: 0.95rem;
-  display: block;
-  padding: 0.75rem 0; /* Consistent padding */
-  transition: color 0.3s ease, background-color 0.3s ease;
-  border-bottom: 1px solid #eee; /* Separator */
-}
-.nav-list li:last-child > a,
-.nav-list li:last-child > button {
-    border-bottom: none; /* Remove border from last item */
-}
-
-
-.nav-list a:hover,
-.nav-list button:hover {
-  color: #0056b3;
-  background-color: #f8f8f8;
-}
-
-/* Mobile Submenu Styles */
-.has-dropdown .dropdown-menu {
-  display: none;
-  list-style: none;
-  margin: 0;
-  padding: 0 0 0 1rem; /* Padding left for indent */
-  background: #f8f8f8; /* Slightly different background */
-  border-left: none; /* Remove side border */
-}
-.has-dropdown.submenu-open > .dropdown-menu {
-  display: block;
-}
-.dropdown-menu li {
-  margin: 0;
-}
-.dropdown-menu a {
-  padding: 0.5rem 0.8rem;
-  font-size: 0.9rem;
-  color: #444; /* Check contrast */
-  border-bottom: 1px solid #ddd; /* Separator inside submenu */
-}
-.dropdown-menu li:last-child a {
-    border-bottom: none;
-}
-
-/* Backdrop for mobile menu */
-.menu-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: rgba(0,0,0,0.4);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.0s 0.3s linear;
-  z-index: 2500; /* Below nav, above content */
-}
-.menu-backdrop.open {
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 0.3s ease;
-}
-
-/* Header Actions (Search etc.) */
-/* This LI contains the search bar */
-.header-actions {
-  display: flex;
-  align-items: center;
-  padding: 0.5rem 0; /* Padding for search li on mobile */
-  border-bottom: 1px solid #eee;
-}
-
-.search-container {
-  margin: 0; /* Remove margin if inside padded li */
-  width: 100%;
-}
-.search-container input[type="search"] {
-  border: 1px solid #ccc;
-  border-radius: 1.5rem;
-  padding: 0.5rem 1rem; /* Increased padding */
-  font-size: 0.9rem;
-  width: 100%; /* Take full width */
-  box-sizing: border-box; /* Include padding in width */
-  transition: border-color 0.3s ease; /* Subtle transition */
-}
-.search-container input[type="search"]:focus {
-  outline: none;
-  border-color: #007bff; /* Focus indicator */
-}
-
-/* Mobile Subscribe Button */
-.nav-list li a[href="#subscribe"] {
-  display: inline-block;
-  background-color: #007bff;
-  color: white; /* Check contrast: White on blue is good */
-  padding: 10px 15px;
-  border-radius: 5px;
-  font-weight: bold;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-  margin-top: 1rem;
-  border-bottom: none; /* Remove border */
-  text-align: center;
-}
-.nav-list li a[href="#subscribe"]:hover {
-  background-color: #0056b3;
-}
-
-
-/* ====== MOBILE HEADER STYLES ====== */
-@media (max-width: 1099px) {
-  .menu-toggle {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    --color-text-primary: #172b4d; /* Dark Slate */
+    --color-text-secondary: #42526e; /* Medium Slate */
+    --color-text-muted: #6b778c; /* Lighter Slate */
+    --color-text-on-dark: #f0f0f0; /* Light text for dark backgrounds */
+    --color-text-on-primary: #ffffff; /* White text on primary color */
+    --color-text-link: var(--color-primary);
+    --color-text-link-hover: var(--color-primary-dark);
+  
+    --color-background-body: #ffffff;
+    --color-background-light: #f8f9fa; /* Very light grey for subtle section differentiation */
+    --color-background-medium: #e9ecef; /* Slightly darker grey */
+    --color-background-overlay: rgba(23, 43, 77, 0.6); /* Dark slate overlay */
+    --color-background-footer: #000080; /* Keeping original Navy for footer */
+  
+    --color-border: #dfe1e6; /* Light border */
+    --color-border-medium: #c1c7d0;
+    --color-border-focus: var(--color-primary);
+    --color-border-accent: var(--color-accent); /* Gold border for footer */
+  
+    --color-success: #006644; /* Dark Green for success/positive actions */
+    --color-success-light: #e3fcef;
+    --color-danger: #dc2626; /* Red for errors/negative actions */
+  
+    /* Premium Look: Define consistent typography variables */
+    --font-family-sans: 'Roboto Condensed', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --font-family-serif: 'Playfair Display', Georgia, serif;
+    --font-family-base: var(--font-family-sans);
+    --font-family-heading: var(--font-family-serif); /* Use Serif for main headings */
+  
+    --font-size-base: 1rem; /* 16px */
+    --font-size-sm: 0.875rem; /* 14px */
+    --font-size-lg: 1.125rem; /* 18px */
+    --line-height-base: 1.6;
+    --line-height-heading: 1.3;
+  
+    /* Premium Look: Define consistent spacing units */
+    --spacing-xs: 0.25rem; /* 4px */
+    --spacing-sm: 0.5rem;  /* 8px */
+    --spacing-md: 1rem;    /* 16px */
+    --spacing-lg: 1.5rem;  /* 24px */
+    --spacing-xl: 2rem;    /* 32px */
+    --spacing-xxl: 3rem;   /* 48px */
+    --spacing-section: 4rem; /* 64px */
+    --spacing-section-lg: 6rem; /* 96px */
+  
+  
+    /* Premium Look: Define consistent border radius */
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px; /* Slightly larger for main containers/cards */
+    --border-radius-pill: 9999px; /* For pill-shaped elements */
+  
+    /* Premium Look: Define subtle shadows */
+    --shadow-soft: 0 4px 8px rgba(9, 30, 66, 0.08);
+    --shadow-medium: 0 6px 16px rgba(9, 30, 66, 0.12);
+    --shadow-focus: 0 0 0 3px rgba(0, 82, 204, 0.2); /* Blue glow for focus */
+  
+    /* Premium Look: Define transition speed */
+    --transition-speed-fast: 0.15s;
+    --transition-speed-normal: 0.25s;
   }
-  .main-nav {
-     position: fixed; /* Keep fixed positioning */
-  }
-  /* Mobile Submenu Toggle Button Styles */
-   .submenu-toggle-button {
-      background: transparent;
-      border: none;
-      padding: 0.5rem;
-      cursor: pointer;
-      margin-left: auto; /* Push to right */
-      font-size: 1.2em;
-      line-height: 1;
-      color: #555; /* Check contrast */
-   }
-}
-
-/* ====== DESKTOP HEADER STYLES ====== */
-@media (min-width: 1100px) {
-  .menu-toggle, .menu-backdrop, .submenu-toggle-button {
-    display: none; /* Hide mobile-only elements */
-  }
-
-  /* Override mobile nav styles */
-  .main-nav {
-    position: static;
-    width: auto;
-    height: auto;
-    transform: none;
-    box-shadow: none;
-    overflow: visible;
-    padding: 0;
-    margin-left: 1rem; /* Adjusted margin logic */
-    background: transparent;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    transition: none;
-    max-width: none;
-    z-index: 3000;
-  }
-
-  /* Keep search container separate if desired outside nav-list in HTML */
-  /* This assumes search stays INSIDE nav-list based on user req */
-   .header-inner .search-container { /* Example if search moved */
-        /* margin-left: auto; */ /* Push to right? */
-   }
-
-
-  .nav-list {
-    display: flex;
-    flex-direction: row;
-    /* FIXED: Use baseline alignment */
-    align-items: baseline;
+  
+  html {
     height: 100%;
+    box-sizing: border-box;
+    scroll-behavior: smooth; /* Added for smooth scrolling */
+  }
+  
+  *, *::before, *::after {
+    box-sizing: inherit;
+  }
+  
+  body {
+    margin: 0;
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+    color: var(--color-text-secondary); /* Slightly softer base text color */
+    background-color: var(--color-background-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+  }
+  
+  main {
+    /* Allow main content to scroll normally */
+    overflow-x: visible;
+    overflow-y: visible;
+    /* Add padding top to prevent content from hiding behind fixed header */
+    padding-top: 3.5rem; /* Match header height */
+  }
+  
+  /* Basic Reset / Normalization */
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 var(--spacing-md) 0;
+    font-family: var(--font-family-heading);
+    font-weight: 700; /* Default bold headings */
+    line-height: var(--line-height-heading);
+    color: var(--color-text-primary);
+    overflow-wrap: break-word;
+  }
+  p {
+    margin: 0 0 var(--spacing-md) 0;
+    overflow-wrap: break-word;
+  }
+  a {
+    color: var(--color-text-link);
+    text-decoration: none; /* Remove default underline */
+    transition: color var(--transition-speed-normal) ease;
+  }
+  a:hover {
+    color: var(--color-text-link-hover);
+    text-decoration: underline; /* Add underline on hover for clarity */
+  }
+  
+  /* Utility Classes (Examples - Adapt Tailwind or use your own) */
+  .container {
+    width: 90%;
+    max-width: 1200px; /* Consistent max width */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+  }
+  .text-center { text-align: center; }
+  
+  
+  /* ==========================================================================
+     Font Definitions
+     ========================================================================== */
+  
+  /* Premium Look: Prioritize woff2 for performance */
+  @font-face {
+    font-family: 'Roboto Condensed';
+    src: url('/fonts/Roboto_Condensed-Regular.woff2') format('woff2'), /* Modern format first */
+         url('/fonts/Roboto_Condensed-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap; /* Crucial for performance */
+  }
+  
+  @font-face {
+    font-family: 'Roboto Condensed';
+    src: url('/fonts/Roboto_Condensed-Bold.woff2') format('woff2'),
+         url('/fonts/Roboto_Condensed-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'Playfair Display';
+    src: url('/fonts/PlayfairDisplay-Regular.woff2') format('woff2'),
+         url('/fonts/PlayfairDisplay-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'Playfair Display';
+    /* Assume bold is Playfair-Display-Bold.ttf based on original CSS */
+    src: url('/fonts/Playfair-Display-Bold.woff2') format('woff2'), /* Try loading woff2 first */
+         url('/fonts/Playfair-Display-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  /* ==========================================================================
+     Header
+     ========================================================================== */
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--color-background-body);
+    box-shadow: var(--shadow-soft); /* Use softer shadow */
+    z-index: 1000; /* Ensure header is above content */
+    height: 3.5rem; /* Define header height */
+    /* font-family: system-ui, ... ; Use base font unless specifically needed */
+    font-weight: 500;
+    font-size: var(--font-size-sm); /* Slightly smaller base font for header */
+    line-height: 1;
+  }
+  
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    max-width: 1280px; /* Slightly wider max-width for header */
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+  }
+  
+  .logo-toggle-container {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  
+  .menu-toggle {
+    display: none; /* Hidden on desktop */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: var(--spacing-sm);
+    margin-right: var(--spacing-sm); /* Space between toggle and logo */
+  }
+  
+  .menu-toggle .bar {
+    display: block;
+    width: 1.5rem;
+    height: 2px; /* Thinner bars */
+    background: var(--color-text-primary);
+    margin: 5px 0; /* Adjusted spacing */
+    transition: transform var(--transition-speed-normal) ease,
+                opacity var(--transition-speed-normal) ease;
+  }
+  /* Hamburger animation */
+  .menu-toggle.open .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .menu-toggle.open .bar:nth-child(2) { opacity: 0; }
+  .menu-toggle.open .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  
+  .site-logo img { /* Assuming Next/Image is used */
+    display: block;
+    height: auto;
+    max-height: calc(3.5rem - var(--spacing-md)); /* Limit height within header */
+    width: auto;
+  }
+  
+  /* Mobile Navigation Panel */
+  .main-nav {
+    position: fixed;
+    top: 3.5rem; /* Below header */
+    left: 0;
+    width: min(80vw, 320px); /* Responsive width */
+    height: calc(100vh - 3.5rem);
+    background: var(--color-background-body);
+    box-shadow: 4px 0 15px rgba(9, 30, 66, 0.15); /* Softer shadow */
+    transform: translateX(-100%);
+    transition: transform var(--transition-speed-normal) ease-in-out;
+    z-index: 999; /* Below header, above backdrop */
+    overflow-y: auto;
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+  
+  .main-nav.open {
+    transform: translateX(0);
+  }
+  
+  .nav-list {
     list-style: none;
     padding: 0;
     margin: 0;
   }
-
+  
   .nav-list li {
-    margin: 0 0.8rem;
-    /* REMOVED height: 100%; */
+    margin: 0;
   }
-
-   /* Search bar styling within nav list on desktop */
-  .nav-list li.header-actions {
-      margin-right: 1.5rem; /* More space after search */
-      /* Reset mobile padding/border */
-      padding: 0;
-      border: none;
-  }
-  .nav-list li.header-actions .search-container {
-      margin: 0;
-  }
-   .nav-list li.header-actions input[type="search"] {
-       width: 180px; /* Set desired desktop width */
-       padding: 0.4rem 0.8rem;
-   }
-   .nav-list li.header-actions input[type="search"]:focus {
-       width: 200px;
-   }
-
-  /* General desktop link styling */
+  
   .nav-list a,
-  .nav-list a.nav-link {
-     display: inline-block;
-     padding: 0.5rem 0.2rem;
-     border-bottom: none;
-     font-weight: 500;
-     position: relative;
+  .nav-list button { /* Base style for nav items */
+    display: flex; /* Use flex for alignment with icons/toggles */
+    align-items: center;
+    text-decoration: none;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+    padding: var(--spacing-sm) 0;
+    transition: color var(--transition-speed-normal) ease, background-color var(--transition-speed-normal) ease;
+    border-bottom: 1px solid var(--color-border);
+    font-size: var(--font-size-base); /* Base font size for mobile nav */
   }
-  /* Simple hover underline effect */
-   .nav-list a:not([href="#subscribe"])::after {
-       content: '';
-       position: absolute;
-       width: 0;
-       height: 2px;
-       display: block;
-       margin-top: 4px;
-       right: 0;
-       background: #0056b3;
-       transition: width .3s ease;
-       -webkit-transition: width .3s ease;
-   }
-   .nav-list a:not([href="#subscribe"]):hover::after {
-       width: 100%;
-       left: 0;
-       background-color: #0056b3;
-   }
-
-  /* Desktop Subscribe Button Styles */
-  .nav-list li a[href="#subscribe"] {
-     display: inline-flex;
-     align-items: center;
-     background-color: #007bff;
-     color: white;
-     padding: 8px 15px;
-     border-radius: 5px;
-     font-weight: bold;
-     text-decoration: none;
-     transition: background-color 0.3s ease;
-     margin-top: 0;
-     margin-left: 1rem;
-     border-bottom: none;
+  .nav-list li:last-child > a,
+  .nav-list li:last-child > button {
+    border-bottom: none;
   }
-  .nav-list li a[href="#subscribe"]:hover {
-    background-color: #0056b3;
+  
+  .nav-list a:hover,
+  .nav-list button:hover {
+    color: var(--color-primary);
+    background-color: var(--color-background-light);
   }
-
-
-  /* --- DESKTOP DROPDOWN POSITIONING & FIX --- */
-  .nav-list li.has-dropdown {
-     position: relative;
-  }
-
+  
+  /* Mobile Submenu */
   .has-dropdown .dropdown-menu {
-    position: absolute;
-    background: white;
-    margin-left: 0;
-    padding: 0.5rem 0;
-    border: 1px solid #eee;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    border-radius: 4px;
-    border-left: none;
     display: none;
-    top: calc(100% + 8px); /* Visual gap */
-    left: 0;
-    min-width: 220px;
-    z-index: 3000;
     list-style: none;
+    margin: 0;
+    padding: var(--spacing-sm) 0 var(--spacing-sm) var(--spacing-lg); /* Indent submenu */
+    background: var(--color-background-light); /* Slightly different background */
   }
-
-  /* Invisible Bridge pseudo-element */
-  .nav-list li.has-dropdown::after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    height: 8px; /* Match the gap */
-    background: transparent;
-    z-index: 3000;
-  }
-
-  /* Show dropdown on hover */
-  .nav-list li.has-dropdown:hover > .dropdown-menu {
+  .has-dropdown.submenu-open > .dropdown-menu {
     display: block;
   }
-
-   /* Styling for items INSIDE dropdown */
-  .dropdown-menu li {
-      margin: 0;
-      height: auto;
-      display: block;
-  }
   .dropdown-menu a {
-      display: block;
-      padding: 0.6rem 1.2rem;
-      font-size: 0.9rem;
-      color: #444;
-      white-space: nowrap;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .dropdown-menu li:last-child a {
+    border-bottom: none;
+  }
+  
+  /* Mobile Submenu Toggle Button */
+  .submenu-toggle-button {
+    background: transparent;
+    border: none;
+    padding: var(--spacing-sm);
+    cursor: pointer;
+    margin-left: auto; /* Push to right */
+    font-size: 1.2em;
+    line-height: 1;
+    color: var(--color-text-muted);
+    /* Add transition if you animate the icon */
+  }
+  
+  /* Mobile Menu Backdrop */
+  .menu-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-speed-normal) ease, visibility 0s var(--transition-speed-normal) linear;
+    z-index: 998; /* Below nav panel */
+  }
+  .menu-backdrop.open {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity var(--transition-speed-normal) ease;
+  }
+  
+  /* Header Actions (Search etc.) */
+  .header-actions { /* This is the LI containing the search */
+    padding: var(--spacing-md) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  /* --- Header Search Bar Styles --- */
+  .search-container {
+    position: relative;
+    width: 100%; /* Full width on mobile */
+  }
+  
+  .search-container input[type="search"] {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-pill); /* Premium Look: Pill shape */
+    width: 100%;
+    box-sizing: border-box;
+    font-size: var(--font-size-sm);
+    transition: border-color var(--transition-speed-normal) ease, box-shadow var(--transition-speed-normal) ease;
+  }
+  .search-container input[type="search"]:focus {
+    border-color: var(--color-border-focus);
+    outline: none;
+    box-shadow: var(--shadow-focus);
+  }
+  
+  /* Base for dropdown/no-results */
+  .search-results-base {
+    position: absolute;
+    top: calc(100% + var(--spacing-xs)); /* Position below input with small gap */
+    left: 0;
+    right: 0;
+    background-color: var(--color-background-body);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md); /* Consistent radius */
+    box-shadow: var(--shadow-medium); /* Use medium shadow */
+    z-index: 1000;
+    padding: 0;
+    margin: 0;
+    max-width: 350px; /* Limit width */
+    overflow: hidden; /* Clip corners */
+  }
+  
+  /* Results List */
+  .search-results-dropdown {
+    /* Inherit base styles */
+    position: absolute;
+    top: calc(100% + var(--spacing-xs));
+    left: 0;
+    right: 0;
+    background-color: var(--color-background-body);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-medium);
+    z-index: 1000;
+    padding: var(--spacing-sm) 0; /* Add padding top/bottom */
+    margin: 0;
+    max-width: 350px;
+    list-style: none;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  
+  /* No Results Message */
+  .search-no-results {
+    /* Inherit base styles */
+    position: absolute;
+    top: calc(100% + var(--spacing-xs));
+    left: 0;
+    right: 0;
+    background-color: var(--color-background-body);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-medium);
+    z-index: 1000;
+    padding: var(--spacing-md);
+    margin: 0;
+    max-width: 350px;
+    color: var(--color-text-muted);
+    font-style: italic;
+    text-align: center;
+  }
+  
+  /* Individual Result Item Link */
+  .search-results-dropdown li a {
+    display: block;
+    padding: var(--spacing-sm) var(--spacing-md);
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    white-space: normal;
+    line-height: 1.4;
+    transition: background-color var(--transition-speed-fast) ease, color var(--transition-speed-fast) ease;
+    font-size: var(--font-size-sm); /* Consistent small size */
+  }
+  
+  .search-results-dropdown li a:hover,
+  .search-results-dropdown li a:focus {
+    background-color: var(--color-primary-light);
+    color: var(--color-primary-dark);
+    outline: none;
+  }
+  
+  .search-result-name {
+    font-weight: 500;
+    display: inline;
+    color: var(--color-text-primary); /* Darker color for name */
+  }
+  .search-result-issuer {
+    color: var(--color-text-muted);
+    font-size: 0.9em;
+    margin-left: var(--spacing-xs);
+    display: inline;
+  }
+  
+  /* Mobile Subscribe Button (Example - Adapt if needed) */
+  .nav-list li a.mobile-subscribe-button { /* Add this class in JS if needed */
+    display: inline-block;
+    background-color: var(--color-primary);
+    color: var(--color-text-on-primary);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color var(--transition-speed-normal) ease;
+    margin: var(--spacing-lg) 0 var(--spacing-md) 0; /* Space it out */
+    border-bottom: none;
+    text-align: center;
+  }
+  .nav-list li a.mobile-subscribe-button:hover {
+    background-color: var(--color-primary-dark);
+  }
+  
+  
+  /* ====== MOBILE HEADER STYLES (Up to 1099px) ====== */
+  @media (max-width: 1099px) {
+    .menu-toggle {
+      display: flex; /* Show hamburger */
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .main-nav {
+        position: fixed; /* Keep fixed */
+    }
+    .submenu-toggle-button {
+        display: inline-block; /* Show submenu toggle */
+    }
+     /* Adjust search results position on mobile */
+    .search-results-base,
+    .search-results-dropdown,
+    .search-no-results {
+      position: static; /* Flow naturally in mobile menu */
+      border: 1px solid var(--color-border);
+      box-shadow: none;
+      max-height: 200px;
+      margin-top: var(--spacing-sm);
+      max-width: none; /* Remove max-width */
+      border-radius: var(--border-radius-md); /* Ensure radius */
+    }
+    .header-actions {
+      order: -1; /* Move search to top of mobile nav */
+      border-bottom: 1px solid var(--color-border); /* Ensure border */
+      padding-bottom: var(--spacing-md); /* Add padding below search */
+      margin-bottom: var(--spacing-md); /* Add margin below search section */
+    }
+    .search-container {
+      margin: 0;
+    }
+    .search-container input[type="search"] {
+        max-width: none; /* Allow full width */
+    }
+  }
+  
+  /* ====== DESKTOP HEADER STYLES (1100px and up) ====== */
+  @media (min-width: 1100px) {
+    .menu-toggle, .menu-backdrop, .submenu-toggle-button, .mobile-subscribe-button {
+      display: none; /* Hide mobile elements */
+    }
+  
+    /* Reset mobile nav panel styles */
+    .main-nav {
+      position: static;
+      width: auto;
+      height: 100%; /* Align items vertically */
+      transform: none;
+      box-shadow: none;
+      overflow: visible;
+      padding: 0;
+      margin: 0; /* Reset margin */
+      background: transparent;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      transition: none;
+    }
+  
+    .nav-list {
+      display: flex;
+      flex-direction: row;
+      align-items: center; /* Vertically center items */
+      height: 100%;
+      list-style: none;
+      padding: 0;
+      margin: 0 0 0 var(--spacing-md); /* Space between logo and nav */
+    }
+  
+    .nav-list li {
+      margin: 0 var(--spacing-sm); /* Space between nav items */
+      height: 100%; /* Allow items to fill height for dropdown positioning */
+      display: flex; /* Align items */
+      align-items: center;
+    }
+  
+    /* Search bar positioning in desktop header */
+    .nav-list li.header-actions {
+      margin: 0 var(--spacing-md) 0 auto; /* Push search towards the right */
+      padding: 0;
       border: none;
-      transition: background-color 0.2s ease, color 0.2s ease;
+      height: auto; /* Don't force height */
+    }
+    .nav-list li.header-actions .search-container input[type="search"] {
+      width: 200px; /* Fixed width */
+      font-size: var(--font-size-sm);
+      padding: var(--spacing-xs) var(--spacing-sm);
+      transition: width var(--transition-speed-normal) ease; /* Transition width */
+    }
+    .nav-list li.header-actions .search-container input[type="search"]:focus {
+      width: 250px; /* Expand on focus */
+    }
+    /* Ensure dropdown position is correct relative to focused input */
+    .nav-list li.header-actions .search-container input[type="search"]:focus ~ .search-results-base,
+    .nav-list li.header-actions .search-container input[type="search"]:focus ~ .search-results-dropdown,
+    .nav-list li.header-actions .search-container input[type="search"]:focus ~ .search-no-results {
+        left: 0; /* Align with input */
+        width: 250px; /* Match focused input width if desired */
+    }
+  
+  
+    /* General desktop nav link styling */
+    .nav-list a.nav-link { /* Add class="nav-link" to main links */
+      display: flex;
+      align-items: center;
+      height: 100%;
+      padding: 0 var(--spacing-sm);
+      border-bottom: none;
+      font-weight: 500;
+      position: relative;
+      color: var(--color-text-secondary);
+      font-size: var(--font-size-sm); /* Slightly smaller for desktop header */
+    }
+    .nav-list a.nav-link:hover {
+        color: var(--color-primary);
+        background-color: transparent; /* No background change */
+    }
+    /* Underline hover effect */
+    .nav-list a.nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      display: block;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 10px; /* Position underline */
+      background: var(--color-primary);
+      transition: width var(--transition-speed-normal) ease;
+    }
+    .nav-list a.nav-link:hover::after {
+      width: 80%; /* Control underline width */
+    }
+  
+    /* Desktop Subscribe Button (Example) */
+    .nav-list li a.desktop-subscribe-button { /* Add class in JS */
+       display: inline-flex;
+       align-items: center;
+       background-color: var(--color-primary);
+       color: var(--color-text-on-primary);
+       padding: var(--spacing-xs) var(--spacing-md); /* Adjust padding */
+       border-radius: var(--border-radius-md);
+       font-weight: bold;
+       text-decoration: none;
+       transition: background-color var(--transition-speed-normal) ease;
+       margin-left: var(--spacing-md); /* Space from nav items */
+       font-size: var(--font-size-sm);
+     }
+    .nav-list li a.desktop-subscribe-button:hover {
+      background-color: var(--color-primary-dark);
+      text-decoration: none; /* Remove underline */
+    }
+    .nav-list li a.desktop-subscribe-button::after {
+        display: none; /* No underline effect */
+    }
+  
+  
+    /* --- DESKTOP DROPDOWN STYLING --- */
+    .nav-list li.has-dropdown {
+       position: relative; /* Needed for absolute positioning */
+    }
+  
+    .has-dropdown .dropdown-menu {
+      position: absolute;
+      background: var(--color-background-body);
+      margin: 0;
+      padding: var(--spacing-sm) 0; /* Padding top/bottom */
+      border: 1px solid var(--color-border);
+      box-shadow: var(--shadow-medium);
+      border-radius: var(--border-radius-md);
+      display: none; /* Hidden by default */
+      top: 100%; /* Position below parent */
+      left: 0;
+      min-width: 220px;
+      z-index: 1000;
+      list-style: none;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px); /* Start slightly lower */
+      transition: opacity var(--transition-speed-normal) ease,
+                  visibility var(--transition-speed-normal) ease,
+                  transform var(--transition-speed-normal) ease;
+    }
+  
+    /* Show dropdown on hover */
+    .nav-list li.has-dropdown:hover > .dropdown-menu {
+      display: block;
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  
+     /* Styling for items INSIDE dropdown */
+    .dropdown-menu li {
+       margin: 0;
+       height: auto;
+       display: block;
+    }
+    .dropdown-menu a {
+       display: block;
+       padding: var(--spacing-sm) var(--spacing-md);
+       font-size: var(--font-size-sm);
+       color: var(--color-text-secondary);
+       white-space: nowrap;
+       border: none;
+       transition: background-color var(--transition-speed-fast) ease, color var(--transition-speed-fast) ease;
+    }
+     .dropdown-menu a:hover {
+       color: var(--color-primary-dark);
+       background-color: var(--color-primary-light);
+       text-decoration: none; /* No underline inside dropdown */
+     }
+     .dropdown-menu a::after {
+         display: none; /* No underline effect inside */
+     }
+    /* --- END DESKTOP DROPDOWN --- */
+  
+  } /* End Desktop Media Query (min-width: 1100px) */
+  
+  
+  /* ==========================================================================
+     Hero Section (Styles for classes used in index.js)
+     ========================================================================== */
+  /* Note: Specific hero styles like image background were moved to inline/component level in index.js using next/image */
+  .hero-section {
+    /* Base styles if needed, mostly handled by Tailwind classes in index.js */
+    /* Example: Ensure text shadow for readability if overlay isn't enough */
+    /* text-shadow: 0 1px 3px rgba(0,0,0,0.4); */
   }
-   .dropdown-menu a:hover {
-       color: #0056b3;
-       background-color: #f5f5f5;
-   }
-  /* --- END DESKTOP DROPDOWN --- */
-
-} /* End Desktop Media Query */
-
-
-/* =============== HERO SECTION =============== */
-#product-overview .img {
-  /* LCP Candidate: Ensure image file is optimized! */
-  background:
-    linear-gradient(to top, rgba(80, 68, 18, 0.6) 10%, transparent),
-     no-repeat center center/cover;
-  background-position: left 10% bottom 40%;
-  /* FIXED: Use 100% instead of 100vw */
-  width: 100%;
-  height: 70vh;
-  position: relative;
-  margin-top: 3.5rem; /* Match header height */
-  display: block; /* Ensure it behaves like a block */
-}
-
-.hero {
-  text-align: center;
-  padding: 1rem;
-}
-
-.hero .container {
-  margin-bottom: 2rem;
-}
-
-.hero h1 {
-  font-size: clamp(2em, 5vw, 3em);
-  margin-bottom: 0.5rem;
-  color: #111; /* Darker heading color */
-}
-
-.hero p {
-  margin: 0 auto 1.5rem auto; /* Center paragraph text block */
-  max-width: 65ch; /* Limit line length for readability */
-  font-size: clamp(1em, 3vw, 1.2em);
-  line-height: 1.6;
-  color: #444; /* Slightly darker paragraph */
-}
-
-/* =============== BUTTONS (General) =============== */
-.cta-button,
-.Apply-button,
-.submit {
-  display: inline-block;
-  padding: 10px 15px;
-  border-radius: 5px;
-  font-weight: bold;
-  text-decoration: none;
-  text-align: center;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.2s ease;
-  border: none;
-  margin: 0.5rem 0.5rem 0.5rem 0;
-  line-height: 1.4; /* Ensure consistent line height */
-}
-.cta-button:active,
-.Apply-button:active,
-.submit:active {
-  transform: scale(0.98);
-}
-/* Accessibility: Improve focus visibility */
-.cta-button:focus-visible,
-.Apply-button:focus-visible,
-.submit:focus-visible {
-    outline: 3px solid #0d6efd; /* Clearer focus outline */
-    outline-offset: 1px;
-    box-shadow: 0 0 0 1px #fff; /* Inner shadow for contrast */
-}
-
-
-/* Specific Button Colors - CHECK CONTRAST RATIOS */
-.cta-button {
-    background-color: #15a310; /* Slightly darker green */
-    color: white;
-}
-.cta-button:hover { background-color: #117d0d; }
-
-.Apply-button {
-    background-color: #007bff; /* Blue */
-    color: white;
-}
-.Apply-button:hover { background-color: #0056b3; }
-
-.submit {
-    background: #15a310; /* Match CTA button */
-    color: #fff;
- }
-.submit:hover { background: #117d0d; }
-
-
-/* Button Widths in Context */
-.hero .cta-button {
-   padding: 12px 25px;
-   font-size: 1.1em;
-}
-/* Ensure buttons stack nicely on smaller views if needed */
-.featured-card__description .cta-button,
-.featured-card__description .Apply-button {
-    width: auto; /* Let padding define width */
-    max-width: calc(50% - 5px); /* Allow two buttons side-by-side */
-    margin-right: 5px;
-    padding: 10px 15px; /* Consistent padding */
-}
-.featured-card__description .Apply-button {
-    margin-right: 0;
-}
-
-
-/* =============== FEATURED CARDS SECTION =============== */
-#featured-cards {
-  margin-top: 3rem;
-  padding: 2rem 1rem;
-  background-color: #FFD700; /* Check contrast of content on this bg */
-  border-radius: 10px;
-}
-
-.H2_featured-cards {
-  text-align: center;
-  color: #111; /* Ensure dark text on yellow */
-  font-size: clamp(2rem, 6vw, 3rem);
-  margin: 0 0 2rem 0;
-}
-
-#featured-cards .card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
-  gap: 30px;
-  padding: 0;
-  margin: 0 auto;
-  max-width: 1200px;
-}
-
-.featured-card {
-  display: flex;
-  flex-direction: column;
-  background-color: white;
-  padding: 1.5rem;
-  border-radius: 10px;
-  font-size: 1rem;
-  color: #333;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  min-width: 0;
-  text-align: center;
-}
-
-.featured-card__image {
-  width: 90%;
-  max-width: 280px;
-  height: auto;
-  object-fit: contain;
-  border-radius: 8px;
-  margin-bottom: 1.5rem;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.featured-card__description {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
-  width: 100%;
-  font-size: 1rem;
-  margin-top: auto;
-  padding-top: 1rem;
-  flex-grow: 1;
-}
-.featured-card__description h3 {
-    margin: 0 0 0.75rem 0;
-    font-size: 1.3rem;
-    line-height: 1.3;
-}
-.featured-card__description p {
-    margin: 0 0 1.5rem 0;
-    line-height: 1.5;
-    flex-grow: 1;
-    min-height: 60px; /* Adjust as needed for consistent card height */
-}
-.featured-card__description .cta-button,
-.featured-card__description .Apply-button {
-    width: auto;
-    max-width: 180px;
-    padding: 10px 20px;
-    margin-bottom: 0.5rem;
-}
-.featured-card__description .cta-button { margin-right: 0; } /* Stack vertically */
-.featured-card__description .Apply-button { margin-right: 0; }
-
-
-/* Responsive stacking for featured cards */
-@media (max-width: 988px) {
-  #featured-cards .card-grid {
-     grid-template-columns: 1fr;
-     gap: 20px;
-     padding: 10px;
+  
+  .hero-section h1 {
+    /* Font family set in index.js via font-playfair class */
+    color: #ffffff; /* Ensure white text on overlay */
+    /* Sizes handled by Tailwind in index.js */
   }
+  
+  .hero-section p {
+    color: #e0e0e0; /* Slightly dimmer white for paragraph */
+     /* Sizes handled by Tailwind in index.js */
+  }
+  
+  /* Premium Look: Hero buttons need refinement (defined below in Buttons section) */
+  .hero-section .cta-button,
+  .hero-section .cta-button-secondary {
+    /* Sizes handled by Tailwind in index.js */
+    /* Base styles defined below, ensure they stand out on the overlay */
+  }
+  
+  /* ==========================================================================
+     Buttons (General & Variants)
+     ========================================================================== */
+  
+  /* Base Button Styles */
+  .button-base { /* You can add this class to all button/link elements */
+    display: inline-block;
+    padding: var(--spacing-sm) var(--spacing-lg); /* Generous padding */
+    border-radius: var(--border-radius-md); /* Consistent radius */
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color var(--transition-speed-normal) ease,
+                transform var(--transition-speed-fast) ease,
+                box-shadow var(--transition-speed-normal) ease;
+    border: 1px solid transparent; /* Base border */
+    line-height: 1.4;
+  }
+  .button-base:active {
+    transform: scale(0.98); /* Subtle press effect */
+  }
+  .button-base:focus {
+      outline: none; /* Remove default outline */
+  }
+  .button-base:focus-visible { /* Accessibility: Clear focus */
+     outline: none;
+     box-shadow: var(--shadow-focus);
+  }
+  .button-base:hover {
+      text-decoration: none; /* Remove underline on button hover */
+  }
+  
+  /* Primary Button (.cta-button, .Apply-button, .submit) */
+  /* Premium Look: Using primary blue for main actions */
+  .cta-button,
+  .Apply-button,
+  .submit {
+    /* Extend base styles */
+    display: inline-block;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color var(--transition-speed-normal) ease,
+                transform var(--transition-speed-fast) ease,
+                box-shadow var(--transition-speed-normal) ease;
+    border: 1px solid transparent;
+    line-height: 1.4;
+  
+    background-color: var(--color-primary);
+    color: var(--color-text-on-primary);
+    border-color: var(--color-primary);
+  }
+  .cta-button:hover,
+  .Apply-button:hover,
+  .submit:hover {
+    background-color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+    color: var(--color-text-on-primary);
+    text-decoration: none;
+  }
+  .cta-button:active,
+  .Apply-button:active,
+  .submit:active {
+    transform: scale(0.98);
+  }
+  .cta-button:focus-visible,
+  .Apply-button:focus-visible,
+  .submit:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+  }
+  
+  /* Secondary Button (.cta-button-secondary) */
+  /* Premium Look: Outline style for secondary actions */
+  .cta-button-secondary {
+     /* Extend base styles */
+    display: inline-block;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color var(--transition-speed-normal) ease,
+                color var(--transition-speed-normal) ease, /* Transition text color */
+                transform var(--transition-speed-fast) ease,
+                box-shadow var(--transition-speed-normal) ease;
+    border: 1px solid var(--color-primary); /* Use primary color for border */
+    line-height: 1.4;
+  
+    background-color: transparent;
+    color: var(--color-primary);
+  }
+  .cta-button-secondary:hover {
+    background-color: var(--color-primary-light); /* Light primary bg on hover */
+    color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+    text-decoration: none;
+  }
+  .cta-button-secondary:active {
+    transform: scale(0.98);
+  }
+  .cta-button-secondary:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+  }
+  
+  
+  /* Adjustments for buttons within specific contexts if needed */
+  /* e.g., smaller buttons in cards */
+  .featured-card .cta-button,
+  .featured-card .Apply-button,
+  .reviews-grid .card .cta-button-secondary {
+     font-size: var(--font-size-sm);
+     padding: var(--spacing-xs) var(--spacing-md);
+  }
+  
+  /* Ensure buttons stack nicely on smaller views if needed */
+  /* Example: Buttons in featured card description */
+  .featured-card__description .flex {
+    gap: var(--spacing-sm); /* Consistent gap */
+  }
+  @media (max-width: 640px) { /* sm breakpoint */
+      .featured-card__description .flex {
+          flex-direction: column; /* Stack vertically on small screens */
+          align-items: stretch; /* Make buttons full width */
+      }
+      .featured-card__description .flex > * {
+          width: 100%; /* Full width buttons */
+      }
+  }
+  
+  /* ==========================================================================
+     Featured Cards Section
+     ========================================================================== */
+  
+  /* Premium Look: Use subtle background, generous padding */
+  #featured-cards {
+    /* Tailwind class bg-gray-50 applied in index.js handles background */
+    /* Tailwind classes py-16 lg:py-24 handle padding */
+    /* Removed background-color: #FFD700; */
+    /* border-radius: var(--border-radius-lg); Remove radius from section */
+  }
+  
+  #featured-cards h2 { /* Corresponds to #featured-cards-heading */
+    /* Tailwind handles text alignment, size, margin */
+    color: var(--color-text-primary); /* Ensure dark text */
+  }
+  
+  /* Premium Look: Grid with ample spacing */
+  .card-grid { /* Used within #featured-cards */
+    display: grid;
+    /* Adjust minmax for desired card width and responsiveness */
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: var(--spacing-xl); /* Increased gap */
+    padding: 0;
+    margin: 0 auto;
+    /* max-width: 1200px; Handled by container */
+  }
+  
+  /* Premium Look: Refined card styling */
   .featured-card {
-      max-width: 500px;
-      margin: 0 auto;
-  }
-}
-
-/* =============== COMPARISON SECTION =============== */
-#compare {
-  margin-top: 3rem;
-  padding: 2rem 1rem;
-  background-color: #f4f4f4;
-  border-radius: 10px;
-  margin-bottom: 1rem;
-}
-
-#compare .container {
-   max-width: 800px;
-   margin: 0 auto;
-   text-align: center;
-}
-
-.H2_comparison {
-  color: #111; /* Ensure contrast */
-  margin-bottom: 1.5rem;
-  font-size: clamp(1.8rem, 5vw, 2.5rem);
-}
-
-#compare form {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem 1.5rem;
-}
-
-#compare label {
-  margin-right: 0.5rem;
-  font-weight: bold;
-  color: #333;
-}
-
-#compare select {
-  padding: 0.6rem 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  min-width: 220px;
-  background-color: #fff;
-  font-size: 1rem;
-}
-
-#compare .submit {
-   margin-top: 0;
-}
-
-.comparison-result {
-  margin-top: 30px;
-  color: #333;
-  font-weight: normal;
-  font-size: 1rem;
-  text-align: left;
-}
-
-.comparison-result h3 {
-   font-size: 1.5rem;
-   margin-bottom: 1rem;
-   text-align: center;
-}
-
-.comparison-result table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-.comparison-result th,
-.comparison-result td {
-  border: 1px solid #ddd;
-  padding: 10px 12px;
-  text-align: left;
-  font-size: 1rem;
-  vertical-align: middle;
-}
-.comparison-result td:not(:first-child),
-.comparison-result th:not(:first-child) {
-  text-align: center;
-}
-
-.comparison-result th {
-  background-color: #e9e9e9;
-  font-weight: bold;
-  color: #333; /* Check contrast */
-}
-
-/* =============== REVIEWS SECTION =============== */
-.reviews-container {
-  width: 90%;
-  max-width: 1200px;
-  background: #fff;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  margin: 3rem auto;
-}
-
-.reviews-container h2 {
-  text-align: center;
-  margin: 0 0 30px 0;
-  font-size: clamp(1.8rem, 5vw, 2.5rem);
-  color: #333;
-}
-
-.reviews-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
-}
-
-/* Review Card Styling */
-.reviews-grid .card {
-  background: #fff;
-  padding: 0;
-  border-radius: 8px;
-  text-align: left;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  color: #555; /* Check contrast */
-}
-
-.reviews-grid .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-}
-
-.review_img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-}
-
-.reviews-grid .card-content {
-    padding: 15px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
-}
-
-.reviews-grid .card h3 {
-  color: #0073e6; /* Check contrast */
-  font-size: 1.2rem;
-  margin: 0 0 10px 0;
-  line-height: 1.3;
-}
-
-.reviews-grid .card p {
-  font-size: 0.9rem;
-  color: #555; /* Check contrast */
-  line-height: 1.5;
-  margin: 0 0 15px 0;
-  flex-grow: 1;
-}
-
-/* Review Card Button */
-.reviews-grid .card .cta-button {
-  display: inline-block;
-  margin-top: auto;
-  padding: 8px 15px;
-  background: #0073e6;
-  color: #fff; /* Contrast OK */
-  text-decoration: none;
-  border-radius: 5px;
-  align-self: center;
-  font-weight: bold;
-}
-
-.reviews-grid .card .cta-button:hover {
-   background-color: #0056b3;
-}
-
-/* =============== FOOTER =============== */
-.site-footer {
-  background: #000080;
-  color: #f0f0f0; /* Good contrast */
-  margin-top: 3rem;
-  padding: 2rem 1rem;
-  border-top: 4px solid #FFD700;
-  font-family: 'Playfair Display', serif;
-}
-
-.footer-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.footer-columns {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
-  margin-bottom: 2rem;
-}
-
-.footer-col h3 {
-  margin: 0 0 1rem 0;
-  color: #fff;
-  font-weight: 700;
-  font-size: 1.2rem;
-}
-
-.footer-col ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-col li {
-  margin-bottom: 0.6rem;
-}
-
-/* Footer Links */
-.footlink a {
-  color: #d0d0d0; /* Contrast OK */
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.footlink a:hover {
-  color: #fff;
-  text-decoration: underline;
-}
-
-.footer-disclaimer {
-  margin-top: 2rem;
-  font-size: 0.85rem;
-  line-height: 1.5;
-  color: #ccc; /* Contrast OK */
-  text-align: center;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.footer-bottom {
-  margin-top: 2rem;
-  padding: 1rem 0;
-  text-align: center;
-  font-size: 0.9rem;
-  color: #ccc; /* Contrast OK */
-  border-top: 1px solid #4a4a9c;
-}
-
-.footer-bottom p {
-  margin: 0;
-}
-/* Existing globals.css content... */
-
-:root {
-  --bg-light-gray: #f9fafb;
-  --bg-white: #ffffff;
-  --bg-light: #f3f4f6; /* Added for selected card items */
-  --text-dark: #111827;
-  --text-medium: #374151;
-  --text-light: #6b7280;
-  --text-muted: #4b5563; /* Added for breakdown */
-  --border-color: #d1d5db;
-  --border-color-light: #e5e7eb;
-  --primary-blue: #2563eb;
-  --primary-blue-dark: #1d4ed8;
-  --primary-blue-focus: rgba(59, 130, 246, 0.2);
-  --primary-blue-light-bg: #eff6ff; /* Added for AI box */
-  --primary-blue-light-border: #bfdbfe; /* Added for AI box */
-  --primary-blue-text-dark: #1e3a8a; /* Added for AI h3 */
-  --secondary-gray: #6b7280;
-  --secondary-gray-dark: #4b5563;
-  --value-good: #16a34a;
-  --value-bad: #dc2626;
-  --info-bg: #eff6ff; /* Example for chips */
-  --info-heading: #1e40af; /* Example for chips */
-  --info-border: #bfdbfe; /* Example for chips */
-  --danger-color: #dc2626; /* For chip remove button */
-  --color-primary: #0052cc; /* Professional Blue */
-  --color-primary-hover: #0041a3;
-  --color-text-primary: #172b4d; /* Dark Slate Gray */
-  --color-text-secondary: #5e6c84; /* Medium Slate Gray */
-  --color-text-muted: #7a869a; /* Lighter Slate Gray */
-  --color-border: #dfe1e6;
-  --color-border-focus: #0052cc;
-  --color-background-light: #ffffff;
-  --color-background-overlay: rgba(23, 43, 77, 0.75); /* Dark Slate Gray overlay */
-  --color-success: #006644; /* Dark Green */
-  --color-success-background: #e3fcef; /* Light Green */
-
-  --font-family-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-
-  --spacing-xs: 4px;
-  --spacing-sm: 8px;
-  --spacing-md: 16px;
-  --spacing-lg: 24px;
-  --spacing-xl: 32px;
-
-  --border-radius-md: 8px;
-  --border-radius-lg: 16px; /* Large radius for the box */
-
-  --shadow-soft: 0 4px 8px rgba(9, 30, 66, 0.1);
-  --shadow-medium: 0 8px 16px rgba(9, 30, 66, 0.15);
-  --shadow-focus: 0 0 0 3px rgba(0, 82, 204, 0.2); /* Blue glow */
-
-  --transition-speed: 0.2s;
+    background-color: var(--color-background-body);
+    padding: var(--spacing-lg); /* Consistent padding */
+    border-radius: var(--border-radius-lg); /* Larger radius */
+    color: var(--color-text-secondary);
+    box-shadow: var(--shadow-soft); /* Softer shadow */
+    overflow: hidden;
+    text-align: center;
+    transition: transform var(--transition-speed-normal) ease, box-shadow var(--transition-speed-normal) ease;
+  }
+  .featured-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-medium); /* Slightly larger shadow on hover */
+  }
   
-}/* --- Header Search Bar Styles --- */
-
-.search-container {
-  position: relative; /* Needed for absolute positioning of dropdown */
-  margin: 0 1rem; /* Adjust horizontal margin */
-}
-
-.search-container input[type="search"] {
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 100%; /* Expand to container width */
-  max-width: 250px; /* Limit width on desktop */
-  box-sizing: border-box;
-  font-size: 1rem; /* Match base font size */
-  transition: border-color 0.2s ease;
-}
-
-.search-container input[type="search"]:focus {
-  border-color: #007bff; /* Highlight border on focus (adjust color) */
-  outline: none; /* Remove default browser outline */
-}
-
-/* Base styles for dropdown-like elements positioned below input */
-.search-results-base {
-  position: absolute;
-  top: 100%; /* Position directly below the input */
-  left: 0;
-  right: 0; /* Span the width of the relative container */
-  background-color: #ffffff; /* White background */
-  border: 1px solid #ccc; /* Match input border */
-  border-top: none; /* Avoid double border */
-  border-radius: 0 0 4px 4px; /* Rounded bottom corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  z-index: 3000; /* Ensure it appears above other content */
-  padding: 0;
-  margin: 0;
-  max-width: 350px; /* Optional: Slightly wider than input for readability */
-}
-
-/* Styles for the results list */
-.search-results-dropdown {
-  /* Inherit base styles */
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background-color: #ffffff;
-  border: 1px solid #ccc;
-  border-top: none;
-  border-radius: 0 0 4px 4px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 3000;
-  padding: 0;
-  margin: 0;
-  max-width: 350px;
-  /* Specific list styles */
-  list-style: none;
-  max-height: 300px; /* Limit height and make scrollable */
-  overflow-y: auto; /* Add scrollbar if content overflows */
-}
-
-/* Styles for the "No results" message */
-.search-no-results {
-   /* Inherit base styles */
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background-color: #ffffff;
-  border: 1px solid #ccc;
-  border-top: none;
-  border-radius: 0 0 4px 4px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 3000;
-  padding: 0;
-  margin: 0;
-  max-width: 350px;
-  /* Specific "no results" styles */
-  padding: 10px 15px; /* Add padding */
-  color: #666; /* Grey text color */
-  font-style: italic;
-  text-align: center;
-  border-top: 1px solid #ccc; /* Re-add top border for separation */
-}
-
-/* Styles for individual list items */
-.search-results-dropdown li {
-  padding: 0;
-  margin: 0;
-}
-
-/* Styles for the links within list items */
-.search-results-dropdown li a {
-  display: block; /* Make the entire area clickable */
-  padding: 10px 15px; /* Padding around text */
-  color: #333; /* Default text color */
-  text-decoration: none; /* Remove underline */
-  white-space: normal; /* Allow text wrapping for long names */
-  line-height: 1.4; /* Adjust line spacing for wrapped text */
-  transition: background-color 0.2s ease, color 0.2s ease; /* Smooth transitions */
-  font-size: 0.7rem;
-}
-
-/* Hover/focus styles for result links */
-.search-results-dropdown li a:hover,
-.search-results-dropdown li a:focus {
-  background-color: #f0f0f0; /* Light grey background on hover/focus */
-  color: #0056b3; /* Link color on hover/focus (adjust) */
-}
-
-/* Style for card name within the link */
-.search-result-name {
-    font-weight: 500; /* Slightly bolder name */
-    display: inline; /* Keep on same line as issuer potentially */
-}
-
-/* Style for issuer name within the link */
-.search-result-issuer {
-    color: #555; /* Darker grey for issuer */
-    font-size: 0.9em; /* Slightly smaller text */
-    margin-left: 4px; /* Space between name and issuer */
-    display: inline; /* Keep on same line */
-}
-
-/* --- Responsive adjustments for Mobile View --- */
-@media (max-width: 1100px) { /* Use the same breakpoint as your mobile menu */
-  .header-actions {
-      order: -1; /* Move search to top in mobile menu (adjust if needed) */
-      width: 100%; /* Take full width */
-      padding: 10px 15px; /* Add padding within mobile menu */
-      box-sizing: border-box;
+  .featured-card__image { /* Class for the Image component */
+    width: 100%; /* Allow image to scale within constraints */
+    max-width: 280px; /* Max width for the card image */
+    height: auto;
+    aspect-ratio: 400 / 252; /* Maintain aspect ratio */
+    object-fit: contain; /* Ensure entire image is visible */
+    border-radius: var(--border-radius-md); /* Rounded corners for image */
+    margin: 0 auto var(--spacing-lg) auto; /* Center image */
   }
-  .search-container {
-     margin: 0; /* Remove horizontal margin */
+  
+  .featured-card__description {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center; /* Center text and buttons */
+    flex-grow: 1; /* Allow description to fill space */
+    margin-top: auto; /* Push content down if needed */
   }
-   .search-container input[type="search"] {
-     max-width: none; /* Allow input to take full width */
-   }
-
-   /* Adjust positioning for dropdown/no-results on mobile */
-  .search-results-base, /* Apply base styles adjustment */
-  .search-results-dropdown,
-  .search-no-results {
-      width: 100%; /* Full width */
-      position: static; /* Change positioning to flow naturally */
-      border: 1px solid #eee; /* Lighter border for mobile */
-      box-shadow: none; /* Remove shadow */
-      max-height: 200px; /* Reduce max height */
-      margin-top: 5px; /* Add space below input */
-      max-width: none; /* Remove max-width limit */
+  .featured-card__description h3 {
+     margin: 0 0 var(--spacing-sm) 0; /* Reduced margin */
+     font-size: var(--font-size-lg); /* Larger heading */
+     line-height: var(--line-height-heading);
+     color: var(--color-text-primary);
+     font-family: var(--font-family-base); /* Use Sans Serif for card titles */
   }
-}
-
-/* --- End Header Search Bar Styles --- */
+  .featured-card__description p {
+     margin: 0 0 var(--spacing-md) 0;
+     line-height: var(--line-height-base);
+     flex-grow: 1; /* Allow paragraph to take space */
+     /* Consider setting a min-height if cards need uniform height */
+     /* min-height: 80px; */
+     font-size: var(--font-size-sm); /* Smaller text */
+  }
+  .featured-card__description .flex { /* Button container */
+    margin-top: auto; /* Push buttons to bottom */
+    padding-top: var(--spacing-sm); /* Space above buttons */
+  }
+  
+  /* ==========================================================================
+     Comparison Section (Placeholder Styles)
+     ========================================================================== */
+  
+  /* Premium Look: Use subtle background, consistent padding */
+  #compare {
+    /* Tailwind class bg-blue-50 applied in index.js - consider changing to bg-gray-50 or white for cohesion */
+    /* Tailwind classes py-16 lg:py-24 handle padding */
+    /* border-radius: var(--border-radius-lg); Remove radius */
+    margin-bottom: 0; /* Remove bottom margin if sections have enough padding */
+  }
+  
+  #compare .container {
+     /* Centered by default */
+     text-align: center;
+  }
+  
+  #compare h2 { /* Corresponds to #comparison-heading */
+    /* Tailwind handles text alignment, size, margin */
+    color: var(--color-text-primary);
+  }
+  
+  #compare p {
+      color: var(--color-text-secondary);
+  }
+  
+  #compare .cta-button {
+      /* Styles defined above */
+  }
+  
+  /* Styles for actual comparison tool elements (if created) */
+  /* Example: */
+  /* #compare form { ... } */
+  /* #compare label { ... } */
+  /* #compare select { */
+  /* padding: var(--spacing-sm) var(--spacing-md); */
+  /* border: 1px solid var(--color-border); */
+  /* border-radius: var(--border-radius-md); */
+  /* background-color: var(--color-background-body); */
+  /* font-size: var(--font-size-base); */
+  /* min-width: 220px; */
+  /* } */
+  /* #compare select:focus { */
+  /* border-color: var(--color-border-focus); */
+  /* outline: none; */
+  /* box-shadow: var(--shadow-focus); */
+  /* } */
+  /* .comparison-result { ... } */
+  /* .comparison-result table { ... } */
+  
+  
+  /* ==========================================================================
+     Reviews Section
+     ========================================================================== */
+  
+  /* Premium Look: Use consistent padding, potentially subtle background */
+  .reviews-container { /* Applied to the section tag in index.js */
+    /* Tailwind handles padding via py-16 lg:py-24 */
+    /* Consider background-color: var(--color-background-light); if needed */
+  }
+  
+  .reviews-container h2 { /* Corresponds to #reviews-heading */
+    /* Tailwind handles text alignment, size, margin */
+    color: var(--color-text-primary);
+  }
+  
+  /* Premium Look: Grid with ample spacing */
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); /* Adjust min card width */
+    gap: var(--spacing-xl); /* Consistent large gap */
+  }
+  
+  /* Premium Look: Refined card styling for reviews */
+  .reviews-grid .card { /* Class applied in index.js loop */
+    background: var(--color-background-body);
+    padding: 0; /* Remove base padding, handle in children */
+    border-radius: var(--border-radius-lg); /* Consistent radius */
+    text-align: left;
+    box-shadow: var(--shadow-soft); /* Softer shadow */
+    transition: transform var(--transition-speed-normal) ease, box-shadow var(--transition-speed-normal) ease;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Ensure image corners are clipped */
+    color: var(--color-text-secondary);
+  }
+  
+  .reviews-grid .card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+  }
+  
+  .review_img { /* Class for the Image component */
+    width: 100%;
+    height: auto; /* Let aspect-ratio control height */
+    aspect-ratio: 16 / 9; /* Example: Force 16:9 aspect ratio */
+    object-fit: cover; /* Cover the area, might crop */
+    object-position: center;
+    display: block;
+    /* border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0; If only top corners rounded */
+  }
+  
+  .reviews-grid .card-content { /* Applied in index.js loop */
+      padding: var(--spacing-lg); /* Generous padding */
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1; /* Allow content to fill height */
+  }
+  
+  .reviews-grid .card h3 {
+    color: var(--color-text-primary); /* Use primary text color */
+    font-size: var(--font-size-lg);
+    margin: 0 0 var(--spacing-sm) 0;
+    line-height: var(--line-height-heading);
+    font-family: var(--font-family-base); /* Sans-serif for readability */
+  }
+  .reviews-grid .card h3 a {
+      color: inherit; /* Inherit color from h3 */
+      transition: color var(--transition-speed-normal) ease;
+  }
+  .reviews-grid .card h3 a:hover {
+      color: var(--color-primary); /* Link color on hover */
+      text-decoration: none; /* No underline on card title hover */
+  }
+  
+  
+  .reviews-grid .card p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-base);
+    margin: 0 0 var(--spacing-md) 0;
+    flex-grow: 1; /* Allow paragraph to expand */
+    /* line-clamp-3 handled by Tailwind class in index.js - ensure it works or use JS */
+  }
+  
+  /* Review Card Button */
+  .reviews-grid .card .cta-button-secondary {
+    /* Styles inherited from general button styles */
+    /* Adjust alignment/margin if needed */
+    margin-top: auto; /* Push to bottom */
+    align-self: flex-start; /* Align button left */
+  }
+  
+  /* ==========================================================================
+     Footer
+     ========================================================================== */
+  .site-footer {
+    background: var(--color-background-footer); /* Navy */
+    color: var(--color-text-on-dark); /* Light text */
+    margin-top: var(--spacing-section); /* Space above footer */
+    padding: var(--spacing-section) var(--spacing-md); /* Generous padding */
+    border-top: 4px solid var(--color-border-accent); /* Gold border */
+    font-family: var(--font-family-serif); /* Playfair Display for footer */
+  }
+  
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .footer-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-xl); /* Substantial gap */
+    margin-bottom: var(--spacing-xl);
+  }
+  
+  .footer-col h3 {
+    margin: 0 0 var(--spacing-md) 0;
+    color: #ffffff; /* White headings */
+    font-weight: 700;
+    font-size: var(--font-size-lg);
+    font-family: var(--font-family-serif); /* Ensure serif */
+  }
+  
+  .footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-col li {
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  /* Footer Links */
+  .footer-col a { /* More specific selector */
+    color: #d0d0d0; /* Slightly muted light color */
+    text-decoration: none;
+    transition: color var(--transition-speed-normal) ease;
+    font-family: var(--font-family-sans); /* Use Sans Serif for links */
+    font-size: var(--font-size-sm);
+  }
+  
+  .footer-col a:hover {
+    color: #ffffff; /* Bright white on hover */
+    text-decoration: underline;
+  }
+  
+  .footer-disclaimer {
+    margin-top: var(--spacing-xl);
+    font-size: var(--font-size-sm); /* Smaller disclaimer text */
+    line-height: 1.5;
+    color: #ccc; /* Muted color */
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: var(--font-family-sans); /* Sans-serif for readability */
+  }
+  
+  .footer-bottom {
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-lg);
+    text-align: center;
+    font-size: var(--font-size-sm);
+    color: #ccc; /* Muted color */
+    border-top: 1px solid rgba(255, 255, 255, 0.2); /* Subtle top border */
+    font-family: var(--font-family-sans); /* Sans-serif */
+  }
+  
+  .footer-bottom p {
+    margin: 0;
+  }
