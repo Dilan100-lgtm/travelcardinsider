@@ -229,14 +229,16 @@ export default function Header() {
                           onMouseDown={(e) => e.preventDefault()}
                         >
                           <Link
-                            href={card.reviewLink}
-                            onClick={() => {
-                              closeSearchDropdown(); // Close dropdown explicitly on click
-                              if (isMobileMenuOpen) { // Also close mobile menu if open
-                                  handleBackdropClick();
-                              }
-                            }}
-                           >
+  href={card.reviewLink}
+  onMouseDown={(e) => {
+    e.preventDefault(); // Prevents blur
+  }}
+  onClick={() => {
+    closeSearchDropdown();
+    if (isMobileMenuOpen) handleBackdropClick();
+  }}
+>
+
                             <span className="search-result-name">{card['Card Name']}</span>
                             {card.Issuer && <span className="search-result-issuer"> - {card.Issuer}</span>}
                           </Link>
