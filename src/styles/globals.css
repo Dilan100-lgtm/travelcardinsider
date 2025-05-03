@@ -980,6 +980,13 @@ p, h1, h2, h3, h4, h5, h6, li, div {
   --shadow-focus: 0 0 0 3px rgba(0, 82, 204, 0.2); /* Blue glow */
 
   --transition-speed: 0.2s;
+  --brand-primary: #0014a8;        /* Navy that matches your header */
+  --brand-accent:  #e30d5c;        /* Red underline in logo */
+  --bg-paper:      #f6f8fc;        /* Light background */
+  --radius-out:    12px;
+  --radius-in:     8px;
+  --shadow-lg:     0 20px 40px rgba(0, 13, 64, 0.12);
+  --trans-fast:    160ms ease;
   
 }/* --- Header Search Bar Styles --- */
 
