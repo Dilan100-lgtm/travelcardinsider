@@ -77,7 +77,11 @@ export default function Header() {
     setSearchQuery(query);
     if (query.length >= fuseOptions.minMatchCharLength) {
       const fuseResults = fuse.search(query);
-      setSearchResults(fuseResults.slice(0, 5).map(result => result.item));
+      // Ensure results have a valid reviewLink before adding
+      const validResults = fuseResults
+        .map(result => result.item)
+        .filter(item => item && item.reviewLink);
+      setSearchResults(validResults.slice(0, 5));
     } else {
       setSearchResults([]);
     }
@@ -161,6 +165,14 @@ export default function Header() {
 
   }, [user, logout]); // Recalculate when user or logout changes
 
+  // Function to handle clicks on search results or menu links that should close the search dropdown
+  const closeSearchDropdown = () => {
+      setIsSearchFocused(false);
+      // Optional: Clear search query/results if desired when an item is clicked
+      // setSearchQuery('');
+      // setSearchResults([]);
+  };
+
   return (
     <header className="site-header">
       {/* Menu Backdrop */}
@@ -203,16 +215,28 @@ export default function Header() {
                   value={searchQuery}
                   onChange={handleSearchChange}
                   onFocus={() => setIsSearchFocused(true)}
-                  // Use timeout to allow click on results before blur hides them
-                  onBlur={() => setTimeout(() => setIsSearchFocused(false), 150)}
+                  // Using timeout remains okay, but the onMouseDown on the LI is the primary fix
+                  onBlur={() => setTimeout(() => { if (!document.activeElement?.closest('.search-results-dropdown')) { setIsSearchFocused(false); } }, 150)}
                 />
                 {/* Search Results Dropdown */}
                 {isSearchFocused && searchQuery.length >= fuseOptions.minMatchCharLength && (
                   searchResults.length > 0 ? (
                     <ul className="search-results-dropdown">
-                      {searchResults.map(card => card && card.reviewLink && (
-                        <li key={card.reviewLink || card['Card Name']}>
-                          <Link href={card.reviewLink} onClick={() => {setIsMobileMenuOpen(false); setOpenSubmenu(null);}}>
+                      {searchResults.map(card => ( // Removed unnecessary checks, filtered in handleSearchChange
+                        <li
+                          key={card.reviewLink} // Use reviewLink as key since we filter by it
+                          // *** THE FIX: Prevent blur when mouse goes down on list item ***
+                          onMouseDown={(e) => e.preventDefault()}
+                        >
+                          <Link
+                            href={card.reviewLink}
+                            onClick={() => {
+                              closeSearchDropdown(); // Close dropdown explicitly on click
+                              if (isMobileMenuOpen) { // Also close mobile menu if open
+                                  handleBackdropClick();
+                              }
+                            }}
+                           >
                             <span className="search-result-name">{card['Card Name']}</span>
                             {card.Issuer && <span className="search-result-issuer"> - {card.Issuer}</span>}
                           </Link>
@@ -220,52 +244,50 @@ export default function Header() {
                       ))}
                     </ul>
                    ) : (
-                    <div className="search-no-results">No cards found.</div>
+                    // Only show "No cards found" if the user actually typed enough chars
+                    searchQuery.length >= fuseOptions.minMatchCharLength && <div className="search-no-results">No cards found.</div>
                    )
                 )}
               </div>
             </li>
             {/* Mapped Menu Items */}
             {menuItems.map((item, index) => {
-              const hasSubmenu = item.submenuKey && item.links.length > 1; // Submenu exists if key and more than 1 link
+              const hasSubmenu = item.submenuKey && item.links.length > 0; // Adjusted check: submenu exists if key is present
               const isSubmenuOpen = openSubmenu === item.submenuKey;
               const submenuId = `submenu-${item.submenuKey}`;
               // Determine properties of the primary link/action for the menu item
-              const primaryLink = item.links[0];
-              // A direct link is one without a submenu, like Subscribe/Unsubscribe
+              const primaryLink = item.links[0]; // Use first link for primary action data
+               // A direct link is one without a submenu, like Subscribe/Unsubscribe
               const isDirectLink = !item.submenuKey;
-              // Check if the href is for internal navigation
+               // Check if the href is for internal navigation
               const isInternalPageLink = primaryLink.href.startsWith('/') && !primaryLink.href.startsWith('//');
 
                // Function to render the main link/button for the menu item
               const renderMainLink = () => {
                 const linkProps = {
-                  className: `nav-link ${isDirectLink ? 'cta-style' : ''}`, // Add a class to style Subscribe/Unsubscribe if needed
+                  className: `nav-link ${isDirectLink && primaryLink.label === 'Subscribe' ? 'subscribe-link-style' : ''} ${isDirectLink && primaryLink.label === 'Unsubscribe' ? 'unsubscribe-link-style' : ''}`, // Add specific classes for styling Subscribe/Unsubscribe
                   onClick: (e: React.MouseEvent<HTMLElement>) => {
                     if (primaryLink.onClick) { // Handle onClick specifically for Unsubscribe
                       e.preventDefault(); // Prevent navigation since href is "#"
                       primaryLink.onClick();
-                      setIsMobileMenuOpen(false); // Close mobile menu on action
-                      setOpenSubmenu(null);
+                      if (isMobileMenuOpen) handleBackdropClick(); // Close mobile menu on action
                     } else if (hasSubmenu && !isMobileView) {
-                      // Prevent default only for desktop dropdown hover triggers (handled by CSS typically)
-                      // e.preventDefault(); // Commented out: CSS hover handles desktop dropdowns
+                       // Allow default link behavior for desktop dropdown triggers
+                       // The hover effect is handled by CSS
                     } else {
                        // Close mobile menu on any direct navigation click
-                      if (isMobileMenuOpen) {
-                          handleBackdropClick();
-                      }
+                       if (isMobileMenuOpen) handleBackdropClick();
                     }
-                    // Allow default navigation for regular links
+                    // Allow default navigation for regular links by not calling e.preventDefault() unless needed
                   }
                 };
 
                 if (primaryLink.onClick) { // Render Unsubscribe as an <a> tag styled as needed
-                    return <a href={primaryLink.href} {...linkProps}>{item.label}</a>;
-                } else if (isInternalPageLink || isDirectLink) { // Render Subscribe or other internal links
-                    return <Link href={primaryLink.href} {...linkProps}>{item.label}</Link>;
-                } else { // Render external links or anchor links
-                    return <a href={primaryLink.href} {...linkProps}>{item.label}</a>;
+                   return <a href={primaryLink.href} {...linkProps}>{item.label}</a>;
+                } else if (isInternalPageLink || isDirectLink) { // Render Subscribe or other internal links using Next Link
+                   return <Link href={primaryLink.href} {...linkProps}>{item.label}</Link>;
+                } else { // Render external links or anchor links as standard <a>
+                   return <a href={primaryLink.href} {...linkProps}>{item.label}</a>;
                 }
               };
 
