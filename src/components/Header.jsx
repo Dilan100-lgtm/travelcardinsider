@@ -146,7 +146,7 @@ export default function Header() {
       {
         label: "Subscribe",
         submenuKey: null,
-        links: [{ label: "Subscribe", href: "#subscribe" }],
+        links: [{ label: "Subscribe", href: "/subscribe" }],
       },
    ];
 
