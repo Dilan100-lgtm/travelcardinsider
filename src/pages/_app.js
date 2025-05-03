@@ -5,7 +5,7 @@ import Script from 'next/script'; // Keep existing GA script import
 // --- NEW IMPORTS ---
 import Header from '../components/Header'; // Assuming path is correct
 import Footer from '../components/Footer'; // Assuming path is correct
-import SubscribeCTA from '../components/SubscribeCTA'; // Import the new CTA component
+
 import { useRouter } from 'next/router';
 import Head from 'next/head'; // Import Head for global settings like viewport
 // --- END NEW IMPORTS ---
