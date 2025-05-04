@@ -2,494 +2,581 @@
 
 /* --- Core Layout & Container --- */
 .reviewContainer {
-     max-width: 850px; /* Optimal reading width */
-     margin: var(--spacing-xl, 32px) auto; /* Center with vertical space */
-     padding: 0 var(--spacing-md, 16px); /* Horizontal padding for smaller screens */
-     font-family: var(--font-sans, sans-serif); /* Fallback font */
-     color: var(--color-text-secondary, #495057);
-     line-height: 1.7; /* Enhanced readability */
+    max-width: 850px; /* Optimal reading width */
+    margin: var(--spacing-xl, 32px) auto; /* Center with vertical space */
+    padding: 0 var(--spacing-md, 16px); /* Horizontal padding for smaller screens */
+    font-family: var(--font-sans, sans-serif); /* Fallback font */
+    color: var(--color-text-secondary, #495057);
+    line-height: 1.7; /* Enhanced readability */
+  }
+  
+  /* Optional class to add top margin if needed - apply to <main> or a wrapper */
+  .mainContentWithHeaderMargin {
+    margin-top: 5rem; /* Adjust if header height changes */
+  }
+  
+  
+  /* ============================================ */
+  /* --- [PREMIUM] Review Header Area START --- */
+  /* ============================================ */
+  
+  .reviewHeader {
+    margin-bottom: var(--spacing-xl, 32px); /* Space below header section */
+    padding-top: var(--spacing-md, 16px); /* PREMIUM: Add some top padding */
+    padding-bottom: var(--spacing-xl, 32px); /* PREMIUM: Increased padding below header before border */
+    border-bottom: 1px solid var(--color-border-light, #e5e7eb); /* PREMIUM: Lighter border */
+  }
+  
+  .reviewHeader h1 {
+    font-family: var(--font-serif, 'Playfair Display', serif); /* Keep serif */
+    color: var(--color-heading, #1a202c);
+    /* PREMIUM: Slightly larger, bolder responsive title */
+    font-size: clamp(2rem, 5.5vw, 3rem);
+    font-weight: 700; /* Keep bold */
+    line-height: 1.2; /* PREMIUM: Slightly tighter line height for larger font */
+    margin: 0 0 var(--spacing-lg, 24px) 0; /* PREMIUM: Increased margin below title */
+    letter-spacing: -0.5px; /* PREMIUM: Subtle refinement */
+    text-wrap: balance; /* Improve text wrapping for titles if browser supports */
+  }
+  
+  /* [PREMIUM] Combined Intro Text & Image Layout */
+  .introAndImageWrapper {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile first */
+    gap: var(--spacing-xl, 32px); /* PREMIUM: Increased gap */
+    align-items: start;
+    margin-bottom: var(--spacing-lg, 24px); /* PREMIUM: Added space below intro/image block */
+  }
+  
+  @media (min-width: 768px) {
+    .introAndImageWrapper {
+      grid-template-columns: 2fr 1.1fr; /* PREMIUM: Adjusted ratio */
+      gap: var(--spacing-xl, 32px); /* Keep increased gap */
     }
-    
-    /* Replaces the inline style for header spacing - apply to <main> or a wrapper div if needed */
-    .mainContentWithHeaderMargin {
-     margin-top: 5rem; /* Adjust if header height changes */
-    }
-    
-    /* --- Review Header Area --- */
-    .reviewHeader {
-     margin-bottom: var(--spacing-xl, 32px);
-     padding-bottom: var(--spacing-lg, 24px);
-     border-bottom: 1px solid var(--color-border, #dee2e6);
-    }
-    
-    .reviewHeader h1 {
-     font-family: var(--font-serif, serif);
-     color: var(--color-heading, #1a202c);
-     font-size: clamp(1.8rem, 5vw, 2.8rem); /* Responsive title */
-     font-weight: 700;
-     line-height: 1.25;
-     margin: 0 0 var(--spacing-md, 16px) 0;
-    }
-    
-    /* Combined Intro Text & Image Layout */
-    .introAndImageWrapper { /* Add this div wrapper in JSX if needed for layout */
-     display: grid;
-     grid-template-columns: 1fr; /* Mobile first */
-     gap: var(--spacing-lg, 24px);
-     align-items: start; /* Align items to the top */
-    }
-    
-    @media (min-width: 768px) {
-     .introAndImageWrapper {
-      grid-template-columns: 2fr 1fr; /* Text wider than image on desktop */
-     }
-     .cardImageContainer {
-      grid-column: 2 / 3; /* Image on the right */
-      grid-row: 1 / 2;
-     }
-     .intro {
-      grid-column: 1 / 2; /* Text on the left */
-      grid-row: 1 / 2;
-     }
-    }
-    
-    .intro p {
-     font-size: 1.05rem; /* Slightly larger intro text */
-     color: var(--color-text-secondary, #495057);
-     margin: 0 0 var(--spacing-md, 16px) 0;
-    }
-    
-    .intro p strong {
-     color: var(--color-text-primary, #212529);
-     font-weight: 600; /* Or 700 if preferred */
-    }
-    
     .cardImageContainer {
-     text-align: center; /* Center image within its container */
-     margin-bottom: var(--spacing-md); /* Space below image on mobile */
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+      margin-bottom: 0; /* Remove mobile margin */
     }
-    
-    .cardImage {
-     max-width: 100%;
-     height: auto;
-     border-radius: var(--border-radius-md, 8px);
-     box-shadow: var(--shadow-md, 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04));
+    .intro {
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
     }
-    
-    /* --- Rating Section --- */
-    .ratingSection {
-     margin-top: var(--spacing-lg, 24px);
-     padding: var(--spacing-md, 16px);
-     background-color: var(--color-background-subtle, #f8f9fa);
-     border: 1px solid var(--color-border, #dee2e6);
-     border-radius: var(--border-radius-md, 8px);
-     text-align: center;
-     position: relative; /* For tooltip positioning */
-    }
-    
-    .tciRating {
-     font-size: 1.1rem;
-     font-weight: 500;
-     color: var(--color-text-primary, #212529);
-     display: inline-flex; /* Align icon and text */
-     align-items: center;
-     gap: var(--spacing-xs, 4px);
-     position: relative; /* Anchor for the tooltip */
-    }
-    
-    .tciRating strong {
-     font-weight: 700;
-     color: var(--color-primary, #0056b3);
-    }
-    
-    /* Info Icon Button */
-    .infoIconButton {
-     background: none;
-     border: none;
-     padding: 0;
-     margin: 0 var(--spacing-xs, 4px) 0 0;
-     cursor: pointer;
-     display: inline-flex; /* Align SVG vertically */
-     vertical-align: middle;
-     color: var(--color-text-muted, #6c757d);
-     transition: color var(--transition-speed, 0.2s) ease;
-    }
-    
-    .infoIconButton:hover,
-    .infoIconButton:focus {
-     color: var(--color-primary, #0056b3);
-     outline: none; /* Add custom focus ring if needed */
-    }
-    
-    .infoIcon {
-     width: 1em; /* Size relative to font-size */
-     height: 1em;
-     fill: currentColor;
-    }
-    
-    /* Rating Tooltip */
-    .ratingTooltip {
-     position: absolute;
-     bottom: calc(100% + var(--spacing-sm, 8px)); /* Position above the button */
-     left: 50%;
-     transform: translateX(-50%);
-     background-color: var(--color-text-primary, #212529);
-     color: var(--color-background, #ffffff);
-     padding: var(--spacing-md, 16px);
-     border-radius: var(--border-radius-md, 8px);
-     box-shadow: var(--shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05));
-     width: max-content; /* Adjust width based on content */
-     max-width: 300px; /* Prevent excessive width */
-     z-index: 10;
-     font-size: 0.85rem;
-     line-height: 1.5;
-     text-align: left;
-     opacity: 1; /* Controlled by JS state */
-     visibility: visible; /* Controlled by JS state */
-     transition: opacity 0.2s ease, visibility 0.2s ease;
-    }
-    .ratingTooltip strong {
-     display: block;
-     margin-bottom: var(--spacing-xs, 4px);
-     font-weight: 700;
-     color: inherit; /* Inherit white color */
-    }
-    .tooltipIntro {
-     margin: var(--spacing-sm, 8px) 0 var(--spacing-xs, 4px) 0;
-     font-weight: 500;
-     color: var(--color-text-muted, #adb5bd); /* Lighter text inside tooltip */
-    }
-    .tooltipList {
-     list-style: disc; /* Use standard bullets */
-     padding-left: var(--spacing-md, 16px); /* Indent list */
-     margin: 0;
-    }
-    .tooltipList li {
-     margin-bottom: var(--spacing-xs, 4px);
-    }
-    
-    /* Star Rating */
-    .starRating {
-     margin: var(--spacing-sm, 8px) 0;
-     color: var(--color-border, #dee2e6); /* Empty star color */
-     font-size: 1.5rem; /* Adjust star size */
-     position: relative;
-     display: inline-block; /* Fit content width */
-     line-height: 1; /* Prevent extra space */
-    }
-    
-    .filledStars {
-     position: absolute;
-     left: 0;
-     top: 0;
-     white-space: nowrap;
-     overflow: hidden;
-     color: var(--color-accent-gold, #b58900); /* Filled star color */
-     width: var(--rating); /* Dynamic width from inline style */
-    }
-    
-    .ratingDescription {
-     font-size: 0.9rem;
-     font-style: italic;
-     color: var(--color-text-muted, #6c757d);
-     margin-top: var(--spacing-sm, 8px);
-    }
-    
-    /* --- General Content Section --- */
-    .reviewSection {
-     padding-block: var(--spacing-lg, 24px); /* Vertical padding */
-     margin-block-start: var(--spacing-lg, 24px); /* Space between sections */
-     border-top: 1px solid var(--color-border, #dee2e6); /* Separator */
-    }
-    
-    .reviewSection:first-of-type {
-     border-top: none; /* No top border for the very first content section */
-     margin-block-start: 0;
-    }
-    
-    .reviewSection h2 {
-     font-family: var(--font-serif, serif);
-     color: var(--color-heading, #1a202c);
-     font-size: clamp(1.5rem, 4vw, 2rem);
-     font-weight: 700;
-     margin: 0 0 var(--spacing-md, 16px) 0;
-     line-height: 1.3;
-    }
-    
-    .reviewSection h3 {
-     font-family: var(--font-sans, sans-serif); /* Use sans for subheadings for clarity */
-     color: var(--color-text-primary, #212529);
-     font-size: clamp(1.2rem, 3vw, 1.5rem);
-     font-weight: 600;
-     margin: var(--spacing-lg, 24px) 0 var(--spacing-sm, 8px) 0;
-     line-height: 1.4;
-    }
-    
-    .reviewSection p {
-     margin: 0 0 var(--spacing-md, 16px) 0;
-    }
-    
-    .reviewSection p:last-child {
-     margin-bottom: 0;
-    }
-    
-    .reviewSection strong {
-     color: var(--color-text-primary, #212529);
-     font-weight: 600;
-    }
-    
-    .reviewSection ul,
-    .reviewSection ol {
-     padding-left: var(--spacing-lg, 24px); /* Indentation */
-     margin: 0 0 var(--spacing-md, 16px) 0;
-    }
-    
-    .reviewSection li {
-     margin-bottom: var(--spacing-sm, 8px);
-    }
-    
-    .reviewSection ul ul {
-     margin-top: var(--spacing-sm, 8px); /* Space above nested list */
-     margin-bottom: var(--spacing-sm, 8px);
-    }
-    
-    /* Specific list styling */
-    .featureList {
-     list-style-type: none; /* Remove default bullets */
-     padding-left: var(--spacing-sm, 8px);
-    }
-    
-    .featureList li {
-     position: relative;
-     padding-left: var(--spacing-lg, 24px); /* Space for custom marker */
-     margin-bottom: var(--spacing-sm, 8px);
-    }
-    
-    .featureList li::before {
-     content: '✓'; /* Checkmark marker */
-     position: absolute;
-     left: 0;
-     top: 1px; /* Adjust vertical alignment */
-     color: var(--color-success, #198754);
-     font-weight: bold;
-     font-size: 0.9em;
-    }
-    
-    .featureList ul { /* Nested lists within featureList */
-      list-style-type: '- '; /* Simple dash for nested */
-      padding-left: var(--spacing-md, 16px);
-      margin-left: var(--spacing-sm, 8px);
-    }
-    .featureList ul li::before {
-      content: none; /* Remove checkmark from nested items */
-    }
-    .featureList ul li {
-      padding-left: 0; /* Reset padding for nested items */
-    }
-    
-    
-    /* --- CTA Section --- */
-    .ctaSection {
-     text-align: center;
-     padding: var(--spacing-xl, 32px) var(--spacing-md, 16px);
-     margin-block: var(--spacing-xl, 32px); /* Space above/below */
-     background-color: var(--color-accent-gold-light, #fdf7e7); /* Light gold background */
-     border-radius: var(--border-radius-lg, 12px);
-     border: 1px solid var(--color-accent-gold, #b58900);
-    }
-    
-    .ctaSection h2 {
-     font-family: var(--font-serif, serif);
-     color: var(--color-heading, #1a202c);
-     font-size: clamp(1.4rem, 4vw, 1.8rem);
-     margin: 0 0 var(--spacing-lg, 24px) 0;
-    }
-    .ctaSection h2 b {
-      font-weight: 700; /* Ensure bold is distinct if h2 isn't already bold */
-    }
-    
-    .ctaButtons {
-     display: flex;
-     flex-wrap: wrap; /* Allow buttons to wrap on small screens */
-     justify-content: center;
-     gap: var(--spacing-md, 16px);
-    }
-    
-    /* --- Button Styling (inherits from global, specific overrides) --- */
-    .btn {
-     /* Inherit base styles from global .cta-button or define base here */
-     display: inline-block;
-     padding: 12px 28px; /* Generous padding */
-     border-radius: var(--border-radius-md, 8px);
-     font-weight: 700;
-     text-decoration: none;
-     text-align: center;
-     cursor: pointer;
-     transition: all 0.2s ease-in-out;
-     border: 2px solid transparent; /* Border thickness for alignment */
-     font-size: 1rem;
-     line-height: 1.5;
-     min-width: 180px; /* Minimum width for better visual balance */
-    }
-    .btn:focus-visible {
-     outline: 3px solid var(--primary-blue-focus, rgba(59, 130, 246, 0.3));
-     outline-offset: 2px;
-    }
-    .btn:active {
-     transform: scale(0.97);
-    }
-    
-    .btnApply {
-     background-color: var(--color-success, #198754);
-     color: var(--color-background, #ffffff);
-     border-color: var(--color-success, #198754);
-    }
-    .btnApply:hover,
-    .btnApply:focus {
-     background-color: #146c43; /* Darker green */
-     border-color: #146c43;
-     color: var(--color-background, #ffffff);
-     box-shadow: var(--shadow-sm);
-    }
-    
-    .btnRates {
-     background-color: transparent;
-     color: var(--color-primary, #0056b3);
-     border-color: var(--color-primary, #0056b3);
-    }
-    .btnRates:hover,
-    .btnRates:focus {
-     background-color: var(--color-primary-light, rgba(0, 86, 179, 0.1));
-     color: var(--color-primary-dark, #004085);
-     border-color: var(--color-primary-dark, #004085);
-    }
-    
-    /* --- Table Styling --- */
-    .tableContainer {
-     overflow-x: auto; /* Allow horizontal scroll on small screens */
-     margin-block: var(--spacing-lg, 24px);
-     border: 1px solid var(--color-border, #dee2e6);
-     border-radius: var(--border-radius-sm, 4px);
-    }
-    
+  }
+  
+  .intro p {
+    /* PREMIUM: Use base sans-serif for better readability, slightly larger */
+    font-family: var(--font-sans, 'Roboto', sans-serif);
+    font-size: 1.1rem;
+    line-height: 1.75; /* PREMIUM: Generous line height */
+    color: var(--color-text-secondary, #495057);
+    margin: 0 0 var(--spacing-lg, 24px) 0; /* PREMIUM: Increased margin below intro paragraph */
+    max-width: 65ch; /* Limit line length for readability */
+  }
+  
+  .intro p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .intro p strong {
+    color: var(--color-text-primary, #212529);
+    font-weight: 600; /* Slightly less heavy than 700 */
+  }
+  
+  .cardImageContainer {
+    text-align: center;
+    position: relative; /* For potential future enhancements */
+  }
+  
+  .cardImage {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-md, 8px);
+    /* PREMIUM: Slightly softer shadow */
+    box-shadow: var(--shadow-md, 0 4px 8px -2px rgba(9, 30, 66, 0.1), 0 0 1px rgba(9, 30, 66, 0.08));
+    display: block; /* Prevents extra space below image */
+    margin: 0 auto; /* Ensure centering */
+  }
+  
+  /* --- [PREMIUM] Rating Section --- */
+  .ratingSection {
+    margin-top: var(--spacing-xl, 32px); /* PREMIUM: Increased space above rating */
+    padding: var(--spacing-lg, 24px); /* PREMIUM: More internal padding */
+    background-color: var(--color-background-subtle, #f8f9fa);
+    border: 1px solid var(--color-border-light, #e5e7eb); /* PREMIUM: Lighter border */
+    border-radius: var(--border-radius-lg, 12px); /* PREMIUM: Larger radius */
+    text-align: center;
+    position: relative;
+  }
+  
+  .tciRating {
+    font-size: 1.1rem; /* Keep size */
+    font-weight: 600; /* PREMIUM: Slightly bolder */
+    color: var(--color-text-primary, #212529);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm, 8px); /* PREMIUM: Slightly more gap */
+    position: relative;
+  }
+  
+  .tciRating strong {
+    font-weight: 700; /* Keep rating value bold */
+    color: var(--color-primary, #0056b3);
+  }
+  
+  /* Info Icon Button */
+  .infoIconButton {
+    background: none;
+    border: none;
+    padding: 2px; /* Add tiny padding for click area */
+    margin: 0 var(--spacing-xs, 4px) 0 0;
+    cursor: pointer;
+    display: inline-flex;
+    vertical-align: middle;
+    color: var(--color-text-muted, #6c757d);
+    transition: color var(--transition-speed, 0.2s) ease;
+    border-radius: 50%; /* Make it round */
+  }
+  
+  .infoIconButton:hover,
+  .infoIconButton:focus-visible { /* Use focus-visible */
+    color: var(--color-primary, #0056b3);
+    background-color: var(--color-primary-light, rgba(0, 86, 179, 0.1)); /* Subtle background on hover/focus */
+    outline: none;
+  }
+  
+  .infoIcon {
+    width: 1.1em; /* PREMIUM: Slightly larger icon */
+    height: 1.1em;
+    fill: currentColor;
+  }
+  
+  /* Rating Tooltip */
+  .ratingTooltip {
+    position: absolute;
+    bottom: calc(100% + var(--spacing-sm, 8px));
+    left: 50%;
+    transform: translateX(-50%);
+    /* PREMIUM: Refined tooltip style */
+    background-color: var(--color-background, #ffffff);
+    color: var(--color-text-primary, #212529); /* Dark text on light background */
+    border: 1px solid var(--color-border, #dee2e6);
+    padding: var(--spacing-md, 16px);
+    border-radius: var(--border-radius-md, 8px);
+    box-shadow: var(--shadow-lg);
+    width: max-content;
+    max-width: 300px;
+    z-index: 10;
+    font-size: 0.9rem; /* PREMIUM: Slightly larger tooltip text */
+    line-height: 1.6; /* PREMIUM: Better line height */
+    text-align: left;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease; /* Added transform */
+  }
+  
+  /* Add subtle arrow */
+  .ratingTooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%; /* Position arrow at the bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: var(--color-background, #ffffff) transparent transparent transparent; /* Arrow pointing down */
+    filter: drop-shadow(0 1px 1px rgba(0,0,0,0.05)); /* Shadow for arrow */
+  }
+  /* Adjust arrow border color if tooltip border is visible */
+  .ratingTooltip::before {
+      content: '';
+      position: absolute;
+      top: calc(100% + 1px); /* Offset by border width */
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 7px; /* Slightly larger for border effect */
+      border-style: solid;
+      border-color: var(--color-border, #dee2e6) transparent transparent transparent;
+      z-index: -1; /* Place behind the main arrow */
+  }
+  
+  
+  .ratingTooltip strong {
+    display: block;
+    margin-bottom: var(--spacing-sm, 8px); /* PREMIUM: More space */
+    font-weight: 700;
+    color: inherit; /* Inherit dark text color */
+  }
+  .tooltipIntro {
+    margin: 0 0 var(--spacing-sm, 8px) 0; /* PREMIUM: More space below intro */
+    font-weight: 500;
+    color: var(--color-text-secondary, #495057);
+  }
+  .tooltipList {
+    list-style: disc;
+    padding-left: var(--spacing-md, 16px);
+    margin: 0;
+  }
+  .tooltipList li {
+    margin-bottom: var(--spacing-xs, 4px);
+  }
+  
+  /* Star Rating */
+  .starRating {
+    margin: var(--spacing-md, 16px) 0; /* PREMIUM: More vertical margin */
+    color: var(--color-border-light, #e5e7eb); /* PREMIUM: Lighter empty star */
+    font-size: 1.6rem; /* PREMIUM: Slightly larger stars */
+    position: relative;
+    display: inline-block;
+    line-height: 1;
+  }
+  
+  .filledStars {
+    position: absolute;
+    left: 0;
+    top: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    /* PREMIUM: Use a slightly brighter gold if available, otherwise keep accent */
+    color: var(--color-accent-gold, #b58900);
+    width: var(--rating);
+  }
+  
+  .ratingDescription {
+    font-size: 0.95rem; /* PREMIUM: Slightly larger */
+    font-style: italic;
+    color: var(--color-text-muted, #6c757d);
+    margin-top: var(--spacing-md, 16px); /* PREMIUM: More space above description */
+    max-width: 450px; /* Limit width */
+    margin-left: auto;
+    margin-right: auto; /* Center if width is limited */
+  }
+  
+  /* ============================================ */
+  /* --- [PREMIUM] Review Header Area END ---   */
+  /* ============================================ */
+  
+  
+  /* --- General Content Section --- */
+  .reviewSection {
+    padding-block: var(--spacing-lg, 24px); /* Vertical padding */
+    margin-block-start: var(--spacing-lg, 24px); /* Space between sections */
+    border-top: 1px solid var(--color-border, #dee2e6); /* Separator */
+  }
+  
+  /* Prevent double border below the already bordered header */
+  .reviewHeader + .reviewSection {
+    border-top: none;
+    margin-block-start: 0; /* Remove extra margin below header border */
+    padding-top: var(--spacing-lg, 24px); /* Ensure padding is still present */
+  }
+  
+  
+  .reviewSection h2 {
+    font-family: var(--font-serif, serif);
+    color: var(--color-heading, #1a202c);
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 700;
+    margin: 0 0 var(--spacing-md, 16px) 0;
+    line-height: 1.3;
+  }
+  
+  .reviewSection h3 {
+    font-family: var(--font-sans, sans-serif); /* Use sans for subheadings for clarity */
+    color: var(--color-text-primary, #212529);
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    font-weight: 600;
+    margin: var(--spacing-lg, 24px) 0 var(--spacing-sm, 8px) 0;
+    line-height: 1.4;
+  }
+  
+  .reviewSection p {
+    margin: 0 0 var(--spacing-md, 16px) 0;
+  }
+  
+  .reviewSection p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .reviewSection strong {
+    color: var(--color-text-primary, #212529);
+    font-weight: 600; /* Consistent with intro */
+  }
+  
+  .reviewSection ul,
+  .reviewSection ol {
+    padding-left: var(--spacing-lg, 24px); /* Indentation */
+    margin: 0 0 var(--spacing-md, 16px) 0;
+  }
+  
+  .reviewSection li {
+    margin-bottom: var(--spacing-sm, 8px);
+  }
+  
+  .reviewSection ul ul,
+  .reviewSection ul ol,
+  .reviewSection ol ul,
+  .reviewSection ol ol {
+    margin-top: var(--spacing-sm, 8px); /* Space above nested list */
+    margin-bottom: var(--spacing-sm, 8px);
+    padding-left: var(--spacing-lg, 24px); /* Ensure deeper indent */
+  }
+  
+  /* Specific list styling */
+  .featureList {
+    list-style-type: none; /* Remove default bullets */
+    padding-left: var(--spacing-sm, 8px);
+  }
+  
+  .featureList li {
+    position: relative;
+    padding-left: var(--spacing-lg, 24px); /* Space for custom marker */
+    margin-bottom: var(--spacing-sm, 8px);
+  }
+  
+  .featureList li::before {
+    content: '✓'; /* Checkmark marker */
+    position: absolute;
+    left: 0;
+    top: 1px; /* Adjust vertical alignment */
+    color: var(--color-success, #198754);
+    font-weight: bold;
+    font-size: 0.9em;
+  }
+  
+  .featureList ul { /* Nested lists within featureList */
+    list-style-type: '- '; /* Simple dash for nested */
+    padding-left: var(--spacing-md, 16px);
+    margin-left: var(--spacing-sm, 8px);
+    margin-top: var(--spacing-xs, 4px); /* Tighter spacing for nested */
+    margin-bottom: var(--spacing-sm, 8px);
+  }
+  .featureList ul li::before {
+    content: none; /* Remove checkmark from nested items */
+  }
+  .featureList ul li {
+    padding-left: 0; /* Reset padding for nested items */
+     margin-bottom: var(--spacing-xs, 4px); /* Tighter spacing */
+  }
+  
+  
+  /* --- CTA Section --- */
+  .ctaSection {
+    text-align: center;
+    padding: var(--spacing-xl, 32px) var(--spacing-md, 16px);
+    margin-block: var(--spacing-xl, 32px); /* Space above/below */
+    background-color: var(--color-accent-gold-light, #fdf7e7); /* Light gold background */
+    border-radius: var(--border-radius-lg, 12px);
+    border: 1px solid var(--color-accent-gold, #b58900);
+  }
+  
+  .ctaSection h2 {
+    font-family: var(--font-serif, serif);
+    color: var(--color-heading, #1a202c);
+    font-size: clamp(1.4rem, 4vw, 1.8rem);
+    margin: 0 0 var(--spacing-lg, 24px) 0;
+  }
+  .ctaSection h2 b {
+    font-weight: 700; /* Ensure bold is distinct */
+  }
+  
+  .ctaButtons {
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap on small screens */
+    justify-content: center;
+    gap: var(--spacing-md, 16px);
+  }
+  
+  /* --- Button Styling (inherits from global, specific overrides) --- */
+  .btn {
+    /* Inherit base styles from global .cta-button or define base here */
+    display: inline-block;
+    padding: 12px 28px; /* Generous padding */
+    border-radius: var(--border-radius-md, 8px);
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    border: 2px solid transparent; /* Border thickness for alignment */
+    font-size: 1rem;
+    line-height: 1.5;
+    min-width: 180px; /* Minimum width for better visual balance */
+  }
+  .btn:focus-visible {
+    outline: 3px solid var(--primary-blue-focus, rgba(59, 130, 246, 0.3));
+    outline-offset: 2px;
+  }
+  .btn:active {
+    transform: scale(0.97);
+  }
+  
+  .btnApply {
+    background-color: var(--color-success, #198754);
+    color: var(--color-background, #ffffff);
+    border-color: var(--color-success, #198754);
+  }
+  .btnApply:hover,
+  .btnApply:focus {
+    background-color: #146c43; /* Darker green */
+    border-color: #146c43;
+    color: var(--color-background, #ffffff);
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .btnRates {
+    background-color: transparent;
+    color: var(--color-primary, #0056b3);
+    border-color: var(--color-primary, #0056b3);
+  }
+  .btnRates:hover,
+  .btnRates:focus {
+    background-color: var(--color-primary-light, rgba(0, 86, 179, 0.1));
+    color: var(--color-primary-dark, #004085);
+    border-color: var(--color-primary-dark, #004085);
+  }
+  
+  /* --- Table Styling --- */
+  .tableContainer {
+    overflow-x: auto; /* Allow horizontal scroll on small screens */
+    margin-block: var(--spacing-lg, 24px);
+    border: 1px solid var(--color-border, #dee2e6);
+    border-radius: var(--border-radius-sm, 4px);
+    -webkit-overflow-scrolling: touch; /* Smoother scrolling on iOS */
+  }
+  
+  .statsTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    white-space: nowrap; /* Prevent wrapping on desktop */
+  }
+  
+  .statsTable th,
+  .statsTable td {
+    padding: var(--spacing-sm, 8px) var(--spacing-md, 16px);
+    text-align: left;
+    border-bottom: 1px solid var(--color-border, #dee2e6);
+    vertical-align: middle;
+  }
+  
+  .statsTable thead th {
+    background-color: var(--color-background-subtle, #f8f9fa);
+    font-weight: 600;
+    color: var(--color-text-primary, #212529);
+    border-bottom-width: 2px; /* Thicker bottom border for header */
+  }
+  
+  .statsTable tbody tr:last-child td {
+    border-bottom: none; /* No border on last row */
+  }
+  
+  .statsTable tbody tr:hover {
+    background-color: var(--color-background-subtle, #f8f9fa);
+  }
+  
+  /* Styling for the bold total row */
+  .statsTable .totalRow td {
+    font-weight: bold;
+    border-top: 2px solid var(--color-border, #dee2e6);
+  }
+  .statsTable .totalRow td[colspan="2"] {
+    text-align: left; /* Keep text align left for desktop */
+  }
+  
+  /* --- Responsive Table Styles --- */
+  @media (max-width: 767px) {
     .statsTable {
-     width: 100%;
-     border-collapse: collapse;
-     font-size: 0.95rem;
+      white-space: normal; /* Allow wrapping on mobile */
     }
-    
-    .statsTable th,
-    .statsTable td {
-     padding: var(--spacing-sm, 8px) var(--spacing-md, 16px);
-     text-align: left;
-     border-bottom: 1px solid var(--color-border, #dee2e6);
-     vertical-align: middle;
-    }
-    
-    .statsTable thead th {
-     background-color: var(--color-background-subtle, #f8f9fa);
-     font-weight: 600;
-     color: var(--color-text-primary, #212529);
-     border-bottom-width: 2px; /* Thicker bottom border for header */
-    }
-    
-    .statsTable tbody tr:last-child td {
-     border-bottom: none; /* No border on last row */
-    }
-    
-    .statsTable tbody tr:hover {
-     background-color: var(--color-background-subtle, #f8f9fa);
-    }
-    
-    /* Styling for the bold total row from inline styles */
-    .statsTable .totalRow td { /* Add class="totalRow" to the <tr> in JSX */
-      font-weight: bold;
-      border-top: 2px solid var(--color-border, #dee2e6);
-    }
-    .statsTable .totalRow td[colspan="2"] { /* Specific alignment if needed */
-      text-align: left;
-    }
-    
-    /* --- Responsive Table Styles --- */
-    @media (max-width: 767px) {
-     .statsTable thead {
+  
+    .statsTable thead {
       display: none; /* Hide header on mobile */
-     }
-     .statsTable tr {
+    }
+    .statsTable tr {
       display: block; /* Stack rows */
       border-bottom: 2px solid var(--color-primary, #0056b3); /* Separate stacked rows */
       margin-bottom: var(--spacing-md, 16px);
       padding-bottom: var(--spacing-sm, 8px);
-     }
-     .statsTable tr:last-child {
-       margin-bottom: 0;
-       border-bottom: none;
-     }
-    
-     .statsTable td {
+    }
+   .statsTable tr:last-child {
+     margin-bottom: 0;
+     border-bottom: none;
+   }
+  
+    .statsTable td {
       display: block; /* Stack cells */
       text-align: right; /* Align value to the right */
-      padding-left: 40%; /* Make space for label */
+      padding-left: 45%; /* Make space for label - increased slightly */
       position: relative;
       border-bottom: 1px dashed var(--color-border, #dee2e6); /* Separator between cells */
-     }
-     .statsTable td:last-child {
+      min-height: 1.5em; /* Ensure cells have some height */
+      padding-top: var(--spacing-sm);
+      padding-bottom: var(--spacing-sm);
+    }
+    .statsTable td:last-child {
       border-bottom: none;
-     }
-    
-     .statsTable td::before {
+    }
+  
+    .statsTable td::before {
       content: attr(data-label); /* Use data-label for header */
       position: absolute;
       left: var(--spacing-sm, 8px);
-      width: calc(40% - var(--spacing-md, 16px)); /* Calculate label width */
+      width: calc(45% - var(--spacing-lg, 24px)); /* Calculate label width */
       padding-right: var(--spacing-sm, 8px);
       font-weight: bold;
       text-align: left;
       color: var(--color-text-primary, #212529);
-     }
-    
-      /* Adjust total row for mobile */
-      .statsTable .totalRow td[colspan="2"] {
-         text-align: right; /* Align total value right */
-      }
-       .statsTable .totalRow td[colspan="2"]::before {
-         content: "Total Potential"; /* Explicitly add label */
-      }
-      .statsTable .totalRow td:not([colspan="2"]) {
-        display: none; /* Hide empty cells in total row */
-      }
+      white-space: normal; /* Allow label text to wrap */
     }
-    
-    /* --- E-A-T Section Styling (Optional Distinction) --- */
-    .eatSection {
-     background-color: var(--color-background-subtle, #f8f9fa);
-     padding: var(--spacing-lg, 24px);
-     margin-top: var(--spacing-xl, 32px);
-     border-radius: var(--border-radius-md, 8px);
-     border: 1px solid var(--color-border, #dee2e6);
+  
+    /* Adjust total row for mobile */
+    .statsTable .totalRow td[colspan="2"] {
+       text-align: right; /* Align total value right */
+       padding-left: 45%; /* Maintain padding */
     }
-    
-    .eatSection h2 {
- border-bottom: 2px solid var(--color-primary, #0056b3);
-padding-bottom: var(--spacing-sm, 8px);
- display: inline-block; /* Border only under text */
+     .statsTable .totalRow td[colspan="2"]::before {
+       content: "Total Potential"; /* Explicitly add label */
+       font-weight: bold; /* Ensure label is bold */
     }
-    
-    .eatSection h3 {
-      color: var(--color-primary, #0056b3);
-      margin-top: var(--spacing-md, 16px);
+    .statsTable .totalRow td:not([colspan="2"]) {
+      display: none; /* Hide empty cells in total row */
     }
-    
-    .eatSection p:last-of-type {
-      margin-top: var(--spacing-lg);
-      font-weight: 500;
-    }
-    
-    .eatSection a {
-      color: var(--color-primary);
-      text-decoration: underline;
-      font-weight: 500;
-    }
-    .eatSection a:hover {
-      color: var(--color-primary-dark);
-    }
+  }
+  
+  /* --- E-A-T Section Styling --- */
+  .eatSection {
+    background-color: var(--color-background-subtle, #f8f9fa);
+    padding: var(--spacing-lg, 24px);
+    margin-top: var(--spacing-xl, 32px);
+    border-radius: var(--border-radius-md, 8px);
+    border: 1px solid var(--color-border, #dee2e6);
+  }
+  
+  .eatSection h2 {
+    border-bottom: 2px solid var(--color-primary, #0056b3);
+    padding-bottom: var(--spacing-sm, 8px);
+    display: inline-block; /* Border only under text */
+    font-size: clamp(1.4rem, 3.5vw, 1.8rem); /* Slightly smaller than main H2 */
+  }
+  
+  .eatSection h3 {
+    color: var(--color-primary, #0056b3);
+    margin-top: var(--spacing-md, 16px);
+     font-size: clamp(1.1rem, 2.5vw, 1.3rem); /* Smaller H3 */
+  }
+  
+  .eatSection p:last-of-type {
+    margin-top: var(--spacing-lg);
+    font-weight: 500;
+  }
+  
+  .eatSection a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    font-weight: 500;
+  }
+  .eatSection a:hover {
+    color: var(--color-primary-dark);
+    text-decoration: none; /* Optional: remove underline on hover */
+  }
