@@ -71,13 +71,12 @@
   
   .intro p {
     font-family: var(--font-sans, 'Roboto', sans-serif);
-    /* PREMIUM: Refined font size */
     font-size: 1.1rem;
     line-height: 1.75;
     color: var(--color-text-secondary, #495057);
     margin: 0 0 var(--spacing-lg, 24px) 0;
-    /* PREMIUM: Limit line length even in wider container */
     max-width: 70ch;
+    text-align: center; /* Center-align intro paragraphs */
   }
   
   .intro p:last-child {
@@ -301,15 +300,7 @@
     font-size: 1.05rem;
     line-height: 1.75;
     color: var(--color-text-secondary, #495057);
-  
-    /* --- ADD THIS LINE FOR JUSTIFICATION --- */
-    text-align: center;
-  
-    /* --- OPTIONAL BUT RECOMMENDED FOR JUSTIFICATION --- */
-    /* Helps browsers break words better to avoid large gaps */
-    hyphens: auto; /* Standard */
-    -webkit-hyphens: auto; /* Safari */
-    -ms-hyphens: auto; /* IE/Edge */
+    text-align: center; /* Center-align paragraphs */
   }
   
   .reviewSection p:last-child {
