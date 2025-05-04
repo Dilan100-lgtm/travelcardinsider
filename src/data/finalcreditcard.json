@@ -180,78 +180,109 @@
       "perks": []
     },
     {
-      "Card Name": "American Express\u00ae Gold Card",
-      "Issuer": "American Express",
-      "image": "/NUS000000174_480x304_straight_withname.avif",
-      "ratingValue": 8.8,
-      "applyLink": "https://www.americanexpress.com/us/credit-cards/card/gold-card/",
-      "ratesandfees": "https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/gold-card/25330-10-0#FeeTable",
-      "reviewLink": "/cards/american-express-gold",
-      "Card Type": "Personal",
-      "Annual Fee": 250.0,
-      "APR Range (Purchases)": "20.24%\u201327.24% Variable",
-      "Foreign Transaction Fee": 0.0,
-      "Intro APR": null,
-      "Credit Score Requirement": "Good\u2013Excellent (700+)",
-      "signUpBonus": {
-        "points": 60000,
-        "description": "Earn 60,000 Membership Rewards points after spending $6,000 in 6 months",
-        "minSpend": 6000,
-        "durationDays": 180,
-        "estimated_value_usd": 900
-      },
-      "rewardProgram": "Membership Rewards",
-      "rewards": [
-        {
-          "multiplier": 4,
-          "category": "dining",
-          "notes": "4x points at restaurants worldwide, including takeout and delivery",
-          "cap": null
-        },
-        {
-          "multiplier": 4,
-          "category": "groceries_us",
-          "notes": "4x points at U.S. supermarkets (up to $25,000 per year)",
-          "cap": {
+         "Card Name": "American Express\u00ae Gold Card",
+         "Issuer": "American Express",
+         "image": "/NUS000000174_480x304_straight_withname.avif",
+         "ratingValue": 8.8,
+         "applyLink": "https://www.americanexpress.com/us/credit-cards/card/gold-card/",
+         "ratesandfees": "https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/gold-card/25330-10-0#FeeTable", 
+         "reviewLink": "/cards/american-express-gold",
+         "Card Type": "Personal",
+         "Annual Fee": 325.0, 
+         "APR Range (Purchases)": "20.24%\u201329.24% Variable", 
+         "Foreign Transaction Fee": 0.0,
+         "Intro APR": null,
+         "Credit Score Requirement": "Good\u2013Excellent (700+)",
+         "signUpBonus": { 
+          "points": 60000,
+          "description": "Earn 60,000 Membership Rewards points after spending $6,000 in 6 months",
+          "minSpend": 6000,
+          "durationDays": 180,
+          "estimated_value_usd": 900 
+         },
+         "rewardProgram": "Membership Rewards",
+         "rewards": [
+          {
+           "multiplier": 4,
+           "category": "dining",
+           "notes": "4x points at restaurants worldwide, including takeout and delivery in the U.S. (up to $50,000 per year)",
+           "cap": { 
+                   "amount_usd": 50000,
+                   "period": "year",
+                   "applies_to_categories": [
+                       "dining"
+                   ]
+                }
+          },
+          {
+           "multiplier": 4,
+           "category": "groceries_us",
+           "notes": "4x points at U.S. supermarkets (up to $25,000 per year)",
+           "cap": {
             "amount_usd": 25000,
             "period": "year",
             "applies_to_categories": [
-              "groceries_us"
+             "groceries_us"
             ]
+           }
+          },
+          {
+           "multiplier": 3,
+           "category": "flights_direct",
+           "notes": "3x points on flights booked directly with airlines or through Amex Travel",
+           "cap": null
+          },
+              { 
+                "multiplier": 2,
+                "category": "travel_amextravel_prepaid",
+                "notes": "2x points on prepaid hotels and other eligible travel booked through American Express Travel",
+                "cap": null
+              },
+          {
+           "multiplier": 1,
+           "category": "other",
+           "notes": "1x points on other purchases",
+           "cap": null
           }
-        },
-        {
-          "multiplier": 3,
-          "category": "flights_direct",
-          "notes": "3x points on flights booked directly with airlines or through Amex Travel",
-          "cap": null
-        },
-        {
-          "multiplier": 1,
-          "category": "other",
-          "notes": "1x points on other purchases",
-          "cap": null
-        }
-      ],
-      "redemptionOptions": {
-        "amex_travel_cpp": 1.0,
-        "transfer_partner_average_cpp": 2.0,
-        "cash_back_cpp": 0.6
-      },
-      "perks": [
-        {
-          "type": "dining_credit",
-          "value_usd": 120,
-          "frequency": "annual",
-          "notes": "$10 monthly dining credit (select partners)"
-        },
-        {
-          "type": "uber_cash",
-          "value_usd": 120,
-          "frequency": "annual",
-          "notes": "$10 monthly Uber Cash for rides or eats in the U.S."
-        }
-      ]
+         ],
+         "redemptionOptions": { 
+          "amex_travel_cpp": 1.0,
+          "transfer_partner_average_cpp": 2.0,
+          "cash_back_cpp": 0.6
+         },
+         "perks": [
+          {
+           "type": "dining_credit",
+           "value_usd": 120,
+           "frequency": "annual",
+           "notes": "$10 monthly dining credit (enrollment required; partners: Grubhub, The Cheesecake Factory, Goldbelly, Wine.com, Five Guys)" 
+          },
+          {
+           "type": "uber_cash",
+           "value_usd": 120,
+           "frequency": "annual",
+           "notes": "$10 monthly Uber Cash for rides or eats in the U.S. (enrollment required)" 
+          },
+              { 
+                "type": "dunkin_credit",
+                "value_usd": 84,
+                "frequency": "annual",
+                "notes": "$7 monthly statement credit at U.S. Dunkin' locations (enrollment required)"
+              },
+              { 
+                "type": "resy_credit",
+                "value_usd": 100,
+                "frequency": "annual",
+                "notes": "$50 semi-annual statement credit for eligible U.S. Resy purchases (enrollment required)"
+              },
+              { 
+                "type": "hotel_credit",
+                "value_usd": 100,
+                "frequency": "per_stay", 
+                "notes": "$100 experience credit for qualifying charges on The Hotel Collection bookings of 2+ nights via Amex Travel"
+              }
+         ]
+       
     },
     {
       "Card Name": "Bank of America Business Advantage Travel Rewards World Mastercard\u00ae",

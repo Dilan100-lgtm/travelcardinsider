@@ -13,7 +13,7 @@ export default function RewardsComparePage() {
   // Replace with actual update date or mechanism
   const lastDataUpdate = "April 27, 2025"; // Example Date - UPDATE THIS REGULARLY
 
-  /** ------------  JSON-LD STRUCTURED DATA ------------- **/
+  /** ------------ JSON-LD STRUCTURED DATA ------------- **/
   // Keep user's JSON-LD
   const jsonLdWebPage = {
     '@context': 'https://schema.org',

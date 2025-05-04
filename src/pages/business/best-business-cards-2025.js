@@ -75,11 +75,11 @@ const cardsData = [
         imageHeight: 302,                                  // actual hero image height
     
         // *** refreshed welcome‑bonus wording & amount ***
-        bonus: '<strong>Welcome Bonus:</strong> 150,000 MR® points after $20,000 in 3 months<br><em>(≈ $2,300 value with smart travel redemptions).</em>',
+        bonus: '<strong>WelcomeBonus:</strong>150,000MR® points after $20,000 in 3months<br><em>(≈$2,300 value with smart travel redemptions).</em>',
     
         // *** earning rates brought in line with 2025 terms ***
         earningRatesList: [
-            '5X on flights & prepaid hotels via Amex Travel',
+            '5X on flights & prepaid hotels via AmexTravel',
             '1.5X on U.S. hardware, software/cloud, shipping & construction merchants (up to $2M/yr)',
             '1.5X on any individual purchase of $5,000+ (shared $2M cap)',
             '1X on all other eligible spend'
@@ -99,7 +99,7 @@ const cardsData = [
             '$150 Adobe credit',
             '$120 wireless service credit',
             'Cell‑phone protection',
-            'Global Entry / TSA PreCheck credit'
+            'Global Entry/TSAPreCheck credit'
         ],
     
         bestFor: 'Luxury business travelers wanting top‑tier lounge perks and rich big‑spend multipliers.',
@@ -107,7 +107,7 @@ const cardsData = [
         // ========== table display values ==========
         welcomeBonusTable: '$2,300 (150,000 points)',
         annualFeeTable: '$695',
-        earningRatesTable: '5× flights & prepaid hotels (Amex Travel); 1.5× select categories & $5k+ purchases',
+        earningRatesTable: '5× flights & prepaid hotels (AmexTravel); 1.5× select categories & $5k+ purchases',
         bestForTable: 'Luxury travelers',
     
         schemaCard2
