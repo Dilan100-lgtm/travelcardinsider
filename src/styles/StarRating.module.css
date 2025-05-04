@@ -1,0 +1,9 @@
+/* src/styles/StarRating.module.css */
+.starRatingContainer {
+  display: flex;
+  align-items: center;
+}
+
+.starRatingContainer svg {
+  margin-right: 2px; /* Adjust spacing between stars */
+}
