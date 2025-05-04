@@ -8,6 +8,7 @@
   color: var(--color-text-secondary); /* Default text color from global */
   line-height: 1.7; /* Generous line height for readability */
   font-family: var(--font-family-sans);
+  margin-top: 4rem;
 }
 
 /* =============== Hero Section =============== */
