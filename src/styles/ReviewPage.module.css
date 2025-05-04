@@ -296,13 +296,20 @@
   
   .reviewSection p {
     margin: 0 0 var(--spacing-md, 16px) 0;
-    /* PREMIUM: Limit line length for readability */
     max-width: 75ch;
-    /* PREMIUM: Use base sans-serif, adjust size */
     font-family: var(--font-sans, 'Roboto', sans-serif);
-    font-size: 1.05rem; /* Slightly larger body text */
-    line-height: 1.75; /* More spacing */
+    font-size: 1.05rem;
+    line-height: 1.75;
     color: var(--color-text-secondary, #495057);
+  
+    /* --- ADD THIS LINE FOR JUSTIFICATION --- */
+    text-align: justify;
+  
+    /* --- OPTIONAL BUT RECOMMENDED FOR JUSTIFICATION --- */
+    /* Helps browsers break words better to avoid large gaps */
+    hyphens: auto; /* Standard */
+    -webkit-hyphens: auto; /* Safari */
+    -ms-hyphens: auto; /* IE/Edge */
   }
   
   .reviewSection p:last-child {
