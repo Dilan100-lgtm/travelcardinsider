@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import Image from 'next/image';
 import styles from '../../styles/NoFTFCardsReview.module.css'; // Reuse existing or create a new specific one
 
 // Optional: Define card data structure for potential sub-components
@@ -107,9 +108,27 @@ function NoFTFReviewPage() {
         {/* Add other relevant meta tags */}
       </Head>
 
+      
+
       <header className={styles.reviewHeader}>
         <h1>Top 5 No Foreign Transaction Fee Credit Cards for International Travelers (2025)</h1>
       </header>
+
+       {/* --- Hero Image Section --- */}
+       <div className={styles.heroSection}>
+        <Image
+          src={heroImageSrc}
+          alt={heroImageAlt}
+          layout="responsive" // Makes the image scale with the container
+          width={900} // Intrinsic width of the image (or aspect ratio reference)
+          height={400} // Intrinsic height of the image (or aspect ratio reference)
+          objectFit="cover" // How the image should fill the container
+          priority // Load this image early (good for LCP)
+          className={styles.heroImage} // Optional class for specific image styling
+        />
+      </div>
+      {/* --- End Hero Image Section --- */}
+
 
       <article>
         <section className={styles.reviewSection}>
