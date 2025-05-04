@@ -15,7 +15,12 @@
     
     /* Add a visible border */
     border: 2px solid var(--color-border, #cedae6); /* Adjust thickness and color as needed */
-    border-radius: var(--border-radius-md, 8px); /* Optional: Keep rounded corners */
+    border-radius: var(--border-radius-md, 8px);
+    box-shadow: var(--shadow-lg); /* Add a subtle shadow for depth */
+    background-color: var(--color-background, #ffffff);
+    padding: 2rem;
+    
+     
   }
   
   /* Optional class for specific top margin adjustment */
