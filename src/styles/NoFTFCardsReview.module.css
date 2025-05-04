@@ -1,22 +1,54 @@
-/* Add to or create src/styles/ReviewPage.module.css (or a new specific file) */
+/* src/styles/ReviewPage.module.css */
 
-.reviewContainer {
-  max-width: 900px;
-  margin: 2rem auto;
-  padding: 1.5rem;
-  font-family: sans-serif;
-  line-height: 1.7;
-  color: #333;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+/* --- Hero Section Styles --- */
+.heroSection {
+  width: 100%; /* Make container full width relative to parent */
+  max-height: 450px; /* Limit the height */
+  overflow: hidden; /* Hide parts of image that overflow */
+  /* Removed margin-bottom as disclaimer handles space below */
+  border-radius: 8px; /* Optional: round corners */
+  position: relative; /* Needed for potential overlay later */
 }
 
+/* Optional: Style the image directly if needed */
+.heroImage {
+   display: block; /* Remove extra space below image */
+}
+
+/* --- Overall Container --- */
+/* Styles applied to the main tag now for better semantic structure */
+main.reviewContainer {
+    max-width: 900px;
+    margin: 2rem auto; /* Adjust top/bottom margins as needed */
+    padding: 1.5rem;
+    font-family: sans-serif; /* Consider setting font in globals.css */
+    line-height: 1.7;
+    color: #333;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* --- Disclaimer --- */
+.disclaimer {
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-top: 1.5rem; /* Space below hero */
+    margin-bottom: 1.5rem; /* Space above main title */
+    text-align: center;
+    padding: 0 1rem;
+    max-width: 750px; /* Limit width for readability */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- Header inside Article --- */
 .reviewHeader {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2rem; /* Space below H1 */
   padding-bottom: 1rem;
   border-bottom: 1px solid #eee;
+  /* margin-top: 1.5rem; */ /* Removed as disclaimer provides top space */
 }
 
 .reviewHeader h1 {
@@ -25,6 +57,7 @@
   margin-bottom: 0.5rem;
 }
 
+/* --- General Section Styling --- */
 .reviewSection {
   margin-bottom: 2.5rem;
 }
@@ -44,17 +77,17 @@
   margin-bottom: 0.8rem;
 }
 
-.reviewContainer p {
+article p { /* Target paragraphs within the article for consistency */
   margin-bottom: 1rem;
 }
 
-.reviewContainer ul {
+article ul { /* Target lists within the article */
   list-style: disc;
   margin-left: 1.5rem;
   margin-bottom: 1rem;
 }
 
-.reviewContainer li {
+article li { /* Target list items within the article */
   margin-bottom: 0.5rem;
 }
 
@@ -64,19 +97,67 @@
     margin-left: 1.5rem; /* Indent further */
 }
 
+/* --- Card Detail Section --- */
 .cardDetailSection {
   background-color: #f8f9fa;
   padding: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem; /* Increased space between cards */
   border: 1px solid #e9ecef;
   border-radius: 6px;
 }
 
-.cardDetailSection h3 {
-  border-bottom: none; /* Remove border for card names */
-  margin-top: 0;
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* Space between image and title/rating */
+  margin-bottom: 1rem;
+  flex-wrap: wrap; /* Allow wrapping on small screens */
 }
 
+.cardImageContainer {
+  flex-shrink: 0; /* Prevent image from shrinking too much */
+  width: 150px; /* Explicit width */
+  height: 95px; /* Explicit height */
+  position: relative; /* Needed for next/image layout=intrinsic or fixed */
+}
+
+.cardImageContainer img { /* Style the actual img rendered by next/image */
+    display: block;
+    border-radius: 4px; /* Optional: slightly rounded corners for card images */
+}
+
+.cardTitleRating {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Allow title section to take remaining space */
+}
+
+.cardTitleRating h3 {
+  border-bottom: none;
+  margin-bottom: 0.3rem; /* Space between title and rating */
+  margin-top: 0; /* Reset margin */
+  font-size: 1.4rem; /* Ensure consistency */
+  color: #3949ab;
+}
+
+.ratingContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Space between stars and text rating */
+}
+
+.ratingValue {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #495057;
+}
+
+/* Ensure ul doesn't have excessive top margin after card header */
+.cardDetailSection ul {
+    margin-top: 0.5rem;
+}
+
+/* --- Comparison Table --- */
 .tableContainer {
   overflow-x: auto; /* Ensure table is responsive */
   margin-top: 1.5rem;
@@ -107,14 +188,10 @@
   background-color: #f8f9fa;
 }
 
-.tableNote, .disclaimer {
+.tableNote {
     font-size: 0.85rem;
     color: #6c757d;
     margin-top: 0.5rem;
-}
-
-.disclaimer sup {
-    font-size: 0.7rem;
 }
 
 /* Optional Apply Button Style */
@@ -137,8 +214,11 @@
     background-color: #45a049;
 }
 
-/* Responsive adjustments */
+/* --- Responsive Adjustments --- */
 @media (max-width: 768px) {
+    main.reviewContainer {
+        padding: 1rem;
+    }
     .reviewHeader h1 {
         font-size: 1.8rem;
     }
@@ -148,8 +228,14 @@
      .reviewSection h3 {
         font-size: 1.2rem;
     }
-    .reviewContainer {
-        padding: 1rem;
+    .heroSection {
+        max-height: 300px; /* Adjust height for smaller screens */
+    }
+    .cardHeader {
+        gap: 0.8rem;
+    }
+     .cardTitleRating h3 {
+        font-size: 1.2rem; /* Slightly smaller title on smaller screens */
     }
     .comparisonTable {
         font-size: 0.8rem; /* Smaller font on mobile */
@@ -159,17 +245,26 @@
         padding: 0.5rem 0.4rem;
     }
 }
-/* --- Hero Section Styles --- */
-.heroSection {
-  width: 100%; /* Make container full width relative to parent */
-  max-height: 450px; /* Limit the height */
-  overflow: hidden; /* Hide parts of image that overflow */
-  margin-bottom: 1.5rem; /* Space below the hero */
-  border-radius: 8px; /* Optional: round corners */
-  position: relative; /* Needed for potential overlay later */
-}
 
-/* Optional: Style the image directly if needed */
-.heroImage {
-   display: block; /* Remove extra space below image */
+@media (max-width: 480px) {
+    .heroSection {
+        max-height: 250px;
+    }
+     .reviewHeader h1 {
+        font-size: 1.6rem;
+    }
+     .reviewSection h2 {
+        font-size: 1.3rem;
+    }
+    .cardHeader {
+       flex-direction: column; /* Stack image and title on very small screens */
+       align-items: flex-start;
+    }
+     .cardImageContainer {
+         margin-bottom: 0.5rem;
+     }
+     .cardTitleRating {
+         /* Ensure title takes full width when stacked */
+         width: 100%;
+     }
 }

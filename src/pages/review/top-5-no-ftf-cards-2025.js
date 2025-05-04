@@ -1,13 +1,22 @@
 import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
-import styles from '../../styles/NoFTFCardsReview.module.css'; // Reuse existing or create a new specific one
+import styles from '../../styles/ReviewPage.module.css';
 
-// Optional: Define card data structure for potential sub-components
+// Import your existing Header and Footer components
+import Header from '../../components/Header'; // Adjust path if necessary
+import Footer from '../../components/Footer'; // Adjust path if necessary
+import StarRating from '../../components/StarRating'; // Import the new component
+
+// Card Data with image and rating info (Update paths and ratings)
 const cardData = [
   {
     id: 'csp',
     name: 'Chase Sapphire Preferred® Card',
+    imageSrc: '/images/cards/chase-sapphire-preferred.png', // Example path
+    imageAlt: 'Chase Sapphire Preferred Card image',
+    ratingValue: 9.2, // Example rating out of 10
+    ratingStars: 4.5, // Corresponding stars (adjust as needed)
     bestFor: 'Travelers seeking great overall value, flexible rewards, solid travel protections, and a moderate annual fee.',
     annualFee: '$95',
     welcomeBonus: 'Earn 100,000 bonus points after $5,000 spend in 3 months (verify current offer).',
@@ -21,6 +30,10 @@ const cardData = [
   {
     id: 'c1vx',
     name: 'Capital One Venture X Rewards Credit Card',
+    imageSrc: '/images/cards/capital-one-venture-x.png', // Example path
+    imageAlt: 'Capital One Venture X Rewards Card image',
+    ratingValue: 9.5, // Example rating
+    ratingStars: 5.0, // Example stars
     bestFor: 'Travelers wanting premium airport experiences, easy-to-use credits offsetting the annual fee, and high rewards via the issuer\'s portal.',
     annualFee: '$395',
     welcomeBonus: '75,000 miles after $4,000 spend in 3 months.',
@@ -34,6 +47,10 @@ const cardData = [
   {
     id: 'csr',
     name: 'Chase Sapphire Reserve®',
+    imageSrc: '/images/cards/chase-sapphire-reserve.png', // Example path
+    imageAlt: 'Chase Sapphire Reserve Card image',
+    ratingValue: 9.0, // Example rating
+    ratingStars: 4.5, // Example stars
     bestFor: 'Frequent luxury travelers prioritizing top-tier insurance, extensive lounge access, high travel/dining rewards, and premium perks.',
     annualFee: '$550 ($75/authorized user)',
     welcomeBonus: '60,000 points after $5,000 spend in 3 months.',
@@ -47,6 +64,10 @@ const cardData = [
    {
     id: 'c1v',
     name: 'Capital One Venture Rewards Credit Card',
+    imageSrc: '/images/cards/capital-one-venture.png', // Example path
+    imageAlt: 'Capital One Venture Rewards Card image',
+    ratingValue: 8.8, // Example rating
+    ratingStars: 4.5, // Example stars
     bestFor: 'Travelers preferring simplicity with a solid flat earning rate, a moderate annual fee, and essential perks like Global Entry credit.',
     annualFee: '$95',
     welcomeBonus: '75,000 miles after $4,000 spend in 3 months (verify current offer).',
@@ -60,6 +81,10 @@ const cardData = [
    {
     id: 'csprem',
     name: 'Citi Strata Premier℠ Card',
+    imageSrc: '/images/cards/citi-strata-premier.png', // Example path
+    imageAlt: 'Citi Strata Premier Card image',
+    ratingValue: 8.5, // Example rating
+    ratingStars: 4.0, // Example stars
     bestFor: 'Travelers spending across diverse categories (air, hotels, dining, supermarkets, gas) who value point transfers.',
     annualFee: '$95',
     welcomeBonus: '60,000 ThankYou® Points after $4,000 spend in 3 months (verify current).',
@@ -72,7 +97,7 @@ const cardData = [
   }
 ];
 
-// Optional: Define data for the comparison table
+// Comparison Table Data (Verify details)
 const comparisonData = [
   { name: 'Chase Sapphire Preferred® Card', fee: '$95', bonus: '100,000 pts / $5k/3mo (verify)', earn: '5x Travel (Portal), 3x Dining, 2x Travel (Other)', perk: '$50 Hotel Credit (Portal), Comp. Insurance', ftf: 'None' },
   { name: 'Capital One Venture X Rewards Card', fee: '$395', bonus: '75,000 miles / $4k/3mo', earn: '10x Hotels/Cars (Portal), 5x Flights (Portal), 2x Else', perk: '$300 Travel Credit (Portal), 10k Miles, Lounge (C1 + PP)', ftf: 'None' },
@@ -81,170 +106,174 @@ const comparisonData = [
   { name: 'Citi Strata Premier℠ Card', fee: '$95', bonus: '60,000 pts / $4k/3mo (verify)', earn: '10x Hotels/Cars (Portal), 3x Air/Hotels/Dining/Grocery/Gas', perk: '$100 Hotel Credit (Portal, $500+ stay)', ftf: 'None' },
 ];
 
-// Optional: Placeholder for a Card Review sub-component
-// const CardReviewSection = ({ card }) => (
-//   <section key={card.id} className={styles.cardSection}>
-//     <h3>{card.name}</h3>
-//     <p><strong>Best For:</strong> {card.bestFor}</p>
-//     {/* ... other card details ... */}
-//   </section>
-// );
-
-// Optional: Placeholder for Comparison Table sub-component
-// const ComparisonTable = ({ data }) => (
-//    <div className={styles.tableContainer}>
-//      <table className={styles.comparisonTable}>
-//         {/* ... table implementation ... */}
-//      </table>
-//    </div>
-// );
 
 function NoFTFReviewPage() {
+  const heroImageSrc = '/images/reviews/no-ftf-hero.jpg'; // IMPORTANT: Replace with your actual image path
+  const heroImageAlt = 'Traveler using a credit card internationally with scenic background'; // Descriptive alt text
+
   return (
-    <div className={styles.reviewContainer}>
+    <> {/* Use Fragment to avoid extra div */}
       <Head>
         <title>Top 5 No Foreign Transaction Fee Credit Cards (2025) | Travel Card Insider</title>
         <meta name="description" content="Review of the best credit cards with no foreign transaction fees for international travel in 2025, including Chase Sapphire, Capital One Venture X, and more." />
-        {/* Add other relevant meta tags */}
+        <link rel="preload" href={heroImageSrc} as="image" />
       </Head>
 
-      
+      <Header /> {/* Include Header component */}
 
-      <header className={styles.reviewHeader}>
-        <h1>Top 5 No Foreign Transaction Fee Credit Cards for International Travelers (2025)</h1>
-      </header>
+      {/* Main content container */}
+      <main className={styles.reviewContainer}>
 
-       {/* --- Hero Image Section --- */}
-       <div className={styles.heroSection}>
-        <Image
-          src={"/AdobeStock_604745576 (1).webp"}
-          alt={heroImageAlt}
-          layout="responsive" // Makes the image scale with the container
-          width={900} // Intrinsic width of the image (or aspect ratio reference)
-          height={400} // Intrinsic height of the image (or aspect ratio reference)
-          objectFit="cover" // How the image should fill the container
-          priority // Load this image early (good for LCP)
-          className={styles.heroImage} // Optional class for specific image styling
-        />
-      </div>
-      {/* --- End Hero Image Section --- */}
+        <div className={styles.heroSection}>
+          <Image
+            src={heroImageSrc}
+            alt={heroImageAlt}
+            layout="responsive"
+            width={900}
+            height={400}
+            objectFit="cover"
+            priority
+            className={styles.heroImage}
+          />
+        </div>
 
+        {/* Disclaimer moved below hero */}
+        <p className={styles.disclaimer}>
+          Disclaimer: Information is based on sources available up to early 2025. Offers and terms change frequently. Verify all details directly with the card issuer before applying. Affiliate links may be present.
+        </p>
 
-      <article>
-        <section className={styles.reviewSection}>
-          <h2>I. Introduction: Travel Smarter in 2025</h2>
-          <p>International travel continues to be a goal for many in 2025. A key aspect of smart travel budgeting is avoiding unnecessary costs like foreign transaction fees, typically 1% to 3% charged on purchases made outside the U.S.</p>
-          <p>Choosing a credit card with no foreign transaction fees offers direct savings, freeing up funds for experiences rather than bank charges. The best cards for international travelers, however, go beyond just fee elimination. They bundle valuable travel rewards, statement credits, lounge access, insurance, and other perks that can significantly enhance your journey and often outweigh any annual fee.</p>
-          <p>This review focuses on the Top 5 No Foreign Transaction Fee Credit Cards for International Travelers in 2025, selected based on current data from official sources and reputable reviews. We aim for an objective comparison to help you find the best financial tool for your global adventures.</p>
-           <p className={styles.disclaimer}><sup>1</sup>Disclaimer: Information is based on sources available up to early 2025. Offers and terms change frequently. Verify all details directly with the card issuer before applying. Affiliate links may be present.</p>
-        </section>
+        <header className={styles.reviewHeader}>
+          <h1>Top 5 No Foreign Transaction Fee Credit Cards for International Travelers (2025)</h1>
+        </header>
 
-        <section className={styles.reviewSection}>
-          <h2>II. Understanding Foreign Transaction Fees (FTFs)</h2>
-          <h3>What Are They?</h3>
-          <p>FTFs are charges applied by card issuers to transactions processed outside the U.S., including purchases made while traveling or online from international merchants. These fees usually range from 1% to 3% of the purchase amount.</p>
-          <h3>Budget Impact</h3>
-          <p>While seemingly small, these fees add up. Spending $5,000 internationally could incur $50-$150 in FTFs.<sup>5</sup> A no-FTF card ensures you avoid this extra cost, providing predictable savings.<sup>1</sup> This applies not just to travel but also to international online shopping.</p>
-        </section>
+        <article>
+          <section className={styles.reviewSection}>
+            <h2>I. Introduction: Travel Smarter in 2025</h2>
+            <p>International travel continues to be a goal for many in 2025. A key aspect of smart travel budgeting is avoiding unnecessary costs like foreign transaction fees, typically 1% to 3% charged on purchases made outside the U.S.</p>
+            <p>Choosing a credit card with no foreign transaction fees offers direct savings, freeing up funds for experiences rather than bank charges. The best cards for international travelers, however, go beyond just fee elimination. They bundle valuable travel rewards, statement credits, lounge access, insurance, and other perks that can significantly enhance your journey and often outweigh any annual fee.</p>
+            <p>This review focuses on the Top 5 No Foreign Transaction Fee Credit Cards for International Travelers in 2025, selected based on current data from official sources and reputable reviews. We aim for an objective comparison to help you find the best financial tool for your global adventures.</p>
+          </section>
 
-        <section className={styles.reviewSection}>
-          <h2>III. Our Picks: The 5 Best No Foreign Transaction Fee Cards (2025)</h2>
-          <p>Here are five standout cards offering no foreign transaction fees alongside strong rewards and travel benefits.</p>
+          <section className={styles.reviewSection}>
+            <h2>II. Understanding Foreign Transaction Fees (FTFs)</h2>
+            <h3>What Are They?</h3>
+            <p>FTFs are charges applied by card issuers to transactions processed outside the U.S., including purchases made while traveling or online from international merchants. These fees usually range from 1% to 3% of the purchase amount.</p>
+            <h3>Budget Impact</h3>
+            <p>While seemingly small, these fees add up. Spending $5,000 internationally could incur $50-$150 in FTFs. A no-FTF card ensures you avoid this extra cost, providing predictable savings. This applies not just to travel but also to international online shopping.</p>
+          </section>
 
-          {/* Render each card review. You could map over cardData and use a sub-component */}
-          {cardData.map(card => (
-             <div key={card.id} className={styles.cardDetailSection}>
-              <h3>{`${cardData.indexOf(card) + 1}. ${card.name}`}</h3>
-              <ul>
-                <li><strong>Best For:</strong> {card.bestFor} <sup>1,2</sup></li>
-                <li><strong>Card Snapshot:</strong>
-                  <ul className={styles.snapshotList}>
-                    <li>Annual Fee: {card.annualFee} <sup>3,6,7,8,9</sup></li>
-                    <li>Welcome Bonus: {card.welcomeBonus} <sup>5,6,7,8,20</sup></li>
-                    <li>Foreign Transaction Fee: {card.ftf} <sup>5,6,7,8,9</sup></li>
-                    <li>Key Rewards: {card.rewards} <sup>2,5,6,7,3,8,9</sup></li>
-                    <li>Standout Perks: {card.perks} <sup>2,5,7,3,13,6,8,9</sup></li>
-                  </ul>
-                </li>
-                <li><strong>Why It Excels Abroad:</strong> {card.excelsAbroad} <sup>2,4,5,3,7,13,6</sup></li>
-                <li><strong>Rewards Program Insights:</strong> {card.rewardsInsights} <sup>2,4,5,7</sup></li>
-                <li><strong>Things to Consider:</strong> {card.considerations} <sup>5,7,6</sup></li>
-              </ul>
-               {/* Add Apply Now Button/Link here if desired */}
-               {/* <button className={styles.applyButton}>Apply Now</button> */}
+          <section className={styles.reviewSection}>
+            <h2>III. Our Picks: The 5 Best No Foreign Transaction Fee Cards (2025)</h2>
+            <p>Here are five standout cards offering no foreign transaction fees alongside strong rewards and travel benefits.</p>
+
+            {/* Updated card rendering loop */}
+            {cardData.map((card, index) => (
+              <div key={card.id} className={styles.cardDetailSection}>
+                <div className={styles.cardHeader}>
+                   <div className={styles.cardImageContainer}>
+                     <Image
+                       src={card.imageSrc}
+                       alt={card.imageAlt}
+                       width={150} // Adjust card image size
+                       height={95}  // Adjust card image size
+                       objectFit="contain"
+                     />
+                   </div>
+                   <div className={styles.cardTitleRating}>
+                     <h3>{`${index + 1}. ${card.name}`}</h3>
+                     <div className={styles.ratingContainer}>
+                       <StarRating rating={card.ratingStars} />
+                       <span className={styles.ratingValue}>{card.ratingValue.toFixed(1)}/10</span>
+                     </div>
+                   </div>
+                 </div>
+
+                <ul>
+                  <li><strong>Best For:</strong> {card.bestFor}</li>
+                  <li><strong>Card Snapshot:</strong>
+                    <ul className={styles.snapshotList}>
+                      <li>Annual Fee: {card.annualFee}</li>
+                      <li>Welcome Bonus: {card.welcomeBonus}</li>
+                      <li>Foreign Transaction Fee: {card.ftf}</li>
+                      <li>Key Rewards: {card.rewards}</li>
+                      <li>Standout Perks: {card.perks}</li>
+                    </ul>
+                  </li>
+                  <li><strong>Why It Excels Abroad:</strong> {card.excelsAbroad}</li>
+                  <li><strong>Rewards Program Insights:</strong> {card.rewardsInsights}</li>
+                  <li><strong>Things to Consider:</strong> {card.considerations}</li>
+                </ul>
+                {/* Optional Apply Button */}
+                {/* <button className={styles.applyButton}>Apply Now</button> */}
+              </div>
+            ))}
+          </section>
+
+          <section className={styles.reviewSection}>
+            <h2>IV. Comparison at a Glance: Top 5 No FTF Travel Cards (2025)</h2>
+            <div className={styles.tableContainer}>
+              <table className={styles.comparisonTable}>
+                 <thead>
+                    <tr>
+                    <th>Card Name</th>
+                    <th>Annual Fee</th>
+                    <th>Current Welcome Bonus (Points/Miles + Spend Req.)</th>
+                    <th>Key Travel/Dining Earn Rate</th>
+                    <th>Top Annual Credit/Perk</th>
+                    <th>Foreign Transaction Fee</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {comparisonData.map(row => (
+                    <tr key={row.name}>
+                        <td>{row.name}</td>
+                        <td>{row.fee}</td>
+                        <td>{row.bonus}</td>
+                        <td>{row.earn}</td>
+                        <td>{row.perk}</td>
+                        <td>{row.ftf}</td>
+                    </tr>
+                    ))}
+                </tbody>
+              </table>
             </div>
-          ))}
-        </section>
+            <p className={styles.tableNote}>Note: Offers and terms change. Verify directly with issuers. "PP" = Priority Pass™ Select.</p>
+          </section>
 
-        <section className={styles.reviewSection}>
-          <h2>IV. Comparison at a Glance: Top 5 No FTF Travel Cards (2025)</h2>
-          <div className={styles.tableContainer}>
-            <table className={styles.comparisonTable}>
-              <thead>
-                <tr>
-                  <th>Card Name</th>
-                  <th>Annual Fee</th>
-                  <th>Current Welcome Bonus (Points/Miles + Spend Req.)</th>
-                  <th>Key Travel/Dining Earn Rate</th>
-                  <th>Top Annual Credit/Perk</th>
-                  <th>Foreign Transaction Fee</th>
-                </tr>
-              </thead>
-              <tbody>
-                {comparisonData.map(row => (
-                  <tr key={row.name}>
-                    <td>{row.name}</td>
-                    <td>{row.fee}</td>
-                    <td>{row.bonus}</td>
-                    <td>{row.earn}</td>
-                    <td>{row.perk}</td>
-                    <td>{row.ftf}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className={styles.tableNote}>Note: Offers and terms change. Verify directly with issuers. "PP" = Priority Pass™ Select. <sup>1</sup></p>
-        </section>
+           <section className={styles.reviewSection}>
+              <h2>V. Honorable Mentions</h2>
+              <p>Other no-FTF cards worth considering:</p>
+              <ul>
+                  <li><strong>Discover it® Miles:</strong> No annual fee, no FTF. Unlimited 1.5x miles on everything. Unlimited Cashback Match first year. Flexible redemption. Lacks perks/insurance of fee cards. Great for beginners or budget travelers.</li>
+                  <li><strong>Capital One VentureOne Rewards Credit Card:</strong> No annual fee, no FTF. Unlimited 1.25x miles (5x on hotels/rentals via portal). Allows partner transfers. Lower earn rate than Venture; lacks Global Entry credit. Good for occasional travelers avoiding fees.</li>
+                  <li><strong>American Express® Cards (Platinum/Gold):</strong> Premium travel/dining cards, typically no FTF. Platinum known for lounge access; Gold for dining/U.S. supermarket rewards. Specific current U.S. offer details (bonuses, fees, credits) were not confirmed in sources for this report, preventing direct comparison here. Check Amex directly for current U.S. terms.</li>
+              </ul>
+          </section>
 
-         <section className={styles.reviewSection}>
-            <h2>V. Honorable Mentions</h2>
-            <p>Other no-FTF cards worth considering:</p>
+          <section className={styles.reviewSection}>
+            <h2>VI. Choosing Your Ideal Card</h2>
+            <p>Select based on your:</p>
             <ul>
-                <li><strong>Discover it® Miles:</strong> No annual fee, no FTF.<sup>22</sup> Unlimited 1.5x miles on everything.<sup>22</sup> Unlimited Cashback Match first year.<sup>23</sup> Flexible redemption.<sup>22</sup> Lacks perks/insurance of fee cards.<sup>5</sup> Great for beginners or budget travelers.<sup>2</sup></li>
-                <li><strong>Capital One VentureOne Rewards Credit Card:</strong> No annual fee, no FTF.<sup>2</sup> Unlimited 1.25x miles (5x on hotels/rentals via portal).<sup>18</sup> Allows partner transfers.<sup>27</sup> Lower earn rate than Venture; lacks Global Entry credit.<sup>7</sup> Good for occasional travelers avoiding fees.<sup>3</sup></li>
-                <li><strong>American Express® Cards (Platinum/Gold):</strong> Premium travel/dining cards, typically no FTF.<sup>1</sup> Platinum known for lounge access<sup>2</sup>; Gold for dining/U.S. supermarket rewards.<sup>1</sup> Specific current U.S. offer details (bonuses, fees, credits) were not confirmed in sources for this report<sup>29</sup>, preventing direct comparison here. Check Amex directly for current U.S. terms.</li>
+              <li><strong>Travel Frequency:</strong> Frequent travel justifies premium card fees (Venture X, Sapphire Reserve). Occasional travel suits mid-tier or no-fee cards.</li>
+              <li><strong>Spending Habits:</strong> Match card bonus categories to your spending (e.g., Sapphire for travel/dining, Citi for supermarkets/gas, Venture for simplicity).</li>
+              <li><strong>Perk Value:</strong> Prioritize lounges, credits, insurance? Premium cards offer most. If not essential, mid-tier suffices.</li>
+              <li><strong>Fee Tolerance:</strong> Can credits/benefits offset the fee? Venture X has clear offset path; Sapphire Reserve needs more perk use. Mid-tier fees are lower.</li>
+              <li><strong>Simplicity vs. Optimization:</strong> Prefer flat rewards (Venture) or maximizing via categories/portals (Sapphire, Citi)?</li>
             </ul>
-        </section>
+          </section>
 
-        <section className={styles.reviewSection}>
-          <h2>VI. Choosing Your Ideal Card</h2>
-          <p>Select based on your:</p>
-          <ul>
-            <li><strong>Travel Frequency:</strong> Frequent travel justifies premium card fees (Venture X, Sapphire Reserve).<sup>4</sup> Occasional travel suits mid-tier or no-fee cards.<sup>3</sup></li>
-            <li><strong>Spending Habits:</strong> Match card bonus categories to your spending (e.g., Sapphire for travel/dining<sup>5</sup>, Citi for supermarkets/gas<sup>9</sup>, Venture for simplicity<sup>8</sup>).</li>
-            <li><strong>Perk Value:</strong> Prioritize lounges, credits, insurance? Premium cards offer most.<sup>1</sup> If not essential, mid-tier suffices.<sup>5</sup></li>
-            <li><strong>Fee Tolerance:</strong> Can credits/benefits offset the fee? Venture X has clear offset path<sup>7</sup>; Sapphire Reserve needs more perk use.<sup>6</sup> Mid-tier fees are lower.<sup>5</sup></li>
-            <li><strong>Simplicity vs. Optimization:</strong> Prefer flat rewards (Venture) or maximizing via categories/portals (Sapphire, Citi)?<sup>4</sup></li>
-          </ul>
-        </section>
+          <section className={styles.reviewSection}>
+              <h2>VII. Final Thoughts</h2>
+              <p>A no-foreign-transaction-fee credit card is essential for international travelers in 2025. It eliminates unnecessary costs on every overseas purchase.</p>
+              <p>However, the best cards offer significant value beyond fee savings, including rewards, credits, lounge access, and insurance, making travel cheaper, more comfortable, and safer.</p>
+              <p>Always perform due diligence. Offers and terms change; verify details directly with the issuer before applying. By matching your needs to the right card, you can travel with greater financial confidence and enjoy enhanced rewards and experiences in 2025.</p>
+          </section>
 
-        <section className={styles.reviewSection}>
-            <h2>VII. Final Thoughts</h2>
-            <p>A no-foreign-transaction-fee credit card is essential for international travelers in 2025.<sup>1</sup> It eliminates unnecessary costs on every overseas purchase.</p>
-            <p>However, the best cards offer significant value beyond fee savings, including rewards, credits, lounge access, and insurance, making travel cheaper, more comfortable, and safer.<sup>1</sup></p>
-            <p>Always perform due diligence. Offers and terms change; verify details directly with the issuer before applying.<sup>1</sup> By matching your needs to the right card, you can travel with greater financial confidence and enjoy enhanced rewards and experiences in 2025.</p>
-        </section>
+        </article>
+      </main> {/* Close main content container */}
 
-         {/* You might add a CTA section here */}
-         {/* <section className={styles.ctaSection}>
-             <h2>Find Your Perfect Card</h2>
-             <p>Use our tools to compare these and other cards based on your spending.</p>
-             <Link href="/card-finder"><a>Go to Card Finder</a></Link>
-         </section> */}
-
-      </article>
-    </div>
+      <Footer /> {/* Include Footer component */}
+    </>
   );
 }
 
