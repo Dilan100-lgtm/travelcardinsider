@@ -1,29 +1,7 @@
 /* styles/ReviewPage.module.css */
 
 /* =============== VARIABLES (Refined Premium Palette) =============== */
-:root {
-    --color-text-primary: #212529; /* Near Black */
-    --color-text-secondary: #495057; /* Dark Gray */
-    --color-text-muted: #6c757d; /* Medium Gray */
-    --color-heading: #1a202c; /* Very Dark Gray-Blue */
-    --color-primary: #0056b3; /* Stronger Blue */
-    --color-primary-dark: #004085; /* Darker Blue */
-    /* Refined Gold - slightly more saturated */
-    --color-accent-gold: #b58900; /*#c09b5f; /* Muted Gold/Bronze */
-    --color-accent-gold-light: #fdf7e7; /* Very light gold/cream for bg */
-    --color-success: #198754; /* Bootstrap Green */
-    --color-danger: #dc3545; /* Bootstrap Red */
-    --color-background: #ffffff;
-    --color-background-subtle: #f8f9fa; /* Standard Light Gray */
-    --color-border: #dee2e6; /* Standard Border Gray */
-    --font-serif: 'Playfair Display', Georgia, serif;
-    --font-sans: 'Roboto', 'Segoe UI', Helvetica, Arial, sans-serif;
-    --font-condensed: 'Roboto Condensed', var(--font-sans);
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
-    --border-radius: 8px; /* Standard radius */
-  }
+
   
   /* =============== BASE & CONTAINER =============== */
   .reviewContainer {
