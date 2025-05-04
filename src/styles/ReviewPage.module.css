@@ -303,7 +303,7 @@
     color: var(--color-text-secondary, #495057);
   
     /* --- ADD THIS LINE FOR JUSTIFICATION --- */
-    text-align: justify;
+    text-align: center;
   
     /* --- OPTIONAL BUT RECOMMENDED FOR JUSTIFICATION --- */
     /* Helps browsers break words better to avoid large gaps */
