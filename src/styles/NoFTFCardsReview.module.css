@@ -1,126 +1,162 @@
 /* src/styles/ReviewPage.module.css */
 
+/* --- Overall Page & Variables --- */
+
+
+/* Apply a base font if not set globally */
+/* body { font-family: 'Inter', sans-serif; } */
+
+/* --- Main Container --- */
+main.reviewContainer {
+    max-width: 950px; /* Slightly wider */
+    margin: 2rem auto 4rem auto; /* More bottom margin */
+    padding: 0; /* Remove padding, handled by sections */
+    font-family: sans-serif; /* Or your global font */
+    color: var(--text-color-primary);
+    background-color: var(--background-light); /* Page background */
+}
+
 /* --- Hero Section Styles --- */
 .heroSection {
   width: 100%;
-  max-height: 450px;
+  max-height: 400px; /* Slightly reduced */
   overflow: hidden;
-  border-radius: 8px; /* Maintain rounded corners */
   position: relative;
-  /* Add a subtle shadow below the hero if desired */
-  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); */
+  /* Consider adding a subtle overlay? */
+  /* &::after { content: ''; position: absolute; inset: 0; background: linear-gradient(rgba(0,0,0,0.1), transparent); } */
 }
 
 .heroImage {
    display: block;
-}
-
-/* --- Overall Container --- */
-main.reviewContainer {
-    max-width: 900px;
-    margin: 2rem auto;
-    /* Remove background color and shadow from main container */
-    /* Let the card sections provide the background/shadow */
-    /* background-color: #ffffff; */
-    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); */
-    padding: 0 1rem; /* Add padding for spacing on smaller screens */
-    font-family: sans-serif;
-    line-height: 1.7;
-    color: #333;
+   width: 100%; /* Ensure image tries to fill container */
+   height: 100%;
+   object-fit: cover; /* Ensure image covers */
 }
 
 /* --- Disclaimer --- */
 .disclaimer {
-    font-size: 0.85rem;
-    color: #6c757d;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
+    font-size: 0.8rem;
+    color: var(--text-color-secondary);
+    margin: 2rem auto; /* Consistent vertical spacing */
     text-align: center;
-    padding: 0 1rem;
+    padding: 0 1.5rem;
     max-width: 750px;
-    margin-left: auto;
-    margin-right: auto;
+    line-height: 1.6;
 }
 
-/* --- Header inside Article --- */
+/* --- Content Area Padding (Applied to sections instead of main container) --- */
+.contentPadding {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+/* --- Review Header --- */
 .reviewHeader {
   text-align: center;
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #eee;
+  margin: 2rem 1.5rem 3rem 1.5rem; /* Add horizontal padding */
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .reviewHeader h1 {
-  font-size: 2.2rem;
-  color: #1a237e;
+  font-size: 2.5rem; /* Larger H1 */
+  font-weight: 700;
+  color: var(--primary-color);
+  line-height: 1.3;
   margin-bottom: 0.5rem;
 }
 
 /* --- General Section Styling --- */
 .reviewSection {
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem; /* Increased section spacing */
 }
 
 .reviewSection h2 {
-  font-size: 1.8rem;
-  color: #283593;
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid #e0e0e0;
+  font-size: 1.9rem; /* Larger H2 */
+  font-weight: 600;
+  color: var(--primary-color-dark);
+  margin-bottom: 1.5rem; /* More space below H2 */
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .reviewSection h3 {
-  font-size: 1.4rem;
-  color: #3949ab;
-  margin-top: 1.5rem;
-  margin-bottom: 0.8rem;
+  font-size: 1.4rem; /* Consistent H3 */
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-top: 2rem; /* More space above H3 */
+  margin-bottom: 1rem;
 }
 
 article p {
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem; /* Slightly more paragraph spacing */
+  line-height: 1.8; /* Improved readability */
+  color: var(--text-color-secondary); /* Softer text color */
+}
+
+article strong {
+    color: var(--text-color-primary);
+    font-weight: 600;
 }
 
 article ul {
-  list-style: disc;
-  margin-left: 1.5rem;
-  margin-bottom: 1rem;
+  list-style: none; /* Remove default bullets */
+  padding-left: 0;
+  margin-bottom: 1.25rem;
 }
 
 article li {
-  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 1.5rem; /* Space for custom marker */
+  margin-bottom: 0.75rem; /* Space between items */
+  color: var(--text-color-secondary);
+}
+
+article li::before { /* Custom bullet */
+  content: '•';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--primary-color); /* Theme color bullet */
+  font-size: 1.2em;
+  line-height: 1;
 }
 
 .snapshotList {
-    list-style: circle;
-    margin-top: 0.5rem;
-    margin-left: 1.5rem;
+    margin-top: 0.75rem;
+    padding-left: 1.5rem; /* Nested list padding */
+}
+.snapshotList li::before {
+    content: '–'; /* Different marker for nested list */
+    color: var(--text-color-secondary);
+    font-size: 1em;
+    left: 0.25rem;
 }
 
 /* --- Card Detail Section (Visual Separation Update) --- */
 .cardDetailSection {
-  background-color: #ffffff; /* Change to white for better shadow contrast */
-  padding: 1.5rem 2rem; /* Slightly more padding */
-  margin-bottom: 2.5rem; /* Increase space between cards */
-  border: 1px solid #e9ecef; /* Keep a subtle border */
-  border-radius: 8px; /* Slightly more rounded corners */
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07); /* Add elevation shadow */
-  transition: box-shadow 0.3s ease-in-out; /* Smooth shadow transition on hover */
+  background-color: var(--background-white);
+  padding: 2rem; /* More padding inside cards */
+  margin: 0 1.5rem 3rem 1.5rem; /* Add horizontal margin for spacing from edge, more bottom margin */
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-md); /* Use defined shadow */
+  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 .cardDetailSection:hover {
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Enhance shadow on hover */
+    box-shadow: var(--shadow-lg); /* Use larger shadow */
+    transform: translateY(-4px); /* Lift card slightly */
 }
 
-/* Remove previous separator logic */
-/* .cardSeparator { ... } */
-/* .cardDetailSection:first-of-type { ... } */
-
-
+/* --- Card Header & Rating --- */
 .cardHeader {
   display: flex;
-  align-items: center;
-  gap: 1.5rem; /* More space between image and title */
-  margin-bottom: 1rem;
+  align-items: flex-start; /* Align items to top */
+  gap: 1.5rem;
+  margin-bottom: 1.5rem; /* More space below header */
+  padding-bottom: 1rem; /* Space before border */
+  border-bottom: 1px solid var(--border-color); /* Add subtle border below card header */
   flex-wrap: wrap;
 }
 
@@ -129,259 +165,286 @@ article li {
   width: 150px;
   height: 95px;
   position: relative;
+  background-color: var(--background-light); /* Add light bg to image container */
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .cardImageContainer img {
     display: block;
     border-radius: 4px;
+    max-width: 90%; /* Prevent image touching edges */
+    max-height: 90%;
 }
 
 .cardTitleRating {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  gap: 0.5rem; /* Space between title and rating */
 }
 
 .cardTitleRating h3 {
   border-bottom: none;
-  margin-bottom: 0.3rem;
-  margin-top: 0;
-  font-size: 1.4rem;
-  color: #3949ab;
+  margin: 0; /* Reset margin */
+  font-size: 1.5rem; /* Slightly larger card title */
+  color: var(--primary-color-dark);
+  line-height: 1.4;
 }
 
 .ratingContainer {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.75rem; /* More space */
 }
 
 .ratingValue {
   font-size: 0.9rem;
-  font-weight: bold;
-  color: #495057;
-}
-
-.cardDetailSection ul {
-    margin-top: 0.5rem;
+  font-weight: 600; /* Slightly bolder */
+  color: var(--text-color-primary);
+  background-color: #e0e7ff; /* Light blue background for rating */
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
 }
 
 /* --- Card Buttons (Premium Styles) --- */
 .cardButtonsContainer {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.75rem;
+    gap: 1rem; /* Slightly larger gap */
     margin-top: 1.5rem;
-    padding-top: 1.5rem; /* More space above buttons */
-    border-top: 1px solid #e9ecef; /* Subtle separator line */
-    justify-content: flex-start; /* Align buttons to the start */
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+    justify-content: flex-start;
 }
 
 .cardButton {
-    /* Base styles for all buttons */
-    display: inline-block; /* Important for layout */
-    padding: 0.75rem 1.5rem; /* Generous padding */
-    border-radius: 6px; /* Slightly rounded */
+    display: inline-flex; /* Use flex for icon alignment if needed later */
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem 1.4rem; /* Adjusted padding */
+    border-radius: var(--border-radius);
     text-decoration: none;
-    font-size: 0.95rem; /* Slightly larger font */
+    font-size: 0.9rem;
     font-weight: 600;
     text-align: center;
     cursor: pointer;
-    transition: all 0.25s ease-in-out; /* Smoother transition */
-    border: none; /* Remove border by default */
-    flex-grow: 0; /* Don't grow by default */
-    flex-shrink: 0; /* Don't shrink by default */
-    min-width: 130px; /* Consistent min width */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Subtle default shadow */
+    transition: all 0.25s ease-in-out;
+    border: 1px solid transparent; /* Base border */
+    flex-grow: 0;
+    flex-shrink: 0;
+    min-width: 120px;
+    box-shadow: var(--shadow-sm); /* Base shadow */
 }
 
 .cardButton:hover {
-    transform: translateY(-2px); /* Slight lift on hover */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Enhanced shadow on hover */
+    transform: translateY(-3px); /* More pronounced lift */
+    box-shadow: var(--shadow-md); /* Increase shadow */
+}
+.cardButton:active {
+    transform: translateY(-1px); /* Press down effect */
+    box-shadow: var(--shadow-sm);
 }
 
-.applyButton { /* Primary Button */
-    background-image: linear-gradient(to right, #34D399 , #22C55E); /* Green gradient */
+.applyButton {
+    background-image: linear-gradient(to right, var(--secondary-color) , var(--secondary-color-dark));
     color: #ffffff;
+    border-color: var(--secondary-color-dark);
 }
 .applyButton:hover {
-    background-image: linear-gradient(to right, #2abb8a , #1d9f4e); /* Darker Green gradient */
+    background-image: linear-gradient(to right, #2dd4bf , #14b8a6); /* Slightly lighter teal */
 }
 
-.secondaryButton { /* Secondary/Tertiary Buttons */
-    background-color: #ffffff; /* White background */
-    color: #3949ab; /* Use theme color for text */
-    border: 1px solid #d1d5db; /* Light border */
+.secondaryButton {
+    background-color: var(--background-white);
+    color: var(--primary-color);
+    border-color: var(--border-color);
 }
 .secondaryButton:hover {
-    background-color: #f9fafb; /* Very light gray background */
-    border-color: #adb5bd; /* Slightly darker border */
-    color: #283593; /* Darker theme color */
+    background-color: #eff6ff; /* Very light blue */
+    border-color: #bfdbfe; /* Lighter blue border */
+    color: var(--primary-color-dark);
 }
 
 
-/* --- Comparison Table --- */
-/* (Keep comparison table styles as before) */
+/* --- Comparison Table (Improved Styling) --- */
 .tableContainer {
   overflow-x: auto;
-  margin-top: 1.5rem;
-  margin-bottom: 1rem;
+  margin: 2.5rem 1.5rem; /* Add horizontal margin */
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  background-color: var(--background-white);
 }
+
 .comparisonTable {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.9rem;
+  white-space: nowrap; /* Prevent text wrapping initially */
 }
+
 .comparisonTable th,
 .comparisonTable td {
-  border: 1px solid #dee2e6;
-  padding: 0.8rem 0.6rem;
+  border: none; /* Remove internal borders */
+  border-bottom: 1px solid var(--border-color); /* Horizontal lines only */
+  padding: 1rem 1.25rem; /* More padding */
   text-align: left;
-  vertical-align: top;
+  vertical-align: middle; /* Align text vertically */
 }
+
 .comparisonTable th {
-  background-color: #e9ecef;
-  font-weight: bold;
-  color: #495057;
+  background-color: var(--background-light);
+  font-weight: 600; /* Bolder headers */
+  color: var(--text-color-primary);
+  font-size: 0.95rem;
+  white-space: normal; /* Allow headers to wrap */
+  border-bottom-width: 2px; /* Thicker border below header */
+  border-color: #d1d5db; /* Darker border */
 }
-.comparisonTable tbody tr:nth-child(odd) {
-  background-color: #f8f9fa;
+
+.comparisonTable tbody tr:last-child td {
+    border-bottom: none; /* No border on last row */
 }
+
+.comparisonTable tbody tr:hover {
+    background-color: #eff6ff; /* Subtle hover for rows */
+}
+
 .tableNote {
-    font-size: 0.85rem;
-    color: #6c757d;
-    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--text-color-secondary);
+    margin: 1rem 1.5rem 0 1.5rem; /* Margin matching table container */
+    text-align: center;
 }
 
 /* --- Responsive Adjustments --- */
-@media (max-width: 768px) {
+@media (max-width: 960px) {
     main.reviewContainer {
-        padding: 0 0.5rem; /* Less padding on mobile */
+        max-width: 100%; /* Allow full width */
         margin-top: 1rem;
-        margin-bottom: 1rem;
+        margin-bottom: 2rem;
     }
      .cardDetailSection {
-         padding: 1rem 1.2rem; /* Adjust padding */
-         margin-bottom: 2rem;
+        margin-left: 1rem; /* Reduce horizontal margin */
+        margin-right: 1rem;
      }
-    .reviewHeader h1 {
-        font-size: 1.8rem;
-    }
-    .reviewSection h2 {
-        font-size: 1.5rem;
-    }
-     .reviewSection h3 {
-        font-size: 1.2rem;
-    }
-    .heroSection {
-        max-height: 300px;
-        border-radius: 0; /* Full width edge-to-edge hero on mobile? */
-    }
-    .cardHeader {
-        gap: 0.8rem;
-    }
-     .cardTitleRating h3 {
-        font-size: 1.2rem;
-    }
-    .comparisonTable {
-        font-size: 0.8rem;
-    }
-    .comparisonTable th,
-    .comparisonTable td {
-        padding: 0.5rem 0.4rem;
-    }
-     /* Adjust button container */
-     .cardButtonsContainer {
-        /* Keep flex-wrap: wrap; */
-        gap: 0.6rem;
-        justify-content: center; /* Center buttons on smaller screens? */
+     .tableContainer, .reviewHeader, .disclaimer, article p, article ul, .reviewSection > p {
+         margin-left: 1rem;
+         margin-right: 1rem;
      }
-     .cardButton {
-         padding: 0.6rem 1.1rem;
-         font-size: 0.9rem;
-         flex-grow: 1; /* Allow buttons to take available space */
-         min-width: 100px; /* Adjust min-width */
-         flex-basis: calc(33.33% - 0.4rem); /* Aim for 3 buttons per row */
+     .contentPadding { /* Remove padding if sections handle it */
+         padding-left: 0;
+         padding-right: 0;
      }
+}
+
+
+@media (max-width: 768px) {
+    main.reviewContainer {
+        padding: 0; /* Remove padding, handled by sections/margins */
+    }
+    .reviewHeader h1 { font-size: 2rem; }
+    .reviewSection h2 { font-size: 1.6rem; }
+    .reviewSection h3 { font-size: 1.3rem; }
+    .heroSection { max-height: 300px; }
+
+    .cardDetailSection {
+        padding: 1.5rem;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+        margin-bottom: 2rem;
+    }
+     .tableContainer, .reviewHeader, .disclaimer, article p, article ul, .reviewSection > p {
+         margin-left: 0.5rem;
+         margin-right: 0.5rem;
+     }
+
+    .cardHeader { gap: 1rem; }
+    .cardTitleRating h3 { font-size: 1.3rem; }
+    .comparisonTable th, .comparisonTable td { padding: 0.8rem 1rem; }
+    .comparisonTable { white-space: normal; } /* Allow wrapping */
+
+    .cardButtonsContainer { gap: 0.75rem; }
+    .cardButton {
+        padding: 0.65rem 1.2rem;
+        font-size: 0.85rem;
+        flex-grow: 1; /* Allow buttons to fill space */
+        flex-basis: calc(50% - 0.375rem); /* Try for 2 buttons per row */
+        min-width: 110px;
+    }
      .applyButton {
-         /* Allow primary to potentially take more space if needed */
-         /* flex-basis: calc(50% - 0.3rem); */
+         flex-basis: 100%; /* Make apply full width on medium screens */
      }
 }
 
 @media (max-width: 480px) {
-    main.reviewContainer {
-         padding: 0; /* No side padding, sections handle it */
+     main.reviewContainer {
+         margin-top: 0;
+         margin-bottom: 1rem;
      }
-     .cardDetailSection {
-         padding: 1rem; /* Less padding */
-         border-radius: 0; /* Full width cards */
-         margin-left: -1rem; /* Hacky way to make it edge-to-edge if parent has padding */
-         margin-right: -1rem;
-         box-shadow: none; /* Remove shadow if going edge-to-edge */
-         border-left: none;
-         border-right: none;
-         border-top: 1px solid #e9ecef; /* Use border top for separation */
-         margin-bottom: 0; /* Collapse margins */
-     }
-      .cardDetailSection:first-of-type {
-         border-top: none;
-     }
-     .cardDetailSection:last-of-type {
-         margin-bottom: 2rem; /* Add margin back after last card */
-     }
+     .heroSection { max-height: 220px; border-radius: 0; }
+     .reviewHeader h1 { font-size: 1.7rem; }
+     .reviewSection h2 { font-size: 1.4rem; }
+     .disclaimer { margin: 1rem auto; }
 
-    .heroSection {
-        max-height: 250px;
-    }
-     .reviewHeader h1 {
-        font-size: 1.6rem;
-    }
-     .reviewSection h2 {
-        font-size: 1.3rem;
-        padding-left: 1rem; /* Indent headers if card is edge-to-edge */
-        padding-right: 1rem;
+     .cardDetailSection {
+        padding: 1.25rem;
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 0;
+        border-radius: 0;
+        box-shadow: none;
+        border: none;
+        border-top: 1px solid var(--border-color);
+        background-color: var(--background-white);
      }
-     article p, article ul, .reviewSection > p {
-         padding-left: 1rem; /* Indent text if card is edge-to-edge */
+     .cardDetailSection:first-of-type { border-top: none; }
+     .cardDetailSection:last-of-type { margin-bottom: 2rem; }
+
+     .tableContainer, .reviewHeader, .disclaimer, article p, article ul, .reviewSection > p {
+         margin-left: 0;
+         margin-right: 0;
+         padding-left: 1rem; /* Add padding back to content */
+         padding-right: 1rem;
+     }
+     .reviewSection h2, .reviewSection h3 {
+         padding-left: 1rem;
          padding-right: 1rem;
      }
      .tableContainer {
-         padding-left: 0.5rem;
-         padding-right: 0.5rem;
+          padding-left: 0;
+          padding-right: 0;
+          border-radius: 0;
+          border-left: none;
+          border-right: none;
+          box-shadow: none;
      }
+     .comparisonTable th, .comparisonTable td { padding: 0.75rem; }
+
     .cardHeader {
        flex-direction: column;
        align-items: flex-start;
-       gap: 0.5rem;
-       padding: 0 1rem; /* Add padding */
+       gap: 0.75rem;
+       padding-bottom: 1rem;
+       margin-bottom: 1rem;
     }
-     .cardImageContainer {
-         margin-bottom: 0.5rem;
-     }
-     .cardTitleRating {
-         width: 100%;
-     }
-      .cardDetailSection ul {
-         padding-left: 1rem; /* Add padding */
-         padding-right: 1rem;
-         margin-left: 0.5rem; /* Adjust default list indent */
-     }
-     .snapshotList {
-         margin-left: 0.5rem; /* Adjust further indent */
-     }
+     .cardImageContainer { margin-bottom: 0.5rem; }
+     .cardTitleRating { width: 100%; }
 
-     /* Stack buttons vertically */
      .cardButtonsContainer {
         flex-direction: column;
         align-items: stretch;
         gap: 0.75rem;
-        padding: 1.5rem 1rem 1rem 1rem; /* Add padding */
-        border-top: 1px solid #e9ecef;
+        padding: 1.25rem 0 0 0; /* Only top padding */
+        border-top: 1px solid var(--border-color);
+        margin: 1.5rem 0 0 0; /* Use margin instead of padding to contain within card */
      }
      .cardButton {
          flex-basis: auto;
          flex-grow: 0;
-         padding: 0.8rem 1rem; /* Make buttons taller */
+         padding: 0.9rem 1rem; /* Taller buttons */
      }
 }
