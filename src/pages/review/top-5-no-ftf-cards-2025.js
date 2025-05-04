@@ -182,6 +182,8 @@ function NoFTFReviewPage() {
             <h2>III. Our Picks: The 5 Best No Foreign Transaction Fee Cards (2025)</h2>
             <p>Here are five standout cards offering no foreign transaction fees alongside strong rewards and travel benefits.</p>
 
+
+            <section className={styles.cardDetailSection}>
             {/* Updated card rendering loop */}
             {cardData.map((card, index) => (
               // Added cardSeparator class for visual distinction
@@ -249,6 +251,7 @@ function NoFTFReviewPage() {
                 </div>
               </div>
             ))}
+            </section>
           </section>
 
           <section className={styles.reviewSection}>
