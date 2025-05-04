@@ -5,8 +5,10 @@
   width: 100%;
   max-height: 450px;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 8px; /* Maintain rounded corners */
   position: relative;
+  /* Add a subtle shadow below the hero if desired */
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); */
 }
 
 .heroImage {
@@ -17,13 +19,14 @@
 main.reviewContainer {
     max-width: 900px;
     margin: 2rem auto;
-    padding: 1.5rem;
+    /* Remove background color and shadow from main container */
+    /* Let the card sections provide the background/shadow */
+    /* background-color: #ffffff; */
+    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); */
+    padding: 0 1rem; /* Add padding for spacing on smaller screens */
     font-family: sans-serif;
     line-height: 1.7;
     color: #333;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 /* --- Disclaimer --- */
@@ -93,35 +96,30 @@ article li {
     margin-left: 1.5rem;
 }
 
-/* --- Card Detail Section --- */
+/* --- Card Detail Section (Visual Separation Update) --- */
 .cardDetailSection {
-  background-color: #f8f9fa;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
-  border: 1px solid #e9ecef;
-  border-radius: 6px;
-  /* Removed cardSeparator specific style here, handled below */
+  background-color: #ffffff; /* Change to white for better shadow contrast */
+  padding: 1.5rem 2rem; /* Slightly more padding */
+  margin-bottom: 2.5rem; /* Increase space between cards */
+  border: 1px solid #e9ecef; /* Keep a subtle border */
+  border-radius: 8px; /* Slightly more rounded corners */
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07); /* Add elevation shadow */
+  transition: box-shadow 0.3s ease-in-out; /* Smooth shadow transition on hover */
 }
 
-/* Visual Separator for Card Sections */
-.cardSeparator {
-    /* Add a top border to visually separate cards */
-    border-top: 3px solid #dbe4ff; /* Example: A slightly thicker, colored top border */
-    margin-top: 2.5rem; /* Ensure space before the border */
-    padding-top: 2rem; /* Add padding inside the section above the content */
+.cardDetailSection:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Enhance shadow on hover */
 }
-/* Style the first card section differently if needed (no top border) */
-.cardDetailSection:first-of-type {
-    border-top: 1px solid #e9ecef; /* Keep original thin border */
-    margin-top: 0;
-    padding-top: 1.5rem; /* Keep original padding */
-}
+
+/* Remove previous separator logic */
+/* .cardSeparator { ... } */
+/* .cardDetailSection:first-of-type { ... } */
 
 
 .cardHeader {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem; /* More space between image and title */
   margin-bottom: 1rem;
   flex-wrap: wrap;
 }
@@ -168,64 +166,72 @@ article li {
     margin-top: 0.5rem;
 }
 
-/* --- Card Buttons --- */
+/* --- Card Buttons (Premium Styles) --- */
 .cardButtonsContainer {
     display: flex;
-    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
-    gap: 0.75rem; /* Space between buttons */
-    margin-top: 1.5rem; /* Space above buttons */
-    padding-top: 1rem; /* Space */
-    border-top: 1px solid #e0e0e0; /* Separator line above buttons */
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem; /* More space above buttons */
+    border-top: 1px solid #e9ecef; /* Subtle separator line */
+    justify-content: flex-start; /* Align buttons to the start */
 }
 
 .cardButton {
-    padding: 0.6rem 1.2rem;
-    border-radius: 5px;
+    /* Base styles for all buttons */
+    display: inline-block; /* Important for layout */
+    padding: 0.75rem 1.5rem; /* Generous padding */
+    border-radius: 6px; /* Slightly rounded */
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.95rem; /* Slightly larger font */
     font-weight: 600;
     text-align: center;
     cursor: pointer;
-    transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
-    border: none;
-    flex-grow: 1; /* Allow buttons to grow */
-    min-width: 120px; /* Minimum width */
+    transition: all 0.25s ease-in-out; /* Smoother transition */
+    border: none; /* Remove border by default */
+    flex-grow: 0; /* Don't grow by default */
+    flex-shrink: 0; /* Don't shrink by default */
+    min-width: 130px; /* Consistent min width */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Subtle default shadow */
+}
+
+.cardButton:hover {
+    transform: translateY(-2px); /* Slight lift on hover */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Enhanced shadow on hover */
 }
 
 .applyButton { /* Primary Button */
-    background-color: #28a745; /* Green */
+    background-image: linear-gradient(to right, #34D399 , #22C55E); /* Green gradient */
     color: #ffffff;
 }
 .applyButton:hover {
-    background-color: #218838;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-image: linear-gradient(to right, #2abb8a , #1d9f4e); /* Darker Green gradient */
 }
 
 .secondaryButton { /* Secondary/Tertiary Buttons */
-    background-color: #f0f0f0; /* Light gray */
-    color: #333;
-    border: 1px solid #ccc;
+    background-color: #ffffff; /* White background */
+    color: #3949ab; /* Use theme color for text */
+    border: 1px solid #d1d5db; /* Light border */
 }
 .secondaryButton:hover {
-    background-color: #e0e0e0;
-    border-color: #bbb;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    background-color: #f9fafb; /* Very light gray background */
+    border-color: #adb5bd; /* Slightly darker border */
+    color: #283593; /* Darker theme color */
 }
 
 
 /* --- Comparison Table --- */
+/* (Keep comparison table styles as before) */
 .tableContainer {
   overflow-x: auto;
   margin-top: 1.5rem;
   margin-bottom: 1rem;
 }
-
 .comparisonTable {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.9rem;
 }
-
 .comparisonTable th,
 .comparisonTable td {
   border: 1px solid #dee2e6;
@@ -233,17 +239,14 @@ article li {
   text-align: left;
   vertical-align: top;
 }
-
 .comparisonTable th {
   background-color: #e9ecef;
   font-weight: bold;
   color: #495057;
 }
-
 .comparisonTable tbody tr:nth-child(odd) {
   background-color: #f8f9fa;
 }
-
 .tableNote {
     font-size: 0.85rem;
     color: #6c757d;
@@ -253,10 +256,14 @@ article li {
 /* --- Responsive Adjustments --- */
 @media (max-width: 768px) {
     main.reviewContainer {
-        padding: 1rem;
+        padding: 0 0.5rem; /* Less padding on mobile */
         margin-top: 1rem;
         margin-bottom: 1rem;
     }
+     .cardDetailSection {
+         padding: 1rem 1.2rem; /* Adjust padding */
+         margin-bottom: 2rem;
+     }
     .reviewHeader h1 {
         font-size: 1.8rem;
     }
@@ -268,6 +275,7 @@ article li {
     }
     .heroSection {
         max-height: 300px;
+        border-radius: 0; /* Full width edge-to-edge hero on mobile? */
     }
     .cardHeader {
         gap: 0.8rem;
@@ -284,23 +292,45 @@ article li {
     }
      /* Adjust button container */
      .cardButtonsContainer {
-        /* Keep flex-wrap: wrap; should handle stacking naturally */
-        gap: 0.5rem;
+        /* Keep flex-wrap: wrap; */
+        gap: 0.6rem;
+        justify-content: center; /* Center buttons on smaller screens? */
      }
      .cardButton {
-         padding: 0.5rem 1rem;
-         font-size: 0.85rem;
-         /* Ensure buttons take reasonable width on mobile */
-         flex-basis: calc(50% - 0.25rem); /* Example: 2 buttons per row roughly */
+         padding: 0.6rem 1.1rem;
+         font-size: 0.9rem;
+         flex-grow: 1; /* Allow buttons to take available space */
+         min-width: 100px; /* Adjust min-width */
+         flex-basis: calc(33.33% - 0.4rem); /* Aim for 3 buttons per row */
      }
-     /* Ensure Apply Now potentially takes full width if desired on small screens */
      .applyButton {
-         /* flex-basis: 100%; */ /* Uncomment if Apply should be full width */
+         /* Allow primary to potentially take more space if needed */
+         /* flex-basis: calc(50% - 0.3rem); */
      }
-
 }
 
 @media (max-width: 480px) {
+    main.reviewContainer {
+         padding: 0; /* No side padding, sections handle it */
+     }
+     .cardDetailSection {
+         padding: 1rem; /* Less padding */
+         border-radius: 0; /* Full width cards */
+         margin-left: -1rem; /* Hacky way to make it edge-to-edge if parent has padding */
+         margin-right: -1rem;
+         box-shadow: none; /* Remove shadow if going edge-to-edge */
+         border-left: none;
+         border-right: none;
+         border-top: 1px solid #e9ecef; /* Use border top for separation */
+         margin-bottom: 0; /* Collapse margins */
+     }
+      .cardDetailSection:first-of-type {
+         border-top: none;
+     }
+     .cardDetailSection:last-of-type {
+         margin-bottom: 2rem; /* Add margin back after last card */
+     }
+
     .heroSection {
         max-height: 250px;
     }
@@ -309,10 +339,22 @@ article li {
     }
      .reviewSection h2 {
         font-size: 1.3rem;
-    }
+        padding-left: 1rem; /* Indent headers if card is edge-to-edge */
+        padding-right: 1rem;
+     }
+     article p, article ul, .reviewSection > p {
+         padding-left: 1rem; /* Indent text if card is edge-to-edge */
+         padding-right: 1rem;
+     }
+     .tableContainer {
+         padding-left: 0.5rem;
+         padding-right: 0.5rem;
+     }
     .cardHeader {
        flex-direction: column;
        align-items: flex-start;
+       gap: 0.5rem;
+       padding: 0 1rem; /* Add padding */
     }
      .cardImageContainer {
          margin-bottom: 0.5rem;
@@ -320,13 +362,26 @@ article li {
      .cardTitleRating {
          width: 100%;
      }
-     /* Stack buttons vertically on very small screens */
+      .cardDetailSection ul {
+         padding-left: 1rem; /* Add padding */
+         padding-right: 1rem;
+         margin-left: 0.5rem; /* Adjust default list indent */
+     }
+     .snapshotList {
+         margin-left: 0.5rem; /* Adjust further indent */
+     }
+
+     /* Stack buttons vertically */
      .cardButtonsContainer {
         flex-direction: column;
-        align-items: stretch; /* Make buttons full width */
+        align-items: stretch;
+        gap: 0.75rem;
+        padding: 1.5rem 1rem 1rem 1rem; /* Add padding */
+        border-top: 1px solid #e9ecef;
      }
      .cardButton {
-         flex-basis: auto; /* Reset basis when stacked */
-         flex-grow: 0; /* Prevent growing when stacked */
+         flex-basis: auto;
+         flex-grow: 0;
+         padding: 0.8rem 1rem; /* Make buttons taller */
      }
 }
