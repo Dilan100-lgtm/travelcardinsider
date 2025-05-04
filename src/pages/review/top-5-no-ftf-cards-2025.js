@@ -130,9 +130,66 @@ function NoFTFReviewPage() {
   return (
     <> {/* Use Fragment to avoid extra div */}
       <Head>
-        <title>Top 5 No Foreign Transaction Fee Credit Cards (2025) | Travel Card Insider</title>
-        <meta name="description" content="Review of the best credit cards with no foreign transaction fees for international travel in 2025, including Chase Sapphire, Capital One Venture X, and more." />
-        <link rel="preload" href={heroImageSrc} as="image" />
+      <title>Top 5 No Foreign Transaction Fee Credit Cards (2025) | Travel Card Insider</title>
+  <meta name="description" content="Review of the best credit cards with no foreign transaction fees for international travel in 2025, including Chase Sapphire, Capital One Venture X, and more." />
+  <link rel="canonical" href="https://www.travelcardinsider.com/review/top-5-no-ftf-cards-2025" />
+  <meta property="og:title" content="Top 5 No Foreign Transaction Fee Credit Cards (2025)" />
+  <meta property="og:description" content="Avoid costly foreign transaction fees in 2025. Compare the best travel credit cards with no FTFs, rewards, and lounge access." />
+  <meta property="og:url" content="https://www.travelcardinsider.com/review/top-5-no-ftf-cards-2025" />
+  <meta property="og:image" content="https://www.travelcardinsider.com/images/reviews/no-ftf-hero.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Top 5 No FTF Credit Cards for 2025" />
+  <meta name="twitter:description" content="Compare 2025’s top credit cards with no foreign transaction fees for international travel and savings." />
+  <meta name="twitter:image" content="https://www.travelcardinsider.com/images/reviews/no-ftf-hero.jpg" />
+  <link rel="preload" href={heroImageSrc} as="image" />
+        <script type="application/ld+json">
+    {`
+      {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Top 5 No Foreign Transaction Fee Cards 2025",
+        "url": "https://www.travelcardinsider.com/review/top-5-no-ftf-cards-2025",
+        "description": "A detailed review of the top 5 no foreign transaction fee travel credit cards in 2025.",
+        "numberOfItems": 5,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "url": "https://www.travelcardinsider.com/cards/chase-sapphire-preferred"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "url": "https://www.travelcardinsider.com/cards/capital-one-venture-x"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "url": "https://www.travelcardinsider.com/cards/chase-sapphire-reserve"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "url": "https://www.travelcardinsider.com/cards/capital-one-venture"
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "url": "https://www.travelcardinsider.com/cards/citi-strata-premier"
+          }
+        ]
+      }
+    `}
+    <meta name="geo.region" content="US" />
+        <meta name="geo.placename" content="United States" />
+        <meta name="language" content="en-US" />
+        <meta name="distribution" content="US" />
+        <link rel="alternate" href="https://www.travelcardinsider.com" hreflang="en-us" />
+        <link rel="preload" href="/fonts/Roboto_Condensed-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/Roboto_Condensed-Bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/PlayfairDisplay-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/Playfair-Display-Bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+  </script>
       </Head>
 
       <Header /> {/* Include Header component */}
