@@ -12,6 +12,10 @@
     font-family: var(--font-sans, 'Roboto', sans-serif); /* Ensure base font is set */
     color: var(--color-text-secondary, #495057);
     line-height: 1.7; /* Default line height for readability */
+    
+    /* Add a visible border */
+    border: 2px solid var(--color-border, #cedae6); /* Adjust thickness and color as needed */
+    border-radius: var(--border-radius-md, 8px); /* Optional: Keep rounded corners */
   }
   
   /* Optional class for specific top margin adjustment */
@@ -275,7 +279,7 @@
   
   .reviewSection h2 {
     font-family: var(--font-serif, 'Playfair Display', serif);
-    color: var(--color-heading, #1a202c);
+    color: rgb(135, 161, 248);
     /* PREMIUM: Consistent responsive sizing */
     font-size: clamp(1.6rem, 4vw, 2.2rem);
     font-weight: 700;
