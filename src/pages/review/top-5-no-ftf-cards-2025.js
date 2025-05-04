@@ -13,10 +13,10 @@ const cardData = [
   {
     id: 'csp',
     name: 'Chase Sapphire Preferred® Card',
-    imageSrc: '/images/cards/chase-sapphire-preferred.png', // Example path
+    imageSrc: '/sapphire_preferred_card.png', // Example path
     imageAlt: 'Chase Sapphire Preferred Card image',
-    ratingValue: 9.2, // Example rating out of 10
-    ratingStars: 4.5, // Corresponding stars (adjust as needed)
+    ratingValue: 8.4, // Example rating out of 10
+    ratingStars: 4.2, // Corresponding stars (adjust as needed)
     bestFor: 'Travelers seeking great overall value, flexible rewards, solid travel protections, and a moderate annual fee.',
     annualFee: '$95',
     welcomeBonus: 'Earn 100,000 bonus points after $5,000 spend in 3 months (verify current offer).',
@@ -30,10 +30,10 @@ const cardData = [
   {
     id: 'c1vx',
     name: 'Capital One Venture X Rewards Credit Card',
-    imageSrc: '/images/cards/capital-one-venture-x.png', // Example path
+    imageSrc: '/venturex-cg-static-card-1000x630-2.avif', // Example path
     imageAlt: 'Capital One Venture X Rewards Card image',
-    ratingValue: 9.5, // Example rating
-    ratingStars: 5.0, // Example stars
+    ratingValue: 9.0, // Example rating
+    ratingStars: 4.5, // Example stars
     bestFor: 'Travelers wanting premium airport experiences, easy-to-use credits offsetting the annual fee, and high rewards via the issuer\'s portal.',
     annualFee: '$395',
     welcomeBonus: '75,000 miles after $4,000 spend in 3 months.',
@@ -47,10 +47,10 @@ const cardData = [
   {
     id: 'csr',
     name: 'Chase Sapphire Reserve®',
-    imageSrc: '/images/cards/chase-sapphire-reserve.png', // Example path
+    imageSrc: '/sapphire_reserve_card.png', // Example path
     imageAlt: 'Chase Sapphire Reserve Card image',
-    ratingValue: 9.0, // Example rating
-    ratingStars: 4.5, // Example stars
+    ratingValue: 9.2, // Example rating
+    ratingStars: 4.6, // Example stars
     bestFor: 'Frequent luxury travelers prioritizing top-tier insurance, extensive lounge access, high travel/dining rewards, and premium perks.',
     annualFee: '$550 ($75/authorized user)',
     welcomeBonus: '60,000 points after $5,000 spend in 3 months.',
@@ -64,10 +64,10 @@ const cardData = [
    {
     id: 'c1v',
     name: 'Capital One Venture Rewards Credit Card',
-    imageSrc: '/images/cards/capital-one-venture.png', // Example path
+    imageSrc: '/venture_cardart_prim_323x203-1.avif', // Example path
     imageAlt: 'Capital One Venture Rewards Card image',
-    ratingValue: 8.8, // Example rating
-    ratingStars: 4.5, // Example stars
+    ratingValue: 8.2, // Example rating
+    ratingStars: 4.0, // Example stars
     bestFor: 'Travelers preferring simplicity with a solid flat earning rate, a moderate annual fee, and essential perks like Global Entry credit.',
     annualFee: '$95',
     welcomeBonus: '75,000 miles after $4,000 spend in 3 months (verify current offer).',
@@ -81,9 +81,9 @@ const cardData = [
    {
     id: 'csprem',
     name: 'Citi Strata Premier℠ Card',
-    imageSrc: '/images/cards/citi-strata-premier.png', // Example path
+    imageSrc: '/download1.png', // Example path
     imageAlt: 'Citi Strata Premier Card image',
-    ratingValue: 8.5, // Example rating
+    ratingValue: 7.7, // Example rating
     ratingStars: 4.0, // Example stars
     bestFor: 'Travelers spending across diverse categories (air, hotels, dining, supermarkets, gas) who value point transfers.',
     annualFee: '$95',
