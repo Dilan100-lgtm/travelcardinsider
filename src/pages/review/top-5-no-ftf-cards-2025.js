@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link'; // Import Link for internal navigation
-import styles from '../../styles/ReviewPage.module.css';
+import styles from '../../styles/NoFTFCardsReview.module.css';
 
 // Import your existing Header and Footer components
 import Header from '../../components/Header'; // Adjust path if necessary
