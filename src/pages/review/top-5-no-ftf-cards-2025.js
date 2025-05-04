@@ -126,7 +126,7 @@ function NoFTFReviewPage() {
 
         <div className={styles.heroSection}>
           <Image
-            src={heroImageSrc}
+            src={'/damaris-isenschmid-k1LIMMsm8bg-unsplash.webp'}
             alt={heroImageAlt}
             layout="responsive"
             width={900}
