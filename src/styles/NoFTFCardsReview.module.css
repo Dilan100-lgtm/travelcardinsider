@@ -2,26 +2,23 @@
 
 /* --- Hero Section Styles --- */
 .heroSection {
-  width: 100%; /* Make container full width relative to parent */
-  max-height: 450px; /* Limit the height */
-  overflow: hidden; /* Hide parts of image that overflow */
-  /* Removed margin-bottom as disclaimer handles space below */
-  border-radius: 8px; /* Optional: round corners */
-  position: relative; /* Needed for potential overlay later */
+  width: 100%;
+  max-height: 450px;
+  overflow: hidden;
+  border-radius: 8px;
+  position: relative;
 }
 
-/* Optional: Style the image directly if needed */
 .heroImage {
-   display: block; /* Remove extra space below image */
+   display: block;
 }
 
 /* --- Overall Container --- */
-/* Styles applied to the main tag now for better semantic structure */
 main.reviewContainer {
     max-width: 900px;
-    margin: 2rem auto; /* Adjust top/bottom margins as needed */
+    margin: 2rem auto;
     padding: 1.5rem;
-    font-family: sans-serif; /* Consider setting font in globals.css */
+    font-family: sans-serif;
     line-height: 1.7;
     color: #333;
     background-color: #ffffff;
@@ -33,11 +30,11 @@ main.reviewContainer {
 .disclaimer {
     font-size: 0.85rem;
     color: #6c757d;
-    margin-top: 1.5rem; /* Space below hero */
-    margin-bottom: 1.5rem; /* Space above main title */
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
     text-align: center;
     padding: 0 1rem;
-    max-width: 750px; /* Limit width for readability */
+    max-width: 750px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -45,15 +42,14 @@ main.reviewContainer {
 /* --- Header inside Article --- */
 .reviewHeader {
   text-align: center;
-  margin-bottom: 2rem; /* Space below H1 */
+  margin-bottom: 2rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid #eee;
-  /* margin-top: 1.5rem; */ /* Removed as disclaimer provides top space */
 }
 
 .reviewHeader h1 {
   font-size: 2.2rem;
-  color: #1a237e; /* Dark blue */
+  color: #1a237e;
   margin-bottom: 0.5rem;
 }
 
@@ -64,7 +60,7 @@ main.reviewContainer {
 
 .reviewSection h2 {
   font-size: 1.8rem;
-  color: #283593; /* Slightly lighter blue */
+  color: #283593;
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid #e0e0e0;
@@ -72,78 +68,94 @@ main.reviewContainer {
 
 .reviewSection h3 {
   font-size: 1.4rem;
-  color: #3949ab; /* Even lighter blue */
+  color: #3949ab;
   margin-top: 1.5rem;
   margin-bottom: 0.8rem;
 }
 
-article p { /* Target paragraphs within the article for consistency */
+article p {
   margin-bottom: 1rem;
 }
 
-article ul { /* Target lists within the article */
+article ul {
   list-style: disc;
   margin-left: 1.5rem;
   margin-bottom: 1rem;
 }
 
-article li { /* Target list items within the article */
+article li {
   margin-bottom: 0.5rem;
 }
 
 .snapshotList {
     list-style: circle;
     margin-top: 0.5rem;
-    margin-left: 1.5rem; /* Indent further */
+    margin-left: 1.5rem;
 }
 
 /* --- Card Detail Section --- */
 .cardDetailSection {
   background-color: #f8f9fa;
   padding: 1.5rem;
-  margin-bottom: 2rem; /* Increased space between cards */
+  margin-bottom: 2rem;
   border: 1px solid #e9ecef;
   border-radius: 6px;
+  /* Removed cardSeparator specific style here, handled below */
 }
+
+/* Visual Separator for Card Sections */
+.cardSeparator {
+    /* Add a top border to visually separate cards */
+    border-top: 3px solid #dbe4ff; /* Example: A slightly thicker, colored top border */
+    margin-top: 2.5rem; /* Ensure space before the border */
+    padding-top: 2rem; /* Add padding inside the section above the content */
+}
+/* Style the first card section differently if needed (no top border) */
+.cardDetailSection:first-of-type {
+    border-top: 1px solid #e9ecef; /* Keep original thin border */
+    margin-top: 0;
+    padding-top: 1.5rem; /* Keep original padding */
+}
+
 
 .cardHeader {
   display: flex;
   align-items: center;
-  gap: 1rem; /* Space between image and title/rating */
+  gap: 1rem;
   margin-bottom: 1rem;
-  flex-wrap: wrap; /* Allow wrapping on small screens */
+  flex-wrap: wrap;
 }
 
 .cardImageContainer {
-  flex-shrink: 0; /* Prevent image from shrinking too much */
-  width: 150px; /* Explicit width */
-  height: 95px; /* Explicit height */
-  position: relative; /* Needed for next/image layout=intrinsic or fixed */
+  flex-shrink: 0;
+  width: 150px;
+  height: 95px;
+  position: relative;
 }
 
-.cardImageContainer img { /* Style the actual img rendered by next/image */
+.cardImageContainer img {
     display: block;
-    border-radius: 4px; /* Optional: slightly rounded corners for card images */
+    border-radius: 4px;
 }
 
 .cardTitleRating {
   display: flex;
   flex-direction: column;
-  flex-grow: 1; /* Allow title section to take remaining space */
+  flex-grow: 1;
 }
 
 .cardTitleRating h3 {
   border-bottom: none;
-  margin-bottom: 0.3rem; /* Space between title and rating */
-  margin-top: 0; /* Reset margin */
-  font-size: 1.4rem; /* Ensure consistency */
+  margin-bottom: 0.3rem;
+  margin-top: 0;
+  font-size: 1.4rem;
   color: #3949ab;
 }
 
 .ratingContainer {
   display: flex;
   align-items: center;
-  gap: 0.5rem; /* Space between stars and text rating */
+  gap: 0.5rem;
 }
 
 .ratingValue {
@@ -152,14 +164,58 @@ article li { /* Target list items within the article */
   color: #495057;
 }
 
-/* Ensure ul doesn't have excessive top margin after card header */
 .cardDetailSection ul {
     margin-top: 0.5rem;
 }
 
+/* --- Card Buttons --- */
+.cardButtonsContainer {
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+    gap: 0.75rem; /* Space between buttons */
+    margin-top: 1.5rem; /* Space above buttons */
+    padding-top: 1rem; /* Space */
+    border-top: 1px solid #e0e0e0; /* Separator line above buttons */
+}
+
+.cardButton {
+    padding: 0.6rem 1.2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    border: none;
+    flex-grow: 1; /* Allow buttons to grow */
+    min-width: 120px; /* Minimum width */
+}
+
+.applyButton { /* Primary Button */
+    background-color: #28a745; /* Green */
+    color: #ffffff;
+}
+.applyButton:hover {
+    background-color: #218838;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.secondaryButton { /* Secondary/Tertiary Buttons */
+    background-color: #f0f0f0; /* Light gray */
+    color: #333;
+    border: 1px solid #ccc;
+}
+.secondaryButton:hover {
+    background-color: #e0e0e0;
+    border-color: #bbb;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+
 /* --- Comparison Table --- */
 .tableContainer {
-  overflow-x: auto; /* Ensure table is responsive */
+  overflow-x: auto;
   margin-top: 1.5rem;
   margin-bottom: 1rem;
 }
@@ -194,30 +250,12 @@ article li { /* Target list items within the article */
     margin-top: 0.5rem;
 }
 
-/* Optional Apply Button Style */
-.applyButton {
-    display: inline-block;
-    background-color: #4CAF50; /* Green */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    font-size: 1rem;
-    margin-top: 1rem;
-    transition: background-color 0.3s ease;
-}
-
-.applyButton:hover {
-    background-color: #45a049;
-}
-
 /* --- Responsive Adjustments --- */
 @media (max-width: 768px) {
     main.reviewContainer {
         padding: 1rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
     }
     .reviewHeader h1 {
         font-size: 1.8rem;
@@ -229,21 +267,37 @@ article li { /* Target list items within the article */
         font-size: 1.2rem;
     }
     .heroSection {
-        max-height: 300px; /* Adjust height for smaller screens */
+        max-height: 300px;
     }
     .cardHeader {
         gap: 0.8rem;
     }
      .cardTitleRating h3 {
-        font-size: 1.2rem; /* Slightly smaller title on smaller screens */
+        font-size: 1.2rem;
     }
     .comparisonTable {
-        font-size: 0.8rem; /* Smaller font on mobile */
+        font-size: 0.8rem;
     }
     .comparisonTable th,
     .comparisonTable td {
         padding: 0.5rem 0.4rem;
     }
+     /* Adjust button container */
+     .cardButtonsContainer {
+        /* Keep flex-wrap: wrap; should handle stacking naturally */
+        gap: 0.5rem;
+     }
+     .cardButton {
+         padding: 0.5rem 1rem;
+         font-size: 0.85rem;
+         /* Ensure buttons take reasonable width on mobile */
+         flex-basis: calc(50% - 0.25rem); /* Example: 2 buttons per row roughly */
+     }
+     /* Ensure Apply Now potentially takes full width if desired on small screens */
+     .applyButton {
+         /* flex-basis: 100%; */ /* Uncomment if Apply should be full width */
+     }
+
 }
 
 @media (max-width: 480px) {
@@ -257,14 +311,22 @@ article li { /* Target list items within the article */
         font-size: 1.3rem;
     }
     .cardHeader {
-       flex-direction: column; /* Stack image and title on very small screens */
+       flex-direction: column;
        align-items: flex-start;
     }
      .cardImageContainer {
          margin-bottom: 0.5rem;
      }
      .cardTitleRating {
-         /* Ensure title takes full width when stacked */
          width: 100%;
+     }
+     /* Stack buttons vertically on very small screens */
+     .cardButtonsContainer {
+        flex-direction: column;
+        align-items: stretch; /* Make buttons full width */
+     }
+     .cardButton {
+         flex-basis: auto; /* Reset basis when stacked */
+         flex-grow: 0; /* Prevent growing when stacked */
      }
 }

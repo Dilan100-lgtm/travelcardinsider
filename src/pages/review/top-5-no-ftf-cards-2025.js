@@ -1,22 +1,26 @@
 import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link'; // Import Link for internal navigation
 import styles from '../../styles/ReviewPage.module.css';
 
 // Import your existing Header and Footer components
 import Header from '../../components/Header'; // Adjust path if necessary
 import Footer from '../../components/Footer'; // Adjust path if necessary
-import StarRating from '../../components/StarRating'; // Import the new component
+import StarRating from '../../components/StarRating'; // Import the star component
 
-// Card Data with image and rating info (Update paths and ratings)
+// Card Data including links extracted/assumed from finalcreditcard.json
 const cardData = [
   {
     id: 'csp',
     name: 'Chase Sapphire Preferred® Card',
-    imageSrc: '/sapphire_preferred_card.png', // Example path
+    imageSrc: '/images/cards/chase-sapphire-preferred.png',
     imageAlt: 'Chase Sapphire Preferred Card image',
-    ratingValue: 8.4, // Example rating out of 10
-    ratingStars: 4.2, // Corresponding stars (adjust as needed)
+    ratingValue: 9.2,
+    ratingStars: 4.5,
+    applyLink: 'https://creditcards.chase.com/travel-credit-cards/sapphire/preferred', // Replace with actual
+    ratesFeesLink: 'https://creditcards.chase.com/travel-credit-cards/sapphire/preferred/pricing', // Replace with actual
+    learnMoreLink: '/cards/chase-sapphire-preferred', // Replace with actual internal link if different
     bestFor: 'Travelers seeking great overall value, flexible rewards, solid travel protections, and a moderate annual fee.',
     annualFee: '$95',
     welcomeBonus: 'Earn 100,000 bonus points after $5,000 spend in 3 months (verify current offer).',
@@ -30,10 +34,13 @@ const cardData = [
   {
     id: 'c1vx',
     name: 'Capital One Venture X Rewards Credit Card',
-    imageSrc: '/venturex-cg-static-card-1000x630-2.avif', // Example path
+    imageSrc: '/images/cards/capital-one-venture-x.png',
     imageAlt: 'Capital One Venture X Rewards Card image',
-    ratingValue: 9.0, // Example rating
-    ratingStars: 4.5, // Example stars
+    ratingValue: 9.5,
+    ratingStars: 5.0,
+    applyLink: 'https://www.capitalone.com/credit-cards/venture-x/', // Replace with actual
+    ratesFeesLink: 'https://www.capitalone.com/credit-cards/venture-x/rates-fees/', // Replace with actual
+    learnMoreLink: '/cards/capital-one-venture-x', // Replace with actual internal link if different
     bestFor: 'Travelers wanting premium airport experiences, easy-to-use credits offsetting the annual fee, and high rewards via the issuer\'s portal.',
     annualFee: '$395',
     welcomeBonus: '75,000 miles after $4,000 spend in 3 months.',
@@ -47,10 +54,13 @@ const cardData = [
   {
     id: 'csr',
     name: 'Chase Sapphire Reserve®',
-    imageSrc: '/sapphire_reserve_card.png', // Example path
+    imageSrc: '/images/cards/chase-sapphire-reserve.png',
     imageAlt: 'Chase Sapphire Reserve Card image',
-    ratingValue: 9.2, // Example rating
-    ratingStars: 4.6, // Example stars
+    ratingValue: 9.0,
+    ratingStars: 4.5,
+    applyLink: 'https://creditcards.chase.com/travel-credit-cards/sapphire/reserve', // Replace with actual
+    ratesFeesLink: 'https://creditcards.chase.com/travel-credit-cards/sapphire/reserve/pricing', // Replace with actual
+    learnMoreLink: '/cards/chase-sapphire-reserve', // Replace with actual internal link if different
     bestFor: 'Frequent luxury travelers prioritizing top-tier insurance, extensive lounge access, high travel/dining rewards, and premium perks.',
     annualFee: '$550 ($75/authorized user)',
     welcomeBonus: '60,000 points after $5,000 spend in 3 months.',
@@ -64,10 +74,13 @@ const cardData = [
    {
     id: 'c1v',
     name: 'Capital One Venture Rewards Credit Card',
-    imageSrc: '/venture_cardart_prim_323x203-1.avif', // Example path
+    imageSrc: '/images/cards/capital-one-venture.png',
     imageAlt: 'Capital One Venture Rewards Card image',
-    ratingValue: 8.2, // Example rating
-    ratingStars: 4.0, // Example stars
+    ratingValue: 8.8,
+    ratingStars: 4.5,
+    applyLink: 'https://www.capitalone.com/credit-cards/venture/', // Replace with actual
+    ratesFeesLink: 'https://www.capitalone.com/credit-cards/venture/rates-fees/', // Replace with actual
+    learnMoreLink: '/cards/capital-one-venture', // Replace with actual internal link if different
     bestFor: 'Travelers preferring simplicity with a solid flat earning rate, a moderate annual fee, and essential perks like Global Entry credit.',
     annualFee: '$95',
     welcomeBonus: '75,000 miles after $4,000 spend in 3 months (verify current offer).',
@@ -81,10 +94,13 @@ const cardData = [
    {
     id: 'csprem',
     name: 'Citi Strata Premier℠ Card',
-    imageSrc: '/download1.png', // Example path
+    imageSrc: '/images/cards/citi-strata-premier.png',
     imageAlt: 'Citi Strata Premier Card image',
-    ratingValue: 7.7, // Example rating
-    ratingStars: 4.0, // Example stars
+    ratingValue: 8.5,
+    ratingStars: 4.0,
+    applyLink: 'https://www.citi.com/credit-cards/citi-strata-premier-card', // Replace with actual
+    ratesFeesLink: 'https://www.citi.com/credit-cards/citi-strata-premier-card/pricing', // Replace with actual
+    learnMoreLink: '/cards/citi-strata-premier', // Replace with actual internal link if different
     bestFor: 'Travelers spending across diverse categories (air, hotels, dining, supermarkets, gas) who value point transfers.',
     annualFee: '$95',
     welcomeBonus: '60,000 ThankYou® Points after $4,000 spend in 3 months (verify current).',
@@ -126,7 +142,7 @@ function NoFTFReviewPage() {
 
         <div className={styles.heroSection}>
           <Image
-            src={'/damaris-isenschmid-k1LIMMsm8bg-unsplash.webp'}
+            src={heroImageSrc}
             alt={heroImageAlt}
             layout="responsive"
             width={900}
@@ -168,14 +184,15 @@ function NoFTFReviewPage() {
 
             {/* Updated card rendering loop */}
             {cardData.map((card, index) => (
-              <div key={card.id} className={styles.cardDetailSection}>
+              // Added cardSeparator class for visual distinction
+              <div key={card.id} className={`${styles.cardDetailSection} ${styles.cardSeparator}`}>
                 <div className={styles.cardHeader}>
                    <div className={styles.cardImageContainer}>
                      <Image
                        src={card.imageSrc}
                        alt={card.imageAlt}
-                       width={150} // Adjust card image size
-                       height={95}  // Adjust card image size
+                       width={150}
+                       height={95}
                        objectFit="contain"
                      />
                    </div>
@@ -183,7 +200,8 @@ function NoFTFReviewPage() {
                      <h3>{`${index + 1}. ${card.name}`}</h3>
                      <div className={styles.ratingContainer}>
                        <StarRating rating={card.ratingStars} />
-                       <span className={styles.ratingValue}>{card.ratingValue.toFixed(1)}/10</span>
+                       {/* Added "TCI Rating: " prefix */}
+                       <span className={styles.ratingValue}>TCI Rating: {card.ratingValue.toFixed(1)}/10</span>
                      </div>
                    </div>
                  </div>
@@ -203,8 +221,32 @@ function NoFTFReviewPage() {
                   <li><strong>Rewards Program Insights:</strong> {card.rewardsInsights}</li>
                   <li><strong>Things to Consider:</strong> {card.considerations}</li>
                 </ul>
-                {/* Optional Apply Button */}
-                {/* <button className={styles.applyButton}>Apply Now</button> */}
+
+                {/* Buttons Section */}
+                <div className={styles.cardButtonsContainer}>
+                    <a
+                        href={card.applyLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`${styles.cardButton} ${styles.applyButton}`} // Primary button style
+                    >
+                        Apply Now
+                    </a>
+                     <a
+                        href={card.ratesFeesLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`${styles.cardButton} ${styles.secondaryButton}`} // Secondary button style
+                    >
+                        Rates & Fees
+                    </a>
+                     {/* Use Next Link for internal page navigation */}
+                     <Link href={card.learnMoreLink} legacyBehavior>
+                         <a className={`${styles.cardButton} ${styles.secondaryButton}`}>
+                            Learn More
+                         </a>
+                    </Link>
+                </div>
               </div>
             ))}
           </section>
