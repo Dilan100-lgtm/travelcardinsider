@@ -117,7 +117,7 @@ function NoFTFReviewPage() {
        {/* --- Hero Image Section --- */}
        <div className={styles.heroSection}>
         <Image
-          src={heroImageSrc}
+          src={"/AdobeStock_604745576 (1).webp"}
           alt={heroImageAlt}
           layout="responsive" // Makes the image scale with the container
           width={900} // Intrinsic width of the image (or aspect ratio reference)
