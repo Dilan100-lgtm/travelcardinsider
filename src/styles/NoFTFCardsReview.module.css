@@ -1,450 +1,410 @@
-/* src/styles/ReviewPage.module.css */
+/* styles/ReviewPage.module.css */
 
-/* --- Overall Page & Variables --- */
-
-
-/* Apply a base font if not set globally */
-/* body { font-family: 'Inter', sans-serif; } */
-
-/* --- Main Container --- */
-main.reviewContainer {
-    max-width: 950px; /* Slightly wider */
-    margin: 2rem auto 4rem auto; /* More bottom margin */
-    padding: 0; /* Remove padding, handled by sections */
-    font-family: sans-serif; /* Or your global font */
-    color: var(--text-color-primary);
-    background-color: var(--background-light); /* Page background */
+/* =============== Base Container & Layout =============== */
+.reviewContainer {
+  max-width: 1100px; /* Content width */
+  margin: var(--spacing-lg) auto; /* Top/Bottom margin, centered */
+  padding: 0 var(--spacing-md); /* Side padding */
+  color: var(--color-text-secondary); /* Default text color from global */
+  line-height: 1.7; /* Generous line height for readability */
+  font-family: var(--font-family-sans);
 }
 
-/* --- Hero Section Styles --- */
+/* =============== Hero Section =============== */
 .heroSection {
-  width: 100%;
-  max-height: 400px; /* Slightly reduced */
-  overflow: hidden;
-  position: relative;
-  /* Consider adding a subtle overlay? */
-  /* &::after { content: ''; position: absolute; inset: 0; background: linear-gradient(rgba(0,0,0,0.1), transparent); } */
+  margin-bottom: var(--spacing-lg);
+  border-radius: var(--border-radius-lg); /* Soft rounded corners for the image container */
+  overflow: hidden; /* Clip the image to the border radius */
+  box-shadow: var(--shadow-soft);
+  line-height: 0; /* Remove potential whitespace below image */
+}
+
+/* Style the Next.js Image component wrapper if needed */
+.heroSection > div {
+  display: block !important; /* Override potential inline styles */
 }
 
 .heroImage {
-   display: block;
-   width: 100%; /* Ensure image tries to fill container */
-   height: 100%;
-   object-fit: cover; /* Ensure image covers */
+  /* objectFit="cover" in component handles aspect ratio */
+  width: 100%;
+  height: auto; /* Maintain aspect ratio */
+  max-height: 450px; /* Limit hero height */
+  display: block;
 }
 
-/* --- Disclaimer --- */
+/* =============== Disclaimer & Header =============== */
 .disclaimer {
-    font-size: 0.8rem;
-    color: var(--text-color-secondary);
-    margin: 2rem auto; /* Consistent vertical spacing */
-    text-align: center;
-    padding: 0 1.5rem;
-    max-width: 750px;
-    line-height: 1.6;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  margin: var(--spacing-md) auto var(--spacing-xl) auto;
+  max-width: 800px;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--color-background-subtle);
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--color-border-light);
 }
 
-/* --- Content Area Padding (Applied to sections instead of main container) --- */
-.contentPadding {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-}
-
-/* --- Review Header --- */
 .reviewHeader {
   text-align: center;
-  margin: 2rem 1.5rem 3rem 1.5rem; /* Add horizontal padding */
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border-color);
+  margin-bottom: var(--spacing-xl);
 }
 
 .reviewHeader h1 {
-  font-size: 2.5rem; /* Larger H1 */
-  font-weight: 700;
-  color: var(--primary-color);
+  font-family: var(--font-family-serif); /* Use serif for main title */
+  font-size: clamp(2rem, 5vw, 2.8rem); /* Responsive heading size */
+  color: var(--color-text-primary);
   line-height: 1.3;
-  margin-bottom: 0.5rem;
+  margin: 0;
 }
 
-/* --- General Section Styling --- */
+/* =============== Content Sections & Typography =============== */
 .reviewSection {
-  margin-bottom: 3rem; /* Increased section spacing */
+  margin-bottom: var(--spacing-xxl); /* Generous space between sections */
 }
 
 .reviewSection h2 {
-  font-size: 1.9rem; /* Larger H2 */
-  font-weight: 600;
-  color: var(--primary-color-dark);
-  margin-bottom: 1.5rem; /* More space below H2 */
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--border-color);
+  font-family: var(--font-family-serif);
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  color: var(--color-text-primary);
+  margin: 0 0 var(--spacing-lg) 0;
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 2px solid var(--color-primary-light); /* Subtle separator */
+  line-height: 1.3;
 }
 
 .reviewSection h3 {
-  font-size: 1.4rem; /* Consistent H3 */
+  font-family: var(--font-family-sans);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--color-text-primary);
+  margin: var(--spacing-lg) 0 var(--spacing-md) 0;
+  line-height: 1.4;
+}
+
+/* Specific H3 styling within card details */
+.cardDetailSection h3 {
+  font-size: 1.4rem; /* Slightly larger for card titles */
+  margin: 0 0 var(--spacing-xs) 0; /* Reduced bottom margin */
+  color: var(--color-primary); /* Make card title stand out */
+}
+
+.reviewSection p,
+.reviewSection ul {
+  margin-bottom: var(--spacing-md);
+}
+
+.reviewSection ul {
+  list-style-position: outside;
+  padding-left: var(--spacing-lg);
+}
+
+.reviewSection li {
+  margin-bottom: var(--spacing-sm);
+}
+
+.reviewSection strong {
   font-weight: 600;
-  color: var(--primary-color);
-  margin-top: 2rem; /* More space above H3 */
-  margin-bottom: 1rem;
+  color: var(--color-text-primary);
 }
 
-article p {
-  margin-bottom: 1.25rem; /* Slightly more paragraph spacing */
-  line-height: 1.8; /* Improved readability */
-  color: var(--text-color-secondary); /* Softer text color */
-}
-
-article strong {
-    color: var(--text-color-primary);
-    font-weight: 600;
-}
-
-article ul {
-  list-style: none; /* Remove default bullets */
-  padding-left: 0;
-  margin-bottom: 1.25rem;
-}
-
-article li {
-  position: relative;
-  padding-left: 1.5rem; /* Space for custom marker */
-  margin-bottom: 0.75rem; /* Space between items */
-  color: var(--text-color-secondary);
-}
-
-article li::before { /* Custom bullet */
-  content: '•';
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: var(--primary-color); /* Theme color bullet */
-  font-size: 1.2em;
-  line-height: 1;
-}
-
-.snapshotList {
-    margin-top: 0.75rem;
-    padding-left: 1.5rem; /* Nested list padding */
-}
-.snapshotList li::before {
-    content: '–'; /* Different marker for nested list */
-    color: var(--text-color-secondary);
-    font-size: 1em;
-    left: 0.25rem;
-}
-
-/* --- Card Detail Section (Visual Separation Update) --- */
+/* =============== Card Detail Styling =============== */
 .cardDetailSection {
-  background-color: var(--background-white);
-  padding: 2rem; /* More padding inside cards */
-  margin: 0 1.5rem 3rem 1.5rem; /* Add horizontal margin for spacing from edge, more bottom margin */
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-md); /* Use defined shadow */
-  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+  background-color: var(--color-background-card);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-soft);
+  padding: var(--spacing-lg);
+  transition: box-shadow var(--transition-speed) var(--transition-timing), transform var(--transition-speed) var(--transition-timing);
 }
+
+/* No need for cardSeparator if margin is on cardDetailSection itself */
+.cardDetailSection:not(:last-child) {
+   margin-bottom: var(--spacing-xl); /* Space between cards */
+}
+
 
 .cardDetailSection:hover {
-    box-shadow: var(--shadow-lg); /* Use larger shadow */
-    transform: translateY(-4px); /* Lift card slightly */
+  box-shadow: var(--shadow-medium);
+  transform: translateY(-4px); /* Subtle lift effect */
 }
 
-/* --- Card Header & Rating --- */
 .cardHeader {
   display: flex;
-  align-items: flex-start; /* Align items to top */
-  gap: 1.5rem;
-  margin-bottom: 1.5rem; /* More space below header */
-  padding-bottom: 1rem; /* Space before border */
-  border-bottom: 1px solid var(--border-color); /* Add subtle border below card header */
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Allow wrapping on small screens */
+  align-items: flex-start; /* Align items to the top */
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 1px solid var(--color-border-light);
 }
 
 .cardImageContainer {
   flex-shrink: 0;
-  width: 150px;
-  height: 95px;
-  position: relative;
-  background-color: var(--background-light); /* Add light bg to image container */
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /* Style the direct div wrapper of Next Image if needed */
 }
-
-.cardImageContainer img {
-    display: block;
-    border-radius: 4px;
-    max-width: 90%; /* Prevent image touching edges */
-    max-height: 90%;
+.cardImageContainer > div {
+  display: block !important; /* Ensure proper block display */
 }
 
 .cardTitleRating {
-  display: flex;
-  flex-direction: column;
   flex-grow: 1;
-  gap: 0.5rem; /* Space between title and rating */
-}
-
-.cardTitleRating h3 {
-  border-bottom: none;
-  margin: 0; /* Reset margin */
-  font-size: 1.5rem; /* Slightly larger card title */
-  color: var(--primary-color-dark);
-  line-height: 1.4;
+  min-width: 200px; /* Prevent excessive squishing */
 }
 
 .ratingContainer {
   display: flex;
   align-items: center;
-  gap: 0.75rem; /* More space */
+  flex-wrap: wrap; /* Wrap if needed */
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+}
+
+/* Style the StarRating component contextually */
+/* Assuming StarRating uses SVGs inside a container */
+.ratingContainer > div:first-child { /* Target the StarRating component div */
+  line-height: 1; /* Align stars better */
+}
+.ratingContainer svg {
+  width: 1em;
+  height: 1em;
+  font-size: 1.1rem; /* Control star size */
+  color: #facc15; /* Use a gold color (or var if defined) */
+  margin-right: 2px;
+}
+.ratingContainer svg.empty { /* Class for empty stars if StarRating provides it */
+  color: var(--color-border);
 }
 
 .ratingValue {
   font-size: 0.9rem;
-  font-weight: 600; /* Slightly bolder */
-  color: var(--text-color-primary);
-  background-color: #e0e7ff; /* Light blue background for rating */
-  padding: 0.2rem 0.6rem;
-  border-radius: 4px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  white-space: nowrap; /* Prevent breaking */
 }
 
-/* --- Card Buttons (Premium Styles) --- */
+.cardDetailSection > ul {
+  padding-left: 0; /* Remove outer padding for main card details list */
+  list-style: none; /* Remove bullets for main details */
+}
+.cardDetailSection > ul > li {
+  margin-bottom: var(--spacing-md); /* Space between main detail points */
+  padding-left: var(--spacing-md);
+  position: relative;
+}
+
+/* Optional: Add icons or separators for list items */
+.cardDetailSection > ul > li::before {
+  content: '•'; /* Or use an SVG icon */
+  color: var(--color-primary);
+  font-weight: bold;
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 1px;
+}
+
+
+.snapshotList {
+  list-style: disc; /* Use standard bullets for sub-list */
+  padding-left: var(--spacing-lg); /* Indent snapshot details */
+  margin-top: var(--spacing-sm);
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
+.snapshotList li {
+  margin-bottom: var(--spacing-xs);
+}
+
+/* =============== Card Buttons =============== */
 .cardButtonsContainer {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem; /* Slightly larger gap */
-    margin-top: 1.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--border-color);
-    justify-content: flex-start;
+  display: flex;
+  flex-wrap: wrap; /* Allow buttons to wrap */
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--color-border-light); /* Separator above buttons */
 }
 
+/* Base button style */
 .cardButton {
-    display: inline-flex; /* Use flex for icon alignment if needed later */
-    align-items: center;
-    justify-content: center;
-    padding: 0.7rem 1.4rem; /* Adjusted padding */
-    border-radius: var(--border-radius);
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.25s ease-in-out;
-    border: 1px solid transparent; /* Base border */
-    flex-grow: 0;
-    flex-shrink: 0;
-    min-width: 120px;
-    box-shadow: var(--shadow-sm); /* Base shadow */
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: var(--border-radius-md);
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color var(--transition-speed) var(--transition-timing),
+              color var(--transition-speed) var(--transition-timing),
+              transform var(--transition-speed) var(--transition-timing),
+              box-shadow var(--transition-speed) var(--transition-timing);
+  border: 2px solid transparent; /* Reserve space for border */
+  line-height: 1.5;
+  font-family: var(--font-family-sans);
+  flex-grow: 1; /* Allow buttons to grow */
+  flex-basis: 150px; /* Minimum width before wrapping */
+  white-space: nowrap; /* Prevent text wrapping */
 }
 
-.cardButton:hover {
-    transform: translateY(-3px); /* More pronounced lift */
-    box-shadow: var(--shadow-md); /* Increase shadow */
+.cardButton:focus-visible {
+  outline: 3px solid var(--color-primary-light);
+  outline-offset: 2px;
+  box-shadow: none;
 }
+
 .cardButton:active {
-    transform: translateY(-1px); /* Press down effect */
-    box-shadow: var(--shadow-sm);
+  transform: scale(0.98);
 }
 
+/* Primary Apply Button */
 .applyButton {
-    background-image: linear-gradient(to right, var(--secondary-color) , var(--secondary-color-dark));
-    color: #ffffff;
-    border-color: var(--secondary-color-dark);
-}
-.applyButton:hover {
-    background-image: linear-gradient(to right, #2dd4bf , #14b8a6); /* Slightly lighter teal */
+  background-color: var(--color-primary);
+  color: var(--color-text-on-primary);
+  border-color: var(--color-primary);
 }
 
+.applyButton:hover,
+.applyButton:focus-visible {
+  background-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+  color: var(--color-text-on-primary);
+}
+
+/* Secondary Rates/Fees & Learn More Button */
 .secondaryButton {
-    background-color: var(--background-white);
-    color: var(--primary-color);
-    border-color: var(--border-color);
-}
-.secondaryButton:hover {
-    background-color: #eff6ff; /* Very light blue */
-    border-color: #bfdbfe; /* Lighter blue border */
-    color: var(--primary-color-dark);
+  background-color: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
 }
 
+.secondaryButton:hover,
+.secondaryButton:focus-visible {
+  background-color: var(--color-primary-light); /* Light blue background */
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
 
-/* --- Comparison Table (Improved Styling) --- */
+/* =============== Comparison Table =============== */
 .tableContainer {
-  overflow-x: auto;
-  margin: 2.5rem 1.5rem; /* Add horizontal margin */
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-sm);
-  background-color: var(--background-white);
+  overflow-x: auto; /* Enable horizontal scroll on small screens */
+  margin-bottom: var(--spacing-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-soft);
 }
 
 .comparisonTable {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.9rem;
-  white-space: nowrap; /* Prevent text wrapping initially */
+  font-size: 0.9rem; /* Slightly smaller text for tables */
+  background-color: var(--color-background-card);
 }
 
 .comparisonTable th,
 .comparisonTable td {
-  border: none; /* Remove internal borders */
-  border-bottom: 1px solid var(--border-color); /* Horizontal lines only */
-  padding: 1rem 1.25rem; /* More padding */
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--color-border-light);
   text-align: left;
   vertical-align: middle; /* Align text vertically */
+  white-space: nowrap; /* Prevent wrapping initially */
+}
+/* Allow wrapping for specific columns if needed */
+.comparisonTable th:nth-child(3), /* Bonus */
+.comparisonTable td:nth-child(3),
+.comparisonTable th:nth-child(4), /* Earn Rate */
+.comparisonTable td:nth-child(4),
+.comparisonTable th:nth-child(5), /* Perk */
+.comparisonTable td:nth-child(5) {
+  white-space: normal; /* Allow these to wrap */
+  min-width: 150px; /* Give them some minimum width */
 }
 
-.comparisonTable th {
-  background-color: var(--background-light);
-  font-weight: 600; /* Bolder headers */
-  color: var(--text-color-primary);
-  font-size: 0.95rem;
-  white-space: normal; /* Allow headers to wrap */
-  border-bottom-width: 2px; /* Thicker border below header */
-  border-color: #d1d5db; /* Darker border */
+
+.comparisonTable thead th {
+  background-color: var(--color-background-subtle);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  position: sticky; /* Keep header visible when scrolling vertically if table gets long */
+  top: 0; /* Required for sticky */
+  z-index: 1;
 }
 
-.comparisonTable tbody tr:last-child td {
-    border-bottom: none; /* No border on last row */
+.comparisonTable tbody tr:nth-child(even) {
+  background-color: var(--color-background-subtle); /* Subtle row striping */
 }
 
 .comparisonTable tbody tr:hover {
-    background-color: #eff6ff; /* Subtle hover for rows */
+  background-color: var(--color-primary-light); /* Highlight row on hover */
 }
 
 .tableNote {
-    font-size: 0.8rem;
-    color: var(--text-color-secondary);
-    margin: 1rem 1.5rem 0 1.5rem; /* Margin matching table container */
-    text-align: center;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-top: var(--spacing-md);
+  text-align: center;
 }
 
-/* --- Responsive Adjustments --- */
-@media (max-width: 960px) {
-    main.reviewContainer {
-        max-width: 100%; /* Allow full width */
-        margin-top: 1rem;
-        margin-bottom: 2rem;
-    }
-     .cardDetailSection {
-        margin-left: 1rem; /* Reduce horizontal margin */
-        margin-right: 1rem;
-     }
-     .tableContainer, .reviewHeader, .disclaimer, article p, article ul, .reviewSection > p {
-         margin-left: 1rem;
-         margin-right: 1rem;
-     }
-     .contentPadding { /* Remove padding if sections handle it */
-         padding-left: 0;
-         padding-right: 0;
-     }
-}
-
-
+/* =============== Responsive Adjustments =============== */
 @media (max-width: 768px) {
-    main.reviewContainer {
-        padding: 0; /* Remove padding, handled by sections/margins */
-    }
-    .reviewHeader h1 { font-size: 2rem; }
-    .reviewSection h2 { font-size: 1.6rem; }
-    .reviewSection h3 { font-size: 1.3rem; }
-    .heroSection { max-height: 300px; }
+  .reviewContainer {
+    padding: 0 var(--spacing-sm); /* Reduce side padding */
+  }
 
-    .cardDetailSection {
-        padding: 1.5rem;
-        margin-left: 0.5rem;
-        margin-right: 0.5rem;
-        margin-bottom: 2rem;
-    }
-     .tableContainer, .reviewHeader, .disclaimer, article p, article ul, .reviewSection > p {
-         margin-left: 0.5rem;
-         margin-right: 0.5rem;
-     }
+  .cardHeader {
+    gap: var(--spacing-md);
+  }
 
-    .cardHeader { gap: 1rem; }
-    .cardTitleRating h3 { font-size: 1.3rem; }
-    .comparisonTable th, .comparisonTable td { padding: 0.8rem 1rem; }
-    .comparisonTable { white-space: normal; } /* Allow wrapping */
+  .cardTitleRating h3 {
+    font-size: 1.25rem;
+  }
 
-    .cardButtonsContainer { gap: 0.75rem; }
-    .cardButton {
-        padding: 0.65rem 1.2rem;
-        font-size: 0.85rem;
-        flex-grow: 1; /* Allow buttons to fill space */
-        flex-basis: calc(50% - 0.375rem); /* Try for 2 buttons per row */
-        min-width: 110px;
-    }
-     .applyButton {
-         flex-basis: 100%; /* Make apply full width on medium screens */
-     }
+  .comparisonTable th,
+  .comparisonTable td {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: 0.85rem;
+  }
+
+  .cardButtonsContainer {
+    flex-direction: column; /* Stack buttons on smaller screens */
+    align-items: stretch; /* Make buttons full width */
+  }
+   .cardButton {
+     flex-grow: 0; /* Prevent growing when stacked */
+     flex-basis: auto;
+   }
 }
 
 @media (max-width: 480px) {
-     main.reviewContainer {
-         margin-top: 0;
-         margin-bottom: 1rem;
-     }
-     .heroSection { max-height: 220px; border-radius: 0; }
-     .reviewHeader h1 { font-size: 1.7rem; }
-     .reviewSection h2 { font-size: 1.4rem; }
-     .disclaimer { margin: 1rem auto; }
-
-     .cardDetailSection {
-        padding: 1.25rem;
-        margin-left: 0;
-        margin-right: 0;
-        margin-bottom: 0;
-        border-radius: 0;
-        box-shadow: none;
-        border: none;
-        border-top: 1px solid var(--border-color);
-        background-color: var(--background-white);
-     }
-     .cardDetailSection:first-of-type { border-top: none; }
-     .cardDetailSection:last-of-type { margin-bottom: 2rem; }
-
-     .tableContainer, .reviewHeader, .disclaimer, article p, article ul, .reviewSection > p {
-         margin-left: 0;
-         margin-right: 0;
-         padding-left: 1rem; /* Add padding back to content */
-         padding-right: 1rem;
-     }
-     .reviewSection h2, .reviewSection h3 {
-         padding-left: 1rem;
-         padding-right: 1rem;
-     }
-     .tableContainer {
-          padding-left: 0;
-          padding-right: 0;
-          border-radius: 0;
-          border-left: none;
-          border-right: none;
-          box-shadow: none;
-     }
-     .comparisonTable th, .comparisonTable td { padding: 0.75rem; }
-
-    .cardHeader {
-       flex-direction: column;
-       align-items: flex-start;
-       gap: 0.75rem;
-       padding-bottom: 1rem;
-       margin-bottom: 1rem;
+   .reviewHeader h1 {
+     font-size: 1.8rem;
+   }
+   .reviewSection h2 {
+     font-size: 1.4rem;
+   }
+   .cardDetailSection h3 {
+    font-size: 1.2rem;
+  }
+   .cardHeader {
+     flex-direction: column; /* Stack image and title */
+     align-items: center; /* Center items when stacked */
+     text-align: center;
+     border-bottom: none; /* Remove border when stacked maybe */
+     padding-bottom: 0;
+   }
+   .cardTitleRating {
+     width: 100%; /* Take full width */
+     margin-top: var(--spacing-md);
+   }
+   .ratingContainer {
+     justify-content: center; /* Center stars/rating */
+   }
+   .cardDetailSection > ul > li {
+     padding-left: 0; /* Remove padding if icons are removed */
+   }
+    .cardDetailSection > ul > li::before {
+      display: none; /* Hide bullet points on smallest screens */
     }
-     .cardImageContainer { margin-bottom: 0.5rem; }
-     .cardTitleRating { width: 100%; }
 
-     .cardButtonsContainer {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0.75rem;
-        padding: 1.25rem 0 0 0; /* Only top padding */
-        border-top: 1px solid var(--border-color);
-        margin: 1.5rem 0 0 0; /* Use margin instead of padding to contain within card */
-     }
-     .cardButton {
-         flex-basis: auto;
-         flex-grow: 0;
-         padding: 0.9rem 1rem; /* Taller buttons */
-     }
 }
