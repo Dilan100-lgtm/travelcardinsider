@@ -3,7 +3,7 @@
 /* =============== Base Container & Layout =============== */
 .reviewContainer {
   max-width: 1200px; /* Content width */
-  margin: 5rem,auto; /* Top/Bottom margin, centered */
+  margin: var(--spacing-lg) auto; /* Top/Bottom margin, centered */
   padding: 0 var(--spacing-md); /* Side padding */
   color: var(--color-text-secondary); /* Default text color from global */
   line-height: 1.7; /* Generous line height for readability */
