@@ -1,43 +1,61 @@
 /* styles/ReviewPage.module.css */
 
-/* =============== VARIABLES (Example Premium Palette) =============== */
-
+/* =============== VARIABLES (Refined Premium Palette) =============== */
+:root {
+    --color-text-primary: #212529; /* Near Black */
+    --color-text-secondary: #495057; /* Dark Gray */
+    --color-text-muted: #6c757d; /* Medium Gray */
+    --color-heading: #1a202c; /* Very Dark Gray-Blue */
+    --color-primary: #0056b3; /* Stronger Blue */
+    --color-primary-dark: #004085; /* Darker Blue */
+    /* Refined Gold - slightly more saturated */
+    --color-accent-gold: #b58900; /*#c09b5f; /* Muted Gold/Bronze */
+    --color-accent-gold-light: #fdf7e7; /* Very light gold/cream for bg */
+    --color-success: #198754; /* Bootstrap Green */
+    --color-danger: #dc3545; /* Bootstrap Red */
+    --color-background: #ffffff;
+    --color-background-subtle: #f8f9fa; /* Standard Light Gray */
+    --color-border: #dee2e6; /* Standard Border Gray */
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Roboto', 'Segoe UI', Helvetica, Arial, sans-serif;
+    --font-condensed: 'Roboto Condensed', var(--font-sans);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+    --border-radius: 8px; /* Standard radius */
+  }
   
   /* =============== BASE & CONTAINER =============== */
   .reviewContainer {
-      max-width: 1200px;
-      margin: 3rem auto 4rem auto; /* Increased margin */
-      padding: clamp(2rem, 5vw, 3.5rem); /* Increased padding */
+      max-width: 1100px; /* Slightly narrower max-width */
+      margin: 2.5rem auto 3.5rem auto;
+      padding: clamp(1.8rem, 4vw, 3rem); /* Slightly reduced padding */
       background-color: var(--color-background);
       border-radius: var(--border-radius);
-      box-shadow: var(--shadow-lg);
-      line-height: 1.75; /* Increased line-height */
-      font-size: 1.05rem; /* Slightly larger base font */
+      box-shadow: var(--shadow-md); /* Medium shadow */
+      line-height: 1.65; /* Reduced line-height */
+      font-size: 1.03rem; /* Slightly adjusted base font */
       color: var(--color-text-primary);
       font-family: var(--font-sans);
-      border: 1px solid var(--color-border); /* Subtle border */
-      overflow: hidden; /* Contain child elements like top borders */
+      border: 1px solid var(--color-border);
+      overflow: hidden;
   }
   
   .reviewSection {
-      margin-bottom: 0; /* Remove bottom margin */
-      padding-bottom: 3.5rem; /* Use padding for spacing */
-      /* Use top border for separation instead of bottom */
-      padding-top: 3.5rem; /* Consistent top/bottom padding */
+      margin-bottom: 0;
+      padding-bottom: 3rem; /* Reduced section spacing */
+      padding-top: 3rem; /* Reduced section spacing */
       border-top: 1px solid var(--color-border);
   }
-  /* First section doesn't need top padding/border */
   .reviewContainer > article > section:first-of-type,
   .reviewContainer > article > header + section {
       padding-top: 0;
       border-top: none;
   }
-  /* Remove bottom border/padding from last section */
   .reviewSection:last-of-type {
       padding-bottom: 0;
-      border-bottom: none; /* Ensure no conflicting bottom border */
+      border-bottom: none;
   }
-  /* Remove bottom border inherited from previous rule */
   .reviewSection {
       border-bottom: none;
   }
@@ -46,45 +64,44 @@
   /* =============== TYPOGRAPHY =============== */
   .reviewHeader h1 {
       font-family: var(--font-serif);
-      font-size: clamp(2.4rem, 6vw, 3.5rem); /* Slightly larger H1 */
+      font-size: clamp(2.2rem, 5.5vw, 3.2rem); /* Adjusted H1 size */
       color: var(--color-heading);
       text-align: center;
-      margin-bottom: 2rem; /* Increased spacing */
-      line-height: 1.2;
-      letter-spacing: -0.5px; /* Subtle tightening */
+      margin-bottom: 1.8rem; /* Reduced spacing */
+      line-height: 1.25;
+      letter-spacing: -0.3px;
   }
   
   .reviewSection h2 {
       font-family: var(--font-serif);
-      font-size: clamp(1.8rem, 4.5vw, 2.5rem); /* Slightly larger H2 */
+      font-size: clamp(1.7rem, 4vw, 2.3rem); /* Adjusted H2 size */
       color: var(--color-heading);
       margin-top: 0;
-      margin-bottom: 2rem; /* Increased spacing */
-      /* Remove underline, use spacing for separation */
+      margin-bottom: 1.8rem; /* Reduced spacing */
       padding-bottom: 0;
       border-bottom: none;
-      display: block; /* Ensure it takes full width for margin */
-      letter-spacing: -0.2px;
+      display: block;
+      letter-spacing: -0.1px;
   }
   
   .reviewSection h3 {
       font-family: var(--font-condensed);
       font-weight: 700;
-      font-size: 1.5rem;
-      color: var(--color-primary); /* Use primary color for H3 */
-      margin-top: 2rem;
-      margin-bottom: 1rem;
+      font-size: 1.4rem; /* Adjusted H3 size */
+      color: var(--color-primary);
+      margin-top: 1.8rem;
+      margin-bottom: 0.9rem;
   }
   
   .reviewContainer p {
-      margin-bottom: 1.3rem;
-      color: var(--color-text-primary); /* Slightly darker than secondary */
-      max-width: 75ch; /* Optimal reading width */
+      margin-bottom: 1.2rem; /* Reduced paragraph spacing */
+      color: var(--color-text-primary);
+      max-width: 72ch;
   }
   
   .reviewContainer strong {
-      font-weight: 600; /* Slightly less harsh than 700 */
-      color: var(--color-primary-dark); /* Use darker primary for emphasis */
+      font-weight: 600;
+      color: var(--color-primary-dark);
   }
   
   .reviewContainer em {
@@ -94,84 +111,82 @@
   
   .reviewContainer ul,
   .reviewContainer ol {
-      margin-left: 1.5rem; /* Keep standard indent */
+      margin-left: 1.5rem;
       padding-left: 0.5rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.3rem; /* Reduced list spacing */
   }
-  .reviewContainer ul ul, /* Nested lists */
+  .reviewContainer ul ul,
   .reviewContainer ol ol,
   .reviewContainer ul ol,
   .reviewContainer ol ul {
       margin-left: 1rem;
-      margin-top: 0.5rem;
-      margin-bottom: 0.8rem;
+      margin-top: 0.4rem;
+      margin-bottom: 0.7rem;
   }
   
-  
   .reviewContainer li {
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.7rem; /* Reduced li spacing */
       padding-left: 0.5rem;
       color: var(--color-text-secondary);
   }
   .reviewContainer li > strong {
-       color: var(--color-text-primary); /* Make strong inside li stand out more */
+       color: var(--color-text-primary);
   }
   
   
   /* Premium Feature List */
   .featureList {
       list-style: none;
-      padding-left: 0.5rem; /* Slight indent */
+      padding-left: 0.3rem; /* Adjust indent */
   }
   .featureList li {
       position: relative;
-      padding-left: 2.2em; /* More space for icon */
-      margin-bottom: 1rem; /* More spacing */
-      color: var(--color-text-primary); /* Use primary text color */
+      padding-left: 2em; /* Adjust space for icon */
+      margin-bottom: 0.8rem; /* Adjust spacing */
+      color: var(--color-text-primary);
   }
   .featureList li::before {
-      content: ''; /* Use background image or SVG */
+      content: '';
       position: absolute;
       left: 0;
-      top: 0.1em; /* Adjust vertical alignment */
-      width: 1.5em; /* Icon size */
-      height: 1.5em; /* Icon size */
-      background-color: var(--color-accent-gold-light); /* Light gold background */
+      top: 0.15em; /* Adjust vertical alignment */
+      width: 1.3em; /* Icon size */
+      height: 1.3em; /* Icon size */
+      background-color: var(--color-accent-gold-light);
       /* Gold Check SVG (URL Encoded) */
-      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23c09b5f'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z'/%3E%3C/svg%3E");
-      mask-size: 65%; /* Make icon slightly smaller than background */
+      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23B58900'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z'/%3E%3C/svg%3E");
+      mask-size: 70%;
       mask-repeat: no-repeat;
       mask-position: center;
-      border-radius: 50%; /* Circle background */
-      line-height: 1.5em;
+      border-radius: 50%;
+      line-height: 1.3em;
       text-align: center;
   }
   
   .numberedList {
       list-style-type: decimal;
-      padding-left: 1.5rem; /* Standard padding for numbers */
+      padding-left: 1.5rem;
   }
   .numberedList li {
-      padding-left: 0.5rem; /* Adjust padding */
+      padding-left: 0.5rem;
   }
   
   /* =============== HEADER & INTRO =============== */
   .reviewHeader {
       text-align: center;
-      margin-bottom: 3.5rem;
-      padding-bottom: 3rem;
-      /* Use lighter dashed border or remove */
+      margin-bottom: 3rem;
+      padding-bottom: 2.5rem;
       border-bottom: 1px solid var(--color-border);
   }
   
   .cardImageContainer {
-      margin: 2rem auto 2.5rem auto; /* Adjust spacing */
+      margin: 1.8rem auto 2.2rem auto; /* Adjust spacing */
       max-width: 480px;
       display: flex;
       justify-content: center;
       align-items: center;
-      border-radius: var(--border-radius); /* Match container radius */
-      overflow: hidden; /* Ensure image respects radius */
+      border-radius: var(--border-radius);
+      overflow: hidden;
       box-shadow: var(--shadow-md);
   }
   
@@ -181,38 +196,38 @@
       height: auto;
   }
   
+  /* --- Rating Section Refined --- */
   .ratingSection {
-      margin-top: 2.5rem; /* Increased spacing */
+      margin-top: 2.2rem; /* Adjust spacing */
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1rem; /* Increased gap */
+      gap: 0.8rem; /* Adjust gap */
   }
   
   .tciRating {
-      font-size: 1.15rem;
+      font-size: 1.1rem; /* Adjust size */
       font-weight: 500;
       color: var(--color-text-primary);
-      background-color: var(--color-background-subtle); /* Subtle background */
-      padding: 0.4rem 1rem; /* Adjust padding */
-      border-radius: 20px; /* Pill shape */
+      background-color: var(--color-background-subtle);
+      padding: 0.4rem 0.9rem;
+      border-radius: 16px;
       display: inline-flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.5rem;
       position: relative;
-      border: 1px solid var(--color-border); /* Add subtle border */
+      border: 1px solid var(--color-border);
   }
   
   .tciRating strong {
       font-weight: 700;
-      color: var(--color-primary); /* Use primary color */
+      color: var(--color-primary);
   }
   
-  /* Rating Icon Button Styles */
   .infoIconButton {
       background: none;
       border: none;
-      padding: 3px; /* Slightly more padding */
+      padding: 2px;
       margin: 0;
       cursor: pointer;
       line-height: 0;
@@ -221,7 +236,7 @@
       align-items: center;
       justify-content: center;
       vertical-align: middle;
-      color: var(--color-text-muted); /* Muted color */
+      color: var(--color-text-muted);
       transition: background-color 0.2s ease, color 0.2s ease;
   }
   .infoIconButton:hover {
@@ -231,21 +246,24 @@
   .infoIconButton:focus-visible {
       outline: 2px solid var(--color-primary);
       outline-offset: 2px;
-      background-color: rgba(44, 82, 130, 0.1); /* Primary transparent */
+      background-color: rgba(0, 86, 179, 0.1);
   }
   .infoIcon {
       display: inline-block;
       fill: currentColor;
-      width: 18px; /* Slightly larger */
-      height: 18px; /* Slightly larger */
+      width: 17px;
+      height: 17px;
   }
   
+  /* --- Star Rating Refined --- */
   .starRating {
-      font-size: 2rem; /* Larger stars */
-      color: var(--color-border); /* Lighter grey for empty stars */
+      font-size: 1.9rem; /* Adjust star size */
+      color: #e9ecef; /* Lighter grey for empty stars */
       position: relative;
       display: inline-block;
-      line-height: 1;
+      line-height: 1; /* Crucial for preventing extra space */
+      vertical-align: middle; /* Better alignment with text/icons if needed */
+      letter-spacing: 2px; /* Add slight space between stars */
   }
   .filledStars {
       position: absolute;
@@ -253,28 +271,32 @@
       top: 0;
       white-space: nowrap;
       overflow: hidden;
-      color: var(--color-accent-gold); /* Use muted gold for filled stars */
+      color: var(--color-accent-gold); /* Gold color for filled stars */
       width: var(--rating, 0%);
+      letter-spacing: 2px; /* Match parent spacing */
+      line-height: 1; /* Match parent */
+      vertical-align: middle; /* Match parent */
   }
   
   .ratingDescription {
-      font-size: 1.1rem; /* Slightly larger */
-      font-style: normal; /* Remove italics */
+      font-size: 1.05rem; /* Adjust size */
+      font-style: normal;
       color: var(--color-text-secondary);
-      margin-top: 0.5rem; /* Reduced top margin as gap increased */
-      max-width: 650px;
+      margin-top: 0.4rem; /* Adjust spacing */
+      max-width: 600px;
       margin-left: auto;
       margin-right: auto;
-      line-height: 1.6;
+      line-height: 1.55; /* Adjust line height */
+      text-align: center;
   }
   
   .intro p {
-      font-size: 1.2rem; /* Larger intro text */
-      line-height: 1.8;
+      font-size: 1.15rem; /* Intro text size */
+      line-height: 1.7; /* Slightly reduced intro line height */
       max-width: 70ch;
-      margin: 2rem auto 0 auto; /* Adjust spacing */
+      margin: 1.8rem auto 0 auto;
       color: var(--color-text-primary);
-      text-align: center; /* Center align intro */
+      text-align: center;
   }
   
   
@@ -283,70 +305,67 @@
       width: 100%;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2.2rem;
       border: 1px solid var(--color-border);
       border-radius: var(--border-radius);
-      box-shadow: var(--shadow-sm); /* Softer shadow */
-      background-color: var(--color-background); /* Ensure background */
+      box-shadow: var(--shadow-sm);
+      background-color: var(--color-background);
   }
   
   .statsTable {
       width: 100%;
-      min-width: 600px;
+      min-width: 550px; /* Adjust min-width */
       border-collapse: collapse;
-      border: none;
+      border-style: hidden; /* Hide outer border for seamless look */
       box-shadow: none;
       margin-bottom: 0;
-      font-size: 1rem; /* Slightly larger table font */
+      font-size: 0.98rem; /* Adjust table font size */
   }
   
   .statsTable thead {
-      background-color: var(--color-background-subtle); /* Subtle header background */
-      border-bottom: 2px solid var(--color-border); /* Stronger header bottom border */
+      background-color: var(--color-background-subtle);
+      border-bottom: 2px solid var(--color-border);
   }
   
   .statsTable th {
       background-color: transparent;
-      color: var(--color-text-secondary); /* Header text color */
-      font-weight: 600; /* Header weight */
+      color: var(--color-text-secondary);
+      font-weight: 600;
       text-align: left;
-      padding: 1.1rem 1.3rem; /* Increased padding */
-      /* Use only bottom border for separation within header */
+      padding: 1rem 1.2rem; /* Adjust padding */
       border-bottom: none;
       border-right: 1px solid var(--color-border);
       white-space: nowrap;
-      text-transform: uppercase; /* Uppercase headers */
-      font-size: 0.85rem; /* Smaller header font */
-      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      font-size: 0.8rem; /* Adjust header font size */
+      letter-spacing: 0.6px;
   }
   .statsTable th:last-child { border-right: none; }
   
   .statsTable td {
-      padding: 1.1rem 1.3rem; /* Match header padding */
+      padding: 1rem 1.2rem; /* Adjust padding */
       border: none;
-      border-bottom: 1px solid var(--color-border); /* Horizontal row separators */
-      border-right: 1px solid var(--color-border); /* Vertical column separators */
+      border-bottom: 1px solid var(--color-border);
+      border-right: 1px solid var(--color-border);
       vertical-align: middle;
       color: var(--color-text-secondary);
       white-space: normal;
   }
   .statsTable td:last-child { border-right: none; }
   
-  /* Remove bottom border on last row */
   .statsTable tbody tr:last-child td {
       border-bottom: none;
   }
-  /* Subtle hover effect */
   .statsTable tbody tr:hover {
       background-color: var(--color-background-subtle);
   }
   .statsTable td:first-child {
       font-weight: 500;
-      color: var(--color-text-primary); /* Make first column text slightly darker */
+      color: var(--color-text-primary);
   }
   
   /* Responsive table adjustments */
-  @media (max-width: 650px) {
+  @media (max-width: 600px) { /* Adjusted breakpoint */
       .statsTable thead { display: table-header-group; }
       .statsTable tr { display: table-row; margin-bottom: 0; border: none; box-shadow: none; padding: 0;}
       .statsTable td { display: table-cell; text-align: left !important; padding-left: 1rem; position: static; border-bottom: 1px solid var(--color-border); border-right: 1px solid var(--color-border); }
@@ -354,27 +373,25 @@
       .statsTable tbody tr:last-child td { border-bottom: none; }
       .statsTable td::before { content: none; }
       .statsTable td[data-label="Details"] { text-align: left !important; }
-      .statsTable th, .statsTable td { padding: 0.9rem; font-size: 0.95rem; }
+      .statsTable th, .statsTable td { padding: 0.8rem; font-size: 0.92rem; }
   }
   
   
   /* =============== CTA Section (Premium Buttons Refined) =============== */
   .ctaSection {
       text-align: center;
-      padding: 3rem 2rem; /* Increased padding */
-      /* Subtle gradient or solid color */
+      padding: 2.8rem 1.8rem; /* Adjust padding */
       background-color: var(--color-background-subtle);
-      /* background: linear-gradient(135deg, #f7fafc, #e2e8f0); */ /* Subtle grey gradient */
       border: 1px solid var(--color-border);
       border-radius: var(--border-radius);
-      margin: 4rem 0; /* Increased margin */
+      margin: 3.5rem 0; /* Adjust margin */
       box-shadow: var(--shadow-md);
   }
   .ctaSection h2 {
-      font-size: clamp(1.7rem, 4.5vw, 2.2rem);
-      color: var(--color-primary); /* Use primary color */
+      font-size: clamp(1.6rem, 4vw, 2.1rem);
+      color: var(--color-primary);
       margin-top: 0;
-      margin-bottom: 2rem;
+      margin-bottom: 1.8rem;
       border: none;
       display: block;
   }
@@ -383,31 +400,31 @@
   .ctaButtons {
       display: flex;
       justify-content: center;
-      gap: 1.5rem; /* Further increased gap */
+      gap: 1.3rem; /* Adjust gap */
       flex-wrap: wrap;
   }
   .ctaButtons .btn {
-      padding: 1rem 2.5rem; /* Generous padding */
-      font-size: 1.1rem;
+      padding: 0.9rem 2.2rem; /* Adjust padding */
+      font-size: 1.05rem;
       font-weight: 600;
-      border-radius: 50px; /* More rounded pill shape */
+      border-radius: 50px;
       box-shadow: var(--shadow-sm);
-      transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Smooth bouncy transition */
-      border: 1px solid transparent; /* Add border for definition */
+      transition: all 0.2s ease-in-out; /* Standard transition */
+      border: 1px solid transparent;
       cursor: pointer;
       text-decoration: none;
       line-height: 1.5;
   }
   .ctaButtons .btn:hover {
       box-shadow: var(--shadow-md);
-      transform: translateY(-3px); /* Lift effect */
+      transform: translateY(-2px);
   }
   .ctaButtons .btn:active {
-      transform: translateY(-1px) scale(0.99);
+      transform: translateY(0px) scale(0.98);
       box-shadow: var(--shadow-sm);
   }
   .ctaButtons .btnApply {
-      background-color: var(--color-primary); /* Solid primary color */
+      background-color: var(--color-primary);
       border-color: var(--color-primary);
       color: white;
   }
@@ -417,19 +434,18 @@
   }
   
   .ctaButtons .btnRates {
-      background-color: var(--color-background); /* White background */
-      color: var(--color-primary); /* Primary text */
-      border-color: var(--color-primary); /* Primary border */
+      background-color: var(--color-background);
+      color: var(--color-primary);
+      border-color: var(--color-primary);
   }
   .ctaButtons .btnRates:hover {
-      background-color: rgba(44, 82, 130, 0.05); /* Light primary background on hover */
+      background-color: rgba(0, 86, 179, 0.05);
       border-color: var(--color-primary-dark);
       color: var(--color-primary-dark);
   }
   
-  /* Focus styles for buttons */
   .ctaButtons .btn:focus-visible {
-      outline: 3px solid rgba(44, 82, 130, 0.4); /* Primary focus ring */
+      outline: 3px solid rgba(0, 86, 179, 0.4);
       outline-offset: 2px;
   }
   
@@ -437,20 +453,20 @@
   .prosCons {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 4rem; /* Wider gap */
-      margin-top: 3rem; /* Reduced margin as section has top border/padding */
-      padding-top: 0; /* Remove padding as section has top border/padding */
-      border-top: none; /* Remove border as section has top border */
+      gap: 3.5rem; /* Adjust gap */
+      margin-top: 0; /* Reset margin as section provides spacing */
+      padding-top: 0;
+      border-top: none;
   }
   .prosCons h3 {
       font-family: var(--font-condensed);
-      font-size: 1.6rem; /* Larger heading */
+      font-size: 1.5rem; /* Adjust heading */
       font-weight: 700;
-      margin-bottom: 1.5rem; /* More space below heading */
-      padding-bottom: 0.5rem;
-      border-bottom: 3px solid;
-      display: inline-block; /* Keep underline contained */
-      letter-spacing: 0.3px;
+      margin-bottom: 1.3rem; /* Adjust space below heading */
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid; /* Thinner underline */
+      display: inline-block;
+      letter-spacing: 0.2px;
   }
   .pros h3 { color: var(--color-success); border-color: var(--color-success);}
   .cons h3 { color: var(--color-danger); border-color: var(--color-danger);}
@@ -460,11 +476,10 @@
       padding-left: 0;
       margin-top: 0;
   }
-  /* Use SVG icons for pros/cons */
   .pros li, .cons li {
-      padding-left: 2.2em; /* Space for icon */
-      margin-bottom: 1rem; /* More space between items */
-      font-size: 1rem; /* Standard list text size */
+      padding-left: 2em; /* Adjust space */
+      margin-bottom: 0.8rem; /* Adjust space */
+      font-size: 0.98rem; /* Adjust text size */
       color: var(--color-text-secondary);
       position: relative;
   }
@@ -472,9 +487,9 @@
       content: '';
       position: absolute;
       left: 0;
-      top: 0.15em; /* Adjust alignment */
-      width: 1.4em;
-      height: 1.4em;
+      top: 0.18em; /* Adjust alignment */
+      width: 1.3em;
+      height: 1.3em;
       background-color: var(--color-success);
       /* Check SVG (URL Encoded White) */
       mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z'/%3E%3C/svg%3E");
@@ -486,9 +501,9 @@
       content: '';
       position: absolute;
       left: 0;
-      top: 0.15em; /* Adjust alignment */
-      width: 1.4em;
-      height: 1.4em;
+      top: 0.18em; /* Adjust alignment */
+      width: 1.3em;
+      height: 1.3em;
       background-color: var(--color-danger);
       /* Cross SVG (URL Encoded White) */
       mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z'/%3E%3C/svg%3E");
@@ -498,149 +513,71 @@
   }
   
   
-  @media (max-width: 700px) { /* Adjusted breakpoint */
+  @media (max-width: 700px) {
       .prosCons {
           grid-template-columns: 1fr;
-          gap: 2.5rem;
+          gap: 2rem;
       }
   }
   
   /* =============== E-A-T Section =============== */
   .eatSection {
-      background-color: var(--color-background-subtle); /* Use subtle background */
+      background-color: var(--color-background-subtle);
       border: 1px solid var(--color-border);
-      padding: 2.5rem clamp(1.5rem, 5vw, 3rem); /* More padding */
+      padding: 2.2rem clamp(1.3rem, 4vw, 2.5rem); /* Adjust padding */
       border-radius: var(--border-radius);
-      margin-top: 0; /* Removed margin as section spacing handles it */
-      /* Ensure it doesn't have double top border */
+      margin-top: 0; /* Handled by section spacing */
       border-top: 1px solid var(--color-border);
   }
   .eatSection h2 {
       text-align: center;
-      color: var(--color-primary); /* Use primary color */
-      border-bottom: none; /* Remove underline */
-      margin-bottom: 2rem;
-      font-size: clamp(1.6rem, 4vw, 2.1rem);
+      color: var(--color-primary);
+      border-bottom: none;
+      margin-bottom: 1.8rem;
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
   }
   .eatSection h3 {
-      color: var(--color-primary-dark); /* Use darker primary */
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-      font-size: 1.3rem;
-      border-bottom: 1px solid var(--color-border); /* Subtle underline */
-      padding-bottom: 0.4rem;
+      color: var(--color-primary-dark);
+      margin-top: 1.8rem;
+      margin-bottom: 0.9rem;
+      font-size: 1.25rem;
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 0.3rem;
   }
   .eatSection ul {
-      list-style-type: disc; /* Keep standard list style */
-      margin-bottom: 1.5rem;
-      padding-left: 1.5rem; /* Standard padding */
+      list-style-type: disc;
+      margin-bottom: 1.3rem;
+      padding-left: 1.5rem;
   }
   .eatSection li {
-      margin-bottom: 0.7rem;
+      margin-bottom: 0.6rem;
       color: var(--color-text-secondary);
   }
   .eatSection p:last-of-type {
-      margin-top: 2rem;
+      margin-top: 1.8rem;
       font-style: italic;
       text-align: center;
-      color: var(--color-text-muted); /* Muted color */
-      font-size: 0.95rem;
+      color: var(--color-text-muted);
+      font-size: 0.92rem;
   }
   
   /* =============== Tooltip Styles (Refined) =============== */
   .ratingTooltip {
       position: absolute;
-      top: calc(100% + 10px); /* More space below */
+      top: calc(100% + 8px); /* Reduced space */
       left: 50%;
       transform: translateX(-50%);
       background-color: var(--color-background);
       border: 1px solid var(--color-border);
-      border-radius: 8px; /* Slightly smaller radius */
-      padding: 12px 18px; /* Adjust padding */
-      width: 280px; /* Wider tooltip */
-      box-shadow: var(--shadow-md); /* Use defined shadow */
+      border-radius: 6px; /* Smaller radius */
+      padding: 10px 15px; /* Adjust padding */
+      width: 260px; /* Adjust width */
+      box-shadow: var(--shadow-md);
       z-index: 1050;
-      font-size: 0.9rem; /* Slightly larger text */
-      line-height: 1.6;
+      font-size: 0.88rem; /* Adjust text size */
+      line-height: 1.55;
       color: var(--color-text-primary);
       text-align: left;
-      opacity: 0; /* Start hidden for animation */
-      visibility: hidden;
-      transition: opacity 0.2s ease, visibility 0.2s ease, top 0.2s ease;
-  }
-  /* Show tooltip */
-  .tciRating:hover .ratingTooltip, /* Example hover trigger (can remove if only click) */
-  .infoIconButton:focus + .ratingTooltip, /* Show on focus */
-  .infoIconButton:focus-visible + .ratingTooltip,
-  /* Add a class via JS to show on click */
-  .ratingTooltip.show {
-      opacity: 1;
-      visibility: visible;
-      top: calc(100% + 12px); /* Final position */
-  }
-  
-  
-  /* Add arrow */
-  .ratingTooltip::before {
-      content: '';
-      position: absolute;
-      bottom: 100%; /* Position arrow at the top */
-      left: 50%;
-      transform: translateX(-50%);
-      border-width: 7px;
-      border-style: solid;
-      border-color: transparent transparent var(--color-border) transparent; /* Bottom border visible */
-  }
-  .ratingTooltip::after {
-      content: '';
-      position: absolute;
-      bottom: 100%; /* Position arrow at the top */
-      left: 50%;
-      transform: translateX(-50%);
-      margin-bottom: -1px; /* Overlap border slightly */
-      border-width: 6px;
-      border-style: solid;
-      border-color: transparent transparent var(--color-background) transparent; /* Match background */
-  }
-  
-  .ratingTooltip strong {
-      display: block;
-      margin-bottom: 0.6rem;
-      color: var(--color-heading);
-      font-weight: 700;
-      font-size: 0.95rem;
-  }
-  .tooltipIntro {
-      margin: 0.6rem 0 0.4rem 0;
-      font-weight: 600;
-      color: var(--color-text-primary);
-  }
-  .tooltipList {
-      list-style: none; /* Remove default disc */
-      padding-left: 0;
-      margin: 0;
-  }
-  .tooltipList li {
-      margin-bottom: 0.3rem;
-      color: var(--color-text-secondary);
-      position: relative;
-      padding-left: 1.2em; /* Space for custom marker */
-  }
-  /* Custom list marker */
-  .tooltipList li::before {
-      content: '•';
-      position: absolute;
-      left: 0;
-      color: var(--color-accent-gold); /* Gold marker */
-      font-weight: bold;
-      font-size: 1em;
-      top: 0.05em;
-  }
-  
-  /* Ensure tooltip visibility logic doesn't fight with potential JS */
-  /* This part might need adjustment based on how show/hide is implemented in JS */
-  /* If using a 'show' class added by JS: */
-  .ratingTooltip {
       opacity: 0;
       visibility: hidden;
       transition: opacity 0.2s ease, visibility 0s linear 0.2s, top 0.2s ease;
@@ -649,15 +586,69 @@
       opacity: 1;
       visibility: visible;
       transition: opacity 0.2s ease, visibility 0s linear 0s, top 0.2s ease;
-      top: calc(100% + 12px); /* Final position */
+      top: calc(100% + 10px); /* Final position */
   }
   
+  .ratingTooltip::before {
+      content: '';
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 6px; /* Arrow size */
+      border-style: solid;
+      border-color: transparent transparent var(--color-border) transparent;
+  }
+  .ratingTooltip::after {
+      content: '';
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-bottom: -1px;
+      border-width: 5px; /* Inner arrow size */
+      border-style: solid;
+      border-color: transparent transparent var(--color-background) transparent;
+  }
+  
+  .ratingTooltip strong {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--color-heading);
+      font-weight: 700;
+      font-size: 0.92rem;
+  }
+  .tooltipIntro {
+      margin: 0.5rem 0 0.3rem 0;
+      font-weight: 600;
+      color: var(--color-text-primary);
+  }
+  .tooltipList {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+  }
+  .tooltipList li {
+      margin-bottom: 0.25rem;
+      color: var(--color-text-secondary);
+      position: relative;
+      padding-left: 1.1em; /* Adjust space */
+  }
+  .tooltipList li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--color-accent-gold);
+      font-weight: bold;
+      font-size: 1em;
+      top: 0.05em;
+  }
   
   @media (max-width: 480px) {
       .ratingTooltip {
-          width: calc(100vw - 2rem); /* Adjust width */
-          max-width: 320px;
-          left: 50% !important; /* Keep centered relative to button */
+          width: calc(100vw - 2rem);
+          max-width: 300px; /* Adjust max-width */
+          left: 50% !important;
           transform: translateX(-50%);
           right: auto;
       }
@@ -666,24 +657,24 @@
   /* =============== RESPONSIVE ADJUSTMENTS =============== */
   @media (max-width: 768px) {
       .reviewContainer {
-          padding: 2rem clamp(1rem, 4vw, 2.5rem);
+          padding: 1.8rem clamp(1rem, 4vw, 2rem);
           margin: 2rem auto 3rem auto;
-          border-radius: 8px; /* Slightly smaller radius on mobile */
+          border-radius: 6px;
       }
       .reviewHeader h1 {
-          font-size: clamp(2.1rem, 5.5vw, 3rem);
+          font-size: clamp(2rem, 5vw, 2.8rem);
       }
       .reviewSection h2 {
-          font-size: clamp(1.6rem, 4vw, 2.2rem);
+          font-size: clamp(1.6rem, 4vw, 2.1rem);
           margin-bottom: 1.5rem;
       }
       .ctaSection h2 {
-          font-size: 1.8rem;
+          font-size: 1.7rem;
       }
       .ctaButtons .btn {
-          padding: 0.9rem 2rem;
+          padding: 0.8rem 1.8rem;
           font-size: 1rem;
       }
-      .prosCons { gap: 2rem; }
-      .prosCons h3 { font-size: 1.5rem; }
+      .prosCons { gap: 1.8rem; }
+      .prosCons h3 { font-size: 1.4rem; }
   }
