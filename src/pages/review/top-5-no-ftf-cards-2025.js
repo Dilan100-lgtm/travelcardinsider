@@ -140,6 +140,10 @@ function NoFTFReviewPage() {
       {/* Main content container */}
       <main className={styles.reviewContainer}>
 
+      <header className={styles.reviewHeader}>
+          <h1>Top 5 No Foreign Transaction Fee Credit Cards for International Travelers (2025)</h1>
+        </header>
+
         <div className={styles.heroSection}>
           <Image
             src={'/damaris-isenschmid-k1LIMMsm8bg-unsplash.webp'}
@@ -158,9 +162,7 @@ function NoFTFReviewPage() {
           Disclaimer: Information is based on sources available up to early 2025. Offers and terms change frequently. Verify all details directly with the card issuer before applying. Affiliate links may be present.
         </p>
 
-        <header className={styles.reviewHeader}>
-          <h1>Top 5 No Foreign Transaction Fee Credit Cards for International Travelers (2025)</h1>
-        </header>
+        
 
         <article>
           <section className={styles.reviewSection}>
