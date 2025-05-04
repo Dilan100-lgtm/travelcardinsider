@@ -1,658 +1,495 @@
-/* styles/ReviewPage.module.css */
+/* === styles/ReviewPage.module.css === */
 
-/* =============== VARIABLES (Refined Premium Palette) =============== */
-
-  
-  /* =============== BASE & CONTAINER =============== */
-  .reviewContainer {
-      max-width: 1100px; /* Slightly narrower max-width */
-      margin: 2.5rem auto 3.5rem auto;
-      padding: clamp(1.8rem, 4vw, 3rem); /* Slightly reduced padding */
-      background-color: var(--color-background);
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow-md); /* Medium shadow */
-      line-height: 1.65; /* Reduced line-height */
-      font-size: 1.03rem; /* Slightly adjusted base font */
-      color: var(--color-text-primary);
-      font-family: var(--font-sans);
-      border: 1px solid var(--color-border);
-      overflow: hidden;
-  }
-  
-  .reviewSection {
-      margin-bottom: 0;
-      padding-bottom: 3rem; /* Reduced section spacing */
-      padding-top: 3rem; /* Reduced section spacing */
-      border-top: 1px solid var(--color-border);
-  }
-  .reviewContainer > article > section:first-of-type,
-  .reviewContainer > article > header + section {
-      padding-top: 0;
-      border-top: none;
-  }
-  .reviewSection:last-of-type {
-      padding-bottom: 0;
-      border-bottom: none;
-  }
-  .reviewSection {
-      border-bottom: none;
-  }
-  
-  
-  /* =============== TYPOGRAPHY =============== */
-  .reviewHeader h1 {
-      font-family: var(--font-serif);
-      font-size: clamp(2.2rem, 5.5vw, 3.2rem); /* Adjusted H1 size */
-      color: var(--color-heading);
-      text-align: center;
-      margin-bottom: 1.8rem; /* Reduced spacing */
-      line-height: 1.25;
-      letter-spacing: -0.3px;
-  }
-  
-  .reviewSection h2 {
-      font-family: var(--font-serif);
-      font-size: clamp(1.7rem, 4vw, 2.3rem); /* Adjusted H2 size */
-      color: var(--color-heading);
-      margin-top: 0;
-      margin-bottom: 1.8rem; /* Reduced spacing */
-      padding-bottom: 0;
-      border-bottom: none;
-      display: block;
-      letter-spacing: -0.1px;
-  }
-  
-  .reviewSection h3 {
-      font-family: var(--font-condensed);
-      font-weight: 700;
-      font-size: 1.4rem; /* Adjusted H3 size */
-      color: var(--color-primary);
-      margin-top: 1.8rem;
-      margin-bottom: 0.9rem;
-  }
-  
-  .reviewContainer p {
-      margin-bottom: 1.2rem; /* Reduced paragraph spacing */
-      color: var(--color-text-primary);
-      max-width: 72ch;
-  }
-  
-  .reviewContainer strong {
-      font-weight: 600;
-      color: var(--color-primary-dark);
-  }
-  
-  .reviewContainer em {
-      font-style: italic;
-      color: var(--color-text-secondary);
-  }
-  
-  .reviewContainer ul,
-  .reviewContainer ol {
-      margin-left: 1.5rem;
-      padding-left: 0.5rem;
-      margin-bottom: 1.3rem; /* Reduced list spacing */
-  }
-  .reviewContainer ul ul,
-  .reviewContainer ol ol,
-  .reviewContainer ul ol,
-  .reviewContainer ol ul {
-      margin-left: 1rem;
-      margin-top: 0.4rem;
-      margin-bottom: 0.7rem;
-  }
-  
-  .reviewContainer li {
-      margin-bottom: 0.7rem; /* Reduced li spacing */
-      padding-left: 0.5rem;
-      color: var(--color-text-secondary);
-  }
-  .reviewContainer li > strong {
-       color: var(--color-text-primary);
-  }
-  
-  
-  /* Premium Feature List */
-  .featureList {
-      list-style: none;
-      padding-left: 0.3rem; /* Adjust indent */
-  }
-  .featureList li {
-      position: relative;
-      padding-left: 2em; /* Adjust space for icon */
-      margin-bottom: 0.8rem; /* Adjust spacing */
-      color: var(--color-text-primary);
-  }
-  .featureList li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0.15em; /* Adjust vertical alignment */
-      width: 1.3em; /* Icon size */
-      height: 1.3em; /* Icon size */
-      background-color: var(--color-accent-gold-light);
-      /* Gold Check SVG (URL Encoded) */
-      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23B58900'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z'/%3E%3C/svg%3E");
-      mask-size: 70%;
-      mask-repeat: no-repeat;
-      mask-position: center;
-      border-radius: 50%;
-      line-height: 1.3em;
-      text-align: center;
-  }
-  
-  .numberedList {
-      list-style-type: decimal;
-      padding-left: 1.5rem;
-  }
-  .numberedList li {
-      padding-left: 0.5rem;
-  }
-  
-  /* =============== HEADER & INTRO =============== */
-  .reviewHeader {
-      text-align: center;
-      margin-bottom: 3rem;
-      padding-bottom: 2.5rem;
-      border-bottom: 1px solid var(--color-border);
-  }
-  
-  .cardImageContainer {
-      margin: 1.8rem auto 2.2rem auto; /* Adjust spacing */
-      max-width: 480px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: var(--border-radius);
-      overflow: hidden;
-      box-shadow: var(--shadow-md);
-  }
-  
-  .cardImage {
-      display: block;
-      max-width: 100%;
-      height: auto;
-  }
-  
-  /* --- Rating Section Refined --- */
-  .ratingSection {
-      margin-top: 2.2rem; /* Adjust spacing */
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.8rem; /* Adjust gap */
-  }
-  
-  .tciRating {
-      font-size: 1.1rem; /* Adjust size */
-      font-weight: 500;
-      color: var(--color-text-primary);
-      background-color: var(--color-background-subtle);
-      padding: 0.4rem 0.9rem;
-      border-radius: 16px;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      position: relative;
-      border: 1px solid var(--color-border);
-  }
-  
-  .tciRating strong {
-      font-weight: 700;
-      color: var(--color-primary);
-  }
-  
-  .infoIconButton {
-      background: none;
-      border: none;
-      padding: 2px;
-      margin: 0;
-      cursor: pointer;
-      line-height: 0;
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      vertical-align: middle;
-      color: var(--color-text-muted);
-      transition: background-color 0.2s ease, color 0.2s ease;
-  }
-  .infoIconButton:hover {
-      background-color: rgba(0, 0, 0, 0.04);
-      color: var(--color-text-secondary);
-  }
-  .infoIconButton:focus-visible {
-      outline: 2px solid var(--color-primary);
-      outline-offset: 2px;
-      background-color: rgba(0, 86, 179, 0.1);
-  }
-  .infoIcon {
-      display: inline-block;
-      fill: currentColor;
-      width: 17px;
-      height: 17px;
-  }
-  
-  /* --- Star Rating Refined --- */
-  .starRating {
-      font-size: 1.9rem; /* Adjust star size */
-      color: #e9ecef; /* Lighter grey for empty stars */
-      position: relative;
-      display: inline-block;
-      line-height: 1; /* Crucial for preventing extra space */
-      vertical-align: middle; /* Better alignment with text/icons if needed */
-      letter-spacing: 2px; /* Add slight space between stars */
-  }
-  .filledStars {
-      position: absolute;
-      left: 0;
-      top: 0;
-      white-space: nowrap;
-      overflow: hidden;
-      color: var(--color-accent-gold); /* Gold color for filled stars */
-      width: var(--rating, 0%);
-      letter-spacing: 2px; /* Match parent spacing */
-      line-height: 1; /* Match parent */
-      vertical-align: middle; /* Match parent */
-  }
-  
-  .ratingDescription {
-      font-size: 1.05rem; /* Adjust size */
-      font-style: normal;
-      color: var(--color-text-secondary);
-      margin-top: 0.4rem; /* Adjust spacing */
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.55; /* Adjust line height */
-      text-align: center;
-  }
-  
-  .intro p {
-      font-size: 1.15rem; /* Intro text size */
-      line-height: 1.7; /* Slightly reduced intro line height */
-      max-width: 70ch;
-      margin: 1.8rem auto 0 auto;
-      color: var(--color-text-primary);
-      text-align: center;
-  }
-  
-  
-  /* =============== TABLES (Premium & Responsive Scroll) =============== */
-  .tableContainer {
-      width: 100%;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      margin-bottom: 2.2rem;
-      border: 1px solid var(--color-border);
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow-sm);
-      background-color: var(--color-background);
-  }
-  
-  .statsTable {
-      width: 100%;
-      min-width: 550px; /* Adjust min-width */
-      border-collapse: collapse;
-      border-style: hidden; /* Hide outer border for seamless look */
-      box-shadow: none;
-      margin-bottom: 0;
-      font-size: 0.98rem; /* Adjust table font size */
-  }
-  
-  .statsTable thead {
-      background-color: var(--color-background-subtle);
-      border-bottom: 2px solid var(--color-border);
-  }
-  
-  .statsTable th {
-      background-color: transparent;
-      color: var(--color-text-secondary);
-      font-weight: 600;
-      text-align: left;
-      padding: 1rem 1.2rem; /* Adjust padding */
-      border-bottom: none;
-      border-right: 1px solid var(--color-border);
-      white-space: nowrap;
-      text-transform: uppercase;
-      font-size: 0.8rem; /* Adjust header font size */
-      letter-spacing: 0.6px;
-  }
-  .statsTable th:last-child { border-right: none; }
-  
-  .statsTable td {
-      padding: 1rem 1.2rem; /* Adjust padding */
-      border: none;
-      border-bottom: 1px solid var(--color-border);
-      border-right: 1px solid var(--color-border);
-      vertical-align: middle;
-      color: var(--color-text-secondary);
-      white-space: normal;
-  }
-  .statsTable td:last-child { border-right: none; }
-  
-  .statsTable tbody tr:last-child td {
-      border-bottom: none;
-  }
-  .statsTable tbody tr:hover {
-      background-color: var(--color-background-subtle);
-  }
-  .statsTable td:first-child {
-      font-weight: 500;
-      color: var(--color-text-primary);
-  }
-  
-  /* Responsive table adjustments */
-  @media (max-width: 600px) { /* Adjusted breakpoint */
-      .statsTable thead { display: table-header-group; }
-      .statsTable tr { display: table-row; margin-bottom: 0; border: none; box-shadow: none; padding: 0;}
-      .statsTable td { display: table-cell; text-align: left !important; padding-left: 1rem; position: static; border-bottom: 1px solid var(--color-border); border-right: 1px solid var(--color-border); }
-      .statsTable td:last-child { border-right: none; }
-      .statsTable tbody tr:last-child td { border-bottom: none; }
-      .statsTable td::before { content: none; }
-      .statsTable td[data-label="Details"] { text-align: left !important; }
-      .statsTable th, .statsTable td { padding: 0.8rem; font-size: 0.92rem; }
-  }
-  
-  
-  /* =============== CTA Section (Premium Buttons Refined) =============== */
-  .ctaSection {
-      text-align: center;
-      padding: 2.8rem 1.8rem; /* Adjust padding */
-      background-color: var(--color-background-subtle);
-      border: 1px solid var(--color-border);
-      border-radius: var(--border-radius);
-      margin: 3.5rem 0; /* Adjust margin */
-      box-shadow: var(--shadow-md);
-  }
-  .ctaSection h2 {
-      font-size: clamp(1.6rem, 4vw, 2.1rem);
-      color: var(--color-primary);
-      margin-top: 0;
-      margin-bottom: 1.8rem;
-      border: none;
-      display: block;
-  }
-  .ctaSection h2 b { color: var(--color-heading); font-weight: 700; }
-  
-  .ctaButtons {
-      display: flex;
-      justify-content: center;
-      gap: 1.3rem; /* Adjust gap */
-      flex-wrap: wrap;
-  }
-  .ctaButtons .btn {
-      padding: 0.9rem 2.2rem; /* Adjust padding */
-      font-size: 1.05rem;
-      font-weight: 600;
-      border-radius: 50px;
-      box-shadow: var(--shadow-sm);
-      transition: all 0.2s ease-in-out; /* Standard transition */
-      border: 1px solid transparent;
-      cursor: pointer;
-      text-decoration: none;
-      line-height: 1.5;
-  }
-  .ctaButtons .btn:hover {
-      box-shadow: var(--shadow-md);
-      transform: translateY(-2px);
-  }
-  .ctaButtons .btn:active {
-      transform: translateY(0px) scale(0.98);
-      box-shadow: var(--shadow-sm);
-  }
-  .ctaButtons .btnApply {
-      background-color: var(--color-primary);
-      border-color: var(--color-primary);
-      color: white;
-  }
-  .ctaButtons .btnApply:hover {
-      background-color: var(--color-primary-dark);
-      border-color: var(--color-primary-dark);
-  }
-  
-  .ctaButtons .btnRates {
-      background-color: var(--color-background);
-      color: var(--color-primary);
-      border-color: var(--color-primary);
-  }
-  .ctaButtons .btnRates:hover {
-      background-color: rgba(0, 86, 179, 0.05);
-      border-color: var(--color-primary-dark);
-      color: var(--color-primary-dark);
-  }
-  
-  .ctaButtons .btn:focus-visible {
-      outline: 3px solid rgba(0, 86, 179, 0.4);
-      outline-offset: 2px;
-  }
-  
-  /* =============== Pros/Cons Section =============== */
-  .prosCons {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3.5rem; /* Adjust gap */
-      margin-top: 0; /* Reset margin as section provides spacing */
-      padding-top: 0;
-      border-top: none;
-  }
-  .prosCons h3 {
-      font-family: var(--font-condensed);
-      font-size: 1.5rem; /* Adjust heading */
-      font-weight: 700;
-      margin-bottom: 1.3rem; /* Adjust space below heading */
-      padding-bottom: 0.4rem;
-      border-bottom: 2px solid; /* Thinner underline */
-      display: inline-block;
-      letter-spacing: 0.2px;
-  }
-  .pros h3 { color: var(--color-success); border-color: var(--color-success);}
-  .cons h3 { color: var(--color-danger); border-color: var(--color-danger);}
-  
-  .pros ul, .cons ul {
-      list-style: none;
-      padding-left: 0;
-      margin-top: 0;
-  }
-  .pros li, .cons li {
-      padding-left: 2em; /* Adjust space */
-      margin-bottom: 0.8rem; /* Adjust space */
-      font-size: 0.98rem; /* Adjust text size */
-      color: var(--color-text-secondary);
-      position: relative;
-  }
-  .pros li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0.18em; /* Adjust alignment */
-      width: 1.3em;
-      height: 1.3em;
-      background-color: var(--color-success);
-      /* Check SVG (URL Encoded White) */
-      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z'/%3E%3C/svg%3E");
-      mask-size: contain;
-      mask-repeat: no-repeat;
-      border-radius: 50%;
-  }
-  .cons li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0.18em; /* Adjust alignment */
-      width: 1.3em;
-      height: 1.3em;
-      background-color: var(--color-danger);
-      /* Cross SVG (URL Encoded White) */
-      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z'/%3E%3C/svg%3E");
-      mask-size: contain;
-      mask-repeat: no-repeat;
-      border-radius: 50%;
-  }
-  
-  
-  @media (max-width: 700px) {
-      .prosCons {
-          grid-template-columns: 1fr;
-          gap: 2rem;
-      }
-  }
-  
-  /* =============== E-A-T Section =============== */
-  .eatSection {
-      background-color: var(--color-background-subtle);
-      border: 1px solid var(--color-border);
-      padding: 2.2rem clamp(1.3rem, 4vw, 2.5rem); /* Adjust padding */
-      border-radius: var(--border-radius);
-      margin-top: 0; /* Handled by section spacing */
-      border-top: 1px solid var(--color-border);
-  }
-  .eatSection h2 {
-      text-align: center;
-      color: var(--color-primary);
-      border-bottom: none;
-      margin-bottom: 1.8rem;
-      font-size: clamp(1.5rem, 3.5vw, 2rem);
-  }
-  .eatSection h3 {
-      color: var(--color-primary-dark);
-      margin-top: 1.8rem;
-      margin-bottom: 0.9rem;
-      font-size: 1.25rem;
-      border-bottom: 1px solid var(--color-border);
-      padding-bottom: 0.3rem;
-  }
-  .eatSection ul {
-      list-style-type: disc;
-      margin-bottom: 1.3rem;
-      padding-left: 1.5rem;
-  }
-  .eatSection li {
-      margin-bottom: 0.6rem;
-      color: var(--color-text-secondary);
-  }
-  .eatSection p:last-of-type {
-      margin-top: 1.8rem;
-      font-style: italic;
-      text-align: center;
-      color: var(--color-text-muted);
-      font-size: 0.92rem;
-  }
-  
-  /* =============== Tooltip Styles (Refined) =============== */
-  .ratingTooltip {
-      position: absolute;
-      top: calc(100% + 8px); /* Reduced space */
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: var(--color-background);
-      border: 1px solid var(--color-border);
-      border-radius: 6px; /* Smaller radius */
-      padding: 10px 15px; /* Adjust padding */
-      width: 260px; /* Adjust width */
-      box-shadow: var(--shadow-md);
-      z-index: 1050;
-      font-size: 0.88rem; /* Adjust text size */
-      line-height: 1.55;
-      color: var(--color-text-primary);
-      text-align: left;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.2s ease, visibility 0s linear 0.2s, top 0.2s ease;
-  }
-  .ratingTooltip.show {
-      opacity: 1;
-      visibility: visible;
-      transition: opacity 0.2s ease, visibility 0s linear 0s, top 0.2s ease;
-      top: calc(100% + 10px); /* Final position */
-  }
-  
-  .ratingTooltip::before {
-      content: '';
-      position: absolute;
-      bottom: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      border-width: 6px; /* Arrow size */
-      border-style: solid;
-      border-color: transparent transparent var(--color-border) transparent;
-  }
-  .ratingTooltip::after {
-      content: '';
-      position: absolute;
-      bottom: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      margin-bottom: -1px;
-      border-width: 5px; /* Inner arrow size */
-      border-style: solid;
-      border-color: transparent transparent var(--color-background) transparent;
-  }
-  
-  .ratingTooltip strong {
-      display: block;
-      margin-bottom: 0.5rem;
-      color: var(--color-heading);
-      font-weight: 700;
-      font-size: 0.92rem;
-  }
-  .tooltipIntro {
-      margin: 0.5rem 0 0.3rem 0;
-      font-weight: 600;
-      color: var(--color-text-primary);
-  }
-  .tooltipList {
-      list-style: none;
-      padding-left: 0;
-      margin: 0;
-  }
-  .tooltipList li {
-      margin-bottom: 0.25rem;
-      color: var(--color-text-secondary);
-      position: relative;
-      padding-left: 1.1em; /* Adjust space */
-  }
-  .tooltipList li::before {
-      content: '•';
-      position: absolute;
-      left: 0;
-      color: var(--color-accent-gold);
+/* --- Core Layout & Container --- */
+.reviewContainer {
+     max-width: 850px; /* Optimal reading width */
+     margin: var(--spacing-xl, 32px) auto; /* Center with vertical space */
+     padding: 0 var(--spacing-md, 16px); /* Horizontal padding for smaller screens */
+     font-family: var(--font-sans, sans-serif); /* Fallback font */
+     color: var(--color-text-secondary, #495057);
+     line-height: 1.7; /* Enhanced readability */
+    }
+    
+    /* Replaces the inline style for header spacing - apply to <main> or a wrapper div if needed */
+    .mainContentWithHeaderMargin {
+     margin-top: 5rem; /* Adjust if header height changes */
+    }
+    
+    /* --- Review Header Area --- */
+    .reviewHeader {
+     margin-bottom: var(--spacing-xl, 32px);
+     padding-bottom: var(--spacing-lg, 24px);
+     border-bottom: 1px solid var(--color-border, #dee2e6);
+    }
+    
+    .reviewHeader h1 {
+     font-family: var(--font-serif, serif);
+     color: var(--color-heading, #1a202c);
+     font-size: clamp(1.8rem, 5vw, 2.8rem); /* Responsive title */
+     font-weight: 700;
+     line-height: 1.25;
+     margin: 0 0 var(--spacing-md, 16px) 0;
+    }
+    
+    /* Combined Intro Text & Image Layout */
+    .introAndImageWrapper { /* Add this div wrapper in JSX if needed for layout */
+     display: grid;
+     grid-template-columns: 1fr; /* Mobile first */
+     gap: var(--spacing-lg, 24px);
+     align-items: start; /* Align items to the top */
+    }
+    
+    @media (min-width: 768px) {
+     .introAndImageWrapper {
+      grid-template-columns: 2fr 1fr; /* Text wider than image on desktop */
+     }
+     .cardImageContainer {
+      grid-column: 2 / 3; /* Image on the right */
+      grid-row: 1 / 2;
+     }
+     .intro {
+      grid-column: 1 / 2; /* Text on the left */
+      grid-row: 1 / 2;
+     }
+    }
+    
+    .intro p {
+     font-size: 1.05rem; /* Slightly larger intro text */
+     color: var(--color-text-secondary, #495057);
+     margin: 0 0 var(--spacing-md, 16px) 0;
+    }
+    
+    .intro p strong {
+     color: var(--color-text-primary, #212529);
+     font-weight: 600; /* Or 700 if preferred */
+    }
+    
+    .cardImageContainer {
+     text-align: center; /* Center image within its container */
+     margin-bottom: var(--spacing-md); /* Space below image on mobile */
+    }
+    
+    .cardImage {
+     max-width: 100%;
+     height: auto;
+     border-radius: var(--border-radius-md, 8px);
+     box-shadow: var(--shadow-md, 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04));
+    }
+    
+    /* --- Rating Section --- */
+    .ratingSection {
+     margin-top: var(--spacing-lg, 24px);
+     padding: var(--spacing-md, 16px);
+     background-color: var(--color-background-subtle, #f8f9fa);
+     border: 1px solid var(--color-border, #dee2e6);
+     border-radius: var(--border-radius-md, 8px);
+     text-align: center;
+     position: relative; /* For tooltip positioning */
+    }
+    
+    .tciRating {
+     font-size: 1.1rem;
+     font-weight: 500;
+     color: var(--color-text-primary, #212529);
+     display: inline-flex; /* Align icon and text */
+     align-items: center;
+     gap: var(--spacing-xs, 4px);
+     position: relative; /* Anchor for the tooltip */
+    }
+    
+    .tciRating strong {
+     font-weight: 700;
+     color: var(--color-primary, #0056b3);
+    }
+    
+    /* Info Icon Button */
+    .infoIconButton {
+     background: none;
+     border: none;
+     padding: 0;
+     margin: 0 var(--spacing-xs, 4px) 0 0;
+     cursor: pointer;
+     display: inline-flex; /* Align SVG vertically */
+     vertical-align: middle;
+     color: var(--color-text-muted, #6c757d);
+     transition: color var(--transition-speed, 0.2s) ease;
+    }
+    
+    .infoIconButton:hover,
+    .infoIconButton:focus {
+     color: var(--color-primary, #0056b3);
+     outline: none; /* Add custom focus ring if needed */
+    }
+    
+    .infoIcon {
+     width: 1em; /* Size relative to font-size */
+     height: 1em;
+     fill: currentColor;
+    }
+    
+    /* Rating Tooltip */
+    .ratingTooltip {
+     position: absolute;
+     bottom: calc(100% + var(--spacing-sm, 8px)); /* Position above the button */
+     left: 50%;
+     transform: translateX(-50%);
+     background-color: var(--color-text-primary, #212529);
+     color: var(--color-background, #ffffff);
+     padding: var(--spacing-md, 16px);
+     border-radius: var(--border-radius-md, 8px);
+     box-shadow: var(--shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05));
+     width: max-content; /* Adjust width based on content */
+     max-width: 300px; /* Prevent excessive width */
+     z-index: 10;
+     font-size: 0.85rem;
+     line-height: 1.5;
+     text-align: left;
+     opacity: 1; /* Controlled by JS state */
+     visibility: visible; /* Controlled by JS state */
+     transition: opacity 0.2s ease, visibility 0.2s ease;
+    }
+    .ratingTooltip strong {
+     display: block;
+     margin-bottom: var(--spacing-xs, 4px);
+     font-weight: 700;
+     color: inherit; /* Inherit white color */
+    }
+    .tooltipIntro {
+     margin: var(--spacing-sm, 8px) 0 var(--spacing-xs, 4px) 0;
+     font-weight: 500;
+     color: var(--color-text-muted, #adb5bd); /* Lighter text inside tooltip */
+    }
+    .tooltipList {
+     list-style: disc; /* Use standard bullets */
+     padding-left: var(--spacing-md, 16px); /* Indent list */
+     margin: 0;
+    }
+    .tooltipList li {
+     margin-bottom: var(--spacing-xs, 4px);
+    }
+    
+    /* Star Rating */
+    .starRating {
+     margin: var(--spacing-sm, 8px) 0;
+     color: var(--color-border, #dee2e6); /* Empty star color */
+     font-size: 1.5rem; /* Adjust star size */
+     position: relative;
+     display: inline-block; /* Fit content width */
+     line-height: 1; /* Prevent extra space */
+    }
+    
+    .filledStars {
+     position: absolute;
+     left: 0;
+     top: 0;
+     white-space: nowrap;
+     overflow: hidden;
+     color: var(--color-accent-gold, #b58900); /* Filled star color */
+     width: var(--rating); /* Dynamic width from inline style */
+    }
+    
+    .ratingDescription {
+     font-size: 0.9rem;
+     font-style: italic;
+     color: var(--color-text-muted, #6c757d);
+     margin-top: var(--spacing-sm, 8px);
+    }
+    
+    /* --- General Content Section --- */
+    .reviewSection {
+     padding-block: var(--spacing-lg, 24px); /* Vertical padding */
+     margin-block-start: var(--spacing-lg, 24px); /* Space between sections */
+     border-top: 1px solid var(--color-border, #dee2e6); /* Separator */
+    }
+    
+    .reviewSection:first-of-type {
+     border-top: none; /* No top border for the very first content section */
+     margin-block-start: 0;
+    }
+    
+    .reviewSection h2 {
+     font-family: var(--font-serif, serif);
+     color: var(--color-heading, #1a202c);
+     font-size: clamp(1.5rem, 4vw, 2rem);
+     font-weight: 700;
+     margin: 0 0 var(--spacing-md, 16px) 0;
+     line-height: 1.3;
+    }
+    
+    .reviewSection h3 {
+     font-family: var(--font-sans, sans-serif); /* Use sans for subheadings for clarity */
+     color: var(--color-text-primary, #212529);
+     font-size: clamp(1.2rem, 3vw, 1.5rem);
+     font-weight: 600;
+     margin: var(--spacing-lg, 24px) 0 var(--spacing-sm, 8px) 0;
+     line-height: 1.4;
+    }
+    
+    .reviewSection p {
+     margin: 0 0 var(--spacing-md, 16px) 0;
+    }
+    
+    .reviewSection p:last-child {
+     margin-bottom: 0;
+    }
+    
+    .reviewSection strong {
+     color: var(--color-text-primary, #212529);
+     font-weight: 600;
+    }
+    
+    .reviewSection ul,
+    .reviewSection ol {
+     padding-left: var(--spacing-lg, 24px); /* Indentation */
+     margin: 0 0 var(--spacing-md, 16px) 0;
+    }
+    
+    .reviewSection li {
+     margin-bottom: var(--spacing-sm, 8px);
+    }
+    
+    .reviewSection ul ul {
+     margin-top: var(--spacing-sm, 8px); /* Space above nested list */
+     margin-bottom: var(--spacing-sm, 8px);
+    }
+    
+    /* Specific list styling */
+    .featureList {
+     list-style-type: none; /* Remove default bullets */
+     padding-left: var(--spacing-sm, 8px);
+    }
+    
+    .featureList li {
+     position: relative;
+     padding-left: var(--spacing-lg, 24px); /* Space for custom marker */
+     margin-bottom: var(--spacing-sm, 8px);
+    }
+    
+    .featureList li::before {
+     content: '✓'; /* Checkmark marker */
+     position: absolute;
+     left: 0;
+     top: 1px; /* Adjust vertical alignment */
+     color: var(--color-success, #198754);
+     font-weight: bold;
+     font-size: 0.9em;
+    }
+    
+    .featureList ul { /* Nested lists within featureList */
+      list-style-type: '- '; /* Simple dash for nested */
+      padding-left: var(--spacing-md, 16px);
+      margin-left: var(--spacing-sm, 8px);
+    }
+    .featureList ul li::before {
+      content: none; /* Remove checkmark from nested items */
+    }
+    .featureList ul li {
+      padding-left: 0; /* Reset padding for nested items */
+    }
+    
+    
+    /* --- CTA Section --- */
+    .ctaSection {
+     text-align: center;
+     padding: var(--spacing-xl, 32px) var(--spacing-md, 16px);
+     margin-block: var(--spacing-xl, 32px); /* Space above/below */
+     background-color: var(--color-accent-gold-light, #fdf7e7); /* Light gold background */
+     border-radius: var(--border-radius-lg, 12px);
+     border: 1px solid var(--color-accent-gold, #b58900);
+    }
+    
+    .ctaSection h2 {
+     font-family: var(--font-serif, serif);
+     color: var(--color-heading, #1a202c);
+     font-size: clamp(1.4rem, 4vw, 1.8rem);
+     margin: 0 0 var(--spacing-lg, 24px) 0;
+    }
+    .ctaSection h2 b {
+      font-weight: 700; /* Ensure bold is distinct if h2 isn't already bold */
+    }
+    
+    .ctaButtons {
+     display: flex;
+     flex-wrap: wrap; /* Allow buttons to wrap on small screens */
+     justify-content: center;
+     gap: var(--spacing-md, 16px);
+    }
+    
+    /* --- Button Styling (inherits from global, specific overrides) --- */
+    .btn {
+     /* Inherit base styles from global .cta-button or define base here */
+     display: inline-block;
+     padding: 12px 28px; /* Generous padding */
+     border-radius: var(--border-radius-md, 8px);
+     font-weight: 700;
+     text-decoration: none;
+     text-align: center;
+     cursor: pointer;
+     transition: all 0.2s ease-in-out;
+     border: 2px solid transparent; /* Border thickness for alignment */
+     font-size: 1rem;
+     line-height: 1.5;
+     min-width: 180px; /* Minimum width for better visual balance */
+    }
+    .btn:focus-visible {
+     outline: 3px solid var(--primary-blue-focus, rgba(59, 130, 246, 0.3));
+     outline-offset: 2px;
+    }
+    .btn:active {
+     transform: scale(0.97);
+    }
+    
+    .btnApply {
+     background-color: var(--color-success, #198754);
+     color: var(--color-background, #ffffff);
+     border-color: var(--color-success, #198754);
+    }
+    .btnApply:hover,
+    .btnApply:focus {
+     background-color: #146c43; /* Darker green */
+     border-color: #146c43;
+     color: var(--color-background, #ffffff);
+     box-shadow: var(--shadow-sm);
+    }
+    
+    .btnRates {
+     background-color: transparent;
+     color: var(--color-primary, #0056b3);
+     border-color: var(--color-primary, #0056b3);
+    }
+    .btnRates:hover,
+    .btnRates:focus {
+     background-color: var(--color-primary-light, rgba(0, 86, 179, 0.1));
+     color: var(--color-primary-dark, #004085);
+     border-color: var(--color-primary-dark, #004085);
+    }
+    
+    /* --- Table Styling --- */
+    .tableContainer {
+     overflow-x: auto; /* Allow horizontal scroll on small screens */
+     margin-block: var(--spacing-lg, 24px);
+     border: 1px solid var(--color-border, #dee2e6);
+     border-radius: var(--border-radius-sm, 4px);
+    }
+    
+    .statsTable {
+     width: 100%;
+     border-collapse: collapse;
+     font-size: 0.95rem;
+    }
+    
+    .statsTable th,
+    .statsTable td {
+     padding: var(--spacing-sm, 8px) var(--spacing-md, 16px);
+     text-align: left;
+     border-bottom: 1px solid var(--color-border, #dee2e6);
+     vertical-align: middle;
+    }
+    
+    .statsTable thead th {
+     background-color: var(--color-background-subtle, #f8f9fa);
+     font-weight: 600;
+     color: var(--color-text-primary, #212529);
+     border-bottom-width: 2px; /* Thicker bottom border for header */
+    }
+    
+    .statsTable tbody tr:last-child td {
+     border-bottom: none; /* No border on last row */
+    }
+    
+    .statsTable tbody tr:hover {
+     background-color: var(--color-background-subtle, #f8f9fa);
+    }
+    
+    /* Styling for the bold total row from inline styles */
+    .statsTable .totalRow td { /* Add class="totalRow" to the <tr> in JSX */
       font-weight: bold;
-      font-size: 1em;
-      top: 0.05em;
-  }
-  
-  @media (max-width: 480px) {
-      .ratingTooltip {
-          width: calc(100vw - 2rem);
-          max-width: 300px; /* Adjust max-width */
-          left: 50% !important;
-          transform: translateX(-50%);
-          right: auto;
+      border-top: 2px solid var(--color-border, #dee2e6);
+    }
+    .statsTable .totalRow td[colspan="2"] { /* Specific alignment if needed */
+      text-align: left;
+    }
+    
+    /* --- Responsive Table Styles --- */
+    @media (max-width: 767px) {
+     .statsTable thead {
+      display: none; /* Hide header on mobile */
+     }
+     .statsTable tr {
+      display: block; /* Stack rows */
+      border-bottom: 2px solid var(--color-primary, #0056b3); /* Separate stacked rows */
+      margin-bottom: var(--spacing-md, 16px);
+      padding-bottom: var(--spacing-sm, 8px);
+     }
+     .statsTable tr:last-child {
+       margin-bottom: 0;
+       border-bottom: none;
+     }
+    
+     .statsTable td {
+      display: block; /* Stack cells */
+      text-align: right; /* Align value to the right */
+      padding-left: 40%; /* Make space for label */
+      position: relative;
+      border-bottom: 1px dashed var(--color-border, #dee2e6); /* Separator between cells */
+     }
+     .statsTable td:last-child {
+      border-bottom: none;
+     }
+    
+     .statsTable td::before {
+      content: attr(data-label); /* Use data-label for header */
+      position: absolute;
+      left: var(--spacing-sm, 8px);
+      width: calc(40% - var(--spacing-md, 16px)); /* Calculate label width */
+      padding-right: var(--spacing-sm, 8px);
+      font-weight: bold;
+      text-align: left;
+      color: var(--color-text-primary, #212529);
+     }
+    
+      /* Adjust total row for mobile */
+      .statsTable .totalRow td[colspan="2"] {
+         text-align: right; /* Align total value right */
       }
-  }
-  
-  /* =============== RESPONSIVE ADJUSTMENTS =============== */
-  @media (max-width: 768px) {
-      .reviewContainer {
-          padding: 1.8rem clamp(1rem, 4vw, 2rem);
-          margin: 2rem auto 3rem auto;
-          border-radius: 6px;
+       .statsTable .totalRow td[colspan="2"]::before {
+         content: "Total Potential"; /* Explicitly add label */
       }
-      .reviewHeader h1 {
-          font-size: clamp(2rem, 5vw, 2.8rem);
+      .statsTable .totalRow td:not([colspan="2"]) {
+        display: none; /* Hide empty cells in total row */
       }
-      .reviewSection h2 {
-          font-size: clamp(1.6rem, 4vw, 2.1rem);
-          margin-bottom: 1.5rem;
-      }
-      .ctaSection h2 {
-          font-size: 1.7rem;
-      }
-      .ctaButtons .btn {
-          padding: 0.8rem 1.8rem;
-          font-size: 1rem;
-      }
-      .prosCons { gap: 1.8rem; }
-      .prosCons h3 { font-size: 1.4rem; }
-  }
+    }
+    
+    /* --- E-A-T Section Styling (Optional Distinction) --- */
+    .eatSection {
+     background-color: var(--color-background-subtle, #f8f9fa);
+     padding: var(--spacing-lg, 24px);
+     margin-top: var(--spacing-xl, 32px);
+     border-radius: var(--border-radius-md, 8px);
+     border: 1px solid var(--color-border, #dee2e6);
+    }
+    
+    .eatSection h2 {
+ border-bottom: 2px solid var(--color-primary, #0056b3);
+padding-bottom: var(--spacing-sm, 8px);
+ display: inline-block; /* Border only under text */
+    }
+    
+    .eatSection h3 {
+      color: var(--color-primary, #0056b3);
+      margin-top: var(--spacing-md, 16px);
+    }
+    
+    .eatSection p:last-of-type {
+      margin-top: var(--spacing-lg);
+      font-weight: 500;
+    }
+    
+    .eatSection a {
+      color: var(--color-primary);
+      text-decoration: underline;
+      font-weight: 500;
+    }
+    .eatSection a:hover {
+      color: var(--color-primary-dark);
+    }
