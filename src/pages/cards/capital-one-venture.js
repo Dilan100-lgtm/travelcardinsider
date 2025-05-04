@@ -23,7 +23,7 @@ const reviewData = {
   imageUrl: '/venture_cardart_prim_323x203-1.avif', // *** VERIFY PATH in /public ***
   ratingValue: 8.2, // From Venture Rewards HTML
   applyLink: 'https://www.capitalone.com/credit-cards/venture/', // *** REPLACE with actual Venture APPLY URL ***
-  ratesLink: 'https://www.capitalone.com/credit-cards/venture/s', // *** VERIFY URL ***
+  ratesLink: 'https://www.capitalone.com/credit-cards/venture/', // *** VERIFY URL ***
   // Image dimensions (MUST BE ACCURATE for next/image) - Guessed from filename
   imageWidth: 323, // *** REPLACE with actual image width ***
   imageHeight: 203, // *** REPLACE with actual image height ***

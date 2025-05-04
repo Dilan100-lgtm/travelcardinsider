@@ -14,12 +14,12 @@ const cardData = [
   {
     id: 'csp',
     name: 'Chase Sapphire Preferred® Card',
-    imageSrc: '/images/cards/chase-sapphire-preferred.png',
+    imageSrc: '/sapphire_preferred_card.png',
     imageAlt: 'Chase Sapphire Preferred Card image',
-    ratingValue: 9.2,
-    ratingStars: 4.5,
-    applyLink: 'https://creditcards.chase.com/travel-credit-cards/sapphire/preferred', // Replace with actual
-    ratesFeesLink: 'https://creditcards.chase.com/travel-credit-cards/sapphire/preferred/pricing', // Replace with actual
+    ratingValue: 8.4,
+    ratingStars: 4.0,
+    applyLink: 'https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred', // Replace with actual
+    ratesFeesLink: 'https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC56014.html', // Replace with actual
     learnMoreLink: '/cards/chase-sapphire-preferred', // Replace with actual internal link if different
     bestFor: 'Travelers seeking great overall value, flexible rewards, solid travel protections, and a moderate annual fee.',
     annualFee: '$95',
@@ -34,12 +34,12 @@ const cardData = [
   {
     id: 'c1vx',
     name: 'Capital One Venture X Rewards Credit Card',
-    imageSrc: '/images/cards/capital-one-venture-x.png',
+    imageSrc: '/venturex-cg-static-card-1000x630-2.avif',
     imageAlt: 'Capital One Venture X Rewards Card image',
-    ratingValue: 9.5,
-    ratingStars: 5.0,
+    ratingValue: 9.0,
+    ratingStars: 4.5,
     applyLink: 'https://www.capitalone.com/credit-cards/venture-x/', // Replace with actual
-    ratesFeesLink: 'https://www.capitalone.com/credit-cards/venture-x/rates-fees/', // Replace with actual
+    ratesFeesLink: 'https://www.capitalone.com/credit-cards/venture-x/', // Replace with actual
     learnMoreLink: '/cards/capital-one-venture-x', // Replace with actual internal link if different
     bestFor: 'Travelers wanting premium airport experiences, easy-to-use credits offsetting the annual fee, and high rewards via the issuer\'s portal.',
     annualFee: '$395',
@@ -54,12 +54,12 @@ const cardData = [
   {
     id: 'csr',
     name: 'Chase Sapphire Reserve®',
-    imageSrc: '/images/cards/chase-sapphire-reserve.png',
+    imageSrc: '/sapphire_reserve_card.png',
     imageAlt: 'Chase Sapphire Reserve Card image',
-    ratingValue: 9.0,
-    ratingStars: 4.5,
-    applyLink: 'https://creditcards.chase.com/travel-credit-cards/sapphire/reserve', // Replace with actual
-    ratesFeesLink: 'https://creditcards.chase.com/travel-credit-cards/sapphire/reserve/pricing', // Replace with actual
+    ratingValue: 9.2,
+    ratingStars: 5.0,
+    applyLink: 'https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve', // Replace with actual
+    ratesFeesLink: 'https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC56007.html', // Replace with actual
     learnMoreLink: '/cards/chase-sapphire-reserve', // Replace with actual internal link if different
     bestFor: 'Frequent luxury travelers prioritizing top-tier insurance, extensive lounge access, high travel/dining rewards, and premium perks.',
     annualFee: '$550 ($75/authorized user)',
@@ -74,12 +74,12 @@ const cardData = [
    {
     id: 'c1v',
     name: 'Capital One Venture Rewards Credit Card',
-    imageSrc: '/images/cards/capital-one-venture.png',
+    imageSrc: '/venture_cardart_prim_323x203-1.avif',
     imageAlt: 'Capital One Venture Rewards Card image',
-    ratingValue: 8.8,
-    ratingStars: 4.5,
+    ratingValue: 8.2,
+    ratingStars: 4.0,
     applyLink: 'https://www.capitalone.com/credit-cards/venture/', // Replace with actual
-    ratesFeesLink: 'https://www.capitalone.com/credit-cards/venture/rates-fees/', // Replace with actual
+    ratesFeesLink: 'https://www.capitalone.com/credit-cards/venture/', // Replace with actual
     learnMoreLink: '/cards/capital-one-venture', // Replace with actual internal link if different
     bestFor: 'Travelers preferring simplicity with a solid flat earning rate, a moderate annual fee, and essential perks like Global Entry credit.',
     annualFee: '$95',
@@ -94,12 +94,12 @@ const cardData = [
    {
     id: 'csprem',
     name: 'Citi Strata Premier℠ Card',
-    imageSrc: '/images/cards/citi-strata-premier.png',
+    imageSrc: '/download1.png',
     imageAlt: 'Citi Strata Premier Card image',
-    ratingValue: 8.5,
+    ratingValue: 7.7,
     ratingStars: 4.0,
-    applyLink: 'https://www.citi.com/credit-cards/citi-strata-premier-card', // Replace with actual
-    ratesFeesLink: 'https://www.citi.com/credit-cards/citi-strata-premier-card/pricing', // Replace with actual
+    applyLink: 'https://www.citi.com/credit-cards/citi-strata-premier-credit-card', // Replace with actual
+    ratesFeesLink: 'https://www.citi.com/credit-cards/citi-strata-premier-credit-card', // Replace with actual
     learnMoreLink: '/cards/citi-strata-premier', // Replace with actual internal link if different
     bestFor: 'Travelers spending across diverse categories (air, hotels, dining, supermarkets, gas) who value point transfers.',
     annualFee: '$95',
@@ -142,7 +142,7 @@ function NoFTFReviewPage() {
 
         <div className={styles.heroSection}>
           <Image
-            src={heroImageSrc}
+            src={'/damaris-isenschmid-k1LIMMsm8bg-unsplash.webp'}
             alt={heroImageAlt}
             layout="responsive"
             width={900}
@@ -183,7 +183,7 @@ function NoFTFReviewPage() {
             <p>Here are five standout cards offering no foreign transaction fees alongside strong rewards and travel benefits.</p>
 
 
-            <section className={styles.cardDetailSection}>
+            
             {/* Updated card rendering loop */}
             {cardData.map((card, index) => (
               // Added cardSeparator class for visual distinction
@@ -251,7 +251,7 @@ function NoFTFReviewPage() {
                 </div>
               </div>
             ))}
-            </section>
+            
           </section>
 
           <section className={styles.reviewSection}>
