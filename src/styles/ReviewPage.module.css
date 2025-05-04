@@ -293,16 +293,25 @@
     line-height: 1.4;
   }
   
-  .reviewSection p {
+  /* In styles/ReviewPage.module.css */
+
+.reviewSection p {
     margin: 0 0 var(--spacing-md, 16px) 0;
     max-width: 75ch;
     font-family: var(--font-sans, 'Roboto', sans-serif);
     font-size: 1.05rem;
     line-height: 1.75;
     color: var(--color-text-secondary, #495057);
-    text-align: center; /* Center-align paragraphs */
-  }
   
+    /* --- ADD THIS LINE FOR JUSTIFICATION --- */
+    text-align: justify;
+  
+    /* --- OPTIONAL BUT RECOMMENDED FOR JUSTIFICATION --- */
+    /* Helps browsers break words better to avoid large gaps */
+    hyphens: auto; /* Standard */
+    -webkit-hyphens: auto; /* Safari */
+    -ms-hyphens: auto; /* IE/Edge */
+  }
   .reviewSection p:last-child {
     margin-bottom: 0;
   }
