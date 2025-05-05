@@ -30,6 +30,7 @@
   grid-template-columns: minmax(0, 1fr) repeat(2, minmax(0, 1fr)); /* Label gets more flexible space */
   gap: 0; /* Use borders for separation */
   border-bottom: 1px solid #e5e7eb; /* Row separator */
+  
 }
 .headerRow {border-top: none; } /* No top border on header */
 .featureRow:last-of-type { border-bottom: none; } /* No bottom border on last row */
@@ -74,7 +75,7 @@
 
 /* --- Specific Cell Min-Widths (Mobile First) --- */
 /* These ensure columns don't collapse too much */
-.featureLabelCell { min-width: 90px; } /* Mobile */
+.featureLabelCell { min-width: 70px; } /* Mobile */
 .cardColumnHeader, .cardValueCell { min-width: 125px; } /* Mobile - more space with only 2 cards */
 
 /* --- Feature Label Cell --- */
@@ -220,6 +221,7 @@
   margin-top: auto;       /* Push to bottom */
   width: 95%;             /* Container width */
   max-width: 160px;       /* Mobile max width */
+  
   flex-shrink: 0;
   padding-top: 0.4rem;
 }
