@@ -30,6 +30,12 @@ export default function UsBankAltitudeConnect2025() {
           U.S. Bank Altitude® Connect Review 2025: Hidden Gem for Travel?
         </title>
         <link rel="canonical" href={pageUrl} />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <meta name="keywords" content="U.S. Bank Altitude Connect, travel credit card, 2025 credit card review, TSA PreCheck credit, Priority Pass lounge access, U.S. Bank credit cards, best no annual fee travel cards, Altitude Connect vs Venture, Altitude Connect rewards, U.S. Bank Altitude Connect Visa Signature" />
+        <meta name="author" content="TravelCardInsider" />
+        <meta name="article:published_time" content="2025-05-05" />
+
+
 
         {/* Google Fonts Preconnect (Copied from example) */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
