@@ -241,6 +241,74 @@ function AmexPlatinumReviewPage() {
             </header>
 
             {/* ============= NEW REVIEW CONTENT SECTIONS (Replacing original sections 2-20) ============= */}
+            
+            {/* Section 2: Quick Stats Table - UPDATED May 5, 2025 */}
+            <section id="section-2" className={styles.reviewSection}>
+               <h2>Quick Stats at a Glance</h2>
+               <div className={styles.tableContainer}>
+                   <table className={styles.statsTable}>
+                       <thead>
+                           <tr>
+                               <th>Feature</th>
+                               <th>Details</th>
+                           </tr>
+                       </thead>
+                       <tbody>
+                           <tr>
+                               <td data-label="Feature">Annual Fee</td>
+                               {/* Data verified May 5, 2025 */}
+                               <td data-label="Details">$695</td>
+                           </tr>
+                           <tr>
+                               <td data-label="Feature">APR Range (Pay Over Time)</td>
+                               {/* Data verified May 5, 2025 - Rates are variable and subject to change */}
+                               <td data-label="Details" dangerouslySetInnerHTML={{__html:"21.24%–29.24% Variable"}}></td>
+                           </tr>
+                           <tr>
+                               <td data-label="Feature">Welcome Offer</td>
+                               {/* Data verified May 5, 2025 - Public offer shown; targeted offers may vary */}
+                               <td data-label="Details" dangerouslySetInnerHTML={{__html:"Earn 80,000 Membership Rewards® points after spending $8,000 in the first 6 months (check for targeted/referral offers)"}}></td>
+                           </tr>
+                           <tr>
+                               <td data-label="Feature">Rewards Rate</td>
+                               {/* Data verified May 5, 2025 */}
+                               <td data-label="Details" dangerouslySetInnerHTML={{__html:"5X on flights (up to $500k/yr, direct or Amex Travel®), 5X on prepaid hotels (AmexTravel.com), 1X on other eligible purchases"}}></td>
+                           </tr>
+                           <tr>
+                               <td data-label="Feature">Key Annual Credits (Enrollment Required)</td>
+                               {/* Data verified May 5, 2025 */}
+                               <td data-label="Details" dangerouslySetInnerHTML={{__html:"$200 Hotel Credit (FHR®/THC via Amex Travel), $200 Airline Fee Credit (select airline), $189 CLEAR® Plus Credit, $200 Uber Cash (monthly US), $100 Saks Credit (semi-annual), $240 Digital Entertainment Credit (monthly), Global Entry/TSA PreCheck Fee Credit"}}></td>
+                           </tr>
+                           <tr>
+                               <td data-label="Feature">Lounge Access (Global Lounge Collection®)</td>
+                               {/* Data verified May 5, 2025 */}
+                               <td data-label="Details" dangerouslySetInnerHTML={{__html:"Centurion® Lounge, Priority Pass™ Select, Delta Sky Club® (w/ Delta flight), Escape Lounges - Centurion Studio Partner, Plaza Premium"}}></td>
+                           </tr>
+                           <tr>
+                               <td data-label="Feature">Foreign Transaction Fee</td>
+                               {/* Data verified May 5, 2025 */}
+                               <td data-label="Details">None</td>
+                           </tr>
+                           <tr>
+                               <td data-label="Feature">Recommended Credit Score</td>
+                               {/* General guideline, not official Amex statement */}
+                               <td data-label="Details">Good–Excellent (Typically 700+, often 720+ for premium approvals)</td>
+                           </tr>
+                       </tbody>
+                   </table>
+               </div>
+             </section>
+
+             {/* CTA Section */}
+                         <section id="cta" className={styles.ctaSection}>
+                           <h2>Get the <b>American Express® Platinum Card</b> Today!</h2>
+                           <div className={styles.ctaButtons}>
+                             {/* Ensure links are correct and sponsored rel attribute is appropriate */}
+                             <a href={reviewData.applyLink} className={`${styles.btn} ${styles.btnApply}`} title="From card issuer's secure site" target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
+                             <a href={reviewData.ratesLink} className={`${styles.btn} ${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored">See Rates & Fees</a>
+                           </div>
+                           {/* Reminder about updating fee in structured data */}
+                         </section>
 
             {/* Section 2: The Elephant in the Lounge */}
             <section id="section-2" className={styles.reviewSection}>
@@ -521,6 +589,17 @@ function AmexPlatinumReviewPage() {
 
                 <p><strong>Final Thought:</strong> The Platinum Card offers exceptional value potential, but only if your travel style, spending habits, and willingness to engage align closely with its premium-focused, benefit-laden structure. It rewards those already inclined towards luxury travel who can navigate its ecosystem effectively. Before committing to the $695 fee<sup>3</sup>, perform a detailed, honest self-assessment. For the right individual, it enhances travel significantly<sup>1</sup>; for the wrong one, it's an expensive card offering limited practical return.</p>
             </section>
+
+            {/* CTA Section */}
+            <section id="cta" className={styles.ctaSection}>
+                           <h2>Get the <b>American Express® Platinum Card</b> Today!</h2>
+                           <div className={styles.ctaButtons}>
+                             {/* Ensure links are correct and sponsored rel attribute is appropriate */}
+                             <a href={reviewData.applyLink} className={`${styles.btn} ${styles.btnApply}`} title="From card issuer's secure site" target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
+                             <a href={reviewData.ratesLink} className={`${styles.btn} ${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored">See Rates & Fees</a>
+                           </div>
+                           {/* Reminder about updating fee in structured data */}
+                         </section>
 
             {/* E-A-T Section - Keeping original structure and content */}
             <section id="eat-expertise-authority-trustworthiness" className={`${styles.reviewSection} ${styles.eatSection}`}>
