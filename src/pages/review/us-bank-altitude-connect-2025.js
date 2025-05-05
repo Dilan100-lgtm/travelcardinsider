@@ -176,7 +176,7 @@ export default function UsBankAltitudeConnect2025() {
             {/* Convert <img> to Next.js <Image> */}
             <div style={{ marginTop: '1rem' }}>
               <Image
-                src="/ChatGPT Image May 5, 2025, 09_36_30 PM (1).png" // Replace with your actual image path
+                src="/us-bank-altitude-connect-card.webp" // Replace with your actual image path
                 alt="U.S. Bank Altitude Connect Visa Signature Card"
                 width={1200} // Adjust as needed
                 height={700}  // Adjust as needed
