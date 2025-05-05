@@ -1,648 +1,505 @@
-/* =========================================== */
-/* === styles/ReviewPage.module.css        === */
-/* === Final Version - Wider & Premium     === */
-/* =========================================== */
+/* styles/ReviewPage.module.css */
 
-/* --- Core Layout & Container --- */
+/* =============== BASE & CONTAINER =============== */
 .reviewContainer {
-    /* PREMIUM: Increased max-width for a more spacious feel like the example */
-    max-width: 1050px;
-    margin: var(--spacing-xl, 32px) auto var(--spacing-xxl, 48px) auto; /* Increased bottom margin */
-    padding: 0 var(--spacing-lg, 24px); /* Adjusted horizontal padding for wider layout */
-    font-family: var(--font-sans, 'Roboto', sans-serif); /* Ensure base font is set */
-    color: var(--color-text-secondary, #495057);
-    line-height: 1.7; /* Default line height for readability */
-    
-    /* Add a visible border */
-    border: 2px solid var(--color-border, #cedae6); /* Adjust thickness and color as needed */
-    border-radius: var(--border-radius-md, 8px);
-    box-shadow: var(--shadow-lg); /* Add a subtle shadow for depth */
-    background-color: var(--color-background, #ffffff);
-    padding: 2rem;
-    
-     
-  }
-  
-  /* Optional class for specific top margin adjustment */
-  .mainContentWithHeaderMargin {
-    margin-top: 5rem; /* Keep if needed, otherwise rely on global styles */
-  }
-  
-  
-  /* ============================================ */
-  /* --- [PREMIUM] Review Header Area START --- */
-  /* ============================================ */
-  
-  .reviewHeader {
-    margin-bottom: var(--spacing-xl, 32px);
-    padding-top: var(--spacing-md, 16px);
-    padding-bottom: var(--spacing-xl, 32px);
-    border-bottom: 1px solid var(--color-border-light, #e5e7eb);
-  }
-  
-  .reviewHeader h1 {
-    font-family: var(--font-serif, 'Playfair Display', serif);
-    color: var(--color-heading, #1a202c);
-    /* PREMIUM: Adjusted clamp for wider layout */
-    font-size: clamp(2.1rem, 5.5vw, 3.2rem);
-    font-weight: 700;
-    line-height: 1.2;
-    margin: 0 0 var(--spacing-lg, 24px) 0;
-    letter-spacing: -0.5px;
-    text-wrap: balance;
-  }
-  
-  /* [PREMIUM] Combined Intro Text & Image Layout */
-  .introAndImageWrapper {
-    display: grid;
-    grid-template-columns: 1fr;
-    /* PREMIUM: Increased gap further */
-    gap: var(--spacing-xl, 32px) var(--spacing-xxl, 48px);
-    align-items: start;
-    margin-bottom: var(--spacing-xl, 32px); /* PREMIUM: Increased space below */
-  }
-  
-  @media (min-width: 768px) {
-    .introAndImageWrapper {
-      /* PREMIUM: Adjusted ratio slightly for wider layout */
-      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1fr);
-    }
-    .cardImageContainer {
-      grid-column: 2 / 3;
-      grid-row: 1 / 2;
-      margin-bottom: 0;
-    }
-    .intro {
-      grid-column: 1 / 2;
-      grid-row: 1 / 2;
-    }
-  }
-  
-  .intro p {
-    font-family: var(--font-sans, 'Roboto', sans-serif);
-    font-size: 1.1rem;
-    line-height: 1.75;
-    color: var(--color-text-secondary, #495057);
-    margin: 0 0 var(--spacing-lg, 24px) 0;
-    max-width: 70ch;
-    text-align: center; /* Center-align intro paragraphs */
-  }
-  
-  .intro p:last-child {
-    margin-bottom: 0;
-  }
-  
-  .intro p strong {
-    color: var(--color-text-primary, #212529);
-    font-weight: 600;
-  }
-  
-  .cardImageContainer {
-    text-align: center;
-    position: relative;
-    padding-top: var(--spacing-xs); /* Align top edge closer to text */
-  }
-  
-  .cardImage {
-    max-width: 100%;
-    height: auto;
-    border-radius: var(--border-radius-md, 8px);
-    box-shadow: var(--shadow-md);
-    display: block;
-    margin: 0 auto;
-  }
-  
-  /* --- [PREMIUM] Rating Section --- */
-  .ratingSection {
-    margin-top: var(--spacing-xl, 32px);
-    padding: var(--spacing-lg, 24px);
-    background-color: var(--color-background-subtle, #f8f9fa);
-    border: 1px solid var(--color-border-light, #e5e7eb);
-    border-radius: var(--border-radius-lg, 12px);
-    text-align: center;
-    position: relative;
-  }
-  
-  .tciRating {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--color-text-primary, #212529);
-    display: inline-flex;
-    align-items: center;
-    gap: var(--spacing-sm, 8px);
-    position: relative;
-  }
-  
-  .tciRating strong {
-    font-weight: 700;
-    color: var(--color-primary, #0056b3);
-  }
-  
-  /* Info Icon Button */
-  .infoIconButton {
-    background: none;
-    border: none;
-    padding: 2px;
-    margin: 0 var(--spacing-xs, 4px) 0 0;
-    cursor: pointer;
-    display: inline-flex;
-    vertical-align: middle;
-    color: var(--color-text-muted, #6c757d);
-    transition: color var(--transition-speed, 0.2s) ease;
-    border-radius: 50%;
-  }
-  
-  .infoIconButton:hover,
-  .infoIconButton:focus-visible {
-    color: var(--color-primary, #0056b3);
-    background-color: var(--color-primary-light, rgba(0, 86, 179, 0.1));
-    outline: none;
-  }
-  
-  .infoIcon {
-    width: 1.1em;
-    height: 1.1em;
-    fill: currentColor;
-  }
-  
-  /* Rating Tooltip */
-  .ratingTooltip {
-    position: absolute;
-    bottom: calc(100% + var(--spacing-sm, 8px));
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: var(--color-background, #ffffff);
-    color: var(--color-text-primary, #212529);
-    border: 1px solid var(--color-border, #dee2e6);
-    padding: var(--spacing-md, 16px);
-    border-radius: var(--border-radius-md, 8px);
-    box-shadow: var(--shadow-lg);
-    width: max-content;
-    max-width: 300px;
-    z-index: 10;
-    font-size: 0.9rem;
-    line-height: 1.6;
-    text-align: left;
-    opacity: 1;
-    visibility: visible;
-    transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
-  }
-  
-  .ratingTooltip::after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 6px;
-    border-style: solid;
-    border-color: var(--color-background, #ffffff) transparent transparent transparent;
-    filter: drop-shadow(0 1px 1px rgba(0,0,0,0.05));
-  }
-  .ratingTooltip::before {
-      content: '';
-      position: absolute;
-      top: calc(100% + 1px);
-      left: 50%;
-      transform: translateX(-50%);
-      border-width: 7px;
-      border-style: solid;
-      border-color: var(--color-border, #dee2e6) transparent transparent transparent;
-      z-index: -1;
-  }
-  
-  .ratingTooltip strong {
-    display: block;
-    margin-bottom: var(--spacing-sm, 8px);
-    font-weight: 700;
-    color: inherit;
-  }
-  .tooltipIntro {
-    margin: 0 0 var(--spacing-sm, 8px) 0;
-    font-weight: 500;
-    color: var(--color-text-secondary, #495057);
-  }
-  .tooltipList {
-    list-style: disc;
-    padding-left: var(--spacing-md, 16px);
-    margin: 0;
-  }
-  .tooltipList li {
-    margin-bottom: var(--spacing-xs, 4px);
-  }
-  
-  /* Star Rating */
-  .starRating {
-    margin: var(--spacing-md, 16px) 0;
-    color: var(--color-border-light, #e5e7eb);
-    font-size: 1.6rem;
-    position: relative;
-    display: inline-block;
-    line-height: 1;
-  }
-  
-  .filledStars {
-    position: absolute;
-    left: 0;
-    top: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    color: var(--color-accent-gold, #b58900);
-    width: var(--rating);
-  }
-  
-  .ratingDescription {
-    font-size: 0.95rem;
-    font-style: italic;
-    color: var(--color-text-muted, #6c757d);
-    margin-top: var(--spacing-md, 16px);
-    max-width: 450px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  /* ============================================ */
-  /* --- [PREMIUM] Review Header Area END ---   */
-  /* ============================================ */
-  
-  
-  /* --- General Content Section Styling --- */
-  .reviewSection {
-    /* PREMIUM: Consistent, generous spacing between sections */
-    padding-block: var(--spacing-lg, 24px) var(--spacing-xl, 32px);
-    margin-block-start: var(--spacing-xl, 32px);
-    border-top: 1px solid var(--color-border-light, #e5e7eb); /* Light separator */
-  }
-  
-  /* Prevent double border below the already bordered header */
-  /* Apply slightly less top padding to the first section after header */
-  .reviewHeader + .reviewSection {
-    border-top: none;
-    margin-block-start: var(--spacing-lg, 24px); /* Keep some space, but less than between other sections */
-    padding-top: var(--spacing-md, 16px);
-  }
-  
-  .reviewSection h2 {
-    font-family: var(--font-serif, 'Playfair Display', serif);
-    color: rgb(135, 161, 248);
-    /* PREMIUM: Consistent responsive sizing */
-    font-size: clamp(1.6rem, 4vw, 2.2rem);
-    font-weight: 700;
-    margin: 0 0 var(--spacing-lg, 24px) 0; /* More space below H2 */
-    line-height: 1.3;
-    letter-spacing: -0.2px; /* Subtle refinement */
-  }
-  
-  .reviewSection h3 {
-    font-family: var(--font-sans, 'Roboto', sans-serif);
-    color: var(--color-text-primary, #212529);
-    font-size: clamp(1.25rem, 3vw, 1.6rem); /* Slightly larger H3 */
-    font-weight: 600;
-    margin: var(--spacing-xl, 32px) 0 var(--spacing-md, 16px) 0; /* More space above H3 */
-    line-height: 1.4;
-  }
-  
-  /* In styles/ReviewPage.module.css */
+  max-width: 1200px;
+  margin: 2rem auto 3rem auto;
+  padding: 2rem clamp(1rem, 5vw, 3rem);
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.09);
+  line-height: 1.7;
+  font-size: 1rem;
+  color: #333;
+  font-family: 'Roboto', Arial, sans-serif;
+}
 
-.reviewSection p {
-    margin: 0 0 var(--spacing-md, 16px) 0;
-    max-width: 75ch;
-    font-family: var(--font-sans, 'Roboto', sans-serif);
-    font-size: 1.05rem;
-    line-height: 1.75;
-    color: var(--color-text-secondary, #495057);
-  
-    /* --- ADD THIS LINE FOR JUSTIFICATION --- */
-    text-align: justify;
-  
-    /* --- OPTIONAL BUT RECOMMENDED FOR JUSTIFICATION --- */
-    /* Helps browsers break words better to avoid large gaps */
-    hyphens: auto; /* Standard */
-    -webkit-hyphens: auto; /* Safari */
-    -ms-hyphens: auto; /* IE/Edge */
+.reviewSection {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+.reviewSection:last-of-type {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+/* =============== TYPOGRAPHY =============== */
+.reviewHeader h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 6vw, 3.2rem);
+  color: #1a1a1a;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.reviewSection h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 4.5vw, 2.2rem);
+  color: #2c3e50;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid #0073e6;
+  display: inline-block;
+}
+
+.reviewSection h3 {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #1a1a1a;
+  margin-top: 1.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.reviewContainer p {
+  margin-bottom: 1.2rem;
+  color: #444;
+}
+
+.reviewContainer strong {
+  font-weight: 700;
+  color: #0056b3;
+}
+
+.reviewContainer em {
+  font-style: italic;
+  color: #555;
+}
+
+.reviewContainer ul,
+.reviewContainer ol {
+  margin-left: 1.5rem;
+  padding-left: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.reviewContainer li {
+  margin-bottom: 0.75rem;
+  padding-left: 0.5rem;
+}
+
+.featureList {
+  list-style: none;
+  padding-left: 0;
+}
+.featureList li {
+  position: relative;
+  padding-left: 1.75em;
+  margin-bottom: 0.8rem;
+}
+.featureList li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #28a745;
+  font-weight: bold;
+  font-size: 1.1em;
+  line-height: 1.3;
+}
+
+.numberedList {
+  list-style-type: decimal;
+}
+
+/* =============== HEADER & INTRO =============== */
+.reviewHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px dashed #ccc;
+}
+
+.cardImageContainer {
+  margin: 1.5rem auto;
+  max-width: 480px;
+  line-height: 0;
+  display: flex; /* Add flexbox */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically (if needed) */
+}
+
+.cardImage {
+  display: block;
+  max-width: 100%;
+  height: auto;
+ 
+}
+
+.ratingSection {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column; /* Stack rating and stars */
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.tciRating {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #333;
+  background-color: #e9ecef;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  display: inline-flex; /* Use flex for icon alignment */
+  align-items: center;
+  gap: 0.5rem;
+  position: relative; /* Space between icon and text */
+}
+
+.tciRating strong {
+  font-weight: 700;
+  color: #0056b3;
+}
+
+/* Rating Icon Button Styles (Copied & adapted) */
+.infoIconButton {
+  background: none;
+  border: none;
+  padding: 2px;
+  margin: 0; /* Reset margin */
+  cursor: pointer;
+  line-height: 0;
+  border-radius: 50%; /* Make it round */
+  display: inline-flex; /* Ensure it aligns */
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle; /* Align with text */
+  color: #6c757d; /* Icon color */
+  transition: background-color 0.2s ease;
+}
+.infoIconButton:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.infoIconButton:focus-visible {
+  outline: 2px solid #0d6efd;
+  outline-offset: 1px;
+  background-color: rgba(13, 110, 253, 0.1);
+}
+.infoIcon {
+  display: inline-block;
+  fill: currentColor;
+  opacity: 0.8; /* Slightly more visible */
+  width: 16px; /* Adjusted size */
+  height: 16px; /* Adjusted size */
+}
+.infoIconButton:hover .infoIcon {
+  opacity: 1;
+}
+
+.starRating {
+  font-size: 1.8rem;
+  color: #e0e0e0;
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+}
+.filledStars {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #ffc107;
+  width: var(--rating, 0%);
+}
+
+.ratingDescription {
+  font-size: 1rem; /* Slightly larger description */
+  font-style: italic;
+  color: #555;
+  margin-top: 1rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.intro p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  max-width: 70ch;
+  margin: 1.5rem auto 0 auto;
+  color: #222;
+  font-display: swap;
+
+}
+
+/* =============== TABLES (Responsive Scroll) =============== */
+.tableContainer {
+  width: 100%;
+  overflow-x: auto; /* Use horizontal scroll */
+  -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
+  margin-bottom: 2rem;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.statsTable {
+  width: 100%; /* Full width inside container */
+  min-width: 600px; /* Minimum width before scrolling starts */
+  border-collapse: collapse; /* Clean borders */
+  border: none;
+  box-shadow: none;
+  margin-bottom: 0;
+  font-size: 0.95rem;
+}
+
+.statsTable thead {
+  background-color: #f8f9fa;
+}
+
+.statsTable th {
+  background-color: transparent;
+  color: #495057;
+  font-weight: 600;
+  text-align: left;
+  padding: 1rem 1.2rem;
+  border-bottom: 2px solid #dee2e6;
+  border-right: 1px solid #e9ecef; /* Add vertical borders */
+  white-space: nowrap; /* Prevent header text wrapping */
+}
+.statsTable th:last-child { border-right: none; }
+
+.statsTable td {
+  padding: 1rem 1.2rem;
+  border: none; /* Remove individual cell borders */
+  border-bottom: 1px solid #e9ecef; /* Horizontal row separators */
+  border-right: 1px solid #e9ecef; /* Vertical column separators */
+  vertical-align: middle; /* Vertically center content */
+  color: #555;
+  white-space: normal; /* Allow content wrapping */
+}
+.statsTable td:last-child { border-right: none; }
+
+.statsTable tbody tr:last-child td {
+  border-bottom: none;
+}
+.statsTable tbody tr:nth-child(even) {
+   background-color: #ffffff;
+}
+.statsTable td:first-child {
+  font-weight: 500;
+  color: #333;
+}
+
+/* Remove stacking styles from media query */
+@media (max-width: 650px) {
+  .statsTable thead { display: table-header-group; } /* Keep header visible */
+  .statsTable tr { display: table-row; margin-bottom: 0; border: none; box-shadow: none; padding: 0;}
+  .statsTable td { display: table-cell; text-align: left !important; padding-left: 1rem; position: static; border-bottom: 1px solid #e9ecef; border-right: 1px solid #e9ecef; }
+  .statsTable td:last-child { border-right: none; }
+  .statsTable tbody tr:last-child td { border-bottom: none; }
+  .statsTable td::before { content: none; } /* Remove pseudo-headers */
+  .statsTable td[data-label="Details"] { text-align: left !important; } /* Ensure details align left */
+   /* Adjust padding for smaller screens */
+  .statsTable th, .statsTable td { padding: 0.8rem; font-size: 0.9rem; }
+}
+
+
+/* =============== CTA Section (Premium Buttons) =============== */
+.ctaSection {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  background: linear-gradient(135deg, #e0f7fa, #b2ebf2); /* Light teal gradient */
+  border: 1px solid #80deea; /* Teal border */
+  border-radius: 8px;
+  margin: 3rem 0;
+  box-shadow: 0 4px 15px rgba(0, 150, 136, 0.1);
+  text-decoration: none;
+}
+.ctaSection h2 {
+  font-size: clamp(1.6rem, 4.5vw, 2rem);
+  color: #00796b; /* Dark Teal */
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  border: none;
+  display: block;
+}
+.ctaSection h2 b { color: #004d40; font-weight: 700; } /* Even darker teal for emphasis */
+
+.ctaButtons {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem; /* Increased gap */
+  flex-wrap: wrap;
+}
+.ctaButtons .btn {
+  padding: 0.9rem 2rem; /* Larger padding */
+  font-size: 1.05rem;
+  font-weight: 600;
+  border-radius: 25px; /* Pill shape */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+.ctaButtons .btn:hover {
+   box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+   transform: translateY(-2px);
+}
+.ctaButtons .btn:active {
+  transform: translateY(0px) scale(0.98);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.ctaButtons .btnApply {
+   background: linear-gradient(135deg, #4caf50, #2e7d32); /* Green gradient */
+   color: white;
+}
+.ctaButtons .btnApply:hover { background: linear-gradient(135deg, #5cb85c, #388e3c); }
+
+.ctaButtons .btnRates {
+  background: linear-gradient(135deg, #6c757d, #495057); /* Grey gradient */
+  color: white;
+}
+.ctaButtons .btnRates:hover { background: linear-gradient(135deg, #868e96, #5a6268); }
+
+/* Focus styles for buttons */
+.ctaButtons .btn:focus-visible {
+  outline: 3px solid rgba(0, 123, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* =============== Pros/Cons Section =============== */
+.prosCons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem; /* Wider gap */
+  margin-top: 2rem;
+  padding-top: 2rem; /* Add padding above */
+  border-top: 1px dashed #ccc; /* Separator */
+}
+.prosCons h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid;
+  padding-bottom: 0.4rem;
+  display: inline-block;
+}
+.pros h3 { color: #198754; border-color: #198754;}
+.cons h3 { color: #dc3545; border-color: #dc3545;}
+
+.pros ul, .cons ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0;
+}
+.pros li, .cons li {
+  padding-left: 1.75em;
+  margin-bottom: 0.8rem;
+  font-size: 0.95rem; /* Slightly larger list text */
+}
+.pros li::before { content: '✓ '; color: #198754; margin-right: 0.6em; font-weight: bold;}
+.cons li::before { content: '✕ '; color: #dc3545; margin-right: 0.6em; font-weight: bold;}
+
+@media (max-width: 600px) {
+  .prosCons {
+      grid-template-columns: 1fr;
+      gap: 2rem;
   }
-  .reviewSection p:last-child {
-    margin-bottom: 0;
+}
+
+/* =============== E-A-T Section =============== */
+.eatSection {
+  background-color: #f0f8ff;
+  border: 1px solid #b0e0e6;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-top: 3rem;
+}
+.eatSection h2 {
+  text-align: center;
+  color: #4682b4;
+  border-bottom-color: #add8e6;
+  margin-bottom: 1.5rem;
+}
+.eatSection h3 {
+  color: #5f9ea0;
+  margin-top: 1.8rem;
+  margin-bottom: 0.8rem;
+  font-size: 1.25rem;
+}
+.eatSection ul {
+  list-style-type: disc;
+  margin-bottom: 1rem;
+}
+.eatSection li {
+  margin-bottom: 0.6rem;
+  color: #444;
+}
+.eatSection p:last-of-type {
+  margin-top: 1.5rem;
+  font-style: italic;
+  text-align: center;
+  color: #555;
+}
+
+/* =============== Tooltip Styles (Copied) =============== */
+.ratingTooltip {
+  position: absolute;
+  top: 120%; /* Push below the button */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffffff;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  padding: 10px 15px;
+  width: 250px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  z-index: 1050;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #343a40;
+  text-align: left;
+}
+.ratingTooltip strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #212529;
+  font-weight: 700;
+}
+.tooltipIntro {
+  margin: 0.5rem 0 0.3rem 0;
+  font-weight: 500;
+  color: #333; /* Ensure text color */
+}
+.tooltipList {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin: 0;
+}
+.tooltipList li {
+  margin-bottom: 0.25rem;
+  color: #444; /* Ensure text color */
+}
+@media (max-width: 480px) {
+  .ratingTooltip {
+      width: calc(100% - 2rem);
+      max-width: 300px;
+      left: 1rem !important; /* Force position on small screens */
+      right: 1rem;
   }
-  
-  .reviewSection strong {
-    color: var(--color-text-primary, #212529);
-    font-weight: 600;
+}
+
+/* =============== RESPONSIVE ADJUSTMENTS =============== */
+@media (max-width: 768px) {
+  .reviewContainer {
+      padding: 1.5rem clamp(1rem, 4vw, 2rem);
   }
-  
-  /* List Styling */
-  .reviewSection ul,
-  .reviewSection ol {
-    padding-left: var(--spacing-xl, 32px); /* PREMIUM: Deeper indent */
-    margin: 0 0 var(--spacing-md, 16px) 0;
-    max-width: 75ch; /* Apply reading width limit */
-    font-size: 1.05rem; /* Match paragraph */
-    line-height: 1.75; /* Match paragraph */
+  .reviewHeader h1 {
+      font-size: clamp(2rem, 5.5vw, 2.8rem);
   }
-  
-  .reviewSection li {
-    margin-bottom: var(--spacing-sm, 8px);
-    padding-left: var(--spacing-xs, 4px); /* Small space after bullet */
+  .reviewSection h2 {
+       font-size: clamp(1.5rem, 4vw, 2rem);
   }
-  
-  .reviewSection ul ul,
-  .reviewSection ul ol,
-  .reviewSection ol ul,
-  .reviewSection ol ol {
-    margin-top: var(--spacing-sm, 8px);
-    margin-bottom: var(--spacing-sm, 8px);
-    padding-left: var(--spacing-lg, 24px);
-  }
-  
-  /* Specific Feature List Styling */
-  .featureList {
-    list-style-type: none;
-    padding-left: var(--spacing-sm, 8px); /* Reset base padding */
-  }
-  
-  .featureList li {
-    position: relative;
-    padding-left: var(--spacing-xl, 32px); /* Space for custom marker */
-    margin-bottom: var(--spacing-md, 16px); /* PREMIUM: More space between feature items */
-  }
-  
-  .featureList li::before {
-    content: '✓';
-    position: absolute;
-    left: var(--spacing-sm, 8px); /* PREMIUM: Indent checkmark slightly */
-    top: 4px; /* Fine-tune vertical alignment */
-    color: var(--color-success, #198754);
-    font-weight: bold;
-    font-size: 1em; /* Match li font size */
-  }
-  
-  /* Nested Lists within featureList */
-  .featureList ul {
-    list-style-type: disc; /* Use standard bullets for nested */
-    padding-left: var(--spacing-lg, 24px); /* Nested indent */
-    margin-left: var(--spacing-sm, 8px);
-    margin-top: var(--spacing-sm, 8px);
-    margin-bottom: var(--spacing-sm, 8px);
-  }
-  .featureList ul li::before {
-    content: none; /* Remove parent checkmark */
-  }
-  .featureList ul li {
-    padding-left: var(--spacing-xs, 4px); /* Space after standard bullet */
-    margin-bottom: var(--spacing-sm, 8px);
-  }
-  
-  
-  /* --- CTA Section --- */
-  .ctaSection {
-    text-align: center;
-    /* PREMIUM: Increased padding for more impact */
-    padding: var(--spacing-xl, 32px) var(--spacing-lg, 24px) var(--spacing-xxl, 48px);
-    margin-block: var(--spacing-xxl, 48px); /* More space around CTA */
-    background-color: var(--color-accent-gold-light, #fdf7e7);
-    border-radius: var(--border-radius-lg, 12px);
-    border: 1px solid var(--color-accent-gold, #b58900);
-  }
-  
   .ctaSection h2 {
-    font-family: var(--font-serif, 'Playfair Display', serif);
-    color: var(--color-heading, #1a202c);
-    font-size: clamp(1.6rem, 4vw, 2rem); /* Adjusted size */
-    margin: 0 0 var(--spacing-lg, 24px) 0;
-    line-height: 1.3;
+      font-size: 1.6rem;
   }
-  .ctaSection h2 b {
-    font-weight: 700;
-  }
-  
-  .ctaButtons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: var(--spacing-lg, 24px); /* PREMIUM: More space between buttons */
-  }
-  
-  /* --- Button Styling (Refined Premium Feel) --- */
-  .btn {
-    display: inline-block;
-    /* PREMIUM: Adjusted padding */
-    padding: 14px 32px;
-    border-radius: var(--border-radius-md, 8px);
-    font-weight: 700;
-    font-family: var(--font-sans, 'Roboto', sans-serif); /* Ensure font */
-    text-decoration: none;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    border: 2px solid transparent;
-    font-size: 1.05rem; /* PREMIUM: Slightly larger button text */
-    line-height: 1.5;
-    min-width: 200px; /* PREMIUM: Slightly wider min-width */
-    letter-spacing: 0.5px; /* PREMIUM: Add spacing */
-    box-shadow: var(--shadow-sm); /* Add subtle shadow */
-  }
-  .btn:focus-visible {
-    outline: 3px solid var(--primary-blue-focus, rgba(59, 130, 246, 0.3));
-    outline-offset: 3px; /* Slightly further offset */
-    box-shadow: none; /* Remove base shadow when focused */
-  }
-  .btn:hover {
-     box-shadow: var(--shadow-md); /* Enhance shadow on hover */
-     transform: translateY(-2px); /* Slight lift */
-  }
-  .btn:active {
-    transform: scale(0.96) translateY(0); /* More noticeable press */
-    box-shadow: none;
-  }
-  
-  .btnApply {
-    background-color: var(--color-success, #198754);
-    color: var(--color-background, #ffffff);
-    border-color: var(--color-success, #198754);
-  }
-  .btnApply:hover,
-  .btnApply:focus {
-    background-color: #146c43;
-    border-color: #146c43;
-    color: var(--color-background, #ffffff);
-  }
-  
-  .btnRates {
-    background-color: transparent;
-    color: var(--color-primary, #0056b3);
-    border-color: var(--color-primary, #0056b3);
-  }
-  .btnRates:hover,
-  .btnRates:focus {
-    background-color: var(--color-primary-light, rgba(0, 86, 179, 0.1));
-    color: var(--color-primary-dark, #004085);
-    border-color: var(--color-primary-dark, #004085);
-  }
-  
-  /* --- Table Styling --- */
-  .tableContainer {
-    overflow-x: auto;
-    margin-block: var(--spacing-xl, 32px); /* PREMIUM: More space around table */
-    border: 1px solid var(--color-border-light, #e5e7eb); /* Light border */
-    border-radius: var(--border-radius-md, 8px); /* Match other elements */
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  .statsTable {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 1rem; /* PREMIUM: Slightly larger table text */
-  }
-  
-  .statsTable th,
-  .statsTable td {
-    padding: var(--spacing-md, 16px); /* PREMIUM: More padding in cells */
-    text-align: left;
-    border-bottom: 1px solid var(--color-border-light, #e5e7eb); /* Light border */
-    vertical-align: middle;
-    white-space: normal; /* Allow wrapping within cells */
-  }
-  
-  .statsTable thead th {
-    background-color: var(--color-background-subtle, #f8f9fa);
-    font-weight: 600;
-    color: var(--color-text-primary, #212529);
-    border-bottom-width: 2px;
-    border-bottom-color: var(--color-border, #dee2e6); /* Slightly stronger header border */
-    white-space: nowrap; /* Prevent header text wrapping */
-  }
-  
-  .statsTable tbody tr:last-child td {
-    border-bottom: none;
-  }
-  
-  /* PREMIUM: Subtle hover for table rows */
-  .statsTable tbody tr:hover {
-    background-color: var(--color-accent-gold-light, #fdf7e7);
-  }
-  
-  /* Styling for the bold total row */
-  .statsTable .totalRow td {
-    font-weight: bold;
-    border-top: 2px solid var(--color-border, #dee2e6); /* Stronger top border */
-    color: var(--color-text-primary);
-  }
-  .statsTable .totalRow td[colspan="2"] {
-    text-align: left;
-  }
-  
-  /* --- Responsive Table Styles --- */
-  @media (max-width: 767px) {
-    /* Keep original responsive table styles, maybe adjust padding slightly */
-    .statsTable thead {
-      display: none;
-    }
-    .statsTable tr {
-      display: block;
-      border-bottom: 2px solid var(--color-primary, #0056b3);
-      margin-bottom: var(--spacing-lg, 24px); /* More space between mobile rows */
-      padding-bottom: var(--spacing-md, 16px);
-    }
-   .statsTable tr:last-child {
-     margin-bottom: 0;
-     border-bottom: none;
-   }
-  
-    .statsTable td {
-      display: block;
-      text-align: right;
-      padding-left: 45%;
-      position: relative;
-      border-bottom: 1px dashed var(--color-border, #dee2e6);
-      min-height: 1.5em;
-      padding-top: var(--spacing-sm);
-      padding-bottom: var(--spacing-sm);
-    }
-    .statsTable td:last-child {
-      border-bottom: none;
-    }
-  
-    .statsTable td::before {
-      content: attr(data-label);
-      position: absolute;
-      left: var(--spacing-md, 16px); /* More left padding */
-      width: calc(45% - var(--spacing-xl, 32px)); /* Adjust width calc */
-      padding-right: var(--spacing-sm, 8px);
-      font-weight: bold;
-      text-align: left;
-      color: var(--color-text-primary, #212529);
-      white-space: normal;
-      font-size: 0.9em; /* Slightly smaller label */
-    }
-  
-    /* Adjust total row for mobile */
-    .statsTable .totalRow td[colspan="2"] {
-       text-align: right;
-       padding-left: 45%;
-    }
-     .statsTable .totalRow td[colspan="2"]::before {
-       content: "Total Potential";
-       font-weight: bold;
-    }
-    .statsTable .totalRow td:not([colspan="2"]) {
-      display: none;
-    }
-  }
-  
-  /* --- E-A-T Section Styling --- */
-  .eatSection {
-    background-color: var(--color-background-subtle, #f8f9fa);
-    /* PREMIUM: Increased padding */
-    padding: var(--spacing-xl, 32px);
-    margin-top: var(--spacing-xxl, 48px); /* More space above */
-    border-radius: var(--border-radius-lg, 12px); /* Match rating section */
-    border: 1px solid var(--color-border-light, #e5e7eb); /* Light border */
-  }
-  
-  .eatSection h2 {
-    border-bottom: 2px solid var(--color-primary, #0056b3);
-    padding-bottom: var(--spacing-sm, 8px);
-    display: inline-block;
-    font-size: clamp(1.4rem, 3.5vw, 1.8rem);
-    margin-bottom: var(--spacing-lg, 24px); /* More space below H2 */
-  }
-  
-  .eatSection h3 {
-    color: var(--color-primary, #0056b3);
-    margin-top: var(--spacing-lg, 24px); /* Consistent space above H3 */
-    font-size: clamp(1.15rem, 2.5vw, 1.4rem); /* Adjusted H3 size */
-  }
-  
-  .eatSection p {
-      max-width: none; /* Allow EAT paragraphs to use full width */
-      font-size: 1rem; /* Standard body size for EAT */
-      line-height: 1.7;
-  }
-  
-  .eatSection ul {
-    max-width: none; /* Allow EAT lists to use full width */
-     font-size: 1rem; /* Standard body size for EAT */
-     line-height: 1.7;
-  }
-  
-  .eatSection li {
-    margin-bottom: var(--spacing-md); /* More space between EAT points */
-  }
-  
-  .eatSection p:last-of-type {
-    margin-top: var(--spacing-lg);
-    font-weight: 500;
-    font-size: 1.05rem; /* Slightly emphasize last paragraph */
-  }
-  
-  .eatSection a {
-    color: var(--color-primary);
-    text-decoration: underline;
-    font-weight: 600; /* Bolder link */
-    text-decoration-thickness: 1px;
-    text-underline-offset: 3px;
-  }
-  .eatSection a:hover {
-    color: var(--color-primary-dark);
-    text-decoration-thickness: 2px;
-  }
+  .prosCons { gap: 1.5rem; }
+  .prosCons h3 { font-size: 1.4rem; }
+}
