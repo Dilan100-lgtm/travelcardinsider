@@ -8,7 +8,7 @@
 .comparisonContainer {
   width: 100%;
   overflow-x: auto;
-  overflow-y: visible; /* Allows horizontal scroll ONLY when needed */
+  overflow-y: hidden; /* Allows horizontal scroll ONLY when needed */
   /* If you intend the container ITSELF to scroll vertically, add overflow-y: auto; */
   /* Otherwise, sticky will work relative to window scroll */
   padding: 0; /* Padding applied internally or via parent */
@@ -22,6 +22,16 @@
   -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
   min-width: 479px;
 }
+/* NEW WRAPPER for horizontal scrolling */
+.comparisonWrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* Smooth iOS scroll */
+  padding-bottom: 1rem; /* Optional: spacing below scroll */
+}
+
+/* Existing .comparisonContainer remains the same */
+
 
 /* --- Grid Layout (Mobile First: 2 Cards) --- */
 .headerRow,

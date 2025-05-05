@@ -113,6 +113,7 @@ export default function CardComparison({ cards }: CardComparisonProps) {
   ];
 
   return (
+    <div className={styles.comparisonWrapper}>
     <div className={styles.comparisonContainer}> {/* Main container for Grid/Flex */}
 
       {/* --- Header Row for Selection & Card Headers --- */}
@@ -246,6 +247,7 @@ export default function CardComparison({ cards }: CardComparisonProps) {
        </div> */}
 
 
-    </div> // End comparisonContainer
+    </div>
+    </div>  // End comparisonContainer
   );
 }
