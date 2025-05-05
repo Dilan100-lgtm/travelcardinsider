@@ -6,6 +6,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CardComparison from '@/components/CardComparison';
 import { useCreditCards } from '@/hooks/useCreditCards';
+import styles from '@/styles/ComparePage.module.css'; // Adjust path as needed
 
 export default function ComparePage() {
   const { cards: allCards } = useCreditCards();
@@ -59,25 +60,23 @@ export default function ComparePage() {
 
       <Header />
 
-      <main className="container" style={{ padding: '2rem 1rem' }}>
-        <h1 style={{ textAlign: 'center', marginBottom: '1rem', fontSize: '2rem' }}>
-          Compare Travel Credit Cards
-        </h1>
+      <main className={styles.pageContainer}>
+  <h1 className={styles.title}>Compare Travel Credit Cards</h1>
 
-        <p style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 2rem auto', fontSize: '1.125rem' }}>
-          Instantly compare up to <strong>three travel credit cards</strong> side by side to find the best fit for your travel lifestyle.
-          Analyze annual fees, points and miles earning, lounge access, bonus offers, credit score needs, and much more—all in one place.
-          Whether you're a frequent flyer, cashback seeker, or luxury traveler, our tool makes it easy to find your ideal card.
-        </p>
+  <p className={styles.subtitle}>
+    Instantly compare up to <strong>three travel credit cards</strong> side by side to find the best fit for your travel lifestyle.
+    Analyze annual fees, points and miles earning, lounge access, bonus offers, credit score needs, and much more—all in one place.
+    Whether you're a frequent flyer, cashback seeker, or luxury traveler, our tool makes it easy to find your ideal card.
+  </p>
 
-        {allCards.length === 0 && (
-          <p style={{ textAlign: 'center', fontSize: '1rem' }}>Loading card data...</p>
-        )}
+  {allCards.length === 0 && (
+    <p className={`${styles.loading} ${styles.fadeIn}`}>Loading card data...</p>
+  )}
 
-        {allCards.length > 0 && (
-          <CardComparison cards={allCards} />
-        )}
-      </main>
+  {allCards.length > 0 && (
+    <CardComparison cards={allCards} />
+  )}
+</main>
 
       <Footer />
     </>
