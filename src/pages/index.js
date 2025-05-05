@@ -330,6 +330,7 @@ export default function HomePage({ featuredReviews }) {
                 <div className="reviews-grid">
                 {[
                     // Keep your existing array of review objects
+                    { img: "/ChatGPT Image May 5, 2025, 09_36_30 PM (1).png", alt: "U.S. Bank Altitude Connect Visa Signature Card", title: "Altitude® Connect: $0 Fee Travel Gem?", desc: "Reviewing the $0 fee card with lounge visits & travel credits.", link: "/review/us-bank-altitude-connect-2025", },
                     { img: "/damaris-isenschmid-k1LIMMsm8bg-unsplash.webp", alt: "Traveler using a credit card internationally with scenic background", title: "Top 5 No Foreign Transaction Fee Cards (2025)", desc: "Avoid extra fees and maximize rewards on your international adventures.", link: "/review/top-5-no-ftf-cards-2025" },
                     { img: "/AdobeStock_560041735_result.webp", alt: "Credit cards fanned out on desk", title: "Top New Travel Credit Card Offers of 2025", desc: "Breaking news on the latest card launches and exclusive sign-up bonuses.", link: "/review/top-new-travel-credit-card-offers-2025", },
                     { img: "/AdobeStock_758160258_result.webp", alt: "Traveler relaxing in airport lounge chair", title: "VIP Airport Lounge Access in 2025", desc: "How to get premium perks and comfort while traveling.", link: "/review/The-Ultimate-Guide-to-Lounge-Access-in-2025-How-to-Get-VIP-Treatment-at-Airports", },
@@ -338,7 +339,7 @@ export default function HomePage({ featuredReviews }) {
                     { img: "/alex-bertha-Jyg7xHRmXiU-unsplash (1).jpg", alt: "Airplane window view of clouds and wing", title: "Redeem for Luxury Travel on a Budget", desc: "Stretch your points and miles for a premium travel experience.", link: "/review/2025-Points-&-Miles-Trends-Best-Ways-to-Redeem-for-Luxury-Travel-on-a-Budget", },
                     { img: "/AdobeStock_265601656_result.webp", alt: "Magnifying glass over credit card details", title: "Secret Travel Card Benefits", desc: "Little-known perks you might already have but never used.", link: "/review/Hidden-Perks-Secret-Travel-Card-Benefits-You-Probably-Didnt-Know-About-in-2025", },
                     { img: "/AdobeStock_446734479.webp", alt: "Wallet with several credit cards, zero dollar bill shown", title: "The Best No Annual Fee Travel Cards", desc: "Earn rewards without worrying about recurring charges.", link: "/review/The-Best-Travel-Cards-with-No-Annual-Fee-Get-Big-Rewards-for-Free", },
-                    { img: "/AdobeStock_241382254_result.webp", alt: "Scale weighing money against credit card perks", title: "Is a $500+ Annual Fee Worth It?", desc: "A cost-benefit breakdown of premium travel credit cards.", link: "/review/Premium-vs-Budget-Travel-Cards-Is-Paying-a-$500+Annual-Fee-Really-Worth-It", },
+                    
                 ].map((review, index) => (
                     <div className="card review-card" key={review.link || index}>
                     <Link href={review.link || '#'} className="review-card__image-link">
