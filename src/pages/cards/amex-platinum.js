@@ -179,7 +179,7 @@ function AmexPlatinumReviewPage() {
               <section id="section-1">
                  <div className={styles.intro}>
                    {/* NEW REVIEW CONTENT - Section 1 */}
-                   <p>The <strong>American Express Platinum Card®</strong> holds a prominent position in the premium credit card sphere, often perceived as a gateway to enhanced travel and lifestyle experiences. For the US-based traveler, however, its allure is tempered by a significant annual fee. Does the promise of airport lounge serenity, hotel upgrades, and exclusive access deliver enough tangible value to justify this cost? This review provides a balanced, advisory analysis, dissecting the card's complex web of benefits, rewards structures, and costs specifically for the US market. We aim to look past the metallic sheen and evaluate the practical worth of its "membership" model<sup>1</sup>, helping you determine if this card aligns with your travel frequency, spending habits, and desire for premium perks, or if it's simply an expensive accessory in a competitive field.</p>
+                   <p>The <strong>American Express Platinum Card®</strong> holds a prominent position in the premium credit card sphere, often perceived as a gateway to enhanced travel and lifestyle experiences. For the US-based traveler, however, its allure is tempered by a significant annual fee. Does the promise of airport lounge serenity, hotel upgrades, and exclusive access deliver enough tangible value to justify this cost? This review provides a balanced, advisory analysis, dissecting the card's complex web of benefits, rewards structures, and costs specifically for the US market. We aim to look past the metallic sheen and evaluate the practical worth of its "membership" model, helping you determine if this card aligns with your travel frequency, spending habits, and desire for premium perks, or if it's simply an expensive accessory in a competitive field.</p>
                  </div>
 
                  {/* Image Container (Keeping original) */}
@@ -313,87 +313,87 @@ function AmexPlatinumReviewPage() {
             {/* Section 2: The Elephant in the Lounge */}
             <section id="section-2" className={styles.reviewSection}>
               <h2>2. The Elephant in the Lounge: Understanding the $695 Annual Fee</h2>
-              <p>The <strong>$695 annual fee</strong> is the most striking feature of the American Express Platinum Card.<sup>3</sup> This places it firmly in the ultra-premium card segment and requires careful consideration. It's best viewed not just as a cost, but as an investment in a comprehensive suite of potential benefits. The card's core value proposition hinges on the cardholder's ability to actively utilize the various statement credits<sup>3</sup>, lounge access, and other perks to effectively recoup this investment. The <strong>actual cost</strong> of the card is the $695 minus the value you realistically extract from its benefits throughout the year. This necessitates proactive engagement; passively holding the card likely means the fee outweighs the returns. Consider the $695 the starting point for your personal cost-benefit calculation.</p>
+              <p>The <strong>$695 annual fee</strong> is the most striking feature of the American Express Platinum Card. This places it firmly in the ultra-premium card segment and requires careful consideration. It's best viewed not just as a cost, but as an investment in a comprehensive suite of potential benefits. The card's core value proposition hinges on the cardholder's ability to actively utilize the various statement credits, lounge access, and other perks to effectively recoup this investment. The <strong>actual cost</strong> of the card is the $695 minus the value you realistically extract from its benefits throughout the year. This necessitates proactive engagement; passively holding the card likely means the fee outweighs the returns. Consider the $695 the starting point for your personal cost-benefit calculation.</p>
             </section>
 
             {/* Section 3: Unlocking Initial Value */}
             <section id="section-3" className={styles.reviewSection}>
               <h2>3. Unlocking Initial Value: The Welcome Offer Explained</h2>
-              <p>For new cardholders, the <strong>welcome offer</strong> often provides a significant initial offset to the annual fee. A common public offer is earning <strong>80,000 Membership Rewards® points</strong> after spending <strong>$8,000 on eligible purchases</strong> within the first six months.<sup>3</sup> These points are highly valuable, particularly when transferred to airline or hotel partners<sup>3</sup>, where they can potentially be worth well over $1,000 towards premium travel, easily covering the first year's fee. However, remember this is a one-time boost. The $8,000 spending requirement<sup>3</sup> is substantial and targets higher spenders. Ensure you can meet this threshold through your normal spending patterns without forcing unnecessary purchases. Also, be mindful of Amex's typical "once per lifetime" rule for welcome bonuses on each specific card product.</p>
+              <p>For new cardholders, the <strong>welcome offer</strong> often provides a significant initial offset to the annual fee. A common public offer is earning <strong>80,000 Membership Rewards® points</strong> after spending <strong>$8,000 on eligible purchases</strong> within the first six months. These points are highly valuable, particularly when transferred to airline or hotel partners, where they can potentially be worth well over $1,000 towards premium travel, easily covering the first year's fee. However, remember this is a one-time boost. The $8,000 spending requirement is substantial and targets higher spenders. Ensure you can meet this threshold through your normal spending patterns without forcing unnecessary purchases. Also, be mindful of Amex's typical "once per lifetime" rule for welcome bonuses on each specific card product.</p>
             </section>
 
             {/* Section 4: Earning Power on Travel */}
             <section id="section-4" className={styles.reviewSection}>
               <h2>4. Earning Power: Maximizing Membership Rewards® Points on Travel</h2>
-              <p>The Platinum Card's ongoing value for travelers is heavily influenced by its points earning, particularly the accelerated <strong>5 Membership Rewards® points per dollar (5X)</strong> offered on<sup>3</sup>:</p>
+              <p>The Platinum Card's ongoing value for travelers is heavily influenced by its points earning, particularly the accelerated <strong>5 Membership Rewards® points per dollar (5X)</strong> offered on:</p>
               <ul className={styles.featureList}>
                 <li><strong>Flights:</strong> Booked directly with airlines or through American Express Travel®. This applies up to a generous $500,000 in spending per calendar year.</li>
                 <li><strong>Prepaid Hotels:</strong> Booked exclusively through AmexTravel.com.</li>
               </ul>
-              <p>The 5X on flights is a powerful tool for accumulating points rapidly on significant travel expenses. The 5X on prepaid hotels via Amex Travel<sup>3</sup>, however, requires using their portal. This presents a trade-off: you gain the high points multiplier but often forgo earning points and elite night credits directly with the hotel's loyalty program. Additionally, portal rates may not always be the absolute lowest. Cardholders must weigh the value of the extra Amex points against potential direct booking benefits or better rates elsewhere for each hotel stay.</p>
+              <p>The 5X on flights is a powerful tool for accumulating points rapidly on significant travel expenses. The 5X on prepaid hotels via Amex Travel, however, requires using their portal. This presents a trade-off: you gain the high points multiplier but often forgo earning points and elite night credits directly with the hotel's loyalty program. Additionally, portal rates may not always be the absolute lowest. Cardholders must weigh the value of the extra Amex points against potential direct booking benefits or better rates elsewhere for each hotel stay.</p>
             </section>
 
             {/* Section 5: Earning on Everyday Spending */}
             <section id="section-5" className={styles.reviewSection}>
                <h2>5. Beyond Flights & Hotels: Earning Points on Everyday Spending</h2>
-               <p>Outside its specific 5X travel categories, the Platinum Card's earning rate on general purchases is a modest <strong>1 Membership Rewards® point per dollar (1X)</strong>.<sup>3</sup> This base rate is not competitive compared to many other rewards cards, including cash-back cards offering 1.5% or 2% back on everything, or cards with higher multipliers on everyday categories like dining or groceries. This structure clearly positions the Platinum Card as a specialized tool for travel rewards, not an all-purpose daily spender. While targeted Amex Offers<sup>3</sup> can occasionally provide bonus points or discounts at specific merchants (requiring activation<sup>2</sup>), relying on the 1X base rate for most non-travel spending is suboptimal. Many users will benefit from pairing the Platinum Card with another card that offers better returns on everyday purchases.</p>
+               <p>Outside its specific 5X travel categories, the Platinum Card's earning rate on general purchases is a modest <strong>1 Membership Rewards® point per dollar (1X)</strong>. This base rate is not competitive compared to many other rewards cards, including cash-back cards offering 1.5% or 2% back on everything, or cards with higher multipliers on everyday categories like dining or groceries. This structure clearly positions the Platinum Card as a specialized tool for travel rewards, not an all-purpose daily spender. While targeted Amex Offers can occasionally provide bonus points or discounts at specific merchants (requiring activation), relying on the 1X base rate for most non-travel spending is suboptimal. Many users will benefit from pairing the Platinum Card with another card that offers better returns on everyday purchases.</p>
             </section>
 
             {/* Section 6: The $200 Hotel Credit */}
             <section id="section-6" className={styles.reviewSection}>
               <h2>6. The $200 Hotel Credit: Your Annual Luxury Stay Rebate</h2>
-              <p>A key benefit aimed at offsetting the fee is the annual <strong>$200 hotel credit</strong>. This takes the form of statement credits for prepaid hotel bookings made through American Express Travel within either the <strong>Fine Hotels + Resorts® (FHR)</strong> or <strong>The Hotel Collection (THC)</strong> portfolios.<sup>3</sup> Importantly, THC bookings require a minimum stay of two consecutive nights to qualify for the credit and associated benefits.<sup>5</sup> This credit is not flexible; it's specifically designed to incentivize using the Amex portal for bookings at higher-end properties within these curated collections. If you regularly stay at FHR or THC properties and book prepaid rates through Amex Travel, this is a straightforward $200 rebate. If your hotel preferences lie elsewhere (budget chains, direct bookings for loyalty, properties outside these collections), you may struggle to utilize this credit effectively, reducing its contribution to the card's value.</p>
+              <p>A key benefit aimed at offsetting the fee is the annual <strong>$200 hotel credit</strong>. This takes the form of statement credits for prepaid hotel bookings made through American Express Travel within either the <strong>Fine Hotels + Resorts® (FHR)</strong> or <strong>The Hotel Collection (THC)</strong> portfolios. Importantly, THC bookings require a minimum stay of two consecutive nights to qualify for the credit and associated benefits. This credit is not flexible; it's specifically designed to incentivize using the Amex portal for bookings at higher-end properties within these curated collections. If you regularly stay at FHR or THC properties and book prepaid rates through Amex Travel, this is a straightforward $200 rebate. If your hotel preferences lie elsewhere (budget chains, direct bookings for loyalty, properties outside these collections), you may struggle to utilize this credit effectively, reducing its contribution to the card's value.</p>
             </section>
 
             {/* Section 7: Navigating the $200 Airline Fee Credit */}
             <section id="section-7" className={styles.reviewSection}>
               <h2>7. Navigating the $200 Airline Fee Credit: Strategy and Use Cases</h2>
-              <p>Another significant credit is the <strong>$200 Airline Fee Credit</strong>, though it's often considered one of the most restrictive.<sup>5</sup> Cardholders must select one qualifying airline each calendar year. The credit then applies only to <strong>incidental fees</strong> charged by that specific airline, such as checked baggage fees, seat selection fees, or airline lounge day passes. It explicitly <strong>does not cover</strong> the cost of airline tickets, upgrades, or mileage purchases. Because of these limitations (single airline, incidentals only), its value is highly dependent on individual circumstances. If you frequently pay such fees on your chosen airline, you can extract good value. However, if you have elite status that waives these fees, fly multiple carriers, or travel light, you might find it difficult to use the full $200 annually. This contrasts with simpler, more flexible travel credits on some competitor cards, making careful planning essential to maximize this particular benefit.</p>
+              <p>Another significant credit is the <strong>$200 Airline Fee Credit</strong>, though it's often considered one of the most restrictive. Cardholders must select one qualifying airline each calendar year. The credit then applies only to <strong>incidental fees</strong> charged by that specific airline, such as checked baggage fees, seat selection fees, or airline lounge day passes. It explicitly <strong>does not cover</strong> the cost of airline tickets, upgrades, or mileage purchases. Because of these limitations (single airline, incidentals only), its value is highly dependent on individual circumstances. If you frequently pay such fees on your chosen airline, you can extract good value. However, if you have elite status that waives these fees, fly multiple carriers, or travel light, you might find it difficult to use the full $200 annually. This contrasts with simpler, more flexible travel credits on some competitor cards, making careful planning essential to maximize this particular benefit.</p>
             </section>
 
             {/* Section 8: Streamlining Security: CLEAR Plus Credit */}
             <section id="section-8" className={styles.reviewSection}>
               <h2>8. Streamlining Security: The Value of the $199 CLEAR Plus Credit</h2>
-              <p>A more user-friendly benefit is the annual statement credit for <strong>CLEAR Plus membership</strong>. Cardholders receive up to <strong>$199 back</strong> per calendar year when using their Platinum Card to pay the CLEAR Plus membership fee.<sup>3</sup> CLEAR Plus uses biometrics (fingerprints/iris scans) for expedited identity verification at dedicated lanes in many major US airports, allowing members to bypass the standard ID check queue.<sup>3</sup> This credit effectively covers the typical cost of an individual membership ($189). Its value proposition is simple: if CLEAR is available at airports you frequently use and you value the time saved during security, this credit provides nearly its full face value back. If CLEAR isn't convenient for your travel patterns, or you don't see significant value in it (perhaps finding TSA PreCheck sufficient), then this benefit offers little personal value, despite the dollar amount.</p>
+              <p>A more user-friendly benefit is the annual statement credit for <strong>CLEAR Plus membership</strong>. Cardholders receive up to <strong>$199 back</strong> per calendar year when using their Platinum Card to pay the CLEAR Plus membership fee. CLEAR Plus uses biometrics (fingerprints/iris scans) for expedited identity verification at dedicated lanes in many major US airports, allowing members to bypass the standard ID check queue. This credit effectively covers the typical cost of an individual membership ($189). Its value proposition is simple: if CLEAR is available at airports you frequently use and you value the time saved during security, this credit provides nearly its full face value back. If CLEAR isn't convenient for your travel patterns, or you don't see significant value in it (perhaps finding TSA PreCheck sufficient), then this benefit offers little personal value, despite the dollar amount.</p>
             </section>
 
             {/* Section 9: Airport Oasis: Global Lounge Collection */}
             <section id="section-9" className={styles.reviewSection}>
               <h2>9. Airport Oasis: Deep Dive into the Global Lounge Collection</h2>
-              <p>Access to the <strong>American Express Global Lounge Collection®</strong> is arguably the Platinum Card's most renowned perk, offering entry to over <strong>1,400 lounges worldwide</strong>.<sup>4</sup> This network is broader than most competitors and includes:</p>
+              <p>Access to the <strong>American Express Global Lounge Collection®</strong> is arguably the Platinum Card's most renowned perk, offering entry to over <strong>1,400 lounges worldwide</strong>. This network is broader than most competitors and includes:</p>
               <ul className={styles.featureList}>
-                <li><strong>The Centurion® Lounges:</strong> Amex's high-quality proprietary lounges with premium food, drinks, and amenities, located in select major airports.<sup>1</sup></li>
-                <li><strong>Priority Pass™ Select:</strong> Membership providing access to a vast network of third-party lounges (enrollment required).<sup>5</sup> Quality varies significantly. Amex-issued membership typically excludes non-lounge experiences like restaurants.</li>
+                <li><strong>The Centurion® Lounges:</strong> Amex's high-quality proprietary lounges with premium food, drinks, and amenities, located in select major airports.</li>
+                <li><strong>Priority Pass™ Select:</strong> Membership providing access to a vast network of third-party lounges (enrollment required). Quality varies significantly. Amex-issued membership typically excludes non-lounge experiences like restaurants.</li>
                 <li><strong>Delta Sky Club®:</strong> Access when flying Delta same-day.</li>
                 <li><strong>Other Partners:</strong> Including Escape Lounges – The Centurion Studio Partner, Plaza Premium Lounges, and select Lufthansa lounges.</li>
               </ul>
-              <p>While the network's breadth is impressive, practical experience matters. Centurion Lounges can suffer from overcrowding, sometimes requiring waitlists.<sup>1</sup> Guest access policies have tightened: Centurion Lounge complimentary guests usually require $75k annual card spend, otherwise fees apply (e.g., $50/guest).<sup>5</sup> Priority Pass and Delta also have specific guest policies and fees. The actual value depends on lounge availability on your routes (check the Amex app<sup>5</sup>), your travel frequency, and tolerance for potential crowding.</p>
+              <p>While the network's breadth is impressive, practical experience matters. Centurion Lounges can suffer from overcrowding, sometimes requiring waitlists. Guest access policies have tightened: Centurion Lounge complimentary guests usually require $75k annual card spend, otherwise fees apply (e.g., $50/guest). Priority Pass and Delta also have specific guest policies and fees. The actual value depends on lounge availability on your routes (check the Amex app), your travel frequency, and tolerance for potential crowding.</p>
             </section>
 
             {/* Section 10: Hotel Perks: Hilton & Marriott Gold Status */}
             <section id="section-10" className={styles.reviewSection}>
               <h2>10. Hotel Perks Without the Stays: Hilton Honors & Marriott Bonvoy Gold Status</h2>
-              <p>The Platinum Card automatically grants complimentary mid-tier elite status with two major hotel programs: <strong>Hilton Honors™ Gold Status</strong> and <strong>Marriott Bonvoy® Gold Elite Status</strong> (enrollment required).<sup>5</sup> Achieving these statuses normally requires significant annual stays (e.g., 40 Hilton nights, 25 Marriott nights). Benefits typically include space-available room upgrades, bonus points on paid stays, and potentially breakfast or food/beverage credits (Hilton) or late checkout priority (Marriott). This perk is most valuable for travelers who stay at these chains moderately (e.g., 5-20 nights/year) but not enough to earn status organically. For those with higher existing status or who rarely stay at these brands, the incremental value is minimal. It's a solid benefit that enhances stays for a specific segment of travelers.</p>
+              <p>The Platinum Card automatically grants complimentary mid-tier elite status with two major hotel programs: <strong>Hilton Honors™ Gold Status</strong> and <strong>Marriott Bonvoy® Gold Elite Status</strong> (enrollment required). Achieving these statuses normally requires significant annual stays (e.g., 40 Hilton nights, 25 Marriott nights). Benefits typically include space-available room upgrades, bonus points on paid stays, and potentially breakfast or food/beverage credits (Hilton) or late checkout priority (Marriott). This perk is most valuable for travelers who stay at these chains moderately (e.g., 5-20 nights/year) but not enough to earn status organically. For those with higher existing status or who rarely stay at these brands, the incremental value is minimal. It's a solid benefit that enhances stays for a specific segment of travelers.</p>
             </section>
 
             {/* Section 11: Booking Advantages: FHR & THC */}
             <section id="section-11" className={styles.reviewSection}>
               <h2>11. Booking Advantages: Fine Hotels + Resorts and The Hotel Collection</h2>
-              <p>Booking through American Express Travel unlocks two exclusive hotel programs: <strong>Fine Hotels + Resorts (FHR)</strong> for luxury properties, and <strong>The Hotel Collection (THC)</strong> for upscale hotels (requiring a 2+ night stay).<sup>6</sup></p>
+              <p>Booking through American Express Travel unlocks two exclusive hotel programs: <strong>Fine Hotels + Resorts (FHR)</strong> for luxury properties, and <strong>The Hotel Collection (THC)</strong> for upscale hotels (requiring a 2+ night stay).</p>
               <ul className={styles.featureList}>
-                <li><strong>FHR:</strong> Provides elite-like benefits on nearly every stay: daily breakfast for two, room upgrade (when available), a unique property amenity (often $100 value), guaranteed 4 PM late check-out, noon check-in (when available), and free Wi-Fi.<sup>5</sup> These perks can easily add hundreds in value per stay.</li>
-                <li><strong>THC:</strong> Offers a $100 hotel credit (for dining, spa, etc.) and a room upgrade (when available) on stays of two nights or more.<sup>5</sup></li>
+                <li><strong>FHR:</strong> Provides elite-like benefits on nearly every stay: daily breakfast for two, room upgrade (when available), a unique property amenity (often $100 value), guaranteed 4 PM late check-out, noon check-in (when available), and free Wi-Fi. These perks can easily add hundreds in value per stay.</li>
+                <li><strong>THC:</strong> Offers a $100 hotel credit (for dining, spa, etc.) and a room upgrade (when available) on stays of two nights or more.</li>
               </ul>
-              <p>Both require booking via Amex Travel.<sup>3</sup> The FHR program, in particular, often presents compelling value compared to direct booking, if the Amex Travel rate is competitive. The bundled benefits significantly enhance luxury stays. For travelers frequenting FHR-level properties, this program alone can heavily contribute to justifying the annual fee. Always compare rates, but the value here is often substantial.</p>
+              <p>Both require booking via Amex Travel. The FHR program, in particular, often presents compelling value compared to direct booking, if the Amex Travel rate is competitive. The bundled benefits significantly enhance luxury stays. For travelers frequenting FHR-level properties, this program alone can heavily contribute to justifying the annual fee. Always compare rates, but the value here is often substantial.</p>
             </section>
 
              {/* Section 12: IAP & Cruise Privileges */}
             <section id="section-12" className={styles.reviewSection}>
                 <h2>12. Beyond the Usual: International Airline Program & Cruise Privileges</h2>
-                <p>For travelers engaging in higher-cost travel, the Platinum Card offers specialized booking programs through Amex Travel<sup>5</sup>:</p>
+                <p>For travelers engaging in higher-cost travel, the Platinum Card offers specialized booking programs through Amex Travel:</p>
                 <ul className={styles.featureList}>
-                    <li><strong>International Airline Program (IAP):</strong> Provides access to potentially discounted fares on international First, Business, and Premium Economy tickets with over 20 partner airlines.<sup>5</sup> Savings aren't guaranteed and vary by route/timing, but significant discounts are possible, especially on partner carriers. Always compare with public fares.</li>
-                    <li><strong>Cruise Privileges Program (CPP):</strong> Offers shipboard credits (e.g., $100-$300 per stateroom) and potential extra amenities when booking cruises of five nights or more with participating lines through Amex Travel.<sup>5</sup></li>
+                    <li><strong>International Airline Program (IAP):</strong> Provides access to potentially discounted fares on international First, Business, and Premium Economy tickets with over 20 partner airlines. Savings aren't guaranteed and vary by route/timing, but significant discounts are possible, especially on partner carriers. Always compare with public fares.</li>
+                    <li><strong>Cruise Privileges Program (CPP):</strong> Offers shipboard credits (e.g., $100-$300 per stateroom) and potential extra amenities when booking cruises of five nights or more with participating lines through Amex Travel.</li>
                 </ul>
                 <p>These programs incentivize using the Amex platform for premium bookings. While requiring comparison shopping, they offer another potential avenue for extracting value, particularly for those regularly flying international premium cabins or taking cruises.</p>
             </section>
@@ -401,7 +401,7 @@ function AmexPlatinumReviewPage() {
             {/* Section 13: Dining Benefits: Resy */}
             <section id="section-13" className={styles.reviewSection}>
                 <h2>13. Dining Benefits: Global Dining Access by Resy</h2>
-                <p>Complementing its travel focus, the Platinum Card includes <strong>Global Dining Access by Resy</strong>.<sup>3</sup> Linking the card to a Resy profile can grant access to exclusive reservation slots at popular restaurants, invitations to special culinary events, and use of Resy's Priority Notify feature for waitlisted tables.<sup>1</sup> This benefit offers intangible value – convenience, exclusivity, enhanced experiences – rather than direct monetary savings. Its worth depends on the cardholder's interest in dining at sought-after restaurants and using reservation platforms. For foodies in competitive dining cities, it can be a valuable perk; for others, it may hold little relevance.</p>
+                <p>Complementing its travel focus, the Platinum Card includes <strong>Global Dining Access by Resy</strong>. Linking the card to a Resy profile can grant access to exclusive reservation slots at popular restaurants, invitations to special culinary events, and use of Resy's Priority Notify feature for waitlisted tables. This benefit offers intangible value – convenience, exclusivity, enhanced experiences – rather than direct monetary savings. Its worth depends on the cardholder's interest in dining at sought-after restaurants and using reservation platforms. For foodies in competitive dining cities, it can be a valuable perk; for others, it may hold little relevance.</p>
             </section>
 
             {/* Section 14: Shopping & Entertainment Credits */}
@@ -409,8 +409,8 @@ function AmexPlatinumReviewPage() {
                 <h2>14. Shopping & Entertainment Credits: Assessing the Value</h2>
                 <p>The card includes lifestyle statement credits requiring enrollment:</p>
                 <ul className={styles.featureList}>
-                    <li><strong>$100 Saks Credit:</strong> $50 credit for Jan-June, $50 for July-Dec, for purchases at Saks Fifth Avenue or saks.com.<sup>5</sup></li>
-                    <li><strong>$240 Digital Entertainment Credit:</strong> Up to $20 per month for eligible direct subscriptions with partners like Disney+, The Disney Bundle, Peacock, Hulu, ESPN+, Audible, SiriusXM, and The New York Times.<sup>4</sup></li>
+                    <li><strong>$100 Saks Credit:</strong> $50 credit for Jan-June, $50 for July-Dec, for purchases at Saks Fifth Avenue or saks.com.</li>
+                    <li><strong>$240 Digital Entertainment Credit:</strong> Up to $20 per month for eligible direct subscriptions with partners like Disney+, The Disney Bundle, Peacock, Hulu, ESPN+, Audible, SiriusXM, and The New York Times.</li>
                 </ul>
                 <p>These credits offer up to $340 in annual rebates. However, their true value depends on whether they offset spending you would make anyway. If you already shop at Saks and subscribe to eligible services, count the full value. If the credits induce extra spending you wouldn't otherwise make, their actual value is lower. Honest self-assessment is key – value these credits based on your organic spending patterns.</p>
             </section>
@@ -418,12 +418,12 @@ function AmexPlatinumReviewPage() {
             {/* Section 15: Insurance & Protection Benefits */}
             <section id="section-15" className={styles.reviewSection}>
                 <h2>15. Protecting Your Purchases and Travel: Insurance & Protection Benefits</h2>
-                <p>Often underestimated are the Platinum Card's built-in insurance and protection benefits, which provide a valuable safety net<sup>5</sup>:</p>
+                <p>Often underestimated are the Platinum Card's built-in insurance and protection benefits, which provide a valuable safety net:</p>
                 <ul className={styles.featureList}>
                     <li><strong>Purchase Protection:</strong> Covers eligible new purchases against accidental damage, theft, or loss for 90 days (up to $10k/item, $50k/year).</li>
                     <li><strong>Return Protection:</strong> May refund an eligible item if a US merchant won't take it back within 90 days (up to $300/item, $1k/year).</li>
                     <li><strong>Cell Phone Protection:</strong> Covers your phone against damage or theft (up to $800/claim, 2 claims/year, $50 deductible) when you pay your monthly wireless bill with the card.</li>
-                    <li><strong>Car Rental Loss/Damage Insurance:</strong> Provides <strong>secondary</strong> coverage in the US (pays after your personal insurance). Also includes complimentary premium status with major rental agencies (enrollment required), offering perks like upgrades.<sup>5</sup></li>
+                    <li><strong>Car Rental Loss/Damage Insurance:</strong> Provides <strong>secondary</strong> coverage in the US (pays after your personal insurance). Also includes complimentary premium status with major rental agencies (enrollment required), offering perks like upgrades.</li>
                 </ul>
                 <p>While you only realize value when making a claim, these protections can be worth hundreds or even thousands of dollars. A single successful claim (e.g., for a damaged phone or stolen laptop) can significantly offset the annual fee. Don't discount the peace of mind these coverages provide.</p>
             </section>
@@ -431,19 +431,19 @@ function AmexPlatinumReviewPage() {
             {/* Section 16: Redeeming Rewards */}
             <section id="section-16" className={styles.reviewSection}>
                 <h2>16. Redeeming Your Rewards: Flexibility and Value of Membership Rewards®</h2>
-                <p>The value of the Membership Rewards® points<sup>3</sup> earned depends heavily on redemption strategy. While options like statement credits (~0.6 cpp), gift cards (~0.5-1 cpp), or booking travel via Amex Travel (flights ~1 cpp, hotels often less) exist, the most potent value comes from <strong>transferring points to airline and hotel partners</strong>.<sup>5</sup> Amex has numerous valuable partners (e.g., Delta, BA, Air France/KLM, Singapore Airlines, Hilton, Marriott).<sup>5</sup> Strategic transfers, especially for international premium cabin flights, can yield values of <strong>2 cents per point or much higher</strong>. Maximizing the Platinum Card's rewards truly requires understanding and utilizing these transfer options; settling for lower-value redemptions significantly diminishes the return on the card's high earning rates.</p>
+                <p>The value of the Membership Rewards® points earned depends heavily on redemption strategy. While options like statement credits (~0.6 cpp), gift cards (~0.5-1 cpp), or booking travel via Amex Travel (flights ~1 cpp, hotels often less) exist, the most potent value comes from <strong>transferring points to airline and hotel partners</strong>. Amex has numerous valuable partners (e.g., Delta, BA, Air France/KLM, Singapore Airlines, Hilton, Marriott). Strategic transfers, especially for international premium cabin flights, can yield values of <strong>2 cents per point or much higher</strong>. Maximizing the Platinum Card's rewards truly requires understanding and utilizing these transfer options; settling for lower-value redemptions significantly diminishes the return on the card's high earning rates.</p>
             </section>
 
             {/* Section 17: Financial Flexibility Features */}
             <section id="section-17" className={styles.reviewSection}>
                 <h2>17. Financial Flexibility: Pay Over Time and Plan It® Features</h2>
-                <p>The Platinum Card offers payment flexibility features: <strong>Pay Over Time</strong> and <strong>Plan It®</strong>.<sup>3</sup> Pay Over Time allows carrying a balance on eligible charges at a variable APR, which can be quite high (e.g., 20.24%–29.24%).<sup>3</sup> Plan It® allows paying off large purchases in fixed monthly installments for a fixed fee.<sup>3</sup> While providing options for managing cash flow or unexpected expenses, these features come at a cost. Carrying a balance with Pay Over Time interest can quickly negate rewards value. Plan It fees are an added expense. These should be viewed as occasional tools, not standard practice. Paying the balance in full each month remains the best strategy to maximize the card's value.</p>
+                <p>The Platinum Card offers payment flexibility features: <strong>Pay Over Time</strong> and <strong>Plan It®</strong>. Pay Over Time allows carrying a balance on eligible charges at a variable APR, which can be quite high (e.g., 20.24%–29.24%). Plan It® allows paying off large purchases in fixed monthly installments for a fixed fee. While providing options for managing cash flow or unexpected expenses, these features come at a cost. Carrying a balance with Pay Over Time interest can quickly negate rewards value. Plan It fees are an added expense. These should be viewed as occasional tools, not standard practice. Paying the balance in full each month remains the best strategy to maximize the card's value.</p>
             </section>
 
              {/* Section 18: Competitive Landscape Table */}
             <section id="section-18" className={styles.reviewSection}>
                 <h2>18. Competitive Landscape: Amex Platinum vs. Key Rivals</h2>
-                <p>The Platinum Card competes against other premium options like the Chase Sapphire Reserve® and Capital One Venture X. Each card has a different approach. Platinum excels in lounge access quality/breadth<sup>4</sup>, FHR benefits<sup>5</sup>, and hotel status.<sup>5</sup> Sapphire Reserve offers a simpler $300 travel credit and strong 3X dining/travel multipliers. Venture X has a lower fee offset by easy-to-use credits, strong 2X base earning, and primary rental car insurance.</p>
+                <p>The Platinum Card competes against other premium options like the Chase Sapphire Reserve® and Capital One Venture X. Each card has a different approach. Platinum excels in lounge access quality/breadth, FHR benefits, and hotel status. Sapphire Reserve offers a simpler $300 travel credit and strong 3X dining/travel multipliers. Venture X has a lower fee offset by easy-to-use credits, strong 2X base earning, and primary rental car insurance.</p>
                 <p><strong>Amex Platinum vs. Key Competitors: Premium Travel Card Showdown</strong></p>
                 <div className={styles.tableContainer}>
                     <table className={styles.statsTable}>
@@ -458,79 +458,79 @@ function AmexPlatinumReviewPage() {
                         <tbody>
                             <tr>
                                 <td data-label="Feature">Annual Fee</td>
-                                <td data-label="American Express Platinum Card®">$695<sup>3</sup></td>
+                                <td data-label="American Express Platinum Card®">$695</td>
                                 <td data-label="Chase Sapphire Reserve®">$550</td>
                                 <td data-label="Capital One Venture X Rewards Credit Card">$395</td>
                             </tr>
                             <tr>
                                 <td data-label="Feature">Welcome Offer (Example)</td>
-                                <td data-label="American Express Platinum Card®">80k points / $8k spend / 6 mos<sup>3</sup></td>
+                                <td data-label="American Express Platinum Card®">80k points / $8k spend / 6 mos</td>
                                 <td data-label="Chase Sapphire Reserve®">60k points / $4k spend / 3 mos</td>
                                 <td data-label="Capital One Venture X Rewards Credit Card">75k miles / $4k spend / 3 mos</td>
                             </tr>
                             <tr>
                                 <td data-label="Feature">Points: Flights</td>
-                                <td data-label="American Express Platinum Card®">5X (Direct/Amex Travel, $500k cap)<sup>3</sup></td>
+                                <td data-label="American Express Platinum Card®">5X (Direct/Amex Travel, $500k cap)</td>
                                 <td data-label="Chase Sapphire Reserve®">5X (Chase Portal); 3X (Other)</td>
                                 <td data-label="Capital One Venture X Rewards Credit Card">5X (CapOne Portal); 2X (Other)</td>
                             </tr>
                             <tr>
                                 <td data-label="Feature">Points: Hotels</td>
-                                <td data-label="American Express Platinum Card®">5X (Prepaid via Amex Travel)<sup>3</sup></td>
+                                <td data-label="American Express Platinum Card®">5X (Prepaid via Amex Travel)</td>
                                 <td data-label="Chase Sapphire Reserve®">10X (Chase Portal); 3X (Other)</td>
                                 <td data-label="Capital One Venture X Rewards Credit Card">10X (CapOne Portal); 2X (Other)</td>
                             </tr>
                             <tr>
                                 <td data-label="Feature">Points: Dining</td>
-                                <td data-label="American Express Platinum Card®">1X<sup>3</sup></td>
+                                <td data-label="American Express Platinum Card®">1X</td>
                                 <td data-label="Chase Sapphire Reserve®">3X</td>
                                 <td data-label="Capital One Venture X Rewards Credit Card">2X</td>
                             </tr>
                             <tr>
                                 <td data-label="Feature">Points: General Travel</td>
-                                <td data-label="American Express Platinum Card®">1X (Non-bonus)<sup>3</sup></td>
+                                <td data-label="American Express Platinum Card®">1X (Non-bonus)</td>
                                 <td data-label="Chase Sapphire Reserve®">3X (After $300 credit)</td>
                                 <td data-label="Capital One Venture X Rewards Credit Card">2X</td>
                             </tr>
                             <tr>
                                 <td data-label="Feature">Points: Non-Bonus</td>
-                                <td data-label="American Express Platinum Card®">1X<sup>3</sup></td>
+                                <td data-label="American Express Platinum Card®">1X</td>
                                 <td data-label="Chase Sapphire Reserve®">1X</td>
                                 <td data-label="Capital One Venture X Rewards Credit Card">2X</td>
                             </tr>
                             <tr>
                                 <td data-label="Feature">Primary Travel Credit(s)</td>
-                                <td data-label="American Express Platinum Card®">$200 Hotel (Portal)<sup>3</sup>; $200 Airline Fee (Incidental)<sup>5</sup></td>
+                                <td data-label="American Express Platinum Card®">$200 Hotel (Portal); $200 Airline Fee (Incidental)</td>
                                 <td data-label="Chase Sapphire Reserve®">$300 (Broad, Automatic)</td>
                                 <td data-label="Capital One Venture X Rewards Credit Card">$300 (Portal); 10k miles anniversary</td>
                             </tr>
                             <tr>
                                 <td data-label="Feature">Lounge Access</td>
-                                <td data-label="American Express Platinum Card®">Centurion, Priority Pass, Delta, Plaza, etc.<sup>4</sup></td>
+                                <td data-label="American Express Platinum Card®">Centurion, Priority Pass, Delta, Plaza, etc.</td>
                                 <td data-label="Chase Sapphire Reserve®">Priority Pass, Chase Lounges</td>
                                 <td data-label="Capital One Venture X Rewards Credit Card">Priority Pass, CapOne Lounges, Plaza</td>
                             </tr>
                             <tr>
                                 <td data-label="Feature">Hotel Status</td>
-                                <td data-label="American Express Platinum Card®">Hilton Gold, Marriott Gold<sup>5</sup></td>
+                                <td data-label="American Express Platinum Card®">Hilton Gold, Marriott Gold</td>
                                 <td data-label="Chase Sapphire Reserve®">None</td>
                                 <td data-label="Capital One Venture X Rewards Credit Card">None</td>
                             </tr>
                              <tr>
                                 <td data-label="Feature">Rental Car Insurance</td>
-                                <td data-label="American Express Platinum Card®">Secondary (US); Premium Status<sup>5</sup></td>
+                                <td data-label="American Express Platinum Card®">Secondary (US); Premium Status</td>
                                 <td data-label="Chase Sapphire Reserve®">Primary</td>
                                 <td data-label="Capital One Venture X Rewards Credit Card">Primary</td>
                             </tr>
                             <tr>
                                 <td data-label="Feature">Unique Perk 1</td>
-                                <td data-label="American Express Platinum Card®">Fine Hotels + Resorts<sup>5</sup></td>
+                                <td data-label="American Express Platinum Card®">Fine Hotels + Resorts</td>
                                 <td data-label="Chase Sapphire Reserve®">50% point boost via Chase Portal</td>
                                 <td data-label="Capital One Venture X Rewards Credit Card">10,000 bonus miles annually</td>
                             </tr>
                             <tr>
                                 <td data-label="Feature">Unique Perk 2</td>
-                                <td data-label="American Express Platinum Card®">$199 CLEAR Plus Credit<sup>3</sup></td>
+                                <td data-label="American Express Platinum Card®">$199 CLEAR Plus Credit</td>
                                 <td data-label="Chase Sapphire Reserve®">DoorDash/Lyft benefits (varies)</td>
                                 <td data-label="Capital One Venture X Rewards Credit Card">Hertz President's Circle Status</td>
                             </tr>
@@ -551,7 +551,7 @@ function AmexPlatinumReviewPage() {
                     <li><strong>Value from Credits Used:</strong> $200 (Hotel) + $150 (Airline) + $199 (CLEAR) + $100 (Saks) + $200 (Digital Ent.) = $849</li>
                     <li><strong>Value from Perks (Subjective Estimate):</strong> Lounge Access ($500) + FHR Benefits ($300) + Hotel Status ($100) = $900</li>
                     <li><strong>Total Annual Value:</strong> $1,590 + $849 + $900 = $3,339</li>
-                    <li><strong>Net Value:</strong> $3,339 - $695 (Fee)<sup>3</sup> = +$2,644</li>
+                    <li><strong>Net Value:</strong> $3,339 - $695 (Fee) = +$2,644</li>
                 </ul>
                 <p>For Sarah, whose profile aligns well with the card's strengths, the value is substantial. However, this calculation is highly sensitive. Reduce travel, change hotel preferences, fail to use credits organically, or value points/perks less, and the net value can easily drop below zero. This highlights the critical need for personalized assessment based on your own habits.</p>
             </section>
@@ -565,13 +565,13 @@ function AmexPlatinumReviewPage() {
                      <div className={styles.pros}>
                           <h3>Consider the Platinum Card if you:</h3>
                           <ul className={styles.featureList}>
-                              <li>Travel frequently, especially by air, maximizing the 5X points.<sup>3</sup></li>
+                              <li>Travel frequently, especially by air, maximizing the 5X points.</li>
                               <li>Highly value premium airport lounge access (Centurion, etc.) and CLEAR.<sup>4,3</sup></li>
-                              <li>Prefer luxury/upscale hotels and can leverage FHR/THC benefits via Amex Travel.<sup>3</sup></li>
-                              <li>Can organically utilize most statement credits (Hotel, Airline Fee, CLEAR, Saks, Digital Entertainment).<sup>4</sup></li>
+                              <li>Prefer luxury/upscale hotels and can leverage FHR/THC benefits via Amex Travel.</li>
+                              <li>Can organically utilize most statement credits (Hotel, Airline Fee, CLEAR, Saks, Digital Entertainment).</li>
                               <li>Are a significant spender, particularly in bonus travel categories.</li>
-                              <li>Are willing to learn and use airline/hotel transfer partners for maximum point value.<sup>5</sup></li>
-                              <li>Are comfortable actively managing benefits, enrollments, and portal bookings.<sup>3</sup></li>
+                              <li>Are willing to learn and use airline/hotel transfer partners for maximum point value.</li>
+                              <li>Are comfortable actively managing benefits, enrollments, and portal bookings.</li>
                           </ul>
                      </div>
                      <div className={styles.cons}>
@@ -580,14 +580,14 @@ function AmexPlatinumReviewPage() {
                               <li>Travel infrequently or are primarily a budget traveler.</li>
                               <li>Won't consistently use the key statement credits or lounge access.</li>
                               <li>Prioritize booking flexibility (direct bookings) over portal perks.</li>
-                              <li>Need strong rewards on everyday spending like dining or groceries (where the 1X rate is weak).<sup>3</sup></li>
+                              <li>Need strong rewards on everyday spending like dining or groceries (where the 1X rate is weak).</li>
                               <li>Prefer simple, straightforward rewards programs with minimal management.</li>
                               <li>Are unwilling to engage with transfer partners and prefer cash-like redemptions.</li>
                           </ul>
                      </div>
                 </div>
 
-                <p><strong>Final Thought:</strong> The Platinum Card offers exceptional value potential, but only if your travel style, spending habits, and willingness to engage align closely with its premium-focused, benefit-laden structure. It rewards those already inclined towards luxury travel who can navigate its ecosystem effectively. Before committing to the $695 fee<sup>3</sup>, perform a detailed, honest self-assessment. For the right individual, it enhances travel significantly<sup>1</sup>; for the wrong one, it's an expensive card offering limited practical return.</p>
+                <p><strong>Final Thought:</strong> The Platinum Card offers exceptional value potential, but only if your travel style, spending habits, and willingness to engage align closely with its premium-focused, benefit-laden structure. It rewards those already inclined towards luxury travel who can navigate its ecosystem effectively. Before committing to the $695 fee, perform a detailed, honest self-assessment. For the right individual, it enhances travel significantly; for the wrong one, it's an expensive card offering limited practical return.</p>
             </section>
 
             {/* CTA Section */}
