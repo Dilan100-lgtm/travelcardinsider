@@ -378,7 +378,7 @@ export default function AmexTrifectaReview2025() {
               {/* Recreating Table 1 */}
               <div className={styles.reviewTableContainer}> {/* Optional: Add a container for styling */}
                 <h4 className={styles.reviewTableHeader}>Table 1: Amex Trifecta - Optimal Card for Each Spending Category (2025)</h4>
-                <table className={styles.reviewTable}>
+                <table className={styles.reviewToc}>
                   <thead>
                     <tr>
                       <th>Spending Category</th>
@@ -450,7 +450,7 @@ export default function AmexTrifectaReview2025() {
                 {/* Recreating Table 2 */}
                  <div className={styles.reviewTableContainer}>
                     <h4 className={styles.reviewTableHeader}>Table 2: Amex Trifecta - Annual Fees vs. Max Potential Statement Credits (2025 Estimate)</h4>
-                    <table className={styles.reviewTable}>
+                    <table className={styles.reviewToc}>
                         <thead>
                             <tr>
                                 <th>Card</th>
