@@ -2350,7 +2350,7 @@
       "reviewLink": "/cards/amex-platinum",
       "Card Type": "Personal",
       "Annual Fee": 695.0,
-      "APR Range (Purchases)": "20.24%–29.24% Variable (Pay Over Time feature) ",
+      "APR Range (Purchases)": "21.24%–29.24% Variable (Pay Over Time feature)",
       "Foreign Transaction Fee": 0.0,
       "Intro APR": null,
       "Credit Score Requirement": "Good–Excellent (690+)",
@@ -2399,7 +2399,7 @@
         },
         {
           "type": "uber_credit",
-          "description": "Up to $200 in annual Uber Cash ($15 per month plus $20 in December)",
+          "description": "Up to $200 in annual Uber Cash ($15 monthly, $35 in Dec, US only)",
           "estimated_value_usd": 200
         },
         {
