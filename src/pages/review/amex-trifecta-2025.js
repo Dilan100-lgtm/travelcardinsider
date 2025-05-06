@@ -30,7 +30,7 @@ export default function AmexTrifectaReview2025() {
           content="Ultimate 2025 Amex Trifecta review: learn how to combine the Amex Platinum, Gold and Blue Business Plus cards for maximum Membership Rewards, lounge access and travel perks."
         />
         <meta name="robots" content="index,follow" />
-        <link rel="canonical" href={pageUrl} />
+        <link rel="canonical" href="https://www.travelcardinsider.com/review/amex-trifecta-2025" />
 
         {/* ---- Open Graph ---- */}
         <meta property="og:type"        content="article" />
@@ -85,10 +85,10 @@ export default function AmexTrifectaReview2025() {
                 },
                 "aggregateRating": {
                   "@type": "AggregateRating",
-                  "ratingValue": "${reviewRatingValue}",
+                  "ratingValue": 4.6,
                   "bestRating": "5",
                   "worstRating": "1",
-                  "reviewCount": "1" // Start with 1 for this review
+                  "reviewCount": 1 // Start with 1 for this review
                 }
               },
               "reviewRating": {
