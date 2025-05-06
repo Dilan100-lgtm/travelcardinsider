@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import styles from '@/styles/ReviewCard.module.css';
+import styles from './ReviewCard.module.css';
 
 export default function ReviewCard({ review }) {
   /* ---------- Ensure numeric rating ---------- */
