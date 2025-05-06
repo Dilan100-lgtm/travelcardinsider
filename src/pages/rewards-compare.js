@@ -161,12 +161,12 @@ export default function RewardsComparePage() {
 
           {/* Accessible subtitle */}
           <h2 style={{ textAlign: 'center', margin: '0 auto 2.5rem auto', fontSize: '1.125rem', color: '#374151', maxWidth: '800px', lineHeight: 1.6 }}>
-             Select up to 3 cards and enter your estimated monthly spending to see which cards offer the best estimated value for *you*. Our calculator considers rewards, perks, fees, and bonuses.
+              Select up to 3 cards and enter your estimated monthly spending to see which cards offer the best estimated value for *you*. Our calculator considers rewards, perks, fees, and bonuses.
           </h2>
 
           <div style={{ overflow: 'visible', position: 'relative' }}>
   <RewardsCompareCalculator />
-                      </div>
+                  </div>
 
           {/* --- E-E-A-T SECTIONS START --- */}
 
@@ -192,11 +192,11 @@ export default function RewardsComparePage() {
 
           {/* E-E-A-T: Data Source & Accuracy */}
           <section style={{ maxWidth: '900px', margin: '3rem auto', padding: '1.5rem', background: '#fff', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.05)' }}>
-             <h2 style={{ fontFamily: "'Playfair Display', serif", marginBottom: '1rem', borderBottom: '1px solid #eee', paddingBottom: '0.5rem', fontSize: '1.4rem' }}>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", marginBottom: '1rem', borderBottom: '1px solid #eee', paddingBottom: '0.5rem', fontSize: '1.4rem' }}>
               Data Source & Accuracy
             </h2>
             <p>
-               Card details, including rewards, fees, perks, and bonus offers, are sourced from our internal database and publicly available issuer data. We strive for accuracy, but details can change frequently.
+                Card details, including rewards, fees, perks, and bonus offers, are sourced from our internal database and publicly available issuer data. We strive for accuracy, but details can change frequently.
             </p>
             <p>
               {/* Using the defined variable */}
@@ -209,12 +209,12 @@ export default function RewardsComparePage() {
           {/* Uncomment and populate this section or link to your about page */}
           {/*
           <section style={{ maxWidth: '900px', margin: '3rem auto', padding: '1.5rem', background: '#fff', borderRadius: '8px', boxShadow:'0 2px 8px rgba(0,0,0,0.05)' }}>
-              <h2 style={{ fontFamily: "'Playfair Display', serif", marginBottom: '1rem', borderBottom: '1px solid #eee', paddingBottom: '0.5rem', fontSize: '1.4rem' }}>
-                  About the Analysis
-              </h2>
-              <p>
-                  This tool and the underlying data analysis are maintained by [Author Name/Team Name], experts in credit card rewards and travel hacking with [X] years of experience... [Link to About Page]
-              </p>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", marginBottom: '1rem', borderBottom: '1px solid #eee', paddingBottom: '0.5rem', fontSize: '1.4rem' }}>
+                About the Analysis
+            </h2>
+            <p>
+                This tool and the underlying data analysis are maintained by [Author Name/Team Name], experts in credit card rewards and travel hacking with [X] years of experience... [Link to About Page]
+            </p>
           </section>
           */}
 

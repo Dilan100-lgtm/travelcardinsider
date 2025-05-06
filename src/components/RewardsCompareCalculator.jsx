@@ -14,7 +14,8 @@ const categoryDisplayNames = {
     hotels: 'Hotels', streaming: 'Streaming', transit: 'Transit',
     onlineShopping: 'Online Shopping (US)', drugstores: 'Drugstores', other: 'Other'
 };
-const defaultSpend = spendingCategories.reduce((acc, cat) => ({ ...acc, [cat]: 0 }), {});
+// *** MODIFICATION: Initialize spending state with empty strings instead of 0 ***
+const defaultSpend = spendingCategories.reduce((acc, cat) => ({ ...acc, [cat]: '' }), {});
 const MOBILE_BREAKPOINT = 767; // Define mobile breakpoint width
 
 // --- Helper Functions ---
@@ -119,9 +120,21 @@ export default function RewardsCompareCalculator() {
     }, []);
 
     // --- Event Handlers ---
+    // *** MODIFICATION: Update state with '' for 0 or empty/invalid input, otherwise store number ***
     const handleSpendingChange = (category, value) => {
-        setSpending({ ...spending, [category]: Math.max(0, Number(value) || 0) });
-    };
+         const num = parseInt(value, 10);
+         // Allow empty string input to clear the field and show placeholder
+         if (value === '') {
+             setSpending(prev => ({ ...prev, [category]: '' }));
+         } else if (isNaN(num) || num < 0) {
+             // If input is invalid but not empty, keep it empty (or decide behavior)
+             // Here, we revert to empty string if non-numeric or negative is attempted after typing something
+             setSpending(prev => ({ ...prev, [category]: '' }));
+         } else {
+             // Store the valid positive number (or 0 if typed explicitly)
+             setSpending(prev => ({ ...prev, [category]: num }));
+         }
+     };
     const handleCardSelect = (index, cardName) => {
         const updated = [...selectedCardNames];
         updated[index] = cardName || null;
@@ -144,8 +157,10 @@ export default function RewardsCompareCalculator() {
             const otherMultiplier = card.rewards.find(r => r.category === 'other')?.multiplier ?? 1;
 
             for (const uiCategory of spendingCategories) {
-                const monthlySpend = spending[uiCategory];
-                if (monthlySpend <= 0) continue;
+                // *** MODIFICATION: Coerce state value ('' or number) to number for calculation, default to 0 ***
+                const monthlySpend = Number(spending[uiCategory] || 0);
+                if (monthlySpend <= 0) continue; // Skip if 0 or empty string
+
                 const annualSpendInCategory = monthlySpend * 12;
                 const rule = findBestRuleForInput(card, uiCategory, categoryMap);
                 const currentMultiplier = rule?.multiplier ?? otherMultiplier;
@@ -159,8 +174,8 @@ export default function RewardsCompareCalculator() {
                     // Handle caps logic...
                     const capInfo = rule.cap;
                     const capKey = Array.isArray(capInfo.applies_to_categories) && capInfo.applies_to_categories.length > 0
-                                ? capInfo.applies_to_categories.sort().join(',')
-                                : rule.category;
+                            ? capInfo.applies_to_categories.sort().join(',')
+                            : rule.category;
                     const capLimit = capInfo.amount_usd;
                     const capPeriod = capInfo.period;
                     let annualPointsAtBonusRate = 0;
@@ -198,7 +213,7 @@ export default function RewardsCompareCalculator() {
                      }
                     categoryPoints = annualPointsAtBonusRate + annualPointsAtOtherRate;
                     if (annualSpendInCategory > 0 && categoryPoints > 0) {
-                         appliedMultiplier = categoryPoints / annualSpendInCategory;
+                        appliedMultiplier = categoryPoints / annualSpendInCategory;
                     } else if (annualSpendInCategory > 0) {
                         appliedMultiplier = otherMultiplier;
                     }
@@ -223,8 +238,9 @@ export default function RewardsCompareCalculator() {
             const firstYearNetValue = netValue + signUpBonusValue;
             const breakdownTooltips = {};
              Object.entries(breakdown).forEach(([cat, data]) => {
-                breakdownTooltips[cat] = `$${spending[cat]} × 12 × ${data.multiplier}x = ${data.points.toLocaleString()} pts`;
-            });
+                // *** MODIFICATION: Use Number(spending[cat] || 0) in tooltip calculation ***
+                 breakdownTooltips[cat] = `$${Number(spending[cat] || 0)} × 12 × ${data.multiplier}x = ${data.points.toLocaleString()} pts`;
+             });
 
             return {
                 card, totalPoints: Math.round(totalAnnualPoints),
@@ -269,15 +285,23 @@ export default function RewardsCompareCalculator() {
     const displayedCardCalculations = cardsToDisplayIndices.map(i => cardCalculations[i]);
     const displayedSelectedCardNames = cardsToDisplayIndices.map(i => selectedCardNames[i]);
 
+    // *** MODIFICATION: Create sorted card list for dropdowns ***
+    const sortedCardOptions = useMemo(() => {
+        return cardsData.cards
+            .slice() // Create a shallow copy to avoid mutating the original import
+            .sort((a, b) => a["Card Name"].localeCompare(b["Card Name"])); // Sort alphabetically
+    }, []); // Empty dependency array means this runs once
+
+
     // --- Render ---
     return (
         <div className={styles.calculatorContainer}>
 
             {/* --- Card Selection Area --- */}
             <section className={styles.cardSelectionSection}>
-                 <h2>Select Up to {isMobile ? '2' : '3'} Cards to Compare</h2>
+                <h2>Select Up to {isMobile ? '2' : '3'} Cards to Compare</h2>
                 <div className={styles.cardSelectorsGrid}>
-                     {selectedCardNames.map((selectedName, index) => {
+                    {selectedCardNames.map((selectedName, index) => {
                         const card = cardsData.cards.find(c => c["Card Name"] === selectedName);
                         return (
                             <div key={index} className={`${styles.cardSelectorColumn} ${isMobile && index > 1 ? styles.hideOnMobile : ''}`}>
@@ -290,7 +314,8 @@ export default function RewardsCompareCalculator() {
                                         disabled={isMobile && index > 1}
                                     >
                                         <option value="">-- Select a Card --</option>
-                                        {cardsData.cards.map((c) => (
+                                        {/* *** MODIFICATION: Map over the pre-sorted list *** */}
+                                        {sortedCardOptions.map((c) => (
                                             <option key={c["Card Name"]} value={c["Card Name"]}>
                                                 {c["Card Name"]}
                                             </option>
@@ -324,9 +349,9 @@ export default function RewardsCompareCalculator() {
                 </div>
             </section>
 
-             {/* --- Input Section --- */}
+            {/* --- Input Section --- */}
             <section className={styles.inputSection}>
-                 <div className={styles.inputHeader}>
+                <div className={styles.inputHeader}>
                     <h2>Enter Your Estimated Monthly Spending</h2>
                     <div className={styles.strategySelector}>
                         <label htmlFor="redemptionStrategy">Value Points As:</label>
@@ -344,10 +369,14 @@ export default function RewardsCompareCalculator() {
                             <label htmlFor={`spend-${category}`}>{categoryDisplayNames[category]}</label>
                             <input
                                 id={`spend-${category}`}
-                                type="number"
+                                type="number" // Keep type="number" for mobile keyboards etc.
+                                inputMode="numeric" // Helps mobile numeric keyboard
+                                pattern="[0-9]*" // Further helps enforce numeric input
                                 min="0" step="10"
+                                // *** MODIFICATION: Value comes from state ('' or number) ***
                                 value={spending[category]}
                                 onChange={(e) => handleSpendingChange(category, e.target.value)}
+                                // *** MODIFICATION: Added placeholder ***
                                 placeholder="$0"
                             />
                         </div>
@@ -363,76 +392,76 @@ export default function RewardsCompareCalculator() {
                         The table below estimates your annual rewards based on the spending you entered and the selected point valuation strategy. Net values account for calculated rewards, estimated annual perk values, and subtract the card's annual fee. The 1st Year value also includes the estimated sign-up bonus value.
                     </p>
                     <div className={styles.tableWrapper}>
-                         <table className={styles.rewardsTable}>
-                             <thead>
-                                 <tr>
-                                     <th>Category</th>
-                                     {displayedCardCalculations.map((calc, index) => (
-                                         <th key={cardsToDisplayIndices[index]}>
+                        <table className={styles.rewardsTable}>
+                            <thead>
+                                <tr>
+                                    <th>Category</th>
+                                    {displayedCardCalculations.map((calc, index) => (
+                                        <th key={cardsToDisplayIndices[index]}>
                                             {calc?.card["Card Name"] ?? `Card ${cardsToDisplayIndices[index] + 1}`}
                                         </th>
-                                     ))}
-                                 </tr>
-                             </thead>
-                             <tbody>
-                                 {/* Points Breakdown */}
-                                 {spendingCategories.map((cat) => (
-                                     <tr key={cat}>
-                                         <td>{categoryDisplayNames[cat]} Points</td>
-                                         {displayedCardCalculations.map((calc, index) => {
-                                             const points = calc?.breakdown?.[cat]?.points ?? 0;
-                                             const tooltipText = calc?.breakdownTooltips?.[cat] ?? '-';
-                                             return (
-                                                 <td key={cardsToDisplayIndices[index]} className={points > 0 ? styles.tooltip : ''}>
-                                                     {points > 0 ? points.toLocaleString() + ' pts' : '-'}
-                                                     {points > 0 && <span className={styles.tooltiptext}>{tooltipText}</span>}
-                                                 </td>
-                                             );
-                                         })}
-                                     </tr>
-                                 ))}
-                                 {/* --- Spacer Row --- */}
-                                 <tr className={styles.spacerRow}><td colSpan={cardsToDisplayIndices.length + 1}></td></tr>
-                                 {/* --- Summary Rows with Highlighting --- */}
+                                    ))}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {/* Points Breakdown */}
+                                {spendingCategories.map((cat) => (
+                                    <tr key={cat}>
+                                        <td>{categoryDisplayNames[cat]} Points</td>
+                                        {displayedCardCalculations.map((calc, index) => {
+                                            const points = calc?.breakdown?.[cat]?.points ?? 0;
+                                            const tooltipText = calc?.breakdownTooltips?.[cat] ?? '-';
+                                            return (
+                                                <td key={cardsToDisplayIndices[index]} className={points > 0 ? styles.tooltip : ''}>
+                                                    {points > 0 ? points.toLocaleString() + ' pts' : '-'}
+                                                    {points > 0 && <span className={styles.tooltiptext}>{tooltipText}</span>}
+                                                </td>
+                                            );
+                                        })}
+                                    </tr>
+                                ))}
+                                {/* --- Spacer Row --- */}
+                                <tr className={styles.spacerRow}><td colSpan={cardsToDisplayIndices.length + 1}></td></tr>
+                                {/* --- Summary Rows with Highlighting --- */}
+                                <tr>
+                                    <td>Total Annual Points</td>
+                                    {displayedCardCalculations.map((calc, index) => ( <td key={cardsToDisplayIndices[index]} className={calc?.isBestTotalPoints ? styles.bestValue : ''}>{calc ? calc.totalPoints.toLocaleString() : '-'}</td> ))}
+                                </tr>
+                                <tr>
+                                    <td>Selected Point Value (CPP)</td>
+                                    {displayedCardCalculations.map((calc, index) => ( <td key={cardsToDisplayIndices[index]}>{calc ? `${calc.cpp.toFixed(2)}¢` : '-'}</td> ))}
+                                </tr>
                                  <tr>
-                                     <td>Total Annual Points</td>
-                                     {displayedCardCalculations.map((calc, index) => ( <td key={cardsToDisplayIndices[index]} className={calc?.isBestTotalPoints ? styles.bestValue : ''}>{calc ? calc.totalPoints.toLocaleString() : '-'}</td> ))}
-                                 </tr>
-                                 <tr>
-                                     <td>Selected Point Value (CPP)</td>
-                                     {displayedCardCalculations.map((calc, index) => ( <td key={cardsToDisplayIndices[index]}>{calc ? `${calc.cpp.toFixed(2)}¢` : '-'}</td> ))}
-                                 </tr>
-                                  <tr>
-                                     <td>Est. Annual Rewards Value</td>
-                                     {displayedCardCalculations.map((calc, index) => ( <td key={cardsToDisplayIndices[index]} className={calc?.isBestRewardsValue ? styles.bestValue : ''}>{calc ? `$${calc.rewardsValue.toFixed(2)}` : '-'}</td> ))}
-                                 </tr>
-                                 <tr>
-                                     <td>Est. Annual Perk Value</td>
-                                     {displayedCardCalculations.map((calc, index) => ( <td key={cardsToDisplayIndices[index]} className={calc?.isBestPerkValue ? styles.bestValue : ''}>{calc ? `$${calc.annualPerkValue.toFixed(2)}` : '-'}</td> ))}
-                                 </tr>
-                                 <tr>
-                                     <td>Annual Fee</td>
-                                     {displayedCardCalculations.map((calc, index) => ( <td key={cardsToDisplayIndices[index]} className={calc?.isLowestAnnualFee ? styles.bestValue : ''}>{calc ? `-$${calc.annualFee.toFixed(2)}` : '-'}</td> ))}
-                                 </tr>
-                                 <tr className={styles.highlightRow}>
-                                     <td>Est. Ongoing Net Value</td>
-                                     {displayedCardCalculations.map((calc, index) => ( <td key={cardsToDisplayIndices[index]} className={`${calc?.isBestNetValue ? styles.bestValue : ''} ${calc && calc.netValue < 0 ? styles.valueBad : ''}`}>{calc ? `$${calc.netValue.toFixed(2)}` : '-'}</td> ))}
-                                 </tr>
-                                 {/* --- Spacer Row --- */}
-                                 <tr className={styles.spacerRow}><td colSpan={cardsToDisplayIndices.length + 1}></td></tr>
-                                 <tr>
-                                     <td>Sign-up Bonus Value</td>
-                                     {displayedCardCalculations.map((calc, index) => ( <td key={cardsToDisplayIndices[index]}>{calc ? `+$${calc.signUpBonusValue.toFixed(2)}` : '-'}</td> ))}
-                                 </tr>
-                                 <tr className={styles.highlightRowBold}>
-                                     <td>Est. 1st Year Net Value</td>
-                                     {displayedCardCalculations.map((calc, index) => ( <td key={cardsToDisplayIndices[index]} className={`${calc?.isBestFirstYearNetValue ? styles.bestValue : ''} ${calc && calc.firstYearNetValue < 0 ? styles.valueBad : ''}`}>{calc ? `$${calc.firstYearNetValue.toFixed(2)}` : '-'}</td> ))}
-                                 </tr>
-                             </tbody>
-                         </table>
+                                    <td>Est. Annual Rewards Value</td>
+                                    {displayedCardCalculations.map((calc, index) => ( <td key={cardsToDisplayIndices[index]} className={calc?.isBestRewardsValue ? styles.bestValue : ''}>{calc ? `$${calc.rewardsValue.toFixed(2)}` : '-'}</td> ))}
+                                </tr>
+                                <tr>
+                                    <td>Est. Annual Perk Value</td>
+                                    {displayedCardCalculations.map((calc, index) => ( <td key={cardsToDisplayIndices[index]} className={calc?.isBestPerkValue ? styles.bestValue : ''}>{calc ? `$${calc.annualPerkValue.toFixed(2)}` : '-'}</td> ))}
+                                </tr>
+                                <tr>
+                                    <td>Annual Fee</td>
+                                    {displayedCardCalculations.map((calc, index) => ( <td key={cardsToDisplayIndices[index]} className={calc?.isLowestAnnualFee ? styles.bestValue : ''}>{calc ? `-$${calc.annualFee.toFixed(2)}` : '-'}</td> ))}
+                                </tr>
+                                <tr className={styles.highlightRow}>
+                                    <td>Est. Ongoing Net Value</td>
+                                    {displayedCardCalculations.map((calc, index) => ( <td key={cardsToDisplayIndices[index]} className={`${calc?.isBestNetValue ? styles.bestValue : ''} ${calc && calc.netValue < 0 ? styles.valueBad : ''}`}>{calc ? `$${calc.netValue.toFixed(2)}` : '-'}</td> ))}
+                                </tr>
+                                {/* --- Spacer Row --- */}
+                                <tr className={styles.spacerRow}><td colSpan={cardsToDisplayIndices.length + 1}></td></tr>
+                                <tr>
+                                    <td>Sign-up Bonus Value</td>
+                                    {displayedCardCalculations.map((calc, index) => ( <td key={cardsToDisplayIndices[index]}>{calc ? `+$${calc.signUpBonusValue.toFixed(2)}` : '-'}</td> ))}
+                                </tr>
+                                <tr className={styles.highlightRowBold}>
+                                    <td>Est. 1st Year Net Value</td>
+                                    {displayedCardCalculations.map((calc, index) => ( <td key={cardsToDisplayIndices[index]} className={`${calc?.isBestFirstYearNetValue ? styles.bestValue : ''} ${calc && calc.firstYearNetValue < 0 ? styles.valueBad : ''}`}>{calc ? `$${calc.firstYearNetValue.toFixed(2)}` : '-'}</td> ))}
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                      <p className={styles.disclaimer}>
-                        **Important:** Calculations are estimates based on provided data and user inputs. Actual rewards may vary based on spending patterns, cap limits, and specific merchant coding. Point values (CPP) are estimates and can fluctuate. Offers, rates, fees, and benefits are subject to change; please verify all details directly with the card issuer before applying. See our full Advertiser Disclosure. Last data refresh: [Insert Date or Mechanism].
+                         **Important:** Calculations are estimates based on provided data and user inputs. Actual rewards may vary based on spending patterns, cap limits, and specific merchant coding. Point values (CPP) are estimates and can fluctuate. Offers, rates, fees, and benefits are subject to change; please verify all details directly with the card issuer before applying. See our full Advertiser Disclosure. Last data refresh: [Insert Date or Mechanism].
                      </p>
                 </section>
              )}
