@@ -2498,8 +2498,8 @@
         },
         {
           "type": "global_entry_tsa_precheck",
-          "description": "Up to $189 credit every 4 years for Global Entry or every 4.5 years for TSA PreCheck®",
-          "estimated_value_usd": 189
+          "description": "Up to $100 statement credit for Global Entry application fee (every 4 years) or up to $85 for TSA PreCheck® application fee (every 4.5 years).",
+          "estimated_value_usd": 100
         }
       ]
     },

@@ -155,8 +155,8 @@ function AmexBusinessPlatinumReviewPage2025() { // Updated component name slight
               {/* Section 1 Content (Part of Header Structure in Template) */}
               <section id="section-1">
                 <div className={styles.intro}>
-                  <p dangerouslySetInnerHTML={{ __html: "The <strong>Business Platinum Card® from American Express</strong> is positioned as a comprehensive toolkit for business owners and executives whose work involves frequent travel.<sup>1</sup> It promises an elevated experience, blending luxury travel perks with business-focused value, suggesting it can help \"redefine possible.\"<sup>1</sup> Often called \"loaded with high end perks\" <sup>2</sup>, it targets those seeking comfort, efficiency, and rewards.<sup>3</sup>" }}></p>
-                  <p dangerouslySetInnerHTML={{ __html: "However, this comes with a significant <strong>$695 annual fee</strong>, placing it in the ultra-premium market.<sup>5</sup> This review offers a concise analysis for the US-based business traveler, examining if the card's extensive benefits justify its price. We'll cover rewards, lounge access, hotel status, business credits, insurance, and customer experience to determine if it's a strategic asset or an expensive luxury.<sup>5</sup> The card's reputation sets high expectations; this review assesses if reality matches the image.<sup>4</sup>" }}></p>
+                  <p dangerouslySetInnerHTML={{ __html: "The <strong>Business Platinum Card® from American Express</strong> is positioned as a comprehensive toolkit for business owners and executives whose work involves frequent travel. It promises an elevated experience, blending luxury travel perks with business-focused value, suggesting it can help \"redefine possible.\" Often called \"loaded with high end perks\" , it targets those seeking comfort, efficiency, and rewards." }}></p>
+                  <p dangerouslySetInnerHTML={{ __html: "However, this comes with a significant <strong>$695 annual fee</strong>, placing it in the ultra-premium market. This review offers a concise analysis for the US-based business traveler, examining if the card's extensive benefits justify its price. We'll cover rewards, lounge access, hotel status, business credits, insurance, and customer experience to determine if it's a strategic asset or an expensive luxury. The card's reputation sets high expectations; this review assesses if reality matches the image." }}></p>
                 </div>
 
                 {/* Image Container - Kept from your template */}
@@ -243,21 +243,21 @@ function AmexBusinessPlatinumReviewPage2025() { // Updated component name slight
             {/* Renumbering sections from user's text, starting new sections from 'section-3' for content */}
             <section id="section-user-2" className={styles.reviewSection}>
                 <h2 dangerouslySetInnerHTML={{ __html: "2. At a Glance: Key Features and Current Welcome Offer" }}></h2>
-                <p dangerouslySetInnerHTML={{ __html: "The American Express Business Platinum Card is primarily a charge card, typically requiring monthly payment in full. It features \"No Pre-Set Spending Limit,\" offering dynamic purchasing power based on usage and credit profile, plus Pay Over Time flexibility.<sup>1</sup>" }}></p>
-                <p dangerouslySetInnerHTML={{ __html: "A major draw is the welcome offer: currently, new Card Members can earn <strong>150,000 Membership Rewards® points</strong> after spending $20,000 on eligible purchases within the first 3 months. Additionally, a <strong>$500 statement credit</strong> is available after spending $2,500 on qualifying flights booked directly or via Amex Travel in the same period.<sup>2</sup> This offer is noted as ending June 30, 2025.<sup>2</sup> The high $20,000 spending requirement targets businesses with substantial cash flow.<sup>2</sup> This dual offer encourages early use of Amex's travel channels and holds significant potential value, estimated at $3,500+ depending on redemption.<sup>8</sup>" }}></p>
-                <p dangerouslySetInnerHTML={{ __html: "The card carries a $695 annual fee.<sup>7</sup> Key benefits include extensive airport lounge access (American Express Global Lounge Collection®), numerous annual statement credits, and 5X points on flights and prepaid hotels via AmexTravel.com.<sup>7</sup>" }}></p>
+                <p dangerouslySetInnerHTML={{ __html: "The American Express Business Platinum Card is primarily a charge card, typically requiring monthly payment in full. It features \"No Pre-Set Spending Limit,\" offering dynamic purchasing power based on usage and credit profile, plus Pay Over Time flexibility." }}></p>
+                <p dangerouslySetInnerHTML={{ __html: "A major draw is the welcome offer: currently, new Card Members can earn <strong>150,000 Membership Rewards® points</strong> after spending $20,000 on eligible purchases within the first 3 months. Additionally, a <strong>$500 statement credit</strong> is available after spending $2,500 on qualifying flights booked directly or via Amex Travel in the same period. This offer is noted as ending June 30, 2025. The high $20,000 spending requirement targets businesses with substantial cash flow. This dual offer encourages early use of Amex's travel channels and holds significant potential value, estimated at $3,500+ depending on redemption." }}></p>
+                <p dangerouslySetInnerHTML={{ __html: "The card carries a $695 annual fee. Key benefits include extensive airport lounge access (American Express Global Lounge Collection®), numerous annual statement credits, and 5X points on flights and prepaid hotels via AmexTravel.com." }}></p>
             </section>
 
             <section id="section-user-3" className={styles.reviewSection}>
                 <h2 dangerouslySetInnerHTML={{ __html: "3. The Price of Premium: Understanding the Annual Fee and Other Costs" }}></h2>
-                <p dangerouslySetInnerHTML={{ __html: "The most prominent cost is the <strong>$695 annual fee</strong>, setting expectations for substantial value from its premium features.<sup>7</sup>" }}></p>
+                <p dangerouslySetInnerHTML={{ __html: "The most prominent cost is the <strong>$695 annual fee</strong>, setting expectations for substantial value from its premium features." }}></p>
                 <p>Other potential costs:</p>
                 <ul className={styles.featureList}>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Additional Card Fees:</strong><ul><li>Employee Business Platinum Card: Offers most primary card benefits (lounge access, Global Entry credit) for a $350 annual fee each.<sup>16</sup></li><li>No-Annual-Fee Employee Card: Earns points but lacks premium perks.<sup>13</sup></li></ul>" }}></li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Foreign Transaction Fees:</strong> None.<sup>13</sup> Essential for international business." }}></li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Late Payment Fees:</strong> $39 or 2.99% of the past due Pay In Full amount, whichever is greater.<sup>11</sup>" }}></li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Returned Payment Fee:</strong> $39.<sup>11</sup>" }}></li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Pay Over Time APR:</strong> Carries interest at a variable APR (e.g., Prime Rate + 10.99% to Prime Rate + 19.99%), with a potential penalty APR (e.g., Prime Rate + 25.99%) up to 29.99%.<sup>11</sup> Carrying a balance long-term is costly." }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Additional Card Fees:</strong><ul><li>Employee Business Platinum Card: Offers most primary card benefits (lounge access, Global Entry credit) for a $350 annual fee each.</li><li>No-Annual-Fee Employee Card: Earns points but lacks premium perks.</li></ul>" }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Foreign Transaction Fees:</strong> None. Essential for international business." }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Late Payment Fees:</strong> $39 or 2.99% of the past due Pay In Full amount, whichever is greater." }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Returned Payment Fee:</strong> $39." }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Pay Over Time APR:</strong> Carries interest at a variable APR (e.g., Prime Rate + 10.99% to Prime Rate + 19.99%), with a potential penalty APR (e.g., Prime Rate + 25.99%) up to 29.99%. Carrying a balance long-term is costly." }}></li>
                 </ul>
             </section>
 
@@ -265,11 +265,11 @@ function AmexBusinessPlatinumReviewPage2025() { // Updated component name slight
                 <h2 dangerouslySetInnerHTML={{ __html: "4. Earning Power: Maximizing Membership Rewards® Points" }}></h2>
                 <p dangerouslySetInnerHTML={{ __html: "The card earns flexible Membership Rewards points, rewarding specific travel and large business spending:" }}></p>
                 <ul className={styles.featureList}>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>5X Points:</strong> Per dollar on:<ul><li>Flights booked directly with airlines (up to $500,000/year, then 1X).<sup>18</sup></li><li>Flights and prepaid hotels via AmexTravel.com.<sup>7</sup></li></ul>" }}></li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>1.5X Points:</strong> Per dollar (extra half point) on eligible purchases in these areas (up to $2 million combined/year, then 1X) <sup>2</sup>:<ul><li>Single purchases of $5,000 or more.</li><li>Key business categories: U.S. construction/hardware suppliers, U.S. electronic goods retailers/software/cloud providers, U.S. shipping providers.</li></ul>" }}></li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>1X Points:</strong> On all other eligible purchases.<sup>7</sup> This base rate is low, emphasizing bonus categories." }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>5X Points:</strong> Per dollar on:<ul><li>Flights booked directly with airlines (up to $500,000/year, then 1X).</li><li>Flights and prepaid hotels via AmexTravel.com.</li></ul>" }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>1.5X Points:</strong> Per dollar (extra half point) on eligible purchases in these areas (up to $2 million combined/year, then 1X) :<ul><li>Single purchases of $5,000 or more.</li><li>Key business categories: U.S. construction/hardware suppliers, U.S. electronic goods retailers/software/cloud providers, U.S. shipping providers.</li></ul>" }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>1X Points:</strong> On all other eligible purchases. This base rate is low, emphasizing bonus categories." }}></li>
                 </ul>
-                <p dangerouslySetInnerHTML={{ __html: "If a purchase qualifies for multiple bonuses, only the highest rate applies.<sup>7</sup> Points are earned on primary and employee card spending.<sup>13</sup>" }}></p>
+                <p dangerouslySetInnerHTML={{ __html: "If a purchase qualifies for multiple bonuses, only the highest rate applies. Points are earned on primary and employee card spending." }}></p>
                 <p><strong>Earning Rates Summary:</strong></p>
                 <div className={styles.tableContainer}>
                     <table className={styles.statsTable}>
@@ -318,15 +318,15 @@ function AmexBusinessPlatinumReviewPage2025() { // Updated component name slight
 
             <section id="section-user-5" className={styles.reviewSection}>
                 <h2 dangerouslySetInnerHTML={{ __html: "5. Redeeming Rewards: Flexibility and Value of Membership Rewards® Points" }}></h2>
-                <p dangerouslySetInnerHTML={{ __html: "Membership Rewards points offer flexibility, but value varies.<sup>13</sup> Understanding options is key:" }}></p>
+                <p dangerouslySetInnerHTML={{ __html: "Membership Rewards points offer flexibility, but value varies. Understanding options is key:" }}></p>
                 <ul className={styles.featureList}>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Transferring to Airline & Hotel Partners:</strong> Often yields the highest potential value (well above 1 cent/point) for premium travel, but requires research and flexibility.<sup>13</sup>" }}></li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Booking Travel via AmexTravel.com:</strong><ul><li>Flights: Typically 1 cent/point.<sup>25</sup> (See Section 6 for 35% rebate impact).</li><li>Hotels (Prepaid), Cruises, etc.: Generally 0.7 cents/point <sup>25</sup>, less favorable. Fine Hotels + Resorts bookings might yield 1 cent/point.<sup>25</sup></li></ul>" }}></li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Pay with Points at Checkout:</strong> Value typically 0.7 to 1 cent/point with participating retailers.<sup>26</sup>" }}></li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Statement Credits (Cover Your Charges):</strong> Generally the least valuable option at 0.6 cents/point.<sup>25</sup>" }}></li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Gift Cards:</strong> Up to 1 cent/point, depending on the brand.<sup>13</sup>" }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Transferring to Airline & Hotel Partners:</strong> Often yields the highest potential value (well above 1 cent/point) for premium travel, but requires research and flexibility." }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Booking Travel via AmexTravel.com:</strong><ul><li>Flights: Typically 1 cent/point. (See Section 6 for 35% rebate impact).</li><li>Hotels (Prepaid), Cruises, etc.: Generally 0.7 cents/point , less favorable. Fine Hotels + Resorts bookings might yield 1 cent/point.</li></ul>" }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Pay with Points at Checkout:</strong> Value typically 0.7 to 1 cent/point with participating retailers." }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Statement Credits (Cover Your Charges):</strong> Generally the least valuable option at 0.6 cents/point." }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Gift Cards:</strong> Up to 1 cent/point, depending on the brand." }}></li>
                 </ul>
-                <p dangerouslySetInnerHTML={{ __html: "Amex provides tools like a Points Value Calculator.<sup>7</sup> Maximizing value often involves using transfer partners or the 35% Pay with Points rebate." }}></p>
+                <p dangerouslySetInnerHTML={{ __html: "Amex provides tools like a Points Value Calculator. Maximizing value often involves using transfer partners or the 35% Pay with Points rebate." }}></p>
                 <p><strong>Redemption Value Summary:</strong></p>
                 <div className={styles.tableContainer}>
                     <table className={styles.statsTable}>
@@ -375,66 +375,66 @@ function AmexBusinessPlatinumReviewPage2025() { // Updated component name slight
 
             <section id="section-user-6" className={styles.reviewSection}>
                 <h2 dangerouslySetInnerHTML={{ __html: "6. The 35% Airline Bonus: A Closer Look at the Pay with Points Rebate" }}></h2>
-                <p dangerouslySetInnerHTML={{ __html: "A key feature is the <strong>35% Airline Bonus</strong> when using Pay with Points via Amex Travel.<sup>2</sup> Card Members get 35% of points back when redeeming for eligible flights." }}></p>
+                <p dangerouslySetInnerHTML={{ __html: "A key feature is the <strong>35% Airline Bonus</strong> when using Pay with Points via Amex Travel. Card Members get 35% of points back when redeeming for eligible flights." }}></p>
                 <ul className={styles.featureList}>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Annual Cap:</strong> Up to 1,000,000 points back per calendar year.<sup>5</sup>" }}></li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Eligible Flights:</strong><ul><li>First and Business Class tickets on any airline via Amex Travel.<sup>8</sup></li><li>Any fare class on the one specific airline selected annually for the $200 Airline Fee Credit.<sup>8</sup></li></ul>" }}></li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Mechanics:</strong> Select qualifying airline annually.<sup>30</sup> Book via Amex Travel using points (min. 5,000).<sup>31</sup> Rebate credited in 6-10 weeks.<sup>30</sup> Spirit/Southwest require calling.<sup>30</sup>" }}></li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Effective Value:</strong> Boosts redemption value to approx. 1.54 cents per point ($1 / 0.65 points).<sup>31</sup>" }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Annual Cap:</strong> Up to 1,000,000 points back per calendar year." }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Eligible Flights:</strong><ul><li>First and Business Class tickets on any airline via Amex Travel.</li><li>Any fare class on the one specific airline selected annually for the $200 Airline Fee Credit.</li></ul>" }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Mechanics:</strong> Select qualifying airline annually. Book via Amex Travel using points (min. 5,000). Rebate credited in 6-10 weeks. Spirit/Southwest require calling." }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Effective Value:</strong> Boosts redemption value to approx. 1.54 cents per point ($1 / 0.65 points)." }}></li>
                 </ul>
-                <p dangerouslySetInnerHTML={{ __html: "This provides a strong alternative to transfers, especially for premium cabins or when award availability is low.<sup>31</sup> It offers straightforward value via the Amex portal and allows earning airline miles/status credits.<sup>31</sup>" }}></p>
+                <p dangerouslySetInnerHTML={{ __html: "This provides a strong alternative to transfers, especially for premium cabins or when award availability is low. It offers straightforward value via the Amex portal and allows earning airline miles/status credits." }}></p>
             </section>
 
             <section id="section-user-7" className={styles.reviewSection}>
                 <h2 dangerouslySetInnerHTML={{ __html: "7. Elevated Airport Experience: The American Express Global Lounge Collection®" }}></h2>
-                <p dangerouslySetInnerHTML={{ __html: "A highly valued benefit is access to the <strong>American Express Global Lounge Collection®</strong>, covering over 1,400 lounges in 140+ countries.<sup>3</sup>" }}></p>
+                <p dangerouslySetInnerHTML={{ __html: "A highly valued benefit is access to the <strong>American Express Global Lounge Collection®</strong>, covering over 1,400 lounges in 140+ countries." }}></p>
                 <p>Includes:</p>
                 <ul className={styles.featureList}>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>The Centurion® Lounge:</strong> Amex's exclusive lounges.<sup>5</sup> Complimentary guest access (up to two) requires $75,000 annual spend; otherwise, guests incur fees (~$50).<sup>13</sup>" }}></li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Priority Pass™ Select:</strong> Complimentary membership upon enrollment.<sup>5</sup> Individual lounge policies/fees vary.<sup>7</sup> Enrollment required.<sup>7</sup>" }}></li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Delta Sky Club®:</strong> Access when flying Delta same-day.<sup>5</sup> Capped at 10 visits per Medallion Year (Feb 1-Jan 31) unless $75,000 annual spend unlocks unlimited visits.<sup>5</sup> Guests generally not complimentary." }}></li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Escape Lounges - The Centurion® Studio Partner:</strong> Complimentary access.<sup>7</sup>" }}></li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Plaza Premium Lounges:</strong> Complimentary access.<sup>7</sup>" }}></li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Lufthansa Lounges:</strong> Access when flying Lufthansa Group (rules vary).<sup>7</sup>" }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>The Centurion® Lounge:</strong> Amex's exclusive lounges. Complimentary guest access (up to two) requires $75,000 annual spend; otherwise, guests incur fees (~$50)." }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Priority Pass™ Select:</strong> Complimentary membership upon enrollment. Individual lounge policies/fees vary. Enrollment required." }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Delta Sky Club®:</strong> Access when flying Delta same-day. Capped at 10 visits per Medallion Year (Feb 1-Jan 31) unless $75,000 annual spend unlocks unlimited visits. Guests generally not complimentary." }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Escape Lounges - The Centurion® Studio Partner:</strong> Complimentary access." }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Plaza Premium Lounges:</strong> Complimentary access." }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Lufthansa Lounges:</strong> Access when flying Lufthansa Group (rules vary)." }}></li>
                     <li><strong>Other Partner Lounges:</strong> Access rules may vary.</li>
                 </ul>
-                <p dangerouslySetInnerHTML={{ __html: "The Amex App includes a Lounge Finder.<sup>18</sup> While access breadth is excellent, recent guest/visit limitations (without high spend) require consideration. Value depends on travel frequency and patterns." }}></p>
+                <p dangerouslySetInnerHTML={{ __html: "The Amex App includes a Lounge Finder. While access breadth is excellent, recent guest/visit limitations (without high spend) require consideration. Value depends on travel frequency and patterns." }}></p>
             </section>
 
             <section id="section-user-8" className={styles.reviewSection}>
                 <h2 dangerouslySetInnerHTML={{ __html: "8. Streamlined Security: CLEAR® Plus and Global Entry/TSA PreCheck® Credits" }}></h2>
                 <p>The card offers credits to expedite airport security:</p>
                 <ul className={styles.featureList}>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>CLEAR® Plus Credit:</strong> Up to $199 in statement credits per year for CLEAR Plus membership paid with the card.<sup>7</sup> CLEAR uses biometrics for faster identity verification at security in 50+ US airports/venues.<sup>7</sup> Credit covers membership cost (excluding taxes/fees); auto-renewal applies.<sup>14</sup>" }}></li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Global Entry or TSA PreCheck® Fee Credit:</strong> Covers the application fee for either:<ul><li>Global Entry: $120 credit every 4 years (includes TSA PreCheck).<sup>7</sup></li><li>TSA PreCheck®: Up to $85 credit every 4.5 years.<sup>7</sup> Credit applied when fee charged to the card.<sup>7</sup></li></ul>" }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>CLEAR® Plus Credit:</strong> Up to $199 in statement credits per year for CLEAR Plus membership paid with the card. CLEAR uses biometrics for faster identity verification at security in 50+ US airports/venues. Credit covers membership cost (excluding taxes/fees); auto-renewal applies." }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Global Entry or TSA PreCheck® Fee Credit:</strong> Covers the application fee for either:<ul><li>Global Entry: $120 credit every 4 years (includes TSA PreCheck).</li><li>TSA PreCheck®: Up to $85 credit every 4.5 years. Credit applied when fee charged to the card.</li></ul>" }}></li>
                 </ul>
-                <p dangerouslySetInnerHTML={{ __html: "Each Additional Business Platinum Card ($350 fee version) is also eligible for its own GE/TSA PreCheck credit.<sup>7</sup> These credits offer direct monetary value and significant time savings.<sup>14</sup>" }}></p>
+                <p dangerouslySetInnerHTML={{ __html: "Each Additional Business Platinum Card ($350 fee version) is also eligible for its own GE/TSA PreCheck credit. These credits offer direct monetary value and significant time savings." }}></p>
             </section>
 
             <section id="section-user-9" className={styles.reviewSection}>
                 <h2 dangerouslySetInnerHTML={{ __html: "9. Hotel Privileges: Elite Status and Premium Program Benefits (Fine Hotels + Resorts® & The Hotel Collection)" }}></h2>
                 <p>The card provides hotel benefits through complimentary elite status and exclusive booking programs via Amex Travel.</p>
                 <ul className={styles.featureList}>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Hilton Honors™ Gold Status:</strong> Complimentary upon enrollment.<sup>5</sup> Benefits include potential upgrades, daily food/beverage credit (US) or breakfast (select non-US), 80% points bonus, 5th night free on reward stays.<sup>14</sup>" }}></li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Marriott Bonvoy® Gold Elite Status:</strong> Complimentary upon enrollment.<sup>5</sup> Benefits include 25% points bonus, potential enhanced upgrades, 2 PM late checkout (subject to availability).<sup>34</sup>" }}></li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Fine Hotels + Resorts® (FHR):</strong> Exclusive benefits at 1,600+ luxury hotels booked via Amex Travel.<sup>4</sup> Average value ~$550/stay <sup>13</sup>, includes daily breakfast for two, room upgrade (when available), noon check-in (when available), guaranteed 4 PM late check-out, Wi-Fi, and a unique $100 property amenity.<sup>13</sup>" }}></li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>The Hotel Collection:</strong> For 2+ night stays at participating upscale hotels booked via Amex Travel <sup>4</sup>: $100 credit for qualifying on-property activities, room upgrade (when available).<sup>14</sup>" }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Hilton Honors™ Gold Status:</strong> Complimentary upon enrollment. Benefits include potential upgrades, daily food/beverage credit (US) or breakfast (select non-US), 80% points bonus, 5th night free on reward stays." }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Marriott Bonvoy® Gold Elite Status:</strong> Complimentary upon enrollment. Benefits include 25% points bonus, potential enhanced upgrades, 2 PM late checkout (subject to availability)." }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Fine Hotels + Resorts® (FHR):</strong> Exclusive benefits at 1,600+ luxury hotels booked via Amex Travel. Average value ~$550/stay , includes daily breakfast for two, room upgrade (when available), noon check-in (when available), guaranteed 4 PM late check-out, Wi-Fi, and a unique $100 property amenity." }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>The Hotel Collection:</strong> For 2+ night stays at participating upscale hotels booked via Amex Travel : $100 credit for qualifying on-property activities, room upgrade (when available)." }}></li>
                 </ul>
-                <p dangerouslySetInnerHTML={{ __html: "Enrollment required for statuses.<sup>7</sup> FHR/Hotel Collection bookings via Amex Travel (prepaid earn 5X).<sup>7</sup> Value depends on usage and perk availability. FHR offers significant value for luxury travelers, though base rates via Amex Travel should be compared." }}></p>
+                <p dangerouslySetInnerHTML={{ __html: "Enrollment required for statuses. FHR/Hotel Collection bookings via Amex Travel (prepaid earn 5X). Value depends on usage and perk availability. FHR offers significant value for luxury travelers, though base rates via Amex Travel should be compared." }}></p>
             </section>
 
             <section id="section-user-10" className={styles.reviewSection}>
                 <h2 dangerouslySetInnerHTML={{ __html: "10. Statement Credits Galore: Offsetting the Annual Fee (Airline, Dell, Indeed, Adobe, Wireless, Hilton)" }}></h2>
-                <p dangerouslySetInnerHTML={{ __html: "Numerous statement credits help offset the $695 fee, potentially exceeding $1,000 annually if maximized.<sup>8</sup> Most require enrollment and have specific terms." }}></p>
+                <p dangerouslySetInnerHTML={{ __html: "Numerous statement credits help offset the $695 fee, potentially exceeding $1,000 annually if maximized. Most require enrollment and have specific terms." }}></p>
                 <ul className={styles.featureList}>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>$200 Airline Fee Credit:</strong> Up to $200/year for incidentals (baggage, seat fees, etc., not tickets) on one selected qualifying US airline.<sup>5</sup> Less flexible than general travel credits." }}></li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Up to $400 Dell Technologies Credit:</strong> Up to $200 semi-annually (Jan-June, July-Dec) for U.S. Dell purchases. Enrollment required. Currently available through June 30, 2025.<sup>2</sup>" }}></li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Up to $360 Indeed Credit:</strong> Up to $90/quarter for Indeed hiring/recruiting purchases. Enrollment required.<sup>2</sup>" }}></li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Up to $150 Adobe Credit:</strong> Annually for eligible annual prepaid Creative Cloud/Acrobat Pro teams plans. Enrollment required. Currently available through June 30, 2025.<sup>2</sup>" }}></li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Up to $120 Wireless Credit:</strong> Up to $10/month for direct U.S. wireless provider purchases. Enrollment required.<sup>2</sup>" }}></li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Up to $200 Hilton Statement Credit:</strong> Up to $50/quarter for eligible purchases made directly with Hilton portfolio properties. Requires enrollment and Hilton for Business membership.<sup>2</sup>" }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>$200 Airline Fee Credit:</strong> Up to $200/year for incidentals (baggage, seat fees, etc., not tickets) on one selected qualifying US airline. Less flexible than general travel credits." }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Up to $400 Dell Technologies Credit:</strong> Up to $200 semi-annually (Jan-June, July-Dec) for U.S. Dell purchases. Enrollment required. Currently available through June 30, 2025." }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Up to $360 Indeed Credit:</strong> Up to $90/quarter for Indeed hiring/recruiting purchases. Enrollment required." }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Up to $150 Adobe Credit:</strong> Annually for eligible annual prepaid Creative Cloud/Acrobat Pro teams plans. Enrollment required. Currently available through June 30, 2025." }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Up to $120 Wireless Credit:</strong> Up to $10/month for direct U.S. wireless provider purchases. Enrollment required." }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Up to $200 Hilton Statement Credit:</strong> Up to $50/quarter for eligible purchases made directly with Hilton portfolio properties. Requires enrollment and Hilton for Business membership." }}></li>
                 </ul>
-                <p dangerouslySetInnerHTML={{ __html: "Utility varies based on spending. Active management (enrollment, tracking) is needed.<sup>40</sup>" }}></p>
+                <p dangerouslySetInnerHTML={{ __html: "Utility varies based on spending. Active management (enrollment, tracking) is needed." }}></p>
                 <p><strong>Statement Credits Summary:</strong></p>
                 <div className={styles.tableContainer}>
                     <table className={styles.statsTable}>
@@ -511,24 +511,24 @@ function AmexBusinessPlatinumReviewPage2025() { // Updated component name slight
 
             <section id="section-user-11" className={styles.reviewSection}>
                 <h2 dangerouslySetInnerHTML={{ __html: "11. On-the-Road Perks: Car Rental Privileges and Benefits" }}></h2>
-                <p dangerouslySetInnerHTML={{ __html: "The card offers complimentary elite status with major car rental companies upon enrollment <sup>5</sup>:" }}></p>
+                <p dangerouslySetInnerHTML={{ __html: "The card offers complimentary elite status with major car rental companies upon enrollment :" }}></p>
                 <ul className={styles.featureList}>
                     <li dangerouslySetInnerHTML={{ __html: "Avis Preferred®" }}></li>
                     <li dangerouslySetInnerHTML={{ __html: "Hertz Gold Plus Rewards® (Typically Gold)" }}></li>
                     <li dangerouslySetInnerHTML={{ __html: "National Car Rental® Emerald Club Executive" }}></li>
                 </ul>
-                <p dangerouslySetInnerHTML={{ __html: "Enrollment required via Amex account.<sup>7</sup> Benefits generally include vehicle upgrades (when available), potential discounts, and priority service.<sup>14</sup> These offer convenience and potential savings. Value depends on rental frequency and availability. Complemented by the card's Car Rental Loss and Damage Insurance.<sup>13</sup>" }}></p>
+                <p dangerouslySetInnerHTML={{ __html: "Enrollment required via Amex account. Benefits generally include vehicle upgrades (when available), potential discounts, and priority service. These offer convenience and potential savings. Value depends on rental frequency and availability. Complemented by the card's Car Rental Loss and Damage Insurance." }}></p>
             </section>
 
             <section id="section-user-12" className={styles.reviewSection}>
                 <h2 dangerouslySetInnerHTML={{ __html: "12. Travel Protections: Peace of Mind on Your Journeys (Trip Cancellation/Interruption, Delay, Baggage)" }}></h2>
-                <p dangerouslySetInnerHTML={{ __html: "The card includes insurance coverages for travel mishaps, generally requiring the trip purchase on the card.<sup>7</sup>" }}></p>
+                <p dangerouslySetInnerHTML={{ __html: "The card includes insurance coverages for travel mishaps, generally requiring the trip purchase on the card." }}></p>
                 <ul className={styles.featureList}>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Trip Cancellation and Interruption Insurance:</strong> May reimburse non-refundable expenses if a covered reason cancels/interrupts a round-trip purchased entirely with the card (limits apply, e.g., up to $10k/trip, $20k/account/year).<sup>5</sup>" }}></li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Trip Delay Insurance:</strong> Can reimburse reasonable expenses (meals, lodging) for covered delays over 6 hours on a round-trip purchased entirely with the card (typically capped at $500/trip, 2 claims/account/year).<sup>5</sup>" }}></li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Baggage Insurance Plan:</strong> Covers lost, damaged, or stolen baggage on common carriers when the entire fare was charged to the card (secondary coverage, limits apply, e.g., up to $3k combined per person/trip).<sup>13</sup>" }}></li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Car Rental Loss and Damage Insurance:</strong> Provides secondary coverage for damage/theft of a rental vehicle when the rental company's CDW is declined and the rental is paid entirely with the card (excludes liability, not available in Australia, Italy, NZ).<sup>13</sup>" }}></li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Premium Global Assist® Hotline:</strong> 24/7 coordination service for emergencies over 100 miles from home (medical, legal, financial referrals). Coordination is complimentary; Card Member pays third-party costs, though emergency medical transport may be covered if coordinated by the hotline.<sup>7</sup>" }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Trip Cancellation and Interruption Insurance:</strong> May reimburse non-refundable expenses if a covered reason cancels/interrupts a round-trip purchased entirely with the card (limits apply, e.g., up to $10k/trip, $20k/account/year)." }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Trip Delay Insurance:</strong> Can reimburse reasonable expenses (meals, lodging) for covered delays over 6 hours on a round-trip purchased entirely with the card (typically capped at $500/trip, 2 claims/account/year)." }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Baggage Insurance Plan:</strong> Covers lost, damaged, or stolen baggage on common carriers when the entire fare was charged to the card (secondary coverage, limits apply, e.g., up to $3k combined per person/trip)." }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Car Rental Loss and Damage Insurance:</strong> Provides secondary coverage for damage/theft of a rental vehicle when the rental company's CDW is declined and the rental is paid entirely with the card (excludes liability, not available in Australia, Italy, NZ)." }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Premium Global Assist® Hotline:</strong> 24/7 coordination service for emergencies over 100 miles from home (medical, legal, financial referrals). Coordination is complimentary; Card Member pays third-party costs, though emergency medical transport may be covered if coordinated by the hotline." }}></li>
                 </ul>
                 <p>These protections offer significant value, but understanding terms, limits, and the full fare purchase requirement is crucial.</p>
             </section>
@@ -537,21 +537,21 @@ function AmexBusinessPlatinumReviewPage2025() { // Updated component name slight
                 <h2 dangerouslySetInnerHTML={{ __html: "13. Shopping Safeguards: Purchase Protection and Extended Warranty Deep Dive" }}></h2>
                 <p>The card offers protections for eligible items purchased:</p>
                 <ul className={styles.featureList}>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Purchase Protection:</strong> Covers eligible items against accidental damage, theft, or loss for up to 90 days from purchase.<sup>5</sup> Provides reimbursement up to $10,000 per purchase ($500 for natural disasters) and $50,000 per account per year.<sup>18</sup> Claims generally within 30 days.<sup>43</sup> High per-item limit is advantageous.<sup>43</sup>" }}></li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Extended Warranty:</strong> Extends the original U.S. manufacturer's warranty by up to one additional year on eligible warranties of 5 years or less.<sup>5</sup> Coverage up to $10,000 per item and $50,000 per account per year, mirroring original warranty terms (excluding physical damage unless originally covered).<sup>45</sup>" }}></li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Return Protection:</strong> If a U.S. merchant refuses a return within 90 days, Amex may refund the purchase price (up to $300/item, $1,000/account/year) for eligible items bought entirely with the card in the U.S.<sup>13</sup>" }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Purchase Protection:</strong> Covers eligible items against accidental damage, theft, or loss for up to 90 days from purchase. Provides reimbursement up to $10,000 per purchase ($500 for natural disasters) and $50,000 per account per year. Claims generally within 30 days. High per-item limit is advantageous." }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Extended Warranty:</strong> Extends the original U.S. manufacturer's warranty by up to one additional year on eligible warranties of 5 years or less. Coverage up to $10,000 per item and $50,000 per account per year, mirroring original warranty terms (excluding physical damage unless originally covered)." }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Return Protection:</strong> If a U.S. merchant refuses a return within 90 days, Amex may refund the purchase price (up to $300/item, $1,000/account/year) for eligible items bought entirely with the card in the U.S." }}></li>
                 </ul>
-                <p dangerouslySetInnerHTML={{ __html: "These safeguards add security for business purchases. Exclusions apply; consult benefit guides.<sup>47</sup>" }}></p>
+                <p dangerouslySetInnerHTML={{ __html: "These safeguards add security for business purchases. Exclusions apply; consult benefit guides." }}></p>
             </section>
 
             <section id="section-user-14" className={styles.reviewSection}>
                 <h2 dangerouslySetInnerHTML={{ __html: "14. Business-Focused Tools: Employee Cards, Account Management, and Amex Business Blueprint™" }}></h2>
                 <p>Amex provides tools for expense management and financial oversight:</p>
                 <ul className={styles.featureList}>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Employee Cards:</strong> Streamline purchasing and tracking.<sup>16</sup><ul><li>Employee Business Platinum Card ($350/year): Offers premium benefits (lounge access, GE/TSA credit) and earns points.<sup>16</sup></li><li>No-Annual-Fee Employee Card: Earns points, lacks premium perks.<sup>13</sup> Up to 99 employee cards allowed.<sup>13</sup> Set spending limits, get alerts, view spending per employee online.<sup>16</sup></li></ul>" }}></li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Account Managers:</strong> Designate a trusted individual to manage certain account aspects (payments, disputes, employee cards).<sup>16</sup>" }}></li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>American Express Business Blueprint™:</strong> Digital dashboard consolidating linked Amex products and external accounts.<sup>51</sup> Features include cash flow insights, expense tracking, and a 30-day bank balance projection.<sup>51</sup>" }}></li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Other Management Tools:</strong> Year-end summaries, potential integration with accounting software (QuickBooks®), Amex @Work platform for larger clients, Shop Small® Map.<sup>16</sup>" }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Employee Cards:</strong> Streamline purchasing and tracking.<ul><li>Employee Business Platinum Card ($350/year): Offers premium benefits (lounge access, GE/TSA credit) and earns points.</li><li>No-Annual-Fee Employee Card: Earns points, lacks premium perks. Up to 99 employee cards allowed. Set spending limits, get alerts, view spending per employee online.</li></ul>" }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Account Managers:</strong> Designate a trusted individual to manage certain account aspects (payments, disputes, employee cards)." }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>American Express Business Blueprint™:</strong> Digital dashboard consolidating linked Amex products and external accounts. Features include cash flow insights, expense tracking, and a 30-day bank balance projection." }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Other Management Tools:</strong> Year-end summaries, potential integration with accounting software (QuickBooks®), Amex @Work platform for larger clients, Shop Small® Map." }}></li>
                 </ul>
                 <p>These tools aim to integrate the card into business financial operations.</p>
             </section>
@@ -560,8 +560,8 @@ function AmexBusinessPlatinumReviewPage2025() { // Updated component name slight
                 <h2 dangerouslySetInnerHTML={{ __html: "15. Added Business Value: Amex Offers and Cell Phone Protection" }}></h2>
                 <p>Additional savings and protection avenues:</p>
                 <ul className={styles.featureList}>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Amex Offers:</strong> Targeted discounts or bonus points on spending with specific merchants.<sup>7</sup> Requires activation via online account/app.<sup>7</sup> Value varies but consistent use can yield savings." }}></li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Cell Phone Protection:</strong> Reimburses for theft or accidental damage of eligible cell phones listed on the wireless bill paid with the card.<sup>4</sup> Key terms:<ul><li>Coverage: Up to $800 per claim.</li><li>Deductible: $50 per approved claim.</li><li>Claim Limit: Max 2 approved claims/account/12 months.</li><li>Eligibility: Prior month's wireless bill must be paid with the card.</li></ul>" }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Amex Offers:</strong> Targeted discounts or bonus points on spending with specific merchants. Requires activation via online account/app. Value varies but consistent use can yield savings." }}></li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Cell Phone Protection:</strong> Reimburses for theft or accidental damage of eligible cell phones listed on the wireless bill paid with the card. Key terms:<ul><li>Coverage: Up to $800 per claim.</li><li>Deductible: $50 per approved claim.</li><li>Claim Limit: Max 2 approved claims/account/12 months.</li><li>Eligibility: Prior month's wireless bill must be paid with the card.</li></ul>" }}></li>
                 </ul>
                 <p>Cell phone protection is a practical benefit for essential business tools.</p>
             </section>
@@ -611,59 +611,59 @@ function AmexBusinessPlatinumReviewPage2025() { // Updated component name slight
                         <tbody>
                             <tr>
                                 <td data-label="Feature">Annual Fee</td>
-                                <td data-label="Amex Business Platinum®" dangerouslySetInnerHTML={{__html: "$695 <sup>7</sup>"}}></td>
-                                <td data-label="Chase Ink Business Preferred®" dangerouslySetInnerHTML={{__html: "$95 <sup>56</sup>"}}></td>
-                                <td data-label="Capital One Venture X Business" dangerouslySetInnerHTML={{__html: "$395 <sup>58</sup>"}}></td>
-                                <td data-label="Delta SkyMiles® Reserve Business Amex" dangerouslySetInnerHTML={{__html: "$650 <sup>60</sup>"}}></td>
-                                <td data-label="Chase Ink Business Premier®" dangerouslySetInnerHTML={{__html: "$195 <sup>62</sup>"}}></td>
+                                <td data-label="Amex Business Platinum®" dangerouslySetInnerHTML={{__html: "$695 "}}></td>
+                                <td data-label="Chase Ink Business Preferred®" dangerouslySetInnerHTML={{__html: "$95 "}}></td>
+                                <td data-label="Capital One Venture X Business" dangerouslySetInnerHTML={{__html: "$395 "}}></td>
+                                <td data-label="Delta SkyMiles® Reserve Business Amex" dangerouslySetInnerHTML={{__html: "$650 "}}></td>
+                                <td data-label="Chase Ink Business Premier®" dangerouslySetInnerHTML={{__html: "$195 "}}></td>
                             </tr>
                             <tr>
                                 <td data-label="Feature">Current Welcome Offer (Example)</td>
-                                <td data-label="Amex Business Platinum®" dangerouslySetInnerHTML={{__html: "150k points + $500 credit after $20k+$2.5k spend <sup>7</sup>"}}></td>
-                                <td data-label="Chase Ink Business Preferred®" dangerouslySetInnerHTML={{__html: "100k points after $8k spend <sup>57</sup>"}}></td>
-                                <td data-label="Capital One Venture X Business" dangerouslySetInnerHTML={{__html: "150k miles after $30k spend (+ potential 200k tier) <sup>59</sup>"}}></td>
-                                <td data-label="Delta SkyMiles® Reserve Business Amex" dangerouslySetInnerHTML={{__html: "80k miles (+ potential MQDs) after spend <sup>61</sup>"}}></td>
-                                <td data-label="Chase Ink Business Premier®" dangerouslySetInnerHTML={{__html: "$1,000 cash back (100k points) after $10k spend <sup>62</sup>"}}></td>
+                                <td data-label="Amex Business Platinum®" dangerouslySetInnerHTML={{__html: "150k points + $500 credit after $20k+$2.5k spend "}}></td>
+                                <td data-label="Chase Ink Business Preferred®" dangerouslySetInnerHTML={{__html: "100k points after $8k spend "}}></td>
+                                <td data-label="Capital One Venture X Business" dangerouslySetInnerHTML={{__html: "150k miles after $30k spend (+ potential 200k tier) "}}></td>
+                                <td data-label="Delta SkyMiles® Reserve Business Amex" dangerouslySetInnerHTML={{__html: "80k miles (+ potential MQDs) after spend "}}></td>
+                                <td data-label="Chase Ink Business Premier®" dangerouslySetInnerHTML={{__html: "$1,000 cash back (100k points) after $10k spend "}}></td>
                             </tr>
                             <tr>
                                 <td data-label="Feature">Primary Rewards Earning</td>
-                                <td data-label="Amex Business Platinum®" dangerouslySetInnerHTML={{__html: "5X flights/prepaid hotels (AmexTravel); 1.5X on $5k+ purchases & key biz categories; 1X other <sup>7</sup>"}}></td>
-                                <td data-label="Chase Ink Business Preferred®" dangerouslySetInnerHTML={{__html: "3X travel, shipping, ads, internet/cable/phone (up to $150k/yr); 1X other <sup>57</sup>"}}></td>
-                                <td data-label="Capital One Venture X Business" dangerouslySetInnerHTML={{__html: "10X hotels/rentals, 5X flights (Capital One Travel); 2X everywhere else <sup>59</sup>"}}></td>
-                                <td data-label="Delta SkyMiles® Reserve Business Amex" dangerouslySetInnerHTML={{__html: "3X Delta; 1.5X transit, US ship, US office supply; 1X other <sup>61</sup>"}}></td>
-                                <td data-label="Chase Ink Business Premier®" dangerouslySetInnerHTML={{__html: "5X travel (Chase Travel); 2.5% cash back on $5k+ purchases; 2% cash back other <sup>62</sup>"}}></td>
+                                <td data-label="Amex Business Platinum®" dangerouslySetInnerHTML={{__html: "5X flights/prepaid hotels (AmexTravel); 1.5X on $5k+ purchases & key biz categories; 1X other "}}></td>
+                                <td data-label="Chase Ink Business Preferred®" dangerouslySetInnerHTML={{__html: "3X travel, shipping, ads, internet/cable/phone (up to $150k/yr); 1X other "}}></td>
+                                <td data-label="Capital One Venture X Business" dangerouslySetInnerHTML={{__html: "10X hotels/rentals, 5X flights (Capital One Travel); 2X everywhere else "}}></td>
+                                <td data-label="Delta SkyMiles® Reserve Business Amex" dangerouslySetInnerHTML={{__html: "3X Delta; 1.5X transit, US ship, US office supply; 1X other "}}></td>
+                                <td data-label="Chase Ink Business Premier®" dangerouslySetInnerHTML={{__html: "5X travel (Chase Travel); 2.5% cash back on $5k+ purchases; 2% cash back other "}}></td>
                             </tr>
                             <tr>
                                 <td data-label="Feature">Key Annual Travel Credits</td>
-                                <td data-label="Amex Business Platinum®" dangerouslySetInnerHTML={{__html: "$200 Airline Fee; $200 Hilton; $199 CLEAR; GE/TSA Fee <sup>7</sup>"}}></td>
+                                <td data-label="Amex Business Platinum®" dangerouslySetInnerHTML={{__html: "$200 Airline Fee; $200 Hilton; $199 CLEAR; GE/TSA Fee "}}></td>
                                 <td data-label="Chase Ink Business Preferred®">None explicit</td>
-                                <td data-label="Capital One Venture X Business" dangerouslySetInnerHTML={{__html: "$300 Capital One Travel Credit; 10k Anniversary Miles; GE/TSA Fee <sup>59</sup>"}}></td>
-                                <td data-label="Delta SkyMiles® Reserve Business Amex" dangerouslySetInnerHTML={{__html: "Companion Cert (First/C+/Main); $250 Delta Stays; $240 Resy; $120 Rideshare; GE/TSA Fee <sup>61</sup>"}}></td>
+                                <td data-label="Capital One Venture X Business" dangerouslySetInnerHTML={{__html: "$300 Capital One Travel Credit; 10k Anniversary Miles; GE/TSA Fee "}}></td>
+                                <td data-label="Delta SkyMiles® Reserve Business Amex" dangerouslySetInnerHTML={{__html: "Companion Cert (First/C+/Main); $250 Delta Stays; $240 Resy; $120 Rideshare; GE/TSA Fee "}}></td>
                                 <td data-label="Chase Ink Business Premier®">None explicit</td>
                             </tr>
                             <tr>
                                 <td data-label="Feature">Airport Lounge Access Summary</td>
-                                <td data-label="Amex Business Platinum®" dangerouslySetInnerHTML={{__html: "Amex Global Lounge Collection (Centurion, Priority Pass, Delta Sky Club*, Escape, etc.) *Delta capped visits/Centurion guests limited w/o spend <sup>7</sup>"}}></td>
+                                <td data-label="Amex Business Platinum®" dangerouslySetInnerHTML={{__html: "Amex Global Lounge Collection (Centurion, Priority Pass, Delta Sky Club*, Escape, etc.) *Delta capped visits/Centurion guests limited w/o spend "}}></td>
                                 <td data-label="Chase Ink Business Preferred®">None standard</td>
-                                <td data-label="Capital One Venture X Business" dangerouslySetInnerHTML={{__html: "Capital One Lounges; Priority Pass Select <sup>59</sup>"}}></td>
-                                <td data-label="Delta SkyMiles® Reserve Business Amex" dangerouslySetInnerHTML={{__html: "Delta Sky Club (15 visits or unlimited w/ spend); Centurion/Escape (when flying Delta) <sup>61</sup>"}}></td>
+                                <td data-label="Capital One Venture X Business" dangerouslySetInnerHTML={{__html: "Capital One Lounges; Priority Pass Select "}}></td>
+                                <td data-label="Delta SkyMiles® Reserve Business Amex" dangerouslySetInnerHTML={{__html: "Delta Sky Club (15 visits or unlimited w/ spend); Centurion/Escape (when flying Delta) "}}></td>
                                 <td data-label="Chase Ink Business Premier®">None standard</td>
                             </tr>
                             <tr>
                                 <td data-label="Feature">Unique Business Perks/Credits</td>
-                                <td data-label="Amex Business Platinum®" dangerouslySetInnerHTML={{__html: "Dell ($400), Indeed ($360), Adobe ($150), Wireless ($120) credits <sup>7</sup>"}}></td>
+                                <td data-label="Amex Business Platinum®" dangerouslySetInnerHTML={{__html: "Dell ($400), Indeed ($360), Adobe ($150), Wireless ($120) credits "}}></td>
                                 <td data-label="Chase Ink Business Preferred®">Strong 3X categories relevant to many businesses</td>
-                                <td data-label="Capital One Venture X Business" dangerouslySetInnerHTML={{__html: "Simple 2X earning everywhere; Virtual Cards <sup>59</sup>"}}></td>
-                                <td data-label="Delta SkyMiles® Reserve Business Amex" dangerouslySetInnerHTML={{__html: "Delta-specific perks (MQD Boost, TakeOff 15, Free Bag) <sup>61</sup>"}}></td>
-                                <td data-label="Chase Ink Business Premier®" dangerouslySetInnerHTML={{__html: "High cash back on large purchases; Flex for Business payment option <sup>62</sup>"}}></td>
+                                <td data-label="Capital One Venture X Business" dangerouslySetInnerHTML={{__html: "Simple 2X earning everywhere; Virtual Cards "}}></td>
+                                <td data-label="Delta SkyMiles® Reserve Business Amex" dangerouslySetInnerHTML={{__html: "Delta-specific perks (MQD Boost, TakeOff 15, Free Bag) "}}></td>
+                                <td data-label="Chase Ink Business Premier®" dangerouslySetInnerHTML={{__html: "High cash back on large purchases; Flex for Business payment option "}}></td>
                             </tr>
                             <tr>
                                 <td data-label="Feature">Point Transfer Options</td>
-                                <td data-label="Amex Business Platinum®" dangerouslySetInnerHTML={{__html: "Yes (Extensive Airline/Hotel Partners) <sup>13</sup>"}}></td>
-                                <td data-label="Chase Ink Business Preferred®" dangerouslySetInnerHTML={{__html: "Yes (Chase Ultimate Rewards Partners) <sup>57</sup>"}}></td>
-                                <td data-label="Capital One Venture X Business" dangerouslySetInnerHTML={{__html: "Yes (15+ Airline/Hotel Partners) <sup>59</sup>"}}></td>
+                                <td data-label="Amex Business Platinum®" dangerouslySetInnerHTML={{__html: "Yes (Extensive Airline/Hotel Partners) "}}></td>
+                                <td data-label="Chase Ink Business Preferred®" dangerouslySetInnerHTML={{__html: "Yes (Chase Ultimate Rewards Partners) "}}></td>
+                                <td data-label="Capital One Venture X Business" dangerouslySetInnerHTML={{__html: "Yes (15+ Airline/Hotel Partners) "}}></td>
                                 <td data-label="Delta SkyMiles® Reserve Business Amex">No (Earns Delta SkyMiles directly)</td>
-                                <td data-label="Chase Ink Business Premier®" dangerouslySetInnerHTML={{__html: "No (Points typically redeemable at 1 cpp for cash/travel/gift cards) <sup>68</sup>"}}></td>
+                                <td data-label="Chase Ink Business Premier®" dangerouslySetInnerHTML={{__html: "No (Points typically redeemable at 1 cpp for cash/travel/gift cards) "}}></td>
                             </tr>
                         </tbody>
                     </table>
@@ -686,31 +686,31 @@ function AmexBusinessPlatinumReviewPage2025() { // Updated component name slight
                     <div className={styles.pros}>
                         <h3>Pros:</h3>
                         <ul className={styles.featureList}>
-                            <li dangerouslySetInnerHTML={{__html: "Unmatched Lounge Access: Global Lounge Collection including Centurion Lounges.<sup>5</sup>"}}></li>
-                            <li dangerouslySetInnerHTML={{__html: "Extensive Statement Credits: Over $1,500 potential annual value can offset/exceed the fee if maximized.<sup>5</sup>"}}></li>
-                            <li dangerouslySetInnerHTML={{__html: "Valuable Hotel Elite Status: Complimentary Hilton & Marriott Gold status.<sup>5</sup>"}}></li>
-                            <li dangerouslySetInnerHTML={{__html: "Robust Travel & Purchase Protections: Comprehensive insurance coverage.<sup>5</sup>"}}></li>
-                            <li dangerouslySetInnerHTML={{__html: "High Earning on Travel: 5X points on flights/prepaid hotels via AmexTravel.<sup>7</sup>"}}></li>
-                            <li dangerouslySetInnerHTML={{__html: "Powerful Pay with Points Rebate: 35% Airline Bonus offers ~1.54 cpp value.<sup>5</sup>"}}></li>
-                            <li dangerouslySetInnerHTML={{__html: "Premium Hotel Booking Programs: FHR & The Hotel Collection add value.<sup>5</sup>"}}></li>
-                            <li dangerouslySetInnerHTML={{__html: "No Foreign Transaction Fees.<sup>6</sup>"}}></li>
+                            <li dangerouslySetInnerHTML={{__html: "Unmatched Lounge Access: Global Lounge Collection including Centurion Lounges."}}></li>
+                            <li dangerouslySetInnerHTML={{__html: "Extensive Statement Credits: Over $1,500 potential annual value can offset/exceed the fee if maximized."}}></li>
+                            <li dangerouslySetInnerHTML={{__html: "Valuable Hotel Elite Status: Complimentary Hilton & Marriott Gold status."}}></li>
+                            <li dangerouslySetInnerHTML={{__html: "Robust Travel & Purchase Protections: Comprehensive insurance coverage."}}></li>
+                            <li dangerouslySetInnerHTML={{__html: "High Earning on Travel: 5X points on flights/prepaid hotels via AmexTravel."}}></li>
+                            <li dangerouslySetInnerHTML={{__html: "Powerful Pay with Points Rebate: 35% Airline Bonus offers ~1.54 cpp value."}}></li>
+                            <li dangerouslySetInnerHTML={{__html: "Premium Hotel Booking Programs: FHR & The Hotel Collection add value."}}></li>
+                            <li dangerouslySetInnerHTML={{__html: "No Foreign Transaction Fees."}}></li>
                         </ul>
                     </div>
                     <div className={styles.cons}>
                         <h3>Cons:</h3>
                         <ul className={styles.featureList}>
-                            <li dangerouslySetInnerHTML={{__html: "Very High Annual Fee: Requires significant benefit use to justify.<sup>5</sup>"}}></li>
-                            <li dangerouslySetInnerHTML={{__html: "Requires Active Management: Benefits/credits need enrollment and tracking.<sup>28</sup>"}}></li>
-                            <li dangerouslySetInnerHTML={{__html: "Specific Vendor Credits: Only valuable if using Dell, Indeed, Adobe.<sup>8</sup>"}}></li>
-                            <li dangerouslySetInnerHTML={{__html: "Low Base Rewards Rate: 1X on non-bonused spending is low.<sup>4</sup>"}}></li>
-                            <li dangerouslySetInnerHTML={{__html: "High Welcome Offer Spend: $20k in 3 months can be challenging.<sup>5</sup>"}}></li>
-                            <li dangerouslySetInnerHTML={{__html: "Complex Point Valuation: Maximizing points often requires transfer partner knowledge.<sup>25</sup>"}}></li>
-                            <li dangerouslySetInnerHTML={{__html: "Restrictive Airline Fee Credit: Incidentals only, not airfare.<sup>35</sup>"}}></li>
-                            <li dangerouslySetInnerHTML={{__html: "Diluted Lounge Perks: Guest/visit limits without high spend reduce value for some.<sup>5</sup>"}}></li>
+                            <li dangerouslySetInnerHTML={{__html: "Very High Annual Fee: Requires significant benefit use to justify."}}></li>
+                            <li dangerouslySetInnerHTML={{__html: "Requires Active Management: Benefits/credits need enrollment and tracking."}}></li>
+                            <li dangerouslySetInnerHTML={{__html: "Specific Vendor Credits: Only valuable if using Dell, Indeed, Adobe."}}></li>
+                            <li dangerouslySetInnerHTML={{__html: "Low Base Rewards Rate: 1X on non-bonused spending is low."}}></li>
+                            <li dangerouslySetInnerHTML={{__html: "High Welcome Offer Spend: $20k in 3 months can be challenging."}}></li>
+                            <li dangerouslySetInnerHTML={{__html: "Complex Point Valuation: Maximizing points often requires transfer partner knowledge."}}></li>
+                            <li dangerouslySetInnerHTML={{__html: "Restrictive Airline Fee Credit: Incidentals only, not airfare."}}></li>
+                            <li dangerouslySetInnerHTML={{__html: "Diluted Lounge Perks: Guest/visit limits without high spend reduce value for some."}}></li>
                         </ul>
                     </div>
                 </div>
-                <p dangerouslySetInnerHTML={{ __html: "Best suited for businesses with frequent premium travel, spending aligned with bonus categories/credits, and willingness to manage benefits actively. Those seeking simplicity, lower fees, or high general rewards might look elsewhere. A personalized calculation is essential.<sup>4</sup>" }}></p>
+                <p dangerouslySetInnerHTML={{ __html: "Best suited for businesses with frequent premium travel, spending aligned with bonus categories/credits, and willingness to manage benefits actively. Those seeking simplicity, lower fees, or high general rewards might look elsewhere. A personalized calculation is essential." }}></p>
             </section>
 
             <section id="section-user-19" className={styles.reviewSection}>
@@ -718,17 +718,17 @@ function AmexBusinessPlatinumReviewPage2025() { // Updated component name slight
                 <p>Applying involves meeting criteria and understanding Amex practices. Post-approval customer experience is key.</p>
                 <p><strong>Application Process:</strong></p>
                 <ul className={styles.featureList}>
-                    <li dangerouslySetInnerHTML={{__html: "Creditworthiness: Generally requires good to excellent credit (often FICO 670+).<sup>5</sup> Amex assesses personal and business credit.<sup>71</sup>"}}></li>
-                    <li dangerouslySetInnerHTML={{__html: "Business Eligibility: Sole proprietors, freelancers, side hustles often eligible.<sup>22</sup> Need business details (name, address, industry, revenue, EIN or SSN).<sup>73</sup> May require documentation.<sup>22</sup>"}}></li>
-                    <li dangerouslySetInnerHTML={{__html: "Application Information: Standard personal and business details needed.<sup>73</sup>"}}></li>
-                    <li dangerouslySetInnerHTML={{__html: "Amex Policies:<ul><li>Apply with Confidence: May see approval odds before hard credit inquiry.<sup>15</sup></li><li>Welcome Offer Eligibility: Typically once per lifetime per card.<sup>22</sup> Pop-up tool may warn ineligible applicants.<sup>22</sup></li><li>Application Velocity: Limits on approvals (e.g., ~2 cards/90 days), considers overall Amex credit exposure.<sup>22</sup></li></ul>"}}></li>
+                    <li dangerouslySetInnerHTML={{__html: "Creditworthiness: Generally requires good to excellent credit (often FICO 670+). Amex assesses personal and business credit."}}></li>
+                    <li dangerouslySetInnerHTML={{__html: "Business Eligibility: Sole proprietors, freelancers, side hustles often eligible. Need business details (name, address, industry, revenue, EIN or SSN). May require documentation."}}></li>
+                    <li dangerouslySetInnerHTML={{__html: "Application Information: Standard personal and business details needed."}}></li>
+                    <li dangerouslySetInnerHTML={{__html: "Amex Policies:<ul><li>Apply with Confidence: May see approval odds before hard credit inquiry.</li><li>Welcome Offer Eligibility: Typically once per lifetime per card. Pop-up tool may warn ineligible applicants.</li><li>Application Velocity: Limits on approvals (e.g., ~2 cards/90 days), considers overall Amex credit exposure.</li></ul>"}}></li>
                 </ul>
                 <p><strong>Customer Experience:</strong></p>
                 <ul className={styles.featureList}>
-                    <li dangerouslySetInnerHTML={{__html: "Reputation: Amex generally ranks highly for customer satisfaction.<sup>69</sup> J.D. Power often awards top marks.<sup>74</sup>"}}></li>
-                    <li dangerouslySetInnerHTML={{__html: "Platinum Card Concierge: Dedicated service for reservations, tickets, requests.<sup>13</sup>"}}></li>
-                    <li dangerouslySetInnerHTML={{__html: "Potential Issues: Some user reports mention inconsistent service, challenges with outsourced reps, difficulties resolving complex issues (especially via Amex Travel), and frustrating chat support.<sup>75</sup>"}}></li>
-                    <li dangerouslySetInnerHTML={{__html: "Digital Tools: Amex mobile app generally well-regarded.<sup>74</sup>"}}></li>
+                    <li dangerouslySetInnerHTML={{__html: "Reputation: Amex generally ranks highly for customer satisfaction. J.D. Power often awards top marks."}}></li>
+                    <li dangerouslySetInnerHTML={{__html: "Platinum Card Concierge: Dedicated service for reservations, tickets, requests."}}></li>
+                    <li dangerouslySetInnerHTML={{__html: "Potential Issues: Some user reports mention inconsistent service, challenges with outsourced reps, difficulties resolving complex issues (especially via Amex Travel), and frustrating chat support."}}></li>
+                    <li dangerouslySetInnerHTML={{__html: "Digital Tools: Amex mobile app generally well-regarded."}}></li>
                 </ul>
                 <p>While aiming for premium service, experiences can vary; resolving issues may require persistence.</p>
             </section>
@@ -753,7 +753,7 @@ function AmexBusinessPlatinumReviewPage2025() { // Updated component name slight
                     <li>Those prioritizing high rewards on general business spending.</li>
                     <li>Businesses unable to meet the high welcome offer spend.</li>
                 </ul>
-                <p dangerouslySetInnerHTML={{ __html: "The $695 fee demands active utilization to be worthwhile.<sup>4</sup> When maximized, benefits can significantly outweigh the fee. Its unique position comes from the sheer volume and variety of perks, especially the lounge network and specific business credits.<sup>5</sup> While competitors offer alternatives, none replicate the entire package." }}></p>
+                <p dangerouslySetInnerHTML={{ __html: "The $695 fee demands active utilization to be worthwhile. When maximized, benefits can significantly outweigh the fee. Its unique position comes from the sheer volume and variety of perks, especially the lounge network and specific business credits. While competitors offer alternatives, none replicate the entire package." }}></p>
                 <p>The decision requires personalized assessment. For the right US business traveler – frequent, valuing premium experiences, spending strategically, and engaging actively – the Amex Business Platinum Card can be a powerful tool. Others might find better value in simpler, less costly alternatives.</p>
             </section>
 
