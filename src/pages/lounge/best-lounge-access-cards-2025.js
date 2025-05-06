@@ -29,43 +29,50 @@ import schemaCard10 from '@/schemas/lounge/hsbc-premier-world-elite.json';
 
 // --- COMPLETE Lounge Access Card Data (Extracted from HTML - VERIFY ALL!) ---
 const cardsData = [
-    {
-        id: 'amex-platinum',
-        name: 'The Platinum Card® from American Express',
-        tciRating: '9.4',
-        applyUrl: 'https://www.americanexpress.com/us/credit-cards/card/platinum/', // *** REPLACE ***
-        learnMoreUrl: '/cards/amex-platinum', // *** REPLACE ***
-        ratesFeesUrl: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/platinum-card/25330-10-0#FeeTable',
-        imageUrl: '/NUS000000237_480x304_straight_withname.avif', // *** VERIFY PATH ***
-        imageAlt: 'The Platinum Card® from American Express',
-        imageWidth: 480, // *** REPLACE ***
-        imageHeight: 304, // *** REPLACE ***
-        bonus: '<strong>Welcome Bonus:</strong> 80,000 Membership Rewards® Points after spending $6,000 in the first 6 months.<br><em>(Valued at ~$1,200 when transferred to partners).</em>',
-        earningRatesList: [
-             '5X points on flights booked directly with airlines or via Amex Travel.',
-             '5X points on prepaid hotels booked through Amex Travel.',
-             '1X points on other purchases.'
-        ],
-        keyFeatures: [ // Luxury Features from HTML
-            'Lounge Access: 1,400+ lounges worldwide (Centurion, Delta Sky Clubs®, Priority Pass™ Select).',
-            'Fine Hotels + Resorts® Program: Room upgrades, late checkout, daily breakfast.',
-            'Uber Cash: Up to $15/month in Uber credits ($35 in December).',
-            'Exclusive Travel Benefits with Emirates, Qatar Airways, etc.'
-        ],
-        additionalPerks: [
-            '$200 airline fee credit annually.',
-            '$100 credit for Global Entry or TSA PreCheck.',
-            'Complimentary Hilton Honors Gold and Marriott Bonvoy Gold Elite status.',
-            'No foreign transaction fees.'
-        ],
-        bestFor: 'Luxury travelers seeking VIP treatment and extensive lounge access.',
-        // Table Data
-        annualFeeTable: '$695',
-        loungeAccessTable: 'Access to 1,400+ lounges including Centurion Lounges, Delta Sky Clubs®, and Priority Pass Select',
-        welcomeBonusTable: '80,000 points',
-        bestForTable: 'Luxury travelers seeking top-tier lounge access',
-        schema: schemaCard1 // Link to imported schema
-    },
+     {
+            // --- START AMEX PLATINUM CARD DATA ---
+             id: 'amex-platinum',
+             name: 'The Platinum Card® from American Express',
+             tciRating: '9.4', // Not verified/updated
+             applyUrl: 'https://www.americanexpress.com/us/credit-cards/card/platinum/', // Original URL, not verified/updated
+             learnMoreUrl: '/cards/amex-platinum', // Original path, not verified/updated
+             ratesFeesUrl: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/platinum-card/25330-10-0#FeeTable', // Original URL, not verified/updated
+             imageUrl: '/NUS000000237_480x304_straight_withname.avif', // Original path, not verified/updated
+             imageAlt: 'The Platinum Card® from American Express',
+             imageWidth: 480, // Original value, not verified/updated
+             imageHeight: 304, // Original value, not verified/updated
+             // UPDATED Welcome Bonus Spending Requirement
+             bonus: '<strong>Welcome Bonus:</strong> 80,000 Membership Rewards® Points after spending $8,000 in the first 6 months.<br><em>(Valued at ~$1,200 when transferred to partners - user valuation, not verified).</em>',
+             // UPDATED Earning Rates to include flight cap
+             earningRatesList: [
+                 '5X points on flights booked directly with airlines or via Amex Travel (on up to $500,000 per calendar year).',
+                 '5X points on prepaid hotels booked through Amex Travel.',
+                 '1X points on other purchases.'
+             ],
+             // UPDATED Key Features (Uber Cash December amount)
+             keyFeatures: [ // Luxury Features from HTML (user comment)
+                 'Lounge Access: 1,400+ lounges worldwide (Centurion, Delta Sky Clubs® when flying Delta, Priority Pass™ Select - enrollment required).', // Clarified Delta access & enrollment
+                 'Fine Hotels + Resorts® Program: Room upgrades (when available), late checkout (when available), daily breakfast for two.', // Added detail/clarification
+                 'Uber Cash: Up to $15/month in Uber credits plus a $20 bonus in December (enrollment required).', // Updated December amount
+                 '$200 Hotel Credit: On prepaid Fine Hotels + Resorts® or The Hotel Collection bookings with Amex Travel (min. 2-night stay for The Hotel Collection).' // Added as specific perk found
+                 // Removed vague 'Exclusive Travel Benefits' as specific perks are listed
+             ],
+             // UPDATED Additional Perks (Global Entry/TSA amount, added CLEAR Plus)
+             additionalPerks: [
+                 '$200 airline fee credit annually (enrollment required, for incidental fees on selected airline).', // Added detail
+                 '$120 credit for Global Entry or up to $85 credit for TSA PreCheck® (fee credit applied every 4-4.5 years).', // Updated credit amounts/details
+                 '$199 CLEAR® Plus Credit annually (enrollment required).', // Added new perk
+                 'Complimentary Hilton Honors Gold and Marriott Bonvoy Gold Elite status (enrollment required).', // Added enrollment note
+                 'No foreign transaction fees.'
+             ],
+             bestFor: 'Luxury travelers seeking VIP treatment and top-tier travel experiences.', // Original value, not verified/updated
+             // Table Data (kept brief as per original structure)
+             annualFeeTable: '$695', // Matches current
+             welcomeBonusTable: '80,000 points', // Matches current points
+             rewardsRatesTable: '5X points on flights & prepaid hotels via Amex Travel', // Matches current summary
+             bestForTable: 'Luxury travelers seeking VIP treatment', // Original value, not verified/updated
+             schema: schemaCard1 // Original value, assuming 'schemaCard1' is defined elsewhere
+           }, // --- END AMEX PLATINUM CARD DATA ---
     {
         id: 'capital-one-venture-x',
         name: 'Capital One Venture X Rewards Credit Card',
