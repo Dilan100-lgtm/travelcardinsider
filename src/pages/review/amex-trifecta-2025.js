@@ -376,7 +376,7 @@ export default function AmexTrifectaReview2025() {
               </ul>
 
               {/* Recreating Table 1 */}
-              <div className={styles.reviewTableContainer}> {/* Optional: Add a container for styling */}
+              <div className={styles.tablereviewSectionResponsive}> {/* Optional: Add a container for styling */}
                 <h4 className={styles.reviewTableHeader}>Table 1: Amex Trifecta - Optimal Card for Each Spending Category (2025)</h4>
                 <table className={styles.tablereviewSection
 }>
