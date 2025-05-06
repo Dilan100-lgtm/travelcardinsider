@@ -449,7 +449,7 @@ export default function AmexTrifectaReview2025() {
                 <p>The combined annual fees for the classic Trifecta total <b>$1,170</b> ($325 Gold + $150 Green + $695 Platinum). Offsetting this significant cost relies heavily on maximizing the statement credits offered by the cards.</p>
 
                 {/* Recreating Table 2 */}
-                 <div className={styles.reviewTableContainer}>
+                 <div className={styles.tablereviewSectionResponsive}>
                     <h4 className={styles.reviewTableHeader}>Table 2: Amex Trifecta - Annual Fees vs. Max Potential Statement Credits (2025 Estimate)</h4>
                     <table className={styles.tablereviewSection 
 }>
