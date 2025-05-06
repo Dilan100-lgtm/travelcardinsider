@@ -451,7 +451,8 @@ export default function AmexTrifectaReview2025() {
                 {/* Recreating Table 2 */}
                  <div className={styles.reviewTableContainer}>
                     <h4 className={styles.reviewTableHeader}>Table 2: Amex Trifecta - Annual Fees vs. Max Potential Statement Credits (2025 Estimate)</h4>
-                    <table className={styles.reviewToc}>
+                    <table className={styles.tablereviewSection 
+}>
                         <thead>
                             <tr>
                                 <th>Card</th>
