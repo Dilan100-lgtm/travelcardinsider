@@ -200,7 +200,7 @@
    .cardFeatureBlock h4 { font-size: 0.9rem; }
    .featureList li { font-size: 0.8rem; }
    .cardActions { padding: 1rem; }
-   .cardActions .ctaButton, .cardActions .ratesFeesLink { width: 100%; max-width: 300px; flex-basis: auto; }
+   .cardActions .ctaButton, .cardActions .ratesFeesLink { width: 100%; max-width: 300px; flex-basis: auto;height: 30%; }
    .cardActions .ratesFeesLink { margin-top: 0.8rem; }
    .ctaSubtext { font-size: 0.65rem; }
    .ctaButton{ min-width: 100px;}
