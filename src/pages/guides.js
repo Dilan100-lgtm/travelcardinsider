@@ -1,6 +1,9 @@
-// /pages/guides.js
+// pages/guides.js – **build‑safe version**
+// Fixes: rating.toFixed crash during SSG by coercing every `review.rating` to a Number
+// and guarding JSON‑LD generation.
+
 import Head from 'next/head';
-import { useState, useEffect } from 'react'; // Import hooks
+import { useState, useEffect } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ReviewCard from '@/components/ReviewCard';
@@ -8,101 +11,84 @@ import { getAllReviewsSorted, getUniqueFilterValues } from '@/utils/getAllReview
 import styles from '@/styles/GuidesPage.module.css';
 
 export default function GuidesPage({ reviews: initialReviews, filterOptions }) {
-  // --- State for Filters ---
+  /* -------------------- Filter state -------------------- */
   const [selectedBank, setSelectedBank] = useState('');
   const [selectedCardType, setSelectedCardType] = useState('');
-  const [showTopPicks, setShowTopPicks] = useState(false); // State for Top Picks button
+  const [showTopPicks, setShowTopPicks] = useState(false);
 
-  // --- State for Displayed Reviews ---
+  /* -------------------- Display state ------------------- */
   const [filteredReviews, setFilteredReviews] = useState(initialReviews);
 
-  // --- Filtering Logic ---
+  /* -------------------- Filtering logic ----------------- */
   useEffect(() => {
-    let currentReviews = [...initialReviews]; // Start with all reviews
+    let current = [...initialReviews];
 
-    // Apply Bank filter
     if (selectedBank) {
-      currentReviews = currentReviews.filter(review => review.issuer === selectedBank);
+      current = current.filter(r => r.issuer === selectedBank);
     }
-
-    // Apply Card Type filter (assuming type is in 'tags')
     if (selectedCardType) {
-      currentReviews = currentReviews.filter(review => review.tags && review.tags.includes(selectedCardType));
+      current = current.filter(r => r.tags?.includes(selectedCardType));
     }
-
-    // Apply Top Picks filter (assuming 'featured' field exists)
     if (showTopPicks) {
-        // Toggle behavior: If already showing top picks, clicking again shows all that match other filters
-        // If not showing top picks, filter down to only featured ones that match other filters.
-        // For simplicity here, we'll just filter *down* if showTopPicks is true.
-        // You might want more complex toggle logic.
-       currentReviews = currentReviews.filter(review => review.featured === true);
+      current = current.filter(r => r.featured === true);
     }
+    setFilteredReviews(current);
+  }, [selectedBank, selectedCardType, showTopPicks, initialReviews]);
 
-
-    setFilteredReviews(currentReviews); // Update the displayed reviews
-
-  }, [selectedBank, selectedCardType, showTopPicks, initialReviews]); // Re-run effect when filters or initial reviews change
-
-
-  // --- Event Handlers ---
-  const handleBankChange = (event) => {
-    setSelectedBank(event.target.value);
-    setShowTopPicks(false); // Reset top picks when other filters change
+  /* -------------------- Handlers ------------------------ */
+  const handleBankChange = e => {
+    setSelectedBank(e.target.value);
+    setShowTopPicks(false);
+  };
+  const handleCardTypeChange = e => {
+    setSelectedCardType(e.target.value);
+    setShowTopPicks(false);
+  };
+  const handleTopPicksToggle = () => {
+    const next = !showTopPicks;
+    setShowTopPicks(next);
+    if (next) {
+      setSelectedBank('');
+      setSelectedCardType('');
+    }
   };
 
-  const handleCardTypeChange = (event) => {
-    setSelectedCardType(event.target.value);
-    setShowTopPicks(false); // Reset top picks when other filters change
-  };
-
-   const handleTopPicksToggle = () => {
-       // Toggle the state and reset other filters if enabling top picks
-       const activatingTopPicks = !showTopPicks;
-       setShowTopPicks(activatingTopPicks);
-       if (activatingTopPicks) {
-           setSelectedBank('');
-           setSelectedCardType('');
-       }
-   };
-
-
-  // Basic JSON-LD Schema generation (same as before)
+  /* -------------------- JSON‑LD ------------------------- */
   const generateSchema = () => {
-     const schema = {
-       "@context": "https://schema.org",
-       "@type": "CollectionPage",
-       "name": "Travel Credit Card Guides & Reviews",
-       "description": "Explore in-depth reviews and guides for the best travel credit cards available in 2025.",
-       "url": "https://www.travelcardinsider.com/guides", // Replace with your actual domain
-       "mainEntity": {
-           "@type": "ItemList",
-           "itemListElement": initialReviews.map((review, index) => ({ // Use initialReviews for schema
-               "@type": "ListItem",
-               "position": index + 1,
-               "item": {
-                   "@type": "Review", // Or "Article"
-                   "name": review.title,
-                   "url": `https://www.travelcardinsider.com/cards/${review.slug}`, // Replace domain
-                   "datePublished": review.publishedAt,
-                   "author": { "@type": "Organization", "name": "TravelCardInsider" },
-                   ...(review.rating && {
-                       "reviewRating": {
-                           "@type": "Rating",
-                           "ratingValue": review.rating.toString(),
-                           "bestRating": "10",
-                           "worstRating": "1"
-                       }
-                   }),
-                   "publisher": { "@type": "Organization", "name": "TravelCardInsider" }
-               }
-           }))
-       }
-     };
-     return JSON.stringify(schema);
-   };
+    return JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      name: 'Travel Credit Card Guides & Reviews',
+      description:
+        'Explore in-depth reviews and guides for the best travel credit cards available in 2025.',
+      url: 'https://www.travelcardinsider.com/guides',
+      mainEntity: {
+        '@type': 'ItemList',
+        itemListElement: initialReviews.map((r, idx) => ({
+          '@type': 'ListItem',
+          position: idx + 1,
+          item: {
+            '@type': 'Review',
+            name: r.title,
+            url: `https://www.travelcardinsider.com/cards/${r.slug}`,
+            datePublished: r.publishedAt,
+            author: { '@type': 'Organization', name: 'TravelCardInsider' },
+            ...(isFinite(r.rating) && {
+              reviewRating: {
+                '@type': 'Rating',
+                ratingValue: r.rating.toString(),
+                bestRating: '10',
+                worstRating: '1'
+              }
+            }),
+            publisher: { '@type': 'Organization', name: 'TravelCardInsider' }
+          }
+        }))
+      }
+    });
+  };
 
-
+  /* -------------------- Render -------------------------- */
   return (
     <>
       <Head>
@@ -111,10 +97,7 @@ export default function GuidesPage({ reviews: initialReviews, filterOptions }) {
           name="description"
           content="Find the best travel credit card for your needs. Explore comprehensive guides, reviews, and comparisons from TravelCardInsider."
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: generateSchema() }}
-        />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: generateSchema() }} />
       </Head>
 
       <Header />
@@ -125,48 +108,42 @@ export default function GuidesPage({ reviews: initialReviews, filterOptions }) {
           Explore our expert reviews and find the perfect travel credit card for your adventures.
         </p>
 
-        {/* --- Filters Section (Now functional) --- */}
+        {/* Filters */}
         <div className={styles.filters}>
           <h2 className={styles.filterTitle}>Filter By:</h2>
-           <select
-             className={styles.filterSelect}
-             value={selectedBank}
-             onChange={handleBankChange} // Add onChange handler
-            >
-               <option value="">Bank (All)</option> {/* Default option */}
-               {filterOptions.issuers?.map(issuer => <option key={issuer} value={issuer}>{issuer}</option>)}
-           </select>
-           <select
-             className={styles.filterSelect}
-             value={selectedCardType}
-             onChange={handleCardTypeChange} // Add onChange handler
-            >
-               <option value="">Card Type (All)</option> {/* Default option */}
-               {/* Dynamically populate card types from tags */}
-               {filterOptions.cardTypes?.map(type => <option key={type} value={type}>{type}</option>)}
-               {/* Fallback static options if dynamic ones fail
-               <option>Airline</option>
-               <option>Hotel</option>
-               <option>General Travel</option>
-               */}
-           </select>
-            <button
-                className={`${styles.filterButton} ${showTopPicks ? styles.activeFilter : ''}`}
-                onClick={handleTopPicksToggle} // Add onClick handler
-            >
-                Top Picks
-            </button>
+          <select className={styles.filterSelect} value={selectedBank} onChange={handleBankChange}>
+            <option value="">Bank (All)</option>
+            {filterOptions.issuers?.map(i => (
+              <option key={i} value={i}>
+                {i}
+              </option>
+            ))}
+          </select>
+
+          <select className={styles.filterSelect} value={selectedCardType} onChange={handleCardTypeChange}>
+            <option value="">Card Type (All)</option>
+            {filterOptions.cardTypes?.map(t => (
+              <option key={t} value={t}>
+                {t}
+              </option>
+            ))}
+          </select>
+
+          <button
+            className={`${styles.filterButton} ${showTopPicks ? styles.activeFilter : ''}`}
+            onClick={handleTopPicksToggle}
+          >
+            Top Picks
+          </button>
         </div>
 
-        {/* --- Reviews Grid (Uses filteredReviews state) --- */}
+        {/* Review grid */}
         <div className={styles.reviewsGrid}>
-          {filteredReviews.map((review) => ( // Map over filteredReviews
-            <ReviewCard key={review.slug} review={review} />
+          {filteredReviews.map(r => (
+            <ReviewCard key={r.slug} review={r} />
           ))}
         </div>
-         {filteredReviews.length === 0 && ( // Check filteredReviews length
-             <p className={styles.noReviewsMessage}>No reviews match the selected filters.</p>
-         )}
+        {filteredReviews.length === 0 && <p className={styles.noReviewsMessage}>No reviews match the selected filters.</p>}
       </main>
 
       <Footer />
@@ -174,19 +151,19 @@ export default function GuidesPage({ reviews: initialReviews, filterOptions }) {
   );
 }
 
-// Fetch data at build time (updated to include card types from tags)
+/* -------------------- SSG ----------------------------- */
 export async function getStaticProps() {
-  const reviews = getAllReviewsSorted();
-  const issuers = getUniqueFilterValues('issuer');
-  const cardTypes = getUniqueFilterValues('tags'); // Fetch unique tags for card types
+  // Ensure every rating is a number to avoid toFixed crash
+  const rawReviews = getAllReviewsSorted();
+  const reviews = rawReviews.map(r => ({ ...r, rating: Number(r.rating) || 0 }));
 
   return {
     props: {
-      reviews, // Pass initial reviews
-       filterOptions: {
-           issuers: issuers,
-           cardTypes: cardTypes // Pass card types
-       }
-    },
+      reviews,
+      filterOptions: {
+        issuers: getUniqueFilterValues('issuer'),
+        cardTypes: getUniqueFilterValues('tags')
+      }
+    }
   };
 }
