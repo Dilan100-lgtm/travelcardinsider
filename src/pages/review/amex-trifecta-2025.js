@@ -24,50 +24,32 @@ export default function AmexTrifectaReview2025() {
   return (
     <>
       <Head>
-        <meta charSet="UTF-8" />
+       <title>Amex Trifecta 2025 Review | Platinum + Gold + Blue Business Plus Strategy</title>
         <meta
           name="description"
-          content={`Amex Trifecta 2025 review for US travelers: Maximize Membership Rewards with the Platinum, Gold & Green cards. Is the $${combinedAnnualFee} fee worth the benefits?`}
+          content="Ultimate 2025 Amex Trifecta review: learn how to combine the Amex Platinum, Gold and Blue Business Plus cards for maximum Membership Rewards, lounge access and travel perks."
         />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>
-          Amex Trifecta 2025 Review: Ultimate US Traveler Rewards Strategy? (Platinum, Gold, Green)
-        </title>
+        <meta name="robots" content="index,follow" />
         <link rel="canonical" href={pageUrl} />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <meta name="keywords" content="Amex Trifecta, American Express Gold, American Express Green, American Express Platinum, Membership Rewards, travel rewards strategy, credit card combo, 2025 review, US traveler, lounge access, statement credits, Amex points, luxury travel card, points maximization, Amex benefits" />
-        <meta name="author" content={authorName} />
-        <meta name="article:published_time" content={publishDate} />
 
-        {/* Google Fonts Preconnect (Copied from example) */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Playfair+Display:wght@400..900&display=swap"
-          rel="stylesheet"
-        />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-          rel="stylesheet"
-        />
+        {/* ---- Open Graph ---- */}
+        <meta property="og:type"        content="article" />
+        <meta property="og:title"       content="Amex Trifecta 2025 Review: Maximise Platinum, Gold & Blue" />
+        <meta property="og:description" content="Breakdown of the 2025 Amex Trifecta strategy—how to stack Platinum, Gold and Blue Business Plus for unrivalled travel rewards." />
+        <meta property="og:url"         content={pageUrl} />
+        <meta property="og:image"       content={`${pageUrl}.webp`} />
 
-        {/* Optional External CSS - Placeholder */}
-        {/* <link rel="stylesheet" href="amex-trifecta-review-2025.css" /> */}
-
-        {/* Open Graph / Social Media Meta Tags */}
-        <meta property="og:title" content="Amex Trifecta 2025 Review: Ultimate US Traveler Rewards Strategy?" />
-        <meta property="og:description" content={`Amex Trifecta 2025 review for US travelers: Maximize Membership Rewards with the Platinum, Gold & Green cards. Is the $${combinedAnnualFee} fee worth the benefits?`} />
-        <meta property="og:url" content={pageUrl} />
-        <meta property="og:image" content={imageUrl} />
-        <meta property="og:type" content="article" />
-        <meta property="og:site_name" content={siteName} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Amex Trifecta 2025 Review: Ultimate US Traveler Rewards Strategy?" />
-        <meta name="twitter:description" content={`Amex Trifecta 2025 review for US travelers: Maximize Membership Rewards with the Platinum, Gold & Green cards. Is the $${combinedAnnualFee} fee worth the benefits?`} />
-        <meta name="twitter:image" content={imageUrl} />
-        {/* <meta name="twitter:site" content="@YourTwitterHandle" /> */}
+        {/* ---- Twitter Card ---- */}
+        <meta name="twitter:card"        content="summary_large_image" />
+        <meta name="twitter:title"       content="Amex Trifecta 2025 | Platinum + Gold + Blue Strategy" />
+        <meta name="twitter:description" content="Full 2025 review of the Amex Trifecta: combine three cards to earn the most Membership Rewards points." />
+        <meta name="twitter:image"       content={`${pageUrl}.webp`} />
+        <meta name="geo.region" content="US" />
+        <meta name="geo.placename" content="United States" />
+        <meta name="language" content="en-US" />
+        <meta name="distribution" content="US" />
+        <link rel="alternate" href="https://www.travelcardinsider.com" hreflang="en-us" />
+        
 
 
         {/* JSON-LD Structured Data */}
