@@ -174,16 +174,23 @@ function AmexBusinessPlatinumReviewPage2025() { // Updated component name slight
 
                 {/* RATING SECTION - Kept from your template */}
                 <div className={styles.ratingSection}>
-                  <span className={styles.tciRating}>
-                    <button
-                      type="button"
-                      className={styles.infoIconButton}
-                      aria-label="See rating methodology"
-                      title="Our TCI rating info"
-                      onClick={handleIconClick}
-                    > ? </button>
-                    TCI Rating:&nbsp;<strong>{reviewData.ratingValue.toFixed(1)}</strong>/10
-                    {showRatingInfo && (
+                <span className={styles.tciRating}>
+                     <button
+                       type="button"
+                       className={styles.infoIconButton}
+                       aria-label="Rating Information"
+                       title="Our TCI rating info"
+                       onClick={handleIconClick}
+                     >
+                        <svg aria-hidden="true" focusable="false" className={styles.infoIcon} viewBox="0 0 16 16">
+                          <path fillRule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                          <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                        </svg>
+                     </button>
+                     TCI Rating: <strong>{reviewData.ratingValue.toFixed(1)}</strong>/10
+
+                     {/* --- Conditionally Rendered Tooltip (Keeping original) --- */}
+                     {showRatingInfo && (
                         <div
                           ref={tooltipRef}
                           className={styles.ratingTooltip}
@@ -191,10 +198,12 @@ function AmexBusinessPlatinumReviewPage2025() { // Updated component name slight
                           aria-live="polite"
                         >
                           <strong>TCI Rating: {reviewData.ratingValue.toFixed(1)}/10</strong>
+                          {/* Using original tooltip intro */}
                           <p className={styles.tooltipIntro}>Our TCI rating system criteria including rewards, welcome bonus, annual fee, redemption flexibility, travel benefits, APR, foreign transaction fees, user experience, and other features.</p>
                         </div>
-                    )}
-                  </span>
+                      )}
+                   </span>
+                    
                   <div className={styles.starRating} title={`Rated ${reviewData.ratingValue} out of 10 stars`} style={{ '--rating': `${reviewData.ratingValue * 10}%` }}>
                     <span>★★★★★</span>
                     <span className={styles.filledStars}>★★★★★</span>
