@@ -10,7 +10,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 // Adjusted paths assuming this file is in src/pages/cards/
-import styles from '../../styles/ReviewPage.module.css';
+import styles from '../../styles/ReviewPage1.module.css';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import RewardsCompareCalculator from '../../components/RewardsCompareCalculator'; // Import the calculator
