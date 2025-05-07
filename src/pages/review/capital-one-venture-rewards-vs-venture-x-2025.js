@@ -102,7 +102,7 @@ export default function CapitalOneVentureVsVentureX2025() {
             {/* Convert <img> to Next.js <Image> */}
             <div style={{ marginTop: '1rem' }}>
               <Image
-                src="/capital-one-cards-hero.webp" // Replace with your actual image path
+                src="/618ad46b23745d001825bd89.webp" // Replace with your actual image path
                 alt="Capital One Venture and Venture X Cards"
                 width={1200}
                 height={700}
