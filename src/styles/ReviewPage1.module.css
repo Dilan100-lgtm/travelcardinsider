@@ -10,25 +10,7 @@
 
 /* =============== GLOBAL & BASE RESETS/STYLES =============== */
 /* Apply a natural box layout model to all elements */
-*, *::before, *::after {
-  box-sizing: border-box;
-}
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Base body styles */
-body { /* Assuming this module is scoped, these would typically be in a global CSS */
-  font-family: var(--font-body);
-  color: var(--color-text-primary);
-  background-color: var(--color-background-main);
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  margin: 0; /* Reset default margin */
-}
 
 /* =============== OVERALL PAGE LAYOUT (ToC + Main Content) =============== */
 .reviewPageLayout {
