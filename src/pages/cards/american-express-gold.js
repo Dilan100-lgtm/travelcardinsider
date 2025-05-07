@@ -9,7 +9,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from '../../styles/ReviewPage.module.css'; // Using the REVIEW CSS module
+import styles from '../../styles/ReviewPage1.module.css'; // Using the REVIEW CSS module
 import Header from '../../components/Header'; // Assuming you have these components
 import Footer from '../../components/Footer'; // Assuming you have these components
 
