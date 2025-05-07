@@ -313,7 +313,7 @@ export default function CapitalOneVentureVsVentureX2025() {
                   <tr>
                     <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>Partner Program</th>
                     <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>Alliance</th>
-                    <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>Transfer Ratio (Capital One > Partner)</th>
+                    <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>Transfer Ratio (Capital One &gt; Partner)</th>
                     <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>Minimum Transfer</th>
                   </tr>
                 </thead>
@@ -506,7 +506,7 @@ export default function CapitalOneVentureVsVentureX2025() {
               <li>Travel Accident Insurance: Coverage for accidental death/dismemberment on common carriers; up to $1,000,000 if World Elite Mastercard.<sup>4</sup></li>
               <li>Lost Luggage Reimbursement: Varies; up to $1,500 if World Elite Mastercard.<sup>26</sup></li>
               <li>Trip Cancellation/Interruption (if World Elite Mastercard): Up to $1,500 for non-refundable expenses due to covered reasons.<sup>26</sup></li>
-              <li>Baggage Delay Insurance (if World Elite Mastercard): Up to $100/day (max 3 days) for essentials if baggage delayed >4 hours.<sup>26</sup></li>
+              <li>Baggage Delay Insurance (if World Elite Mastercard): Up to $100/day (max 3 days) for essentials if baggage delayed &gt;4 hours.<sup>26</sup></li>
               <li>Other Protections: Extended warranty, purchase security (up to $500/claim for Visa Signature).<sup>22</sup></li>
             </ul>
             <h3>Table 3: Travel Insurance Coverage Snapshot (2025)</h3>
