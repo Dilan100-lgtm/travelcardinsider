@@ -1,4 +1,5 @@
-// Suggested Path: travelcardinsider-main/src/pages/cards/american-express-gold.js
+// Example Path: pages/reviews/amex-gold.js
+// Or: pages/reviews/[slug].js (if using dynamic routing)
 
 // !!! WARNING: THIS FILE CONTAINS PLACEHOLDER DATA/URLs/DIMENSIONS !!!
 // !!! YOU MUST REPLACE ALL PLACEHOLDERS MARKED WITH '***' BEFORE DEPLOYMENT !!!
@@ -8,87 +9,61 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-
-// Adjusted paths assuming this file is in src/pages/cards/
-import styles from '../../styles/ReviewPage1.module.css';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
-import RewardsCompareCalculator from '../../components/RewardsCompareCalculator'; // Import the calculator
+import styles from '../../styles/ReviewPage.module.css'; // Using the REVIEW CSS module
+import Header from '../../components/Header'; // Assuming you have these components
+import Footer from '../../components/Footer'; // Assuming you have these components
 
 // --- Data object ---
+// Consider moving detailed content for sections into this object or a separate JSON for easier management
 const reviewData = {
   cardName: 'American Express® Gold Card',
+  // Updated Title for a more premium feel, reflecting the blueprint's vision
   title: 'Comprehensive Review: American Express® Gold Card - Maximize Your Rewards',
+  // Updated Description
   description: 'Discover how the American Express® Gold Card can elevate your rewards with 4X on dining & groceries, 3X on flights, and valuable credits. Our in-depth review analyzes its premium perks and overall value.',
-  keywords: 'American Express, Gold Card, Amex Gold, premium rewards, travel rewards, dining rewards, grocery rewards, Membership Rewards, statement credits, card review, $325 annual fee',
+  keywords: 'American Express, Gold Card, Amex Gold, premium rewards, travel rewards, dining rewards, grocery rewards, Membership Rewards, statement credits, card review, $325 annual fee', // Added "Amex Gold", "premium rewards"
   author: 'TravelCardInsider', // *** REPLACE with your actual author/site name ***
   lastUpdated: 'May 7, 2025', // *** REPLACE with actual last updated date ***
   imageUrl: '/NUS000000174_480x304_straight_withname.avif', // *** VERIFY PATH in /public ***
-  imageWidth: 480,
-  imageHeight: 304,
+  imageWidth: 480, // *** REPLACE with actual image width ***
+  imageHeight: 304, // *** REPLACE with actual image height ***
   applyLink: 'https://www.americanexpress.com/us/credit-cards/card/gold-card/', // *** REPLACE with actual Amex Gold APPLY URL ***
   ratesLink: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/gold-card/25330-10-0#FeeTable', // *** VERIFY URL ***
-  ratingValue: 8.8,
+  ratingValue: 8.8, // From Amex Gold HTML (KEEPING ORIGINAL AS REQUESTED)
 
+  // --- Data for "At-a-Glance" Box ---
   atAGlance: {
     welcomeOffer: 'Earn 60,000 Membership Rewards® Points after spending $6,000 on eligible purchases within the first 6 months.',
     annualFee: '$325',
     rewardsHighlights: [
-      { text: '4X points at restaurants worldwide (up to $50k/yr, then 1X)', iconClass: 'iconDining' },
-      { text: '4X points at U.S. supermarkets (up to $25k/yr, then 1X)', iconClass: 'iconGroceries' },
-      { text: '3X points on flights (booked directly or on AmexTravel.com)', iconClass: 'iconFlights' },
+      { text: '4X points at restaurants worldwide (up to $50k/yr, then 1X)', icon: '🍽️' }, // Placeholder icon
+      { text: '4X points at U.S. supermarkets (up to $25k/yr, then 1X)', icon: '🛒' }, // Placeholder icon
+      { text: '3X points on flights (booked directly or on AmexTravel.com)', icon: '✈️' }, // Placeholder icon
     ],
     keyBenefits: [
-      { text: 'Up to $120 Dining Credit ($10/month at select partners)', iconClass: 'iconStatementCredit' },
-      { text: 'Up to $120 Uber Cash ($10/month for U.S. rides/eats)', iconClass: 'iconRideshare' },
-      { text: 'Up to $100 Resy Credit ($50 semi-annually)', iconClass: 'iconDiningCredit' },
-      { text: 'Up to $84 Dunkin\' Credit ($7/month at U.S. Dunkin\')', iconClass: 'iconCoffee' },
-      { text: 'No Foreign Transaction Fees', iconClass: 'iconNoFTF' },
+      { text: 'Up to $120 Dining Credit ($10/month at select partners)', icon: '🧾' }, // Placeholder icon
+      { text: 'Up to $120 Uber Cash ($10/month for U.S. rides/eats)', icon: '🚗' }, // Placeholder icon
+      { text: 'Up to $100 Resy Credit ($50 semi-annually)', icon: '🧑‍🍳' }, // Placeholder icon
+      { text: 'Up to $84 Dunkin\' Credit ($7/month)', icon: '🍩' }, // Placeholder icon
+      { text: 'No Foreign Transaction Fees', icon: '🌍' }, // Placeholder icon
     ],
     bestFor: 'Individuals who spend significantly on dining and U.S. groceries, travel frequently, and can maximize statement credits with specific partners.',
   },
-  // Data for conceptual rewards earning chart
-  sampleRewardsChartData: {
-    labels: ['Dining', 'U.S. Supermarkets', 'Flights', 'Other Travel (AmexTravel)', 'General Spend'],
-    // Assuming $1000 monthly spend in each for illustration
-    points: [4000*12, 4000*12, 3000*12, 2000*12, 1000*12],
-    description: "Illustrative annual points based on $1,000 monthly spend in each category, before caps. Your earnings will vary based on actual spending and adherence to category terms (e.g., U.S. supermarkets)."
-  },
-  // Data for conceptual competitor snapshot
-  competitorSnapshot: [
-    { name: 'Chase Sapphire Preferred®', annualFee: '$95', coreReward: '2X-5X Travel, 3X Dining', topPerk: '$50 Annual Hotel Credit' , iconClass: 'iconCompetitorChase'},
-    { name: 'Capital One Venture Rewards', annualFee: '$95', coreReward: '2X Miles Everywhere', topPerk: 'Global Entry/TSA PreCheck Credit', iconClass: 'iconCompetitorCap1' },
-  ],
-  pros: [
-    { text: "Excellent 4X points on global dining & U.S. supermarkets.", iconClass: 'iconBenefitCheck' },
-    { text: "Solid 3X points on flights booked directly or via AmexTravel.com.", iconClass: 'iconBenefitCheck' },
-    { text: "Up to $424 in annual statement credits can offset the fee.", iconClass: 'iconBenefitCheck' },
-    { text: "Valuable Membership Rewards® program with transfer partners.", iconClass: 'iconBenefitCheck' },
-    { text: "No foreign transaction fees.", iconClass: 'iconBenefitCheck' },
-    { text: "Good travel and purchase protections.", iconClass: 'iconBenefitCheck' },
-  ],
-  cons: [
-    { text: "$325 annual fee requires maximizing credits for best value.", iconClass: 'iconBenefitCross' },
-    { text: "Statement credits are partner-specific and often U.S.-focused.", iconClass: 'iconBenefitCross' },
-    { text: "Secondary car rental insurance (primary preferred by some).", iconClass: 'iconBenefitCross' },
-    { text: "Highest point values require learning transfer partner strategies.", iconClass: 'iconBenefitCross' },
-    { text: "Caps on some bonus categories (though generally high).", iconClass: 'iconBenefitCross' },
-  ]
 };
 
+// --- Rating Tooltip Content (KEEPING ORIGINAL AS REQUESTED) ---
 const ratingCriteria = [
-    'Dining & Grocery Rewards (4x)', 'Welcome Bonus Value', 'Membership Rewards® Flexibility',
-    'Annual Fee vs. Credits ($325 / $424 Potential)', 'Travel Perks (3x Flights, No FTF)'
+    'Dining & Grocery Rewards (4x)',
+    'Welcome Bonus Value',
+    'Membership Rewards® Flexibility',
+    'Annual Fee vs. Credits ($325 / $424 Potential)', // Updated to reflect current fee and potential credits
+    'Travel Perks (3x Flights, No FTF)'
 ];
 
 // --- Sections for Table of Contents ---
-// Corrected: Removed the instructional HTML block that was here causing the syntax error.
+// Ensure IDs match the <section id="..."> attributes in your JSX
 const sections = [
   { id: 'at-a-glance', title: 'At a Glance' },
-  { id: 'pros-cons', title: 'Pros & Cons' },
-  { id: 'rewards-calculator', title: 'Rewards Calculator' },
-  { id: 'rewards-earning-chart', title: 'Earning Potential' },
-  { id: 'competitor-snapshot', title: 'Quick Comparison' },
   { id: 'section-2', title: 'Snapshot & Welcome Offer' },
   { id: 'section-3', title: 'Annual Fee Analysis' },
   { id: 'section-4', title: '4X Dining Rewards' },
@@ -111,39 +86,36 @@ const sections = [
   { id: 'eat-expertise-authority-trustworthiness', title: 'Our E-A-T Commitment' },
 ];
 
-
-// --- Main React Component ---
 function AmexGoldReviewPage() {
   const [showRatingInfo, setShowRatingInfo] = useState(false);
   const tooltipRef = useRef(null);
   const [activeSection, setActiveSection] = useState('');
   const tocRef = useRef(null);
-  const mainContentRef = useRef(null);
+  const mainContentRef = useRef(null); // Ref for the main content area
 
   const handleIconClick = useCallback((event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    setShowRatingInfo(prevState => !prevState);
-  }, []);
+        event.preventDefault();
+        event.stopPropagation();
+        setShowRatingInfo(prevState => !prevState);
+    }, []);
 
   const closeTooltip = useCallback(() => {
-    setShowRatingInfo(false);
-  }, []);
+        setShowRatingInfo(false);
+    }, []);
 
-  // Close tooltip on outside click
   useEffect(() => {
-    if (!showRatingInfo) return;
-    const handleClickOutside = (event) => {
-      const isInfoButton = event.target.closest(`.${styles.infoIconButton}`);
-      if (tooltipRef.current && !tooltipRef.current.contains(event.target) && !isInfoButton) {
-        closeTooltip();
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [showRatingInfo, closeTooltip]);
+        if (!showRatingInfo) return;
+        const handleClickOutside = (event) => {
+            const isInfoButton = event.target.closest(`.${styles.infoIconButton}`);
+            if (tooltipRef.current && !tooltipRef.current.contains(event.target) && !isInfoButton) {
+                closeTooltip();
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, [showRatingInfo, closeTooltip]);
 
-  // Intersection Observer for ToC highlighting
+  // --- Table of Contents Scroll Logic ---
   useEffect(() => {
     const observerCallback = (entries) => {
       entries.forEach(entry => {
@@ -152,42 +124,29 @@ function AmexGoldReviewPage() {
         }
       });
     };
-    const observerOptions = { rootMargin: '-20% 0px -75% 0px', threshold: 0 }; // Adjusted for better active highlighting
+
+    const observerOptions = {
+      rootMargin: '-20% 0px -80% 0px', // Adjust to trigger when section is more centered
+      threshold: 0, // Trigger as soon as any part is visible within the rootMargin
+    };
+
     const observer = new IntersectionObserver(observerCallback, observerOptions);
     const currentSections = mainContentRef.current?.querySelectorAll('section[id]');
+
     currentSections?.forEach(section => observer.observe(section));
+
     return () => currentSections?.forEach(section => observer.unobserve(section));
   }, []);
 
-  // Smooth scroll handler for ToC links
-  const handleTocLinkClick = (e, sectionId) => {
-    e.preventDefault();
-    const element = document.getElementById(sectionId);
-    if (element) {
-      // Calculate offset if you have a fixed header
-      const headerOffset = 100; // *** Adjust this value based on your sticky header's actual height ***
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-      // Optional: Update URL hash without page jump (can interfere with observer sometimes)
-      // history.pushState(null, null, `#${sectionId}`);
-      setActiveSection(sectionId); // Optionally set active section immediately
-    }
-  };
 
   const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
-  const pageUrl = `${siteUrl}/cards/american-express-gold`; // *** ADJUST if path changes ***
+  const pageUrl = `${siteUrl}/reviews/amex-gold`; // *** REPLACE with your actual page URL ***
 
-  // Structured Data (Schema.org)
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "ProductReview",
+    "@type": "ProductReview", // Changed to ProductReview for more specificity
     "itemReviewed": {
-        "@type": "FinancialProduct",
+        "@type": "FinancialProduct", // More specific type
         "name": reviewData.cardName,
         "image": `${siteUrl}${reviewData.imageUrl}`,
         "description": reviewData.description,
@@ -196,30 +155,40 @@ function AmexGoldReviewPage() {
           "@type": "Offer",
           "url": reviewData.applyLink.startsWith('http') ? reviewData.applyLink : `${siteUrl}${reviewData.applyLink}`,
           "priceCurrency": "USD",
-          "price": "325", // Ensure this matches the current fee
+          "price": "325", // Updated annual fee based on content
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition"
         },
-        "additionalProperty": [
-            { "@type": "PropertyValue", "name": "Annual Fee", "value": "$325" }, // Ensure consistency
+        "additionalProperty": [ // Example for fees, could add more
+            { "@type": "PropertyValue", "name": "Annual Fee", "value": "$325" },
             { "@type": "PropertyValue", "name": "Foreign Transaction Fee", "value": "None" }
         ]
     },
-    "reviewRating": { "@type": "Rating", "ratingValue": reviewData.ratingValue.toString(), "bestRating": "10", "worstRating": "1" },
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": reviewData.ratingValue.toString(),
+      "bestRating": "10",
+      "worstRating": "1"
+    },
     "name": reviewData.title,
     "author": { "@type": "Organization", "name": reviewData.author },
     "datePublished": "2023-10-26", // *** REPLACE with actual publish date ***
-    "dateModified": reviewData.lastUpdated,
-    "description": reviewData.description,
+    "dateModified": reviewData.lastUpdated, // Using lastUpdated from reviewData
+    "description": reviewData.description, // Can be a shorter summary
     "publisher": { "@type": "Organization", "name": reviewData.author, "logo": { "@type": "ImageObject", "url": `${siteUrl}/logo.png` } }, // *** REPLACE with your logo path ***
     "mainEntityOfPage": pageUrl,
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": reviewData.ratingValue.toString(), "bestRating": "10", "worstRating": "1", "ratingCount": "580", "reviewCount": "580" }, // *** REPLACE counts ***
+     "aggregateRating": { // Kept for broader product context if applicable
+      "@type": "AggregateRating",
+      "ratingValue": reviewData.ratingValue.toString(),
+      "bestRating": "10",
+      "worstRating": "1",
+      "ratingCount": "580", // *** REPLACE with actual or estimated count (string) ***
+      "reviewCount": "580"  // *** REPLACE with actual or estimated count (string) ***
+    },
   };
 
-  // --- Render Component ---
   return (
     <>
-      {/* --- Head Section --- */}
       <Head>
         <title>{reviewData.title}</title>
         <meta name="description" content={reviewData.description} />
@@ -227,11 +196,12 @@ function AmexGoldReviewPage() {
         <meta name="author" content={reviewData.author} />
         <link rel="canonical" href={pageUrl} />
 
-        {/* Font Preloading */}
+        {/* Preload new fonts - Inter and Montserrat. Keep Playfair for potential stylistic choices or remove if not used. */}
         <link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <link rel="preload" href="https://fonts.gstatic.com/s/montserrat/v25/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        {/* Optional: Preload Playfair Display if still used for specific elements */}
+        {/* <link rel="preload" href="/fonts/PlayfairDisplay-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" /> */}
 
-        {/* Open Graph / Social Meta Tags */}
         <meta property="og:title" content={reviewData.title} />
         <meta property="og:description" content={reviewData.description} />
         <meta property="og:url" content={pageUrl} />
@@ -240,79 +210,81 @@ function AmexGoldReviewPage() {
         <meta property="article:author" content={reviewData.author} />
         <meta property="article:published_time" content={structuredData.datePublished} />
         <meta property="article:modified_time" content={structuredData.dateModified} />
+
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={reviewData.title} />
         <meta name="twitter:description" content={reviewData.description} />
         <meta name="twitter:image" content={structuredData.itemReviewed.image} />
         {/* <meta name="twitter:site" content="@YourTwitterHandle"> */}
 
-        {/* Favicons */}
+
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-        {/* JSON-LD Schema */}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
       </Head>
 
-      {/* --- Header Component --- */}
       <Header />
 
-      {/* --- Main Page Layout (ToC + Content) --- */}
-      <div className={styles.reviewPageLayout}>
+      <div className={styles.reviewPageLayout}> {/* New overall layout container */}
         {/* --- Sticky Table of Contents --- */}
         <nav className={styles.stickyToc} ref={tocRef}>
-          <h3>In This Review</h3>
+          <h3>Table of Contents</h3>
           <ul>
             {sections.map(section => (
               <li key={section.id} className={activeSection === section.id ? styles.activeTocItem : ''}>
-                <a href={`#${section.id}`} onClick={(e) => handleTocLinkClick(e, section.id)}>{section.title}</a>
+                <a href={`#${section.id}`}>{section.title}</a>
               </li>
             ))}
           </ul>
-          {/* ToC Call to Action */}
-          <div className={styles.tocCta}>
-            <a href={reviewData.applyLink} className={`${styles.btn} ${styles.btnApplySmall}`} target="_blank" rel="noopener noreferrer sponsored">
-              Apply Now <span className={styles.lockIcon}>🔒</span>
-            </a>
-          </div>
+           {/* Optional: CTA in ToC */}
+           <div className={styles.tocCta}>
+             <a href={reviewData.applyLink} className={`${styles.btn} ${styles.btnApplySmall}`} target="_blank" rel="noopener noreferrer sponsored">
+                Apply Now <span className={styles.lockIcon}>🔒</span>
+             </a>
+           </div>
         </nav>
 
-        {/* --- Main Content Area --- */}
         <main className={styles.mainContent} ref={mainContentRef}>
           <div className={styles.reviewContainer}>
             <article>
-              {/* --- Hero Section --- */}
+              {/* ============= HERO SECTION (Replaces Old Review Header) ============= */}
               <header className={styles.heroSection}>
-                {/* Strategic Imagery Suggestion: High-quality, aspirational lifestyle shot related to dining/travel OR dynamic card shot */}
                 <div className={styles.heroTextContent}>
                   <h1>{reviewData.title}</h1>
                   <p className={styles.heroSubtitle}>
-                    Unlock premium rewards and benefits. Is the Amex Gold the right choice for your wallet?
+                    Maximize your business rewards with flexible earning & premium perks on the American Express® Gold Card.
                   </p>
                   <div className={styles.authorDate}>
                     <span>By {reviewData.author}</span> | <span>Last Updated: {reviewData.lastUpdated}</span>
                   </div>
-                  <div className={styles.heroCta}>
-                    <a href={reviewData.applyLink} className={`${styles.btn} ${styles.btnApply}`} target="_blank" rel="noopener noreferrer sponsored">
-                      Apply Securely Now <span className={styles.lockIcon}>🔒</span>
-                    </a>
-                    <a href={reviewData.ratesLink} className={`${styles.btn} ${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored">See Rates & Fees</a>
-                  </div>
+                  {/* Early CTA in Hero */}
+                   <div className={styles.heroCta}>
+                        <a href={reviewData.applyLink} className={`${styles.btn} ${styles.btnApply}`} target="_blank" rel="noopener noreferrer sponsored">
+                            Apply Securely Now <span className={styles.lockIcon}>🔒</span>
+                        </a>
+                        <a href={reviewData.ratesLink} className={`${styles.btn} ${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored">See Rates & Fees</a>
+                    </div>
                 </div>
                 <div className={styles.heroImageContainer}>
                   <Image
-                    src={reviewData.imageUrl} alt={reviewData.cardName} width={reviewData.imageWidth} height={reviewData.imageHeight}
-                    className={styles.cardImage} priority
+                    src={reviewData.imageUrl}
+                    alt={reviewData.cardName}
+                    width={reviewData.imageWidth}
+                    height={reviewData.imageHeight}
+                    className={styles.cardImage}
+                    priority
                   />
-                  {/* Rating Section */}
+                  {/* Rating moved to be associated with image or hero text */}
                   <div className={styles.ratingSection}>
                     <span className={styles.tciRating}>
                       <button type="button" className={styles.infoIconButton} aria-label="Rating Information" onClick={handleIconClick}>
-                        {/* SVG Icon */}
                         <svg aria-hidden="true" focusable="false" className={styles.infoIcon} viewBox="0 0 16 16"><path fillRule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>
                       </button>
                       TCI Rating: <strong>{reviewData.ratingValue.toFixed(1)}</strong>/10
-                      {/* Tooltip */}
                       {showRatingInfo && (
                         <div ref={tooltipRef} className={styles.ratingTooltip} role="tooltip" aria-live="polite">
                           <strong>TCI Rating: {reviewData.ratingValue.toFixed(1)}/10</strong>
@@ -321,7 +293,6 @@ function AmexGoldReviewPage() {
                         </div>
                       )}
                     </span>
-                    {/* Star Rating Visual */}
                     <div className={styles.starRating} title={`Rated ${reviewData.ratingValue} out of 10 stars`}>
                       ★★★★★ <span className={styles.filledStars} style={{ '--rating': `${reviewData.ratingValue * 10}%` }}>★★★★★</span>
                     </div>
@@ -329,22 +300,22 @@ function AmexGoldReviewPage() {
                 </div>
               </header>
 
-              {/* --- At a Glance Section --- */}
+             {/* --- "At-a-Glance" Summary Box --- */}
               <section id="at-a-glance" className={`${styles.reviewSection} ${styles.atAGlanceBox}`}>
-                <h2><span className={`${styles.icon} ${styles.iconInfo}`}></span>{reviewData.cardName}: Key Insights</h2>
+                <h2>{reviewData.cardName}: Key Insights</h2>
                 <div className={styles.glanceGrid}>
                     <div><strong>Welcome Offer:</strong> {reviewData.atAGlance.welcomeOffer}</div>
                     <div><strong>Annual Fee:</strong> <span className={styles.glanceFee}>{reviewData.atAGlance.annualFee}</span></div>
                     <div>
                         <strong>Top Rewards:</strong>
-                        <ul className={`${styles.glanceList} ${styles.iconList}`}>
-                            {reviewData.atAGlance.rewardsHighlights.map(item => <li key={item.text}><span className={`${styles.icon} ${styles[item.iconClass]}`}></span> {item.text}</li>)}
+                        <ul className={styles.glanceList}>
+                            {reviewData.atAGlance.rewardsHighlights.map(item => <li key={item.text}><span className={styles.glanceIcon}>{item.icon}</span> {item.text}</li>)}
                         </ul>
                     </div>
                     <div>
                         <strong>Key Statement Credits:</strong>
-                        <ul className={`${styles.glanceList} ${styles.iconList}`}>
-                            {reviewData.atAGlance.keyBenefits.map(item => <li key={item.text}><span className={`${styles.icon} ${styles[item.iconClass]}`}></span> {item.text}</li>)}
+                        <ul className={styles.glanceList}>
+                            {reviewData.atAGlance.keyBenefits.map(item => <li key={item.text}><span className={styles.glanceIcon}>{item.icon}</span> {item.text}</li>)}
                         </ul>
                     </div>
                     <div className={styles.glanceBestFor}>
@@ -359,71 +330,9 @@ function AmexGoldReviewPage() {
                 </div>
               </section>
 
-              {/* --- Enhanced Pros & Cons Section --- */}
-              <section id="pros-cons" className={`${styles.reviewSection} ${styles.prosConsSection}`}>
-                <h2><span className={`${styles.icon} ${styles.iconThumbsUpDown}`}></span>Amex Gold: Pros & Cons</h2>
-                <div className={styles.prosConsGrid}>
-                    <div className={styles.prosBox}>
-                        <h3><span className={`${styles.icon} ${styles.iconPros}`}></span>What We Love</h3>
-                        <ul className={`${styles.featureList} ${styles.prosList} ${styles.iconList}`}>
-                            {reviewData.pros.map(pro => <li key={pro.text}><span className={`${styles.icon} ${styles[pro.iconClass]}`}></span>{pro.text}</li>)}
-                        </ul>
-                    </div>
-                    <div className={styles.consBox}>
-                        <h3><span className={`${styles.icon} ${styles.iconCons}`}></span>What to Consider</h3>
-                        <ul className={`${styles.featureList} ${styles.consList} ${styles.iconList}`}>
-                            {reviewData.cons.map(con => <li key={con.text}><span className={`${styles.icon} ${styles[con.iconClass]}`}></span>{con.text}</li>)}
-                        </ul>
-                    </div>
-                </div>
-              </section>
 
-              {/* --- Rewards Calculator Section --- */}
-              <section id="rewards-calculator" className={`${styles.reviewSection} ${styles.interactiveToolSection}`}>
-                <h2><span className={`${styles.icon} ${styles.iconCalculator}`}></span>Estimate Your Amex Gold Rewards & Compare</h2>
-                <p>Use our interactive calculator to see how your spending translates to rewards with the Amex Gold and compare it against other top cards. Input your estimated monthly spending in various categories below.</p>
-                <div className={styles.calculatorWrapper}>
-                    <RewardsCompareCalculator />
-                </div>
-                <p className={styles.toolDisclaimer}>Note: The Rewards Compare Calculator is for estimation purposes. Actual rewards depend on specific merchant coding, spending caps, and current card terms.</p>
-              </section>
-
-              {/* --- Conceptual Rewards Earning Chart Placeholder --- */}
-              <section id="rewards-earning-chart" className={`${styles.reviewSection} ${styles.dataVisualizationSection}`}>
-                <h2><span className={`${styles.icon} ${styles.iconChart}`}></span>Visualizing Your Potential Rewards</h2>
-                <p>The chart below offers a conceptual look at how points can accumulate in key bonus categories with the Amex Gold Card. <em>(This is a placeholder for a dynamic chart you can implement with a library like Chart.js or Recharts).</em></p>
-                <div className={styles.chartPlaceholder}>
-                    <h4>Annual Points Projection (Illustrative)</h4>
-                    {/* You would replace this with your chart component */}
-                    <div className={styles.barChartExample}>
-                        {reviewData.sampleRewardsChartData.labels.map((label, index) => (
-                            <div key={label} className={styles.barChartBar} style={{ height: `${(reviewData.sampleRewardsChartData.points[index] / 60000) * 100}%` /* Simple scaling for visual */ }}>
-                                <span className={styles.barLabel}>{label}</span>
-                                <span className={styles.barValue}>{reviewData.sampleRewardsChartData.points[index].toLocaleString()} pts</span>
-                            </div>
-                        ))}
-                    </div>
-                    <p className={styles.chartDescription}>{reviewData.sampleRewardsChartData.description}</p>
-                </div>
-              </section>
-
-              {/* --- Conceptual Competitor Snapshot Placeholder --- */}
-              <section id="competitor-snapshot" className={`${styles.reviewSection} ${styles.dataVisualizationSection}`}>
-                <h2><span className={`${styles.icon} ${styles.iconCompare}`}></span>Amex Gold vs. Key Competitors: A Quick Look</h2>
-                <p>While our calculator provides an in-depth comparison, here’s a brief snapshot of how the Amex Gold stacks up against popular alternatives. <em>(This is a placeholder for a more visually engaging comparison table/graphic).</em></p>
-                <div className={styles.competitorTablePlaceholder}>
-                    {reviewData.competitorSnapshot.map(card => (
-                        <div key={card.name} className={styles.competitorCard}>
-                             <h4><span className={`${styles.icon} ${styles[card.iconClass]}`}></span> {card.name}</h4>
-                             <p><strong>Annual Fee:</strong> {card.annualFee}</p>
-                             <p><strong>Core Reward:</strong> {card.coreReward}</p>
-                             <p><strong>Top Perk:</strong> {card.topPerk}</p>
-                        </div>
-                    ))}
-                </div>
-              </section>
-
-              {/* --- Lead-in Content --- */}
+              {/* ============= ORIGINAL REVIEW CONTENT SECTIONS (wrapped with <section id="...">) ============= */}
+              {/* Intro paragraph from original design - now part of Hero or can be a lead-in to Section 2 */}
               <section className={`${styles.reviewSection} ${styles.contentLeadIn}`}>
                 <p>
                     The <strong>American Express® Gold Card</strong> holds a prominent position in the premium credit card sphere,
@@ -437,262 +346,303 @@ function AmexGoldReviewPage() {
                   </p>
               </section>
 
-              {/* --- Detailed Review Sections Start --- */}
 
-              {/* Section 2: Snapshot */}
-              <section id="section-2" className={styles.reviewSection}>
-                <h2><span className={`${styles.icon} ${styles.iconSnapshot}`}></span>Snapshot: Key Features and Current Welcome Offer</h2>
-                <p>Here’s a quick look at the Amex Gold Card's current core features:</p>
-                <ul className={`${styles.featureList} ${styles.iconList}`}>
-                  <li><span className={`${styles.icon} ${styles.iconFee}`}></span><strong>Annual Fee:</strong> $325.</li>
-                  <li><span className={`${styles.icon} ${styles.iconGift}`}></span><strong>Welcome Offer:</strong> Earn 60,000 Membership Rewards® Points after spending $6,000 on eligible purchases within the first 6 months of Card Membership. (Offers can vary).</li>
-                  <li><span className={`${styles.icon} ${styles.iconRewards}`}></span><strong>Rewards Earning:</strong>
-                    <ul>
-                      <li><span className={`${styles.icon} ${styles.iconDining}`}></span>4X points at restaurants worldwide (up to $50k/year, then 1X).</li>
-                      <li><span className={`${styles.icon} ${styles.iconGroceries}`}></span>4X points at U.S. supermarkets (up to $25k/year, then 1X).</li>
-                      <li><span className={`${styles.icon} ${styles.iconFlights}`}></span>3X points on flights (booked directly with airlines or AmexTravel.com).</li>
-                      <li><span className={`${styles.icon} ${styles.iconTravel}`}></span>2X points on other eligible prepaid travel via AmexTravel.com.</li>
-                      <li><span className={`${styles.icon} ${styles.iconPoints}`}></span>1X points on other eligible purchases.</li>
-                    </ul>
-                  </li>
-                  <li><span className={`${styles.icon} ${styles.iconStatementCredit}`}></span><strong>Annual Statement Credits (Enrollment Required):</strong>
-                    <ul>
-                      <li><span className={`${styles.icon} ${styles.iconDiningCredit}`}></span>Up to $120 Dining Credit ($10/month at select partners).</li>
-                      <li><span className={`${styles.icon} ${styles.iconRideshare}`}></span>Up to $120 Uber Cash ($10/month for U.S. rides/eats).</li>
-                      <li><span className={`${styles.icon} ${styles.iconDiningCredit}`}></span>Up to $100 Resy Credit ($50 semi-annually at U.S. Resy partners).</li>
-                      <li><span className={`${styles.icon} ${styles.iconCoffee}`}></span>Up to $84 Dunkin' Credit ($7/month at U.S. Dunkin').</li>
-                    </ul>
-                  </li>
-                  <li><span className={`${styles.icon} ${styles.iconCheckmarkCircle}`}></span><strong>Application Feature:</strong> "Apply with Confidence" allows checking for approval without impacting credit score before accepting.</li>
-                </ul>
-                <p>The welcome offer requires significant spending ($1,000/month average for 6 months), a factor for potential applicants to consider.</p>
-              </section>
-
-              {/* --- Mid-Page CTA --- */}
-              <section id="cta-main" className={`${styles.ctaSection} ${styles.ctaSectionMain}`}>
-                <h2>Ready to Elevate Your Rewards?</h2>
-                <p>Unlock premium benefits with the American Express® Gold Card.</p>
-                <div className={styles.ctaButtons}>
-                  <a href={reviewData.applyLink} className={`${styles.btn} ${styles.btnApply}`} title="From card issuer's secure site" target="_blank" rel="noopener noreferrer sponsored">
-                      Apply Securely Now <span className={styles.lockIcon}>🔒</span>
-                  </a>
-                  <a href={reviewData.ratesLink} className={`${styles.btn} ${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored">See Rates & Fees</a>
-                </div>
-              </section>
-
-              {/* --- Continue with detailed sections 3 through 20 --- */}
-              {/* (Ensuring H2s and feature lists have icon placeholders) */}
-
-              <section id="section-3" className={styles.reviewSection}>
-                <h2><span className={`${styles.icon} ${styles.iconFee}`}></span>Unpacking the $325 Annual Fee: Is It Justified for Travelers?</h2>
-                {/* ... content ... */}
-              </section>
-
-              <section id="section-4" className={styles.reviewSection}>
-                <h2><span className={`${styles.icon} ${styles.iconDining}`}></span>Earning Power: Maximizing 4X Points on Global Dining</h2>
-                {/* ... content ... */}
-              </section>
-
-              <section id="section-5" className={styles.reviewSection}>
-                <h2><span className={`${styles.icon} ${styles.iconGroceries}`}></span>Earning Power: Stocking Up with 4X Points at U.S. Supermarkets</h2>
-                {/* ... content ... */}
-              </section>
-
-              <section id="section-6" className={styles.reviewSection}>
-                <h2><span className={`${styles.icon} ${styles.iconFlights}`}></span>Travel Focus: Earning 3X Points on Flights (Direct & AmexTravel.com)</h2>
-                {/* ... content ... */}
-              </section>
-
-              <section id="section-7" className={styles.reviewSection}>
-                <h2><span className={`${styles.icon} ${styles.iconTravel}`}></span>Travel Focus: Earning 2X Points via AmexTravel.com (Hotels, Packages, etc.)</h2>
-                 {/* ... content ... */}
-              </section>
-
-              <section id="section-8" className={styles.reviewSection}>
-                <h2><span className={`${styles.icon} ${styles.iconPoints}`}></span>The Foundation: Understanding Membership Rewards® Points Value</h2>
-                <p>Points earned are American Express Membership Rewards® (MR), a flexible currency whose value depends heavily on redemption.</p>
-                <p>Typical redemption values:</p>
-                <ul className={`${styles.featureList} ${styles.iconList}`}>
-                  <li><span className={`${styles.icon} ${styles.iconStatementCredit}`}></span><strong>Statement Credits:</strong> ~0.6 cents per point (cpp) - Poor value.</li>
-                  <li><span className={`${styles.icon} ${styles.iconGiftCard}`}></span><strong>Pay with Points/Gift Cards:</strong> 0.7 - 1.0 cpp.</li>
-                  <li><span className={`${styles.icon} ${styles.iconTravel}`}></span><strong>Amex Travel Bookings:</strong>
-                    <ul>
-                      <li><span className={`${styles.icon} ${styles.iconFlights}`}></span>Flights: 1.0 cpp.</li>
-                      <li><span className={`${styles.icon} ${styles.iconHotel}`}></span>Other Prepaid Travel (Hotels, Cars): 0.7 cpp - Poor value.</li>
-                    </ul>
-                  </li>
-                  <li><span className={`${styles.icon} ${styles.iconTransfer}`}></span><strong>Airline/Hotel Partner Transfers:</strong> Potential for 2.0+ cpp, especially for premium international travel - Highest potential value.</li>
-                </ul>
-                {/* ... rest of content ... */}
-              </section>
-
-              <section id="section-9" className={styles.reviewSection}>
-                <h2><span className={`${styles.icon} ${styles.iconTransfer}`}></span>Travel Focus: Redeeming Points: Mastering Airline & Hotel Transfers</h2>
-                 {/* ... content ... */}
-                 {/* Ensure ul lists have styles.iconList if icons added */}
-                 <h3>Key Airline Partners (Generally 1:1 Ratio, Instant Transfer unless noted):</h3>
-                  <ul className={`${styles.featureList} ${styles.iconList}`}>
-                    <li><span className={`${styles.icon} ${styles.iconAirline}`}></span><strong>Star Alliance:</strong> Air Canada Aeroplan, ANA Mileage Club (up to 48h), Avianca LifeMiles, Singapore Airlines KrisFlyer.</li>
-                    {/* ... other partners ... */}
+            {/* Section 2: Snapshot */}
+            <section id="section-2" className={styles.reviewSection}>
+              <h2>Snapshot: Key Features and Current Welcome Offer</h2>
+              {/* Content remains the same as original JS */}
+              <p>Here’s a quick look at the Amex Gold Card's current core features:</p>
+              <ul className={styles.featureList}>
+                <li><strong>Annual Fee:</strong> $325.</li>
+                <li><strong>Welcome Offer:</strong> Earn 60,000 Membership Rewards® Points after spending $6,000 on eligible purchases within the first 6 months of Card Membership. (Offers can vary).</li>
+                <li><strong>Rewards Earning:</strong>
+                  <ul>
+                    <li>4X points at restaurants worldwide (up to $50k/year, then 1X).</li>
+                    <li>4X points at U.S. supermarkets (up to $25k/year, then 1X).</li>
+                    <li>3X points on flights (booked directly with airlines or AmexTravel.com).</li>
+                    <li>2X points on other eligible prepaid travel via AmexTravel.com.</li>
+                    <li>1X points on other eligible purchases.</li>
                   </ul>
-                 <h3>Key Hotel Partners (Instant Transfer):</h3>
-                  <ul className={`${styles.featureList} ${styles.iconList}`}>
-                    <li><span className={`${styles.icon} ${styles.iconHotel}`}></span>Choice Privileges (1:1)</li>
-                    {/* ... other partners ... */}
+                </li>
+                <li><strong>Annual Statement Credits (Enrollment Required):</strong>
+                  <ul>
+                    <li>Up to $120 Dining Credit ($10/month at select partners).</li>
+                    <li>Up to $120 Uber Cash ($10/month for U.S. rides/eats).</li>
+                    <li>Up to $100 Resy Credit ($50 semi-annually at U.S. Resy partners).</li>
+                    <li>Up to $84 Dunkin' Credit ($7/month at U.S. Dunkin').</li>
                   </ul>
-                 {/* ... rest of content ... */}
-              </section>
+                </li>
+                <li><strong>Application Feature:</strong> "Apply with Confidence" allows checking for approval without impacting credit score before accepting.</li>
+              </ul>
+              <p>The welcome offer requires significant spending ($1,000/month average for 6 months), a factor for potential applicants to consider.</p>
+            </section>
 
-              <section id="section-10" className={styles.reviewSection}>
-                <h2><span className={`${styles.icon} ${styles.iconTravel}`}></span>Travel Focus: Redeeming Points: Booking Directly via Amex Travel</h2>
-                <p>Booking travel directly through AmexTravel.com using points offers a simpler redemption path.</p>
-                <p>Redemption values via portal:</p>
-                <ul className={`${styles.featureList} ${styles.iconList}`}>
-                  <li><span className={`${styles.icon} ${styles.iconFlights}`}></span><strong>Flights:</strong> 1.0 cent per point.</li>
-                  <li><span className={`${styles.icon} ${styles.iconHotel}`}></span><strong>Other Prepaid Travel (Hotels, Cars, Cruises):</strong> 0.7 cents per point (Poor value).</li>
-                </ul>
-                 {/* ... rest of content ... */}
-              </section>
+            {/* CTA Section - Redesigned and strategically placed. Can be repeated. */}
+            <section id="cta-main" className={`${styles.ctaSection} ${styles.ctaSectionMain}`}>
+              <h2>Ready to Elevate Your Rewards?</h2>
+              <p>Unlock premium benefits with the American Express® Gold Card.</p>
+              <div className={styles.ctaButtons}>
+                <a href={reviewData.applyLink} className={`${styles.btn} ${styles.btnApply}`} title="From card issuer's secure site" target="_blank" rel="noopener noreferrer sponsored">
+                    Apply Securely Now <span className={styles.lockIcon}>🔒</span>
+                </a>
+                <a href={reviewData.ratesLink} className={`${styles.btn} ${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored">See Rates & Fees</a>
+              </div>
+            </section>
 
-              <section id="section-11" className={styles.reviewSection}>
-                <h2><span className={`${styles.icon} ${styles.iconDiningCredit}`}></span>$120 Dining Credit: Savoring Monthly Savings (Partners & Enrollment)</h2>
-                <p>The Amex Gold offers a <strong>$120 annual Dining Credit</strong>, delivered as up to <strong>$10 in statement credits monthly</strong>. Enrollment is required. The credit applies to purchases made with the enrolled card at these specific partners:</p>
-                <ul className={`${styles.featureList} ${styles.iconList}`}>
-                    <li><span className={`${styles.icon} ${styles.iconBenefitCheck}`}></span>Grubhub (incl. Seamless)</li>
-                    <li><span className={`${styles.icon} ${styles.iconBenefitCheck}`}></span>The Cheesecake Factory</li>
-                    <li><span className={`${styles.icon} ${styles.iconBenefitCheck}`}></span>Goldbelly</li>
-                    <li><span className={`${styles.icon} ${styles.iconBenefitCheck}`}></span>Wine.com</li>
-                    <li><span className={`${styles.icon} ${styles.iconBenefitCheck}`}></span>Five Guys</li>
-                </ul>
-                 {/* ... rest of content ... */}
-              </section>
+            {/* Section 3: Annual Fee */}
+            <section id="section-3" className={styles.reviewSection}>
+              <h2>Unpacking the $325 Annual Fee: Is It Justified for Travelers?</h2>
+              {/* Content remains the same */}
+              <p>
+                The <strong>$325 annual fee</strong> is a central consideration. It's charged upon opening and annually thereafter, with a 30-day grace period for cancellation refunds.
+                Justification primarily rests on the potential <strong>$424 in annual statement credits</strong> ($120 Dining + $120 Uber + $100 Resy + $84 Dunkin').
+                While this exceeds the fee, realizing the full value requires active enrollment and spending with specific partners, many U.S.-based.
+                This contrasts with simpler cards and highlights the need for engagement.
+              </p>
+              <p>
+                For travelers, the <strong>No Foreign Transaction Fee</strong> is crucial, saving ~3% on international purchases.
+                Travel insurances and The Hotel Collection perks add further potential value. Compared to other Amex cards, it sits between the premium Platinum Card® ($695 fee, more travel perks) and the lower-tier Green Card ($150 fee, fewer benefits).
+              </p>
+              <p>
+                A key advantage is the ability to add up to five Additional Gold Cards for <strong>no extra annual fee</strong> (sixth+ card is $35 each).
+                This allows authorized users to help accumulate points and access some benefits, enhancing the value derived from the single primary fee.
+              </p>
+            </section>
 
-              <section id="section-12" className={styles.reviewSection}>
-                <h2><span className={`${styles.icon} ${styles.iconRideshare}`}></span>Travel Focus: $120 Uber Cash: Credits for Rides & Eats On-the-Go (US Focus)</h2>
-                 {/* ... content ... */}
-              </section>
+            {/* Sections 4 through 20 would follow here, ensure each has a unique id and className={styles.reviewSection} */}
+            {/* ... (Original sections 4-14 - content unchanged, just ensure they have correct IDs and classNames) ... */}
+             <section id="section-4" className={styles.reviewSection}>
+              <h2>Earning Power: Maximizing 4X Points on Global Dining</h2>
+              <p>
+                A major appeal of the Amex Gold is earning <strong>4X Membership Rewards® points</strong> per dollar at <strong>restaurants worldwide</strong>.
+                This high rate applies broadly to cafes, bars, and restaurants globally, and includes U.S. takeout and delivery.
+                The "worldwide" aspect is vital for travelers, rewarding dining spending abroad at the same high rate, unlike some competitors.
+              </p>
+              <p>
+                This 4X rate is capped at <strong>$50,000</strong> in restaurant spending per calendar year, after which it drops to 1X.
+                However, this cap is very high (over $4,100/month) and unlikely to affect most users, making the 4X dining benefit effectively unlimited for typical spending patterns, both domestically and internationally.
+              </p>
+            </section>
 
-              <section id="section-13" className={styles.reviewSection}>
-                <h2><span className={`${styles.icon} ${styles.iconDiningCredit}`}></span>$100 Resy Credit: Elevating Your U.S. Dining Experiences</h2>
-                 {/* ... content ... */}
-              </section>
+            <section id="section-5" className={styles.reviewSection}>
+              <h2>Earning Power: Stocking Up with 4X Points at U.S. Supermarkets</h2>
+              <p>
+                The card also earns <strong>4X Membership Rewards® points</strong> per dollar at <strong>U.S. supermarkets</strong>, accelerating points on everyday spending.
+                However, this benefit has two important limitations. First, it applies only to supermarkets located within the U.S. International grocery purchases earn just 1X point.
+                Second, the 4X rate is capped at <strong>$25,000</strong> in spending per calendar year; subsequent U.S. supermarket spending earns 1X.
+                This cap ($2,083/month average) is more relevant for high grocery spenders than the dining cap. Note that superstores (Target, Walmart) and warehouse clubs (Costco) are typically excluded.
+              </p>
+            </section>
 
-             <section id="section-14" className={styles.reviewSection}>
-                <h2><span className={`${styles.icon} ${styles.iconCoffee}`}></span>$84 Dunkin' Credit: Fueling Your Mornings (US Focus)</h2>
-                 {/* ... content ... */}
-              </section>
+            <section id="section-6" className={styles.reviewSection}>
+              <h2>Travel Focus: Earning 3X Points on Flights (Direct & AmexTravel.com)</h2>
+              <p>
+                For air travel, the Amex Gold provides <strong>3X Membership Rewards® points</strong> per dollar on flights.
+                This solid return applies only when flights are booked <strong>directly with the airline</strong> or through <strong>AmexTravel.com</strong>.
+                Bookings via third-party online travel agencies (OTAs) like Expedia generally earn only 1X point.
+                This encourages booking through specific channels, potentially requiring a shift in habits for those accustomed to using OTAs.
+                While competitive for a mid-tier card, it's less than the 5X offered by The Platinum Card®, positioning the Gold as strong but not top-tier for extremely high flight spenders.
+              </p>
+            </section>
 
-              <section id="section-15" className={styles.reviewSection}>
-                <h2><span className={`${styles.icon} ${styles.iconReport}`}></span>Calculating the Value: How Credits Offset the Annual Fee</h2>
-                 {/* ... content ... table included ... */}
-              </section>
+            <section id="section-7" className={styles.reviewSection}>
+              <h2>Travel Focus: Earning 2X Points via AmexTravel.com (Hotels, Packages, etc.)</h2>
+              <p>
+                The card offers <strong>2X Membership Rewards® points</strong> on certain other travel purchases, but only for <strong>prepaid bookings made through AmexTravel.com</strong>.
+                This typically includes prepaid hotels, vacation packages, prepaid car rentals, and cruises booked via the portal.
+                Non-prepaid bookings or travel booked elsewhere usually earn just 1X point.
+              </p>
+              <p>
+                This 2X category is less compelling than the 4X/3X rates and narrower than some competitors' travel multipliers.
+                It strongly incentivizes using the Amex Travel portal, which integrates with The Hotel Collection benefit.
+                However, users must weigh the 2X points against potentially higher portal prices, the inflexibility of prepaid rates, and the common inability to earn hotel loyalty points or elite status credit on portal bookings – a significant factor for hotel loyalists.
+              </p>
+            </section>
 
-              <section id="section-16" className={styles.reviewSection}>
-                <h2><span className={`${styles.icon} ${styles.iconHotel}`}></span>Travel Focus: The Hotel Collection Benefits ($100 Credit & Upgrades)</h2>
-                <p>The Amex Gold provides access to <strong>The Hotel Collection (THC)</strong>, offering perks at over 1,000 participating upscale hotels worldwide. Booking a stay of <strong>two consecutive nights or more</strong> through American Express Travel using the Gold Card is required.</p>
-                <p>Benefits include:</p>
-                <ul className={`${styles.featureList} ${styles.iconList}`}>
-                  <li><span className={`${styles.icon} ${styles.iconBenefitCheck}`}></span><strong>$100 Experience Credit:</strong> For eligible on-property charges (dining, spa, etc.), applied at check-out.</li>
-                  <li><span className={`${styles.icon} ${styles.iconBenefitCheck}`}></span><strong>Room Upgrade:</strong> One-category upgrade at check-in, when available.</li>
-                </ul>
-                 {/* ... rest of content ... */}
-              </section>
+            <section id="section-8" className={styles.reviewSection}>
+              <h2>The Foundation: Understanding Membership Rewards® Points Value</h2>
+              <p>Points earned are American Express Membership Rewards® (MR), a flexible currency whose value depends heavily on redemption.</p>
+              <p>Typical redemption values:</p>
+              <ul className={styles.featureList}>
+                <li><strong>Statement Credits:</strong> ~0.6 cents per point (cpp) - Poor value.</li>
+                <li><strong>Pay with Points/Gift Cards:</strong> 0.7 - 1.0 cpp.</li>
+                <li><strong>Amex Travel Bookings:</strong><ul><li>Flights: 1.0 cpp.</li><li>Other Prepaid Travel (Hotels, Cars): 0.7 cpp - Poor value.</li></ul></li>
+                <li><strong>Airline/Hotel Partner Transfers:</strong> Potential for 2.0+ cpp, especially for premium international travel - Highest potential value.</li>
+              </ul>
+              <p>The card's true power lies in strategic redemption, particularly via partner transfers. Earning 4X points yields an effective 8% return if redeemed at 2.0 cpp, versus only 2.4% if redeemed at 0.6 cpp. This highlights the importance of redemption strategy alongside earning. The flexibility and high potential value require effort to maximize, making the card best for those willing to engage with the MR program's nuances.</p>
+            </section>
 
-              <section id="section-17" className={styles.reviewSection}>
-                <h2><span className={`${styles.icon} ${styles.iconShield}`}></span>Travel Focus: Essential Travel Protections: Baggage & Car Rental Insurance</h2>
-                 {/* ... content ... lists included ... */}
-                  <h3>Baggage Insurance Plan:</h3>
-                  <ul className={`${styles.featureList} ${styles.iconList}`}>
-                     <li><span className={`${styles.icon} ${styles.iconBenefitCheck}`}></span><strong>Carry-on:</strong> Up to $1,250.</li>
-                     {/* ... other list items ... */}
-                  </ul>
-                  <h3>Car Rental Loss and Damage Insurance:</h3>
-                  <ul className={`${styles.featureList} ${styles.iconList}`}>
-                    <li><span className={`${styles.icon} ${styles.iconBenefitCheck}`}></span><strong>Limit:</strong> Up to $50,000 per rental.</li>
-                    {/* ... other list items ... */}
-                  </ul>
-                 {/* ... rest of content ... */}
-              </section>
+            <section id="section-9" className={styles.reviewSection}>
+              <h2>Travel Focus: Redeeming Points: Mastering Airline & Hotel Transfers (Key Partners)</h2>
+              <p>Transferring MR points to airline and hotel loyalty programs offers the highest potential value for travelers. Amex partners with numerous programs across all major airline alliances and several hotel chains, providing global booking flexibility.</p>
+              <h3>Key Airline Partners (Generally 1:1 Ratio, Instant Transfer unless noted):</h3>
+              <ul className={styles.featureList}>
+                <li><strong>Star Alliance:</strong> Air Canada Aeroplan, ANA Mileage Club (up to 48h), Avianca LifeMiles, Singapore Airlines KrisFlyer. (Allows booking United, etc.)</li>
+                <li><strong>Oneworld:</strong> British Airways Avios, Cathay Pacific Asia Miles, Iberia Plus, Qantas Frequent Flyer, Qatar Airways Privilege Club. (Allows booking American Airlines, etc.)</li>
+                <li><strong>SkyTeam:</strong> Aeromexico Rewards (1:1.6), Air France/KLM Flying Blue, Delta SkyMiles, Virgin Atlantic Flying Club.</li>
+                <li><strong>Non-Alliance:</strong> Emirates Skywards, Etihad Guest, Hawaiian Airlines HawaiianMiles, JetBlue TrueBlue (2.5:2).</li>
+              </ul>
+              <h3>Key Hotel Partners (Instant Transfer):</h3>
+              <ul className={styles.featureList}><li>Choice Privileges (1:1)</li><li>Hilton Honors (1:2) - Often lower value.</li><li>Marriott Bonvoy (1:1) - Often lower value.</li></ul>
+              <p>(Ratios/times subject to change. Minimums apply. Excise tax offset fee for U.S. airline transfers.)</p>
+              <p>Highest values are typically found booking international premium cabin flights. Hotel transfers generally yield lower value. Linking accounts via Amex is required. Confirm award availability before transferring, as transfers are irreversible.</p>
+            </section>
 
-              <section id="section-18" className={styles.reviewSection}>
-                <h2><span className={`${styles.icon} ${styles.iconGlobe}`}></span>Travel Focus: Added Peace of Mind: Global Assist® Hotline & No FTF</h2>
-                 {/* ... content ... lists included ... */}
-                 <h3>Global Assist® Hotline:</h3>
-                 <ul className={`${styles.featureList} ${styles.iconList}`}>
-                   <li><span className={`${styles.icon} ${styles.iconBenefitCheck}`}></span>Medical referrals...</li>
-                   {/* ... other list items ... */}
-                 </ul>
-                 {/* ... rest of content ... */}
-              </section>
+            <section id="section-10" className={styles.reviewSection}>
+              <h2>Travel Focus: Redeeming Points: Booking Directly via Amex Travel</h2>
+              <p>Booking travel directly through AmexTravel.com using points offers a simpler redemption path.</p>
+              <p>Redemption values via portal:</p>
+              <ul className={styles.featureList}><li><strong>Flights:</strong> 1.0 cent per point.</li><li><strong>Other Prepaid Travel (Hotels, Cars, Cruises):</strong> 0.7 cents per point (Poor value).</li></ul>
+              <p>The process involves selecting travel, choosing "Pay with Points," having the card charged the full amount, and receiving a statement credit for the points' value within ~48 hours. The main advantage is convenience – any available flight/prepaid hotel can be booked with points, bypassing award availability searches. The 1.0 cpp for flights provides a reasonable floor value.</p>
+              <p>The primary disadvantage is the lower potential value compared to partner transfers, especially the poor 0.7 cpp rate for non-flight travel. This strongly discourages using points for hotels or cars via the portal. For personal Gold cardholders, the portal is best used for flights when transfer options are poor, and avoided for other travel types.</p>
+            </section>
 
-              <section id="section-19" className={styles.reviewSection}>
-                <h2><span className={`${styles.icon} ${styles.iconShoppingBag}`}></span>Beyond Travel: Purchase Protection & Extended Warranty Deep Dive</h2>
-                 {/* ... content ... lists included ... */}
-                 <h3>Purchase Protection:</h3>
-                 <ul className={`${styles.featureList} ${styles.iconList}`}>
-                    <li><span className={`${styles.icon} ${styles.iconBenefitCheck}`}></span><strong>Limits:</strong> Up to <strong>$10,000 per item / occurrence</strong>.</li>
-                    {/* ... other list items ... */}
-                 </ul>
-                 <h3>Extended Warranty:</h3>
-                 <ul className={`${styles.featureList} ${styles.iconList}`}>
-                    <li><span className={`${styles.icon} ${styles.iconBenefitCheck}`}></span><strong>Extension:</strong> Adds up to <strong>one additional year</strong>.</li>
-                    {/* ... other list items ... */}
-                 </ul>
-                 {/* ... rest of content ... */}
-              </section>
+            <section id="section-11" className={styles.reviewSection}>
+              <h2>$120 Dining Credit: Savoring Monthly Savings (Partners & Enrollment)</h2>
+              <p>The Amex Gold offers a <strong>$120 annual Dining Credit</strong>, delivered as up to <strong>$10 in statement credits monthly</strong>. Enrollment is required. The credit applies to purchases made with the enrolled card at these specific partners:</p>
+              <ul className={styles.featureList}><li>Grubhub (incl. Seamless)</li><li>The Cheesecake Factory</li><li>Goldbelly</li><li>Wine.com</li><li>Five Guys</li></ul>
+              <p>Value depends entirely on spending at these partners. Frequent users can extract the full $120. Those who don't use these services gain little value. The credit is monthly and does not roll over ("use it or lose it"), requiring consistent small purchases to maximize.</p>
+            </section>
 
-             <section id="section-20" className={styles.reviewSection}>
-                <h2><span className={`${styles.icon} ${styles.iconFlag}`}></span>Final Verdict: Is the Amex Gold Your Ideal Travel Companion?</h2>
-                 {/* ... content ... lists included ... */}
-                 <h3>Who is it best for?</h3>
-                 <ul className={`${styles.featureList} ${styles.iconList}`}>
-                   <li><span className={`${styles.icon} ${styles.iconBenefitCheck}`}></span>Spend heavily...</li>
-                   {/* ... other list items ... */}
-                 </ul>
-                 <h3>Consider alternatives if:</h3>
-                 <ul className={`${styles.featureList} ${styles.iconList}`}>
-                   <li><span className={`${styles.icon} ${styles.iconBenefitCross}`}></span>You can't consistently...</li>
-                   {/* ... other list items ... */}
-                 </ul>
-                 {/* ... rest of content ... */}
-              </section>
+            <section id="section-12" className={styles.reviewSection}>
+              <h2>Travel Focus: $120 Uber Cash: Credits for Rides & Eats On-the-Go (US Focus)</h2>
+              <p>Cardholders receive up to <strong>$120 annually in Uber Cash</strong>, provided as <strong>$10 deposited monthly</strong> into their linked Uber account. This requires adding the Gold Card to the Uber wallet. The Uber Cash applies to <strong>U.S. Uber rides and Uber Eats orders only</strong>. It expires at the end of each month if unused.</p>
+              <p>This credit is practical for U.S.-based Uber users, directly reducing costs. However, its U.S.-only restriction limits its value during international travel, a notable drawback for a travel-focused card. The value appears in the Uber app, not as an Amex statement credit.</p>
+            </section>
 
-              {/* --- E-A-T Section --- */}
-              <section id="eat-expertise-authority-trustworthiness" className={`${styles.reviewSection} ${styles.eatSection}`}>
-                <h2><span className={`${styles.icon} ${styles.iconLeaf}`}></span>Our Commitment to E-A-T: Expertise, Authority & Trustworthiness</h2>
+            <section id="section-13" className={styles.reviewSection}>
+              <h2>$100 Resy Credit: Elevating Your U.S. Dining Experiences</h2>
+              <p>The <strong>$100 annual Resy Credit</strong> is structured semi-annually: up to <strong>$50 back from Jan-Jun</strong>, and up to <strong>$50 back from Jul-Dec</strong>. Enrollment is required. It applies to purchases made with the enrolled card at <strong>U.S. restaurants participating in Resy</strong> or for other eligible Resy purchases. Resy is an Amex-owned reservation platform, often featuring popular/upscale U.S. restaurants.</p>
+              <p>Utility depends on dining at U.S. Resy partners, which are more prevalent in major cities. Maximizing requires qualifying spend in both six-month periods. This credit provides value while driving engagement with Amex's Resy platform.</p>
+            </section>
+
+           <section id="section-14" className={styles.reviewSection}>
+              <h2>$84 Dunkin' Credit: Fueling Your Mornings (US Focus)</h2>
+              <p>The most niche credit is the <strong>$84 annual Dunkin' Credit</strong>, offering up to <strong>$7 in statement credits monthly</strong>. Enrollment is required. It applies to purchases made with the enrolled card at <strong>U.S. Dunkin' locations</strong>.</p>
+              <p>This benefits regular U.S. Dunkin' customers. It's "use it or lose it" monthly. A common strategy is loading exactly $7 onto a Dunkin' account via their app each month to trigger the credit without needing a specific purchase.</p>
+            </section>
+
+
+            {/* Section 15: Credits Summary Table - Ensure table styling is updated via CSS module */}
+            <section id="section-15" className={styles.reviewSection}>
+              <h2>Calculating the Value: How Credits Offset the Annual Fee</h2>
+              <p>The Amex Gold's credits potentially total <strong>$424 annually</strong> ($120 Dining + $120 Uber + $100 Resy + $84 Dunkin'), exceeding the $325 annual fee.</p>
+              <h3>Amex Gold Annual Credits Summary</h3>
+              <div className={styles.tableContainer}> {/* Existing table structure, will be styled by new CSS */}
+                <table className={styles.statsTable}>
+                  <thead>
+                    <tr>
+                      <th>Credit Name</th><th>Structure</th><th>Max Annual Value</th><th>Key Partners / Usage Restrictions</th><th>Enrollment Required</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td data-label="Credit Name">Dining Credit</td><td data-label="Structure">Up to $10 / month</td><td data-label="Max Annual Value">$120</td><td data-label="Key Partners / Usage Restrictions">Grubhub, Cheesecake Factory, Goldbelly, Wine.com, Five Guys</td><td data-label="Enrollment Required">Yes</td></tr>
+                    <tr><td data-label="Credit Name">Uber Cash</td><td data-label="Structure">$10 Uber Cash / month</td><td data-label="Max Annual Value">$120</td><td data-label="Key Partners / Usage Restrictions">Uber Rides & Uber Eats in U.S. only</td><td data-label="Enrollment Required">Yes (Link Card)</td></tr>
+                    <tr><td data-label="Credit Name">Resy Credit</td><td data-label="Structure">Up to $50 / 6 months (Jan-Jun, Jul-Dec)</td><td data-label="Max Annual Value">$100</td><td data-label="Key Partners / Usage Restrictions">U.S. Resy Restaurants & eligible Resy purchases</td><td data-label="Enrollment Required">Yes</td></tr>
+                    <tr><td data-label="Credit Name">Dunkin' Credit</td><td data-label="Structure">Up to $7 / month</td><td data-label="Max Annual Value">$84</td><td data-label="Key Partners / Usage Restrictions">U.S. Dunkin' locations</td><td data-label="Enrollment Required">Yes</td></tr>
+                    <tr className={styles.totalRow}><td colSpan="2" data-label="Total">Total Potential</td><td data-label="Max Annual Value">$424</td><td colSpan="2"></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p>However, achieving this requires fully utilizing all credits, many with partner and U.S. restrictions. Prospective cardmembers must realistically assess their spending. Do they naturally spend enough with these specific partners/services within the required timeframes and locations? If not, the actual credit value received will be lower, placing more emphasis on points earning and other benefits to justify the fee. The card favors users aligned with these specific services, particularly in urban U.S. areas.</p>
+            </section>
+
+            {/* ... (Original sections 16-19 - content unchanged, just ensure they have correct IDs and classNames) ... */}
+
+            <section id="section-16" className={styles.reviewSection}>
+              <h2>Travel Focus: The Hotel Collection Benefits ($100 Credit & Upgrades)</h2>
+              <p>The Amex Gold provides access to <strong>The Hotel Collection (THC)</strong>, offering perks at over 1,000 participating upscale hotels worldwide. Booking a stay of <strong>two consecutive nights or more</strong> through American Express Travel using the Gold Card is required.</p>
+              <p>Benefits include:</p>
+              <ul className={styles.featureList}><li><strong>$100 Experience Credit:</strong> For eligible on-property charges (dining, spa, etc.), applied at check-out.</li><li><strong>Room Upgrade:</strong> One-category upgrade at check-in, when available.</li></ul>
+              <p>Noon check-in/late check-out may also be offered, subject to availability.</p>
+              <p>Conditions are strict: 2-night minimum, booking via Amex Travel. Benefits are per room, per stay (limit 3 rooms). Back-to-back stays don't qualify for extra benefits. The $100 credit requires on-property spending. Booking via Amex Travel might mean higher rates or forfeiting hotel loyalty benefits. THC offers introductory luxury perks, below the more comprehensive Fine Hotels + Resorts program available with Platinum/Centurion cards.</p>
+            </section>
+
+            <section id="section-17" className={styles.reviewSection}>
+              <h2>Travel Focus: Essential Travel Protections: Baggage & Car Rental Insurance (Secondary)</h2>
+              <p>The Gold Card includes travel insurance protections when the trip is paid for with the card.</p>
+              <h3>Baggage Insurance Plan:</h3>
+              <p>Covers eligible lost, damaged, or stolen baggage during common carrier travel (plane, train, etc.). Limits per person per trip:</p>
+              <ul className={styles.featureList}><li><strong>Carry-on:</strong> Up to $1,250.</li><li><strong>Checked:</strong> Up to $500.</li><li><strong>High-Risk Items (jewelry, electronics, etc.):</strong> $250 sub-limit across all baggage.</li></ul>
+              <p>Coverage is <strong>secondary</strong> to the carrier's reimbursement. Claims must be filed first with the carrier. Exclusions apply (cash, normal wear). Limits may be insufficient for high-value items.</p>
+              <h3>Car Rental Loss and Damage Insurance:</h3>
+              <p>Covers damage/theft of a rental car. Requires paying for the entire rental with the Gold Card and declining the rental company's CDW/LDW. Key details:</p>
+              <ul className={styles.featureList}><li><strong>Limit:</strong> Up to $50,000 per rental.</li><li><strong>Type: Secondary.</strong> File first with personal auto insurance; Amex covers the deductible/uncovered costs. This is a major drawback vs. primary coverage on some competitor cards.</li><li><strong>Duration:</strong> Up to 30 consecutive days.</li><li><strong>Exclusions:</strong> Rentals in Australia, Italy, New Zealand; certain vehicle types (large vans, trucks, antique/exotic cars, RVs); liability for damage/injury to others is not covered.</li></ul>
+              <p>While providing a safety net, the secondary nature of the car rental insurance is a significant limitation. Amex offers optional paid primary coverage.</p>
+            </section>
+
+            <section id="section-18" className={styles.reviewSection}>
+              <h2>Travel Focus: Added Peace of Mind: Global Assist® Hotline & No Foreign Transaction Fees</h2>
+              <p>Two additional travel-focused benefits enhance the Gold Card's appeal.</p>
+              <h3>Global Assist® Hotline:</h3>
+              <p>Provides 24/7 coordination and referral services when traveling over 100 miles from home. Services include:</p>
+              <ul className={styles.featureList}><li>Medical referrals (doctors, hospitals), monitoring, emergency transport coordination.</li><li>Legal referrals (lawyers, bail bonds).</li><li>Financial assistance coordination (emergency cash, hotel check-in help).</li><li>Travel assistance (lost passport/luggage help, urgent message relay, translation coordination).</li><li>Pre-trip info (customs, visas, weather).</li></ul>
+              <p>Crucially, Global Assist® provides <strong>coordination, not payment</strong>. The cardmember is responsible for all third-party costs (doctors, lawyers, etc.). Its value lies in having 24/7 expert help during emergencies abroad.</p>
+              <h3>No Foreign Transaction Fees:</h3>
+              <p>The card charges <strong>no fees</strong> on purchases made outside the U.S. This saves ~3% compared to many cards, a vital benefit for international travelers that complements the global dining rewards.</p>
+            </section>
+
+            <section id="section-19" className={styles.reviewSection}>
+              <h2>Beyond Travel: Purchase Protection & Extended Warranty Deep Dive</h2>
+              <p>The Gold Card also protects everyday purchases.</p>
+              <h3>Purchase Protection:</h3>
+              <p>Covers eligible items bought with the card against accidental damage, theft, or loss for <strong>90 days</strong> from purchase. No enrollment needed.</p>
+              <ul className={styles.featureList}><li><strong>Limits:</strong> Up to <strong>$10,000 per item / occurrence</strong>.</li><li>Up to <strong>$50,000 per account</strong> per calendar year.</li></ul>
+              <p>This $10k item limit is robust, offering significant protection for valuable goods. Exclusions apply (animals, consumables, motorized vehicles, items not reasonably safeguarded). Claims require prompt notification (within 30 days) and proof (receipt, police report).</p>
+              <h3>Extended Warranty:</h3>
+              <p>Automatically extends the original U.S. manufacturer's warranty.</p>
+              <ul className={styles.featureList}><li><strong>Extension:</strong> Adds up to <strong>one additional year</strong>.</li><li><strong>Eligible Warranties:</strong> Original manufacturer's warranties of <strong>5 years or less</strong>.</li><li><strong>Coverage Limits:</strong> Up to <strong>$10,000 per item</strong>, $50,000 per account per year.</li></ul>
+              <p>This benefit adds significant value, especially for electronics/appliances. Exclusions include consumables, vehicles, commercial use items. Claims require documentation (receipt, warranty). Both protections require good record-keeping but offer substantial peace of mind and potential savings.</p>
+            </section>
+
+
+           {/* Section 20: Final Verdict */}
+           <section id="section-20" className={styles.reviewSection}>
+              <h2>Final Verdict: Is the Amex Gold Your Ideal Travel Companion?</h2>
+              {/* Content is largely the same, styling will enhance it */}
+              <p>The <strong>American Express® Gold Card</strong> remains a strong contender, particularly for those whose spending aligns with its strengths: superb <strong>4X points on global dining</strong> and <strong>U.S. supermarkets</strong>, solid <strong>3X on direct/Amex Travel flights</strong>, access to the valuable <strong>Membership Rewards® program</strong>, and <strong>No Foreign Transaction Fees</strong>. The potential <strong>$424 in annual credits</strong> can more than offset the <strong>$325 annual fee</strong>, and travel/purchase protections add security.</p>
+              <p>However, maximizing value requires active use of the specific, often U.S.-centric, credits. The complimentary Car Rental Insurance is <strong>secondary</strong>, a notable drawback versus primary coverage from competitors like Chase Sapphire Preferred®. Achieving top value from MR points necessitates engaging with airline/hotel transfer partners, which involves complexity.</p>
+              <h3>Who is it best for?</h3>
+              <p>U.S.-based individuals/families who:</p>
+              <ul className={styles.featureList}>
+                <li>Spend heavily on restaurants (globally) and U.S. groceries.</li>
+                <li>Regularly use Grubhub, Uber (U.S.), Resy (U.S.), and/or Dunkin' (U.S.) to maximize credits.</li>
+                <li>Travel often enough to benefit from 3X flight points, No FTF, THC perks, and insurances.</li>
+                <li>Are willing to learn and use MR transfer partners for high-value travel redemptions.</li>
+              </ul>
+              <h3>Consider alternatives if:</h3>
+              <ul className={styles.featureList}>
+                <li>You can't consistently use the specific credits.</li>
+                <li>You prefer simple cash back over points complexity.</li>
+                <li>You need primary car rental insurance (consider Chase Sapphire Preferred®, $95 fee).</li>
+                <li>You seek top-tier travel perks like extensive lounge access (consider The Platinum Card®, $695 fee).</li>
+                <li>You want solid travel/dining rewards with a lower fee (consider Amex Green Card, $150 fee).</li>
+              </ul>
+              <p><strong>In conclusion:</strong> The Amex Gold Card excels in rewarding everyday food spending while offering good travel benefits. Its value proposition is highly personalized, hinging on maximizing credits and strategically redeeming points. For users whose lifestyle fits this structure and who embrace the points strategy, it's a powerful and potentially very rewarding card.</p>
+              <div className={styles.disclaimerBox}>
+                <p><strong>Disclaimer:</strong> Terms, interest rates, fees, welcome offers, credit partners, point values, and insurance benefits are subject to change at any time. Always verify current details directly with American Express before applying. Affiliate links may be present; editorial opinions are independent. Points valuations are estimates and vary based on redemption. Carrying a balance will incur interest charges that can outweigh rewards. Refer to official American Express documentation for the most up-to-date Terms & Conditions.</p>
+              </div>
+            </section>
+
+            {/* E-A-T Section - styling updated */}
+            <section id="eat-expertise-authority-trustworthiness" className={`${styles.reviewSection} ${styles.eatSection}`}>
+                <h2 dangerouslySetInnerHTML={{ __html: "Our Commitment to E-A-T: Expertise, Authority &amp; Trustworthiness"}}></h2>
+                {/* Content remains the same */}
                 <p>At <strong>{reviewData.author}</strong>, we prioritize:</p>
                 <h3>1. Expertise</h3>
-                <ul className={`${styles.featureList} ${styles.iconList}`}>
-                    <li><span className={`${styles.icon} ${styles.iconBenefitCheck}`}></span><strong>Real-World Testing:</strong> Our team actively uses the Amex Gold...</li>
-                    {/* ... other list items ... */}
-                </ul>
+                <ul className={styles.featureList}><li><strong>Real-World Testing:</strong> Our team actively uses the Amex Gold for dining/groceries, verifying 4x categories and monthly credit usage, providing firsthand insight into statement postings.</li><li><strong>Regular Monitoring:</strong> We track changes to dining credit partners, redemption rates, and transfer partner expansions, ensuring each year’s coverage is updated.</li><li><strong>Advanced Redemption Knowledge:</strong> We experiment with airline/hotel transfers to confirm sweet spots, guiding readers to potentially 2¢+ per point redemptions.</li></ul>
                 <h3>2. Authority</h3>
-                <ul className={`${styles.featureList} ${styles.iconList}`}>
-                    <li><span className={`${styles.icon} ${styles.iconBenefitCheck}`}></span><strong>Comprehensive Analysis:</strong> Our detailed coverage dives beyond basics...</li>
-                    {/* ... other list items ... */}
-                </ul>
+                <ul className={styles.featureList}><li><strong>Comprehensive Analysis:</strong> Our detailed coverage dives beyond basics, tackling synergy with other Amex cards, competitor comparisons, and advanced usage tips.</li><li><strong>Industry Recognition:</strong> We’re frequently cited in top finance/travel outlets for unbiased Amex coverage. {/* *** Customize this claim *** */} Our data-driven approach ensures readers get detailed, factual card reviews.</li><li><strong>Transparency:</strong> If affiliate links are present, we disclose them, preserving editorial independence regarding star ratings or final verdicts.</li></ul>
                 <h3>3. Trustworthiness</h3>
-                <ul className={`${styles.featureList} ${styles.iconList}`}>
-                    <li><span className={`${styles.icon} ${styles.iconBenefitCheck}`}></span><strong>Independent Ratings:</strong> We do not let advertisers influence...</li>
-                    {/* ... other list items ... */}
-                    <li><span className={`${styles.icon} ${styles.iconBenefitCheck}`}></span>
-                      <strong>Privacy & Security:</strong> We uphold data protection best practices, as explained in our{' '}
-                      <Link href="/privacy-policy">
-                        <a>Privacy Policy</a>{/* Ensure /privacy-policy route exists */}
-                      </Link>.
-                    </li>
-                </ul>
-                <p>
-                  By following E-A-T, we aim to deliver a thorough, trustworthy evaluation of the <strong>{reviewData.cardName}</strong>, so you can decide if it’s your ideal travel and dining companion.
-                </p>
+                <ul className={styles.featureList}><li><strong>Independent Ratings:</strong> We do not let advertisers influence our editorial stance or rating scores.</li><li><strong>Frequent Revisions:</strong> If major changes occur (e.g., new fee structures, credit changes), we swiftly update to maintain accuracy.</li><li><strong>User Engagement:</strong> We welcome feedback or redemption stories from real cardholders to cross-verify official T&amp;Cs and categories.</li><li><strong>Privacy &amp; Security:</strong> We uphold data protection best practices, as explained in our <Link href="/privacy-policy"><a>Privacy Policy</a></Link>.</li></ul>
+                <p>By following E-A-T, we aim to deliver a thorough, trustworthy evaluation of the <strong>{reviewData.cardName}</strong>, so you can decide if it’s your ideal travel and dining companion.</p>
             </section>
 
             </article>
-          </div> {/* Close reviewContainer */}
+          </div>
         </main>
       </div> {/* Close reviewPageLayout */}
 
-      {/* --- Footer Component --- */}
       <Footer />
     </>
   );
