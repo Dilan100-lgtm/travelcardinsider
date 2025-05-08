@@ -92,7 +92,7 @@
   .tocContainer {
     position: sticky;
     /* Use var from globals or define fallback */
-    top: calc(var(--header-height-actual, 3.5rem) + var(--spacing-lg, 24px));
+    top: 5rem;
     /* Use var from globals or define fallback */
     width: var(--toc-width-desktop, 280px);
     align-self: flex-start; /* Align within sidebarArea if it were flex, harmless otherwise */
