@@ -142,7 +142,7 @@
 /* Desktop Styles (Sidebar) */
 @media (min-width: 1024px) { /* Adjust this breakpoint as needed */
   .tocContainer {
-    position: sticky;
+    position: sticky !important;
     top: calc(var(--header-height-actual, 3.5rem) + var(--spacing-lg, 24px)); /* Sticky below header with some space */
     width: var(--toc-width-desktop, 280px); /* Use a variable or a fixed value */
     align-self: flex-start; /* Important if in a flex container with main content */
