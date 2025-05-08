@@ -11,6 +11,7 @@
   border: 1px solid var(--color-border-light, #ebecf0); /* Add subtle border */
   line-height: 1.7;
   font-size: 1rem;
+  margin-top: 4rem;
   color: var(--text-medium, #42526e); /* Use variable */
   font-family: 'Roboto', Arial, sans-serif; /* Will be overridden by globals.css for Inter if not more specific */
 }
@@ -107,6 +108,7 @@
   padding-left: 1.75em;
   margin-bottom: var(--spacing-sm, 8px); /* Tighter spacing */
   font-size: 0.95rem;
+  text-decoration: none;
 }
 .featureList li::before {
   content: '•'; /* Simple bullet */
