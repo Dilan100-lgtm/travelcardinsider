@@ -201,7 +201,7 @@
   font-family: var(--font-condensed, 'Roboto Condensed', var(--font-family-sans, sans-serif));
   font-size: 1.3rem; /* Smaller title */
   font-weight: 600; /* Less heavy */
-  color: var(--text-dark, #172b4d); /* Use variable */
+  color: var(--text-dark, #223d6d); /* Use variable */
   text-align: center;
   margin-top: 0;
   margin-bottom: var(--spacing-lg, 24px);
@@ -255,14 +255,17 @@
   color: var(--text-dark, #172b4d); /* Use variable */
   font-size: 1rem; /* Slightly larger value text */
   text-align: right;
+  font-family: roboto-condensed, sans-serif; /* Condensed font */
 }
 
 .summaryValue small {
   font-size: 0.8em;
-  color: var(--text-light, #6b7f9b); /* Use variable */
+  color: var(--text-light, #476ea3); /* Use variable */
   display: inline; /* Show details inline */
   margin-left: 0.3em;
   font-weight: 400;
+  font-family: roboto-condensed, sans-serif; /* Condensed font */
+  font-style: italic; /* Italicize for emphasis */
 }
 
 .summaryRatesLink {
