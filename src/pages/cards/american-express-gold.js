@@ -301,7 +301,7 @@ function AmexGoldReviewPage() {
                 {/* ============= REVIEW HEADER ============= */}
                 <header className={styles.reviewHeader}>
                   {/* H1 uses new title from reviewData */}
-                  <h1>{reviewData.title}</h1>
+                  
 
                   {/* Section 1 Content & Image Wrapper */}
                   {/* Added introAndImageWrapper div for CSS Module layout */}
