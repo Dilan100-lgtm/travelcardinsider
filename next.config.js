@@ -1,19 +1,25 @@
 module.exports = {
   reactStrictMode: true,
 };
+// next.config.js  (only the webpack() part shown)
+const svgRegex = /\.svg$/i;
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   webpack(config) {
-    // Grab the existing asset rule for svgs and exclude the paths you
-    // want SVGR to handle, or just delete the default test for /\.svg$/
-    const fileLoaderRule = config.module.rules.find(
-      rule => rule.test && rule.test.test('.svg')
+    // 1️⃣  Find *the* default asset rule that handles SVGs *and* is a RegExp
+    const assetRule = config.module.rules.find(
+      (rule) => rule.test instanceof RegExp && rule.test.test('file.svg')
     );
-    fileLoaderRule.exclude = /\.svg$/;
 
-    // Add SVGR
+    if (assetRule) {
+      // Tell that rule to ignore .svg so SVGR can own them
+      assetRule.exclude = svgRegex;
+    }
+
+    // 2️⃣  Add SVGR for any SVG that’s imported from JS/TS/TSX/JSX
     config.module.rules.push({
-      test: /\.svg$/,
+      test: svgRegex,
       issuer: /\.[jt]sx?$/,
       use: [
         {
