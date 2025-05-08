@@ -476,9 +476,9 @@
 
 }
 
-.mainContentArea { flex-grow: 1; min-width: 0; }
+.mainContentArea { flex-grow: 1; min-width: 0; overflow-y: visible; }
 
-.sidebarArea { width: 100%; }
+.sidebarArea { width: 100%; align-self: flex-start }
 
 @media (min-width: 1024px) { /* Desktop breakpoint */
   .reviewPageLayout { flex-direction: row; align-items: flex-start; }
