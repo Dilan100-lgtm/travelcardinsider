@@ -30,7 +30,7 @@
   padding: 0;
   margin: 0;
   max-height: calc(100vh - 200px); /* Default max height */
-  overflow-y: visible;
+  overflow-y: auto;
 }
 
 .tocItem {
@@ -92,7 +92,7 @@
 /* Desktop Styles (Sidebar) */
 @media (min-width: 1024px) {
   .tocContainer {
-    position: sticky; /* Sticky to the top of the sidebar area */
+    position: fixed; /* Sticky to the top of the sidebar area */
     /* Use var from globals or define fallback */
     top: 5rem;
     margin-bottom: 30rem;
