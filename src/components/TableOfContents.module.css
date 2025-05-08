@@ -90,7 +90,7 @@
 /* Desktop Styles (Sidebar) */
 @media (min-width: 1024px) {
   .tocContainer {
-    position: sticky;
+    position: sticky !important; /* Sticky to the top of the sidebar area */
     /* Use var from globals or define fallback */
     top: 5rem;
     /* Use var from globals or define fallback */
