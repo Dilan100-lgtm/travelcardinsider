@@ -157,7 +157,7 @@ body {
 
 main.main-content {
   margin-top: 3.5rem; /* Ensure content starts below fixed header */
-   /* overflow-x: hidden; Consider if needed, can hide content */
+    overflow-x: clip;  
    overflow-y: visible;
 }
 
