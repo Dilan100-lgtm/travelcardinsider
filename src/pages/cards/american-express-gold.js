@@ -15,7 +15,7 @@ import Footer from '../../components/Footer'; // Assuming path: components/Foote
 import TableOfContents from '../../components/TableOfContents'; // Import the new ToC component
 import IconGift from '../../components/icons/icon-gift.svg';
 import IconStar from '../../components/icons/icon-star.svg'; // Assuming you have a star icon component
-import IconCheck from '../../components/icons/icon-Credit card.svg'; // Assuming you have a check icon component
+import IconCheck from '../../components/icons/icon-Credit Card.svg'; // Assuming you have a check icon component
 import IconX from '../../components/icons/icon-Star + Arrow Up.svg'; // Assuming you have an X icon componen
 import IconPlus from '../../components/icons/icon-target.svg'; // Assuming you have a plus icon component
 
