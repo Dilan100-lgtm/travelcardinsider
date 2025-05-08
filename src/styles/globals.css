@@ -1,64 +1,145 @@
 /* =============== GLOBALS & DEFAULTS (Refined) =============== */
 :root {
-  /* Using a more consistent and modern palette from ReviewPage1.module.css as a base */
-  --color-background-main: #FDFDFD; /* Bright white with a hint of warmth */
-  --color-background-module: #FFFFFF;
-  --color-background-accent: #F0F8FF; /* Light Alice Blue for subtle section backgrounds or callouts */
-  --color-text-primary: #2D3748; /* Dark Gray-Blue */
-  --color-text-secondary: #4A5568; /* Medium Gray-Blue */
-  --color-text-subtle: #718096; /* Lighter Gray-Blue */
-  --color-primary-accent: #005A8C; /* Deep Refined Blue (e.g., Amex Blue-like) */
-  --color-secondary-accent: #00AEEF; /* Brighter, modern blue for highlights */
-  --color-cta-primary-bg: #D4AF37; /* Muted Elegant Gold */
-  --color-cta-primary-text: #FFFFFF;
-  --color-cta-primary-hover-bg: #C69F27; /* Darker Gold */
-  --color-cta-secondary-bg: #E2E8F0; /* Light Gray for secondary CTAs */
-  --color-cta-secondary-text: var(--color-primary-accent);
-  --color-cta-secondary-hover-bg: #CBD5E0;
-  --color-border-subtle: #E2E8F0;
-  --color-border-strong: #CBD5E0;
-  --color-success: #38A169; /* Green */
-  --color-error: #E53E3E; /* Red */
-  --color-star-filled: #FFC107; /* Gold for stars */
-  --color-star-empty: #E0E0E0; /* Light gray for empty stars */
+  /* Existing Variables - Kept As Is */
+  --bg-light-gray: #f9fafb;
+  --bg-white: #ffffff;
+  --bg-light: #f3f4f6; /* Added for selected card items */
+  --text-dark: #111827;
+  --text-medium: #374151;
+  --text-light: #6b7280;
+  --text-muted: #4b5563; /* Added for breakdown */
+  --border-color: #d1d5db;
+  --border-color-light: #e5e7eb;
+  --primary-blue: #2563eb;
+  --primary-blue-dark: #1d4ed8;
+  --primary-blue-focus: rgba(59, 130, 246, 0.2);
+  --primary-blue-light-bg: #eff6ff; /* Added for AI box */
+  --primary-blue-light-border: #bfdbfe; /* Added for AI box */
+  --primary-blue-text-dark: #1e3a8a; /* Added for AI h3 */
+  --secondary-gray: #6b7280;
+  --secondary-gray-dark: #4b5563;
+  --value-good: #16a34a;
+  --value-bad: #dc2626;
+  --info-bg: #eff6ff; /* Example for chips */
+  --info-heading: #1e40af; /* Example for chips */
+  --info-border: #bfdbfe; /* Example for chips */
+  --danger-color: #dc2626; /* For chip remove button */
+  --color-primary: #0052cc; /* Professional Blue */
+  --color-primary-hover: #0041a3;
+  --color-text-primary: #172b4d; /* Dark Slate Gray */
+  --color-text-secondary: #5e6c84; /* Medium Slate Gray */
+  --color-text-muted: #7a869a; /* Lighter Slate Gray */
+  --color-border: #dfe1e6;
+  --color-border-focus: #0052cc;
+  --color-background-light: #ffffff;
+  --color-background-overlay: rgba(23, 43, 77, 0.75); /* Dark Slate Gray overlay */
+  --color-success: #006644; /* Dark Green */
+  --color-success-background: #e3fcef; /* Light Green */
 
-  /* Typography */
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-  --font-headings: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-  --font-monospace: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  --font-family-sans: 'Roboto Condensed', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; /* Prioritize Roboto Condensed */
+  --font-family-serif: 'Playfair Display', Georgia, serif; /* Added serif option */
 
-  /* Spacing & Layout */
-  --space-xs: 0.25rem;  /* 4px */
-  --space-sm: 0.5rem;   /* 8px */
-  --space-md: 1rem;     /* 16px */
-  --space-lg: 1.5rem;   /* 24px */
-  --space-xl: 2rem;     /* 32px */
-  --space-xxl: 3rem;    /* 48px */
-  --container-max-width: 1280px;
-  --container-padding-desktop: var(--space-xl);
-  --container-padding-mobile: var(--space-md);
-  --border-radius: 8px;
-  --box-shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
-  --box-shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
 
-  /* Added from original globals for compatibility, can be deprecated if not used elsewhere */
-  --bg-light-gray: #f9fafb; /* Similar to background-accent */
-  --bg-white: #ffffff; /* Same as background-module */
-  --text-dark: var(--color-text-primary);
-  --text-medium: var(--color-text-secondary);
-  --text-light: var(--color-text-subtle);
-  --border-color: var(--color-border-strong);
-  --primary-blue: var(--color-primary-accent);
-  --primary-blue-dark: #0041a3; /* Darker version of primary accent */
-  --primary-blue-focus: rgba(0, 90, 140, 0.2); /* Focus for primary accent */
+  --border-radius-md: 8px;
+  --border-radius-lg: 16px; /* Large radius for the box */
 
-  --header-height: 56px; /* Example header height, adjust based on actual Header component */
+  --shadow-soft: 0 4px 8px rgba(9, 30, 66, 0.1);
+  --shadow-medium: 0 8px 16px rgba(9, 30, 66, 0.15);
+  --shadow-focus: 0 0 0 3px rgba(0, 82, 204, 0.2); /* Blue glow */
+
+  --transition-speed: 0.2s;
+  --color-primary: #0052cc;          /* Professional Blue */
+  --color-primary-hover: #0041a3;     /* Darker Blue */
+  --color-primary-light: rgba(0, 82, 204, 0.15); /* Light blue for focus */
+  --color-primary-gradient-start: #0052cc;
+  --color-primary-gradient-end: #003aaa; /* Slightly less intense gradient end */
+
+  --color-text-primary: #172b4d;      /* Dark Slate Gray */
+  --color-text-secondary: #5e6c84;    /* Medium Slate Gray */
+  --color-text-light: #7a869a;       /* Lighter Slate Gray */
+  --color-text-on-primary: #ffffff;   /* White */
+
+  --color-background-page: #f4f5f7;   /* Light Gray background */
+  --color-background-card: #ffffff;   /* White card */
+
+  --color-border: #dfe1e6;          /* Light Gray border */
+  --color-border-focus: var(--color-primary);
+
+  --color-success: #006644;          /* Dark Green */
+  --color-success-background: #e3fcef; /* Light Green */
+  --color-error: #bf2600;            /* Dark Red */
+  --color-error-background: #ffebe6;   /* Light Red */
+
+  --color-spinner-base: #c1c7d0;     /* Medium Gray */
+  --color-spinner-accent: var(--color-primary);
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
+
+  /* Radii */
+  --border-radius-sm: 4px;  /* Inner elements */
+  --border-radius-md: 8px;  /* Card, buttons */
+  --border-radius-lg: 12px; /* Larger elements if needed */
+  --border-radius-full: 50%;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(9, 30, 66, 0.07);
+  --shadow-md: 0 4px 8px -2px rgba(9, 30, 66, 0.1), 0 0 1px rgba(9, 30, 66, 0.08);
+  --shadow-lg: 0 12px 24px -4px rgba(9, 30, 66, 0.15), 0 0 1px rgba(9, 30, 66, 0.1);
+
+  /* Transitions */
+  --transition-speed: 0.2s;
+  --transition-timing: ease-in-out;
+  --color-text-primary: #212529; /* Near Black */
+    --color-text-secondary: #495057; /* Dark Gray */
+    --color-text-muted: #6c757d; /* Medium Gray */
+    --color-heading: #1a202c; /* Very Dark Gray-Blue */
+    --color-primary: #0056b3; /* Stronger Blue */
+    --color-primary-dark: #004085; /* Darker Blue */
+    /* Refined Gold - slightly more saturated */
+    --color-accent-gold: #b58900; /*#c09b5f; /* Muted Gold/Bronze */
+    --color-accent-gold-light: #fdf7e7; /* Very light gold/cream for bg */
+    --color-success: #198754; /* Bootstrap Green */
+    --color-danger: #dc3545; /* Bootstrap Red */
+    --color-background: #ffffff;
+    --color-background-subtle: #f8f9fa; /* Standard Light Gray */
+    --color-border: #dee2e6; /* Standard Border Gray */
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Roboto', 'Segoe UI', Helvetica, Arial, sans-serif;
+    --font-condensed: 'Roboto Condensed', var(--font-sans);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+    --border-radius: 8px; /* Standard radius */
+    --primary-color: #1e40af; /* Deep Blue */
+    --primary-color-dark: #1e3a8a;
+    --secondary-color: #34d399; /* Tealish Green */
+    --secondary-color-dark: #10b981;
+    --text-color-primary: #1f2937; /* Dark Gray */
+    --text-color-secondary: #4b5563; /* Medium Gray */
+    --background-light: #f9fafb; /* Very Light Gray */
+    --background-white: #ffffff;
+    --border-color: #e5e7eb; /* Light Gray Border */
+    --border-radius: 8px;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 html {
   height: 100%;
   box-sizing: border-box;
-  scroll-behavior: smooth;
+  scroll-behavior: smooth; /* Added for smoother anchor link scrolling */
 }
 *, *::before, *::after {
   box-sizing: inherit;
@@ -66,194 +147,1256 @@ html {
 
 body {
   margin: 0;
-  font-family: var(--font-body); /* Use new font variable */
-  color: var(--color-text-secondary); /* Use new text color */
-  background-color: var(--color-background-main); /* Use new background color */
+  font-family: var(--font-family-sans); /* Use variable */
+  color: var(--text-medium); /* Use variable */
+  background-color: var(--bg-white); /* Use variable */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  line-height: 1.6;
-  padding-top: var(--header-height); /* Add padding to body to prevent content from being hidden by fixed header */
+  line-height: 1.6; /* Improve base readability */
 }
 
 main.main-content {
-  /* margin-top: 3.5rem; /* Removed, handled by body padding-top */
-  overflow-x: hidden; /* Prevent horizontal scroll on main content */
+  margin-top: 3.5rem; /* Ensure content starts below fixed header */
+   /* overflow-x: hidden; Consider if needed, can hide content */
+   overflow-y: visible;
 }
 
-p, h1, h2, h3, h4, h5, h6, li, div, span {
+/* Add word wrapping globally for safety */
+p, h1, h2, h3, h4, h5, h6, li, div, span { /* Added span */
     overflow-wrap: break-word;
-    word-wrap: break-word;
+    word-wrap: break-word; /* Older browsers */
 }
 
+/* General Container for consistent max-width and padding */
 .container {
   width: 90%;
-  max-width: var(--container-max-width);
+  max-width: 1200px; /* Keep consistent max-width */
   margin-left: auto;
   margin-right: auto;
-  padding-left: var(--container-padding-mobile); /* Default to mobile padding */
-  padding-right: var(--container-padding-mobile);
-}
-@media (min-width: 768px) { /* Apply desktop padding for larger screens */
-    .container {
-        padding-left: var(--container-padding-desktop);
-        padding-right: var(--container-padding-desktop);
-    }
+  padding-left: var(--spacing-md, 16px); /* Use spacing variables */
+  padding-right: var(--spacing-md, 16px);
 }
 
+/* General Section Styling */
 .content-section {
-  padding-top: var(--space-xl);
-  padding-bottom: var(--space-xl);
-  /* margin-top: 1rem; /* Can be removed if spacing is handled by sections themselves */
+  padding-top: var(--spacing-xl, 32px); /* Consistent vertical spacing */
+  padding-bottom: var(--spacing-xl, 32px);
+  margin-top: 1rem; /* Add some space between sections */
 }
 
+/* General Section Title */
 .section-title {
   text-align: center;
-  color: var(--color-text-primary);
-  font-family: var(--font-headings);
+  color: var(--text-dark); /* Use variable */
+  font-family: var(--font-family-serif); /* Use Playfair for headings */
   font-weight: 700;
-  font-size: clamp(1.8rem, 5vw, 2.5rem);
-  margin: 0 auto var(--space-lg) auto;
-  max-width: 800px;
+  font-size: clamp(1.8rem, 5vw, 2.5rem); /* Responsive heading size */
+  margin: 0 auto var(--spacing-lg, 24px) auto; /* Center align and add bottom margin */
+  max-width: 800px; /* Prevent overly long titles on wide screens */
   line-height: 1.3;
 }
 
 .section-description {
   text-align: center;
-  color: var(--color-text-secondary);
+  color: var(--text-medium);
   font-size: clamp(1rem, 2.5vw, 1.1rem);
   max-width: 700px;
-  margin: 0 auto var(--space-lg) auto;
+  margin: 0 auto var(--spacing-lg, 24px) auto;
   line-height: 1.6;
 }
 
 
-/* =============== FONT DEFINITIONS (Example, ensure paths are correct) =============== */
-/* Ensure these fonts are actually hosted or use Google Fonts via <link> in Head */
-/*
+/* =============== FONT DEFINITIONS (Unchanged) =============== */
 @font-face {
-  font-family: 'Inter';
-  src: url('/fonts/Inter-Regular.ttf') format('truetype');
+  font-family: 'Roboto Condensed';
+  src: url('/fonts/Roboto_Condensed-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
-  font-display: swap;
+  font-display: swap; /* Good for performance */
 }
+
 @font-face {
-  font-family: 'Montserrat';
-  src: url('/fonts/Montserrat-Bold.ttf') format('truetype');
+  font-family: 'Roboto Condensed';
+  src: url('/fonts/Roboto_Condensed-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
-  font-display: swap;
+  font-display: swap; /* Good for performance */
 }
-*/
 
-/* =============== HEADER (Basic placeholder, assuming Header component handles its styles) =============== */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/PlayfairDisplay-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/Playfair-Display-Bold.ttf') format('truetype');
+}
+
+
+/* =============== HEADER (Unchanged) =============== */
 .site-header {
-  position: fixed; /* Critical for sticky ToC calculations and body padding */
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background: var(--color-background-module);
-  box-shadow: var(--box-shadow-soft);
-  z-index: 2000; /* Ensure header is above ToC and sticky CTA */
-  height: var(--header-height); /* Define header height */
-  /* Add other header styles: display:flex, align-items, padding, etc. */
+  background: white; /* Check contrast if header color changes */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 3000; /* Ensure header is above most content */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1; /* Set base line-height */
+}
+
+.header-inner {
   display: flex;
   align-items: center;
-  padding: 0 var(--space-md);
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1200px;
+  height: 3.5rem; /* Define header height */
+  padding: 0 1rem;
 }
-/* .header-inner, .logo-toggle-container, .menu-toggle, .site-logo, .main-nav, etc. would be styled within Header component or here */
 
-
-/* =============== BUTTONS (Unified Button Styles) =============== */
-.cta-button, /* Generic CTA */
-.Apply-button, /* Specific Apply button */
-.submit, /* Form submit */
-.btn { /* Base class from ReviewPage1, can be merged */
-  display: inline-flex; /* Use flex for icon alignment */
+.logo-toggle-container {
+  display: flex;
   align-items: center;
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem; /* Add padding for easier tapping */
+  margin: 0 1rem 0 -0.5rem; /* Adjust margin */
+}
+
+.bar {
+  display: block;
+  width: 1.5rem;
+  height: 0.2rem;
+  background: #000; /* Ensure high contrast */
+  margin: 4px 0; /* Slightly increased spacing */
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Added opacity */
+}
+
+.menu-toggle.open .bar:nth-child(1) { transform: translateY(6px) rotate(45deg); } /* Adjusted transform */
+.menu-toggle.open .bar:nth-child(2) { opacity: 0; }
+.menu-toggle.open .bar:nth-child(3) { transform: translateY(-6px) rotate(-45deg); } /* Adjusted transform */
+
+.site-logo {
+    display: inline-block; /* Allows vertical alignment */
+}
+.site-logo img { /* Styling might differ slightly for Next Image */
+  display: block;
+  height: auto; /* Let width/height props control size */
+  width: auto;
+  max-height: calc(3.5rem - 1rem); /* Example: Limit height based on header */
+}
+
+/* Main Navigation (Mobile - Slide out) */
+.main-nav {
+  position: fixed;
+  top: 3.5rem;
+  left: 0;
+  width: min(70vw, 300px); /* Use min() for responsiveness */
+  height: calc(100vh - 3.5rem);
+  background: #fff;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 3000; /* Above backdrop */
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+.main-nav.open {
+  transform: translateX(0);
+}
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-list li {
+  margin: 0; /* Reset margin for consistency */
+}
+
+.nav-list a,
+.nav-list button { /* Style buttons similarly if used */
+  text-decoration: none;
+  color: #333; /* Check contrast */
+  font-weight: 500;
+  font-size: 0.95rem;
+  display: block;
+  padding: 0.75rem 0; /* Consistent padding */
+  transition: color 0.3s ease, background-color 0.3s ease;
+  border-bottom: 1px solid #eee; /* Separator */
+}
+.nav-list li:last-child > a,
+.nav-list li:last-child > button {
+    border-bottom: none; /* Remove border from last item */
+}
+
+
+.nav-list a:hover,
+.nav-list button:hover {
+  color: #0056b3;
+  background-color: #f8f8f8;
+}
+
+/* Mobile Submenu Styles */
+.has-dropdown .dropdown-menu {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 1rem; /* Padding left for indent */
+  background: #f8f8f8; /* Slightly different background */
+  border-left: none; /* Remove side border */
+}
+.has-dropdown.submenu-open > .dropdown-menu {
+  display: block;
+}
+.dropdown-menu li {
+  margin: 0;
+}
+.dropdown-menu a {
+  padding: 0.5rem 0.8rem;
+  font-size: 0.9rem;
+  color: #444; /* Check contrast */
+  border-bottom: 1px solid #ddd; /* Separator inside submenu */
+}
+.dropdown-menu li:last-child a {
+    border-bottom: none;
+}
+
+/* Backdrop for mobile menu */
+.menu-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.4);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.0s 0.3s linear;
+  z-index: 2500; /* Below nav, above content */
+}
+.menu-backdrop.open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease;
+}
+
+/* Header Actions (Search etc.) */
+/* This LI contains the search bar */
+.header-actions {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0; /* Padding for search li on mobile */
+  border-bottom: 1px solid #eee;
+}
+
+/* --- Header Search Bar Styles (Unchanged) --- */
+.search-container {
+  position: relative; /* Needed for absolute positioning of dropdown */
+  margin: 0 1rem; /* Adjust horizontal margin */
+}
+
+.search-container input[type="search"] {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%; /* Expand to container width */
+  max-width: 250px; /* Limit width on desktop */
+  box-sizing: border-box;
+  font-size: 1rem; /* Match base font size */
+  transition: border-color 0.2s ease;
+}
+
+.search-container input[type="search"]:focus {
+  border-color: #007bff; /* Highlight border on focus (adjust color) */
+  outline: none; /* Remove default browser outline */
+}
+
+/* Base styles for dropdown-like elements positioned below input */
+.search-results-base {
+  position: absolute;
+  top: 100%; /* Position directly below the input */
+  left: 0;
+  right: 0; /* Span the width of the relative container */
+  background-color: #ffffff; /* White background */
+  border: 1px solid #ccc; /* Match input border */
+  border-top: none; /* Avoid double border */
+  border-radius: 0 0 4px 4px; /* Rounded bottom corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  z-index: 3000; /* Ensure it appears above other content */
+  padding: 0;
+  margin: 0;
+  max-width: 350px; /* Optional: Slightly wider than input for readability */
+}
+
+/* Styles for the results list */
+.search-results-dropdown {
+  /* Inherit base styles */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 3000;
+  padding: 0;
+  margin: 0;
+  max-width: 350px;
+  /* Specific list styles */
+  list-style: none;
+  max-height: 300px; /* Limit height and make scrollable */
+  overflow-y: auto; /* Add scrollbar if content overflows */
+}
+
+/* Styles for the "No results" message */
+.search-no-results {
+   /* Inherit base styles */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 3000;
+  padding: 0;
+  margin: 0;
+  max-width: 350px;
+  /* Specific "no results" styles */
+  padding: 10px 15px; /* Add padding */
+  color: #666; /* Grey text color */
+  font-style: italic;
+  text-align: center;
+  border-top: 1px solid #ccc; /* Re-add top border for separation */
+}
+
+/* Styles for individual list items */
+.search-results-dropdown li {
+  padding: 0;
+  margin: 0;
+}
+
+/* Styles for the links within list items */
+.search-results-dropdown li a {
+  display: block; /* Make the entire area clickable */
+  padding: 10px 15px; /* Padding around text */
+  color: #333; /* Default text color */
+  text-decoration: none; /* Remove underline */
+  white-space: normal; /* Allow text wrapping for long names */
+  line-height: 1.4; /* Adjust line spacing for wrapped text */
+  transition: background-color 0.2s ease, color 0.2s ease; /* Smooth transitions */
+  font-size: 0.9rem; /* Adjusted font size */
+}
+
+/* Hover/focus styles for result links */
+.search-results-dropdown li a:hover,
+.search-results-dropdown li a:focus {
+  background-color: #f0f0f0; /* Light grey background on hover/focus */
+  color: #0056b3; /* Link color on hover/focus (adjust) */
+}
+
+/* Style for card name within the link */
+.search-result-name {
+    font-weight: 500; /* Slightly bolder name */
+    display: inline; /* Keep on same line as issuer potentially */
+}
+
+/* Style for issuer name within the link */
+.search-result-issuer {
+    color: #555; /* Darker grey for issuer */
+    font-size: 0.9em; /* Slightly smaller text */
+    margin-left: 4px; /* Space between name and issuer */
+    display: inline; /* Keep on same line */
+}
+
+/* --- End Header Search Bar Styles --- */
+
+/* Mobile Subscribe Button */
+.nav-list li a[href="#subscribe"] {
+  display: inline-block;
+  background-color: #007bff;
+  color: white; /* Check contrast: White on blue is good */
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+  border-bottom: none; /* Remove border */
+  text-align: center;
+}
+.nav-list li a[href="#subscribe"]:hover {
+  background-color: #0056b3;
+}
+
+
+/* ====== MOBILE HEADER STYLES (Unchanged) ====== */
+@media (max-width: 1099px) {
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .main-nav {
+     position: fixed; /* Keep fixed positioning */
+  }
+  /* Mobile Submenu Toggle Button Styles */
+   .submenu-toggle-button {
+     background: transparent;
+     border: none;
+     padding: 0.5rem;
+     cursor: pointer;
+     margin-left: auto; /* Push to right */
+     font-size: 1.2em;
+     line-height: 1;
+     color: #555; /* Check contrast */
+    }
+
+  /* --- Responsive adjustments for Mobile Search (Unchanged) --- */
+  .header-actions {
+      order: -1; /* Move search to top in mobile menu (adjust if needed) */
+      width: 100%; /* Take full width */
+      padding: 10px 15px; /* Add padding within mobile menu */
+      box-sizing: border-box;
+      border-bottom: 1px solid #eee; /* Keep border */
+  }
+  .search-container {
+      margin: 0; /* Remove horizontal margin */
+      width: 100%; /* Take full width */
+  }
+  .search-container input[type="search"] {
+      max-width: none; /* Allow input to take full width */
+  }
+
+  /* Adjust positioning for dropdown/no-results on mobile */
+  .search-results-base, /* Apply base styles adjustment */
+  .search-results-dropdown,
+  .search-no-results {
+      width: 100%; /* Full width */
+      position: static; /* Change positioning to flow naturally */
+      border: 1px solid #eee; /* Lighter border for mobile */
+      box-shadow: none; /* Remove shadow */
+      max-height: 200px; /* Reduce max height */
+      margin-top: 5px; /* Add space below input */
+      max-width: none; /* Remove max-width limit */
+      z-index: 3001; /* Ensure dropdown is above content but potentially below header */
+  }
+  /* --- End Mobile Search Adjustments --- */
+
+}
+
+/* ====== DESKTOP HEADER STYLES (Unchanged) ====== */
+@media (min-width: 1100px) {
+  .menu-toggle, .menu-backdrop, .submenu-toggle-button {
+    display: none; /* Hide mobile-only elements */
+  }
+
+  /* Override mobile nav styles */
+  .main-nav {
+    position: static;
+    width: auto;
+    height: auto;
+    transform: none;
+    box-shadow: none;
+    overflow: visible;
+    padding: 0;
+    margin-left: 1rem; /* Adjusted margin logic */
+    background: transparent;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    transition: none;
+    max-width: none;
+    z-index: 3000;
+  }
+
+  /* Keep search container separate if desired outside nav-list in HTML */
+  /* This assumes search stays INSIDE nav-list based on user req */
+   .header-inner .search-container { /* Example if search moved */
+       /* margin-left: auto; */ /* Push to right? */
+   }
+
+
+  .nav-list {
+    display: flex;
+    flex-direction: row;
+    /* FIXED: Use baseline alignment */
+    align-items: baseline;
+    height: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav-list li {
+    margin: 0 0.8rem;
+    /* REMOVED height: 100%; */
+  }
+
+   /* Search bar styling within nav list on desktop */
+  .nav-list li.header-actions {
+     margin-right: 1.5rem; /* More space after search */
+     /* Reset mobile padding/border */
+     padding: 0;
+     border: none;
+     display: flex; /* Use flex to align items */
+     align-items: center;
+   }
+  .nav-list li.header-actions .search-container {
+     margin: 0;
+     width: auto; /* Don't force 100% width */
+  }
+   .nav-list li.header-actions input[type="search"] {
+      width: 180px; /* Set desired desktop width */
+      padding: 0.4rem 0.8rem;
+      max-width: 180px; /* Explicit max width */
+   }
+   .nav-list li.header-actions input[type="search"]:focus {
+      width: 200px;
+      max-width: 200px;
+   }
+
+  /* General desktop link styling */
+  .nav-list a,
+  .nav-list a.nav-link {
+     display: inline-block;
+     padding: 0.5rem 0.2rem;
+     border-bottom: none;
+     font-weight: 500;
+     position: relative;
+     color: var(--text-medium); /* Use variable */
+  }
+  /* Simple hover underline effect */
+   .nav-list a:not([href="#subscribe"])::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      display: block;
+      margin-top: 4px;
+      right: 0;
+      background: var(--color-primary); /* Use variable */
+      transition: width .3s ease;
+      -webkit-transition: width .3s ease;
+   }
+   .nav-list a:not([href="#subscribe"]):hover::after {
+      width: 100%;
+      left: 0;
+      background-color: var(--color-primary); /* Use variable */
+   }
+   .nav-list a:hover {
+     color: var(--color-primary); /* Change text color on hover */
+   }
+
+
+  /* Desktop Subscribe Button Styles */
+  .nav-list li a[href="#subscribe"] {
+     display: inline-flex;
+     align-items: center;
+     background-color: var(--color-primary); /* Use variable */
+     color: white;
+     padding: 8px 15px;
+     border-radius: 5px;
+     font-weight: bold;
+     text-decoration: none;
+     transition: background-color 0.3s ease;
+     margin-top: 0;
+     margin-left: 1rem;
+     border-bottom: none;
+  }
+  .nav-list li a[href="#subscribe"]:hover {
+    background-color: var(--color-primary-hover); /* Use variable */
+  }
+
+
+  /* --- DESKTOP DROPDOWN POSITIONING & FIX (Unchanged) --- */
+  .nav-list li.has-dropdown {
+     position: relative;
+  }
+
+  .has-dropdown .dropdown-menu {
+    position: absolute;
+    background: white;
+    margin-left: 0;
+    padding: 0.5rem 0;
+    border: 1px solid #eee;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    border-left: none;
+    display: none;
+    top: calc(100% + 8px); /* Visual gap */
+    left: 0;
+    min-width: 220px;
+    z-index: 3000;
+    list-style: none;
+  }
+
+  /* Invisible Bridge pseudo-element */
+  .nav-list li.has-dropdown::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 8px; /* Match the gap */
+    background: transparent;
+    z-index: 3000;
+  }
+
+  /* Show dropdown on hover */
+  .nav-list li.has-dropdown:hover > .dropdown-menu {
+    display: block;
+  }
+
+   /* Styling for items INSIDE dropdown */
+  .dropdown-menu li {
+      margin: 0;
+      height: auto;
+      display: block;
+  }
+  .dropdown-menu a {
+      display: block;
+      padding: 0.6rem 1.2rem;
+      font-size: 0.9rem;
+      color: #444;
+      white-space: nowrap;
+      border: none;
+      transition: background-color 0.2s ease, color 0.2s ease;
+  }
+   .dropdown-menu a:hover {
+      color: var(--color-primary); /* Use variable */
+      background-color: #f5f5f5;
+   }
+   .dropdown-menu a::after { /* Remove hover underline from dropdown links */
+       display: none;
+   }
+  /* --- END DESKTOP DROPDOWN --- */
+
+} /* End Desktop Media Query */
+
+
+/* =============== HERO SECTION (Refined) =============== */
+.hero-section {
+  position: relative; /* Stacking context for overlay and content */
+  height: 70vh; /* Adjusted height */
+  min-height: 500px; /* Minimum height */
+  display: flex; /* Use flex to center content */
+  align-items: center; /* Vertically center */
+  justify-content: center; /* Horizontally center */
+  text-align: center;
+  overflow: hidden; /* Prevent image overflow */
+  /* margin-top: -3.5rem; Pull up to overlap potential header margin - REMOVED, handled by main margin */
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Behind content */
+}
+
+/* Target potential Next.js Image wrapper */
+.hero-background > div {
+  height: 100%;
+}
+
+.hero-background img { /* Style the image itself */
+    object-position: center; /* Ensure image is centered */
+}
+
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Subtle overlay to improve text contrast */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.45)); /* Adjusted gradient */
+  z-index: 2; /* Above image, below content */
+}
+
+.hero-content-container {
+  position: relative; /* Ensure content is above overlay */
+  z-index: 3;
+  color: var(--bg-white); /* White text on dark overlay/image */
+  padding: var(--spacing-lg); /* Add padding */
+  max-width: 900px; /* Limit content width */
+  margin: 0 auto; /* Center */
+}
+
+.hero-section h1 {
+  font-family: var(--font-family-serif); /* Use Playfair */
+  font-size: clamp(2.2rem, 6vw, 3.5rem); /* Larger hero heading */
+  font-weight: 700;
+  margin-bottom: var(--spacing-sm); /* Use spacing variables */
+  line-height: 1.2;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.6); /* Stronger shadow for readability */
+}
+
+.hero-subheading {
+  font-size: clamp(1rem, 3vw, 1.3rem);
+  margin: 0 auto var(--spacing-lg) auto;
+  max-width: 65ch;
+  line-height: 1.6;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+  opacity: 0.95; /* Slightly less transparent */
+}
+
+.hero-actions {
+  margin-top: var(--spacing-lg);
+  display: flex;
+  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
   justify-content: center;
-  padding: var(--space-sm) var(--space-lg); /* Adjusted padding */
-  border-radius: 25px; /* Pill shape from ReviewPage1 */
-  font-family: var(--font-headings); /* Headings font for buttons */
-  font-weight: 600;
+  gap: var(--spacing-md); /* Space between buttons */
+}
+
+.hero-cta {
+  padding: 12px 28px !important; /* Larger padding for hero buttons - override general */
+  font-size: 1.1rem !important; /* Larger font size */
+  min-width: 180px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Add shadow to hero buttons */
+}
+
+/* Style secondary CTAs differently */
+.secondary-cta {
+  background-color: transparent !important; /* Transparent background */
+  color: var(--bg-white) !important; /* White text */
+  border: 2px solid var(--bg-white) !important; /* White border */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  box-shadow: none !important; /* Remove shadow from secondary */
+}
+
+.secondary-cta:hover {
+  background-color: rgba(255, 255, 255, 0.15) !important; /* Slight white background on hover */
+  color: var(--bg-white) !important;
+}
+
+
+/* =============== BUTTONS (Refined) =============== */
+.cta-button,
+.Apply-button,
+.submit {
+  display: inline-block;
+  padding: 10px 20px; /* Adjusted padding */
+  border-radius: var(--border-radius-md, 8px); /* Use variable */
+  font-weight: 700; /* Bolder */
   text-decoration: none;
   text-align: center;
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  border: none;
-  margin: 0;
-  line-height: 1.5;
-  box-shadow: var(--box-shadow-soft);
-}
-.cta-button:hover,
-.Apply-button:hover,
-.submit:hover,
-.btn:hover {
-  box-shadow: var(--box-shadow-medium);
-  transform: translateY(-2px);
+  transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.2s ease;
+  border: none; /* Ensure no default border */
+  margin: 0; /* Reset margin, handle spacing with gap or utility classes */
+  line-height: 1.5; /* Consistent line height */
+  font-family: var(--font-family-sans); /* Ensure consistent font */
 }
 .cta-button:active,
 .Apply-button:active,
-.submit:active,
-.btn:active {
-  transform: translateY(0px) scale(0.98);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+.submit:active {
+  transform: scale(0.97); /* Slightly more noticeable press */
 }
+
+/* Accessibility: Improve focus visibility */
 .cta-button:focus-visible,
 .Apply-button:focus-visible,
-.submit:focus-visible,
-.btn:focus-visible {
-    outline: 3px solid var(--color-secondary-accent);
+.submit:focus-visible {
+    outline: 3px solid var(--primary-blue-focus, rgba(59, 130, 246, 0.3)); /* Use variable */
     outline-offset: 2px;
+    box-shadow: none; /* Remove inner shadow if focus ring is clear */
 }
 
-/* Primary Button (e.g., Apply Now from ReviewPage1) */
-.btn.btnApply, .Apply-button { /* Merging .Apply-button with .btn.btnApply */
-    background: var(--color-cta-primary-bg);
-    color: var(--color-cta-primary-text);
-}
-.btn.btnApply:hover, .Apply-button:hover {
-    background: var(--color-cta-primary-hover-bg);
-}
 
-/* Secondary Button (e.g., Rates & Fees from ReviewPage1) */
-.btn.btnRates {
-  background: var(--color-cta-secondary-bg);
-  color: var(--color-cta-secondary-text);
-  border: 1px solid var(--color-border-strong);
-}
-.btn.btnRates:hover {
-  background: var(--color-cta-secondary-hover-bg);
-}
-
-/* General CTA button (if different from Apply) */
+/* Specific Button Colors - Using Variables */
 .cta-button {
-    background-color: var(--color-primary-accent); /* Default to primary accent blue */
-    color: var(--color-cta-primary-text); /* White text */
+    background-color: var(--color-primary, #0052cc); /* Primary color */
+    color: var(--bg-white, #fff);
 }
 .cta-button:hover {
-    background-color: var(--primary-blue-dark); /* Darker blue */
+    background-color: var(--color-primary-hover, #0041a3); /* Darker primary */
+}
+
+.Apply-button {
+    background-color: var(--color-success, #006644); /* Use success green */
+    color: var(--bg-white, #fff);
+}
+.Apply-button:hover {
+    background-color: #004d33; /* Darker green */
+}
+
+.submit {
+    /* Matches primary CTA button */
+    background: var(--color-primary, #0052cc);
+    color: var(--bg-white, #fff);
+}
+.submit:hover {
+    background: var(--color-primary-hover, #0041a3);
+}
+
+/* Button variants (example) */
+.learn-more-button {
+  background-color: var(--secondary-gray, #6b7280);
+  color: var(--bg-white, #fff);
+}
+.learn-more-button:hover {
+  background-color: var(--secondary-gray-dark, #4b5563);
+}
+
+.read-more-button {
+  background-color: var(--color-primary, #0052cc);
+  color: var(--bg-white, #fff);
+  padding: 8px 16px; /* Slightly smaller */
+  font-size: 0.9rem;
+  align-self: flex-start; /* Align to start of flex container */
+  margin-top: auto; /* Push to bottom */
+}
+.read-more-button:hover {
+  background-color: var(--color-primary-hover, #0041a3);
 }
 
 
-/* =============== FOOTER (Basic placeholder) =============== */
+/* =============== FEATURED CARDS SECTION (Refined) =============== */
+#featured-cards {
+  background-color: var(--bg-light-gray); /* Changed from yellow to light gray */
+  /* padding is handled by .content-section */
+}
+
+.featured-cards-grid { /* Specific grid for featured cards */
+  display: grid; /* Ensure grid display */
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); /* Adjusted min size */
+  gap: var(--spacing-lg, 24px); /* Consistent gap */
+}
+
+.featured-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-white);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-soft); /* Use variable */
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add hover transition */
+}
+
+.featured-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium); /* Enhance shadow on hover */
+}
+
+.featured-card__image-wrapper {
+  background-color: var(--bg-white); /* White background for image */
+  padding: var(--spacing-lg); /* More padding */
+  display: flex; /* Center image */
+  justify-content: center;
+  align-items: center;
+  min-height: 160px; /* Adjust as needed */
+  border-bottom: 1px solid var(--border-color-light);
+}
+
+.featured-card__image {
+  width: auto; /* Let height control */
+  max-height: 100px; /* Reduced card image height for cleaner look */
+  height: auto;
+  object-fit: contain; /* Ensure full card is visible */
+  display: block; /* Remove extra space */
+  margin: 0 auto; /* Center */
+}
+
+
+.featured-card__description {
+  padding: var(--spacing-lg); /* Consistent padding */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content */
+  flex-grow: 1; /* Ensure description takes remaining space */
+}
+
+.featured-card__description h3 {
+    margin: 0 0 var(--spacing-sm) 0;
+    font-size: 1.2rem; /* Slightly smaller heading */
+    line-height: 1.3;
+    color: var(--text-dark);
+    font-weight: 700; /* Ensure bold */
+}
+
+.featured-card__description p {
+    margin: 0 0 var(--spacing-md) 0;
+    line-height: 1.5;
+    color: var(--text-medium);
+    font-size: 0.95rem;
+    flex-grow: 1; /* Allow paragraph to push buttons down */
+    min-height: 60px; /* Ensure consistent space */
+}
+
+.featured-card__actions {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    gap: var(--spacing-sm); /* Space between stacked buttons */
+    width: 100%; /* Ensure buttons can be centered */
+    align-items: center; /* Center buttons */
+    margin-top: auto; /* Push action group to bottom */
+    padding-top: var(--spacing-sm); /* Space above buttons */
+}
+
+.featured-card__actions .cta-button,
+.featured-card__actions .Apply-button {
+    width: 100%; /* Make buttons full width within actions */
+    max-width: 220px; /* Limit max width for aesthetics */
+    margin: 0; /* Remove individual margins */
+    padding: 10px 15px; /* Adjust padding if needed */
+    font-size: 0.95rem; /* Adjust font size */
+}
+
+.card-footnote {
+    grid-column: 1 / -1; /* Span full grid width */
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-top: var(--spacing-md);
+    padding: 0 var(--spacing-md); /* Add padding */
+}
+
+/* Responsive stacking for featured cards (keep existing or adjust breakpoint) */
+@media (max-width: 988px) {
+  .featured-cards-grid {
+     grid-template-columns: 1fr; /* Force single column */
+     gap: var(--spacing-md);
+  }
+  .featured-card {
+      max-width: 450px; /* Adjust max width for single column */
+      margin: 0 auto; /* Center single column card */
+  }
+}
+
+
+/* =============== COMPARISON SECTION (Refined) =============== */
+.comparison-section { /* Use specific class */
+  background-color: var(--primary-blue-light-bg); /* Use light blue background */
+  border-top: 1px solid var(--primary-blue-light-border);
+  border-bottom: 1px solid var(--primary-blue-light-border);
+  /* padding handled by .content-section */
+}
+
+/* Styles for the comparison tool page if needed - these were placeholders */
+#compare label {
+  margin-right: 0.5rem;
+  font-weight: bold;
+  color: var(--text-dark);
+}
+
+#compare select {
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  min-width: 220px;
+  background-color: var(--bg-white);
+  font-size: 1rem;
+}
+
+.comparison-result {
+  margin-top: 30px;
+  color: var(--text-medium);
+  font-weight: normal;
+  font-size: 1rem;
+  text-align: left;
+}
+
+.comparison-result h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: var(--text-dark);
+}
+
+.comparison-result table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: var(--bg-white);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.comparison-result th,
+.comparison-result td {
+  border: 1px solid var(--border-color);
+  padding: 10px 12px;
+  text-align: left;
+  font-size: 1rem;
+  vertical-align: middle;
+}
+.comparison-result td:not(:first-child),
+.comparison-result th:not(:first-child) {
+  text-align: center;
+}
+
+.comparison-result th {
+  background-color: var(--bg-light-gray);
+  font-weight: bold;
+  color: var(--text-dark);
+}
+
+
+/* =============== REVIEWS SECTION (Refined) =============== */
+.reviews-news-section { /* Use specific class */
+  background-color: var(--bg-white);
+  /* Padding handled by .content-section */
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted min-width */
+  gap: var(--spacing-lg); /* Use variable */
+}
+
+/* Review Card Styling */
+.review-card { /* Renamed class */
+  background: var(--bg-white);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: var(--text-medium);
+  border: 1px solid var(--border-color-light); /* Add subtle border */
+}
+
+.review-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-medium);
+}
+
+.review-card__image-link {
+    display: block; /* Ensure link wraps image properly */
+    line-height: 0; /* Remove potential space below image */
+}
+
+.review-card__image { /* Renamed class */
+  width: 100%;
+  height: 180px; /* Fixed height for consistent look */
+  object-fit: cover; /* Cover ensures aspect ratio is maintained */
+  object-position: center;
+  display: block;
+  /* border-bottom: 1px solid var(--border-color-light); removed border here, added to card */
+}
+
+.review-card__content { /* Renamed class */
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Takes remaining space */
+}
+
+.review-card__content h3 {
+  color: var(--color-primary); /* Use primary color for link-like titles */
+  font-size: 1.15rem; /* Slightly smaller than featured */
+  margin: 0 0 var(--spacing-sm) 0;
+  line-height: 1.3;
+  font-weight: 700; /* Make title bold */
+}
+.review-card__content h3 a {
+    color: inherit; /* Inherit color from h3 */
+    text-decoration: none;
+}
+.review-card__content h3 a:hover {
+    text-decoration: underline;
+}
+
+.review-card__content p {
+  font-size: 0.9rem;
+  color: var(--text-medium);
+  line-height: 1.5;
+  margin: 0 0 var(--spacing-md) 0;
+  flex-grow: 1; /* Push button to bottom */
+}
+
+/* Review Card Button */
+.review-card__content .read-more-button { /* Target specific button */
+  /* Styling defined in general button section */
+  align-self: flex-start; /* Align left */
+  margin-top: auto; /* Push to bottom */
+}
+
+
+/* =============== FOOTER (Unchanged) =============== */
 .site-footer {
-  background: var(--color-text-primary); /* Dark background */
-  color: var(--color-background-accent); /* Light text */
-  margin-top: var(--space-xxl);
-  padding: var(--space-xl) var(--container-padding-mobile);
-  border-top: 4px solid var(--color-cta-primary-bg); /* Gold accent */
-  font-family: var(--font-body);
+  background: #000080;
+  color: #f0f0f0; /* Good contrast */
+  margin-top: var(--spacing-xl); /* Ensure space above footer */
+  padding: 2rem 1rem;
+  border-top: 4px solid #FFD700; /* Keep brand element */
+  font-family: var(--font-family-serif); /* Use Playfair */
 }
-@media (min-width: 768px) {
-    .site-footer {
-        padding: var(--space-xl) var(--container-padding-desktop);
-    }
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
 }
-/* .footer-inner, .footer-columns, .footer-col, etc. would be styled here or in Footer component */
 
+.footer-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
 
-/* Accessibility helper class */
+.footer-col h3 {
+  margin: 0 0 1rem 0;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.2rem;
+  font-family: var(--font-family-sans); /* Use Sans for footer headings for clarity */
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col li {
+  margin-bottom: 0.6rem;
+}
+
+/* Footer Links */
+.footlink a {
+  color: #d0d0d0; /* Contrast OK */
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-family: var(--font-family-sans); /* Use Sans for links */
+  font-size: 0.95rem;
+}
+
+.footlink a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.footer-disclaimer {
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #ccc; /* Contrast OK */
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: var(--font-family-sans); /* Use Sans */
+}
+
+.footer-bottom {
+  margin-top: 2rem;
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #ccc; /* Contrast OK */
+  border-top: 1px solid #4a4a9c;
+  font-family: var(--font-family-sans); /* Use Sans */
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+/* ===== REMOVED OLD/REDUNDANT STYLES ===== */
+/* Removed styles like #product-overview .img, .hero, .H2_featured-cards, */
+/* .H2_comparison, .reviews-container, .reviews-grid .card, .review_img etc. */
+/* as they are replaced by the new section/card/title classes */
+/* =============== STAR RATING STYLES (Update for SVG) =============== */
+.star-rating {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center align rating block */
+  gap: var(--spacing-sm, 8px); /* Space between number and SVG stars */
+  margin-bottom: var(--spacing-md, 16px); /* More space below stars */
+  color: var(--text-medium);
+  line-height: 1; /* Ensure consistent alignment */
+}
+
+.rating-value {
+  font-weight: 600;
+  font-size: 0.9rem; /* Slightly smaller number */
+  color: var(--text-secondary); /* Use secondary text color */
+}
+
+/* Styling for the SVG icons */
+.star-rating .star {
+  display: inline-block; /* Treat SVGs like characters */
+  font-size: 1rem; /* Control SVG size via font-size */
+  color: #d1d5db; /* Default empty star color (light gray) */
+  vertical-align: middle; /* Align stars nicely with text */
+}
+
+.star-rating .star.filled {
+  color: #facc15; /* Yellow/Gold color for filled/half stars */
+}
+
+/* Optional: specific color for empty if different from default gray */
+.star-rating .star.empty {
+   color: #e5e7eb; /* Even lighter gray for empty */
+}
+
+/* --- Ensure Featured Card Description Alignment --- */
+
+/* Ensure the card itself uses flex column */
+.featured-card {
+  display: flex; /* Keep or add */
+  flex-direction: column; /* Keep or add */
+  /* rest of card styles... */
+}
+
+/* Ensure the description area grows and uses flex column */
+.featured-card__description {
+  display: flex; /* Keep or add */
+  flex-direction: column; /* Keep or add */
+  flex-grow: 1; /* Allows this section to expand vertically */
+  /* align-items: center; Replaced with below for better text alignment */
+  text-align: center; /* Center text elements */
+  /* rest of description styles... */
+}
+
+/* Ensure paragraph grows to push actions down, REMOVE fixed min-height */
+.featured-card__description .featured-card__text { /* Use specific class if needed */
+  flex-grow: 1; /* Allows paragraph to take up available space */
+  margin-top: var(--spacing-sm); /* Ensure space above paragraph */
+  margin-bottom: var(--spacing-md); /* Space below paragraph */
+  min-height: initial; /* REMOVE fixed min-height */
+  /* rest of paragraph styles... */
+}
+
+/* Ensure actions stay at the bottom */
+.featured-card__actions {
+  margin-top: auto; /* Keep or add, pushes actions to bottom */
+  /* rest of action styles... */
+}
+
+/* Add accessibility helper class if not already global */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -265,8 +1408,3 @@ p, h1, h2, h3, h4, h5, h6, li, div, span {
   white-space: nowrap;
   border-width: 0;
 }
-
-/* Add other global styles as needed, trying to consolidate from the old globals.css */
-/* For example, if .featured-cards-grid, .featured-card, etc. are used on other pages, their styles would go here. */
-/* For now, assuming they are specific to a non-review page or will be restyled. */
-
