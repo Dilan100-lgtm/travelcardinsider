@@ -399,6 +399,12 @@
   border: 1px solid var(--color-border, #dfe1e6); /* Use variable */
   box-shadow: none;
 }
+.ctaButtons .btncalculator {
+  background: var(--color-background-subtle, #f1f3f5); /* Use variable */
+  color: var(--text-dark, #172b4d); /* Use variable */
+  border: 1px solid var(--color-border, #dfe1e6); /* Use variable */
+  box-shadow: none;
+}
 .ctaButtons .btnRates:hover {
   background: var(--color-background-subtle, #f1f3f5); /* Use variable */
   border-color: var(--color-primary, #0052cc); /* Use variable */
@@ -466,6 +472,8 @@
   max-width: 1600px;
   margin: var(--spacing-lg, 24px) auto var(--spacing-xl, 32px) auto; /* Adjusted margins */
   padding: 0 var(--spacing-md, 16px);
+  overflow-y: visible;
+
 }
 
 .mainContentArea { flex-grow: 1; min-width: 0; }
@@ -478,7 +486,15 @@
       width: var(--toc-width-desktop, 280px); /* Use variable */
       flex-shrink: 0;
       /* Add padding to the sidebar container itself */
-      padding-top: var(--spacing-sm, 8px); /* Align top of ToC roughly */
+      padding-top: var(--spacing-sm, 8px);
+      overflow: visible 
+      
+  }
+  .sidebarArea nav {     /* TableOfContents root */
+    position: sticky;
+    top: 96px;           /* height of your fixed header */
+    align-self: flex-start;
+    height: max-content; /* when parent is a flex column */
   }
 }
 
