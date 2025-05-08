@@ -1,4 +1,4 @@
-/* styles/ReviewPage.module.css */
+/* styles/ReviewPage1.module.css */
 
 /* =============== FONTS (Import recommended via _app.js or global CSS if not using <link> in Head) =============== */
 /* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap'); */
@@ -6,8 +6,6 @@
 
 
 /* =============== CSS CUSTOM PROPERTIES (NEW Color Palette & Typography) =============== */
-
-
 /* =============== OVERALL PAGE LAYOUT (ToC + Main Content) =============== */
 .reviewPageLayout {
   display: flex;
@@ -223,6 +221,15 @@
     content: '•'; /* Example for nested items */
     color: var(--color-secondary-accent);
 }
+/* For custom icons in feature lists (Phase 2) */
+.customIcon {
+    position: absolute;
+    left: 0;
+    top: 0.1em; /* Adjust alignment */
+    font-size: 1.1em; /* Or use width/height for SVG */
+    color: var(--color-secondary-accent); /* Example color */
+    /* Add styles for SVG icons if used: e.g., display: inline-block; width: 1em; height: 1em; vertical-align: -0.125em; */
+}
 
 
 /* =============== HERO SECTION =============== */
@@ -411,11 +418,12 @@
   font-size: 0.95rem;
   color: var(--color-text-secondary);
 }
-.glanceIcon { /* Placeholder for actual icons */
+.glanceIcon { /* Placeholder for actual icons (Phase 2) */
   margin-right: var(--space-sm);
   color: var(--color-secondary-accent);
   font-size: 1.1em; /* Make icon slightly larger */
   line-height: 1.4;
+  /* For SVG icons: width: 1.2em; height: 1.2em; fill: currentColor; */
 }
 .glanceBestFor {
   grid-column: 1 / -1; /* Span full width */
@@ -457,7 +465,7 @@
 }
 
 
-/* =============== TABLES (Refined Styling) =============== */
+/* =============== TABLES (Refined Styling - Phase 2) =============== */
 .tableContainer {
   width: 100%;
   overflow-x: auto;
@@ -498,7 +506,7 @@
   border-bottom: none;
 }
 .statsTable tbody tr:nth-child(even) {
-   background-color: var(--color-background-module); /* Keep even row striping if desired */
+   background-color: var(--color-background-main); /* Changed from module for contrast */
 }
 .statsTable tbody tr:hover {
     background-color: var(--color-background-accent); /* Hover effect for rows */
@@ -511,6 +519,15 @@
     color: var(--color-primary-accent);
     background-color: var(--color-background-accent);
 }
+/* Comparison Table Specifics (Phase 3) */
+.comparisonTable th {
+    background-color: var(--color-primary-accent);
+    color: var(--color-background-module);
+}
+.comparisonTable td[data-label="Feature"] {
+    font-weight: 600;
+}
+
 
 /* Responsive table (keeping the scroll for wide tables, but ensuring readability) */
 @media (max-width: 650px) {
@@ -522,7 +539,7 @@
 }
 
 
-/* =============== CALLS-TO-ACTION (CTAs - Refined & Persuasive) =============== */
+/* =============== CALLS-TO-ACTION (CTAs - Refined & Persuasive - Phase 2 Microinteractions) =============== */
 .ctaSection { /* General container for CTAs if used outside hero/glance */
   text-align: center;
   padding: var(--space-xl) var(--space-lg);
@@ -571,7 +588,7 @@
   text-decoration: none;
   line-height: 1.2; /* Ensure text is centered vertically */
 }
-.btn:hover {
+.btn:hover { /* Phase 2 Microinteraction */
    box-shadow: var(--box-shadow-medium);
    transform: translateY(-2px);
 }
@@ -619,13 +636,23 @@
   margin-bottom: var(--space-md) !important;
   border-bottom: 2px solid;
   padding-bottom: var(--space-xs) !important;
-  display: inline-block;
+  display: inline-flex; /* Align icon with text */
+  align-items: center;
+}
+.prosCons h3 .customIcon { /* Icon specific style in pros/cons */
+    margin-left: var(--space-sm);
+    position: static; /* Override absolute if from .featureList */
 }
 .pros h3 { color: var(--color-success); border-color: var(--color-success);}
 .cons h3 { color: var(--color-error); border-color: var(--color-error);}
 
 .pros ul, .cons ul { list-style: none; padding-left: 0; margin-top: 0; }
-.pros li, .cons li { padding-left: 1.75em; margin-bottom: var(--space-sm); font-size: 0.95rem; }
+.pros li, .cons li {
+    position: relative; /* For pseudo-element positioning */
+    padding-left: 1.75em;
+    margin-bottom: var(--space-sm);
+    font-size: 0.95rem;
+}
 .pros li::before { content: '✓ '; color: var(--color-success); font-weight: bold; position: absolute; left: 0; }
 .cons li::before { content: '✕ '; color: var(--color-error); font-weight: bold; position: absolute; left: 0; }
 
@@ -655,13 +682,14 @@
 }
 
 .disclaimerBox {
-    background-color: var(--color-background-accent);
+    background-color: #f9f9f9; /* Slightly off-white */
     padding: var(--space-lg);
     border-radius: var(--border-radius);
     border: 1px dashed var(--color-border-strong);
     margin-top: var(--space-xl);
     font-size: 0.85rem;
     color: var(--color-text-subtle);
+    line-height: 1.6;
 }
 .disclaimerBox strong {
     color: var(--color-text-secondary);
@@ -688,6 +716,121 @@
 }
 .tooltipList { list-style: disc; padding-left: var(--space-lg); margin: 0; }
 .tooltipList li { margin-bottom: var(--space-xs); color: var(--color-text-secondary); }
+
+/* =============== ADDED FOR PHASE 3 ENHANCEMENTS =============== */
+
+/* Rewards Calculator (Phase 3) */
+.rewardsCalculator {
+  background-color: var(--color-background-accent);
+  padding: var(--space-lg);
+  border-radius: var(--border-radius);
+  margin-top: var(--space-xl);
+  border: 1px solid var(--color-border-subtle);
+}
+.rewardsCalculator h4 {
+  font-family: var(--font-headings);
+  color: var(--color-primary-accent);
+  margin-top: 0;
+  margin-bottom: var(--space-md);
+}
+.rewardsCalculator .calcGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+}
+.rewardsCalculator label {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-xs);
+}
+.rewardsCalculator input[type="number"] {
+  width: 100%;
+  padding: var(--space-sm);
+  border: 1px solid var(--color-border-strong);
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+}
+.rewardsCalculator .calculatedResult {
+  margin-top: var(--space-lg);
+  padding: var(--space-md);
+  background-color: var(--color-background-module);
+  border: 1px solid var(--color-success);
+  border-left-width: 4px;
+  border-radius: 4px;
+  font-size: 1.1rem;
+}
+.rewardsCalculator .calculatedResult strong {
+  color: var(--color-success);
+}
+.rewardsCalculator small {
+    display: block;
+    margin-top: var(--space-md);
+    font-size: 0.85rem;
+    color: var(--color-text-subtle);
+}
+
+/* Statement Credits Chart (Phase 3 Data Visualization) */
+.statementCreditsChart {
+  background-color: var(--color-background-accent);
+  padding: var(--space-lg);
+  border-radius: var(--border-radius);
+  margin: var(--space-xl) 0;
+  border: 1px solid var(--color-border-subtle);
+}
+.statementCreditsChart h4 {
+  font-family: var(--font-headings);
+  color: var(--color-primary-accent);
+  margin-top: 0;
+  margin-bottom: var(--space-lg);
+  text-align: center;
+}
+.chartBars {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+.chartBarContainer {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: var(--space-sm);
+}
+.chartBarLabel {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+}
+.barIcon { /* For icons next to bar labels */
+    margin-right: var(--space-sm);
+    font-size: 1.1em;
+}
+.chartBar {
+  height: 24px; /* Fixed height for bars */
+  border-radius: 3px;
+  background-color: var(--color-secondary-accent); /* Default bar color */
+  transition: width 0.5s ease-in-out; /* Phase 3 Animation */
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+  color: white; /* Text inside bar if any, though not used here */
+  text-align: right;
+  padding-right: var(--space-sm);
+  line-height: 24px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.statementCreditsChart p {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--color-text-subtle);
+    margin-top: var(--space-lg);
+}
+.dataVisualizationSection { /* General section for charts/visuals */
+    padding: var(--space-lg);
+    background-color: var(--color-background-main); /* Slightly different bg if needed */
+}
 
 
 /* =============== RESPONSIVE ADJUSTMENTS (Consolidated) =============== */
