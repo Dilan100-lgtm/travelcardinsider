@@ -228,7 +228,7 @@ function AmexGoldReviewPage() {
     </div>
     <div className={styles.heroImageContainer}>
       <Image
-        src="/AdobeStock_446734479.jpg" // Path to your uploaded image
+        src="/AdobeStock_446734479.webp" // Path to your uploaded image
         alt="Luxurious abstract background with golden flowing lines, representing the premium American Express Gold Card" // Descriptive alt text
         width={1200} // *** CRITICAL: Replace with ACTUAL width of AdobeStock_446734479.jpg ***
         height={675} // *** CRITICAL: Replace with ACTUAL height of AdobeStock_446734479.jpg ***
