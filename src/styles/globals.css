@@ -155,10 +155,20 @@ body {
   line-height: 1.6; /* Improve base readability */
 }
 
+main {
+  /* flex: 1 1 auto; */ /* Consider removing if using sticky footer pattern causes issues */
+  display: block;
+  width: 100%;
+  /* CRITICAL FIX: Ensure NO overflow property here that isn't 'visible' */
+  /* overflow: visible; */ /* Explicitly setting default, or just remove any overflow rule */
+}
+
+/* If you have a specific class for main content like .main-content */
 main.main-content {
-  margin-top: 3.5rem; /* Ensure content starts below fixed header */
-     
-   overflow-y: visible;
+  margin-top: var(--header-height-actual, 3.5rem); /* Use variable */
+  /* CRITICAL FIX: REMOVE overflow-x property */
+  /* overflow-x: clip; */ /* REMOVED */
+  overflow-y: visible; /* Keep as default */
 }
 
 /* Add word wrapping globally for safety */

@@ -287,6 +287,50 @@ function AmexGoldReviewPage() {
                   </div> {/* End ratingSection */}
                 </header>
 
+                {/* ============= AT-A-GLANCE SUMMARY BOX (NEW) ============= */}
+                <div className={styles.summaryBox}>
+                  <h2 className={styles.summaryBoxTitle}>Amex Gold: Key Insights</h2>
+                  <div className={styles.summaryGrid}>
+                    {/* Welcome Offer */}
+                    <div className={styles.summaryItem}>
+                      <span className={styles.summaryIcon}>🎁</span> {/* TODO: Replace Icon */}
+                      <span className={styles.summaryLabel}>Welcome Offer:</span>
+                      <span className={styles.summaryValue}>60,000 points <small>(after $6k spend in 6 mos)</small></span>
+                    </div>
+                    {/* Annual Fee */}
+                    <div className={styles.summaryItem}>
+                      <span className={styles.summaryIcon}>💲</span> {/* TODO: Replace Icon */}
+                      <span className={styles.summaryLabel}>Annual Fee:</span>
+                      <span className={styles.summaryValue}>$325</span>
+                    </div>
+                    {/* Top Earning */}
+                    <div className={styles.summaryItem}>
+                      <span className={styles.summaryIcon}>⭐</span> {/* TODO: Replace Icon */}
+                      <span className={styles.summaryLabel}>Top Earning:</span>
+                      <span className={styles.summaryValue}>4X Dining & U.S. Supermarkets, 3X Flights</span>
+                    </div>
+                    {/* Key Credits */}
+                    <div className={styles.summaryItem}>
+                      <span className={styles.summaryIcon}>💳</span> {/* TODO: Replace Icon */}
+                      <span className={styles.summaryLabel}>Annual Credits (Up To):</span>
+                      <span className={styles.summaryValue}><small>$120 Dining + $120 Uber + $100 Resy + $84 Dunkin' (Enrollment Req.)</small></span>
+                    </div>
+                    {/* Best For */}
+                    <div className={styles.summaryItem} data-full-width="true">
+                      <span className={styles.summaryIcon}>🎯</span> {/* TODO: Replace Icon */}
+                      <span className={styles.summaryLabel}>Best For:</span>
+                      <span className={styles.summaryValue}>Foodies & travelers maximizing points & specific U.S. credits.</span>
+                    </div>
+                  </div>
+                  <div className={styles.summaryRatesLink}>
+                    <a href={reviewData.ratesLink} target="_blank" rel="noopener noreferrer sponsored">
+                      See Card Rates & Fees
+                    </a>
+                  </div>
+                </div>
+                {/* ============= END SUMMARY BOX ============= */}
+
+
                 {/* ============= REVIEW CONTENT SECTIONS ============= */}
 
                 {/* Section 2: Snapshot */}
