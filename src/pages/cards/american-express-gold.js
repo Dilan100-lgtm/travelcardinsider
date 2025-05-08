@@ -199,6 +199,42 @@ function AmexGoldReviewPage() {
         {/* New layout wrapper for main content and sidebar */}
         <div className={styles.reviewPageLayout}>
           {/* Main content area that contains the review article */}
+           {/* NEW Hero Section - Placed before mainContentArea or at the top of it */}
+  <section className={styles.heroSection}>
+    <div className={styles.heroTextContainer}>
+      <h1 className={styles.heroTitle}>
+        {reviewData.h1Content || reviewData.title} {/* Using your dynamic title */}
+      </h1>
+      <p className={styles.heroSubtitle}>
+        Unlock premium rewards and tailored benefits for your business. Discover how the Amex Gold sets the standard. {/* Example Value Proposition - Update as needed */}
+      </p>
+      <div className={styles.heroCtaContainer}>
+        {/* Option 1: Link to an apply section on the page or direct link */}
+        <a 
+          href={reviewData.applicationUrl || '#apply-now-section'} // Ensure applicationUrl is correct or link to an on-page section
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className={`${styles.applyNowButton} ${styles.heroApplyButton}`} // Using the CTA style we defined
+        >
+          Apply Securely Now
+        </a>
+        {/* Option 2: Link to the summary box or key benefits section */}
+        <Link href="#summary-box" legacyBehavior> {/* Make sure your summary box has id="summary-box" */}
+          <a className={styles.heroSecondaryLink}>View Key Benefits</a>
+        </Link>
+      </div>
+    </div>
+    <div className={styles.heroImageContainer}>
+      <Image
+        src="/AdobeStock_446734479.jpg" // Path to your uploaded image
+        alt="Luxurious abstract background with golden flowing lines, representing the premium American Express Gold Card" // Descriptive alt text
+        width={1200} // *** CRITICAL: Replace with ACTUAL width of AdobeStock_446734479.jpg ***
+        height={675} // *** CRITICAL: Replace with ACTUAL height of AdobeStock_446734479.jpg ***
+        priority // Good for LCP as this is a hero image
+        className={styles.heroImage}
+      />
+    </div>
+  </section>
           <div className={styles.mainContentArea}>
             <div className={styles.reviewContainer}>
               <article> {/* Wrap main content in article */}

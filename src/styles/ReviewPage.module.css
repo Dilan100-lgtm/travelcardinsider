@@ -605,3 +605,130 @@
    If .ctaSection itself needs to change to accommodate the new button style
    (e.g., different spacing if the new button is larger), you'd adjust .ctaSection here.
 */
+/* --- HERO SECTION STYLES --- */
+.heroSection {
+  display: flex;
+  flex-direction: column; /* Image below text on mobile */
+  align-items: center;
+  /* Full-width option: consider removing padding from reviewPageLayout for this section if you want full bleed */
+  /* padding: var(--spacing-xl) 0; */ /* Example for full bleed with internal container */
+
+  /* Contained width option (as per previous example): */
+  padding: var(--spacing-xl) var(--spacing-md); /* 2rem 1rem */
+  background-color: var(--color-background-subtle); /* Example: Subtle background from globals.css */
+  border-bottom: 1px solid var(--color-border-light); /* Optional separator */
+  margin-bottom: var(--spacing-xl); /* Space before the main review content */
+  text-align: center; /* Center text on mobile */
+}
+
+.heroTextContainer {
+  margin-bottom: var(--spacing-lg);
+  max-width: 720px; /* Control width of text content */
+  width: 100%;
+}
+
+.heroTitle {
+  font-family: var(--font-family-main); /* Inter from globals.css */
+  font-size: clamp(2.2rem, 5vw, 3rem); /* Responsive: min, preferred, max */
+  font-weight: var(--font-weight-bold); /* 700 from globals.css */
+  color: var(--color-text-primary); /* from globals.css */
+  line-height: 1.2;
+  margin-bottom: var(--spacing-md); /* 1rem */
+}
+
+.heroSubtitle {
+  font-family: var(--font-family-main); /* Inter from globals.css */
+  font-size: clamp(1.05rem, 2.5vw, 1.25rem); /* Responsive */
+  font-weight: var(--font-weight-regular); /* 400 from globals.css */
+  color: var(--color-text-secondary); /* from globals.css */
+  line-height: 1.65;
+  margin-bottom: var(--spacing-lg); /* 1.5rem */
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.heroCtaContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md); /* 1rem */
+  margin-top: var(--spacing-sm);
+}
+
+/* Use the .applyNowButton style from your main CTA definitions */
+/* .heroApplyButton can be used for any minor tweaks specific to the hero context */
+.heroApplyButton {
+  /* Example: Slightly larger if needed in hero */
+  /* padding: var(--spacing-lg) var(--spacing-xl); */
+  /* font-size: 1.2rem; */
+}
+
+.heroSecondaryLink {
+  font-family: var(--font-family-main);
+  font-size: 1rem;
+  font-weight: var(--font-weight-medium); /* 500 from globals.css */
+  color: var(--color-accent-primary); /* from globals.css */
+  text-decoration: none; /* No underline by default, underline on hover from global 'a' styles */
+  padding: var(--spacing-xs) var(--spacing-sm); /* 0.25rem 0.5rem */
+  border-radius: var(--border-radius-md);
+  transition: background-color 0.2s ease;
+}
+
+.heroSecondaryLink:hover,
+.heroSecondaryLink:focus {
+  text-decoration: underline;
+  background-color: rgba(0,0,0,0.03); /* Subtle hover background */
+}
+
+.heroImageContainer {
+  width: 100%;
+  max-width: 700px; /* Max width for the hero image container */
+  margin-top: var(--spacing-lg); /* Space above image on mobile */
+  line-height: 0; /* Remove extra space below image */
+}
+
+.heroImage {
+  border-radius: var(--border-radius-lg); /* 8px, from globals.css */
+  box-shadow: 0 6px 12px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.06); /* Slightly more pronounced shadow */
+  width: 100%;
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Ensure image covers the area if aspect ratios differ slightly */
+}
+
+/* Desktop layout for Hero */
+@media (min-width: 992px) { /* lg breakpoint, adjust as needed */
+  .heroSection {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; /* Vertically center content */
+    text-align: left; /* Align text to left on desktop */
+    padding: var(--spacing-xxl) clamp(1.5rem, 6vw, 4rem); /* More padding: 3rem, responsive horizontal */
+    /* If your hero section is within a .container or constrained width element, this will work.
+       If .heroSection is full-bleed, you might need an inner div for text/image content to constrain them. */
+  }
+
+  .heroTextContainer {
+    flex-basis: 50%; /* Adjust ratio as needed */
+    margin-bottom: 0;
+    margin-right: var(--spacing-xl); /* 2rem space between text and image */
+    text-align: left;
+  }
+  
+  .heroSubtitle {
+    margin-left: 0; /* Reset for left alignment */
+    margin-right: 0;
+  }
+
+  .heroCtaContainer {
+    flex-direction: row;
+    justify-content: flex-start; /* Align CTAs to the left */
+    gap: var(--spacing-lg); /* 1.5rem space between CTAs */
+  }
+
+  .heroImageContainer {
+    flex-basis: 45%; /* Adjust ratio */
+    margin-top: 0;
+    max-width: 600px; /* Max width for image on desktop */
+  }
+}
