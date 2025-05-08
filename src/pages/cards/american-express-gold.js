@@ -13,7 +13,7 @@ import styles from '../../styles/ReviewPage.module.css'; // Using the REVIEW CSS
 import Header from '../../components/Header'; // Assuming path: components/Header.js
 import Footer from '../../components/Footer'; // Assuming path: components/Footer.js
 import TableOfContents from '../../components/TableOfContents'; // Import the new ToC component
-
+import IconGift from '../components/icons/icon-gift.svg';
 // --- Updated data object based on new content (Ambiguous spaces removed) ---
 const reviewData = {
   cardName: 'American Express® Gold Card',
@@ -293,7 +293,7 @@ function AmexGoldReviewPage() {
                   <div className={styles.summaryGrid}>
                     {/* Welcome Offer */}
                     <div className={styles.summaryItem}>
-                      <span className={styles.summaryIcon}>🎁</span> {/* TODO: Replace Icon */}
+                      <span className={styles.summaryIcon}><IconGift /></span> {/* TODO: Replace Icon */}
                       <span className={styles.summaryLabel}>Welcome Offer:</span>
                       <span className={styles.summaryValue}>60,000 points <small>(after $6k spend in 6 mos)</small></span>
                     </div>
