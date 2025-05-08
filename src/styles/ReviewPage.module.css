@@ -2,22 +2,23 @@
 
 /* =============== BASE & CONTAINER =============== */
 .reviewContainer {
-  max-width: 1200px; /* Content width within mainContentArea */
-  margin: 0 auto; /* Centered within mainContentArea */
-  padding: 2rem clamp(1rem, 5vw, 3rem);
-  background-color: var(--bg-white, #ffffff);
-  border-radius: var(--border-radius-md, 8px);
-  box-shadow: var(--shadow-md, 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04)); /* Refined shadow */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-xl, 32px) clamp(1.5rem, 6vw, 4rem); /* Increased padding */
+  background-color: var(--color-background-card, #ffffff); /* Use variable */
+  border-radius: var(--border-radius-md, 6px); /* Use variable, slightly sharper */
+  box-shadow: var(--shadow-md); /* Use variable */
+  border: 1px solid var(--color-border-light, #ebecf0); /* Add subtle border */
   line-height: 1.7;
   font-size: 1rem;
-  color: var(--text-medium, #374151);
-  font-family: 'Roboto', Arial, sans-serif; /* Default sans-serif */
+  color: var(--text-medium, #42526e); /* Use variable */
+  font-family: 'Roboto', Arial, sans-serif;
 }
 
 .reviewSection {
   margin-bottom: 3rem;
   padding-bottom: 2rem;
-  border-bottom: 1px solid var(--border-color-light, #e5e7eb);
+  border-bottom: 1px solid var(--border-color-light, #e5e7eb); /* Lighter border */
 }
 .reviewSection:last-of-type {
   margin-bottom: 0;
@@ -27,47 +28,50 @@
 
 /* =============== TYPOGRAPHY =============== */
 .reviewHeader h1 {
-  font-family: var(--font-family-serif, 'Playfair Display', serif); /* Use variable */
+  font-family: var(--font-family-serif, 'Playfair Display', serif);
   font-size: clamp(2.2rem, 6vw, 3.2rem);
-  color: var(--color-heading, #1a202c); /* Use variable */
+  color: var(--text-dark, #172b4d); /* Use variable */
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--spacing-lg, 24px); /* Use variable */
   line-height: 1.2;
+  font-weight: 700;
 }
 
 .reviewSection h2 {
-  font-family: var(--font-family-serif, 'Playfair Display', serif); /* Use variable */
-  font-size: clamp(1.6rem, 4.5vw, 2.2rem);
-  color: var(--primary-blue-text-dark, #1e3a8a); /* Use heading color */
+  font-family: var(--font-family-serif, 'Playfair Display', serif);
+  font-size: clamp(1.8rem, 4.8vw, 2.4rem); /* Slightly larger */
+  color: var(--color-primary, #0052cc); /* Use variable */
   margin-top: 0;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 3px solid var(--primary-blue, #2563eb); /* Use variable */
-  display: inline-block; /* Keep inline-block for border */
+  margin-bottom: var(--spacing-lg, 24px); /* Use variable */
+  padding-bottom: var(--spacing-sm, 8px); /* Use variable */
+  border-bottom: 2px solid var(--color-border, #dfe1e6); /* Thinner, less intense border */
+  display: inline-block;
 }
 
 .reviewSection h3 {
   font-family: var(--font-condensed, 'Roboto Condensed', var(--font-family-sans, sans-serif));
   font-weight: 700;
-  font-size: 1.4rem;
-  color: var(--text-dark, #111827); /* Use variable */
-  margin-top: 1.5rem;
-  margin-bottom: 0.8rem;
+  font-size: 1.5rem; /* Increase size */
+  color: var(--text-dark, #172b4d); /* Use variable */
+  margin-top: var(--spacing-xl, 32px); /* Use variable */
+  margin-bottom: var(--spacing-md, 16px); /* Use variable */
 }
 
 .reviewContainer p {
-  margin-bottom: 1.2rem;
-  color: var(--text-medium, #374151); /* Use variable */
+  margin-bottom: var(--spacing-md, 16px); /* Use variable */
+  color: var(--text-medium, #42526e); /* Use variable */
+  line-height: var(--base-line-height, 1.7); /* Use variable */
+  max-width: 68ch; /* Consistent line length */
 }
 
 .reviewContainer strong {
   font-weight: 700;
-  color: var(--primary-blue, #2563eb); /* Use variable */
+  color: var(--color-primary, #0052cc); /* Use variable */
 }
 
 .reviewContainer em {
   font-style: italic;
-  color: var(--text-medium, #374151);
+  color: var(--text-medium, #42526e); /* Use variable */
 }
 
 .reviewContainer ul,
@@ -82,85 +86,84 @@
   padding-left: 0.5rem;
 }
 
+/* Refined Feature List */
 .featureList {
   list-style: none;
   padding-left: 0;
+  margin-bottom: var(--spacing-lg, 24px); /* Use variable */
 }
 .featureList li {
   position: relative;
   padding-left: 1.75em;
-  margin-bottom: 0.8rem;
+  margin-bottom: var(--spacing-sm, 8px); /* Tighter spacing */
+  font-size: 0.95rem;
 }
 .featureList li::before {
-  content: '✓';
-  position: absolute; left: 0;
-  color: var(--value-good, #16a34a); /* Use variable */
-  font-weight: bold; font-size: 1.1em; line-height: 1.3;
+  content: '•'; /* Simple bullet */
+  position: absolute; left: 0.5em;
+  color: var(--color-primary, #0052cc); /* Use variable */
+  font-weight: bold; font-size: 1em; line-height: inherit;
 }
 
 /* =============== HEADER & INTRO =============== */
 .reviewHeader {
   text-align: center;
-  margin-bottom: 3rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px dashed #ccc;
+  margin-bottom: var(--spacing-xl, 32px); /* Use variable */
+  padding-bottom: var(--spacing-lg, 24px); /* Use variable */
+  border-bottom: 1px solid var(--color-border-light, #ebecf0); /* Use variable */
 }
 
 .cardImageContainer {
-  margin: 1.5rem auto;
-  max-width: 480px;
-  line-height: 0;
+  margin: 1.5rem auto; max-width: 480px; line-height: 0;
   display: flex; justify-content: center; align-items: center;
 }
 
-.cardImage {
-  display: block; max-width: 100%; height: auto;
-}
+.cardImage { display: block; max-width: 100%; height: auto; }
 
+/* Refined Rating Section */
 .ratingSection {
-  margin-top: 1.5rem; display: flex; flex-direction: column;
-  align-items: center; gap: 0.75rem;
+  margin-top: var(--spacing-lg, 24px);
+  border-top: 1px solid var(--color-border-light, #ebecf0);
+  padding-top: var(--spacing-lg, 24px);
+  display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
 }
-
 .tciRating {
-  font-size: 1.1rem; font-weight: 500;
-  color: var(--text-dark, #111827);
-  background-color: var(--bg-light, #f3f4f6); /* Use variable */
-  padding: 0.3rem 0.8rem; border-radius: 15px;
+  font-size: 1rem; font-weight: 500;
+  color: var(--text-dark, #172b4d);
+  background-color: var(--color-background-subtle, #f1f3f5); /* Use variable */
+  border: 1px solid var(--color-border, #dfe1e6); /* Use variable */
+  padding: 0.4rem 1rem; border-radius: 15px;
   display: inline-flex; align-items: center; gap: 0.5rem;
   position: relative;
 }
-
-.tciRating strong { color: var(--primary-blue, #2563eb); }
-
+.tciRating strong { color: var(--color-primary, #0052cc); }
 .infoIconButton {
   background: none; border: none; padding: 2px; margin: 0;
   cursor: pointer; line-height: 0; border-radius: 50%;
   display: inline-flex; align-items: center; justify-content: center;
-  vertical-align: middle; color: var(--text-light, #6b7280); /* Use variable */
+  vertical-align: middle; color: var(--text-light, #6b7f9b); /* Use variable */
   transition: background-color 0.2s ease;
 }
 .infoIconButton:hover { background-color: rgba(0, 0, 0, 0.05); }
 .infoIconButton:focus-visible {
-  outline: 2px solid var(--primary-blue, #2563eb); /* Use variable */
+  outline: 2px solid var(--color-primary, #0052cc);
   outline-offset: 1px;
-  background-color: rgba(59, 130, 246, 0.1); /* Focus color adjustment */
+  background-color: rgba(0, 82, 204, 0.1); /* Focus color adjustment */
 }
 .infoIcon { display: inline-block; fill: currentColor; opacity: 0.8; width: 16px; height: 16px; }
 .infoIconButton:hover .infoIcon { opacity: 1; }
-
 .starRating {
-  font-size: 1.8rem; color: var(--border-color-light, #e5e7eb); /* Use variable */
+  font-size: 1.5rem; /* Smaller stars */
+  color: var(--color-border-light, #ebecf0);
   position: relative; display: inline-block; line-height: 1;
 }
 .filledStars {
   position: absolute; left: 0; top: 0; white-space: nowrap;
   overflow: hidden; color: #facc15; /* Gold color */
-  width: var(--rating, 0%); /* Controlled by inline style in JS */
+  width: var(--rating, 0%);
 }
-
 .ratingDescription {
-  font-size: 1rem; font-style: italic; color: var(--text-medium, #374151);
+  font-size: 0.95rem; font-style: italic; color: var(--text-light, #6b7f9b); /* Use variable */
   margin-top: 1rem; max-width: 600px; margin-left: auto; margin-right: auto;
   line-height: 1.6;
 }
@@ -171,8 +174,8 @@
     margin-bottom: var(--spacing-lg, 24px);
 }
 .intro p {
-  font-size: 1.15rem; line-height: 1.8; max-width: 70ch;
-  margin: 0 auto 0 auto; color: var(--text-dark, #111827);
+  font-size: 1.1rem; line-height: 1.8; max-width: 75ch;
+  margin: 0 auto 0 auto; color: var(--text-medium, #42526e); /* Use variable */
 }
 @media (min-width: 768px) {
     .introAndImageWrapper { flex-direction: row; align-items: center; }
@@ -181,101 +184,101 @@
     .cardImageContainer { flex-basis: 40%; max-width: 480px; margin: 0; }
 }
 
-/* =============== AT-A-GLANCE SUMMARY BOX =============== */
+
+/* =============== AT-A-GLANCE SUMMARY BOX (Refined) =============== */
 .summaryBox {
-  background-color: var(--primary-blue-light-bg, #eff6ff);
-  border: 1px solid var(--primary-blue-light-border, #bfdbfe);
-  border-radius: var(--border-radius-md, 8px);
+  /* Blending with page background, using border */
+  background-color: var(--color-background-page, #f8f9fa); /* Match page bg */
+  border: 1px solid var(--color-border, #dfe1e6); /* Use variable */
+  border-radius: var(--border-radius-lg, 12px); /* Softer, larger radius */
   padding: var(--spacing-lg, 24px);
-  margin-bottom: 3rem;
-  box-shadow: var(--shadow-sm, 0 1px 2px rgba(0,0,0,0.05));
+  margin: 0 auto var(--spacing-xl, 32px) auto; /* Center and add more bottom margin */
+  max-width: 1100px; /* Limit width relative to content */
+  box-shadow: none; /* Remove shadow */
 }
 
 .summaryBoxTitle {
   font-family: var(--font-condensed, 'Roboto Condensed', var(--font-family-sans, sans-serif));
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--primary-blue-text-dark, #1e3a8a);
+  font-size: 1.3rem; /* Smaller title */
+  font-weight: 600; /* Less heavy */
+  color: var(--text-dark, #172b4d); /* Use variable */
   text-align: center;
   margin-top: 0;
   margin-bottom: var(--spacing-lg, 24px);
   padding-bottom: var(--spacing-sm, 8px);
-  border-bottom: 1px solid var(--primary-blue-light-border, #bfdbfe);
-  display: block; /* Ensure it takes full width for centering/border */
-  /* Reset potential inherited border styles from general h2 */
-  border-left: none;
-  border-right: none;
-  border-top: none;
+  border-bottom: 1px solid var(--color-border, #dfe1e6); /* Use variable */
+  display: block;
+  /* Reset general h2 styles */
+  border-left: none; border-right: none; border-top: none;
 }
 
 .summaryGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--spacing-md, 16px) var(--spacing-lg, 24px);
+  gap: var(--spacing-md, 16px); /* Consistent gap */
   align-items: start;
 }
 
 .summaryItem {
   display: flex;
-  align-items: center;
+  align-items: baseline; /* Align text baseline */
   gap: var(--spacing-sm, 10px);
-  background-color: var(--bg-white, #ffffff);
-  padding: var(--spacing-sm, 10px) var(--spacing-md, 16px);
-  border-radius: var(--border-radius-sm, 6px);
-  border: 1px solid var(--border-color-light, #e5e7eb);
-  min-height: 50px;
+  background-color: transparent; /* No background per item */
+  border: none; /* No border per item */
+  padding: var(--spacing-xs, 4px) 0; /* Reduced padding */
+  min-height: auto; /* Remove min-height */
 }
 
 .summaryItem[data-full-width="true"] {
-  grid-column: 1 / -1;
+  grid-column: 1 / -1; /* Span full width */
 }
 
 .summaryIcon {
-  font-size: 1.5rem;
+  font-size: 1.2rem; /* Smaller icons */
+  color: var(--color-primary, #0052cc); /* Use variable */
   flex-shrink: 0;
   line-height: 1;
-  color: var(--primary-blue, #2563eb);
-  /* Replace emojis with actual icons later */
+  margin-right: var(--spacing-xs, 4px);
+  /* TODO: Replace emoji/placeholder with actual SVG/Icon component */
 }
 
 .summaryLabel {
-  font-weight: 600;
-  color: var(--text-medium, #374151);
-  font-size: 0.9rem;
+  font-weight: 500; /* Normal weight */
+  color: var(--text-medium, #42526e); /* Use variable */
+  font-size: 0.95rem;
+  margin-right: auto; /* Pushes value right */
   flex-shrink: 0;
-  margin-right: auto; /* Pushes value to the right */
 }
 
 .summaryValue {
   font-weight: 500;
-  color: var(--text-dark, #111827);
-  font-size: 0.95rem;
+  color: var(--text-dark, #172b4d); /* Use variable */
+  font-size: 1rem; /* Slightly larger value text */
   text-align: right;
 }
 
 .summaryValue small {
   font-size: 0.8em;
-  color: var(--text-light, #6b7280);
-  display: block;
-  line-height: 1.3;
+  color: var(--text-light, #6b7f9b); /* Use variable */
+  display: inline; /* Show details inline */
+  margin-left: 0.3em;
   font-weight: 400;
-  margin-top: 2px;
 }
 
 .summaryRatesLink {
   text-align: center;
-  margin-top: var(--spacing-lg, 24px);
+  margin-top: var(--spacing-md, 16px); /* Less space */
   font-size: 0.85rem;
 }
 
 .summaryRatesLink a {
-  color: var(--text-light, #6b7280);
+  color: var(--text-light, #6b7f9b); /* Use variable */
   text-decoration: underline;
   transition: color var(--transition-speed, 0.2s) ease;
 }
 
 .summaryRatesLink a:hover {
-  color: var(--primary-blue, #2563eb);
+  color: var(--color-primary, #0052cc); /* Use variable */
 }
 
 @media (max-width: 600px) {
@@ -283,15 +286,15 @@
   .summaryItem { flex-wrap: wrap; align-items: flex-start; }
   .summaryLabel { margin-right: var(--spacing-sm, 8px); }
   .summaryValue { text-align: left; flex-basis: 100%; margin-top: var(--spacing-xs, 4px); }
-  .summaryValue small { display: inline; } /* Example: make detail inline on mobile */
 }
+
 
 /* =============== TABLES (Responsive Scroll) =============== */
 .tableContainer {
   width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch;
-  margin-bottom: 2rem; border: 1px solid var(--color-border, #dee2e6);
-  border-radius: var(--border-radius-md, 8px);
-  box-shadow: var(--shadow-sm, 0 1px 2px rgba(0,0,0,0.05));
+  margin-bottom: 2rem; border: 1px solid var(--color-border, #dfe1e6);
+  border-radius: var(--border-radius-md, 6px); /* Use variable */
+  box-shadow: var(--shadow-sm, 0 2px 4px rgba(23, 43, 77, 0.07)); /* Use variable */
 }
 
 .statsTable {
@@ -299,99 +302,127 @@
   border: none; box-shadow: none; margin-bottom: 0; font-size: 0.95rem;
 }
 
-.statsTable thead { background-color: var(--color-background-subtle, #f8f9fa); }
+.statsTable thead { background-color: var(--color-background-subtle, #f1f3f5); } /* Use variable */
 
 .statsTable th {
-  background-color: transparent; color: var(--color-text-secondary, #495057);
+  background-color: transparent; color: var(--color-text-secondary, #5e6c84); /* Use variable */
   font-weight: 600; text-align: left; padding: 1rem 1.2rem;
-  border-bottom: 2px solid var(--color-border, #dee2e6);
-  border-right: 1px solid var(--border-color-light, #e9ecef); white-space: nowrap;
+  border-bottom: 2px solid var(--color-border, #dfe1e6); /* Use variable */
+  border-right: 1px solid var(--color-border-light, #ebecf0); /* Use variable */
+  white-space: nowrap;
 }
 .statsTable th:last-child { border-right: none; }
 
 .statsTable td {
   padding: 1rem 1.2rem; border: none;
-  border-bottom: 1px solid var(--border-color-light, #e9ecef);
-  border-right: 1px solid var(--border-color-light, #e9ecef);
-  vertical-align: middle; color: var(--text-medium, #374151); white-space: normal;
+  border-bottom: 1px solid var(--color-border-light, #ebecf0); /* Use variable */
+  border-right: 1px solid var(--color-border-light, #ebecf0); /* Use variable */
+  vertical-align: middle; color: var(--text-medium, #42526e); /* Use variable */
+  white-space: normal;
 }
 .statsTable td:last-child { border-right: none; }
 
 .statsTable tbody tr:last-child td { border-bottom: none; }
-.statsTable tbody tr:nth-child(odd) { background-color: var(--color-background-subtle, #f8f9fa); }
-.statsTable td:first-child { font-weight: 500; color: var(--text-dark, #111827); }
+.statsTable tbody tr:nth-child(odd) { background-color: var(--color-background-subtle, #f1f3f5); } /* Subtle striping */
+.statsTable td:first-child { font-weight: 500; color: var(--text-dark, #172b4d); }
 
 @media (max-width: 650px) {
-  /* Keep table scrollable, don't stack cells */
   .statsTable th, .statsTable td { padding: 0.8rem; font-size: 0.9rem; }
 }
 
-.totalRow td { /* Style for total row in credits summary */
-  font-weight: bold; color: var(--text-dark, #111827);
-  background-color: var(--bg-light-gray, #f9fafb);
+.totalRow td {
+  font-weight: bold; color: var(--text-dark, #172b4d);
+  background-color: var(--color-background-subtle, #f1f3f5); /* Use subtle background */
 }
 .totalRow td:first-child { text-align: right; }
 
-/* =============== CTA Section (Premium Buttons) =============== */
+
+/* =============== CTA Section (Refined) =============== */
 .ctaSection {
-  text-align: center; padding: 2.5rem 1.5rem;
-  background: linear-gradient(135deg, var(--primary-blue-light-bg, #e0f7fa), var(--primary-blue-light-border, #b2ebf2));
-  border: 1px solid var(--primary-blue-light-border, #80deea);
-  border-radius: var(--border-radius-md, 8px); margin: 3rem 0;
-  box-shadow: var(--shadow-md, 0 4px 8px rgba(0, 150, 136, 0.1));
+  text-align: center; padding: var(--spacing-xl, 32px); /* Use variable */
+  background: var(--color-background-subtle, #f1f3f5); /* Use variable */
+  border: 1px solid var(--color-border, #dfe1e6); /* Use variable */
+  border-radius: var(--border-radius-md, 6px); /* Use variable */
+  margin: var(--spacing-xl, 32px) 0; /* Use variable */
+  box-shadow: none;
 }
 .ctaSection h2 {
-  font-size: clamp(1.6rem, 4.5vw, 2rem); color: var(--primary-blue-text-dark, #00796b);
+  font-family: var(--font-condensed, 'Roboto Condensed', var(--font-family-sans, sans-serif));
+  font-size: clamp(1.5rem, 4vw, 1.8rem); color: var(--text-dark, #172b4d); /* Use variable */
   margin-top: 0; margin-bottom: 1.5rem; border: none; display: block;
 }
-.ctaSection h2 b { color: var(--primary-blue-dark, #1d4ed8); font-weight: 700; }
+.ctaSection h2 b { color: var(--color-primary, #0052cc); font-weight: 700; } /* Use variable */
 
 .ctaButtons { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; }
 .ctaButtons .btn {
-  padding: 0.9rem 2rem; font-size: 1.05rem; font-weight: 600; border-radius: 25px;
-  box-shadow: var(--shadow-sm, 0 4px 8px rgba(0,0,0,0.1));
+  padding: 10px 24px; font-size: 1rem; font-weight: 700; /* Bolder */
+  border-radius: var(--border-radius-md, 6px); /* Use variable */
+  box-shadow: var(--shadow-sm, 0 2px 4px rgba(23, 43, 77, 0.07)); /* Use variable */
   transition: all 0.3s ease; border: none; cursor: pointer;
   text-decoration: none; line-height: 1.5;
 }
-.ctaButtons .btn:hover { box-shadow: var(--shadow-md, 0 6px 12px rgba(0,0,0,0.15)); transform: translateY(-2px); }
+.ctaButtons .btn:hover { box-shadow: var(--shadow-md, 0 4px 8px rgba(23, 43, 77, 0.1)); transform: translateY(-2px); }
 .ctaButtons .btn:active { transform: translateY(0px) scale(0.98); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-.ctaButtons .btnApply {
-   background: linear-gradient(135deg, var(--value-good, #4caf50), var(--color-success, #2e7d32));
-   color: white;
-}
-.ctaButtons .btnApply:hover { background: linear-gradient(135deg, #5cb85c, #388e3c); }
-.ctaButtons .btnRates {
-  background: linear-gradient(135deg, var(--secondary-gray, #6c757d), var(--secondary-gray-dark, #495057));
-  color: white;
-}
-.ctaButtons .btnRates:hover { background: linear-gradient(135deg, #868e96, #5a6268); }
-.ctaButtons .btn:focus-visible { outline: 3px solid var(--primary-blue-focus, rgba(0, 123, 255, 0.5)); outline-offset: 2px; }
 
-/* =============== E-A-T Section =============== */
+/* Specific Button Colors */
+.ctaButtons .btnApply {
+   background: var(--color-accent, var(--value-good, #16a34a)); /* Use accent color */
+   color: var(--text-on-primary, white); /* Ensure contrast */
+}
+.ctaButtons .btnApply:hover { background: var(--color-accent-hover, #117e37); } /* Define hover color */
+
+.ctaButtons .btnRates {
+  background: none;
+  color: var(--color-primary, #0052cc); /* Use variable */
+  border: 1px solid var(--color-border, #dfe1e6); /* Use variable */
+  box-shadow: none;
+}
+.ctaButtons .btnRates:hover {
+  background: var(--color-background-subtle, #f1f3f5); /* Use variable */
+  border-color: var(--color-primary, #0052cc); /* Use variable */
+}
+.ctaButtons .btn:focus-visible {
+  outline: 3px solid var(--color-primary-light, rgba(0, 82, 204, 0.15)); /* Use variable */
+  outline-offset: 2px;
+}
+
+
+/* =============== E-A-T Section (Refined) =============== */
 .eatSection {
-  background-color: var(--bg-light-gray, #f9fafb);
-  border: 1px solid var(--border-color-light, #e5e7eb);
-  padding: 2rem; border-radius: var(--border-radius-md, 8px); margin-top: 3rem;
+  background-color: var(--color-background-subtle, #f1f3f5); /* Use variable */
+  border: 1px solid var(--color-border-light, #ebecf0); /* Use variable */
+  padding: var(--spacing-lg, 24px); /* Use variable */
+  border-radius: var(--border-radius-md, 6px); /* Use variable */
+  margin-top: var(--spacing-xl, 32px); /* Use variable */
 }
 .eatSection h2 {
-  text-align: center; color: var(--primary-blue-text-dark, #1e3a8a);
-  border-bottom-color: var(--primary-blue-light-border, #bfdbfe); margin-bottom: 1.5rem;
+  font-family: var(--font-condensed, 'Roboto Condensed', var(--font-family-sans, sans-serif));
+  font-size: 1.3rem; color: var(--text-dark, #172b4d); /* Use variable */
+  border-bottom: 1px solid var(--color-border, #dfe1e6); /* Use variable */
+  margin-bottom: var(--spacing-lg, 24px); /* Use variable */
+  text-align: center;
   /* Reset general h2 styles */
   border-left: none; border-right: none; border-top: none; display: block;
 }
 .eatSection h3 {
-  color: var(--text-medium, #374151); margin-top: 1.8rem; margin-bottom: 0.8rem;
-  font-size: 1.25rem;
+   color: var(--text-medium, #42526e); /* Use variable */
+   font-family: var(--font-family-sans);
+   font-weight: 600;
+   font-size: 1.1rem;
+   margin-top: var(--spacing-lg, 24px); /* Use variable */
+   margin-bottom: var(--spacing-sm, 8px);
 }
-.eatSection ul { list-style-type: disc; margin-bottom: 1rem; padding-left: 1.5rem; }
-.eatSection li { margin-bottom: 0.6rem; color: var(--text-medium, #374151); padding-left: 0; }
-.eatSection li::before { content: none; } /* Remove featureList checkmark */
-.eatSection p:last-of-type { margin-top: 1.5rem; font-style: italic; text-align: center; color: var(--text-medium, #374151); }
+.eatSection ul { list-style: disc; margin-bottom: 1rem; padding-left: 1.5rem; }
+.eatSection li { color: var(--text-medium, #42526e); font-size: 0.95rem; margin-bottom: 0.6rem; padding-left: 0; }
+.eatSection li::before { content: none; } /* Remove featureList style */
+.eatSection p:last-of-type { margin-top: 1.5rem; font-style: italic; text-align: center; color: var(--text-medium, #42526e); }
+
 
 /* =============== Tooltip Styles =============== */
+/* Keeping existing Tooltip styles for now, adjust if needed */
 .ratingTooltip {
   position: absolute; top: 120%; left: 50%; transform: translateX(-50%);
-  background-color: #ffffff; border: 1px solid var(--border-color, #ced4da);
+  background-color: #ffffff; border: 1px solid var(--color-border, #ced4da);
   border-radius: 6px; padding: 10px 15px; width: 250px;
   box-shadow: var(--shadow-md, 0 5px 15px rgba(0, 0, 0, 0.15));
   z-index: 1050; font-size: 0.85rem; line-height: 1.5; color: var(--text-dark, #343a40);
@@ -410,8 +441,10 @@
 /* =============== LAYOUT STYLES FOR TOC INTEGRATION =============== */
 .reviewPageLayout {
   display: flex; flex-direction: column; /* Mobile first */
-  gap: var(--spacing-lg, 24px); max-width: 1600px;
-  margin: 2rem auto 3rem auto; padding: 0 var(--spacing-md, 16px);
+  gap: var(--spacing-xl, 32px); /* Increased gap */
+  max-width: 1600px;
+  margin: var(--spacing-lg, 24px) auto var(--spacing-xl, 32px) auto; /* Adjusted margins */
+  padding: 0 var(--spacing-md, 16px);
 }
 
 .mainContentArea { flex-grow: 1; min-width: 0; }
@@ -420,18 +453,19 @@
 
 @media (min-width: 1024px) { /* Desktop breakpoint */
   .reviewPageLayout { flex-direction: row; align-items: flex-start; }
-  .sidebarArea { width: var(--toc-width-desktop, 280px); flex-shrink: 0; }
+  .sidebarArea {
+      width: var(--toc-width-desktop, 280px); /* Use variable */
+      flex-shrink: 0;
+      /* Add padding to the sidebar container itself */
+      padding-top: var(--spacing-sm, 8px); /* Align top of ToC roughly */
+  }
 }
 
-/* =============== RESPONSIVE ADJUSTMENTS (Existing + Refined) =============== */
+
+/* =============== RESPONSIVE ADJUSTMENTS =============== */
 @media (max-width: 768px) {
-  .reviewContainer {
-      padding: 1.5rem clamp(1rem, 4vw, 2rem);
-      /* Removed top/bottom margin as reviewPageLayout handles it */
-  }
+  .reviewContainer { padding: 1.5rem clamp(1rem, 4vw, 2rem); }
   .reviewHeader h1 { font-size: clamp(2rem, 5.5vw, 2.8rem); }
   .reviewSection h2 { font-size: clamp(1.5rem, 4vw, 2rem); }
   .ctaSection h2 { font-size: 1.6rem; }
-  /* .prosCons { gap: 1.5rem; } */ /* Remove if .prosCons is no longer used */
-  /* .prosCons h3 { font-size: 1.4rem; } */ /* Remove if .prosCons is no longer used */
 }
