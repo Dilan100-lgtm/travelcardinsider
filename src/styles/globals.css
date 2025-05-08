@@ -165,7 +165,7 @@ main {
 
 /* If you have a specific class for main content like .main-content */
 main.main-content {
-  margin-top: var(--header-height-actual, 3.5rem); /* Use variable */
+  margin-top: var(--header-height-actual, 4rem); /* Use variable */
   /* CRITICAL FIX: REMOVE overflow-x property */
   /* overflow-x: clip; */ /* REMOVED */
   overflow-y: visible; /* Keep as default */
