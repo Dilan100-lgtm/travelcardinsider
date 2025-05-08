@@ -239,55 +239,17 @@ function AmexGoldReviewPage() {
       </div>
     </div>
     <div className={styles.heroImageContainer}>
-      <Image
-        src="/AdobeStock_446734479.webp" // Path to your uploaded image
-        alt="Luxurious abstract background with golden flowing lines, representing the premium American Express Gold Card" // Descriptive alt text
-        width={1200} // *** CRITICAL: Replace with ACTUAL width of AdobeStock_446734479.jpg ***
-        height={675} // *** CRITICAL: Replace with ACTUAL height of AdobeStock_446734479.jpg ***
-        priority // Good for LCP as this is a hero image
-        className={styles.heroImage}
-      />
-    </div>
-  </section>
-            <div className={styles.reviewContainer}>
-              <article> {/* Wrap main content in article */}
-                {/* ============= REVIEW HEADER ============= */}
-                <header className={styles.reviewHeader}>
-                  {/* H1 uses new title from reviewData */}
-                  <h1>{reviewData.title}</h1>
-
-                  {/* Section 1 Content & Image Wrapper */}
-                  {/* Added introAndImageWrapper div for CSS Module layout */}
-                  <div className={styles.introAndImageWrapper}>
-                    <div className={styles.intro}>
-                      {/* === Section 1 Content === */}
-                      <p>
-                        The <strong>American Express® Gold Card</strong> holds a prominent position in the premium credit card sphere,
-                        easily identified by its classic Gold or stylish Rose Gold metal design. It targets individuals whose spending habits heavily feature dining and travel,
-                        offering a compelling mix of accelerated points earning in these key categories and various statement credits aimed at offsetting its annual fee.
-                        Marketed as ideal for "Food Lovers" and equipped with benefits for both culinary and travel pursuits, the card appeals to those who frequently dine out,
-                        order delivery, buy groceries (especially in the U.S.), and travel enough to leverage the versatile American Express Membership Rewards® program.
-                        This review offers an expert analysis, concentrating on its travel-related features and assessing its value proposition for the modern traveler and diner,
-                        using the most current data. We'll examine its earning potential, redemption avenues, travel protections, and credits to determine if the benefits justify the cost,
-                        particularly considering its updated annual fee and the active management required to maximize its value.
-                      </p>
-                      {/* === END Section 1 Content === */}
-                    </div>
-
-                    {/* Image Container */}
-                    <div className={styles.cardImageContainer}>
+    <div className={styles.cardImageContainer}>
                       <Image
                         src={reviewData.imageUrl} // *** VERIFY PATH ***
                         alt={reviewData.cardName} // Alt text is crucial
                         width={reviewData.imageWidth} // *** REPLACE with actual image width ***
                         height={reviewData.imageHeight} // *** REPLACE with actual image height ***
-                        className={styles.cardImage}
+                        className={styles.heroImage}
                         priority // Preload this important image
                       />
                     </div>
-                  </div> {/* End introAndImageWrapper */}
-
-                  {/* RATING SECTION */}
+                     {/* RATING SECTION */}
                   <div className={styles.ratingSection}>
                       <span className={styles.tciRating}>
                         <button
@@ -328,12 +290,48 @@ function AmexGoldReviewPage() {
                         ★★★★★ {/* Foreground filled stars, width controlled by CSS variable */}
                       </span>
                     </div>
+                    </div>
+                    <div className={styles.ratingDescription}>
+                      <i>A top pick for foodies & travelers, excelling in dining/grocery rewards and offering valuable statement credits.</i>
+                    </div>
+    </div>
+  </section>
+            <div className={styles.reviewContainer}>
+              <article> {/* Wrap main content in article */}
+                {/* ============= REVIEW HEADER ============= */}
+                <header className={styles.reviewHeader}>
+                  {/* H1 uses new title from reviewData */}
+                  <h1>{reviewData.title}</h1>
+
+                  {/* Section 1 Content & Image Wrapper */}
+                  {/* Added introAndImageWrapper div for CSS Module layout */}
+                  <div className={styles.introAndImageWrapper}>
+                    <div className={styles.intro}>
+                      {/* === Section 1 Content === */}
+                      <p>
+                        The <strong>American Express® Gold Card</strong> holds a prominent position in the premium credit card sphere,
+                        easily identified by its classic Gold or stylish Rose Gold metal design. It targets individuals whose spending habits heavily feature dining and travel,
+                        offering a compelling mix of accelerated points earning in these key categories and various statement credits aimed at offsetting its annual fee.
+                        Marketed as ideal for "Food Lovers" and equipped with benefits for both culinary and travel pursuits, the card appeals to those who frequently dine out,
+                        order delivery, buy groceries (especially in the U.S.), and travel enough to leverage the versatile American Express Membership Rewards® program.
+                        This review offers an expert analysis, concentrating on its travel-related features and assessing its value proposition for the modern traveler and diner,
+                        using the most current data. We'll examine its earning potential, redemption avenues, travel protections, and credits to determine if the benefits justify the cost,
+                        particularly considering its updated annual fee and the active management required to maximize its value.
+                      </p>
+                      {/* === END Section 1 Content === */}
+                    </div>
+
+                    {/* Image Container */}
+                    
+                  </div> {/* End introAndImageWrapper */}
+
+                 
 
                     {/* Rating Description */}
                     <div className={styles.ratingDescription}>
                       <i>A top pick for foodies & travelers, excelling in dining/grocery rewards and offering valuable statement credits.</i>
                     </div>
-                  </div> {/* End ratingSection */}
+                  
                 </header>
 
                 {/* ============= AT-A-GLANCE SUMMARY BOX (NEW) ============= */}
