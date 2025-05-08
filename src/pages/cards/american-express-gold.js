@@ -198,10 +198,6 @@ function AmexGoldReviewPage() {
       <main>
         {/* New layout wrapper for main content and sidebar */}
         <div className={styles.reviewPageLayout}>
-          {/* Sidebar area for the Table of Contents */}
-          <aside className={styles.sidebarArea}>
-            <TableOfContents sections={tocSections} />
-          </aside>
           {/* Main content area that contains the review article */}
           <div className={styles.mainContentArea}>
             <div className={styles.reviewContainer}>
@@ -759,7 +755,10 @@ function AmexGoldReviewPage() {
             </div> {/* Close reviewContainer */}
           </div> {/* Close mainContentArea */}
 
-          
+          {/* Sidebar area for the Table of Contents */}
+          <aside className={styles.sidebarArea}>
+            <TableOfContents sections={tocSections} />
+          </aside>
         </div> {/* Close reviewPageLayout */}
       </main>
 
