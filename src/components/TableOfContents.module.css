@@ -30,7 +30,7 @@
   padding: 0;
   margin: 0;
   max-height: calc(100vh - 200px); /* Default max height */
-  overflow-y: auto;
+  overflow-y: visible;
 }
 
 .tocItem {
