@@ -244,7 +244,7 @@
 }
 
 .summaryIcon {
-  font-size: 1.2rem; /* Smaller icons */
+  font-size: 1.4rem; /* Smaller icons */
   color: var(--color-primary, #0052cc); /* Use variable */
   flex-shrink: 0;
   line-height: 1;
@@ -255,16 +255,18 @@
 .summaryLabel {
   font-weight: 500; /* Normal weight */
   color: var(--text-medium, #42526e); /* Use variable */
-  font-size: 0.95rem;
+  font-size: 1.2rem;
   margin-right: auto; /* Pushes value right */
   flex-shrink: 0;
+  font-family: 'Roboto Condensed', sans-serif;
+
 }
 
 .summaryValue {
   font-weight: 500;
   color: var(--text-dark, #172b4d); /* Use variable */
   font-size: 1rem; /* Slightly larger value text */
-  text-align: right;
+  text-align: center;
   font-family: 'Roboto Condensed', sans-serif; /* Preserved: Explicitly Roboto Condensed */
 }
 
