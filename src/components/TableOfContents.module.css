@@ -95,6 +95,7 @@
     position: fixed; /* Sticky to the top of the sidebar area */
     /* Use var from globals or define fallback */
     top: 5rem;
+    margin-bottom: 30rem;
     /* Use var from globals or define fallback */
     width: var(--toc-width-desktop, 280px);
     align-self: flex-start; /* Align within sidebarArea if it were flex, harmless otherwise */
