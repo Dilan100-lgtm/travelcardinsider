@@ -129,3 +129,76 @@
   transition: opacity 0.3s ease, visibility 0s 0.3s linear;
 }
 .tocBackdrop.open { opacity: 1; visibility: visible; transition-delay: 0s; }
+/* styles/TableOfContents.module.css */
+
+/* ... (Keep existing .tableOfContents, .tocTitle styles) ... */
+
+.tocList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tocList li {
+  margin-bottom: var(--spacing-xs); /* Small gap between items */
+}
+
+.tocList li a {
+  display: block;
+  padding: var(--spacing-sm) var(--spacing-md); /* 8px 16px padding */
+  /* Inherit Inter font from body */
+  font-size: 0.95rem; /* Slightly larger TOC links */
+  font-weight: var(--font-weight-regular); /* Regular weight */
+  color: var(--color-text-secondary); /* Use secondary text color */
+  text-decoration: none;
+  border-radius: var(--border-radius-md); /* Match button/card radius */
+  border-left: 3px solid transparent; /* Placeholder for active state border */
+
+  /* --- ADD TRANSITIONS --- */
+  transition: 
+    background-color 0.2s ease-in-out, 
+    color 0.2s ease-in-out, 
+    padding-left 0.2s ease-in-out,
+    border-left-color 0.2s ease-in-out,
+    font-weight 0.1s linear; /* Faster transition for font-weight */
+}
+
+/* Hover state for TOC links */
+.tocList li a:hover {
+  color: var(--color-accent-primary); /* Use primary accent color */
+  background-color: var(--color-background-subtle); /* Use subtle background from globals */
+  padding-left: calc(var(--spacing-md) + 4px); /* Example: Subtle indent */
+}
+
+/* Active state for the current section link */
+.tocList li a.active {
+  color: var(--color-accent-primary);
+  font-weight: var(--font-weight-semibold); /* Bolder for active */
+  background-color: var(--primary-blue-light-bg); /* Use your existing variable */
+  border-left-color: var(--color-accent-primary); /* Show the left border */
+  /* Adjust padding if needed to keep text aligned */
+  padding-left: calc(var(--spacing-md) - 3px + 4px); /* Account for border + potential hover indent */
+}
+
+/* Focus state for keyboard navigation */
+.tocList li a:focus {
+  outline: none; /* Remove default outline */
+}
+
+.tocList li a:focus-visible { /* Style focus state clearly */
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-background-main), 0 0 0 4px var(--color-accent-primary); /* Halo effect */
+  /* Or use outline: 2px solid var(--color-accent-primary); outline-offset: 2px; */
+  background-color: var(--color-background-subtle); /* Ensure background helps visibility */
+  color: var(--color-accent-primary);
+}
+
+/* Style for the optional icon within the ToC link */
+.tocIcon {
+  display: inline-block;
+  width: 1.1em;
+  height: 1.1em;
+  margin-right: var(--spacing-sm);
+  vertical-align: -0.15em; /* Adjust vertical alignment */
+  /* color: currentColor; */ /* Inherits color */
+}

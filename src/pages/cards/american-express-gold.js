@@ -14,6 +14,18 @@ import Header from '../../components/Header'; // Assuming path: components/Heade
 import Footer from '../../components/Footer'; // Assuming path: components/Footer.js
 import TableOfContents from '../../components/TableOfContents'; // Import the new ToC component
 import IconGift from '../../components/icons/icon-gift.svg';
+import { 
+  UtensilsCrossed, // Good for Dining category/credit
+  ShoppingCart,    // Good for Groceries category
+  Plane,           // Good for Flights category/travel perks
+  CreditCard,      // General card/credit icon
+  Hotel,           // For hotel credits/perks
+  ShieldCheck,     // For insurance perks
+  Info,            // For informational sections or tooltips
+  CheckCircle,     // For Pros list
+  XCircle          // For Cons list
+} from 'lucide-react'; 
+
 // --- Updated data object based on new content (Ambiguous spaces removed) ---
 const reviewData = {
   cardName: 'American Express® Gold Card',
