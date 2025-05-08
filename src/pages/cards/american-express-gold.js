@@ -14,6 +14,11 @@ import Header from '../../components/Header'; // Assuming path: components/Heade
 import Footer from '../../components/Footer'; // Assuming path: components/Footer.js
 import TableOfContents from '../../components/TableOfContents'; // Import the new ToC component
 import IconGift from '../../components/icons/icon-gift.svg';
+import IconStar from '../../components/icons/icon-star.svg'; // Assuming you have a star icon component
+import IconCheck from '../../components/icons/icon-Credit card.svg'; // Assuming you have a check icon component
+import IconX from '../../components/icons/icon-Star + Arrow Up.svg'; // Assuming you have an X icon componen
+import IconPlus from '../../components/icons/icon-target.svg'; // Assuming you have a plus icon component
+
 import { 
   UtensilsCrossed, // Good for Dining category/credit
   ShoppingCart,    // Good for Groceries category
@@ -346,25 +351,25 @@ function AmexGoldReviewPage() {
                     </div>
                     {/* Annual Fee */}
                     <div className={styles.summaryItem}>
-                      <span className={styles.summaryIcon}>💲</span> {/* TODO: Replace Icon */}
+                      <span className={styles.summaryIcon}><IconStar /></span> {/* TODO: Replace Icon */}
                       <span className={styles.summaryLabel}>Annual Fee:</span>
                       <span className={styles.summaryValue}>$325</span>
                     </div>
                     {/* Top Earning */}
                     <div className={styles.summaryItem}>
-                      <span className={styles.summaryIcon}>⭐</span> {/* TODO: Replace Icon */}
+                      <span className={styles.summaryIcon}><IconX /></span> {/* TODO: Replace Icon */}
                       <span className={styles.summaryLabel}>Top Earning:</span>
                       <span className={styles.summaryValue}>4X Dining & U.S. Supermarkets, 3X Flights</span>
                     </div>
                     {/* Key Credits */}
                     <div className={styles.summaryItem}>
-                      <span className={styles.summaryIcon}>💳</span> {/* TODO: Replace Icon */}
+                      <span className={styles.summaryIcon}><IconCheck /></span> {/* TODO: Replace Icon */}
                       <span className={styles.summaryLabel}>Annual Credits (Up To):</span>
                       <span className={styles.summaryValue}><small>$120 Dining + $120 Uber + $100 Resy + $84 Dunkin' (Enrollment Req.)</small></span>
                     </div>
                     {/* Best For */}
                     <div className={styles.summaryItem} data-full-width="true">
-                      <span className={styles.summaryIcon}>🎯</span> {/* TODO: Replace Icon */}
+                      <span className={styles.summaryIcon}><IconPlus /></span> {/* TODO: Replace Icon */}
                       <span className={styles.summaryLabel}>Best For:</span>
                       <span className={styles.summaryValue}>Foodies & travelers maximizing points & specific U.S. credits.</span>
                     </div>
