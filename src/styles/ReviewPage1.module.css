@@ -6,70 +6,7 @@
 
 
 /* =============== CSS CUSTOM PROPERTIES (NEW Color Palette & Typography) =============== */
-:root {
-  /* Color Palette */
-  --color-background-main: #FDFDFD; /* Bright white with a hint of warmth */
-  --color-background-module: #FFFFFF;
-  --color-background-accent: #F0F8FF; /* Light Alice Blue for subtle section backgrounds or callouts */
-  --color-text-primary: #2D3748; /* Dark Gray-Blue */
-  --color-text-secondary: #4A5568; /* Medium Gray-Blue */
-  --color-text-subtle: #718096; /* Lighter Gray-Blue */
-  --color-primary-accent: #005A8C; /* Deep Refined Blue (e.g., Amex Blue-like) */
-  --color-secondary-accent: #00AEEF; /* Brighter, modern blue for highlights */
-  --color-cta-primary-bg: #D4AF37; /* Muted Elegant Gold */
-  --color-cta-primary-text: #FFFFFF;
-  --color-cta-primary-hover-bg: #C69F27; /* Darker Gold */
-  --color-cta-secondary-bg: #E2E8F0; /* Light Gray for secondary CTAs */
-  --color-cta-secondary-text: var(--color-primary-accent);
-  --color-cta-secondary-hover-bg: #CBD5E0;
-  --color-border-subtle: #E2E8F0;
-  --color-border-strong: #CBD5E0;
-  --color-success: #38A169; /* Green */
-  --color-error: #E53E3E; /* Red */
-  --color-star-filled: #FFC107; /* Gold for stars */
-  --color-star-empty: #E0E0E0; /* Light gray for empty stars */
 
-  /* Typography */
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-  --font-headings: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-  --font-monospace: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
-
-  /* Spacing & Layout */
-  --space-xs: 0.25rem;  /* 4px */
-  --space-sm: 0.5rem;   /* 8px */
-  --space-md: 1rem;     /* 16px */
-  --space-lg: 1.5rem;   /* 24px */
-  --space-xl: 2rem;     /* 32px */
-  --space-xxl: 3rem;    /* 48px */
-  --container-max-width: 1280px; /* Increased max-width for a more spacious feel */
-  --container-padding-desktop: var(--space-xl);
-  --container-padding-mobile: var(--space-md);
-  --border-radius: 8px;
-  --box-shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
-  --box-shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
-}
-
-/* =============== GLOBAL & BASE RESETS/STYLES =============== */
-/* Apply a natural box layout model to all elements */
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Base body styles */
-body { /* Assuming this module is scoped, these would typically be in a global CSS */
-  font-family: var(--font-body);
-  color: var(--color-text-primary);
-  background-color: var(--color-background-main);
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  margin: 0; /* Reset default margin */
-}
 
 /* =============== OVERALL PAGE LAYOUT (ToC + Main Content) =============== */
 .reviewPageLayout {
