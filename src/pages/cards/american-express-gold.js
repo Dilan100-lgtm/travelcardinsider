@@ -199,7 +199,9 @@ function AmexGoldReviewPage() {
         {/* New layout wrapper for main content and sidebar */}
         <div className={styles.reviewPageLayout}>
           {/* Main content area that contains the review article */}
-           {/* NEW Hero Section - Placed before mainContentArea or at the top of it */}
+          
+          <div className={styles.mainContentArea}>
+             {/* NEW Hero Section - Placed before mainContentArea or at the top of it */}
   <section className={styles.heroSection}>
     <div className={styles.heroTextContainer}>
       <h1 className={styles.heroTitle}>
@@ -235,7 +237,6 @@ function AmexGoldReviewPage() {
       />
     </div>
   </section>
-          <div className={styles.mainContentArea}>
             <div className={styles.reviewContainer}>
               <article> {/* Wrap main content in article */}
                 {/* ============= REVIEW HEADER ============= */}
