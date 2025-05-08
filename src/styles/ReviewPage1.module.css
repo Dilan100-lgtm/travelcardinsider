@@ -1,721 +1,596 @@
 /* styles/ReviewPage.module.css */
 
-/* =============== FONTS (Import recommended via _app.js or global CSS if not using <link> in Head) =============== */
-/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap'); */
-/* Using <link rel="preload"> in Head component is preferred for performance */
-
-
-/* =============== CSS CUSTOM PROPERTIES (NEW Color Palette & Typography) =============== */
-
-
-/* =============== OVERALL PAGE LAYOUT (ToC + Main Content) =============== */
-.reviewPageLayout {
-  display: flex;
-  max-width: var(--container-max-width);
-  margin: var(--space-xl) auto;
-  padding: 0 var(--container-padding-desktop);
-  gap: var(--space-xl);
-}
-
-.mainContent {
-  flex: 3; /* Main content takes more space */
-  min-width: 0; /* Prevent overflow issues with flex items */
-}
-
+/* =============== BASE & CONTAINER =============== */
 .reviewContainer {
-  /* max-width: 800px; /* Content within mainContent can have its own max-width for readability */
-  margin: 0 auto; /* Centered if narrower than mainContent flex area */
-  padding: 0; /* Padding handled by mainContent or reviewPageLayout */
-  background-color: var(--color-background-module);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow-medium);
-}
-/* Adjust reviewContainer padding when ToC is on the side */
-@media (min-width: 992px) {
-  .reviewContainer {
-    padding: var(--space-xl) var(--space-xxl); /* More internal padding on large screens */
-  }
-}
-@media (max-width: 991px) {
-  .reviewPageLayout {
-    flex-direction: column;
-    padding: 0 var(--container-padding-mobile);
-  }
-  .reviewContainer {
-    padding: var(--space-lg) var(--space-md); /* Less padding on mobile */
-  }
+  max-width: 1200px; /* This will be the content width within mainContentArea */
+  margin: 0 auto; /* Centered within mainContentArea if mainContentArea is wider */
+  /* Removed top/bottom margin, handle via reviewPageLayout or mainContentArea padding */
+  padding: 2rem clamp(1rem, 5vw, 3rem);
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.09);
+  line-height: 1.7;
+  font-size: 1rem;
+  color: #333;
+  font-family: 'Roboto', Arial, sans-serif;
 }
 
-
-/* =============== STICKY TABLE OF CONTENTS =============== */
-.stickyToc {
-  flex: 1; /* ToC takes less space */
-  position: sticky;
-  top: var(--space-xl); /* Adjust based on your header height */
-  align-self: flex-start; /* Sticks to the top of its container */
-  max-height: calc(100vh - (var(--space-xl) * 2)); /* Max height with padding */
-  overflow-y: auto;
-  padding: var(--space-lg);
-  background-color: var(--color-background-module);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow-soft);
-  border: 1px solid var(--color-border-subtle);
+.reviewSection {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #e0e0e0;
 }
-.stickyToc h3 {
-  font-family: var(--font-headings);
-  font-size: 1.2rem;
-  color: var(--color-primary-accent);
-  margin-top: 0;
-  margin-bottom: var(--space-md);
-  padding-bottom: var(--space-sm);
-  border-bottom: 2px solid var(--color-primary-accent);
-}
-.stickyToc ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.stickyToc li a {
-  display: block;
-  padding: var(--space-sm) 0;
-  color: var(--color-text-secondary);
-  text-decoration: none;
-  font-size: 0.9rem;
-  border-bottom: 1px solid var(--color-border-subtle);
-  transition: color 0.2s ease, background-color 0.2s ease, padding-left 0.2s ease;
-}
-.stickyToc li:last-child a {
+.reviewSection:last-of-type {
+  margin-bottom: 0;
+  padding-bottom: 0;
   border-bottom: none;
 }
-.stickyToc li a:hover,
-.stickyToc li a:focus {
-  color: var(--color-primary-accent);
-  background-color: var(--color-background-accent);
-  padding-left: var(--space-sm);
-}
-.stickyToc .activeTocItem a {
-  color: var(--color-primary-accent);
-  font-weight: 700; /* Make active item bold */
-  background-color: var(--color-background-accent);
-  border-left: 3px solid var(--color-primary-accent); /* Highlight active item */
-  padding-left: calc(var(--space-sm) - 3px); /* Adjust padding for border */
-}
 
-/* ToC CTA */
-.tocCta {
-    margin-top: var(--space-lg);
-    padding-top: var(--space-lg);
-    border-top: 1px solid var(--color-border-subtle);
-}
-.btnApplySmall { /* Specific styling for ToC CTA button if needed */
-    display: block;
-    text-align: center;
-    width: 100%;
-    font-size: 0.9rem !important;
-    padding: var(--space-sm) var(--space-md) !important;
-}
-
-
-/* Hide ToC on smaller screens or transform to a dropdown/modal */
-@media (max-width: 991px) {
-  .stickyToc {
-    display: none; /* Simple hide for now, could be a collapsible menu */
-    /* Or, for a top sticky bar:
-    position: sticky; top: 0; width: 100%; z-index: 1000;
-    max-height: none; overflow-y: visible;
-    border-radius: 0; border-left: none; border-right: none;
-    margin-bottom: var(--space-lg); */
-  }
-}
-
-
-/* =============== TYPOGRAPHY (Refined Scale) =============== */
-/* H1 for Hero Section */
-.heroSection h1 {
-  font-family: var(--font-headings);
-  font-size: clamp(2rem, 5vw, 3rem); /* Responsive font size */
-  color: var(--color-text-primary);
-  font-weight: 800; /* Bolder for impact */
+/* =============== TYPOGRAPHY =============== */
+.reviewHeader h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 6vw, 3.2rem);
+  color: #1a1a1a;
+  text-align: center;
+  margin-bottom: 1.5rem;
   line-height: 1.2;
-  margin-bottom: var(--space-md);
-  text-align: left; /* For hero layout */
 }
 
-/* Section H2 */
-.reviewSection h2, .atAGlanceBox h2 {
-  font-family: var(--font-headings);
-  font-size: clamp(1.5rem, 4vw, 2.2rem);
-  color: var(--color-primary-accent);
-  margin-top: 0; /* Reset from original styles if needed */
-  margin-bottom: var(--space-lg);
-  padding-bottom: var(--space-sm);
-  border-bottom: 3px solid var(--color-secondary-accent); /* Use secondary accent for underline */
-  display: inline-block; /* To make border only span text width */
+.reviewSection h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 4.5vw, 2.2rem);
+  color: #2c3e50;
+  margin-top: 0; /* Sections should have their own top margin if needed, or rely on parent gap */
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid #0073e6; /* Consider using a CSS variable from globals.css */
+  display: inline-block;
 }
 
-/* Section H3 */
 .reviewSection h3 {
-  font-family: var(--font-headings); /* Changed from Roboto Condensed */
+  font-family: 'Roboto Condensed', sans-serif;
   font-weight: 700;
-  font-size: 1.3rem; /* Slightly adjusted */
-  color: var(--color-text-primary);
-  margin-top: var(--space-xl);
-  margin-bottom: var(--space-md);
+  font-size: 1.4rem;
+  color: #1a1a1a;
+  margin-top: 1.5rem;
+  margin-bottom: 0.8rem;
 }
 
-.reviewContainer p, .reviewSection p { /* Target p inside review sections */
-  margin-bottom: var(--space-md);
-  color: var(--color-text-secondary);
-  font-size: 1rem; /* Standard body text */
-}
-.reviewContainer p:last-of-type {
-  margin-bottom: 0;
+.reviewContainer p {
+  margin-bottom: 1.2rem;
+  color: #444;
 }
 
 .reviewContainer strong {
-  font-weight: 600; /* Slightly less heavy than default bold */
-  color: var(--color-primary-accent); /* Use primary accent for emphasis */
+  font-weight: 700;
+  color: #0056b3; /* Consider using a CSS variable */
 }
 
 .reviewContainer em {
   font-style: italic;
-  color: var(--color-text-subtle);
+  color: #555;
 }
 
 .reviewContainer ul,
 .reviewContainer ol {
-  margin-left: var(--space-md); /* Consistent indentation */
-  padding-left: var(--space-sm);
-  margin-bottom: var(--space-lg);
+  margin-left: 1.5rem; /* Default list styling */
+  padding-left: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .reviewContainer li {
-  margin-bottom: var(--space-sm);
-  padding-left: var(--space-xs);
-  color: var(--color-text-secondary);
+  margin-bottom: 0.75rem;
+  padding-left: 0.5rem; /* Default list styling */
 }
 
-.featureList {
+.featureList { /* Specific styling for feature lists */
   list-style: none;
   padding-left: 0;
 }
 .featureList li {
   position: relative;
-  padding-left: 1.75em; /* Space for icon */
-  margin-bottom: var(--space-md);
+  padding-left: 1.75em; /* Space for the custom bullet */
+  margin-bottom: 0.8rem;
 }
 .featureList li::before {
-  content: '✓'; /* Default check, can be replaced by SVG icons */
+  content: '✓'; /* Custom bullet */
   position: absolute;
   left: 0;
-  color: var(--color-success);
+  color: #28a745; /* Green checkmark - consider CSS variable */
   font-weight: bold;
   font-size: 1.1em;
-  line-height: 1.4; /* Adjust vertical alignment */
-}
-/* Specific list styling for nested lists within featureList if any */
-.featureList ul {
-    margin-top: var(--space-sm);
-    margin-left: 0; /* Reset margin for nested UL if icons are not needed */
-    padding-left: var(--space-md); /* Indent nested list content */
-}
-.featureList ul li::before {
-    content: '•'; /* Example for nested items */
-    color: var(--color-secondary-accent);
+  line-height: 1.3; /* Ensure it aligns well with the text */
 }
 
-
-/* =============== HERO SECTION =============== */
-.heroSection {
-  display: flex;
-  flex-direction: row; /* Default for desktop */
-  gap: var(--space-xl);
-  align-items: center;
-  padding: var(--space-xxl) 0; /* Generous padding */
-  margin-bottom: var(--space-xxl);
-  border-bottom: 1px solid var(--color-border-subtle);
-  /* background: linear-gradient(135deg, var(--color-background-accent), var(--color-background-main) 70%); */
-}
-.heroTextContent {
-  flex: 1.5; /* Text takes more space */
-}
-.heroImageContainer {
-  flex: 1;
-  display: flex;
-  flex-direction: column; /* Stack image and rating */
-  align-items: center;
-  justify-content: center;
-}
-.heroSubtitle {
-  font-size: 1.15rem;
-  color: var(--color-text-secondary);
-  margin-bottom: var(--space-lg);
-  max-width: 65ch; /* Readability */
-  line-height: 1.6;
-}
-.authorDate {
-  font-size: 0.9rem;
-  color: var(--color-text-subtle);
-  margin-bottom: var(--space-xl);
-}
-.authorDate span + span {
-  margin-left: var(--space-sm);
-  padding-left: var(--space-sm);
-  border-left: 1px solid var(--color-border-subtle);
-}
-.heroCta {
-    display: flex;
-    gap: var(--space-md);
-    margin-top: var(--space-xl);
-    flex-wrap: wrap;
+.numberedList {
+  list-style-type: decimal; /* Standard numbered list */
 }
 
-.cardImageContainer { /* Original, potentially for other image uses */
-  margin: var(--space-lg) auto;
+/* =============== HEADER & INTRO =============== */
+.reviewHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px dashed #ccc;
+}
+
+.cardImageContainer {
+  margin: 1.5rem auto;
   max-width: 480px;
-  line-height: 0;
+  line-height: 0; /* Remove space below image if it's an inline block */
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.cardImage { /* For hero section */
-  display: block;
+
+.cardImage {
+  display: block; /* Or inline-block if preferred, ensure no extra space */
   max-width: 100%;
   height: auto;
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow-medium);
-  margin-bottom: var(--space-lg); /* Space between image and rating below it */
 }
 
-/* Rating Section (within Hero or stand-alone) */
 .ratingSection {
-  margin-top: 0; /* Adjusted as it's now part of hero image container or text */
+  margin-top: 1.5rem;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center if below image */
-  gap: var(--space-sm);
+  align-items: center;
+  gap: 0.75rem;
 }
+
 .tciRating {
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 500;
-  color: var(--color-text-primary);
-  background-color: var(--color-background-accent);
-  padding: var(--space-xs) var(--space-md);
-  border-radius: 20px; /* Pill shape */
+  color: #333;
+  background-color: #e9ecef; /* Light gray background - consider CSS variable */
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px; /* Pill shape */
   display: inline-flex;
   align-items: center;
-  gap: var(--space-sm);
-  position: relative;
-  border: 1px solid var(--color-border-subtle);
+  gap: 0.5rem;
+  position: relative; /* For tooltip positioning if needed */
 }
+
 .tciRating strong {
   font-weight: 700;
-  color: var(--color-primary-accent);
+  color: #0056b3; /* Blue for emphasis - consider CSS variable */
 }
 
-/* Info Icon Button for Rating */
 .infoIconButton {
-  background: none; border: none; padding: 2px; margin: 0; cursor: pointer; line-height: 0;
-  border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
-  vertical-align: middle; color: var(--color-text-subtle); transition: background-color 0.2s ease, color 0.2s ease;
+  background: none;
+  border: none;
+  padding: 2px;
+  margin: 0;
+  cursor: pointer;
+  line-height: 0;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  color: #6c757d; /* Icon color - consider CSS variable */
+  transition: background-color 0.2s ease;
 }
-.infoIconButton:hover, .infoIconButton:focus {
-  background-color: rgba(0,0,0,0.05); color: var(--color-primary-accent);
+.infoIconButton:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.infoIconButton:focus-visible {
+  outline: 2px solid #0d6efd; /* Focus outline color - consider CSS variable */
+  outline-offset: 1px;
+  background-color: rgba(13, 110, 253, 0.1);
 }
 .infoIcon {
-  display: inline-block; fill: currentColor; opacity: 0.8; width: 16px; height: 16px;
+  display: inline-block;
+  fill: currentColor;
+  opacity: 0.8;
+  width: 16px;
+  height: 16px;
 }
-.infoIconButton:hover .infoIcon { opacity: 1; }
+.infoIconButton:hover .infoIcon {
+  opacity: 1;
+}
 
-/* Star Rating */
 .starRating {
-  font-size: 1.6rem; /* Slightly adjusted */
-  color: var(--color-star-empty);
-  position: relative; display: inline-block; line-height: 1;
+  font-size: 1.8rem; /* Size of stars */
+  color: #e0e0e0; /* Empty star color - consider CSS variable */
+  position: relative;
+  display: inline-block;
+  line-height: 1;
 }
 .filledStars {
-  position: absolute; left: 0; top: 0; white-space: nowrap; overflow: hidden;
-  color: var(--color-star-filled); width: var(--rating, 0%);
-}
-.ratingDescription { /* No longer used in Hero, kept if used elsewhere */
-  font-size: 0.95rem; font-style: italic; color: var(--color-text-subtle);
-  margin-top: var(--space-sm); max-width: 600px; line-height: 1.6;
-}
-
-@media (max-width: 768px) {
-  .heroSection {
-    flex-direction: column;
-    text-align: center; /* Center text content on mobile */
-    padding: var(--space-xl) 0;
-  }
-  .heroSection h1, .heroSubtitle, .authorDate {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-  }
-   .heroCta {
-    justify-content: center;
-  }
-  .heroImageContainer {
-    margin-top: var(--space-lg);
-  }
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #ffc107; /* Filled star color (gold) - consider CSS variable */
+  width: var(--rating, 0%); /* Controlled by inline style in JS */
 }
 
-/* =============== "AT-A-GLANCE" SUMMARY BOX =============== */
-.atAGlanceBox {
-  background-color: var(--color-background-accent);
-  padding: var(--space-xl) var(--space-xl); /* More padding */
-  border-radius: var(--border-radius);
-  margin-bottom: var(--space-xxl); /* Space after box */
-  border: 1px solid var(--color-border-subtle);
-  box-shadow: var(--box-shadow-soft);
-}
-.atAGlanceBox h2 {
-  text-align: center;
-  margin-bottom: var(--space-xl);
-  font-size: clamp(1.4rem, 3.5vw, 1.8rem); /* Slightly smaller H2 */
-  border-bottom-color: var(--color-primary-accent); /* Stronger border for this title */
-}
-.glanceGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive columns */
-  gap: var(--space-xl);
-}
-.glanceGrid > div { /* Direct children are the items */
-  padding: var(--space-md);
-  background-color: var(--color-background-module);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow-soft);
-}
-.glanceGrid strong {
-  display: block;
-  margin-bottom: var(--space-sm);
-  color: var(--color-primary-accent);
-  font-weight: 600;
+.ratingDescription {
   font-size: 1rem;
-}
-.glanceFee {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--color-error); /* Highlight fee */
-}
-.glanceList {
-  list-style: none;
-  padding-left: 0;
-  margin-top: var(--space-sm);
-}
-.glanceList li {
-  display: flex; /* Align icon and text */
-  align-items: flex-start;
-  margin-bottom: var(--space-sm);
-  font-size: 0.95rem;
-  color: var(--color-text-secondary);
-}
-.glanceIcon { /* Placeholder for actual icons */
-  margin-right: var(--space-sm);
-  color: var(--color-secondary-accent);
-  font-size: 1.1em; /* Make icon slightly larger */
-  line-height: 1.4;
-}
-.glanceBestFor {
-  grid-column: 1 / -1; /* Span full width */
   font-style: italic;
-  color: var(--color-text-subtle);
-  padding-top: var(--space-md);
-  border-top: 1px dashed var(--color-border-subtle);
-  margin-top: var(--space-md);
+  color: #555;
+  margin-top: 1rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
 }
-.glanceCta {
-    grid-column: 1 / -1;
+
+/* Styles for the introductory paragraph(s) if different from general p */
+.introAndImageWrapper { /* New wrapper from amex-gold.js for layout */
     display: flex;
-    justify-content: center;
-    gap: var(--space-md);
-    margin-top: var(--space-lg);
-    padding-top: var(--space-lg);
-    border-top: 1px solid var(--color-border-strong);
+    flex-direction: column;
+    gap: var(--spacing-lg, 24px);
+    margin-bottom: var(--spacing-lg, 24px);
+}
+.intro p { /* Targeting paragraphs within the .intro div specifically */
+  font-size: 1.15rem;
+  line-height: 1.8;
+  max-width: 70ch; /* Limit line length for readability */
+  margin: 0 auto 0 auto; /* Center if text-align: center on parent */
+  color: #222;
+}
+@media (min-width: 768px) { /* Example: side-by-side intro text and image */
+    .introAndImageWrapper {
+        flex-direction: row;
+        align-items: center; /* Vertically align text and image */
+    }
+    .intro {
+        flex: 1; /* Allow text to take available space */
+        text-align: left; /* Align text left on larger screens */
+    }
+    .intro p {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .cardImageContainer {
+        flex-basis: 40%; /* Or a fixed width, e.g., 300px */
+        max-width: 480px; /* Keep max width */
+        margin: 0; /* Reset margin */
+    }
 }
 
 
-/* =============== REVIEW SECTIONS (General Styling & Modularity) =============== */
-.reviewSection {
-  margin-bottom: var(--space-xxl);
-  padding-bottom: var(--space-xl);
-  border-bottom: 1px solid var(--color-border-subtle);
-}
-.reviewSection:last-of-type { /* Last section in main content */
-  margin-bottom: 0;
-  padding-bottom: 0;
-  border-bottom: none;
-}
-.contentLeadIn { /* Specific style for the intro paragraph section if kept separate */
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: var(--color-text-secondary);
-    border-bottom: none; /* If it's just text, no strong border */
-    padding-bottom: var(--space-lg);
-    margin-bottom: var(--space-xl);
-}
-
-
-/* =============== TABLES (Refined Styling) =============== */
+/* =============== TABLES (Responsive Scroll) =============== */
 .tableContainer {
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  margin-bottom: var(--space-lg);
-  border: 1px solid var(--color-border-strong);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow-soft);
+  margin-bottom: 2rem;
+  border: 1px solid var(--color-border, #dee2e6); /* Use global border */
+  border-radius: var(--border-radius-md, 8px); /* Use global radius */
+  box-shadow: var(--shadow-sm, 0 1px 2px rgba(0,0,0,0.05)); /* Use global shadow */
 }
+
 .statsTable {
   width: 100%;
-  min-width: 600px;
-  border-collapse: separate; /* Allows for border-radius on cells if needed, and spacing */
-  border-spacing: 0; /* Reset spacing if using separate */
+  min-width: 600px; /* Minimum width before horizontal scroll kicks in */
+  border-collapse: collapse;
+  border: none; /* Remove outer border, rely on container */
+  box-shadow: none;
+  margin-bottom: 0;
   font-size: 0.95rem;
 }
+
 .statsTable thead {
-  background-color: var(--color-background-accent); /* Lighter header */
+  background-color: var(--color-background-subtle, #f8f9fa); /* Use global subtle bg */
 }
+
 .statsTable th {
-  font-family: var(--font-headings);
-  background-color: transparent; /* Inherits from thead */
-  color: var(--color-primary-accent);
+  background-color: transparent; /* Header cells transparent */
+  color: var(--color-text-secondary, #495057); /* Use global text color */
   font-weight: 600;
   text-align: left;
-  padding: var(--space-md) var(--space-lg);
-  border-bottom: 2px solid var(--color-border-strong);
+  padding: 1rem 1.2rem;
+  border-bottom: 2px solid var(--color-border, #dee2e6);
+  border-right: 1px solid var(--color-border-light, #e9ecef); /* Lighter border for vertical lines */
   white-space: nowrap;
 }
+.statsTable th:last-child { border-right: none; }
+
 .statsTable td {
-  padding: var(--space-md) var(--space-lg);
-  border-bottom: 1px solid var(--color-border-subtle);
+  padding: 1rem 1.2rem;
+  border: none;
+  border-bottom: 1px solid var(--color-border-light, #e9ecef);
+  border-right: 1px solid var(--color-border-light, #e9ecef);
   vertical-align: middle;
-  color: var(--color-text-secondary);
-  white-space: normal;
+  color: #555;
+  white-space: normal; /* Allow content to wrap */
 }
+.statsTable td:last-child { border-right: none; }
+
 .statsTable tbody tr:last-child td {
   border-bottom: none;
 }
-.statsTable tbody tr:nth-child(even) {
-   background-color: var(--color-background-module); /* Keep even row striping if desired */
+.statsTable tbody tr:nth-child(even) { /* Optional: Zebra striping */
+   background-color: var(--color-background-white, #ffffff); /* Ensure it's not transparent if container has color */
 }
-.statsTable tbody tr:hover {
-    background-color: var(--color-background-accent); /* Hover effect for rows */
+.statsTable tbody tr:nth-child(odd) {
+   background-color: var(--color-background-subtle, #f8f9fa); /* If you want striping */
 }
-.statsTable td:first-child, .statsTable th:first-child {
-   /* No specific style needed if all text is aligned left */
-}
-.statsTable .totalRow td {
-    font-weight: 700;
-    color: var(--color-primary-accent);
-    background-color: var(--color-background-accent);
+.statsTable td:first-child { /* First column often contains row headers */
+  font-weight: 500;
+  color: #333;
 }
 
-/* Responsive table (keeping the scroll for wide tables, but ensuring readability) */
+/* Responsive table: Keep as scrollable on small screens, remove stacking */
 @media (max-width: 650px) {
-  .statsTable th, .statsTable td {
-    padding: var(--space-sm) var(--space-md); font-size: 0.9rem;
-  }
-  /* Original data-label stacking can be kept if preferred for very narrow screens,
-     but horizontal scroll is often better for complex tables. */
+  .statsTable thead { display: table-header-group; }
+  .statsTable tr { display: table-row; margin-bottom: 0; border: none; box-shadow: none; padding: 0;}
+  .statsTable td { display: table-cell; text-align: left !important; /* Important to override any center align from previous */ padding-left: 1rem; position: static; border-bottom: 1px solid var(--color-border-light, #e9ecef); border-right: 1px solid var(--color-border-light, #e9ecef); }
+  .statsTable td:last-child { border-right: none; }
+  .statsTable tbody tr:last-child td { border-bottom: none; }
+  .statsTable td::before { content: none; } /* Remove data-label pseudo-elements if they existed */
+  .statsTable td[data-label="Details"] { text-align: left !important; }
+  .statsTable th, .statsTable td { padding: 0.8rem; font-size: 0.9rem; } /* Slightly smaller padding/font on mobile */
+}
+/* Style for the total row in the credits summary table */
+.totalRow td {
+  font-weight: bold;
+  color: var(--text-dark, #111827); /* Use a darker color for emphasis */
+  background-color: var(--bg-light-gray, #f9fafb); /* Slightly different background */
+}
+.totalRow td:first-child {
+  text-align: right; /* If you want "Total Potential" to align right before the value */
 }
 
 
-/* =============== CALLS-TO-ACTION (CTAs - Refined & Persuasive) =============== */
-.ctaSection { /* General container for CTAs if used outside hero/glance */
+/* =============== CTA Section (Premium Buttons) =============== */
+.ctaSection {
   text-align: center;
-  padding: var(--space-xl) var(--space-lg);
-  background: linear-gradient(135deg, var(--color-background-accent), var(--color-background-main) 80%);
-  border: 1px solid var(--color-border-subtle);
-  border-radius: var(--border-radius);
-  margin: var(--space-xxl) 0;
-  box-shadow: var(--box-shadow-soft);
+  padding: 2.5rem 1.5rem;
+  background: linear-gradient(135deg, var(--primary-blue-light-bg, #e0f7fa), var(--primary-blue-light-border, #b2ebf2)); /* Use global vars if possible */
+  border: 1px solid var(--primary-blue-light-border, #80deea);
+  border-radius: var(--border-radius-md, 8px);
+  margin: 3rem 0;
+  box-shadow: 0 4px 15px rgba(0, 150, 136, 0.1); /* Consider using global shadow variable */
+  text-decoration: none; /* If the section itself is a link (unlikely) */
 }
-.ctaSection h2 { /* H2 within a CTA block */
-  font-size: clamp(1.5rem, 4vw, 2rem);
-  color: var(--color-primary-accent);
+.ctaSection h2 {
+  font-size: clamp(1.6rem, 4.5vw, 2rem);
+  color: var(--primary-blue-text-dark, #00796b); /* Dark Teal or primary dark text */
   margin-top: 0;
-  margin-bottom: var(--space-sm); /* Less margin if p follows */
-  border: none;
-  display: block;
+  margin-bottom: 1.5rem;
+  border: none; /* Remove border inherited from generic h2 */
+  display: block; /* Ensure it's block for text-align center to work on it */
 }
-.ctaSection p {
-  font-size: 1.1rem;
-  color: var(--color-text-secondary);
-  margin-bottom: var(--space-lg);
-  max-width: 60ch;
-  margin-left: auto;
-  margin-right: auto;
-}
+.ctaSection h2 b { color: var(--primary-blue-dark, #004d40); font-weight: 700; }
 
-.ctaButtons { /* Flex container for multiple buttons */
+.ctaButtons {
   display: flex;
   justify-content: center;
-  gap: var(--space-lg); /* Wider gap */
-  flex-wrap: wrap;
+  gap: 1.2rem;
+  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
 }
-.btn { /* Base button style */
-  display: inline-flex; /* Allows icon alignment */
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-md) var(--space-xl); /* Generous padding */
-  font-family: var(--font-headings);
-  font-size: 1rem; /* Base size, can be adjusted */
+.ctaButtons .btn { /* General button styling for CTA section */
+  padding: 0.9rem 2rem;
+  font-size: 1.05rem;
   font-weight: 600;
-  border-radius: 25px; /* Pill shape for premium feel */
-  box-shadow: var(--box-shadow-soft);
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); /* Smoother transition */
+  border-radius: 25px; /* Pill shape */
+  box-shadow: var(--shadow-sm, 0 4px 8px rgba(0,0,0,0.1)); /* Use global shadow */
+  transition: all 0.3s ease;
   border: none;
   cursor: pointer;
   text-decoration: none;
-  line-height: 1.2; /* Ensure text is centered vertically */
+  line-height: 1.5; /* Ensure good line height */
 }
-.btn:hover {
-   box-shadow: var(--box-shadow-medium);
+.ctaButtons .btn:hover {
+   box-shadow: var(--shadow-md, 0 6px 12px rgba(0,0,0,0.15)); /* Use global shadow */
    transform: translateY(-2px);
 }
-.btn:active {
+.ctaButtons .btn:active {
   transform: translateY(0px) scale(0.98);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Simpler shadow on active */
 }
-.btn:focus-visible {
-  outline: 3px solid var(--color-secondary-accent); /* Use theme color for focus */
+/* Specific CTA button styles */
+.ctaButtons .btnApply {
+   background: linear-gradient(135deg, var(--value-good, #4caf50), var(--color-success, #2e7d32)); /* Green gradient using global success */
+   color: white;
+}
+.ctaButtons .btnApply:hover { background: linear-gradient(135deg, #5cb85c, #388e3c); } /* Slightly lighter green */
+
+.ctaButtons .btnRates {
+  background: linear-gradient(135deg, var(--secondary-gray, #6c757d), var(--secondary-gray-dark, #495057)); /* Grey gradient using global grays */
+  color: white;
+}
+.ctaButtons .btnRates:hover { background: linear-gradient(135deg, #868e96, #5a6268); } /* Slightly lighter gray */
+
+.ctaButtons .btn:focus-visible {
+  outline: 3px solid var(--primary-blue-focus, rgba(0, 123, 255, 0.5)); /* Use global focus var */
   outline-offset: 2px;
 }
 
-/* Primary CTA Button (Apply Now) */
-.btnApply {
-   background: var(--color-cta-primary-bg); /* Gold */
-   color: var(--color-cta-primary-text);
-}
-.btnApply:hover { background: var(--color-cta-primary-hover-bg); }
-
-/* Secondary CTA Button (Rates & Fees) */
-.btnRates {
-  background: var(--color-cta-secondary-bg); /* Light Gray */
-  color: var(--color-cta-secondary-text);
-  border: 1px solid var(--color-border-strong); /* Subtle border */
-}
-.btnRates:hover { background: var(--color-cta-secondary-hover-bg); }
-
-.lockIcon {
-    margin-left: var(--space-sm);
-    font-size: 0.9em; /* Adjust if using a real icon font/SVG */
-}
-
-
-/* =============== PROS/CONS SECTION (Original styles seem fine, minor tweaks for consistency) =============== */
+/* =============== Pros/Cons Section =============== */
 .prosCons {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-xl); /* Consistent gap */
-  margin-top: var(--space-lg);
-  padding-top: var(--space-lg);
-  border-top: 1px dashed var(--color-border-subtle);
+  gap: 3rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px dashed #ccc;
 }
-.prosCons h3 { /* Using section H3 style by default, can be overridden */
-  font-size: 1.4rem !important; /* Override if needed */
-  margin-bottom: var(--space-md) !important;
+.prosCons h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
   border-bottom: 2px solid;
-  padding-bottom: var(--space-xs) !important;
+  padding-bottom: 0.4rem;
   display: inline-block;
 }
-.pros h3 { color: var(--color-success); border-color: var(--color-success);}
-.cons h3 { color: var(--color-error); border-color: var(--color-error);}
+.pros h3 { color: var(--value-good, #198754); border-color: var(--value-good, #198754);} /* Use global success color */
+.cons h3 { color: var(--value-bad, #dc3545); border-color: var(--value-bad, #dc3545);} /* Use global danger color */
 
-.pros ul, .cons ul { list-style: none; padding-left: 0; margin-top: 0; }
-.pros li, .cons li { padding-left: 1.75em; margin-bottom: var(--space-sm); font-size: 0.95rem; }
-.pros li::before { content: '✓ '; color: var(--color-success); font-weight: bold; position: absolute; left: 0; }
-.cons li::before { content: '✕ '; color: var(--color-error); font-weight: bold; position: absolute; left: 0; }
+.pros ul, .cons ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0;
+}
+.pros li, .cons li {
+  padding-left: 1.75em; /* Space for custom bullet */
+  position: relative; /* For ::before positioning */
+  margin-bottom: 0.8rem;
+  font-size: 0.95rem;
+}
+.pros li::before { content: '✓ '; color: var(--value-good, #198754); margin-right: 0.6em; font-weight: bold; position: absolute; left: 0; }
+.cons li::before { content: '✕ '; color: var(--value-bad, #dc3545); margin-right: 0.6em; font-weight: bold; position: absolute; left: 0; }
 
 @media (max-width: 600px) {
-  .prosCons { grid-template-columns: 1fr; gap: var(--space-lg); }
+  .prosCons {
+      grid-template-columns: 1fr; /* Stack on smaller screens */
+      gap: 2rem;
+  }
 }
 
-/* =============== E-A-T & DISCLAIMER SECTION =============== */
+/* =============== E-A-T Section =============== */
 .eatSection {
-  background-color: var(--color-background-accent);
-  border: 1px solid var(--color-border-subtle);
-  padding: var(--space-xl);
-  border-radius: var(--border-radius);
-  margin-top: var(--space-xxl);
+  background-color: var(--bg-light-gray, #f0f8ff); /* Use global light gray */
+  border: 1px solid var(--border-color-light, #b0e0e6); /* Use global light border */
+  padding: 2rem;
+  border-radius: var(--border-radius-md, 8px);
+  margin-top: 3rem;
 }
-.eatSection h2 { /* Uses default H2 styling */
+.eatSection h2 { /* EAT Section specific h2 */
   text-align: center;
-  border-bottom-color: var(--color-secondary-accent); /* Lighter underline */
+  color: var(--primary-blue-text-dark, #4682b4); /* Use global var or specific */
+  border-bottom-color: var(--primary-blue-light-border, #add8e6); /* Match border color */
+  margin-bottom: 1.5rem;
 }
-.eatSection h3 { /* Uses default H3 styling */
-  color: var(--color-primary-accent); /* Darker H3 for EAT */
+.eatSection h3 {
+  color: var(--text-medium, #5f9ea0); /* Use global var */
+  margin-top: 1.8rem;
+  margin-bottom: 0.8rem;
+  font-size: 1.25rem;
 }
-.eatSection ul { margin-bottom: var(--space-lg); } /* More space after lists */
-.eatSection li { color: var(--color-text-secondary); }
-.eatSection p:last-of-type { /* Concluding paragraph */
-  margin-top: var(--space-lg); font-style: italic; text-align: center; color: var(--color-text-subtle);
+.eatSection ul { /* EAT section uses its own feature list, not the green check one */
+  list-style-type: disc;
+  margin-bottom: 1rem;
+  padding-left: 1.5rem; /* Ensure standard ul padding */
+}
+.eatSection li {
+  margin-bottom: 0.6rem;
+  color: #444;
+  padding-left: 0; /* Reset padding from .featureList if it was globally applied to li */
+}
+.eatSection li::before {
+    content: none; /* Remove custom bullet from .featureList if it was globally applied */
 }
 
-.disclaimerBox {
-    background-color: var(--color-background-accent);
-    padding: var(--space-lg);
-    border-radius: var(--border-radius);
-    border: 1px dashed var(--color-border-strong);
-    margin-top: var(--space-xl);
-    font-size: 0.85rem;
-    color: var(--color-text-subtle);
-}
-.disclaimerBox strong {
-    color: var(--color-text-secondary);
+.eatSection p:last-of-type {
+  margin-top: 1.5rem;
+  font-style: italic;
+  text-align: center;
+  color: #555;
 }
 
 
-/* =============== RATING TOOLTIP (Mostly original, minor theme adjustments) =============== */
+/* =============== Tooltip Styles (Copied from original) =============== */
 .ratingTooltip {
-  position: absolute; top: 125%; left: 50%; transform: translateX(-50%); /* Ensure it doesn't overlap */
-  background-color: var(--color-background-module);
-  border: 1px solid var(--color-border-strong);
-  border-radius: var(--border-radius);
-  padding: var(--space-md) var(--space-lg);
-  width: 280px; /* Slightly wider */
-  box-shadow: var(--box-shadow-medium); /* Enhanced shadow */
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffffff;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  padding: 10px 15px;
+  width: 250px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
   z-index: 1050;
-  font-size: 0.9rem; line-height: 1.6; color: var(--color-text-secondary); text-align: left;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #343a40;
+  text-align: left;
 }
-.ratingTooltip strong { /* First strong tag (title) */
-  display: block; margin-bottom: var(--space-sm); color: var(--color-primary-accent); font-weight: 700;
+.ratingTooltip strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #212529;
+  font-weight: 700;
 }
-.tooltipIntro { /* "This rating is based on:" */
-  margin: var(--space-sm) 0 var(--space-xs) 0; font-weight: 500; color: var(--color-text-primary);
+.tooltipIntro {
+  margin: 0.5rem 0 0.3rem 0;
+  font-weight: 500;
+  color: #333;
 }
-.tooltipList { list-style: disc; padding-left: var(--space-lg); margin: 0; }
-.tooltipList li { margin-bottom: var(--space-xs); color: var(--color-text-secondary); }
+.tooltipList {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin: 0;
+}
+.tooltipList li {
+  margin-bottom: 0.25rem;
+  color: #444;
+  padding-left: 0; /* Reset padding from general li if needed */
+}
+.tooltipList li::before {
+    content: none; /* Reset ::before from general li if needed */
+}
+
+@media (max-width: 480px) {
+  .ratingTooltip {
+      width: calc(100% - 2rem); /* Full width minus some padding */
+      max-width: 300px;
+      left: 50%; /* Keep centered with transform */
+      transform: translateX(-50%);
+      /* Consider if it should be fixed to viewport edge if space is very limited */
+  }
+}
+
+/* =============== NEW LAYOUT STYLES FOR TOC INTEGRATION =============== */
+.reviewPageLayout {
+  display: flex;
+  flex-direction: column; /* Mobile first: ToC will be fixed/off-canvas */
+  gap: var(--spacing-lg, 24px); /* Gap between content and sidebar on desktop */
+  max-width: 1600px; /* Overall max width for the page content including sidebar */
+  margin: 2rem auto 3rem auto; /* Top and bottom margin for the whole layout */
+  padding: 0 var(--spacing-md, 16px); /* Horizontal padding for the layout */
+}
+
+.mainContentArea {
+  flex-grow: 1; /* Allows the main content to take available space */
+  min-width: 0; /* Fix for flex items overflowing */
+}
+
+.sidebarArea {
+  width: 100%; /* On mobile, ToC component itself handles its appearance */
+}
+
+@media (min-width: 1024px) { /* Desktop breakpoint (match ToC CSS) */
+  .reviewPageLayout {
+    flex-direction: row; /* Side-by-side layout for content and sidebar */
+    align-items: flex-start; /* Align items to the top */
+  }
+
+  .mainContentArea {
+    /* Let flexbox handle width calculation based on sidebar's fixed width */
+    /* max-width: calc(100% - var(--toc-width-desktop, 280px) - var(--spacing-lg, 24px)); */
+    /* The above max-width can be removed if flex-grow:1 on mainContentArea and fixed width on sidebarArea is preferred */
+  }
+
+  .sidebarArea {
+    width: var(--toc-width-desktop, 280px); /* Use variable defined in ToC CSS or globals */
+    flex-shrink: 0; /* Prevent sidebar from shrinking */
+    /* ToC component inside .sidebarArea will handle its own sticky positioning */
+  }
+}
 
 
-/* =============== RESPONSIVE ADJUSTMENTS (Consolidated) =============== */
-@media (max-width: 768px) { /* Tablet and smaller */
-  .reviewContainer {
-      /* Padding handled by .reviewPageLayout */
+/* =============== RESPONSIVE ADJUSTMENTS (Existing) =============== */
+@media (max-width: 768px) {
+  .reviewContainer { /* This now applies to content within mainContentArea */
+      padding: 1.5rem clamp(1rem, 4vw, 2rem);
+      margin-top: 0; /* Remove top margin if reviewPageLayout handles it */
+      margin-bottom: 0; /* Remove bottom margin if reviewPageLayout handles it */
   }
-  /* H1 already responsive */
-  .reviewSection h2, .atAGlanceBox h2 {
-       /* H2 already responsive */
+  .reviewHeader h1 {
+      font-size: clamp(2rem, 5.5vw, 2.8rem);
   }
-  .ctaSection h2 { font-size: 1.5rem; } /* Smaller H2 in standalone CTA blocks */
-  .prosCons { gap: var(--space-lg); }
-  .prosCons h3 { font-size: 1.3rem !important; }
-}
-
-@media (max-width: 480px) { /* Small mobile */
-    .heroCta .btn, .glanceCta .btn {
-        width: 100%; /* Full width buttons in these sections on small mobile */
-        margin-bottom: var(--space-sm);
-    }
-    .heroCta .btn:last-child, .glanceCta .btn:last-child {
-        margin-bottom: 0;
-    }
-    .ratingTooltip {
-      width: calc(100vw - (var(--container-padding-mobile) * 2)); /* Full width minus padding */
-      left: var(--container-padding-mobile) !important;
-      right: var(--container-padding-mobile) !important;
-      transform: translateX(0);
+  .reviewSection h2 {
+       font-size: clamp(1.5rem, 4vw, 2rem);
   }
+  .ctaSection h2 {
+      font-size: 1.6rem;
+  }
+  .prosCons { gap: 1.5rem; }
+  .prosCons h3 { font-size: 1.4rem; }
 }

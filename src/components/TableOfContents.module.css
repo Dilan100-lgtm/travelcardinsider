@@ -1,0 +1,217 @@
+/* components/TableOfContents.module.css */
+
+/* Ensure these variables are defined in your globals.css or adjust them here */
+/* These are examples based on your provided globals.css and common practice */
+:root {
+  --toc-bg-color: var(--color-background-subtle, #f8f9fa);
+  --toc-border-color: var(--color-border, #dee2e6);
+  --toc-link-color: var(--color-text-secondary, #5e6c84);
+  --toc-link-hover-color: var(--color-primary, #0056b3); /* Or --primary-blue from your globals */
+  --toc-active-bg-color: var(--primary-blue-light-bg, #eff6ff);
+  --toc-active-link-color: var(--primary-blue, #2563eb);
+  --toc-active-border-color: var(--primary-blue, #2563eb);
+  --toc-width-desktop: 280px; /* Width of the ToC sidebar on desktop */
+  --header-height-actual: 3.5rem; /* Adjust if your actual header height is different */
+}
+
+.tocContainer {
+  background-color: var(--toc-bg-color);
+  padding: var(--spacing-md, 16px);
+  border-radius: var(--border-radius-md, 8px); /* Use md from globals */
+  border: 1px solid var(--toc-border-color);
+  width: 100%; /* Full width for mobile, constrained by parent on desktop */
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  box-shadow: var(--shadow-sm, 0 1px 2px rgba(0,0,0,0.05));
+}
+
+.tocTitle {
+  font-family: var(--font-condensed, 'Roboto Condensed', var(--font-family-sans, sans-serif)); /* Use global font variables */
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-heading, var(--text-dark, #111827)); /* Use global heading or dark text color */
+  margin-top: 0;
+  margin-bottom: var(--spacing-md, 16px);
+  padding-bottom: var(--spacing-sm, 8px);
+  border-bottom: 1px solid var(--toc-border-color);
+}
+
+.tocList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: calc(100vh - 200px); /* Default max height, adjusted in media queries */
+  overflow-y: auto;
+}
+
+.tocItem {
+  margin-bottom: var(--spacing-xs, 4px);
+}
+
+.tocItem a {
+  display: block;
+  color: var(--toc-link-color);
+  text-decoration: none;
+  padding: var(--spacing-sm, 8px) var(--spacing-md, 12px);
+  border-radius: var(--border-radius-sm, 4px); /* Use sm from globals */
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  border-left: 3px solid transparent; /* For active state indicator */
+}
+
+.tocItem a:hover {
+  background-color: var(--bg-light, #f3f4f6); /* Use global light background */
+  color: var(--toc-link-hover-color);
+}
+
+.tocItem.active a {
+  background-color: var(--toc-active-bg-color);
+  color: var(--toc-active-link-color);
+  font-weight: 600;
+  border-left-color: var(--toc-active-border-color);
+}
+
+/* Mobile Toggle Button Styles */
+.mobileTocToggle {
+  display: none; /* Hidden by default, shown in media query */
+  position: fixed;
+  top: calc(var(--header-height-actual) + 15px); /* Position below main header */
+  left: 15px;
+  z-index: 1050; /* High z-index */
+  background-color: var(--primary-blue, #2563eb); /* Use global primary blue */
+  color: var(--bg-white, #ffffff); /* Use global white */
+  border: none;
+  border-radius: 50%; /* Circle button */
+  width: 50px;
+  height: 50px;
+  box-shadow: var(--shadow-md, 0 4px 6px rgba(0,0,0,0.1));
+  cursor: pointer;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.mobileTocToggle:hover {
+  background-color: var(--primary-blue-dark, #1d4ed8); /* Use global dark blue */
+}
+
+.mobileTocToggleIcon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 22px; /* Burger icon lines width */
+  height: 18px; /* Burger icon lines height */
+}
+.mobileTocToggleIcon span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--bg-white, #ffffff);
+  border-radius: 1px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.mobileTocToggle.open .mobileTocToggleIcon span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.mobileTocToggle.open .mobileTocToggleIcon span:nth-child(2) {
+  opacity: 0;
+}
+.mobileTocToggle.open .mobileTocToggleIcon span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Screen-reader only text for the toggle button's label */
+.mobileTocToggleText {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Desktop Styles (Sidebar) */
+@media (min-width: 1024px) { /* Adjust this breakpoint as needed */
+  .tocContainer {
+    position: sticky;
+    top: calc(var(--header-height-actual) + var(--spacing-lg, 24px)); /* Sticky below header with some space */
+    width: var(--toc-width-desktop);
+    align-self: flex-start; /* Important if in a flex container with main content */
+    /* The parent .sidebarArea in ReviewPage.module.css controls its placement in the grid/flex layout */
+  }
+
+  .tocList {
+    /* Adjust max-height considering title, padding, and space from bottom of viewport */
+    max-height: calc(100vh - var(--header-height-actual) - var(--spacing-lg, 24px) - 80px); /* 80px is an estimate for ToC title, paddings etc. */
+  }
+}
+
+/* Mobile Styles (Off-canvas menu) */
+@media (max-width: 1023px) { /* Should match the inverse of the desktop breakpoint */
+  .mobileTocToggle {
+    display: flex; /* Show toggle button on mobile */
+  }
+
+  .tocContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: min(80vw, 320px); /* Responsive width, max 320px or 80% of viewport width */
+    height: 100vh; /* Full viewport height */
+    transform: translateX(-100%); /* Initially hidden off-screen to the left */
+    border-radius: 0; /* No border radius for full-height menu */
+    border-right: 1px solid var(--toc-border-color);
+    border-left: none;
+    border-top: none;
+    border-bottom: none;
+    z-index: 1040; /* Below mobile toggle button, above potential backdrop/main content */
+    overflow-y: auto; /* Allow scrolling within the ToC if content is long */
+    padding-top: var(--spacing-xl, 32px); /* More padding at the top for aesthetics */
+  }
+
+  .tocContainer.mobileOpen {
+    transform: translateX(0); /* Slide in when open */
+    box-shadow: var(--shadow-lg, 0 10px 15px rgba(0,0,0,0.1)); /* Add shadow when open */
+  }
+
+  .tocList {
+    max-height: none; /* Allow full scroll within the container */
+  }
+
+  .tocTitle {
+    /* Optional: If you want the title to be sticky at the top of the off-canvas menu */
+    /* position: sticky; */
+    /* top: 0; */
+    /* background-color: var(--toc-bg-color); Ensure it has a background if sticky */
+    /* z-index: 1; */
+    padding: var(--spacing-md, 16px); /* Consistent padding */
+    margin: 0; /* Reset margin for the title when in off-canvas */
+    /* border-bottom: 1px solid var(--toc-border-color); /* Keep or remove based on preference */
+  }
+
+  /*
+  // Optional backdrop for mobile - manage its state (open/closed) in JS alongside ToC mobile state
+  .tocBackdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1030; // Below ToC, above main page content
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0s 0.3s linear;
+  }
+  .tocBackdrop.open {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+  }
+  */
+}
