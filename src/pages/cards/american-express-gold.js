@@ -22,13 +22,13 @@ const reviewData = {
   // Updated Description
   description: 'Discover how the American Express® Gold Card can elevate your rewards with 4X on dining & groceries, 3X on flights, and valuable credits. Our in-depth review analyzes its premium perks and overall value.',
   keywords: 'American Express, Gold Card, Amex Gold, premium rewards, travel rewards, dining rewards, grocery rewards, Membership Rewards, statement credits, card review, $325 annual fee', // Added "Amex Gold", "premium rewards"
-  author: 'TravelCardInsider', // *** REPLACE with your actual author/site name ***
-  lastUpdated: 'May 7, 2025', // *** REPLACE with actual last updated date ***
-  imageUrl: '/NUS000000174_480x304_straight_withname.avif', // *** VERIFY PATH in /public ***
-  imageWidth: 480, // *** REPLACE with actual image width ***
-  imageHeight: 304, // *** REPLACE with actual image height ***
-  applyLink: 'https://www.americanexpress.com/us/credit-cards/card/gold-card/', // *** REPLACE with actual Amex Gold APPLY URL ***
-  ratesLink: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/gold-card/25330-10-0#FeeTable', // *** VERIFY URL ***
+  author: 'TravelCardInsider', // 
+  lastUpdated: 'May 8, 2025', // 
+  imageUrl: '/NUS000000174_480x304_straight_withname.avif', // 
+  imageWidth: 480, // 
+  imageHeight: 304, // 
+  applyLink: 'https://www.americanexpress.com/us/credit-cards/card/gold-card/', // 
+  ratesLink: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/gold-card/25330-10-0#FeeTable', // 
   ratingValue: 8.8, // From Amex Gold HTML (KEEPING ORIGINAL AS REQUESTED)
 
   // --- Data for "At-a-Glance" Box ---
@@ -139,8 +139,8 @@ function AmexGoldReviewPage() {
   }, []);
 
 
-  const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
-  const pageUrl = `${siteUrl}/reviews/amex-gold`; // *** REPLACE with your actual page URL ***
+  const siteUrl = "https://www.travelcardinsider.com"; // 
+  const pageUrl = `${siteUrl}/reviews/amex-gold`; // 
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -172,18 +172,18 @@ function AmexGoldReviewPage() {
     },
     "name": reviewData.title,
     "author": { "@type": "Organization", "name": reviewData.author },
-    "datePublished": "2023-10-26", // *** REPLACE with actual publish date ***
+    "datePublished": "2023-10-26", // 
     "dateModified": reviewData.lastUpdated, // Using lastUpdated from reviewData
     "description": reviewData.description, // Can be a shorter summary
-    "publisher": { "@type": "Organization", "name": reviewData.author, "logo": { "@type": "ImageObject", "url": `${siteUrl}/logo.png` } }, // *** REPLACE with your logo path ***
+    "publisher": { "@type": "Organization", "name": reviewData.author, "logo": { "@type": "ImageObject", "url": `${siteUrl}/logo.png` } }, // 
     "mainEntityOfPage": pageUrl,
      "aggregateRating": { // Kept for broader product context if applicable
       "@type": "AggregateRating",
       "ratingValue": reviewData.ratingValue.toString(),
       "bestRating": "10",
       "worstRating": "1",
-      "ratingCount": "580", // *** REPLACE with actual or estimated count (string) ***
-      "reviewCount": "580"  // *** REPLACE with actual or estimated count (string) ***
+      "ratingCount": "580", // 
+      "reviewCount": "580"  // 
     },
   };
 
