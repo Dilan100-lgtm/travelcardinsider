@@ -6,859 +6,599 @@
 
 
 /* =============== CSS CUSTOM PROPERTIES (NEW Color Palette & Typography) =============== */
+/* These should ideally be in globals.css if shared across many pages, or defined here if specific to reviews */
+
+
+
 /* =============== OVERALL PAGE LAYOUT (ToC + Main Content) =============== */
 .reviewPageLayout {
-  display: flex;
-  max-width: var(--container-max-width);
-  margin: var(--space-xl) auto;
-  padding: 0 var(--container-padding-desktop);
-  gap: var(--space-xl);
+display: flex;
+max-width: var(--container-max-width);
+margin: var(--space-xl) auto;
+padding: 0 var(--container-padding-desktop);
+gap: var(--space-xl); /* Gap between ToC and Main Content */
 }
 
 .mainContent {
-  flex: 3; /* Main content takes more space */
-  min-width: 0; /* Prevent overflow issues with flex items */
+flex: 3; /* Main content takes more space */
+min-width: 0; /* Prevent overflow issues with flex items */
 }
 
+/* Content width on desktop optimization */
 .reviewContainer {
-  /* max-width: 800px; /* Content within mainContent can have its own max-width for readability */
-  margin: 0 auto; /* Centered if narrower than mainContent flex area */
-  padding: 0; /* Padding handled by mainContent or reviewPageLayout */
-  background-color: var(--color-background-module);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow-medium);
+max-width: 720px; /* Constrain content width for readability */
+margin: 0 auto; /* Center the constrained content area */
+padding: var(--space-lg) var(--space-md); /* Padding inside the content box */
+background-color: var(--color-background-module);
+border-radius: var(--border-radius);
+box-shadow: var(--box-shadow-medium);
 }
-/* Adjust reviewContainer padding when ToC is on the side */
-@media (min-width: 992px) {
-  .reviewContainer {
-    padding: var(--space-xl) var(--space-xxl); /* More internal padding on large screens */
-  }
+
+@media (max-width: 991px) { /* Mobile and Tablet */
+.reviewPageLayout {
+  flex-direction: column;
+  padding: 0 var(--container-padding-mobile);
+  gap: var(--space-lg);
 }
-@media (max-width: 991px) {
-  .reviewPageLayout {
-    flex-direction: column;
-    padding: 0 var(--container-padding-mobile);
-  }
-  .reviewContainer {
-    padding: var(--space-lg) var(--space-md); /* Less padding on mobile */
-  }
+.reviewContainer {
+  /* max-width will still apply, padding might adjust if needed */
+  padding: var(--space-md) var(--space-sm);
+}
 }
 
 
-/* =============== STICKY TABLE OF CONTENTS =============== */
+/* =============== STICKY TABLE OF CONTENTS (Collapsible) =============== */
 .stickyToc {
-  flex: 1; /* ToC takes less space */
-  position: sticky;
-  top: var(--space-xl); /* Adjust based on your header height */
-  align-self: flex-start; /* Sticks to the top of its container */
-  max-height: calc(100vh - (var(--space-xl) * 2)); /* Max height with padding */
-  overflow-y: auto;
-  padding: var(--space-lg);
-  background-color: var(--color-background-module);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow-soft);
-  border: 1px solid var(--color-border-subtle);
+flex: 1; /* ToC takes less space on desktop */
+position: sticky;
+top: var(--toc-sticky-top); /* Sticky position below header */
+align-self: flex-start;
+max-height: calc(100vh - var(--toc-sticky-top) - var(--space-xl)); /* Max height with padding */
+overflow-y: auto;
+padding: var(--space-lg);
+background-color: var(--color-background-module);
+border-radius: var(--border-radius);
+box-shadow: var(--box-shadow-soft);
+border: 1px solid var(--color-border-subtle);
+transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* For potential future animations */
+z-index: 100; /* Ensure it's above content but below modals/header */
 }
+
+.tocToggle { /* Button to show/hide ToC on mobile */
+display: none; /* Hidden by default, shown on mobile */
+background-color: var(--color-primary-accent);
+color: white;
+border: none;
+padding: var(--space-sm) var(--space-md);
+border-radius: var(--border-radius);
+cursor: pointer;
+font-weight: 600;
+margin-bottom: var(--space-md);
+width: 100%;
+text-align: left;
+}
+
+.tocListWrapper {
+/* Styles for the list container if needed for collapse animation */
+}
+
 .stickyToc h3 {
-  font-family: var(--font-headings);
-  font-size: 1.2rem;
-  color: var(--color-primary-accent);
-  margin-top: 0;
-  margin-bottom: var(--space-md);
-  padding-bottom: var(--space-sm);
-  border-bottom: 2px solid var(--color-primary-accent);
+font-family: var(--font-headings);
+font-size: 1.2rem;
+color: var(--color-primary-accent);
+margin-top: 0;
+margin-bottom: var(--space-md);
+padding-bottom: var(--space-sm);
+border-bottom: 2px solid var(--color-primary-accent);
 }
 .stickyToc ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+list-style: none;
+padding: 0;
+margin: 0;
 }
 .stickyToc li a {
-  display: block;
-  padding: var(--space-sm) 0;
-  color: var(--color-text-secondary);
-  text-decoration: none;
-  font-size: 0.9rem;
-  border-bottom: 1px solid var(--color-border-subtle);
-  transition: color 0.2s ease, background-color 0.2s ease, padding-left 0.2s ease;
+display: block;
+padding: var(--space-sm) 0;
+color: var(--color-text-secondary);
+text-decoration: none;
+font-size: 0.9rem;
+border-bottom: 1px solid var(--color-border-subtle);
+transition: color 0.2s ease, background-color 0.2s ease, padding-left 0.2s ease;
 }
 .stickyToc li:last-child a {
-  border-bottom: none;
+border-bottom: none;
 }
 .stickyToc li a:hover,
 .stickyToc li a:focus {
-  color: var(--color-primary-accent);
-  background-color: var(--color-background-accent);
-  padding-left: var(--space-sm);
+color: var(--color-primary-accent);
+background-color: var(--color-background-accent);
+padding-left: var(--space-sm);
 }
-.stickyToc .activeTocItem a {
-  color: var(--color-primary-accent);
-  font-weight: 700; /* Make active item bold */
-  background-color: var(--color-background-accent);
-  border-left: 3px solid var(--color-primary-accent); /* Highlight active item */
-  padding-left: calc(var(--space-sm) - 3px); /* Adjust padding for border */
+.stickyToc .activeTocItem a { /* Highlighting for active section */
+color: var(--color-primary-accent);
+font-weight: 700;
+background-color: var(--color-background-accent);
+border-left: 3px solid var(--color-primary-accent);
+padding-left: calc(var(--space-sm) - 3px); /* Adjust padding for border */
 }
-
-/* ToC CTA */
-.tocCta {
-    margin-top: var(--space-lg);
-    padding-top: var(--space-lg);
-    border-top: 1px solid var(--color-border-subtle);
+.stickyToc .tocSubItem a { /* Indentation for H3 subsections */
+  padding-left: var(--space-md);
 }
-.btnApplySmall { /* Specific styling for ToC CTA button if needed */
-    display: block;
-    text-align: center;
-    width: 100%;
-    font-size: 0.9rem !important;
-    padding: var(--space-sm) var(--space-md) !important;
+.stickyToc .tocSubItem.activeTocItem a {
+  padding-left: calc(var(--space-md) - 3px); /* Adjust padding for border */
 }
 
 
-/* Hide ToC on smaller screens or transform to a dropdown/modal */
-@media (max-width: 991px) {
-  .stickyToc {
-    display: none; /* Simple hide for now, could be a collapsible menu */
-    /* Or, for a top sticky bar:
-    position: sticky; top: 0; width: 100%; z-index: 1000;
-    max-height: none; overflow-y: visible;
-    border-radius: 0; border-left: none; border-right: none;
-    margin-bottom: var(--space-lg); */
-  }
+@media (max-width: 991px) { /* Mobile and Tablet ToC behavior */
+.stickyToc {
+  position: relative; /* No longer sticky on its own */
+  top: auto;
+  width: 100%;
+  max-height: none;
+  order: -1; /* Place ToC before main content on mobile if desired */
+  margin-bottom: var(--space-lg);
+  padding: var(--space-md);
+}
+.tocToggle {
+  display: block; /* Show toggle button */
+}
+.tocListWrapper { /* Controls collapse */
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+.stickyToc:not(.tocCollapsed) .tocListWrapper { /* Expanded state */
+  max-height: 500px; /* Or a sufficiently large value */
+}
+.tocCollapsed .tocListWrapper {
+    max-height: 0;
+}
 }
 
 
 /* =============== TYPOGRAPHY (Refined Scale) =============== */
-/* H1 for Hero Section */
-.heroSection h1 {
-  font-family: var(--font-headings);
-  font-size: clamp(2rem, 5vw, 3rem); /* Responsive font size */
-  color: var(--color-text-primary);
-  font-weight: 800; /* Bolder for impact */
-  line-height: 1.2;
-  margin-bottom: var(--space-md);
-  text-align: left; /* For hero layout */
+.reviewContainer h1 { /* Main page title, now in Hero */
+font-family: var(--font-headings);
+font-size: clamp(1.8rem, 5vw, 2.8rem); /* Adjusted for hero */
+color: var(--color-text-primary); /* Usually white/light on hero background */
+font-weight: 800;
+line-height: 1.2;
+margin-bottom: var(--space-md);
 }
 
 /* Section H2 */
-.reviewSection h2, .atAGlanceBox h2 {
-  font-family: var(--font-headings);
-  font-size: clamp(1.5rem, 4vw, 2.2rem);
-  color: var(--color-primary-accent);
-  margin-top: 0; /* Reset from original styles if needed */
-  margin-bottom: var(--space-lg);
-  padding-bottom: var(--space-sm);
-  border-bottom: 3px solid var(--color-secondary-accent); /* Use secondary accent for underline */
-  display: inline-block; /* To make border only span text width */
+.reviewSection h2, .atAGlanceBox h2 { /* .atAGlanceBox h2 might be specific if it's outside .reviewSection */
+font-family: var(--font-headings);
+font-size: clamp(1.5rem, 4vw, 2.0rem); /* Slightly smaller for better hierarchy within 720px */
+color: var(--color-primary-accent);
+margin-top: var(--space-xl); /* More space above H2 */
+margin-bottom: var(--space-lg);
+padding-bottom: var(--space-sm);
+border-bottom: 3px solid var(--color-secondary-accent);
+display: inline-block;
+}
+.reviewSection:first-of-type h2 { /* First H2 might need less top margin if following hero */
+  margin-top: 0;
 }
 
-/* Section H3 */
-.reviewSection h3 {
-  font-family: var(--font-headings); /* Changed from Roboto Condensed */
-  font-weight: 700;
-  font-size: 1.3rem; /* Slightly adjusted */
-  color: var(--color-text-primary);
-  margin-top: var(--space-xl);
-  margin-bottom: var(--space-md);
+
+/* Section H3 (Sub-sections) */
+.reviewSection h3, .subSection h3 {
+font-family: var(--font-headings);
+font-weight: 700;
+font-size: 1.25rem; /* Adjusted for clear hierarchy under new H2 size */
+color: var(--color-text-primary);
+margin-top: var(--space-lg); /* Consistent top margin for H3s */
+margin-bottom: var(--space-md);
 }
 
-.reviewContainer p, .reviewSection p { /* Target p inside review sections */
-  margin-bottom: var(--space-md);
-  color: var(--color-text-secondary);
-  font-size: 1rem; /* Standard body text */
+.reviewContainer p, .reviewSection p {
+margin-bottom: var(--space-md);
+color: var(--color-text-secondary);
+font-size: 1rem;
+line-height: 1.7; /* Improved line height for readability */
 }
 .reviewContainer p:last-of-type {
-  margin-bottom: 0;
+margin-bottom: 0;
 }
 
 .reviewContainer strong {
-  font-weight: 600; /* Slightly less heavy than default bold */
-  color: var(--color-primary-accent); /* Use primary accent for emphasis */
+font-weight: 600;
+color: var(--color-primary-accent);
 }
-
 .reviewContainer em {
-  font-style: italic;
-  color: var(--color-text-subtle);
+font-style: italic;
+color: var(--color-text-subtle);
 }
-
 .reviewContainer ul,
 .reviewContainer ol {
-  margin-left: var(--space-md); /* Consistent indentation */
-  padding-left: var(--space-sm);
-  margin-bottom: var(--space-lg);
+margin-left: var(--space-md);
+padding-left: var(--space-sm);
+margin-bottom: var(--space-lg);
 }
-
 .reviewContainer li {
-  margin-bottom: var(--space-sm);
-  padding-left: var(--space-xs);
-  color: var(--color-text-secondary);
+margin-bottom: var(--space-sm);
+padding-left: var(--space-xs);
+color: var(--color-text-secondary);
 }
 
-.featureList {
-  list-style: none;
-  padding-left: 0;
-}
-.featureList li {
-  position: relative;
-  padding-left: 1.75em; /* Space for icon */
-  margin-bottom: var(--space-md);
-}
-.featureList li::before {
-  content: '✓'; /* Default check, can be replaced by SVG icons */
-  position: absolute;
-  left: 0;
-  color: var(--color-success);
-  font-weight: bold;
-  font-size: 1.1em;
-  line-height: 1.4; /* Adjust vertical alignment */
-}
-/* Specific list styling for nested lists within featureList if any */
-.featureList ul {
-    margin-top: var(--space-sm);
-    margin-left: 0; /* Reset margin for nested UL if icons are not needed */
-    padding-left: var(--space-md); /* Indent nested list content */
-}
-.featureList ul li::before {
-    content: '•'; /* Example for nested items */
-    color: var(--color-secondary-accent);
-}
-/* For custom icons in feature lists (Phase 2) */
-.customIcon {
-    position: absolute;
-    left: 0;
-    top: 0.1em; /* Adjust alignment */
-    font-size: 1.1em; /* Or use width/height for SVG */
-    color: var(--color-secondary-accent); /* Example color */
-    /* Add styles for SVG icons if used: e.g., display: inline-block; width: 1em; height: 1em; vertical-align: -0.125em; */
+.featureList { list-style: none; padding-left: 0; }
+.featureList li { position: relative; padding-left: 1.75em; margin-bottom: var(--space-md); }
+.featureList li::before { content: '✓'; position: absolute; left: 0; color: var(--color-success); font-weight: bold; font-size: 1.1em; line-height: 1.4; }
+.customIcon { /* For SVG or font icons in lists */
+  position: absolute; left: 0; top: 0.1em; font-size: 1.1em; color: var(--color-secondary-accent);
+  /* display: inline-block; width: 1em; height: 1em; vertical-align: -0.125em; */
 }
 
 
-/* =============== HERO SECTION =============== */
+/* =============== HERO SECTION (with CSS Background Image) =============== */
 .heroSection {
-  display: flex;
-  flex-direction: row; /* Default for desktop */
-  gap: var(--space-xl);
-  align-items: center;
-  padding: var(--space-xxl) 0; /* Generous padding */
-  margin-bottom: var(--space-xxl);
-  border-bottom: 1px solid var(--color-border-subtle);
-  /* background: linear-gradient(135deg, var(--color-background-accent), var(--color-background-main) 70%); */
+position: relative; /* For overlay and content positioning */
+padding: var(--space-xxl) var(--space-lg); /* Generous padding */
+margin-bottom: var(--space-xxl);
+/* border-bottom: 1px solid var(--color-border-subtle); Removed, design choice */
+color: var(--color-cta-primary-text); /* Default text color on hero: white */
+text-align: center; /* Center content by default, can be overridden */
+min-height: 60vh; /* Ensure it has some height */
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
 }
-.heroTextContent {
-  flex: 1.5; /* Text takes more space */
+
+.heroBackground { /* Applied to the heroSection header */
+background-size: cover;
+background-position: center center;
+background-repeat: no-repeat;
+/* Responsive background images */
+background-image: var(--hero-bg-mobile); /* Mobile first */
 }
-.heroImageContainer {
-  flex: 1;
-  display: flex;
-  flex-direction: column; /* Stack image and rating */
-  align-items: center;
-  justify-content: center;
+/* Define CSS variables for background images (can also be done inline in JS if preferred) */
+:root {
+  /* These URLs should be correctly pathed from the public folder if Next.js */
+  --hero-bg-mobile: url('/images/amex_business_gold_hero_mobile.webp'); /* Fallback, will be overridden by JS if available */
+  --hero-bg-desktop: url('/images/amex_business_gold_hero_desktop.webp'); /* Fallback */
+}
+@media (min-width: 768px) {
+.heroBackground {
+  background-image: var(--hero-bg-desktop);
+}
+}
+
+.heroOverlay {
+position: absolute;
+top: 0; left: 0; right: 0; bottom: 0;
+background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for text contrast */
+z-index: 1;
+}
+
+.heroContent { /* Container for text and CTAs within hero */
+position: relative;
+z-index: 2;
+max-width: 800px; /* Max width for hero text content */
+margin: 0 auto;
+}
+
+.heroSection h1 { /* Overrides general h1 for hero specific styling */
+font-size: clamp(2.2rem, 6vw, 3.2rem); /* Responsive hero title */
+text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+margin-bottom: var(--space-md);
 }
 .heroSubtitle {
-  font-size: 1.15rem;
-  color: var(--color-text-secondary);
-  margin-bottom: var(--space-lg);
-  max-width: 65ch; /* Readability */
-  line-height: 1.6;
+font-size: clamp(1.1rem, 3vw, 1.4rem);
+color: rgba(255, 255, 255, 0.9);
+margin-bottom: var(--space-lg);
+max-width: 65ch;
+line-height: 1.6;
+text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 .authorDate {
-  font-size: 0.9rem;
-  color: var(--color-text-subtle);
-  margin-bottom: var(--space-xl);
+font-size: 0.9rem;
+color: rgba(255, 255, 255, 0.8);
+margin-bottom: var(--space-xl);
 }
-.authorDate span + span {
-  margin-left: var(--space-sm);
-  padding-left: var(--space-sm);
-  border-left: 1px solid var(--color-border-subtle);
-}
-.heroCta {
-    display: flex;
-    gap: var(--space-md);
-    margin-top: var(--space-xl);
-    flex-wrap: wrap;
+.authorDate span + span { margin-left: var(--space-sm); padding-left: var(--space-sm); border-left: 1px solid rgba(255,255,255,0.3); }
+
+.heroCta { display: flex; gap: var(--space-md); margin-top: var(--space-xl); justify-content: center; flex-wrap: wrap; }
+.heroApplyBtn { /* Specific styling for the main hero CTA button */
+  padding: var(--space-md) var(--space-xl) !important; /* Larger padding */
+  font-size: 1.1rem !important; /* Larger font */
 }
 
-.cardImageContainer { /* Original, potentially for other image uses */
-  margin: var(--space-lg) auto;
-  max-width: 480px;
-  line-height: 0;
+
+/* "At a Glance" / Pros & Cons Box integrated into Hero */
+.atAGlanceBoxInline {
+background-color: rgba(255, 255, 255, 0.1); /* Subtle background for the box */
+backdrop-filter: blur(5px); /* Optional: frosted glass effect */
+padding: var(--space-lg);
+border-radius: var(--border-radius);
+margin-top: var(--space-xl);
+text-align: left; /* Align text left within this box */
+border: 1px solid rgba(255,255,255,0.2);
+}
+.atAGlanceBoxInline h2 { /* Title for the inline box */
+font-size: 1.5rem;
+color: var(--color-cta-primary-text); /* White text */
+margin-top: 0;
+margin-bottom: var(--space-md);
+border-bottom: 1px solid rgba(255,255,255,0.3);
+padding-bottom: var(--space-sm);
+text-align: center;
+}
+.glanceGridInline {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: var(--space-md);
+font-size: 0.9rem;
+}
+.glanceGridInline > div { /* Each item in the grid */
+  color: rgba(255,255,255,0.9);
+}
+.glanceGridInline strong { color: var(--color-cta-primary-text); } /* White strong text */
+.glanceFee { font-size: 1.1rem; font-weight: 700; color: var(--color-star-filled); /* Gold for fee */ }
+.glanceList { list-style: none; padding-left: 0; margin-top: var(--space-xs); }
+.glanceList li { display: flex; align-items: flex-start; margin-bottom: var(--space-xs); }
+.glanceIcon { margin-right: var(--space-sm); color: var(--color-secondary-accent); /* Bright blue icon */ font-size: 1.1em; }
+.glanceProsCons {
+  grid-column: 1 / -1; /* Span full width */
   display: flex;
-  justify-content: center;
-  align-items: center;
+  gap: var(--space-lg);
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px dashed rgba(255,255,255,0.2);
 }
-.cardImage { /* For hero section */
-  display: block;
-  max-width: 100%;
-  height: auto;
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow-medium);
-  margin-bottom: var(--space-lg); /* Space between image and rating below it */
-}
+.glanceProsCons .pros, .glanceProsCons .cons { flex: 1; }
+.glanceProsCons h3 { font-size: 1.1rem !important; margin-bottom: var(--space-xs) !important; border: none; padding-bottom: 0 !important;}
+.glanceProsCons .pros h3 { color: #a7f3d0; } /* Light green for pros */
+.glanceProsCons .cons h3 { color: #fca5a5; } /* Light red for cons */
+.glanceProsCons ul { font-size: 0.85rem; }
+.glanceProsCons li::before { display: none; } /* Remove default list bullets if any */
+.glanceBestFor { grid-column: 1 / -1; font-style: italic; color: rgba(255,255,255,0.8); margin-top: var(--space-sm); }
 
-/* Rating Section (within Hero or stand-alone) */
-.ratingSection {
-  margin-top: 0; /* Adjusted as it's now part of hero image container or text */
+.ratingSectionHero { /* Rating within hero content */
+  margin-top: var(--space-lg);
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center if below image */
-  gap: var(--space-sm);
-}
-.tciRating {
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--color-text-primary);
-  background-color: var(--color-background-accent);
-  padding: var(--space-xs) var(--space-md);
-  border-radius: 20px; /* Pill shape */
-  display: inline-flex;
   align-items: center;
-  gap: var(--space-sm);
-  position: relative;
-  border: 1px solid var(--color-border-subtle);
+  gap: var(--space-xs);
 }
-.tciRating strong {
-  font-weight: 700;
-  color: var(--color-primary-accent);
+.ratingSectionHero .tciRating {
+  background-color: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.3);
 }
 
-/* Info Icon Button for Rating */
-.infoIconButton {
-  background: none; border: none; padding: 2px; margin: 0; cursor: pointer; line-height: 0;
-  border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
-  vertical-align: middle; color: var(--color-text-subtle); transition: background-color 0.2s ease, color 0.2s ease;
+@media (max-width: 767px) { /* Mobile hero adjustments */
+.heroSection {
+  padding: var(--space-xl) var(--container-padding-mobile);
+  min-height: 50vh;
 }
-.infoIconButton:hover, .infoIconButton:focus {
-  background-color: rgba(0,0,0,0.05); color: var(--color-primary-accent);
+.atAGlanceBoxInline { padding: var(--space-md); }
+.glanceProsCons { flex-direction: column; gap: var(--space-md); }
 }
-.infoIcon {
-  display: inline-block; fill: currentColor; opacity: 0.8; width: 16px; height: 16px;
-}
+
+
+/* Original Card Image container (if used outside hero) */
+.cardImageContainer { margin: var(--space-lg) auto; max-width: 480px; line-height: 0; display: flex; justify-content: center; align-items: center; }
+.cardImage { display: block; max-width: 100%; height: auto; border-radius: var(--border-radius); box-shadow: var(--box-shadow-medium); margin-bottom: var(--space-lg); }
+
+/* Rating Section (standalone, if used outside hero) */
+.ratingSection { margin-top: 0; display: flex; flex-direction: column; align-items: center; gap: var(--space-sm); }
+.tciRating { font-size: 1rem; font-weight: 500; color: var(--color-text-primary); background-color: var(--color-background-accent); padding: var(--space-xs) var(--space-md); border-radius: 20px; display: inline-flex; align-items: center; gap: var(--space-sm); position: relative; border: 1px solid var(--color-border-subtle); }
+.tciRating strong { font-weight: 700; color: var(--color-primary-accent); }
+.infoIconButton { background: none; border: none; padding: 2px; margin: 0; cursor: pointer; line-height: 0; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; vertical-align: middle; color: var(--color-text-subtle); transition: background-color 0.2s ease, color 0.2s ease; }
+.infoIconButton:hover, .infoIconButton:focus { background-color: rgba(0,0,0,0.05); color: var(--color-primary-accent); }
+.infoIcon { display: inline-block; fill: currentColor; opacity: 0.8; width: 16px; height: 16px; }
 .infoIconButton:hover .infoIcon { opacity: 1; }
+.starRating { font-size: 1.6rem; color: var(--color-star-empty); position: relative; display: inline-block; line-height: 1; }
+.filledStars { position: absolute; left: 0; top: 0; white-space: nowrap; overflow: hidden; color: var(--color-star-filled); width: var(--rating, 0%); }
 
-/* Star Rating */
-.starRating {
-  font-size: 1.6rem; /* Slightly adjusted */
-  color: var(--color-star-empty);
-  position: relative; display: inline-block; line-height: 1;
-}
-.filledStars {
-  position: absolute; left: 0; top: 0; white-space: nowrap; overflow: hidden;
-  color: var(--color-star-filled); width: var(--rating, 0%);
-}
-.ratingDescription { /* No longer used in Hero, kept if used elsewhere */
-  font-size: 0.95rem; font-style: italic; color: var(--color-text-subtle);
-  margin-top: var(--space-sm); max-width: 600px; line-height: 1.6;
-}
 
-@media (max-width: 768px) {
-  .heroSection {
-    flex-direction: column;
-    text-align: center; /* Center text content on mobile */
-    padding: var(--space-xl) 0;
-  }
-  .heroSection h1, .heroSubtitle, .authorDate {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-  }
-   .heroCta {
-    justify-content: center;
-  }
-  .heroImageContainer {
-    margin-top: var(--space-lg);
-  }
+/* =============== "AT-A-GLANCE" SUMMARY BOX (Standalone, if not in hero) =============== */
+.atAGlanceBox { /* Styles for the original, separate At a Glance box if kept */
+background-color: var(--color-background-accent);
+padding: var(--space-xl);
+border-radius: var(--border-radius);
+margin-bottom: var(--space-xxl);
+border: 1px solid var(--color-border-subtle);
+box-shadow: var(--box-shadow-soft);
 }
-
-/* =============== "AT-A-GLANCE" SUMMARY BOX =============== */
-.atAGlanceBox {
-  background-color: var(--color-background-accent);
-  padding: var(--space-xl) var(--space-xl); /* More padding */
-  border-radius: var(--border-radius);
-  margin-bottom: var(--space-xxl); /* Space after box */
-  border: 1px solid var(--color-border-subtle);
-  box-shadow: var(--box-shadow-soft);
-}
-.atAGlanceBox h2 {
-  text-align: center;
-  margin-bottom: var(--space-xl);
-  font-size: clamp(1.4rem, 3.5vw, 1.8rem); /* Slightly smaller H2 */
-  border-bottom-color: var(--color-primary-accent); /* Stronger border for this title */
-}
-.glanceGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive columns */
-  gap: var(--space-xl);
-}
-.glanceGrid > div { /* Direct children are the items */
-  padding: var(--space-md);
-  background-color: var(--color-background-module);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow-soft);
-}
-.glanceGrid strong {
-  display: block;
-  margin-bottom: var(--space-sm);
-  color: var(--color-primary-accent);
-  font-weight: 600;
-  font-size: 1rem;
-}
-.glanceFee {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--color-error); /* Highlight fee */
-}
-.glanceList {
-  list-style: none;
-  padding-left: 0;
-  margin-top: var(--space-sm);
-}
-.glanceList li {
-  display: flex; /* Align icon and text */
-  align-items: flex-start;
-  margin-bottom: var(--space-sm);
-  font-size: 0.95rem;
-  color: var(--color-text-secondary);
-}
-.glanceIcon { /* Placeholder for actual icons (Phase 2) */
-  margin-right: var(--space-sm);
-  color: var(--color-secondary-accent);
-  font-size: 1.1em; /* Make icon slightly larger */
-  line-height: 1.4;
-  /* For SVG icons: width: 1.2em; height: 1.2em; fill: currentColor; */
-}
-.glanceBestFor {
-  grid-column: 1 / -1; /* Span full width */
-  font-style: italic;
-  color: var(--color-text-subtle);
-  padding-top: var(--space-md);
-  border-top: 1px dashed var(--color-border-subtle);
-  margin-top: var(--space-md);
-}
-.glanceCta {
-    grid-column: 1 / -1;
-    display: flex;
-    justify-content: center;
-    gap: var(--space-md);
-    margin-top: var(--space-lg);
-    padding-top: var(--space-lg);
-    border-top: 1px solid var(--color-border-strong);
-}
+.atAGlanceBox h2 { text-align: center; margin-bottom: var(--space-xl); font-size: clamp(1.4rem, 3.5vw, 1.8rem); border-bottom-color: var(--color-primary-accent); }
+.glanceGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-xl); }
+.glanceGrid > div { padding: var(--space-md); background-color: var(--color-background-module); border-radius: var(--border-radius); box-shadow: var(--box-shadow-soft); }
+.glanceGrid strong { display: block; margin-bottom: var(--space-sm); color: var(--color-primary-accent); font-weight: 600; font-size: 1rem; }
+.glanceFee { font-size: 1.2rem; font-weight: 700; color: var(--color-error); }
+.glanceList { list-style: none; padding-left: 0; margin-top: var(--space-sm); }
+.glanceList li { display: flex; align-items: flex-start; margin-bottom: var(--space-sm); font-size: 0.95rem; color: var(--color-text-secondary); }
+.glanceIcon { margin-right: var(--space-sm); color: var(--color-secondary-accent); font-size: 1.1em; line-height: 1.4; }
+.glanceBestFor { grid-column: 1 / -1; font-style: italic; color: var(--color-text-subtle); padding-top: var(--space-md); border-top: 1px dashed var(--color-border-subtle); margin-top: var(--space-md); }
+.glanceCta { grid-column: 1 / -1; display: flex; justify-content: center; gap: var(--space-md); margin-top: var(--space-lg); padding-top: var(--space-lg); border-top: 1px solid var(--color-border-strong); }
 
 
 /* =============== REVIEW SECTIONS (General Styling & Modularity) =============== */
 .reviewSection {
-  margin-bottom: var(--space-xxl);
-  padding-bottom: var(--space-xl);
-  border-bottom: 1px solid var(--color-border-subtle);
+margin-bottom: var(--space-xxl);
+padding-bottom: var(--space-xl);
+border-bottom: 1px solid var(--color-border-subtle);
 }
-.reviewSection:last-of-type { /* Last section in main content */
-  margin-bottom: 0;
-  padding-bottom: 0;
-  border-bottom: none;
-}
-.contentLeadIn { /* Specific style for the intro paragraph section if kept separate */
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: var(--color-text-secondary);
-    border-bottom: none; /* If it's just text, no strong border */
-    padding-bottom: var(--space-lg);
-    margin-bottom: var(--space-xl);
-}
+.reviewSection:last-of-type { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
 
-
-/* =============== TABLES (Refined Styling - Phase 2) =============== */
-.tableContainer {
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  margin-bottom: var(--space-lg);
-  border: 1px solid var(--color-border-strong);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow-soft);
-}
-.statsTable {
-  width: 100%;
-  min-width: 600px;
-  border-collapse: separate; /* Allows for border-radius on cells if needed, and spacing */
-  border-spacing: 0; /* Reset spacing if using separate */
-  font-size: 0.95rem;
-}
-.statsTable thead {
-  background-color: var(--color-background-accent); /* Lighter header */
-}
-.statsTable th {
-  font-family: var(--font-headings);
-  background-color: transparent; /* Inherits from thead */
-  color: var(--color-primary-accent);
-  font-weight: 600;
-  text-align: left;
-  padding: var(--space-md) var(--space-lg);
-  border-bottom: 2px solid var(--color-border-strong);
-  white-space: nowrap;
-}
-.statsTable td {
-  padding: var(--space-md) var(--space-lg);
-  border-bottom: 1px solid var(--color-border-subtle);
-  vertical-align: middle;
-  color: var(--color-text-secondary);
-  white-space: normal;
-}
-.statsTable tbody tr:last-child td {
-  border-bottom: none;
-}
-.statsTable tbody tr:nth-child(even) {
-   background-color: var(--color-background-main); /* Changed from module for contrast */
-}
-.statsTable tbody tr:hover {
-    background-color: var(--color-background-accent); /* Hover effect for rows */
-}
-.statsTable td:first-child, .statsTable th:first-child {
-   /* No specific style needed if all text is aligned left */
-}
-.statsTable .totalRow td {
-    font-weight: 700;
-    color: var(--color-primary-accent);
-    background-color: var(--color-background-accent);
-}
-/* Comparison Table Specifics (Phase 3) */
-.comparisonTable th {
-    background-color: var(--color-primary-accent);
-    color: var(--color-background-module);
-}
-.comparisonTable td[data-label="Feature"] {
-    font-weight: 600;
-}
-
-
-/* Responsive table (keeping the scroll for wide tables, but ensuring readability) */
-@media (max-width: 650px) {
-  .statsTable th, .statsTable td {
-    padding: var(--space-sm) var(--space-md); font-size: 0.9rem;
-  }
-  /* Original data-label stacking can be kept if preferred for very narrow screens,
-     but horizontal scroll is often better for complex tables. */
-}
-
-
-/* =============== CALLS-TO-ACTION (CTAs - Refined & Persuasive - Phase 2 Microinteractions) =============== */
-.ctaSection { /* General container for CTAs if used outside hero/glance */
-  text-align: center;
-  padding: var(--space-xl) var(--space-lg);
-  background: linear-gradient(135deg, var(--color-background-accent), var(--color-background-main) 80%);
-  border: 1px solid var(--color-border-subtle);
-  border-radius: var(--border-radius);
-  margin: var(--space-xxl) 0;
-  box-shadow: var(--box-shadow-soft);
-}
-.ctaSection h2 { /* H2 within a CTA block */
-  font-size: clamp(1.5rem, 4vw, 2rem);
-  color: var(--color-primary-accent);
-  margin-top: 0;
-  margin-bottom: var(--space-sm); /* Less margin if p follows */
-  border: none;
-  display: block;
-}
-.ctaSection p {
-  font-size: 1.1rem;
-  color: var(--color-text-secondary);
-  margin-bottom: var(--space-lg);
-  max-width: 60ch;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.ctaButtons { /* Flex container for multiple buttons */
-  display: flex;
-  justify-content: center;
-  gap: var(--space-lg); /* Wider gap */
-  flex-wrap: wrap;
-}
-.btn { /* Base button style */
-  display: inline-flex; /* Allows icon alignment */
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-md) var(--space-xl); /* Generous padding */
-  font-family: var(--font-headings);
-  font-size: 1rem; /* Base size, can be adjusted */
-  font-weight: 600;
-  border-radius: 25px; /* Pill shape for premium feel */
-  box-shadow: var(--box-shadow-soft);
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); /* Smoother transition */
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-  line-height: 1.2; /* Ensure text is centered vertically */
-}
-.btn:hover { /* Phase 2 Microinteraction */
-   box-shadow: var(--box-shadow-medium);
-   transform: translateY(-2px);
-}
-.btn:active {
-  transform: translateY(0px) scale(0.98);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-.btn:focus-visible {
-  outline: 3px solid var(--color-secondary-accent); /* Use theme color for focus */
-  outline-offset: 2px;
-}
-
-/* Primary CTA Button (Apply Now) */
-.btnApply {
-   background: var(--color-cta-primary-bg); /* Gold */
-   color: var(--color-cta-primary-text);
-}
-.btnApply:hover { background: var(--color-cta-primary-hover-bg); }
-
-/* Secondary CTA Button (Rates & Fees) */
-.btnRates {
-  background: var(--color-cta-secondary-bg); /* Light Gray */
-  color: var(--color-cta-secondary-text);
-  border: 1px solid var(--color-border-strong); /* Subtle border */
-}
-.btnRates:hover { background: var(--color-cta-secondary-hover-bg); }
-
-.lockIcon {
-    margin-left: var(--space-sm);
-    font-size: 0.9em; /* Adjust if using a real icon font/SVG */
-}
-
-
-/* =============== PROS/CONS SECTION (Original styles seem fine, minor tweaks for consistency) =============== */
-.prosCons {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-xl); /* Consistent gap */
+.subSection { /* For H3 content blocks if they need specific styling */
   margin-top: var(--space-lg);
-  padding-top: var(--space-lg);
-  border-top: 1px dashed var(--color-border-subtle);
+  padding-left: var(--space-sm); /* Optional slight indent for sub-sections */
+  border-left: 3px solid var(--color-background-accent); /* Subtle left border */
 }
-.prosCons h3 { /* Using section H3 style by default, can be overridden */
-  font-size: 1.4rem !important; /* Override if needed */
-  margin-bottom: var(--space-md) !important;
-  border-bottom: 2px solid;
-  padding-bottom: var(--space-xs) !important;
-  display: inline-flex; /* Align icon with text */
-  align-items: center;
+
+
+/* =============== TABLES =============== */
+.tableContainer { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: var(--space-lg); border: 1px solid var(--color-border-strong); border-radius: var(--border-radius); box-shadow: var(--box-shadow-soft); }
+.statsTable { width: 100%; min-width: 600px; border-collapse: separate; border-spacing: 0; font-size: 0.95rem; }
+.statsTable thead { background-color: var(--color-background-accent); }
+.statsTable th { font-family: var(--font-headings); background-color: transparent; color: var(--color-primary-accent); font-weight: 600; text-align: left; padding: var(--space-md) var(--space-lg); border-bottom: 2px solid var(--color-border-strong); white-space: nowrap; }
+.statsTable td { padding: var(--space-md) var(--space-lg); border-bottom: 1px solid var(--color-border-subtle); vertical-align: middle; color: var(--color-text-secondary); white-space: normal; }
+.statsTable tbody tr:last-child td { border-bottom: none; }
+.statsTable tbody tr:nth-child(even) { background-color: var(--color-background-main); }
+.statsTable tbody tr:hover { background-color: var(--color-background-accent); }
+.comparisonTable th { background-color: var(--color-primary-accent); color: var(--color-background-module); }
+
+
+/* =============== CALLS-TO-ACTION (CTAs - Buttons) =============== */
+.ctaSection { text-align: center; padding: var(--space-xl) var(--space-lg); background: linear-gradient(135deg, var(--color-background-accent), var(--color-background-main) 80%); border: 1px solid var(--color-border-subtle); border-radius: var(--border-radius); margin: var(--space-xxl) 0; box-shadow: var(--box-shadow-soft); }
+.ctaSection h2 { font-size: clamp(1.5rem, 4vw, 2rem); color: var(--color-primary-accent); margin-top: 0; margin-bottom: var(--space-sm); border: none; display: block; }
+.ctaSection p { font-size: 1.1rem; color: var(--color-text-secondary); margin-bottom: var(--space-lg); max-width: 60ch; margin-left: auto; margin-right: auto; }
+
+.ctaButtons { display: flex; justify-content: center; gap: var(--space-lg); flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; justify-content: center; padding: var(--space-md) var(--space-xl); font-family: var(--font-headings); font-size: 1rem; font-weight: 600; border-radius: 25px; box-shadow: var(--box-shadow-soft); transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); border: none; cursor: pointer; text-decoration: none; line-height: 1.2; }
+.btn:hover { box-shadow: var(--box-shadow-medium); transform: translateY(-2px); }
+.btn:active { transform: translateY(0px) scale(0.98); box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+.btn:focus-visible { outline: 3px solid var(--color-secondary-accent); outline-offset: 2px; }
+
+.btnApply { background: var(--color-cta-primary-bg); color: var(--color-cta-primary-text); }
+.btnApply:hover { background: var(--color-cta-primary-hover-bg); }
+.btnRates { background: var(--color-cta-secondary-bg); color: var(--color-cta-secondary-text); border: 1px solid var(--color-border-strong); }
+.btnRates:hover { background: var(--color-cta-secondary-hover-bg); }
+.btnApplySmall { font-size: 0.9rem !important; padding: var(--space-sm) var(--space-md) !important; }
+.lockIcon { margin-left: var(--space-sm); font-size: 0.9em; }
+
+
+/* Sticky Secondary CTA Bar */
+.stickyCtaBar {
+position: fixed;
+bottom: 0;
+left: 0;
+right: 0;
+background-color: var(--color-background-module);
+padding: var(--space-sm) var(--space-md);
+box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+z-index: 1000; /* High z-index to be on top */
+display: flex;
+justify-content: space-between;
+align-items: center;
+transform: translateY(100%); /* Initially hidden */
+transition: transform 0.3s ease-in-out;
 }
-.prosCons h3 .customIcon { /* Icon specific style in pros/cons */
-    margin-left: var(--space-sm);
-    position: static; /* Override absolute if from .featureList */
+/* Show sticky CTA bar on screens > 900px, or always if preferred */
+@media (min-width: 901px) { /* Desktop sticky bar */
+  .stickyCtaBar {
+      transform: translateY(0);
+  }
 }
+@media (max-width: 900px) { /* Mobile bottom sheet style */
+  .stickyCtaBar {
+      /* Keep it as a bar for now, true bottom sheet is more complex */
+      transform: translateY(0);
+      padding: var(--space-md); /* More padding on mobile */
+  }
+}
+.stickyCtaText {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  font-size: 0.9rem;
+}
+.stickyApplyBtn { /* Button within the sticky bar */
+  /* Uses .btn and .btnApplySmall styles */
+}
+
+
+/* =============== PROS/CONS SECTION (Original styles, if used separately from Hero) =============== */
+.prosCons { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl); margin-top: var(--space-lg); padding-top: var(--space-lg); border-top: 1px dashed var(--color-border-subtle); }
+.prosCons h3 { font-size: 1.4rem !important; margin-bottom: var(--space-md) !important; border-bottom: 2px solid; padding-bottom: var(--space-xs) !important; display: inline-flex; align-items: center; }
+.prosCons h3 .customIcon { margin-left: var(--space-sm); position: static; }
 .pros h3 { color: var(--color-success); border-color: var(--color-success);}
 .cons h3 { color: var(--color-error); border-color: var(--color-error);}
-
 .pros ul, .cons ul { list-style: none; padding-left: 0; margin-top: 0; }
-.pros li, .cons li {
-    position: relative; /* For pseudo-element positioning */
-    padding-left: 1.75em;
-    margin-bottom: var(--space-sm);
-    font-size: 0.95rem;
-}
+.pros li, .cons li { position: relative; padding-left: 1.75em; margin-bottom: var(--space-sm); font-size: 0.95rem; }
 .pros li::before { content: '✓ '; color: var(--color-success); font-weight: bold; position: absolute; left: 0; }
 .cons li::before { content: '✕ '; color: var(--color-error); font-weight: bold; position: absolute; left: 0; }
+@media (max-width: 600px) { .prosCons { grid-template-columns: 1fr; gap: var(--space-lg); } }
 
-@media (max-width: 600px) {
-  .prosCons { grid-template-columns: 1fr; gap: var(--space-lg); }
-}
 
 /* =============== E-A-T & DISCLAIMER SECTION =============== */
-.eatSection {
-  background-color: var(--color-background-accent);
-  border: 1px solid var(--color-border-subtle);
-  padding: var(--space-xl);
-  border-radius: var(--border-radius);
-  margin-top: var(--space-xxl);
-}
-.eatSection h2 { /* Uses default H2 styling */
-  text-align: center;
-  border-bottom-color: var(--color-secondary-accent); /* Lighter underline */
-}
-.eatSection h3 { /* Uses default H3 styling */
-  color: var(--color-primary-accent); /* Darker H3 for EAT */
-}
-.eatSection ul { margin-bottom: var(--space-lg); } /* More space after lists */
-.eatSection li { color: var(--color-text-secondary); }
-.eatSection p:last-of-type { /* Concluding paragraph */
-  margin-top: var(--space-lg); font-style: italic; text-align: center; color: var(--color-text-subtle);
-}
-
-.disclaimerBox {
-    background-color: #f9f9f9; /* Slightly off-white */
-    padding: var(--space-lg);
-    border-radius: var(--border-radius);
-    border: 1px dashed var(--color-border-strong);
-    margin-top: var(--space-xl);
-    font-size: 0.85rem;
-    color: var(--color-text-subtle);
-    line-height: 1.6;
-}
-.disclaimerBox strong {
-    color: var(--color-text-secondary);
-}
+.eatSection { background-color: var(--color-background-accent); border: 1px solid var(--color-border-subtle); padding: var(--space-xl); border-radius: var(--border-radius); margin-top: var(--space-xxl); }
+.eatSection h2 { text-align: center; border-bottom-color: var(--color-secondary-accent); }
+.eatSection h3 { color: var(--color-primary-accent); }
+.disclaimerBox { background-color: #f9f9f9; padding: var(--space-lg); border-radius: var(--border-radius); border: 1px dashed var(--color-border-strong); margin-top: var(--space-xl); font-size: 0.85rem; color: var(--color-text-subtle); line-height: 1.6; }
+.disclaimerBox strong { color: var(--color-text-secondary); }
 
 
-/* =============== RATING TOOLTIP (Mostly original, minor theme adjustments) =============== */
-.ratingTooltip {
-  position: absolute; top: 125%; left: 50%; transform: translateX(-50%); /* Ensure it doesn't overlap */
-  background-color: var(--color-background-module);
-  border: 1px solid var(--color-border-strong);
-  border-radius: var(--border-radius);
-  padding: var(--space-md) var(--space-lg);
-  width: 280px; /* Slightly wider */
-  box-shadow: var(--box-shadow-medium); /* Enhanced shadow */
-  z-index: 1050;
-  font-size: 0.9rem; line-height: 1.6; color: var(--color-text-secondary); text-align: left;
-}
-.ratingTooltip strong { /* First strong tag (title) */
-  display: block; margin-bottom: var(--space-sm); color: var(--color-primary-accent); font-weight: 700;
-}
-.tooltipIntro { /* "This rating is based on:" */
-  margin: var(--space-sm) 0 var(--space-xs) 0; font-weight: 500; color: var(--color-text-primary);
-}
+/* =============== RATING TOOLTIP =============== */
+.ratingTooltip { position: absolute; top: 125%; left: 50%; transform: translateX(-50%); background-color: var(--color-background-module); border: 1px solid var(--color-border-strong); border-radius: var(--border-radius); padding: var(--space-md) var(--space-lg); width: 280px; box-shadow: var(--box-shadow-medium); z-index: 1050; font-size: 0.9rem; line-height: 1.6; color: var(--color-text-secondary); text-align: left; }
+.ratingTooltip strong { display: block; margin-bottom: var(--space-sm); color: var(--color-primary-accent); font-weight: 700; }
+.tooltipIntro { margin: var(--space-sm) 0 var(--space-xs) 0; font-weight: 500; color: var(--color-text-primary); }
 .tooltipList { list-style: disc; padding-left: var(--space-lg); margin: 0; }
 .tooltipList li { margin-bottom: var(--space-xs); color: var(--color-text-secondary); }
 
-/* =============== ADDED FOR PHASE 3 ENHANCEMENTS =============== */
 
-/* Rewards Calculator (Phase 3) */
-.rewardsCalculator {
-  background-color: var(--color-background-accent);
-  padding: var(--space-lg);
-  border-radius: var(--border-radius);
-  margin-top: var(--space-xl);
-  border: 1px solid var(--color-border-subtle);
-}
-.rewardsCalculator h4 {
-  font-family: var(--font-headings);
-  color: var(--color-primary-accent);
-  margin-top: 0;
-  margin-bottom: var(--space-md);
-}
-.rewardsCalculator .calcGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--space-md);
-    margin-bottom: var(--space-lg);
-}
-.rewardsCalculator label {
-  display: block;
-  font-size: 0.9rem;
-  color: var(--color-text-secondary);
-  margin-bottom: var(--space-xs);
-}
-.rewardsCalculator input[type="number"] {
-  width: 100%;
-  padding: var(--space-sm);
-  border: 1px solid var(--color-border-strong);
-  border-radius: 4px;
-  font-family: var(--font-body);
-  font-size: 1rem;
-}
-.rewardsCalculator .calculatedResult {
-  margin-top: var(--space-lg);
-  padding: var(--space-md);
-  background-color: var(--color-background-module);
-  border: 1px solid var(--color-success);
-  border-left-width: 4px;
-  border-radius: 4px;
-  font-size: 1.1rem;
-}
-.rewardsCalculator .calculatedResult strong {
-  color: var(--color-success);
-}
-.rewardsCalculator small {
-    display: block;
-    margin-top: var(--space-md);
-    font-size: 0.85rem;
-    color: var(--color-text-subtle);
-}
+/* =============== REWARDS CALCULATOR (Mini & Full) =============== */
+.rewardsCalculator { background-color: var(--color-background-accent); padding: var(--space-lg); border-radius: var(--border-radius); margin-top: var(--space-xl); border: 1px solid var(--color-border-subtle); }
+.rewardsCalculator.miniCalculator { padding: var(--space-md); margin-top: var(--space-md); }
+.rewardsCalculator h4 { font-family: var(--font-headings); color: var(--color-primary-accent); margin-top: 0; margin-bottom: var(--space-md); }
+.rewardsCalculator .calcGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-md); margin-bottom: var(--space-md); } /* Adjusted minmax */
+.rewardsCalculator label { display: block; font-size: 0.85rem; color: var(--color-text-secondary); margin-bottom: var(--space-xs); }
+.rewardsCalculator input[type="number"] { width: 100%; padding: var(--space-sm); border: 1px solid var(--color-border-strong); border-radius: 4px; font-family: var(--font-body); font-size: 0.95rem; }
+.rewardsCalculator .calculatedResult { margin-top: var(--space-md); padding: var(--space-sm) var(--space-md); background-color: var(--color-background-module); border: 1px solid var(--color-success); border-left-width: 4px; border-radius: 4px; font-size: 1rem; }
+.rewardsCalculator.miniCalculator .calculatedResult { font-size: 1.05rem; text-align: center; }
+.rewardsCalculator .calculatedResult strong { color: var(--color-success); }
+.rewardsCalculator small { display: block; margin-top: var(--space-md); font-size: 0.85rem; color: var(--color-text-subtle); }
+.miniCalcLink { font-size: 0.9rem; color: var(--color-primary-accent); text-decoration: none; }
+.miniCalcLink:hover { text-decoration: underline; }
 
-/* Statement Credits Chart (Phase 3 Data Visualization) */
-.statementCreditsChart {
-  background-color: var(--color-background-accent);
-  padding: var(--space-lg);
-  border-radius: var(--border-radius);
-  margin: var(--space-xl) 0;
-  border: 1px solid var(--color-border-subtle);
-}
-.statementCreditsChart h4 {
-  font-family: var(--font-headings);
-  color: var(--color-primary-accent);
-  margin-top: 0;
-  margin-bottom: var(--space-lg);
-  text-align: center;
-}
-.chartBars {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
-}
-.chartBarContainer {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: var(--space-sm);
-}
-.chartBarLabel {
-  font-size: 0.9rem;
-  color: var(--color-text-secondary);
-  margin-bottom: var(--space-xs);
-  display: flex;
-  align-items: center;
-}
-.barIcon { /* For icons next to bar labels */
-    margin-right: var(--space-sm);
-    font-size: 1.1em;
-}
-.chartBar {
-  height: 24px; /* Fixed height for bars */
-  border-radius: 3px;
-  background-color: var(--color-secondary-accent); /* Default bar color */
-  transition: width 0.5s ease-in-out; /* Phase 3 Animation */
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
-  color: white; /* Text inside bar if any, though not used here */
-  text-align: right;
-  padding-right: var(--space-sm);
-  line-height: 24px;
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-.statementCreditsChart p {
-    text-align: center;
-    font-size: 0.9rem;
-    color: var(--color-text-subtle);
-    margin-top: var(--space-lg);
-}
-.dataVisualizationSection { /* General section for charts/visuals */
-    padding: var(--space-lg);
-    background-color: var(--color-background-main); /* Slightly different bg if needed */
-}
+/* =============== STATEMENT CREDITS CHART =============== */
+.statementCreditsChart { background-color: var(--color-background-accent); padding: var(--space-lg); border-radius: var(--border-radius); margin: var(--space-xl) 0; border: 1px solid var(--color-border-subtle); }
+.statementCreditsChart h4 { font-family: var(--font-headings); color: var(--color-primary-accent); margin-top: 0; margin-bottom: var(--space-lg); text-align: center; }
+.chartBars { display: flex; flex-direction: column; gap: var(--space-sm); }
+.chartBarContainer { display: flex; flex-direction: column; margin-bottom: var(--space-sm); }
+.chartBarLabel { font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: var(--space-xs); display: flex; align-items: center; }
+.barIcon { margin-right: var(--space-sm); font-size: 1.1em; }
+.chartBar { height: 24px; border-radius: 3px; background-color: var(--color-secondary-accent); transition: width 0.5s ease-in-out; box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); color: white; text-align: right; padding-right: var(--space-sm); line-height: 24px; font-size: 0.8rem; font-weight: 600; }
+.statementCreditsChart p { text-align: center; font-size: 0.9rem; color: var(--color-text-subtle); margin-top: var(--space-lg); }
 
+
+/* =============== BREADCRUMBS =============== */
+.breadcrumbs {
+margin-bottom: var(--space-lg);
+font-size: 0.9rem;
+color: var(--color-text-subtle);
+}
+.breadcrumbs ol {
+list-style: none;
+padding: 0;
+margin: 0;
+display: flex;
+flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+.breadcrumbs li {
+display: flex;
+align-items: center;
+}
+.breadcrumbs a {
+color: var(--color-primary-accent);
+text-decoration: none;
+}
+.breadcrumbs a:hover {
+text-decoration: underline;
+}
+.breadcrumbs span[aria-current="page"] {
+color: var(--color-text-secondary);
+font-weight: 500;
+}
+.breadcrumbSeparator {
+margin: 0 var(--space-sm);
+color: var(--color-text-subtle);
+}
 
 /* =============== RESPONSIVE ADJUSTMENTS (Consolidated) =============== */
 @media (max-width: 768px) { /* Tablet and smaller */
-  .reviewContainer {
-      /* Padding handled by .reviewPageLayout */
-  }
-  /* H1 already responsive */
-  .reviewSection h2, .atAGlanceBox h2 {
-       /* H2 already responsive */
-  }
-  .ctaSection h2 { font-size: 1.5rem; } /* Smaller H2 in standalone CTA blocks */
-  .prosCons { gap: var(--space-lg); }
-  .prosCons h3 { font-size: 1.3rem !important; }
+.reviewSection h2, .atAGlanceBox h2 { /* Already responsive via clamp */ }
+.ctaSection h2 { font-size: 1.5rem; }
+.prosCons { gap: var(--space-lg); }
+.prosCons h3 { font-size: 1.3rem !important; }
 }
 
 @media (max-width: 480px) { /* Small mobile */
-    .heroCta .btn, .glanceCta .btn {
-        width: 100%; /* Full width buttons in these sections on small mobile */
-        margin-bottom: var(--space-sm);
-    }
-    .heroCta .btn:last-child, .glanceCta .btn:last-child {
-        margin-bottom: 0;
-    }
-    .ratingTooltip {
-      width: calc(100vw - (var(--container-padding-mobile) * 2)); /* Full width minus padding */
-      left: var(--container-padding-mobile) !important;
-      right: var(--container-padding-mobile) !important;
-      transform: translateX(0);
-  }
+  .heroCta .btn, .glanceCta .btn { width: 100%; margin-bottom: var(--space-sm); }
+  .heroCta .btn:last-child, .glanceCta .btn:last-child { margin-bottom: 0; }
+  .ratingTooltip { width: calc(100vw - (var(--container-padding-mobile) * 2)); left: var(--container-padding-mobile) !important; right: var(--container-padding-mobile) !important; transform: translateX(0); }
+  .stickyCtaText { display: none; } /* Hide text on very small screens if button takes too much space */
+  .stickyCtaBar { justify-content: center; } /* Center button if text is hidden */
+
 }
