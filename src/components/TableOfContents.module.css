@@ -92,7 +92,7 @@
 /* Desktop Styles (Sidebar) */
 @media (min-width: 1024px) {
   .tocContainer {
-    position: fixed; /* Sticky to the top of the sidebar area */
+    position: sticky; /* Sticky to the top of the sidebar area */
     /* Use var from globals or define fallback */
     top: 5rem;
     margin-bottom: 30rem;
