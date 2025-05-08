@@ -221,7 +221,7 @@ function AmexGoldReviewPage() {
           Apply Securely Now
         </a>
         {/* Option 2: Link to the summary box or key benefits section */}
-        <Link href="#summaryBox" className={styles.heroSecondaryLink}>
+        <Link href="summaryBoxTitle" className={styles.heroSecondaryLink}>
   View Key Benefits
 </Link>
       </div>
