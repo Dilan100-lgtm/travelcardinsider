@@ -221,7 +221,7 @@ function AmexGoldReviewPage() {
           Apply Securely Now
         </a>
         {/* Option 2: Link to the summary box or key benefits section */}
-        <Link href="summaryBoxTitle" className={styles.heroSecondaryLink}>
+        <Link href="#summaryBoxTitle" className={styles.heroSecondaryLink}>
   View Key Benefits
 </Link>
       </div>
@@ -325,7 +325,7 @@ function AmexGoldReviewPage() {
                 </header>
 
                 {/* ============= AT-A-GLANCE SUMMARY BOX (NEW) ============= */}
-                <div className={styles.summaryBox}>
+                <div className={styles.summaryBox} id="summaryBoxTitle">
                   <h2 className={styles.summaryBoxTitle}>Amex Gold: Key Insights</h2>
                   <div className={styles.summaryGrid}>
                     {/* Welcome Offer */}
