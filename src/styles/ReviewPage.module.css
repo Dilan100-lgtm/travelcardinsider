@@ -2,8 +2,9 @@
 
 /* =============== BASE & CONTAINER =============== */
 .reviewContainer {
-  max-width: 1200px;
-  margin: 2rem auto 3rem auto;
+  max-width: 1200px; /* This will be the content width within mainContentArea */
+  margin: 0 auto; /* Centered within mainContentArea if mainContentArea is wider */
+  /* Removed top/bottom margin, handle via reviewPageLayout or mainContentArea padding */
   padding: 2rem clamp(1rem, 5vw, 3rem);
   background-color: #ffffff;
   border-radius: 8px;
@@ -39,10 +40,10 @@
   font-family: 'Playfair Display', serif;
   font-size: clamp(1.6rem, 4.5vw, 2.2rem);
   color: #2c3e50;
-  margin-top: 0;
+  margin-top: 0; /* Sections should have their own top margin if needed, or rely on parent gap */
   margin-bottom: 1.5rem;
   padding-bottom: 0.5rem;
-  border-bottom: 3px solid #0073e6;
+  border-bottom: 3px solid #0073e6; /* Consider using a CSS variable from globals.css */
   display: inline-block;
 }
 
@@ -62,7 +63,7 @@
 
 .reviewContainer strong {
   font-weight: 700;
-  color: #0056b3;
+  color: #0056b3; /* Consider using a CSS variable */
 }
 
 .reviewContainer em {
@@ -72,37 +73,37 @@
 
 .reviewContainer ul,
 .reviewContainer ol {
-  margin-left: 1.5rem;
+  margin-left: 1.5rem; /* Default list styling */
   padding-left: 0.5rem;
   margin-bottom: 1.5rem;
 }
 
 .reviewContainer li {
   margin-bottom: 0.75rem;
-  padding-left: 0.5rem;
+  padding-left: 0.5rem; /* Default list styling */
 }
 
-.featureList {
+.featureList { /* Specific styling for feature lists */
   list-style: none;
   padding-left: 0;
 }
 .featureList li {
   position: relative;
-  padding-left: 1.75em;
+  padding-left: 1.75em; /* Space for the custom bullet */
   margin-bottom: 0.8rem;
 }
 .featureList li::before {
-  content: '✓';
+  content: '✓'; /* Custom bullet */
   position: absolute;
   left: 0;
-  color: #28a745;
+  color: #28a745; /* Green checkmark - consider CSS variable */
   font-weight: bold;
   font-size: 1.1em;
-  line-height: 1.3;
+  line-height: 1.3; /* Ensure it aligns well with the text */
 }
 
 .numberedList {
-  list-style-type: decimal;
+  list-style-type: decimal; /* Standard numbered list */
 }
 
 /* =============== HEADER & INTRO =============== */
@@ -116,23 +117,22 @@
 .cardImageContainer {
   margin: 1.5rem auto;
   max-width: 480px;
-  line-height: 0;
-  display: flex; /* Add flexbox */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically (if needed) */
+  line-height: 0; /* Remove space below image if it's an inline block */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .cardImage {
-  display: block;
+  display: block; /* Or inline-block if preferred, ensure no extra space */
   max-width: 100%;
   height: auto;
- 
 }
 
 .ratingSection {
   margin-top: 1.5rem;
   display: flex;
-  flex-direction: column; /* Stack rating and stars */
+  flex-direction: column;
   align-items: center;
   gap: 0.75rem;
 }
@@ -141,58 +141,57 @@
   font-size: 1.1rem;
   font-weight: 500;
   color: #333;
-  background-color: #e9ecef;
+  background-color: #e9ecef; /* Light gray background - consider CSS variable */
   padding: 0.3rem 0.8rem;
-  border-radius: 15px;
-  display: inline-flex; /* Use flex for icon alignment */
+  border-radius: 15px; /* Pill shape */
+  display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  position: relative; /* Space between icon and text */
+  position: relative; /* For tooltip positioning if needed */
 }
 
 .tciRating strong {
   font-weight: 700;
-  color: #0056b3;
+  color: #0056b3; /* Blue for emphasis - consider CSS variable */
 }
 
-/* Rating Icon Button Styles (Copied & adapted) */
 .infoIconButton {
   background: none;
   border: none;
   padding: 2px;
-  margin: 0; /* Reset margin */
+  margin: 0;
   cursor: pointer;
   line-height: 0;
-  border-radius: 50%; /* Make it round */
-  display: inline-flex; /* Ensure it aligns */
+  border-radius: 50%;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  vertical-align: middle; /* Align with text */
-  color: #6c757d; /* Icon color */
+  vertical-align: middle;
+  color: #6c757d; /* Icon color - consider CSS variable */
   transition: background-color 0.2s ease;
 }
 .infoIconButton:hover {
   background-color: rgba(0, 0, 0, 0.05);
 }
 .infoIconButton:focus-visible {
-  outline: 2px solid #0d6efd;
+  outline: 2px solid #0d6efd; /* Focus outline color - consider CSS variable */
   outline-offset: 1px;
   background-color: rgba(13, 110, 253, 0.1);
 }
 .infoIcon {
   display: inline-block;
   fill: currentColor;
-  opacity: 0.8; /* Slightly more visible */
-  width: 16px; /* Adjusted size */
-  height: 16px; /* Adjusted size */
+  opacity: 0.8;
+  width: 16px;
+  height: 16px;
 }
 .infoIconButton:hover .infoIcon {
   opacity: 1;
 }
 
 .starRating {
-  font-size: 1.8rem;
-  color: #e0e0e0;
+  font-size: 1.8rem; /* Size of stars */
+  color: #e0e0e0; /* Empty star color - consider CSS variable */
   position: relative;
   display: inline-block;
   line-height: 1;
@@ -203,12 +202,12 @@
   top: 0;
   white-space: nowrap;
   overflow: hidden;
-  color: #ffc107;
-  width: var(--rating, 0%);
+  color: #ffc107; /* Filled star color (gold) - consider CSS variable */
+  width: var(--rating, 0%); /* Controlled by inline style in JS */
 }
 
 .ratingDescription {
-  font-size: 1rem; /* Slightly larger description */
+  font-size: 1rem;
   font-style: italic;
   color: #555;
   margin-top: 1rem;
@@ -218,86 +217,122 @@
   line-height: 1.6;
 }
 
-.intro p {
+/* Styles for the introductory paragraph(s) if different from general p */
+.introAndImageWrapper { /* New wrapper from amex-gold.js for layout */
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg, 24px);
+    margin-bottom: var(--spacing-lg, 24px);
+}
+.intro p { /* Targeting paragraphs within the .intro div specifically */
   font-size: 1.15rem;
   line-height: 1.8;
-  max-width: 70ch;
-  margin: 1.5rem auto 0 auto;
+  max-width: 70ch; /* Limit line length for readability */
+  margin: 0 auto 0 auto; /* Center if text-align: center on parent */
   color: #222;
-  font-display: swap;
-
 }
+@media (min-width: 768px) { /* Example: side-by-side intro text and image */
+    .introAndImageWrapper {
+        flex-direction: row;
+        align-items: center; /* Vertically align text and image */
+    }
+    .intro {
+        flex: 1; /* Allow text to take available space */
+        text-align: left; /* Align text left on larger screens */
+    }
+    .intro p {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .cardImageContainer {
+        flex-basis: 40%; /* Or a fixed width, e.g., 300px */
+        max-width: 480px; /* Keep max width */
+        margin: 0; /* Reset margin */
+    }
+}
+
 
 /* =============== TABLES (Responsive Scroll) =============== */
 .tableContainer {
   width: 100%;
-  overflow-x: auto; /* Use horizontal scroll */
-  -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   margin-bottom: 2rem;
-  border: 1px solid #dee2e6;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  border: 1px solid var(--color-border, #dee2e6); /* Use global border */
+  border-radius: var(--border-radius-md, 8px); /* Use global radius */
+  box-shadow: var(--shadow-sm, 0 1px 2px rgba(0,0,0,0.05)); /* Use global shadow */
 }
 
 .statsTable {
-  width: 100%; /* Full width inside container */
-  min-width: 600px; /* Minimum width before scrolling starts */
-  border-collapse: collapse; /* Clean borders */
-  border: none;
+  width: 100%;
+  min-width: 600px; /* Minimum width before horizontal scroll kicks in */
+  border-collapse: collapse;
+  border: none; /* Remove outer border, rely on container */
   box-shadow: none;
   margin-bottom: 0;
   font-size: 0.95rem;
 }
 
 .statsTable thead {
-  background-color: #f8f9fa;
+  background-color: var(--color-background-subtle, #f8f9fa); /* Use global subtle bg */
 }
 
 .statsTable th {
-  background-color: transparent;
-  color: #495057;
+  background-color: transparent; /* Header cells transparent */
+  color: var(--color-text-secondary, #495057); /* Use global text color */
   font-weight: 600;
   text-align: left;
   padding: 1rem 1.2rem;
-  border-bottom: 2px solid #dee2e6;
-  border-right: 1px solid #e9ecef; /* Add vertical borders */
-  white-space: nowrap; /* Prevent header text wrapping */
+  border-bottom: 2px solid var(--color-border, #dee2e6);
+  border-right: 1px solid var(--color-border-light, #e9ecef); /* Lighter border for vertical lines */
+  white-space: nowrap;
 }
 .statsTable th:last-child { border-right: none; }
 
 .statsTable td {
   padding: 1rem 1.2rem;
-  border: none; /* Remove individual cell borders */
-  border-bottom: 1px solid #e9ecef; /* Horizontal row separators */
-  border-right: 1px solid #e9ecef; /* Vertical column separators */
-  vertical-align: middle; /* Vertically center content */
+  border: none;
+  border-bottom: 1px solid var(--color-border-light, #e9ecef);
+  border-right: 1px solid var(--color-border-light, #e9ecef);
+  vertical-align: middle;
   color: #555;
-  white-space: normal; /* Allow content wrapping */
+  white-space: normal; /* Allow content to wrap */
 }
 .statsTable td:last-child { border-right: none; }
 
 .statsTable tbody tr:last-child td {
   border-bottom: none;
 }
-.statsTable tbody tr:nth-child(even) {
-   background-color: #ffffff;
+.statsTable tbody tr:nth-child(even) { /* Optional: Zebra striping */
+   background-color: var(--color-background-white, #ffffff); /* Ensure it's not transparent if container has color */
 }
-.statsTable td:first-child {
+.statsTable tbody tr:nth-child(odd) {
+   background-color: var(--color-background-subtle, #f8f9fa); /* If you want striping */
+}
+.statsTable td:first-child { /* First column often contains row headers */
   font-weight: 500;
   color: #333;
 }
 
-/* Remove stacking styles from media query */
+/* Responsive table: Keep as scrollable on small screens, remove stacking */
 @media (max-width: 650px) {
-  .statsTable thead { display: table-header-group; } /* Keep header visible */
+  .statsTable thead { display: table-header-group; }
   .statsTable tr { display: table-row; margin-bottom: 0; border: none; box-shadow: none; padding: 0;}
-  .statsTable td { display: table-cell; text-align: left !important; padding-left: 1rem; position: static; border-bottom: 1px solid #e9ecef; border-right: 1px solid #e9ecef; }
+  .statsTable td { display: table-cell; text-align: left !important; /* Important to override any center align from previous */ padding-left: 1rem; position: static; border-bottom: 1px solid var(--color-border-light, #e9ecef); border-right: 1px solid var(--color-border-light, #e9ecef); }
   .statsTable td:last-child { border-right: none; }
   .statsTable tbody tr:last-child td { border-bottom: none; }
-  .statsTable td::before { content: none; } /* Remove pseudo-headers */
-  .statsTable td[data-label="Details"] { text-align: left !important; } /* Ensure details align left */
-   /* Adjust padding for smaller screens */
-  .statsTable th, .statsTable td { padding: 0.8rem; font-size: 0.9rem; }
+  .statsTable td::before { content: none; } /* Remove data-label pseudo-elements if they existed */
+  .statsTable td[data-label="Details"] { text-align: left !important; }
+  .statsTable th, .statsTable td { padding: 0.8rem; font-size: 0.9rem; } /* Slightly smaller padding/font on mobile */
+}
+/* Style for the total row in the credits summary table */
+.totalRow td {
+  font-weight: bold;
+  color: var(--text-dark, #111827); /* Use a darker color for emphasis */
+  background-color: var(--bg-light-gray, #f9fafb); /* Slightly different background */
+}
+.totalRow td:first-child {
+  text-align: right; /* If you want "Total Potential" to align right before the value */
 }
 
 
@@ -305,63 +340,64 @@
 .ctaSection {
   text-align: center;
   padding: 2.5rem 1.5rem;
-  background: linear-gradient(135deg, #e0f7fa, #b2ebf2); /* Light teal gradient */
-  border: 1px solid #80deea; /* Teal border */
-  border-radius: 8px;
+  background: linear-gradient(135deg, var(--primary-blue-light-bg, #e0f7fa), var(--primary-blue-light-border, #b2ebf2)); /* Use global vars if possible */
+  border: 1px solid var(--primary-blue-light-border, #80deea);
+  border-radius: var(--border-radius-md, 8px);
   margin: 3rem 0;
-  box-shadow: 0 4px 15px rgba(0, 150, 136, 0.1);
-  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0, 150, 136, 0.1); /* Consider using global shadow variable */
+  text-decoration: none; /* If the section itself is a link (unlikely) */
 }
 .ctaSection h2 {
   font-size: clamp(1.6rem, 4.5vw, 2rem);
-  color: #00796b; /* Dark Teal */
+  color: var(--primary-blue-text-dark, #00796b); /* Dark Teal or primary dark text */
   margin-top: 0;
   margin-bottom: 1.5rem;
-  border: none;
-  display: block;
+  border: none; /* Remove border inherited from generic h2 */
+  display: block; /* Ensure it's block for text-align center to work on it */
 }
-.ctaSection h2 b { color: #004d40; font-weight: 700; } /* Even darker teal for emphasis */
+.ctaSection h2 b { color: var(--primary-blue-dark, #004d40); font-weight: 700; }
 
 .ctaButtons {
   display: flex;
   justify-content: center;
-  gap: 1.2rem; /* Increased gap */
-  flex-wrap: wrap;
+  gap: 1.2rem;
+  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
 }
-.ctaButtons .btn {
-  padding: 0.9rem 2rem; /* Larger padding */
+.ctaButtons .btn { /* General button styling for CTA section */
+  padding: 0.9rem 2rem;
   font-size: 1.05rem;
   font-weight: 600;
   border-radius: 25px; /* Pill shape */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow-sm, 0 4px 8px rgba(0,0,0,0.1)); /* Use global shadow */
   transition: all 0.3s ease;
   border: none;
   cursor: pointer;
   text-decoration: none;
+  line-height: 1.5; /* Ensure good line height */
 }
 .ctaButtons .btn:hover {
-   box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+   box-shadow: var(--shadow-md, 0 6px 12px rgba(0,0,0,0.15)); /* Use global shadow */
    transform: translateY(-2px);
 }
 .ctaButtons .btn:active {
   transform: translateY(0px) scale(0.98);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Simpler shadow on active */
 }
+/* Specific CTA button styles */
 .ctaButtons .btnApply {
-   background: linear-gradient(135deg, #4caf50, #2e7d32); /* Green gradient */
+   background: linear-gradient(135deg, var(--value-good, #4caf50), var(--color-success, #2e7d32)); /* Green gradient using global success */
    color: white;
 }
-.ctaButtons .btnApply:hover { background: linear-gradient(135deg, #5cb85c, #388e3c); }
+.ctaButtons .btnApply:hover { background: linear-gradient(135deg, #5cb85c, #388e3c); } /* Slightly lighter green */
 
 .ctaButtons .btnRates {
-  background: linear-gradient(135deg, #6c757d, #495057); /* Grey gradient */
+  background: linear-gradient(135deg, var(--secondary-gray, #6c757d), var(--secondary-gray-dark, #495057)); /* Grey gradient using global grays */
   color: white;
 }
-.ctaButtons .btnRates:hover { background: linear-gradient(135deg, #868e96, #5a6268); }
+.ctaButtons .btnRates:hover { background: linear-gradient(135deg, #868e96, #5a6268); } /* Slightly lighter gray */
 
-/* Focus styles for buttons */
 .ctaButtons .btn:focus-visible {
-  outline: 3px solid rgba(0, 123, 255, 0.5);
+  outline: 3px solid var(--primary-blue-focus, rgba(0, 123, 255, 0.5)); /* Use global focus var */
   outline-offset: 2px;
 }
 
@@ -369,10 +405,10 @@
 .prosCons {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem; /* Wider gap */
+  gap: 3rem;
   margin-top: 2rem;
-  padding-top: 2rem; /* Add padding above */
-  border-top: 1px dashed #ccc; /* Separator */
+  padding-top: 2rem;
+  border-top: 1px dashed #ccc;
 }
 .prosCons h3 {
   font-size: 1.5rem;
@@ -381,8 +417,8 @@
   padding-bottom: 0.4rem;
   display: inline-block;
 }
-.pros h3 { color: #198754; border-color: #198754;}
-.cons h3 { color: #dc3545; border-color: #dc3545;}
+.pros h3 { color: var(--value-good, #198754); border-color: var(--value-good, #198754);} /* Use global success color */
+.cons h3 { color: var(--value-bad, #dc3545); border-color: var(--value-bad, #dc3545);} /* Use global danger color */
 
 .pros ul, .cons ul {
   list-style: none;
@@ -390,48 +426,55 @@
   margin-top: 0;
 }
 .pros li, .cons li {
-  padding-left: 1.75em;
+  padding-left: 1.75em; /* Space for custom bullet */
+  position: relative; /* For ::before positioning */
   margin-bottom: 0.8rem;
-  font-size: 0.95rem; /* Slightly larger list text */
+  font-size: 0.95rem;
 }
-.pros li::before { content: '✓ '; color: #198754; margin-right: 0.6em; font-weight: bold;}
-.cons li::before { content: '✕ '; color: #dc3545; margin-right: 0.6em; font-weight: bold;}
+.pros li::before { content: '✓ '; color: var(--value-good, #198754); margin-right: 0.6em; font-weight: bold; position: absolute; left: 0; }
+.cons li::before { content: '✕ '; color: var(--value-bad, #dc3545); margin-right: 0.6em; font-weight: bold; position: absolute; left: 0; }
 
 @media (max-width: 600px) {
   .prosCons {
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr; /* Stack on smaller screens */
       gap: 2rem;
   }
 }
 
 /* =============== E-A-T Section =============== */
 .eatSection {
-  background-color: #f0f8ff;
-  border: 1px solid #b0e0e6;
+  background-color: var(--bg-light-gray, #f0f8ff); /* Use global light gray */
+  border: 1px solid var(--border-color-light, #b0e0e6); /* Use global light border */
   padding: 2rem;
-  border-radius: 8px;
+  border-radius: var(--border-radius-md, 8px);
   margin-top: 3rem;
 }
-.eatSection h2 {
+.eatSection h2 { /* EAT Section specific h2 */
   text-align: center;
-  color: #4682b4;
-  border-bottom-color: #add8e6;
+  color: var(--primary-blue-text-dark, #4682b4); /* Use global var or specific */
+  border-bottom-color: var(--primary-blue-light-border, #add8e6); /* Match border color */
   margin-bottom: 1.5rem;
 }
 .eatSection h3 {
-  color: #5f9ea0;
+  color: var(--text-medium, #5f9ea0); /* Use global var */
   margin-top: 1.8rem;
   margin-bottom: 0.8rem;
   font-size: 1.25rem;
 }
-.eatSection ul {
+.eatSection ul { /* EAT section uses its own feature list, not the green check one */
   list-style-type: disc;
   margin-bottom: 1rem;
+  padding-left: 1.5rem; /* Ensure standard ul padding */
 }
 .eatSection li {
   margin-bottom: 0.6rem;
   color: #444;
+  padding-left: 0; /* Reset padding from .featureList if it was globally applied to li */
 }
+.eatSection li::before {
+    content: none; /* Remove custom bullet from .featureList if it was globally applied */
+}
+
 .eatSection p:last-of-type {
   margin-top: 1.5rem;
   font-style: italic;
@@ -439,10 +482,11 @@
   color: #555;
 }
 
-/* =============== Tooltip Styles (Copied) =============== */
+
+/* =============== Tooltip Styles (Copied from original) =============== */
 .ratingTooltip {
   position: absolute;
-  top: 120%; /* Push below the button */
+  top: 120%;
   left: 50%;
   transform: translateX(-50%);
   background-color: #ffffff;
@@ -466,7 +510,7 @@
 .tooltipIntro {
   margin: 0.5rem 0 0.3rem 0;
   font-weight: 500;
-  color: #333; /* Ensure text color */
+  color: #333;
 }
 .tooltipList {
   list-style: disc;
@@ -475,21 +519,68 @@
 }
 .tooltipList li {
   margin-bottom: 0.25rem;
-  color: #444; /* Ensure text color */
+  color: #444;
+  padding-left: 0; /* Reset padding from general li if needed */
 }
+.tooltipList li::before {
+    content: none; /* Reset ::before from general li if needed */
+}
+
 @media (max-width: 480px) {
   .ratingTooltip {
-      width: calc(100% - 2rem);
+      width: calc(100% - 2rem); /* Full width minus some padding */
       max-width: 300px;
-      left: 1rem !important; /* Force position on small screens */
-      right: 1rem;
+      left: 50%; /* Keep centered with transform */
+      transform: translateX(-50%);
+      /* Consider if it should be fixed to viewport edge if space is very limited */
   }
 }
 
-/* =============== RESPONSIVE ADJUSTMENTS =============== */
+/* =============== NEW LAYOUT STYLES FOR TOC INTEGRATION =============== */
+.reviewPageLayout {
+  display: flex;
+  flex-direction: column; /* Mobile first: ToC will be fixed/off-canvas */
+  gap: var(--spacing-lg, 24px); /* Gap between content and sidebar on desktop */
+  max-width: 1600px; /* Overall max width for the page content including sidebar */
+  margin: 2rem auto 3rem auto; /* Top and bottom margin for the whole layout */
+  padding: 0 var(--spacing-md, 16px); /* Horizontal padding for the layout */
+}
+
+.mainContentArea {
+  flex-grow: 1; /* Allows the main content to take available space */
+  min-width: 0; /* Fix for flex items overflowing */
+}
+
+.sidebarArea {
+  width: 100%; /* On mobile, ToC component itself handles its appearance */
+}
+
+@media (min-width: 1024px) { /* Desktop breakpoint (match ToC CSS) */
+  .reviewPageLayout {
+    flex-direction: row; /* Side-by-side layout for content and sidebar */
+    align-items: flex-start; /* Align items to the top */
+  }
+
+  .mainContentArea {
+    /* Let flexbox handle width calculation based on sidebar's fixed width */
+    /* max-width: calc(100% - var(--toc-width-desktop, 280px) - var(--spacing-lg, 24px)); */
+    /* The above max-width can be removed if flex-grow:1 on mainContentArea and fixed width on sidebarArea is preferred */
+  }
+
+  .sidebarArea {
+    width: var(--toc-width-desktop, 280px); /* Use variable defined in ToC CSS or globals */
+    flex-shrink: 0; /* Prevent sidebar from shrinking */
+    /* ToC component inside .sidebarArea will handle its own sticky positioning */
+  }
+}
+
+
+/* =============== RESPONSIVE ADJUSTMENTS (Existing) =============== */
 @media (max-width: 768px) {
-  .reviewContainer {
+  .reviewContainer { /* This now applies to content within mainContentArea */
       padding: 1.5rem clamp(1rem, 4vw, 2rem);
+      margin-top: 0; /* Remove top margin if reviewPageLayout handles it */
+      margin-bottom: 0; /* Remove bottom margin if reviewPageLayout handles it */
   }
   .reviewHeader h1 {
       font-size: clamp(2rem, 5.5vw, 2.8rem);
