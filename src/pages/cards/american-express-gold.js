@@ -9,15 +9,17 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from '../../styles/ReviewPage.module.css'; // Using the REVIEW CSS module
-import TableOfContents from '../../components/TableOfContents'; // Import the new ToC component
+import dynamic from 'next/dynamic'; // <<< THIS LINE WAS MISSING. ADD IT HERE.
+import styles from '../../styles/ReviewPage.module.css';
+import TableOfContents from '../../components/TableOfContents';
 
 // Assuming SVGR is configured in your Next.js project to handle SVG imports as components
 import IconGift from '../../components/icons/icon-gift.svg';
 import IconStar from '../../components/icons/icon-star.svg';
-import IconCheck from '../../components/icons/icon-Credit Card.svg'; // Ensure file name is correct
-import IconX from '../../components/icons/icon-Star + Arrow Up.svg';   // Ensure file name is correct
+import IconCheck from '../../components/icons/icon-Credit Card.svg';
+import IconX from '../../components/icons/icon-Star + Arrow Up.svg';
 import IconPlus from '../../components/icons/icon-target.svg';
+
 const RatingTooltipDynamic = dynamic(() => import('../../components/RatingTooltip'), {
   ssr: false,
   loading: () => null,
