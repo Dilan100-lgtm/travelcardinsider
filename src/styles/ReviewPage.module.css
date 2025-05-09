@@ -739,6 +739,7 @@
 }
 .ratesFeesList dt {
   font-size: 1.2rem;
-  color: #000;
+  color: #9799f5;
   font-weight: 700;
+  font-family: var(--font-condensed, 'Roboto Condensed', var(--font-family-sans, sans-serif));
 }
