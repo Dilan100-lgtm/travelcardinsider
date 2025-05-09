@@ -885,7 +885,7 @@ function CapitalOneQuicksilverOneReviewPage() {
                         Is the $39 annual fee for QuicksilverOne worth it for travelers?
                       </summary>
                       <div className={styles.faqAnswer}>
-                        <p>Yes, if you travel internationally (saving on no FTF<sup>1</sup>) or use the Capital One Travel portal for 5% back on hotels/cars enough to offset it.<sup>2</sup> Spending $1,300 abroad or $780 via the portal can cover the fee.</p>
+                        <p>Yes, if you travel internationally (saving on no FTF) or use the Capital One Travel portal for 5% back on hotels/cars enough to offset it. Spending $1,300 abroad or $780 via the portal can cover the fee.</p>
                       </div>
                     </details>
 
@@ -895,7 +895,7 @@ function CapitalOneQuicksilverOneReviewPage() {
                         What credit score is needed for QuicksilverOne?
                       </summary>
                       <div className={styles.faqAnswer}>
-                        <p>It's for "FAIR" credit, generally FICO scores of 580-689.<sup>1</sup> Use Capital One's pre-approval tool first.<sup>1</sup></p>
+                        <p>It's for "FAIR" credit, generally FICO scores of 580-689. Use Capital One's pre-approval tool first.</p>
                       </div>
                     </details>
 
@@ -925,7 +925,7 @@ function CapitalOneQuicksilverOneReviewPage() {
                         Can I transfer QuicksilverOne cash back to airline miles or hotel points?
                       </summary>
                       <div className={styles.faqAnswer}>
-                        <p>No. Cash back cannot be transferred to external loyalty programs.<sup>24</sup> Redeem for statement credits, checks, gift cards, etc.<sup>1</sup></p>
+                        <p>No. Cash back cannot be transferred to external loyalty programs.<sup>24</sup> Redeem for statement credits, checks, gift cards, etc.</p>
                       </div>
                     </details>
 
@@ -945,7 +945,7 @@ function CapitalOneQuicksilverOneReviewPage() {
                         How quickly can I get a credit limit increase?
                       </summary>
                       <div className={styles.faqAnswer}>
-                        <p>Capital One automatically considers you for a higher credit line in as little as six months with responsible use (on-time payments, low balance).<sup>1</sup> Not guaranteed.</p>
+                        <p>Capital One automatically considers you for a higher credit line in as little as six months with responsible use (on-time payments, low balance). Not guaranteed.</p>
                       </div>
                     </details>
 
@@ -955,7 +955,7 @@ function CapitalOneQuicksilverOneReviewPage() {
                         What if I can't pay my balance in full?
                       </summary>
                       <div className={styles.faqAnswer}>
-                        <p>You'll be charged a very high variable APR (currently 29.74%<sup>1</sup>), quickly negating rewards. A late fee (up to $40<sup>3</sup>) also applies. Avoid carrying a balance.</p>
+                        <p>You'll be charged a very high variable APR (currently 29.74%), quickly negating rewards. A late fee (up to $40) also applies. Avoid carrying a balance.</p>
                       </div>
                     </details>
 
@@ -965,7 +965,7 @@ function CapitalOneQuicksilverOneReviewPage() {
                         Are there better Capital One travel cards if my credit improves?
                       </summary>
                       <div className={styles.faqAnswer}>
-                        <p>Yes. The Venture and Venture X cards (excellent credit) offer miles transferable to partners and more perks.<sup>2</sup> The standard Quicksilver (excellent credit) has 1.5% back with no annual fee.<sup>9</sup></p>
+                        <p>Yes. The Venture and Venture X cards (excellent credit) offer miles transferable to partners and more perks. The standard Quicksilver (excellent credit) has 1.5% back with no annual fee.<sup>9</sup></p>
                       </div>
                     </details>
 
@@ -975,7 +975,7 @@ function CapitalOneQuicksilverOneReviewPage() {
                         How does Eno help with travel?
                       </summary>
                       <div className={styles.faqAnswer}>
-                        <p>Eno, Capital One's assistant, provides virtual card numbers for secure online bookings and alerts for suspicious activity, useful when traveling.<sup>1</sup> It doesn't book travel (that's via Capital One Travel).</p>
+                        <p>Eno, Capital One's assistant, provides virtual card numbers for secure online bookings and alerts for suspicious activity, useful when traveling. It doesn't book travel (that's via Capital One Travel).</p>
                       </div>
                     </details>
                   </div>
