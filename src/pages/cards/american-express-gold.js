@@ -10,8 +10,6 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from '../../styles/ReviewPage.module.css'; // Using the REVIEW CSS module
-import Header from '../../components/Header'; // Assuming path: components/Header.js
-import Footer from '../../components/Footer'; // Assuming path: components/Footer.js
 import TableOfContents from '../../components/TableOfContents'; // Import the new ToC component
 
 // Assuming SVGR is configured in your Next.js project to handle SVG imports as components
@@ -927,7 +925,7 @@ function AmexBusinessGoldReviewPage() {
         </div> {/* Close reviewPageLayout */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }
