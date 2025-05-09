@@ -304,9 +304,7 @@ export default function HomePage({ featuredReviews }) {
         {/* === End Featured Cards Section === */}
 
 
-        {/* === Top Reviews Section (Unchanged) === */}
-        <TopReviewsSection reviews={featuredReviews} />
-        {/* ===================================== */}
+       
 
         {/* Comparison Tool Section (Unchanged) */}
         <section id="compare" className="content-section comparison-section" aria-labelledby="comparison-heading">
