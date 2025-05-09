@@ -30,7 +30,7 @@ const reviewData = {
   title: "Capital One QuicksilverOne Rewards: A US Traveler's Guide to Building Credit with Cash Back - Review 2025", // *** ADJUST YEAR IF NEEDED ***
   description: "In-depth review of the Capital One QuicksilverOne Rewards card. Learn about its 1.5% cash back, 5% on Capital One Travel, no foreign transaction fees, and suitability for fair credit.",
   keywords: 'Capital One, QuicksilverOne, Rewards, Credit Card, Fair Credit, Cash Back, Travel Rewards, No Foreign Transaction Fees, Credit Building',
-  author: '*** YOUR SITE/AUTHOR NAME ***', // *** REPLACE ***
+  author: 'Travelcardinsider', // *** REPLACE ***
   imageUrl: '/qs1_cardart_prim_1290x812.avif', // Source: 9 from review
   ratingValue: 5.4, // From review: "3.5 / 5.0 Stars"
   applyLink: 'https://www.capitalone.com/credit-cards/quicksilverone/', // *** REPLACE ***
@@ -358,7 +358,7 @@ function CapitalOneQuicksilverOneReviewPage() {
                         <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
                       </svg>
                     </button>
-                    {reviewData.author} Rating: <strong>{reviewData.ratingValue.toFixed(1)}</strong>/5.0
+                    TCI Rating: <strong>{reviewData.ratingValue.toFixed(1)}</strong>/10
                     {showRatingInfo && (
       <RatingTooltipDynamic
         ratingValue={reviewData.ratingValue}
@@ -370,7 +370,7 @@ function CapitalOneQuicksilverOneReviewPage() {
                   <div className={styles.starRating} title={`Rated ${reviewData.ratingValue} out of 5 stars`}>
                      {/* Assuming a 5-star system based on review text */}
                       ★★★★★
-                      <span className={styles.filledStars} style={{ '--rating': `${(reviewData.ratingValue / 5) * 100}%` }}>
+                      <span className={styles.filledStars} style={{ '--rating': `${(reviewData.ratingValue / 10) * 100}%` }}>
                         ★★★★★
                       </span>
                   </div>
