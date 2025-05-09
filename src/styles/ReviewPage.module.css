@@ -253,6 +253,7 @@
   flex-shrink: 0;
   line-height: 1;
   margin-right: var(--spacing-xs, 4px);
+  margin: 0.5rem;
   /* TODO: Replace emoji/placeholder with actual SVG/Icon component */
 }
 
@@ -530,7 +531,7 @@
   padding: 1rem;
   margin-top: 1.5rem;
   margin-bottom: 1.5rem; /* Adjusted for mobile */
-  height: 25vh;
+  height: 20vh;
 }
 
 /* --- NEW/UPDATED STYLES FOR CALLS-TO-ACTION (CTAs) --- */
