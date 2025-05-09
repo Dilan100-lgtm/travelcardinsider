@@ -377,14 +377,15 @@
    or update .ctaButtons .btnApply to match the new design.
 */
 .ctaSection {
-  text-align: center; padding: var(--spacing-xl, 32px); /* Use variable */
+  text-align: center; padding: 0.5rem; /* Use variable */
   background: var(--color-background-subtle, #f1f3f5); /* Use variable */
   border: 1px solid var(--color-border, #dfe1e6); /* Use variable */
   border-radius: var(--border-radius-md, 6px); /* Use variable */
   margin: var(--spacing-xl, 32px) 0; /* Use variable */
   box-shadow: none;
   position: sticky; top: 3rem; /* Sticky section */
-  height: 30vh;
+  height: 40vh;
+
 }
 .ctaSection h2 {
   font-family: var(--font-condensed, 'Roboto Condensed', var(--font-family-sans, sans-serif)); /* Preserved */
