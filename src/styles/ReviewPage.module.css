@@ -749,6 +749,7 @@
 .cardImageContainer2 {
   align-items: right;
   width: 100%;
+  overflow: hidden;
 
 }
 
