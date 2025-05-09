@@ -759,6 +759,10 @@
   -webkit-overflow-scrolling: touch; /* Smooth scrolling on touch devices */
   padding-bottom: 10px; /* Optional: Adds some space if scrollbar is visible */
   margin-bottom: 20px; /* Optional: Adds space below the scrollable area */
+  user-select: none; /* Standard */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE/Edge */
 }
 .scrollableTableWrapper:active {
   cursor: grabbing;
