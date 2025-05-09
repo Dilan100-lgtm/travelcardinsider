@@ -533,6 +533,10 @@
   margin-bottom: 1.5rem; /* Adjusted for mobile */
   height: 20vh;
 }
+.heroImageContainer {
+  margin: 0 auto; max-width: 100%; /* Full width on mobile */
+  display: flex; justify-content: center; align-items: center;
+}
 
 /* --- NEW/UPDATED STYLES FOR CALLS-TO-ACTION (CTAs) --- */
 /* These are the styles discussed for the new "premium" CTA design.
@@ -778,8 +782,7 @@
     flex-basis: 45%; /* Adjust ratio */
     margin-top: 0;
     max-width: 600px;
-    align-self: center; /* Max width for image on desktop */
-    margin: auto;
+    margin-left: auto; /* Center image on desktop */
   }
 }
 
