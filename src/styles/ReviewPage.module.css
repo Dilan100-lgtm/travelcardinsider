@@ -747,3 +747,14 @@
     max-width: 600px; /* Max width for image on desktop */
   }
 }
+@media (min-width: 1024px) {
+  nav.tocContainer {
+    position: sticky !important;
+    top: 96px !important;
+    transform: none !important;
+  }
+  .reviewPageLayout,
+  .sidebarArea {
+    overflow: visible !important;
+  }
+}
