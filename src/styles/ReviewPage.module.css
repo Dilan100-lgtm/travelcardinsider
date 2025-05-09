@@ -737,3 +737,6 @@
   display: block;
   text-align: center;
 }
+dt {
+  font-size: 4rem;
+}
