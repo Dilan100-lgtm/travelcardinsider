@@ -431,8 +431,8 @@ function CapitalOneQuicksilverOneReviewPage() {
                 {/* Section 1: Card Snapshot & "Best For" Tagline */}
                 <section id="section-1" className={styles.reviewSection}>
                   <h2>1. Card Snapshot & "Best For" Tagline</h2>
-                  <p>The Capital One QuicksilverOne Rewards Credit Card is tailored for individuals looking to build or improve their credit while earning straightforward rewards. It offers unlimited 1.5% cash back on all purchases, which is appealing for its simplicity.<sup>1</sup> For travelers, a key highlight is the enhanced unlimited 5% cash back on hotels and rental cars booked via the Capital One Travel portal, plus the welcome absence of foreign transaction fees on international spending.<sup>1</sup></p>
-                  <p>This accessibility comes with a $39 annual fee.<sup>1</sup> The card is specifically aimed at those with "FAIR" credit, positioning it as a stepping stone.<sup>1</sup> A notable feature for credit builders is the possibility of a credit line increase review after just six months of responsible use, encouraging timely payments and good financial habits.<sup>1</sup></p>
+                  <p>The Capital One QuicksilverOne Rewards Credit Card is tailored for individuals looking to build or improve their credit while earning straightforward rewards. It offers unlimited 1.5% cash back on all purchases, which is appealing for its simplicity. For travelers, a key highlight is the enhanced unlimited 5% cash back on hotels and rental cars booked via the Capital One Travel portal, plus the welcome absence of foreign transaction fees on international spending.</p>
+                  <p>This accessibility comes with a $39 annual fee. The card is specifically aimed at those with "FAIR" credit, positioning it as a stepping stone. A notable feature for credit builders is the possibility of a credit line increase review after just six months of responsible use, encouraging timely payments and good financial habits.</p>
                   <p><strong>"Best For" Tagline:</strong> The Capital One QuicksilverOne: A practical choice for US travelers with fair credit, offering simple flat-rate cash back, bonus rewards on portal travel bookings, and no foreign transaction fees—ideal for those building credit who pay their balance in full.</p>
                 </section>
 
@@ -440,9 +440,9 @@ function CapitalOneQuicksilverOneReviewPage() {
                 <section id="section-2" className={styles.reviewSection}>
                   <h2>2. Editor's Rating & Concise Verdict and High-Quality Card Image</h2>
                   <p><strong>Editor's Rating:</strong> 3.5 / 5.0 Stars</p>
-                  <p>This rating reflects the QuicksilverOne's solid, if not spectacular, offering for its target demographic. The unlimited 1.5% cash back is competitive for fair credit, and no foreign transaction fees are a significant plus for travelers.<sup>1</sup> The 5% back on Capital One Travel hotel and rental car bookings adds potential, though portal use is required.<sup>2</sup> The $39 annual fee and very high APR are the main drawbacks.<sup>1</sup></p>
+                  <p>This rating reflects the QuicksilverOne's solid, if not spectacular, offering for its target demographic. The unlimited 1.5% cash back is competitive for fair credit, and no foreign transaction fees are a significant plus for travelers. The 5% back on Capital One Travel hotel and rental car bookings adds potential, though portal use is required. The $39 annual fee and very high APR are the main drawbacks.</p>
                   <p><strong>Concise Verdict:</strong></p>
-                  <p>The Capital One QuicksilverOne is a commendable card for US travelers with fair credit who want uncomplicated cash back. Its unlimited 1.5% on everything, 5% on select portal travel, and no foreign transaction fees make it practical.<sup>1</sup> However, the $39 annual fee means you need to spend enough to make it worthwhile (around $2,600 in general purchases<sup>5</sup>), and the steep 29.74% variable APR means it's only for those who clear their balance monthly.<sup>1</sup> It serves its credit-building purpose with basic travel-friendly features, though it lacks a welcome bonus and extensive travel protections.<sup>7</sup></p>
+                  <p>The Capital One QuicksilverOne is a commendable card for US travelers with fair credit who want uncomplicated cash back. Its unlimited 1.5% on everything, 5% on select portal travel, and no foreign transaction fees make it practical. However, the $39 annual fee means you need to spend enough to make it worthwhile (around $2,600 in general purchases), and the steep 29.74% variable APR means it's only for those who clear their balance monthly. It serves its credit-building purpose with basic travel-friendly features, though it lacks a welcome bonus and extensive travel protections.</p>
                   <p><strong>High-Quality Card Image:</strong></p>
                   <div className={styles.cardImageContainer}> {/* You might want a specific style for inline images */}
                     <Image
@@ -472,27 +472,27 @@ function CapitalOneQuicksilverOneReviewPage() {
                   <p>The Capital One QuicksilverOne is built for simplicity and credit building, with a transparent fee structure crucial for its target audience.</p>
                   <h3>Key Features Overview:</h3>
                   <ul className={styles.featureList}>
-                    <li><strong>Unlimited 1.5% Cash Back:</strong> On every purchase, every day, with no caps or rotating categories.<sup>1</sup></li>
-                    <li><strong>Enhanced Travel Rewards:</strong> Unlimited 5% cash back on hotels and rental cars booked via Capital One Travel.<sup>10</sup></li>
-                    <li><strong>Entertainment Rewards:</strong> Unlimited 5% cash back on purchases through Capital One Entertainment.<sup>2</sup></li>
-                    <li><strong>Annual Fee:</strong> $39.<sup>1</sup></li>
-                    <li><strong>No Foreign Transaction Fees:</strong> Ideal for international purchases.<sup>1</sup></li>
-                    <li><strong>Target Credit Level:</strong> Designed for "Fair" credit profiles.<sup>1</sup></li>
-                    <li><strong>Credit Line Increase Review:</strong> Potential for automatic review for a higher credit line in as little as six months.<sup>1</sup></li>
+                    <li><strong>Unlimited 1.5% Cash Back:</strong> On every purchase, every day, with no caps or rotating categories.</li>
+                    <li><strong>Enhanced Travel Rewards:</strong> Unlimited 5% cash back on hotels and rental cars booked via Capital One Travel.</li>
+                    <li><strong>Entertainment Rewards:</strong> Unlimited 5% cash back on purchases through Capital One Entertainment.</li>
+                    <li><strong>Annual Fee:</strong> $39.</li>
+                    <li><strong>No Foreign Transaction Fees:</strong> Ideal for international purchases.</li>
+                    <li><strong>Target Credit Level:</strong> Designed for "Fair" credit profiles.</li>
+                    <li><strong>Credit Line Increase Review:</strong> Potential for automatic review for a higher credit line in as little as six months.</li>
                   </ul>
                   <h3>Full Spectrum of Rates & Fees (as of May 2024):</h3>
                   {/* Using a definition list for better semantics here */}
                   <dl className={styles.ratesFeesList}>
-                    <dt>Annual Fee:</dt><dd>$39.<sup>1</sup> Implication: Must earn enough rewards or save on FTFs to offset.</dd>
-                    <dt>APR for Purchases:</dt><dd>29.74% variable APR.<sup>1</sup> Implication: Very high; carrying a balance is costly and negates rewards.</dd>
-                    <dt>APR for Balance Transfers:</dt><dd>29.74% variable APR.<sup>9</sup> Implication: No introductory offer; expensive for debt consolidation.</dd>
-                    <dt>Balance Transfer Fee:</dt><dd>"$0 at the Transfer APR, 4% of the amount of each transferred balance that posts to your account at a promotional APR that Capital One may offer to you".<sup>3</sup> Capital One's site states a "Balance transfer fee applies".<sup>1</sup> Implication: Likely costly.</dd>
-                    <dt>APR for Cash Advances:</dt><dd>29.74% variable APR.<sup>10</sup> Implication: Extremely expensive.</dd>
-                    <dt>Cash Advance Fee:</dt><dd>Either $5 or 5% of the amount of each cash advance, whichever is greater.<sup>3</sup> Implication: Adds to the high cost of cash advances.</dd>
-                    <dt>Foreign Transaction Fee:</dt><dd>None.<sup>1</sup> Implication: Significant savings for international travelers.</dd>
-                    <dt>Late Payment Fee:</dt><dd>Up to $40.<sup>3</sup> Implication: Standard penalty; also impacts credit score.</dd>
-                    <dt>Returned Payment Fee:</dt><dd>None.<sup>3</sup> Implication: Consumer-friendly.</dd>
-                    <dt>Penalty APR:</dt><dd>None.<sup>3</sup> Implication: A positive, though the standard APR is already very high.</dd>
+                    <dt>Annual Fee:</dt><dd>$39. Implication: Must earn enough rewards or save on FTFs to offset.</dd>
+                    <dt>APR for Purchases:</dt><dd>29.74% variable APR. Implication: Very high; carrying a balance is costly and negates rewards.</dd>
+                    <dt>APR for Balance Transfers:</dt><dd>29.74% variable APR. Implication: No introductory offer; expensive for debt consolidation.</dd>
+                    <dt>Balance Transfer Fee:</dt><dd>"$0 at the Transfer APR, 4% of the amount of each transferred balance that posts to your account at a promotional APR that Capital One may offer to you". Capital One's site states a "Balance transfer fee applies". Implication: Likely costly.</dd>
+                    <dt>APR for Cash Advances:</dt><dd>29.74% variable APR. Implication: Extremely expensive.</dd>
+                    <dt>Cash Advance Fee:</dt><dd>Either $5 or 5% of the amount of each cash advance, whichever is greater. Implication: Adds to the high cost of cash advances.</dd>
+                    <dt>Foreign Transaction Fee:</dt><dd>None. Implication: Significant savings for international travelers.</dd>
+                    <dt>Late Payment Fee:</dt><dd>Up to $40. Implication: Standard penalty; also impacts credit score.</dd>
+                    <dt>Returned Payment Fee:</dt><dd>None. Implication: Consumer-friendly.</dd>
+                    <dt>Penalty APR:</dt><dd>None. Implication: A positive, though the standard APR is already very high.</dd>
                   </dl>
                   <p>The fee structure underscores the card's positioning: the annual fee is a consideration, but no foreign transaction fees are a boon. The consistently high APR across the board dictates that this card is best for those who pay their balance in full monthly.</p>
                 </section>
@@ -500,22 +500,22 @@ function CapitalOneQuicksilverOneReviewPage() {
                 {/* Section 4: Current Welcome Offer & Eligibility Deep Dive */}
                 <section id="section-4" className={styles.reviewSection}>
                   <h2>4. Current Welcome Offer & Eligibility Deep Dive</h2>
-                  <p>The Capital One QuicksilverOne typically does not offer a welcome bonus for new cardmembers, nor does it provide an introductory APR period for purchases or balance transfers.<sup>7</sup> This is a key difference from cards aimed at users with excellent credit, like the standard Quicksilver, which often features both.<sup>14</sup> The QuicksilverOne's value from the start relies on its ongoing rewards and benefits.</p>
+                  <p>The Capital One QuicksilverOne typically does not offer a welcome bonus for new cardmembers, nor does it provide an introductory APR period for purchases or balance transfers. This is a key difference from cards aimed at users with excellent credit, like the standard Quicksilver, which often features both. The QuicksilverOne's value from the start relies on its ongoing rewards and benefits.</p>
                   <h3>Eligibility Deep Dive:</h3>
-                  <p>Capital One markets this card to individuals with "FAIR" credit.<sup>1</sup> This generally translates to FICO scores in the 580-689 range.<sup>4</sup> However, Capital One considers an applicant's entire financial profile, including income and existing debt.<sup>17</sup></p>
-                  <p>To help applicants, Capital One offers a pre-approval tool that checks eligibility without a hard credit inquiry, which is beneficial for those actively building credit.<sup>1</sup> The card is designed as a credit-building tool, with responsible use (on-time payments, low credit utilization) being crucial.<sup>7</sup> Supporting this, cardholders may be automatically considered for a higher credit line in as little as six months.<sup>1</sup></p>
+                  <p>Capital One markets this card to individuals with "FAIR" credit. This generally translates to FICO scores in the 580-689 range. However, Capital One considers an applicant's entire financial profile, including income and existing debt.</p>
+                  <p>To help applicants, Capital One offers a pre-approval tool that checks eligibility without a hard credit inquiry, which is beneficial for those actively building credit. The card is designed as a credit-building tool, with responsible use (on-time payments, low credit utilization) being crucial. Supporting this, cardholders may be automatically considered for a higher credit line in as little as six months.</p>
                 </section>
 
                 {/* Section 5: Annual Fee: Cost vs. Value Analysis */}
                 <section id="section-5" className={styles.reviewSection}>
                   <h2>5. Annual Fee: Cost vs. Value Analysis</h2>
-                  <p>The Capital One QuicksilverOne carries a $39 annual fee, a key consideration for anyone, especially those with fair credit.<sup>1</sup> To offset this fee solely through the 1.5% cash back on general purchases, you'd need to spend $2,600 annually (about $217 per month).<sup>5</sup></p>
+                  <p>The Capital One QuicksilverOne carries a $39 annual fee, a key consideration for anyone, especially those with fair credit. To offset this fee solely through the 1.5% cash back on general purchases, you'd need to spend $2,600 annually (about $217 per month).</p>
                   <p>For travelers, the value proposition improves:</p>
                   <ul className={styles.featureList}>
-                    <li><strong>No Foreign Transaction Fees:</strong> Spending $1,300 internationally saves you about $39 in typical 3% fees, directly covering the annual cost.<sup>1</sup></li>
-                    <li><strong>5% Cash Back via Capital One Travel:</strong> Booking $780 in hotels or rental cars through the portal earns $39 back, neutralizing the fee.<sup>2</sup></li>
+                    <li><strong>No Foreign Transaction Fees:</strong> Spending $1,300 internationally saves you about $39 in typical 3% fees, directly covering the annual cost.</li>
+                    <li><strong>5% Cash Back via Capital One Travel:</strong> Booking $780 in hotels or rental cars through the portal earns $39 back, neutralizing the fee.</li>
                   </ul>
-                  <p>Compared to no-annual-fee cards for fair credit (like the Capital One Platinum, which offers no rewards<sup>5</sup>), the QuicksilverOne provides rewards and travel perks. The fee is justified for regular international travelers, users of the Capital One Travel portal, moderate-to-high spenders, and credit builders who value these specific benefits. The fee reflects the "fair credit" targeting, helping Capital One manage risk while offering a rewards program.<sup>11</sup></p>
+                  <p>Compared to no-annual-fee cards for fair credit (like the Capital One Platinum, which offers no rewards), the QuicksilverOne provides rewards and travel perks. The fee is justified for regular international travelers, users of the Capital One Travel portal, moderate-to-high spenders, and credit builders who value these specific benefits. The fee reflects the "fair credit" targeting, helping Capital One manage risk while offering a rewards program.</p>
                 </section>
 
                 {/* Section 6: Comprehensive Rewards Earning Structure */}
@@ -523,37 +523,37 @@ function CapitalOneQuicksilverOneReviewPage() {
                   <h2>6. Comprehensive Rewards Earning Structure</h2>
                   <p>The QuicksilverOne offers a straightforward yet potentially lucrative rewards structure.</p>
                   <ul className={styles.featureList}>
-                    <li><strong>Primary Earning Rate:</strong> Unlimited 1.5% cash back on every purchase, every day.<sup>1</sup> This simplicity is a major draw, eliminating the need to track categories or spending caps. Rewards do not expire for the life of the account (if in good standing).<sup>1</sup></li>
-                    <li><strong>Bonus Category 1: Capital One Travel Portal:</strong> Earn unlimited 5% cash back on hotels and rental cars booked through Capital One Travel.<sup>10</sup> Note that flights booked via the portal earn the standard 1.5%.<sup>18</sup> This encourages use of Capital One's platform, but always compare prices to ensure true value.</li>
-                    <li><strong>Bonus Category 2: Capital One Entertainment:</strong> Earn unlimited 5% cash back on purchases made through Capital One Entertainment, which offers access to tickets for various events, sometimes with exclusive perks.<sup>2</sup></li>
+                    <li><strong>Primary Earning Rate:</strong> Unlimited 1.5% cash back on every purchase, every day. This simplicity is a major draw, eliminating the need to track categories or spending caps. Rewards do not expire for the life of the account (if in good standing).</li>
+                    <li><strong>Bonus Category 1: Capital One Travel Portal:</strong> Earn unlimited 5% cash back on hotels and rental cars booked through Capital One Travel. Note that flights booked via the portal earn the standard 1.5%. This encourages use of Capital One's platform, but always compare prices to ensure true value.</li>
+                    <li><strong>Bonus Category 2: Capital One Entertainment:</strong> Earn unlimited 5% cash back on purchases made through Capital One Entertainment, which offers access to tickets for various events, sometimes with exclusive perks.</li>
                   </ul>
-                  <p>Beyond these portal-specific bonuses, the 1.5% rate applies universally, ensuring consistent rewards on all other spending.<sup>1</sup> The value of the 5% categories depends on using Capital One's platforms and their price competitiveness.</p>
+                  <p>Beyond these portal-specific bonuses, the 1.5% rate applies universally, ensuring consistent rewards on all other spending. The value of the 5% categories depends on using Capital One's platforms and their price competitiveness.</p>
                 </section>
 
                 {/* Section 7: Redemption Strategies & Point/Mile Valuation */}
                 <section id="section-7" className={styles.reviewSection}>
                   <h2>7. Redemption Strategies & Point/Mile Valuation</h2>
-                  <p>The QuicksilverOne earns pure cash back, valued at 1 cent per 1% earned, offering simplicity and flexibility.<sup>1</sup></p>
-                  <h3>Redemption Options:<sup>1</sup></h3>
+                  <p>The QuicksilverOne earns pure cash back, valued at 1 cent per 1% earned, offering simplicity and flexibility.</p>
+                  <h3>Redemption Options:</h3>
                   <ul className={styles.featureList}>
                     <li><strong>Statement Credit:</strong> Apply cash back to reduce your card balance.</li>
                     <li><strong>Check:</strong> Receive your rewards as a physical check.</li>
                     <li><strong>Cover Recent Purchases:</strong> Use cash back to "erase" specific recent transactions.</li>
                     <li><strong>Gift Cards:</strong> Convert rewards into gift cards from various merchants.</li>
-                    <li><strong>PayPal & Amazon.com:</strong> Link your card to use rewards directly at checkout on these platforms.<sup>14</sup></li>
-                    <li><strong>Capital One Travel:</strong> Apply cash back towards travel bookings made through the portal.<sup>1</sup></li>
+                    <li><strong>PayPal & Amazon.com:</strong> Link your card to use rewards directly at checkout on these platforms.</li>
+                    <li><strong>Capital One Travel:</strong> Apply cash back towards travel bookings made through the portal.</li>
                   </ul>
-                  <p>Generally, there are no minimum redemption amounts for options like statement credits.<sup>14</sup> Rewards do not expire as long as the account is open and in good standing.<sup>1</sup> For most, redeeming as a statement credit is the most practical approach, directly lowering the outstanding balance.</p>
+                  <p>Generally, there are no minimum redemption amounts for options like statement credits. Rewards do not expire as long as the account is open and in good standing. For most, redeeming as a statement credit is the most practical approach, directly lowering the outstanding balance.</p>
                 </section>
 
                 {/* Section 8: Loyalty Program Deep Dive & Partner Network Analysis */}
                 <section id="section-8" className={styles.reviewSection}>
                   <h2>8. Loyalty Program Deep Dive & Partner Network Analysis</h2>
                   <p>The QuicksilverOne's "loyalty" is centered on Capital One's own platforms rather than traditional airline/hotel partnerships.</p>
-                  <p>The <strong>Capital One Travel portal</strong> is key, offering 5% cash back on hotel and rental car bookings.<sup>10</sup> The portal features tools like price prediction, price drop protection (up to $50 travel credit if a recommended flight price drops<sup>14</sup>), and a price match guarantee.<sup>14</sup> While some users find competitive prices and value these features<sup>14</sup>, others report issues with booking changes.<sup>21</sup> Flight prices are generally competitive.<sup>23</sup></p>
-                  <p><strong>Capital One Entertainment</strong> also offers 5% cash back on ticket purchases for various events, often with presales or VIP access.<sup>2</sup></p>
-                  <p>Redemption "partnerships" exist with Amazon.com and PayPal, allowing direct use of cash back.<sup>14</sup></p>
-                  <p>Crucially, cash back earned with QuicksilverOne <strong>cannot be transferred</strong> to external airline or hotel loyalty programs.<sup>24</sup> This differs from Capital One's Venture cards. The strategy encourages using Capital One's ecosystem. The value of the 5% bonuses depends on the competitiveness and usability of these portals.</p>
+                  <p>The <strong>Capital One Travel portal</strong> is key, offering 5% cash back on hotel and rental car bookings. The portal features tools like price prediction, price drop protection (up to $50 travel credit if a recommended flight price drops), and a price match guarantee. While some users find competitive prices and value these features, others report issues with booking changes. Flight prices are generally competitive.</p>
+                  <p><strong>Capital One Entertainment</strong> also offers 5% cash back on ticket purchases for various events, often with presales or VIP access.</p>
+                  <p>Redemption "partnerships" exist with Amazon.com and PayPal, allowing direct use of cash back.</p>
+                  <p>Crucially, cash back earned with QuicksilverOne <strong>cannot be transferred</strong> to external airline or hotel loyalty programs. This differs from Capital One's Venture cards. The strategy encourages using Capital One's ecosystem. The value of the 5% bonuses depends on the competitiveness and usability of these portals.</p>
                 </section>
 
                 {/* Section 9: Travel-Specific Benefits & Credits (Maximization Guide) */}
@@ -561,16 +561,16 @@ function CapitalOneQuicksilverOneReviewPage() {
                   <h2>9. Travel-Specific Benefits & Credits (Maximization Guide)</h2>
                   <p>For US travelers, especially those with fair credit, the QuicksilverOne offers several useful travel benefits.</p>
                   <ul className={styles.featureList}>
-                    <li><strong>No Foreign Transaction Fees:</strong> A core benefit, saving ~3% on international purchases.<sup>1</sup> Maximization: Use for all foreign spending.</li>
-                    <li><strong>5% Cash Back on Hotels and Rental Cars via Capital One Travel:</strong><sup>10</sup> Maximization: Always check Capital One Travel first for these bookings and compare prices. Utilize portal tools like price prediction.<sup>18</sup></li>
-                    <li><strong>Emergency Card Replacement & ATM Location Services:</strong> Standard assistance features.<sup>1</sup> Maximization: Have contact numbers ready, but be wary of high cash advance fees.<sup>3</sup></li>
+                    <li><strong>No Foreign Transaction Fees:</strong> A core benefit, saving ~3% on international purchases. Maximization: Use for all foreign spending.</li>
+                    <li><strong>5% Cash Back on Hotels and Rental Cars via Capital One Travel:</strong> Maximization: Always check Capital One Travel first for these bookings and compare prices. Utilize portal tools like price prediction.</li>
+                    <li><strong>Emergency Card Replacement & ATM Location Services:</strong> Standard assistance features. Maximization: Have contact numbers ready, but be wary of high cash advance fees.</li>
                   </ul>
-                  <h3>Potential Mastercard Network Protections (Verify with your Guide to Benefits<sup>26</sup>):</h3>
+                  <h3>Potential Mastercard Network Protections (Verify with your Guide to Benefits):</h3>
                   <ul className={styles.featureList}>
-                    <li><strong>Travel Accident Insurance:</strong> May offer substantial coverage for common carrier travel paid with the card.<sup>12</sup></li>
-                    <li><strong>Lost or Damaged Luggage Reimbursement:</strong> Potential reimbursement if luggage is lost/damaged by a carrier (ticket paid with card).<sup>26</sup></li>
-                    <li><strong>Auto Rental Collision Damage Waiver (MasterRental):</strong> May cover damage/theft if you pay for the rental with the card and decline the rental company's CDW.<sup>12</sup> Coverage is often secondary domestically.</li>
-                    <li><strong>24-Hour Travel Assistance Services:</strong> Referrals for medical/legal help, lost document assistance (user pays for third-party services).<sup>12</sup></li>
+                    <li><strong>Travel Accident Insurance:</strong> May offer substantial coverage for common carrier travel paid with the card.</li>
+                    <li><strong>Lost or Damaged Luggage Reimbursement:</strong> Potential reimbursement if luggage is lost/damaged by a carrier (ticket paid with card).</li>
+                    <li><strong>Auto Rental Collision Damage Waiver (MasterRental):</strong> May cover damage/theft if you pay for the rental with the card and decline the rental company's CDW. Coverage is often secondary domestically.</li>
+                    <li><strong>24-Hour Travel Assistance Services:</strong> Referrals for medical/legal help, lost document assistance (user pays for third-party services).</li>
                   </ul>
                   <p>The card lacks annual travel statement credits. Value comes from no FTF, portal rewards, and underlying insurance.</p>
                 </section>
@@ -578,19 +578,19 @@ function CapitalOneQuicksilverOneReviewPage() {
                 {/* Section 10: Travel & Purchase Protections (Insurance Explained Simply) */}
                 <section id="section-10" className={styles.reviewSection}>
                   <h2>10. Travel & Purchase Protections (Insurance Explained Simply)</h2>
-                  <p>The QuicksilverOne, typically a Mastercard, includes several protections. Always consult your specific Guide to Benefits for exact terms.<sup>12</sup></p>
-                  <p><strong>$0 Fraud Liability (Capital One):</strong> You're not responsible for unauthorized charges if reported promptly.<sup>1</sup> "If crooks use your card, you don't pay."</p>
-                  <h3>Potential Mastercard Protections (based on a sample "Professional" guide<sup>26</sup>; verify your own):</h3>
+                  <p>The QuicksilverOne, typically a Mastercard, includes several protections. Always consult your specific Guide to Benefits for exact terms.</p>
+                  <p><strong>$0 Fraud Liability (Capital One):</strong> You're not responsible for unauthorized charges if reported promptly. "If crooks use your card, you don't pay."</p>
+                  <h3>Potential Mastercard Protections (based on a sample "Professional" guide; verify your own):</h3>
                   <ul className={styles.featureList}>
-                    <li><strong>Auto Rental Collision Damage Waiver (MasterRental):</strong> Covers rental car damage/theft if you pay with the card and decline the rental company's CDW.<sup>12</sup> "Backup insurance for your rental."</li>
-                    <li><strong>Travel Accident Insurance:</strong> Significant coverage for serious accidents on common carrier travel paid with the card.<sup>12</sup> "A safety net for travel mishaps."</li>
-                    <li><strong>Lost or Damaged Luggage Insurance:</strong> Reimburses for lost/damaged luggage by a carrier (ticket paid with card), usually secondary coverage.<sup>26</sup> "Helps replace your stuff if the airline loses it."</li>
-                    <li><strong>Baggage Delay Insurance:</strong> Reimburses for essentials if bags are significantly delayed.<sup>26</sup> "Buys you necessities if your bags take a detour."</li>
-                    <li><strong>Trip Cancellation/Interruption Insurance:</strong> May cover non-refundable costs for covered cancellations/interruptions.<sup>26</sup> "Helps recoup costs if your trip is unexpectedly cut short for specific reasons."</li>
-                    <li><strong>Extended Warranty Protection:</strong> Can double manufacturer's warranty (up to a limit, e.g., 24 months).<sup>12</sup> "Extra warranty time on eligible purchases."</li>
-                    <li><strong>Purchase Assurance (Damage/Theft):</strong> Covers recent eligible purchases against damage/theft (e.g., 90 days).<sup>15</sup> "Repairs or replaces new items if quickly damaged or stolen."</li>
-                    <li><strong>Price Protection:</strong> May refund the difference if you find an item cheaper after buying it with the card (e.g., within 120 days).<sup>15</sup> "Get money back if the price drops soon after you buy."</li>
-                    <li><strong>Mastercard ID Theft Protection™:</strong> Monitoring and resolution assistance (enrollment usually required).<sup>3</sup> "Helps guard against identity theft."</li>
+                    <li><strong>Auto Rental Collision Damage Waiver (MasterRental):</strong> Covers rental car damage/theft if you pay with the card and decline the rental company's CDW. "Backup insurance for your rental."</li>
+                    <li><strong>Travel Accident Insurance:</strong> Significant coverage for serious accidents on common carrier travel paid with the card. "A safety net for travel mishaps."</li>
+                    <li><strong>Lost or Damaged Luggage Insurance:</strong> Reimburses for lost/damaged luggage by a carrier (ticket paid with card), usually secondary coverage. "Helps replace your stuff if the airline loses it."</li>
+                    <li><strong>Baggage Delay Insurance:</strong> Reimburses for essentials if bags are significantly delayed. "Buys you necessities if your bags take a detour."</li>
+                    <li><strong>Trip Cancellation/Interruption Insurance:</strong> May cover non-refundable costs for covered cancellations/interruptions. "Helps recoup costs if your trip is unexpectedly cut short for specific reasons."</li>
+                    <li><strong>Extended Warranty Protection:</strong> Can double manufacturer's warranty (up to a limit, e.g., 24 months). "Extra warranty time on eligible purchases."</li>
+                    <li><strong>Purchase Assurance (Damage/Theft):</strong> Covers recent eligible purchases against damage/theft (e.g., 90 days). "Repairs or replaces new items if quickly damaged or stolen."</li>
+                    <li><strong>Price Protection:</strong> May refund the difference if you find an item cheaper after buying it with the card (e.g., within 120 days). "Get money back if the price drops soon after you buy."</li>
+                    <li><strong>Mastercard ID Theft Protection™:</strong> Monitoring and resolution assistance (enrollment usually required). "Helps guard against identity theft."</li>
                   </ul>
                   <p>These benefits add significant value but require understanding the terms. A single claim could easily outweigh the annual fee.</p>
                 </section>
@@ -601,23 +601,23 @@ function CapitalOneQuicksilverOneReviewPage() {
                   <p>The QuicksilverOne offers a solid suite of features for security and ease of use.</p>
                   <h3>Security:</h3>
                   <ul className={styles.featureList}>
-                    <li><strong>$0 Fraud Liability:</strong> No responsibility for unauthorized charges.<sup>1</sup></li>
-                    <li><strong>Security Alerts:</strong> Notifications for suspicious transactions.<sup>1</sup></li>
-                    <li><strong>Card Lock:</strong> Instantly lock your card via the mobile app if lost/stolen.<sup>1</sup></li>
-                    <li><strong>Virtual Card Numbers from Eno®:</strong> Unique card numbers for secure online shopping.<sup>1</sup></li>
-                    <li><strong>Eno® - Your Capital One Assistant:</strong> Monitors accounts, sends alerts for unusual activity.<sup>1</sup></li>
-                    <li><strong>CreditWise® from Capital One:</strong> Free credit monitoring (TransUnion score, alerts for TransUnion/Experian changes).<sup>1</sup></li>
-                    <li><strong>Mastercard ID Theft Protection™:</strong> Identity monitoring and resolution services (enrollment typically needed).<sup>3</sup></li>
+                    <li><strong>$0 Fraud Liability:</strong> No responsibility for unauthorized charges.</li>
+                    <li><strong>Security Alerts:</strong> Notifications for suspicious transactions.</li>
+                    <li><strong>Card Lock:</strong> Instantly lock your card via the mobile app if lost/stolen.</li>
+                    <li><strong>Virtual Card Numbers from Eno®:</strong> Unique card numbers for secure online shopping.</li>
+                    <li><strong>Eno® - Your Capital One Assistant:</strong> Monitors accounts, sends alerts for unusual activity.</li>
+                    <li><strong>CreditWise® from Capital One:</strong> Free credit monitoring (TransUnion score, alerts for TransUnion/Experian changes).</li>
+                    <li><strong>Mastercard ID Theft Protection™:</strong> Identity monitoring and resolution services (enrollment typically needed).</li>
                   </ul>
                   <h3>Convenience & Tech:</h3>
                   <ul className={styles.featureList}>
-                    <li><strong>Capital One Mobile App:</strong> Manage account, pay bills, view transactions, track rewards, lock card.<sup>1</sup></li>
-                    <li><strong>Autopay:</strong> Set up automatic payments.<sup>1</sup></li>
-                    <li><strong>Authorized User:</strong> Add users and track their spending (some benefits may not extend).<sup>1</sup></li>
-                    <li><strong>24/7 Customer Service:</strong><sup>1</sup></li>
-                    <li><strong>Tap to Pay (Contactless Card):</strong><sup>1</sup></li>
-                    <li><strong>View Monthly Recurring Transactions:</strong><sup>1</sup></li>
-                    <li><strong>50% off Handcrafted Beverages at Capital One Cafés:</strong><sup>1</sup></li>
+                    <li><strong>Capital One Mobile App:</strong> Manage account, pay bills, view transactions, track rewards, lock card.</li>
+                    <li><strong>Autopay:</strong> Set up automatic payments.</li>
+                    <li><strong>Authorized User:</strong> Add users and track their spending (some benefits may not extend).</li>
+                    <li><strong>24/7 Customer Service:</strong></li>
+                    <li><strong>Tap to Pay (Contactless Card):</strong></li>
+                    <li><strong>View Monthly Recurring Transactions:</strong></li>
+                    <li><strong>50% off Handcrafted Beverages at Capital One Cafés:</strong></li>
                   </ul>
                   <p>These features, especially Eno and CreditWise, empower users with fair credit to manage finances securely.</p>
                 </section>
@@ -625,12 +625,12 @@ function CapitalOneQuicksilverOneReviewPage() {
                 {/* Section 12: Credit Score Guidance & Application Insights */}
                 <section id="section-12" className={styles.reviewSection}>
                   <h2>12. Credit Score Guidance & Application Insights</h2>
-                  <p>The QuicksilverOne is designed for those with "FAIR" credit.<sup>1</sup> This generally means FICO scores in the 580-689 range.<sup>4</sup> However, Capital One looks at your overall financial picture, not just the score.<sup>17</sup></p>
+                  <p>The QuicksilverOne is designed for those with "FAIR" credit. This generally means FICO scores in the 580-689 range. However, Capital One looks at your overall financial picture, not just the score.</p>
                   <h3>Application Insights:</h3>
                   <ul className={styles.featureList}>
-                    <li><strong>Pre-Approval Tool:</strong> Capital One offers a way to check your approval odds without a hard credit inquiry, which is great for credit builders.<sup>1</sup></li>
-                    <li><strong>Credit Building Focus:</strong> The card is a tool to improve credit.<sup>7</sup> Responsible use (on-time payments, low credit utilization) is key.</li>
-                    <li><strong>Automatic Credit Line Increase Review:</strong> You may be considered for a higher credit limit in as little as six months with good payment history, which can positively impact your credit utilization and score.<sup>1</sup></li>
+                    <li><strong>Pre-Approval Tool:</strong> Capital One offers a way to check your approval odds without a hard credit inquiry, which is great for credit builders.</li>
+                    <li><strong>Credit Building Focus:</strong> The card is a tool to improve credit. Responsible use (on-time payments, low credit utilization) is key.</li>
+                    <li><strong>Automatic Credit Line Increase Review:</strong> You may be considered for a higher credit limit in as little as six months with good payment history, which can positively impact your credit utilization and score.</li>
                     <li><strong>Reports to Major Credit Bureaus:</strong> Activity is reported, helping build a positive credit history.</li>
                   </ul>
                   <p>This card can be a stepping stone to better credit products if used responsibly.</p>
@@ -641,19 +641,19 @@ function CapitalOneQuicksilverOneReviewPage() {
                   <h2>13. "Is This Card Your Perfect Travel Companion?" (Detailed User Profiling)</h2>
                   <p>The QuicksilverOne's suitability as a travel card depends on your profile:</p>
                   <h3>Profile 1: The Aspiring Traveler Building Credit (Fair FICO 580-689)</h3>
-                  <p><strong>Fits if:</strong> You travel occasionally (especially internationally due to no FTF<sup>1</sup>), want simple 1.5% rewards<sup>1</sup>, can use the 5% Capital One Travel portal bonus<sup>4</sup>, are committed to paying in full, and aim to improve credit (potential credit line increase<sup>1</sup>).</p>
+                  <p><strong>Fits if:</strong> You travel occasionally (especially internationally due to no FTF), want simple 1.5% rewards, can use the 5% Capital One Travel portal bonus, are committed to paying in full, and aim to improve credit (potential credit line increase).</p>
                   <p><strong>Caveats:</strong> Must spend enough to justify the $39 fee; high APR is a risk if balance carried.</p>
                   <h3>Profile 2: The Budget-Conscious International Explorer (Fair Credit)</h3>
-                  <p><strong>Fits if:</strong> No FTF is a top priority.<sup>1</sup> You can leverage the 5% portal rewards for budget hotels/cars.<sup>4</sup> 1.5% on other foreign spend adds up.</p>
-                  <p><strong>Caveats:</strong> Basic travel insurance<sup>7</sup>; must compare portal prices.</p>
+                  <p><strong>Fits if:</strong> No FTF is a top priority. You can leverage the 5% portal rewards for budget hotels/cars. 1.5% on other foreign spend adds up.</p>
+                  <p><strong>Caveats:</strong> Basic travel insurance; must compare portal prices.</p>
                   <h3>Profile 3: The Infrequent Traveler Prioritizing Credit Growth (Fair Credit)</h3>
-                  <p><strong>Fits if:</strong> Primary goal is credit building with some travel perks. Simple 1.5% back on everyday spend is good<sup>1</sup>; no FTF useful for occasional trips.<sup>1</sup></p>
+                  <p><strong>Fits if:</strong> Primary goal is credit building with some travel perks. Simple 1.5% back on everyday spend is good; no FTF useful for occasional trips.</p>
                   <p><strong>Caveats:</strong> If travel is minimal, annual fee might be hard to offset purely on rewards.</p>
                   <h3>Who Should Look Elsewhere?</h3>
                   <ul className={styles.featureList}>
-                    <li><strong>Rewards Maximizers with Excellent Credit:</strong> Better flat-rate cards (e.g., 2%), richer bonuses, no annual fees (like standard Quicksilver<sup>14</sup>), or premium travel cards (Venture, Sapphire Preferred) exist.</li>
-                    <li><strong>Those Who Carry a Balance:</strong> The high APR (29.74% variable<sup>1</sup>) makes it very costly.</li>
-                    <li><strong>Travelers Needing Comprehensive Insurance/Premium Perks:</strong> This card lacks robust insurance, lounge access, or significant travel credits found on higher-tier cards.<sup>7</sup></li>
+                    <li><strong>Rewards Maximizers with Excellent Credit:</strong> Better flat-rate cards (e.g., 2%), richer bonuses, no annual fees (like standard Quicksilver), or premium travel cards (Venture, Sapphire Preferred) exist.</li>
+                    <li><strong>Those Who Carry a Balance:</strong> The high APR (29.74% variable) makes it very costly.</li>
+                    <li><strong>Travelers Needing Comprehensive Insurance/Premium Perks:</strong> This card lacks robust insurance, lounge access, or significant travel credits found on higher-tier cards.</li>
                   </ul>
                   <p>It's best for independent, often budget-aware travelers building credit who always pay in full.</p>
                 </section>
@@ -665,26 +665,26 @@ function CapitalOneQuicksilverOneReviewPage() {
                     <div className={styles.prosBox}>
                       <h3>Pros:</h3>
                       <ul className={styles.featureList}>
-                        <li>Simple, Unlimited 1.5% Cash Back.<sup>1</sup></li>
+                        <li>Simple, Unlimited 1.5% Cash Back.</li>
                         <li>Bonus 5% Travel/Entertainment Rewards via Capital One Portals.<sup>10, 2</sup></li>
-                        <li>No Foreign Transaction Fees.<sup>1</sup></li>
-                        <li>Accessible with Fair Credit.<sup>1</sup></li>
-                        <li>Credit Building Features (Reporting, Potential CLI).<sup>1</sup></li>
-                        <li>Robust Security & Tech (Eno, CreditWise).<sup>1</sup></li>
-                        <li>Rewards Don't Expire (Account in good standing).<sup>1</sup></li>
+                        <li>No Foreign Transaction Fees.</li>
+                        <li>Accessible with Fair Credit.</li>
+                        <li>Credit Building Features (Reporting, Potential CLI).</li>
+                        <li>Robust Security & Tech (Eno, CreditWise).</li>
+                        <li>Rewards Don't Expire (Account in good standing).</li>
                         <li>Flexible Redemption Options.<sup>1, 14</sup></li>
                       </ul>
                     </div>
                     <div className={styles.consBox}>
                       <h3>Cons:</h3>
                       <ul className={styles.featureList}>
-                        <li>$39 Annual Fee.<sup>1</sup></li>
-                        <li>High Regular APR (Currently 29.74% variable).<sup>1</sup></li>
-                        <li>No Welcome Offer or Introductory APR typically.<sup>7</sup></li>
+                        <li>$39 Annual Fee.</li>
+                        <li>High Regular APR (Currently 29.74% variable).</li>
+                        <li>No Welcome Offer or Introductory APR typically.</li>
                         <li>Limited "Premium" Travel Benefits.<sup>7, 26</sup></li>
-                        <li>5% Rewards Tied to Capital One Portals (Price comparison needed).<sup>23</sup></li>
+                        <li>5% Rewards Tied to Capital One Portals (Price comparison needed).</li>
                         <li>Cash Back Not Transferable to Airline/Hotel Partners.</li>
-                        <li>Some Benefits May Not Extend to Authorized Users.<sup>1</sup></li>
+                        <li>Some Benefits May Not Extend to Authorized Users.</li>
                       </ul>
                     </div>
                   </div>
@@ -718,77 +718,77 @@ function CapitalOneQuicksilverOneReviewPage() {
                                 </tr>
                                 <tr>
                                     <td data-label="Feature">Annual Fee</td>
-                                    <td data-label="Capital One QuicksilverOne">$39<sup>1</sup></td>
-                                    <td data-label="Discover it® Miles">$0<sup>30</sup></td>
-                                    <td data-label="Petal® 2 Visa®">$0 (No fees of any kind)<sup>32</sup></td>
-                                    <td data-label="Upgrade Cash Rewards Visa®">$0<sup>40</sup></td>
-                                    <td data-label="Bank of America® Travel Rewards">$0<sup>43</sup></td>
+                                    <td data-label="Capital One QuicksilverOne">$39</td>
+                                    <td data-label="Discover it® Miles">$0</td>
+                                    <td data-label="Petal® 2 Visa®">$0 (No fees of any kind)</td>
+                                    <td data-label="Upgrade Cash Rewards Visa®">$0</td>
+                                    <td data-label="Bank of America® Travel Rewards">$0</td>
                                 </tr>
                                 <tr>
                                     <td data-label="Feature">Welcome Offer</td>
-                                    <td data-label="Capital One QuicksilverOne">None typically<sup>7</sup></td>
-                                    <td data-label="Discover it® Miles">Unlimited Miles Match at end of first year<sup>30</sup></td>
-                                    <td data-label="Petal® 2 Visa®">None typically<sup>32</sup></td>
-                                    <td data-label="Upgrade Cash Rewards Visa®">$200 bonus with Rewards Checking Plus account & 3 debit card transactions<sup>40</sup></td>
-                                    <td data-label="Bank of America® Travel Rewards">25,000 online bonus points after $1,000 spend in 90 days (may require good/excellent credit)<sup>43</sup></td>
+                                    <td data-label="Capital One QuicksilverOne">None typically</td>
+                                    <td data-label="Discover it® Miles">Unlimited Miles Match at end of first year</td>
+                                    <td data-label="Petal® 2 Visa®">None typically</td>
+                                    <td data-label="Upgrade Cash Rewards Visa®">$200 bonus with Rewards Checking Plus account & 3 debit card transactions</td>
+                                    <td data-label="Bank of America® Travel Rewards">25,000 online bonus points after $1,000 spend in 90 days (may require good/excellent credit)</td>
                                 </tr>
                                 <tr>
                                     <td data-label="Feature">Rewards Rate (General)</td>
-                                    <td data-label="Capital One QuicksilverOne">1.5% cash back<sup>1</sup></td>
-                                    <td data-label="Discover it® Miles">1.5x Miles on all purchases (1 Mile = 1 cent)<sup>30</sup></td>
-                                    <td data-label="Petal® 2 Visa®">1% cash back, increases to 1.25% (6 on-time payments), then 1.5% (12 on-time payments). 2-10% at select merchants.<sup>32</sup></td>
-                                    <td data-label="Upgrade Cash Rewards Visa®">1.5% cash back on purchases when you pay them back<sup>40</sup></td>
-                                    <td data-label="Bank of America® Travel Rewards">1.5 points per $1 on all purchases (1 point = 1 cent for travel/dining redemption)<sup>43</sup></td>
+                                    <td data-label="Capital One QuicksilverOne">1.5% cash back</td>
+                                    <td data-label="Discover it® Miles">1.5x Miles on all purchases (1 Mile = 1 cent)</td>
+                                    <td data-label="Petal® 2 Visa®">1% cash back, increases to 1.25% (6 on-time payments), then 1.5% (12 on-time payments). 2-10% at select merchants.</td>
+                                    <td data-label="Upgrade Cash Rewards Visa®">1.5% cash back on purchases when you pay them back</td>
+                                    <td data-label="Bank of America® Travel Rewards">1.5 points per $1 on all purchases (1 point = 1 cent for travel/dining redemption)</td>
                                 </tr>
                                 <tr>
                                     <td data-label="Feature">Rewards Rate (Travel)</td>
-                                    <td data-label="Capital One QuicksilverOne">5% cash back on hotels/rental cars via Capital One Travel<sup>10</sup></td>
-                                    <td data-label="Discover it® Miles">Flat 1.5x Miles on all purchases<sup>30</sup></td>
-                                    <td data-label="Petal® 2 Visa®">Same as general; no specific travel bonus category<sup>33</sup></td>
-                                    <td data-label="Upgrade Cash Rewards Visa®">Up to 10% cash back at select merchants via Upgrade Shopping (may include travel)<sup>40</sup></td>
-                                    <td data-label="Bank of America® Travel Rewards">3 points per $1 on travel booked via BoA Travel Center; 1.5 points/$1 otherwise<sup>44</sup></td>
+                                    <td data-label="Capital One QuicksilverOne">5% cash back on hotels/rental cars via Capital One Travel</td>
+                                    <td data-label="Discover it® Miles">Flat 1.5x Miles on all purchases</td>
+                                    <td data-label="Petal® 2 Visa®">Same as general; no specific travel bonus category</td>
+                                    <td data-label="Upgrade Cash Rewards Visa®">Up to 10% cash back at select merchants via Upgrade Shopping (may include travel)</td>
+                                    <td data-label="Bank of America® Travel Rewards">3 points per $1 on travel booked via BoA Travel Center; 1.5 points/$1 otherwise</td>
                                 </tr>
                                 <tr>
                                     <td data-label="Feature">Foreign Transaction Fee</td>
-                                    <td data-label="Capital One QuicksilverOne">None<sup>1</sup></td>
-                                    <td data-label="Discover it® Miles">None<sup>30</sup></td>
-                                    <td data-label="Petal® 2 Visa®">None<sup>32</sup></td>
-                                    <td data-label="Upgrade Cash Rewards Visa®">Up to 3%<sup>41</sup></td>
-                                    <td data-label="Bank of America® Travel Rewards">None<sup>43</sup></td>
+                                    <td data-label="Capital One QuicksilverOne">None</td>
+                                    <td data-label="Discover it® Miles">None</td>
+                                    <td data-label="Petal® 2 Visa®">None</td>
+                                    <td data-label="Upgrade Cash Rewards Visa®">Up to 3%</td>
+                                    <td data-label="Bank of America® Travel Rewards">None</td>
                                 </tr>
                                 <tr>
                                     <td data-label="Feature">Key Travel Protections</td>
-                                    <td data-label="Capital One QuicksilverOne">Auto Rental CDW (likely Mastercard secondary), Travel Accident Ins., Lost Luggage (potential Mastercard benefits)<sup>12</sup></td>
+                                    <td data-label="Capital One QuicksilverOne">Auto Rental CDW (likely Mastercard secondary), Travel Accident Ins., Lost Luggage (potential Mastercard benefits)</td>
                                     <td data-label="Discover it® Miles">None explicitly listed by Discover (benefits largely cut in 2018)<sup>62</sup></td>
-                                    <td data-label="Petal® 2 Visa®">Basic Visa benefits may apply (e.g., Roadside Dispatch, Auto Rental CDW often standard but not detailed by Petal for this card).<sup>34</sup> No FTF confirmed.<sup>58</sup></td>
-                                    <td data-label="Upgrade Cash Rewards Visa®">Visa Signature benefits (e.g., Roadside Dispatch, Extended Warranty, Price Protection, Travel & Emergency Assistance Services).<sup>41</sup> No specific travel insurance detailed.</td>
+                                    <td data-label="Petal® 2 Visa®">Basic Visa benefits may apply (e.g., Roadside Dispatch, Auto Rental CDW often standard but not detailed by Petal for this card). No FTF confirmed.<sup>58</sup></td>
+                                    <td data-label="Upgrade Cash Rewards Visa®">Visa Signature benefits (e.g., Roadside Dispatch, Extended Warranty, Price Protection, Travel & Emergency Assistance Services). No specific travel insurance detailed.</td>
                                     <td data-label="Bank of America® Travel Rewards">Travel & Emergency Assistance Services. Other Visa Signature benefits may apply (e.g., Auto Rental CDW, Lost Luggage, etc., per generic Visa guides).<sup>64</sup> BoA Premium Rewards card (higher tier) has more.<sup>51</sup></td>
                                 </tr>
                                 <tr>
                                     <td data-label="Feature">Typical Credit Needed</td>
-                                    <td data-label="Capital One QuicksilverOne">Fair (FICO ~580-689)<sup>1</sup></td>
+                                    <td data-label="Capital One QuicksilverOne">Fair (FICO ~580-689)</td>
                                     <td data-label="Discover it® Miles">Good to Excellent (FICO 670+)<sup>67</sup>; some sources suggest Fair is possible<sup>68</sup></td>
-                                    <td data-label="Petal® 2 Visa®">Fair, Good, Excellent, or no credit history<sup>32</sup></td>
-                                    <td data-label="Upgrade Cash Rewards Visa®">Fair<sup>41</sup></td>
-                                    <td data-label="Bank of America® Travel Rewards">Good to Excellent for unsecured with bonus.<sup>44</sup> Secured version available for building credit.<sup>46</sup></td>
+                                    <td data-label="Petal® 2 Visa®">Fair, Good, Excellent, or no credit history</td>
+                                    <td data-label="Upgrade Cash Rewards Visa®">Fair</td>
+                                    <td data-label="Bank of America® Travel Rewards">Good to Excellent for unsecured with bonus. Secured version available for building credit.</td>
                                 </tr>
                                 <tr>
                                     <td data-label="Feature">Network</td>
-                                    <td data-label="Capital One QuicksilverOne">Mastercard<sup>1</sup></td>
+                                    <td data-label="Capital One QuicksilverOne">Mastercard</td>
                                     <td data-label="Discover it® Miles">Discover</td>
-                                    <td data-label="Petal® 2 Visa®">Visa<sup>32</sup></td>
-                                    <td data-label="Upgrade Cash Rewards Visa®">Visa<sup>41</sup></td>
-                                    <td data-label="Bank of America® Travel Rewards">Visa<sup>44</sup></td>
+                                    <td data-label="Petal® 2 Visa®">Visa</td>
+                                    <td data-label="Upgrade Cash Rewards Visa®">Visa</td>
+                                    <td data-label="Bank of America® Travel Rewards">Visa</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                     <h3>Comparison Highlights:</h3>
                     <ul className={styles.featureList}>
-                        <li><strong>vs. Discover it® Miles:</strong> QuicksilverOne has a $39 annual fee; Discover it Miles has none.<sup>1</sup> Both offer 1.5% back and no FTF.<sup>1</sup> Discover's first-year Miles Match is a strong welcome offer QuicksilverOne lacks.<sup>30</sup> QuicksilverOne has 5% on portal hotels/cars; Discover is flat 1.5x.<sup>4</sup> Mastercard (QuicksilverOne) likely offers more baseline travel/purchase protections than Discover.<sup>26</sup></li>
-                        <li><strong>vs. Petal® 2 Visa®:</strong> Both target fair credit. Petal 2 has no fees at all.<sup>33</sup> Petal 2's rewards start at 1%, rising to 1.5% after 12 on-time payments; QuicksilverOne is 1.5% from the start but has the $39 fee.<sup>1</sup> Both have no FTF.<sup>1</sup> QuicksilverOne's 5% portal bonus is an edge if used.<sup>4</sup></li>
-                        <li><strong>vs. Upgrade Cash Rewards Visa®:</strong> Both offer 1.5% back for fair credit.<sup>1</sup> Upgrade has no annual fee but charges up to 3% FTF, making QuicksilverOne better for international use.<sup>41</sup> Upgrade is a hybrid card/loan product.<sup>41</sup></li>
-                        <li><strong>vs. Bank of America® Travel Rewards (unsecured):</strong> Typically no annual fee, no FTF, 1.5 points/$1 (1 cent/point for travel/dining).<sup>43</sup> Often has a welcome bonus/intro APR but usually needs good/excellent credit.<sup>43</sup> BoA offers 3 points/$1 on its travel center bookings.<sup>44</sup> QuicksilverOne's 5% on portal hotels/cars is higher.<sup>4</sup></li>
+                        <li><strong>vs. Discover it® Miles:</strong> QuicksilverOne has a $39 annual fee; Discover it Miles has none. Both offer 1.5% back and no FTF. Discover's first-year Miles Match is a strong welcome offer QuicksilverOne lacks. QuicksilverOne has 5% on portal hotels/cars; Discover is flat 1.5x. Mastercard (QuicksilverOne) likely offers more baseline travel/purchase protections than Discover.</li>
+                        <li><strong>vs. Petal® 2 Visa®:</strong> Both target fair credit. Petal 2 has no fees at all. Petal 2's rewards start at 1%, rising to 1.5% after 12 on-time payments; QuicksilverOne is 1.5% from the start but has the $39 fee. Both have no FTF. QuicksilverOne's 5% portal bonus is an edge if used.</li>
+                        <li><strong>vs. Upgrade Cash Rewards Visa®:</strong> Both offer 1.5% back for fair credit. Upgrade has no annual fee but charges up to 3% FTF, making QuicksilverOne better for international use. Upgrade is a hybrid card/loan product.</li>
+                        <li><strong>vs. Bank of America® Travel Rewards (unsecured):</strong> Typically no annual fee, no FTF, 1.5 points/$1 (1 cent/point for travel/dining). Often has a welcome bonus/intro APR but usually needs good/excellent credit. BoA offers 3 points/$1 on its travel center bookings. QuicksilverOne's 5% on portal hotels/cars is higher.</li>
                     </ul>
                     <p>QuicksilverOne's $39 fee is a hurdle, but its immediate 1.5% rewards and no FTF are compelling for its target audience, especially against cards that lack these or require time to reach similar reward levels.</p>
                 </section>
@@ -798,13 +798,13 @@ function CapitalOneQuicksilverOneReviewPage() {
                   <h2>16. Exclusive Expert Tips & Hidden Value Unlocked</h2>
                   <p>To maximize the Capital One QuicksilverOne, especially as a US traveler with fair credit:</p>
                   <ul className={styles.featureList}>
-                    <li><strong>Target the 5% Categories:</strong> The 5% cash back on hotels/rental cars via Capital One Travel and on Capital One Entertainment purchases is your best earning opportunity.<sup>10</sup> Tip: Always start your hotel/rental car search on Capital One Travel and compare. Use portal tools like price prediction.<sup>18</sup></li>
-                    <li><strong>Offset the $39 Annual Fee Strategically:</strong> Spending $780/year on the 5% travel portal categories or $1,300 internationally (saving ~3% on FTFs) covers the fee.<sup>1</sup></li>
-                    <li><strong>Use as a Credit-Building Stepping Stone:</strong> Maintain excellent payment history and low utilization. After 6-12 months of responsible use, you might get a credit line increase<sup>1</sup>, paving the way for better cards.</li>
+                    <li><strong>Target the 5% Categories:</strong> The 5% cash back on hotels/rental cars via Capital One Travel and on Capital One Entertainment purchases is your best earning opportunity. Tip: Always start your hotel/rental car search on Capital One Travel and compare. Use portal tools like price prediction.</li>
+                    <li><strong>Offset the $39 Annual Fee Strategically:</strong> Spending $780/year on the 5% travel portal categories or $1,300 internationally (saving ~3% on FTFs) covers the fee.</li>
+                    <li><strong>Use as a Credit-Building Stepping Stone:</strong> Maintain excellent payment history and low utilization. After 6-12 months of responsible use, you might get a credit line increase, paving the way for better cards.</li>
                     <li><strong>Pairing Strategy (Advanced):</strong> If you have other cards with better rewards on specific categories (e.g., groceries), use them for those. Use QuicksilverOne for all other non-bonus spend, international purchases (no FTF), and Capital One portal bookings (5%).<sup>72</sup></li>
-                    <li><strong>Prioritize Avoiding Interest:</strong> The high APR (29.74% variable<sup>1</sup>) is detrimental. Tip: Pay your balance in full every month. Set up autopay. Carrying a balance negates rewards.<sup>5</sup></li>
-                    <li><strong>Leverage Mastercard Benefits:</strong> Protections like Auto Rental CDW, Extended Warranty, and Purchase Protection are valuable but often underused.<sup>12</sup> Tip: Read your Guide to Benefits. Understand coverage and claim processes.</li>
-                    <li><strong>Engage with Eno® and CreditWise®:</strong> Use Eno for virtual card numbers and alerts.<sup>1</sup> Monitor your credit with the free CreditWise service.<sup>1</sup></li>
+                    <li><strong>Prioritize Avoiding Interest:</strong> The high APR (29.74% variable) is detrimental. Tip: Pay your balance in full every month. Set up autopay. Carrying a balance negates rewards.</li>
+                    <li><strong>Leverage Mastercard Benefits:</strong> Protections like Auto Rental CDW, Extended Warranty, and Purchase Protection are valuable but often underused. Tip: Read your Guide to Benefits. Understand coverage and claim processes.</li>
+                    <li><strong>Engage with Eno® and CreditWise®:</strong> Use Eno for virtual card numbers and alerts. Monitor your credit with the free CreditWise service.</li>
                   </ul>
                   <p>The card's hidden value lies in disciplined use: avoiding FTFs, using the travel portal wisely, and leveraging Mastercard protections, all while building credit.</p>
                 </section>
@@ -814,9 +814,9 @@ function CapitalOneQuicksilverOneReviewPage() {
                   <h2>17. Aggregated User Sentiment & Real-World Experiences and Real-Life Spend Examples / Estimated Value</h2>
                   <h3>Aggregated User Sentiment:</h3>
                   <p>Users generally see the QuicksilverOne as a decent credit-building tool with simple rewards.</p>
-                  <p><strong>Positives:</strong> Effective for building credit<sup>7</sup>, straightforward 1.5% cash back<sup>7</sup>, no foreign transaction fees praised by travelers<sup>7</sup>, good customer service and app.<sup>1</sup> Some find value in Capital One Travel portal perks.<sup>14</sup></p>
-                  <p><strong>Negatives:</strong> The $39 annual fee is a common complaint<sup>7</sup>, as is the high APR.<sup>1</sup> Lack of a welcome bonus is noted.<sup>7</sup> Some report difficulty getting credit limit increases<sup>1</sup> or issues with the travel portal/international verification.<sup>21</sup></p>
-                  <p>Despite criticisms, many users (92% on Capital One's site<sup>1</sup>, 95% on Experian<sup>73</sup>) recommend it, suggesting it meets expectations for its target audience.</p>
+                  <p><strong>Positives:</strong> Effective for building credit, straightforward 1.5% cash back, no foreign transaction fees praised by travelers, good customer service and app. Some find value in Capital One Travel portal perks.</p>
+                  <p><strong>Negatives:</strong> The $39 annual fee is a common complaint, as is the high APR. Lack of a welcome bonus is noted. Some report difficulty getting credit limit increases or issues with the travel portal/international verification.</p>
+                  <p>Despite criticisms, many users (92% on Capital One's site, 95% on Experian<sup>73</sup>) recommend it, suggesting it meets expectations for its target audience.</p>
                   <h3>Real-Life Spend Example / Estimated Value:</h3>
                   <p>Consider "Alex," a fair-credit freelance writer, aiming to build credit and travel moderately, always paying balances in full.</p>
                   <h4>Annual Spending:</h4>
@@ -853,8 +853,8 @@ function CapitalOneQuicksilverOneReviewPage() {
                 <section id="section-18" className={styles.reviewSection}>
                   <h2>18. "The Final Takeaway": Authoritative Recommendation & Alternatives</h2>
                   <h3>Authoritative Recommendation:</h3>
-                  <p>The Capital One QuicksilverOne is a solid choice for the US traveler with fair credit who seeks simple cash back, values no foreign transaction fees, and is disciplined enough to always pay their balance in full. If you can strategically use the Capital One Travel portal for its 5% bonus on hotels and rental cars, the $39 annual fee can be a worthwhile investment for the rewards and credit-building opportunity.<sup>1</sup> It's a functional bridge to better credit products.</p>
-                  <p>However, its very high APR makes carrying a balance extremely costly, negating rewards.<sup>1</sup> The lack of a welcome bonus or intro APR also diminishes initial appeal.<sup>7</sup></p>
+                  <p>The Capital One QuicksilverOne is a solid choice for the US traveler with fair credit who seeks simple cash back, values no foreign transaction fees, and is disciplined enough to always pay their balance in full. If you can strategically use the Capital One Travel portal for its 5% bonus on hotels and rental cars, the $39 annual fee can be a worthwhile investment for the rewards and credit-building opportunity. It's a functional bridge to better credit products.</p>
+                  <p>However, its very high APR makes carrying a balance extremely costly, negating rewards. The lack of a welcome bonus or intro APR also diminishes initial appeal.</p>
                   <h4>Who Should Get It?</h4>
                   <ul className={styles.featureList}>
                     <li>Those with fair credit (FICO ~580-689) building/rebuilding credit.</li>
@@ -865,17 +865,17 @@ function CapitalOneQuicksilverOneReviewPage() {
                   </ul>
                   <h4>Who Should Consider Alternatives?</h4>
                   <ul className={styles.featureList}>
-                    <li>Those with good/excellent credit (better cards like standard Quicksilver exist<sup>14</sup>).</li>
+                    <li>Those with good/excellent credit (better cards like standard Quicksilver exist).</li>
                     <li>Anyone who frequently carries a balance (seek low-interest cards).</li>
                     <li>Travelers needing premium perks/insurance (look at higher-tier cards).</li>
-                    <li>Fee-averse individuals in the fair credit space (consider Petal 2<sup>33</sup>).</li>
-                    <li>Applicants prioritizing a strong welcome bonus (Discover it Miles<sup>30</sup>).</li>
+                    <li>Fee-averse individuals in the fair credit space (consider Petal 2).</li>
+                    <li>Applicants prioritizing a strong welcome bonus (Discover it Miles).</li>
                   </ul>
                   <h4>Strong Alternatives:</h4>
                   <ul className={styles.featureList}>
-                    <li><strong>Discover it® Miles:</strong> No annual fee, 1.5x miles, first-year Miles Match, no FTF.<sup>30</sup> Good for fair-to-good credit.</li>
-                    <li><strong>Petal® 2 "Cash Back, No Fees" Visa®:</strong> No fees whatsoever, rewards up to 1.5% (after 12 on-time payments), no FTF.<sup>32</sup> Excellent for fee-averse credit builders.</li>
-                    <li><strong>Secured Credit Cards (e.g., Capital One Quicksilver Secured<sup>1</sup>, Discover it® Secured<sup>55</sup>):</strong> Best for poor credit/new to credit, offering rewards and credit building with a security deposit.</li>
+                    <li><strong>Discover it® Miles:</strong> No annual fee, 1.5x miles, first-year Miles Match, no FTF. Good for fair-to-good credit.</li>
+                    <li><strong>Petal® 2 "Cash Back, No Fees" Visa®:</strong> No fees whatsoever, rewards up to 1.5% (after 12 on-time payments), no FTF. Excellent for fee-averse credit builders.</li>
+                    <li><strong>Secured Credit Cards (e.g., Capital One Quicksilver Secured, Discover it® Secured):</strong> Best for poor credit/new to credit, offering rewards and credit building with a security deposit.</li>
                   </ul>
                   <p>The QuicksilverOne can be a valuable tool for a specific user at a specific credit stage, facilitating access to better financial products later.</p>
                 </section>
@@ -885,34 +885,34 @@ function CapitalOneQuicksilverOneReviewPage() {
                   <h2>19. Card-Specific Frequently Asked Questions (FAQs)</h2>
                   <dl className={styles.faqList}>
                     <dt>Q1: Is the $39 annual fee for QuicksilverOne worth it for travelers?</dt>
-                    <dd>A: Yes, if you travel internationally (saving on no FTF<sup>1</sup>) or use the Capital One Travel portal for 5% back on hotels/cars enough to offset it.<sup>2</sup> Spending $1,300 abroad or $780 via the portal can cover the fee.</dd>
+                    <dd>A: Yes, if you travel internationally (saving on no FTF) or use the Capital One Travel portal for 5% back on hotels/cars enough to offset it. Spending $1,300 abroad or $780 via the portal can cover the fee.</dd>
 
                     <dt>Q2: What credit score is needed for QuicksilverOne?</dt>
-                    <dd>A: It's for "FAIR" credit, generally FICO scores of 580-689.<sup>1</sup> Use Capital One's pre-approval tool first.<sup>1</sup></dd>
+                    <dd>A: It's for "FAIR" credit, generally FICO scores of 580-689. Use Capital One's pre-approval tool first.</dd>
 
                     <dt>Q3: Does QuicksilverOne offer travel insurance?</dt>
-                    <dd>A: As a Mastercard, it likely includes network benefits like Auto Rental CDW, Travel Accident Insurance, and Lost/Damaged Luggage Reimbursement.<sup>12</sup> Check your specific Guide to Benefits.</dd>
+                    <dd>A: As a Mastercard, it likely includes network benefits like Auto Rental CDW, Travel Accident Insurance, and Lost/Damaged Luggage Reimbursement. Check your specific Guide to Benefits.</dd>
 
                     <dt>Q4: How does the 5% cash back on Capital One Travel work for flights?</dt>
-                    <dd>A: For QuicksilverOne, the 5% back is for hotels and rental cars only booked via Capital One Travel.<sup>10</sup> Flights earn the standard 1.5%.</dd>
+                    <dd>A: For QuicksilverOne, the 5% back is for hotels and rental cars only booked via Capital One Travel. Flights earn the standard 1.5%.</dd>
 
                     <dt>Q5: Can I transfer QuicksilverOne cash back to airline miles or hotel points?</dt>
-                    <dd>A: No. Cash back cannot be transferred to external loyalty programs.<sup>24</sup> Redeem for statement credits, checks, gift cards, etc.<sup>1</sup></dd>
+                    <dd>A: No. Cash back cannot be transferred to external loyalty programs. Redeem for statement credits, checks, gift cards, etc.</dd>
 
                     <dt>Q6: Is Capital One Travel portal pricing competitive?</dt>
-                    <dd>A: Generally, yes. Flight prices are often very close to direct bookings.<sup>23</sup> The 5% back on hotels/cars can make deals attractive. Always compare. Features like price prediction add value.<sup>14</sup></dd>
+                    <dd>A: Generally, yes. Flight prices are often very close to direct bookings. The 5% back on hotels/cars can make deals attractive. Always compare. Features like price prediction add value.</dd>
 
                     <dt>Q7: How quickly can I get a credit limit increase?</dt>
-                    <dd>A: Capital One automatically considers you for a higher credit line in as little as six months with responsible use (on-time payments, low balance).<sup>1</sup> Not guaranteed.</dd>
+                    <dd>A: Capital One automatically considers you for a higher credit line in as little as six months with responsible use (on-time payments, low balance). Not guaranteed.</dd>
 
                     <dt>Q8: What if I can't pay my balance in full?</dt>
-                    <dd>A: You'll be charged a very high variable APR (currently 29.74%<sup>1</sup>), quickly negating rewards. A late fee (up to $40<sup>3</sup>) also applies. Avoid carrying a balance.</dd>
+                    <dd>A: You'll be charged a very high variable APR (currently 29.74%), quickly negating rewards. A late fee (up to $40) also applies. Avoid carrying a balance.</dd>
 
                     <dt>Q9: Are there better Capital One travel cards if my credit improves?</dt>
-                    <dd>A: Yes. The Venture and Venture X cards (excellent credit) offer miles transferable to partners and more perks.<sup>2</sup> The standard Quicksilver (excellent credit) has 1.5% back with no annual fee.<sup>9</sup></dd>
+                    <dd>A: Yes. The Venture and Venture X cards (excellent credit) offer miles transferable to partners and more perks. The standard Quicksilver (excellent credit) has 1.5% back with no annual fee.</dd>
 
                     <dt>Q10: How does Eno help with travel?</dt>
-                    <dd>A: Eno, Capital One's assistant, provides virtual card numbers for secure online bookings and alerts for suspicious activity, useful when traveling.<sup>1</sup> It doesn't book travel (that's via Capital One Travel).</dd>
+                    <dd>A: Eno, Capital One's assistant, provides virtual card numbers for secure online bookings and alerts for suspicious activity, useful when traveling. It doesn't book travel (that's via Capital One Travel).</dd>
                   </dl>
                 </section>
                 {/* E-A-T Section Placeholder - adapt from Amex Gold if needed */}

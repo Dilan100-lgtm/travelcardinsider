@@ -346,7 +346,7 @@ export default function UsBankAltitudeConnect2025() {
 
             <h3>4.2 Breeze Through Security</h3>
             <p>
-              The card offers a statement credit of up to <b><em>$100 for the Global Entry or TSA PreCheck® application fee</em></b>, available once every four years. This directly covers the cost of these popular expedited security programs, adding ~$21-25 in annual value. This benefit is typically found on cards with annual fees<sup>28</sup>, making its inclusion here notable.
+              The card offers a statement credit of up to <b><em>$100 for the Global Entry or TSA PreCheck® application fee</em></b>, available once every four years. This directly covers the cost of these popular expedited security programs, adding ~$21-25 in annual value. This benefit is typically found on cards with annual fees, making its inclusion here notable.
             </p>
 
              <h3>4.3 Standard Protections and Visa Signature® Perks</h3>
@@ -400,7 +400,7 @@ export default function UsBankAltitudeConnect2025() {
             <h3>5.4 How it Stacks Up (Brief Competitive Context)</h3>
             <ul>
                 <li><b><em>Vs. Chase Sapphire Preferred® ($95 fee):</em></b> Altitude Connect has no fee, lounge visits, GE/TSA credit. CSP has transferable points (higher potential value), better travel insurance, uncapped bonuses.<sup>4,1</sup></li>
-                <li><b><em>Vs. Capital One Venture Rewards ($95 fee):</em></b> Altitude Connect has no fee, lounge visits. Venture has simpler 2X base earning, transferable miles (mostly international partners), GE/TSA credit, 1cpp travel statement credit.<sup>28</sup></li>
+                <li><b><em>Vs. Capital One Venture Rewards ($95 fee):</em></b> Altitude Connect has no fee, lounge visits. Venture has simpler 2X base earning, transferable miles (mostly international partners), GE/TSA credit, 1cpp travel statement credit.</li>
                 <li><b><em>Vs. Amex Green® ($150 fee):</em></b> Altitude Connect has no fee, lounge visits, GE/TSA credit. Green has transferable points (high potential value), broad 3X travel/transit/dining categories, CLEAR® Plus credit.<sup>5,5</sup></li>
             </ul>
              <p>The Altitude Connect's unique value lies in its <b><em>specific combination</em></b> of $0 fee + GE/TSA credit + limited lounge access.</p>
