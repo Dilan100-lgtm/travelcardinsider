@@ -258,7 +258,7 @@ function CapitalOneQuicksilverOneReviewPage() {
     { id: 'section-18', title: 'The Final Takeaway & Alternatives' },
     { id: 'section-19', title: 'Card-Specific FAQs' },
   ];
-  import { useRef, useEffect } from 'react';
+ 
 
 function DraggableTableWrapper({ children }) {
   const containerRef = useRef(null);
@@ -933,7 +933,7 @@ function DraggableTableWrapper({ children }) {
                   <p>The QuicksilverOne can be a valuable tool for a specific user at a specific credit stage, facilitating access to better financial products later.</p>
                 </section>
 
-                // Section 19: Card-Specific Frequently Asked Questions (FAQs)
+               
                 <section id="section-19" className={`${styles.reviewSection} ${styles.faqSection}`}> {/* Added styles.faqSection */}
                   <h2>19. Card-Specific Frequently Asked Questions (FAQs)</h2>
                   <div className={styles.faqContainer}>
