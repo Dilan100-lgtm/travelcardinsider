@@ -306,6 +306,19 @@
   .summaryLabel { margin-right: var(--spacing-sm, 8px); }
   .summaryValue { text-align: left; flex-basis: 100%; margin-top: var(--spacing-xs, 4px); }
 }
+.summaryRatesLink {
+  background: none;
+  color: var(--color-primary, #0052cc); /* Use variable */
+  border: 1px solid var(--color-border, #dfe1e6); /* Use variable */
+  box-shadow: none;
+}
+.summaryRatesLink .btnRates {
+  padding: 10px 24px; font-size: 1rem; font-weight: 700; /* Bolder */
+  border-radius: var(--border-radius-md, 6px); /* Use variable */
+  box-shadow: var(--shadow-sm, 0 2px 4px rgba(23, 43, 77, 0.07)); /* Use variable */
+  transition: all 0.3s ease; border: none; cursor: pointer;
+  text-decoration: none; line-height: 1.5;
+}
 
 
 /* =============== TABLES (Responsive Scroll) =============== */
