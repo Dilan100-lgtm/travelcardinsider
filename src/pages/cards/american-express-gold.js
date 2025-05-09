@@ -20,6 +20,10 @@ import IconStar from '../../components/icons/icon-star.svg';
 import IconCheck from '../../components/icons/icon-Credit Card.svg'; // Ensure file name is correct
 import IconX from '../../components/icons/icon-Star + Arrow Up.svg';   // Ensure file name is correct
 import IconPlus from '../../components/icons/icon-target.svg';
+const RatingTooltipDynamic = dynamic(() => import('../../components/RatingTooltip'), {
+  ssr: false,
+  loading: () => null,
+});
 
 
 
@@ -49,9 +53,9 @@ const ratingCriteria = [
     'Travel Perks (3X Flights, No FTF)'
 ];
 
-function AmexGoldReviewPage() {
+function AmexBusinessGoldReviewPage() {
+  // --- Tooltip State --- (Priority 1)
   const [showRatingInfo, setShowRatingInfo] = useState(false);
-  const tooltipRef = useRef(null);
 
   const handleIconClick = useCallback((event) => {
         event.preventDefault();
@@ -59,23 +63,6 @@ function AmexGoldReviewPage() {
         setShowRatingInfo(prevState => !prevState);
     }, []);
 
-  const closeTooltip = useCallback(() => {
-        setShowRatingInfo(false);
-    }, []);
-
-  useEffect(() => {
-        if (!showRatingInfo) return;
-        const handleClickOutside = (event) => {
-            const isInfoButton = event.target.closest(`.${styles.infoIconButton}`);
-            if (tooltipRef.current && !tooltipRef.current.contains(event.target) && !isInfoButton) {
-                closeTooltip();
-            }
-        };
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, [showRatingInfo, closeTooltip]);
 
   const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
   const pageUrl = `${siteUrl}/reviews/american-express-gold`; // *** REPLACE with your actual page URL, ensure it matches your file structure, e.g., /cards/american-express-gold ***
@@ -285,6 +272,11 @@ function AmexGoldReviewPage() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+        <link
+            rel="preload"
+            as="image"
+            href={reviewData.imageUrl}
         />
       </Head>
 

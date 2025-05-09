@@ -28,60 +28,51 @@
 }
 
 /* =============== TYPOGRAPHY =============== */
-/* Note: Font families here might be overridden by globals.css if less specific,
-   or you can make them more specific if you want Roboto/Playfair here
-   instead of the global Inter. For consistency with our plan, these should
-   ideally use var(--font-family-main) and var(--font-family-headings) or similar
-   if those are defined with Inter and a specific heading font.
-   However, per "do not change or reduce any other things", I am keeping your explicit font declarations here.
-   If you want Inter to apply here, you'd change these font-family lines.
-*/
 .reviewHeader h1 {
-  font-family: var(--font-family-serif, 'Playfair Display', serif); /* Preserved: Uses Playfair Display */
+  font-family: var(--font-family-serif, 'Playfair Display', serif);
   font-size: clamp(2.2rem, 6vw, 3.2rem);
-  color: var(--text-dark, #172b4d); /* Use variable */
+  color: var(--text-dark, #172b4d);
   text-align: center;
-  margin-bottom: var(--spacing-lg, 24px); /* Use variable */
+  margin-bottom: var(--spacing-lg, 24px);
   line-height: 1.2;
   font-weight: 700;
 }
 
 .reviewSection h2 {
-  font-family: var(--font-family-serif, 'Playfair Display', serif); /* Preserved: Uses Playfair Display */
-  font-size: clamp(1.8rem, 4.8vw, 2.4rem); /* Slightly larger */
-  color: var(--color-primary, #0052cc); /* Use variable */
+  font-family: var(--font-family-serif, 'Playfair Display', serif);
+  font-size: clamp(1.8rem, 4.8vw, 2.4rem);
+  color: var(--color-primary, #0052cc);
   margin-top: 0;
-  margin-bottom: var(--spacing-lg, 24px); /* Use variable */
-  padding-bottom: var(--spacing-sm, 8px); /* Use variable */
-  border-bottom: 2px solid var(--color-border, #dfe1e6); /* Thinner, less intense border */
+  margin-bottom: var(--spacing-lg, 24px);
+  padding-bottom: var(--spacing-sm, 8px);
+  border-bottom: 2px solid var(--color-border, #dfe1e6);
   display: inline-block;
 }
 
 .reviewSection h3 {
-  font-family: var(--font-condensed, 'Roboto Condensed', var(--font-family-sans, sans-serif)); /* Preserved */
+  font-family: var(--font-condensed, 'Roboto Condensed', var(--font-family-sans, sans-serif));
   font-weight: 700;
-  font-size: 1.5rem; /* Increase size */
-  color: var(--text-dark, #172b4d); /* Use variable */
-  margin-top: var(--spacing-xl, 32px); /* Use variable */
-  margin-bottom: var(--spacing-md, 16px); /* Use variable */
+  font-size: 1.5rem;
+  color: var(--text-dark, #172b4d);
+  margin-top: var(--spacing-xl, 32px);
+  margin-bottom: var(--spacing-md, 16px);
 }
 
 .reviewContainer p {
-  margin-bottom: var(--spacing-md, 16px); /* Use variable */
-  color: var(--text-medium, #42526e); /* Use variable */
-  line-height: var(--base-line-height, 1.7); /* Use variable */
-  max-width: 68ch; /* Consistent line length */
-  /* font-family will inherit from .reviewContainer or body (Inter from globals.css) */
+  margin-bottom: var(--spacing-md, 16px);
+  color: var(--text-medium, #42526e);
+  line-height: var(--base-line-height, 1.7);
+  max-width: 68ch;
 }
 
 .reviewContainer strong {
-  font-weight: 700; /* Will use Inter Bold from globals.css definition of strong */
-  color: var(--color-primary, #0052cc); /* Use variable */
+  font-weight: 700;
+  color: var(--color-primary, #0052cc);
 }
 
 .reviewContainer em {
-  font-style: italic; /* Will use Inter Italic if available and body set to Inter */
-  color: var(--text-medium, #42526e); /* Use variable */
+  font-style: italic;
+  color: var(--text-medium, #42526e);
 }
 
 .reviewContainer ul,
@@ -94,45 +85,62 @@
 .reviewContainer li {
   margin-bottom: 0.75rem;
   padding-left: 0.5rem;
-  /* list-style-type will inherit from globals.css (disc/decimal) */
 }
 
-/* Refined Feature List */
 .featureList {
   list-style: none;
   padding-left: 0;
-  margin-bottom: var(--spacing-lg, 24px); /* Use variable */
+  margin-bottom: var(--spacing-lg, 24px);
 }
 .featureList li {
   position: relative;
   padding-left: 1.75em;
-  margin-bottom: var(--spacing-sm, 8px); /* Tighter spacing */
+  margin-bottom: var(--spacing-sm, 8px);
   font-size: 0.95rem;
   text-decoration: none;
 }
 .featureList li::before {
-  
   position: absolute; left: 0.5em;
-  color: var(--color-primary, #0052cc); /* Use variable */
+  color: var(--color-primary, #0052cc);
   font-weight: bold; font-size: 1em; line-height: inherit;
 }
 
 /* =============== HEADER & INTRO =============== */
 .reviewHeader {
   text-align: center;
-  margin-bottom: var(--spacing-xl, 32px); /* Use variable */
-  padding-bottom: var(--spacing-lg, 24px); /* Use variable */
-  border-bottom: 1px solid var(--color-border-light, #ebecf0); /* Use variable */
+  margin-bottom: var(--spacing-xl, 32px);
+  padding-bottom: var(--spacing-lg, 24px);
+  border-bottom: 1px solid var(--color-border-light, #ebecf0);
 }
 
-.cardImageContainer {
-  margin: 1.5rem auto; max-width: 480px; line-height: 0;
-  display: flex; justify-content: center; align-items: center;
+/* Styles for CSS background image for the card (Priority 8) */
+.cardImageContainer { /* This div centers the background image div */
+  margin: 1.5rem auto;
+  max-width: 480px; /* !!! Should ideally match your image's intended display width or reviewData.imageWidth !!! */
+  line-height: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.cardImageBackground {
+  width: 100%; /* Takes the width of cardImageContainer */
+  /* !!! Set a specific height or use padding-bottom for aspect ratio if width is 100% of a constrained parent !!! */
+  /* Example using aspect ratio: (imageHeight / imageWidth) * 100% */
+  /* For 480x304, aspect ratio is 304/480 = 0.6333. So padding-bottom: 63.33% */
+  /* This example assumes reviewData.imageWidth and reviewData.imageHeight are 480 and 304 respectively. */
+  /* !!! You MUST ensure your reviewData.imageUrl in amex-business-gold.js points to the correct image path in /public !!! */
+  /* The actual background-image is set inline in the JSX for dynamic URL */
+  height: 304px; /* !!! Or use padding-bottom for aspect ratio. Set to actual reviewData.imageHeight or desired fixed height !!! */
+  background-size: contain; /* Or 'cover' or specific dimensions */
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+/* .cardImage class is no longer used by a next/image component for the main card, but might be used elsewhere */
 .cardImage { display: block; max-width: 100%; height: auto; }
 
-/* Refined Rating Section */
 .ratingSection {
   margin-top: var(--spacing-lg, 24px);
   border-top: 1px solid var(--color-border-light, #ebecf0);
@@ -142,30 +150,32 @@
 .tciRating {
   font-size: 1rem; font-weight: 500;
   color: var(--text-dark, #172b4d);
-  background-color: var(--color-background-subtle, #f1f3f5); /* Use variable */
-  border: 1px solid var(--color-border, #dfe1e6); /* Use variable */
+  background-color: var(--color-background-subtle, #f1f3f5);
+  border: 1px solid var(--color-border, #dfe1e6);
   padding: 0.4rem 1rem; border-radius: 15px;
   display: inline-flex; align-items: center; gap: 0.5rem;
-  position: relative;
+  position: relative; /* For tooltip positioning */
 }
 .tciRating strong { color: var(--color-primary, #0052cc); }
+
 .infoIconButton {
   background: none; border: none; padding: 2px; margin: 0;
   cursor: pointer; line-height: 0; border-radius: 50%;
   display: inline-flex; align-items: center; justify-content: center;
-  vertical-align: middle; color: var(--text-light, #6b7f9b); /* Use variable */
+  vertical-align: middle; color: var(--text-light, #6b7f9b);
   transition: background-color 0.2s ease;
 }
 .infoIconButton:hover { background-color: rgba(0, 0, 0, 0.05); }
 .infoIconButton:focus-visible {
   outline: 2px solid var(--color-primary, #0052cc);
   outline-offset: 1px;
-  background-color: rgba(0, 82, 204, 0.1); /* Focus color adjustment */
+  background-color: rgba(0, 82, 204, 0.1);
 }
 .infoIcon { display: inline-block; fill: currentColor; opacity: 0.8; width: 16px; height: 16px; }
 .infoIconButton:hover .infoIcon { opacity: 1; }
+
 .starRating {
-  font-size: 1.5rem; /* Smaller stars */
+  font-size: 1.5rem;
   color: var(--color-border-light, #ebecf0);
   position: relative; display: inline-block; line-height: 1;
 }
@@ -175,7 +185,7 @@
   width: var(--rating, 0%);
 }
 .ratingDescription {
-  font-size: 0.95rem; font-style: italic; color: var(--text-light, #6b7f9b); /* Use variable */
+  font-size: 0.95rem; font-style: italic; color: var(--text-light, #6b7f9b);
   margin-top: 1rem; max-width: 600px; margin-left: auto; margin-right: auto;
   line-height: 1.6;
 }
@@ -187,338 +197,328 @@
 }
 .intro p {
   font-size: 1.1rem; line-height: 1.8; max-width: 75ch;
-  margin: 0 auto 0 auto; color: var(--text-medium, #42526e); 
-  text-align: center;/* Use variable */
-  justify-content: center; 
+  margin: 0 auto 0 auto; color: var(--text-medium, #42526e);
+  text-align: center;
+  justify-content: center;
 }
 @media (min-width: 768px) {
     .introAndImageWrapper { flex-direction: row; align-items: center; }
     .intro { flex: 1; text-align: left; }
     .intro p { margin-left: 0; margin-right: 0; }
+    /* .cardImageContainer flex-basis adjusted if it's only for background now */
     .cardImageContainer { flex-basis: 40%; max-width: 480px; margin: 0; }
 }
 
+/* Remaining CSS from your original ReviewPage.module.css continues below */
+/* Ensure all other styles (.summaryBox, .statsTable, .ctaSection, .eatSection, etc.) */
+/* are preserved exactly as they were in your provided file. */
+/* ... (Your existing .summaryBox styles) ... */
+/* ... (Your existing .statsTable styles) ... */
+/* ... (Your existing .ctaSection styles) ... */
+/* ... (Your existing .eatSection styles) ... */
+/* ... (Your existing .ratingTooltip styles - these are still used by RatingTooltip.js) ... */
+/* ... (Your existing .reviewPageLayout, .mainContentArea, .sidebarArea styles) ... */
+/* ... (Your existing responsive adjustments and other miscellaneous styles) ... */
 
 /* =============== AT-A-GLANCE SUMMARY BOX (Refined) =============== */
 .summaryBox {
-  /* Blending with page background, using border */
-  background-color: var(--color-background-page, #f8f9fa); /* Match page bg */
-  border: 1px solid var(--color-border, #dfe1e6); /* Use variable */
-  border-radius: var(--border-radius-lg, 12px); /* Softer, larger radius */
+  background-color: var(--color-background-page, #f8f9fa);
+  border: 1px solid var(--color-border, #dfe1e6);
+  border-radius: var(--border-radius-lg, 12px);
   padding: var(--spacing-lg, 24px);
-  margin: 0 auto var(--spacing-xl, 32px) auto; /* Center and add more bottom margin */
-  max-width: 1100px; /* Limit width relative to content */
-  box-shadow: none; /* Remove shadow */
+  margin: 0 auto var(--spacing-xl, 32px) auto;
+  max-width: 1100px;
+  box-shadow: none;
 }
-
 .summaryBoxTitle {
-  font-family: var(--font-condensed, 'Roboto Condensed', var(--font-family-sans, sans-serif)); /* Preserved */
-  font-size: 1.3rem; /* Smaller title */
-  font-weight: 600; /* Less heavy */
-  color: var(--text-dark, #223d6d); /* Use variable */
+  font-family: var(--font-condensed, 'Roboto Condensed', var(--font-family-sans, sans-serif));
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-dark, #223d6d);
   text-align: center;
   margin-top: 0;
   margin-bottom: var(--spacing-lg, 24px);
   padding-bottom: var(--spacing-sm, 8px);
-  border-bottom: 1px solid var(--color-border, #dfe1e6); /* Use variable */
+  border-bottom: 1px solid var(--color-border, #dfe1e6);
   display: block;
-  /* Reset general h2 styles */
   border-left: none; border-right: none; border-top: none;
 }
-
 .summaryGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--spacing-md, 16px); /* Consistent gap */
+  gap: var(--spacing-md, 16px);
   align-items: start;
 }
-
 .summaryItem {
   display: flex;
-  align-items: baseline; /* Align text baseline */
+  align-items: baseline;
   gap: var(--spacing-sm, 10px);
-  background-color: transparent; /* No background per item */
-  border: none; /* No border per item */
-  padding: var(--spacing-xs, 4px) 0; /* Reduced padding */
-  min-height: auto; /* Remove min-height */
+  background-color: transparent;
+  border: none;
+  padding: var(--spacing-xs, 4px) 0;
+  min-height: auto;
 }
-
 .summaryItem[data-full-width="true"] {
-  grid-column: 1 / -1; /* Span full width */
+  grid-column: 1 / -1;
 }
-
 .summaryIcon {
-  font-size: 1.4rem; /* Smaller icons */
-  color: var(--color-primary, #0052cc); /* Use variable */
+  font-size: 1.4rem;
+  color: var(--color-primary, #0052cc);
   flex-shrink: 0;
   line-height: 1;
   margin-right: var(--spacing-xs, 4px);
   margin: 0.5rem;
-  /* TODO: Replace emoji/placeholder with actual SVG/Icon component */
 }
-
 .summaryLabel {
-  font-weight: 500; /* Normal weight */
-  color: rgb(108, 108, 214); /* Use variable */
+  font-weight: 500;
+  color: rgb(108, 108, 214);
   font-size: 1.2rem;
-  margin-right: auto; /* Pushes value right */
+  margin-right: auto;
   flex-shrink: 0;
   font-family: 'Roboto Condensed', sans-serif;
-
 }
-
 .summaryValue {
   font-weight: 500;
-  color: var(--text-dark, #172b4d); /* Use variable */
-  font-size: 1rem; /* Slightly larger value text */
+  color: var(--text-dark, #172b4d);
+  font-size: 1rem;
   text-align: left;
-  font-family: 'Roboto Condensed', sans-serif; /* Preserved: Explicitly Roboto Condensed */
+  font-family: 'Roboto Condensed', sans-serif;
 }
-
 .summaryValue small {
   font-size: 0.8em;
-  color: var(--text-light, #476ea3); /* Use variable */
-  display: inline; /* Show details inline */
+  color: var(--text-light, #476ea3);
+  display: inline;
   margin-left: 0.3em;
   font-weight: 400;
-  font-family: 'Roboto Condensed', sans-serif; /* Preserved: Explicitly Roboto Condensed */
-  font-style: italic; /* Italicize for emphasis */
+  font-family: 'Roboto Condensed', sans-serif;
+  font-style: italic;
 }
-
 .summaryRatesLink {
   text-align: center;
-  margin-top: var(--spacing-md, 16px); /* Less space */
+  margin-top: var(--spacing-md, 16px);
   font-size: 0.85rem;
 }
-
 .summaryRatesLink a {
-  color: var(--text-light, #6b7f9b); /* Use variable */
+  color: var(--text-light, #6b7f9b);
   text-decoration: underline;
   transition: color var(--transition-speed, 0.2s) ease;
 }
-
 .summaryRatesLink a:hover {
-  color: var(--color-primary, #0052cc); /* Use variable */
+  color: var(--color-primary, #0052cc);
 }
-
 @media (max-width: 600px) {
   .summaryGrid { grid-template-columns: 1fr; gap: var(--spacing-sm, 8px); }
   .summaryItem { flex-wrap: wrap; align-items: flex-start; }
   .summaryLabel { margin-right: var(--spacing-sm, 8px); }
   .summaryValue { text-align: left; flex-basis: 100%; margin-top: var(--spacing-xs, 4px); }
 }
-
 .summaryRatesLink .btnRates {
-  padding: 10px 24px; font-size: 1rem; font-weight: 700; /* Bolder */
-  border-radius: var(--border-radius-md, 6px); /* Use variable */
-  box-shadow: var(--shadow-sm, 0 2px 4px rgba(23, 43, 77, 0.07)); /* Use variable */
+  padding: 10px 24px; font-size: 1rem; font-weight: 700;
+  border-radius: var(--border-radius-md, 6px);
+  box-shadow: var(--shadow-sm, 0 2px 4px rgba(23, 43, 77, 0.07));
   transition: all 0.3s ease; border: none; cursor: pointer;
   text-decoration: none; line-height: 1.5;
   background: none;
-  color: var(--color-primary, #0052cc); /* Use variable */
-  border: 1px solid var(--color-border, #dfe1e6); /* Use variable */
-  
+  color: var(--color-primary, #0052cc);
+  border: 1px solid var(--color-border, #dfe1e6);
 }
 .summaryRatesLink .btnRates:hover { box-shadow: var(--shadow-md, 0 4px 8px rgba(23, 43, 77, 0.1)); transform: translateY(-2px); }
 .summaryRatesLink .btnRates:active { transform: translateY(0px) scale(0.98); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-
 
 /* =============== TABLES (Responsive Scroll) =============== */
 .tableContainer {
   width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch;
   margin-bottom: 2rem; border: 1px solid var(--color-border, #dfe1e6);
-  border-radius: var(--border-radius-md, 6px); /* Use variable */
-  box-shadow: var(--shadow-sm, 0 2px 4px rgba(23, 43, 77, 0.07)); /* Use variable */
+  border-radius: var(--border-radius-md, 6px);
+  box-shadow: var(--shadow-sm, 0 2px 4px rgba(23, 43, 77, 0.07));
 }
-
 .statsTable {
   width: 100%; min-width: 600px; border-collapse: collapse;
   border: none; box-shadow: none; margin-bottom: 0; font-size: 0.95rem;
 }
-
-.statsTable thead { background-color: var(--color-background-subtle, #f1f3f5); } /* Use variable */
-
+.statsTable thead { background-color: var(--color-background-subtle, #f1f3f5); }
 .statsTable th {
-  background-color: transparent; color: var(--color-text-secondary, #5e6c84); /* Use variable */
+  background-color: transparent; color: var(--color-text-secondary, #5e6c84);
   font-weight: 600; text-align: left; padding: 1rem 1.2rem;
-  border-bottom: 2px solid var(--color-border, #dfe1e6); /* Use variable */
-  border-right: 1px solid var(--color-border-light, #ebecf0); /* Use variable */
+  border-bottom: 2px solid var(--color-border, #dfe1e6);
+  border-right: 1px solid var(--color-border-light, #ebecf0);
   white-space: nowrap;
 }
 .statsTable th:last-child { border-right: none; }
-
 .statsTable td {
   padding: 1rem 1.2rem; border: none;
-  border-bottom: 1px solid var(--color-border-light, #ebecf0); /* Use variable */
-  border-right: 1px solid var(--color-border-light, #ebecf0); /* Use variable */
-  vertical-align: middle; color: var(--text-medium, #42526e); /* Use variable */
+  border-bottom: 1px solid var(--color-border-light, #ebecf0);
+  border-right: 1px solid var(--color-border-light, #ebecf0);
+  vertical-align: middle; color: var(--text-medium, #42526e);
   white-space: normal;
 }
 .statsTable td:last-child { border-right: none; }
-
 .statsTable tbody tr:last-child td { border-bottom: none; }
-.statsTable tbody tr:nth-child(odd) { background-color: var(--color-background-subtle, #f1f3f5); } /* Subtle striping */
+.statsTable tbody tr:nth-child(odd) { background-color: var(--color-background-subtle, #f1f3f5); }
 .statsTable td:first-child { font-weight: 500; color: var(--text-dark, #172b4d); }
-
 @media (max-width: 650px) {
   .statsTable th, .statsTable td { padding: 0.8rem; font-size: 0.9rem; }
 }
-
 .totalRow td {
   font-weight: bold; color: var(--text-dark, #172b4d);
-  background-color: var(--color-background-subtle, #f1f3f5); /* Use subtle background */
+  background-color: var(--color-background-subtle, #f1f3f5);
 }
 .totalRow td:first-child { text-align: right; }
 
-
 /* =============== Original CTA Section (Refined) - Preserved =============== */
-/* Note: The styles below are your existing CTA styles.
-   The NEW styles for .applyNowButton and .ratesFeesLink are added further down.
-   You will need to decide whether to use the new .applyNowButton class in your JSX
-   or update .ctaButtons .btnApply to match the new design.
-*/
 .ctaSection {
-  text-align: center; padding: 0.5rem; /* Use variable */
-  background: var(--color-background-subtle, #f1f3f5); /* Use variable */
-  border: 1px solid var(--color-border, #dfe1e6); /* Use variable */
-  border-radius: var(--border-radius-md, 6px); /* Use variable */
-  margin: var(--spacing-xl, 32px) 0; /* Use variable */
+  text-align: center; padding: 0.5rem;
+  background: var(--color-background-subtle, #f1f3f5);
+  border: 1px solid var(--color-border, #dfe1e6);
+  border-radius: var(--border-radius-md, 6px);
+  margin: var(--spacing-xl, 32px) 0;
   box-shadow: none;
-  position: sticky; top: 3rem; /* Sticky section */
-  height: 30vh;
-  z-index: 1000; /* Ensure it stays above other content */
-
+  position: sticky; top: 3rem;
+  height: 30vh; /* This was in your original CSS for .ctaSection */
+  z-index: 1000;
 }
 .ctaSection h2 {
-  font-family: var(--font-condensed, 'Roboto Condensed', var(--font-family-sans, sans-serif)); /* Preserved */
-  font-size: clamp(1.5rem, 4vw, 1.8rem); color: var(--text-dark, #172b4d); /* Use variable */
+  font-family: var(--font-condensed, 'Roboto Condensed', var(--font-family-sans, sans-serif));
+  font-size: clamp(1.5rem, 4vw, 1.8rem); color: var(--text-dark, #172b4d);
   margin-top: 0; margin-bottom: 0.5rem; border: none; display: block;
 }
-.ctaSection h2 b { color: var(--color-primary, #0052cc); font-weight: 700; } /* Use variable */
-
+.ctaSection h2 b { color: var(--color-primary, #0052cc); font-weight: 700; }
 .ctaButtons { display: flex; justify-content: center; gap: 0.5rem; flex-wrap: wrap; }
 .ctaButtons .btn {
-  padding: 10px 24px; font-size: 1rem; font-weight: 700; /* Bolder */
-  border-radius: var(--border-radius-md, 6px); /* Use variable */
-  box-shadow: var(--shadow-sm, 0 2px 4px rgba(23, 43, 77, 0.07)); /* Use variable */
+  padding: 10px 24px; font-size: 1rem; font-weight: 700;
+  border-radius: var(--border-radius-md, 6px);
+  box-shadow: var(--shadow-sm, 0 2px 4px rgba(23, 43, 77, 0.07));
   transition: all 0.3s ease; border: none; cursor: pointer;
   text-decoration: none; line-height: 1.5;
 }
 .ctaButtons .btn:hover { box-shadow: var(--shadow-md, 0 4px 8px rgba(23, 43, 77, 0.1)); transform: translateY(-2px); }
 .ctaButtons .btn:active { transform: translateY(0px) scale(0.98); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-
-/* Specific Button Colors - Preserved */
 .ctaButtons .btnApply {
-   background: var(--color-accent, var(--value-good, #16a34a)); /* Use accent color */
-   color: var(--text-on-primary, white); /* Ensure contrast */
+   background: var(--color-accent, var(--value-good, #16a34a));
+   color: var(--text-on-primary, white);
 }
-.ctaButtons .btnApply:hover { background: var(--color-accent-hover, #117e37); } /* Define hover color */
-
+.ctaButtons .btnApply:hover { background: var(--color-accent-hover, #117e37); }
 .ctaButtons .btnRates {
   background: none;
-  color: var(--color-primary, #0052cc); /* Use variable */
-  border: 1px solid var(--color-border, #dfe1e6); /* Use variable */
+  color: var(--color-primary, #0052cc);
+  border: 1px solid var(--color-border, #dfe1e6);
   box-shadow: none;
 }
 .ctaButtons .btncalculator {
-  background:  #0d7eee; /* Use variable */
-  color:  #f3f5f8; /* Use variable */
-  border: 1px solid var(--color-border, #dfe1e6); /* Use variable */
+  background:  #0d7eee;
+  color:  #f3f5f8;
+  border: 1px solid var(--color-border, #dfe1e6);
   box-shadow: none;
 }
 .ctaButtons .btncalculator:hover {
-  background: #0d72d8; /* Use variable */
-  border-color: var(--color-primary, #0052cc); /* Use variable */
+  background: #0d72d8;
+  border-color: var(--color-primary, #0052cc);
 }
 .ctaButtons .btnRates:hover {
-  background: var(--color-background-subtle, #f1f3f5); /* Use variable */
-  border-color: var(--color-primary, #0052cc); /* Use variable */
+  background: var(--color-background-subtle, #f1f3f5);
+  border-color: var(--color-primary, #0052cc);
 }
 .ctaButtons .btn:focus-visible {
-  outline: 3px solid var(--color-primary-light, rgba(0, 82, 204, 0.15)); /* Use variable */
+  outline: 3px solid var(--color-primary-light, rgba(0, 82, 204, 0.15));
   outline-offset: 2px;
 }
 
 /* =============== E-A-T Section (Refined) =============== */
 .eatSection {
-  background-color: var(--color-background-subtle, #f1f3f5); /* Use variable */
-  border: 1px solid var(--color-border-light, #ebecf0); /* Use variable */
-  padding: var(--spacing-lg, 24px); /* Use variable */
-  border-radius: var(--border-radius-md, 6px); /* Use variable */
-  margin-top: var(--spacing-xl, 32px); /* Use variable */
+  background-color: var(--color-background-subtle, #f1f3f5);
+  border: 1px solid var(--color-border-light, #ebecf0);
+  padding: var(--spacing-lg, 24px);
+  border-radius: var(--border-radius-md, 6px);
+  margin-top: var(--spacing-xl, 32px);
 }
 .eatSection h2 {
-  font-family: var(--font-condensed, 'Roboto Condensed', var(--font-family-sans, sans-serif)); /* Preserved */
-  font-size: 1.3rem; color: var(--text-dark, #172b4d); /* Use variable */
-  border-bottom: 1px solid var(--color-border, #dfe1e6); /* Use variable */
-  margin-bottom: var(--spacing-lg, 24px); /* Use variable */
+  font-family: var(--font-condensed, 'Roboto Condensed', var(--font-family-sans, sans-serif));
+  font-size: 1.3rem; color: var(--text-dark, #172b4d);
+  border-bottom: 1px solid var(--color-border, #dfe1e6);
+  margin-bottom: var(--spacing-lg, 24px);
   text-align: center;
-  /* Reset general h2 styles */
   border-left: none; border-right: none; border-top: none; display: block;
 }
 .eatSection h3 {
-    color: var(--text-medium, #42526e); /* Use variable */
-    font-family: var(--font-family-sans); /* Preserved - consider changing to --font-family-main (Inter) for consistency */
+    color: var(--text-medium, #42526e);
+    font-family: var(--font-family-sans);
     font-weight: 600;
     font-size: 1.1rem;
-    margin-top: var(--spacing-lg, 24px); /* Use variable */
+    margin-top: var(--spacing-lg, 24px);
     margin-bottom: var(--spacing-sm, 8px);
 }
 .eatSection ul { list-style: disc; margin-bottom: 1rem; padding-left: 1.5rem; }
 .eatSection li { color: var(--text-medium, #42526e); font-size: 0.95rem; margin-bottom: 0.6rem; padding-left: 0; }
-.eatSection li::before { content: none; } /* Remove featureList style */
+.eatSection li::before { content: none; }
 .eatSection p:last-of-type { margin-top: 1.5rem; font-style: italic; text-align: center; color: var(--text-medium, #42526e); }
 
-
 /* =============== Tooltip Styles =============== */
-/* Keeping existing Tooltip styles for now, adjust if needed */
 .ratingTooltip {
-  position: absolute; top: 120%; left: 50%; transform: translateX(-50%);
-  background-color: #ffffff; border: 1px solid var(--color-border, #ced4da);
-  border-radius: 6px; padding: 10px 15px; width: 250px;
+  position: absolute;
+  top: 120%; /* Adjust as needed based on icon size and desired spacing */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffffff;
+  border: 1px solid var(--color-border, #ced4da); /* #ced4da is var(--gray-400) in Bootstrap-like systems */
+  border-radius: 6px;
+  padding: 10px 15px;
+  width: 280px; /* Slightly wider for more content */
   box-shadow: var(--shadow-md, 0 5px 15px rgba(0, 0, 0, 0.15));
-  z-index: 1050; font-size: 0.85rem; line-height: 1.5; color: var(--text-dark, #343a40);
-  text-align: left;
+  z-index: 1050; /* High z-index to appear above other elements */
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-dark, #343a40); /* #343a40 is var(--gray-800) */
+  text-align: left; /* Ensure text is aligned left within the tooltip */
 }
-.ratingTooltip strong { display: block; margin-bottom: 0.5rem; color: var(--text-dark, #212529); font-weight: 700; }
-.tooltipIntro { margin: 0.5rem 0 0.3rem 0; font-weight: 500; color: var(--text-dark, #333); }
-.tooltipList { list-style: disc; padding-left: 1.5rem; margin: 0; }
-.tooltipList li { margin-bottom: 0.25rem; color: var(--text-medium, #444); padding-left: 0; }
-.tooltipList li::before { content: none; }
-
+.ratingTooltip strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-dark, #212529); /* #212529 is var(--gray-900) */
+  font-weight: 700;
+}
+.tooltipIntro {
+  margin: 0.5rem 0 0.3rem 0;
+  font-weight: 500;
+  color: var(--text-dark, #333);
+}
+.tooltipList {
+  list-style: disc;
+  padding-left: 1.5rem; /* Indent list items */
+  margin: 0; /* Reset margin */
+}
+.tooltipList li {
+  margin-bottom: 0.25rem;
+  color: var(--text-medium, #444);
+  padding-left: 0; /* Reset padding if any from global li styles */
+}
+.tooltipList li::before { /* Reset list item pseudo-elements if any from global styles */
+  content: none;
+}
 @media (max-width: 480px) {
-  .ratingTooltip { width: calc(100% - 2rem); max-width: 300px; }
+  .ratingTooltip { width: calc(100% - 2rem); max-width: 300px; left: 50%; transform: translateX(-50%);}
 }
 
 /* =============== LAYOUT STYLES FOR TOC INTEGRATION =============== */
 .reviewPageLayout {
-  display: flex; flex-direction: column; /* Mobile first */
-  gap: var(--spacing-xl, 32px); /* Increased gap */
+  display: flex; flex-direction: column;
+  gap: var(--spacing-xl, 32px);
   max-width: 1600px;
-  margin: var(--spacing-lg, 24px) auto var(--spacing-xl, 32px) auto; /* Adjusted margins */
+  margin: var(--spacing-lg, 24px) auto var(--spacing-xl, 32px) auto;
   padding: 0 var(--spacing-md, 16px);
   overflow-y: visible;
-
 }
-
 .mainContentArea { flex-grow: 1; min-width: 0; overflow-y: visible; }
-
 .sidebarArea { width: 100%; align-self: flex-start }
-
-@media (min-width: 1024px) { /* Desktop breakpoint */
+@media (min-width: 1024px) {
   .reviewPageLayout { flex-direction: row; align-items: flex-start; }
   .sidebarArea {
-      width: var(--toc-width-desktop, 280px); /* Use variable */
+      width: var(--toc-width-desktop, 280px);
       flex-shrink: 0;
-      /* Add padding to the sidebar container itself */
       padding-top: var(--spacing-sm, 8px);
       overflow: visible;
-      position: sticky; top: 0; /* Sticky sidebar */ 
-      
+      position: sticky; top: 0;
   }
-  
 }
-
 
 /* =============== RESPONSIVE ADJUSTMENTS =============== */
 @media (max-width: 768px) {
@@ -527,71 +527,54 @@
   .reviewSection h2 { font-size: clamp(1.5rem, 4vw, 2rem); }
   .ctaSection h2 { font-size: 1.6rem; }
 }
-
-@media (min-width: 768px) {
-  .ctaSection { /* This is the specific mobile adjustment block for .ctaSection */
+@media (min-width: 768px) { /* This was in your original file, kept as is */
+  .ctaSection {
     padding: 1rem;
     margin-top: 1.5rem;
-    margin-bottom: 1.5rem; /* Adjusted for mobile */
-    height: 20vh;
+    margin-bottom: 1.5rem;
+    height: 20vh; /* This was in your original CSS for .ctaSection with this media query */
   }
-} /* This empty media query was kept as per "do not change any other things" - if it's preferred to remove it, please specify */
-
-.heroImageContainer { /* This seems to be a general style for heroImageContainer, possibly a fallback or base */
+}
+.heroImageContainer { /* This was in your original file, kept as is - now for the background image container */
   margin: auto;
 }
 
 /* --- NEW/UPDATED STYLES FOR CALLS-TO-ACTION (CTAs) --- */
-/* These are the styles discussed for the new "premium" CTA design.
-   You can apply .applyNowButton to your primary apply links in the JSX.
-   This is separate from your existing .ctaButtons .btnApply.
-   You need to decide if this .applyNowButton REPLACES .btnApply or is used INSTEAD of it.
-*/
-
-.applyNowButton { /* NEW PRIMARY CTA STYLE */
+.applyNowButton {
   display: inline-block;
-  padding: var(--spacing-md) var(--spacing-xl); /* e.g., 16px 32px */
-  background-color: var(--color-accent-secondary-cta); /* Your chosen CTA accent color from globals.css, e.g., a muted gold */
-  color: var(--color-text-primary); /* Dark text for contrast on a gold/yellow background. */
-  /* If your --color-accent-secondary-cta is dark (e.g. deep blue), use: color: var(--color-background-main); for white text */
-  
-  font-family: var(--font-family-main); /* Inter font from globals.css */
-  font-size: 1.125rem; /* ~18px, for prominence */
-  font-weight: var(--font-weight-semibold); /* e.g., 600 weight */
+  padding: var(--spacing-md) var(--spacing-xl);
+  background-color: var(--color-accent-secondary-cta);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-main);
+  font-size: 1.125rem;
+  font-weight: var(--font-weight-semibold);
   text-align: center;
   text-decoration: none;
   border: 2px solid transparent;
-  border-radius: var(--border-radius-lg); /* e.g., 8px */
+  border-radius: var(--border-radius-lg);
   cursor: pointer;
   transition: background-color 0.2s ease-in-out, transform 0.15s ease-in-out, box-shadow 0.2s ease-in-out;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05), 0 4px 8px rgba(0,0,0,0.05);
   line-height: 1.4;
   max-height: 5rem;
 }
-
 .applyNowButton:hover,
 .applyNowButton:focus {
-  /* Example for a gold CTA: background-color: #c9a030; */ /* Slightly darker shade of gold - ADJUST THIS HEX */
-  /* Update this hover background color to be a darker/lighter shade of your actual --color-accent-secondary-cta */
-  background-color: color-mix(in srgb, var(--color-accent-secondary-cta) 85%, black); /* Example to darken the CTA color */
-  color: var(--color-text-primary); /* Or --color-background-main if hover bg is dark */
+  background-color: color-mix(in srgb, var(--color-accent-secondary-cta) 85%, black);
+  color: var(--color-text-primary);
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0,0,0,0.07), 0 6px 12px rgba(0,0,0,0.07);
   outline: none;
 }
-
 .applyNowButton:focus-visible {
-  outline: 3px solid var(--color-accent-primary); /* Your primary accent for focus outline from globals.css */
+  outline: 3px solid var(--color-accent-primary);
   outline-offset: 2px;
-  /* Keep hover shadow for consistency or define a specific focus shadow */
   box-shadow: 0 4px 8px rgba(0,0,0,0.07), 0 6px 12px rgba(0,0,0,0.07);
 }
-
 .applyNowButton:active {
   transform: translateY(0px);
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
-
 .applyNowButton svg {
   margin-right: var(--spacing-sm);
   vertical-align: middle;
@@ -599,203 +582,158 @@
   height: 1.125em;
   fill: currentColor;
 }
-
-/* New style for "Rates & Fees" type links */
 .ratesFeesLink {
   display: inline-block;
   margin-top: var(--spacing-sm);
-  color: var(--color-text-secondary); /* Subdued color from globals.css */
+  color: var(--color-text-secondary);
   font-family: var(--font-family-main);
   font-size: 0.9rem;
   font-weight: var(--font-weight-medium);
   text-decoration: underline;
-  text-decoration-color: var(--color-border-medium); /* Subtle underline from globals.css */
+  text-decoration-color: var(--color-border-medium);
   transition: color 0.2s ease-in-out, text-decoration-color 0.2s ease-in-out;
 }
-
 .ratesFeesLink:hover,
 .ratesFeesLink:focus {
-  color: var(--color-accent-primary); /* Primary accent on hover/focus from globals.css */
+  color: var(--color-accent-primary);
   text-decoration-color: var(--color-accent-primary);
   outline: none;
 }
-
 .ratesFeesLink:focus-visible {
   outline: 2px solid var(--color-accent-primary);
   outline-offset: 2px;
 }
-
-/* Updated styles for .officialSiteLink and its anchor tag (if used for secondary actions) */
 .officialSiteLink {
   margin-top: var(--spacing-md);
-  text-align: center; /* Or 'left' if it appears below a left-aligned button */
+  text-align: center;
   font-size: 0.9rem;
-  color: var(--color-text-secondary); /* Text color for the "or visit the" part */
-  /* font-family will be inherited (Inter) */
+  color: var(--color-text-secondary);
 }
-
 .officialSiteLink a {
-  color: var(--color-text-secondary); /* Or var(--color-accent-primary) for more pop */
-  font-weight: var(--font-weight-medium); /* From globals.css */
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
   text-decoration: underline;
   text-decoration-color: var(--color-border-medium);
   transition: color 0.2s ease-in-out, text-decoration-color 0.2s ease-in-out;
 }
-
 .officialSiteLink a:hover,
 .officialSiteLink a:focus {
   color: var(--color-accent-primary);
   text-decoration-color: var(--color-accent-primary);
   outline: none;
 }
-
 .officialSiteLink a:focus-visible {
   outline: 2px solid var(--color-accent-primary);
   outline-offset: 2px;
 }
 
-/* You might want to update the .ctaSection if the new .applyNowButton is used within it,
-   or if the .ctaButtons .btnApply should adopt the new style.
-   For now, I am adding the new .applyNowButton style separately as requested.
-   If .ctaSection itself needs to change to accommodate the new button style
-   (e.g., different spacing if the new button is larger), you'd adjust .ctaSection here.
-*/
 /* --- HERO SECTION STYLES --- */
 .heroSection {
   display: flex;
-  flex-direction: column; /* Image below text on mobile */
+  flex-direction: column;
   align-items: center;
-  /* Full-width option: consider removing padding from reviewPageLayout for this section if you want full bleed */
-  /* padding: var(--spacing-xl) 0; */ /* Example for full bleed with internal container */
-
-  /* Contained width option (as per previous example): */
-  padding: var(--spacing-xl) var(--spacing-md); /* 2rem 1rem */
-  background-color: var(--color-background-subtle); /* Example: Subtle background from globals.css */
-  border-bottom: 1px solid var(--color-border-light); /* Optional separator */
-  margin-bottom: var(--spacing-xl); /* Space before the main review content */
-  text-align: center; /* Center text on mobile */
+  padding: var(--spacing-xl) var(--spacing-md);
+  background-color: var(--color-background-subtle);
+  border-bottom: 1px solid var(--color-border-light);
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
 }
-
 .heroTextContainer {
   margin-bottom: var(--spacing-lg);
-  max-width: 720px; /* Control width of text content */
+  max-width: 720px;
   width: 100%;
 }
-
 .heroTitle {
-  font-family: var(--font-family-main); /* Inter from globals.css */
-  font-size: clamp(2.2rem, 5vw, 3rem); /* Responsive: min, preferred, max */
-  font-weight: var(--font-weight-bold); /* 700 from globals.css */
-  color: var(--color-text-primary); /* from globals.css */
+  font-family: var(--font-family-main);
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
   line-height: 1.2;
-  margin-bottom: var(--spacing-md); /* 1rem */
+  margin-bottom: var(--spacing-md);
 }
-
 .heroSubtitle {
-  font-family: var(--font-family-main); /* Inter from globals.css */
-  font-size: clamp(1.05rem, 2.5vw, 1.25rem); /* Responsive */
-  font-weight: var(--font-weight-regular); /* 400 from globals.css */
-  color: var(--color-text-secondary); /* from globals.css */
+  font-family: var(--font-family-main);
+  font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-secondary);
   line-height: 1.65;
-  margin-bottom: var(--spacing-lg); /* 1.5rem */
+  margin-bottom: var(--spacing-lg);
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
 }
-
 .heroCtaContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--spacing-md); /* 1rem */
+  gap: var(--spacing-md);
   margin-top: var(--spacing-sm);
 }
-
-/* Use the .applyNowButton style from your main CTA definitions */
-/* .heroApplyButton can be used for any minor tweaks specific to the hero context */
-.heroApplyButton {
-  /* Example: Slightly larger if needed in hero */
-  /* padding: var(--spacing-lg) var(--spacing-xl); */
-  /* font-size: 1.2rem; */
-}
-
+.heroApplyButton { /* Potentially for hero-specific tweaks to .applyNowButton */ }
 .heroSecondaryLink {
   font-family: var(--font-family-main);
   font-size: 1rem;
-  font-weight: var(--font-weight-medium); /* 500 from globals.css */
-  color: var(--color-accent-primary); /* from globals.css */
-  text-decoration: none; /* No underline by default, underline on hover from global 'a' styles */
-  padding: var(--spacing-xs) var(--spacing-sm); /* 0.25rem 0.5rem */
+  font-weight: var(--font-weight-medium);
+  color: var(--color-accent-primary);
+  text-decoration: none;
+  padding: var(--spacing-xs) var(--spacing-sm);
   border-radius: var(--border-radius-md);
   transition: background-color 0.2s ease;
 }
-
 .heroSecondaryLink:hover,
 .heroSecondaryLink:focus {
   text-decoration: underline;
-  background-color: rgba(0,0,0,0.03); /* Subtle hover background */
+  background-color: rgba(0,0,0,0.03);
 }
-
-.heroImageContainer { /* This is the hero-specific image container style */
+/* This .heroImageContainer style was already present; now applies to the CSS background image container */
+.heroImageContainer {
   width: 100%;
-  max-width: 700px; /* Max width for the hero image container */
-  margin-top: var(--spacing-lg); /* Space above image on mobile */
-  line-height: 0; /* Remove extra space below image */
+  max-width: 700px;
+  margin-top: var(--spacing-lg);
+  line-height: 0;
 }
-
-.heroImage {
-  border-radius: var(--border-radius-lg); /* 8px, from globals.css */
-  box-shadow: 0 6px 12px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.06); /* Slightly more pronounced shadow */
+.heroImage { /* This class might not be used if you've fully switched to CSS background for hero */
+  border-radius: var(--border-radius-lg);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.06);
   width: 100%;
   margin: auto;
-  height: auto; /* Maintain aspect ratio */
-  object-fit: cover; /* Ensure image covers the area if aspect ratios differ slightly */
+  height: auto;
+  object-fit: cover;
 }
-
-/* Desktop layout for Hero */
-@media (min-width: 992px) { /* lg breakpoint, adjust as needed */
+@media (min-width: 992px) {
   .heroSection {
     flex-direction: row;
     justify-content: space-between;
-    align-items: center; /* Vertically center content */
-    text-align: left; /* Align text to left on desktop */
-    padding: var(--spacing-xxl) clamp(1.5rem, 6vw, 4rem); /* More padding: 3rem, responsive horizontal */
-    /* If your hero section is within a .container or constrained width element, this will work.
-       If .heroSection is full-bleed, you might need an inner div for text/image content to constrain them. */
+    align-items: center;
+    text-align: left;
+    padding: var(--spacing-xxl) clamp(1.5rem, 6vw, 4rem);
   }
-
   .heroTextContainer {
-    flex-basis: 50%; /* Adjust ratio as needed */
+    flex-basis: 50%;
     margin-bottom: 0;
-    margin-right: var(--spacing-xl); /* 2rem space between text and image */
+    margin-right: var(--spacing-xl);
     text-align: left;
   }
-  
   .heroSubtitle {
-    margin-left: 0; /* Reset for left alignment */
+    margin-left: 0;
     margin-right: 0;
   }
-
   .heroCtaContainer {
     flex-direction: row;
-    justify-content: flex-start; /* Align CTAs to the left */
-    gap: var(--spacing-lg); /* 1.5rem space between CTAs */
+    justify-content: flex-start;
+    gap: var(--spacing-lg);
   }
-
   .heroImageContainer { /* This is the hero-specific image container style for desktop */
-    flex-basis: 45%; /* Adjust ratio */
+    flex-basis: 45%;
     margin-top: 0;
-    max-width: 600px;
-    margin-left: auto; /* Center image on desktop */
+    max-width: 600px; /* Ensure this is sufficient for your image */
+    margin-left: auto; /* This was in your original file */
   }
 }
-/* NEW: Style for the disclaimer text below the hero apply button */
 .heroApplyButtonDisclaimer {
-  font-size: 0.75rem; /* Small font size */
-  color: var(--color-text-secondary, #5e6c84); /* Use a secondary or muted text color */
-  margin-top: var(--spacing-xs, 4px); /* Small space above the disclaimer */
-  display: block; /* Ensure it takes its own line */
-  text-align: center; /* Center align with the button */
+  font-size: 0.75rem;
+  color: var(--color-text-secondary, #5e6c84);
+  margin-top: var(--spacing-xs, 4px);
+  display: block;
+  text-align: center;
 }
-
-/* This is the final override for .ctaButtons gap, it's kept as it's a specific change */
