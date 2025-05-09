@@ -791,6 +791,3 @@
 }
 
 /* This is the final override for .ctaButtons gap, it's kept as it's a specific change */
-.ctaButtons {
-  gap: 3rem; /* 1rem */
-}
