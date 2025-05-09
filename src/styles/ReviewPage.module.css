@@ -533,8 +533,9 @@
   margin-bottom: 1.5rem; /* Adjusted for mobile */
   height: 20vh;
 }
+@media (min-width: 768px) {}
 .heroImageContainer {
-margin: auto;
+  margin: auto;
 }
 
 /* --- NEW/UPDATED STYLES FOR CALLS-TO-ACTION (CTAs) --- */
