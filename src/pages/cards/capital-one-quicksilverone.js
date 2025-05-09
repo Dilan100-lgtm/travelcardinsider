@@ -446,7 +446,7 @@ function CapitalOneQuicksilverOneReviewPage() {
                   <p><strong>High-Quality Card Image:</strong></p>
                   <div className={styles.cardImageContainer}> {/* You might want a specific style for inline images */}
                     <Image
-                        src="https://ecm.capitalone.com/WCM/card/products/qs1_cardart_prim_1290x812.png"
+                        src="/pexels-mikhail-nilov-6963857.webp" // Placeholder, replace with your actual image path
                         alt="Capital One QuicksilverOne Card"
                         width={645} // Reduced size for inline display
                         height={406} // Reduced size for inline display
