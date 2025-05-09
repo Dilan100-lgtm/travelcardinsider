@@ -325,7 +325,7 @@ function CapitalOneQuicksilverOneReviewPage() {
                 <div className={styles.heroCtaContainer}>
                   <div>
                     <a
-                      href={reviewData.applicationUrl}
+                      href={reviewData.applyLink}
                       target="_blank"
                       rel="noopener noreferrer sponsored" // Adjust rel as per your policies
                       className={`${styles.applyNowButton} ${styles.heroApplyButton}`}
