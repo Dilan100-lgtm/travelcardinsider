@@ -93,53 +93,225 @@ function AmexGoldReviewPage() {
   // --- End Tooltip State and Logic ---
 
 
+  // --- Updated data object based on new content (Ambiguous spaces removed) ---
+const reviewData = {
+  cardName: 'American Express® Gold Card',
+  // MODIFIED: Title Tag Update - Added "2025", moved "Review"
+  title: 'American Express® Gold Card – Maximize Your Rewards 2025 Review',
+  // Meta Description: Verify it exists at build time; keep it ≤ 155 chars and include welcome-offer figures.
+  // The current description is: "Expert analysis of the Amex Gold Card for travel enthusiasts, focusing on 4X dining/groceries, 3X flights, credits, travel perks, and Membership Rewards® redemption to assess its value against the $325 fee."
+  // This is a good length. Let's refine it to include welcome offer.
+  description: 'Explore the American Express® Gold Card (2025): 60,000 points welcome offer, 4X on dining/groceries, 3X flights, valuable credits. Is the $325 fee worth it? Full review.',
+  // Updated Keywords based on new content
+  keywords: 'American Express, Gold Card, 2025 review, travel rewards, dining rewards, Membership Rewards, statement credits, travel insurance, $325 annual fee, Amex Gold welcome offer',
+  author: 'TravelCardInsider', // *** REPLACE with your actual author/site name ***
+  imageUrl: '/NUS000000174_480x304_straight_withname.avif', // *** VERIFY PATH in /public ***
+  ratingValue: 8.8, // From Amex Gold HTML (KEEPING ORIGINAL AS REQUESTED)
+  applyLink: 'https://www.americanexpress.com/us/credit-cards/card/gold-card/', // *** REPLACE with actual Amex Gold APPLY URL ***
+  ratesLink: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/gold-card/25330-10-0#FeeTable', // *** VERIFY URL ***
+  // Image dimensions (MUST BE ACCURATE for next/image)
+  imageWidth: 480, // *** REPLACE with actual image width ***
+  imageHeight: 304, // *** REPLACE with actual image height ***
+  datePublished: "2025-05-09", // MODIFIED: Added for Schema - USE THE ACTUAL PUBLISH/UPDATE DATE
+  // Placeholder for APR info - update with actual data
+  aprRange: "19.24% - 26.24% Variable", // *** REPLACE with actual APR range if available, or a general statement ***
+};
+
+// --- Rating Tooltip Content (Ambiguous spaces removed) ---
+// KEEPING ORIGINAL AS REQUESTED
+const ratingCriteria = [ // *** VERIFY/CUSTOMIZE these criteria for Amex Gold Rating ***
+    'Dining & Grocery Rewards (4x)',
+    'Welcome Bonus Value',
+    'Membership Rewards® Flexibility',
+    'Annual Fee vs. Credits ($325 / up to $424)', // Updated to reflect current fee/credit potential
+    'Travel Perks (3X Flights, No FTF)'
+];
+
+
+function AmexGoldReviewPage() {
+  // --- Tooltip State and Logic (KEEPING ORIGINAL) ---
+  const [showRatingInfo, setShowRatingInfo] = useState(false);
+  const tooltipRef = useRef(null);
+
+  const handleIconClick = useCallback((event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        setShowRatingInfo(prevState => !prevState); // Toggle state
+    }, []);
+
+  const closeTooltip = useCallback(() => {
+        setShowRatingInfo(false);
+    }, []);
+
+  useEffect(() => {
+        if (!showRatingInfo) return;
+        const handleClickOutside = (event) => {
+            const isInfoButton = event.target.closest(`.${styles.infoIconButton}`);
+            // Check if the click is outside the tooltip AND not on the info button itself
+            if (tooltipRef.current && !tooltipRef.current.contains(event.target) && !isInfoButton) {
+                closeTooltip();
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [showRatingInfo, closeTooltip]);
+  // --- End Tooltip State and Logic ---
+
+
   // Inline Structured Data based on the final template structure
   // !!! VERIFY all URLs, counts, and details !!!
   const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
   const pageUrl = `${siteUrl}/reviews/amex-gold`; // *** REPLACE with your actual page URL ***
 
-  // *** CRITICAL: Verify the 'price' (annual fee) here matches the current offer ($325 according to text). The placeholder uses $250 based on previous context. UPDATE BEFORE DEPLOYMENT. ***
+  // MODIFIED: Enhanced Structured Data
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "American Express® Gold Card", // Kept original name
-    "image": `${siteUrl}${reviewData.imageUrl}`, // *** Assuming imageUrl starts with / and siteUrl is correct ***
-    "description": reviewData.description, // Updated description
-    "brand": {
-      "@type": "Brand",
-      "name": "American Express"
-    },
-    "review": {
-      "@type": "Review",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": reviewData.ratingValue.toString(), // Kept original rating
-        "bestRating": "10",
-        "worstRating": "1"
+    "@graph": [ // Using @graph for multiple schema types
+      {
+        "@type": "Product",
+        "name": reviewData.cardName,
+        "image": `${siteUrl}${reviewData.imageUrl}`,
+        "description": reviewData.description,
+        "sku": "AMEX-GOLD-CARD", // *** REPLACE with your internal SKU or identifier ***
+        "mpn": "NUS000000174",   // *** REPLACE with actual Manufacturer Part Number if applicable ***
+        "brand": {
+          "@type": "Brand",
+          "name": "American Express"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": reviewData.ratingValue.toString(),
+          "bestRating": "10",
+          "worstRating": "1",
+          "ratingCount": "580", // *** REPLACE with actual or estimated count (string) ***
+          "reviewCount": "1"  // Number of reviews on THIS page, so 1 for this specific Review object
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": reviewData.applyLink.startsWith('http') ? reviewData.applyLink : `${siteUrl}${reviewData.applyLink}`,
+          "priceCurrency": "USD",
+          "price": "325", // Annual Fee
+          "priceSpecification": [ // Added for APR info
+            {
+              "@type": "PriceSpecification",
+              "price": "325",
+              "priceCurrency": "USD",
+              "valueAddedTaxIncluded": "false", // Assuming fees don't include VAT directly
+              "description": "Annual Fee"
+            },
+            // Placeholder for APR. Update with real data or remove if not applicable/too variable.
+            // For credit cards, APR is complex. You might link to terms instead or provide a typical range.
+            {
+              "@type": "PriceSpecification",
+              "priceCurrency": "USD",
+              "description": `Purchase APR: ${reviewData.aprRange}. See rates and fees for details.`, // Example
+              // "minPrice": "19.24", // If you have min/max APR
+              // "maxPrice": "26.24"
+            }
+          ],
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "offeredBy": {
+            "@type": "Organization",
+            "name": "American Express" // The issuer offering the card
+          }
+        }
+        // "review" property for Product can point to the ID of the Review schema object below
+        // "review": { "@id": `${pageUrl}#review` } // Linking to the Review object
       },
-      "author": {
-        "@type": "Organization",
-        "name": reviewData.author // *** REPLACE with actual author/site name ***
+      {
+        "@type": "Review",
+        "@id": `${pageUrl}#review`, // Unique ID for this review
+        "itemReviewed": {
+          "@type": "Product", // Minimal reference to the Product being reviewed
+          "name": reviewData.cardName,
+          "image": `${siteUrl}${reviewData.imageUrl}`
+          // Potentially add "@id": "AMEX-GOLD-PRODUCT-ID" if you give the Product an @id
+        },
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": reviewData.ratingValue.toString(),
+          "bestRating": "10",
+          "worstRating": "1",
+          "description": "TravelCardInsider's rating based on rewards, fees, and benefits." // Optional description for the rating
+        },
+        "name": reviewData.title, // Title of the review
+        "author": {
+          "@type": "Organization", // Or "Person" if it's an individual author
+          "name": reviewData.author,
+          "url": siteUrl // URL of the author/organization
+        },
+        "datePublished": reviewData.datePublished, // ISO 8601 format YYYY-MM-DD
+        // "dateModified": "YYYY-MM-DD", // If you update the review, add this
+        "reviewBody": reviewData.description, // Or a more detailed summary of the review
+        "publisher": { // The publisher of the review (your website)
+            "@type": "Organization",
+            "name": reviewData.author, // Assuming author is the site name here
+            "logo": {
+              "@type": "ImageObject",
+              "url": `${siteUrl}/path-to-your-logo.png` // *** REPLACE with your actual logo URL ***
+            }
+        }
       },
-      "reviewBody": reviewData.description // Use meta description or a specific summary
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": reviewData.ratingValue.toString(), // Kept original rating
-      "bestRating": "10",
-      "worstRating": "1",
-      "ratingCount": "580", // *** REPLACE with actual or estimated count (string) ***
-      "reviewCount": "580"  // *** REPLACE with actual or estimated count (string) ***
-    },
-    "offers": {
-      "@type": "Offer",
-      "url": reviewData.applyLink.startsWith('http') ? reviewData.applyLink : `${siteUrl}${reviewData.applyLink}`, // *** Ensure full APPLY URL ***
-      "priceCurrency": "USD",
-       // *** VERIFY/UPDATE PRICE BASED ON CURRENT OFFER & TEXT ($325 mentioned in text) ***
-      "price": "325", // Updated Annual Fee based on text content
-      "availability": "https://schema.org/InStock",
-      "itemCondition": "https://schema.org/NewCondition"
-    }
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home", // Or your site's name
+            "item": siteUrl
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Credit Card Reviews", // *** REPLACE with your category page name ***
+            "item": `${siteUrl}/reviews` // *** REPLACE with your category page URL ***
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": reviewData.cardName + " Review", // Current page
+            "item": pageUrl
+          }
+        ]
+      },
+      // MODIFIED: Added FAQPage Schema
+      // *** Populate mainEntity with your actual Q&A content from the page ***
+      // *** If you don't have a Q&A section, you can remove this FAQPage schema part ***
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the annual fee for the American Express Gold Card?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The annual fee for the American Express Gold Card is $325."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What are the main rewards categories for the Amex Gold Card?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The Amex Gold Card offers 4X points at restaurants worldwide (up to $50k/year, then 1X), 4X points at U.S. supermarkets (up to $25k/year, then 1X), and 3X points on flights booked directly with airlines or on AmexTravel.com."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does the Amex Gold Card have foreign transaction fees?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No, the American Express Gold Card does not charge foreign transaction fees, making it a good choice for international travel."
+            }
+          }
+          // *** ADD MORE Q&A PAIRS FROM YOUR CONTENT HERE ***
+        ]
+      }
+    ]
   };
 
   // Define tocSections here
@@ -166,6 +338,8 @@ function AmexGoldReviewPage() {
     // Optional Sections (Uncomment to include):
     // { id: 'cta', title: 'Apply for the American Express® Gold Card' },
     // { id: 'eat-expertise-authority-trustworthiness', title: 'Our Commitment to E-A-T' },
+    // MODIFIED: If you add a Q&A section to your page, add its ID here for ToC
+    // { id: 'faq-section', title: 'Frequently Asked Questions' },
   ];
 
 
@@ -173,7 +347,9 @@ function AmexGoldReviewPage() {
     <>
       {/* ===== HEAD SECTION for Metadata & SEO ===== */}
       <Head>
+        {/* MODIFIED: Title now comes from reviewData.title which was updated */}
         <title>{reviewData.title}</title>
+        {/* MODIFIED: Description now comes from reviewData.description which was updated */}
         <meta name="description" content={reviewData.description} />
         <meta name="keywords" content={reviewData.keywords} />
         <meta name="author" content={reviewData.author} />
@@ -192,23 +368,37 @@ function AmexGoldReviewPage() {
         <meta property="og:title" content={reviewData.title} />
         <meta property="og:description" content={reviewData.description} />
         <meta property="og:url" content={pageUrl} />
-        <meta property="og:image" content={structuredData.image} />
+        <meta property="og:image" content={structuredData["@graph"][0].image} /> {/* Points to Product image */}
         <meta property="og:type" content="article" />
+        {/* MODIFIED: Added article specific OG tags */}
+        <meta property="article:published_time" content={reviewData.datePublished} />
+        <meta property="article:author" content={siteUrl} /> {/* URL to author page or site */}
+        <meta property="article:section" content="Credit Card Reviews" /> {/* Category */}
+        {reviewData.keywords.split(',').map(keyword => (
+            <meta property="article:tag" content={keyword.trim()} key={keyword} />
+        ))}
+
+
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={reviewData.title} />
         <meta name="twitter:description" content={reviewData.description} />
-        <meta name="twitter:image" content={structuredData.image} />
+        <meta name="twitter:image" content={structuredData["@graph"][0].image} />
+        {/* <meta name="twitter:site" content="@YourTwitterHandle" /> */} {/* *** REPLACE with your Twitter handle *** */}
+        {/* <meta name="twitter:creator" content="@AuthorTwitterHandle" /> */} {/* *** REPLACE with author's Twitter handle if different *** */}
+
 
         {/* Favicons */}
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" /> {/* Ensure these files exist in /public */}
 
         {/* Structured Data (JSON-LD) */}
+        {/* This ensures the JSON-LD is SSR'd */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </Head>
+
 
       <Header />
 
