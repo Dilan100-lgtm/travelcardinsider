@@ -777,7 +777,8 @@
   .heroImageContainer {
     flex-basis: 45%; /* Adjust ratio */
     margin-top: 0;
-    max-width: 600px; /* Max width for image on desktop */
+    max-width: 600px;
+    align-self: center; /* Max width for image on desktop */
   }
 }
 
