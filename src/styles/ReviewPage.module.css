@@ -385,7 +385,7 @@
   margin: var(--spacing-xl, 32px) 0; /* Use variable */
   box-shadow: none;
   position: sticky; top: 3rem; /* Sticky section */
-  height: 35vh;
+  height: 30vh;
   z-index: 1000; /* Ensure it stays above other content */
 
 }
