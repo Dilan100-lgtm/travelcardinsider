@@ -318,7 +318,7 @@ function AmexGoldReviewPage() {
                     </a>
                     {/* MODIFIED: Added disclaimer text below the button */}
                     <span className={styles.heroApplyButtonDisclaimer}>
-                      from American Express official site
+                      from American Express's official site
                     </span>
                   </div>
                   <Link href="#summaryBoxTitle" legacyBehavior>
