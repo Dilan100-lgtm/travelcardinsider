@@ -737,6 +737,6 @@
   display: block;
   text-align: center;
 }
-dt {
+.ratesFeesList dt {
   font-size: 4rem;
 }
