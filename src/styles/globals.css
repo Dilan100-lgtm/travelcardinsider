@@ -1418,3 +1418,91 @@ p, h1, h2, h3, h4, h5, h6, li, div, span { /* Added span */
   white-space: nowrap;
   border-width: 0;
 }
+/* =============== EXISTING GLOBALS & DEFAULTS (Preserved) =============== */
+:root {
+  /* Existing Variables - Kept As Is */
+  --bg-light-gray: #f9fafb;
+  --bg-white: #ffffff;
+  --bg-light: #f3f4f6; /* Added for selected card items */
+  --text-dark: #111827;
+  --text-medium: #374151;
+  --text-light: #6b7280;
+  --text-muted: #4b5563; /* Added for breakdown */
+  --border-color: #d1d5db;
+  --border-color-light: #e5e7eb;
+  --primary-blue: #2563eb;
+  --primary-blue-dark: #1d4ed8;
+  --primary-blue-focus: rgba(59, 130, 246, 0.2);
+  --primary-blue-light-bg: #eff6ff; /* Added for AI box */
+  --primary-blue-light-border: #bfdbfe; /* Added for AI box */
+  --primary-blue-text-dark: #1e3a8a; /* Added for AI h3 */
+  --secondary-gray: #6b7280;
+  --secondary-gray-dark: #4b5563;
+  --value-good: #16a34a;
+  --value-bad: #dc2626;
+  --info-bg: #eff6ff; /* Example for chips */
+  --info-text: #2563eb; /* Example for chips */
+  --success-bg: #f0fdf4; /* Example for chips */
+  --success-text: #16a34a; /* Example for chips */
+  --warning-bg: #fffbeb; /* Example for chips */
+  --warning-text: #f59e0b; /* Example for chips */
+  --danger-bg: #fef2f2; /* Example for chips */
+  --danger-text: #ef4444; /* Example for chips */
+  --neutral-bg: #f3f4f6; /* Example for chips */
+  --neutral-text: #4b5563; /* Example for chips */
+
+  /* Card Image Specifics */
+  --card-image-width: 280px; /* Example: Increased base width */
+  --card-image-height: 176px; /* Example: Increased base height */
+  --card-image-aspect-ratio: calc(var(--card-image-width) / var(--card-image-height)); /* Approx 1.59 */
+  --card-image-border-radius: 12px; /* Example: Softer radius */
+
+
+  /* === NEW Core Visual Identity Variables (Integrated) === */
+
+  /* Neutrals - Aligned with new strategy, some may overlap or complement existing */
+  --color-background-main: var(--bg-white);       /* Bright White - Aliased to existing */
+  --color-background-subtle: var(--bg-light-gray); /* Soft, Light Gray - Aliased to existing */
+  --color-text-primary: var(--text-dark);        /* Dark Gray for primary text - Aliased */
+  --color-text-secondary: var(--text-medium);     /* Medium Gray for secondary text - Aliased */
+  --color-border-light: var(--border-color-light); /* Light Gray for borders - Aliased */
+  --color-border-medium: var(--border-color);      /* Medium Gray for borders - Aliased */
+
+  /* Accent Colors - Examples, choose actual hex codes based on your branding */
+  /* These are new and distinct from existing primary-blue for more refined control if needed */
+  --color-accent-primary: #0033A0;     /* Example: Refined Deep Blue for links, key highlights (can be same as --primary-blue or different) */
+  --color-accent-secondary-cta: #D4AF37; /* Example: Muted Elegant Gold for Call-to-Action buttons */
+
+  /* Typography Variables - Using Inter as the main font */
+  --font-family-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Font Weights (matching imported Inter weights) */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Spacing and Sizing (examples, build out as needed for consistency) */
+  --spacing-xs: 0.25rem; /* 4px */
+  --spacing-sm: 0.5rem;  /* 8px */
+  --spacing-md: 1rem;    /* 16px */
+  --spacing-lg: 1.5rem;  /* 24px */
+  --spacing-xl: 2rem;    /* 32px */
+  --spacing-xxl: 3rem;   /* 48px */
+
+  /* Border Radius for elements like buttons, cards */
+  --border-radius-sm: 0.2rem;    /* ~3px */
+  --border-radius-md: 0.375rem;  /* ~6px */
+  --border-radius-lg: 0.5rem;    /* ~8px */
+
+  /* Added variables from existing globals.css for scrollbar, etc. */
+  --scrollbar-thumb-color: #cbd5e1;
+  --scrollbar-track-color: #f1f5f9;
+  --scrollbar-thumb-hover-color: #94a3b8;
+  --content-max-width: 1280px; /* Max width for main content areas */
+  --header-height: 64px; /* Assuming a fixed header height */
+  --footer-height: 120px; /* Assuming a fixed footer height */
+  --sidebar-width: 300px; /* Example width for a potential sidebar */
+}
+
+
