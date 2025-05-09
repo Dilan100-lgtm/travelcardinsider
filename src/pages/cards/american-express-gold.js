@@ -347,20 +347,12 @@ function AmexGoldReviewPage() {
                         TCI Rating: <strong>{reviewData.ratingValue.toFixed(1)}</strong>/10
                         {/* --- Conditionally Rendered Tooltip --- */}
                         {showRatingInfo && (
-                              <div
-                                ref={tooltipRef}
-                                className={styles.ratingTooltip}
-                                role="tooltip"
-                                aria-live="polite" // Announce changes politely
-                              >
-                                <strong>TCI Rating: {reviewData.ratingValue.toFixed(1)}/10</strong>
-                                <p className={styles.tooltipIntro}>This rating is based on:</p>
-                                <ul className={styles.tooltipList}>
-                                    {ratingCriteria.map((criterion, index) => <li key={index}>{criterion}</li>)}
-                                    {/* Using index as key is acceptable for static, non-reordering lists */}
-                                </ul>
-                              </div>
-                          )}
+      <RatingTooltipDynamic
+        ratingValue={reviewData.ratingValue}
+        ratingCriteria={ratingCriteria} // Pass ratingCriteria if your tooltip component uses it
+        onClose={() => setShowRatingInfo(false)} // This allows the tooltip to close itself
+      />
+    )}
                       </span>
 
                     {/* STAR RATING */}
