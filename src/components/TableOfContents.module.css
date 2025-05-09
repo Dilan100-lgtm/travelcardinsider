@@ -12,6 +12,7 @@
   box-shadow: var(--shadow-sm, 0 1px 2px rgba(0,0,0,0.05));
   margin-top: 2rem;
   
+  
 }
 
 .tocTitle {
@@ -92,9 +93,7 @@
 /* Desktop Styles (Sidebar) */
 @media (min-width: 1024px) {
   .tocContainer {
-    position: fixed; /* Sticky to the top of the sidebar area */
-    /* Use var from globals or define fallback */
-    top: 5rem;
+  
     margin-bottom: 30rem;
     /* Use var from globals or define fallback */
     width: var(--toc-width-desktop, 280px);
