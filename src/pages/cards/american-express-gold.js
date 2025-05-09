@@ -80,142 +80,149 @@ function AmexGoldReviewPage() {
   const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
   const pageUrl = `${siteUrl}/reviews/american-express-gold`; // *** REPLACE with your actual page URL, ensure it matches your file structure, e.g., /cards/american-express-gold ***
 
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Product",
-        "name": reviewData.cardName,
-        "image": `${siteUrl}${reviewData.imageUrl}`,
-        "description": reviewData.description,
-        "sku": "AMEX-GOLD-CARD-TCI", // *** REPLACE with your internal SKU or identifier ***
-        "mpn": "AMEXGOLD123",   // *** REPLACE with actual Manufacturer Part Number if applicable ***
-        "brand": {
-          "@type": "Brand",
-          "name": "American Express"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": reviewData.ratingValue.toString(),
-          "bestRating": "10",
-          "worstRating": "1",
-          "ratingCount": "580", // *** REPLACE with actual or estimated count (string) ***
-          "reviewCount": "1"
-        },
-        "offers": {
-          "@type": "Offer",
-          "url": reviewData.applyLink.startsWith('http') ? reviewData.applyLink : `${siteUrl}${reviewData.applyLink}`,
-          "priceCurrency": "USD",
-          "price": "325",
-          "priceSpecification": [
-            {
-              "@type": "PriceSpecification",
-              "price": "325",
-              "priceCurrency": "USD",
-              "valueAddedTaxIncluded": "false",
-              "description": "Annual Fee"
-            },
-            {
-              "@type": "PriceSpecification",
-              "priceCurrency": "USD",
-              "description": `Purchase APR: ${reviewData.aprRange}. See rates and fees for details.`,
-            }
-          ],
-          "availability": "https://schema.org/InStock",
-          "itemCondition": "https://schema.org/NewCondition",
-          "offeredBy": {
-            "@type": "Organization",
-            "name": "American Express"
-          }
-        }
+ // MODIFIED: Enhanced Structured Data with explicit review link and IDs
+ const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Product",
+      "@id": `${pageUrl}#product`, // Added @id for the Product
+      "name": reviewData.cardName,
+      "image": `${siteUrl}${reviewData.imageUrl}`,
+      "description": reviewData.description,
+      "sku": "AMEX-GOLD-CARD-TCI", // *** REPLACE with your internal SKU or identifier ***
+      "mpn": "AMEXGOLD123",   // *** REPLACE with actual Manufacturer Part Number if applicable ***
+      "brand": {
+        "@type": "Brand",
+        "name": "American Express"
       },
-      {
-        "@type": "Review",
-        "@id": `${pageUrl}#review`,
-        "itemReviewed": {
-          "@type": "Product",
-          "name": reviewData.cardName,
-          "image": `${siteUrl}${reviewData.imageUrl}`
-        },
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": reviewData.ratingValue.toString(),
-          "bestRating": "10",
-          "worstRating": "1",
-          "description": "TravelCardInsider's rating based on rewards, fees, and benefits."
-        },
-        "name": reviewData.title,
-        "author": {
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": reviewData.ratingValue.toString(),
+        "bestRating": "10",
+        "worstRating": "1",
+        "ratingCount": "580", // *** REPLACE with actual or estimated count (string) ***
+        "reviewCount": "1" // This refers to the single editorial review on this page.
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": reviewData.applyLink.startsWith('http') ? reviewData.applyLink : `${siteUrl}${reviewData.applyLink}`,
+        "priceCurrency": "USD",
+        "price": "325",
+        "priceSpecification": [
+          {
+            "@type": "PriceSpecification",
+            "price": "325",
+            "priceCurrency": "USD",
+            "valueAddedTaxIncluded": "false",
+            "description": "Annual Fee"
+          },
+          {
+            "@type": "PriceSpecification",
+            "priceCurrency": "USD",
+            "description": `Purchase APR: ${reviewData.aprRange}. See rates and fees for details.`,
+          }
+        ],
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "offeredBy": {
           "@type": "Organization",
-          "name": reviewData.author,
-          "url": siteUrl
-        },
-        "datePublished": reviewData.datePublished,
-        "reviewBody": reviewData.description,
-        "publisher": {
-            "@type": "Organization",
-            "name": reviewData.author,
-            "logo": {
-              "@type": "ImageObject",
-              "url": `${siteUrl}/TCI Logo New Favicon.png` // *** REPLACE with your actual logo URL ***
-            }
+          "name": "American Express"
         }
       },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Travel Card Insider", // Or your site's name
-            "item": siteUrl
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Credit Card Reviews", // *** REPLACE with your category page name ***
-            "item": `${siteUrl}/reviews` // *** REPLACE with your category page URL ***
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": `${reviewData.cardName} Review`,
-            "item": pageUrl
-          }
-        ]
+      "review": [ // MODIFIED: Explicitly linking to the review via @id, as an array
+        {
+          "@type": "Review", // Keep type here for clarity, or just @id if preferred by validator
+          "@id": `${pageUrl}#review`
+        }
+      ]
+    },
+    {
+      "@type": "Review",
+      "@id": `${pageUrl}#review`, // This ID is referenced above
+      "itemReviewed": {
+        "@type": "Product",
+        "@id": `${pageUrl}#product` // MODIFIED: Pointing to the Product's @id
       },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What is the annual fee for the American Express Gold Card?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "The annual fee for the American Express Gold Card is $325."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What are the main rewards categories for the Amex Gold Card?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "The Amex Gold Card offers 4X points at restaurants worldwide (up to $50k/year, then 1X), 4X points at U.S. supermarkets (up to $25k/year, then 1X), and 3X points on flights booked directly with airlines or on AmexTravel.com."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Does the Amex Gold Card have foreign transaction fees?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "No, the American Express Gold Card does not charge foreign transaction fees, making it a good choice for international travel."
-            }
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": reviewData.ratingValue.toString(),
+        "bestRating": "10",
+        "worstRating": "1",
+        "description": "TravelCardInsider's rating based on rewards, fees, and benefits."
+      },
+      "name": reviewData.title, // The title of the review article
+      "author": {
+        "@type": "Organization",
+        "name": reviewData.author,
+        "url": siteUrl
+      },
+      "datePublished": reviewData.datePublished,
+      "reviewBody": reviewData.description, // Or a more specific summary of the review content
+      "publisher": {
+          "@type": "Organization",
+          "name": reviewData.author, // Assuming site name is the author here
+          "logo": {
+            "@type": "ImageObject",
+            "url": `${siteUrl}/TCI Logo New Favicon.png` // *** REPLACE with your actual logo URL ***
           }
-          // *** ADD MORE Q&A PAIRS FROM YOUR CONTENT HERE ***
-        ]
       }
-    ]
-  };
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Travel Card Insider",
+          "item": siteUrl
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Credit Card Reviews", // *** REPLACE with your category page name ***
+          "item": `${siteUrl}/cards` // *** REPLACE with your category page URL (e.g., /cards or /reviews) ***
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": `${reviewData.cardName} Review`,
+          "item": pageUrl
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the annual fee for the American Express Gold Card?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The annual fee for the American Express Gold Card is $325."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the main rewards categories for the Amex Gold Card?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Amex Gold Card offers 4X points at restaurants worldwide (up to $50k/year, then 1X), 4X points at U.S. supermarkets (up to $25k/year, then 1X), and 3X points on flights booked directly with airlines or on AmexTravel.com."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the Amex Gold Card have foreign transaction fees?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, the American Express Gold Card does not charge foreign transaction fees, making it a good choice for international travel."
+          }
+        }
+        // *** ADD MORE Q&A PAIRS FROM YOUR CONTENT HERE ***
+      ]
+    }
+  ]
+};
 
   const tocSections = [
     { id: 'section-2', title: 'Snapshot: Key Features and Current Welcome Offer' },
