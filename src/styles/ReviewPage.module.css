@@ -405,6 +405,10 @@
   border: 1px solid var(--color-border, #dfe1e6); /* Use variable */
   box-shadow: none;
 }
+.ctaButtons .btncalculator:hover {
+  background: #0d72d8; /* Use variable */
+  border-color: var(--color-primary, #0052cc); /* Use variable */
+}
 .ctaButtons .btnRates:hover {
   background: var(--color-background-subtle, #f1f3f5); /* Use variable */
   border-color: var(--color-primary, #0052cc); /* Use variable */
