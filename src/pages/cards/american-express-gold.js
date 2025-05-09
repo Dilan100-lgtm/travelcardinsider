@@ -298,30 +298,34 @@ function AmexGoldReviewPage() {
           
           <div className={styles.mainContentArea}>
              {/* NEW Hero Section - Placed before mainContentArea or at the top of it */}
-  <section className={styles.heroSection}>
-    <div className={styles.heroTextContainer}>
-      <h1 className={styles.heroTitle}>
-        {reviewData.h1Content || reviewData.title} {/* Using your dynamic title */}
-      </h1>
-      <p className={styles.heroSubtitle}>
-        Unlock premium rewards and tailored benefits for your business. Discover how the Amex Gold sets the standard. {/* Example Value Proposition - Update as needed */}
-      </p>
-      <div className={styles.heroCtaContainer}>
-        {/* Option 1: Link to an apply section on the page or direct link */}
-        <a 
-          href={reviewData.applicationUrl || '#apply-now-section'} // Ensure applicationUrl is correct or link to an on-page section
-          target="_blank" 
-          rel="noopener noreferrer" 
-          className={`${styles.applyNowButton} ${styles.heroApplyButton}`} // Using the CTA style we defined
-        >
-          Apply Securely Now
-        </a>
-        {/* Option 2: Link to the summary box or key benefits section */}
-        <Link href="#summaryBoxTitle" className={styles.heroSecondaryLink}>
-  View Key Benefits
-</Link>
-      </div>
-    </div>
+             <section className={styles.heroSection}>
+              <div className={styles.heroTextContainer}>
+                <h1 className={styles.heroTitle}>
+                  {reviewData.h1Content}
+                </h1>
+                <p className={styles.heroSubtitle}>
+                  Unlock premium rewards and tailored benefits for your business. Discover how the Amex Gold sets the standard. {/* Example Value Proposition - Update as needed */}
+                </p>
+                <div className={styles.heroCtaContainer}>
+                  <div> {/* Added a div to wrap the button and the new disclaimer for better layout control if needed */}
+                    <a
+                      href={reviewData.applicationUrl}
+                      target="_blank"
+                      rel="noopener noreferrer sponsored"
+                      className={`${styles.applyNowButton} ${styles.heroApplyButton}`}
+                    >
+                      Apply Securely Now
+                    </a>
+                    {/* MODIFIED: Added disclaimer text below the button */}
+                    <span className={styles.heroApplyButtonDisclaimer}>
+                      from American Express official site
+                    </span>
+                  </div>
+                  <Link href="#summaryBoxTitle" legacyBehavior>
+                    <a className={styles.heroSecondaryLink}>View Key Benefits</a>
+                  </Link>
+                </div>
+              </div>
     <div className={styles.heroImageContainer}>
     <div className={styles.cardImageContainer}>
                       <Image

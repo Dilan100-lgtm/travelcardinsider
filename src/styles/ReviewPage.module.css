@@ -789,5 +789,13 @@
     margin-left: auto; /* Center image on desktop */
   }
 }
+/* NEW: Style for the disclaimer text below the hero apply button */
+.heroApplyButtonDisclaimer {
+  font-size: 0.75rem; /* Small font size */
+  color: var(--color-text-secondary, #5e6c84); /* Use a secondary or muted text color */
+  margin-top: var(--spacing-xs, 4px); /* Small space above the disclaimer */
+  display: block; /* Ensure it takes its own line */
+  text-align: center; /* Center align with the button */
+}
 
 /* This is the final override for .ctaButtons gap, it's kept as it's a specific change */
