@@ -490,12 +490,7 @@
       overflow: visible 
       
   }
-  .sidebarArea nav {     /* TableOfContents root */
-    position: sticky;
-    top: 96px;           /* height of your fixed header */
-    align-self: flex-start;
-    height: max-content; /* when parent is a flex column */
-  }
+  
 }
 
 
