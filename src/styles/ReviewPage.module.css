@@ -314,6 +314,8 @@
   transition: all 0.3s ease; border: none; cursor: pointer;
   text-decoration: none; line-height: 1.5;
 }
+.summaryRatesLink .btnRates:hover { box-shadow: var(--shadow-md, 0 4px 8px rgba(23, 43, 77, 0.1)); transform: translateY(-2px); }
+.summaryRatesLink .btnRates:active { transform: translateY(0px) scale(0.98); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
 
 
 /* =============== TABLES (Responsive Scroll) =============== */
