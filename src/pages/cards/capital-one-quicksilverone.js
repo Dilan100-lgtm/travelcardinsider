@@ -1030,7 +1030,7 @@ function DraggableTableWrapper({ children }) {
                     {/* FAQ Item 10 */}
                     <details className={styles.faqItem}>
                       <summary className={styles.faqQuestion}>
-                        How does Eno help with travel?
+                        How does Eno  with travel?
                       </summary>
                       <div className={styles.faqAnswer}>
                         <p>Eno, Capital One's assistant, provides virtual card numbers for secure online bookings and alerts for suspicious activity, useful when traveling. It doesn't book travel (that's via Capital One Travel).</p>
