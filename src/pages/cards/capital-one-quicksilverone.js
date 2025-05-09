@@ -444,7 +444,7 @@ function CapitalOneQuicksilverOneReviewPage() {
                   <p><strong>Concise Verdict:</strong></p>
                   <p>The Capital One QuicksilverOne is a commendable card for US travelers with fair credit who want uncomplicated cash back. Its unlimited 1.5% on everything, 5% on select portal travel, and no foreign transaction fees make it practical. However, the $39 annual fee means you need to spend enough to make it worthwhile (around $2,600 in general purchases), and the steep 29.74% variable APR means it's only for those who clear their balance monthly. It serves its credit-building purpose with basic travel-friendly features, though it lacks a welcome bonus and extensive travel protections.</p>
                   
-                  <div className={styles.cardImageContainer}> {/* You might want a specific style for inline images */}
+                  <div className={styles.cardImageContainer2}> {/* You might want a specific style for inline images */}
                     <Image
                         src="/pexels-mikhail-nilov-6963857.webp" // Placeholder, replace with your actual image path
                         alt="Capital One QuicksilverOne Card"

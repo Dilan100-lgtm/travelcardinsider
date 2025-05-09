@@ -743,7 +743,7 @@
   font-weight: 700;
   font-family: var(--font-condensed, 'Roboto Condensed', var(--font-family-sans, sans-serif));
 }
-.cardImageContainer {
+.cardImageContainer2 {
   align-items: right;
-  
+
 }
