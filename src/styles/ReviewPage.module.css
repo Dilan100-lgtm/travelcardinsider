@@ -487,7 +487,8 @@
       flex-shrink: 0;
       /* Add padding to the sidebar container itself */
       padding-top: var(--spacing-sm, 8px);
-      overflow: visible 
+      overflow: visible;
+      position: sticky; top: 0; /* Sticky sidebar */ 
       
   }
   
