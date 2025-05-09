@@ -527,13 +527,15 @@
   .reviewSection h2 { font-size: clamp(1.5rem, 4vw, 2rem); }
   .ctaSection h2 { font-size: 1.6rem; }
 }
-.ctaSection { /* This is the specific mobile adjustment block for .ctaSection */
-  padding: 1rem;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem; /* Adjusted for mobile */
-  height: 20vh;
-}
-@media (min-width: 768px) {} /* This empty media query was kept as per "do not change any other things" - if it's preferred to remove it, please specify */
+
+@media (min-width: 768px) {
+  .ctaSection { /* This is the specific mobile adjustment block for .ctaSection */
+    padding: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem; /* Adjusted for mobile */
+    height: 20vh;
+  }
+} /* This empty media query was kept as per "do not change any other things" - if it's preferred to remove it, please specify */
 
 .heroImageContainer { /* This seems to be a general style for heroImageContainer, possibly a fallback or base */
   margin: auto;
