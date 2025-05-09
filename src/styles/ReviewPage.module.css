@@ -258,7 +258,7 @@
 
 .summaryLabel {
   font-weight: 500; /* Normal weight */
-  color: var(--text-medium, #42526e); /* Use variable */
+  color: rgb(108, 108, 214); /* Use variable */
   font-size: 1.2rem;
   margin-right: auto; /* Pushes value right */
   flex-shrink: 0;
