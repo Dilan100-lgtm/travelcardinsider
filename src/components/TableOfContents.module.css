@@ -116,7 +116,7 @@
     border-radius: 0;
     border-right: 1px solid var(--toc-border-color, var(--color-border, #dee2e6)); /* Added fallback */
     border-left: none; border-top: none; border-bottom: none;
-    z-index: 1040; overflow-y: auto;
+    z-index: 1040; overflow-y: visible;
     padding-top: var(--spacing-xl, 32px);
   }
   .tocContainer.mobileOpen { transform: translateX(0); box-shadow: var(--shadow-lg, 0 10px 15px rgba(0,0,0,0.1)); }
