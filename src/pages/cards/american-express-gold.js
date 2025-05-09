@@ -289,7 +289,7 @@ function AmexGoldReviewPage() {
       </Head>
 
 
-      <Header />
+      
 
       <main>
         {/* New layout wrapper for main content and sidebar */}
