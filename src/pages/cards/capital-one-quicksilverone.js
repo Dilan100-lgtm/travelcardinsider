@@ -1,7 +1,7 @@
 // Example Path: pages/reviews/capital-one-quicksilverone.js
 // Or: pages/reviews/[slug].js (if using dynamic routing with 'capital-one-quicksilverone' as a slug)
 
-// !!! WARNING: THIS FILE CONTAINS DATA EXTRACTED FROM YOUR PROVIDED TEXT !!!
+
 // !!! YOU MUST REPLACE ALL PLACEHOLDERS MARKED WITH '***' (like image paths, URLs, author names) BEFORE DEPLOYMENT !!!
 // !!! VERIFY ALL CARD DETAILS, SCHEMA VALUES, COUNTS, and URLs AGAINST OFFICIAL ISSUER INFO !!!
 
