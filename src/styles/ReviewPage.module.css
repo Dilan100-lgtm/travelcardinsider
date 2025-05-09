@@ -534,6 +534,9 @@
     margin-bottom: 1.5rem;
     height: 20vh; /* This was in your original CSS for .ctaSection with this media query */
   }
+  .ctaSection h2 {
+    font-size: 1.4rem;
+  }
 }
 .heroImageContainer { /* This was in your original file, kept as is - now for the background image container */
   margin: auto;
