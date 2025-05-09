@@ -383,7 +383,8 @@
   border-radius: var(--border-radius-md, 6px); /* Use variable */
   margin: var(--spacing-xl, 32px) 0; /* Use variable */
   box-shadow: none;
-  position: sticky; top: 0; /* Sticky section */
+  position: sticky; top: 3rem; /* Sticky section */
+  height: ;
 }
 .ctaSection h2 {
   font-family: var(--font-condensed, 'Roboto Condensed', var(--font-family-sans, sans-serif)); /* Preserved */
