@@ -708,14 +708,7 @@ function CapitalOneQuicksilverOneReviewPage() {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td data-label="Feature">Image</td>
-                                    <td data-label="Capital One QuicksilverOne"><Image src='/qs1_cardart_prim_1290x812.avif' /></td>
-                                    <td data-label="Discover it® Miles">(Image not available in provided snippets)</td>
-                                    <td data-label="Petal® 2 Visa®">(Image not available in provided snippets)</td>
-                                    <td data-label="Upgrade Cash Rewards Visa®">(Image not available in provided snippets)</td>
-                                    <td data-label="Bank of America® Travel Rewards">(Image not available in provided snippets)</td>
-                                </tr>
+
                                 <tr>
                                     <td data-label="Feature">Annual Fee</td>
                                     <td data-label="Capital One QuicksilverOne">$39</td>
