@@ -534,8 +534,7 @@
   height: 20vh;
 }
 .heroImageContainer {
-  margin: 0 auto; max-width: 100%; /* Full width on mobile */
-  display: flex; justify-content: center; align-items: center;
+margin: auto;
 }
 
 /* --- NEW/UPDATED STYLES FOR CALLS-TO-ACTION (CTAs) --- */
