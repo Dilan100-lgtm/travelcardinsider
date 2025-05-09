@@ -371,13 +371,6 @@ function AmexGoldReviewPage() {
                     
                   </div> {/* End introAndImageWrapper */}
 
-                 
-
-                    {/* Rating Description */}
-                    <div className={styles.ratingDescription}>
-                      <i>A top pick for foodies & travelers, excelling in dining/grocery rewards and offering valuable statement credits.</i>
-                    </div>
-                  
                 </header>
 
               
