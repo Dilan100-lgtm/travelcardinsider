@@ -258,6 +258,64 @@ function CapitalOneQuicksilverOneReviewPage() {
     { id: 'section-18', title: 'The Final Takeaway & Alternatives' },
     { id: 'section-19', title: 'Card-Specific FAQs' },
   ];
+  import { useRef, useEffect } from 'react';
+
+function DraggableTableWrapper({ children }) {
+  const containerRef = useRef(null);
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    const startDragging = (e) => {
+      isDown = true;
+      el.classList.add('grabbing');
+      startX = e.pageX || e.touches?.[0]?.pageX;
+      scrollLeft = el.scrollLeft;
+    };
+
+    const stopDragging = () => {
+      isDown = false;
+      el.classList.remove('grabbing');
+    };
+
+    const handleMove = (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX || e.touches?.[0]?.pageX;
+      const walk = (x - startX) * 1.5; // scroll speed
+      el.scrollLeft = scrollLeft - walk;
+    };
+
+    el.addEventListener('mousedown', startDragging);
+    el.addEventListener('touchstart', startDragging);
+    el.addEventListener('mouseleave', stopDragging);
+    el.addEventListener('mouseup', stopDragging);
+    el.addEventListener('touchend', stopDragging);
+    el.addEventListener('mousemove', handleMove);
+    el.addEventListener('touchmove', handleMove);
+
+    return () => {
+      el.removeEventListener('mousedown', startDragging);
+      el.removeEventListener('touchstart', startDragging);
+      el.removeEventListener('mouseleave', stopDragging);
+      el.removeEventListener('mouseup', stopDragging);
+      el.removeEventListener('touchend', stopDragging);
+      el.removeEventListener('mousemove', handleMove);
+      el.removeEventListener('touchmove', handleMove);
+    };
+  }, []);
+
+  return (
+    <div ref={containerRef} className="draggable-scroll-container">
+      {children}
+    </div>
+  );
+}
+
 
   return (
     <>
