@@ -530,6 +530,9 @@
   margin-top: 1.5rem;
   margin-bottom: 1.5rem; /* Adjusted for mobile */
 }
+.ctaSection h2 {
+  margin-top: 2rem;
+}
 /* --- NEW/UPDATED STYLES FOR CALLS-TO-ACTION (CTAs) --- */
 /* These are the styles discussed for the new "premium" CTA design.
    You can apply .applyNowButton to your primary apply links in the JSX.
@@ -778,10 +781,10 @@
 
 .ctaSection {
   padding: 1rem;
-  margin-top: 2rem;
-  margin-bottom: 2rem; /* Adjusted for mobile */
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem; /* Adjusted for mobile */
 
 }
 .ctaButtons {
-  gap: var(--spacing-md); /* 1rem */
+  gap: 3rem; /* 1rem */
 }
