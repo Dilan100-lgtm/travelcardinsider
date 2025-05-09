@@ -747,12 +747,114 @@
   font-weight: 700;
   font-family: var(--font-condensed, 'Roboto Condensed', var(--font-family-sans, sans-serif));
 }
+
+/* =============== FAQ SECTION STYLES (Premium Look) =============== */
+.faqSection { /* Styles for the overall FAQ section block */
+  /* background-color: var(--color-background-subtle, #f8f9fa); */ /* Optional: subtle background for the whole section */
+  /* padding-top: var(--spacing-lg, 24px); */ /* Already handled by .reviewSection */
+  /* border-top: 1px solid var(--color-border-light, #ebecf0); */ /* Optional: if you want a top border distinct from other sections */
+}
+
+.faqContainer {
+  max-width: 800px; /* Or your preferred max-width for FAQ content */
+  margin: 0 auto; /* Center the FAQ container */
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm, 8px); /* Space between FAQ items */
+}
+
+.faqItem {
+  background-color: var(--color-background-card, #ffffff);
+  border: 1px solid var(--color-border-light, #e5e7eb);
+  border-radius: var(--border-radius-md, 8px);
+  transition: box-shadow var(--transition-speed, 0.2s) ease;
+}
+
+.faqItem:hover {
+  box-shadow: var(--shadow-sm, 0 1px 2px rgba(9, 30, 66, 0.07));
+}
+
+.faqItem[open] {
+  /* Styles for when the FAQ item is open */
+  box-shadow: var(--shadow-md, 0 4px 8px -2px rgba(9, 30, 66, 0.1), 0 0 1px rgba(9, 30, 66, 0.08));
+}
+
+.faqItem[open] .faqQuestion {
+  border-bottom: 1px solid var(--color-border-light, #e5e7eb);
+  /* color: var(--color-primary, #0052cc); */ /* Optional: Change question color when open */
+}
+
+.faqQuestion {
+  padding: var(--spacing-md, 16px) var(--spacing-lg, 24px);
+  font-family: var(--font-family-main, 'Inter', sans-serif); /* Using Inter from your globals */
+  font-weight: var(--font-weight-semibold, 600);
+  font-size: 1.1rem; /* Slightly larger for questions */
+  color: var(--color-text-primary, #172b4d);
+  cursor: pointer;
+  list-style: none; /* Remove default marker */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color var(--transition-speed, 0.2s) ease;
+}
+
+.faqQuestion::-webkit-details-marker {
+  display: none; /* Hide default marker in WebKit browsers */
+}
+
+.faqQuestion::marker { /* For Firefox */
+  display: none;
+}
+
+/* Custom Icon for Open/Close State */
+.faqQuestion::after {
+  content: '+'; /* Plus icon for closed state */
+  font-size: 1.5em; /* Make icon larger */
+  font-weight: var(--font-weight-regular, 400);
+  color: var(--color-primary, #0052cc);
+  transition: transform var(--transition-speed, 0.2s) ease-in-out;
+  line-height: 1; /* Ensure proper vertical alignment */
+  margin-left: var(--spacing-md, 16px);
+}
+
+.faqItem[open] .faqQuestion::after {
+  content: '\\2013'; /* Minus icon (en-dash) for open state */
+  transform: rotate(0deg); /* Keep minus horizontal */
+  /* color: var(--color-primary-hover, #0041a3); */ /* Optional: darker icon when open */
+}
+
+.faqAnswer {
+  padding: var(--spacing-md, 16px) var(--spacing-lg, 24px) var(--spacing-lg, 24px);
+  color: var(--color-text-secondary, #5e6c84);
+  line-height: 1.7;
+  font-size: 0.95rem;
+  border-top: none; /* Ensure no double border if summary also has bottom border */
+  background-color: var(--color-background-subtle, #f8f9fa); /* Slightly different bg for answer */
+  border-radius: 0 0 var(--border-radius-md, 8px) var(--border-radius-md, 8px); /* Rounded bottom corners when open */
+}
+
+.faqAnswer p {
+  margin-bottom: var(--spacing-sm, 8px); /* Space between paragraphs in answer */
+  max-width: none; /* Override max-width from .reviewContainer p if needed */
+}
+
+.faqAnswer p:last-child {
+  margin-bottom: 0;
+}
+
+/* Focus state for accessibility */
+.faqQuestion:focus-visible {
+  outline: 2px solid var(--color-primary-light, rgba(0, 82, 204, 0.15));
+  outline-offset: 2px;
+  border-radius: var(--border-radius-sm, 4px); /* Match summary's rounding for focus */
+}
 .cardImageContainer2 {
   align-items: right;
   width: 100%;
   overflow: hidden;
 
 }
+
 .scrollableTableWrapper {
   overflow-x: auto; /* Enables horizontal scrolling */
   cursor: grab; /* Shows the 'grab' hand icon */

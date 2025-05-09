@@ -875,40 +875,110 @@ function CapitalOneQuicksilverOneReviewPage() {
                   <p>The QuicksilverOne can be a valuable tool for a specific user at a specific credit stage, facilitating access to better financial products later.</p>
                 </section>
 
-                {/* Section 19: Card-Specific Frequently Asked Questions (FAQs) */}
-                <section id="section-19" className={styles.reviewSection}>
+                // Section 19: Card-Specific Frequently Asked Questions (FAQs)
+                <section id="section-19" className={`${styles.reviewSection} ${styles.faqSection}`}> {/* Added styles.faqSection */}
                   <h2>19. Card-Specific Frequently Asked Questions (FAQs)</h2>
-                  <dl className={styles.faqList}>
-                    <dt>Q1: Is the $39 annual fee for QuicksilverOne worth it for travelers?</dt>
-                    <dd>A: Yes, if you travel internationally (saving on no FTF) or use the Capital One Travel portal for 5% back on hotels/cars enough to offset it. Spending $1,300 abroad or $780 via the portal can cover the fee.</dd>
+                  <div className={styles.faqContainer}>
+                    {/* FAQ Item 1 */}
+                    <details className={styles.faqItem}>
+                      <summary className={styles.faqQuestion}>
+                        Is the $39 annual fee for QuicksilverOne worth it for travelers?
+                      </summary>
+                      <div className={styles.faqAnswer}>
+                        <p>Yes, if you travel internationally (saving on no FTF<sup>1</sup>) or use the Capital One Travel portal for 5% back on hotels/cars enough to offset it.<sup>2</sup> Spending $1,300 abroad or $780 via the portal can cover the fee.</p>
+                      </div>
+                    </details>
 
-                    <dt>Q2: What credit score is needed for QuicksilverOne?</dt>
-                    <dd>A: It's for "FAIR" credit, generally FICO scores of 580-689. Use Capital One's pre-approval tool first.</dd>
+                    {/* FAQ Item 2 */}
+                    <details className={styles.faqItem}>
+                      <summary className={styles.faqQuestion}>
+                        What credit score is needed for QuicksilverOne?
+                      </summary>
+                      <div className={styles.faqAnswer}>
+                        <p>It's for "FAIR" credit, generally FICO scores of 580-689.<sup>1</sup> Use Capital One's pre-approval tool first.<sup>1</sup></p>
+                      </div>
+                    </details>
 
-                    <dt>Q3: Does QuicksilverOne offer travel insurance?</dt>
-                    <dd>A: As a Mastercard, it likely includes network benefits like Auto Rental CDW, Travel Accident Insurance, and Lost/Damaged Luggage Reimbursement. Check your specific Guide to Benefits.</dd>
+                    {/* FAQ Item 3 */}
+                    <details className={styles.faqItem}>
+                      <summary className={styles.faqQuestion}>
+                        Does QuicksilverOne offer travel insurance?
+                      </summary>
+                      <div className={styles.faqAnswer}>
+                        <p>As a Mastercard, it likely includes network benefits like Auto Rental CDW, Travel Accident Insurance, and Lost/Damaged Luggage Reimbursement.<sup>12</sup> Check your specific Guide to Benefits.</p>
+                      </div>
+                    </details>
 
-                    <dt>Q4: How does the 5% cash back on Capital One Travel work for flights?</dt>
-                    <dd>A: For QuicksilverOne, the 5% back is for hotels and rental cars only booked via Capital One Travel. Flights earn the standard 1.5%.</dd>
+                    {/* FAQ Item 4 */}
+                    <details className={styles.faqItem}>
+                      <summary className={styles.faqQuestion}>
+                        How does the 5% cash back on Capital One Travel work for flights?
+                      </summary>
+                      <div className={styles.faqAnswer}>
+                        <p>For QuicksilverOne, the 5% back is for hotels and rental cars only booked via Capital One Travel.<sup>10</sup> Flights earn the standard 1.5%.</p>
+                      </div>
+                    </details>
 
-                    <dt>Q5: Can I transfer QuicksilverOne cash back to airline miles or hotel points?</dt>
-                    <dd>A: No. Cash back cannot be transferred to external loyalty programs. Redeem for statement credits, checks, gift cards, etc.</dd>
+                    {/* FAQ Item 5 */}
+                    <details className={styles.faqItem}>
+                      <summary className={styles.faqQuestion}>
+                        Can I transfer QuicksilverOne cash back to airline miles or hotel points?
+                      </summary>
+                      <div className={styles.faqAnswer}>
+                        <p>No. Cash back cannot be transferred to external loyalty programs.<sup>24</sup> Redeem for statement credits, checks, gift cards, etc.<sup>1</sup></p>
+                      </div>
+                    </details>
 
-                    <dt>Q6: Is Capital One Travel portal pricing competitive?</dt>
-                    <dd>A: Generally, yes. Flight prices are often very close to direct bookings. The 5% back on hotels/cars can make deals attractive. Always compare. Features like price prediction add value.</dd>
+                    {/* FAQ Item 6 */}
+                    <details className={styles.faqItem}>
+                      <summary className={styles.faqQuestion}>
+                        Is Capital One Travel portal pricing competitive?
+                      </summary>
+                      <div className={styles.faqAnswer}>
+                        <p>Generally, yes. Flight prices are often very close to direct bookings.<sup>23</sup> The 5% back on hotels/cars can make deals attractive. Always compare. Features like price prediction add value.<sup>14</sup></p>
+                      </div>
+                    </details>
 
-                    <dt>Q7: How quickly can I get a credit limit increase?</dt>
-                    <dd>A: Capital One automatically considers you for a higher credit line in as little as six months with responsible use (on-time payments, low balance). Not guaranteed.</dd>
+                    {/* FAQ Item 7 */}
+                    <details className={styles.faqItem}>
+                      <summary className={styles.faqQuestion}>
+                        How quickly can I get a credit limit increase?
+                      </summary>
+                      <div className={styles.faqAnswer}>
+                        <p>Capital One automatically considers you for a higher credit line in as little as six months with responsible use (on-time payments, low balance).<sup>1</sup> Not guaranteed.</p>
+                      </div>
+                    </details>
 
-                    <dt>Q8: What if I can't pay my balance in full?</dt>
-                    <dd>A: You'll be charged a very high variable APR (currently 29.74%), quickly negating rewards. A late fee (up to $40) also applies. Avoid carrying a balance.</dd>
+                    {/* FAQ Item 8 */}
+                    <details className={styles.faqItem}>
+                      <summary className={styles.faqQuestion}>
+                        What if I can't pay my balance in full?
+                      </summary>
+                      <div className={styles.faqAnswer}>
+                        <p>You'll be charged a very high variable APR (currently 29.74%<sup>1</sup>), quickly negating rewards. A late fee (up to $40<sup>3</sup>) also applies. Avoid carrying a balance.</p>
+                      </div>
+                    </details>
 
-                    <dt>Q9: Are there better Capital One travel cards if my credit improves?</dt>
-                    <dd>A: Yes. The Venture and Venture X cards (excellent credit) offer miles transferable to partners and more perks. The standard Quicksilver (excellent credit) has 1.5% back with no annual fee.</dd>
+                    {/* FAQ Item 9 */}
+                    <details className={styles.faqItem}>
+                      <summary className={styles.faqQuestion}>
+                        Are there better Capital One travel cards if my credit improves?
+                      </summary>
+                      <div className={styles.faqAnswer}>
+                        <p>Yes. The Venture and Venture X cards (excellent credit) offer miles transferable to partners and more perks.<sup>2</sup> The standard Quicksilver (excellent credit) has 1.5% back with no annual fee.<sup>9</sup></p>
+                      </div>
+                    </details>
 
-                    <dt>Q10: How does Eno help with travel?</dt>
-                    <dd>A: Eno, Capital One's assistant, provides virtual card numbers for secure online bookings and alerts for suspicious activity, useful when traveling. It doesn't book travel (that's via Capital One Travel).</dd>
-                  </dl>
+                    {/* FAQ Item 10 */}
+                    <details className={styles.faqItem}>
+                      <summary className={styles.faqQuestion}>
+                        How does Eno help with travel?
+                      </summary>
+                      <div className={styles.faqAnswer}>
+                        <p>Eno, Capital One's assistant, provides virtual card numbers for secure online bookings and alerts for suspicious activity, useful when traveling.<sup>1</sup> It doesn't book travel (that's via Capital One Travel).</p>
+                      </div>
+                    </details>
+                  </div>
                 </section>
                 {/* E-A-T Section Placeholder - adapt from Amex Gold if needed */}
                 <section id="eat-expertise-authority-trustworthiness" className={`${styles.reviewSection} ${styles.eatSection}`}>
