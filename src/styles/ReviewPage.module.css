@@ -525,7 +525,11 @@
   .reviewSection h2 { font-size: clamp(1.5rem, 4vw, 2rem); }
   .ctaSection h2 { font-size: 1.6rem; }
 }
-
+.ctaSection {
+  padding: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem; /* Adjusted for mobile */
+}
 /* --- NEW/UPDATED STYLES FOR CALLS-TO-ACTION (CTAs) --- */
 /* These are the styles discussed for the new "premium" CTA design.
    You can apply .applyNowButton to your primary apply links in the JSX.
@@ -770,4 +774,10 @@
     margin-top: 0;
     max-width: 600px; /* Max width for image on desktop */
   }
+}
+
+.ctaSection {
+  padding: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem; /* Adjusted for mobile */
 }
