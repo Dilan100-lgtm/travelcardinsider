@@ -753,4 +753,19 @@
   overflow: hidden;
 
 }
+.scrollableTableWrapper {
+  overflow-x: auto; /* Enables horizontal scrolling */
+  cursor: grab; /* Shows the 'grab' hand icon */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on touch devices */
+  padding-bottom: 10px; /* Optional: Adds some space if scrollbar is visible */
+  margin-bottom: 20px; /* Optional: Adds space below the scrollable area */
+}
+.scrollableTableWrapper:active {
+  cursor: grabbing;
+}
+@media (max-width: 768px) {
+  .tableContainer .statsTable {
+    min-width: 100%; /* On smaller screens, let it be 100% or manage via data-labels */
+  }
+}
 

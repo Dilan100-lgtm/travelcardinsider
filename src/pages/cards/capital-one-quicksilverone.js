@@ -695,6 +695,7 @@ function CapitalOneQuicksilverOneReviewPage() {
                 <section id="section-15" className={styles.reviewSection}>
                     <h2>15. Head-to-Head: How It Stacks Up Against Key Competitors</h2>
                     <p>For US travelers with fair credit, several cards compete with the QuicksilverOne. Here's a comparison:</p>
+                    <div className={styles.scrollableTableWrapper}>
                     <div className={styles.tableContainer}>
                         <table className={styles.statsTable}>
                             <thead>
@@ -775,6 +776,7 @@ function CapitalOneQuicksilverOneReviewPage() {
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
                     </div>
                     <h3>Comparison Highlights:</h3>
                     <ul className={styles.featureList}>
