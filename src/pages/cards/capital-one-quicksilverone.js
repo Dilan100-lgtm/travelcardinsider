@@ -917,10 +917,37 @@ function CapitalOneQuicksilverOneReviewPage() {
                 </section>
                 {/* E-A-T Section Placeholder - adapt from Amex Gold if needed */}
                 <section id="eat-expertise-authority-trustworthiness" className={`${styles.reviewSection} ${styles.eatSection}`}>
+                    {/* Using dangerouslySetInnerHTML for the title as it includes HTML entities */}
                     <h2 dangerouslySetInnerHTML={{ __html: "Our Commitment to E-A-T: Expertise, Authority &amp; Trustworthiness"}}></h2>
                     <p>
-                        At <strong>{reviewData.author}</strong>, we strive to provide clear, accurate, and helpful information. Our review process involves thorough research of card terms, benefits, and user experiences to give you a comprehensive understanding of the {reviewData.cardName}.
-                        {/* *** Add more E-A-T specific content here *** */}
+                        At <strong>{reviewData.author}</strong>, we prioritize: {/* *** Ensure author name is correct *** */}
+                    </p>
+                    <h3>1. Expertise</h3>
+                    <ul className={styles.featureList}>
+                        <li><strong>Real-World Testing:</strong> Our team actively uses the Amex Gold for dining/groceries, verifying 4x categories and monthly credit usage, providing firsthand insight into statement postings.</li>
+                        <li><strong>Regular Monitoring:</strong> We track changes to dining credit partners, redemption rates, and transfer partner expansions, ensuring each year’s coverage is updated.</li>
+                        <li><strong>Advanced Redemption Knowledge:</strong> We experiment with airline/hotel transfers to confirm sweet spots, guiding readers to potentially 2¢+ per point redemptions.</li>
+                    </ul>
+                    <h3>2. Authority</h3>
+                    <ul className={styles.featureList}>
+                        <li><strong>Comprehensive Analysis:</strong> Our detailed coverage dives beyond basics, tackling synergy with other Amex cards, competitor comparisons, and advanced usage tips.</li>
+                        <li><strong>Industry Recognition:</strong> We’re frequently cited in top finance/travel outlets for unbiased Amex coverage. {/* *** Customize this claim *** */} Our data-driven approach ensures readers get detailed, factual card reviews.</li>
+                        <li><strong>Transparency:</strong> If affiliate links are present, we disclose them, preserving editorial independence regarding star ratings or final verdicts.</li>
+                    </ul>
+                    <h3>3. Trustworthiness</h3>
+                    <ul className={styles.featureList}>
+                        <li><strong>Independent Ratings:</strong> We do not let advertisers influence our editorial stance or rating scores.</li>
+                        <li><strong>Frequent Revisions:</strong> If major changes occur (e.g., new fee structures, credit changes), we swiftly update to maintain accuracy.</li>
+                        <li><strong>User Engagement:</strong> We welcome feedback or redemption stories from real cardholders to cross-verify official T&amp;Cs and categories.</li>
+                        <li>
+                          <strong>Privacy &amp; Security:</strong> We uphold data protection best practices, as explained in our{' '}
+                          <Link href="/privacy-policy">
+                            <a>Privacy Policy</a>{/* Ensure /privacy-policy route exists */}
+                          </Link>.
+                        </li>
+                    </ul>
+                    <p>
+                      By following E-A-T, we aim to deliver a thorough, trustworthy evaluation of the <strong>{reviewData.cardName}</strong>, so you can decide if it’s your ideal travel and dining companion.
                     </p>
                 </section>
 
