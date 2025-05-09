@@ -21,17 +21,7 @@ import IconCheck from '../../components/icons/icon-Credit Card.svg'; // Ensure f
 import IconX from '../../components/icons/icon-Star + Arrow Up.svg';   // Ensure file name is correct
 import IconPlus from '../../components/icons/icon-target.svg';
 
-import {
-  UtensilsCrossed,
-  ShoppingCart,
-  Plane,
-  CreditCard,
-  Hotel,
-  ShieldCheck,
-  Info,
-  CheckCircle,
-  XCircle
-} from 'lucide-react';
+
 
 const reviewData = {
   cardName: 'American Express® Gold Card',
