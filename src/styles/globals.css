@@ -248,6 +248,37 @@ p, h1, h2, h3, h4, h5, h6, li, div, span { /* Added span */
   font-display: swap;
   src: url('/fonts/Playfair-Display-Bold.ttf') format('truetype');
 }
+@font-face {
+  font-family: 'Inter'; /* This is the name you'll use in your font-family CSS property */
+  src: url('/fonts/inter-v18-latin-regular.woff2') format('woff2'); /* Path to your font file */
+  font-weight: 400; /* Or 'normal' */
+  font-style: normal;
+  font-display: swap; /* Crucial for performance: renders text with a fallback font while Inter loads */
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter-v18-latin-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter-v18-latin-600.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter-v18-latin-700.woff2') format('woff2');
+  font-weight: 700; /* Or 'bold' */
+  font-style: normal;
+  font-display: swap;
+}
 
 
 /* =============== HEADER (Unchanged) =============== */

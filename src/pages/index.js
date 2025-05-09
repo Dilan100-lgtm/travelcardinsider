@@ -9,7 +9,7 @@ import Link from 'next/link';
 import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
 import Header from "../components/Header"; // Assuming path is correct
 import Footer from "../components/Footer"; // Assuming path is correct
-import TopReviewsSection from '@/components/TopReviewsSection'; // Import the new section
+
 import { getFeaturedReviews } from '@/utils/getAllReviews'; // Import the data fetching function
 
 
