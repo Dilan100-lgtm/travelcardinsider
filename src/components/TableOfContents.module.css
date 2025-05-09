@@ -118,6 +118,8 @@
     border-left: none; border-top: none; border-bottom: none;
     z-index: 1040; overflow-y: visible;
     padding-top: var(--spacing-xl, 32px);
+    overflow-y: auto; /* Enable vertical scrolling */
+
   }
   .tocContainer.mobileOpen { transform: translateX(0); box-shadow: var(--shadow-lg, 0 10px 15px rgba(0,0,0,0.1)); }
   .tocList { max-height: none; }
