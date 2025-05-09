@@ -439,7 +439,7 @@ function CapitalOneQuicksilverOneReviewPage() {
                 {/* Section 2: Editor's Rating & Concise Verdict */}
                 <section id="section-2" className={styles.reviewSection}>
                   <h2>2. Editor's Rating & Concise Verdict and High-Quality Card Image</h2>
-                  <p><strong>Editor's Rating:</strong> 3.5 / 5.0 Stars</p>
+                  <p><strong>Editor's Rating:</strong> 5.4 / 10 Stars</p>
                   <p>This rating reflects the QuicksilverOne's solid, if not spectacular, offering for its target demographic. The unlimited 1.5% cash back is competitive for fair credit, and no foreign transaction fees are a significant plus for travelers. The 5% back on Capital One Travel hotel and rental car bookings adds potential, though portal use is required. The $39 annual fee and very high APR are the main drawbacks.</p>
                   <p><strong>Concise Verdict:</strong></p>
                   <p>The Capital One QuicksilverOne is a commendable card for US travelers with fair credit who want uncomplicated cash back. Its unlimited 1.5% on everything, 5% on select portal travel, and no foreign transaction fees make it practical. However, the $39 annual fee means you need to spend enough to make it worthwhile (around $2,600 in general purchases), and the steep 29.74% variable APR means it's only for those who clear their balance monthly. It serves its credit-building purpose with basic travel-friendly features, though it lacks a welcome bonus and extensive travel protections.</p>
