@@ -773,4 +773,7 @@
     min-width: 100%; /* On smaller screens, let it be 100% or manage via data-labels */
   }
 }
+.scrollableTableWrapper .statsTable {
+  min-width: 2000px !important;
+}
 
