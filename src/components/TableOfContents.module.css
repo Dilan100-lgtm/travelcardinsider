@@ -93,7 +93,8 @@
 /* Desktop Styles (Sidebar) */
 @media (min-width: 1024px) {
   .tocContainer {
-  
+    position: sticky;          /* ← make it sticky here         */
+    top: 96px;                 /* height of your fixed header   */
     margin-bottom: 30rem;
     /* Use var from globals or define fallback */
     width: var(--toc-width-desktop, 280px);
