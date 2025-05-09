@@ -198,8 +198,8 @@
 .intro p {
   font-size: 1.1rem; line-height: 1.8; max-width: 75ch;
   margin: 0 auto 0 auto; color: var(--text-medium, #42526e);
-  text-align: center;
-  justify-content: center;
+  text-align: left;
+  
 }
 @media (min-width: 768px) {
     .introAndImageWrapper { flex-direction: row; align-items: center; }
