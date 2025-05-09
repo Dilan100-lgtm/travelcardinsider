@@ -258,61 +258,6 @@ function CapitalOneQuicksilverOneReviewPage() {
     { id: 'section-18', title: 'The Final Takeaway & Alternatives' },
     { id: 'section-19', title: 'Card-Specific FAQs' },
   ];
-  function DraggableTableWrapper({ children }) {
-    const containerRef = useRef(null);
-    useEffect(() => {
-      const el = containerRef.current;
-      if (!el) return;
-  
-      let isDown = false;
-      let startX;
-      let scrollLeft;
-  
-      const startDragging = (e) => {
-        isDown = true;
-        el.classList.add('grabbing');
-        startX = e.pageX || e.touches?.[0]?.pageX;
-        scrollLeft = el.scrollLeft;
-      };
-  
-      const stopDragging = () => {
-        isDown = false;
-        el.classList.remove('grabbing');
-      };
-  
-      const handleMove = (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX || e.touches?.[0]?.pageX;
-        const walk = (x - startX) * 1.5; // scroll speed
-        el.scrollLeft = scrollLeft - walk;
-      };
-  
-      el.addEventListener('mousedown', startDragging);
-      el.addEventListener('touchstart', startDragging);
-      el.addEventListener('mouseleave', stopDragging);
-      el.addEventListener('mouseup', stopDragging);
-      el.addEventListener('touchend', stopDragging);
-      el.addEventListener('mousemove', handleMove);
-      el.addEventListener('touchmove', handleMove);
-  
-      return () => {
-        el.removeEventListener('mousedown', startDragging);
-        el.removeEventListener('touchstart', startDragging);
-        el.removeEventListener('mouseleave', stopDragging);
-        el.removeEventListener('mouseup', stopDragging);
-        el.removeEventListener('touchend', stopDragging);
-        el.removeEventListener('mousemove', handleMove);
-        el.removeEventListener('touchmove', handleMove);
-      };
-    }, []);
-  
-    return (
-      <div ref={containerRef} className="draggable-scroll-container">
-        {children}
-      </div>
-    );
-  }
 
   return (
     <>
@@ -750,7 +695,7 @@ function CapitalOneQuicksilverOneReviewPage() {
                 <section id="section-15" className={styles.reviewSection}>
                     <h2>15. Head-to-Head: How It Stacks Up Against Key Competitors</h2>
                     <p>For US travelers with fair credit, several cards compete with the QuicksilverOne. Here's a comparison:</p>
-                    <DraggableTableWrapper>
+                    <div className={styles.scrollableTableWrapper}>
                     <div className={styles.tableContainer}>
                         <table className={styles.statsTable}>
                             <thead>
@@ -832,7 +777,7 @@ function CapitalOneQuicksilverOneReviewPage() {
                             </tbody>
                         </table>
                     </div>
-                    </DraggableTableWrapper>
+                    </div>
                     <h3>Comparison Highlights:</h3>
                     <ul className={styles.featureList}>
                         <li><strong>vs. Discover it® Miles:</strong> QuicksilverOne has a $39 annual fee; Discover it Miles has none. Both offer 1.5% back and no FTF. Discover's first-year Miles Match is a strong welcome offer QuicksilverOne lacks. QuicksilverOne has 5% on portal hotels/cars; Discover is flat 1.5x. Mastercard (QuicksilverOne) likely offers more baseline travel/purchase protections than Discover.</li>
