@@ -384,7 +384,7 @@
   margin: var(--spacing-xl, 32px) 0; /* Use variable */
   box-shadow: none;
   position: sticky; top: 3rem; /* Sticky section */
-  height: 40vh;
+  height: 30vh;
 
 }
 .ctaSection h2 {
