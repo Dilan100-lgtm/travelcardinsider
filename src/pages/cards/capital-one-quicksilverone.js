@@ -2,7 +2,7 @@
 // Or: pages/reviews/[slug].js (if using dynamic routing with 'capital-one-quicksilverone' as a slug)
 
 
-// !!! YOU MUST REPLACE ALL PLACEHOLDERS MARKED WITH '***' (like image paths, URLs, author names) BEFORE DEPLOYMENT !!!
+
 // !!! VERIFY ALL CARD DETAILS, SCHEMA VALUES, COUNTS, and URLs AGAINST OFFICIAL ISSUER INFO !!!
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
