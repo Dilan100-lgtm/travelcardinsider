@@ -748,7 +748,7 @@
 @media (min-width: 992px) { /* lg breakpoint, adjust as needed */
   .heroSection {
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center; /* Vertically center content */
     text-align: left; /* Align text to left on desktop */
     padding: var(--spacing-xxl) clamp(1.5rem, 6vw, 4rem); /* More padding: 3rem, responsive horizontal */
