@@ -23,7 +23,7 @@ import IconPlus from '../../components/icons/icon-target.svg';
 const RatingTooltipDynamic = dynamic(() => import('../../components/RatingTooltip'), {
   ssr: false,
   loading: () => null,
-});
+})
 
 
 
@@ -53,7 +53,7 @@ const ratingCriteria = [
     'Travel Perks (3X Flights, No FTF)'
 ];
 
-function AmexBusinessGoldReviewPage() {
+function AmexGoldReviewPage() {
   // --- Tooltip State --- (Priority 1)
   const [showRatingInfo, setShowRatingInfo] = useState(false);
 
