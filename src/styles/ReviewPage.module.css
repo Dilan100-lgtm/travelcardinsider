@@ -385,6 +385,7 @@
   box-shadow: none;
   position: sticky; top: 3rem; /* Sticky section */
   height: 35vh;
+  z-index: 1000; /* Ensure it stays above other content */
 
 }
 .ctaSection h2 {
