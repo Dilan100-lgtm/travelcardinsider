@@ -345,7 +345,6 @@ function AmexGoldReviewPage() {
                     <a href={reviewData.ratesLink} className={`${styles.btnRates} `} target="_blank" rel="noopener noreferrer sponsored">
                       See Card Rates & Fees
                     </a>
-                    <a href='/rewards-compare' className={`${styles.btn} ${styles.btncalculator}`} target="_blank" rel="noopener noreferrer sponsored">Rewards Calculator</a>
                   </div>
                 </div>
                 {/* ============= END SUMMARY BOX ============= */}
