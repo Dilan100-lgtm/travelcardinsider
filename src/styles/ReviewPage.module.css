@@ -379,7 +379,7 @@
 }
 .ctaSection h2 {
   font-family: var(--font-condensed, 'Roboto Condensed', var(--font-family-sans, sans-serif));
-  font-size: 1.2rem; color: var(--text-dark, #172b4d);
+  font-size: 1 rem; color: var(--text-dark, #172b4d);
   margin-top: 0; margin-bottom: 0.5rem; border: none; display: block;
 }
 .ctaSection h2 b { color: var(--color-primary, #0052cc); font-weight: 700; }
