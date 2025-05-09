@@ -763,6 +763,7 @@
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE/Edge */
+  border: 2px dashed red;
 }
 .scrollableTableWrapper:active {
   cursor: grabbing;
