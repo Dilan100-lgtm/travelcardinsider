@@ -381,7 +381,7 @@
   font-family: var(--font-condensed, 'Roboto Condensed', var(--font-family-sans, sans-serif));
   font-size: 1 rem; color: var(--text-dark, #172b4d);
   margin-top: 0; margin-bottom: 0.5rem; border: none; display: block;
-  line-height: 0.3rem;
+  line-height: 1rem;
 }
 .ctaSection h2 b { color: var(--color-primary, #0052cc); font-weight: 700; }
 .ctaButtons { display: flex; justify-content: center; gap: 0.5rem; flex-wrap: wrap; }
