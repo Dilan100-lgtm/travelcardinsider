@@ -738,5 +738,7 @@
   text-align: center;
 }
 .ratesFeesList dt {
-  font-size: 4rem;
+  font-size: 1.2rem;
+  color: #000;
+  font-weight: 700;
 }
