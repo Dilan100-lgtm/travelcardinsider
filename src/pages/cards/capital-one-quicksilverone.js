@@ -390,7 +390,7 @@ function DraggableTableWrapper({ children }) {
             <section className={styles.heroSection}>
               <div className={styles.heroTextContainer}>
                 <h1 className={styles.heroTitle}>
-                  {reviewData.h1Content}
+                  Capital One QuicksilverOne: Building Credit with Cash Back for Travelers
                 </h1>
                 <p className={styles.heroSubtitle}>
                   Discover how the Capital One QuicksilverOne card helps you build credit while earning cash back on every purchase, with added perks for travelers.
