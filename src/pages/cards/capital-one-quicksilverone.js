@@ -260,52 +260,61 @@ function CapitalOneQuicksilverOneReviewPage() {
   ];
  
 
+import { useEffect, useRef } from 'react';
+import styles from './YourCSSModule.module.css'; // Adjust path accordingly
+
 function DraggableTableWrapper({ children }) {
   const containerRef = useRef(null);
+
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     const el = containerRef.current;
     if (!el) return;
 
-    let isDown = false;
-    let startX;
-    let scrollLeft;
+    // ✅ Only enable drag logic if screen width is >= 768px
+    const isDesktop = window.innerWidth >= 768;
+    if (!isDesktop) return;
 
-    const startDragging = (e) => {
-      isDown = true;
-      el.classList.add('grabbing');
+    let isDragging = false;
+    let startX = 0;
+    let scrollStart = 0;
+
+    const startDrag = (e) => {
+      isDragging = true;
+      el.classList.add(styles.grabbing);
       startX = e.pageX || e.touches?.[0]?.pageX;
-      scrollLeft = el.scrollLeft;
+      scrollStart = el.scrollLeft;
     };
 
-    const stopDragging = () => {
-      isDown = false;
-      el.classList.remove('grabbing');
+    const stopDrag = () => {
+      isDragging = false;
+      el.classList.remove(styles.grabbing);
     };
 
-    const handleMove = (e) => {
-      if (!isDown) return;
-      e.preventDefault();
+    const onMove = (e) => {
+      if (!isDragging) return;
       const x = e.pageX || e.touches?.[0]?.pageX;
-      const walk = (x - startX) * 1.5; // scroll speed
-      el.scrollLeft = scrollLeft - walk;
+      const delta = x - startX;
+      el.scrollLeft = scrollStart - delta;
     };
 
-    el.addEventListener('mousedown', startDragging);
-    el.addEventListener('touchstart', startDragging);
-    el.addEventListener('mouseleave', stopDragging);
-    el.addEventListener('mouseup', stopDragging);
-    el.addEventListener('touchend', stopDragging);
-    el.addEventListener('mousemove', handleMove);
-    el.addEventListener('touchmove', handleMove);
+    el.addEventListener('mousedown', startDrag);
+    el.addEventListener('touchstart', startDrag);
+    el.addEventListener('mouseup', stopDrag);
+    el.addEventListener('mouseleave', stopDrag);
+    el.addEventListener('touchend', stopDrag);
+    el.addEventListener('mousemove', onMove);
+    el.addEventListener('touchmove', onMove);
 
     return () => {
-      el.removeEventListener('mousedown', startDragging);
-      el.removeEventListener('touchstart', startDragging);
-      el.removeEventListener('mouseleave', stopDragging);
-      el.removeEventListener('mouseup', stopDragging);
-      el.removeEventListener('touchend', stopDragging);
-      el.removeEventListener('mousemove', handleMove);
-      el.removeEventListener('touchmove', handleMove);
+      el.removeEventListener('mousedown', startDrag);
+      el.removeEventListener('touchstart', startDrag);
+      el.removeEventListener('mouseup', stopDrag);
+      el.removeEventListener('mouseleave', stopDrag);
+      el.removeEventListener('touchend', stopDrag);
+      el.removeEventListener('mousemove', onMove);
+      el.removeEventListener('touchmove', onMove);
     };
   }, []);
 
@@ -315,6 +324,9 @@ function DraggableTableWrapper({ children }) {
     </div>
   );
 }
+
+export default DraggableTableWrapper;
+
 
 
   return (
