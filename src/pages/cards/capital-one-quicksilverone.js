@@ -11,12 +11,11 @@ import dynamic from 'next/dynamic';
 import styles from '../../styles/ReviewPage.module.css';
 
 import TableOfContents    from '../../components/TableOfContents';
-import IconGift           from '../../components/icons/icon-gift.svg';
-import IconStar           from '../../components/icons/icon-star.svg';
-import IconCheck          from '../../components/icons/icon-credit-card.svg'; // Corrected import name
-import IconX              from '../../components/icons/icon-star-arrow-up.svg'; // Corrected import name
-import IconPlus           from '../../components/icons/icon-target.svg';
-
+import IconGift from '../../components/icons/icon-gift.svg'; // Placeholder, update if needed
+import IconStar from '../../components/icons/icon-star.svg'; // Placeholder, update if needed
+import IconCheck from '../../components/icons/icon-Credit Card.svg'; // Placeholder, update if needed
+import IconX from '../../components/icons/icon-Star + Arrow Up.svg'; // Placeholder, update if needed
+import IconPlus from '../../components/icons/icon-target.svg'; // Placeholder, update if needed
 const RatingTooltip = dynamic(() => import('../../components/RatingTooltip'), { ssr: false, loading: () => null });
 
 /* ──────────────────────────────
