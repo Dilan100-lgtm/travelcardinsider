@@ -16,8 +16,10 @@ export default function WellsFargoAutographJourneyReview2025() {
   const siteName = "YourCreditCardReviewSite"; // Customize this
   const authorName = "Travelcardinsider"; // Customize this
   const publishDate = "2025-05-10"; // Current Date
-  const reviewRatingValue = "4.5"; // Example Rating - Adjust based on your assessment
-  const annualFee = "95";
+  
+  // Corrected to numbers
+  const reviewRatingValue = 4.5; 
+  const annualFee = 95;
 
   return (
     <>
@@ -35,7 +37,7 @@ export default function WellsFargoAutographJourneyReview2025() {
         <meta property="og:title" content="Wells Fargo Autograph Journey Review 2025: A New Premium Travel Card?" />
         <meta property="og:description" content="Our 2025 analysis of the Wells Fargo Autograph Journey℠ Card. Is it a top contender for US-based premium travel rewards?" />
         <meta property="og:url" content={pageUrl} />
-        <meta property="og:image"       content={imageUrl} /> {/* Use direct image URL */}
+        <meta property="og:image"       content={imageUrl} />
         <meta property="og:site_name" content={siteName} />
 
 
@@ -43,9 +45,7 @@ export default function WellsFargoAutographJourneyReview2025() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Wells Fargo Autograph Journey Card Review 2025 | US Travel Focus" />
         <meta name="twitter:description" content="Detailed 2025 review: Wells Fargo Autograph Journey℠ Card. Rewards, direct booking benefits, travel insurance, and comparison for US travelers." />
-        <meta name="twitter:image"       content={imageUrl} /> {/* Use direct image URL */}
-        {/* <meta name="twitter:site" content="@YourTwitterHandle" /> */} {/* Optional: Add your Twitter handle */}
-        {/* <meta name="twitter:creator" content="@AuthorTwitterHandle" /> */} {/* Optional: Add author's Twitter handle */}
+        <meta name="twitter:image"       content={imageUrl} />
 
 
         <meta name="geo.region" content="US" />
@@ -76,11 +76,11 @@ export default function WellsFargoAutographJourneyReview2025() {
                     {
                       "@type": "UnitPriceSpecification",
                       "priceCurrency": "USD",
-                      "price": "${annualFee}",
+                      "price": ${annualFee},
                       "name": "Annual Fee",
                       "referenceQuantity": {
                          "@type": "QuantitativeValue",
-                         "value": "1",
+                         "value": 1,
                          "unitCode": "ANN"
                       }
                     }
@@ -88,17 +88,17 @@ export default function WellsFargoAutographJourneyReview2025() {
                 },
                 "aggregateRating": {
                   "@type": "AggregateRating",
-                  "ratingValue": "${reviewRatingValue}", 
-                  "bestRating": "5",
-                  "worstRating": "1",
-                  "reviewCount": "1" 
+                  "ratingValue": ${reviewRatingValue}, 
+                  "bestRating": 5,
+                  "worstRating": 1,
+                  "reviewCount": 1 
                 }
               },
               "reviewRating": {
                 "@type": "Rating",
-                "ratingValue": "${reviewRatingValue}",
-                "bestRating": "5",
-                "worstRating": "1"
+                "ratingValue": ${reviewRatingValue},
+                "bestRating": 5,
+                "worstRating": 1
               },
               "headline": "Wells Fargo Autograph Journey℠ Card Review 2025: New Contender for Premium Travel?",
               "author": {
@@ -155,11 +155,11 @@ export default function WellsFargoAutographJourneyReview2025() {
 
             <div style={{ marginTop: '1rem', marginBottom: '1rem' }}>
               <Image
-                src={'/simon-english-48nerZQCHgo-unsplash.webp'} // Using the variable
+                src={'/simon-english-48nerZQCHgo-unsplash.webp'} 
                 alt="Wells Fargo Autograph Journey℠ Card"
                 width={380} 
                 height={240}  
-                style={{ width: '100%', maxWidth: '380px', height: 'auto', display: 'block', margin: '0 auto' }} // Responsive and centered
+                style={{ width: '100%', maxWidth: '380px', height: 'auto', display: 'block', margin: '0 auto' }} 
                 priority 
               />
             </div>
