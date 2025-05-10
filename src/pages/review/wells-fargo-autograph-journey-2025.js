@@ -14,7 +14,7 @@ export default function WellsFargoAutographJourneyReview2025() {
   const imageUrl = "https://www.wellsfargo.com/assets/images/contextual/card-art/autograph-journey-visa-signature-card-380x240.png"; // Replace with your actual card image URL
   const logoUrl = "https://www.wellsfargo.com/assets/images/logos/wellsfargo/logo_90x40.png"; // Replace with your actual site logo URL
   const siteName = "YourCreditCardReviewSite"; // Customize this
-  const authorName = "Your Site Staff"; // Customize this
+  const authorName = "Travelcardinsider"; // Customize this
   const publishDate = "2025-05-10"; // Current Date
   const reviewRatingValue = "4.5"; // Example Rating - Adjust based on your assessment
   const annualFee = "95";
