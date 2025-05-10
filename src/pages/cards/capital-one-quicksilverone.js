@@ -260,8 +260,7 @@ function CapitalOneQuicksilverOneReviewPage() {
   ];
  
 
-import { useEffect, useRef } from 'react';
-import styles from './YourCSSModule.module.css'; // Adjust path accordingly
+
 
 function DraggableTableWrapper({ children }) {
   const containerRef = useRef(null);
@@ -325,7 +324,7 @@ function DraggableTableWrapper({ children }) {
   );
 }
 
-export default DraggableTableWrapper;
+
 
 
 
