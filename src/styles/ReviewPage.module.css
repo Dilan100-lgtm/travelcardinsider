@@ -333,7 +333,7 @@
   box-shadow: var(--shadow-sm, 0 2px 4px rgba(23, 43, 77, 0.07));
 }
 .statsTable {
-  width: 100%; min-width: 1000px; border-collapse: collapse;
+  width: 100%; min-width: 600px; border-collapse: collapse;
   border: none; box-shadow: none; margin-bottom: 0; font-size: 0.95rem;
 }
 .statsTable thead { background-color: var(--color-background-subtle, #f1f3f5); }
@@ -860,13 +860,5 @@
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  cursor: grab;
-  user-select: none;
-  
 }
-
-.draggableScrollContainer.active {
-  cursor: grabbing;
-}
-
 
