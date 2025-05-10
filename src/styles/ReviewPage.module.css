@@ -860,12 +860,10 @@
   cursor: grab;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
+  border: #0052cc 1px solid;
 }
 .draggable-scroll-container.grabbing {
   cursor: grabbing;
   user-select: none;
 }
-.statsTable {
-  width: max-content;
-  min-width: 1000px; /* Ensure it overflows */
-}
+
