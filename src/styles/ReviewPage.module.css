@@ -855,15 +855,18 @@
 
 }
 
-.draggable-scroll-container {
+.draggableScrollContainer {
   overflow-x: auto;
-  cursor: grab;
+  overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  border: #0052cc 1px solid;
-}
-.draggable-scroll-container.grabbing {
-  cursor: grabbing;
+  cursor: grab;
   user-select: none;
+  border: 2px dashed red; /* ✅ Test if visible now */
 }
+
+.draggableScrollContainer.grabbing {
+  cursor: grabbing;
+}
+
 

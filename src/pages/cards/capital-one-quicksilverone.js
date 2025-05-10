@@ -310,7 +310,7 @@ function DraggableTableWrapper({ children }) {
   }, []);
 
   return (
-    <div ref={containerRef} className="draggable-scroll-container">
+    <div ref={containerRef} className={styles.draggableScrollContainer}>
       {children}
     </div>
   );
