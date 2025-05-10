@@ -385,7 +385,7 @@ export default function PointsMilesTrends2025LuxuryTravel() {
       </main>
 
       {/* Footer component (replaces your <footer> tag) */}
-      <Footer />
+      
 
       {/* The original script reference (if needed in Next.js, consider a custom Document or next/script): */}
       {/* <script src="tools.js"></script> */}

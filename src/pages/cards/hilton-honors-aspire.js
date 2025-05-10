@@ -822,7 +822,7 @@ function HiltonHonorsAspireReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

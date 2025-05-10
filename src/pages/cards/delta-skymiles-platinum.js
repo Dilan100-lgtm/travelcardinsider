@@ -738,7 +738,7 @@ function DeltaSkyMilesPlatinumReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

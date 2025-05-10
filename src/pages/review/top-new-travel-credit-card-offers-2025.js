@@ -661,7 +661,7 @@ export default function TopNewTravelCreditCardOffers2025() {
       </main>
 
       {/* Footer component */}
-      <Footer />
+      
     </>
   );
 }

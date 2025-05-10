@@ -151,7 +151,7 @@ export default function TermsOfServicePage() {
         </div>
       </main>
 
-      <Footer />
+      
     </>
   );
 }

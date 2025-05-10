@@ -626,7 +626,7 @@ function AmexPlatinumReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

@@ -550,7 +550,7 @@ export default function BestTravelCardsPage() { // Changed function name
                 </div>
             )}
 
-             <Footer />
+             
         </>
     );
 }

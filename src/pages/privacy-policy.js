@@ -164,7 +164,7 @@ export default function PrivacyPolicyPage() {
         </div>
       </main>
 
-      <Footer /> {/* Render Footer component */}
+       {/* Render Footer component */}
     </>
   );
 }

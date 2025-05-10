@@ -515,7 +515,7 @@ export default function BestBeginnerCardsPage() { // Changed function name
                 </div>
             )}
 
-             <Footer />
+             
         </>
     );
 }

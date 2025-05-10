@@ -364,7 +364,7 @@ const FaqsAndGuidesPage = () => {
         </article>
       </main>
 
-      <Footer /> {/* Render the shared footer */}
+       {/* Render the shared footer */}
     </>
   );
 };

@@ -732,7 +732,7 @@ function AeroplanCardReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

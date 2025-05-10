@@ -787,7 +787,7 @@ function WellsFargoActiveCashReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

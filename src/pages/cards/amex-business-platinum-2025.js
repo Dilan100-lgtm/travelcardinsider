@@ -796,7 +796,7 @@ function AmexBusinessPlatinumReviewPage2025() { // Updated component name slight
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

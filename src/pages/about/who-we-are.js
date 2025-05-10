@@ -67,7 +67,7 @@ const WhoWeArePage = () => {
         </section>
       </main>
 
-      <Footer /> {/* Render the shared footer */}
+       {/* Render the shared footer */}
     </>
   );
 };

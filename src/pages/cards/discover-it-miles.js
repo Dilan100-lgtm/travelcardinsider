@@ -813,7 +813,7 @@ function DiscoverItMilesReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

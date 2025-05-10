@@ -692,7 +692,7 @@ function HSBCPremierWorldEliteReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

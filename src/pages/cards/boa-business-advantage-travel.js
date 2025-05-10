@@ -715,7 +715,7 @@ function BoABusinessAdvantageTravelReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

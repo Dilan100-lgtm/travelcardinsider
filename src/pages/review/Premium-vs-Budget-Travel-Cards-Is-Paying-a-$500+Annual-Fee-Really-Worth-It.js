@@ -531,7 +531,7 @@ export default function PremiumVsBudgetTravelCards2025() {
       </main>
 
       {/* FOOTER COMPONENT */}
-      <Footer />
+      
     </>
   );
 }

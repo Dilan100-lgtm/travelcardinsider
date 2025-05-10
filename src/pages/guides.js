@@ -169,7 +169,7 @@ export default function GuidesPage({ reviews: initialReviews, filterOptions }) {
          )}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

@@ -748,7 +748,7 @@ function UnitedClubInfiniteReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

@@ -698,7 +698,7 @@ function MastercardBlackCardReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

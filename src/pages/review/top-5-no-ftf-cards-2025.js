@@ -376,7 +376,7 @@ function NoFTFReviewPage() {
         </article>
       </main> {/* Close main content container */}
 
-      <Footer /> {/* Include Footer component */}
+       {/* Include Footer component */}
     </>
   );
 }

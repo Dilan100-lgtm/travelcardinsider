@@ -797,7 +797,7 @@ function HyattBusinessReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

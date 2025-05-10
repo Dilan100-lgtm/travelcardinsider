@@ -716,7 +716,7 @@ function VentureXBusinessReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

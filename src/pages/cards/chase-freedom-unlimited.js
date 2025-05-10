@@ -686,7 +686,7 @@ function ChaseFreedomUnlimitedReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

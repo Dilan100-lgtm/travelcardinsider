@@ -763,7 +763,7 @@ function WyndhamRewardsEarnerPlusReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

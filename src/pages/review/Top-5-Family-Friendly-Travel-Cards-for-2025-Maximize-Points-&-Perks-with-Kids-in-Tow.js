@@ -493,7 +493,7 @@ export default function FamilyFriendlyTravelCards2025() {
       </main>
 
       {/* Footer component */}
-      <Footer />
+      
     </>
   );
 }

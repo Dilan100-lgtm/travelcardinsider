@@ -711,7 +711,7 @@ function DeltaSkyMilesBlueReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

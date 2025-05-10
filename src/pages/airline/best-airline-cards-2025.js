@@ -438,7 +438,7 @@ export default function BestAirlineCardsPage() {
              {/* --- Conditionally Rendered Tooltip --- */}
              {activeTooltip && ( <div ref={tooltipRef} className={styles.ratingTooltip} style={{ position: 'absolute', top: `${activeTooltip.top}px`, left: `${activeTooltip.left}px` }} role="tooltip" aria-live="polite"> <strong>TCI Rating: {activeTooltip.rating}/10</strong> <p className={styles.tooltipIntro}>This rating is based on:</p> <ul className={styles.tooltipList}> {ratingCriteria.map((criterion, index) => <li key={index}>{criterion}</li>)} </ul> </div> )}
 
-             <Footer />
+             
         </>
     );
 }

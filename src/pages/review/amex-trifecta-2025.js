@@ -548,7 +548,7 @@ export default function AmexTrifectaReview2025() {
         </article>
       </main>
 
-      <Footer /> {/* Assuming Footer component is imported */}
+       {/* Assuming Footer component is imported */}
 
       {/* Optional JS (if needed) */}
       {/* <script src="tools.js"></script> */}

@@ -135,7 +135,7 @@ export default function CardFinderPage() {
       </RequireAuth>
       {/* --- End RequireAuth wrapper --- */}
 
-      <Footer />
+      
 
       {/* --- Basic Styles (Optional, already in your CSS globally probably) --- */}
       <style jsx global>{`

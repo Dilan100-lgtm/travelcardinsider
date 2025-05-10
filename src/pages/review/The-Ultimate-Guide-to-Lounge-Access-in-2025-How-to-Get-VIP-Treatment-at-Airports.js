@@ -674,7 +674,7 @@ export default function LoungeAccess2025() {
         </article>
       </main>
 
-      <Footer />
+      
     </>
   );
 }

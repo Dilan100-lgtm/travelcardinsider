@@ -637,7 +637,7 @@ function CitiDiamondPreferredReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

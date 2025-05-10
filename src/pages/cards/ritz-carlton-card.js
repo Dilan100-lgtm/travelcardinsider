@@ -699,7 +699,7 @@ function RitzCarltonReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

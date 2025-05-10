@@ -764,7 +764,7 @@ function USBankCashPlusReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

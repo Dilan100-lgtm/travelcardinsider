@@ -712,7 +712,7 @@ function AmexBusinessGoldReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

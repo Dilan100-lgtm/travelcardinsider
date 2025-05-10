@@ -725,7 +725,7 @@ function InkBusinessPreferredReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

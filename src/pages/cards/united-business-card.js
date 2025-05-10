@@ -771,7 +771,7 @@ function UnitedBusinessCardReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

@@ -547,7 +547,7 @@ export default function ImproveCreditScoreFast2025() {
       </main>
 
       {/* Footer replaces original <footer> */}
-      <Footer />
+      
 
       {/* Optional JS for Mobile Nav */}
       {/* If you need the original tools.js for mobile toggles, add it like so: */}

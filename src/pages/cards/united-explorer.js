@@ -787,7 +787,7 @@ function UnitedExplorerReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

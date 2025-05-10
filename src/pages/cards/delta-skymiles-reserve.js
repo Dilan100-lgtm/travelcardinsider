@@ -769,7 +769,7 @@ function DeltaSkyMilesReserveReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

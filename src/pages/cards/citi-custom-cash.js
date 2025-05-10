@@ -763,7 +763,7 @@ function CitiCustomCashReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

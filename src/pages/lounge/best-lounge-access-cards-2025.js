@@ -613,7 +613,7 @@ export default function BestLoungeAccessCardsPage() { // Renamed component funct
                 </div>
             )}
 
-             <Footer />
+             
         </>
     );
 }

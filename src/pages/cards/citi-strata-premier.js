@@ -777,7 +777,7 @@ function CitiStrataPremierReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

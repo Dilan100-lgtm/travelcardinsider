@@ -783,7 +783,7 @@ function AlaskaVisaSignatureReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

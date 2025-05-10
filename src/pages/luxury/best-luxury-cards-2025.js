@@ -600,7 +600,7 @@ export default function BestLuxuryCardsPage() { // Renamed component function
                 </div>
             )}
 
-             <Footer />
+             
         </>
     );
 }

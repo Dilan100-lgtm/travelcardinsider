@@ -882,7 +882,7 @@ function CapitalOneVentureXReview() {
       </main>
 
       {/* Assume Footer component is rendered in _app.js or a Layout component */}
-       <Footer />
+       
     </>
   );
 }

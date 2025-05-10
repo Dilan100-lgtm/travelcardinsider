@@ -622,7 +622,7 @@ export default function CapitalOneVentureVsVentureX2025() {
       </main>
 
       {/* Footer replaces original <footer> */}
-      <Footer />
+      
 
       {/* Optional JS for Mobile Nav - Placeholder from example */}
       {/* <script src="tools.js"></script> */}

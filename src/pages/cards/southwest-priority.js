@@ -688,7 +688,7 @@ function SouthwestPriorityReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

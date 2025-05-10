@@ -589,7 +589,7 @@ export default function BestBusinessCardsPage() { // Changed function name
                 </div>
             )}
 
-             <Footer />
+             
         </>
     );
 }

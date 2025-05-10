@@ -716,7 +716,7 @@ function DeltaReserveBusinessReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

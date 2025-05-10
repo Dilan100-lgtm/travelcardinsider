@@ -769,7 +769,7 @@ function BlueCashEverydayReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

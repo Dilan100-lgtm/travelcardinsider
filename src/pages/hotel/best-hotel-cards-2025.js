@@ -546,7 +546,7 @@ export default function BestHotelCardsPage() { // Renamed component function
                 </div>
             )}
 
-             <Footer />
+             
         </>
     );
 }

@@ -599,7 +599,7 @@ export default function BestZeroAprCardsPage() {
                 </div>
             )}
 
-             <Footer />
+             
         </>
     );
 }

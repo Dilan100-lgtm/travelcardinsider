@@ -777,7 +777,7 @@ function JetBluePlusReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

@@ -764,7 +764,7 @@ function HiltonHonorsAmexBusinessReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

@@ -807,7 +807,7 @@ function MarriottBonvoyBoundlessReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

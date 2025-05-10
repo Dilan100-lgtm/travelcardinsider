@@ -537,7 +537,7 @@ export default function HiddenPerksTravelCardBenefits2025() {
           </main>
   
         {/* Footer component (replaces the <footer> section) */}
-        <Footer />
+        
 {/* Closing JSX fragment */}
 </React.Fragment>
   );

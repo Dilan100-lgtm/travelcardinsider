@@ -679,7 +679,7 @@ function AAdvantageMileUpReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

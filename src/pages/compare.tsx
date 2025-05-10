@@ -78,7 +78,7 @@ export default function ComparePage() {
   )}
 </main>
 
-      <Footer />
+      
     </>
   );
 }

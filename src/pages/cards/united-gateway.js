@@ -681,7 +681,7 @@ function UnitedGatewayReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

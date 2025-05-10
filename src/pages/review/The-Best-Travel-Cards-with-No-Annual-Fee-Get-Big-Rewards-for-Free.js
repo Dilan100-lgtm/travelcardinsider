@@ -445,7 +445,7 @@ export default function NoFeeTravelCards2025() {
       </main>
 
       {/* Footer replaces your <footer> HTML */}
-      <Footer />
+      
     </>
   );
 }

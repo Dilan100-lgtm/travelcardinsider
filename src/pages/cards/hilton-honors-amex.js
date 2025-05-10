@@ -639,7 +639,7 @@ function HiltonHonorsAmexReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

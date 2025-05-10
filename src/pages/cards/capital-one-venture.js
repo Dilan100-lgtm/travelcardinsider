@@ -694,7 +694,7 @@ function CapitalOneVentureReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

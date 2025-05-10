@@ -578,7 +578,7 @@ export default function BestNoFeeCardsPage() { // Renamed component function
                 </div>
             )}
 
-             <Footer />
+             
         </>
     );
 }

@@ -447,7 +447,7 @@ export default function UsBankAltitudeConnect2025() {
         </article>
       </main>
 
-      <Footer />
+      
 
       {/* Optional JS (if needed) */}
       {/* <script src="tools.js"></script> */}

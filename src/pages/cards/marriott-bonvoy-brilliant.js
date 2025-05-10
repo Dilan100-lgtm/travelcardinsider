@@ -784,7 +784,7 @@ function MarriottBonvoyBrilliantReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

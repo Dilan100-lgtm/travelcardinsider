@@ -704,7 +704,7 @@ function WellsFargoAutographReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

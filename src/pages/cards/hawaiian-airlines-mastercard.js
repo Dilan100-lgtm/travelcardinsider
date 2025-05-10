@@ -650,7 +650,7 @@ function HawaiianAirlinesReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

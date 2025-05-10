@@ -818,7 +818,7 @@ function IHGOneRewardsPremierReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

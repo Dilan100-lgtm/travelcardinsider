@@ -732,7 +732,7 @@ function BritishAirwaysVisaReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

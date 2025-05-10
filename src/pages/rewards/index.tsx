@@ -95,7 +95,7 @@ export default function RewardsPage() {
         </small>
       </main>
 
-      <Footer />
+      
     </>
   );
 }

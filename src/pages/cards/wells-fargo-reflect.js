@@ -628,7 +628,7 @@ function WellsFargoReflectReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

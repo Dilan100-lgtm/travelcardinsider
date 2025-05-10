@@ -652,7 +652,7 @@ function CitiAAPlatinumReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

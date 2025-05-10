@@ -837,7 +837,7 @@ function ChaseSapphireReserveReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

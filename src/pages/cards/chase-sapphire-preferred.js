@@ -737,7 +737,7 @@ function ChaseSapphirePreferredReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

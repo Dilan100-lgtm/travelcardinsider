@@ -769,7 +769,7 @@ function SparkMilesReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }

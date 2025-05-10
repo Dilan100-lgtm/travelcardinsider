@@ -783,7 +783,7 @@ function HiltonHonorsSurpassReviewPage() {
         </div> {/* Close reviewContainer */}
       </main>
 
-      <Footer />
+      
     </>
   );
 }
