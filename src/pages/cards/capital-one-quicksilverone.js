@@ -413,9 +413,7 @@ function DraggableTableWrapper({ children }) {
                     <a className={styles.heroSecondaryLink}>View Key Features</a>
                   </Link>
                 </div>
-                <div>
-                 <a href='/rewards-compare' className={ styles.heroRewardsCalculator} target="_blank" rel="noopener noreferrer sponsored">Rewards Calculator</a>
-              </div>
+                
                 </div>
               <div className={styles.heroImageContainer}>
                 <div className={styles.cardImageContainer}>
@@ -501,6 +499,9 @@ function DraggableTableWrapper({ children }) {
                             See Card Rates & Fees
                             </a>
                         </div>
+                        <div>
+                 <a href='/rewards-compare' className={ styles.heroRewardsCalculator} target="_blank" rel="noopener noreferrer sponsored">Rewards Calculator</a>
+              </div>
                     </div>
                 </header>
 
