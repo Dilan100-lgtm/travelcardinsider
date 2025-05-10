@@ -543,7 +543,7 @@ export default function WellsFargoAutographJourneyReview2025() {
         </article>
       </main>
 
-      <Footer /> {/* Assuming Footer component is imported */}
+       {/* Assuming Footer component is imported */}
     </>
   );
 }
