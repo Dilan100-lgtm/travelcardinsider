@@ -865,4 +865,7 @@
   cursor: grabbing;
   user-select: none;
 }
-
+.statsTable {
+  width: max-content;
+  min-width: 1000px; /* Ensure it overflows */
+}
