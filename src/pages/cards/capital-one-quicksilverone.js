@@ -358,7 +358,11 @@ function DraggableTableWrapper({ children }) {
         <meta property="article:section" content="Credit Card Reviews" />
         {reviewData.keywords.split(',').map(keyword => (
             <meta property="article:tag" content={keyword.trim()} key={keyword.trim()} />
-        ))}
+        ))}<meta name="geo.region" content="US" />
+        <meta name="geo.placename" content="United States" />
+        <meta name="language" content="en-US" />
+        <meta name="distribution" content="US" />
+        <link rel="alternate" href="https://www.travelcardinsider.com" hreflang="en-us" />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={reviewData.title} />
@@ -409,8 +413,10 @@ function DraggableTableWrapper({ children }) {
                     <a className={styles.heroSecondaryLink}>View Key Features</a>
                   </Link>
                 </div>
+                <div>
                  <a href='/rewards-compare' className={`${styles.btn} ${styles.btncalculator}`} target="_blank" rel="noopener noreferrer sponsored">Rewards Calculator</a>
               </div>
+                </div>
               <div className={styles.heroImageContainer}>
                 <div className={styles.cardImageContainer}>
                   <Image
