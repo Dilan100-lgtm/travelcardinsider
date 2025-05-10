@@ -557,7 +557,7 @@ function DraggableTableWrapper({ children }) {
                     <li><strong>Target Credit Level:</strong> Designed for "Fair" credit profiles.</li>
                     <li><strong>Credit Line Increase Review:</strong> Potential for automatic review for a higher credit line in as little as six months.</li>
                   </ul>
-                  <h3>Full Spectrum of Rates & Fees (as of May 2024):</h3>
+                  <h3>Full Spectrum of Rates & Fees (as of May 2025):</h3>
                   {/* Using a definition list for better semantics here */}
                   <dl className={styles.ratesFeesList}>
                     <dt>Annual Fee:</dt><dd>$39. <strong>Implication:</strong> Must earn enough rewards or save on FTFs to offset.</dd>
