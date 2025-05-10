@@ -215,8 +215,8 @@ export default function WellsFargoAutographJourneyReview2025() {
 
           <section id="introduction" className={styles.reviewSection}>
             <h2>I. Introduction: Wells Fargo Enters the Premium Travel Arena</h2>
-            <p>The 2025 U.S. travel rewards credit card market is fiercely competitive, with consumers demanding value, flexibility, and enhanced travel experiences.<sup>1</sup> "Premium" now signifies comprehensive perks beyond high annual fees. Wells Fargo's Autograph Journey℠ Card emerges as a contender, targeting travelers who seek robust earning potential and essential protections without the top-tier fees of established premium cards.<sup>3</sup> A key development is its points transfer capability, signaling ambition to compete with programs from Chase, American Express, and Capital One.<sup>3</sup> This move suggests a shift towards a more sophisticated rewards ecosystem.</p>
-            <p>Launched when travel interest is high but cost-consciousness persists, the Autograph Journey's 2025 enhancements—premium-like earning rates and solid travel protections at a moderate price—could appeal to many.<sup>3</sup> This review will dissect the card's offerings, comparing it against market leaders to determine if it’s a true "premium travel" contender for U.S. travelers.</p>
+            <p>The 2025 U.S. travel rewards credit card market is fiercely competitive, with consumers demanding value, flexibility, and enhanced travel experiences. "Premium" now signifies comprehensive perks beyond high annual fees. Wells Fargo's Autograph Journey℠ Card emerges as a contender, targeting travelers who seek robust earning potential and essential protections without the top-tier fees of established premium cards. A key development is its points transfer capability, signaling ambition to compete with programs from Chase, American Express, and Capital One. This move suggests a shift towards a more sophisticated rewards ecosystem.</p>
+            <p>Launched when travel interest is high but cost-consciousness persists, the Autograph Journey's 2025 enhancements—premium-like earning rates and solid travel protections at a moderate price—could appeal to many. This review will dissect the card's offerings, comparing it against market leaders to determine if it’s a true "premium travel" contender for U.S. travelers.</p>
           </section>
 
           <section id="unpacking-card" className={styles.reviewSection}>
@@ -224,60 +224,60 @@ export default function WellsFargoAutographJourneyReview2025() {
             
             <section id="earning-rewards" className={styles.reviewSubSection}>
               <h3>A. Earning Your Way: Rewards Structure & Sign-Up Bonus</h3>
-              <p>The Wells Fargo Autograph Journey℠ Card features a rewards structure favoring travel, especially direct bookings. Cardholders earn <strong>5X points per dollar on hotels booked directly</strong> and <strong>4X points per dollar on airlines booked directly</strong>.<sup>4</sup> These rates appeal to travelers prioritizing loyalty status or direct customer service.</p>
-              <p>The card also offers a versatile <strong>3X points per dollar on other travel and on dining</strong>. The "other travel" category is broad, including cruise lines, travel agencies, and campgrounds.<sup>4</sup> All other purchases earn 1X point per dollar.<sup>4</sup></p>
-              <p>New cardmembers in 2025 can earn a <strong>sign-up bonus of 60,000 bonus points</strong> after spending $4,000 on qualifying purchases in the first three months, a $600 travel value.<sup>4</sup> This can offset the annual fee multiple times in the first year.<sup>5</sup> Bonus eligibility may be restricted if the applicant has received a bonus for the same card within the preceding 48 months.<sup>4</sup></p>
+              <p>The Wells Fargo Autograph Journey℠ Card features a rewards structure favoring travel, especially direct bookings. Cardholders earn <strong>5X points per dollar on hotels booked directly</strong> and <strong>4X points per dollar on airlines booked directly</strong>. These rates appeal to travelers prioritizing loyalty status or direct customer service.</p>
+              <p>The card also offers a versatile <strong>3X points per dollar on other travel and on dining</strong>. The "other travel" category is broad, including cruise lines, travel agencies, and campgrounds. All other purchases earn 1X point per dollar.</p>
+              <p>New cardmembers in 2025 can earn a <strong>sign-up bonus of 60,000 bonus points</strong> after spending $4,000 on qualifying purchases in the first three months, a $600 travel value. This can offset the annual fee multiple times in the first year. Bonus eligibility may be restricted if the applicant has received a bonus for the same card within the preceding 48 months.</p>
             </section>
 
             <section id="redeeming-rewards" className={styles.reviewSubSection}>
               <h3>B. Redeeming Your Rewards: Flexibility and Value</h3>
-              <p>The Wells Fargo Rewards program allows points redemption through several avenues. Primary options include booking travel via the Wells Fargo Rewards portal.<sup>5</sup> Points can also be redeemed for cash equivalents like statement credits (for eligible purchases of $1+), checks, or direct deposits to eligible Wells Fargo accounts, usually in 2500-point increments.<sup>4</sup> Gift cards from over 100 brands are available, typically in $25 denominations.<sup>1</sup> The "Pay with Rewards" (PWR) feature allows points usage at participating merchants, including PayPal.<sup>4</sup></p>
-              <p>A crucial enhancement is the ability to <strong>transfer points to participating partner loyalty programs</strong>, generally at a 1:1 ratio unless specified otherwise.<sup>3</sup> This is vital for maximizing point value, as strategic transfers can yield more than the standard 1 cent per point. While the partner list is developing, this feature significantly elevates the program.</p>
-              <p>Point valuation for travel through the Wells Fargo portal or for cash-equivalents is typically 1 cent per point.<sup>1</sup> Transfer partners, however, open possibilities for higher valuations, a hallmark of major transferable currencies.</p>
+              <p>The Wells Fargo Rewards program allows points redemption through several avenues. Primary options include booking travel via the Wells Fargo Rewards portal. Points can also be redeemed for cash equivalents like statement credits (for eligible purchases of $1+), checks, or direct deposits to eligible Wells Fargo accounts, usually in 2500-point increments. Gift cards from over 100 brands are available, typically in $25 denominations. The "Pay with Rewards" (PWR) feature allows points usage at participating merchants, including PayPal.</p>
+              <p>A crucial enhancement is the ability to <strong>transfer points to participating partner loyalty programs</strong>, generally at a 1:1 ratio unless specified otherwise. This is vital for maximizing point value, as strategic transfers can yield more than the standard 1 cent per point. While the partner list is developing, this feature significantly elevates the program.</p>
+              <p>Point valuation for travel through the Wells Fargo portal or for cash-equivalents is typically 1 cent per point. Transfer partners, however, open possibilities for higher valuations, a hallmark of major transferable currencies.</p>
             </section>
 
             <section id="cost-journey" className={styles.reviewSubSection}>
               <h3>C. The Cost of the Journey: Fees and APRs (as of May 2025)</h3>
-              <p>The Wells Fargo Autograph Journey℠ Card has a <strong>$95 annual fee</strong>, positioning it in the mid-tier range.<sup>4</sup> It charges <strong>no foreign transaction fees</strong>, essential for international travelers.<sup>4</sup></p>
-              <p>As of May 10, 2025 (U.S. Prime Rate 7.50% <sup>4</sup>):</p>
+              <p>The Wells Fargo Autograph Journey℠ Card has a <strong>$95 annual fee</strong>, positioning it in the mid-tier range. It charges <strong>no foreign transaction fees</strong>, essential for international travelers.</p>
+              <p>As of May 10, 2025 (U.S. Prime Rate 7.50% ):</p>
               <ul>
-                <li>APR for Purchases: 20.24%, 25.24%, or 29.24% (Prime + 12.74%, 17.74%, or 21.74%), variable. Maximum APR 29.99%.<sup>4</sup></li>
-                <li>APR for Balance Transfers: Same as purchases. Maximum APR 29.99%.<sup>4</sup></li>
-                <li>APR for Cash Advances and Overdraft Protection Advances: 29.99% (Prime + 22.74%), variable. Maximum APR 29.99%.<sup>4</sup></li>
+                <li>APR for Purchases: 20.24%, 25.24%, or 29.24% (Prime + 12.74%, 17.74%, or 21.74%), variable. Maximum APR 29.99%.</li>
+                <li>APR for Balance Transfers: Same as purchases. Maximum APR 29.99%.</li>
+                <li>APR for Cash Advances and Overdraft Protection Advances: 29.99% (Prime + 22.74%), variable. Maximum APR 29.99%.</li>
               </ul>
-              <p>Other potential fees include <sup>4</sup>:</p>
+              <p>Other potential fees include :</p>
               <ul>
                 <li>Balance Transfer Fee: Intro: $5 or 3% (whichever is greater) for 120 days from account opening. After: up to 5%, min $5.</li>
                 <li>Cash Advance Fee: $10 or 5% (whichever is greater).</li>
                 <li>Late Payment Fee: Up to $40.</li>
                 <li>Minimum Interest Charge: $1.00 if interest is charged.</li>
               </ul>
-              <p>Cardholders should always consult current Wells Fargo terms for the latest information.<sup>4</sup></p>
+              <p>Cardholders should always consult current Wells Fargo terms for the latest information.</p>
             </section>
 
             <section id="travel-benefits" className={styles.reviewSubSection}>
               <h3>D. Travel-Centric Benefits: Protecting Your Adventures</h3>
-              <p>A key part of the Autograph Journey's value is its travel benefits, especially insurance. A <strong>$50 annual airline statement credit</strong> is provided after a qualifying airline purchase of $50 or more directly with an airline, automatically applied within one to two billing periods.<sup>4</sup> This simple credit effectively reduces the net annual fee to $45 if used.</p>
-              <p>The card’s travel insurance suite is robust for its fee <sup>5</sup>:</p>
+              <p>A key part of the Autograph Journey's value is its travel benefits, especially insurance. A <strong>$50 annual airline statement credit</strong> is provided after a qualifying airline purchase of $50 or more directly with an airline, automatically applied within one to two billing periods. This simple credit effectively reduces the net annual fee to $45 if used.</p>
+              <p>The card’s travel insurance suite is robust for its fee :</p>
               <ul>
                 <li><strong>Worldwide Automatic Common Carrier Travel Accident Insurance:</strong> Up to $1,000,000 for accidental death/dismemberment when the ticket is purchased with the card.</li>
                 <li><strong>Lost Baggage Reimbursement:</strong> Up to $3,000 per trip if baggage is lost, stolen, or misdirected by a common carrier.</li>
                 <li><strong>Trip Cancellation and Interruption Protection:</strong> Up to $15,000 per covered trip for non-refundable expenses if a trip is canceled or cut short for covered reasons (e.g., sickness, severe weather). This limit is notably generous.</li>
                 <li><strong>Auto Rental Collision Damage Waiver:</strong> Covers damage due to collision or theft when paying with the card; typically secondary coverage for Visa Signature cards.</li>
               </ul>
-              <p>Travel and Emergency Assistance Services offer worldwide referrals and coordination.<sup>5</sup> As a Visa Signature card, it includes Visa Signature® Concierge and access to the Visa Signature® Luxury Hotel Collection for potential perks.<sup>5</sup> This strong insurance package, especially the high limits, is a key differentiator, offering "premium" security without a top-tier fee.</p>
+              <p>Travel and Emergency Assistance Services offer worldwide referrals and coordination. As a Visa Signature card, it includes Visa Signature® Concierge and access to the Visa Signature® Luxury Hotel Collection for potential perks. This strong insurance package, especially the high limits, is a key differentiator, offering "premium" security without a top-tier fee.</p>
             </section>
 
             <section id="everyday-value" className={styles.reviewSubSection}>
               <h3>E. Beyond Travel: Everyday Value and Protections</h3>
-              <p>The Wells Fargo Autograph Journey℠ Card offers benefits beyond travel. A significant non-travel perk is <strong>Cellular Telephone Protection:</strong> paying the monthly cell phone bill with the card provides up to $1,000 coverage per claim ($25 deductible) for damage, theft, or unintentional separation, limited to two paid claims per 12-month period.<sup>5</sup></p>
-              <p>Cardholders access My Wells Fargo Deals for personalized cash back offers.<sup>5</sup> Autograph Card Exclusives provide access to live event tickets.<sup>5</sup> Wells Fargo’s Credit Close-Up® offers complimentary FICO® Score tracking and credit insights.<sup>5</sup> Standard protections include Zero Liability Protection and Emergency Cash Disbursement and Card Replacement.<sup>5</sup></p>
+              <p>The Wells Fargo Autograph Journey℠ Card offers benefits beyond travel. A significant non-travel perk is <strong>Cellular Telephone Protection:</strong> paying the monthly cell phone bill with the card provides up to $1,000 coverage per claim ($25 deductible) for damage, theft, or unintentional separation, limited to two paid claims per 12-month period.</p>
+              <p>Cardholders access My Wells Fargo Deals for personalized cash back offers. Autograph Card Exclusives provide access to live event tickets. Wells Fargo’s Credit Close-Up® offers complimentary FICO® Score tracking and credit insights. Standard protections include Zero Liability Protection and Emergency Cash Disbursement and Card Replacement.</p>
             </section>
           </section>
 
           <section id="premium-gauntlet" className={styles.reviewSection}>
             <h2>III. The Premium Gauntlet: Autograph Journey vs. The Established Elite</h2>
-            <p>To assess if the Wells Fargo Autograph Journey℠ Card is a premium travel contender, we must define "premium travel card" in 2025—typically cards with annual fees over $300, offering substantial travel credits, comprehensive airport lounge access (like Priority Pass Select), enhanced point redemption values, superior customer service, and robust travel/purchase protections.<sup>1</sup> The Autograph Journey ($95 fee) challenges this with strong earning rates for direct bookings and a solid insurance package, though it lacks widespread lounge access or a large travel credit.</p>
+            <p>To assess if the Wells Fargo Autograph Journey℠ Card is a premium travel contender, we must define "premium travel card" in 2025—typically cards with annual fees over $300, offering substantial travel credits, comprehensive airport lounge access (like Priority Pass Select), enhanced point redemption values, superior customer service, and robust travel/purchase protections. The Autograph Journey ($95 fee) challenges this with strong earning rates for direct bookings and a solid insurance package, though it lacks widespread lounge access or a large travel credit.</p>
             
             <section id="comparative-analysis" className={styles.reviewSubSection}>
                 <h4>Comparative Analysis: Autograph Journey vs. Key Premium Cards</h4>
@@ -285,29 +285,29 @@ export default function WellsFargoAutographJourneyReview2025() {
                     <li>
                         <strong>Wells Fargo Autograph Journey℠ vs. Chase Sapphire Reserve®</strong>
                         <ul>
-                            <li>The Autograph Journey has a much lower annual fee ($95 vs. $550 for Sapphire Reserve<sup>4</sup>) and higher trip cancellation coverage ($15,000 vs. $10,000<sup>5</sup>). Its 5X on direct hotels and 4X on direct airlines can be very rewarding.</li>
-                            <li>The Sapphire Reserve offers a $300 annual travel credit<sup>13</sup>, Priority Pass Select lounge access<sup>10</sup>, 50% more point value via Chase Travel℠, an established transfer partner network<sup>11</sup>, and primary auto rental CDW.<sup>11</sup></li>
+                            <li>The Autograph Journey has a much lower annual fee ($95 vs. $550 for Sapphire Reserve) and higher trip cancellation coverage ($15,000 vs. $10,000). Its 5X on direct hotels and 4X on direct airlines can be very rewarding.</li>
+                            <li>The Sapphire Reserve offers a $300 annual travel credit, Priority Pass Select lounge access, 50% more point value via Chase Travel℠, an established transfer partner network, and primary auto rental CDW.</li>
                             <li>The Sapphire Reserve provides more upfront travel value and luxury perks for frequent travelers. The Autograph Journey focuses on cost-effective high rewards and robust insurance.</li>
                         </ul>
                     </li>
                     <li>
                         <strong>Wells Fargo Autograph Journey℠ vs. The Platinum Card® from American Express</strong>
                         <ul>
-                            <li>The annual fee difference is stark: $95 for Autograph Journey versus $695 for The Platinum Card®.<sup>4</sup> Autograph Journey offers simpler benefits and broader travel category earnings. Amex Platinum's 5X is on direct flights/Amex Travel and prepaid hotels via Amex Travel.<sup>16</sup></li>
-                            <li>The Platinum Card® excels in luxury: unparalleled airport lounge access (American Express Global Lounge Collection®<sup>16</sup>), extensive statement credits (potentially &gt;$1,500 for Uber, airline incidentals, hotels, etc., requiring management<sup>16</sup>), complimentary elite status with Marriott Bonvoy and Hilton Honors (enrollment required), and Fine Hotels + Resorts® access.<sup>19</sup></li>
+                            <li>The annual fee difference is stark: $95 for Autograph Journey versus $695 for The Platinum Card®. Autograph Journey offers simpler benefits and broader travel category earnings. Amex Platinum's 5X is on direct flights/Amex Travel and prepaid hotels via Amex Travel.</li>
+                            <li>The Platinum Card® excels in luxury: unparalleled airport lounge access (American Express Global Lounge Collection®), extensive statement credits (potentially &gt;$1,500 for Uber, airline incidentals, hotels, etc., requiring management), complimentary elite status with Marriott Bonvoy and Hilton Honors (enrollment required), and Fine Hotels + Resorts® access.</li>
                             <li>These cards serve different needs. Amex Platinum is for those maximizing luxury perks and credits; Autograph Journey offers straightforward rewards and protections.</li>
                         </ul>
                     </li>
                     <li>
                         <strong>Wells Fargo Autograph Journey℠ vs. Capital One Venture X Rewards Credit Card</strong>
                         <ul>
-                            <li>Autograph Journey's $95 fee is lower than Venture X's $395.<sup>4</sup> Its direct booking earn rates (5X hotels, 4X airlines) can outperform Venture X's flat 2X on everyday purchases (Venture X earns 5X on flights and 10X on hotels/rental cars only via Capital One Travel<sup>23</sup>). Autograph Journey's trip cancellation ($15,000) is higher than Venture X's $2,000.<sup>5</sup></li>
-                            <li>Venture X offers a $300 annual travel credit (via Capital One Travel) and 10,000 anniversary bonus miles, effectively offsetting its fee for many.<sup>23</sup> It includes Priority Pass Select and primary auto rental CDW.<sup>23</sup></li>
+                            <li>Autograph Journey's $95 fee is lower than Venture X's $395. Its direct booking earn rates (5X hotels, 4X airlines) can outperform Venture X's flat 2X on everyday purchases (Venture X earns 5X on flights and 10X on hotels/rental cars only via Capital One Travel). Autograph Journey's trip cancellation ($15,000) is higher than Venture X's $2,000.</li>
+                            <li>Venture X offers a $300 annual travel credit (via Capital One Travel) and 10,000 anniversary bonus miles, effectively offsetting its fee for many. It includes Priority Pass Select and primary auto rental CDW.</li>
                             <li>Venture X provides more direct annual value and lounge access. The choice depends on preference for Autograph Journey's direct earn rates and trip insurance versus Venture X's credits, lounge access, and simpler 2X base earning.</li>
                         </ul>
                     </li>
                 </ul>
-                <p>The definition of "premium" is evolving. While traditionally tied to high fees and lounge access (which Autograph Journey lacks<sup>4</sup>), some travelers in 2025 may prioritize high intrinsic reward value and robust protections relative to cost. The Autograph Journey, despite a modest $50 airline credit and no lounge access, offers strong direct booking earn rates and excellent insurance.<sup>5</sup> For those not valuing lounges or complex credits, but desiring high rewards and top-tier insurance, it could feel "premium" for its annual fee.</p>
+                <p>The definition of "premium" is evolving. While traditionally tied to high fees and lounge access (which Autograph Journey lacks), some travelers in 2025 may prioritize high intrinsic reward value and robust protections relative to cost. The Autograph Journey, despite a modest $50 airline credit and no lounge access, offers strong direct booking earn rates and excellent insurance. For those not valuing lounges or complex credits, but desiring high rewards and top-tier insurance, it could feel "premium" for its annual fee.</p>
             </section>
 
             <section id="premium-showdown-table" className={styles.reviewSubSection}>
@@ -326,115 +326,115 @@ export default function WellsFargoAutographJourneyReview2025() {
                         <tbody>
                             <tr>
                                 <td>Annual Fee</td>
-                                <td>$95 <sup>4</sup></td>
-                                <td>$550 ($75 per authorized user) <sup>9</sup></td>
-                                <td>$695 <sup>16</sup></td>
-                                <td>$395 <sup>24</sup></td>
+                                <td>$95 </td>
+                                <td>$550 ($75 per authorized user) </td>
+                                <td>$695 </td>
+                                <td>$395 </td>
                             </tr>
                             <tr>
                                 <td>Sign-Up Bonus (2025)</td>
-                                <td>60,000 points ($4k spend/3mo) <sup>4</sup></td>
-                                <td>60,000 points ($5k spend/3mo) <sup>11</sup></td>
-                                <td>80,000 points ($8k spend/6mo) <sup>16</sup></td>
-                                <td>75,000 miles ($4k spend/3mo) <sup>24</sup></td>
+                                <td>60,000 points ($4k spend/3mo) </td>
+                                <td>60,000 points ($5k spend/3mo) </td>
+                                <td>80,000 points ($8k spend/6mo) </td>
+                                <td>75,000 miles ($4k spend/3mo) </td>
                             </tr>
                             <tr>
                                 <td>Rewards: Direct Hotels</td>
-                                <td>5X <sup>4</sup></td>
-                                <td>3X (after $300 travel credit used) <sup>15</sup></td>
-                                <td>1X (5X on prepaid via AmexTravel.com) <sup>16</sup></td>
-                                <td>2X (10X via Capital One Travel) <sup>24</sup></td>
+                                <td>5X </td>
+                                <td>3X (after $300 travel credit used) </td>
+                                <td>1X (5X on prepaid via AmexTravel.com) </td>
+                                <td>2X (10X via Capital One Travel) </td>
                             </tr>
                             <tr>
                                 <td>Rewards: Direct Airlines</td>
-                                <td>4X <sup>4</sup></td>
-                                <td>3X (after $300 travel credit used; 5X via Chase Travel) <sup>15</sup></td>
-                                <td>5X (on up to $500k/yr) <sup>16</sup></td>
-                                <td>2X (5X via Capital One Travel) <sup>24</sup></td>
+                                <td>4X </td>
+                                <td>3X (after $300 travel credit used; 5X via Chase Travel) </td>
+                                <td>5X (on up to $500k/yr) </td>
+                                <td>2X (5X via Capital One Travel) </td>
                             </tr>
                             <tr>
                                 <td>Rewards: Other Travel</td>
-                                <td>3X <sup>4</sup></td>
-                                <td>3X (after $300 travel credit used; 10X on hotels/cars via Chase Travel) <sup>15</sup></td>
-                                <td>1X (5X on prepaid hotels via AmexTravel.com) <sup>16</sup></td>
-                                <td>2X (10X on rental cars, 5X on vacation rentals via Capital One Travel) <sup>24</sup></td>
+                                <td>3X </td>
+                                <td>3X (after $300 travel credit used; 10X on hotels/cars via Chase Travel) </td>
+                                <td>1X (5X on prepaid hotels via AmexTravel.com) </td>
+                                <td>2X (10X on rental cars, 5X on vacation rentals via Capital One Travel) </td>
                             </tr>
                             <tr>
                                 <td>Rewards: Dining</td>
-                                <td>3X <sup>4</sup></td>
-                                <td>3X (10X on Chase Dining) <sup>15</sup></td>
-                                <td>1X <sup>16</sup></td>
-                                <td>2X <sup>24</sup></td>
+                                <td>3X </td>
+                                <td>3X (10X on Chase Dining) </td>
+                                <td>1X </td>
+                                <td>2X </td>
                             </tr>
                             <tr>
                                 <td>Rewards: General Spend</td>
-                                <td>1X <sup>4</sup></td>
-                                <td>1X <sup>15</sup></td>
-                                <td>1X <sup>16</sup></td>
-                                <td>2X <sup>24</sup></td>
+                                <td>1X </td>
+                                <td>1X </td>
+                                <td>1X </td>
+                                <td>2X </td>
                             </tr>
                             <tr>
                                 <td>Key Travel Credit(s)</td>
-                                <td>$50 annual airline credit <sup>4</sup></td>
-                                <td>$300 annual travel credit <sup>14</sup></td>
-                                <td>Multiple: $200 airline fee, $200 hotel, $200 Uber Cash, etc. <sup>16</sup></td>
-                                <td>$300 annual travel credit (via Capital One Travel) <sup>24</sup></td>
+                                <td>$50 annual airline credit </td>
+                                <td>$300 annual travel credit </td>
+                                <td>Multiple: $200 airline fee, $200 hotel, $200 Uber Cash, etc. </td>
+                                <td>$300 annual travel credit (via Capital One Travel) </td>
                             </tr>
                             <tr>
                                 <td>Airport Lounge Access</td>
                                 <td>None explicitly offered</td>
-                                <td>Priority Pass Select <sup>10</sup></td>
-                                <td>Amex Global Lounge Collection (Centurion, Priority Pass, Delta Sky Club etc.) <sup>16</sup></td>
-                                <td>Priority Pass Select, Capital One Lounges <sup>24</sup></td>
+                                <td>Priority Pass Select </td>
+                                <td>Amex Global Lounge Collection (Centurion, Priority Pass, Delta Sky Club etc.) </td>
+                                <td>Priority Pass Select, Capital One Lounges </td>
                             </tr>
                             <tr>
                                 <td>Point Transfer Capability</td>
-                                <td>Yes (partners TBD/developing) <sup>4</sup></td>
-                                <td>Yes (established network) <sup>11</sup></td>
-                                <td>Yes (established network) <sup>30</sup></td>
-                                <td>Yes (established network) <sup>24</sup></td>
+                                <td>Yes (partners TBD/developing) </td>
+                                <td>Yes (established network) </td>
+                                <td>Yes (established network) </td>
+                                <td>Yes (established network) </td>
                             </tr>
                             <tr>
                                 <td>Point Value (Travel Red.)</td>
-                                <td>1 cent (portal); potential for more via transfers <sup>5</sup></td>
-                                <td>1.5 cents (Chase Travel); potential for more via transfers <sup>15</sup></td>
-                                <td>Varies (Amex Travel, typically 0.7-1 cent for hotels/cars, 1 cent for flights); potential for more via transfers <sup>31</sup></td>
-                                <td>1 cent (portal/cover travel); potential for more via transfers <sup>23</sup></td>
+                                <td>1 cent (portal); potential for more via transfers </td>
+                                <td>1.5 cents (Chase Travel); potential for more via transfers </td>
+                                <td>Varies (Amex Travel, typically 0.7-1 cent for hotels/cars, 1 cent for flights); potential for more via transfers </td>
+                                <td>1 cent (portal/cover travel); potential for more via transfers </td>
                             </tr>
                              <tr>
                                 <td>Travel Accident Insurance</td>
-                                <td>Up to $1,000,000 <sup>5</sup></td>
-                                <td>Up to $1,000,000 <sup>11</sup></td>
-                                <td>Up to $500,000 <sup>32</sup></td>
-                                <td>Up to $1,000,000 <sup>25</sup></td>
+                                <td>Up to $1,000,000 </td>
+                                <td>Up to $1,000,000 </td>
+                                <td>Up to $500,000 </td>
+                                <td>Up to $1,000,000 </td>
                             </tr>
                             <tr>
                                 <td>Trip Cancellation/Interr.</td>
-                                <td>Up to $15,000/trip <sup>5</sup></td>
-                                <td>Up to $10,000/person, $20,000/trip <sup>11</sup></td>
-                                <td>Up to $10,000/trip, $20,000/12 mo. <sup>32</sup></td>
-                                <td>Up to $2,000/person <sup>25</sup></td>
+                                <td>Up to $15,000/trip </td>
+                                <td>Up to $10,000/person, $20,000/trip </td>
+                                <td>Up to $10,000/trip, $20,000/12 mo. </td>
+                                <td>Up to $2,000/person </td>
                             </tr>
                             <tr>
                                 <td>Lost Luggage Reimb.</td>
-                                <td>Up to $3,000/trip <sup>5</sup></td>
-                                <td>Up to $3,000/passenger <sup>11</sup></td>
-                                <td>Up to $3,000 (combined carry-on/checked) <sup>32</sup></td>
-                                <td>Up to $3,000/trip <sup>26</sup></td>
+                                <td>Up to $3,000/trip </td>
+                                <td>Up to $3,000/passenger </td>
+                                <td>Up to $3,000 (combined carry-on/checked) </td>
+                                <td>Up to $3,000/trip </td>
                             </tr>
                             <tr>
                                 <td>Auto Rental CDW</td>
-                                <td>Secondary (typically Visa Signature) <sup>5</sup></td>
-                                <td>Primary (up to $75,000) <sup>11</sup></td>
-                                <td>Secondary (option to buy primary) <sup>36</sup></td>
-                                <td>Primary (Visa Infinite benefit) <sup>28</sup></td>
+                                <td>Secondary (typically Visa Signature) </td>
+                                <td>Primary (up to $75,000) </td>
+                                <td>Secondary (option to buy primary) </td>
+                                <td>Primary (Visa Infinite benefit) </td>
                             </tr>
                             <tr>
                                 <td>Foreign Transaction Fee</td>
-                                <td>None <sup>4</sup></td>
-                                <td>None <sup>11</sup></td>
-                                <td>None <sup>17</sup></td>
-                                <td>None <sup>24</sup></td>
+                                <td>None </td>
+                                <td>None </td>
+                                <td>None </td>
+                                <td>None </td>
                             </tr>
                         </tbody>
                     </table>
@@ -449,11 +449,11 @@ export default function WellsFargoAutographJourneyReview2025() {
                 <h3>The Ideal Autograph Journey Cardholder Profile: Who Benefits Most?</h3>
                 <p>The Autograph Journey offers compelling value for specific US travelers:</p>
                 <ul>
-                    <li><strong>Direct Booking Loyalists:</strong> Those booking flights/hotels directly benefit from 5X points on hotels and 4X on airlines, earning card points alongside brand loyalty points.<sup>4</sup></li>
-                    <li><strong>Value-Conscious Protection Seekers:</strong> Individuals prioritizing comprehensive travel insurance (e.g., $15,000 trip cancellation, $1,000,000 travel accident, $3,000 lost luggage) but wary of fees over $100 will find its protections strong for its $95 fee.<sup>5</sup></li>
-                    <li><strong>Existing Wells Fargo Customers:</strong> They may find convenience in consolidating finances and leveraging perks like My Wells Fargo Deals.<sup>5</sup></li>
+                    <li><strong>Direct Booking Loyalists:</strong> Those booking flights/hotels directly benefit from 5X points on hotels and 4X on airlines, earning card points alongside brand loyalty points.</li>
+                    <li><strong>Value-Conscious Protection Seekers:</strong> Individuals prioritizing comprehensive travel insurance (e.g., $15,000 trip cancellation, $1,000,000 travel accident, $3,000 lost luggage) but wary of fees over $100 will find its protections strong for its $95 fee.</li>
+                    <li><strong>Existing Wells Fargo Customers:</strong> They may find convenience in consolidating finances and leveraging perks like My Wells Fargo Deals.</li>
                     <li><strong>Lounge-Agnostic Travelers:</strong> If airport lounge access isn't critical, the $95 fee is attractive compared to cards with lounge benefits costing $395-$695.</li>
-                    <li><strong>Efficient Credit Users:</strong> Those making a $50+ airline purchase annually effectively reduce the fee to $45.<sup>4</sup></li>
+                    <li><strong>Efficient Credit Users:</strong> Those making a $50+ airline purchase annually effectively reduce the fee to $45.</li>
                     <li><strong>Pragmatic Rewards Optimizers:</strong> Ideal for those valuing earning on travel and protection during travel over luxury perks.</li>
                 </ul>
             </section>
@@ -464,9 +464,9 @@ export default function WellsFargoAutographJourneyReview2025() {
                 <ul>
                     <li><strong>Channel Key Spending:</strong> Use for all direct hotel/airline bookings, dining, and other eligible travel to maximize accelerated points.</li>
                     <li><strong>Secure the Airline Credit:</strong> Make a qualifying $50+ airline purchase annually for the $50 statement credit.</li>
-                    <li><strong>Monitor and Leverage Transfer Partners:</strong> The long-term value of points is significantly influenced by Wells Fargo's transfer partners.<sup>3</sup> Stay informed about new partners and high-value transfer opportunities.</li>
-                    <li><strong>Activate Cell Phone Protection:</strong> Pay the monthly cell phone bill with the card for $1,000 protection against damage/theft.<sup>5</sup></li>
-                    <li><strong>Explore Visa Signature Benefits:</strong> Utilize perks like the Luxury Hotel Collection for potential upgrades or credits.<sup>5</sup></li>
+                    <li><strong>Monitor and Leverage Transfer Partners:</strong> The long-term value of points is significantly influenced by Wells Fargo's transfer partners. Stay informed about new partners and high-value transfer opportunities.</li>
+                    <li><strong>Activate Cell Phone Protection:</strong> Pay the monthly cell phone bill with the card for $1,000 protection against damage/theft.</li>
+                    <li><strong>Explore Visa Signature Benefits:</strong> Utilize perks like the Luxury Hotel Collection for potential upgrades or credits.</li>
                 </ul>
             </section>
 
@@ -476,11 +476,11 @@ export default function WellsFargoAutographJourneyReview2025() {
                 <div>
                     <h4>What You Gain:</h4>
                     <ul>
-                        <li>A significantly lower $95 annual fee.<sup>4</sup></li>
-                        <li>Excellent 5X/4X earning on direct hotel/airline bookings, plus 3X on other travel/dining.<sup>4</sup></li>
-                        <li>Robust travel insurance with high coverage limits for its fee.<sup>5</sup></li>
-                        <li>Simple benefit utilization (e.g., $50 airline credit).<sup>4</sup></li>
-                        <li>Points transfer capability.<sup>4</sup></li>
+                        <li>A significantly lower $95 annual fee.</li>
+                        <li>Excellent 5X/4X earning on direct hotel/airline bookings, plus 3X on other travel/dining.</li>
+                        <li>Robust travel insurance with high coverage limits for its fee.</li>
+                        <li>Simple benefit utilization (e.g., $50 airline credit).</li>
+                        <li>Points transfer capability.</li>
                     </ul>
                 </div>
                 <div>
@@ -490,7 +490,7 @@ export default function WellsFargoAutographJourneyReview2025() {
                         <li>Large, flexible annual travel credits (like the $300 credits from Chase Sapphire Reserve or Capital One Venture X).</li>
                         <li>Elite-like perks (e.g., hotel elite status from The Platinum Card®).</li>
                         <li>A potentially less established transfer partner network (currently).</li>
-                        <li>Primary auto rental CDW, offered by some competitors<sup>11</sup>; Autograph Journey's is likely secondary.</li>
+                        <li>Primary auto rental CDW, offered by some competitors; Autograph Journey's is likely secondary.</li>
                     </ul>
                 </div>
             </section>
@@ -506,7 +506,7 @@ export default function WellsFargoAutographJourneyReview2025() {
             <p>The Wells Fargo Autograph Journey℠ Card is a compelling 2025 travel rewards entry, challenging norms for sub-$100 annual fee cards.</p>
             <section id="recap-features-limitations" className={styles.reviewSubSection}>
                 <h3>Recap of Standout Features and Notable Limitations</h3>
-                <p><strong>Standout features:</strong> Excellent 5X points on direct hotels, 4X on direct airlines, 3X on other travel/dining.<sup>4</sup> Noteworthy travel insurance: $1,000,000 travel accident, $15,000 trip cancellation/interruption.<sup>5</sup> Simple $50 annual airline credit effectively cuts the fee.<sup>4</sup> Crucially, points transfer capability signals Wells Fargo's ambition.<sup>3</sup></p>
+                <p><strong>Standout features:</strong> Excellent 5X points on direct hotels, 4X on direct airlines, 3X on other travel/dining. Noteworthy travel insurance: $1,000,000 travel accident, $15,000 trip cancellation/interruption. Simple $50 annual airline credit effectively cuts the fee. Crucially, points transfer capability signals Wells Fargo's ambition.</p>
                 <p><strong>Notable limitations:</strong> No airport lounge access. The $50 airline credit is less substantial than competitors' $300 credits. Auto rental CDW is likely secondary, unlike primary coverage from some rivals. The strength of its points transfer feature depends on future partner network development.</p>
             </section>
 
@@ -543,7 +543,7 @@ export default function WellsFargoAutographJourneyReview2025() {
         </article>
       </main>
 
-       {/* Assuming Footer component is imported */}
+      <Footer /> {/* Assuming Footer component is imported */}
     </>
   );
 }
