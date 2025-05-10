@@ -312,7 +312,7 @@
   .summaryLabel { margin-right: var(--spacing-sm, 8px); }
   .summaryValue { text-align: left; flex-basis: 100%; margin-top: var(--spacing-xs, 4px); }
 }
-.summaryRatesLink .btnRates {
+.summaryRatesLink {
   padding: 10px 24px; font-size: 1rem; font-weight: 700;
   border-radius: var(--border-radius-md, 6px);
   box-shadow: var(--shadow-sm, 0 2px 4px rgba(23, 43, 77, 0.07));
@@ -322,8 +322,8 @@
   color: var(--color-primary, #0052cc);
   border: 1px solid var(--color-border, #dfe1e6);
 }
-.summaryRatesLink .btnRates:hover { box-shadow: var(--shadow-md, 0 4px 8px rgba(23, 43, 77, 0.1)); transform: translateY(-2px); }
-.summaryRatesLink .btnRates:active { transform: translateY(0px) scale(0.98); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+.summaryRatesLink:hover { box-shadow: var(--shadow-md, 0 4px 8px rgba(23, 43, 77, 0.1)); transform: translateY(-2px); }
+.summaryRatesLink:active { transform: translateY(0px) scale(0.98); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
 .summaryBoxActions {
   display: flex; /* Enables Flexbox */
   justify-content: center; /* Centers the buttons horizontally in the container */
@@ -332,15 +332,26 @@
   margin-top: var(--spacing-lg, 24px); /* Space above the button group */
   flex-wrap: wrap; /* Allows buttons to wrap on smaller screens if they don't fit */
 }
-
-/* You can keep your existing .btnRates and .heroRewardsCalculator styles.
-   If you added .summaryButton for shared styles, you can define it: */
-.summaryButton {
-  /* Example: if you need specific margins not covered by gap */
-  /* margin-left: var(--spacing-xs, 4px); */
-  /* margin-right: var(--spacing-xs, 4px); */
-  text-decoration: none; /* Ensure links look like buttons */
+.heroRewardsCalculator {
+  background:  #0d7eee;
+  color:  #f3f5f8;
+  border: 1px solid var(--color-border, #dfe1e6);
+  box-shadow: none;
+  padding: 10px 24px; font-size: 1rem; font-weight: 700;
+  border-radius: var(--border-radius-md, 6px);
+  box-shadow: var(--shadow-sm, 0 2px 4px rgba(23, 43, 77, 0.07));
+  transition: all 0.3s ease; border: none; cursor: pointer;
+  text-decoration: none; line-height: 1.5;
+  display: block;
 }
+.heroRewardsCalculator:hover {
+  box-shadow: var(--shadow-md, 0 4px 8px rgba(23, 43, 77, 0.1)); transform: translateY(-2px); 
+  background: #0d72d8;
+  border-color: var(--color-primary, #0052cc);
+}
+.heroRewardsCalculator:active { transform: translateY(0px) scale(0.98); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+
+
 
 /* =============== TABLES (Responsive Scroll) =============== */
 .tableContainer {
@@ -429,24 +440,7 @@
   border: 1px solid var(--color-border, #dfe1e6);
   box-shadow: none;
 }
-.heroRewardsCalculator {
-  background:  #0d7eee;
-  color:  #f3f5f8;
-  border: 1px solid var(--color-border, #dfe1e6);
-  box-shadow: none;
-  padding: 10px 24px; font-size: 1rem; font-weight: 700;
-  border-radius: var(--border-radius-md, 6px);
-  box-shadow: var(--shadow-sm, 0 2px 4px rgba(23, 43, 77, 0.07));
-  transition: all 0.3s ease; border: none; cursor: pointer;
-  text-decoration: none; line-height: 1.5;
-  display: block;
-}
-.heroRewardsCalculator:hover {
-  box-shadow: var(--shadow-md, 0 4px 8px rgba(23, 43, 77, 0.1)); transform: translateY(-2px); 
-  background: #0d72d8;
-  border-color: var(--color-primary, #0052cc);
-}
-.heroRewardsCalculator:active { transform: translateY(0px) scale(0.98); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+
 .ctaButtons .btnRates:hover {
   background: var(--color-background-subtle, #f1f3f5);
   border-color: var(--color-primary, #0052cc);
