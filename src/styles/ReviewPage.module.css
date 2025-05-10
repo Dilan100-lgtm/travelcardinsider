@@ -28,15 +28,7 @@
 }
 
 /* =============== TYPOGRAPHY =============== */
-.reviewHeader h1 {
-  font-family: var(--font-family-serif, 'Playfair Display', serif);
-  font-size: clamp(2.2rem, 6vw, 3.2rem);
-  color: var(--text-dark, #172b4d);
-  text-align: center;
-  margin-bottom: var(--spacing-lg, 24px);
-  line-height: 1.2;
-  font-weight: 700;
-}
+
 
 .reviewSection h2 {
   font-family: var(--font-family-serif, 'Playfair Display', serif);
@@ -681,7 +673,14 @@
   max-width: 720px;
   width: 100%;
 }
-
+.heroTitle {
+  font-family: var(--font-family-serif, 'Playfair Display', serif);
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  line-height: 1.2;
+  margin-bottom: var(--spacing-md);
+}
 .heroSubtitle {
   font-family: var(--font-family-main);
   font-size: clamp(1.05rem, 2.5vw, 1.25rem);
