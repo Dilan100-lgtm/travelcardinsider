@@ -324,6 +324,23 @@
 }
 .summaryRatesLink .btnRates:hover { box-shadow: var(--shadow-md, 0 4px 8px rgba(23, 43, 77, 0.1)); transform: translateY(-2px); }
 .summaryRatesLink .btnRates:active { transform: translateY(0px) scale(0.98); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+.summaryBoxActions {
+  display: flex; /* Enables Flexbox */
+  justify-content: center; /* Centers the buttons horizontally in the container */
+  align-items: center; /* Aligns buttons vertically if they have different heights */
+  gap: var(--spacing-md, 16px); /* Adds space between the buttons */
+  margin-top: var(--spacing-lg, 24px); /* Space above the button group */
+  flex-wrap: wrap; /* Allows buttons to wrap on smaller screens if they don't fit */
+}
+
+/* You can keep your existing .btnRates and .heroRewardsCalculator styles.
+   If you added .summaryButton for shared styles, you can define it: */
+.summaryButton {
+  /* Example: if you need specific margins not covered by gap */
+  /* margin-left: var(--spacing-xs, 4px); */
+  /* margin-right: var(--spacing-xs, 4px); */
+  text-decoration: none; /* Ensure links look like buttons */
+}
 
 /* =============== TABLES (Responsive Scroll) =============== */
 .tableContainer {

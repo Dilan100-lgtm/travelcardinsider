@@ -494,14 +494,14 @@ function DraggableTableWrapper({ children }) {
                                 <span className={styles.summaryValue}>US travelers with fair credit building credit, wanting simple cash back & no foreign transaction fees.</span>
                             </div>
                         </div>
-                        <div className={styles.summaryRatesLink}>
-                            <a href={reviewData.ratesLink} className={`${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored">
-                            See Card Rates & Fees
-                            </a>
-                        </div>
-                        <div>
-                 <a href='/rewards-compare' className={ styles.heroRewardsCalculator} target="_blank" rel="noopener noreferrer sponsored">Rewards Calculator</a>
-              </div>
+                        <div className={styles.summaryBoxActions}> {/* Changed class name for clarity and new styling */}
+                          <a href={reviewData.ratesLink} className={`${styles.btnRates} ${styles.summaryButton}`} target="_blank" rel="noopener noreferrer sponsored">
+                               See Card Rates & Fees
+                                  </a>
+                            <a href='/rewards-compare' className={`${styles.heroRewardsCalculator} ${styles.summaryButton}`} target="_blank" rel="noopener noreferrer sponsored">
+                                Rewards Calculator
+                                       </a>
+                              </div>
                     </div>
                 </header>
 
