@@ -757,7 +757,7 @@
   margin-top: var(--spacing-xs, 4px);
   display: block;
   text-align: center;
-  margin-bottom: 5rem;
+  
 }
 .ratesFeesList dt {
   font-size: 1.2rem;
