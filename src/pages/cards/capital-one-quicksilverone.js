@@ -753,7 +753,7 @@ function DraggableTableWrapper({ children }) {
                 <section id="section-15" className={styles.reviewSection}>
                     <h2>15. Head-to-Head: How It Stacks Up Against Key Competitors</h2>
                     <p>For US travelers with fair credit, several cards compete with the QuicksilverOne. Here's a comparison:</p>
-                    <div className={styles.scrollableTableWrapper}>
+                    <DraggableTableWrapper>
                     <div className={styles.tableContainer}>
                         <table className={styles.statsTable}>
                             <thead>
@@ -835,7 +835,7 @@ function DraggableTableWrapper({ children }) {
                             </tbody>
                         </table>
                     </div>
-                    </div>
+                    </DraggableTableWrapper>
                     <h3>Comparison Highlights:</h3>
                     <ul className={styles.featureList}>
                         <li><strong>vs. Discover it® Miles:</strong> QuicksilverOne has a $39 annual fee; Discover it Miles has none. Both offer 1.5% back and no FTF. Discover's first-year Miles Match is a strong welcome offer QuicksilverOne lacks. QuicksilverOne has 5% on portal hotels/cars; Discover is flat 1.5x. Mastercard (QuicksilverOne) likely offers more baseline travel/purchase protections than Discover.</li>

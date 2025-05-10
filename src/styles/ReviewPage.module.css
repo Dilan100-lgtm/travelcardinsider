@@ -854,30 +854,7 @@
   overflow: hidden;
 
 }
-aa
-.scrollableTableWrapper {
-  overflow-x: auto; /* Enables horizontal scrolling */
-  cursor: grab; /* Shows the 'grab' hand icon */
-  -webkit-overflow-scrolling: touch; /* Smooth scrolling on touch devices */
-  padding-bottom: 10px; /* Optional: Adds some space if scrollbar is visible */
-  margin-bottom: 20px; /* Optional: Adds space below the scrollable area */
-  user-select: none; /* Standard */
-  -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE/Edge */
-  border: 2px dashed red;
-}
-.scrollableTableWrapper:active {
-  cursor: grabbing;
-}
-@media (max-width: 768px) {
-  .tableContainer .statsTable {
-    min-width: 100%; /* On smaller screens, let it be 100% or manage via data-labels */
-  }
-}
-.scrollableTableWrapper .statsTable {
-  min-width: 2000px !important;
-}
+
 .draggable-scroll-container {
   overflow-x: auto;
   cursor: grab;
