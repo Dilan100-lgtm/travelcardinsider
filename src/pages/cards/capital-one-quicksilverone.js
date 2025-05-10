@@ -414,7 +414,7 @@ function DraggableTableWrapper({ children }) {
                   </Link>
                 </div>
                 <div>
-                 <a href='/rewards-compare' className={`${styles.btn} ${styles.btncalculator}`} target="_blank" rel="noopener noreferrer sponsored">Rewards Calculator</a>
+                 <a href='/rewards-compare' className={ styles.heroRewardsCalculator} target="_blank" rel="noopener noreferrer sponsored">Rewards Calculator</a>
               </div>
                 </div>
               <div className={styles.heroImageContainer}>
