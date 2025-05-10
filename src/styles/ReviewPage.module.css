@@ -327,7 +327,7 @@
 
 /* =============== TABLES (Responsive Scroll) =============== */
 .tableContainer {
-  width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  width: 100%;
   margin-bottom: 2rem; border: 1px solid var(--color-border, #dfe1e6);
   border-radius: var(--border-radius-md, 6px); /* Use variable */
   box-shadow: var(--shadow-sm, 0 2px 4px rgba(23, 43, 77, 0.07)); /* Use variable */
