@@ -862,7 +862,7 @@
   scroll-behavior: smooth;
   cursor: grab;
   user-select: none;
-  border: 2px dashed red; /* ✅ Test if visible now */
+  
 }
 
 .draggableScrollContainer.grabbing {
