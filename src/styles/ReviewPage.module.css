@@ -740,19 +740,7 @@
     max-width: 600px; /* Ensure this is sufficient for your image */
     margin-left: auto; /* This was in your original file */
   }
-  .draggableScrollContainer {
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-  cursor: grab;
-  user-select: none;
-  border: 2px dashed red; /* ✅ Test if visible now */
-}
-
-.draggableScrollContainer.grabbing {
-  cursor: grabbing;
-}
+ 
 
 }
 .heroApplyButtonDisclaimer {
@@ -882,4 +870,18 @@
 
 }
 }
+@media (min-width: 992px) {
+   .draggableScrollContainer {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  cursor: grab;
+  user-select: none;
+  
+}
+
+.draggableScrollContainer.grabbing {
+  cursor: grabbing;
+}}
 
