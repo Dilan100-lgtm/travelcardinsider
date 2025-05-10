@@ -865,7 +865,7 @@
   
 }
 
-.draggableScrollContainer.grabbing {
+.draggableScrollContainer.active {
   cursor: grabbing;
 }
 
