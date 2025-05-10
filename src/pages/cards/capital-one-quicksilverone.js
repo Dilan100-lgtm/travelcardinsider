@@ -559,16 +559,16 @@ function DraggableTableWrapper({ children }) {
                   <h3>Full Spectrum of Rates & Fees (as of May 2024):</h3>
                   {/* Using a definition list for better semantics here */}
                   <dl className={styles.ratesFeesList}>
-                    <dt>Annual Fee:</dt><dd>$39. Implication: Must earn enough rewards or save on FTFs to offset.</dd>
-                    <dt>APR for Purchases:</dt><dd>29.74% variable APR. Implication: Very high; carrying a balance is costly and negates rewards.</dd>
-                    <dt>APR for Balance Transfers:</dt><dd>29.74% variable APR. Implication: No introductory offer; expensive for debt consolidation.</dd>
-                    <dt>Balance Transfer Fee:</dt><dd>"$0 at the Transfer APR, 4% of the amount of each transferred balance that posts to your account at a promotional APR that Capital One may offer to you". Capital One's site states a "Balance transfer fee applies". Implication: Likely costly.</dd>
-                    <dt>APR for Cash Advances:</dt><dd>29.74% variable APR. Implication: Extremely expensive.</dd>
-                    <dt>Cash Advance Fee:</dt><dd>Either $5 or 5% of the amount of each cash advance, whichever is greater. Implication: Adds to the high cost of cash advances.</dd>
-                    <dt>Foreign Transaction Fee:</dt><dd>None. Implication: Significant savings for international travelers.</dd>
-                    <dt>Late Payment Fee:</dt><dd>Up to $40. Implication: Standard penalty; also impacts credit score.</dd>
-                    <dt>Returned Payment Fee:</dt><dd>None. Implication: Consumer-friendly.</dd>
-                    <dt>Penalty APR:</dt><dd>None. Implication: A positive, though the standard APR is already very high.</dd>
+                    <dt>Annual Fee:</dt><dd>$39. <strong>Implication:</strong> Must earn enough rewards or save on FTFs to offset.</dd>
+                    <dt>APR for Purchases:</dt><dd>29.74% variable APR. <strong>Implication:</strong> Very high; carrying a balance is costly and negates rewards.</dd>
+                    <dt>APR for Balance Transfers:</dt><dd>29.74% variable APR. <strong>Implication:</strong> No introductory offer; expensive for debt consolidation.</dd>
+                    <dt>Balance Transfer Fee:</dt><dd>"$0 at the Transfer APR, 4% of the amount of each transferred balance that posts to your account at a promotional APR that Capital One may offer to you". Capital One's site states a "Balance transfer fee applies". <strong>Implication:</strong> Likely costly.</dd>
+                    <dt>APR for Cash Advances:</dt><dd>29.74% variable APR. <strong>Implication:</strong> Extremely expensive.</dd>
+                    <dt>Cash Advance Fee:</dt><dd>Either $5 or 5% of the amount of each cash advance, whichever is greater. <strong>Implication:</strong> Adds to the high cost of cash advances.</dd>
+                    <dt>Foreign Transaction Fee:</dt><dd>None. <strong>Implication:</strong> Significant savings for international travelers.</dd>
+                    <dt>Late Payment Fee:</dt><dd>Up to $40. <strong>Implication:</strong> Standard penalty; also impacts credit score.</dd>
+                    <dt>Returned Payment Fee:</dt><dd>None. <strong>Implication:</strong> Consumer-friendly.</dd>
+                    <dt>Penalty APR:</dt><dd>None. <strong>Implication:</strong> A positive, though the standard APR is already very high.</dd>
                   </dl>
                   <p>The fee structure underscores the card's positioning: the annual fee is a consideration, but no foreign transaction fees are a boon. The consistently high APR across the board dictates that this card is best for those who pay their balance in full monthly.</p>
                 </section>
