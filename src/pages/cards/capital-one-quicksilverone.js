@@ -35,7 +35,7 @@ const reviewDataNew = { // Renamed to avoid conflict with previous, will merge c
   keywords        : 'Capital One QuicksilverOne review, QuicksilverOne rewards, fair credit travel card, no foreign transaction fee card, Capital One Travel cash back, build credit',
   author          : siteName,
   // IMPORTANT: Ensure this image path is correct and the image exists in your /public folder
-  imageUrl        : `${siteUrl}/images/cards/qs1_cardart_1290x812.avif`,    // static/public
+  imageUrl        : '/qs1_cardart_1290x812.avif',    // static/public
   imageWidth      : 1290,
   imageHeight     : 812,
   ratingValue     : 5.4,               // TCI 10-pt scale
