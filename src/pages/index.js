@@ -376,7 +376,7 @@ export default function HomePage({ featuredReviews }) {
       </main>
 
       {/* Footer Component (Unchanged) */}
-      <Footer />
+      
 
       {/* Add screen reader only style if not already global */}
       {/* <style>{`.sr-only{...}`}</style> */}
