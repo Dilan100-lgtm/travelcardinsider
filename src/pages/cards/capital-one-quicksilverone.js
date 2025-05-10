@@ -557,9 +557,8 @@ function DraggableTableWrapper({ children }) {
                     <li><strong>Target Credit Level:</strong> Designed for "Fair" credit profiles.</li>
                     <li><strong>Credit Line Increase Review:</strong> Potential for automatic review for a higher credit line in as little as six months.</li>
                   </ul>
-                  // ... inside Section 3 of CapitalOneQuicksilverOneReviewPage component ...
-
-<h3>Full Spectrum of Rates & Fees (as of May 2024):</h3>
+                
+<h3>Full Spectrum of Rates & Fees (as of May 2025):</h3>
 <div className={styles.tableContainer}> {/* Use existing class for scroll/container styling if needed */}
   <table className={`${styles.statsTable} ${styles.ratesFeesTable}`}> {/* Added new class for specific styling */}
     <thead>
