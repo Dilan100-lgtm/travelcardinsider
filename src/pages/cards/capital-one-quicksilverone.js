@@ -3,7 +3,7 @@
 
 
 
-// !!! VERIFY ALL CARD DETAILS, SCHEMA VALUES, COUNTS, and URLs AGAINST OFFICIAL ISSUER INFO !!!
+
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Head from 'next/head';
