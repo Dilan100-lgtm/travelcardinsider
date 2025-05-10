@@ -875,6 +875,11 @@
   overflow: hidden;
 
 }
+@media (min-width: 992px) {
+.tableContainer {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 
-
+}
+}
 
