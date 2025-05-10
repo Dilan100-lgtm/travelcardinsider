@@ -422,6 +422,7 @@
   box-shadow: var(--shadow-sm, 0 2px 4px rgba(23, 43, 77, 0.07));
   transition: all 0.3s ease; border: none; cursor: pointer;
   text-decoration: none; line-height: 1.5;
+  display: block;
 }
 .heroRewardsCalculator:hover {
   box-shadow: var(--shadow-md, 0 4px 8px rgba(23, 43, 77, 0.1)); transform: translateY(-2px); 
