@@ -495,7 +495,7 @@ function DraggableTableWrapper({ children }) {
                             </div>
                         </div>
                         <div className={styles.summaryBoxActions}> {/* Changed class name for clarity and new styling */}
-                          <a href={reviewData.ratesLink} className={`${styles.btnRates} ${styles.summaryRatesLink}`} target="_blank" rel="noopener noreferrer sponsored">
+                          <a href={reviewData.ratesLink} className={ styles.summaryRatesLink .btnRates} target="_blank" rel="noopener noreferrer sponsored">
                                See Card Rates & Fees
                                   </a>
                             <a href='/rewards-compare' className={`${styles.heroRewardsCalculator} ${styles.summaryRatesLink}`} target="_blank" rel="noopener noreferrer sponsored">
