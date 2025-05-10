@@ -495,10 +495,10 @@ function DraggableTableWrapper({ children }) {
                             </div>
                         </div>
                         <div className={styles.summaryBoxActions}> {/* Changed class name for clarity and new styling */}
-                          <a href={reviewData.ratesLink} className={`${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored">
+                          <a href={reviewData.ratesLink} className={`${styles.btnRates} ${styles.summaryRatesLink}`} target="_blank" rel="noopener noreferrer sponsored">
                                See Card Rates & Fees
                                   </a>
-                            <a href='/rewards-compare' className={`${styles.heroRewardsCalculator} ${styles.summaryButton}`} target="_blank" rel="noopener noreferrer sponsored">
+                            <a href='/rewards-compare' className={`${styles.heroRewardsCalculator} ${styles.summaryRatesLink}`} target="_blank" rel="noopener noreferrer sponsored">
                                 Rewards Calculator
                                        </a>
                           </div>
@@ -539,7 +539,7 @@ function DraggableTableWrapper({ children }) {
                   <div className={styles.ctaButtons}>
                     <a href={reviewData.applyLink} className={`${styles.btn} ${styles.btnApply}`} title="From card issuer's secure site" target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
                     <a href={reviewData.ratesLink} className={`${styles.btn} ${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored">See Rates & Fees</a>
-                  
+                    
                   </div>
                 </section>
 
