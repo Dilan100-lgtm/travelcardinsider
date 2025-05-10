@@ -409,6 +409,7 @@ function DraggableTableWrapper({ children }) {
                     <a className={styles.heroSecondaryLink}>View Key Features</a>
                   </Link>
                 </div>
+                 <a href='/rewards-compare' className={`${styles.btn} ${styles.btncalculator}`} target="_blank" rel="noopener noreferrer sponsored">Rewards Calculator</a>
               </div>
               <div className={styles.heroImageContainer}>
                 <div className={styles.cardImageContainer}>
