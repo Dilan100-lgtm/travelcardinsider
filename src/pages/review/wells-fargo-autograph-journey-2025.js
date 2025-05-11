@@ -159,7 +159,7 @@ export default function WellsFargoAutographJourneyReview2025() {
                 alt="Wells Fargo Autograph Journey℠ Card"
                 width={380} 
                 height={240}  
-                style={{ width: '100%', maxWidth: '380px', height: 'auto', display: 'block', margin: '0 auto' }} 
+                style={{ width: '100%', maxWidth: '1200px', height: 'auto', display: 'block', margin: '0 auto' }} 
                 priority 
               />
             </div>
