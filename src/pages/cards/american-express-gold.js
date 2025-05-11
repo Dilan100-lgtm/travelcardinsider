@@ -413,11 +413,14 @@ function AmexGoldReviewPage() {
                       <span className={styles.summaryValue}>Foodies & travelers maximizing points & specific U.S. credits.</span>
                     </div>
                   </div>
-                  <div className={styles.summaryRatesLink}>
-                    <a href={reviewData.ratesLink} className={`${styles.btnRates} `} target="_blank" rel="noopener noreferrer sponsored">
-                      See Card Rates & Fees
-                    </a>
-                  </div>
+                 <div className={styles.summaryBoxActions}>
+                            <a href={reviewDataNew.ratesLink} className={styles.summaryRatesLink} target="_blank" rel="noopener noreferrer sponsored">
+                                See Card Rates & Fees
+                            </a>
+                             <a href='/rewards-compare' className={`${styles.heroRewardsCalculator} ${styles.summaryButton}`} target="_blank" rel="noopener noreferrer sponsored">
+                                Rewards Calculator
+                            </a>
+                        </div>
                 </div>
                 {/* ============= END SUMMARY BOX ============= */}
 
@@ -486,7 +489,7 @@ function AmexGoldReviewPage() {
                     {/* Ensure links are correct and sponsored rel attribute is appropriate */}
                     <a href={reviewData.applyLink} className={`${styles.btn} ${styles.btnApply}`} title="From card issuer's secure site" target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
                     <a href={reviewData.ratesLink} className={`${styles.btn} ${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored">See Rates & Fees</a>
-                    <a href='/rewards-compare' className={`${styles.btn} ${styles.btncalculator}`} target="_blank" rel="noopener noreferrer sponsored">Rewards Calculator</a>
+                    
                   </div>
                   {/* Reminder about updating fee in structured data */}
                 </section>
