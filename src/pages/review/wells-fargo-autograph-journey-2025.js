@@ -63,7 +63,7 @@ export default function WellsFargoAutographJourneyReview2025() {
               "@context": "https://schema.org",
               "@type": "Review",
               "itemReviewed": {
-                "@type": "FinancialProduct",
+                "@type": "Product",
                 "name": "Wells Fargo Autograph Journey℠ Card",
                 "brand": {
                   "@type": "Brand",

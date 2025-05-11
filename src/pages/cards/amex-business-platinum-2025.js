@@ -85,7 +85,7 @@ function AmexBusinessPlatinumReviewPage2025() { // Updated component name slight
        "url": reviewData.applyLink, // Use apply link from reviewData
        "category": "Business Travel Rewards Charge Card",
        "itemOffered": {
-         "@type": "FinancialProduct",
+         "@type": "Product",
          "name": "The Business Platinum Card® from American Express",
          "annualPercentageRate": "Pay‑Over‑Time APR 19.49 %–27.49 % variable (if enabled)", // Source Schema phrasing
          "feesAndCommissionsSpecification": "$695 annual fee; no foreign transaction fees"

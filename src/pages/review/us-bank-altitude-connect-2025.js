@@ -80,7 +80,7 @@ export default function UsBankAltitudeConnect2025() {
               "@context": "https://schema.org",
               "@type": "Review",
               "itemReviewed": {
-                "@type": "FinancialProduct",
+                "@type": "Product",
                 "name": "U.S. Bank Altitude® Connect Visa Signature® Card",
                 "brand": {
                   "@type": "Brand",

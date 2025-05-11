@@ -60,7 +60,7 @@ export default function AmexTrifectaReview2025() {
               "@context": "https://schema.org",
               "@type": "Review",
               "itemReviewed": {
-                "@type": "FinancialProduct",
+                "@type": "Product",
                 "name": "American Express Trifecta Strategy (Platinum, Gold, Green Cards)",
                 "brand": {
                   "@type": "Brand",
