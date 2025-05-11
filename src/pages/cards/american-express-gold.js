@@ -414,13 +414,13 @@ function AmexGoldReviewPage() {
                     </div>
                   </div>
                  <div className={styles.summaryBoxActions}>
-                            <a href={reviewDataNew.ratesLink} className={styles.summaryRatesLink} target="_blank" rel="noopener noreferrer sponsored">
-                                See Card Rates & Fees
-                            </a>
-                             <a href='/rewards-compare' className={`${styles.heroRewardsCalculator} ${styles.summaryButton}`} target="_blank" rel="noopener noreferrer sponsored">
-                                Rewards Calculator
-                            </a>
-                        </div>
+  <a href={reviewData.ratesLink} className={styles.summaryRatesLink} target="_blank" rel="noopener noreferrer sponsored">
+    See Card Rates & Fees
+  </a>
+  <a href='/rewards-compare' className={`${styles.heroRewardsCalculator} ${styles.summaryButton}`} target="_blank" rel="noopener noreferrer sponsored">
+    Rewards Calculator
+  </a>
+</div>
                 </div>
                 {/* ============= END SUMMARY BOX ============= */}
 
