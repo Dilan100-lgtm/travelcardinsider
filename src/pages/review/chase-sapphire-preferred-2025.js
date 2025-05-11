@@ -70,7 +70,7 @@ export default function ChaseSapphirePreferredReview2025() {
               "@context": "https://schema.org",
               "@type": "Review",
               "itemReviewed": {
-                "@type": "FinancialProduct",
+                "@type": "Product",
                 "name": "${cardName}",
                 "brand": {
                   "@type": "Brand",
