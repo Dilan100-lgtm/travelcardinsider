@@ -488,8 +488,7 @@ function AmexGoldReviewPage() {
                   <div className={styles.ctaButtons}>
                     {/* Ensure links are correct and sponsored rel attribute is appropriate */}
                     <a href={reviewData.applyLink} className={`${styles.btn} ${styles.btnApply}`} title="From card issuer's secure site" target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
-                    <a href={reviewData.ratesLink} className={`${styles.btn} ${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored">See Rates & Fees</a>
-                    
+                   
                   </div>
                   {/* Reminder about updating fee in structured data */}
                 </section>
