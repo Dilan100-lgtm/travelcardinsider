@@ -151,7 +151,7 @@ function ChaseSapphirePreferredReviewPage() {
         />
       </Head>
 
-      <Header />
+      
 
       <main>
         {/* Spacing for fixed header - adjusted margin from HTML */}

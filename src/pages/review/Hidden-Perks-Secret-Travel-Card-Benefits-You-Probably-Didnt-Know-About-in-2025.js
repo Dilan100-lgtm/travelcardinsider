@@ -82,7 +82,7 @@ export default function HiddenPerksTravelCardBenefits2025() {
       </Head>
 
       {/* Header component (replaces the <header> section) */}
-      <Header />
+      
       <main style={{ fontFamily: 'Roboto, sans-serif' }}>
   {/* The main container for the review article */}
   <article

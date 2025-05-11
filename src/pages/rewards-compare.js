@@ -81,7 +81,7 @@ export default function RewardsComparePage() {
 
   return (
     <>
-      <Header />
+      
 
       <Head>
         {/* ---------- Primary Meta ---------- */}

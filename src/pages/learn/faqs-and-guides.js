@@ -32,7 +32,7 @@ const FaqsAndGuidesPage = () => {
         />
       </Head>
 
-      <Header /> {/* Render the shared header */}
+       {/* Render the shared header */}
 
       {/* Main Content Wrapper */}
       <main className={styles.pageContainer}>

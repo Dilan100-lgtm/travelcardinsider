@@ -73,7 +73,7 @@ export default function PremiumVsBudgetTravelCards2025() {
       </Head>
 
       {/* Header component (replaces your <header> tag) */}
-      <Header />
+      
       <main style={{ fontFamily: 'Roboto, sans-serif' }}>
               {/* The main container for the review article */}
               <article

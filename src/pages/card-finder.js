@@ -77,7 +77,7 @@ export default function CardFinderPage() {
 
   return (
     <>
-      <Header />
+      
 
       <Head>
         {/* ---------- Primary SEO Meta ---------- */}

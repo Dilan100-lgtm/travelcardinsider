@@ -162,7 +162,7 @@ export default function UsBankAltitudeConnect2025() {
         />
       </Head>
 
-      <Header />
+      
 
       <main style={{ fontFamily: 'Roboto, sans-serif' }}>
         <article className={styles.reviewContainer}>

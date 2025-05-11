@@ -155,7 +155,7 @@ function CitiStrataPremierReviewPage() {
         />
       </Head>
 
-      <Header />
+      
 
       <main>
         {/* Spacing for fixed header */}

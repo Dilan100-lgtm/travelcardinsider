@@ -159,7 +159,7 @@ function AmexBusinessGoldReviewPage() {
         <link rel="alternate" href={siteUrl} hreflang="en-us" />
       </Head>
 
-      <Header />
+      
 
       <main>
         {/* Spacing for fixed header */}

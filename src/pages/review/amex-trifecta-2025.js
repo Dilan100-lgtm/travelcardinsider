@@ -143,7 +143,7 @@ export default function AmexTrifectaReview2025() {
         />
       </Head>
 
-      <Header /> {/* Assuming Header component is imported */}
+       {/* Assuming Header component is imported */}
 
       <main style={{ fontFamily: 'Roboto, sans-serif' }}>
         <article className={styles.reviewContainer}>

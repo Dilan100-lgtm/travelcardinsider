@@ -103,7 +103,7 @@ function CapitalOneVentureXReview() {
       </Head>
 
       {/* Assume Header component is rendered in _app.js or a Layout component */}
-      <Header />
+      
 
       <main>
         {/* Spacing for fixed header - could be handled by global CSS or Layout component */}

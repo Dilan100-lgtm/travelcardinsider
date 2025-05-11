@@ -426,7 +426,7 @@ export default function BestTravelCardsPage() { // Changed function name
 
     return (
         <>
-             <Header />
+             
             <Head>
                  <title>Best 10 Travel Credit Cards of 2025 | TravelCardInsider</title>
                  <meta name="description" content="Discover the top 10 travel credit cards of 2025. Whether you’re a frequent flyer, luxury traveler, or budget explorer, compare the best cards for maximizing rewards, perks, and benefits."/>

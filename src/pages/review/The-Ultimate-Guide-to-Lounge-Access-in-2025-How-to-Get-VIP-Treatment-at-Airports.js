@@ -185,7 +185,7 @@ export default function LoungeAccess2025() {
         />
       </Head>
 
-      <Header />
+      
       <main style={{ fontFamily: 'Roboto, sans-serif' }}>
               {/* The main container for the review article */}
               <article

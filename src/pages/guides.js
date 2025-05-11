@@ -117,7 +117,7 @@ export default function GuidesPage({ reviews: initialReviews, filterOptions }) {
         />
       </Head>
 
-      <Header />
+      
 
       <main className={styles.guidesContainer}>
         <h1 className={styles.pageTitle}>Travel Card Guides & Reviews</h1>

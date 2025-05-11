@@ -16,7 +16,7 @@ export default function PrivacyPolicyPage() {
         <meta name="description" content="Review the Privacy Policy for TravelCardInsider to understand how we collect, use, and protect your information." />
       </Head>
 
-      <Header /> {/* Render Header component */}
+       {/* Render Header component */}
 
       <main className={styles.mainContainer}>
         <div className={styles.contentWrapper}>

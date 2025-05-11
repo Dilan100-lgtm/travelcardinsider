@@ -470,7 +470,7 @@ export default function BestLuxuryCardsPage() { // Renamed component function
 
     return (
         <>
-             <Header />
+             
             <Head>
                  <title>Best 10 Luxury Travel Credit Cards of 2025 | TravelCardInsider</title>
                  <meta name="description" content="Compare the top 10 luxury travel credit cards of 2025. Maximize rewards, enjoy premium perks, and upgrade your journey with top-tier benefits."/>

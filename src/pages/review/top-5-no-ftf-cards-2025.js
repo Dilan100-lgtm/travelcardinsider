@@ -192,7 +192,7 @@ function NoFTFReviewPage() {
   </script>
       </Head>
 
-      <Header /> {/* Include Header component */}
+       {/* Include Header component */}
 
       {/* Main content container */}
       <main className={styles.reviewContainer}>

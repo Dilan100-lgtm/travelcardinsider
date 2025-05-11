@@ -97,7 +97,7 @@ export default function PointsMilesTrends2025LuxuryTravel() {
       </Head>
 
       {/* Header component (replaces your <header> tag) */}
-      <Header />
+      
 
       <main style={{ fontFamily: 'Roboto, sans-serif' }}>
         {/* Main Article Container */}

@@ -157,7 +157,7 @@ function AAdvantageMileUpReviewPage() {
 <link rel="alternate" href="https://www.travelcardinsider.com" hreflang="en-us" />
       </Head>
 
-      <Header />
+      
 
       <main>
         {/* Spacing for fixed header */}

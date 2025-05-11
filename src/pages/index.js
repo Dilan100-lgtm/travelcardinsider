@@ -206,7 +206,7 @@ export default function HomePage({ featuredReviews }) {
       </Head>
 
       {/* Header Component (Unchanged) */}
-      <Header />
+      
 
       <main className="main-content">
         {/* Hero Section Wrapper (Unchanged) */}

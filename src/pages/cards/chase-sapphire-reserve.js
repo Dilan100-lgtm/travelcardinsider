@@ -153,7 +153,7 @@ function ChaseSapphireReserveReviewPage() {
         />
       </Head>
 
-      <Header />
+      
 
       <main>
         {/* Spacing for fixed header */}

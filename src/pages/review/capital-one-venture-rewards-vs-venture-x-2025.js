@@ -83,7 +83,7 @@ export default function CapitalOneVentureVsVentureX2025() {
       </Head>
 
       {/* Header replaces original <header> */}
-      <Header />
+      
 
       <main style={{ fontFamily: 'Roboto, sans-serif' }}>
         <article className={styles.reviewContainer}>

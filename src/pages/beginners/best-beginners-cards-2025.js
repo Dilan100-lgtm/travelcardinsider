@@ -392,7 +392,7 @@ export default function BestBeginnerCardsPage() { // Changed function name
 
     return (
         <>
-             <Header />
+             
             <Head>
                  <title>Discover the Best 10 Beginners Travel Credit Cards of 2025 | TravelCardInsider</title>
                  <meta name="description" content="Compare top-rated beginners travel credit cards, maximize rewards, and unlock exclusive perks. Whether you’re a frequent flyer or a first-time explorer, find the perfect card to suit your travel needs for 2025."/>

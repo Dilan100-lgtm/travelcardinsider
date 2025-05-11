@@ -15,7 +15,7 @@ export default function TermsOfServicePage() {
         {/* Add other relevant meta tags if needed */}
       </Head>
 
-      <Header />
+      
 
       <main className={styles.mainContainer}>
         <div className={styles.contentWrapper}> {/* Use the same wrapper class */}

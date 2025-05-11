@@ -18,7 +18,7 @@ const CreditManagementPage = () => {
         {/* Add other relevant meta tags if needed */}
       </Head>
 
-      <Header /> {/* Render the shared header */}
+       {/* Render the shared header */}
 
       {/* Main Content Wrapper */}
       <main className={styles.pageContainer}>

@@ -18,7 +18,7 @@ const AffiliateDisclosurePage = () => {
         {/* Add other relevant meta tags if needed */}
       </Head>
 
-      <Header /> {/* Render the shared header */}
+       {/* Render the shared header */}
 
       {/* Main Content Wrapper */}
       {/* Using <main> tag semantically, styled by pageContainer */}

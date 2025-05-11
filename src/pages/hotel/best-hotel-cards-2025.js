@@ -415,7 +415,7 @@ export default function BestHotelCardsPage() { // Renamed component function
 
     return (
         <>
-             <Header />
+             
             <Head>
                  <title>Best 10 Hotel Travel Credit Cards of 2025 | TravelCardInsider</title>
                  <meta name="description" content="Compare the top 10 hotel-focused travel credit cards for 2025. Maximize points, enjoy elite perks, and get free nights with Marriott, Hilton, Hyatt, and more."/>
