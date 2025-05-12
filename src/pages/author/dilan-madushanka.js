@@ -13,7 +13,7 @@ const authorData = {
     title: 'Founder & Lead Editor',
     credentials: 'MD',
     // *** Use a larger, high-quality image for the profile page ***
-    profileImageUrl: '/authors/dilan-madushanka-profile.jpg', // *** REPLACE WITH ACTUAL PATH ***
+    profileImageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // *** REPLACE WITH ACTUAL PATH ***
     profileImageWidth: 150, // Adjust size as needed
     profileImageHeight: 150,
     fullBio: `Dilan Madushanka is the founder and lead editor of TravelCardInsider.com, a platform dedicated to helping everyday people make smarter decisions with travel and rewards credit cards. With a background in medicine and a deep passion for financial literacy, Dilan turned his real-world experience—navigating travel, budgeting, and rewards programs—into a mission: demystify credit cards and uncover their real-world value.\n\nAfter years of studying the fine print, testing travel benefits firsthand, and comparing hundreds of card offers, Dilan has built a site that goes beyond generic advice. He combines research, real spending scenarios, and hands-on card analysis to help readers maximize rewards and avoid costly mistakes.\n\nExperience matters—and Dilan brings a unique one. A Sri Lankan doctor by training, he took a bold leap into digital entrepreneurship to build a transparent, user-focused credit card resource from scratch. Every guide and review you read is written or edited by him with accuracy, integrity, and a deep sense of purpose.`,
