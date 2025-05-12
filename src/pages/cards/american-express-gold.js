@@ -43,7 +43,7 @@ const reviewData = {
       imageUrl: '/authors/dilan-madushanka-small.jpg', // e.g., /public/authors/dilan-madushanka-small.jpg
       imageWidth: 40,
       imageHeight: 40,
-      tooltipImageUrl: '/authors/dilan-madushanka-large.jpg', // e.g., /public/authors/dilan-madushanka-large.jpg
+      tooltipImageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // e.g., /public/authors/dilan-madushanka-large.jpg
       tooltipImageWidth: 60, // Adjust as needed for your image
       tooltipImageHeight: 60, // Adjust as needed
       expertise: [
