@@ -40,7 +40,7 @@ const reviewData = {
       title: 'Founder & Lead Editor',
       // *** YOU NEED TO PROVIDE THESE IMAGE PATHS ***
       // These paths should point to images in your /public directory
-      imageUrl: '/authors/dilan-madushanka-small.jpg', // e.g., /public/authors/dilan-madushanka-small.jpg
+      imageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // e.g., /public/authors/dilan-madushanka-small.jpg
       imageWidth: 40,
       imageHeight: 40,
       tooltipImageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // e.g., /public/authors/dilan-madushanka-large.jpg
