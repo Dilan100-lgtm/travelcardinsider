@@ -51,7 +51,7 @@ export default function HiddenPerksTravelCardBenefits2025() {
   "@type": "Article",
   "headline": "Hidden Perks: Secret Travel Card Benefits You Probably Didn’t Know About in 2025",
   "description": "A 2000-word deep dive into lesser-known travel credit card perks in 2025, including insurance, price protection, extended warranties, and more.",
-  "image": "https://www.yoursite.com/images/hidden-travel-perks.jpg",
+  "image": "https://www.travelcardinsider.com/images/hidden-travel-perks.jpg",
   "author": {
     "@type": "Person",
     "name": "TravelCardInsider"
@@ -61,14 +61,14 @@ export default function HiddenPerksTravelCardBenefits2025() {
     "name": "TravelCardInsider",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://www.yoursite.com/images/logo.png"
+      "url": "https://www.travelcardinsider.com/images/logo.png"
     }
   },
   "datePublished": "2025-01-01",
   "articleSection": "Travel, Credit Cards",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://www.yoursite.com/blog/hidden-perks-travel-cards-2025"
+    "@id": "https://www.travelcardinsider.com/blog/hidden-perks-travel-cards-2025"
   }
 }`
           }}

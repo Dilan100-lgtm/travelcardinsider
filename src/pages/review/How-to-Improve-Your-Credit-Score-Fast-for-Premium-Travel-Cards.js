@@ -62,7 +62,7 @@ export default function ImproveCreditScoreFast2025() {
     "name": "TravelCardInsider",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://www.yoursite.com/logo-example.png"
+      "url": "https://www.travelcardinsider.com/logo-example.png"
     }
   },
   "keywords": [
@@ -73,7 +73,7 @@ export default function ImproveCreditScoreFast2025() {
   ],
   "articleSection": "Finance, Travel, Credit Cards",
   "image": [
-    "https://www.yoursite.com/credit-score-hero.jpg"
+    "https://www.travelcardinsider.com/credit-score-hero.jpg"
   ]
 }`
           }}

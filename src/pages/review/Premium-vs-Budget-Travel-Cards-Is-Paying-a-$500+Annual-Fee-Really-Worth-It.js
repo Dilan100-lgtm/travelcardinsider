@@ -48,7 +48,7 @@ export default function PremiumVsBudgetTravelCards2025() {
   "@type": "Article",
   "headline": "Premium vs. Budget Travel Cards: Is Paying a $500+ Annual Fee Really Worth It?",
   "description": "A 2000-word in-depth review comparing premium travel credit cards (annual fees $500+) vs. budget options, focusing on lounge access, statement credits, ROI, and who truly benefits from these perks.",
-  "image": "https://www.yoursite.com/images/premium-vs-budget-travel-cards.jpg",
+  "image": "https://www.travelcardinsider.com/images/premium-vs-budget-travel-cards.jpg",
   "author": {
     "@type": "Person",
     "name": "TravelCardInsider"
@@ -58,14 +58,14 @@ export default function PremiumVsBudgetTravelCards2025() {
     "name": "TravelCardInsider",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://www.yoursite.com/images/logo.png"
+      "url": "https://www.travelcardinsider.com/images/logo.png"
     }
   },
   "datePublished": "2025-01-01",
   "articleSection": "Travel, Credit Cards",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://www.yoursite.com/blog/premium-vs-budget-travel-cards"
+    "@id": "https://www.travelcardinsider.com/guides/premium-vs-budget-travel-cards"
   }
 }`
           }}

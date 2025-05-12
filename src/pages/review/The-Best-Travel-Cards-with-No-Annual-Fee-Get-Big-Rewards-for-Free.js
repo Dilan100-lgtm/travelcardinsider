@@ -68,7 +68,7 @@ export default function NoFeeTravelCards2025() {
   "@type": "Article",
   "headline": "The Best Travel Cards with No Annual Fee: Get Big Rewards for Free",
   "description": "A 2,000-word in-depth review of the best travel credit cards with no annual fee, covering top picks, rewards tips, redemption strategies, and key considerations in 2025.",
-  "image": "https://www.yoursite.com/images/no-annual-fee-travel-cards.jpg",
+  "image": "https://www.travelcardinsider.com/images/no-annual-fee-travel-cards.jpg",
   "author": {
     "@type": "Person",
     "name": "TravelCardInsider"
@@ -78,14 +78,14 @@ export default function NoFeeTravelCards2025() {
     "name": "TravelCardInsider",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://www.yoursite.com/images/logo.png"
+      "url": "https://www.travelcardinsider.com/images/logo.png"
     }
   },
   "datePublished": "2025-01-01",
   "articleSection": "Travel, Credit Cards",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://www.yoursite.com/blog/no-annual-fee-travel-cards-2025"
+    "@id": "https://www.travelcardinsider.com/blog/no-annual-fee-travel-cards-2025"
   }
 }`
           }}

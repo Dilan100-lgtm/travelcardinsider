@@ -387,7 +387,7 @@ const cardsData = [
 
 // --- Construct Schema Data from Imports ---
 const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE if needed ***
-const pageUrl = `${siteUrl}/zeroapr/best-zero-apr-cards-2025`; // *** Use CORRECT page path ***
+const pageUrl = `${siteUrl}/zeroapr/Best-10-Zero-APR-And-Balance-Transfer-Credit-Cards-of-2025`; // *** Use CORRECT page path ***
 const dateModifiedISO = new Date().toISOString();
 
 // Combine imported schemas into the graph structure

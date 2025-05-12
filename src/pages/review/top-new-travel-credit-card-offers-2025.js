@@ -102,7 +102,7 @@ export default function TopNewTravelCreditCardOffers2025() {
     "name": "TravelCardInsider",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://www.yoursite.com/path-to-logo.png"
+      "url": "https://www.travelcardinsider.com/path-to-logo.png"
     }
   },
   "review": [
@@ -208,7 +208,7 @@ export default function TopNewTravelCreditCardOffers2025() {
   ],
   "articleSection": "Finance, Travel, Credit Cards",
   "image": [
-    "https://www.yoursite.com/path-to-featured-image.jpg"
+    "https://www.travelcardinsider.com/path-to-featured-image.jpg"
   ]
 }`
           }}

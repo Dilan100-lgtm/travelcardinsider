@@ -63,7 +63,7 @@ export default function CapitalOneVentureVsVentureX2025() {
                 "name": "TravelCardInsider",
                 "logo": {
                   "@type": "ImageObject",
-                  "url": "https://www.yoursite.com/logo-example.png"
+                  "url": "https://www.travelcardinsider.com/logo-example.png"
                 }
               },
               "keywords": [
@@ -75,7 +75,7 @@ export default function CapitalOneVentureVsVentureX2025() {
               ],
               "articleSection": "Finance, Travel, Credit Cards",
               "image": [
-                "https://www.yoursite.com/capital-one-venture-cards.webp"
+                "https://www.travelcardinsider.com/capital-one-venture-cards.webp"
               ]
             }`
           }}

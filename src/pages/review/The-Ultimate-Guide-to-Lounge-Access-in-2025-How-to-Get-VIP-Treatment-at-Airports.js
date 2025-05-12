@@ -71,7 +71,7 @@ export default function LoungeAccess2025() {
     "name": "TravelCardInsider",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://www.yoursite.com/logo.png"
+      "url": "https://www.travelcardinsider.com/logo.png"
     }
   },
   "review": [
@@ -178,7 +178,7 @@ export default function LoungeAccess2025() {
   ],
   "articleSection": "Finance, Travel, Credit Cards",
   "image": [
-    "https://www.yoursite.com/lounge-featured-image.jpg"
+    "https://www.travelcardinsider.com/lounge-featured-image.jpg"
   ]
 }`
           }}
