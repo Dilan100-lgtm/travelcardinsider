@@ -350,7 +350,8 @@ function CapitalOneQuicksilverOneReviewPage() {
         <title>{reviewDataNew.title}</title>
         <meta name="description" content={reviewDataNew.description} />
         <meta name="keywords" content={reviewDataNew.keywords} />
-        <meta name="author" content={reviewDataNew.author} />
+        <meta name="author" content={reviewDataNew.author.name}  // ✅ this is fine
+ />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <meta name="robots" content="index,follow,max-image-preview:large" />
         <link rel="canonical" href={pageUrlFull} />
@@ -1114,7 +1115,8 @@ function CapitalOneQuicksilverOneReviewPage() {
                 {/* E-A-T Section (Original Content) */}
                 <section id="eat-expertise-authority-trustworthiness" className={`${styles.reviewSection} ${styles.eatSection}`}>
                     <h2 dangerouslySetInnerHTML={{ __html: "Our Commitment to E-A-T: Expertise, Authority &amp; Trustworthiness"}}></h2>
-                    <p>At <strong>{reviewDataNew.author}</strong>, we prioritize:</p>
+                    <p>At <strong>{reviewDataNew.author.name}
+</strong>, we prioritize:</p>
                     <h3>1. Expertise</h3>
                     <ul className={styles.featureList}>
                         <li><strong>In-Depth Analysis:</strong> Our team meticulously examines cardmember agreements, rewards structures, and benefit terms to provide accurate, comprehensive evaluations.</li>
