@@ -34,7 +34,38 @@ const reviewDataNew = { // Renamed to avoid conflict with previous, will merge c
   title           : 'Capital One QuicksilverOne Rewards Credit Card Review 2025 – Build Credit & Earn Cash Back',
   description     : 'Complete 2025 review of the Capital One QuicksilverOne® Rewards card: 1.5% cash back, 5% on Capital One Travel hotels & cars, $39 annual fee, no foreign transaction fees, ideal for fair-credit U.S. travellers.',
   keywords        : 'Capital One QuicksilverOne review, QuicksilverOne rewards, fair credit travel card, no foreign transaction fee card, Capital One Travel cash back, build credit',
-  author          : siteName,
+    // --- UPDATED AUTHOR DETAILS for Dilan Madushanka ---
+  author: {
+      name: 'Dilan Madushanka',
+      title: 'Founder & Lead Editor',
+      // *** YOU NEED TO PROVIDE THESE IMAGE PATHS ***
+      // These paths should point to images in your /public directory
+      imageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // e.g., /public/authors/dilan-madushanka-small.jpg
+      imageWidth: 40,
+      imageHeight: 40,
+      tooltipImageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // e.g., /public/authors/dilan-madushanka-large.jpg
+      tooltipImageWidth: 60, // Adjust as needed for your image
+      tooltipImageHeight: 60, // Adjust as needed
+      expertise: [
+          'Travel Credit Cards',
+          'Rewards Programs',
+          'Financial Literacy for Travel',
+          'Maximizing Card Benefits',
+          'Credit Card Analysis'
+      ],
+      bioSnippet: 'Dilan Madushanka is the founder and lead editor of TravelCardInsider.com, dedicated to demystifying credit cards and uncovering their real-world value for smarter travel.',
+      fullBioLink: '/author/dilan-madushanka', // Example: This would be pages/author/dilan-madushanka.js
+      fullBio: `Dilan Madushanka is the founder and lead editor of TravelCardInsider.com, a platform dedicated to helping everyday people make smarter decisions with travel and rewards credit cards. With a background in medicine and a deep passion for financial literacy, Dilan turned his real-world experience—navigating travel, budgeting, and rewards programs—into a mission: demystify credit cards and uncover their real-world value.\n\nAfter years of studying the fine print, testing travel benefits firsthand, and comparing hundreds of card offers, Dilan has built a site that goes beyond generic advice. He combines research, real spending scenarios, and hands-on card analysis to help readers maximize rewards and avoid costly mistakes.\n\nExperience matters—and Dilan brings a unique one. A Sri Lankan doctor by training, he took a bold leap into digital entrepreneurship to build a transparent, user-focused credit card resource from scratch. Every guide and review you read is written or edited by him with accuracy, integrity, and a deep sense of purpose.`,
+      publishedStats: '6+ in-depth card reviews per week',
+      testedStats: 'Over 50 credit card benefits across major brands',
+      socialLinks: {
+          linkedin: 'https://www.linkedin.com/in/YOUR_LINKEDIN_PROFILE_URL', // *** REPLACE with actual URL ***
+          twitter: 'https://twitter.com/YOUR_TWITTER_HANDLE', // *** REPLACE with actual URL ***
+          email: 'dilan@travelcardinsider.com'
+      }
+  },
+  // --- End Author Details ---
+  siteName: 'TravelCardInsider',
   // IMPORTANT: Ensure this image path is correct and the image exists in your /public folder
   imageUrl        : '/qs1_cardart_prim_1290x812.avif',    // static/public
   imageWidth      : 1290,
