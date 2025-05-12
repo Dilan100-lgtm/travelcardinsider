@@ -755,7 +755,7 @@
   }
   .heroImageContainer { /* This is the hero-specific image container style for desktop */
     flex-basis: 45%;
-    margin-top: 0;
+    margin-top: 3rem;
     max-width: 600px; /* Ensure this is sufficient for your image */
     margin-left: auto; /* This was in your original file */
   }
