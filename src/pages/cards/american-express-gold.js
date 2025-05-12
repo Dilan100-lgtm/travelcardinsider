@@ -376,90 +376,136 @@ function AmexGoldReviewPage() {
                 <h1 className={styles.heroTitle}>
                   {reviewData.h1Content}
                 </h1>
-                <div
-                    className={styles.authorBioContainer}
-                    ref={authorRef}
-                    onMouseEnter={handleAuthorMouseEnter}
-                    onMouseLeave={handleAuthorMouseLeave}
-                    aria-haspopup="true"
-                    aria-expanded={showAuthorBioTooltip}
-                    tabIndex={0} // For keyboard accessibility
-                >
-                    <Image
-                        src={reviewData.author.imageUrl}
-                        alt={`${reviewData.author.name} headshot`}
-                        width={reviewData.author.imageWidth}
-                        height={reviewData.author.imageHeight}
-                        className={styles.authorImageSmall}
-                        priority
-                    />
-                    <div className={styles.authorInfo}>
-                        <span className={styles.authorName}>{reviewData.author.name}</span>
-                        <span className={styles.authorTitle}>{reviewData.author.title}</span>
-                    </div>
+               {/* === START: Updated Author Section === */}
+<div
+    className={styles.authorBioContainer}
+    ref={authorRef}
+    onMouseEnter={handleAuthorMouseEnter}
+    onMouseLeave={handleAuthorMouseLeave}
+    aria-haspopup="true"
+    aria-expanded={showAuthorBioTooltip}
+    tabIndex={0} // For keyboard accessibility
+>
+    {/* Author Image */}
+    <Image
+        src={reviewData.author.imageUrl}
+        alt={`${reviewData.author.name} headshot`}
+        width={reviewData.author.imageWidth}
+        height={reviewData.author.imageHeight}
+        className={styles.authorImageSmall}
+        priority
+    />
+    {/* Author Info Block */}
+    <div className={styles.authorInfoBlock}>
+        <div className={styles.authorNameLine}>
+            <span className={styles.authorPrefix}>By</span>
+            <span className={styles.authorName}>{reviewData.author.name}</span>
+        </div>
+        <span className={styles.authorTitle}>{reviewData.author.title}</span>
+        {/* Last Edited Time */}
+        {reviewData.datePublished && (
+            <time dateTime={reviewData.datePublished} className={styles.authorLastEdited}>
+                Last updated: {new Date(reviewData.datePublished).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+            </time>
+        )}
+        {/* Social Media Icons */}
+        {reviewData.author.socialLinks && (
+            <div className={styles.authorSocialLinks}>
+                {reviewData.author.socialLinks.linkedin && (
+                    <a href={reviewData.author.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={styles.socialIconLink}>
+                        {/* Placeholder for LinkedIn Icon - Replace with actual SVG or Font Icon */}
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"> {/* Example Inline SVG */}
+                           <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                    </a>
+                )}
+                {reviewData.author.socialLinks.twitter && (
+                    <a href={reviewData.author.socialLinks.twitter} target="_blank" rel="noopener noreferrer" aria-label="Twitter" className={styles.socialIconLink}>
+                        {/* Placeholder for Twitter Icon */}
+                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"> {/* Example Inline SVG */}
+                           <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-.422.724-.665 1.56-.665 2.452 0 1.697.864 3.198 2.18 4.078-.8-.025-1.555-.247-2.227-.616v.054c0 2.37 1.683 4.333 3.91 4.78-.426.116-.874.174-1.337.174-.31 0-.611-.03-.904-.085.622 1.936 2.421 3.338 4.553 3.377-1.672 1.309-3.781 2.088-6.072 2.088-.394 0-.784-.023-1.169-.069 2.16 1.389 4.723 2.202 7.482 2.202 8.979 0 13.897-7.446 13.897-13.898 0-.21 0-.42-.015-.63.953-.689 1.778-1.56 2.433-2.525z"/>
+                        </svg>
+                    </a>
+                )}
+                {reviewData.author.socialLinks.email && (
+                    <a href={`mailto:${reviewData.author.socialLinks.email}`} aria-label="Email" className={styles.socialIconLink}>
+                        {/* Placeholder for Email Icon */}
+                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"> {/* Example Inline SVG */}
+                            <path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/>
+                         </svg>
+                    </a>
+                )}
+            </div>
+        )}
+    </div>
 
-                    {showAuthorBioTooltip && (
-                        <div
-                            className={styles.authorTooltip}
-                            ref={authorTooltipRef}
-                            role="tooltip"
-                            onMouseEnter={handleAuthorMouseEnter}
-                            onMouseLeave={handleAuthorMouseLeave}
-                        >
-                           <div className={styles.authorTooltipHeader}>
-                             <Image
-                                src={reviewData.author.tooltipImageUrl}
-                                alt={`${reviewData.author.name} headshot`}
-                                width={reviewData.author.tooltipImageWidth}
-                                height={reviewData.author.tooltipImageHeight}
-                                className={styles.authorTooltipImage}
-                             />
-                             <div className={styles.authorTooltipInfo}>
-                                 <span className={styles.authorTooltipName}>{reviewData.author.name}</span>
-                                 <span className={styles.authorTooltipTitle}>{reviewData.author.title}</span>
-                             </div>
-                           </div>
-                           {reviewData.author.expertise && reviewData.author.expertise.length > 0 && (
-                             <div className={styles.authorTooltipExpertise}>
-                                 <strong>Expertise</strong>
-                                 <ul>
-                                     {reviewData.author.expertise.map(area => <li key={area}>{area}</li>)}
-                                 </ul>
-                             </div>
-                           )}
-                           <p className={styles.authorTooltipBioSnippet}>{reviewData.author.bioSnippet}</p>
-                           {reviewData.author.fullBioLink && (
-                               <Link href={reviewData.author.fullBioLink} legacyBehavior>
-                                   <a className={styles.authorTooltipBioLink}>
-                                       See full bio
-                                       {/* Optional: Add an icon here, e.g., an arrow */}
-                                       {/* <span aria-hidden="true"> →</span> */}
-                                   </a>
-                               </Link>
-                           )}
-                           {/* Optional: Add social links here */}
-                           {reviewData.author.socialLinks && (
-                                <div className={styles.authorTooltipSocials}>
-                                    {reviewData.author.socialLinks.linkedin && (
-                                        <a href={reviewData.author.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                                            {/* Placeholder for LinkedIn Icon */} L
-                                        </a>
-                                    )}
-                                    {reviewData.author.socialLinks.twitter && (
-                                        <a href={reviewData.author.socialLinks.twitter} target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                                            {/* Placeholder for Twitter Icon */} T
-                                        </a>
-                                    )}
-                                    {reviewData.author.socialLinks.email && (
-                                        <a href={`mailto:${reviewData.author.socialLinks.email}`} aria-label="Email">
-                                            {/* Placeholder for Email Icon */} E
-                                        </a>
-                                    )}
-                                </div>
-                            )}
-                        </div>
-                    )}
-                </div>
+    {/* Author Tooltip (remains unchanged) */}
+    {showAuthorBioTooltip && (
+        <div
+            className={styles.authorTooltip}
+            ref={authorTooltipRef}
+            role="tooltip"
+            onMouseEnter={handleAuthorMouseEnter}
+            onMouseLeave={handleAuthorMouseLeave}
+        >
+           {/* ... existing tooltip content ... */}
+           {/* NOTE: You had placeholder icons 'L', 'T', 'E' inside the tooltip. 
+               You might want to replace those with actual icons too, 
+               similar to how they are added outside the tooltip now. */}
+             <div className={styles.authorTooltipHeader}>
+                 <Image
+                    src={reviewData.author.tooltipImageUrl}
+                    alt={`${reviewData.author.name} headshot`}
+                    width={reviewData.author.tooltipImageWidth}
+                    height={reviewData.author.tooltipImageHeight}
+                    className={styles.authorTooltipImage}
+                 />
+                 <div className={styles.authorTooltipInfo}>
+                     <span className={styles.authorTooltipName}>{reviewData.author.name}</span>
+                     <span className={styles.authorTooltipTitle}>{reviewData.author.title}</span>
+                 </div>
+               </div>
+               {reviewData.author.expertise && reviewData.author.expertise.length > 0 && (
+                 <div className={styles.authorTooltipExpertise}>
+                     <strong>Expertise</strong>
+                     <ul>
+                         {reviewData.author.expertise.map(area => <li key={area}>{area}</li>)}
+                     </ul>
+                 </div>
+               )}
+               <p className={styles.authorTooltipBioSnippet}>{reviewData.author.bioSnippet}</p>
+               {reviewData.author.fullBioLink && (
+                   <Link href={reviewData.author.fullBioLink} legacyBehavior>
+                       <a className={styles.authorTooltipBioLink}>
+                           See full bio
+                           {/* <span aria-hidden="true"> →</span> */}
+                       </a>
+                   </Link>
+               )}
+               {/* Updated Social Links inside Tooltip */}
+               {reviewData.author.socialLinks && (
+                    <div className={styles.authorTooltipSocials}> {/* Add a class for styling if needed */}
+                        {reviewData.author.socialLinks.linkedin && (
+                             <a href={reviewData.author.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={styles.socialIconLink}>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                             </a>
+                         )}
+                         {reviewData.author.socialLinks.twitter && (
+                             <a href={reviewData.author.socialLinks.twitter} target="_blank" rel="noopener noreferrer" aria-label="Twitter" className={styles.socialIconLink}>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-.422.724-.665 1.56-.665 2.452 0 1.697.864 3.198 2.18 4.078-.8-.025-1.555-.247-2.227-.616v.054c0 2.37 1.683 4.333 3.91 4.78-.426.116-.874.174-1.337.174-.31 0-.611-.03-.904-.085.622 1.936 2.421 3.338 4.553 3.377-1.672 1.309-3.781 2.088-6.072 2.088-.394 0-.784-.023-1.169-.069 2.16 1.389 4.723 2.202 7.482 2.202 8.979 0 13.897-7.446 13.897-13.898 0-.21 0-.42-.015-.63.953-.689 1.778-1.56 2.433-2.525z"/></svg>
+                             </a>
+                         )}
+                         {reviewData.author.socialLinks.email && (
+                             <a href={`mailto:${reviewData.author.socialLinks.email}`} aria-label="Email" className={styles.socialIconLink}>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
+                             </a>
+                         )}
+                    </div>
+                )}
+        </div>
+    )}
+</div>
+{/* === END: Updated Author Section === */}
 
                 
                 <p className={styles.heroSubtitle}>
