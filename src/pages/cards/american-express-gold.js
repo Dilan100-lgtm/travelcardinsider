@@ -9,7 +9,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import dynamic from 'next/dynamic'; // <<< THIS LINE WAS MISSING. ADD IT HERE.
+import dynamic from 'next/dynamic';
 import styles from '../../styles/ReviewPage.module.css';
 import TableOfContents from '../../components/TableOfContents';
 
@@ -23,8 +23,9 @@ import IconPlus from '../../components/icons/icon-target.svg';
 const RatingTooltipDynamic = dynamic(() => import('../../components/RatingTooltip'), {
   ssr: false,
   loading: () => null,
-})
+});
 
+// const AuthorBioTooltipDynamic = dynamic(() => import('../../components/AuthorBioTooltip'), { ssr: false });
 
 
 const reviewData = {
@@ -32,17 +33,50 @@ const reviewData = {
   title: 'American Express® Gold Card – Maximize Your Rewards 2025 Review',
   description: 'Explore the American Express® Gold Card (2025): 60,000 points welcome offer, 4X on dining/groceries, 3X flights, valuable credits. Is the $325 fee worth it? Full review.',
   keywords: 'American Express, Gold Card, 2025 review, travel rewards, dining rewards, Membership Rewards, statement credits, travel insurance, $325 annual fee, Amex Gold welcome offer',
-  author: 'TravelCardInsider', // *** REPLACE with your actual author/site name ***
-  imageUrl: '/NUS000000174_480x304_straight_withname.avif', // *** VERIFY PATH in /public ***
+
+  // --- UPDATED AUTHOR DETAILS for Dilan Madushanka ---
+  author: {
+      name: 'Dilan Madushanka',
+      title: 'Founder & Lead Editor',
+      // *** YOU NEED TO PROVIDE THESE IMAGE PATHS ***
+      // These paths should point to images in your /public directory
+      imageUrl: '/authors/dilan-madushanka-small.jpg', // e.g., /public/authors/dilan-madushanka-small.jpg
+      imageWidth: 40,
+      imageHeight: 40,
+      tooltipImageUrl: '/authors/dilan-madushanka-large.jpg', // e.g., /public/authors/dilan-madushanka-large.jpg
+      tooltipImageWidth: 60, // Adjust as needed for your image
+      tooltipImageHeight: 60, // Adjust as needed
+      expertise: [
+          'Travel Credit Cards',
+          'Rewards Programs',
+          'Financial Literacy for Travel',
+          'Maximizing Card Benefits',
+          'Credit Card Analysis'
+      ],
+      bioSnippet: 'Dilan Madushanka is the founder and lead editor of TravelCardInsider.com, dedicated to demystifying credit cards and uncovering their real-world value for smarter travel.',
+      fullBioLink: '/author/dilan-madushanka', // Example: This would be pages/author/dilan-madushanka.js
+      fullBio: `Dilan Madushanka is the founder and lead editor of TravelCardInsider.com, a platform dedicated to helping everyday people make smarter decisions with travel and rewards credit cards. With a background in medicine and a deep passion for financial literacy, Dilan turned his real-world experience—navigating travel, budgeting, and rewards programs—into a mission: demystify credit cards and uncover their real-world value.\n\nAfter years of studying the fine print, testing travel benefits firsthand, and comparing hundreds of card offers, Dilan has built a site that goes beyond generic advice. He combines research, real spending scenarios, and hands-on card analysis to help readers maximize rewards and avoid costly mistakes.\n\nExperience matters—and Dilan brings a unique one. A Sri Lankan doctor by training, he took a bold leap into digital entrepreneurship to build a transparent, user-focused credit card resource from scratch. Every guide and review you read is written or edited by him with accuracy, integrity, and a deep sense of purpose.`,
+      publishedStats: '6+ in-depth card reviews per week',
+      testedStats: 'Over 50 credit card benefits across major brands',
+      socialLinks: {
+          linkedin: 'https://www.linkedin.com/in/YOUR_LINKEDIN_PROFILE_URL', // *** REPLACE with actual URL ***
+          twitter: 'https://twitter.com/YOUR_TWITTER_HANDLE', // *** REPLACE with actual URL ***
+          email: 'dilan@travelcardinsider.com'
+      }
+  },
+  // --- End Author Details ---
+
+  siteName: 'TravelCardInsider',
+  imageUrl: '/NUS000000174_480x304_straight_withname.avif',
   ratingValue: 8.8,
-  applyLink: 'https://www.americanexpress.com/us/credit-cards/card/gold-card/', // *** REPLACE with actual Amex Gold APPLY URL ***
-  ratesLink: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/gold-card/25330-10-0#FeeTable', // *** VERIFY URL ***
-  imageWidth: 480, // *** REPLACE with actual image width ***
-  imageHeight: 304, // *** REPLACE with actual image height ***
-  datePublished: "2025-05-09", // *** USE THE ACTUAL PUBLISH/UPDATE DATE ***
-  aprRange: "19.24% - 26.24% Variable", // *** REPLACE with actual APR range or a general statement ***
-  applicationUrl: 'https://www.americanexpress.com/us/credit-cards/card/gold-card/', // *** VERIFY AND USE ACTUAL APPLY LINK ***
-  h1Content: 'American Express® Gold Card: An In-Depth Review for Travel Enthusiasts', // Specific H1 for the hero section
+  applyLink: 'https://www.americanexpress.com/us/credit-cards/card/gold-card/',
+  ratesLink: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/gold-card/25330-10-0#FeeTable',
+  imageWidth: 480,
+  imageHeight: 304,
+  datePublished: "2025-05-12", // *** USE THE ACTUAL PUBLISH/UPDATE DATE ***
+  aprRange: "19.24% - 26.24% Variable",
+  applicationUrl: 'https://www.americanexpress.com/us/credit-cards/card/gold-card/',
+  h1Content: 'American Express® Gold Card: An In-Depth Review for Travel Enthusiasts',
 };
 
 const ratingCriteria = [
@@ -54,26 +88,74 @@ const ratingCriteria = [
 ];
 
 function AmexGoldReviewPage() {
-  // --- Tooltip State --- (Priority 1)
   const [showRatingInfo, setShowRatingInfo] = useState(false);
+  const [showAuthorBioTooltip, setShowAuthorBioTooltip] = useState(false);
+  const authorRef = useRef(null);
+  const authorTooltipRef = useRef(null);
+  // Add refs for rating tooltip if you implement click-outside for it similarly
+  // const ratingTriggerRef = useRef(null);
+  // const ratingTooltipContainerRef = useRef(null);
+
 
   const handleIconClick = useCallback((event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        setShowRatingInfo(prevState => !prevState);
-    }, []);
+      event.preventDefault();
+      event.stopPropagation();
+      setShowRatingInfo(prevState => !prevState);
+  }, []);
+
+  const handleAuthorMouseEnter = useCallback(() => {
+      setShowAuthorBioTooltip(true);
+  }, []);
+
+  const handleAuthorMouseLeave = useCallback(() => {
+      const timerId = setTimeout(() => {
+          if (authorRef.current && authorTooltipRef.current) {
+              const isHoveringTrigger = authorRef.current.matches(':hover');
+              const isHoveringTooltip = authorTooltipRef.current.matches(':hover');
+              const isFocusWithinTrigger = authorRef.current.contains(document.activeElement);
+              const isFocusWithinTooltip = authorTooltipRef.current.contains(document.activeElement);
+
+              if (!isHoveringTrigger && !isHoveringTooltip && !isFocusWithinTrigger && !isFocusWithinTooltip) {
+                 setShowAuthorBioTooltip(false);
+              }
+          }
+      }, 150);
+      return () => clearTimeout(timerId);
+  }, [authorRef, authorTooltipRef]);
+
+  useEffect(() => {
+      function handleClickOutside(event) {
+          if (showAuthorBioTooltip &&
+              authorRef.current && !authorRef.current.contains(event.target) &&
+              authorTooltipRef.current && !authorTooltipRef.current.contains(event.target)) {
+              setShowAuthorBioTooltip(false);
+          }
+          // Example for Rating Tooltip (ensure refs are defined and passed if using this)
+          // if (showRatingInfo &&
+          //     ratingTriggerRef.current && !ratingTriggerRef.current.contains(event.target) &&
+          //     ratingTooltipContainerRef.current && !ratingTooltipContainerRef.current.contains(event.target)) {
+          //     setShowRatingInfo(false);
+          // }
+      }
+
+      if (showAuthorBioTooltip || showRatingInfo) {
+          document.addEventListener("mousedown", handleClickOutside);
+      }
+      return () => {
+          document.removeEventListener("mousedown", handleClickOutside);
+      };
+  }, [showAuthorBioTooltip, authorRef, authorTooltipRef, showRatingInfo /*, ratingTriggerRef, ratingTooltipContainerRef */]);
 
 
   const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
   const pageUrl = `${siteUrl}/reviews/american-express-gold`; // *** REPLACE with your actual page URL, ensure it matches your file structure, e.g., /cards/american-express-gold ***
 
- // MODIFIED: Enhanced Structured Data with explicit review link and IDs
  const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "Product",
-      "@id": `${pageUrl}#product`, // Added @id for the Product
+      "@id": `${pageUrl}#product`,
       "name": reviewData.cardName,
       "image": `${siteUrl}${reviewData.imageUrl}`,
       "description": reviewData.description,
@@ -89,7 +171,7 @@ function AmexGoldReviewPage() {
         "bestRating": "10",
         "worstRating": "1",
         "ratingCount": "580", // *** REPLACE with actual or estimated count (string) ***
-        "reviewCount": "1" // This refers to the single editorial review on this page.
+        "reviewCount": "1"
       },
       "offers": {
         "@type": "Offer",
@@ -117,38 +199,38 @@ function AmexGoldReviewPage() {
           "name": "American Express"
         }
       },
-      "review": [ // MODIFIED: Explicitly linking to the review via @id, as an array
+      "review": [
         {
-          "@type": "Review", // Keep type here for clarity, or just @id if preferred by validator
+          "@type": "Review",
           "@id": `${pageUrl}#review`
         }
       ]
     },
     {
       "@type": "Review",
-      "@id": `${pageUrl}#review`, // This ID is referenced above
+      "@id": `${pageUrl}#review`,
       "itemReviewed": {
         "@type": "Product",
-        "@id": `${pageUrl}#product` // MODIFIED: Pointing to the Product's @id
+        "@id": `${pageUrl}#product`
       },
       "reviewRating": {
         "@type": "Rating",
         "ratingValue": reviewData.ratingValue.toString(),
         "bestRating": "10",
         "worstRating": "1",
-        "description": "TravelCardInsider's rating based on rewards, fees, and benefits."
+        "description": `${reviewData.siteName}'s rating based on rewards, fees, and benefits.`
       },
-      "name": reviewData.title, // The title of the review article
+      "name": reviewData.title,
       "author": {
-        "@type": "Organization",
-        "name": reviewData.author,
-        "url": siteUrl
+        "@type": "Person", // Updated to Person
+        "name": reviewData.author.name, // Using new author structure
+        "url": reviewData.author.fullBioLink ? `${siteUrl}${reviewData.author.fullBioLink}` : undefined // Optional: Link to author's page
       },
       "datePublished": reviewData.datePublished,
-      "reviewBody": reviewData.description, // Or a more specific summary of the review content
+      "reviewBody": reviewData.description,
       "publisher": {
           "@type": "Organization",
-          "name": reviewData.author, // Assuming site name is the author here
+          "name": reviewData.siteName, // Site name is the publisher
           "logo": {
             "@type": "ImageObject",
             "url": `${siteUrl}/TCI Logo New Favicon.png` // *** REPLACE with your actual logo URL ***
@@ -161,7 +243,7 @@ function AmexGoldReviewPage() {
         {
           "@type": "ListItem",
           "position": 1,
-          "name": "Travel Card Insider",
+          "name": reviewData.siteName, // Use site name
           "item": siteUrl
         },
         {
@@ -231,7 +313,7 @@ function AmexGoldReviewPage() {
     { id: 'section-18', title: 'Travel Focus: Added Peace of Mind: Global Assist® Hotline & No Foreign Transaction Fees' },
     { id: 'section-19', title: 'Beyond Travel: Purchase Protection & Extended Warranty Deep Dive' },
     { id: 'section-20', title: 'Final Verdict: Is the Amex Gold Your Ideal Travel Companion?' },
-    // { id: 'faq-section', title: 'Frequently Asked Questions' }, // Uncomment if you add a visible FAQ section
+    // { id: 'faq-section', title: 'Frequently Asked Questions' },
   ];
 
   return (
@@ -240,7 +322,7 @@ function AmexGoldReviewPage() {
         <title>{reviewData.title}</title>
         <meta name="description" content={reviewData.description} />
         <meta name="keywords" content={reviewData.keywords} />
-        <meta name="author" content={reviewData.author} />
+        <meta name="author" content={reviewData.author.name} />
         <link rel="canonical" href={pageUrl} />
 
         <link rel="preload" href="/fonts/Roboto_Condensed-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
@@ -252,24 +334,23 @@ function AmexGoldReviewPage() {
         <link rel="preload" href="/fonts/inter-v18-latin-600.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/inter-v18-latin-700.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
 
-
         <meta property="og:title" content={reviewData.title} />
         <meta property="og:description" content={reviewData.description} />
         <meta property="og:url" content={pageUrl} />
         <meta property="og:image" content={structuredData["@graph"][0].image} />
         <meta property="og:type" content="article" />
         <meta property="article:published_time" content={reviewData.datePublished} />
-        <meta property="article:author" content={siteUrl} />
+        <meta property="article:author" content={reviewData.author.name} />
         <meta property="article:section" content="Credit Card Reviews" />
         {reviewData.keywords.split(',').map(keyword => (
-            <meta property="article:tag" content={keyword.trim()} key={keyword.trim()} /> // Added .trim() to key for robustness
+            <meta property="article:tag" content={keyword.trim()} key={keyword.trim()} />
         ))}
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={reviewData.title} />
         <meta name="twitter:description" content={reviewData.description} />
         <meta name="twitter:image" content={structuredData["@graph"][0].image} />
-        {/* <meta name="twitter:site" content="@YourTwitterHandle" /> */} {/* *** REPLACE with your Twitter handle *** */}
+        {/* <meta name="twitter:site" content="@YourTwitterHandle" /> */}
 
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -281,30 +362,25 @@ function AmexGoldReviewPage() {
         <link
             rel="preload"
             as="image"
-            href={reviewData.imageUrl}
+            href={reviewData.imageUrl} // Card image
         />
+         <link rel="preload" as="image" href={reviewData.author.imageUrl} />
+         <link rel="preload" as="image" href={reviewData.author.tooltipImageUrl} />
       </Head>
 
-
-      
-
       <main>
-        {/* New layout wrapper for main content and sidebar */}
         <div className={styles.reviewPageLayout}>
-          {/* Main content area that contains the review article */}
-          
           <div className={styles.mainContentArea}>
-             {/* NEW Hero Section - Placed before mainContentArea or at the top of it */}
              <section className={styles.heroSection}>
               <div className={styles.heroTextContainer}>
-                 {/* *** NEW: AUTHOR BIO SECTION *** */}
                 <div
                     className={styles.authorBioContainer}
-                    ref={authorRef} // Add ref here
+                    ref={authorRef}
                     onMouseEnter={handleAuthorMouseEnter}
                     onMouseLeave={handleAuthorMouseLeave}
                     aria-haspopup="true"
                     aria-expanded={showAuthorBioTooltip}
+                    tabIndex={0} // For keyboard accessibility
                 >
                     <Image
                         src={reviewData.author.imageUrl}
@@ -312,21 +388,20 @@ function AmexGoldReviewPage() {
                         width={reviewData.author.imageWidth}
                         height={reviewData.author.imageHeight}
                         className={styles.authorImageSmall}
-                        priority // Load small image quickly
+                        priority
                     />
                     <div className={styles.authorInfo}>
                         <span className={styles.authorName}>{reviewData.author.name}</span>
                         <span className={styles.authorTitle}>{reviewData.author.title}</span>
                     </div>
 
-                    {/* --- NEW: Author Bio Tooltip (Conditional Rendering) --- */}
                     {showAuthorBioTooltip && (
                         <div
                             className={styles.authorTooltip}
-                            ref={authorTooltipRef} // Add ref here
+                            ref={authorTooltipRef}
                             role="tooltip"
-                            onMouseEnter={handleAuthorMouseEnter} // Keep open if mouse enters tooltip
-                            onMouseLeave={handleAuthorMouseLeave} // Close if mouse leaves tooltip
+                            onMouseEnter={handleAuthorMouseEnter}
+                            onMouseLeave={handleAuthorMouseLeave}
                         >
                            <div className={styles.authorTooltipHeader}>
                              <Image
@@ -354,23 +429,43 @@ function AmexGoldReviewPage() {
                                <Link href={reviewData.author.fullBioLink} legacyBehavior>
                                    <a className={styles.authorTooltipBioLink}>
                                        See full bio
-                                       {/* Optional: Add an icon here */}
+                                       {/* Optional: Add an icon here, e.g., an arrow */}
+                                       {/* <span aria-hidden="true"> →</span> */}
                                    </a>
                                </Link>
                            )}
+                           {/* Optional: Add social links here */}
+                           {reviewData.author.socialLinks && (
+                                <div className={styles.authorTooltipSocials}>
+                                    {reviewData.author.socialLinks.linkedin && (
+                                        <a href={reviewData.author.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                                            {/* Placeholder for LinkedIn Icon */} L
+                                        </a>
+                                    )}
+                                    {reviewData.author.socialLinks.twitter && (
+                                        <a href={reviewData.author.socialLinks.twitter} target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                                            {/* Placeholder for Twitter Icon */} T
+                                        </a>
+                                    )}
+                                    {reviewData.author.socialLinks.email && (
+                                        <a href={`mailto:${reviewData.author.socialLinks.email}`} aria-label="Email">
+                                            {/* Placeholder for Email Icon */} E
+                                        </a>
+                                    )}
+                                </div>
+                            )}
                         </div>
                     )}
-                    {/* --- End Author Bio Tooltip --- */}
                 </div>
-                {/* *** END AUTHOR BIO SECTION *** */}
+
                 <h1 className={styles.heroTitle}>
                   {reviewData.h1Content}
                 </h1>
                 <p className={styles.heroSubtitle}>
-                  Unlock premium rewards and tailored benefits for your business. Discover how the Amex Gold sets the standard. {/* Example Value Proposition - Update as needed */}
+                  Unlock premium rewards and tailored benefits for your business. Discover how the Amex Gold sets the standard.
                 </p>
                 <div className={styles.heroCtaContainer}>
-                  <div> {/* Added a div to wrap the button and the new disclaimer for better layout control if needed */}
+                  <div>
                     <a
                       href={reviewData.applicationUrl}
                       target="_blank"
@@ -379,7 +474,6 @@ function AmexGoldReviewPage() {
                     >
                       Apply Securely Now
                     </a>
-                    {/* MODIFIED: Added disclaimer text below the button */}
                     <span className={styles.heroApplyButtonDisclaimer}>
                       from American Express's official site
                     </span>
@@ -389,112 +483,101 @@ function AmexGoldReviewPage() {
                   </Link>
                 </div>
               </div>
-    <div className={styles.heroImageContainer}>
-    <div className={styles.cardImageContainer}>
-                      <Image
-                        src={reviewData.imageUrl} // *** VERIFY PATH ***
-                        alt={reviewData.cardName} // Alt text is crucial
-                        width={reviewData.imageWidth} // *** REPLACE with actual image width ***
-                        height={reviewData.imageHeight} // *** REPLACE with actual image height ***
-                        className={styles.heroImage}
-                        priority // Preload this important image
-                      />
-                    </div>
-                     {/* RATING SECTION */}
-                  <div className={styles.ratingSection}>
-                      <span className={styles.tciRating}>
-                        <button
-                          type="button"
-                          className={styles.infoIconButton}
-                          aria-label="Rating Information"
-                          onClick={handleIconClick}
-                        >
-                          {/* SVG Icon for Information */}
-                          <svg aria-hidden="true" focusable="false" className={styles.infoIcon} viewBox="0 0 16 16">
-                            <path fillRule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-                          </svg>
-                        </button>
-                        TCI Rating: <strong>{reviewData.ratingValue.toFixed(1)}</strong>/10
-                        {/* --- Conditionally Rendered Tooltip --- */}
-                        {showRatingInfo && (
-      <RatingTooltipDynamic
-        ratingValue={reviewData.ratingValue}
-        ratingCriteria={ratingCriteria} // Pass ratingCriteria if your tooltip component uses it
-        onClose={() => setShowRatingInfo(false)} // This allows the tooltip to close itself
-      />
-    )}
-                      </span>
 
-                    {/* STAR RATING */}
-                    <div className={styles.starRating} title={`Rated ${reviewData.ratingValue} out of 10 stars`}>
-                      ★★★★★ {/* Background empty stars */}
-                      <span className={styles.filledStars} style={{ '--rating': `${reviewData.ratingValue * 10}%` }}>
-                        ★★★★★ {/* Foreground filled stars, width controlled by CSS variable */}
-                      </span>
-                    </div>
-                    </div>
-                    <div className={styles.ratingDescription}>
-                      <i>A top pick for foodies & travelers, excelling in dining/grocery rewards and offering valuable statement credits.</i>
-                    </div>
-    </div>
-  </section>
+              <div className={styles.heroImageContainer}>
+                <div className={styles.cardImageContainer}>
+                  <Image
+                    src={reviewData.imageUrl}
+                    alt={reviewData.cardName}
+                    width={reviewData.imageWidth}
+                    height={reviewData.imageHeight}
+                    className={styles.heroImage}
+                    priority
+                  />
+                </div>
+                <div className={styles.ratingSection}>
+                  {/* Add ref={ratingTriggerRef} to the button/span if implementing click-outside for rating tooltip */}
+                  <span className={styles.tciRating} /* ref={ratingTriggerRef} */ >
+                    <button
+                      type="button"
+                      className={styles.infoIconButton}
+                      aria-label="Rating Information"
+                      onClick={handleIconClick}
+                      aria-expanded={showRatingInfo}
+                    >
+                      <svg aria-hidden="true" focusable="false" className={styles.infoIcon} viewBox="0 0 16 16">
+                        <path fillRule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                      </svg>
+                    </button>
+                    TCI Rating: <strong>{reviewData.ratingValue.toFixed(1)}</strong>/10
+                    {showRatingInfo && (
+                      // Add ref={ratingTooltipContainerRef} if implementing click-outside
+                      <RatingTooltipDynamic
+                        /* ref={ratingTooltipContainerRef} */
+                        ratingValue={reviewData.ratingValue}
+                        ratingCriteria={ratingCriteria}
+                        onClose={() => setShowRatingInfo(false)}
+                      />
+                    )}
+                  </span>
+                  <div className={styles.starRating} title={`Rated ${reviewData.ratingValue} out of 10 stars`}>
+                    ★★★★★
+                    <span className={styles.filledStars} style={{ '--rating': `${reviewData.ratingValue * 10}%` }}>
+                      ★★★★★
+                    </span>
+                  </div>
+                </div>
+                <div className={styles.ratingDescription}>
+                  <i>A top pick for foodies & travelers, excelling in dining/grocery rewards and offering valuable statement credits.</i>
+                </div>
+              </div>
+            </section>
+
             <div className={styles.reviewContainer}>
-              <article> {/* Wrap main content in article */}
-                {/* ============= REVIEW HEADER ============= */}
+              <article>
                 <header className={styles.reviewHeader}>
-                  {/* H1 uses new title from reviewData */}
-                    {/* ============= AT-A-GLANCE SUMMARY BOX (NEW) ============= */}
-                <div className={styles.summaryBox} id="summaryBoxTitle">
-                  <h2 className={styles.summaryBoxTitle}>Amex Gold: Key Insights</h2>
-                  <div className={styles.summaryGrid}>
-                    {/* Welcome Offer */}
-                    <div className={styles.summaryItem}>
-                      <span className={styles.summaryIcon}><IconGift /></span> {/* TODO: Replace Icon */}
-                      <span className={styles.summaryLabel}>Welcome Offer:</span>
-                      <span className={styles.summaryValue}>60,000 points <small>(after $6k spend in 6 mos)</small></span>
+                  <div className={styles.summaryBox} id="summaryBoxTitle">
+                    <h2 className={styles.summaryBoxTitle}>Amex Gold: Key Insights</h2>
+                    <div className={styles.summaryGrid}>
+                      <div className={styles.summaryItem}>
+                        <span className={styles.summaryIcon}><IconGift /></span>
+                        <span className={styles.summaryLabel}>Welcome Offer:</span>
+                        <span className={styles.summaryValue}>60,000 points <small>(after $6k spend in 6 mos)</small></span>
+                      </div>
+                      <div className={styles.summaryItem}>
+                        <span className={styles.summaryIcon}><IconStar /></span>
+                        <span className={styles.summaryLabel}>Annual Fee:</span>
+                        <span className={styles.summaryValue}>$325</span>
+                      </div>
+                      <div className={styles.summaryItem}>
+                        <span className={styles.summaryIcon}><IconX /></span>
+                        <span className={styles.summaryLabel}>Top Earning:</span>
+                        <span className={styles.summaryValue}>4X Dining & U.S. Supermarkets, 3X Flights</span>
+                      </div>
+                      <div className={styles.summaryItem}>
+                        <span className={styles.summaryIcon}><IconCheck /></span>
+                        <span className={styles.summaryLabel}>Annual Credits (Up To):</span>
+                        <span className={styles.summaryValue}><small>$120 Dining + $120 Uber + $100 Resy + $84 Dunkin' (Enrollment Req.)</small></span>
+                      </div>
+                      <div className={styles.summaryItem} data-full-width="true">
+                        <span className={styles.summaryIcon}><IconPlus /></span>
+                        <span className={styles.summaryLabel}>Best For:</span>
+                        <span className={styles.summaryValue}>Foodies & travelers maximizing points & specific U.S. credits.</span>
+                      </div>
                     </div>
-                    {/* Annual Fee */}
-                    <div className={styles.summaryItem}>
-                      <span className={styles.summaryIcon}><IconStar /></span> {/* TODO: Replace Icon */}
-                      <span className={styles.summaryLabel}>Annual Fee:</span>
-                      <span className={styles.summaryValue}>$325</span>
-                    </div>
-                    {/* Top Earning */}
-                    <div className={styles.summaryItem}>
-                      <span className={styles.summaryIcon}><IconX /></span> {/* TODO: Replace Icon */}
-                      <span className={styles.summaryLabel}>Top Earning:</span>
-                      <span className={styles.summaryValue}>4X Dining & U.S. Supermarkets, 3X Flights</span>
-                    </div>
-                    {/* Key Credits */}
-                    <div className={styles.summaryItem}>
-                      <span className={styles.summaryIcon}><IconCheck /></span> {/* TODO: Replace Icon */}
-                      <span className={styles.summaryLabel}>Annual Credits (Up To):</span>
-                      <span className={styles.summaryValue}><small>$120 Dining + $120 Uber + $100 Resy + $84 Dunkin' (Enrollment Req.)</small></span>
-                    </div>
-                    {/* Best For */}
-                    <div className={styles.summaryItem} data-full-width="true">
-                      <span className={styles.summaryIcon}><IconPlus /></span> {/* TODO: Replace Icon */}
-                      <span className={styles.summaryLabel}>Best For:</span>
-                      <span className={styles.summaryValue}>Foodies & travelers maximizing points & specific U.S. credits.</span>
+                    <div className={styles.summaryBoxActions}>
+                        <a href={reviewData.ratesLink} className={styles.summaryRatesLink} target="_blank" rel="noopener noreferrer sponsored">
+                            See Card Rates & Fees
+                        </a>
+                        <a href='/rewards-compare' className={`${styles.heroRewardsCalculator} ${styles.summaryButton}`} target="_blank" rel="noopener noreferrer sponsored">
+                            Rewards Calculator
+                        </a>
                     </div>
                   </div>
-                 <div className={styles.summaryBoxActions}>
-  <a href={reviewData.ratesLink} className={styles.summaryRatesLink} target="_blank" rel="noopener noreferrer sponsored">
-    See Card Rates & Fees
-  </a>
-  <a href='/rewards-compare' className={`${styles.heroRewardsCalculator} ${styles.summaryButton}`} target="_blank" rel="noopener noreferrer sponsored">
-    Rewards Calculator
-  </a>
-</div>
-                </div>
-                {/* ============= END SUMMARY BOX ============= */}
 
-                  {/* Section 1 Content & Image Wrapper */}
-                  {/* Added introAndImageWrapper div for CSS Module layout */}
                   <div className={styles.introAndImageWrapper}>
                     <div className={styles.intro}>
-                      {/* === Section 1 Content === */}
                       <p>
                         The <strong>American Express® Gold Card</strong> holds a prominent position in the premium credit card sphere,
                         easily identified by its classic Gold or stylish Rose Gold metal design. It targets individuals whose spending habits heavily feature dining and travel,
@@ -505,21 +588,10 @@ function AmexGoldReviewPage() {
                         using the most current data. We'll examine its earning potential, redemption avenues, travel protections, and credits to determine if the benefits justify the cost,
                         particularly considering its updated annual fee and the active management required to maximize its value.
                       </p>
-                      {/* === END Section 1 Content === */}
                     </div>
-
-                    {/* Image Container */}
-                    
-                  </div> {/* End introAndImageWrapper */}
-
+                  </div>
                 </header>
 
-              
-
-
-                {/* ============= REVIEW CONTENT SECTIONS ============= */}
-
-                {/* Section 2: Snapshot */}
                 <section id="section-2" className={styles.reviewSection}>
                   <h2>Snapshot: Key Features and Current Welcome Offer</h2>
                   <p>Here’s a quick look at the Amex Gold Card's current core features:</p>
@@ -548,18 +620,13 @@ function AmexGoldReviewPage() {
                   <p>The welcome offer requires significant spending ($1,000/month average for 6 months), a factor for potential applicants to consider.</p>
                 </section>
 
-                {/* CTA Section */}
                 <section id="cta" className={styles.ctaSection}>
                   <h2>Get the <b>American Express® Gold Card</b> Today!</h2>
                   <div className={styles.ctaButtons}>
-                    {/* Ensure links are correct and sponsored rel attribute is appropriate */}
                     <a href={reviewData.applyLink} className={`${styles.btn} ${styles.btnApply}`} title="From card issuer's secure site" target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
-                   
                   </div>
-                  {/* Reminder about updating fee in structured data */}
                 </section>
 
-                {/* Section 3: Annual Fee */}
                 <section id="section-3" className={styles.reviewSection}>
                   <h2>Unpacking the $325 Annual Fee: Is It Justified for Travelers?</h2>
                   <p>
@@ -578,7 +645,6 @@ function AmexGoldReviewPage() {
                   </p>
                 </section>
 
-                {/* Section 4: 4X Dining */}
                 <section id="section-4" className={styles.reviewSection}>
                   <h2>Earning Power: Maximizing 4X Points on Global Dining</h2>
                   <p>
@@ -592,7 +658,6 @@ function AmexGoldReviewPage() {
                   </p>
                 </section>
 
-                {/* Section 5: 4X U.S. Supermarkets */}
                 <section id="section-5" className={styles.reviewSection}>
                   <h2>Earning Power: Stocking Up with 4X Points at U.S. Supermarkets</h2>
                   <p>
@@ -603,7 +668,6 @@ function AmexGoldReviewPage() {
                   </p>
                 </section>
 
-                {/* Section 6: 3X Flights */}
                 <section id="section-6" className={styles.reviewSection}>
                   <h2>Travel Focus: Earning 3X Points on Flights (Direct & AmexTravel.com)</h2>
                   <p>
@@ -615,7 +679,6 @@ function AmexGoldReviewPage() {
                   </p>
                 </section>
 
-                {/* Section 7: 2X AmexTravel */}
                 <section id="section-7" className={styles.reviewSection}>
                   <h2>Travel Focus: Earning 2X Points via AmexTravel.com (Hotels, Packages, etc.)</h2>
                   <p>
@@ -630,7 +693,6 @@ function AmexGoldReviewPage() {
                   </p>
                 </section>
 
-                {/* Section 8: MR Points Value */}
                 <section id="section-8" className={styles.reviewSection}>
                   <h2>The Foundation: Understanding Membership Rewards® Points Value</h2>
                   <p>
@@ -654,7 +716,6 @@ function AmexGoldReviewPage() {
                   </p>
                 </section>
 
-                {/* Section 9: Partner Transfers */}
                 <section id="section-9" className={styles.reviewSection}>
                   <h2>Travel Focus: Redeeming Points: Mastering Airline & Hotel Transfers (Key Partners)</h2>
                   <p>
@@ -681,7 +742,6 @@ function AmexGoldReviewPage() {
                   </p>
                 </section>
 
-                {/* Section 10: Amex Travel Redemption */}
                 <section id="section-10" className={styles.reviewSection}>
                   <h2>Travel Focus: Redeeming Points: Booking Directly via Amex Travel</h2>
                   <p>Booking travel directly through AmexTravel.com using points offers a simpler redemption path.</p>
@@ -700,7 +760,6 @@ function AmexGoldReviewPage() {
                   </p>
                 </section>
 
-                {/* Section 11: Dining Credit */}
                 <section id="section-11" className={styles.reviewSection}>
                   <h2>$120 Dining Credit: Savoring Monthly Savings (Partners & Enrollment)</h2>
                   <p>
@@ -720,7 +779,6 @@ function AmexGoldReviewPage() {
                   </p>
                 </section>
 
-                {/* Section 12: Uber Cash */}
                 <section id="section-12" className={styles.reviewSection}>
                   <h2>Travel Focus: $120 Uber Cash: Credits for Rides & Eats On-the-Go (US Focus)</h2>
                   <p>
@@ -734,7 +792,6 @@ function AmexGoldReviewPage() {
                   </p>
                 </section>
 
-                {/* Section 13: Resy Credit */}
                 <section id="section-13" className={styles.reviewSection}>
                   <h2>$100 Resy Credit: Elevating Your U.S. Dining Experiences</h2>
                   <p>
@@ -748,7 +805,6 @@ function AmexGoldReviewPage() {
                   </p>
                 </section>
 
-              {/* Section 14: Dunkin Credit */}
               <section id="section-14" className={styles.reviewSection}>
                   <h2>$84 Dunkin' Credit: Fueling Your Mornings (US Focus)</h2>
                   <p>
@@ -760,7 +816,6 @@ function AmexGoldReviewPage() {
                   </p>
                 </section>
 
-                {/* Section 15: Credits Summary Table */}
                 <section id="section-15" className={styles.reviewSection}>
                   <h2>Calculating the Value: How Credits Offset the Annual Fee</h2>
                   <p>
@@ -807,11 +862,10 @@ function AmexGoldReviewPage() {
                           <td data-label="Key Partners / Usage Restrictions">U.S. Dunkin' locations</td>
                           <td data-label="Enrollment Required">Yes</td>
                         </tr>
-                        {/* Added className here for styling the total row */}
                         <tr className={styles.totalRow}>
                           <td colSpan="2" data-label="Total">Total Potential</td>
                           <td data-label="Max Annual Value">$424</td>
-                          <td colSpan="2"></td> {/* Empty cells for alignment */}
+                          <td colSpan="2"></td>
                         </tr>
                       </tbody>
                     </table>
@@ -824,7 +878,6 @@ function AmexGoldReviewPage() {
                   </p>
                 </section>
 
-                {/* Section 16: Hotel Collection */}
                 <section id="section-16" className={styles.reviewSection}>
                   <h2>Travel Focus: The Hotel Collection Benefits ($100 Credit & Upgrades)</h2>
                   <p>
@@ -844,7 +897,6 @@ function AmexGoldReviewPage() {
                   </p>
                 </section>
 
-                {/* Section 17: Travel Protections */}
                 <section id="section-17" className={styles.reviewSection}>
                   <h2>Travel Focus: Essential Travel Protections: Baggage & Car Rental Insurance (Secondary)</h2>
                   <p>The Gold Card includes travel insurance protections when the trip is paid for with the card.</p>
@@ -868,7 +920,6 @@ function AmexGoldReviewPage() {
                   <p>While providing a safety net, the secondary nature of the car rental insurance is a significant limitation. Amex offers optional paid primary coverage.</p>
                 </section>
 
-                {/* Section 18: Global Assist & No FTF */}
                 <section id="section-18" className={styles.reviewSection}>
                   <h2>Travel Focus: Added Peace of Mind: Global Assist® Hotline & No Foreign Transaction Fees</h2>
                   <p>Two additional travel-focused benefits enhance the Gold Card's appeal.</p>
@@ -887,7 +938,6 @@ function AmexGoldReviewPage() {
                   <p>The card charges <strong>no fees</strong> on purchases made outside the U.S. This saves ~3% compared to many cards, a vital benefit for international travelers that complements the global dining rewards.</p>
                 </section>
 
-                {/* Section 19: Purchase Protection & Ext Warranty */}
                 <section id="section-19" className={styles.reviewSection}>
                   <h2>Beyond Travel: Purchase Protection & Extended Warranty Deep Dive</h2>
                   <p>The Gold Card also protects everyday purchases.</p>
@@ -909,7 +959,6 @@ function AmexGoldReviewPage() {
                   <p>This benefit adds significant value, especially for electronics/appliances. Exclusions include consumables, vehicles, commercial use items. Claims require documentation (receipt, warranty). Both protections require good record-keeping but offer substantial peace of mind and potential savings.</p>
                 </section>
 
-              {/* Section 20: Final Verdict */}
               <section id="section-20" className={styles.reviewSection}>
                   <h2>Final Verdict: Is the Amex Gold Your Ideal Travel Companion?</h2>
                   <p>
@@ -939,18 +988,14 @@ function AmexGoldReviewPage() {
                     <strong>In conclusion:</strong> The Amex Gold Card excels in rewarding everyday food spending while offering good travel benefits. Its value proposition is highly personalized, hinging on maximizing credits and strategically redeeming points. For users whose lifestyle fits this structure and who embrace the points strategy, it's a powerful and potentially very rewarding card.
                   </p>
                   <p>
-                    {/* Standard Disclaimer */}
                     <strong>Disclaimer:</strong> Terms, interest rates, fees, welcome offers, credit partners, point values, and insurance benefits are subject to change at any time. Always verify current details directly with American Express before applying. Affiliate links may be present; editorial opinions are independent. Points valuations are estimates and vary based on redemption. Carrying a balance will incur interest charges that can outweigh rewards. Refer to official American Express documentation for the most up-to-date Terms & Conditions.
                   </p>
                 </section>
 
-                {/* E-A-T Section */}
-                {/* *** Ensure you customize the E-A-T content for accuracy and relevance *** */}
                 <section id="eat-expertise-authority-trustworthiness" className={`${styles.reviewSection} ${styles.eatSection}`}>
-                    {/* Using dangerouslySetInnerHTML for the title as it includes HTML entities */}
                     <h2 dangerouslySetInnerHTML={{ __html: "Our Commitment to E-A-T: Expertise, Authority &amp; Trustworthiness"}}></h2>
                     <p>
-                        At <strong>{reviewData.author}</strong>, we prioritize: {/* *** Ensure author name is correct *** */}
+                        At <strong>{reviewData.siteName}</strong>, we prioritize:
                     </p>
                     <h3>1. Expertise</h3>
                     <ul className={styles.featureList}>
@@ -961,7 +1006,7 @@ function AmexGoldReviewPage() {
                     <h3>2. Authority</h3>
                     <ul className={styles.featureList}>
                         <li><strong>Comprehensive Analysis:</strong> Our detailed coverage dives beyond basics, tackling synergy with other Amex cards, competitor comparisons, and advanced usage tips.</li>
-                        <li><strong>Industry Recognition:</strong> We’re frequently cited in top finance/travel outlets for unbiased Amex coverage. {/* *** Customize this claim *** */} Our data-driven approach ensures readers get detailed, factual card reviews.</li>
+                        <li><strong>Industry Recognition:</strong> We’re frequently cited in top finance/travel outlets for unbiased Amex coverage. Our data-driven approach ensures readers get detailed, factual card reviews.</li>
                         <li><strong>Transparency:</strong> If affiliate links are present, we disclose them, preserving editorial independence regarding star ratings or final verdicts.</li>
                     </ul>
                     <h3>3. Trustworthiness</h3>
@@ -971,8 +1016,8 @@ function AmexGoldReviewPage() {
                         <li><strong>User Engagement:</strong> We welcome feedback or redemption stories from real cardholders to cross-verify official T&amp;Cs and categories.</li>
                         <li>
                           <strong>Privacy &amp; Security:</strong> We uphold data protection best practices, as explained in our{' '}
-                          <Link href="/privacy-policy">
-                            <a>Privacy Policy</a>{/* Ensure /privacy-policy route exists */}
+                          <Link href="/privacy-policy" legacyBehavior>
+                            <a>Privacy Policy</a>
                           </Link>.
                         </li>
                     </ul>
@@ -982,17 +1027,14 @@ function AmexGoldReviewPage() {
                 </section>
 
               </article>
-            </div> {/* Close reviewContainer */}
-          </div> {/* Close mainContentArea */}
+            </div>
+          </div>
 
-          {/* Sidebar area for the Table of Contents */}
           <aside className={styles.sidebarArea}>
             <TableOfContents sections={tocSections} />
           </aside>
-        </div> {/* Close reviewPageLayout */}
+        </div>
       </main>
-
-      
     </>
   );
 }
