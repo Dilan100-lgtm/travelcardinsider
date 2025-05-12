@@ -297,6 +297,72 @@ function AmexGoldReviewPage() {
              {/* NEW Hero Section - Placed before mainContentArea or at the top of it */}
              <section className={styles.heroSection}>
               <div className={styles.heroTextContainer}>
+                 {/* *** NEW: AUTHOR BIO SECTION *** */}
+                <div
+                    className={styles.authorBioContainer}
+                    ref={authorRef} // Add ref here
+                    onMouseEnter={handleAuthorMouseEnter}
+                    onMouseLeave={handleAuthorMouseLeave}
+                    aria-haspopup="true"
+                    aria-expanded={showAuthorBioTooltip}
+                >
+                    <Image
+                        src={reviewData.author.imageUrl}
+                        alt={`${reviewData.author.name} headshot`}
+                        width={reviewData.author.imageWidth}
+                        height={reviewData.author.imageHeight}
+                        className={styles.authorImageSmall}
+                        priority // Load small image quickly
+                    />
+                    <div className={styles.authorInfo}>
+                        <span className={styles.authorName}>{reviewData.author.name}</span>
+                        <span className={styles.authorTitle}>{reviewData.author.title}</span>
+                    </div>
+
+                    {/* --- NEW: Author Bio Tooltip (Conditional Rendering) --- */}
+                    {showAuthorBioTooltip && (
+                        <div
+                            className={styles.authorTooltip}
+                            ref={authorTooltipRef} // Add ref here
+                            role="tooltip"
+                            onMouseEnter={handleAuthorMouseEnter} // Keep open if mouse enters tooltip
+                            onMouseLeave={handleAuthorMouseLeave} // Close if mouse leaves tooltip
+                        >
+                           <div className={styles.authorTooltipHeader}>
+                             <Image
+                                src={reviewData.author.tooltipImageUrl}
+                                alt={`${reviewData.author.name} headshot`}
+                                width={reviewData.author.tooltipImageWidth}
+                                height={reviewData.author.tooltipImageHeight}
+                                className={styles.authorTooltipImage}
+                             />
+                             <div className={styles.authorTooltipInfo}>
+                                 <span className={styles.authorTooltipName}>{reviewData.author.name}</span>
+                                 <span className={styles.authorTooltipTitle}>{reviewData.author.title}</span>
+                             </div>
+                           </div>
+                           {reviewData.author.expertise && reviewData.author.expertise.length > 0 && (
+                             <div className={styles.authorTooltipExpertise}>
+                                 <strong>Expertise</strong>
+                                 <ul>
+                                     {reviewData.author.expertise.map(area => <li key={area}>{area}</li>)}
+                                 </ul>
+                             </div>
+                           )}
+                           <p className={styles.authorTooltipBioSnippet}>{reviewData.author.bioSnippet}</p>
+                           {reviewData.author.fullBioLink && (
+                               <Link href={reviewData.author.fullBioLink} legacyBehavior>
+                                   <a className={styles.authorTooltipBioLink}>
+                                       See full bio
+                                       {/* Optional: Add an icon here */}
+                                   </a>
+                               </Link>
+                           )}
+                        </div>
+                    )}
+                    {/* --- End Author Bio Tooltip --- */}
+                </div>
+                {/* *** END AUTHOR BIO SECTION *** */}
                 <h1 className={styles.heroTitle}>
                   {reviewData.h1Content}
                 </h1>
