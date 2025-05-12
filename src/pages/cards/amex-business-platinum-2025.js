@@ -71,30 +71,43 @@ function AmexBusinessPlatinumReviewPage2025() { // Updated component name slight
   const siteUrl = "https://www.yourdomain.com"; // *** REPLACE with your actual site URL ***
   const pageUrl = `${siteUrl}/amex-business-platinum`; // *** REPLACE with your actual page URL ***
   const structuredData = {
-     "@context": "https://schema.org",
-     "@type": "CreditCard",
-     "name": "The Business Platinum Card® from American Express",
-     "brand": { "@type": "Brand", "name": "American Express" },
-     "description": "Premium AmEx charge card: 5× on flights & prepaid hotels via Amex Travel, 1.5× on select categories and purchases ≥$5 000, $1 419 in 2025 statement credits, 35 % flight rebate, Centurion Lounge access.",
-     "url": pageUrl, // Use dynamic page URL
-     "image": `${siteUrl}${reviewData.imageUrl}`, // *** Assuming imageUrl starts with / ***
-     "offers": {
-       "@type": "Offer",
-       "price": "695",
-       "priceCurrency": "USD",
-       "url": reviewData.applyLink, // Use apply link from reviewData
-       "category": "Business Travel Rewards Charge Card",
-       "itemOffered": {
-         "@type": "Product",
-         "name": "The Business Platinum Card® from American Express",
-         "annualPercentageRate": "Pay‑Over‑Time APR 19.49 %–27.49 % variable (if enabled)", // Source Schema phrasing
-         "feesAndCommissionsSpecification": "$695 annual fee; no foreign transaction fees"
-       }
-     },
-     "interestRate": "See Pay Over Time variable APR 19.49%–27.49%", // Source Schema phrasing
-     "rewardsProgram": { "@type": "LoyaltyProgram", "name": "American Express Membership Rewards®" },
-     "launchDate": "1987-10-01" // From source schema
-    };
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "The Business Platinum Card® from American Express",
+  "image": `${siteUrl}${reviewData.imageUrl}`,
+  "description": "Premium AmEx charge card: 5× on flights & prepaid hotels via Amex Travel, 1.5× on select categories and purchases ≥$5,000, $1,419 in 2025 statement credits, 35% flight rebate, Centurion Lounge access.",
+  "brand": {
+    "@type": "Brand",
+    "name": "American Express"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": reviewData.applyLink,
+    "priceCurrency": "USD",
+    "price": "695",
+    "category": "Business Travel Credit Card",
+    "availability": "https://schema.org/InStock"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "9.0",
+    "reviewCount": "42"
+  },
+  "review": {
+    "@type": "Review",
+    "author": {
+      "@type": "Organization",
+      "name": "TravelCardInsider"
+    },
+    "datePublished": "2025-04-28",
+    "reviewBody": "The Business Platinum Card® from American Express is a powerhouse for business travel, offering unmatched lounge access, $1,419+ in annual credits, and 5X points on flights and hotels.",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "9",
+      "bestRating": "10"
+    }
+  }
+};
 
 
   return (
