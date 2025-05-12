@@ -1,0 +1,140 @@
+/* styles/AuthorPage.module.css */
+
+.authorPageContainer {
+  max-width: 900px;
+  margin: 2rem auto 4rem auto;
+  padding: 1rem var(--spacing-md, 16px);
+  font-family: var(--font-family-main, sans-serif);
+  line-height: 1.7;
+  color: var(--text-medium);
+}
+
+.authorHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: var(--spacing-xl, 32px);
+  padding-bottom: var(--spacing-lg, 24px);
+  border-bottom: 1px solid var(--border-color-light);
+}
+
+.authorImageContainer {
+  margin-bottom: var(--spacing-md, 16px);
+}
+
+.authorProfileImage {
+  border-radius: 50%;
+  background-color: var(--border-color-light); /* Placeholder bg */
+  border: 3px solid var(--bg-white);
+  box-shadow: var(--shadow-md);
+}
+
+.authorInfo {
+  /* Styles for the text info container */
+}
+
+.authorName {
+  font-family: var(--font-family-serif, serif); /* Optional: Serif for name */
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  font-weight: var(--font-weight-bold, 700);
+  color: var(--text-dark);
+  margin: 0 0 var(--spacing-xs, 4px) 0;
+  line-height: 1.2;
+}
+
+.authorCredentials {
+  font-size: 0.7em; /* Smaller font size for credentials */
+  font-weight: var(--font-weight-medium, 500);
+  color: var(--text-light);
+  vertical-align: middle; /* Align slightly better with name */
+}
+
+.authorTitle {
+  font-size: 1.1rem;
+  font-weight: var(--font-weight-regular);
+  color: var(--text-medium);
+  margin: 0 0 var(--spacing-md, 16px) 0;
+}
+
+.authorSocialLinks {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-lg, 24px); /* Increased gap */
+}
+
+.authorSocialLinks a {
+  color: var(--text-light);
+  font-size: 1.5rem; /* Larger icons */
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-block;
+}
+
+.authorSocialLinks a:hover {
+  color: var(--primary-blue); /* Or your accent color */
+  transform: scale(1.1);
+}
+
+.authorBioSection,
+.authorStatsSection {
+  margin-bottom: var(--spacing-xl, 32px);
+}
+
+.authorBioSection h2,
+.authorStatsSection h2 {
+  font-family: var(--font-family-serif, serif);
+  font-size: 1.6rem;
+  font-weight: var(--font-weight-semibold, 600);
+  color: var(--text-dark);
+  margin-bottom: var(--spacing-md, 16px);
+  padding-bottom: var(--spacing-sm, 8px);
+  border-bottom: 1px solid var(--border-color-light);
+}
+
+.authorBioSection p {
+  margin-bottom: var(--spacing-md, 16px);
+  color: var(--text-medium);
+}
+
+.authorStatsSection ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.authorStatsSection li {
+  margin-bottom: var(--spacing-sm, 8px);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm, 8px);
+  font-size: 1rem;
+  color: var(--text-medium);
+}
+
+.authorStatsSection li span[role="img"] { /* Style the emojis */
+   font-size: 1.1em;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .authorHeader {
+    flex-direction: row;
+    text-align: left;
+    align-items: flex-start; /* Align items to top */
+    gap: var(--spacing-lg, 24px);
+  }
+  .authorImageContainer {
+    margin-bottom: 0;
+    flex-shrink: 0; /* Prevent image shrinking */
+  }
+  .authorInfo {
+    flex-grow: 1; /* Allow info to take remaining space */
+  }
+  .authorName {
+     font-size: clamp(2.2rem, 6vw, 2.8rem);
+  }
+  .authorSocialLinks {
+     justify-content: flex-start; /* Align links left on desktop */
+     margin-top: var(--spacing-md);
+  }
+}
