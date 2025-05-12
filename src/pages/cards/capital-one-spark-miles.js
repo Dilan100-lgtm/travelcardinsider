@@ -74,7 +74,7 @@ function SparkMilesReviewPage() {
   // Inline Structured Data
   // !!! VERIFY all URLs, counts, and details FOR SPARK MILES !!!
   const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
-  const pageUrl = `${siteUrl}/reviews/capital-one-spark-miles`; // *** REPLACE with your actual page URL ***
+  const pageUrl = `${siteUrl}/cards/capital-one-spark-miles`; // *** REPLACE with your actual page URL ***
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Product",

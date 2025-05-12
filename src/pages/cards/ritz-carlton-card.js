@@ -77,7 +77,7 @@ function RitzCarltonReviewPage() {
   // !!! VERIFY all URLs, counts, and details FOR RITZ-CARLTON CARD !!!
   // !!! Set availability to Discontinued as it's not open to new applicants !!!
   const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
-  const pageUrl = `${siteUrl}/reviews/ritz-carlton-credit-card`; // *** REPLACE with your actual page URL ***
+  const pageUrl = `${siteUrl}/cards/ritz-carlton-credit-card`; // *** REPLACE with your actual page URL ***
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Product",

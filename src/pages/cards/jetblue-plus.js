@@ -72,7 +72,7 @@ function JetBluePlusReviewPage() {
   // Inline Structured Data
   // !!! VERIFY all URLs, counts, and details FOR JETBLUE PLUS !!!
   const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
-  const pageUrl = `${siteUrl}/reviews/jetblue-plus`; // *** REPLACE with your actual page URL ***
+  const pageUrl = `${siteUrl}/cards/jetblue-plus`; // *** REPLACE with your actual page URL ***
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Product",

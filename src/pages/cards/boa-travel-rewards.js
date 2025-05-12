@@ -72,7 +72,7 @@ function BoATravelRewardsReviewPage() {
   // Inline Structured Data
   // !!! VERIFY all URLs, counts, and details FOR BOA TRAVEL REWARDS !!!
   const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
-  const pageUrl = `${siteUrl}/reviews/boa-travel-rewards`; // *** REPLACE with your actual page URL ***
+  const pageUrl = `${siteUrl}/cards/boa-travel-rewards`; // *** REPLACE with your actual page URL ***
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Product",

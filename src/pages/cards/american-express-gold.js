@@ -148,7 +148,7 @@ function AmexGoldReviewPage() {
 
 
   const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
-  const pageUrl = `${siteUrl}/reviews/american-express-gold`; // *** REPLACE with your actual page URL, ensure it matches your file structure, e.g., /cards/american-express-gold ***
+  const pageUrl = `${siteUrl}/cards/american-express-gold`; // *** REPLACE with your actual page URL, ensure it matches your file structure, e.g., /cards/american-express-gold ***
 
  const structuredData = {
   "@context": "https://schema.org",

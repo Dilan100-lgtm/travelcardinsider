@@ -73,7 +73,7 @@ function ChaseSapphireReserveReviewPage() {
   // Inline Structured Data
   // !!! VERIFY all URLs, counts, and details FOR CHASE SAPPHIRE RESERVE® !!!
   const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
-  const pageUrl = `${siteUrl}/reviews/chase-sapphire-reserve`; // *** REPLACE with your actual page URL ***
+  const pageUrl = `${siteUrl}/cards/chase-sapphire-reserve`; // *** REPLACE with your actual page URL ***
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Product",

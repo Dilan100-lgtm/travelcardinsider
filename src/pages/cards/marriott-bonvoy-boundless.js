@@ -72,7 +72,7 @@ function MarriottBonvoyBoundlessReviewPage() {
   // Inline Structured Data
   // !!! VERIFY all URLs, counts, and details FOR MARRIOTT BOUNDLESS !!!
   const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
-  const pageUrl = `${siteUrl}/reviews/marriott-bonvoy-boundless`; // *** REPLACE with your actual page URL ***
+  const pageUrl = `${siteUrl}/cards/marriott-bonvoy-boundless`; // *** REPLACE with your actual page URL ***
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Product",

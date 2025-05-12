@@ -71,7 +71,7 @@ function CapitalOneVentureReviewPage() {
   // Inline Structured Data
   // !!! VERIFY all URLs, counts, and details FOR STANDARD VENTURE CARD !!!
   const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
-  const pageUrl = `${siteUrl}/reviews/capital-one-venture`; // *** REPLACE with your actual page URL ***
+  const pageUrl = `${siteUrl}/cards/capital-one-venture`; // *** REPLACE with your actual page URL ***
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Product", // Using Product schema

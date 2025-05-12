@@ -72,7 +72,7 @@ function WellsFargoReflectReviewPage() {
   // Inline Structured Data
   // !!! VERIFY all URLs, counts, and details FOR WF REFLECT !!!
   const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
-  const pageUrl = `${siteUrl}/reviews/wells-fargo-reflect`; // *** REPLACE with your actual page URL ***
+  const pageUrl = `${siteUrl}/cards/wells-fargo-reflect`; // *** REPLACE with your actual page URL ***
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Product",

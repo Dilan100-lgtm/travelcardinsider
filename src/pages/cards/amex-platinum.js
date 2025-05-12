@@ -74,7 +74,7 @@ function AmexPlatinumReviewPage() {
   // !!! VERIFY all URLs, counts, and details FOR AMEX PLATINUM !!!
   // KEEPING ORIGINAL SCHEMA STRUCTURE AND PLACEHOLDERS
   const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
-  const pageUrl = `${siteUrl}/reviews/amex-platinum`; // *** REPLACE with your actual page URL ***
+  const pageUrl = `${siteUrl}/cards/amex-platinum`; // *** REPLACE with your actual page URL ***
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Product",

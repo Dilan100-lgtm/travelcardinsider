@@ -74,7 +74,7 @@ function CitiStrataPremierReviewPage() {
   // !!! VERIFY all URLs, counts, and details FOR CITI STRATA PREMIER !!!
   // !!! Note: Schema reflects data provided but card may be hypothetical !!!
   const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
-  const pageUrl = `${siteUrl}/reviews/citi-strata-premier`; // *** REPLACE with your actual page URL ***
+  const pageUrl = `${siteUrl}/cards/citi-strata-premier`; // *** REPLACE with your actual page URL ***
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Product",

@@ -75,7 +75,7 @@ function HiltonHonorsSurpassReviewPage() {
   // Inline Structured Data
   // !!! VERIFY all URLs, counts, and details FOR HILTON SURPASS AMEX !!!
   const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
-  const pageUrl = `${siteUrl}/reviews/hilton-honors-surpass`; // *** REPLACE with your actual page URL ***
+  const pageUrl = `${siteUrl}/cards/hilton-honors-surpass`; // *** REPLACE with your actual page URL ***
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Product",

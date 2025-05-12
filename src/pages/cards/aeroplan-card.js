@@ -72,7 +72,7 @@ function AeroplanCardReviewPage() {
   // Inline Structured Data
   // !!! VERIFY all URLs, counts, and details FOR AEROPLAN CARD !!!
   const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
-  const pageUrl = `${siteUrl}/reviews/aeroplan-card`; // *** REPLACE with your actual page URL ***
+  const pageUrl = `${siteUrl}/cards/aeroplan-card`; // *** REPLACE with your actual page URL ***
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Product",

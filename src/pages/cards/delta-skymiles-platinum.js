@@ -72,7 +72,7 @@ function DeltaSkyMilesPlatinumReviewPage() {
   // Inline Structured Data
   // !!! VERIFY all URLs, counts, and details FOR DELTA PLATINUM AMEX !!!
   const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
-  const pageUrl = `${siteUrl}/reviews/delta-skymiles-platinum`; // *** REPLACE with your actual page URL ***
+  const pageUrl = `${siteUrl}/cards/delta-skymiles-platinum`; // *** REPLACE with your actual page URL ***
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Product",

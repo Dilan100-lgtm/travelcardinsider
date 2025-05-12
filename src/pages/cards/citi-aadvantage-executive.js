@@ -72,7 +72,7 @@ function CitiAAdvantageExecutiveReviewPage() {
   // Inline Structured Data
   // !!! VERIFY all URLs, counts, and details FOR CITI AA EXECUTIVE !!!
   const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
-  const pageUrl = `${siteUrl}/reviews/citi-aadvantage-executive`; // *** REPLACE with your actual page URL ***
+  const pageUrl = `${siteUrl}/cards/citi-aadvantage-executive`; // *** REPLACE with your actual page URL ***
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Product",

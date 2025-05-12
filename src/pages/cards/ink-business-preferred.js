@@ -72,7 +72,7 @@ function InkBusinessPreferredReviewPage() {
   // Inline Structured Data
   // !!! VERIFY all URLs, counts, and details FOR INK BIZ PREFERRED !!!
   const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
-  const pageUrl = `${siteUrl}/reviews/ink-business-preferred`; // *** REPLACE with your actual page URL ***
+  const pageUrl = `${siteUrl}/cards/ink-business-preferred`; // *** REPLACE with your actual page URL ***
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Product",

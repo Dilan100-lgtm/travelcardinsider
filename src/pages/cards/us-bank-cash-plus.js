@@ -72,7 +72,7 @@ function USBankCashPlusReviewPage() {
   // Inline Structured Data
   // !!! VERIFY all URLs, counts, and details FOR US BANK CASH+ !!!
   const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
-  const pageUrl = `${siteUrl}/reviews/us-bank-cash-plus`; // *** REPLACE with your actual page URL ***
+  const pageUrl = `${siteUrl}/cards/us-bank-cash-plus`; // *** REPLACE with your actual page URL ***
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Product",

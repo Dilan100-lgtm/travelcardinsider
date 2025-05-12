@@ -72,7 +72,7 @@ function CitiCustomCashReviewPage() {
   // Inline Structured Data
   // !!! VERIFY all URLs, counts, and details FOR CITI CUSTOM CASH !!!
   const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
-  const pageUrl = `${siteUrl}/reviews/citi-custom-cash`; // *** REPLACE with your actual page URL ***
+  const pageUrl = `${siteUrl}/cards/citi-custom-cash`; // *** REPLACE with your actual page URL ***
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Product",

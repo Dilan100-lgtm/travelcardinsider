@@ -71,7 +71,7 @@ function MarriottBonvoyBrilliantReviewPage() {
   // Inline Structured Data
   // !!! VERIFY all URLs, counts, and details FOR MARRIOTT BRILLIANT !!!
   const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
-  const pageUrl = `${siteUrl}/reviews/marriott-bonvoy-brilliant`; // *** REPLACE with your actual page URL ***
+  const pageUrl = `${siteUrl}/cards/marriott-bonvoy-brilliant`; // *** REPLACE with your actual page URL ***
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Product",

@@ -72,7 +72,7 @@ function AlaskaVisaSignatureReviewPage() {
   // Inline Structured Data
   // !!! VERIFY all URLs, counts, and details FOR ALASKA VISA SIGNATURE !!!
   const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
-  const pageUrl = `${siteUrl}/reviews/alaska-visa-signature`; // *** REPLACE with your actual page URL ***
+  const pageUrl = `${siteUrl}/cards/alaska-visa-signature`; // *** REPLACE with your actual page URL ***
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Product",

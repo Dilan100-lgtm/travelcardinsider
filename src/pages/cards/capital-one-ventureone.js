@@ -72,7 +72,7 @@ function VentureOneReviewPage() {
   // Inline Structured Data
   // !!! VERIFY all URLs, counts, and details FOR VENTUREONE !!!
   const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
-  const pageUrl = `${siteUrl}/reviews/capital-one-ventureone`; // *** REPLACE with your actual page URL ***
+  const pageUrl = `${siteUrl}/cards/capital-one-ventureone`; // *** REPLACE with your actual page URL ***
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Product",

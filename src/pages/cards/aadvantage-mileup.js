@@ -72,7 +72,7 @@ function AAdvantageMileUpReviewPage() {
   // Inline Structured Data
   // !!! VERIFY all URLs, counts, and details FOR AA MILEUP CARD !!!
   const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
-  const pageUrl = `${siteUrl}/reviews/aa-mileup`; // *** REPLACE with your actual page URL ***
+  const pageUrl = `${siteUrl}/cards/aa-mileup`; // *** REPLACE with your actual page URL ***
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Product",

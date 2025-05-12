@@ -73,7 +73,7 @@ function AmexBusinessGoldReviewPage() {
   // Inline Structured Data
   // !!! VERIFY all URLs, counts, and details FOR AMEX BUSINESS GOLD CARD !!!
   const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
-  const pageUrl = `${siteUrl}/reviews/amex-business-gold`; // *** REPLACE with your actual page URL ***
+  const pageUrl = `${siteUrl}/cards/amex-business-gold`; // *** REPLACE with your actual page URL ***
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Product", // Using Product schema
