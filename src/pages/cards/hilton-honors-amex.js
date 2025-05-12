@@ -1,647 +1,1189 @@
-// Example Path: pages/reviews/hilton-honors-amex.js
-// Or: pages/reviews/[slug].js (if using dynamic routing with 'hilton-honors-amex' as slug)
+/* ------------------------------------------------------------------
+    File:  pages/reviews/hilton-honors-amex.js
+    Route: https://www.travelcardinsider.com/reviews/hilton-honors-amex
+------------------------------------------------------------------- */
 
-// !!! WARNING: THIS FILE CONTAINS PLACEHOLDER DATA/URLs/DIMENSIONS !!!
-// !!! YOU MUST REPLACE ALL PLACEHOLDERS MARKED WITH '!!!' BEFORE DEPLOYMENT !!!
-// !!! VERIFY ALL CARD DETAILS & SCHEMA VALUES AGAINST OFFICIAL ISSUER INFO !!!
-
-import React, { useState, useEffect, useCallback, useRef } from 'react'; // Hooks for tooltip
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from '../../styles/ReviewPage.module.css'; // Using the REVIEW CSS module
-import Header from '../../components/Header'; // Assuming you have these components
-import Footer from '../../components/Footer'; // Assuming you have these components
+import dynamic from 'next/dynamic';
+import styles from '../../styles/ReviewPage.module.css'; // Assuming same CSS module from
 
-// Simplified data object based on the final template structure
-const reviewData = {
-  cardName: 'Hilton Honors American Express Card',
-  title: 'Hilton Honors American Express Card – 2025 In-Depth Review',
-  description: 'A 2,500-word comprehensive review of the Hilton Honors American Express Card. Explore 7x at Hilton hotels, no annual fee, advanced usage tips, synergy with other Amex Hilton cards, disclaimers, and more for 2025.',
-  keywords: 'Hilton Honors, American Express, no annual fee, travel credit card, hotel rewards, 2025 updates',
-  author: 'TravelCardInsider', // *** REPLACE with your actual author/site name ***
-  imageUrl: '/NUS000000327_480x304_straight_withname.avif', // *** VERIFY PATH in /public ***
-  ratingValue: 6.8, // From Hilton Honors Amex HTML
-  applyLink: 'https://www.americanexpress.com/us/credit-cards/card/hilton-honors/', // *** REPLACE with actual Hilton Honors Amex APPLY URL ***
-  ratesLink: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/hilton-honors-credit-card/25330-10-0#FeeTable', // *** VERIFY URL ***
-  // Image dimensions (MUST BE ACCURATE for next/image) - Guessed from filename
-  imageWidth: 480, // *** REPLACE with actual image width ***
-  imageHeight: 304, // *** REPLACE with actual image height ***
+import TableOfContents    from '../../components/TableOfContents'; // Assuming same TOC component from
+// Assuming you have similar icon components or will adapt these:
+import IconGift from '../../components/icons/icon-gift.svg'; // from
+import IconStar from '../../components/icons/icon-star.svg'; // from
+import IconCheck from '../../components/icons/icon-Credit Card.svg'; // from - Reused for Key Benefit
+import IconX from '../../components/icons/icon-Star + Arrow Up.svg'; // from - Reused for Top Earning
+import IconPlus from '../../components/icons/icon-target.svg'; // from
+
+const RatingTooltip = dynamic(() => import('../../components/RatingTooltip'), { ssr: false, loading: () => null }); // from
+
+/* ──────────────────────────────
+    CONSTANTS & STATIC DATA
+    ────────────────────────────── */
+const siteName    = 'TravelCardInsider'; // from
+const siteUrl     = 'https://www.travelcardinsider.com'; // from
+const pagePath    = '/reviews/hilton-honors-amex'; // Updated path
+const pageUrlFull = `${siteUrl}${pagePath}`;
+const publishDate = '2025-05-12'; // *** PLACEHOLDER *** Update publish date
+const updateDate  = '2025-05-12'; // *** PLACEHOLDER *** Update modification date
+
+const reviewDataHilton = {
+  cardName        : 'Hilton Honors American Express Card',
+  title           : 'Hilton Honors American Express Card Review (2025): No-Fee Status Perks', // Generated Title
+  description     : 'In-depth 2025 review of the no-annual-fee Hilton Honors American Express Card. Get Silver status, earn points on Hilton stays & US spending, and enjoy no foreign transaction fees. Ideal for occasional Hilton guests.', // Generated Description
+  keywords        : 'Hilton Honors American Express Card review, Hilton Amex review, no annual fee hotel card, Hilton Silver status, Hilton points, Amex Hilton card, no foreign transaction fee card', // Generated Keywords
+  // --- AUTHOR DETAILS - *** PLACEHOLDER: Update with actual author info *** ---
+  author: {
+      name: 'Dilan Madushanka', // Placeholder from
+      title: 'Founder & Lead Editor', // Placeholder from
+      imageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // Placeholder from
+      imageWidth: 40, // Placeholder from
+      imageHeight: 40, // Placeholder from
+      tooltipImageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // Placeholder from
+      tooltipImageWidth: 60, // Placeholder from
+      tooltipImageHeight: 60, // Placeholder from
+      expertise: [ // Placeholder from
+          'Travel Credit Cards',
+          'Rewards Programs',
+          'Hotel Loyalty Programs',
+          'Maximizing Card Benefits',
+          'Credit Card Analysis'
+      ],
+      bioSnippet: 'Dilan Madushanka is the founder and lead editor of TravelCardInsider.com, dedicated to demystifying credit cards and uncovering their real-world value for smarter travel.', // Placeholder from
+      fullBioLink: '/author/dilan-madushanka', // Placeholder from
+      fullBio: `Dilan Madushanka is the founder and lead editor of TravelCardInsider.com... [Add full bio here]`, // Placeholder from
+      publishedStats: '6+ in-depth card reviews per week', // Placeholder from
+      testedStats: 'Over 50 credit card benefits across major brands', // Placeholder from
+      socialLinks: { // Placeholder from
+          linkedin: 'https://www.linkedin.com/in/YOUR_LINKEDIN_PROFILE_URL', // *** REPLACE ***
+          twitter: 'https://twitter.com/YOUR_TWITTER_HANDLE', // *** REPLACE ***
+          email: 'dilan@travelcardinsider.com' // *** REPLACE ***
+      }
+  },
+  // --- End Author Details ---
+  siteName: 'TravelCardInsider',
+  imageUrl        : '/NUS000000327_480x304_straight_withname.avif', // *** PLACEHOLDER: Update with actual card image URL ***
+  imageWidth      : 1290, // *** PLACEHOLDER: Adjust width ***
+  imageHeight     : 812, // *** PLACEHOLDER: Adjust height ***
+  ratingValue     : 6.8, // Converted from 3.5/5 Stars (3.5 / 5 * 10)
+  ratingCount     : 150, // *** PLACEHOLDER: Update with estimated review count ***
+  reviewBody      : "Our editors evaluate the Hilton Honors American Express Card based on its rewards structure, fees, included Silver status benefits, travel protections, and overall value for US travelers, especially those who stay occasionally at Hilton properties and prefer no annual fee.", // Generated reviewBody
+  // APR and Fee info extracted from review text Section 12
+  aprRange        : '20.99% – 29.99% Variable', // From review text (Section 12)
+  annualFee       : 0, // From review text (Section 3 & 12)
+  applyLink       : 'https://www.americanexpress.com/en-us/credit-cards/card/hilton-honors/', // *** PLACEHOLDER: Verify & update apply link ***
+  ratesLink       : 'https://www.americanexpress.com/us/credit-cards/card-application/apply/hilton-honors-credit-card/49003-10-0', // *** PLACEHOLDER: Verify & update rates link ***
+  sku             : 'AMEX-HILTON-TCI-2025', // *** PLACEHOLDER: Update SKU ***
+  mpn             : 'AMEXHILTONHONORS', // *** PLACEHOLDER: Update MPN ***
+  h1Content       : "Hilton Honors Amex Review: No-Fee Status & Points", // Generated H1
 };
 
-// --- Rating Tooltip Content (Customize if needed for Hilton Honors Amex) ---
-const ratingCriteria = [ // *** VERIFY/CUSTOMIZE these criteria for Hilton Honors Amex Rating ***
-    'No Annual Fee',
-    'Hilton Points Earning (7x/5x/3x)',
-    'Automatic Silver Status',
-    'Welcome Bonus Value',
-    'Foreign Transaction Fee (2.7%)' // Note this drawback
+/* ──────────────────────────────
+    STRUCTURED DATA GRAPH
+    ────────────────────────────── */
+// Adapted structured data from using reviewDataHilton
+const structuredDataOptimized = {
+  '@context': 'https://schema.org',
+  '@graph'  : [
+    {
+      '@type'        : 'Product',
+      '@id'          : `${pageUrlFull}#product`,
+      name           : reviewDataHilton.cardName,
+      image          : reviewDataHilton.imageUrl, // *** PLACEHOLDER ***
+      description    : reviewDataHilton.description,
+      sku            : reviewDataHilton.sku, // *** PLACEHOLDER ***
+      mpn            : reviewDataHilton.mpn, // *** PLACEHOLDER ***
+      brand          : { '@type': 'Brand', name: 'American Express' }, // Updated Brand
+      aggregateRating: {
+        '@type'    : 'AggregateRating',
+        ratingValue : reviewDataHilton.ratingValue.toString(),
+        bestRating  : '10',
+        worstRating : '1',
+        ratingCount : reviewDataHilton.ratingCount.toString(), // *** PLACEHOLDER ***
+        reviewCount : '1', // Represents this editorial review
+      },
+      offers: {
+        '@type'            : 'Offer',
+        url                : reviewDataHilton.applyLink, // *** PLACEHOLDER ***
+        priceCurrency      : 'USD',
+        price              : reviewDataHilton.annualFee.toString(),
+        priceValidUntil    : '2026-12-31', // *** PLACEHOLDER ***
+        itemCondition      : 'https://schema.org/NewCondition',
+        availability       : 'https://schema.org/InStock',
+        priceSpecification: [
+          {
+            '@type'              : 'PriceSpecification',
+            priceCurrency        : 'USD',
+            price                : reviewDataHilton.annualFee.toString(),
+            valueAddedTaxIncluded: 'false',
+            description          : 'Annual fee',
+          },
+          {
+            '@type'              : 'PriceSpecification',
+            priceCurrency        : 'USD',
+            description          : `Purchase APR: ${reviewDataHilton.aprRange}`,
+          },
+        ],
+        seller: { '@type': 'Organization', name: 'American Express' }, // Updated Seller
+      },
+      review: { '@id': `${pageUrlFull}#editorReview` },
+    },
+    {
+      '@type'         : 'Review',
+      '@id'           : `${pageUrlFull}#editorReview`,
+      name            : `${reviewDataHilton.cardName} – Review Updated ${updateDate}`, // *** PLACEHOLDER ***
+      itemReviewed    : { '@id': `${pageUrlFull}#product` },
+      reviewBody      : reviewDataHilton.reviewBody,
+      reviewRating    : {
+        '@type'    : 'Rating',
+        ratingValue : reviewDataHilton.ratingValue.toString(),
+        bestRating  : '10',
+        worstRating : '1',
+        description: `TravelCardInsider editorial rating based on 5.0 scale converted to 10.0 scale, as of ${updateDate}.` // *** PLACEHOLDER ***
+      },
+      author          : { // Using Person type based on correction in
+          '@type': 'Person',
+          'name': reviewDataHilton.author.name, // *** PLACEHOLDER ***
+          'url': reviewDataHilton.author.fullBioLink ? `${siteUrl}${reviewDataHilton.author.fullBioLink}` : undefined // *** PLACEHOLDER ***
+      },
+      publisher       : {
+        '@type' : 'Organization',
+        name    : siteName,
+        logo    : { '@type': 'ImageObject', url: `${siteUrl}/images/logo/tci-logo-schema.png` }, // from - Ensure this exists
+      },
+      datePublished   : publishDate, // *** PLACEHOLDER ***
+      dateModified    : updateDate, // *** PLACEHOLDER ***
+    },
+    {
+      '@type'            : 'WebPage',
+      '@id'              : pageUrlFull,
+      url                : pageUrlFull,
+      name               : reviewDataHilton.title,
+      description        : reviewDataHilton.description,
+      inLanguage         : 'en-US',
+      isPartOf           : { '@id': `${siteUrl}#website` },
+      primaryImageOfPage : { '@id': `${pageUrlFull}#primaryImage` },
+      breadcrumb         : { '@id': `${pageUrlFull}#breadcrumbs` },
+      datePublished      : publishDate, // *** PLACEHOLDER ***
+      dateModified       : updateDate, // *** PLACEHOLDER ***
+       author: { // Using Person type based on correction in
+          '@type': 'Person',
+          'name': reviewDataHilton.author.name, // *** PLACEHOLDER ***
+          'url': reviewDataHilton.author.fullBioLink ? `${siteUrl}${reviewDataHilton.author.fullBioLink}` : undefined // *** PLACEHOLDER ***
+       },
+    },
+    {
+      '@type'   : 'ImageObject',
+      '@id'     : `${pageUrlFull}#primaryImage`,
+      url       : reviewDataHilton.imageUrl, // *** PLACEHOLDER ***
+      width     : reviewDataHilton.imageWidth, // *** PLACEHOLDER ***
+      height    : reviewDataHilton.imageHeight, // *** PLACEHOLDER ***
+      caption   : reviewDataHilton.cardName,
+    },
+    {
+      '@type'        : 'BreadcrumbList',
+      '@id'          : `${pageUrlFull}#breadcrumbs`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: siteName, item: siteUrl },
+        { '@type': 'ListItem', position: 2, name: 'Credit Card Reviews', item: `${siteUrl}/reviews` }, // from
+        { '@type': 'ListItem', position: 3, name: `${reviewDataHilton.cardName} Review`, item: pageUrlFull },
+      ],
+    },
+    { // FAQ data extracted from review text Section 20
+      '@type'    : 'FAQPage',
+      '@id'      : `${pageUrlFull}#faqs`,
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name   : 'Annual Fee?',
+          acceptedAnswer: { '@type': 'Answer', text: "$0." },
+        },
+        {
+          '@type': 'Question',
+          name   : 'Welcome Offer?',
+          acceptedAnswer: { '@type': 'Answer', text: "Often 80k points after $2k spend in 6 months (check current offer)." },
+        },
+        {
+          '@type': 'Question',
+          name   : 'Credit Score Needed?',
+          acceptedAnswer: { '@type': 'Answer', text: "Good to Excellent (typically FICO 670+)." },
+        },
+        {
+          '@type': 'Question',
+          name   : 'Foreign Transaction Fees?',
+          acceptedAnswer: { '@type': 'Answer', text: "None." },
+        },
+        {
+          '@type': 'Question',
+          name   : 'Main Silver Benefits?',
+          acceptedAnswer: { '@type': 'Answer', text: "20% points bonus on stays, 5th Night Free on award stays, points don't expire with status." },
+        },
+        {
+          '@type': 'Question',
+          name   : 'Earn Gold Status?',
+          acceptedAnswer: { '@type': 'Answer', text: "Yes, by spending $20k/year (often inefficient)." },
+        },
+         {
+          '@type': 'Question',
+          name   : 'Hilton Point Value?',
+          acceptedAnswer: { '@type': 'Answer', text: "Around 0.5-0.6 cents each." },
+        },
+         {
+          '@type': 'Question',
+          name   : 'Good for Everyday Spend?',
+          acceptedAnswer: { '@type': 'Answer', text: "Decent for U.S. bonus categories (5X), less competitive elsewhere (3X), value depends on using points well." },
+        },
+         {
+          '@type': 'Question',
+          name   : 'Lounge Access?',
+          acceptedAnswer: { '@type': 'Answer', text: "No." },
+        }
+      ],
+    },
+    { // Copied from
+      '@type' : 'Organization',
+      '@id'   : `${siteUrl}#website`,
+      name    : siteName,
+      url     : siteUrl,
+      logo    : { '@type': 'ImageObject', url: `${siteUrl}/images/logo/tci-logo-schema.png` }, // from - Ensure this logo exists
+      sameAs  : [
+        // 'https://www.facebook.com/TravelCardInsider', // *** REPLACE with actual ***
+        // 'https://www.instagram.com/travelcardinsider', // *** REPLACE with actual ***
+        // 'https://twitter.com/travelcardinsider', // *** REPLACE with actual ***
+      ],
+    },
+  ],
+};
+
+// Adapted rating criteria based on Hilton review focus
+const ratingCriteriaHilton = [
+    'Hilton Stay Earning Rate (7X)',
+    'US Bonus Categories (5X)',
+    'No Foreign Transaction Fees',
+    'Annual Fee ($0)',
+    'Complimentary Silver Status (5th Night Free)',
+    'Welcome Offer & Protections'
 ];
 
+// TOC sections based on the Hilton review headings
+const tocSectionsHilton = [
+    { id: 'section-1', title: 'Card Snapshot & "Best For" Tagline' },
+    { id: 'section-2', title: "Editor's Rating & Concise Verdict and High-Quality Card Image" },
+    { id: 'section-3', title: 'Key Features Overview' },
+    { id: 'section-4', title: 'Current Welcome Offer & Eligibility Deep Dive' },
+    { id: 'section-5', title: 'Annual Fee: Why $0 Doesn\'t Mean Zero Value' },
+    { id: 'section-6', title: 'Comprehensive Rewards Earning Structure' },
+    { id: 'section-7', title: 'Redemption Strategies & Point/Mile Valuation' },
+    { id: 'section-8', title: 'Loyalty Program Deep Dive & Partner Network Analysis' },
+    { id: 'section-9', title: 'Travel-Specific Benefits & Credits (Maximization Guide - Focus on Status Path)' },
+    { id: 'section-10', title: 'Travel & Purchase Protections (Insurance Explained Simply)' },
+    { id: 'section-11', title: 'Security, Convenience & Tech Features' },
+    { id: 'section-12', title: 'Full Spectrum of Rates & Fees (Transparency is Key)' },
+    { id: 'section-13', title: 'Credit Score Guidance & Application Insights' },
+    { id: 'section-14', title: '"Is This Card Your Perfect Travel Companion?" (Detailed User Profiling)' },
+    { id: 'section-15', title: 'Unbiased Pros & Cons (Comprehensive & Balanced)' },
+    { id: 'section-16', title: 'Head-to-Head: How It Stacks Up Against Key Competitors' },
+    { id: 'section-17', title: 'Exclusive Expert Tips & Hidden Value Unlocked' },
+    { id: 'section-18', title: 'Aggregated User Sentiment & Real-World Experiences and Real-Life Spend Examples / Estimated Value' },
+    { id: 'section-19', title: '"The Final Takeaway": Authoritative Recommendation & Alternatives' },
+    { id: 'section-20', title: 'Card-Specific Frequently Asked Questions (FAQs)' },
+  ];
+
+// DraggableTableWrapper component copied directly from
+function DraggableTableWrapper({ children }) {
+  const containerRef = useRef(null);
+  useEffect(() => {
+    if (typeof window === 'undefined' || window.innerWidth < 768) return;
+    const el = containerRef.current;
+    if (!el) return;
+    let isDragging = false, startX = 0, scrollStart = 0;
+    const startDrag = (e) => {
+      isDragging = true; el.classList.add(styles.grabbing);
+      startX = e.pageX || e.touches?.[0]?.pageX; scrollStart = el.scrollLeft;
+      e.preventDefault();
+    };
+    const stopDrag = () => { isDragging = false; el.classList.remove(styles.grabbing); };
+    const onMove = (e) => {
+      if (!isDragging) return; e.preventDefault();
+      const x = e.pageX || e.touches?.[0]?.pageX;
+      el.scrollLeft = scrollStart - (x - startX);
+    };
+    el.addEventListener('mousedown', startDrag);
+    document.addEventListener('mouseup', stopDrag);
+    document.addEventListener('mouseleave', stopDrag);
+    el.addEventListener('mousemove', onMove);
+    el.addEventListener('touchstart', startDrag, { passive: false });
+    document.addEventListener('touchend', stopDrag);
+    el.addEventListener('touchmove', onMove, { passive: false });
+    return () => {
+      el.removeEventListener('mousedown', startDrag);
+      document.removeEventListener('mouseup', stopDrag);
+      document.removeEventListener('mouseleave', stopDrag);
+      el.removeEventListener('mousemove', onMove);
+      el.removeEventListener('touchstart', startDrag);
+      document.removeEventListener('touchend', stopDrag);
+      el.removeEventListener('touchmove', onMove);
+    };
+  }, []);
+  return (<div ref={containerRef} className={styles.draggableScrollContainer}>{children}</div>);
+}
+
+/* ──────────────────────────────
+    COMPONENT
+    ────────────────────────────── */
 function HiltonHonorsAmexReviewPage() {
-  // --- Tooltip State and Logic ---
+  // State and effect hooks copied from
   const [showRatingInfo, setShowRatingInfo] = useState(false);
-  const tooltipRef = useRef(null);
+  const [showAuthorBioTooltip, setShowAuthorBioTooltip] = useState(false);
+  const authorRef = useRef(null);
+  const authorTooltipRef = useRef(null);
+  const ratingTooltipRef = useRef(null);
 
   const handleIconClick = useCallback((event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        setShowRatingInfo(prevState => !prevState);
-    }, []);
+      event.preventDefault();
+      event.stopPropagation();
+      setShowRatingInfo(prevState => !prevState);
+  }, []);
 
-    const closeTooltip = useCallback(() => {
-        setShowRatingInfo(false);
-    }, []);
+  const handleAuthorMouseEnter = useCallback(() => {
+      setShowAuthorBioTooltip(true);
+  }, []);
 
-    useEffect(() => {
-        if (!showRatingInfo) return;
-        const handleClickOutside = (event) => {
-            const isInfoButton = event.target.closest(`.${styles.infoIconButton}`);
-            if (tooltipRef.current && !tooltipRef.current.contains(event.target) && !isInfoButton) {
-                closeTooltip();
-            }
-        };
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, [showRatingInfo, closeTooltip]);
-  // --- End Tooltip State and Logic ---
+  const handleAuthorMouseLeave = useCallback(() => {
+      const timerId = setTimeout(() => {
+          if (authorRef.current && authorTooltipRef.current) {
+              const isHoveringTrigger = authorRef.current.matches(':hover');
+              const isHoveringTooltip = authorTooltipRef.current.matches(':hover');
+              const isFocusWithinTrigger = authorRef.current.contains(document.activeElement);
+              const isFocusWithinTooltip = authorTooltipRef.current.contains(document.activeElement);
+              if (!isHoveringTrigger && !isHoveringTooltip && !isFocusWithinTrigger && !isFocusWithinTooltip) {
+                 setShowAuthorBioTooltip(false);
+              }
+          } else if (!authorRef.current?.matches(':hover') && !authorTooltipRef.current?.matches(':hover')) {
+               setShowAuthorBioTooltip(false);
+          }
+      }, 150);
+      authorRef.current.tooltipTimeoutId = timerId;
+  }, [authorRef, authorTooltipRef]);
+
+   const handleAuthorClearTimeout = useCallback(() => {
+      if (authorRef.current?.tooltipTimeoutId) {
+          clearTimeout(authorRef.current.tooltipTimeoutId);
+      }
+   }, [authorRef]);
 
 
-  // Inline Structured Data
-  // !!! VERIFY all URLs, counts, and details FOR HILTON HONORS AMEX !!!
-  const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
-  const pageUrl = `${siteUrl}/cards/hilton-honors-amex`; // *** REPLACE with your actual page URL ***
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "Hilton Honors American Express Card",
-    "image": `${siteUrl}${reviewData.imageUrl}`, // *** Assuming imageUrl starts with / ***
-    "description": "A no-annual-fee Hilton Honors AMEX offering 7x at Hilton properties, 5x at U.S. restaurants, supermarkets, and gas stations, plus automatic Silver status.", // Adjusted description
-    "brand": {
-      "@type": "Brand",
-      "name": "American Express"
-    },
-     "review": {
-      "@type": "Review",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": reviewData.ratingValue.toString(),
-        "bestRating": "10",
-        "worstRating": "1"
-      },
-      "author": {
-        "@type": "Organization",
-        "name": reviewData.author
-      },
-      "reviewBody": reviewData.description // Use meta description
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": reviewData.ratingValue.toString(),
-      "bestRating": "10",
-      "worstRating": "1",
-      "ratingCount": 420, // *** REPLACE with actual or estimated count ***
-      "reviewCount": 420  // *** REPLACE with actual or estimated count ***
-    },
-    "offers": {
-      "@type": "Offer",
-      "url": reviewData.applyLink.startsWith('http') ? reviewData.applyLink : `${siteUrl}${reviewData.applyLink}`, // *** Ensure full APPLY URL ***
-      "priceCurrency": "USD",
-      "price": "0", // Annual Fee for Hilton Honors Amex
-      "availability": "https://schema.org/InStock",
-      "itemCondition": "https://schema.org/NewCondition"
-    }
-    // Consider adding "provider": { "@type": "Organization", "name": "Hilton" }
-  };
+  useEffect(() => {
+      function handleClickOutside(event) {
+          if (showAuthorBioTooltip &&
+              authorRef.current && !authorRef.current.contains(event.target) &&
+              authorTooltipRef.current && !authorTooltipRef.current.contains(event.target)) {
+              setShowAuthorBioTooltip(false);
+          }
+          if (showRatingInfo &&
+              !event.target.closest(`.${styles.infoIconButton}`) &&
+              ratingTooltipRef.current && !ratingTooltipRef.current.contains(event.target)
+             ) {
+               setShowRatingInfo(false);
+          }
+      }
+
+      if (showAuthorBioTooltip || showRatingInfo) {
+          document.addEventListener("mousedown", handleClickOutside);
+      } else {
+           document.removeEventListener("mousedown", handleClickOutside);
+      }
+      return () => {
+          document.removeEventListener("mousedown", handleClickOutside);
+      };
+  }, [showAuthorBioTooltip, authorRef, authorTooltipRef, showRatingInfo, ratingTooltipRef]);
 
 
   return (
     <>
-      {/* ===== HEAD SECTION for Metadata & SEO ===== */}
+      {/* Head component structure copied from, updated with reviewDataHilton */}
       <Head>
-        <title>{reviewData.title}</title>
-        <meta name="description" content={reviewData.description} />
-        <meta name="keywords" content={reviewData.keywords} />
-        <meta name="author" content={reviewData.author} />
-        <link rel="canonical" href={pageUrl} />
-        {/* Preload critical fonts */}
-        <link rel="preload" href="/fonts/Roboto_Condensed-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/Roboto_Condensed-Bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/PlayfairDisplay-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/Playfair-Display-Bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-
-        {/* OG/Twitter tags */}
-        <meta property="og:title" content={reviewData.title} />
-        <meta property="og:description" content={reviewData.description} />
-        <meta property="og:url" content={pageUrl} />
-        <meta property="og:image" content={structuredData.image} />
-        <meta property="og:type" content="article" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={reviewData.title} />
-        <meta name="twitter:description" content={reviewData.description} />
-        <meta name="twitter:image" content={structuredData.image} />
-
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-
-        {/* Structured Data (JSON-LD) */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
+        <title>{reviewDataHilton.title}</title>
+        <meta name="description" content={reviewDataHilton.description} />
+        <meta name="keywords" content={reviewDataHilton.keywords} />
+        <meta name="author" content={reviewDataHilton.author.name} /> {/* *** PLACEHOLDER *** */}
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta name="robots" content="index,follow,max-image-preview:large" />
+        <link rel="canonical" href={pageUrlFull} />
+        <link rel="alternate" href={pageUrlFull} hreflang="en-us" />
+        <link rel="preload" as="image" href={reviewDataHilton.imageUrl} /> {/* *** PLACEHOLDER *** */}
+        {/* Preload author images - *** PLACEHOLDER *** */}
+        <link rel="preload" as="image" href={reviewDataHilton.author.imageUrl} />
+        <link rel="preload" as="image" href={reviewDataHilton.author.tooltipImageUrl} />
         <meta name="geo.region" content="US" />
-<meta name="geo.placename" content="United States" />
-<meta name="language" content="en-US" />
-<meta name="distribution" content="US" />
-<link rel="alternate" href="https://www.travelcardinsider.com" hreflang="en-us" />
+        <meta name="geo.placename" content="United States" />
+        <meta name="language" content="en-US" />
+        <meta name="distribution" content="US" />
+        {[ // Font preloads copied from
+          '/fonts/inter-v18-latin-regular.woff2',
+          '/fonts/inter-v18-latin-600.woff2',
+          '/fonts/inter-v18-latin-700.woff2',
+          '/fonts/Roboto_Condensed-Regular.ttf',
+          '/fonts/Roboto_Condensed-Bold.ttf',
+          '/fonts/PlayfairDisplay-Regular.ttf',
+          '/fonts/Playfair-Display-Bold.ttf',
+        ].map((f) => (
+          <link key={f} rel="preload" href={f} as="font" type={f.endsWith('woff2') ? 'font/woff2' : 'font/ttf'} crossOrigin="anonymous" />
+        ))}
+        <meta property="og:type"        content="article" />
+        <meta property="og:locale"      content="en_US" />
+        <meta property="og:site_name"   content={siteName} />
+        <meta property="og:title"       content={reviewDataHilton.title} />
+        <meta property="og:description" content={reviewDataHilton.description} />
+        <meta property="og:url"         content={pageUrlFull} />
+        <meta property="og:image"       content={reviewDataHilton.imageUrl} /> {/* *** PLACEHOLDER *** */}
+        <meta property="og:image:width" content={String(reviewDataHilton.imageWidth)} /> {/* *** PLACEHOLDER *** */}
+        <meta property="og:image:height" content={String(reviewDataHilton.imageHeight)} /> {/* *** PLACEHOLDER *** */}
+        <meta property="article:publisher" content={`https://www.facebook.com/${siteName}`} /> {/* from */}
+        <meta property="article:section"       content="Credit Card Reviews" />
+        <meta property="article:published_time" content={publishDate} /> {/* *** PLACEHOLDER *** */}
+        <meta property="article:modified_time"  content={updateDate} /> {/* *** PLACEHOLDER *** */}
+        <meta property="article:author" content={reviewDataHilton.author.name} /> {/* *** PLACEHOLDER *** */}
+        {reviewDataHilton.keywords.split(',').map(keyword => (
+            <meta property="article:tag" content={keyword.trim()} key={keyword.trim()} />
+        ))}
+        <meta name="twitter:card"        content="summary_large_image" />
+        {/* <meta name="twitter:site" content="@YourTwitterHandle" /> */} {/* from */}
+        <meta name="twitter:title"       content={reviewDataHilton.title} />
+        <meta name="twitter:description" content={reviewDataHilton.description} />
+        <meta name="twitter:image"       content={reviewDataHilton.imageUrl} /> {/* *** PLACEHOLDER *** */}
+        {/* Favicon links copied from */}
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredDataOptimized) }} />
       </Head>
 
-      
-
       <main>
-        {/* Spacing for fixed header */}
-        <div style={{ marginTop: '5rem' }}></div>
-
-        {/* Review Container using CSS Module */}
-        <div className={styles.reviewContainer}>
-          <article> {/* Wrap main content in article */}
-            {/* ============= REVIEW HEADER ============= */}
-            <header className={styles.reviewHeader}>
-               {/* Using dangerouslySetInnerHTML for ® */}
-              <h1 dangerouslySetInnerHTML={{ __html: "Hilton Honors American Express Card – 2025 In-Depth Review"}}></h1>
-
-              {/* Section 1 Content (Part of Header Structure in Template) */}
-              <section id="section-1">
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <div className={styles.intro}>
-                  <p dangerouslySetInnerHTML={{ __html:"The <strong>Hilton Honors American Express Card</strong> stands as the <strong>no-annual-fee</strong> gateway to the Hilton ecosystem, featuring <strong>7x points at Hilton properties</strong>, <strong>5x at select U.S. categories</strong> (restaurants, groceries, gas), and <strong>automatic Silver status</strong>. With no yearly cost, it’s ideal for travelers who occasionally stay at Hilton hotels but still want to accumulate points. Across these 20 sections, we’ll dissect sign-up bonuses, real-life usage, synergy with other AMEX Hilton products, disclaimers, advanced loyalty strategies, and more to determine if this is your 2025 lodging solution."}}></p>
+        {/* Layout structure copied from */}
+        <div className={styles.reviewPageLayout}>
+          <div className={styles.mainContentArea}>
+            {/* Hero Section structure copied from, content updated */}
+            <section className={styles.heroSection}>
+              <div className={styles.heroTextContainer}>
+                <h1 className={styles.heroTitle}>
+                  {reviewDataHilton.h1Content}
+                </h1>
+                 {/* Author Section structure copied from, using reviewDataHilton - *** PLACEHOLDER: Update Author Data *** */}
+                <div
+                    className={styles.authorBioContainer}
+                    ref={authorRef}
+                    onMouseEnter={() => { handleAuthorClearTimeout(); handleAuthorMouseEnter(); }}
+                    onMouseLeave={handleAuthorMouseLeave}
+                    onFocus={handleAuthorMouseEnter}
+                    onBlur={handleAuthorMouseLeave}
+                    aria-haspopup="true"
+                    aria-expanded={showAuthorBioTooltip}
+                    tabIndex={0}
+                >
+                    <Image
+                        src={reviewDataHilton.author.imageUrl}
+                        alt={`${reviewDataHilton.author.name} headshot`}
+                        width={reviewDataHilton.author.imageWidth}
+                        height={reviewDataHilton.author.imageHeight}
+                        className={styles.authorImageSmall}
+                        priority
+                    />
+                    <div className={styles.authorInfoBlock}>
+                        <div className={styles.authorNameLine}>
+                            <span className={styles.authorPrefix}>By</span>
+                            <span className={styles.authorName}>{reviewDataHilton.author.name}</span>
+                        </div>
+                        <span className={styles.authorTitle}>{reviewDataHilton.author.title}</span>
+                        {updateDate && (
+                            <time dateTime={updateDate} className={styles.authorLastEdited}>
+                                Last updated: {new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                            </time>
+                        )}
+                        {reviewDataHilton.author.socialLinks && (
+                            <div className={styles.authorSocialLinks}>
+                                {reviewDataHilton.author.socialLinks.linkedin && (
+                                    <a href={reviewDataHilton.author.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={styles.socialIconLink}>
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"> {/* Inline SVG from */}
+                                           <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                        </svg>
+                                    </a>
+                                )}
+                                {reviewDataHilton.author.socialLinks.twitter && (
+                                    <a href={reviewDataHilton.author.socialLinks.twitter} target="_blank" rel="noopener noreferrer" aria-label="Twitter" className={styles.socialIconLink}>
+                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"> {/* Inline SVG from */}
+                                           <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-.422.724-.665 1.56-.665 2.452 0 1.697.864 3.198 2.18 4.078-.8-.025-1.555-.247-2.227-.616v.054c0 2.37 1.683 4.333 3.91 4.78-.426.116-.874.174-1.337.174-.31 0-.611-.03-.904-.085.622 1.936 2.421 3.338 4.553 3.377-1.672 1.309-3.781 2.088-6.072 2.088-.394 0-.784-.023-1.169-.069 2.16 1.389 4.723 2.202 7.482 2.202 8.979 0 13.897-7.446 13.897-13.898 0-.21 0-.42-.015-.63.953-.689 1.778-1.56 2.433-2.525z"/>
+                                        </svg>
+                                    </a>
+                                )}
+                                {reviewDataHilton.author.socialLinks.email && (
+                                    <a href={`mailto:${reviewDataHilton.author.socialLinks.email}`} aria-label="Email" className={styles.socialIconLink}>
+                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"> {/* Inline SVG from */}
+                                            <path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/>
+                                         </svg>
+                                    </a>
+                                )}
+                            </div>
+                        )}
+                    </div>
+                    {/* Author Tooltip structure copied from - *** PLACEHOLDER: Update Author Data *** */}
+                    {showAuthorBioTooltip && (
+                        <div
+                            className={styles.authorTooltip}
+                            ref={authorTooltipRef}
+                            role="tooltip"
+                            onMouseEnter={handleAuthorClearTimeout}
+                            onMouseLeave={handleAuthorMouseLeave}
+                            onFocus={handleAuthorMouseEnter}
+                            onBlur={handleAuthorMouseLeave}
+                        >
+                             <div className={styles.authorTooltipHeader}>
+                                 <Image
+                                    src={reviewDataHilton.author.tooltipImageUrl}
+                                    alt={`${reviewDataHilton.author.name} headshot`}
+                                    width={reviewDataHilton.author.tooltipImageWidth}
+                                    height={reviewDataHilton.author.tooltipImageHeight}
+                                    className={styles.authorTooltipImage}
+                                 />
+                                 <div className={styles.authorTooltipInfo}>
+                                     <span className={styles.authorTooltipName}>{reviewDataHilton.author.name}</span>
+                                     <span className={styles.authorTooltipTitle}>{reviewDataHilton.author.title}</span>
+                                 </div>
+                               </div>
+                               {reviewDataHilton.author.expertise && reviewDataHilton.author.expertise.length > 0 && (
+                                 <div className={styles.authorTooltipExpertise}>
+                                     <strong>Expertise</strong>
+                                     <ul>
+                                         {reviewDataHilton.author.expertise.map(area => <li key={area}>{area}</li>)}
+                                     </ul>
+                                 </div>
+                               )}
+                               <p className={styles.authorTooltipBioSnippet}>{reviewDataHilton.author.bioSnippet}</p>
+                               {reviewDataHilton.author.fullBioLink && (
+                                   <Link href={reviewDataHilton.author.fullBioLink} legacyBehavior>
+                                       <a className={styles.authorTooltipBioLink}>
+                                           See full bio
+                                       </a>
+                                   </Link>
+                               )}
+                               {reviewDataHilton.author.socialLinks && (
+                                    <div className={styles.authorTooltipSocials}>
+                                        {reviewDataHilton.author.socialLinks.linkedin && (
+                                             <a href={reviewDataHilton.author.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={styles.socialIconLink}>
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                             </a>
+                                         )}
+                                         {reviewDataHilton.author.socialLinks.twitter && (
+                                             <a href={reviewDataHilton.author.socialLinks.twitter} target="_blank" rel="noopener noreferrer" aria-label="Twitter" className={styles.socialIconLink}>
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-.422.724-.665 1.56-.665 2.452 0 1.697.864 3.198 2.18 4.078-.8-.025-1.555-.247-2.227-.616v.054c0 2.37 1.683 4.333 3.91 4.78-.426.116-.874.174-1.337.174-.31 0-.611-.03-.904-.085.622 1.936 2.421 3.338 4.553 3.377-1.672 1.309-3.781 2.088-6.072 2.088-.394 0-.784-.023-1.169-.069 2.16 1.389 4.723 2.202 7.482 2.202 8.979 0 13.897-7.446 13.897-13.898 0-.21 0-.42-.015-.63.953-.689 1.778-1.56 2.433-2.525z"/></svg>
+                                             </a>
+                                         )}
+                                         {reviewDataHilton.author.socialLinks.email && (
+                                             <a href={`mailto:${reviewDataHilton.author.socialLinks.email}`} aria-label="Email" className={styles.socialIconLink}>
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
+                                             </a>
+                                         )}
+                                    </div>
+                                )}
+                        </div>
+                    )}
                 </div>
-
-                {/* Image Container */}
+                <p className={styles.heroSubtitle}>
+                  A Comprehensive Review for US Travelers seeking no-fee Hilton perks.
+                </p>
+                {/* CTA buttons copied from, links updated */}
+                <div className={styles.heroCtaContainer}>
+                  <div>
+                    <a
+                      href={reviewDataHilton.applyLink} // *** PLACEHOLDER ***
+                      target="_blank"
+                      rel="noopener noreferrer sponsored"
+                      className={`${styles.applyNowButton} ${styles.heroApplyButton}`}
+                    >
+                      Apply Securely Now
+                    </a>
+                    <span className={styles.heroApplyButtonDisclaimer}>
+                      on American Express' official site
+                    </span>
+                  </div>
+                  <Link href="#section-3" legacyBehavior>
+                    <a className={styles.heroSecondaryLink}>View Key Features</a>
+                  </Link>
+                </div>
+              </div>
+              {/* Hero Image section copied from, data updated */}
+              <div className={styles.heroImageContainer}>
                 <div className={styles.cardImageContainer}>
-                  {/* Corrected class name */}
-                   <Image
-                     src={reviewData.imageUrl}
-                     alt={"Hilton Honors American Express Card"}
-                     width={reviewData.imageWidth} // *** REPLACE or use data ***
-                     height={reviewData.imageHeight} // *** REPLACE or use data ***
-                     className={styles.cardImage}
-                     priority
-                   />
-                 </div>
-
-                {/* RATING SECTION */}
+                  <Image
+                    src={reviewDataHilton.imageUrl} // *** PLACEHOLDER ***
+                    alt={reviewDataHilton.cardName}
+                    width={reviewDataHilton.imageWidth} // *** PLACEHOLDER ***
+                    height={reviewDataHilton.imageHeight} // *** PLACEHOLDER ***
+                    className={styles.heroImage}
+                    priority
+                  />
+                </div>
                 <div className={styles.ratingSection}>
                   <span className={styles.tciRating}>
                     <button
                       type="button"
-                      className={styles.infoIconButton} // Use CSS module class
+                      className={styles.infoIconButton}
                       aria-label="Rating Information"
-                      title="Our TCI rating info"
                       onClick={handleIconClick}
+                      aria-expanded={showRatingInfo}
                     >
-                       <svg aria-hidden="true" focusable="false" className={styles.infoIcon} viewBox="0 0 16 16">
-                         <path fillRule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                         <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-                       </svg>
+                      <svg aria-hidden="true" focusable="false" className={styles.infoIcon} viewBox="0 0 16 16">
+                        <path fillRule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                      </svg>
                     </button>
-                    TCI Rating: <strong>{reviewData.ratingValue.toFixed(1)}</strong>/10
-
-                    {/* --- Conditionally Rendered Tooltip --- */}
+                    {siteName} Rating: <strong>{reviewDataHilton.ratingValue.toFixed(1)}</strong>/10
                     {showRatingInfo && (
-                        <div
-                            ref={tooltipRef}
-                            className={styles.ratingTooltip}
-                            role="tooltip"
-                            aria-live="polite"
-                        >
-                            <strong>TCI Rating: {reviewData.ratingValue.toFixed(1)}/10</strong>
-                            {/* Using ratingCriteria array */}
-                            <p className={styles.tooltipIntro}>Our TCI rating system criteria including rewards, welcome bonus, annual fee, redemption flexibility, travel benefits, APR, foreign transaction fees, user experience, and other features.</p>
-                           
-                        </div>
+                      <RatingTooltip
+                        ref={ratingTooltipRef}
+                        ratingValue={reviewDataHilton.ratingValue}
+                        ratingCriteria={ratingCriteriaHilton} // Use Hilton criteria
+                        onClose={() => setShowRatingInfo(false)}
+                      />
                     )}
                   </span>
-
-                  {/* STAR RATING - Added based on template */}
-                  <div className={styles.starRating} title={`Rated ${reviewData.ratingValue} out of 10 stars`} style={{ '--rating': `${reviewData.ratingValue * 10}%` }}>
-                    <span>★★★★★</span>
-                    <span className={styles.filledStars}>★★★★★</span>
-                  </div>
-
-                  <div className={styles.ratingDescription}>
-                    <i>A no-fee way to earn Hilton points at 7x on Hilton stays, 5x on key categories, plus free Silver status—perfect for occasional Hilton guests.</i>
+                  <div className={styles.starRating} title={`Rated ${reviewDataHilton.ratingValue} out of 10 stars`}>
+                      ★★★★★
+                      <span className={styles.filledStars} style={{ '--rating': `${(reviewDataHilton.ratingValue / 10) * 100}%` }}>
+                        ★★★★★
+                      </span>
                   </div>
                 </div>
-              </section>
-            </header>
-
-            {/* ============= REVIEW CONTENT SECTIONS (Hardcoded JSX) ============= */}
-
-             {/* Section 2: Quick Stats Table */}
-             <section id="section-2" className={styles.reviewSection}>
-                <h2>Quick Stats at a Glance</h2>
-                <div className={styles.tableContainer}>
-                    <table className={styles.statsTable}>
-                        <thead>
-                            <tr>
-                                <th>Feature</th>
-                                <th>Details</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td data-label="Feature">Annual Fee</td>
-                                <td data-label="Details">$0</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Feature">APR</td>
-                                <td data-label="Details" dangerouslySetInnerHTML={{__html:"~20.99% – 29.99% Variable"}}></td>
-                            </tr>
-                             {/* Using dangerouslySetInnerHTML for ® */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Feature">Sign-Up Bonus</td><td data-label="Details">~70k–80k Hilton Honors points after $1,000–$2,000 spend in first 3 months (varies)</td>'}}></tr>
-                            <tr>
-                                <td data-label="Feature">Rewards Rate</td>
-                                <td data-label="Details">7x at Hilton, 5x on U.S. restaurants, supermarkets, gas, 3x all else</td>
-                            </tr>
-                             {/* Using dangerouslySetInnerHTML for ® */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Feature">Foreign Transaction Fee</td><td data-label="Details">2.7% on transactions outside the U.S.</td>'}}></tr>
-                             {/* Using dangerouslySetInnerHTML for ® */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Feature">Automatic Status</td><td data-label="Details">Complimentary Hilton Honors Silver</td>'}}></tr>
-                            <tr>
-                                <td data-label="Feature">Recommended Credit Score</td>
-                                <td data-label="Details">Good–Excellent (700+ typically)</td>
-                            </tr>
-                             {/* Using dangerouslySetInnerHTML for &amp; */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Feature">Intro APR</td><td data-label="Details">Occasionally 0% for 12 months on purchases (offer can vary)</td>'}}></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-
-             {/* CTA Section */}
-             <section id="cta" className={styles.ctaSection}>
-                <h2>Apply for the <b>Hilton Honors American Express Card</b></h2>
-                <div className={styles.ctaButtons}>
-                    <a href={reviewData.applyLink} className={`${styles.btn} ${styles.btnApply}`} title="From card issuer's secure site" target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
-                     {/* Using dangerouslySetInnerHTML for &amp; */}
-                    <a href={reviewData.ratesLink} className={`${styles.btn} ${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored" dangerouslySetInnerHTML={{__html:"See Rates &amp; Fees"}}></a>
-                </div>
-            </section>
-
-             {/* Section 3: Card Overview & Positioning */}
-             <section id="section-3" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html:"Card Overview &amp; Positioning"}}></h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"The <strong>Hilton Honors American Express Card</strong> is <strong>Amex’s</strong> no-fee entry point into the Hilton family. You’ll earn <strong>7x</strong> at Hilton hotels and resorts, plus <strong>5x</strong> on typical categories: <strong>U.S. restaurants, supermarkets, and gas</strong>. Meanwhile, you get <strong>automatic Silver status</strong>, which can unlock perks like a 20% points bonus on paid stays and the potential to reach Gold if you spend enough. While overshadowed by Surpass® or Aspire (which provide higher statuses or free nights but have fees), this no-fee card remains perfect for travelers who occasionally stay with Hilton and want an easy way to accumulate points for free nights."}}></p>
-            </section>
-
-             {/* Section 4: Earning Potential */}
-             <section id="section-4" className={styles.reviewSection}>
-                <h2>Earning Potential: 7x Hilton, 5x Key Categories</h2>
-                <p>
-                    The highlight is definitely <strong>7x points at Hilton properties</strong>.
-                    If you have a quick weekend getaway or a business trip, that can add up,
-                    especially if you pair it with your Hilton Honors Silver or potential Gold.
-                    On the everyday side, <strong>5x</strong> at:
-                </p>
-                <ul className={styles.featureList}>
-                    <li><strong>U.S. restaurants:</strong> from fast food to fine dining, plus possibly carryout/delivery if coded as restaurant</li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>U.S. supermarkets:</strong> groceries, produce, etc. (excludes wholesale clubs or superstores if they code differently)"}}></li>
-                    <li><strong>U.S. gas stations:</strong> a typical daily expense for many drivers</li>
-                </ul>
-                <p>
-                    That’s quite broad for a no-fee card.
-                    All other purchases net <strong>3x points</strong>.
-                    Keep in mind, Hilton points are generally worth around 0.5 cents each,
-                    so 5x effectively ~2.5% return in those categories, 7x ~3.5%, and 3x ~1.5%.
-                    This is still good for a $0 annual fee, especially if you frequently choose Hilton for lodging.
-                </p>
-            </section>
-
-            {/* Section 5: Hilton Honors Silver Status */}
-            <section id="section-5" className={styles.reviewSection}>
-                <h2>Hilton Honors Silver Status: What It Means</h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"This card automatically grants <strong>Silver status</strong>. Perks typically include:"}}></p>
-                <ul className={styles.featureList}>
-                    <li>15% bonus points on paid stays at Hilton (beyond the base points all members get)</li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"Fifth night free on award stays of 5+ nights (applies to all Hilton elites, including Silver and above)"}}></li>
-                    <li>Occasionally early check-in or a late checkout courtesy, subject to availability (less consistent than higher tiers)</li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"Option to reach Gold status if you spend $20,000 in a calendar year on the card (Gold offers free breakfast and more robust perks at many Hilton properties)"}}></li>
-                </ul>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"Although Silver is not as lavish as Gold or Diamond, it’s still a step above the base level, and you pay no annual fee for that status. If you spend enough or stay frequently, you can upgrade to Gold or beyond—still using this no-fee card as your points-earning engine."}}></p>
-            </section>
-
-             {/* Section 6: Sign-Up Bonus & Intro Offers */}
-             <section id="section-6" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html:"Sign-Up Bonus &amp; Intro Offers"}}></h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"The sign-up bonus typically ranges from <strong>70,000 to 80,000 Hilton Honors points</strong> after spending around $1,000–$2,000 in the first 3 months. That’s enough for a few free nights at lower-tier properties or 1–2 nights at mid-tier hotels, depending on location and dynamic award pricing. Some promotions might push it to 100,000 points, so watch for limited-time deals. Also, Amex occasionally extends a <strong>0% intro APR</strong> on purchases for 12 months, which can help if you plan a big purchase or a Hilton booking that you’d prefer to pay off over time. Just check the variable APR post-intro; interest can overshadow your points if you revolve a balance."}}></p>
-            </section>
-
-             {/* Section 7: 2.7% Foreign Transaction Fee */}
-             <section id="section-7" className={styles.reviewSection}>
-                 <h2>2.7% Foreign Transaction Fee – A Travel Caveat</h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"Despite being a travel-branded card, this version imposes a <strong>2.7% foreign transaction fee</strong> on non-U.S. purchases. That’s typical for many no-fee Amex cards. If you frequently travel overseas or buy from foreign merchants, that fee might cancel out the value of your points. Consider the <strong>Hilton Honors Surpass®</strong> (annual fee $95) or other no-FTF cards if you want to maximize overseas spend. But if you mostly stay domestic, 2.7% might not be a big barrier, especially if your main focus is racking up points on U.S. categories."}}></p>
-            </section>
-
-            {/* Section 8: Real-Life Example Spending */}
-            <section id="section-8" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html:"Real-Life Example: Spending &amp; Points"}}></h2>
-                <p>
-                    Suppose in a year you do:
-                </p>
-                <ul className={styles.featureList}>
-                    <li>$600 in Hilton hotel stays</li>
-                    <li>$3,600 on groceries (U.S. supermarkets)</li>
-                    <li>$2,400 on dining</li>
-                    <li>$1,200 on gas</li>
-                    <li>$4,000 on other categories</li>
-                </ul>
-                <p>That yields:</p>
-                 <div className={styles.tableContainer}>
-                    <table className={styles.statsTable}>
-                        <thead>
-                            <tr>
-                                <th>Category</th>
-                                <th>Annual Spend</th>
-                                <th>Points per $</th>
-                                <th>Total Points</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td data-label="Category">Hilton Hotels</td>
-                                <td data-label="Annual Spend">$600</td>
-                                <td data-label="Points per $">7x</td>
-                                <td data-label="Total Points">4,200</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Category">Groceries (U.S.)</td>
-                                <td data-label="Annual Spend">$3,600</td>
-                                <td data-label="Points per $">5x</td>
-                                <td data-label="Total Points">18,000</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Category">Dining (U.S.)</td>
-                                <td data-label="Annual Spend">$2,400</td>
-                                <td data-label="Points per $">5x</td>
-                                <td data-label="Total Points">12,000</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Category">Gas (U.S.)</td>
-                                <td data-label="Annual Spend">$1,200</td>
-                                <td data-label="Points per $">5x</td>
-                                <td data-label="Total Points">6,000</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Category">Other Spend</td>
-                                <td data-label="Annual Spend">$4,000</td>
-                                <td data-label="Points per $">3x</td>
-                                <td data-label="Total Points">12,000</td>
-                            </tr>
-                            <tr style={{fontWeight: 'bold', borderTop: '2px solid #dee2e6'}}>
-                                <th>Total</th>
-                                <th>$11,800</th>
-                                <th>—</th>
-                                <th>52,200</th>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"<strong>52,200 points</strong> from normal spend, plus a possible <strong>70,000–80,000</strong> sign-up bonus in year one. That can top <strong>122k–132k points</strong> in total. Considering many standard Hilton properties range from ~20k–40k points a night, you might land 3–4 free nights at mid-tier hotels with just everyday spend + bonus, <strong>all</strong> while paying $0 in annual fees."}}></p>
-            </section>
-
-             {/* Section 9: Redemption & Hilton Honors Value */}
-             <section id="section-9" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html:"Redemption &amp; Hilton Honors Value"}}></h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"Hilton Honors points typically value around <strong>0.5 cents each</strong>. So 7x effectively ~3.5% back, 5x ~2.5%, 3x ~1.5%. However, Hilton uses dynamic award pricing, so nights at popular hotels can vary between 20k and 95k+ points. Some lower-tier or off-peak properties can dip below 20k, meaning your points go further. Redeeming for standard rooms typically yields the best average value. Suite awards or premium rooms can cost a lot more points. Also note, as Silver (or higher), you get the <strong>5th night free</strong> on award stays of 5 or more consecutive nights, further stretching your points. This perk is huge if you plan multi-night vacations."}}></p>
-            </section>
-
-             {/* Section 10: Sign-Up Bonus & Minimal Spend Requirement */}
-             <section id="section-10" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html:"Sign-Up Bonus &amp; Minimal Spend Requirement"}}></h2>
-                 {/* Using dangerouslySetInnerHTML for &amp; ® */}
-                <p dangerouslySetInnerHTML={{ __html:"The typical requirement is <strong>$1,000–$2,000</strong> in the first 3 months, easier than some premium cards demanding $3,000–$4,000. That can be handled quickly if you put groceries and gas on the card. If you snag a promotion of 80k or more points, you might get the equivalent of $400+ value in free nights. For a no-fee card, that’s quite generous. Premium Amex Hilton cards (Surpass® or Aspire) can push 130k–150k sign-up points, but they also charge fees. This no-fee version is friendlier if you simply want moderate coverage and free nights occasionally."}}></p>
-            </section>
-
-             {/* Section 11: Does This Card Provide Elite Upgrades? */}
-             <section id="section-11" className={styles.reviewSection}>
-                 <h2>Does This Card Provide Elite Upgrades?</h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"As mentioned, it grants <strong>Silver</strong>, but you can <strong>upgrade to Gold</strong> if you spend $20,000 in a calendar year. Gold is more rewarding: it typically includes free breakfast at many Hilton brands, space-available room upgrades, more bonus points on stays, and more. If you put everyday spend here to chase that threshold, you might enjoy a near-mid-tier status. That said, if your normal spending surpasses $15k–$20k annually, you may want to consider <strong>Hilton Surpass®</strong> from Amex. It has a $95 fee but automatically grants Gold. Evaluate your preference for paying $0 vs. getting guaranteed Gold from day one."}}></p>
-            </section>
-
-             {/* Section 12: Potential Downsides & Limitations */}
-             <section id="section-12" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html:"Potential Downsides &amp; Limitations"}}></h2>
-                <ul className={styles.featureList}>
-                    <li><strong>Foreign Transaction Fee (2.7%)</strong> – Not ideal for overseas usage, especially since Hilton has many global properties.</li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Hilton Points Are Less Valuable per Unit</strong> – 0.5 cents is common, so 7x = about 3.5% effective. Not bad, but not as high as some might imagine from “7x.”"}}></li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Minimal Travel Protections</strong> – This card doesn’t come with robust trip cancellation insurance or primary rental coverage. Basic coverage at best."}}></li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>No free weekend nights or priority benefits</strong> – Surpass® or Aspire might offer free weekend night certificates or lounge benefits. This no-fee card is simpler."}}></li>
-                </ul>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"Overall, it’s a starter or moderate-level loyalty card, not designed for heavy international travel or advanced coverage. If you want deeper perks, check Surpass® or Aspire—but that means paying an annual fee."}}></p>
-            </section>
-
-            {/* Section 13: APR & Ongoing Interest */}
-             <section id="section-13" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html:"APR &amp; Ongoing Interest"}}></h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"Standard variable APR hovers around <strong>20.99%–29.99%</strong>, depending on creditworthiness. Some promotions might give you an intro 0% on purchases for up to 12 months. If you revolve a balance after the intro, interest costs can overshadow any points. Ideally, pay in full each month or treat the 0% as a short-term plan for a big purchase you can pay off within that window. The card’s real power is in building Hilton points, not carrying debt."}}></p>
-            </section>
-
-             {/* Section 14: Real-Life Extended Example */}
-             <section id="section-14" className={styles.reviewSection}>
-                <h2>Another Real-Life Example: Family of Four with Mild Hilton Loyalty</h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"Suppose a family travels 2–3 times a year, each time staying at a Hilton brand for $500 each trip (total $1,500), plus groceries at $4,000, dining $3,000, gas $1,500, and $2,000 other. Let’s approximate:"}}></p>
-                <ul className={styles.featureList}>
-                    <li>Hilton stays: $1,500 x 7 = 10,500 points</li>
-                    <li>Groceries: $4,000 x 5 = 20,000 points</li>
-                    <li>Dining: $3,000 x 5 = 15,000 points</li>
-                    <li>Gas: $1,500 x 5 = 7,500 points</li>
-                    <li>Other: $2,000 x 3 = 6,000 points</li>
-                    <li>Total = 59,000 points</li>
-                </ul>
-                <p>
-                    Add a sign-up bonus of ~80k if offered, and that’s ~139k points in year one.
-                    Enough for 3–6 free nights at lower-tier Hiltons or 2 nights at mid-tier brands.
-                    Meanwhile, free Silver status might yield slightly more points on stays and the 5th night free perk for an extended trip.
-                    All with zero annual cost.
-                    If your family wants more frequent free breakfasts or upgrades, you might aim for $20k spend for Gold status or consider the Surpass® card.
-                    But for moderate usage, this is a cost-effective method to accumulate points.
-                </p>
-            </section>
-
-             {/* Section 15: Pairing With Other Amex Cards */}
-             <section id="section-15" className={styles.reviewSection}>
-                <h2>Pairing With Other Amex Cards</h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"You can combine the <strong>Hilton Honors Amex</strong> with other Amex membership rewards cards (like Amex Gold or Blue Cash) for different reasons. However, note that Hilton points do not directly convert from Membership Rewards. There is a transfer ratio, but it’s not typically the best. If your main goal is maximizing Hilton points specifically, consider the <strong>Hilton Surpass®</strong> or <strong>Hilton Aspire®</strong> for bigger status and free night certificates, albeit with annual fees. Alternatively, keep this no-fee card as your dedicated “Hilton earner + 5x categories” card while using something like Amex Blue Cash for other everyday spending. Both can peacefully coexist in your wallet."}}></p>
-            </section>
-
-             {/* Section 16: 2025 Updates & Potential Changes */}
-             <section id="section-16" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html:"2025 Updates &amp; Potential Changes"}}></h2>
-                <p>
-                    For 2025, watch for:
-                </p>
-                <ul className={styles.featureList}> {/* Changed from OL to UL */}
-                    <li><strong>Sign-Up Bonus Variations:</strong>
-                    Amex frequently changes them, possibly hitting 90k or 100k points occasionally.
-                    Keep an eye on targeted or referral offers.</li>
-                    <li><strong>Category Adjustments:</strong>
-                    Rarely, Amex updates bonus categories or the definition of “U.S. restaurants” or “supermarkets.” They might also introduce new limited-time categories or promotions.</li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Hilton Honors Program Tweaks:</strong> If Hilton changes redemption or status thresholds, your Silver or path to Gold might shift. Dynamic pricing can also evolve, affecting your points’ value."}}></li>
-                </ul>
-                 {/* Using dangerouslySetInnerHTML for &amp; */}
-                <p dangerouslySetInnerHTML={{ __html:"Always confirm the latest T&amp;Cs with American Express or Hilton’s official site. If big changes disadvantage you, consider alternative no-fee travel cards that align better with your future strategy."}}></p>
-            </section>
-
-            {/* Section 17: Competitor Analysis */}
-            <section id="section-17" className={styles.reviewSection}>
-                 <h2>Competitor Analysis</h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"Some direct or indirect competitors to the <strong>Hilton Honors American Express Card</strong>:"}}></p>
-                <ul className={styles.featureList}>
-                     {/* Using dangerouslySetInnerHTML for ™ ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Marriott Bonvoy Bold™ (Chase):</strong> No annual fee, automatic Silver in Marriott. Earn 3x at Marriott, 2x on travel, 1x elsewhere. If you prefer Marriott’s footprint, that’s a parallel offering."}}></li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>IHG® Rewards Traveler Card (Chase):</strong> No fee, IHG points, 3x on IHG purchases, 2x on gas/groceries/dining, overshadowed by IHG Premier if you want free nights. But decent for casual IHG fans."}}></li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Wyndham Rewards Earner® Card (Barclays):</strong> No annual fee, 5x on Wyndham, 2x dining/grocery. Another hotel chain alternative for folks loyal to Wyndham. Less global presence than Hilton but decent for road-trip travelers."}}></li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Amex Blue Cash Everyday® or Capital One SavorOne:</strong> Both no fee but revolve around cash back or dining/groceries. If you don’t want hotel loyalty, those might provide more flexible redemption. But they lack Hilton synergy or status."}}></li>
-                </ul>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"Ultimately, pick the program where you stay the most. If you want an introduction to <strong>Hilton</strong> without fees, this is it. If you do heavier Hilton stays or want instant Gold/ Diamond, you might upgrade to Surpass® ($95) or Aspire® ($450). But for a no-fee, keep-it-simple approach, the base Hilton Honors AMEX is reliable."}}></p>
-            </section>
-
-            {/* Section 18: Who Should Get This Card? */}
-            <section id="section-18" className={styles.reviewSection}>
-                <h2>Who Should Get This Card?</h2>
-                <div className={styles.prosCons}>
-                    <div className={styles.pros}>
-                        <h3>Ideal For:</h3>
-                        <ul className={styles.featureList}>
-                            <li>Occasional Hilton guests wanting a no-fee entry into Honors points + Silver status</li>
-                            <li>Domestic spenders: 5x restaurants, supermarkets, gas is quite broad if you remain in the U.S.</li>
-                             {/* Using dangerouslySetInnerHTML for ® */}
-                            <li dangerouslySetInnerHTML={{__html:"Smaller budgets or “just testing” out hotel loyalty — easy sign-up bonus, low spend requirement"}}></li>
-                            <li>Those who dislike annual fees but want a hotel card synergy</li>
-                        </ul>
-                    </div>
-                    <div className={styles.cons}>
-                         <h3>Not So Great If:</h3>
-                        <ul className={styles.featureList}>
-                             {/* Using dangerouslySetInnerHTML for ® */}
-                            <li dangerouslySetInnerHTML={{__html:"You want <strong>no foreign transaction fees</strong> or robust trip coverage"}}></li>
-                             {/* Using dangerouslySetInnerHTML for ® */}
-                            <li dangerouslySetInnerHTML={{__html:"You regularly stay at Hilton but <strong>want free breakfasts, lounge access, free nights, or top-tier status</strong> (that’s Surpass® or Aspire territory)"}}></li>
-                             {/* Using dangerouslySetInnerHTML for ® */}
-                            <li dangerouslySetInnerHTML={{__html:"You prefer universal points (Chase, Amex MR, etc.) that can transfer to multiple hotel/airline partners"}}></li>
-                             {/* Using dangerouslySetInnerHTML for ® */}
-                            <li dangerouslySetInnerHTML={{__html:"You rarely stay at Hilton or want a bigger sign-up bonus from a different co-branded card"}}></li>
-                        </ul>
-                    </div>
+                 <div className={styles.ratingDescription}>
+                    <i>{reviewDataHilton.cardName}: {reviewDataHilton.description}</i>
                  </div>
+              </div>
             </section>
 
-             {/* Section 19: Advanced Loyalty Tips */}
-             <section id="section-19" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html:"Advanced Loyalty Tips: Reaching Gold &amp; Stacking Promos"}}></h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"If you decide to push your <strong>no-fee Hilton Honors Amex</strong> further:"}}></p>
-                <ul className={styles.featureList}>
-                    <li><strong>Spend $20k/Year for Gold:</strong> That triggers automatic Gold after hitting the threshold. Gold includes free breakfast at many brands, space-available upgrades, higher earn rates, etc.</li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Stack Hilton Promos:</strong> Hilton frequently runs double or triple points promotions, or targeted promos. If your card is awarding 7x, plus double base points on stays, plus any tier bonus, you could rack up a large chunk quickly."}}></li>
-                    <li><strong>5th Night Free on Rewards Stays:</strong> Even with Silver, 5th reward night is free. So if you plan a 5-night vacation, you effectively pay only 4 nights in points. This can net big savings if you have enough points from sign-up + daily spend.</li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Combine Points + Money:</strong> If short on points, Hilton allows partial pay in points plus cash, which can help you use leftover points for nights you otherwise couldn’t afford with points alone. The card’s earnings help you gather enough to reduce your cash outlay."}}></li>
-                </ul>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"While not as glamorous as higher-level Amex Hilton cards, it’s still possible to leverage the no-fee version to achieve a higher status or accumulate an impressive points stash over time."}}></p>
-            </section>
+            {/* Main review content area */}
+            <div className={styles.reviewContainer}>
+              <article>
+                {/* Summary Box structure copied from, content updated */}
+                <header className={styles.reviewHeader}>
+                    <div className={styles.summaryBox} id="summaryBoxTitle">
+                        <h2 className={styles.summaryBoxTitle}>{reviewDataHilton.cardName}: Key Insights</h2>
+                        <div className={styles.summaryGrid}>
+                            <div className={styles.summaryItem}>
+                                <span className={styles.summaryIcon}><IconGift /></span>
+                                <span className={styles.summaryLabel}>Welcome Offer:</span>
+                                <span className={styles.summaryValue}>Typically 80k points after $2k spend in 6 months.</span>
+                            </div>
+                            <div className={styles.summaryItem}>
+                                <span className={styles.summaryIcon}><IconStar /></span>
+                                <span className={styles.summaryLabel}>Annual Fee:</span>
+                                <span className={styles.summaryValue}>${reviewDataHilton.annualFee}</span>
+                            </div>
+                            <div className={styles.summaryItem}>
+                                <span className={styles.summaryIcon}><IconX /></span> {/* Reused icon */}
+                                <span className={styles.summaryLabel}>Top Earning:</span>
+                                <span className={styles.summaryValue}>7X at Hilton; 5X at US Restaurants, Supermarkets, Gas Stations.</span>
+                            </div>
+                            <div className={styles.summaryItem}>
+                                <span className={styles.summaryIcon}><IconCheck /></span> {/* Reused icon */}
+                                <span className={styles.summaryLabel}>Key Benefit:</span>
+                                <span className={styles.summaryValue}>Complimentary Hilton Honors Silver Status (inc. 5th Night Free).</span>
+                            </div>
+                            <div className={styles.summaryItem} data-full-width="true">
+                                <span className={styles.summaryIcon}><IconPlus /></span>
+                                <span className={styles.summaryLabel}>Best For:</span>
+                                <span className={styles.summaryValue}>Occasional Hilton Guests Seeking No-Fee Status Perks and Point Earnings.</span>
+                            </div>
+                        </div>
+                        <div className={styles.summaryBoxActions}>
+                            <a href={reviewDataHilton.ratesLink} className={styles.summaryRatesLink} target="_blank" rel="noopener noreferrer sponsored">
+                                See Card Rates & Fees {/* *** PLACEHOLDER *** */}
+                            </a>
+                             <a href='/rewards-compare' className={`${styles.heroRewardsCalculator} ${styles.summaryButton}`} target="_blank" rel="noopener noreferrer sponsored">
+                                Rewards Calculator {/* Copied from */}
+                            </a>
+                        </div>
+                    </div>
+                </header>
 
-             {/* Section 20: Final Thoughts & Disclaimer */}
-             <section id="section-20" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html:"Final Thoughts &amp; Disclaimer"}}></h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"The <strong>Hilton Honors American Express Card</strong> is the <strong>no-annual-fee</strong> path into Hilton’s ecosystem, offering <strong>7x at Hilton stays</strong>, <strong>5x on popular U.S. categories</strong>, and complimentary <strong>Silver status</strong>. For casual travelers or those wanting to test the Hilton brand, it’s a great stepping stone. If you plan heavier international travel, the 2.7% foreign transaction fee is a notable drawback, and bigger perks like free breakfast or lounge access require stepping up to Surpass® ($95) or Aspire® ($450). But for zero annual cost, you can’t beat the combination of <strong>automatic Silver</strong>, a decent sign-up bonus, and strong earn rates in everyday categories."}}></p>
-                 {/* Using dangerouslySetInnerHTML for &amp; ® */}
-                <p dangerouslySetInnerHTML={{ __html:"<strong>Disclaimer:</strong> Terms, conditions, and sign-up offers change frequently. Always verify current details with American Express or Hilton. We may earn affiliate commissions if you use certain links, but our editorial stance is independent. Examples of redemption or valuations (0.5 cents/point) are approximate; real yields vary. Pay your balance in full to avoid high interest overshadowing your rewards. Evaluate your usage patterns to ensure this card suits your lodging and spending habits. For the best synergy, consider your travel frequency, preference for advanced coverage, or willingness to pay a higher annual fee for more robust perks."}}></p>
-            </section>
+                {/* Review sections based on Hilton text */}
+                <section id="section-1" className={styles.reviewSection}>
+                  <h2>1. Card Snapshot &amp; "Best For" Tagline</h2>
+                  <p>Think of the Hilton Honors American Express Card as your straightforward entry into Hilton rewards, minus the annual fee. It’s the collaboration between Amex and Hilton designed for travelers who enjoy Hilton properties occasionally and appreciate earning points without a yearly cost. This isn't the card for high-flyers seeking luxury; it's the practical starting point. It grants you access to the Hilton Honors program, lets you earn points on hotel stays and everyday U.S. spending (like groceries and gas), and gives you automatic Silver status perks. It’s built for the traveler who values simplicity and savings.</p>
+                  <p><strong>Best For:</strong> Occasional Hilton Guests Seeking No-Fee Status Perks and Point Earnings.</p>
+                </section>
 
-            {/* CTA Section */}
-            <section id="cta" className={styles.ctaSection}>
-                <h2>Apply for the <b>Hilton Honors American Express Card</b></h2>
-                <div className={styles.ctaButtons}>
-                    <a href={reviewData.applyLink} className={`${styles.btn} ${styles.btnApply}`} title="From card issuer's secure site" target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
-                     {/* Using dangerouslySetInnerHTML for &amp; */}
-                    <a href={reviewData.ratesLink} className={`${styles.btn} ${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored" dangerouslySetInnerHTML={{__html:"See Rates &amp; Fees"}}></a>
-                </div>
-            </section>
+                <section id="section-2" className={styles.reviewSection}>
+                  <h2>2. Editor's Rating &amp; Concise Verdict and High-Quality Card Image</h2>
+                  <p><strong>Editor's Rating:</strong> 3.5 / 5 Stars (translates to {reviewDataHilton.ratingValue.toFixed(1)}/10 on our scale)</p>
+                  <p><strong>Concise Verdict:</strong> The Hilton Honors American Express Card is a solid, reliable choice, particularly if you stay at Hilton properties sometimes and strongly prefer avoiding annual fees. Getting automatic Silver status is a nice perk, especially for the 5th Night Free benefit on award stays. Earning extra points at U.S. supermarkets, restaurants, and gas stations helps turn daily spending into future travel. Plus, no foreign transaction fees is always welcome for trips abroad. The main trade-offs? Hilton points aren't the most valuable currency, and you won't find premium travel credits or lounge access. It’s a dependable, low-risk introduction to Hilton Honors for the budget-conscious traveler.</p>
+                  <div className={styles.cardImageContainer2}>
+                    {/* *** PLACEHOLDER: Add actual card image *** */}
+                    <Image
+                        src={reviewDataHilton.imageUrl} // Placeholder
+                        alt={`${reviewDataHilton.cardName} visual`}
+                        width={645} // Placeholder from
+                        height={406} // Placeholder from
+                        className={styles.inlineCardImage}
+                    />
+                     <p>(Imagine a clear image of the Hilton Honors American Express Card, emphasizing its connection to both Amex and Hilton without overstating luxury.)</p>
+                  </div>
+                 </section>
 
-            {/* E-A-T Section */}
-             <section id="eat-expertise-authority-trustworthiness" className={`${styles.reviewSection} ${styles.eatSection}`}>
-                <h2 dangerouslySetInnerHTML={{ __html: "E-A-T: Expertise, Authority &amp; Trustworthiness"}}></h2>
-                 {/* Using E-A-T text adapted for Hilton Honors Amex */}
-                <p>
-                    At <strong>TravelCardInsider</strong>, we prioritize:
-                </p>
-                <h3>1. Expertise</h3>
-                <ul className={styles.featureList}>
-                     {/* Using dangerouslySetInnerHTML for &amp; */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Thorough Testing:</strong> We confirm real 7x, 5x, 3x categories, sign-up bonuses, and synergy with Silver status by analyzing user data and personal card usage."}}></li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Frequent Updates:</strong> If Amex changes the bonus or if Hilton modifies point redemption, we revise content promptly to maintain accuracy."}}></li>
-                </ul>
-                <h3>2. Authority</h3>
-                <ul className={styles.featureList}>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Long-Form In-Depth Reviews:</strong> This 2,500-word piece covers 20 sections, from advanced loyalty tips to disclaimers, ensuring a comprehensive user experience."}}></li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Transparent Card Ratings:</strong> We use consistent weighting for rewards, fees, user experience, travel perks, redemption, and more—yielding a 6.8/10 rating for the Hilton Honors Amex (no-fee)."}}></li>
-                </ul>
-                <h3>3. Trustworthiness</h3>
-                <ul className={styles.featureList}>
-                    <li><strong>Editorial Independence:</strong> Advertisers do not influence our star ratings or final verdict. Our mission is to provide objective, user-centric information.</li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Reader Feedback Integration:</strong> We incorporate cardholder reports on how well 5x categories code or how fast points post after each statement cycle."}}></li>
-                    <li><strong>Privacy Commitment:</strong> We do not store your card data or personal info, abiding by standard data protection practices.</li>
-                     {/* Using Link component for internal link */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Data Security:</strong> As per our <a href='/privacy-policy'>Privacy Policy</a>, we safeguard any user data from subscription forms or feedback channels."}}>
-                         {/* Corrected: <Link href="/privacy-policy"><a>Privacy Policy</a></Link> */}
+                {/* CTA Section copied from, links updated */}
+                <section id="cta-hilton-amex" className={styles.ctaSection}>
+                  <h2>Interested in the <b>{reviewDataHilton.cardName}</b>?</h2>
+                  <div className={styles.ctaButtons}>
+                    <a href={reviewDataHilton.applyLink} className={`${styles.btn} ${styles.btnApply}`} title="From card issuer's secure site" target="_blank" rel="noopener noreferrer sponsored">Apply Now</a> {/* *** PLACEHOLDER *** */}
+                    <a href={reviewDataHilton.ratesLink} className={`${styles.btn} ${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored">See Rates & Fees</a> {/* *** PLACEHOLDER *** */}
+                  </div>
+                </section>
+
+                <section id="section-3" className={styles.reviewSection}>
+                  <h2>3. Key Features Overview</h2>
+                  <p>What makes this no-fee card stand out? Here are the core features:</p>
+                  {/* Using featureList style from */}
+                  <ul className={styles.featureList}>
+                    <li>$0 Annual Fee: Keep the card year after year without paying a membership fee. This removes the pressure to constantly justify its cost.</li>
+                    <li>Complimentary Hilton Honors™ Silver Status: You're automatically granted Silver status, providing enhanced point earnings on stays and the valuable 5th Night Free benefit on point redemptions of 5+ nights.</li>
+                    <li>Bonus Points Earning: Earn 7X points per dollar on eligible Hilton purchases. Get 5X points per dollar at U.S. restaurants, U.S. supermarkets, and U.S. gas stations. All other eligible purchases earn 3X points per dollar.</li>
+                    <li>No Foreign Transaction Fees: Avoid the typical ~3% fee on purchases made outside the United States, saving you money on international trips.</li>
+                  </ul>
+                   <p>The combination of no annual fee and no foreign transaction fees is a significant advantage, making it a cost-effective option even for infrequent international travelers who might stay at a Hilton property abroad.</p>
+                </section>
+
+                <section id="section-4" className={styles.reviewSection}>
+                  <h2>4. Current Welcome Offer & Eligibility Deep Dive</h2>
+                  <p>New cardmembers can often snag a welcome bonus. A typical offer is 80,000 Hilton Honors Bonus Points after spending $2,000 on eligible purchases within the first 6 months of opening the card.</p>
+                  <p>This offer is generally accessible, requiring around $333 in monthly spending over six months – achievable for many through regular expenses. Those 80,000 points could be worth roughly $480 towards Hilton stays (based on a ~0.6 cpp valuation), providing substantial first-year value for a no-fee card.</p>
+                  <p>Regarding eligibility, Amex usually limits welcome offers to once per lifetime per specific card. Your history with other Amex cards also matters. The "Apply with Confidence" feature is helpful, allowing you to see if you're approved before a hard credit inquiry impacts your score, letting you accept only if approved.</p>
+                </section>
+
+                <section id="section-5" className={styles.reviewSection}>
+                   <h2>5. Annual Fee: Why $0 Doesn't Mean Zero Value</h2>
+                  <p>The $0 annual fee is a cornerstone of this card's appeal. It means every benefit – the status, the points, the protections – is pure upside, without the need to constantly calculate if you're "breaking even" on a fee.</p>
+                  <p>Beyond immediate savings, the $0 fee offers long-term strategic value. Keeping the card open helps build your credit history length, potentially boosting your score. It maintains your relationship with American Express, ensuring continued access to Amex Offers and potential upgrade opportunities. Plus, the Silver status helps prevent your Hilton points from expiring. It’s a low-maintenance way to stay connected to both Amex and Hilton.</p>
+                </section>
+
+                <section id="section-6" className={styles.reviewSection}>
+                  <h2>6. Comprehensive Rewards Earning Structure</h2>
+                  <p>The card rewards Hilton loyalty and common U.S. spending:</p>
+                  {/* Using featureList style from */}
+                  <ul className={styles.featureList}>
+                    <li>7X Points: For eligible purchases charged directly with hotels and resorts within the Hilton portfolio.</li>
+                    <li>5X Points: For eligible purchases at:
+                        <ul>
+                            <li>U.S. Restaurants (including takeout/delivery)</li>
+                            <li>U.S. Supermarkets</li>
+                            <li>U.S. Gas Stations</li>
+                        </ul>
                     </li>
-                </ul>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html: "By emphasizing thorough research, real data, and user feedback, we strive to deliver an authoritative, honest view of the <strong>Hilton Honors American Express Card</strong> in 2025." }}></p>
-            </section>
+                    <li>3X Points: On all other eligible purchases.</li>
+                  </ul>
+                  <p>"Eligible purchases" exclude things like fees and cash advances. The key limitation is that the 5X bonus categories only apply to merchants located within the United States. Dining, grocery, or gas purchases abroad only earn 3X points.</p>
+                  <p>This structure clearly favors domestic spending patterns.</p>
+                </section>
 
-          </article>
-        </div> {/* Close reviewContainer */}
+                <section id="section-7" className={styles.reviewSection}>
+                  <h2>7. Redemption Strategies & Point/Mile Valuation</h2>
+                  <p>The most valuable way to use your Hilton Honors points is for free nights at Hilton portfolio hotels. Hilton uses dynamic pricing, so the points needed vary based on the hotel, date, and demand, similar to cash prices. Expect costs from 5,000 points to over 95,000 points per night. Use Hilton's Points Explorer tool online to estimate costs.</p>
+                  <p>Hilton points are generally valued around 0.5 to 0.6 cents per point (cpp), lower than some competitors. However, the 5th Night Free benefit significantly boosts value. Available to Silver members (which you get with this card), booking a standard room award stay of 5+ consecutive nights using only points makes the fifth night free. This effectively gives a 20% points discount on 5-night stays, making longer award stays the most strategic redemption.</p>
+                  <p>Other options like airline transfers or merchandise usually offer poor value and are best avoided.</p>
+                </section>
+
+                <section id="section-8" className={styles.reviewSection}>
+                  <h2>8. Loyalty Program Deep Dive & Partner Network Analysis (Hilton Honors Focus)</h2>
+                   <p>This card grants you automatic Hilton Honors Silver status, the first elite tier in Hilton's four-level program (Member, Silver, Gold, Diamond). Silver status provides:</p>
+                   {/* Using featureList style from */}
+                   <ul className={styles.featureList}>
+                    <li>20% Bonus on Base Points: Earn 12 points per dollar on paid stays (10 base + 20% bonus), before card earnings.</li>
+                    <li>Fifth Night Free: The most valuable Silver perk for maximizing point redemptions.</li>
+                    <li>Complimentary Bottled Water: Two bottles per stay at most brands.</li>
+                    <li>Elite Rollover Nights: Helps qualify for status the following year.</li>
+                    <li>Points Don't Expire: Status typically prevents point expiration from inactivity.</li>
+                   </ul>
+                   <p>While Silver lacks the upgrades or breakfast benefits of Gold/Diamond, securing the 5th Night Free automatically is a significant advantage for a no-fee card. Hilton also partners with Lyft and dining programs for extra point earning opportunities. Airline transfers are possible but generally not recommended due to poor ratios.</p>
+                 </section>
+
+                <section id="section-9" className={styles.reviewSection}>
+                  <h2>9. Travel-Specific Benefits & Credits (Maximization Guide - Focus on Status Path)</h2>
+                  <p>Unlike premium Hilton cards, this no-fee version doesn't offer annual statement credits. Its main travel benefits are the no foreign transaction fees and complimentary Silver status.</p>
+                  <p>The card does offer a path to Hilton Honors Gold status by spending $20,000 on eligible purchases in a calendar year. Gold status is a nice upgrade, offering an 80% point bonus, potential room upgrades, and a daily food/beverage credit (U.S.) or breakfast (international).</p>
+                  <p>However, spending $20,000 just for Gold status is generally not efficient. The Hilton Honors American Express Surpass® Card ($150 annual fee) provides automatic Gold status. For most people wanting Gold, paying the fee for the Surpass card is a more direct and likely cost-effective strategy than hitting the high spending threshold on the no-fee card.</p>
+                 </section>
+
+                <section id="section-10" className={styles.reviewSection}>
+                  <h2>10. Travel & Purchase Protections (Insurance Explained Simply)</h2>
+                  <p>Despite the $0 fee, Amex includes valuable protections:</p>
+                   {/* Using featureList style from */}
+                   <ul className={styles.featureList}>
+                    <li>Car Rental Loss and Damage Insurance: Provides secondary coverage against damage or theft for eligible rentals paid with the card when you decline the rental company's CDW. Secondary means it applies after your personal auto insurance.</li>
+                    <li>Purchase Protection: Covers eligible new purchases against accidental damage, theft, or loss for up to 90 days (typically up to $1,000 per item).</li>
+                    <li>Extended Warranty: Extends the original manufacturer's warranty by up to one additional year on eligible purchases with warranties of 5 years or less.</li>
+                    <li>Global Assist® Hotline: Provides 24/7 coordination and referral services for medical, legal, or other emergencies when traveling over 100 miles from home (you pay third-party costs).</li>
+                   </ul>
+                   <p>These benefits offer real peace of mind and potential savings, adding tangible value often overlooked in no-fee cards.</p>
+                </section>
+
+                <section id="section-11" className={styles.reviewSection}>
+                  <h2>11. Security, Convenience & Tech Features</h2>
+                  <p>As an Amex card, you get access to their robust platform:</p>
+                  {/* Using featureList style from */}
+                  <ul className={styles.featureList}>
+                    <li>American Express App/Website: Excellent tools for tracking spending, points, paying bills, and managing your account.</li>
+                    <li>Amex Offers: Access targeted deals providing statement credits or bonus points at various merchants. Regularly checking and activating these offers is key to maximizing value.</li>
+                    <li>Send & Split®: Split purchase costs with Venmo or PayPal users directly from the Amex App, while still earning rewards on the full amount.</li>
+                    <li>Fraud Protection: $0 liability for unauthorized charges.</li>
+                    <li>Account Alerts: Customizable notifications for payments, spending, etc.</li>
+                    <li>Contactless Payment: Supports tap-to-pay.</li>
+                  </ul>
+                   <p>Engaging with these features, especially Amex Offers, enhances the card's overall value proposition.</p>
+                </section>
+
+                <section id="section-12" className={styles.reviewSection}>
+                  <h2>12. Full Spectrum of Rates & Fees (Transparency is Key)</h2>
+                  <p>Understanding the costs is vital. Here’s a summary (always verify with official Amex documentation):</p>
+                  {/* Table structure adapted from using DraggableTableWrapper */}
+                  <DraggableTableWrapper>
+                    <div className={styles.tableContainer}>
+                        <table className={`${styles.statsTable} ${styles.ratesFeesTable}`}>
+                            <thead>
+                                <tr>
+                                    <th>Fee/Rate Type</th>
+                                    <th>Amount/Rate</th>
+                                    {/* <th>Supporting Snippets</th> */} {/* Removed as superscripts are removed */}
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td data-label="Fee/Rate Type">Annual Fee</td>
+                                    <td data-label="Amount/Rate">$0</td>
+                                    {/* <td data-label="Supporting Snippets">1</td> */}
+                                    <td data-label="Notes">Core benefit.</td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Fee/Rate Type">Foreign Transaction Fee</td>
+                                    <td data-label="Amount/Rate">None</td>
+                                    {/* <td data-label="Supporting Snippets">1</td> */}
+                                    <td data-label="Notes">Saves ~3% abroad.</td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Fee/Rate Type">Purchase APR</td>
+                                    <td data-label="Amount/Rate">20.99% – 29.99% Variable</td>
+                                    {/* <td data-label="Supporting Snippets">4</td> */}
+                                    <td data-label="Notes">High; avoid carrying a balance.</td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Fee/Rate Type">Balance Transfer APR</td>
+                                    <td data-label="Amount/Rate">20.99% – 29.99% Variable</td>
+                                    {/* <td data-label="Supporting Snippets">Implied by 4</td> */}
+                                    <td data-label="Notes">High ongoing rate; check for intro offers.</td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Fee/Rate Type">Balance Transfer Fee</td>
+                                    <td data-label="Amount/Rate">Fee Applies</td>
+                                    {/* <td data-label="Supporting Snippets">See Note</td> */}
+                                    <td data-label="Notes">Typically 3% or $5. Verify terms.</td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Fee/Rate Type">Cash Advance APR</td>
+                                    <td data-label="Amount/Rate">29.99% Variable</td>
+                                    {/* <td data-label="Supporting Snippets">4</td> */}
+                                    <td data-label="Notes">Very high; interest accrues immediately.</td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Fee/Rate Type">Cash Advance Fee</td>
+                                    <td data-label="Amount/Rate">Fee Applies</td>
+                                    {/* <td data-label="Supporting Snippets">See Note</td> */}
+                                    <td data-label="Notes">Typically 5% or $10. Verify terms.</td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Fee/Rate Type">Late Payment Fee</td>
+                                    <td data-label="Amount/Rate">Up to $40</td>
+                                    {/* <td data-label="Supporting Snippets">Standard Amex</td> */}
+                                    <td data-label="Notes">Pay on time! Verify terms.</td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Fee/Rate Type">Returned Payment Fee</td>
+                                    <td data-label="Amount/Rate">Up to $40</td>
+                                    {/* <td data-label="Supporting Snippets">Standard Amex</td> */}
+                                    <td data-label="Notes">Ensure sufficient funds. Verify terms.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                  </DraggableTableWrapper>
+                  <p><em>Note: Specific fee amounts need confirmation from the issuer.</em></p>
+                  <p>The key takeaway: The Purchase APR is high. Carrying a balance will likely cost more in interest than you earn in rewards. Pay your statement in full each month.</p>
+                </section>
+
+                <section id="section-13" className={styles.reviewSection}>
+                  <h2>13. Credit Score Guidance & Application Insights</h2>
+                  <p>Approval generally requires good to excellent credit, typically a FICO score of 670 or higher. Amex considers your full credit profile, income, and relationship with them.</p>
+                  <p>The "Apply with Confidence" feature is helpful, letting you see if you're approved before a hard inquiry hits your credit report. You only get the inquiry if you're approved and accept the card. While entry-level for Hilton, it's still an Amex card, so standards might be slightly higher than some other basic cards. It's best for those with established positive credit.</p>
+                </section>
+
+                <section id="section-14" className={styles.reviewSection}>
+                  <h2>14. "Is This Card Your Perfect Travel Companion?" (Detailed User Profiling)</h2>
+                  <p>This card fits specific profiles well:</p>
+                  {/* Using featureList style from */}
+                  <h3>Ideal Users:</h3>
+                  <ul className={styles.featureList}>
+                    <li>The Casual Hilton Guest: Travels occasionally, often chooses mid-tier Hilton brands, values earning points and basic perks without an annual fee.</li>
+                    <li>The Budget-Conscious U.S. Spender: Spends significantly on U.S. groceries, dining, and gas, wants travel rewards without a fee, and is okay with Hilton points.</li>
+                    <li>The Amex Ecosystem Entrant: Wants a low-risk way to start a relationship with American Express and access Amex Offers.</li>
+                  </ul>
+                  <h3>Not the Best Fit For:</h3>
+                  <ul className={styles.featureList}>
+                    <li>Frequent Travelers Seeking Premium Perks: Needs lounge access, travel credits, higher status, or top-tier insurance.</li>
+                    <li>Hotel Brand Agnostics: Doesn't stay loyal to Hilton, limiting point redemption value.</li>
+                    <li>Heavy International Spenders: Misses out on 5X bonus categories outside the U.S.</li>
+                    <li>Rewards Maximizers: Prefers higher-value flexible points or straightforward cash back.</li>
+                  </ul>
+                  <p>Honesty about your travel and spending habits is key to determining if this card aligns with your needs.</p>
+                </section>
+
+                <section id="section-15" className={styles.reviewSection}>
+                  <h2>15. Unbiased Pros & Cons (Comprehensive & Balanced)</h2>
+                  <p>Let's weigh the good against the not-so-good:</p>
+                  {/* Pros/Cons structure copied from */}
+                  <div className={styles.prosConsContainer}>
+                    <div className={styles.prosBox}>
+                        <h3>Pros:</h3>
+                        <ul className={styles.featureList}>
+                            <li>$0 Annual Fee: Easy to keep long-term.</li>
+                            <li>Complimentary Silver Status: Key perk is the 5th Night Free.</li>
+                            <li>Strong 7X Earning at Hilton: Rewards brand loyalty.</li>
+                            <li>Solid 5X U.S. Bonus Categories: Covers common spending.</li>
+                            <li>No Foreign Transaction Fees: Saves money abroad.</li>
+                            <li>Access to Amex Offers: Potential for extra savings/points.</li>
+                            <li>Included Protections: Car rental insurance, purchase protection, extended warranty add value.</li>
+                            <li>Attainable Welcome Offer: Often has reasonable requirements.</li>
+                        </ul>
+                    </div>
+                    <div className={styles.consBox}>
+                        <h3>Cons:</h3>
+                        <ul className={styles.featureList}>
+                            <li>Lower Point Valuation: Hilton points worth ~0.6 cpp.</li>
+                            <li>U.S. Restriction on 5X Categories: Limits earning abroad.</li>
+                            <li>Basic Silver Perks: Beyond 5th Night Free, benefits are minimal.</li>
+                            <li>Inefficient Path to Gold Status: $20k spend is very high.</li>
+                            <li>High APR: Costly if you carry a balance.</li>
+                            <li>Requires Hilton Preference: Points best used within Hilton.</li>
+                            <li>Everyday Return Can Be Matched: Effective return (~3% on 5X, ~1.8% on 3X) might not beat cash back or flexible points for some spenders.</li>
+                        </ul>
+                    </div>
+                  </div>
+                  <p>The core trade-off is accepting lower point value and flexibility for no annual fee and solid Hilton/U.S. spending perks.</p>
+                </section>
+
+                <section id="section-16" className={styles.reviewSection}>
+                  <h2>16. Head-to-Head: How It Stacks Up Against Key Competitors</h2>
+                  <p>Compared to other $0 fee hotel/travel cards:</p>
+                   {/* Table structure adapted from using DraggableTableWrapper */}
+                  <DraggableTableWrapper>
+                    <div className={styles.tableContainer}>
+                        <table className={`${styles.statsTable} ${styles.ratesFeesTable}`}>
+                            <thead>
+                                <tr>
+                                    <th>Feature</th>
+                                    <th>Hilton Honors Amex</th>
+                                    <th>Marriott Bonvoy Bold (Chase)</th>
+                                    <th>IHG One Rewards Traveler (Chase)</th>
+                                    <th>Wyndham Rewards Earner (Barclays)</th>
+                                    <th>Capital One VentureOne</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td data-label="Feature">Annual Fee</td>
+                                    <td data-label="Hilton Honors Amex">$0</td>
+                                    <td data-label="Marriott Bonvoy Bold (Chase)">$0</td>
+                                    <td data-label="IHG One Rewards Traveler (Chase)">$0</td>
+                                    <td data-label="Wyndham Rewards Earner (Barclays)">$0</td>
+                                    <td data-label="Capital One VentureOne">$0</td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Feature">Hotel Stay Earning</td>
+                                    <td data-label="Hilton Honors Amex">7X Hilton</td>
+                                    <td data-label="Marriott Bonvoy Bold (Chase)">Up to 14X Marriott</td>
+                                    <td data-label="IHG One Rewards Traveler (Chase)">Up to 17X IHG</td>
+                                    <td data-label="Wyndham Rewards Earner (Barclays)">5X Wyndham</td>
+                                    <td data-label="Capital One VentureOne">5X miles via C1 Portal</td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Feature">Dining Earning</td>
+                                    <td data-label="Hilton Honors Amex">5X (U.S. only)</td>
+                                    <td data-label="Marriott Bonvoy Bold (Chase)">2X</td>
+                                    <td data-label="IHG One Rewards Traveler (Chase)">3X</td>
+                                    <td data-label="Wyndham Rewards Earner (Barclays)">2X</td>
+                                    <td data-label="Capital One VentureOne">1.25X miles</td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Feature">Grocery Earning</td>
+                                    <td data-label="Hilton Honors Amex">5X (U.S. only)</td>
+                                    <td data-label="Marriott Bonvoy Bold (Chase)">2X</td>
+                                    <td data-label="IHG One Rewards Traveler (Chase)">2X (Other)</td>
+                                    <td data-label="Wyndham Rewards Earner (Barclays)">2X</td>
+                                    <td data-label="Capital One VentureOne">1.25X miles</td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Feature">Gas Earning</td>
+                                    <td data-label="Hilton Honors Amex">5X (U.S. only)</td>
+                                    <td data-label="Marriott Bonvoy Bold (Chase)">1X (Other)</td>
+                                    <td data-label="IHG One Rewards Traveler (Chase)">3X</td>
+                                    <td data-label="Wyndham Rewards Earner (Barclays)">5X</td>
+                                    <td data-label="Capital One VentureOne">1.25X miles</td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Feature">Key Status Perk</td>
+                                    <td data-label="Hilton Honors Amex">Hilton Silver (5th Night Free)</td>
+                                    <td data-label="Marriott Bonvoy Bold (Chase)">Marriott Silver</td>
+                                    <td data-label="IHG One Rewards Traveler (Chase)">IHG Silver</td>
+                                    <td data-label="Wyndham Rewards Earner (Barclays)">Wyndham Gold</td>
+                                    <td data-label="Capital One VentureOne">None</td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Feature">Est. Point Value (cpp)</td>
+                                    <td data-label="Hilton Honors Amex">~0.006</td>
+                                    <td data-label="Marriott Bonvoy Bold (Chase)">~0.008</td>
+                                    <td data-label="IHG One Rewards Traveler (Chase)">~0.005</td>
+                                    <td data-label="Wyndham Rewards Earner (Barclays)">~0.011</td>
+                                    <td data-label="Capital One VentureOne">~0.01+</td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Feature">Foreign Transaction Fee</td>
+                                    <td data-label="Hilton Honors Amex">$0</td>
+                                    <td data-label="Marriott Bonvoy Bold (Chase)">$0</td>
+                                    <td data-label="IHG One Rewards Traveler (Chase)">$0</td>
+                                    <td data-label="Wyndham Rewards Earner (Barclays)">$0</td>
+                                    <td data-label="Capital One VentureOne">$0</td>
+                                </tr>
+                                {/* Removed Supporting Snippets row */}
+                            </tbody>
+                        </table>
+                    </div>
+                  </DraggableTableWrapper>
+                  <p><em>Point values/earning rates are estimates/typical.</em></p>
+                  <p>Analysis: The Hilton Amex competes well with its high 5X U.S. bonus categories and valuable Silver status (5th Night Free). However, Wyndham Earner offers higher Gold status and 5X on gas globally. IHG Traveler includes bills in its 3X category. Marriott Bold earns more valuable points (lower rate). VentureOne offers transferable miles. The best choice depends on preferred hotel brand, spending patterns (U.S. vs. global), and value placed on status vs. flexibility.</p>
+                </section>
+
+                <section id="section-17" className={styles.reviewSection}>
+                   <h2>17. Exclusive Expert Tips & Hidden Value Unlocked</h2>
+                  <p>Maximize your card with these strategies:</p>
+                  {/* Using featureList style from */}
+                  <ul className={styles.featureList}>
+                    <li>Hunt Amex Offers: Regularly check for and activate targeted deals for statement credits or bonus points. This adds significant hidden value.</li>
+                    <li>Plan for the 5th Night Free: Structure award stays in 5-night increments whenever feasible to get a 20% points discount.</li>
+                    <li>Stack Hilton Promotions: Always register for Hilton Honors bonus point promotions before stays. They stack with card and status earnings.</li>
+                    <li>Pool Points: Combine points with up to 10 friends or family members for free to reach redemptions faster.</li>
+                    <li>Book Direct with Hilton: Always use Hilton's site/app to book stays and pay with this card to ensure points and status benefits.</li>
+                    <li>Use for No Foreign Fees: If lacking another fee-free card, use this abroad to save ~3%, even if bonus categories don't apply.</li>
+                    <li>Avoid the $20k Gold Chase: Spending $20k just for Gold status is usually inefficient; consider the Surpass card instead if Gold is desired.</li>
+                  </ul>
+                  <p>Active engagement with Amex Offers and Hilton program features is crucial.</p>
+                </section>
+
+                <section id="section-18" className={styles.reviewSection}>
+                  <h2>18. Aggregated User Sentiment & Real-World Experiences and Real-Life Spend Examples / Estimated Value</h2>
+                  <p>Users generally praise the $0 fee, Silver status (5th Night Free), and no foreign transaction fees. Criticisms often focus on the lower value of Hilton points and the U.S.-only 5X bonus categories. It's well-regarded by its target audience but less so by rewards maximizers.</p>
+                  <h3>Example Scenario:</h3>
+                   <p>A user spending $15,000 annually ($1k Hilton, $3k U.S. Restaurants, $4k U.S. Supermarkets, $2k U.S. Gas, $5k Other) could earn ~79,000 Hilton points.</p>
+                  {/* Using featureList style from */}
+                  <ul className={styles.featureList}>
+                    <li>Base Value (@ 0.6 cpp): ~$474</li>
+                    <li>vs. 2% Cash Back: $15,000 x 0.02 = $300</li>
+                    <li>Potential Added Value: Using the 5th Night Free could save points worth $100+, and Amex Offers could add $50-$200+ annually.</li>
+                  </ul>
+                  <p>The card can outperform simple cash back, but realizing that extra value often depends on leveraging Hilton perks and Amex Offers.</p>
+                </section>
+
+                <section id="section-19" className={styles.reviewSection}>
+                   <h2>19. "The Final Takeaway": Authoritative Recommendation & Alternatives</h2>
+                  <p>The Hilton Honors American Express Card is a strong choice for the cost-conscious, occasional Hilton guest whose spending is primarily domestic. It delivers solid value through its $0 fee, Silver status perks (especially 5th Night Free), decent U.S. bonus categories, and lack of foreign transaction fees.</p>
+                  <p>It's less suitable if you: rarely stay at Hilton, demand maximum point value/flexibility, spend heavily abroad, need premium travel benefits, or want higher elite status easily.</p>
+                  <h3>Recommendation:</h3>
+                  <p>Get it if you fit the target profile. Otherwise, explore alternatives:</p>
+                  {/* Using featureList style from */}
+                  <ul className={styles.featureList}>
+                    <li>More Hilton Perks/Easier Gold: Hilton Honors Amex Surpass® Card ($150 fee).</li>
+                    <li>No-Fee Flexible Rewards: Capital One VentureOne (transferable miles).</li>
+                    <li>Premium Flexible Rewards: Chase Sapphire Preferred® or Capital One Venture X.</li>
+                    <li>Simple Cash Back: Flat 1.5%-2% cash back cards.</li>
+                    <li>Other No-Fee Hotel Cards: Marriott Bonvoy Bold®, IHG One Rewards Traveler, Wyndham Rewards Earner®.</li>
+                  </ul>
+                  <p>Choose based on your specific travel loyalty, spending habits, and tolerance for fees.</p>
+                </section>
+
+                 {/* FAQ Section structure copied from, content updated */}
+                <section id="section-20" className={`${styles.reviewSection} ${styles.faqSection}`}>
+                  <h2>20. Card-Specific Frequently Asked Questions (FAQs)</h2>
+                  <div className={styles.faqContainer}>
+                    <details className={styles.faqItem}>
+                        <summary className={styles.faqQuestion}>Q1: Annual Fee?</summary>
+                        <div className={styles.faqAnswer}><p>A: $0.</p></div>
+                    </details>
+                    <details className={styles.faqItem}>
+                        <summary className={styles.faqQuestion}>Q2: Welcome Offer?</summary>
+                        <div className={styles.faqAnswer}><p>A: Often 80k points after $2k spend in 6 months (check current offer).</p></div>
+                    </details>
+                    <details className={styles.faqItem}>
+                        <summary className={styles.faqQuestion}>Q3: Credit Score Needed?</summary>
+                        <div className={styles.faqAnswer}><p>A: Good to Excellent (typically FICO 670+).</p></div>
+                    </details>
+                     <details className={styles.faqItem}>
+                        <summary className={styles.faqQuestion}>Q4: Foreign Transaction Fees?</summary>
+                        <div className={styles.faqAnswer}><p>A: None.</p></div>
+                    </details>
+                    <details className={styles.faqItem}>
+                        <summary className={styles.faqQuestion}>Q5: Main Silver Benefits?</summary>
+                        <div className={styles.faqAnswer}><p>A: 20% points bonus on stays, 5th Night Free on award stays, points don't expire with status.</p></div>
+                    </details>
+                    <details className={styles.faqItem}>
+                        <summary className={styles.faqQuestion}>Q6: Earn Gold Status?</summary>
+                        <div className={styles.faqAnswer}><p>A: Yes, by spending $20k/year (often inefficient).</p></div>
+                    </details>
+                    <details className={styles.faqItem}>
+                        <summary className={styles.faqQuestion}>Q7: Hilton Point Value?</summary>
+                        <div className={styles.faqAnswer}><p>A: Around 0.5-0.6 cents each.</p></div>
+                    </details>
+                     <details className={styles.faqItem}>
+                        <summary className={styles.faqQuestion}>Q8: Good for Everyday Spend?</summary>
+                        <div className={styles.faqAnswer}><p>A: Decent for U.S. bonus categories (5X), less competitive elsewhere (3X), value depends on using points well.</p></div>
+                    </details>
+                     <details className={styles.faqItem}>
+                        <summary className={styles.faqQuestion}>Q9: Lounge Access?</summary>
+                        <div className={styles.faqAnswer}><p>A: No.</p></div>
+                    </details>
+                  </div>
+                </section>
+
+                {/* E-A-T Section structure copied from, content updated */}
+                <section id="eat-expertise-authority-trustworthiness" className={`${styles.reviewSection} ${styles.eatSection}`}>
+                    <h2 dangerouslySetInnerHTML={{ __html: "Our Commitment to E-A-T: Expertise, Authority &amp; Trustworthiness"}}></h2>
+                    <p>At <strong>{siteName}</strong>, we ensure our content meets the highest standards.</p>
+                     <p>
+                      This review of the <strong>{reviewDataHilton.cardName}</strong> is based on thorough research of the card's features, terms, and conditions as of {updateDate}, as well as comparisons to other cards in the market, to provide you with a reliable and comprehensive guide. {/* *** PLACEHOLDER: Update date *** */}
+                    </p>
+                </section>
+
+              </article>
+            </div>
+          </div>
+
+          {/* Sidebar structure copied from */}
+          <aside className={styles.sidebarArea}>
+            <TableOfContents sections={tocSectionsHilton} /> {/* Use Hilton TOC sections */}
+          </aside>
+        </div>
       </main>
-
-      
     </>
   );
 }
 
-export default HiltonHonorsAmexReviewPage;
+export default HiltonHonorsAmexReviewPage; // Updated export name
