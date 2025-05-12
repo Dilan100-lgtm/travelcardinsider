@@ -143,11 +143,17 @@ const structuredDataOptimized = {
         worstRating : '1',
         description: `TravelCardInsider editorial rating based on 5.0 scale converted to 10.0 scale, as of ${updateDate}.`
       },
-      author          : { '@type': 'Organization', name: siteName, url: siteUrl },
+      // *********** CORRECTION: Author should be Person, not Organization ***********
+      author          : {
+          '@type': 'Person',
+          'name': reviewDataNew.author.name,
+          'url': reviewDataNew.author.fullBioLink ? `${siteUrl}${reviewDataNew.author.fullBioLink}` : undefined
+      },
+      // *********** END CORRECTION ***********
       publisher       : {
         '@type' : 'Organization',
         name    : siteName,
-        logo    : { '@type': 'ImageObject', url: `${siteUrl}/images/logo/tci-logo-schema.png` },
+        logo    : { '@type': 'ImageObject', url: `${siteUrl}/images/logo/tci-logo-schema.png` }, // Ensure this logo exists
       },
       datePublished   : publishDate,
       dateModified    : updateDate,
@@ -164,6 +170,13 @@ const structuredDataOptimized = {
       breadcrumb         : { '@id': `${pageUrlFull}#breadcrumbs` },
       datePublished      : publishDate,
       dateModified       : updateDate,
+      // *********** CORRECTION: Author for WebPage should also be Person ***********
+       author: {
+          '@type': 'Person',
+          'name': reviewDataNew.author.name,
+          'url': reviewDataNew.author.fullBioLink ? `${siteUrl}${reviewDataNew.author.fullBioLink}` : undefined
+       },
+       // *********** END CORRECTION ***********
     },
     {
       '@type'   : 'ImageObject',
@@ -178,7 +191,7 @@ const structuredDataOptimized = {
       '@id'          : `${pageUrlFull}#breadcrumbs`,
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: siteName, item: siteUrl },
-        { '@type': 'ListItem', position: 2, name: 'Credit Card Reviews', item: `${siteUrl}/reviews` },
+        { '@type': 'ListItem', position: 2, name: 'Credit Card Reviews', item: `${siteUrl}/reviews` }, // Ensure '/reviews' is correct path
         { '@type': 'ListItem', position: 3, name: `${reviewDataNew.cardName} Review`, item: pageUrlFull },
       ],
     },
@@ -243,11 +256,11 @@ const structuredDataOptimized = {
       '@id'   : `${siteUrl}#website`,
       name    : siteName,
       url     : siteUrl,
-      logo    : { '@type': 'ImageObject', url: `${siteUrl}/images/logo/tci-logo-schema.png` },
+      logo    : { '@type': 'ImageObject', url: `${siteUrl}/images/logo/tci-logo-schema.png` }, // Ensure this logo exists
       sameAs  : [
-        'https://www.facebook.com/TravelCardInsider', // Replace with actual
-        'https://www.instagram.com/travelcardinsider', // Replace with actual
-        'https://twitter.com/travelcardinsider', // Replace with actual
+        // 'https://www.facebook.com/TravelCardInsider', // Replace with actual
+        // 'https://www.instagram.com/travelcardinsider', // Replace with actual
+        // 'https://twitter.com/travelcardinsider', // Replace with actual
       ],
     },
   ],
@@ -331,61 +344,78 @@ function CapitalOneQuicksilverReviewPage() {
    const [showAuthorBioTooltip, setShowAuthorBioTooltip] = useState(false);
     const authorRef = useRef(null);
     const authorTooltipRef = useRef(null);
-    // Add refs for rating tooltip if you implement click-outside for it similarly
-    // const ratingTriggerRef = useRef(null);
-    // const ratingTooltipContainerRef = useRef(null);
-  
-  
+    const ratingTooltipRef = useRef(null); // Added ref for rating tooltip
+
     const handleIconClick = useCallback((event) => {
         event.preventDefault();
         event.stopPropagation();
         setShowRatingInfo(prevState => !prevState);
     }, []);
-  
+
     const handleAuthorMouseEnter = useCallback(() => {
         setShowAuthorBioTooltip(true);
     }, []);
-  
+
     const handleAuthorMouseLeave = useCallback(() => {
+        // Use a timer to allow moving cursor between trigger and tooltip
         const timerId = setTimeout(() => {
             if (authorRef.current && authorTooltipRef.current) {
                 const isHoveringTrigger = authorRef.current.matches(':hover');
                 const isHoveringTooltip = authorTooltipRef.current.matches(':hover');
+                // Also check if focus is within either element for accessibility
                 const isFocusWithinTrigger = authorRef.current.contains(document.activeElement);
                 const isFocusWithinTooltip = authorTooltipRef.current.contains(document.activeElement);
-  
+
                 if (!isHoveringTrigger && !isHoveringTooltip && !isFocusWithinTrigger && !isFocusWithinTooltip) {
                    setShowAuthorBioTooltip(false);
                 }
+            } else if (!authorRef.current?.matches(':hover') && !authorTooltipRef.current?.matches(':hover')) {
+                 // Fallback if refs somehow become null while checking
+                 setShowAuthorBioTooltip(false);
             }
-        }, 150);
-        return () => clearTimeout(timerId);
-    }, [authorRef, authorTooltipRef]);
-  
+        }, 150); // 150ms delay
+
+        // Store timerId to clear it if mouse re-enters before timeout
+        authorRef.current.tooltipTimeoutId = timerId;
+    }, [authorRef, authorTooltipRef]); // Dependencies include the refs
+
+     // Clear timer if mouse re-enters trigger or tooltip
+     const handleAuthorClearTimeout = useCallback(() => {
+        if (authorRef.current?.tooltipTimeoutId) {
+            clearTimeout(authorRef.current.tooltipTimeoutId);
+        }
+     }, [authorRef]);
+
+
     useEffect(() => {
         function handleClickOutside(event) {
+            // Close Author Tooltip
             if (showAuthorBioTooltip &&
                 authorRef.current && !authorRef.current.contains(event.target) &&
                 authorTooltipRef.current && !authorTooltipRef.current.contains(event.target)) {
                 setShowAuthorBioTooltip(false);
             }
-            // Example for Rating Tooltip (ensure refs are defined and passed if using this)
-            // if (showRatingInfo &&
-            //     ratingTriggerRef.current && !ratingTriggerRef.current.contains(event.target) &&
-            //     ratingTooltipContainerRef.current && !ratingTooltipContainerRef.current.contains(event.target)) {
-            //     setShowRatingInfo(false);
-            // }
+            // Close Rating Tooltip
+            if (showRatingInfo &&
+                // Check if click is outside the icon button (trigger)
+                !event.target.closest(`.${styles.infoIconButton}`) &&
+                // Check if click is outside the rating tooltip itself
+                ratingTooltipRef.current && !ratingTooltipRef.current.contains(event.target)
+               ) {
+                 setShowRatingInfo(false);
+            }
         }
-  
+
         if (showAuthorBioTooltip || showRatingInfo) {
             document.addEventListener("mousedown", handleClickOutside);
+        } else {
+             document.removeEventListener("mousedown", handleClickOutside);
         }
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
-    }, [showAuthorBioTooltip, authorRef, authorTooltipRef, showRatingInfo /*, ratingTriggerRef, ratingTooltipContainerRef */]);
-const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
-const pagePath = "/reviews/capital-one-quicksilver"; // *** REPLACE with your actual page path ***
+        // Add ratingTooltipRef to dependencies if it's used
+    }, [showAuthorBioTooltip, authorRef, authorTooltipRef, showRatingInfo, ratingTooltipRef]);
 
 
   return (
@@ -394,12 +424,18 @@ const pagePath = "/reviews/capital-one-quicksilver"; // *** REPLACE with your ac
         <title>{reviewDataNew.title}</title>
         <meta name="description" content={reviewDataNew.description} />
         <meta name="keywords" content={reviewDataNew.keywords} />
-        <meta name="author" content={reviewDataNew.author} />
+        {/* ***** CORRECTION: Use Person name for author meta ***** */}
+        <meta name="author" content={reviewDataNew.author.name} />
+        {/* ***** END CORRECTION ***** */}
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <meta name="robots" content="index,follow,max-image-preview:large" />
         <link rel="canonical" href={pageUrlFull} />
         <link rel="alternate" href={pageUrlFull} hreflang="en-us" />
         <link rel="preload" as="image" href={reviewDataNew.imageUrl} />
+        {/* ***** CORRECTION: Preload author images ***** */}
+        <link rel="preload" as="image" href={reviewDataNew.author.imageUrl} />
+        <link rel="preload" as="image" href={reviewDataNew.author.tooltipImageUrl} />
+        {/* ***** END CORRECTION ***** */}
         <meta name="geo.region" content="US" />
         <meta name="geo.placename" content="United States" />
         <meta name="language" content="en-US" />
@@ -424,10 +460,13 @@ const pagePath = "/reviews/capital-one-quicksilver"; // *** REPLACE with your ac
         <meta property="og:image"       content={reviewDataNew.imageUrl} />
         <meta property="og:image:width" content={String(reviewDataNew.imageWidth)} />
         <meta property="og:image:height" content={String(reviewDataNew.imageHeight)} />
-        <meta property="article:publisher" content={`https://www.facebook.com/${siteName}`} />
+        <meta property="article:publisher" content={`https://www.facebook.com/${siteName}`} /> {/* Ensure this matches your FB page */}
         <meta property="article:section"       content="Credit Card Reviews" />
         <meta property="article:published_time" content={publishDate} />
         <meta property="article:modified_time"  content={updateDate} />
+        {/* ***** CORRECTION: Author tag should use Person name ***** */}
+        <meta property="article:author" content={reviewDataNew.author.name} />
+        {/* ***** END CORRECTION ***** */}
         {reviewDataNew.keywords.split(',').map(keyword => (
             <meta property="article:tag" content={keyword.trim()} key={keyword.trim()} />
         ))}
@@ -452,22 +491,24 @@ const pagePath = "/reviews/capital-one-quicksilver"; // *** REPLACE with your ac
                 <h1 className={styles.heroTitle}>
                   {reviewDataNew.h1Content}
                 </h1>
-                 {/* === START: Updated Author Section === */}
+                 {/* === START: Updated Author Section (Corrected for Quicksilver) === */}
                 <div
                     className={styles.authorBioContainer}
                     ref={authorRef}
-                    onMouseEnter={handleAuthorMouseEnter}
+                    onMouseEnter={() => { handleAuthorClearTimeout(); handleAuthorMouseEnter(); }}
                     onMouseLeave={handleAuthorMouseLeave}
+                    onFocus={handleAuthorMouseEnter} // Show tooltip on focus
+                    onBlur={handleAuthorMouseLeave} // Hide tooltip on blur (with delay)
                     aria-haspopup="true"
                     aria-expanded={showAuthorBioTooltip}
-                    tabIndex={0} // For keyboard accessibility
+                    tabIndex={0} // Make focusable
                 >
                     {/* Author Image */}
                     <Image
-                        src={reviewData.author.imageUrl}
-                        alt={`${reviewData.author.name} headshot`}
-                        width={reviewData.author.imageWidth}
-                        height={reviewData.author.imageHeight}
+                        src={reviewDataNew.author.imageUrl} // Corrected: reviewDataNew
+                        alt={`${reviewDataNew.author.name} headshot`} // Corrected: reviewDataNew
+                        width={reviewDataNew.author.imageWidth} // Corrected: reviewDataNew
+                        height={reviewDataNew.author.imageHeight} // Corrected: reviewDataNew
                         className={styles.authorImageSmall}
                         priority
                     />
@@ -475,37 +516,34 @@ const pagePath = "/reviews/capital-one-quicksilver"; // *** REPLACE with your ac
                     <div className={styles.authorInfoBlock}>
                         <div className={styles.authorNameLine}>
                             <span className={styles.authorPrefix}>By</span>
-                            <span className={styles.authorName}>{reviewData.author.name}</span>
+                            <span className={styles.authorName}>{reviewDataNew.author.name}</span> {/* Corrected: reviewDataNew */}
                         </div>
-                        <span className={styles.authorTitle}>{reviewData.author.title}</span>
-                        {/* Last Edited Time */}
-                        {reviewData.datePublished && (
-                            <time dateTime={reviewData.datePublished} className={styles.authorLastEdited}>
-                                Last updated: {new Date(reviewData.datePublished).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                        <span className={styles.authorTitle}>{reviewDataNew.author.title}</span> {/* Corrected: reviewDataNew */}
+                        {/* Last Edited Time - Using updateDate */}
+                        {updateDate && (
+                            <time dateTime={updateDate} className={styles.authorLastEdited}>
+                                Last updated: {new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                             </time>
                         )}
                         {/* Social Media Icons */}
-                        {reviewData.author.socialLinks && (
+                        {reviewDataNew.author.socialLinks && ( // Corrected: reviewDataNew
                             <div className={styles.authorSocialLinks}>
-                                {reviewData.author.socialLinks.linkedin && (
-                                    <a href={reviewData.author.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={styles.socialIconLink}>
-                                        {/* Placeholder for LinkedIn Icon - Replace with actual SVG or Font Icon */}
+                                {reviewDataNew.author.socialLinks.linkedin && ( // Corrected: reviewDataNew
+                                    <a href={reviewDataNew.author.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={styles.socialIconLink}>
                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"> {/* Example Inline SVG */}
                                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                                         </svg>
                                     </a>
                                 )}
-                                {reviewData.author.socialLinks.twitter && (
-                                    <a href={reviewData.author.socialLinks.twitter} target="_blank" rel="noopener noreferrer" aria-label="Twitter" className={styles.socialIconLink}>
-                                        {/* Placeholder for Twitter Icon */}
+                                {reviewDataNew.author.socialLinks.twitter && ( // Corrected: reviewDataNew
+                                    <a href={reviewDataNew.author.socialLinks.twitter} target="_blank" rel="noopener noreferrer" aria-label="Twitter" className={styles.socialIconLink}>
                                          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"> {/* Example Inline SVG */}
                                            <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-.422.724-.665 1.56-.665 2.452 0 1.697.864 3.198 2.18 4.078-.8-.025-1.555-.247-2.227-.616v.054c0 2.37 1.683 4.333 3.91 4.78-.426.116-.874.174-1.337.174-.31 0-.611-.03-.904-.085.622 1.936 2.421 3.338 4.553 3.377-1.672 1.309-3.781 2.088-6.072 2.088-.394 0-.784-.023-1.169-.069 2.16 1.389 4.723 2.202 7.482 2.202 8.979 0 13.897-7.446 13.897-13.898 0-.21 0-.42-.015-.63.953-.689 1.778-1.56 2.433-2.525z"/>
                                         </svg>
                                     </a>
                                 )}
-                                {reviewData.author.socialLinks.email && (
-                                    <a href={`mailto:${reviewData.author.socialLinks.email}`} aria-label="Email" className={styles.socialIconLink}>
-                                        {/* Placeholder for Email Icon */}
+                                {reviewDataNew.author.socialLinks.email && ( // Corrected: reviewDataNew
+                                    <a href={`mailto:${reviewDataNew.author.socialLinks.email}`} aria-label="Email" className={styles.socialIconLink}>
                                          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"> {/* Example Inline SVG */}
                                             <path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/>
                                          </svg>
@@ -514,65 +552,62 @@ const pagePath = "/reviews/capital-one-quicksilver"; // *** REPLACE with your ac
                             </div>
                         )}
                     </div>
-                
-                    {/* Author Tooltip (remains unchanged) */}
+
+                    {/* Author Tooltip (Corrected for Quicksilver) */}
                     {showAuthorBioTooltip && (
                         <div
                             className={styles.authorTooltip}
                             ref={authorTooltipRef}
                             role="tooltip"
-                            onMouseEnter={handleAuthorMouseEnter}
+                            onMouseEnter={handleAuthorClearTimeout} // Keep open if mouse enters tooltip
                             onMouseLeave={handleAuthorMouseLeave}
+                            onFocus={handleAuthorMouseEnter} // Keep open if focus moves into tooltip
+                            onBlur={handleAuthorMouseLeave} // Hide if focus leaves tooltip
                         >
-                           {/* ... existing tooltip content ... */}
-                           {/* NOTE: You had placeholder icons 'L', 'T', 'E' inside the tooltip. 
-                               You might want to replace those with actual icons too, 
-                               similar to how they are added outside the tooltip now. */}
                              <div className={styles.authorTooltipHeader}>
                                  <Image
-                                    src={reviewData.author.tooltipImageUrl}
-                                    alt={`${reviewData.author.name} headshot`}
-                                    width={reviewData.author.tooltipImageWidth}
-                                    height={reviewData.author.tooltipImageHeight}
+                                    src={reviewDataNew.author.tooltipImageUrl} // Corrected: reviewDataNew
+                                    alt={`${reviewDataNew.author.name} headshot`} // Corrected: reviewDataNew
+                                    width={reviewDataNew.author.tooltipImageWidth} // Corrected: reviewDataNew
+                                    height={reviewDataNew.author.tooltipImageHeight} // Corrected: reviewDataNew
                                     className={styles.authorTooltipImage}
                                  />
                                  <div className={styles.authorTooltipInfo}>
-                                     <span className={styles.authorTooltipName}>{reviewData.author.name}</span>
-                                     <span className={styles.authorTooltipTitle}>{reviewData.author.title}</span>
+                                     <span className={styles.authorTooltipName}>{reviewDataNew.author.name}</span> {/* Corrected: reviewDataNew */}
+                                     <span className={styles.authorTooltipTitle}>{reviewDataNew.author.title}</span> {/* Corrected: reviewDataNew */}
                                  </div>
                                </div>
-                               {reviewData.author.expertise && reviewData.author.expertise.length > 0 && (
+                               {reviewDataNew.author.expertise && reviewDataNew.author.expertise.length > 0 && ( // Corrected: reviewDataNew
                                  <div className={styles.authorTooltipExpertise}>
                                      <strong>Expertise</strong>
                                      <ul>
-                                         {reviewData.author.expertise.map(area => <li key={area}>{area}</li>)}
+                                         {reviewDataNew.author.expertise.map(area => <li key={area}>{area}</li>)} {/* Corrected: reviewDataNew */}
                                      </ul>
                                  </div>
                                )}
-                               <p className={styles.authorTooltipBioSnippet}>{reviewData.author.bioSnippet}</p>
-                               {reviewData.author.fullBioLink && (
-                                   <Link href={reviewData.author.fullBioLink} legacyBehavior>
+                               <p className={styles.authorTooltipBioSnippet}>{reviewDataNew.author.bioSnippet}</p> {/* Corrected: reviewDataNew */}
+                               {reviewDataNew.author.fullBioLink && ( // Corrected: reviewDataNew
+                                   <Link href={reviewDataNew.author.fullBioLink} legacyBehavior>
                                        <a className={styles.authorTooltipBioLink}>
                                            See full bio
-                                           {/* <span aria-hidden="true"> →</span> */}
                                        </a>
                                    </Link>
                                )}
-                               {/* Updated Social Links inside Tooltip */}
-                               {reviewData.author.socialLinks && (
-                                    <div className={styles.authorTooltipSocials}> {/* Add a class for styling if needed */}
-                                        {reviewData.author.socialLinks.linkedin && (
-                                             <a href={reviewData.author.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={styles.socialIconLink}>
+                               {/* Updated Social Links inside Tooltip (Corrected for Quicksilver) */}
+                               {reviewDataNew.author.socialLinks && ( // Corrected: reviewDataNew
+                                    <div className={styles.authorTooltipSocials}>
+                                        {reviewDataNew.author.socialLinks.linkedin && ( // Corrected: reviewDataNew
+                                             <a href={reviewDataNew.author.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={styles.socialIconLink}>
                                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                                              </a>
                                          )}
-                                         {reviewData.author.socialLinks.twitter && (
-                                             <a href={reviewData.author.socialLinks.twitter} target="_blank" rel="noopener noreferrer" aria-label="Twitter" className={styles.socialIconLink}>
+                                         {reviewDataNew.author.socialLinks.twitter && ( // Corrected: reviewDataNew
+                                             <a href={reviewDataNew.author.socialLinks.twitter} target="_blank" rel="noopener noreferrer" aria-label="Twitter" className={styles.socialIconLink}>
                                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-.422.724-.665 1.56-.665 2.452 0 1.697.864 3.198 2.18 4.078-.8-.025-1.555-.247-2.227-.616v.054c0 2.37 1.683 4.333 3.91 4.78-.426.116-.874.174-1.337.174-.31 0-.611-.03-.904-.085.622 1.936 2.421 3.338 4.553 3.377-1.672 1.309-3.781 2.088-6.072 2.088-.394 0-.784-.023-1.169-.069 2.16 1.389 4.723 2.202 7.482 2.202 8.979 0 13.897-7.446 13.897-13.898 0-.21 0-.42-.015-.63.953-.689 1.778-1.56 2.433-2.525z"/></svg>
                                              </a>
                                          )}
-                                         {reviewData.author.socialLinks.email && (
-                                             <a href={`mailto:${reviewData.author.socialLinks.email}`} aria-label="Email" className={styles.socialIconLink}>
+                                         {reviewDataNew.author.socialLinks.email && ( // Corrected: reviewDataNew
+                                             <a href={`mailto:${reviewDataNew.author.socialLinks.email}`} aria-label="Email" className={styles.socialIconLink}>
                                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
                                              </a>
                                          )}
@@ -622,6 +657,7 @@ const pagePath = "/reviews/capital-one-quicksilver"; // *** REPLACE with your ac
                       className={styles.infoIconButton}
                       aria-label="Rating Information"
                       onClick={handleIconClick}
+                      aria-expanded={showRatingInfo} // Control aria-expanded state
                     >
                       <svg aria-hidden="true" focusable="false" className={styles.infoIcon} viewBox="0 0 16 16">
                         <path fillRule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -631,10 +667,10 @@ const pagePath = "/reviews/capital-one-quicksilver"; // *** REPLACE with your ac
                     {siteName} Rating: <strong>{reviewDataNew.ratingValue.toFixed(1)}</strong>/10
                     {showRatingInfo && (
                       <RatingTooltip
-                        ref={tooltipRef}
+                        ref={ratingTooltipRef} // Pass the ref here
                         ratingValue={reviewDataNew.ratingValue}
                         ratingCriteria={ratingCriteriaOriginal}
-                        onClose={() => setShowRatingInfo(false)}
+                        onClose={() => setShowRatingInfo(false)} // Allow closing via tooltip itself if implemented
                       />
                     )}
                   </span>
@@ -711,7 +747,7 @@ const pagePath = "/reviews/capital-one-quicksilver"; // *** REPLACE with your ac
                         alt={`${reviewDataNew.cardName} visual`}
                         width={645}
                         height={406}
-                        className={styles.inlineCardImage}
+                        className={styles.inlineCardImage} // Assuming this class exists for inline images
                     />
                   </div>
                   <p>Review scores for the Quicksilver vary (from 3.5 to 4.6 out of 5 stars) because its value depends on individual priorities. Those focused on maximizing points via complex strategies might find its 1.5% rate modest. However, those valuing ease of use and transparency rate it higher. The Quicksilver excels when its benefits align with a traveler's desire for simplicity and no foreign transaction fees.</p>
@@ -771,7 +807,7 @@ const pagePath = "/reviews/capital-one-quicksilver"; // *** REPLACE with your ac
                   <h2>6. Comprehensive Rewards Earning Structure</h2>
                   <p>The Quicksilver's rewards are simple: flat, unlimited 1.5% cash back on every purchase, every day. No rotating categories or sign-ups are needed.</p>
                   <p>Enhanced earning opportunities include:</p>
-                  <ol className={styles.orderedList}>
+                  <ol className={styles.orderedList}> {/* Changed to ordered list if appropriate */}
                     <li>Unlimited 5% Cash Back on Hotels and Rental Cars Booked Through Capital One Travel: A significant boost if using Capital One's portal.</li>
                     <li>5% Cash Back on Capital One Entertainment Purchases: Through December 31, 2025, on purchases via the Capital One Entertainment platform.</li>
                   </ol>
@@ -1074,8 +1110,8 @@ const pagePath = "/reviews/capital-one-quicksilver"; // *** REPLACE with your ac
 
                 <section id="section-15" className={styles.reviewSection}>
                   <h2>15. Unbiased Pros &amp; Cons (Comprehensive &amp; Balanced)</h2>
-                  <div className={styles.prosConsContainer}>
-                    <div className={styles.prosBox}>
+                  <div className={styles.prosConsContainer}> {/* Assuming this class exists for layout */}
+                    <div className={styles.prosBox}> {/* Assuming this class exists */}
                         <h3>Pros:</h3>
                         <ul className={styles.featureList}>
                             <li>Simple, Unlimited 1.5% Cash Back: Easy to earn and manage.</li>
@@ -1089,7 +1125,7 @@ const pagePath = "/reviews/capital-one-quicksilver"; // *** REPLACE with your ac
                             <li>Flexible Cash Back Redemptions: Statement credits, check, gift cards, Amazon/PayPal, often no minimum.</li>
                         </ul>
                     </div>
-                    <div className={styles.consBox}>
+                    <div className={styles.consBox}> {/* Assuming this class exists */}
                         <h3>Cons:</h3>
                         <ul className={styles.featureList}>
                             <li>1.5% Rewards Rate Isn't Highest Flat Rate: Some cards offer 2% (may have FTFs).</li>
@@ -1304,11 +1340,13 @@ const pagePath = "/reviews/capital-one-quicksilver"; // *** REPLACE with your ac
                     </details>
                   </div>
                 </section>
-                
+
                  {/* E-A-T Section */}
                 <section id="eat-expertise-authority-trustworthiness" className={`${styles.reviewSection} ${styles.eatSection}`}>
                     <h2 dangerouslySetInnerHTML={{ __html: "Our Commitment to E-A-T: Expertise, Authority &amp; Trustworthiness"}}></h2>
-                    <p>At <strong>{reviewDataNew.author}</strong>, we ensure our content meets the highest standards.</p>
+                     {/* ***** CORRECTION: Use Person name in EAT section ***** */}
+                    <p>At <strong>{siteName}</strong>, we ensure our content meets the highest standards.</p>
+                     {/* ***** END CORRECTION ***** */}
                     {/* Add more E-A-T content specific to this card review if desired */}
                      <p>
                       This review of the <strong>{reviewDataNew.cardName}</strong> is based on thorough research of the card's features, terms, and conditions as of {updateDate}, as well as comparisons to other cards in the market, to provide you with a reliable and comprehensive guide.
