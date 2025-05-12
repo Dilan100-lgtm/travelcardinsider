@@ -373,6 +373,9 @@ function AmexGoldReviewPage() {
           <div className={styles.mainContentArea}>
              <section className={styles.heroSection}>
               <div className={styles.heroTextContainer}>
+                <h1 className={styles.heroTitle}>
+                  {reviewData.h1Content}
+                </h1>
                 <div
                     className={styles.authorBioContainer}
                     ref={authorRef}
@@ -458,9 +461,7 @@ function AmexGoldReviewPage() {
                     )}
                 </div>
 
-                <h1 className={styles.heroTitle}>
-                  {reviewData.h1Content}
-                </h1>
+                
                 <p className={styles.heroSubtitle}>
                   Unlock premium rewards and tailored benefits for your business. Discover how the Amex Gold sets the standard.
                 </p>
