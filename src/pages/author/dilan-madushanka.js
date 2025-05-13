@@ -21,9 +21,9 @@ const authorData = {
     testedStats: 'Personally tested over 50 credit card benefits across brands like Chase, Amex, Capital One, Citi, and more.',
     siteName: 'TravelCardInsider.com',
     socialLinks: {
-        linkedin: 'https://www.linkedin.com/in/YOUR_LINKEDIN_PROFILE_URL', // *** REPLACE ***
-        twitter: 'https://twitter.com/YOUR_TWITTER_HANDLE', // *** REPLACE ***
-        email: 'dilan@travelcardinsider.com'
+        linkedin: 'www.linkedin.com/in/dilan-madushanka-b65293365', // *** REPLACE ***
+        twitter: 'https://x.com/team_dilan', // *** REPLACE ***
+        email: 'team@travelcardinsider.com'
     }
 };
 // --- End Author Data ---

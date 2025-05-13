@@ -56,9 +56,9 @@ const reviewDataNew = {
       publishedStats: '6+ in-depth card reviews per week',
       testedStats: 'Over 50 credit card benefits across major brands',
       socialLinks: {
-          linkedin: 'https://www.linkedin.com/in/YOUR_LINKEDIN_PROFILE_URL', // *** REPLACE with actual URL ***
-          twitter: 'https://twitter.com/YOUR_TWITTER_HANDLE', // *** REPLACE with actual URL ***
-          email: 'dilan@travelcardinsider.com'
+          linkedin: 'www.linkedin.com/in/dilan-madushanka-b65293365', // *** REPLACE with actual URL ***
+          twitter: 'https://x.com/team_dilan', // *** REPLACE with actual URL ***
+          email: 'team@travelcardinsider.com'
       }
   },
   siteName: 'TravelCardInsider',

@@ -58,9 +58,9 @@ const reviewDataHilton = {
       publishedStats: '6+ in-depth card reviews per week', // Placeholder from
       testedStats: 'Over 50 credit card benefits across major brands', // Placeholder from
       socialLinks: { // Placeholder from
-          linkedin: 'https://www.linkedin.com/in/YOUR_LINKEDIN_PROFILE_URL', // *** REPLACE ***
-          twitter: 'https://twitter.com/YOUR_TWITTER_HANDLE', // *** REPLACE ***
-          email: 'dilan@travelcardinsider.com' // *** REPLACE ***
+          linkedin: 'www.linkedin.com/in/dilan-madushanka-b65293365', // *** REPLACE ***
+          twitter: 'https://x.com/team_dilan', // *** REPLACE ***
+          email: 'team@travelcardinsider.com' // *** REPLACE ***
       }
   },
   // --- End Author Details ---
