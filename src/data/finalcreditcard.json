@@ -486,84 +486,96 @@
         }
       ]
     },
+   {
+  "Card Name": "Capital One Quicksilver Cash Rewards Credit Card",
+  "Issuer": "Capital One",
+  "image": "/qs_cardart_prim_1290x812.avif",
+  "ratingValue": 7.8,
+  "applyLink": "https://www.capitalone.com/credit-cards/quicksilver/",
+  "ratesandfees": "https://www.capitalone.com/credit-cards/quicksilver/",
+  "reviewLink": "/cards/capital-one-quicksilver",
+  "Card Type": "Personal",
+  "Annual Fee": 0.0,
+  "APR Range (Purchases)": "19.24% - 29.24% Variable",
+  "Foreign Transaction Fee": 0.0,
+  "Intro APR": "0% intro APR for 15 months on purchases and balance transfers",
+  "Credit Score Requirement": "Good–Excellent (670+)",
+  "signUpBonus": {
+    "points": null,
+    "description": "Earn $200 cash bonus after spending $500 in 3 months",
+    "minSpend": 500,
+    "durationDays": 90,
+    "estimated_value_usd": 200
+  },
+  "rewardProgram": "Cash Rewards",
+  "rewards": [
     {
-      "Card Name": "Capital One Quicksilver Cash Rewards Credit Card",
-      "Issuer": "Capital One",
-      "image": "/qs_cardart_prim_1290x812.avif",
-      "ratingValue": 7.8,
-      "applyLink": "https://www.capitalone.com/credit-cards/quicksilver/",
-      "ratesandfees": "https://www.capitalone.com/credit-cards/quicksilver/",
-      "reviewLink": "/cards/capital-one-quicksilver",
-      "Card Type": "Personal",
-      "Annual Fee": 0.0,
-      "APR Range (Purchases)": "19.74%\u201329.74% Variable",
-      "Foreign Transaction Fee": 0.0,
-      "Intro APR": "0% intro APR for 15 months on purchases and balance transfers",
-      "Credit Score Requirement": "Good\u2013Excellent (670+)",
-      "signUpBonus": {
-        "points": null,
-        "description": "Earn $200 cash bonus after spending $500 in 3 months",
-        "minSpend": 500,
-        "durationDays": 90,
-        "estimated_value_usd": 200
-      },
-      "rewardProgram": "Cash Rewards",
-      "rewards": [
-        {
-          "multiplier": 1.5,
-          "category": "other",
-          "notes": "Unlimited 1.5% cash back on every purchase",
-          "cap": null
-        }
-      ],
-      "redemptionOptions": {
-        "cash_back_cpp": 1.0
-      },
-      "perks": []
+      "multiplier": 1.5,
+      "category": "other",
+      "notes": "Unlimited 1.5% cash back on every purchase, every day",
+      "cap": null
     },
     {
-      "Card Name": "Capital One Spark Miles for Business",
-      "Issuer": "Capital One",
-      "image": "/miles_new_2021.avif",
-      "ratingValue": 8.0,
-      "applyLink": "https://www.capitalone.com/small-business/credit-cards/spark-miles/",
-      "ratesandfees": "https://www.capitalone.com/small-business/credit-cards/spark-miles/",
-      "reviewLink": "/cards/capital-one-spark-miles",
-      "Card Type": "Business",
-      "Annual Fee": 95,
-      "APR Range (Purchases)": "21.74%\u201329.74% Variable",
-      "Foreign Transaction Fee": 0.0,
-      "Intro APR": null,
-      "Credit Score Requirement": "Good\u2013Excellent (700+)",
-      "signUpBonus": {
-        "description": "Earn 50,000 bonus miles after spending $4,500 in 3 months",
-        "points": 50000,
-        "minSpend": 4500,
-        "durationDays": 90,
-        "estimated_value_usd": 925
-      },
-      "rewardProgram": "Capital One Miles",
-      "rewards": [
-        {
-          "multiplier": 2,
-          "category": "other",
-          "notes": "2x miles on every purchase",
-          "cap": null
-        }
-      ],
-      "redemptionOptions": {
-        "program_cpp": 1.8,
-        "cash_back_cpp": 1.0
-      },
-      "perks": [
-        {
-          "type": "global_entry_tsa_precheck_credit",
-          "value_usd": 100,
-          "frequency": "every_4_years",
-          "notes": "Credit for Global Entry or TSA PreCheck"
-        }
-      ]
+      "multiplier": 5.0,
+      "category": "travel",
+      "notes": "Unlimited 5% cash back on hotels and rental cars booked through Capital One Travel",
+      "cap": null
+    }
+  ],
+  "redemptionOptions": {
+    "cash_back_cpp": 1.0
+  },
+  "perks": []
+},
+    {
+  "Card Name": "Capital One Spark Miles for Business",
+  "Issuer": "Capital One",
+  "image": "/miles_new_2021.avif",
+  "ratingValue": 8.0,
+  "applyLink": "https://www.capitalone.com/small-business/credit-cards/spark-miles/",
+  "ratesandfees": "https://www.capitalone.com/small-business/credit-cards/spark-miles/",
+  "reviewLink": "/cards/capital-one-spark-miles",
+  "Card Type": "Business",
+  "Annual Fee": "$0 intro for first year, $95 after that",
+  "APR Range (Purchases)": "25.24% Variable",
+  "Foreign Transaction Fee": 0.0,
+  "Intro APR": null,
+  "Credit Score Requirement": "Good–Excellent (700+)",
+  "signUpBonus": {
+    "description": "Earn 50,000 bonus miles after spending $4,500 in 3 months",
+    "points": 50000,
+    "minSpend": 4500,
+    "durationDays": 90,
+    "estimated_value_usd": 925
+  },
+  "rewardProgram": "Capital One Miles",
+  "rewards": [
+    {
+      "multiplier": 2,
+      "category": "other",
+      "notes": "Unlimited 2X miles on every purchase for your business",
+      "cap": null
     },
+    {
+      "multiplier": 5,
+      "category": "travel",
+      "notes": "Unlimited 5X miles on hotels and rental cars booked through Capital One Travel",
+      "cap": null
+    }
+  ],
+  "redemptionOptions": {
+    "program_cpp": 1.8,
+    "cash_back_cpp": 1.0
+  },
+  "perks": [
+    {
+      "type": "global_entry_tsa_precheck_credit",
+      "value_usd": 120,
+      "frequency": "every_4_years",
+      "notes": "Up to $120 credit for Global Entry or TSA PreCheck®"
+    }
+  ]
+},
     {
       "Card Name": "Capital One Venture Rewards Credit Card",
       "Issuer": "Capital One",
@@ -674,71 +686,77 @@
       ]
     },
     {
-      "Card Name": "Capital One Venture X Rewards Credit Card",
-      "Issuer": "Capital One",
-      "image": "/venturex-cg-static-card-1000x630-2.avif",
-      "ratingValue": 8.8,
-      "applyLink": "https://www.capitalone.com/credit-cards/venture-x/",
-      "ratesandfees": "https://www.capitalone.com/credit-cards/venture-x/",
-      "reviewLink": "/cards/capital-one-venture-x",
-      "Card Type": "Personal",
-      "Annual Fee": 395.0,
-      "APR Range (Purchases)": "22.24%\u201329.24% Variable",
-      "Foreign Transaction Fee": 0.0,
-      "Intro APR": null,
-      "Credit Score Requirement": "Excellent (720+)",
-      "signUpBonus": {
-        "points": 75000,
-        "description": "Earn 75,000 bonus miles after spending $4,000 in 3 months",
-        "minSpend": 4000,
-        "durationDays": 90,
-        "estimated_value_usd": 1388
-      },
-      "rewardProgram": "Capital One Miles",
-      "rewards": [
-        {
-          "multiplier": 10,
-          "category": "hotel_capital_one_portal",
-          "notes": "10x miles on hotels and car rentals booked via Capital One Travel",
-          "cap": null
-        },
-        {
-          "multiplier": 5,
-          "category": "flights_capital_one_portal",
-          "notes": "5x miles on flights booked via Capital One Travel",
-          "cap": null
-        },
-        {
-          "multiplier": 2,
-          "category": "other",
-          "notes": "2x miles on other purchases",
-          "cap": null
-        }
-      ],
-      "redemptionOptions": {
-        "cap_one_travel_cpp": 1.0,
-        "transfer_partner_average_cpp": 1.8,
-        "cash_back_cpp": 0.5
-      },
-      "perks": [
-        {
-          "type": "travel_credit",
-          "value_usd": 300,
-          "frequency": "annual",
-          "notes": "$300 annual travel credit through Capital One Travel"
-        },
-        {
-          "type": "lounge_access",
-          "description": "Unlimited access to Capital One Lounges + Priority Pass Select",
-          "estimated_value_usd": null
-        },
-        {
-          "type": "anniversary_miles",
-          "description": "10,000 bonus miles every account anniversary",
-          "estimated_value_usd": 100
-        }
-      ]
+  "Card Name": "Capital One Venture X Rewards Credit Card",
+  "Issuer": "Capital One",
+  "image": "/venturex-cg-static-card-1000x630-2.avif",
+  "ratingValue": 8.8,
+  "applyLink": "https://www.capitalone.com/credit-cards/venture-x/",
+  "ratesandfees": "https://www.capitalone.com/credit-cards/venture-x/",
+  "reviewLink": "/cards/capital-one-venture-x",
+  "Card Type": "Personal",
+  "Annual Fee": 395.0,
+  "APR Range (Purchases)": "19.99% - 29.24% Variable",
+  "Foreign Transaction Fee": 0.0,
+  "Intro APR": null,
+  "Credit Score Requirement": "Excellent (720+)",
+  "signUpBonus": {
+    "points": 75000,
+    "description": "Earn 75,000 bonus miles after spending $4,000 in 3 months",
+    "minSpend": 4000,
+    "durationDays": 90,
+    "estimated_value_usd": 1388
+  },
+  "rewardProgram": "Capital One Miles",
+  "rewards": [
+    {
+      "multiplier": 10,
+      "category": "hotel_capital_one_portal",
+      "notes": "10X miles on hotels and rental cars booked through Capital One Travel",
+      "cap": null
     },
+    {
+      "multiplier": 5,
+      "category": "flights_capital_one_portal",
+      "notes": "5X miles on flights and vacation rentals booked through Capital One Travel",
+      "cap": null
+    },
+    {
+      "multiplier": 2,
+      "category": "other",
+      "notes": "2X miles on all other purchases, every day",
+      "cap": null
+    }
+  ],
+  "redemptionOptions": {
+    "cap_one_travel_cpp": 1.0,
+    "transfer_partner_average_cpp": 1.8,
+    "cash_back_cpp": 0.5
+  },
+  "perks": [
+    {
+      "type": "travel_credit",
+      "value_usd": 300,
+      "frequency": "annual",
+      "notes": "$300 annual travel credit for bookings through Capital One Travel"
+    },
+    {
+      "type": "lounge_access",
+      "description": "Unlimited access to Capital One Lounges + Priority Pass Select",
+      "estimated_value_usd": null
+    },
+    {
+      "type": "anniversary_miles",
+      "description": "10,000 bonus miles every account anniversary",
+      "estimated_value_usd": 100
+    },
+    {
+      "type": "global_entry_tsa_precheck_credit",
+      "value_usd": 120,
+      "frequency": "every_4_years",
+      "notes": "Up to $120 credit for Global Entry or TSA PreCheck®"
+    }
+  ]
+},
     {
       "Card Name": "Chase Freedom Unlimited\u00ae Credit Card",
       "Issuer": "Chase",
