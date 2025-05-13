@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from '../../styles/ReviewPage.module.css'; // Assuming a generic name for your review CSS module
+import styles from '../../styles/NoFTFCardsReview.module.css'; // Assuming a generic name for your review CSS module
 
 // Import your existing Header and Footer components if available
 // import Header from '../../components/Header'; // Adjust path if necessary
