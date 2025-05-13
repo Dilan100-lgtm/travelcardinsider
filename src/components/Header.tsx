@@ -121,7 +121,7 @@ export default function Header() {
               submenuKey: "blog",
               links: [
                 { label: "Guides", href: "/guides" },
-                { label: "News", href: "/review/top-5-no-ftf-cards-2025" }, // Assuming this is an anchor link
+                { label: "News", href: "/news" }, // Assuming this is an anchor link
               ],
           },
           {
