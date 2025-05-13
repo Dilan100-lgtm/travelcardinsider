@@ -37,7 +37,7 @@ function MyApp({ Component, pageProps }) {
             <Component {...pageProps} />
           </main>
 <Footer />
-          
+         <Analytics /> 
         </div>
       </>
     </AuthProvider>
