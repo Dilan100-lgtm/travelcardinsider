@@ -1,0 +1,57 @@
+[
+  {
+    "slug": "first-news-article",
+    "title": "Breaking News: Travel Trends for 2025",
+    "date": "2025-05-15",
+    "imageSrc": "/images/news/news1.jpg",
+    "imageAlt": "Abstract image representing travel trends",
+    "author": "TravelCardInsider Team",
+    "snippet": "Discover the latest travel trends shaping how we explore the world in 2025. From sustainable tourism to tech innovations...",
+    "category": "Travel News",
+    "content": "<p>This is the full content of the first news article. It can contain <strong>HTML markup</strong>.</p><p>Sustainable tourism is gaining significant traction, with more travelers seeking eco-friendly accommodations and experiences. Technology continues to play a vital role, with advancements in AI-powered travel planning and virtual reality previews of destinations.</p><h2>Key Highlights:</h2><ul><li>Rise of eco-conscious travel.</li><li>AI and VR revolutionizing trip planning.</li><li>Increased interest in off-season travel.</li></ul>"
+  },
+  {
+    "slug": "new-card-launch",
+    "title": "New Travel Rewards Card Launched by XYZ Bank",
+    "date": "2025-05-10",
+    "imageSrc": "/images/news/news2.jpg",
+    "imageAlt": "Image of a new credit card",
+    "author": "Jane Doe",
+    "snippet": "XYZ Bank today announced the launch of its new 'Explorer Rewards' credit card, packed with benefits for frequent flyers...",
+    "category": "Credit Card News",
+    "content": "<p>XYZ Bank has officially entered the premium travel card market with its new <strong>Explorer Rewards</strong> card.</p><p>The card offers an attractive sign-up bonus, accelerated points on travel and dining, and a suite of travel insurance benefits. Industry experts are already weighing in on its potential to shake up the market.</p>"
+  },
+  {
+    "slug": "airport-updates-global",
+    "title": "Global Airports Announce Major Upgrades for Better Traveler Experience",
+    "date": "2025-05-05",
+    "imageSrc": "/images/news/news3.jpg",
+    "imageAlt": "Modern airport terminal",
+    "author": "John Smith",
+    "snippet": "Several major international airports have revealed plans for significant infrastructure upgrades aimed at enhancing passenger flow and amenities.",
+    "category": "Airport News",
+    "content": "<p>In a move to cater to the growing number of international travelers, airports in London, Dubai, and Singapore have announced multi-billion dollar expansion and renovation projects. These upgrades include new terminals, enhanced security screening processes, and more diverse retail and dining options.</p>"
+  },
+  {
+    "slug": "loyalty-program-changes",
+    "title": "Airline Loyalty Program Overhaul: What You Need to Know",
+    "date": "2025-05-01",
+    "imageSrc": "/images/news/news4.jpg",
+    "imageAlt": "Airplane flying over clouds",
+    "author": "Alice Brown",
+    "snippet": "Major Airline Corp has revamped its loyalty program, introducing new elite tiers and ways to earn and redeem miles. We break down the changes.",
+    "category": "Airline News",
+    "content": "<p>Frequent flyers with Major Airline Corp will need to familiarize themselves with a completely restructured loyalty program. The changes, effective immediately, aim to reward high-spending customers more directly. Key changes include dynamic award pricing for some routes and new benefits for top-tier members.</p>"
+  },
+  {
+    "slug": "sustainable-travel-tips",
+    "title": "Top 5 Tips for More Sustainable Travel in 2025",
+    "date": "2025-04-28",
+    "imageSrc": "/images/news/news5.jpg",
+    "imageAlt": "Lush green landscape",
+    "author": "Eco Traveler Weekly",
+    "snippet": "Traveling responsibly is more important than ever. Here are five practical tips to make your adventures more sustainable this year.",
+    "category": "Travel Tips",
+    "content": "<p>Make your travels greener with these easy-to-follow tips. Choose direct flights, pack light, support local businesses, offset your carbon footprint, and opt for reusable items to reduce waste. Every small step contributes to a larger positive impact on our planet.</p>"
+  }
+]

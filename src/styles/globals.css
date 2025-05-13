@@ -1535,5 +1535,62 @@ p, h1, h2, h3, h4, h5, h6, li, div, span { /* Added span */
   --footer-height: 120px; /* Assuming a fixed footer height */
   --sidebar-width: 300px; /* Example width for a potential sidebar */
 }
+/* Add to your global CSS or homepage specific CSS */
+.news-grid-homepage {
+  display: grid;
+  gap: 1.5rem; /* Adjust gap as needed */
+  grid-template-columns: repeat(1, 1fr); /* Default for mobile */
+}
 
+@media (min-width: 640px) { /* Small tablets and up */
+  .news-grid-homepage {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) { /* Desktops and up */
+  .news-grid-homepage {
+    grid-template-columns: repeat(4, 1fr); /* 4 columns for larger screens */
+  }
+}
+
+/* Ensure cards in the homepage news grid stretch to fill height if needed */
+.news-grid-homepage > div { /* Target the wrapper of NewsCard if any, or NewsCard itself */
+  height: 100%;
+}
+
+.view-all-news-button {
+    background-color: #007bff; /* Example primary color */
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-block;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.view-all-news-button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* You might also want a class for the section title similar to others */
+.section-title {
+  font-size: 2rem; /* Or your preferred size */
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem; /* Or your preferred margin */
+  color: #333; /* Or your preferred color */
+}
+
+.container {
+  max-width: 1200px; /* Or your site's container width */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* If NewsCard uses module CSS, you might need to ensure its root element stretches */
+/* This is generally handled by the card's own styling (.card height: 100%) */
 

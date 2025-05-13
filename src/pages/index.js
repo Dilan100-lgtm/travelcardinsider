@@ -10,6 +10,7 @@ import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
 import Header from "../components/Header"; // Assuming path is correct
 import Footer from "../components/Footer"; // Assuming path is correct
 
+
 import { getFeaturedReviews } from '@/utils/getAllReviews'; // Import the data fetching function
 
 
@@ -42,7 +43,7 @@ function RenderStars({ ratingOutOf10, maxStars = 5 }) {
 // --- End Helper Function ---
 
 // Updated component definition to accept props
-export default function HomePage({ featuredReviews }) {
+export default function HomePage({ featuredReviews, latestNews }) {
 
   // --- Define featured card data including ratings (OUT OF 10) ---
   // Example: Doubled the previous ratings (4.8*2=9.6, 4.6*2=9.2, 4.7*2=9.4)
@@ -319,6 +320,27 @@ export default function HomePage({ featuredReviews }) {
                 </Link>
             </div>
          </section>
+
+         {/* Latest News Section */}
+       <section id="latest-news" className="content-section" aria-labelledby="latest-news-heading">
+         <div className="container">
+           <h2 id="latest-news-heading" className="section-title">Latest News</h2>
+           <div className="news-grid-homepage"> {/* New CSS class for homepage layout */}
+             {latestNews && latestNews.length > 0 ? (
+               latestNews.map((newsItem) => (
+                 <NewsCard key={newsItem.slug} newsItem={newsItem} />
+   ))
+ ) : (
+   <p>No news available at the moment.</p>
+ )}
+           </div>
+           <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+            <Link href="/news" className="cta-button view-all-news-button">
+                View All News
+            </Link>
+           </div>
+         </div>
+       </section>
 
         {/* Reviews & News Section (Unchanged) */}
         <section className="content-section reviews-news-section" aria-labelledby="reviews-heading">
