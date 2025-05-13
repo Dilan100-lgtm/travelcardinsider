@@ -135,7 +135,7 @@ function FlightBookingCardsReviewPage() {
   const pageTitle = "Best Credit Cards for Booking Flights in 2025: Points, Protections & Perks";
   const metaDescription = "Discover the top US credit cards for booking flights in 2025. Maximize points, enjoy travel protections, and unlock premium perks for your next journey.";
   const canonicalUrl = "https://www.yourwebsite.com/reviews/best-flight-booking-cards-2025"; // Replace with your actual URL
-  const heroImageSrc = '/images/heros/flight-booking-hero.jpg'; // Replace with your actual hero image path
+  const heroImageSrc = '/pexels-railgunbreaker-32008325.webp'; // Replace with your actual hero image path
   const heroImageAlt = 'Traveler planning a trip with a laptop and credit card, with an airplane in the background';
   const siteName = "Your Awesome Travel Site"; // Replace with your site name
 
