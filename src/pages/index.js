@@ -7,8 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 // Import SVG star icons from react-icons
 import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
-import Header from "../components/Header"; // Assuming path is correct
-import Footer from "../components/Footer"; // Assuming path is correct
+
  import { getFeaturedNews } from '@/utils/newsUtils'; // Import for featured news
  import NewsCard from '@/components/NewsCard'; // Import the NewsCard component
 
@@ -352,6 +351,7 @@ export default function HomePage({ featuredReviews, latestNews }) {
                 <div className="reviews-grid">
                 {[
                     // Keep your existing array of review objects
+                    { img: "/images/reviews/best-airline-card-hero.webp", alt: "Airplane wing with a credit card and passport", title: "Top Airline Credit Cards for Miles & Perks in 2025", desc: "Unlock free flights and luxury travel with 2025's best airline rewards credit cards.", link: "/reviews/best-airline-credit-cards-2025", },
                     { img: "/peter-hansen-MeGmdPNe36w-unsplash.webp", alt: "Chase Sapphire Preferred credit card art", title: "Chase Sapphire Preferred Review (2025)", desc: "Is the Chase Sapphire Preferred still the traveler's sweetheart for $95 in 2025? Our in-depth analysis.", link: "/review/chase-sapphire-preferred-2025" },
                     { img: "/simon-english-48nerZQCHgo-unsplash.webp", alt: "Wells Fargo Autograph Journey℠ Card", title: "Wells Fargo Autograph Journey Review 2025: Premium Travel Contender?", desc: "In-depth 2025 review of the Wells Fargo Autograph Journey℠ Card. Explore rewards, benefits, fees, and see if it's the right premium travel card for US travelers.", link: "/review/wells-fargo-autograph-journey-2025" },
                     { img: "/618ad46b23745d001825bd89.webp", alt: "Capital One Venture and Venture X Cards", title: "Capital One Venture Rewards vs. Venture X: Which Travel Card Wins in 2025?", desc: "A comprehensive review comparing Capital One Venture and Venture X rewards, benefits, fees, and overall value to determine the best fit for US travelers in 2025", link: "/review/capital-one-venture-rewards-vs-venture-x-2025", date: "2025-05-07" },
@@ -360,7 +360,7 @@ export default function HomePage({ featuredReviews, latestNews }) {
                     { img: "/damaris-isenschmid-k1LIMMsm8bg-unsplash.webp", alt: "Traveler using a credit card internationally with scenic background", title: "Top 5 No Foreign Transaction Fee Cards (2025)", desc: "Avoid extra fees and maximize rewards on your international adventures.", link: "/review/top-5-no-ftf-cards-2025" },
                     { img: "/AdobeStock_560041735_result.webp", alt: "Credit cards fanned out on desk", title: "Top New Travel Credit Card Offers of 2025", desc: "Breaking news on the latest card launches and exclusive sign-up bonuses.", link: "/review/top-new-travel-credit-card-offers-2025", },
                     { img: "/AdobeStock_758160258_result.webp", alt: "Traveler relaxing in airport lounge chair", title: "VIP Airport Lounge Access in 2025", desc: "How to get premium perks and comfort while traveling.", link: "/review/The-Ultimate-Guide-to-Lounge-Access-in-2025-How-to-Get-VIP-Treatment-at-Airports", },
-                    { img: "/AdobeStock_947404358_result.webp", alt: "Family with luggage smiling at airport gate", title: "5 Family-Friendly Travel Cards for 2025", desc: "Kid-friendly perks and money-saving benefits for your family vacations.", link: "/review/Top-5-Family-Friendly-Travel-Cards-for-2025-Maximize-Points-&-Perks-with-Kids-in-Tow", },
+                    
                     
                    
                     
