@@ -33,12 +33,12 @@ const cardData = [
   {
     id: 'chase-sapphire-reserve',
     name: 'Chase Sapphire Reserve',
-    imageSrc: '/images/cards/chase_sapphire_reserve.png', // Replace with actual image path
+    imageSrc: '/sapphire_reserve_card.png', // Replace with actual image path
     imageAlt: 'Chase Sapphire Reserve Card',
-    ratingValue: 0, // Replace with actual rating
-    ratingStars: 0, // Replace with actual rating
-    applyLink: '#apply-chase-sapphire-reserve', // Replace with actual apply link
-    ratesFeesLink: '#rates-fees-chase-sapphire-reserve', // Replace with actual rates & fees link
+    ratingValue: 9.2, // Replace with actual rating
+    ratingStars: 5, // Replace with actual rating
+    applyLink: 'https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve', // Replace with actual apply link
+    ratesFeesLink: 'https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC56007.html', // Replace with actual rates & fees link
     learnMoreLink: '/cards/chase-sapphire-reserve', // Replace with actual internal link
     annualFee: '$550',
     welcomeBonus: '60,000 points ($5k spend/3mo), worth $900 for travel.',
@@ -51,12 +51,12 @@ const cardData = [
   {
     id: 'amex-platinum',
     name: 'The Platinum Card from American Express',
-    imageSrc: '/images/cards/amex_platinum.png', // Replace with actual image path
+    imageSrc: '/NUS000000237_480x304_straight_withname.avif', // Replace with actual image path
     imageAlt: 'The Platinum Card from American Express',
-    ratingValue: 0, // Replace with actual rating
-    ratingStars: 0, // Replace with actual rating
-    applyLink: '#apply-amex-platinum',
-    ratesFeesLink: '#rates-fees-amex-platinum',
+    ratingValue: 9.4, // Replace with actual rating
+    ratingStars: 5, // Replace with actual rating
+    applyLink: 'https://www.americanexpress.com/us/credit-cards/card/platinum/',
+    ratesFeesLink: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/platinum-card/25330-10-0#FeeTable',
     learnMoreLink: '/cards/amex-platinum',
     annualFee: '$695',
     welcomeBonus: '80,000 points ($8k spend/6mo).',
@@ -69,12 +69,12 @@ const cardData = [
   {
     id: 'capital-one-venture-x',
     name: 'Capital One Venture X Rewards Credit Card',
-    imageSrc: '/images/cards/capital_one_venture_x.png',
+    imageSrc: '/venturex-cg-static-card-1000x630-2.avif',
     imageAlt: 'Capital One Venture X Rewards Credit Card',
-    ratingValue: 0,
-    ratingStars: 0,
-    applyLink: '#apply-capital-one-venture-x',
-    ratesFeesLink: '#rates-fees-capital-one-venture-x',
+    ratingValue: 9.0,
+    ratingStars: 4.5,
+    applyLink: 'https://www.capitalone.com/credit-cards/venture-x/',
+    ratesFeesLink: 'https://www.capitalone.com/credit-cards/venture-x/',
     learnMoreLink: '/cards/capital-one-venture-x',
     annualFee: '$395',
     welcomeBonus: '75,000 bonus miles after spending $4,000 in 3 months, equating to $750 toward travel.',
@@ -87,12 +87,12 @@ const cardData = [
   {
     id: 'chase-sapphire-preferred',
     name: 'Chase Sapphire Preferred Card',
-    imageSrc: '/images/cards/chase_sapphire_preferred.png',
+    imageSrc: '/sapphire_preferred_card.png',
     imageAlt: 'Chase Sapphire Preferred Card',
-    ratingValue: 0,
-    ratingStars: 0,
-    applyLink: '#apply-chase-sapphire-preferred',
-    ratesFeesLink: '#rates-fees-chase-sapphire-preferred',
+    ratingValue: 8.4,
+    ratingStars: 4.5,
+    applyLink: 'https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred',
+    ratesFeesLink: 'https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC56014.html',
     learnMoreLink: '/cards/chase-sapphire-preferred',
     annualFee: '$95',
     welcomeBonus: 'An attractive 100,000 bonus points after spending $5,000 in 3 months, worth $1,250 toward travel via Chase Travel.',
@@ -105,13 +105,13 @@ const cardData = [
   {
     id: 'delta-skymiles-reserve-amex',
     name: 'Delta SkyMiles Reserve American Express Card',
-    imageSrc: '/images/cards/delta_skymiles_reserve_amex.png',
+    imageSrc: '/NUS000000270_480x304_straight_withname.avif',
     imageAlt: 'Delta SkyMiles Reserve American Express Card',
-    ratingValue: 0,
-    ratingStars: 0,
-    applyLink: '#apply-delta-skymiles-reserve-amex',
-    ratesFeesLink: '#rates-fees-delta-skymiles-reserve-amex',
-    learnMoreLink: '/cards/delta-skymiles-reserve-amex',
+    ratingValue: 8.8,
+    ratingStars: 4.5,
+    applyLink: 'https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-reserve-american-express-card/',
+    ratesFeesLink: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/delta-skymiles-reserve-american-express-card/25330-10-0#FeeTable',
+    learnMoreLink: '/cards/delta-skymiles-reserve',
     annualFee: '$650',
     welcomeBonus: '70,000 Bonus Miles after spending $5,000 in 6 months.',
     flightBookingProwess: 'Earn 3X Miles on Delta purchases made directly with Delta. The "TakeOff 15" benefit allows Card Members to save 15% when using miles to book Award Travel on Delta flights for Delta loyalists.',
