@@ -1,8 +1,6 @@
 // src/utils/newsUtils.js
 import newsData from '@/data/newsData.json';
 
-
-
 // Get all news items, sorted by date (newest first)
 export function getAllNews() {
   return newsData.sort((a, b) => new Date(b.date) - new Date(a.date));

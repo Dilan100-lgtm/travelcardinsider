@@ -9,6 +9,8 @@ import Link from 'next/link';
 import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
 import Header from "../components/Header"; // Assuming path is correct
 import Footer from "../components/Footer"; // Assuming path is correct
+ import { getFeaturedNews } from '@/utils/newsUtils'; // Import for featured news
+ import NewsCard from '@/components/NewsCard'; // Import the NewsCard component
 
 
 import { getFeaturedReviews } from '@/utils/getAllReviews'; // Import the data fetching function
@@ -410,6 +412,7 @@ export default function HomePage({ featuredReviews, latestNews }) {
 // getStaticProps (Unchanged)
 export async function getStaticProps() {
   const featuredReviews = getFeaturedReviews(8);
+  const latestNews = getFeaturedNews(4); // Get 4 latest news items
 
   return {
     props: {
