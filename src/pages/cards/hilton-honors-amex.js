@@ -928,7 +928,7 @@ function HiltonHonorsAmexReviewPage() {
                   <p>Approval generally requires good to excellent credit, typically a FICO score of 670 or higher. Amex considers your full credit profile, income, and relationship with them.</p>
                   <p>The "Apply with Confidence" feature is helpful, letting you see if you're approved before a hard inquiry hits your credit report. You only get the inquiry if you're approved and accept the card. While entry-level for Hilton, it's still an Amex card, so standards might be slightly higher than some other basic cards. It's best for those with established positive credit.</p>
                 <Image
-                        src={'/kingdeluxeseaviewbedroom01.webp'} // Placeholder
+                        src={'/bilderboken-rlwE8f8anOc-unsplash.webp'} // Placeholder
                         alt={`${reviewDataHilton.cardName} visual`}
                         width={645} // Placeholder from
                         height={406} // Placeholder from
