@@ -166,7 +166,7 @@ export default function MarriottBonvoyBoundlessReview2025() {
             <div style={{ marginTop: '1rem', marginBottom: '1rem' }}>
               {/* Replace with an actual Image component for the card */}
               <Image
-                src={imageUrl} // Replace with your card image path
+                src={'/jordan-ryskamp-kxI7siCTAyY-unsplash.webp'} // Replace with your card image path
                 alt="Marriott Bonvoy Boundless Credit Card"
                 width={760} // Adjust as needed
                 height={480}  // Adjust as needed
