@@ -10,7 +10,7 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
 export default function WellsFargoAutographJourneyReview2025() {
-  const pageUrl = "https://www.yourwebsite.com/review/wells-fargo-autograph-journey-2025"; // Customize this
+  const pageUrl = "https://www.travelcardinsider.com/review/wells-fargo-autograph-journey-2025"; // Customize this
   const imageUrl = "https://www.wellsfargo.com/assets/images/contextual/card-art/autograph-journey-visa-signature-card-380x240.png"; // Replace with your actual card image URL
   const logoUrl = "https://www.wellsfargo.com/assets/images/logos/wellsfargo/logo_90x40.png"; // Replace with your actual site logo URL
   const siteName = "YourCreditCardReviewSite"; // Customize this

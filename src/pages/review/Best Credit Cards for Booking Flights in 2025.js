@@ -134,7 +134,7 @@ const comparisonData = [
 function FlightBookingCardsReviewPage() {
   const pageTitle = "Best Credit Cards for Booking Flights in 2025: Points, Protections & Perks";
   const metaDescription = "Discover the top US credit cards for booking flights in 2025. Maximize points, enjoy travel protections, and unlock premium perks for your next journey.";
-  const canonicalUrl = "https://www.yourwebsite.com/reviews/best-flight-booking-cards-2025"; // Replace with your actual URL
+  const canonicalUrl = "https://www.travelcardinsider.com/reviews/best-flight-booking-cards-2025"; // Replace with your actual URL
   const heroImageSrc = '/pexels-railgunbreaker-32008325.webp'; // Replace with your actual hero image path
   const heroImageAlt = 'Traveler planning a trip with a laptop and credit card, with an airplane in the background';
   const siteName = "Your Awesome Travel Site"; // Replace with your site name
@@ -148,13 +148,13 @@ function FlightBookingCardsReviewPage() {
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={metaDescription} />
         <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:image" content={`https://www.yourwebsite.com${heroImageSrc}`} /> {/* Ensure full URL for OG image */}
+        <meta property="og:image" content={`https://www.travelcardinsider.com${heroImageSrc}`} /> {/* Ensure full URL for OG image */}
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content={siteName} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={metaDescription} />
-        <meta name="twitter:image" content={`https://www.yourwebsite.com${heroImageSrc}`} /> {/* Ensure full URL for Twitter image */}
+        <meta name="twitter:image" content={`https://www.travelcardinsider.com${heroImageSrc}`} /> {/* Ensure full URL for Twitter image */}
         {/* <meta name="twitter:site" content="@yourtwitterhandle" /> Replace with your Twitter handle */}
         
         <meta name="geo.region" content="US" />
@@ -177,7 +177,7 @@ function FlightBookingCardsReviewPage() {
               },
               "headline": "${pageTitle}",
               "description": "${metaDescription}",
-              "image": "${`https://www.yourwebsite.com${heroImageSrc}`}",
+              "image": "${`https://www.travelcardinsider.com${heroImageSrc}`}",
               "author": {
                 "@type": "Organization",
                 "name": "${siteName}" 
@@ -187,7 +187,7 @@ function FlightBookingCardsReviewPage() {
                 "name": "${siteName}",
                 "logo": {
                   "@type": "ImageObject",
-                  "url": "https://www.yourwebsite.com/images/logo.png" // Replace with your logo URL
+                  "url": "https://www.travelcardinsider.com/images/logo.png" // Replace with your logo URL
                 }
               },
               "datePublished": "2025-01-15", // Update with actual publication date
@@ -210,8 +210,8 @@ function FlightBookingCardsReviewPage() {
                     "@type": "Product",
                     "name": "${removeSuperscripts(card.name)}",
                     "description": "${removeSuperscripts(card.bottomLine)}",
-                    "url": "https://www.yourwebsite.com${card.learnMoreLink}", // Replace with actual card page URL
-                    "image": "https://www.yourwebsite.com${card.imageSrc}", // Replace with actual card image URL
+                    "url": "https://www.travelcardinsider.com${card.learnMoreLink}", // Replace with actual card page URL
+                    "image": "https://www.travelcardinsider.com${card.imageSrc}", // Replace with actual card image URL
                     "offers": {
                       "@type": "Offer",
                       "priceCurrency": "USD",

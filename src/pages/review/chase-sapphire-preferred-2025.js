@@ -10,10 +10,10 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
 export default function ChaseSapphirePreferredReview2025() {
-  const pageUrl = "https://www.yourwebsite.com/review/chase-sapphire-preferred-2025"; // Customize this
+  const pageUrl = "https://www.travelcardinsider.com/review/chase-sapphire-preferred-2025"; // Customize this
   // Suggestion: Replace with an actual, high-quality image URL for Chase Sapphire Preferred
   const imageUrl = "https://www.chase.com/content/dam/chase-ux/card-art/sapphire/preferred/bg_cardart_preferred_666x420.png"; // Example URL, please verify or replace
-  const logoUrl = "https://www.yourwebsite.com/logo.png"; // Replace with your actual site logo URL
+  const logoUrl = "https://www.travelcardinsider.com/logo.png"; // Replace with your actual site logo URL
   const siteName = "YourCreditCardReviewSite"; // Customize this
   const authorName = "Travelcardinsider"; // Customize this (or use a different author)
   const publishDate = "2025-05-11"; // Current Date or your publish date
