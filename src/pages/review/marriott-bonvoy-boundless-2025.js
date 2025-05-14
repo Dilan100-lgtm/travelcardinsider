@@ -11,7 +11,7 @@ import styles from '../../styles/reviews2025.module.css'; // Assuming same CSS m
 
 export default function MarriottBonvoyBoundlessReview2025() {
   const pageUrl = "https://www.travelcardinsider.com/review/marriott-bonvoy-boundless-2025"; // Customize this
-  const imageUrl = "https://www.travelcardinsider.com/images/marriott-bonvoy-boundless-card.png"; // Replace with your actual card image URL
+  const imageUrl = "/jordan-ryskamp-kxI7siCTAyY-unsplash.webp"; // Replace with your actual card image URL
   const logoUrl = "https://www.travelcardinsider.com/images/logo.png"; // Replace with your actual site logo URL
   const siteName = "YourCreditCardReviewSite"; // Customize this
   const authorName = "Credit Card Review Expert"; // Customize this
