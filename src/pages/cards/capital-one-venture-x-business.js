@@ -1077,43 +1077,7 @@ function CapitalOneVentureXBusinessReviewPage() {
                     <p>Maximizing the card involves active engagement with its portal, transfer partners, and business tools.</p>
                 </section>
 
-                <section id="section-18" className={`${styles.reviewSection} ${styles.faqSection}`}>
-                    <h2>XVIII. Frequently Asked Questions (General)</h2>
-                    <div className={styles.faqContainer}>
-                        <details className={styles.faqItem}>
-                            <summary className={styles.faqQuestion}>Q1: Is the $395 annual fee worth it?</summary>
-                            <div className={styles.faqAnswer}><p>A: Yes, if you use the $300 travel credit (via Capital One Travel) and value the 10,000 anniversary miles ($100+ value), effectively making the fee -$5. (See Sections V, VI)</p></div>
-                        </details>
-                        <details className={styles.faqItem}>
-                            <summary className={styles.faqQuestion}>Q2: What credit score is needed?</summary>
-                            <div className={styles.faqAnswer}><p>A: "Excellent credit," typically 720-740 FICO or higher. (See Section XII)</p></div>
-                        </details>
-                        <details className={styles.faqItem}>
-                            <summary className={styles.faqQuestion}>Q3: Can I carry a balance?</summary>
-                            <div className={styles.faqAnswer}><p>A: No, it's a pay-in-full charge card. (See Section X)</p></div>
-                        </details>
-                        <details className={styles.faqItem}>
-                            <summary className={styles.faqQuestion}>Q4: Best transfer partners for domestic US travel?</summary>
-                            <div className={styles.faqAnswer}><p>A: Use international partners in alliances: Air Canada Aeroplan or Avianca LifeMiles (for United), British Airways (for American/Alaska). Requires research.</p></div>
-                        </details>
-                        <details className={styles.faqItem}>
-                            <summary className={styles.faqQuestion}>Q5: How does "no preset spending limit" work?</summary>
-                            <div className={styles.faqAnswer}><p>A: Purchasing capacity adapts based on spending, payment history, etc. Not unlimited. (See Section IX)</p></div>
-                        </details>
-                        <details className={styles.faqItem}>
-                            <summary className={styles.faqQuestion}>Q6: Are employee cards free, and do they get lounge access?</summary>
-                            <div className={styles.faqAnswer}><p>A: Yes, employee cards are free. No, they generally don't get their own complimentary lounge access.</p></div>
-                        </details>
-                        <details className={styles.faqItem}>
-                            <summary className={styles.faqQuestion}>Q7: Must I use Capital One Travel for bonus miles?</summary>
-                            <div className={styles.faqAnswer}><p>A: Yes, for 10X on hotels/cars and 5X on flights. All other purchases earn 2X. (See Section III)</p></div>
-                        </details>
-                        <details className={styles.faqItem}>
-                            <summary className={styles.faqQuestion}>Q8: Does it report to personal credit?</summary>
-                            <div className={styles.faqAnswer}><p>A: Typically no, unless the account is delinquent.</p></div>
-                        </details>
-                    </div>
-                </section>
+                
 
                 <section id="section-19" className={styles.reviewSection}>
                     <h2>XIX. Our Final Verdict: Who Should Get the Venture X Business Card (and Who Shouldn't)?</h2>
