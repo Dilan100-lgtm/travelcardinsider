@@ -14,7 +14,7 @@ export default function CitiCustomCashReview2025() {
   const imageUrl = "/pexels-rdne-5778466.webp"; // Replace with your actual card image URL
   const logoUrl = "https://www.travelcardinsider.com/images/your-logo.png"; // Replace with your actual site logo URL
   const siteName = "YourCreditCardReviewSite"; // Customize this
-  const authorName = "Your Name/Site Name"; // Customize this
+  const authorName = "Dilan Madushanka"; // Customize this
   const publishDate = new Date().toISOString().split('T')[0]; // Current Date
   
   const reviewRatingValue = 4.7; // Example Rating - Adjust as needed
