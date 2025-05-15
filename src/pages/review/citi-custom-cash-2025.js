@@ -11,7 +11,7 @@ import styles from '../../styles/reviews2025.module.css'; // Assuming same CSS m
 
 export default function CitiCustomCashReview2025() {
   const pageUrl = "https://www.travelcardinsider.com/review/citi-custom-cash-2025"; // Customize this URL
-  const imageUrl = "/beautiful-luxury-outdoor-swimming-pool-hotel-resort_result.webp"; // Replace with your actual card image URL
+  const imageUrl = "philip-jahn-PYkpulrIMG0-unsplash.jpg"; // Replace with your actual card image URL
   const logoUrl = "https://www.travelcardinsider.com/images/your-logo.png"; // Replace with your actual site logo URL
   const siteName = "YourCreditCardReviewSite"; // Customize this
   const authorName = "Dilan Madushanka"; // Customize this
