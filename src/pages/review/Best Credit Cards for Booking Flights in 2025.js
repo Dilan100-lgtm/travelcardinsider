@@ -241,8 +241,7 @@ function FlightBookingCardsReviewPage() {
             src={heroImageSrc}
             alt={heroImageAlt}
             layout="responsive"
-            width={900}
-            height={400}
+            
             objectFit="cover"
             priority
             className={styles.heroImage}
