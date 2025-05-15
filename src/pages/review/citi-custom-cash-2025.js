@@ -167,8 +167,7 @@ export default function CitiCustomCashReview2025() {
               <Image
                 src={imageUrl} // Replace with your card image path
                 alt="Citi Custom Cash Card"
-                width={380} 
-                height={240}  
+                  
                 style={{ width: '100%', maxWidth: '600px', height: 'auto', display: 'block', margin: '0 auto' }} 
                 priority 
               />
