@@ -15,7 +15,7 @@ export default function AlaskaAirlinesVisaSignatureReview2025() {
   const imageUrl = "/images/alaska-airlines-visa-signature-card-2025.webp"; // IMPORTANT: Replace with your actual card image URL
   const siteLogoUrl = "https://www.yourtravelcardreviewsite.com/images/logo.png"; // IMPORTANT: Replace with your actual site logo URL
   const siteName = "Your Travel Card Review Site"; // IMPORTANT: Customize your site name
-  const authorName = "Your Name / Credit Card Expert"; // IMPORTANT: Customize author name
+  const authorName = "Team Travelcardinsider"; // IMPORTANT: Customize author name
   const publishDate = "2025-05-17"; // Update to your publish date
   const cardName = "Alaska Airlines Visa Signature Card";
   const issuerName = "Bank of America";
@@ -281,6 +281,14 @@ export default function AlaskaAirlinesVisaSignatureReview2025() {
             </div>
           </section>
 
+          <section id="cta-Alaska Airlines Visa Signature Card" className={styles.ctaSection}>
+                            <h2>Interested in the <b>{reviewDataNew.cardName}</b>?</h2>
+                            <div className={styles.ctaButtons}>
+                              <a href={reviewDataNew.applyLink} className={`${styles.btn} ${styles.btnApply}`} title="From card issuer's secure site" target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
+                              <a href={reviewDataNew.ratesLink} className={`${styles.btn} ${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored">See Rates & Fees</a>
+                            </div>
+                          </section>
+
           <section id="companion-fare" className={styles.reviewSection}>
             <h2>V. The Companion Fare Explained</h2>
             <p>The Famous Companion Fare is a standout perk of the Alaska Visa. Here's the deal: after your first year's welcome bonus fare, you can earn another one each year around your account anniversary. The main catch? You need to have spent $6,000 or more on the card in the prior year (that’s an average of $500 a month).</p>
@@ -408,55 +416,6 @@ export default function AlaskaAirlinesVisaSignatureReview2025() {
         </article>
       </main>
 
-      {/* Sticky Call-to-Action Section */}
-      <div style={{
-          position: 'sticky',
-          bottom: '0',
-          left: '0',
-          width: '100%',
-          backgroundColor: '#f0f0f0', // Example background
-          padding: '15px 20px',
-          borderTop: '1px solid #ccc',
-          boxShadow: '0 -2px 10px rgba(0,0,0,0.1)',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          zIndex: 1000,
-          gap: '15px', // Space between buttons
-        }}
-        className={styles.stickyCtaContainer} // You can create this class in your CSS module
-      >
-        {/* It's better to define styles for buttons in your CSS module */}
-        <a 
-          href={applyNowUrl} 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          className={styles.ctaButtonApply} // Example class
-          style={{ 
-            padding: '10px 20px', 
-            backgroundColor: '#007bff', 
-            color: 'white', 
-            textDecoration: 'none', 
-            borderRadius: '5px',
-            fontWeight: 'bold',
-          }}
-        >
-          Apply Now
-        </a>
-        <a 
-          href={learnMoreUrl} 
-          className={styles.ctaButtonLearnMore} // Example class
-          style={{ 
-            padding: '10px 20px', 
-            backgroundColor: '#6c757d', 
-            color: 'white', 
-            textDecoration: 'none', 
-            borderRadius: '5px',
-          }}
-        >
-          Learn More
-        </a>
-      </div>
 
        {/* <Footer /> */} {/* Uncomment if you have a Footer component */}
     </>
