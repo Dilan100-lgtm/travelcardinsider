@@ -351,6 +351,7 @@ export default function HomePage({ featuredReviews, latestNews }) {
                 <div className="reviews-grid">
                 {[
                     // Keep your existing array of review objects
+                    { img: "/images/alaska-airlines-visa-signature-card-2025.webp", alt: "Alaska Airlines Visa Signature Card on a travel-themed background", title: "Alaska Airlines Visa Signature Card (2025)", desc: "West Coaster's top pick? Review Companion Fare, free bags, $95 fee & 2025 perks.", link: "/review/alaska-airlines-visa-signature-2025" },
                     { img: "/pexels-rdne-5778466.jpg", alt: "Citi Custom Cash Card", title: "Citi Custom Cash Card Review 2025: A Secret Weapon for Everyday Rewards?", desc: "Discover its adaptive 5% cash back, $0 annual fee, welcome bonus, and if it's the top choice for US consumers' everyday spending.", link: "/review/citi-custom-cash-2025" },
                     { img: "/jordan-ryskamp-kxI7siCTAyY-unsplash.webp", alt: "Marriott Bonvoy Boundless Credit Card", title: "Marriott Bonvoy Boundless 2025 Review", desc: "Is its $95 annual fee justified by its hotel loyalty perks for US travelers?", link: "/review/marriott-bonvoy-boundless-2025" },
                     { img: "/pexels-railgunbreaker-32008325.webp", alt: "Airplane wing with a credit card and passport", title: "Top Airline Credit Cards for Miles & Perks in 2025", desc: "Unlock free flights and luxury travel with 2025's best airline rewards credit cards.", link: "/review/Best Credit Cards for Booking Flights in 2025", },
@@ -359,7 +360,7 @@ export default function HomePage({ featuredReviews, latestNews }) {
                     { img: "/618ad46b23745d001825bd89.webp", alt: "Capital One Venture and Venture X Cards", title: "Capital One Venture Rewards vs. Venture X: Which Travel Card Wins in 2025?", desc: "A comprehensive review comparing Capital One Venture and Venture X rewards, benefits, fees, and overall value to determine the best fit for US travelers in 2025", link: "/review/capital-one-venture-rewards-vs-venture-x-2025", date: "2025-05-07" },
                     { img: "/vitaly-gariev-1JnN9QhmTGU-unsplash (1).jpg", alt: "American Express Platinum, Gold, and Green cards representing the Amex Trifecta", title: "Amex Trifecta 2025: Max Rewards?", desc: "Reviewing the Platinum, Gold & Green combo for US travelers.", link: "/review/amex-trifecta-2025" },
                     { img: "/ChatGPT Image May 5, 2025, 09_36_30 PM (1).png", alt: "U.S. Bank Altitude Connect Visa Signature Card", title: "Altitude® Connect: $0 Fee Travel Gem?", desc: "Reviewing the $0 fee card with lounge visits & travel credits.", link: "/review/us-bank-altitude-connect-2025", },
-                    { img: "/damaris-isenschmid-k1LIMMsm8bg-unsplash.webp", alt: "Traveler using a credit card internationally with scenic background", title: "Top 5 No Foreign Transaction Fee Cards (2025)", desc: "Avoid extra fees and maximize rewards on your international adventures.", link: "/review/top-5-no-ftf-cards-2025" },
+                    
                    
                     
                     
