@@ -12,7 +12,7 @@ import styles from '../../styles/reviews2025.module.css'; // Using the same CSS 
 export default function AlaskaAirlinesVisaSignatureReview2025() {
   // Customize these details for your site and this specific review
   const pageUrl = "https://www.yourtravelcardreviewsite.com/review/alaska-airlines-visa-signature-2025"; // IMPORTANT: Update this to your actual page URL
-  const imageUrl = "/images/alaska-airlines-visa-signature-card-2025.webp"; // IMPORTANT: Replace with your actual card image URL
+  const imageUrl = "/darrin-henein-sREvt-W52Tc-unsplash.webp"; // IMPORTANT: Replace with your actual card image URL
   const siteLogoUrl = "https://www.yourtravelcardreviewsite.com/images/logo.png"; // IMPORTANT: Replace with your actual site logo URL
   const siteName = "Your Travel Card Review Site"; // IMPORTANT: Customize your site name
   const authorName = "Team Travelcardinsider"; // IMPORTANT: Customize author name
