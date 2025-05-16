@@ -245,3 +245,120 @@
     margin-top: 0.5rem;
   }
 }
+/* src/styles/NewsArticlePage.module.css */
+
+/* ... (all your existing CSS styles up to .articleContent sup) ... */
+
+.articleContent sup {
+  font-size: 0.7em;
+  vertical-align: super;
+  line-height: 0;
+}
+
+/* Premium Table Styles */
+.articleContent table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.75em; /* Consistent with p, ul, ol */
+  font-size: 0.95rem;    /* Slightly smaller for dense data if needed, adjust as preferred */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.07); /* Soft shadow for depth */
+  border-radius: 8px;       /* Rounded corners for the table block */
+  overflow: hidden;         /* Ensures box-shadow and border-radius are respected by child elements */
+  border: 1px solid #dee2e6; /* Light border around the table */
+}
+
+.articleContent th,
+.articleContent td {
+  padding: 0.9rem 1rem;  /* Vertical and horizontal padding for cells */
+  text-align: left;
+  border-bottom: 1px solid #e9ecef; /* Light line for row separation */
+  vertical-align: top; /* Align content to the top for consistency */
+}
+
+.articleContent th {
+  background-color: #f8f9fa; /* Light background for headers */
+  color: #212529;             /* Darker text for header contrast */
+  font-weight: 600;           /* Bolder header text */
+  font-family: 'Roboto Condensed', sans-serif; /* Using the content font for consistency */
+  border-bottom-width: 2px;   /* Stronger bottom border for header section */
+  border-top: none; /* Remove default top border if any conflict */
+}
+
+/* Zebra striping for tbody rows for better readability */
+.articleContent tbody tr:nth-of-type(even) {
+  background-color: #fcfdff; /* Very subtle striping, almost white */
+}
+
+.articleContent tbody tr:hover {
+  background-color: #e9ecef; /* Slightly more pronounced hover effect */
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* Remove bottom border from the last row in tbody to prevent double border look if table has a footer or against container border */
+.articleContent tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Optional: Styling for table captions if you use the <caption> HTML element */
+.articleContent table caption {
+  font-size: 1em; /* Existing h3 will likely be larger */
+  font-weight: 600;
+  padding: 0.75rem 0;
+  caption-side: top;
+  text-align: left;
+  color: #333; /* Or use your primary color: #007bff */
+  margin-bottom: 0.5rem;
+}
+
+/* Adjust spacing if a heading (like the H3s for table titles in Emirates article) directly precedes a table */
+.articleContent h3 + table {
+  margin-top: 0.75em;
+}
+.articleContent h4 + table {
+  margin-top: 0.6em;
+}
+
+
+/* Responsive Wrapper for Wide Tables */
+/* Usage: Wrap your <table> in <div class={styles.tableWrapperResponsive}>...</div> in your JSX/HTML */
+.tableWrapperResponsive {
+  overflow-x: auto;
+  margin-bottom: 1.75em; /* Keep consistent spacing */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  border-radius: 8px; /* Match table radius if it's visually distinct */
+  border: 1px solid #dee2e6; /* Optional: border on wrapper if table border is removed */
+}
+
+/* If using .tableWrapperResponsive, you might want the table inside to not have its own shadow or outer border */
+.tableWrapperResponsive > table {
+  margin-bottom: 0; /* Margin handled by wrapper */
+  box-shadow: none;   /* Shadow on wrapper or none */
+  border: none;       /* Border on wrapper or none for inner table */
+  border-radius: 0;   /* Wrapper handles radius */
+}
+
+/* And the table within the responsive wrapper might need its first th to have a top border */
+.tableWrapperResponsive > table th {
+   border-top: 1px solid #d0d0d0; /* Add top border back if removed by table style */
+}
+/* Re-apply border to the last row's cells if the table border is removed when inside the wrapper */
+.tableWrapperResponsive > table tbody tr:last-child td {
+  border-bottom: 1px solid #e9ecef;
+}
+/* And ensure the very last cell of the last row truly has no bottom border if table has no bottom border */
+.tableWrapperResponsive > table:last-child tbody tr:last-child td:last-child {
+   /* border-bottom: none; */ /* This logic can get complex, depends on specific design */
+}
+
+
+/* ... (rest of your existing CSS, including .articleFooter and @media queries) ... */
+
+.articleFooter {
+/* ... */
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: space-between; /* For back link and potential share buttons */
+  align-items: center;
+}
