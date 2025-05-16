@@ -3,30 +3,117 @@
 import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
-import styles from '../../styles/reviews2025.module.css'; // Using the same CSS module
+// Assuming your Alaska review uses 'reviews2025.module.css' as previously discussed
+// If it uses 'ReviewPage.module.css' like Quicksilver, change the import below.
+import styles from '../../styles/reviews2025.module.css';
 
-// Assuming you might have Header and Footer components
-// import Header from '../../components/Header';
-// import Footer from '../../components/Footer';
+// Placeholder for global site constants if you have them, otherwise define directly or in reviewDataNew
+const siteUrl = 'https://www.yourtravelcardreviewsite.com'; // IMPORTANT: Update this
+
+const reviewDataNew = {
+  cardName: "Alaska Airlines Visa Signature Card",
+  issuerName: "Bank of America",
+  title: "Alaska Airlines Visa Signature Card 2025 Review: Top Pick for West Coasters?",
+  description: "In-depth 2025 review of the Alaska Airlines Visa Signature Card from Bank of America. Explore miles, Companion Fare, checked bags, elite perks, and the $95 annual fee. Is it the top choice for US West Coast travelers?",
+  keywords: "Alaska Airlines Visa Signature review, Alaska Airlines credit card 2025, West Coast airline card, Alaska Companion Fare, Alaska Airlines miles, travel credit card $95 fee, Bank of America Alaska card, EQM credit card, best airline card West Coast, credit card review US",
+  author: {
+    name: "Your Name / Credit Card Expert", // IMPORTANT: Update this
+    // Add other author details if your template uses them, similar to Quicksilver's author object
+  },
+  siteName: "Your Travel Card Review Site", // IMPORTANT: Update this
+  pagePath: "/review/alaska-airlines-visa-signature-2025",
+  imageUrl: "/darrin-henein-sREvt-W52Tc-unsplash.webp", // IMPORTANT: Update with your actual card image URL
+  imageWidth: 760, // Adjust to your image's actual width
+  imageHeight: 480, // Adjust to your image's actual height
+  siteLogoUrl: "/images/logo.png", // IMPORTANT: Update with your actual site logo URL
+  publishDate: "2025-05-17", // Update to your publish date
+  updateDate: "2025-05-17", // Update to your modification date
+  ratingValue: 4.4, // Example rating (1-5 or 1-10, adjust schema accordingly)
+  annualFee: 95,
+  applyLink: "https://www.yourlink.com/apply-alaska-visa", // IMPORTANT: Replace with your Alaska card affiliate/application link
+  learnMoreLink: "#sweet-spot-redemptions", // Or another relevant link for the Alaska card
+  h1Content: "The Alaska Airlines Visa Signature Card: My Honest Take for West Coasters in 2025",
+  reviewBody: "Our comprehensive 2025 analysis of the Alaska Airlines Visa Signature Card. Uncover its value for West Coast flyers, from the Companion Fare to earning miles and elite status perks.", // For JSON-LD
+  // For JSON-LD Product Schema
+  sku: "BOFA-ALASKA-TCI-2025", // Stock Keeping Unit (invent one if you track products)
+  mpn: "BOFAALASKA", // Manufacturer Part Number (invent one)
+  brandName: "Bank of America Alaska Airlines", // For Product schema
+};
+
+const pageUrlFull = `${siteUrl}${reviewDataNew.pagePath}`;
+
+// JSON-LD Structured Data
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Review",
+  "itemReviewed": {
+    "@type": "Product",
+    "name": reviewDataNew.cardName,
+    "brand": {
+      "@type": "Brand",
+      "name": reviewDataNew.brandName
+    },
+    "description": reviewDataNew.description,
+    "image": `${siteUrl}${reviewDataNew.imageUrl}`,
+    "sku": reviewDataNew.sku,
+    "mpn": reviewDataNew.mpn,
+    "offers": {
+        "@type": "Offer",
+        "url": reviewDataNew.applyLink,
+        "priceCurrency": "USD",
+        "price": reviewDataNew.annualFee.toString(),
+        "priceSpecification": {
+           "@type": "PriceSpecification",
+           "price": reviewDataNew.annualFee,
+           "priceCurrency": "USD",
+           "valueAddedTaxIncluded": "false",
+           "billingIncrement": "1",
+           "unitText": "ANNUAL"
+        },
+        "seller": { "@type": "Organization", name: reviewDataNew.issuerName }
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": reviewDataNew.ratingValue.toString(),
+      "bestRating": "5", // Assuming a 5-star scale, adjust if 10
+      "worstRating": "1",
+      "reviewCount": "1" // Number of reviews aggregated, if this is the only one, set to 1
+    }
+  },
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": reviewDataNew.ratingValue.toString(),
+    "bestRating": "5", // Assuming a 5-star scale
+    "worstRating": "1"
+  },
+  "headline": reviewDataNew.title,
+  "author": {
+    "@type": "Person", // Or "Organization" if the site is the author
+    "name": reviewDataNew.author.name
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": reviewDataNew.siteName,
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${siteUrl}${reviewDataNew.siteLogoUrl}`
+    }
+  },
+  "datePublished": reviewDataNew.publishDate,
+  "dateModified": reviewDataNew.updateDate,
+  "description": reviewDataNew.description,
+  "keywords": reviewDataNew.keywords,
+  "mainEntityOfPage": {
+     "@type": "WebPage",
+     "@id": pageUrlFull
+  },
+  "image": [
+     `${siteUrl}${reviewDataNew.imageUrl}`
+   ]
+};
+
 
 export default function AlaskaAirlinesVisaSignatureReview2025() {
-  // Customize these details for your site and this specific review
-  const pageUrl = "https://www.yourtravelcardreviewsite.com/review/alaska-airlines-visa-signature-2025"; // IMPORTANT: Update this to your actual page URL
-  const imageUrl = "/darrin-henein-sREvt-W52Tc-unsplash.webp"; // IMPORTANT: Replace with your actual card image URL
-  const siteLogoUrl = "https://www.yourtravelcardreviewsite.com/images/logo.png"; // IMPORTANT: Replace with your actual site logo URL
-  const siteName = "Your Travel Card Review Site"; // IMPORTANT: Customize your site name
-  const authorName = "Team Travelcardinsider"; // IMPORTANT: Customize author name
-  const publishDate = "2025-05-17"; // Update to your publish date
-  const cardName = "Alaska Airlines Visa Signature Card";
-  const issuerName = "Bank of America";
-
-  const reviewRatingValue = 4.4; // Example rating (1-5), adjust as needed
-  const annualFee = 95;
-
-  // URLs for CTA buttons - replace with your actual links
-  const applyNowUrl = "https://www.yourlink.com/apply-alaska-visa"; // IMPORTANT: Replace with your affiliate/application link
-  const learnMoreUrl = "#sweet-spot-redemptions"; // Example: links to a section on the page, or an external page
-
   return (
     <>
       <Head>
