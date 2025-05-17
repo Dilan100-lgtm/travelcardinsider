@@ -3,11 +3,8 @@
 import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
-// Assuming your Alaska review uses 'reviews2025.module.css' as previously discussed
-// If it uses 'ReviewPage.module.css' like Quicksilver, change the import below.
 import styles from '../../styles/reviews2025.module.css';
 
-// Placeholder for global site constants if you have them, otherwise define directly or in reviewDataNew
 const siteUrl = 'https://www.yourtravelcardreviewsite.com'; // IMPORTANT: Update this
 
 const reviewDataNew = {
@@ -15,34 +12,44 @@ const reviewDataNew = {
   issuerName: "Bank of America",
   title: "Alaska Airlines Visa Signature Card 2025 Review: Top Pick for West Coasters?",
   description: "In-depth 2025 review of the Alaska Airlines Visa Signature Card from Bank of America. Explore miles, Companion Fare, checked bags, elite perks, and the $95 annual fee. Is it the top choice for US West Coast travelers?",
-  keywords: "Alaska Airlines Visa Signature review, Alaska Airlines credit card 2025, West Coast airline card, Alaska Companion Fare, Alaska Airlines miles, travel credit card $95 fee, Bank of America Alaska card, EQM credit card, best airline card West Coast, credit card review US",
+  keywords: [ // Changed to an array for easier processing
+    "Alaska Airlines Visa Signature review", 
+    "Alaska Airlines credit card 2025", 
+    "West Coast airline card", 
+    "Alaska Companion Fare", 
+    "Alaska Airlines miles", 
+    "travel credit card $95 fee", 
+    "Bank of America Alaska card", 
+    "EQM credit card", 
+    "best airline card West Coast", 
+    "credit card review US"
+  ],
   author: {
     name: "Your Name / Credit Card Expert", // IMPORTANT: Update this
-    // Add other author details if your template uses them, similar to Quicksilver's author object
   },
   siteName: "Your Travel Card Review Site", // IMPORTANT: Update this
   pagePath: "/review/alaska-airlines-visa-signature-2025",
-  imageUrl: "/darrin-henein-sREvt-W52Tc-unsplash.webp", // IMPORTANT: Update with your actual card image URL
-  imageWidth: 760, // Adjust to your image's actual width
-  imageHeight: 480, // Adjust to your image's actual height
-  siteLogoUrl: "/images/logo.png", // IMPORTANT: Update with your actual site logo URL
-  publishDate: "2025-05-17", // Update to your publish date
-  updateDate: "2025-05-17", // Update to your modification date
-  ratingValue: 4.4, // Example rating (1-5 or 1-10, adjust schema accordingly)
+  imageUrl: "/darrin-henein-sREvt-W52Tc-unsplash.webp", // IMPORTANT: Update this path
+  imageWidth: 760,
+  imageHeight: 480,
+  siteLogoUrl: "/images/logo.png", // IMPORTANT: Update this path
+  publishDate: "2025-05-17",
+  updateDate: "2025-05-17",
+  ratingValue: 4.4,
   annualFee: 95,
-  applyLink: "https://www.yourlink.com/apply-alaska-visa", // IMPORTANT: Replace with your Alaska card affiliate/application link
-  learnMoreLink: "#sweet-spot-redemptions", // Or another relevant link for the Alaska card
+  applyLink: "https://www.yourlink.com/apply-alaska-visa", // IMPORTANT: Update this link
+  learnMoreLink: "#sweet-spot-redemptions",
+  ratesLink: "https://www.yourlink.com/alaska-visa-rates-fees", // IMPORTANT: Add actual rates & fees link
   h1Content: "The Alaska Airlines Visa Signature Card: My Honest Take for West Coasters in 2025",
-  reviewBody: "Our comprehensive 2025 analysis of the Alaska Airlines Visa Signature Card. Uncover its value for West Coast flyers, from the Companion Fare to earning miles and elite status perks.", // For JSON-LD
-  // For JSON-LD Product Schema
-  sku: "BOFA-ALASKA-TCI-2025", // Stock Keeping Unit (invent one if you track products)
-  mpn: "BOFAALASKA", // Manufacturer Part Number (invent one)
-  brandName: "Bank of America Alaska Airlines", // For Product schema
+  reviewBody: "Our comprehensive 2025 analysis of the Alaska Airlines Visa Signature Card. Uncover its value for West Coast flyers, from the Companion Fare to earning miles and elite status perks.",
+  sku: "BOFA-ALASKA-TCI-2025",
+  mpn: "BOFAALASKA",
+  brandName: "Bank of America Alaska Airlines",
 };
 
 const pageUrlFull = `${siteUrl}${reviewDataNew.pagePath}`;
 
-// JSON-LD Structured Data
+// JSON-LD Structured Data - This is correctly defined using reviewDataNew
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Review",
@@ -75,20 +82,20 @@ const structuredData = {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": reviewDataNew.ratingValue.toString(),
-      "bestRating": "5", // Assuming a 5-star scale, adjust if 10
+      "bestRating": "5",
       "worstRating": "1",
-      "reviewCount": "1" // Number of reviews aggregated, if this is the only one, set to 1
+      "reviewCount": "1"
     }
   },
   "reviewRating": {
     "@type": "Rating",
     "ratingValue": reviewDataNew.ratingValue.toString(),
-    "bestRating": "5", // Assuming a 5-star scale
+    "bestRating": "5",
     "worstRating": "1"
   },
   "headline": reviewDataNew.title,
   "author": {
-    "@type": "Person", // Or "Organization" if the site is the author
+    "@type": "Person",
     "name": reviewDataNew.author.name
   },
   "publisher": {
@@ -101,8 +108,8 @@ const structuredData = {
   },
   "datePublished": reviewDataNew.publishDate,
   "dateModified": reviewDataNew.updateDate,
-  "description": reviewDataNew.description,
-  "keywords": reviewDataNew.keywords,
+  "description": reviewDataNew.description, // Schema.org description
+  "keywords": reviewDataNew.keywords.join(', '), // Convert array to comma-separated string for meta tag if needed, or use directly if schema supports array
   "mainEntityOfPage": {
      "@type": "WebPage",
      "@id": pageUrlFull
@@ -117,159 +124,77 @@ export default function AlaskaAirlinesVisaSignatureReview2025() {
   return (
     <>
       <Head>
-        <title>{cardName} 2025 Review: Top Pick for West Coasters?</title>
+        {/* Corrected to use reviewDataNew object */}
+        <title>{reviewDataNew.title}</title>
         <meta
           name="description"
-          content={`In-depth 2025 review of the ${cardName} from ${issuerName}. Explore miles, Companion Fare, checked bags, elite perks, and the $${annualFee} annual fee. Is it the top choice for US West Coast travelers?`}
+          content={reviewDataNew.description}
         />
+        <meta name="keywords" content={reviewDataNew.keywords.join(', ')} />
+        <meta name="author" content={reviewDataNew.author.name} />
         <meta name="robots" content="index,follow" />
-        <link rel="canonical" href={pageUrl} />
+        <link rel="canonical" href={pageUrlFull} />
 
         {/* ---- Open Graph (for Facebook, Pinterest, etc.) ---- */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content={`${cardName} 2025 Review: Maximize Your West Coast Travel`} />
-        <meta property="og:description" content={`Our comprehensive 2025 analysis of the ${cardName}. Uncover its value for West Coast flyers, from the Companion Fare to earning miles.`} />
-        <meta property="og:url" content={pageUrl} />
-        <meta property="og:image" content={imageUrl} />
-        <meta property="og:site_name" content={siteName} />
+        <meta property="og:title" content={reviewDataNew.title} />
+        <meta property="og:description" content={reviewDataNew.description} />
+        <meta property="og:url" content={pageUrlFull} />
+        <meta property="og:image" content={`${siteUrl}${reviewDataNew.imageUrl}`} />
+        <meta property="og:image:width" content={String(reviewDataNew.imageWidth)} />
+        <meta property="og:image:height" content={String(reviewDataNew.imageHeight)} />
+        <meta property="og:site_name" content={reviewDataNew.siteName} />
         <meta property="article:publisher" content={`https://www.facebook.com/yourfbprofile`} /> {/* Optional: Link to your Facebook page */}
-        <meta property="article:published_time" content={publishDate} />
-        <meta property="article:modified_time" content={publishDate} />
-        <meta property="article:author" content={authorName} /> {/* You can link to an author's Facebook profile if desired */}
+        <meta property="article:published_time" content={reviewDataNew.publishDate} />
+        <meta property="article:modified_time" content={reviewDataNew.updateDate} />
+        <meta property="article:author" content={reviewDataNew.author.name} />
 
 
         {/* ---- Twitter Card ---- */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@YourTwitterHandle" /> {/* Optional: Your Twitter handle */}
-        <meta name="twitter:title" content={`${cardName} Review (2025) | $${annualFee} Fee Justified for West Coast Flyers?`} />
-        <meta name="twitter:description" content={`Detailed 2025 review: ${cardName}. Companion Fare, free checked bags, EQMs, and overall value proposition for Alaska Airlines loyalists in the US.`} />
-        <meta name="twitter:image" content={imageUrl} />
+        {/* Example of constructing a slightly different title for Twitter if needed, otherwise use reviewDataNew.title */}
+        <meta name="twitter:title" content={`${reviewDataNew.cardName} Review (2025) | $${reviewDataNew.annualFee} Fee Justified?`} />
+        <meta name="twitter:description" content={`Detailed 2025 review: ${reviewDataNew.cardName}. Companion Fare, free checked bags, EQMs, and value for Alaska loyalists.`} />
+        <meta name="twitter:image" content={`${siteUrl}${reviewDataNew.imageUrl}`} />
         <meta name="twitter:creator" content="@AuthorTwitterHandle" /> {/* Optional: Author's Twitter handle */}
 
         {/* ---- Geo-targeting and Language ---- */}
         <meta name="geo.region" content="US" />
         <meta name="geo.placename" content="United States" />
         <meta name="language" content="en-US" />
-        <meta name="distribution" content="US" /> {/* You can also use "global" if applicable */}
-        <link rel="alternate" hrefLang="en-us" href={pageUrl} />
+        <meta name="distribution" content="US" />
+        <link rel="alternate" hrefLang="en-us" href={pageUrlFull} />
         
-
         {/* ---- JSON-LD Structured Data for Google Rich Snippets ---- */}
+        {/* This uses the 'structuredData' object defined above, which correctly uses 'reviewDataNew' */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: `{
-              "@context": "https://schema.org",
-              "@type": "Review",
-              "itemReviewed": {
-                "@type": "Product",
-                "name": "${cardName}",
-                "brand": {
-                  "@type": "Brand",
-                  "name": "${issuerName} Alaska Airlines"
-                },
-                "description": "The ${cardName} is a co-branded airline credit card by ${issuerName} targeted at US travelers, especially those on the West Coast, offering benefits like Alaska's Famous Companion Fare, free checked bags, and accelerated mile earning with Alaska Airlines.",
-                "image": "${imageUrl}",
-                "offers": {
-                    "@type": "Offer",
-                    "priceCurrency": "USD",
-                    "price": "${annualFee}",
-                    "priceSpecification": {
-                       "@type": "PriceSpecification",
-                       "price": ${annualFee},
-                       "priceCurrency": "USD",
-                       "valueAddedTaxIncluded": "false",
-                       "billingIncrement": "1",
-                       "unitText": "ANNUAL"
-                    }
-                },
-                "feesAndCommissionsSpecification": {
-                  "@type": "CompoundPriceSpecification",
-                  "priceComponent": [
-                    {
-                      "@type": "UnitPriceSpecification",
-                      "priceCurrency": "USD",
-                      "price": ${annualFee},
-                      "name": "Annual Fee",
-                      "referenceQuantity": {
-                         "@type": "QuantitativeValue",
-                         "value": 1,
-                         "unitCode": "ANN" 
-                      }
-                    }
-                  ]
-                },
-                "aggregateRating": {
-                  "@type": "AggregateRating",
-                  "ratingValue": ${reviewRatingValue}, 
-                  "bestRating": "5",
-                  "worstRating": "1",
-                  "reviewCount": "1" 
-                }
-              },
-              "reviewRating": {
-                "@type": "Rating",
-                "ratingValue": ${reviewRatingValue},
-                "bestRating": "5",
-                "worstRating": "1"
-              },
-              "headline": "${cardName} 2025 Review: Is the $${annualFee} Fee Worth It for West Coasters?",
-              "author": {
-                "@type": "Person",
-                "name": "${authorName}"
-              },
-              "publisher": {
-                "@type": "Organization",
-                "name": "${siteName}",
-                "logo": {
-                  "@type": "ImageObject",
-                  "url": "${siteLogoUrl}"
-                }
-              },
-              "datePublished": "${publishDate}",
-              "dateModified": "${publishDate}",
-              "keywords": [
-                "${cardName} review",
-                "Alaska Airlines credit card 2025",
-                "West Coast airline card",
-                "Alaska Companion Fare",
-                "Alaska Airlines miles",
-                "travel credit card $${annualFee} fee",
-                "${issuerName} Alaska card",
-                "EQM credit card",
-                "best airline card West Coast",
-                "credit card review US"
-              ],
-              "mainEntityOfPage": {
-                 "@type": "WebPage",
-                 "@id": "${pageUrl}"
-              },
-              "image": [
-                 "${imageUrl}"
-               ]
-            }`
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </Head>
 
-       {/* <Header /> */} {/* Uncomment if you have a Header component */}
+        {/* <Header /> */} {/* Uncomment if you have a Header component */}
 
       <main style={{ fontFamily: 'Arial, sans-serif' }}> {/* Example font */}
         <article className={styles.reviewContainer}>
           <header className={styles.reviewHeader}>
             <h1 className={styles.reviewTitle}>
-              The {cardName}: My Honest Take for West Coasters in 2025
+              {/* Corrected to use reviewDataNew */}
+              {reviewDataNew.h1Content}
             </h1>
             <b>
-              <u>By {authorName}</u>
+              {/* Corrected to use reviewDataNew */}
+              <u>By {reviewDataNew.author.name}</u>
             </b>
 
             <div style={{ marginTop: '1rem', marginBottom: '1rem' }}>
               <Image
-                src={imageUrl}
-                alt={`${cardName} from ${issuerName}`}
-                width={760}
-                height={480}
+                // Corrected to use reviewDataNew
+                src={reviewDataNew.imageUrl}
+                alt={`${reviewDataNew.cardName} from ${reviewDataNew.issuerName}`}
+                width={reviewDataNew.imageWidth}
+                height={reviewDataNew.imageHeight}
                 style={{ width: '100%', maxWidth: '700px', height: 'auto', display: 'block', margin: '0 auto' }} 
                 priority 
               />
@@ -286,7 +211,8 @@ export default function AlaskaAirlinesVisaSignatureReview2025() {
           <nav className={styles.reviewToc}>
             <h2>Table of Contents</h2>
             <ol>
-              <li><a href="#introduction">Introduction: The {cardName} for West Coasters</a></li>
+              {/* Corrected to use reviewDataNew */}
+              <li><a href="#introduction">Introduction: The {reviewDataNew.cardName} for West Coasters</a></li>
               <li><a href="#annual-fee-interest">Annual Fee and Interest: Is It Worth It?</a></li>
               <li><a href="#welcome-offer">Welcome Offer in 2025: What You Get</a></li>
               <li><a href="#earning-miles">Earning Miles: Alaska, Gas, Streaming & More</a></li>
@@ -301,20 +227,23 @@ export default function AlaskaAirlinesVisaSignatureReview2025() {
           </nav>
 
           <section id="introduction" className={styles.reviewSection}>
-            <h2>I. Introduction: The {cardName} for West Coasters</h2>
-            <p>If you're eyeing the {cardName}, especially as a West Coaster, you want the real story. Is it still a top-tier travel companion in 2025, or are there better options? This review breaks down exactly what you get, what it costs, and who this card genuinely makes sense for – all to help you decide if it deserves a spot in your wallet.</p>
+            {/* Corrected to use reviewDataNew */}
+            <h2>I. Introduction: The {reviewDataNew.cardName} for West Coasters</h2>
+            <p>If you're eyeing the {reviewDataNew.cardName}, especially as a West Coaster, you want the real story. Is it still a top-tier travel companion in 2025, or are there better options? This review breaks down exactly what you get, what it costs, and who this card genuinely makes sense for – all to help you decide if it deserves a spot in your wallet.</p>
           </section>
 
           <section id="annual-fee-interest" className={styles.reviewSection}>
             <h2>II. Annual Fee and Interest: Is It Worth It?</h2>
-            <p>The {cardName} comes with a ${annualFee} annual fee. This is pretty standard for an airline rewards card. The big question is always: will the benefits you use outweigh this yearly cost? If you can save more than $95 through perks like the Companion Fare or free checked bags, then yes, it can definitely be worth it.</p>
+            {/* Corrected to use reviewDataNew */}
+            <p>The {reviewDataNew.cardName} comes with a ${reviewDataNew.annualFee} annual fee. This is pretty standard for an airline rewards card. The big question is always: will the benefits you use outweigh this yearly cost? If you can save more than ${reviewDataNew.annualFee} through perks like the Companion Fare or free checked bags, then yes, it can definitely be worth it.</p>
             <p>Now, a crucial heads-up on interest: if you carry a balance, the Annual Percentage Rate (APR) on purchases is a variable 20.24% to 28.24%. Honestly, to get true value from any rewards card, including this one, you should aim to pay your balance in full each month. Interest charges can quickly wipe out the value of any miles you earn. Balance transfers also fall into this APR range, plus a 4% fee. Cash advances? Best to avoid them due to higher APRs and fees.</p>
             <p>One solid gold perk: no foreign transaction fees. This is essential for international travel, saving you around 3% on purchases made abroad. Just be mindful of potential late payment fees (up to $40) and a higher penalty APR if you miss a due date.</p>
           </section>
 
           <section id="welcome-offer" className={styles.reviewSection}>
             <h2>III. Welcome Offer in 2025: What You Get</h2>
-            <p>As of early 2025, the typical welcome offer for new {cardName} cardholders is quite appealing. You can usually expect to earn 60,000 bonus miles plus Alaska's Famous Companion Fare (this initial one lets a companion fly with you from $99 plus taxes/fees, starting around $23). To qualify, you'll generally need to spend $3,000 or more on purchases within the first 90 days of opening your account.</p>
+            {/* Corrected to use reviewDataNew */}
+            <p>As of early 2025, the typical welcome offer for new {reviewDataNew.cardName} cardholders is quite appealing. You can usually expect to earn 60,000 bonus miles plus Alaska's Famous Companion Fare (this initial one lets a companion fly with you from $99 plus taxes/fees, starting around $23). To qualify, you'll generally need to spend $3,000 or more on purchases within the first 90 days of opening your account.</p>
             <p>Those 60,000 bonus miles are valuable – travel experts often value Alaska miles at 1.3 to 1.5 cents each, making the miles alone worth potentially $780 to $900 towards flights. Getting the Companion Fare upfront is a significant perk, offering immediate savings. Some offers may also include a percentage-off discount code for a future flight, but these often come with specific booking windows, travel dates, and fare restrictions, so its actual value can vary greatly depending on your flexibility.</p>
           </section>
 
@@ -326,9 +255,11 @@ export default function AlaskaAirlinesVisaSignatureReview2025() {
               <li>On everyday spending: Get 2 miles for every $1 spent on eligible gas, EV charging, cable, streaming services, and local transit (including rideshares, trains, and ferries).</li>
               <li>On all other purchases: Earn 1 mile for every $1 spent.</li>
             </ul>
+            {/* Corrected to use reviewDataNew */}
             <p>If you have an eligible Bank of America checking, savings, or investment account, you can get a 10% relationship bonus on all miles earned from card purchases, boosting your earning rates slightly. A significant enhancement for 2025 is the ability to earn 1 Elite Qualifying Mile (EQM) for every $3 spent on your card, up to 30,000 EQMs annually. This offers a tangible way to help you reach Alaska Airlines elite status through your card spending.</p>
              <div className={styles.tableResponsive}>
-                <h4 style={{textAlign: 'center'}}>Table 1: Earning Miles with the {cardName}</h4>
+                {/* Corrected to use reviewDataNew */}
+                <h4 style={{textAlign: 'center'}}>Table 1: Earning Miles with the {reviewDataNew.cardName}</h4>
                 <table className={styles.comparisonTable}>
                     <thead>
                         <tr>
@@ -368,18 +299,21 @@ export default function AlaskaAirlinesVisaSignatureReview2025() {
             </div>
           </section>
 
-          <section id="cta-Alaska Airlines Visa Signature Card" className={styles.ctaSection}>
-                            <h2>Interested in the <b>{reviewDataNew.cardName}</b>?</h2>
-                            <div className={styles.ctaButtons}>
-                              <a href={reviewDataNew.applyLink} className={`${styles.btn} ${styles.btnApply}`} title="From card issuer's secure site" target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
-                              <a href={reviewDataNew.ratesLink} className={`${styles.btn} ${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored">See Rates & Fees</a>
-                            </div>
-                          </section>
+          {/* This inline CTA section was already correctly using reviewDataNew for cardName and applyLink. */}
+          {/* Ensured ratesLink from reviewDataNew is used. */}
+          <section id="cta-Alaska-Airlines-Visa-Signature-Card" className={styles.ctaSection}> {/* Changed ID to be more CSS friendly */}
+              <h2>Interested in the <b>{reviewDataNew.cardName}</b>?</h2>
+              <div className={styles.ctaButtons}>
+                <a href={reviewDataNew.applyLink} className={`${styles.btn} ${styles.btnApply}`} title="From card issuer's secure site" target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
+                <a href={reviewDataNew.ratesLink} className={`${styles.btn} ${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored">See Rates & Fees</a>
+              </div>
+          </section>
 
           <section id="companion-fare" className={styles.reviewSection}>
             <h2>V. The Companion Fare Explained</h2>
+            {/* Corrected to use reviewDataNew */}
             <p>The Famous Companion Fare is a standout perk of the Alaska Visa. Here's the deal: after your first year's welcome bonus fare, you can earn another one each year around your account anniversary. The main catch? You need to have spent $6,000 or more on the card in the prior year (that’s an average of $500 a month).</p>
-            <p>If you meet that spend, you get a discount code. This lets your travel buddy fly with you on a round-trip Alaska Airlines coach ticket for just a $99 base fare, plus taxes and fees (which start from about $23). So, they could be flying for as little as $122 – a huge potential saving, easily offsetting the annual fee.</p>
+            <p>If you meet that spend, you get a discount code. This lets your travel buddy fly with you on a round-trip Alaska Airlines coach ticket for just a $99 base fare, plus taxes and fees (which start from about $23). So, they could be flying for as little as $122 – a huge potential saving, easily offsetting the {reviewDataNew.annualFee} annual fee.</p> {/* Used reviewDataNew.annualFee here */}
             <p>The code usually shows up in your Alaska Mileage Plan account a bit after your card anniversary. You'll typically have 12 months to book the travel, though the trip itself can be later. Plus, there are no blackout dates on Alaska-operated flights when using the code.</p>
             <p>Big news for 2025: starting mid-summer, this Companion Fare will also be usable on select Hawaiian Airlines flights! This is a fantastic boost, especially for West Coast to Hawaii trips. Remember, the cardholder must be traveling or purchasing, and you can’t use miles for the companion’s ticket, but you both earn miles on the flight, and these tickets are eligible for upgrades.</p>
           </section>
@@ -388,7 +322,7 @@ export default function AlaskaAirlinesVisaSignatureReview2025() {
             <h2>VI. Travel Benefits That Add Real Value</h2>
             <p>Beyond the Companion Fare, the card offers other perks that can genuinely save you money and hassle:</p>
             <ul>
-              <li><strong>First Free Checked Bag:</strong> This is a big one. The primary cardholder and up to six other guests on the same reservation each get their first checked bag free on flights marketed and operated by Alaska Airlines (and now Hawaiian Airlines, when purchased with the card). With bag fees typically $35 each way, a couple saves $140 on a single roundtrip – easily covering the annual fee.</li>
+              <li><strong>First Free Checked Bag:</strong> This is a big one. The primary cardholder and up to six other guests on the same reservation each get their first checked bag free on flights marketed and operated by Alaska Airlines (and now Hawaiian Airlines, when purchased with the card). With bag fees typically $35 each way, a couple saves $140 on a single roundtrip – easily covering the {reviewDataNew.annualFee} annual fee.</li> {/* Used reviewDataNew.annualFee here */}
               <li><strong>Priority Boarding:</strong> Cardholders and those on their reservation (when the flight is paid for with the card) get to board earlier, making it easier to find overhead bin space.</li>
               <li><strong>20% Back on Inflight Purchases:</strong> Receive a 20% statement credit on purchases of food, beverages, and Wi-Fi aboard Alaska Airlines flights when paying with your card.</li>
               <li><strong>Alaska Lounge+ Discount:</strong> Get a $100 discount on an annual Alaska Lounge+ Membership when purchased with the card. This is most valuable for very frequent flyers.</li>
@@ -431,7 +365,8 @@ export default function AlaskaAirlinesVisaSignatureReview2025() {
 
           <section id="elite-status-perks" className={styles.reviewSection}>
             <h2>VII. Elite Status Perks in 2025</h2>
-            <p>Reaching elite status with Alaska Airlines (MVP, MVP Gold, etc.) unlocks valuable benefits like upgrades, bonus miles, and priority services. For 2025, the {cardName} plays a more direct role:</p>
+            {/* Corrected to use reviewDataNew */}
+            <p>Reaching elite status with Alaska Airlines (MVP, MVP Gold, etc.) unlocks valuable benefits like upgrades, bonus miles, and priority services. For 2025, the {reviewDataNew.cardName} plays a more direct role:</p>
             <ul>
               <li><strong>Earn EQMs with Card Spend:</strong> As mentioned, earning 1 EQM for every $3 spent (up to 30,000 EQMs annually) is a significant pathway to help you qualify or requalify for status. For example, MVP status requires 20,000 EQMs.</li>
               <li><strong>Mileage Plan Enhancements:</strong> Alaska's loyalty program itself has seen upgrades for 2025 that benefit elite members and those aspiring to be. This includes earning EQMs on award tickets (based on distance flown on Alaska and partners), and new Milestone Rewards that offer choices of perks at various EQM thresholds (starting at 10,000 EQMs), even between traditional elite tiers.</li>
@@ -464,13 +399,15 @@ export default function AlaskaAirlinesVisaSignatureReview2025() {
 
           <section id="card-shortcomings" className={styles.reviewSection}>
             <h2>X. Where This Card Falls Short (Card Protections)</h2>
-            <p>Now, for an area where this card, frankly, doesn't shine: built-in travel and purchase protections. The personal {cardName} appears to lack comprehensive, issuer-provided travel insurance benefits like trip cancellation/interruption coverage, significant lost luggage reimbursement, or an auto rental collision damage waiver (CDW). Many other travel cards in the same $95 annual fee range typically include these as standard.</p>
+            {/* Corrected to use reviewDataNew */}
+            <p>Now, for an area where this card, frankly, doesn't shine: built-in travel and purchase protections. The personal {reviewDataNew.cardName} appears to lack comprehensive, issuer-provided travel insurance benefits like trip cancellation/interruption coverage, significant lost luggage reimbursement, or an auto rental collision damage waiver (CDW). Many other travel cards in the same ${reviewDataNew.annualFee} annual fee range typically include these as standard.</p>
             <p>While you get $0 liability for fraudulent transactions and free FICO score access, the absence of robust travel protections is a notable drawback for a card marketed towards travelers. Alaska Airlines does promote travel insurance you can purchase separately, but this is an added cost and not an automatic card benefit. If strong, automatic travel insurance is a high priority for you, this card likely isn't your best primary option for travel bookings.</p>
           </section>
 
           <section id="final-verdict" className={styles.reviewSection}>
             <h2>XI. Final Verdict: Who Should Get the Alaska Visa?</h2>
-            <p>So, after breaking it all down, who is the {cardName} genuinely a good fit for in 2025?</p>
+            {/* Corrected to use reviewDataNew */}
+            <p>So, after breaking it all down, who is the {reviewDataNew.cardName} genuinely a good fit for in 2025?</p>
             
             <section id="ideal-cardholder" className={styles.reviewSubSection}>
               <h3>A. This card is likely a great choice if:</h3>
@@ -494,17 +431,35 @@ export default function AlaskaAirlinesVisaSignatureReview2025() {
               </ul>
             </section>
             
-            <section id="editors-essential-takeaways" className={`${styles.reviewSubSection} ${styles.eetaSection}`}> {/* Added new class for EETA styling */}
+            <section id="editors-essential-takeaways" className={`${styles.reviewSubSection} ${styles.eetaSection || ''}`}>
               <h3>C. Editor's Essential Takeaways (EETA)</h3>
-              <p>Ultimately, the {cardName} continues to offer significant, tangible value for its target audience, particularly with the 2025 enhancements. The Companion Fare and free checked bags are powerful money-savers. Just be sure its strengths align with your travel habits and that you're comfortable with its shortcomings, especially regarding travel protections. For the right West Coast traveler, it remains a very compelling co-branded airline card.</p>
+              {/* Corrected to use reviewDataNew */}
+              <p>Ultimately, the {reviewDataNew.cardName} continues to offer significant, tangible value for its target audience, particularly with the 2025 enhancements. The Companion Fare and free checked bags are powerful money-savers. Just be sure its strengths align with your travel habits and that you're comfortable with its shortcomings, especially regarding travel protections. For the right West Coast traveler, it remains a very compelling co-branded airline card.</p>
             </section>
           </section>
 
         </article>
       </main>
 
+      {/* Sticky CTA - uses reviewDataNew for links */}
+      <div className={styles.stickyCtaContainer}>
+        <a
+          href={reviewDataNew.applyLink}
+          target="_blank"
+          rel="noopener noreferrer sponsored"
+          className={styles.ctaButtonApply}
+        >
+          Apply Now
+        </a>
+        <a
+          href={reviewDataNew.learnMoreLink} // Using learnMoreLink here as defined in reviewDataNew
+          className={styles.ctaButtonLearnMore}
+        >
+          Learn More
+        </a>
+      </div>
 
-       {/* <Footer /> */} {/* Uncomment if you have a Footer component */}
+        {/* <Footer /> */} {/* Uncomment if you have a Header component */}
     </>
   );
 }
