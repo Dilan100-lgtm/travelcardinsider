@@ -242,11 +242,12 @@ export default function AlaskaAirlinesVisaSignatureReview2025() {
                             <span className={styles.authorName}>{reviewDataNew.author.name}</span>
                         </div>
                         <span className={styles.authorTitle}>{reviewDataNew.author.title}</span>
-                        {updateDate && (
-                            <time dateTime={updateDate} className={styles.authorLastEdited}>
-                                Last updated: {new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-                            </time>
-                        )}
+                        {reviewDataNew.updateDate && (
+  <time dateTime={reviewDataNew.updateDate} className={styles.authorLastEdited}>
+    Last updated: {new Date(reviewDataNew.updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+  </time>
+)}
+
                         {reviewDataNew.author.socialLinks && (
                             <div className={styles.authorSocialLinks}>
                                 {reviewDataNew.author.socialLinks.linkedin && (
