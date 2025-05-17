@@ -25,7 +25,7 @@ const reviewDataNew = {
     "credit card review US"
   ],
   author: {
-    name: "Your Name / Credit Card Expert", // IMPORTANT: Update this
+    name: "Dilan Madushanka", // IMPORTANT: Update this
   },
   siteName: "Your Travel Card Review Site", // IMPORTANT: Update this
   pagePath: "/review/alaska-airlines-visa-signature-2025",
@@ -193,9 +193,8 @@ export default function AlaskaAirlinesVisaSignatureReview2025() {
                 // Corrected to use reviewDataNew
                 src={reviewDataNew.imageUrl}
                 alt={`${reviewDataNew.cardName} from ${reviewDataNew.issuerName}`}
-                width={reviewDataNew.imageWidth}
-                height={reviewDataNew.imageHeight}
-                style={{ width: '100%', maxWidth: '700px', height: 'auto', display: 'block', margin: '0 auto' }} 
+                
+                style={{ width: '100%', maxWidth: '1200px', height: 'auto', display: 'block', margin: '0 auto' }} 
                 priority 
               />
             </div>
