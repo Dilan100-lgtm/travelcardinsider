@@ -310,7 +310,7 @@
   margin: var(--spacing-xl, 32px) 0;
   box-shadow: none;
   position: sticky; top: 3rem;
-  height: 25vh; /* This was in your original CSS for .ctaSection */
+  height: 20vh; /* This was in your original CSS for .ctaSection */
   z-index: 1000;
 }
 .ctaSection h2 {
