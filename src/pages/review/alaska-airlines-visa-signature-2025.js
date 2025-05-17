@@ -143,8 +143,17 @@ const structuredData = {
    ]
 };
 
-
 export default function AlaskaAirlinesVisaSignatureReview2025() {
+  const authorRef = useRef(null); // ✅ Add this
+  const authorTooltipRef = useRef(null); // ✅ You also reference this
+  const [showAuthorBioTooltip, setShowAuthorBioTooltip] = useState(false);
+
+  const handleAuthorMouseEnter = () => setShowAuthorBioTooltip(true);
+  const handleAuthorMouseLeave = () => {
+    setTimeout(() => setShowAuthorBioTooltip(false), 200);
+  };
+  const handleAuthorClearTimeout = () => setShowAuthorBioTooltip(true);
+
   return (
     <>
       <Head>
