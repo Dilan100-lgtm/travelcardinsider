@@ -24,8 +24,32 @@ const reviewDataNew = {
     "best airline card West Coast", 
     "credit card review US"
   ],
-  author: {
-    name: "Dilan Madushanka", // IMPORTANT: Update this
+  author: { // Assuming same author details as the example
+      name: 'Dilan Madushanka',
+      title: 'Founder & Lead Editor',
+      imageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg',
+      imageWidth: 40,
+      imageHeight: 40,
+      tooltipImageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg',
+      tooltipImageWidth: 60,
+      tooltipImageHeight: 60,
+      expertise: [
+          'Travel Credit Cards',
+          'Rewards Programs',
+          'Financial Literacy for Travel',
+          'Maximizing Card Benefits',
+          'Credit Card Analysis'
+      ],
+      bioSnippet: 'Dilan Madushanka is the founder and lead editor of TravelCardInsider.com, dedicated to demystifying credit cards and uncovering their real-world value for smarter travel.',
+      fullBioLink: '/author/dilan-madushanka',
+      fullBio: `Dilan Madushanka is the founder and lead editor of TravelCardInsider.com, a platform dedicated to helping everyday people make smarter decisions with travel and rewards credit cards. With a background in medicine and a deep passion for financial literacy, Dilan turned his real-world experience—navigating travel, budgeting, and rewards programs—into a mission: demystify credit cards and uncover their real-world value.\n\nAfter years of studying the fine print, testing travel benefits firsthand, and comparing hundreds of card offers, Dilan has built a site that goes beyond generic advice. He combines research, real spending scenarios, and hands-on card analysis to help readers maximize rewards and avoid costly mistakes.\n\nExperience matters—and Dilan brings a unique one. A Sri Lankan doctor by training, he took a bold leap into digital entrepreneurship to build a transparent, user-focused credit card resource from scratch. Every guide and review you read is written or edited by him with accuracy, integrity, and a deep sense of purpose.`,
+      publishedStats: '6+ in-depth card reviews per week',
+      testedStats: 'Over 50 credit card benefits across major brands',
+      socialLinks: {
+          linkedin: 'www.linkedin.com/in/dilan-madushanka-b65293365', // *** REPLACE with actual URL ***
+          twitter: 'https://x.com/team_dilan', // *** REPLACE with actual URL ***
+          email: 'team@travelcardinsider.com'
+      }
   },
   siteName: "Your Travel Card Review Site", // IMPORTANT: Update this
   pagePath: "/review/alaska-airlines-visa-signature-2025",
@@ -183,10 +207,117 @@ export default function AlaskaAirlinesVisaSignatureReview2025() {
               {/* Corrected to use reviewDataNew */}
               {reviewDataNew.h1Content}
             </h1>
-            <b>
-              {/* Corrected to use reviewDataNew */}
-              <u>By {reviewDataNew.author.name}</u>
-            </b>
+            <div
+                    className={styles.authorBioContainer}
+                    ref={authorRef}
+                    onMouseEnter={() => { handleAuthorClearTimeout(); handleAuthorMouseEnter(); }}
+                    onMouseLeave={handleAuthorMouseLeave}
+                    onFocus={handleAuthorMouseEnter}
+                    onBlur={handleAuthorMouseLeave}
+                    aria-haspopup="true"
+                    aria-expanded={showAuthorBioTooltip}
+                    tabIndex={0}
+                >
+                    <Image
+                        src={reviewDataNew.author.imageUrl}
+                        alt={`${reviewDataNew.author.name} headshot`}
+                        width={reviewDataNew.author.imageWidth}
+                        height={reviewDataNew.author.imageHeight}
+                        className={styles.authorImageSmall}
+                        priority
+                    />
+                    <div className={styles.authorInfoBlock}>
+                        <div className={styles.authorNameLine}>
+                            <span className={styles.authorPrefix}>By</span>
+                            <span className={styles.authorName}>{reviewDataNew.author.name}</span>
+                        </div>
+                        <span className={styles.authorTitle}>{reviewDataNew.author.title}</span>
+                        {updateDate && (
+                            <time dateTime={updateDate} className={styles.authorLastEdited}>
+                                Last updated: {new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                            </time>
+                        )}
+                        {reviewDataNew.author.socialLinks && (
+                            <div className={styles.authorSocialLinks}>
+                                {reviewDataNew.author.socialLinks.linkedin && (
+                                    <a href={reviewDataNew.author.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={styles.socialIconLink}>
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                    </a>
+                                )}
+                                {reviewDataNew.author.socialLinks.twitter && (
+                                    <a href={reviewDataNew.author.socialLinks.twitter} target="_blank" rel="noopener noreferrer" aria-label="Twitter" className={styles.socialIconLink}>
+                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-.422.724-.665 1.56-.665 2.452 0 1.697.864 3.198 2.18 4.078-.8-.025-1.555-.247-2.227-.616v.054c0 2.37 1.683 4.333 3.91 4.78-.426.116-.874.174-1.337.174-.31 0-.611-.03-.904-.085.622 1.936 2.421 3.338 4.553 3.377-1.672 1.309-3.781 2.088-6.072 2.088-.394 0-.784-.023-1.169-.069 2.16 1.389 4.723 2.202 7.482 2.202 8.979 0 13.897-7.446 13.897-13.898 0-.21 0-.42-.015-.63.953-.689 1.778-1.56 2.433-2.525z"/></svg>
+                                    </a>
+                                )}
+                                {reviewDataNew.author.socialLinks.email && (
+                                    <a href={`mailto:${reviewDataNew.author.socialLinks.email}`} aria-label="Email" className={styles.socialIconLink}>
+                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
+                                    </a>
+                                )}
+                            </div>
+                        )}
+                    </div>
+                    {showAuthorBioTooltip && (
+                        <div
+                            className={styles.authorTooltip}
+                            ref={authorTooltipRef}
+                            role="tooltip"
+                            onMouseEnter={handleAuthorClearTimeout}
+                            onMouseLeave={handleAuthorMouseLeave}
+                            onFocus={handleAuthorMouseEnter}
+                            onBlur={handleAuthorMouseLeave}
+                        >
+                             <div className={styles.authorTooltipHeader}>
+                                 <Image
+                                    src={reviewDataNew.author.tooltipImageUrl}
+                                    alt={`${reviewDataNew.author.name} headshot`}
+                                    width={reviewDataNew.author.tooltipImageWidth}
+                                    height={reviewDataNew.author.tooltipImageHeight}
+                                    className={styles.authorTooltipImage}
+                                 />
+                                 <div className={styles.authorTooltipInfo}>
+                                     <span className={styles.authorTooltipName}>{reviewDataNew.author.name}</span>
+                                     <span className={styles.authorTooltipTitle}>{reviewDataNew.author.title}</span>
+                                 </div>
+                               </div>
+                               {reviewDataNew.author.expertise && reviewDataNew.author.expertise.length > 0 && (
+                                 <div className={styles.authorTooltipExpertise}>
+                                     <strong>Expertise</strong>
+                                     <ul>
+                                         {reviewDataNew.author.expertise.map(area => <li key={area}>{area}</li>)}
+                                     </ul>
+                                 </div>
+                               )}
+                               <p className={styles.authorTooltipBioSnippet}>{reviewDataNew.author.bioSnippet}</p>
+                               {reviewDataNew.author.fullBioLink && (
+                                   <Link href={reviewDataNew.author.fullBioLink} legacyBehavior>
+                                       <a className={styles.authorTooltipBioLink}>
+                                           See full bio
+                                       </a>
+                                   </Link>
+                               )}
+                               {reviewDataNew.author.socialLinks && (
+                                    <div className={styles.authorTooltipSocials}>
+                                        {reviewDataNew.author.socialLinks.linkedin && (
+                                             <a href={reviewDataNew.author.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={styles.socialIconLink}>
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                             </a>
+                                         )}
+                                         {reviewDataNew.author.socialLinks.twitter && (
+                                             <a href={reviewDataNew.author.socialLinks.twitter} target="_blank" rel="noopener noreferrer" aria-label="Twitter" className={styles.socialIconLink}>
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-.422.724-.665 1.56-.665 2.452 0 1.697.864 3.198 2.18 4.078-.8-.025-1.555-.247-2.227-.616v.054c0 2.37 1.683 4.333 3.91 4.78-.426.116-.874.174-1.337.174-.31 0-.611-.03-.904-.085.622 1.936 2.421 3.338 4.553 3.377-1.672 1.309-3.781 2.088-6.072 2.088-.394 0-.784-.023-1.169-.069 2.16 1.389 4.723 2.202 7.482 2.202 8.979 0 13.897-7.446 13.897-13.898 0-.21 0-.42-.015-.63.953-.689 1.778-1.56 2.433-2.525z"/></svg>
+                                             </a>
+                                         )}
+                                         {reviewDataNew.author.socialLinks.email && (
+                                             <a href={`mailto:${reviewDataNew.author.socialLinks.email}`} aria-label="Email" className={styles.socialIconLink}>
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
+                                             </a>
+                                         )}
+                                    </div>
+                                )}
+                        </div>
+                    )}
+                </div>
 
             <div style={{ marginTop: '1rem', marginBottom: '1rem' }}>
               <Image
