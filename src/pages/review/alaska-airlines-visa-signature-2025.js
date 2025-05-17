@@ -1,6 +1,7 @@
 // File: pages/review/alaska-airlines-visa-signature-2025.js
 
-import React from 'react';
+import React, { useRef, useState } from 'react';
+
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../../styles/reviews2025.module.css';
