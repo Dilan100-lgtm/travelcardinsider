@@ -144,16 +144,24 @@ const structuredData = {
    ]
 };
 
-export default function AlaskaAirlinesVisaSignatureReview2025() {
-  const authorRef = useRef(null); // ✅ Add this
-  const authorTooltipRef = useRef(null); // ✅ You also reference this
-  const [showAuthorBioTooltip, setShowAuthorBioTooltip] = useState(false);
+import { useState, useRef } from 'react';
 
-  const handleAuthorMouseEnter = () => setShowAuthorBioTooltip(true);
-  const handleAuthorMouseLeave = () => {
-    setTimeout(() => setShowAuthorBioTooltip(false), 200);
-  };
-  const handleAuthorClearTimeout = () => setShowAuthorBioTooltip(true);
+const authorRef = useRef(null);
+const authorTooltipRef = useRef(null);
+const [showAuthorBioTooltip, setShowAuthorBioTooltip] = useState(false);
+
+const handleAuthorMouseEnter = () => {
+  setShowAuthorBioTooltip(true);
+};
+
+const handleAuthorMouseLeave = () => {
+  setShowAuthorBioTooltip(false);
+};
+
+const handleAuthorClearTimeout = () => {
+  setShowAuthorBioTooltip(true);
+};
+
 
   return (
     <>
@@ -270,14 +278,15 @@ export default function AlaskaAirlinesVisaSignatureReview2025() {
                     </div>
                     {showAuthorBioTooltip && (
                         <div
-                            className={styles.authorTooltip}
-                            ref={authorTooltipRef}
-                            role="tooltip"
-                            onMouseEnter={handleAuthorClearTimeout}
-                            onMouseLeave={handleAuthorMouseLeave}
-                            onFocus={handleAuthorMouseEnter}
-                            onBlur={handleAuthorMouseLeave}
-                        >
+  className={styles.authorBioContainer}
+  ref={authorRef}
+  onMouseEnter={handleAuthorMouseEnter}
+  onMouseLeave={handleAuthorMouseLeave}
+  tabIndex={0}
+  aria-haspopup="true"
+  aria-expanded={showAuthorBioTooltip}
+>
+
                              <div className={styles.authorTooltipHeader}>
                                  <Image
                                     src={reviewDataNew.author.tooltipImageUrl}
