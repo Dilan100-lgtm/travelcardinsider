@@ -571,23 +571,7 @@ export default function AlaskaAirlinesVisaSignatureReview2025() {
         </article>
       </main>
 
-      {/* Sticky CTA - uses reviewDataNew for links */}
-      <div className={styles.stickyCtaContainer}>
-        <a
-          href={reviewDataNew.applyLink}
-          target="_blank"
-          rel="noopener noreferrer sponsored"
-          className={styles.ctaButtonApply}
-        >
-          Apply Now
-        </a>
-        <a
-          href={reviewDataNew.learnMoreLink} // Using learnMoreLink here as defined in reviewDataNew
-          className={styles.ctaButtonLearnMore}
-        >
-          Learn More
-        </a>
-      </div>
+      
 
         {/* <Footer /> */} {/* Uncomment if you have a Header component */}
     </>
