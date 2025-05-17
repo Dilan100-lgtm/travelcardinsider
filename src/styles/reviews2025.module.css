@@ -364,3 +364,16 @@
     font-size: 1.4rem;
   }
   }
+/* Add this to your styles/reviews2025.module.css file */
+
+/* Override sticky positioning for the first table's first column */
+.comparisonTable.noStickyFirstCol td:first-child,
+.comparisonTable.noStickyFirstCol th:first-child {
+  position: static; /* This removes the stickiness */
+  /* z-index: auto; */ /* Reset z-index if it was set by sticky styles */
+}
+
+/* Reset the specific background for the first header cell if it was made sticky */
+.comparisonTable.noStickyFirstCol th:first-child {
+  background-color: #f5f5f5; /* This is the default background for 'th' in .comparisonTable */
+}

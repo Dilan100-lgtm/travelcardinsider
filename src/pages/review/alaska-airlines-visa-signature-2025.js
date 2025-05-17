@@ -259,7 +259,7 @@ export default function AlaskaAirlinesVisaSignatureReview2025() {
              <div className={styles.tableResponsive}>
                 {/* Corrected to use reviewDataNew */}
                 <h4 style={{textAlign: 'center'}}>Table 1: Earning Miles with the {reviewDataNew.cardName}</h4>
-                <table className={styles.comparisonTable}>
+                <table className={`${styles.comparisonTable} ${styles.noStickyFirstCol}`}>
                     <thead>
                         <tr>
                             <th>Spending Category</th>
