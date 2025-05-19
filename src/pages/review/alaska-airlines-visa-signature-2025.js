@@ -63,7 +63,7 @@ const reviewDataNew = {
   ratingValue: 4.4,
   annualFee: 95,
   applyLink: "https://www.yourlink.com/apply-alaska-visa", // IMPORTANT: Update this link
-  learnMoreLink: "#sweet-spot-redemptions",
+  learnMoreLink: "/cards/alaska-visa-signature",
   ratesLink: "https://www.yourlink.com/alaska-visa-rates-fees", // IMPORTANT: Add actual rates & fees link
   h1Content: "The Alaska Airlines Visa Signature Card: My Honest Take for West Coasters in 2025",
   reviewBody: "Our comprehensive 2025 analysis of the Alaska Airlines Visa Signature Card. Uncover its value for West Coast flyers, from the Companion Fare to earning miles and elite status perks.",
@@ -474,7 +474,7 @@ export default function AlaskaAirlinesVisaSignatureReview2025() {
               <h2>Interested in the <b>{reviewDataNew.cardName}</b>?</h2>
               <div className={styles.ctaButtons}>
                 <a href={reviewDataNew.applyLink} className={`${styles.btn} ${styles.btnApply}`} title="From card issuer's secure site" target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
-                <a href={reviewDataNew.ratesLink} className={`${styles.btn} ${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored">See Rates & Fees</a>
+                <a href={reviewDataNew.learnMoreLink} className={`${styles.btn} ${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored">Learn more</a>
               </div>
           </section>
 
