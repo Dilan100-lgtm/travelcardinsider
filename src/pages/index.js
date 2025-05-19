@@ -351,6 +351,7 @@ export default function HomePage({ featuredReviews, latestNews }) {
                 <div className="reviews-grid">
                 {[
                     // Keep your existing array of review objects
+                    { img: "/images/reviews/hotel-cards-hero-2025.jpg", alt: "Best Hotel Credit Cards for US Travelers in 2025, featuring luxury hotel imagery", title: "Hotel Rewards Showdown 2025: Elite Perks & Free Stays", desc: "Reviewing 2025's top hotel credit cards for US travelers seeking elite status and maximum free night value.", link: "/reviews/best-hotel-credit-cards-2025" },
                     { img: "/darrin-henein-sREvt-W52Tc-unsplash.webp", alt: "Alaska Airlines Visa Signature Card on a travel-themed background", title: "Alaska Airlines Visa Signature Card (2025)", desc: "West Coaster's top pick? Review Companion Fare, free bags, $95 fee & 2025 perks.", link: "/review/alaska-airlines-visa-signature-2025" },
                     { img: "/pexels-rdne-5778466.jpg", alt: "Citi Custom Cash Card", title: "Citi Custom Cash Card Review 2025: A Secret Weapon for Everyday Rewards?", desc: "Discover its adaptive 5% cash back, $0 annual fee, welcome bonus, and if it's the top choice for US consumers' everyday spending.", link: "/review/citi-custom-cash-2025" },
                     { img: "/jordan-ryskamp-kxI7siCTAyY-unsplash.webp", alt: "Marriott Bonvoy Boundless Credit Card", title: "Marriott Bonvoy Boundless 2025 Review", desc: "Is its $95 annual fee justified by its hotel loyalty perks for US travelers?", link: "/review/marriott-bonvoy-boundless-2025" },
@@ -359,7 +360,7 @@ export default function HomePage({ featuredReviews, latestNews }) {
                     { img: "/simon-english-48nerZQCHgo-unsplash.webp", alt: "Wells Fargo Autograph Journey℠ Card", title: "Wells Fargo Autograph Journey Review 2025: Premium Travel Contender?", desc: "In-depth 2025 review of the Wells Fargo Autograph Journey℠ Card. Explore rewards, benefits, fees, and see if it's the right premium travel card for US travelers.", link: "/review/wells-fargo-autograph-journey-2025" },
                     { img: "/618ad46b23745d001825bd89.webp", alt: "Capital One Venture and Venture X Cards", title: "Capital One Venture Rewards vs. Venture X: Which Travel Card Wins in 2025?", desc: "A comprehensive review comparing Capital One Venture and Venture X rewards, benefits, fees, and overall value to determine the best fit for US travelers in 2025", link: "/review/capital-one-venture-rewards-vs-venture-x-2025", date: "2025-05-07" },
                     { img: "/vitaly-gariev-1JnN9QhmTGU-unsplash (1).jpg", alt: "American Express Platinum, Gold, and Green cards representing the Amex Trifecta", title: "Amex Trifecta 2025: Max Rewards?", desc: "Reviewing the Platinum, Gold & Green combo for US travelers.", link: "/review/amex-trifecta-2025" },
-                    { img: "/ChatGPT Image May 5, 2025, 09_36_30 PM (1).png", alt: "U.S. Bank Altitude Connect Visa Signature Card", title: "Altitude® Connect: $0 Fee Travel Gem?", desc: "Reviewing the $0 fee card with lounge visits & travel credits.", link: "/review/us-bank-altitude-connect-2025", },
+                   
                     
                    
                     
