@@ -413,7 +413,7 @@
 
 .authorBioContainer {
   display: inline-flex; /* Align items horizontally */
-  align-items: center;
+  align-items: left; /* Align items to the left */
   gap: var(--spacing-sm, 8px);
   margin-bottom: var(--spacing-md, 16px); /* Space below author bio */
   position: relative; /* Needed for absolute positioning of the tooltip */
