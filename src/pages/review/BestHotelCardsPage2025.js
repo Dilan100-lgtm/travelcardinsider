@@ -141,7 +141,7 @@ const hotelCardData = [
   {
     id: 'choiceSelectMC',
     name: 'Choice Privileges Select Mastercard',
-    imageSrc: '/choice_select_card.png',
+    imageSrc: '/WF_Choice_Fee_Collateral_Front__RGB_no_flag.png',
     imageAlt: 'Choice Privileges Select Mastercard image',
     ratingValue: 8.2,
     ratingStars: 4.0,
