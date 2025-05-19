@@ -1,16 +1,16 @@
 // File: pages/reviews/BestHotelCardsPage2025.js
 
-import React, { useState, useRef, useEffect, useCallback } from 'react'; // Added useEffect, useCallback, useRef
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from '../../styles/NoFTFCardsReview.module.css';
+import styles from '../../styles/NoFTFCardsReview.module.css'; // Uses the provided CSS
 import StarRating from '../../components/StarRating';
 
-// NEW: Define Author Data (Customize this with actual information)
+// Author Data (Customize this with actual information)
 const authorData = {
-  name: 'Dilan Madushanka', // Example, replace with actual
-  title: 'Lead Travel Card Analyst', // Example
+  name: 'Dilan Madushanka',
+  title: 'Lead Travel Card Analyst',
   imageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // IMPORTANT: Ensure this path is correct
   imageWidth: 40,
   imageHeight: 40,
@@ -25,17 +25,16 @@ const authorData = {
       'Credit Card Analysis'
   ],
   bioSnippet: 'Dilan is a seasoned travel card analyst, focused on helping readers find the best hotel rewards and travel perks.',
-  fullBioLink: '/author/dilan-madushanka', // Example path
-  // fullBio: `Full biography here...`, // You can add a longer bio if needed for a dedicated author page
+  fullBioLink: '/author/dilan-madushanka',
   socialLinks: {
-      linkedin: 'https://www.linkedin.com/in/dilan-madushanka-b65293365', // Example
-      twitter: 'https://x.com/team_dilan', // Example
-      email: 'team@travelcardinsider.com' // Example
+      linkedin: 'https://www.linkedin.com/in/dilan-madushanka-b65293365',
+      twitter: 'https://x.com/team_dilan',
+      email: 'team@travelcardinsider.com'
   },
-  updateDate: "2025-05-20" // Example update date
+  updateDate: "2025-05-20"
 };
 
-// Card Data for the 7 Best Hotel Credit Cards (Your existing data)
+// Card Data for the 7 Best Hotel Credit Cards
 const hotelCardData = [
   {
     id: 'marriottBrilliantAmex',
@@ -176,7 +175,6 @@ function BestHotelCardsPage2025() {
   const pageUrlFull = `${siteBaseUrl}${pagePath}`;
   const siteName = "Your Site Name"; // Define your site name here
 
-  // NEW: Hooks and handlers for Author Bio Tooltip
   const authorRef = useRef(null);
   const authorTooltipRef = useRef(null);
   const [showAuthorBioTooltip, setShowAuthorBioTooltip] = useState(false);
@@ -244,7 +242,6 @@ function BestHotelCardsPage2025() {
         <meta property="og:url" content={pageUrlFull} />
         <meta property="og:image" content={`${siteBaseUrl}${heroImageSrc}`} />
         <meta property="og:type" content="article" />
-        {/* NEW: Added Author meta tag */}
         <meta name="author" content={authorData.name} /> 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Top Hotel Credit Cards 2025 for US Travelers | Elite Status & Free Nights" />
@@ -316,7 +313,7 @@ function BestHotelCardsPage2025() {
                   "url": "${siteBaseUrl}/images/logo.png" // IMPORTANT: Update this path
                 }
               },
-              "datePublished": "2025-05-20", // Example, set your publish date
+              "datePublished": "2025-05-20", 
               "dateModified": "${authorData.updateDate}"
             }
           `}
@@ -327,9 +324,8 @@ function BestHotelCardsPage2025() {
         <header className={styles.reviewHeader}>
           <h1>Unlock Elite Travel: The Hotel Credit Cards Real US Travelers Should Get in 2025 (And Which to Skip)</h1>
           
-          {/* NEW: Author Bio Section with Tooltip */}
           <div
-              className={styles.authorBioContainer} // You'll need to style this
+              className={styles.authorBioContainer}
               ref={authorRef}
               onMouseEnter={handleAuthorMouseEnter}
               onMouseLeave={handleAuthorMouseLeave}
@@ -344,24 +340,21 @@ function BestHotelCardsPage2025() {
                   alt={`${authorData.name} headshot`} 
                   width={authorData.imageWidth} 
                   height={authorData.imageHeight} 
-                  className={styles.authorImageSmall} // Style this
+                  className={styles.authorImageSmall}
                   priority
               />
-              <div className={styles.authorInfoBlock}> {/* Style this */}
-                  <div className={styles.authorNameLine}> {/* Style this */}
-                      <span className={styles.authorPrefix}>By</span> {/* Style this */}
-                      <span className={styles.authorName}>{authorData.name}</span> {/* Style this */}
-                  </div>
-                  <span className={styles.authorTitle}>{authorData.title}</span> {/* Style this */}
+              <div className={styles.authorInfo}> {/* Updated class name */}
+                  <span className={styles.authorName}>{authorData.name}</span> 
+                  <span className={styles.authorTitle}>{authorData.title}</span> 
                   {authorData.updateDate && (
-                      <time dateTime={authorData.updateDate} className={styles.authorLastEdited}> {/* Style this */}
+                      <time dateTime={authorData.updateDate} className={styles.authorLastEdited}>
                           Last updated: {new Date(authorData.updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                       </time>
                   )}
                   {authorData.socialLinks && ( 
-                      <div className={styles.authorSocialLinks}> {/* Style this */}
+                      <div className={styles.authorSocialLinks}>
                           {authorData.socialLinks.linkedin && ( 
-                              <a href={authorData.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={styles.socialIconLink}> {/* Style this */}
+                              <a href={authorData.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={styles.socialIconLink}>
                                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                               </a>
                           )}
@@ -380,7 +373,7 @@ function BestHotelCardsPage2025() {
               </div>
               {showAuthorBioTooltip && (
                   <div 
-                      className={styles.authorTooltip} // You'll need to style this
+                      className={styles.authorTooltip}
                       ref={authorTooltipRef}
                       role="tooltip"
                       onMouseEnter={handleTooltipMouseEnter} 
@@ -388,37 +381,37 @@ function BestHotelCardsPage2025() {
                       onFocus={handleTooltipMouseEnter} 
                       onBlur={handleAuthorMouseLeave} 
                   >
-                       <div className={styles.authorTooltipHeader}> {/* Style this */}
+                       <div className={styles.authorTooltipHeader}>
                            <Image
                               src={authorData.tooltipImageUrl} 
                               alt={`${authorData.name} headshot`} 
                               width={authorData.tooltipImageWidth} 
                               height={authorData.tooltipImageHeight} 
-                              className={styles.authorTooltipImage} // Style this
+                              className={styles.authorTooltipImage}
                            />
-                           <div className={styles.authorTooltipInfo}> {/* Style this */}
-                               <span className={styles.authorTooltipName}>{authorData.name}</span> {/* Style this */}
-                               <span className={styles.authorTooltipTitle}>{authorData.title}</span> {/* Style this */}
+                           <div className={styles.authorTooltipInfo}>
+                               <span className={styles.authorTooltipName}>{authorData.name}</span> 
+                               <span className={styles.authorTooltipTitle}>{authorData.title}</span> 
                            </div>
                          </div>
                          {authorData.expertise && authorData.expertise.length > 0 && ( 
-                           <div className={styles.authorTooltipExpertise}> {/* Style this */}
+                           <div className={styles.authorTooltipExpertise}>
                                <strong>Expertise</strong>
                                <ul>
                                    {authorData.expertise.map(area => <li key={area}>{area}</li>)} 
                                </ul>
                            </div>
                          )}
-                         <p className={styles.authorTooltipBioSnippet}>{authorData.bioSnippet}</p> {/* Style this */}
+                         <p className={styles.authorTooltipBioSnippet}>{authorData.bioSnippet}</p> 
                          {authorData.fullBioLink && ( 
                              <Link href={authorData.fullBioLink} legacyBehavior>
-                                 <a className={styles.authorTooltipBioLink}> {/* Style this */}
+                                 <a className={styles.authorTooltipBioLink}>
                                      See full bio
                                  </a>
                              </Link>
                          )}
                          {authorData.socialLinks && ( 
-                              <div className={styles.authorTooltipSocials}> {/* Style this */}
+                              <div className={styles.authorTooltipSocials}>
                                   {authorData.socialLinks.linkedin && ( 
                                        <a href={authorData.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={styles.socialIconLink}>
                                           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
@@ -439,7 +432,6 @@ function BestHotelCardsPage2025() {
                   </div>
               )}
           </div>
-
         </header>
 
         <div className={styles.heroSection}>
@@ -465,14 +457,42 @@ function BestHotelCardsPage2025() {
             <p>But here’s the catch: not all hotel cards are created equal. Some are rockstars, some are just… okay. And some are actively trying to confuse you with "benefits" you'll never use. As 2025 travel heats up, we’re here to show you which cards actually deliver.</p>
           </section>
 
-          {/* ... (rest of your article sections remain the same) ... */}
+          <section className={styles.reviewSection}>
+            <h2>Our Mission: Real Free Nights & Status That Matters</h2>
+            <p>We're laser-focused on two things that genuinely change your travel game:</p>
+            <ul>
+              <li><strong>Legit Free Hotel Stays:</strong> We’re talking about significantly slashing your hotel bills by earning points that are easy to use.</li>
+              <li><strong>Elite Status That Isn't Just Fluff:</strong> Perks like actual room upgrades (not just a "better view of the parking lot"), free breakfast that’s more than a stale croissant, lounge access for a quiet escape, and late checkouts that save your sanity.</li>
+            </ul>
+            <p>We’ve sifted through the marketing hype to pick cards that make sense for US travelers right now. With prices doing their crazy dance, hotel points can be your secret weapon, and those free night certificates? Lifesavers.</p>
+          </section>
+
+          <section className={styles.reviewSection}>
+            <h2>Hotel Loyalty 101: Who's Who and Why Points Aren't All the Same</h2>
+            <p>You know the big names: Marriott Bonvoy, Hilton Honors, World of Hyatt, IHG One Rewards, and the like. Here’s a pro tip: Hyatt points are king. They often stretch 2-3 times further than Hilton or IHG points. Keep these rough 2025 values in your back pocket:</p>
+            <ul>
+              <li>Marriott Bonvoy: ~0.7 cents/point</li>
+              <li>Hilton Honors: ~0.6 cents/point</li>
+              <li>World of Hyatt: ~1.7-2.2 cents/point (Seriously, these are gold!)</li>
+              <li>IHG One Rewards: ~0.5 cents/point</li>
+              <li>Wyndham Rewards: ~1.1-1.2 cents/point</li>
+              <li>Choice Privileges: ~0.6-1.1 cents/point</li>
+            </ul>
+            <h3>Award Nights: Predictable vs. "Maybe" Pricing</h3>
+            <p>Hyatt and Wyndham use award charts (mostly predictable point costs). Marriott, Hilton, and IHG? They’ve mostly jumped on the "dynamic pricing" train, meaning point costs can swing wildly. This makes those free night certificates with a fixed point cap a bit of a gamble sometimes – you might score a $700 room or find nothing but options in the boonies.</p>
+          </section>
+
+          <section className={styles.reviewSection}>
+            <h2>How We Picked These Cards (The No-BS Version)</h2>
+            <p>We looked for cards that offer genuine, easily usable value for US travelers, especially for free nights and status that actually improves your stay. We balanced fees against real-world benefits you'll use, not just a long list of "features." These are the cards we'd recommend to our own friends and family.</p>
+          </section>
 
           <section className={styles.reviewSection}>
             <h2>Spotlight: The 7 Best Hotel Credit Cards for Real Value & Perks in 2025</h2>
             <p>Okay, "best" depends on you, but these seven cards are serious contenders. We’ll tell you straight up who should get them and why.</p>
             
             {hotelCardData.map((card, index) => (
-              <div key={card.id} className={`${styles.cardDetailSection} ${styles.cardSeparator}`}>
+              <div key={card.id} className={`${styles.cardDetailSection} ${styles.cardSeparator}`}> {/* cardSeparator class was noted as not needed if margin on cardDetailSection itself */}
                 <div className={styles.cardHeader}>
                     <div className={styles.cardImageContainer}>
                       <Image
@@ -580,8 +600,7 @@ function BestHotelCardsPage2025() {
             </ul>
           </section>
 
-          {/* NEW: EETA Section */}
-          <section id="editors-essential-takeaways" className={`${styles.reviewSection} ${styles.eetaSection || ''}`}> {/* Add eetaSection to your CSS */}
+          <section id="editors-essential-takeaways" className={`${styles.reviewSection} ${styles.eetaSection || ''}`}>
             <h2>Editor's Essential Takeaways (EETA)</h2>
             <p>Choosing the right hotel credit card in 2025 boils down to matching your travel style and loyalty with the card's core strengths. Don't get swayed by massive point bonuses if the annual fee and perks don't align with your spending or travel habits.</p>
             <ul>
