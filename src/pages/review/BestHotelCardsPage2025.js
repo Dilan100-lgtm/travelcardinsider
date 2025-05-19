@@ -144,7 +144,7 @@ const comparisonHotelData = [
 ];
 
 function BestHotelCardsPage2025() {
-  const heroImageSrc = '/images/reviews/hotel-cards-hero-2025.jpg'; // IMPORTANT: Replace with your actual image path
+  const heroImageSrc = '/manuel-moreno-DGa0LQ0yDPc-unsplash.webp'; // IMPORTANT: Replace with your actual image path
   const heroImageAlt = 'Luxury hotel suite with a stunning city view, symbolizing elite travel perks'; // Descriptive alt text
   const siteBaseUrl = 'https://www.yourwebsite.com'; // Replace with your actual domain
 
