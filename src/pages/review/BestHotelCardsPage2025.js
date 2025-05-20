@@ -1,45 +1,56 @@
-// File: pages/reviews/BestHotelCardsPage2025.js
+// File: pages/reviews/BestHotelCardsPage2025.js – FINAL COMPLETE VERSION
+// ❗ Replace image src paths (in hotelCardData and constants) with your optimised, WebP‑or‑AVIF images.
+// The paths below are placeholders from your original examples or new constants.
 
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from '../../styles/NoFTFCardsReview.module.css'; // Uses the provided CSS
-import StarRating from '../../components/StarRating';
+import styles from '../../styles/NoFTFCardsReview.module.css'; // Ensure this path is correct for your project
+import StarRating from '../../components/StarRating'; // Ensure this component exists and path is correct
 
-// Author Data (Customize this with actual information)
-const authorData = {
+// ─────────────────────────────────────────────────────────────────────────────
+// 🔗 CONFIG (From user's "FULLY-SEO-OPTIMISED VERSION")
+// ─────────────────────────────────────────────────────────────────────────────
+const SITE_BASE_URL = 'https://www.travelcardinsider.com';
+const PAGE_PATH = '/reviews/best-hotel-credit-cards-2025';
+const PAGE_URL = `${SITE_BASE_URL}${PAGE_PATH}`;
+const SITE_NAME = 'Travel Card Insider';
+const HERO_IMAGE_SRC = '/images/hero/best-hotel-cards‑2025.webp'; // Optimised path
+const HERO_IMAGE_ALT = 'Luxury hotel suite overlooking a city skyline – symbol of elite travel perks in 2025';
+const DATE_PUBLISHED = '2025-05-20';
+const DATE_MODIFIED = '2025-05-20'; // ✏️ update whenever you edit copy
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 👤 AUTHOR INFO (From user's "FULLY-SEO-OPTIMISED VERSION")
+// ─────────────────────────────────────────────────────────────────────────────
+const author = {
   name: 'Dilan Madushanka',
   title: 'Lead Travel Card Analyst',
-  imageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // IMPORTANT: Ensure this path is correct
-  imageWidth: 40,
-  imageHeight: 40,
-  tooltipImageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // IMPORTANT: Ensure this path is correct
-  tooltipImageWidth: 60,
-  tooltipImageHeight: 60,
+  image: '/images/authors/dilan‑madushanka‑40.jpg',  // 40×40px web‑optimised headshot
+  imageLarge: '/images/authors/dilan‑madushanka‑60.jpg', // 60x60px for tooltip
+  bio: 'Seasoned travel‑card analyst helping readers unlock elite travel perks & maximise hotel rewards.',
   expertise: [
-      'Hotel Rewards Programs',
-      'Airline Miles Strategy',
-      'Travel Hacking',
-      'Maximizing Card Benefits',
-      'Credit Card Analysis'
+    'Hotel Rewards Strategy',
+    'Airline Miles Optimisation',
+    'Travel Hacking',
+    'Credit Card Analytics',
   ],
-  bioSnippet: 'Dilan is a seasoned travel card analyst, focused on helping readers find the best hotel rewards and travel perks.',
-  fullBioLink: '/author/dilan-madushanka',
-  socialLinks: {
-      linkedin: 'https://www.linkedin.com/in/dilan-madushanka-b65293365',
-      twitter: 'https://x.com/team_dilan',
-      email: 'team@travelcardinsider.com'
+  social: {
+    linkedin: 'https://www.linkedin.com/in/dilan-madushanka-b65293365',
+    twitter: 'https://x.com/team_dilan',
+    email: 'team@travelcardinsider.com',
   },
-  updateDate: "2025-05-20"
 };
 
-// Card Data for the 7 Best Hotel Credit Cards
+// ─────────────────────────────────────────────────────────────────────────────
+// 🃏 CARD DATA (From original user file, as per "KEEP YOUR hotelCardData ... UNCHANGED")
+// ─────────────────────────────────────────────────────────────────────────────
 const hotelCardData = [
   {
     id: 'marriottBrilliantAmex',
     name: 'Marriott Bonvoy Brilliant American Express Card',
-    imageSrc: '/NUS000000313_480x304_straight_withname.avif',
+    imageSrc: '/NUS000000313_480x304_straight_withname.avif', // Placeholder path from original
     imageAlt: 'Marriott Bonvoy Brilliant American Express Card image',
     ratingValue: 8.9,
     ratingStars: 4.5,
@@ -56,7 +67,7 @@ const hotelCardData = [
   {
     id: 'hiltonAspireAmex',
     name: 'Hilton Honors American Express Aspire Card',
-    imageSrc: '/NUS000000329_480x304_straight_withname.avif',
+    imageSrc: '/NUS000000329_480x304_straight_withname.avif', // Placeholder path from original
     imageAlt: 'Hilton Honors American Express Aspire Card image',
     ratingValue: 9.0,
     ratingStars: 4.5,
@@ -73,7 +84,7 @@ const hotelCardData = [
   {
     id: 'worldOfHyattChase',
     name: 'The World of Hyatt Credit Card',
-    imageSrc: '/world_of_hyatt_card.png',
+    imageSrc: '/world_of_hyatt_card.png', // Placeholder path from original
     imageAlt: 'The World of Hyatt Credit Card image',
     ratingValue: 9.5,
     ratingStars: 5.0,
@@ -90,7 +101,7 @@ const hotelCardData = [
   {
     id: 'ihgPremierChase',
     name: 'IHG One Rewards Premier Credit Card',
-    imageSrc: '/ihg_premier_card.png',
+    imageSrc: '/ihg_premier_card.png', // Placeholder path from original
     imageAlt: 'IHG One Rewards Premier Credit Card image',
     ratingValue: 7.5,
     ratingStars: 3.7,
@@ -107,7 +118,7 @@ const hotelCardData = [
   {
     id: 'hiltonSurpassAmex',
     name: 'Hilton Honors American Express Surpass Card',
-    imageSrc: '/NUS000000328_480x304_straight_withname.avif',
+    imageSrc: '/NUS000000328_480x304_straight_withname.avif', // Placeholder path from original
     imageAlt: 'Hilton Honors American Express Surpass Card image',
     ratingValue: 8.1,
     ratingStars: 4.0,
@@ -124,7 +135,7 @@ const hotelCardData = [
   {
     id: 'marriottBoundlessChase',
     name: 'Marriott Bonvoy Boundless Credit Card',
-    imageSrc: '/marriott_bonvoy_boundless_card.png',
+    imageSrc: '/marriott_bonvoy_boundless_card.png', // Placeholder path from original
     imageAlt: 'Marriott Bonvoy Boundless Credit Card image',
     ratingValue: 8.4,
     ratingStars: 4.0,
@@ -141,7 +152,7 @@ const hotelCardData = [
   {
     id: 'choiceSelectMC',
     name: 'Choice Privileges Select Mastercard',
-    imageSrc: '/WF_Choice_Fee_Collateral_Front__RGB_no_flag.png',
+    imageSrc: '/WF_Choice_Fee_Collateral_Front__RGB_no_flag.png', // Placeholder path from original
     imageAlt: 'Choice Privileges Select Mastercard image',
     ratingValue: 8.2,
     ratingStars: 4.0,
@@ -167,157 +178,211 @@ const comparisonHotelData = [
   { name: 'Choice Privileges Select Mastercard', fee: '$95', bonus: '60k pts (verify)', perk: '30k Anniversary Pts, Platinum Status', ftf: 'None (verify with issuer)' },
 ];
 
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 🧠 HELPERS (From user's "FULLY-SEO-OPTIMISED VERSION")
+// ─────────────────────────────────────────────────────────────────────────────
+function generateJsonLD() { // Renamed to avoid potential global scope conflicts
+  const itemListElements = hotelCardData.map((card, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    item: {
+      '@type': 'Product',
+      name: card.name,
+      url: `${SITE_BASE_URL}${card.learnMoreLink}`,
+      image: `${SITE_BASE_URL}${card.imageSrc}`,
+      description: card.shinesFor,
+      brand: {
+        '@type': 'Brand',
+        name:
+          card.name.match(/Marriott/) ? 'Marriott' :
+          card.name.match(/Hilton/) ? 'Hilton' :
+          card.name.match(/Hyatt/) ? 'Hyatt' :
+          card.name.match(/IHG/) ? 'IHG' :
+          card.name.match(/Choice/) ? 'Choice Hotels' : // Brand is Choice Hotels, program is Choice Privileges
+          'Various',
+      },
+      // To add issuer (manufacturer), add `issuerName` to hotelCardData items:
+      // ...(card.issuerName && { manufacturer: { '@type': 'Organization', name: card.issuerName } }),
+      offers: {
+        '@type': 'Offer',
+        priceCurrency: 'USD',
+        price: card.annualFee.replace('$', ''),
+      },
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: card.ratingValue,
+        bestRating: '10',
+        ratingCount: 1, // This implies "Our Rating"
+      },
+    },
+  }));
+
+  const breadcrumbsSchema = {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_BASE_URL, },
+      { '@type': 'ListItem', position: 2, name: 'Reviews', item: `${SITE_BASE_URL}/reviews`, }, // Assuming a /reviews category page
+      { '@type': 'ListItem', position: 3, name: 'Best Hotel Credit Cards 2025', item: PAGE_URL, },
+    ],
+  };
+
+  const articleSchema = {
+    '@type': 'Article',
+    mainEntityOfPage: { "@type": "WebPage", "@id": PAGE_URL },
+    headline: 'Unlock Elite Travel: The Hotel Credit Cards Real US Travelers Should Get in 2025 (And Which to Skip)', // Matching H1
+    description: 'Unlock free hotel nights, elite status & travel credits with our 2025 pick of the 7 best hotel credit cards for US travellers – Marriott, Hilton, Hyatt, IHG, Choice & more.', // Matching meta description
+    image: [`${SITE_BASE_URL}${HERO_IMAGE_SRC}`],
+    author: {
+      '@type': 'Person',
+      name: author.name,
+      url: author.social.linkedin, // Using LinkedIn as a primary URL for the author, or create a dedicated author page on your site
+      image: `${SITE_BASE_URL}${author.imageLarge || author.image}`,
+      jobTitle: author.title,
+      description: author.bio.substring(0, 200), // Short bio snippet for schema
+      sameAs: Object.values(author.social).filter(Boolean) // Array of social profile URLs
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: SITE_NAME,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${SITE_BASE_URL}/images/logo-120.png`, // Ensure this logo exists and is accessible
+      },
+    },
+    datePublished: DATE_PUBLISHED,
+    dateModified: DATE_MODIFIED,
+  };
+
+  return JSON.stringify(
+    {
+      '@context': 'https://schema.org',
+      '@graph': [
+        articleSchema, // Article can be primary
+        { '@type': 'ItemList', name: 'Top 7 Hotel Credit Cards 2025', url: PAGE_URL, numberOfItems: hotelCardData.length, itemListElement: itemListElements, mainEntityOfPage: PAGE_URL }, // ItemList related to the page
+        breadcrumbsSchema,
+      ],
+    },
+    null,
+    2 // Indentation for readability (optional)
+  );
+}
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 🌐 COMPONENT
+// ─────────────────────────────────────────────────────────────────────────────
 function BestHotelCardsPage2025() {
-  const heroImageSrc = '/manuel-moreno-DGa0LQ0yDPc-unsplash.webp';
-  const heroImageAlt = 'Luxury hotel suite with a stunning city view, symbolizing elite travel perks';
-  const siteBaseUrl = 'https://www.yourwebsite.com'; // Replace with your actual domain
-  const pagePath = '/reviews/best-hotel-credit-cards-2025';
-  const pageUrlFull = `${siteBaseUrl}${pagePath}`;
-  const siteName = "Your Site Name"; // Define your site name here
+  const [showTooltip, setShowTooltip] = useState(false);
+  const triggerRef = useRef(null); // Renamed for clarity: element that triggers tooltip
+  const tooltipRef = useRef(null); // Renamed for clarity: the tooltip popup itself
+  const tooltipTimeoutIdRef = useRef(null); // Stores the timeout ID for delayed hiding
 
-  const authorRef = useRef(null);
-  const authorTooltipRef = useRef(null);
-  const [showAuthorBioTooltip, setShowAuthorBioTooltip] = useState(false);
-
-  const handleAuthorMouseEnter = useCallback(() => {
-    if (authorRef.current?.tooltipTimeoutId) {
-        clearTimeout(authorRef.current.tooltipTimeoutId);
+  const handleMouseEnterTriggerOrTooltip = useCallback(() => {
+    if (tooltipTimeoutIdRef.current) {
+      clearTimeout(tooltipTimeoutIdRef.current);
     }
-    setShowAuthorBioTooltip(true);
+    setShowTooltip(true);
   }, []);
 
-  const handleAuthorMouseLeave = useCallback(() => {
-    const timerId = setTimeout(() => {
-        if (authorRef.current && authorTooltipRef.current) {
-            const isHoveringTrigger = authorRef.current.matches(':hover');
-            const isHoveringTooltip = authorTooltipRef.current.matches(':hover');
-            const isFocusWithinTrigger = authorRef.current.contains(document.activeElement);
-            const isFocusWithinTooltip = authorTooltipRef.current.contains(document.activeElement);
-            if (!isHoveringTrigger && !isHoveringTooltip && !isFocusWithinTrigger && !isFocusWithinTooltip) {
-               setShowAuthorBioTooltip(false);
-            }
-        } else if (!authorRef.current?.matches(':hover') && !authorTooltipRef.current?.matches(':hover')) {
-             setShowAuthorBioTooltip(false);
-        }
-    }, 150); 
-    if (authorRef.current) authorRef.current.tooltipTimeoutId = timerId;
-  }, [authorRef, authorTooltipRef]);
-
-  const handleTooltipMouseEnter = useCallback(() => {
-    if (authorRef.current?.tooltipTimeoutId) {
-        clearTimeout(authorRef.current.tooltipTimeoutId);
-    }
+  const handleMouseLeaveTriggerOrTooltip = useCallback(() => {
+    tooltipTimeoutIdRef.current = setTimeout(() => {
+      // A more robust check would involve checking event.relatedTarget
+      // to see if the mouse moved into the other element (trigger or tooltip).
+      // This simplified version hides if neither is actively hovered after a delay.
+      let isStillHovering = false;
+      if (triggerRef.current && triggerRef.current.matches(':hover')) isStillHovering = true;
+      if (tooltipRef.current && tooltipRef.current.matches(':hover')) isStillHovering = true;
+      
+      if (!isStillHovering) {
+          setShowTooltip(false);
+      }
+    }, 150); // Delay to allow mouse travel between trigger and tooltip
   }, []);
   
   useEffect(() => {
-    function handleClickOutside(event) {
-        if (showAuthorBioTooltip &&
-            authorRef.current && !authorRef.current.contains(event.target) &&
-            authorTooltipRef.current && !authorTooltipRef.current.contains(event.target)) {
-            setShowAuthorBioTooltip(false);
-        }
-    }
-    if (showAuthorBioTooltip) {
-        document.addEventListener("mousedown", handleClickOutside);
-    } else {
-        document.removeEventListener("mousedown", handleClickOutside);
-    }
-    return () => {
-        document.removeEventListener("mousedown", handleClickOutside);
-        if(authorRef.current?.tooltipTimeoutId){ 
-            clearTimeout(authorRef.current.tooltipTimeoutId);
-        }
+    const currentTimeoutId = tooltipTimeoutIdRef.current;
+    return () => { // Cleanup on unmount
+      if (currentTimeoutId) {
+        clearTimeout(currentTimeoutId);
+      }
     };
-  }, [showAuthorBioTooltip, authorRef, authorTooltipRef]);
+  }, []);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (showTooltip &&
+          triggerRef.current && !triggerRef.current.contains(event.target) &&
+          tooltipRef.current && !tooltipRef.current.contains(event.target)) {
+        setShowTooltip(false);
+      }
+    }
+    if (showTooltip) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+    return () => { // Cleanup event listener
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showTooltip]); // Re-run if showTooltip changes
 
 
   return (
     <>
-      <Head>
-        <title>Best Hotel Credit Cards 2025: Unlock Elite US Travel Perks | {siteName}</title>
-        <meta name="description" content="Discover the top 7 hotel credit cards for US travelers in 2025. Get elite status, free nights, and valuable credits with Marriott, Hilton, Hyatt, IHG, and Choice." />
-        <link rel="canonical" href={pageUrlFull} />
-        <meta property="og:title" content={`Unlock Elite Travel: Best Hotel Credit Cards for US Travelers (2025) | ${siteName}`} />
-        <meta property="og:description" content="Maximize your 2025 travels with our top hotel card picks for free nights, VIP status, and unbeatable perks. For US travelers." />
-        <meta property="og:url" content={pageUrlFull} />
-        <meta property="og:image" content={`${siteBaseUrl}${heroImageSrc}`} />
+      <Head> {/* From user's "FULLY-SEO-OPTIMISED VERSION" */}
+        {/* Core */}
+        <title>Best Hotel Credit Cards 2025 | {SITE_NAME}</title>
+        <meta
+          name="description"
+          content="Unlock free hotel nights, elite status & travel credits with our 2025 pick of the 7 best hotel credit cards for US travellers – Marriott, Hilton, Hyatt, IHG, Choice & more."
+        />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <meta name="keywords" content="best hotel credit cards 2025, Marriott Bonvoy Brilliant, Hilton Aspire, World of Hyatt card, IHG Premier, Choice Privileges Select, hotel free night certificate, elite status, travel credit cards" />
+        <link rel="canonical" href={PAGE_URL} />
+
+        {/* Open Graph */}
         <meta property="og:type" content="article" />
-        <meta name="author" content={authorData.name} /> 
+        <meta property="og:title" content="Best Hotel Credit Cards 2025 – Free Nights & Elite Status | Travel Card Insider" />
+        <meta property="og:description" content="Compare the top US hotel credit cards for 2025 and learn which fits your travel style. Free nights, VIP perks, no fluff." />
+        <meta property="og:url" content={PAGE_URL} />
+        <meta property="og:site_name" content={SITE_NAME} />
+        <meta property="og:image" content={`${SITE_BASE_URL}${HERO_IMAGE_SRC}`} />
+        <meta property="og:locale" content="en_US" />
+        <meta property="article:published_time" content={DATE_PUBLISHED} />
+        <meta property="article:modified_time" content={DATE_MODIFIED} />
+        <meta property="article:author" content={author.name} />
+
+
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Top Hotel Credit Cards 2025 for US Travelers | Elite Status & Free Nights" />
-        <meta name="twitter:description" content="Which hotel card is best for you in 2025? Compare Marriott, Hilton, Hyatt & more for US travel perks." />
-        <meta name="twitter:image" content={`${siteBaseUrl}${heroImageSrc}`} />
-        
+        <meta name="twitter:title" content="Best Hotel Credit Cards 2025 – Which One Should You Get?" />
+        <meta name="twitter:description" content="Maximise free nights & elite status with our expert picks of 2025's top hotel cards." />
+        <meta name="twitter:image" content={`${SITE_BASE_URL}${HERO_IMAGE_SRC}`} />
+        {author.social.twitter && <meta name="twitter:creator" content={`@${author.social.twitter.split('/').pop()}`} />}
+
+
+        {/* Geo‑targeting & Language */}
         <meta name="geo.region" content="US" />
         <meta name="geo.placename" content="United States" />
         <meta name="language" content="en-US" />
         <meta name="distribution" content="US" />
-        <link rel="alternate" hrefLang="en-us" href={pageUrlFull} />
+        <link rel="alternate" hrefLang="en-us" href={PAGE_URL} />
 
-        <link rel="preload" href={heroImageSrc} as="image" />
-        <link rel="preload" href="/fonts/Roboto_Condensed-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+
+        {/* Preloads */}
+        <link rel="preload" href={HERO_IMAGE_SRC} as="image" />
+        <link rel="preload" href="/fonts/roboto-condensed-v25-latin-regular.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        {/* Add preloads for other critical fonts used above the fold if any */}
+        {/* Example from original file (ensure paths are correct for your project):
         <link rel="preload" href="/fonts/Roboto_Condensed-Bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/PlayfairDisplay-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/Playfair-Display-Bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+        */}
 
-        <script type="application/ld+json">
-          {`
-            {
-              "@context": "https://schema.org",
-              "@type": "ItemList", 
-              "name": "Top 7 Hotel Credit Cards for US Travelers 2025",
-              "url": "${pageUrlFull}",
-              "description": "A detailed review of the top 7 hotel credit cards for US travelers in 2025, focusing on elite status, free nights, and overall value.",
-              "numberOfItems": ${hotelCardData.length},
-              "itemListElement": [
-                ${hotelCardData.map((card, index) => `{
-                  "@type": "ListItem",
-                  "position": ${index + 1},
-                  "item": {
-                    "@type": "Product",
-                    "name": "${card.name}",
-                    "url": "${siteBaseUrl}${card.learnMoreLink}",
-                    "image": "${siteBaseUrl}${card.imageSrc}",
-                    "description": "${card.shinesFor}",
-                    "brand": {
-                        "@type": "Brand",
-                        "name": "${card.name.includes('Marriott') ? 'Marriott' : card.name.includes('Hilton') ? 'Hilton' : card.name.includes('Hyatt') ? 'Hyatt' : card.name.includes('IHG') ? 'IHG' : card.name.includes('Choice') ? 'Choice Privileges' : card.name.includes('American Express') || card.name.includes('Amex') ? 'American Express' : card.name.includes('Chase') ? 'Chase' : 'Unknown Issuer'}"
-                    },
-                    "offers": {
-                        "@type": "Offer",
-                        "priceCurrency": "USD",
-                        "price": "${card.annualFee.replace('$', '')}"
-                    },
-                    "aggregateRating": {
-                        "@type": "AggregateRating",
-                        "ratingValue": "${card.ratingValue}",
-                        "bestRating": "10",
-                        "reviewCount": "1" 
-                      }
-                  }
-                }`).join(',\n')}
-              ],
-              "mainEntityOfPage": {
-                 "@type": "WebPage",
-                 "@id": "${pageUrlFull}"
-              },
-              "author": {
-                "@type": "Person",
-                "name": "${authorData.name}"
-              },
-              "publisher": {
-                "@type": "Organization",
-                "name": "${siteName}",
-                "logo": { 
-                  "@type": "ImageObject",
-                  "url": "${siteBaseUrl}/images/logo.png" // IMPORTANT: Update this path
-                }
-              },
-              "datePublished": "2025-05-20", 
-              "dateModified": "${authorData.updateDate}"
-            }
-          `}
-        </script>
+        {/* JSON‑LD */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: generateJsonLD() }} />
       </Head>
 
       <main className={styles.reviewContainer}>
@@ -326,104 +391,108 @@ function BestHotelCardsPage2025() {
           
           <div
               className={styles.authorBioContainer}
-              ref={authorRef}
-              onMouseEnter={handleAuthorMouseEnter}
-              onMouseLeave={handleAuthorMouseLeave}
-              onFocus={handleAuthorMouseEnter} 
-              onBlur={handleAuthorMouseLeave} 
+              ref={triggerRef}
+              onMouseEnter={handleMouseEnterTriggerOrTooltip}
+              onMouseLeave={handleMouseLeaveTriggerOrTooltip}
+              onFocus={handleMouseEnterTriggerOrTooltip} 
+              onBlur={handleMouseLeaveTriggerOrTooltip} 
               aria-haspopup="true"
-              aria-expanded={showAuthorBioTooltip}
+              aria-expanded={showTooltip}
               tabIndex={0} 
           >
               <Image
-                  src={authorData.imageUrl} 
-                  alt={`${authorData.name} headshot`} 
-                  width={authorData.imageWidth} 
-                  height={authorData.imageHeight} 
+                  src={author.image} 
+                  alt={`${author.name} headshot`} 
+                  width={40} 
+                  height={40} 
                   className={styles.authorImageSmall}
                   priority
               />
-              <div className={styles.authorInfo}> {/* Updated class name */}
-                  <span className={styles.authorName}>{authorData.name}</span> 
-                  <span className={styles.authorTitle}>{authorData.title}</span> 
-                  {authorData.updateDate && (
-                      <time dateTime={authorData.updateDate} className={styles.authorLastEdited}>
-                          Last updated: {new Date(authorData.updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+              <div className={styles.authorInfo}>
+                  <span className={styles.authorName}>{author.name}</span> 
+                  <span className={styles.authorTitle}>{author.title}</span> 
+                  {DATE_MODIFIED && (
+                      <time dateTime={DATE_MODIFIED} className={styles.authorLastEdited}>
+                          Last updated: {new Date(DATE_MODIFIED).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                       </time>
                   )}
-                  {authorData.socialLinks && ( 
+                  {author.social && ( 
                       <div className={styles.authorSocialLinks}>
-                          {authorData.socialLinks.linkedin && ( 
-                              <a href={authorData.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={styles.socialIconLink}>
+                          {author.social.linkedin && ( 
+                              <a href={author.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${author.name} on LinkedIn`} className={styles.socialIconLink}>
                                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                               </a>
                           )}
-                          {authorData.socialLinks.twitter && ( 
-                              <a href={authorData.socialLinks.twitter} target="_blank" rel="noopener noreferrer" aria-label="Twitter" className={styles.socialIconLink}>
+                          {author.social.twitter && ( 
+                              <a href={author.social.twitter} target="_blank" rel="noopener noreferrer" aria-label={`${author.name} on Twitter`} className={styles.socialIconLink}>
                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-.422.724-.665 1.56-.665 2.452 0 1.697.864 3.198 2.18 4.078-.8-.025-1.555-.247-2.227-.616v.054c0 2.37 1.683 4.333 3.91 4.78-.426.116-.874.174-1.337.174-.31 0-.611-.03-.904-.085.622 1.936 2.421 3.338 4.553 3.377-1.672 1.309-3.781 2.088-6.072 2.088-.394 0-.784-.023-1.169-.069 2.16 1.389 4.723 2.202 7.482 2.202 8.979 0 13.897-7.446 13.897-13.898 0-.21 0-.42-.015-.63.953-.689 1.778-1.56 2.433-2.525z"/></svg>
                               </a>
                           )}
-                          {authorData.socialLinks.email && ( 
-                              <a href={`mailto:${authorData.socialLinks.email}`} aria-label="Email" className={styles.socialIconLink}>
+                          {author.social.email && ( 
+                              <a href={`mailto:${author.social.email}`} aria-label={`Email ${author.name}`} className={styles.socialIconLink}>
                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
                               </a>
                           )}
                       </div>
                   )}
               </div>
-              {showAuthorBioTooltip && (
+              {showTooltip && (
                   <div 
                       className={styles.authorTooltip}
-                      ref={authorTooltipRef}
+                      ref={tooltipRef}
                       role="tooltip"
-                      onMouseEnter={handleTooltipMouseEnter} 
-                      onMouseLeave={handleAuthorMouseLeave}
-                      onFocus={handleTooltipMouseEnter} 
-                      onBlur={handleAuthorMouseLeave} 
+                      onMouseEnter={handleMouseEnterTriggerOrTooltip} 
+                      onMouseLeave={handleMouseLeaveTriggerOrTooltip}
+                      onFocus={handleMouseEnterTriggerOrTooltip} // For keyboard navigation
+                      onBlur={handleMouseLeaveTriggerOrTooltip}  // For keyboard navigation
                   >
                        <div className={styles.authorTooltipHeader}>
                            <Image
-                              src={authorData.tooltipImageUrl} 
-                              alt={`${authorData.name} headshot`} 
-                              width={authorData.tooltipImageWidth} 
-                              height={authorData.tooltipImageHeight} 
+                              src={author.imageLarge} 
+                              alt={`${author.name} headshot`} 
+                              width={60} 
+                              height={60} 
                               className={styles.authorTooltipImage}
                            />
                            <div className={styles.authorTooltipInfo}>
-                               <span className={styles.authorTooltipName}>{authorData.name}</span> 
-                               <span className={styles.authorTooltipTitle}>{authorData.title}</span> 
+                               <span className={styles.authorTooltipName}>{author.name}</span> 
+                               <span className={styles.authorTooltipTitle}>{author.title}</span> 
                            </div>
                          </div>
-                         {authorData.expertise && authorData.expertise.length > 0 && ( 
+                         {author.expertise && author.expertise.length > 0 && ( 
                            <div className={styles.authorTooltipExpertise}>
                                <strong>Expertise</strong>
                                <ul>
-                                   {authorData.expertise.map(area => <li key={area}>{area}</li>)} 
+                                   {author.expertise.map(area => <li key={area}>{area}</li>)} 
                                </ul>
                            </div>
                          )}
-                         <p className={styles.authorTooltipBioSnippet}>{authorData.bioSnippet}</p> 
-                         {authorData.fullBioLink && ( 
-                             <Link href={authorData.fullBioLink} legacyBehavior>
+                         <p className={styles.authorTooltipBioSnippet}>{author.bio}</p> 
+                         {/* The 'author' object (from user's optimised version) does not contain 'fullBioLink'.
+                         If a "See full bio" link is desired, add a 'fullBioLink' field to the 'author' const above.
+                         Example:
+                         {author.fullBioLink && ( 
+                             <Link href={author.fullBioLink} legacyBehavior>
                                  <a className={styles.authorTooltipBioLink}>
                                      See full bio
                                  </a>
                              </Link>
                          )}
-                         {authorData.socialLinks && ( 
+                         */}
+                         {author.social && ( 
                               <div className={styles.authorTooltipSocials}>
-                                  {authorData.socialLinks.linkedin && ( 
-                                       <a href={authorData.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={styles.socialIconLink}>
+                                  {author.social.linkedin && ( 
+                                       <a href={author.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${author.name} on LinkedIn`} className={styles.socialIconLink}>
                                           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                                        </a>
                                    )}
-                                   {authorData.socialLinks.twitter && ( 
-                                       <a href={authorData.socialLinks.twitter} target="_blank" rel="noopener noreferrer" aria-label="Twitter" className={styles.socialIconLink}>
+                                   {author.social.twitter && ( 
+                                       <a href={author.social.twitter} target="_blank" rel="noopener noreferrer" aria-label={`${author.name} on Twitter`} className={styles.socialIconLink}>
                                           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-.422.724-.665 1.56-.665 2.452 0 1.697.864 3.198 2.18 4.078-.8-.025-1.555-.247-2.227-.616v.054c0 2.37 1.683 4.333 3.91 4.78-.426.116-.874.174-1.337.174-.31 0-.611-.03-.904-.085.622 1.936 2.421 3.338 4.553 3.377-1.672 1.309-3.781 2.088-6.072 2.088-.394 0-.784-.023-1.169-.069 2.16 1.389 4.723 2.202 7.482 2.202 8.979 0 13.897-7.446 13.897-13.898 0-.21 0-.42-.015-.63.953-.689 1.778-1.56 2.433-2.525z"/></svg>
                                        </a>
                                    )}
-                                   {authorData.socialLinks.email && ( 
-                                       <a href={`mailto:${authorData.socialLinks.email}`} aria-label="Email" className={styles.socialIconLink}>
+                                   {author.social.email && ( 
+                                       <a href={`mailto:${author.social.email}`} aria-label={`Email ${author.name}`} className={styles.socialIconLink}>
                                           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
                                        </a>
                                    )}
@@ -436,11 +505,11 @@ function BestHotelCardsPage2025() {
 
         <div className={styles.heroSection}>
           <Image
-            src={heroImageSrc}
-            alt={heroImageAlt}
+            src={HERO_IMAGE_SRC}
+            alt={HERO_IMAGE_ALT}
             layout="responsive"
-            width={900}
-            height={450}
+            width={900} // Example intrinsic width, adjust to your actual image
+            height={450} // Example intrinsic height, adjust to your actual image
             objectFit="cover"
             priority
             className={styles.heroImage}
@@ -492,15 +561,16 @@ function BestHotelCardsPage2025() {
             <p>Okay, "best" depends on you, but these seven cards are serious contenders. We’ll tell you straight up who should get them and why.</p>
             
             {hotelCardData.map((card, index) => (
-              <div key={card.id} className={`${styles.cardDetailSection} ${styles.cardSeparator}`}> {/* cardSeparator class was noted as not needed if margin on cardDetailSection itself */}
+              <div key={card.id} className={`${styles.cardDetailSection} ${styles.cardSeparator}`}>
                 <div className={styles.cardHeader}>
                     <div className={styles.cardImageContainer}>
                       <Image
-                        src={card.imageSrc}
+                        src={card.imageSrc} // Ensure these are optimised paths for production
                         alt={card.imageAlt}
                         width={150} 
                         height={95}  
                         objectFit="contain"
+                        loading={index > 2 ? "lazy" : undefined} // Lazy load images further down
                       />
                     </div>
                     <div className={styles.cardTitleRating}>
@@ -531,7 +601,7 @@ function BestHotelCardsPage2025() {
                     <a
                       href={card.applyLink}
                       target="_blank"
-                      rel="noopener noreferrer nofollow" 
+                      rel="noopener noreferrer sponsored" 
                       className={`${styles.cardButton} ${styles.applyButton}`}
                     >
                       Apply Now
@@ -539,7 +609,7 @@ function BestHotelCardsPage2025() {
                      <a
                       href={card.ratesFeesLink}
                       target="_blank"
-                      rel="noopener noreferrer nofollow"
+                      rel="noopener noreferrer sponsored" 
                       className={`${styles.cardButton} ${styles.secondaryButton}`}
                     >
                       Rates & Fees
@@ -560,11 +630,11 @@ function BestHotelCardsPage2025() {
               <table className={styles.comparisonTable}>
                   <thead>
                     <tr>
-                    <th>Card Name</th>
-                    <th>Annual Fee</th>
-                    <th>Welcome Bonus (Example)</th>
-                    <th>Key Perk / Status</th>
-                    <th>Foreign Transaction Fee (FTF)</th>
+                      <th scope="col">Card Name</th>
+                      <th scope="col">Annual Fee</th>
+                      <th scope="col">Welcome Bonus (Example)</th>
+                      <th scope="col">Key Perk / Status</th>
+                      <th scope="col">Foreign Transaction Fee (FTF)</th>
                     </tr>
                 </thead>
                 <tbody>
