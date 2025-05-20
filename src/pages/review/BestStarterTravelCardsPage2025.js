@@ -106,7 +106,7 @@ const starterCardData = [
   {
     id: 'biltMastercard',
     name: 'Bilt Mastercard®',
-    imageSrc: '/high.mp4', // ✏️ CRITICAL UPDATE REQUIRED
+    imageSrc: '/Bilt_card_D.png', // ✏️ CRITICAL UPDATE REQUIRED
     imageAlt: 'Bilt Mastercard',
     ratingValue: 8.5, // ✏️ Adjust
     ratingStars: 4.5, // ✏️ Adjust
@@ -550,7 +550,7 @@ function BestStarterTravelCardsPage2025() {
             alt={HERO_IMAGE_ALT}
             layout="responsive"
             width={900} // Adjust to your actual image's aspect ratio
-            height={450} // Adjust to your actual image's aspect ratio
+             // Adjust to your actual image's aspect ratio
             objectFit="cover"
             priority // Keep for LCP
             className={styles.heroImage}
