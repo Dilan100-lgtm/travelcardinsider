@@ -16,7 +16,7 @@ const SITE_BASE_URL = 'https://www.travelcardinsider.com'; // ✏️ Adjust if d
 const PAGE_PATH = '/reviews/best-starter-travel-credit-cards-2025';
 const PAGE_URL = `${SITE_BASE_URL}${PAGE_PATH}`;
 const SITE_NAME = 'Travel Card Insider';
-const HERO_IMAGE_SRC = '/images/starter-cards-hero.webp'; // ✏️ CRITICAL UPDATE REQUIRED: Replace with your optimised hero image path
+const HERO_IMAGE_SRC = '/eddy-billard-JOoOPt8tTPY-unsplash.webp'; // ✏️ CRITICAL UPDATE REQUIRED: Replace with your optimised hero image path
 const HERO_IMAGE_ALT = 'Montage of travel scenes and credit cards, symbolizing accessible travel with starter rewards cards in 2025.';
 const DATE_PUBLISHED = '2025-05-21'; // ✏️ Adjust if needed
 const DATE_MODIFIED = '2025-05-21'; // ✏️ Update whenever you edit copy significantly
@@ -52,10 +52,10 @@ const starterCardData = [
   {
     id: 'chaseSapphirePreferred',
     name: 'Chase Sapphire Preferred® Card',
-    imageSrc: '/images/cards/chase_sapphire_preferred.webp', // ✏️ CRITICAL UPDATE REQUIRED: Path to optimised card image
+    imageSrc: '/sapphire_preferred_card.png', // ✏️ CRITICAL UPDATE REQUIRED: Path to optimised card image
     imageAlt: 'Chase Sapphire Preferred Card',
-    ratingValue: 8.8, // ✏️ Adjust placeholder rating
-    ratingStars: 4.5, // ✏️ Adjust placeholder rating
+    ratingValue: 8.4, // ✏️ Adjust placeholder rating
+    ratingStars: 4.2, // ✏️ Adjust placeholder rating
     annualFee: '$95',
     welcomeOffer: '60,000 points after $5,000 spend in 3 months (worth $750 towards travel via Chase Travel℠). (Info as of May 2025)',
     apr: '19.99% - 28.24% Variable.',
@@ -63,17 +63,17 @@ const starterCardData = [
     whyGreat: 'A taste of premium rewards with a manageable fee. Excellent travel protections, valuable 1:1 point transfers to airline and hotel partners (like United, Southwest, Hyatt). $50 annual hotel credit via Chase Travel℠ effectively lowers the fee. No foreign transaction fees.',
     headsUp: 'The $95 annual fee and higher spending requirement for the bonus might be a consideration for absolute beginners.',
     ftf: 'None',
-    applyLink: '#apply-csp-placeholder', // ✏️ CRITICAL UPDATE REQUIRED: Replace with actual APPLY link
-    ratesFeesLink: '#rates-fees-csp-placeholder', // ✏️ CRITICAL UPDATE REQUIRED: Replace with actual RATES & FEES PDF/link
-    learnMoreLink: '/cards/chase-sapphire-preferred-review', // ✏️ CRITICAL UPDATE REQUIRED: Path to your review page
+    applyLink: 'https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred', // ✏️ CRITICAL UPDATE REQUIRED: Replace with actual APPLY link
+    ratesFeesLink: 'https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC56014.html', // ✏️ CRITICAL UPDATE REQUIRED: Replace with actual RATES & FEES PDF/link
+    learnMoreLink: '/cards/chase-sapphire-preferred', // ✏️ CRITICAL UPDATE REQUIRED: Path to your review page
   },
   {
     id: 'capitalOneVentureOne',
     name: 'Capital One VentureOne Rewards Credit Card',
-    imageSrc: '/images/cards/capital_one_ventureone.webp', // ✏️ CRITICAL UPDATE REQUIRED: Path to optimised card image
+    imageSrc: '/ventureone_cardart_prim_323x203.avif', // ✏️ CRITICAL UPDATE REQUIRED: Path to optimised card image
     imageAlt: 'Capital One VentureOne Rewards Credit Card',
-    ratingValue: 8.0, // ✏️ Adjust placeholder rating
-    ratingStars: 4.0, // ✏️ Adjust placeholder rating
+    ratingValue: 7.2, // ✏️ Adjust placeholder rating
+    ratingStars: 3.5, // ✏️ Adjust placeholder rating
     annualFee: '$0',
     welcomeOffer: '20,000 bonus miles once you spend $500 on purchases within 3 months from account opening. (Info as of May 2025)',
     apr: '0% Intro APR on purchases and balance transfers for 15 months; 19.24% - 29.24% variable APR after that.',
@@ -81,17 +81,17 @@ const starterCardData = [
     whyGreat: 'The epitome of simplicity with no annual fee. Miles are easy to earn and redeem for any travel expense. Good for those who want straightforward rewards without tracking categories. No foreign transaction fees.',
     headsUp: 'The base earning rate of 1.25 miles per $1 is lower than some other cards.',
     ftf: 'None',
-    applyLink: '#apply-c1v1-placeholder', // ✏️ CRITICAL UPDATE REQUIRED
-    ratesFeesLink: '#rates-fees-c1v1-placeholder', // ✏️ CRITICAL UPDATE REQUIRED
-    learnMoreLink: '/cards/capital-one-ventureone-review', // ✏️ CRITICAL UPDATE REQUIRED
+    applyLink: 'https://www.capitalone.com/credit-cards/ventureone/', // ✏️ CRITICAL UPDATE REQUIRED
+    ratesFeesLink: 'https://www.capitalone.com/credit-cards/ventureone/', // ✏️ CRITICAL UPDATE REQUIRED
+    learnMoreLink: '/cards/capital-one-ventureone', // ✏️ CRITICAL UPDATE REQUIRED
   },
   {
     id: 'wellsFargoAutograph',
     name: 'Wells Fargo Autograph℠ Card',
-    imageSrc: '/images/cards/wells_fargo_autograph.webp', // ✏️ CRITICAL UPDATE REQUIRED
+    imageSrc: '/Autograph-No-Fee-Card-RGB_d.png', // ✏️ CRITICAL UPDATE REQUIRED
     imageAlt: 'Wells Fargo Autograph Card',
-    ratingValue: 8.2, // ✏️ Adjust
-    ratingStars: 4.0, // ✏️ Adjust
+    ratingValue: 7.1, // ✏️ Adjust
+    ratingStars: 3.0, // ✏️ Adjust
     annualFee: '$0',
     welcomeOffer: '20,000 bonus points when you spend $1,000 in purchases in the first 3 months ($200 value). (Info as of May 2025)',
     apr: '0% Intro APR for 12 months from account opening on purchases. 19.24%, 24.24%, or 29.24% variable APR thereafter.',
@@ -99,14 +99,14 @@ const starterCardData = [
     whyGreat: 'Excellent for everyday spending with broad 3x bonus categories covering common expenses. Also includes cell phone protection when you pay your monthly bill with the card. No foreign transaction fees.',
     headsUp: 'Points are generally redeemed at 1 cent each towards travel; fewer direct high-value airline/hotel transfer partners compared to Chase or Amex.',
     ftf: 'None',
-    applyLink: '#apply-wfa-placeholder', // ✏️ CRITICAL UPDATE REQUIRED
-    ratesFeesLink: '#rates-fees-wfa-placeholder', // ✏️ CRITICAL UPDATE REQUIRED
-    learnMoreLink: '/cards/wells-fargo-autograph-review', // ✏️ CRITICAL UPDATE REQUIRED
+    applyLink: 'https://creditcards.wellsfargo.com/autograph-visa-credit-card/?SGNTST=SHINYLP&sub_channel=SEO&vendor_code=G', // ✏️ CRITICAL UPDATE REQUIRED
+    ratesFeesLink: 'https://www.wellsfargo.com/credit-cards/autograph-visa/terms/?FPID=012988I6P10000&product_code=CC&subproduct_code=AU&cx_nm=CXNAME_CSMPD&sub_channel=SEO&vendor_code=G&refdmn=www.google.com&_gl=1*1qpj6ry*_gcl_au*OTk5NTUyMzU3LjE3NDAzMTU0NDM.*_ga*NjU1MzIyNC4xNzQwMzE1NDQz*_ga_7JXJJ2JF12*MTc0MTQ1MzE2Ny41LjAuMTc0MTQ1MzIyMy40LjAuMA..', // ✏️ CRITICAL UPDATE REQUIRED
+    learnMoreLink: '/cards/wells-fargo-autograph', // ✏️ CRITICAL UPDATE REQUIRED
   },
   {
     id: 'biltMastercard',
     name: 'Bilt Mastercard®',
-    imageSrc: '/images/cards/bilt_mastercard.webp', // ✏️ CRITICAL UPDATE REQUIRED
+    imageSrc: '/high.mp4', // ✏️ CRITICAL UPDATE REQUIRED
     imageAlt: 'Bilt Mastercard',
     ratingValue: 8.5, // ✏️ Adjust
     ratingStars: 4.5, // ✏️ Adjust
@@ -117,17 +117,17 @@ const starterCardData = [
     whyGreat: 'Revolutionary for renters, allowing them to earn valuable points on their largest monthly expense without fees. Points transfer 1:1 to excellent partners like American Airlines AAdvantage® and World of Hyatt®. Strong travel and purchase protections. No foreign transaction fees.',
     headsUp: 'You must use the card for at least 5 transactions (rent payment excluded) each statement period to earn points.',
     ftf: 'None',
-    applyLink: '#apply-bilt-placeholder', // ✏️ CRITICAL UPDATE REQUIRED
-    ratesFeesLink: '#rates-fees-bilt-placeholder', // ✏️ CRITICAL UPDATE REQUIRED
+    applyLink: 'https://www.biltrewards.com/card', // ✏️ CRITICAL UPDATE REQUIRED
+    ratesFeesLink: 'https://www.biltrewards.com/card', // ✏️ CRITICAL UPDATE REQUIRED
     learnMoreLink: '/cards/bilt-mastercard-review', // ✏️ CRITICAL UPDATE REQUIRED
   },
   {
     id: 'discoverItMiles',
     name: 'Discover it® Miles',
-    imageSrc: '/images/cards/discover_it_miles.webp', // ✏️ CRITICAL UPDATE REQUIRED
+    imageSrc: '/cardart-travel-beachcard-620-382.webp', // ✏️ CRITICAL UPDATE REQUIRED
     imageAlt: 'Discover it Miles card',
-    ratingValue: 7.8, // ✏️ Adjust
-    ratingStars: 4.0, // ✏️ Adjust
+    ratingValue: 7.0, // ✏️ Adjust
+    ratingStars: 3.5, // ✏️ Adjust
     annualFee: '$0',
     welcomeOffer: 'Unlimited Cashback Match – Discover will automatically match all the Miles you’ve earned at the end of your first year. (Info as of May 2025)',
     apr: '0% Intro APR for 15 months on purchases and balance transfers. Then 18.24% - 27.24% Variable APR.',
@@ -135,17 +135,17 @@ const starterCardData = [
     whyGreat: 'The first-year Miles Match effectively means earning 3 Miles per $1 on all purchases for the first year, which is fantastic. Simple earning and redemption. No foreign transaction fees.',
     headsUp: 'After the first year, the 1.5 Miles per $1 earning rate is standard. It offers fewer travel-specific insurance perks compared to some other travel cards.',
     ftf: 'None',
-    applyLink: '#apply-dim-placeholder', // ✏️ CRITICAL UPDATE REQUIRED
-    ratesFeesLink: '#rates-fees-dim-placeholder', // ✏️ CRITICAL UPDATE REQUIRED
-    learnMoreLink: '/cards/discover-it-miles-review', // ✏️ CRITICAL UPDATE REQUIRED
+    applyLink: 'https://www.discover.com/credit-cards/travel/', // ✏️ CRITICAL UPDATE REQUIRED
+    ratesFeesLink: 'https://www.discovercard.com/application/website/ratesrewards?srcCde=GJX4&adobe_mc=TS%3D1741447882%7CMCMID%3D39379935660807998981588704922154453327%7CMCORGID%3D0D6C4673527839230A490D45%2540AdobeOrg&sv_session_undefined=true&_gl=1*1ec64ug*_gcl_au*MTYyMTU5ODAxMS4xNzQwMzE1MDcw*_ga*MTk0MTA3MDUwOC4xNzQwMzE1MDcx*_ga_3MJNPV4VSE*MTc0MTQ0Nzg3NS40LjAuMTc0MTQ0Nzg3NS42MC4wLjA.', // ✏️ CRITICAL UPDATE REQUIRED
+    learnMoreLink: '/cards/discover-it-miles', // ✏️ CRITICAL UPDATE REQUIRED
   },
   {
     id: 'chaseFreedomUnlimited',
     name: 'Chase Freedom Unlimited®',
-    imageSrc: '/images/cards/chase_freedom_unlimited.webp', // ✏️ CRITICAL UPDATE REQUIRED
+    imageSrc: '/freedom_unlimited_card_alt (1).png', // ✏️ CRITICAL UPDATE REQUIRED
     imageAlt: 'Chase Freedom Unlimited card',
-    ratingValue: 8.3, // ✏️ Adjust
-    ratingStars: 4.0, // ✏️ Adjust
+    ratingValue: 9.0, // ✏️ Adjust
+    ratingStars: 4.5, // ✏️ Adjust
     annualFee: '$0',
     welcomeOffer: 'Earn an extra 1.5% on everything you buy (on up to $20,000 spent in the first year) - worth up to $300 cash back. That’s 6.5% on travel purchased through Chase Travel℠, 4.5% on dining and drugstores, and 3% on all other purchases. (Info as of May 2025, verify current offer)',
     apr: '0% Intro APR for 15 months from account opening on purchases and balance transfers. After the intro period, a variable APR of 18.99%–28.49%.',
@@ -153,16 +153,16 @@ const starterCardData = [
     whyGreat: 'A cash-back hero whose points can become powerful travel rewards. Strong everyday earning rates. When paired with a Chase Sapphire card, points can be transferred to travel partners for potentially higher value.',
     headsUp: 'This card has a 3% foreign transaction fee, making it less ideal for international travel on its own.',
     ftf: '3%',
-    applyLink: '#apply-cfu-placeholder', // ✏️ CRITICAL UPDATE REQUIRED
-    ratesFeesLink: '#rates-fees-cfu-placeholder', // ✏️ CRITICAL UPDATE REQUIRED
-    learnMoreLink: '/cards/chase-freedom-unlimited-review', // ✏️ CRITICAL UPDATE REQUIRED
+    applyLink: 'https://creditcards.chase.com/cash-back-credit-cards/freedom/unlimited', // ✏️ CRITICAL UPDATE REQUIRED
+    ratesFeesLink: 'https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC56029.html', // ✏️ CRITICAL UPDATE REQUIRED
+    learnMoreLink: '/cards/chase-freedom-unlimited', // ✏️ CRITICAL UPDATE REQUIRED
   },
   {
     id: 'bofaTravelRewards',
     name: 'Bank of America® Travel Rewards credit card',
-    imageSrc: '/images/cards/bofa_travel_rewards.webp', // ✏️ CRITICAL UPDATE REQUIRED
+    imageSrc: '/8blm_trvsigcm_v_250x158.png', // ✏️ CRITICAL UPDATE REQUIRED
     imageAlt: 'Bank of America Travel Rewards credit card',
-    ratingValue: 7.9, // ✏️ Adjust
+    ratingValue: 7.4, // ✏️ Adjust
     ratingStars: 4.0, // ✏️ Adjust
     annualFee: '$0',
     welcomeOffer: '25,000 online bonus points after you make at least $1,000 in purchases in the first 90 days of account opening - that can be a $250 statement credit toward travel and dining purchases. (Info as of May 2025)',
@@ -171,9 +171,9 @@ const starterCardData = [
     whyGreat: 'Simple flat-rate earning makes it easy to accumulate points. No foreign transaction fees. Becomes significantly more valuable if you have banking/investment accounts with Bank of America to qualify for Preferred Rewards tiers.',
     headsUp: 'The base 1.5 points per $1 earning rate is standard; the card truly shines only with the Preferred Rewards boost.',
     ftf: 'None',
-    applyLink: '#apply-bofa-placeholder', // ✏️ CRITICAL UPDATE REQUIRED
-    ratesFeesLink: '#rates-fees-bofa-placeholder', // ✏️ CRITICAL UPDATE REQUIRED
-    learnMoreLink: '/cards/bank-of-america-travel-rewards-review', // ✏️ CRITICAL UPDATE REQUIRED
+    applyLink: 'https://www.bankofamerica.com/credit-cards/products/travel-rewards-credit-card/', // ✏️ CRITICAL UPDATE REQUIRED
+    ratesFeesLink: 'https://www.bankofamerica.com/credit-cards/products/travel-rewards-credit-card/', // ✏️ CRITICAL UPDATE REQUIRED
+    learnMoreLink: '/cards/boa-travel-rewards', // ✏️ CRITICAL UPDATE REQUIRED
   }
 ];
 
@@ -604,8 +604,8 @@ function BestStarterTravelCardsPage2025() {
           <section className={styles.reviewSection}>
             <h2>The 2025 Honor Roll: Top Starter Travel Credit Cards</h2>
             <p>Here’s our curated list of top starter travel credit cards for 2025. We'll break down the key details for each.</p>
-            <p><em>(✏️ CRITICAL UPDATE REQUIRED: The "Apply Now" and "See Rates & Fees" links below are placeholders. You MUST replace them with your actual, live, and tracked affiliate links or direct issuer links.)</em></p>
             
+
             {starterCardData.map((card, index) => (
               <div key={card.id} className={`${styles.cardDetailSection} ${styles.cardSeparator}`}>
                 <div className={styles.cardHeader}>
