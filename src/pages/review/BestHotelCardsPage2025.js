@@ -16,7 +16,7 @@ const SITE_BASE_URL = 'https://www.travelcardinsider.com';
 const PAGE_PATH = '/reviews/best-hotel-credit-cards-2025';
 const PAGE_URL = `${SITE_BASE_URL}${PAGE_PATH}`;
 const SITE_NAME = 'Travel Card Insider';
-const HERO_IMAGE_SRC = '/images/hero/best-hotel-cards‑2025.webp'; // Optimised path
+const HERO_IMAGE_SRC = '/pexels-donaldtong94-189296.webp'; // Optimised path
 const HERO_IMAGE_ALT = 'Luxury hotel suite overlooking a city skyline – symbol of elite travel perks in 2025';
 const DATE_PUBLISHED = '2025-05-20';
 const DATE_MODIFIED = '2025-05-20'; // ✏️ update whenever you edit copy
@@ -27,8 +27,8 @@ const DATE_MODIFIED = '2025-05-20'; // ✏️ update whenever you edit copy
 const author = {
   name: 'Dilan Madushanka',
   title: 'Lead Travel Card Analyst',
-  image: '/images/authors/dilan‑madushanka‑40.jpg',  // 40×40px web‑optimised headshot
-  imageLarge: '/images/authors/dilan‑madushanka‑60.jpg', // 60x60px for tooltip
+  image: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg',  // 40×40px web‑optimised headshot
+  imageLarge: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // 60x60px for tooltip
   bio: 'Seasoned travel‑card analyst helping readers unlock elite travel perks & maximise hotel rewards.',
   expertise: [
     'Hotel Rewards Strategy',
