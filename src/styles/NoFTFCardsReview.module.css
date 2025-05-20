@@ -413,7 +413,7 @@
 
 .authorBioContainer {
   display: inline-flex; /* Align items horizontally */
-  align-items: center; /* Vertically center items in the flex container */
+  align-items: left; /* Vertically center items in the flex container */
   /* align-items: left; /* This was likely intended to be text-align or align-items for flex children */
   text-align: left; /* Ensure text within aligns left if children are block or inline-block */
   gap: var(--spacing-sm, 8px);
