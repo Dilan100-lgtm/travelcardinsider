@@ -29,7 +29,7 @@
   /* objectFit="cover" in component handles aspect ratio */
   width: 100%;
   height: auto; /* Maintain aspect ratio */
-  max-height: 450px; /* Limit hero height */
+   /* Limit hero height */
   display: block;
 }
 

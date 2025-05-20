@@ -550,7 +550,8 @@ function BestStarterTravelCardsPage2025() {
             alt={HERO_IMAGE_ALT}
             layout="responsive"
             width={900} // Adjust to your actual image's aspect ratio
-             // Adjust to your actual image's aspect ratio
+           
+            
             objectFit="cover"
             priority // Keep for LCP
             className={styles.heroImage}
