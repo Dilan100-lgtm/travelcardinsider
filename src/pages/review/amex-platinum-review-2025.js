@@ -54,7 +54,7 @@ const reviewDataNew = {
   },
   siteName: "Your Travel Card Review Site", // IMPORTANT: Update this
   pagePath: "/review/amex-platinum-2025",
-  imageUrl: "/amex-platinum-card-hero-2025.webp", // IMPORTANT: Update this path to your card image in /public
+  imageUrl: "/savvas-kalimeris-hO3do8FKJkQ-unsplash.webp", // IMPORTANT: Update this path to your card image in /public
   imageWidth: 760, // Main card image width
   imageHeight: 480, // Main card image height
   siteLogoUrl: "/images/logo.png", // IMPORTANT: Update this path to your site logo in /public
