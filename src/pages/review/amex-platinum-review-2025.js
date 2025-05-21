@@ -1,408 +1,640 @@
-// File: pages/review/amex-platinum-review-2025.js
+// File: pages/review/amex-platinum-2025.js
 
-import React from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
-import styles from '../../styles/reviews2025.module.css'; // Assuming same CSS module
+import Link from 'next/link'; // Added for author bio link and internal links
+import styles from '../../styles/reviews2025.module.css'; // IMPORTANT: Ensure this CSS module exists and is styled
 
-// Assuming you have Header and Footer components
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
+const siteUrl = 'https://www.yourtravelcardreviewsite.com'; // IMPORTANT: Update this to your actual site URL
+
+const reviewDataNew = {
+  cardName: "The Platinum Card® from American Express",
+  issuerName: "American Express",
+  title: "Amex Platinum 2025 Review: Are Premium Travel Perks Worth $695?",
+  description: "In-depth 2025 review of The Platinum Card® from American Express. Explore its $695 annual fee, extensive travel credits, unparalleled lounge access, elite hotel status, and robust insurance protections. Is this premium card the right investment for your travel style?",
+  keywords: [
+    "Amex Platinum review 2025",
+    "American Express Platinum Card",
+    "premium travel credit card",
+    "$695 annual fee card",
+    "Centurion Lounge access",
+    "Amex Membership Rewards",
+    "luxury credit card US",
+    "Amex travel credits",
+    "Amex FHR",
+    "travel insurance credit card"
+  ],
+  author: { // IMPORTANT: Update author details as needed
+      name: 'Dilan Madushanka',
+      title: 'Founder & Lead Editor',
+      imageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // IMPORTANT: Ensure this path is correct and image is in /public
+      imageWidth: 40,
+      imageHeight: 40,
+      tooltipImageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // IMPORTANT: Ensure this path is correct
+      tooltipImageWidth: 60,
+      tooltipImageHeight: 60,
+      expertise: [
+          'Premium Credit Cards',
+          'Travel Rewards Programs',
+          'Luxury Travel Benefits',
+          'Maximizing Card Credits',
+          'Credit Card Analysis'
+      ],
+      bioSnippet: 'Dilan Madushanka is the founder and lead editor of TravelCardInsider.com, dedicated to demystifying credit cards and uncovering their real-world value for smarter travel.',
+      fullBioLink: '/author/dilan-madushanka', // Example path, IMPORTANT: Update if necessary
+      fullBio: `Dilan Madushanka is the founder and lead editor of TravelCardInsider.com, a platform dedicated to helping everyday people make smarter decisions with travel and rewards credit cards. With a background in medicine and a deep passion for financial literacy, Dilan turned his real-world experience—navigating travel, budgeting, and rewards programs—into a mission: demystify credit cards and uncover their real-world value.\n\nAfter years of studying the fine print, testing travel benefits firsthand, and comparing hundreds of card offers, Dilan has built a site that goes beyond generic advice. He combines research, real spending scenarios, and hands-on card analysis to help readers maximize rewards and avoid costly mistakes.\n\nExperience matters—and Dilan brings a unique one. A Sri Lankan doctor by training, he took a bold leap into digital entrepreneurship to build a transparent, user-focused credit card resource from scratch. Every guide and review you read is written or edited by him with accuracy, integrity, and a deep sense of purpose.`,
+      publishedStats: '6+ in-depth card reviews per week', // IMPORTANT: Update if necessary
+      testedStats: 'Over 50 credit card benefits across major brands', // IMPORTANT: Update if necessary
+      socialLinks: { // IMPORTANT: Update social links
+          linkedin: 'https://www.linkedin.com/in/dilan-madushanka-b65293365',
+          twitter: 'https://x.com/team_dilan',
+          email: 'team@travelcardinsider.com'
+      }
+  },
+  siteName: "Your Travel Card Review Site", // IMPORTANT: Update this
+  pagePath: "/review/amex-platinum-2025",
+  imageUrl: "/amex-platinum-card-hero-2025.webp", // IMPORTANT: Update this path to your card image in /public
+  imageWidth: 760, // Main card image width
+  imageHeight: 480, // Main card image height
+  siteLogoUrl: "/images/logo.png", // IMPORTANT: Update this path to your site logo in /public
+  publishDate: "2025-05-22", // IMPORTANT: Update as per your publishing date
+  updateDate: "2025-05-22", // IMPORTANT: Update as per your update date
+  ratingValue: 4.6, // Subjective rating, adjust as needed
+  annualFee: 695,
+  applyLink: "https://www.yourlink.com/apply-amex-platinum", // IMPORTANT: Update this with your affiliate link
+  learnMoreLink: "/cards/amex-platinum-details", // IMPORTANT: Update this to a relevant page or use ratesLink
+  ratesLink: "https://www.yourlink.com/amex-platinum-rates-fees", // IMPORTANT: Update this with the official rates and fees link
+  h1Content: "The Amex Platinum Card 2025: A Deep Dive into its $695 Value",
+  reviewBody: "Our comprehensive 2025 analysis of The Platinum Card® from American Express. Uncover its value through travel credits, lounge access, elite perks, and whether the $695 fee is justified for you.",
+  sku: "AMEX-PLATINUM-TCI-2025", // Stock Keeping Unit - for your internal tracking
+  mpn: "AMEXPLATINUM", // Manufacturer Part Number - for your internal tracking
+  brandName: "American Express Platinum", // Brand name for schema
+};
+
+const pageUrlFull = `${siteUrl}${reviewDataNew.pagePath}`;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Review",
+  "itemReviewed": {
+    "@type": "Product",
+    "name": reviewDataNew.cardName,
+    "brand": {
+      "@type": "Brand",
+      "name": reviewDataNew.brandName // Using the refined brand name
+    },
+    "description": reviewDataNew.description,
+    "image": `${siteUrl}${reviewDataNew.imageUrl}`,
+    "sku": reviewDataNew.sku,
+    "mpn": reviewDataNew.mpn,
+    "offers": {
+        "@type": "Offer",
+        "url": reviewDataNew.applyLink,
+        "priceCurrency": "USD",
+        "price": reviewDataNew.annualFee.toString(),
+        "priceSpecification": {
+           "@type": "PriceSpecification",
+           "price": reviewDataNew.annualFee,
+           "priceCurrency": "USD",
+           "valueAddedTaxIncluded": "false",
+           "billingIncrement": "1",
+           "unitText": "ANNUAL"
+        },
+        "seller": { "@type": "Organization", name: reviewDataNew.issuerName }
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": reviewDataNew.ratingValue.toString(),
+      "bestRating": "5",
+      "worstRating": "1",
+      "reviewCount": "1" // Assuming this is the first review count, update if aggregated elsewhere
+    }
+  },
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": reviewDataNew.ratingValue.toString(),
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "headline": reviewDataNew.title,
+  "author": {
+    "@type": "Person",
+    "name": reviewDataNew.author.name
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": reviewDataNew.siteName,
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${siteUrl}${reviewDataNew.siteLogoUrl}`
+    }
+  },
+  "datePublished": reviewDataNew.publishDate,
+  "dateModified": reviewDataNew.updateDate,
+  "description": reviewDataNew.description,
+  "keywords": reviewDataNew.keywords.join(', '),
+  "mainEntityOfPage": {
+     "@type": "WebPage",
+     "@id": pageUrlFull
+  },
+  "image": [
+     `${siteUrl}${reviewDataNew.imageUrl}`
+   ]
+};
 
 export default function AmexPlatinumReview2025() {
-  const pageUrl = "https://www.yourwebsite.com/review/amex-platinum-2025"; // Customize this URL
-  const cardName = "The Platinum Card® from American Express";
-  const issuerName = "American Express";
-  // Placeholder image - replace with your actual card image URL or a locally hosted one
-  const imageUrl = "https://www.americanexpress.com/content/dam/acq/global/img/card-art/platinum-card-front-standard-576x364.png";
-  // Placeholder logo - replace with your actual site logo URL
-  const logoUrl = "https://www.yourwebsite.com/your-site-logo.png";
-  const siteName = "TravelcardInsider"; // Customize your site name
-  const authorName = "TravelcardInsider"; // Customize author name
-  const publishDate = "2025-05-21"; // Update with actual publish date
-  const lastModifiedDate = "2025-05-21"; // Update with actual modification date
+  const authorRef = useRef(null);
+  const authorTooltipRef = useRef(null);
+  const [showAuthorBioTooltip, setShowAuthorBioTooltip] = useState(false);
 
-  const reviewRatingValue = 4.2; // Adjust this based on your review (e.g., 4.0, 4.5)
-  const annualFee = 695;
+  const handleAuthorMouseEnter = useCallback(() => {
+    if (authorRef.current?.tooltipTimeoutId) {
+        clearTimeout(authorRef.current.tooltipTimeoutId);
+    }
+    setShowAuthorBioTooltip(true);
+  }, []);
 
-  const jsonLdDescription = `The ${cardName} is a premium travel rewards credit card designed for US travelers, offering a wide array of statement credits, comprehensive airport lounge access, hotel elite status, and robust travel protections, with a $${annualFee} annual fee.`;
+  const handleAuthorMouseLeave = useCallback(() => {
+    const timerId = setTimeout(() => {
+        if (authorRef.current && authorTooltipRef.current) {
+            const isHoveringTrigger = authorRef.current.matches(':hover');
+            const isHoveringTooltip = authorTooltipRef.current.matches(':hover');
+            const isFocusWithinTrigger = authorRef.current.contains(document.activeElement);
+            const isFocusWithinTooltip = authorTooltipRef.current.contains(document.activeElement);
+            if (!isHoveringTrigger && !isHoveringTooltip && !isFocusWithinTrigger && !isFocusWithinTooltip) {
+               setShowAuthorBioTooltip(false);
+            }
+        } else if (!authorRef.current?.matches(':hover') && !authorTooltipRef.current?.matches(':hover')) {
+             setShowAuthorBioTooltip(false);
+        }
+    }, 150);
+    if (authorRef.current) authorRef.current.tooltipTimeoutId = timerId;
+  }, [authorRef, authorTooltipRef]);
+
+  const handleTooltipMouseEnter = useCallback(() => {
+    if (authorRef.current?.tooltipTimeoutId) {
+        clearTimeout(authorRef.current.tooltipTimeoutId);
+    }
+  }, []);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+        if (showAuthorBioTooltip &&
+            authorRef.current && !authorRef.current.contains(event.target) &&
+            authorTooltipRef.current && !authorTooltipRef.current.contains(event.target)) {
+            setShowAuthorBioTooltip(false);
+        }
+    }
+    if (showAuthorBioTooltip) {
+        document.addEventListener("mousedown", handleClickOutside);
+    } else {
+        document.removeEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+        if(authorRef.current?.tooltipTimeoutId){
+            clearTimeout(authorRef.current.tooltipTimeoutId);
+        }
+    };
+  }, [showAuthorBioTooltip, authorRef, authorTooltipRef]);
 
   return (
     <>
       <Head>
-        <title>Amex Platinum 2025 Review: Are Premium Travel Perks Worth ${annualFee}?</title>
-        <meta
-          name="description"
-          content={`In-depth 2025 review of the ${cardName}. Explore its $${annualFee} fee, extensive travel credits, lounge access, elite status, and protections to see if it's the right premium card for US travelers.`}
-        />
+        <title>{reviewDataNew.title}</title>
+        <meta name="description" content={reviewDataNew.description} />
+        <meta name="keywords" content={reviewDataNew.keywords.join(', ')} />
+        <meta name="author" content={reviewDataNew.author.name} />
         <meta name="robots" content="index,follow" />
-        <link rel="canonical" href={pageUrl} />
+        <link rel="canonical" href={pageUrlFull} />
 
-        {/* ---- Open Graph ---- */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content={`Amex Platinum 2025 Review: Is the $${annualFee} Fee Justified by Its Premium Perks?`} />
-        <meta property="og:description" content={`Our in-depth 2025 analysis of the ${cardName}. Discover if its luxury travel benefits, statement credits, and protections make it worth the investment for US travelers.`} />
-        <meta property="og:url" content={pageUrl} />
-        <meta property="og:image" content={imageUrl} />
-        <meta property="og:site_name" content={siteName} />
-        <meta property="article:publisher" content={`https://www.yourwebsite.com`} /> {/* Customize your website URL */}
-        <meta property="article:published_time" content={publishDate} />
-        <meta property="article:modified_time" content={lastModifiedDate} />
-        <meta property="article:author" content={authorName} />
-        {/* Add article tags if relevant */}
-        {/* <meta property="article:tag" content="Amex Platinum" /> */}
+        <meta property="og:title" content={reviewDataNew.title} />
+        <meta property="og:description" content={reviewDataNew.description} />
+        <meta property="og:url" content={pageUrlFull} />
+        <meta property="og:image" content={`${siteUrl}${reviewDataNew.imageUrl}`} />
+        <meta property="og:image:width" content={String(reviewDataNew.imageWidth)} />
+        <meta property="og:image:height" content={String(reviewDataNew.imageHeight)} />
+        <meta property="og:site_name" content={reviewDataNew.siteName} />
+        {/* IMPORTANT: Update Facebook profile URL */}
+        <meta property="article:publisher" content={`https://www.facebook.com/yourtravelcardinsiderprofile`} />
+        <meta property="article:published_time" content={reviewDataNew.publishDate} />
+        <meta property="article:modified_time" content={reviewDataNew.updateDate} />
+        <meta property="article:author" content={reviewDataNew.author.name} /> {/* Can also be a link to author's FB profile if available */}
 
-
-        {/* ---- Twitter Card ---- */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`Amex Platinum Card Review 2025: Perks vs. $${annualFee} Price Tag | ${siteName}`} />
-        <meta name="twitter:description" content={`Is the ${cardName} still the king of premium travel cards in 2025? We break down the $${annualFee} fee, credits, lounge access, and more for US travelers.`} />
-        <meta name="twitter:image" content={imageUrl} />
-        {/* <meta name="twitter:site" content="@YourTwitterHandle" /> */} {/* Add your Twitter handle */}
-        {/* <meta name="twitter:creator" content="@AuthorTwitterHandle" /> */} {/* Add author's Twitter handle if different */}
+        {/* IMPORTANT: Update Twitter handle for the site */}
+        <meta name="twitter:site" content="@YourSiteTwitterHandle" />
+        <meta name="twitter:title" content={`${reviewDataNew.cardName} Review (2025) | Is the $${reviewDataNew.annualFee} Fee Justified?`} />
+        <meta name="twitter:description" content={`Deep dive into the 2025 Amex Platinum: $${reviewDataNew.annualFee} fee, credits, lounge access, travel perks. Who benefits most?`} />
+        <meta name="twitter:image" content={`${siteUrl}${reviewDataNew.imageUrl}`} />
+         {/* IMPORTANT: Update Twitter handle for the author */}
+        <meta name="twitter:creator" content={reviewDataNew.author.socialLinks.twitter ? reviewDataNew.author.socialLinks.twitter.replace('https://x.com/', '@') : '@AuthorTwitterHandle'} />
 
 
         <meta name="geo.region" content="US" />
         <meta name="geo.placename" content="United States" />
         <meta name="language" content="en-US" />
         <meta name="distribution" content="US" />
-        <link rel="alternate" hrefLang="en-us" href={pageUrl} />
+        <link rel="alternate" hrefLang="en-us" href={pageUrlFull} />
 
-        {/* JSON-LD Structured Data */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: `{
-              "@context": "https://schema.org",
-              "@type": "Review",
-              "itemReviewed": {
-                "@type": "FinancialProduct",
-                "name": "${cardName}",
-                "brand": {
-                  "@type": "Brand",
-                  "name": "${issuerName}"
-                },
-                "description": "${jsonLdDescription}",
-                "image": "${imageUrl}",
-                "feesAndCommissionsSpecification": {
-                  "@type": "CompoundPriceSpecification",
-                  "priceComponent": [
-                    {
-                      "@type": "UnitPriceSpecification",
-                      "priceCurrency": "USD",
-                      "price": ${annualFee},
-                      "name": "Annual Fee",
-                      "referenceQuantity": {
-                         "@type": "QuantitativeValue",
-                         "value": 1,
-                         "unitCode": "ANN"
-                      }
-                    }
-                  ]
-                },
-                "aggregateRating": {
-                  "@type": "AggregateRating",
-                  "ratingValue": ${reviewRatingValue},
-                  "bestRating": 5,
-                  "worstRating": 1,
-                  "reviewCount": 1, // Update if you have more reviews integrated
-                  "ratingCount": 1 // Or use ratingCount
-                }
-              },
-              "reviewRating": {
-                "@type": "Rating",
-                "ratingValue": ${reviewRatingValue},
-                "bestRating": 5,
-                "worstRating": 1
-              },
-              "headline": "Amex Platinum 2025 Review: Are Premium Travel Perks Worth $${annualFee}?",
-              "author": {
-                "@type": "Person", // Or "Organization" if the site is the author
-                "name": "${authorName}"
-              },
-              "publisher": {
-                "@type": "Organization",
-                "name": "${siteName}",
-                "logo": {
-                  "@type": "ImageObject",
-                  "url": "${logoUrl}"
-                }
-              },
-              "datePublished": "${publishDate}",
-              "dateModified": "${lastModifiedDate}",
-              "keywords": [
-                "American Express Platinum",
-                "Amex Platinum review 2025",
-                "premium travel card",
-                "travel rewards",
-                "airport lounge access",
-                "Amex Membership Rewards",
-                "luxury credit card",
-                "$${annualFee} annual fee card",
-                "Amex credits",
-                "Amex FHR",
-                "Centurion Lounge",
-                "travel insurance credit card",
-                "US travel credit card"
-              ],
-              "mainEntityOfPage": {
-                 "@type": "WebPage",
-                 "@id": "${pageUrl}"
-              },
-              "image": [
-                 "${imageUrl}"
-               ]
-            }`
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </Head>
 
-      {/* <Header /> */} {/* Uncomment if you have a Header component */}
-
-      <main style={{ fontFamily: 'Arial, sans-serif' }}> {/* Basic font, customize as needed */}
+      <main style={{ fontFamily: 'Arial, sans-serif' }}> {/* Example style, manage globally or via CSS module */}
         <article className={styles.reviewContainer}>
           <header className={styles.reviewHeader}>
             <h1 className={styles.reviewTitle}>
-              Amex Platinum 2025 Review: Are Premium Travel Perks Worth ${annualFee}?
+              {reviewDataNew.h1Content}
             </h1>
-            <b>
-              <u>By {authorName}</u>
-            </b>
+            <div
+                className={styles.authorBioContainer}
+                ref={authorRef}
+                onMouseEnter={handleAuthorMouseEnter}
+                onMouseLeave={handleAuthorMouseLeave}
+                onFocus={handleAuthorMouseEnter}
+                onBlur={handleAuthorMouseLeave}
+                aria-haspopup="true"
+                aria-expanded={showAuthorBioTooltip}
+                tabIndex={0}
+            >
+                <Image
+                    src={reviewDataNew.author.imageUrl}
+                    alt={`${reviewDataNew.author.name} headshot`}
+                    width={reviewDataNew.author.imageWidth}
+                    height={reviewDataNew.author.imageHeight}
+                    className={styles.authorImageSmall}
+                    priority
+                />
+                <div className={styles.authorInfoBlock}>
+                    <div className={styles.authorNameLine}>
+                        <span className={styles.authorPrefix}>By</span>
+                        <span className={styles.authorName}>{reviewDataNew.author.name}</span>
+                    </div>
+                    <span className={styles.authorTitle}>{reviewDataNew.author.title}</span>
+                    {reviewDataNew.updateDate && (
+                        <time dateTime={reviewDataNew.updateDate} className={styles.authorLastEdited}>
+                            Last updated: {new Date(reviewDataNew.updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                        </time>
+                    )}
+                    {reviewDataNew.author.socialLinks && (
+                        <div className={styles.authorSocialLinks}>
+                            {reviewDataNew.author.socialLinks.linkedin && (
+                                <a href={reviewDataNew.author.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={styles.socialIconLink}>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                </a>
+                            )}
+                            {reviewDataNew.author.socialLinks.twitter && (
+                                <a href={reviewDataNew.author.socialLinks.twitter} target="_blank" rel="noopener noreferrer" aria-label="Twitter" className={styles.socialIconLink}>
+                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-.422.724-.665 1.56-.665 2.452 0 1.697.864 3.198 2.18 4.078-.8-.025-1.555-.247-2.227-.616v.054c0 2.37 1.683 4.333 3.91 4.78-.426.116-.874.174-1.337.174-.31 0-.611-.03-.904-.085.622 1.936 2.421 3.338 4.553 3.377-1.672 1.309-3.781 2.088-6.072 2.088-.394 0-.784-.023-1.169-.069 2.16 1.389 4.723 2.202 7.482 2.202 8.979 0 13.897-7.446 13.897-13.898 0-.21 0-.42-.015-.63.953-.689 1.778-1.56 2.433-2.525z"/></svg>
+                                </a>
+                            )}
+                            {reviewDataNew.author.socialLinks.email && (
+                                <a href={`mailto:${reviewDataNew.author.socialLinks.email}`} aria-label="Email" className={styles.socialIconLink}>
+                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
+                                </a>
+                            )}
+                        </div>
+                    )}
+                </div>
+                {showAuthorBioTooltip && (
+                    <div
+                        className={styles.authorTooltip}
+                        ref={authorTooltipRef}
+                        role="tooltip"
+                        onMouseEnter={handleTooltipMouseEnter}
+                        onMouseLeave={handleAuthorMouseLeave}
+                        onFocus={handleTooltipMouseEnter}
+                        onBlur={handleAuthorMouseLeave}
+                    >
+                         <div className={styles.authorTooltipHeader}>
+                             <Image
+                                src={reviewDataNew.author.tooltipImageUrl}
+                                alt={`${reviewDataNew.author.name} headshot`}
+                                width={reviewDataNew.author.tooltipImageWidth}
+                                height={reviewDataNew.author.tooltipImageHeight}
+                                className={styles.authorTooltipImage}
+                             />
+                             <div className={styles.authorTooltipInfo}>
+                                 <span className={styles.authorTooltipName}>{reviewDataNew.author.name}</span>
+                                 <span className={styles.authorTooltipTitle}>{reviewDataNew.author.title}</span>
+                             </div>
+                           </div>
+                           {reviewDataNew.author.expertise && reviewDataNew.author.expertise.length > 0 && (
+                             <div className={styles.authorTooltipExpertise}>
+                                 <strong>Expertise</strong>
+                                 <ul>
+                                     {reviewDataNew.author.expertise.map(area => <li key={area}>{area}</li>)}
+                                 </ul>
+                             </div>
+                           )}
+                           <p className={styles.authorTooltipBioSnippet}>{reviewDataNew.author.bioSnippet}</p>
+                           {reviewDataNew.author.fullBioLink && (
+                               <Link href={reviewDataNew.author.fullBioLink} legacyBehavior>
+                                   <a className={styles.authorTooltipBioLink}>
+                                       See full bio
+                                   </a>
+                               </Link>
+                           )}
+                           {reviewDataNew.author.socialLinks && (
+                                <div className={styles.authorTooltipSocials}>
+                                    {reviewDataNew.author.socialLinks.linkedin && (
+                                         <a href={reviewDataNew.author.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={styles.socialIconLink}>
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                         </a>
+                                     )}
+                                     {reviewDataNew.author.socialLinks.twitter && (
+                                         <a href={reviewDataNew.author.socialLinks.twitter} target="_blank" rel="noopener noreferrer" aria-label="Twitter" className={styles.socialIconLink}>
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-.422.724-.665 1.56-.665 2.452 0 1.697.864 3.198 2.18 4.078-.8-.025-1.555-.247-2.227-.616v.054c0 2.37 1.683 4.333 3.91 4.78-.426.116-.874.174-1.337.174-.31 0-.611-.03-.904-.085.622 1.936 2.421 3.338 4.553 3.377-1.672 1.309-3.781 2.088-6.072 2.088-.394 0-.784-.023-1.169-.069 2.16 1.389 4.723 2.202 7.482 2.202 8.979 0 13.897-7.446 13.897-13.898 0-.21 0-.42-.015-.63.953-.689 1.778-1.56 2.433-2.525z"/></svg>
+                                         </a>
+                                     )}
+                                     {reviewDataNew.author.socialLinks.email && (
+                                         <a href={`mailto:${reviewDataNew.author.socialLinks.email}`} aria-label="Email" className={styles.socialIconLink}>
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
+                                         </a>
+                                     )}
+                                </div>
+                            )}
+                    </div>
+                )}
+            </div>
 
             <div style={{ marginTop: '1rem', marginBottom: '1rem' }}>
               <Image
-                src={imageUrl} // Using the defined imageUrl
-                alt={`${cardName} art`}
-                width={576} // Adjust based on actual image dimensions or desired display
-                height={364}
-                style={{ width: '100%', maxWidth: '576px', height: 'auto', display: 'block', margin: '0 auto' }}
+                src={reviewDataNew.imageUrl}
+                alt={`${reviewDataNew.cardName} from ${reviewDataNew.issuerName}`}
+                width={reviewDataNew.imageWidth}
+                height={reviewDataNew.imageHeight}
+                style={{ width: '100%', maxWidth: '1200px', height: 'auto', display: 'block', margin: '0 auto' }}
                 priority
               />
             </div>
 
             <p className={styles.reviewDisclaimer}>
-              Offers and benefits are subject to change. Terms apply to American Express benefits and offers. Enrollment may be required for select American Express benefits. Visit americanexpress.com to learn more. The information provided in this review is for informational purposes only and does not constitute financial advice.
+              We may receive compensation when you click on links to certain credit card products
+              on our site. However, our recommendations remain our own, and offers are subject to
+              change. Always verify details with the official issuer. Terms apply to credit card benefits and offers.
+              Enrollment may be required for select American Express benefits and offers.
             </p>
           </header>
 
-          {/* Table of Contents */}
           <nav className={styles.reviewToc}>
             <h2>Table of Contents</h2>
             <ol>
               <li><a href="#introduction">Introduction: The Platinum Promise in 2025</a></li>
-              <li><a href="#core-economics">The Price of Prestige: Understanding Platinum's Core Economics</a></li>
+              <li><a href="#core-economics">The Price of Prestige: Core Economics & Earning Points</a></li>
               <li><a href="#platinum-credits">Decoding the Dollars: Your 2025 Guide to Platinum Credits</a></li>
-              <li><a href="#travel-benefits">The Globetrotter's Toolkit: Elite Travel Benefits in 2025</a></li>
-              <li><a href="#travel-protections">Travel Confidently: Platinum's Suite of Protections in 2025</a></li>
+              <li><a href="#travel-benefits">The Globetrotter's Toolkit: Elite Travel Benefits</a></li>
+              <li><a href="#travel-protections">Travel Confidently: Platinum's Suite of Protections</a></li>
               <li><a href="#lifestyle-perks">Beyond the Airport: Lifestyle Perks</a></li>
-              <li>
-                <a href="#verdict">The Verdict: Is the Amex Platinum a Smart Investment for You in 2025?</a>
-                <ul>
-                    <li><a href="#pros-cons">Pros & Cons</a></li>
-                    <li><a href="#who-gains-most">Who Gains the Most?</a></li>
-                    <li><a href="#who-might-look-elsewhere">Who Might Look Elsewhere?</a></li>
-                </ul>
-              </li>
-              <li><a href="#conclusion">Conclusion: Crafting Your Platinum Journey in 2025</a></li>
+              <li><a href="#verdict">The Verdict: Is Amex Platinum Worth ${reviewDataNew.annualFee} for You?</a></li>
+              <li><a href="#conclusion">Conclusion: Crafting Your Platinum Journey</a></li>
             </ol>
           </nav>
 
           <section id="introduction" className={styles.reviewSection}>
             <h2>I. Introduction: The Platinum Promise in 2025</h2>
-            <p>Imagine gliding through a dedicated airport security line, then settling into a serene Centurion Lounge with a gourmet snack, the terminal's usual chaos a world away. This is the experience the American Express Platinum Card hints at. For decades, it’s been a beacon of premium travel, synonymous with status and a hefty suite of benefits. But as travel evolves and the card's ${annualFee} annual fee remains significant, the big question for US travelers in 2025 is: does this iconic card still deliver real value? This review dives deep, blending a traveler's insights with a practical financial eye, all based on the latest 2025 details from American Express, to help you decide.</p>
+            <p>Imagine gliding through a dedicated airport security line, then settling into a serene Centurion Lounge with a gourmet snack, the terminal's usual chaos a world away. This is the experience the {reviewDataNew.cardName} hints at. For decades, it’s been a beacon of premium travel, synonymous with status and a hefty suite of benefits. But as travel evolves and the card's ${reviewDataNew.annualFee} annual fee remains significant, the big question for US travelers in 2025 is: does this iconic card still deliver real value? This review dives deep, blending a traveler's insights with a practical financial eye, all based on the latest 2025 details from {reviewDataNew.issuerName}, to help you decide.</p>
           </section>
 
           <section id="core-economics" className={styles.reviewSection}>
             <h2>II. The Price of Prestige: Understanding Platinum's Core Economics</h2>
-            <p>Your journey with the Platinum Card starts with its financial structure. That ${annualFee} annual fee is prominent. While American Express might break it down to about $${(annualFee/12).toFixed(2)} a month, it’s a yearly investment that needs to pay off.</p>
-            <p>For new cardmembers, a welcome offer can soften that initial outlay. A typical 2025 offer might be earning 80,000 Membership Rewards® Points after spending $8,000 in the first six months. Valuing these points at around 2 cents each when transferred to travel partners (see how we value points here: <a href="/your-valuation-methodology-article-link">Your Valuation Methodology Article</a>) means this bonus could be worth roughly $1,600 – easily covering the first year's fee. However, remember this is a one-time boost. Long-term value depends on consistently using the card’s ongoing benefits. The $8,000 spending threshold also signals that this card is geared towards those with significant purchasing power.</p>
+            <p>Your journey with the {reviewDataNew.cardName} starts with its financial structure. That ${reviewDataNew.annualFee} annual fee is prominent. While {reviewDataNew.issuerName} might break it down to about ${Math.round(reviewDataNew.annualFee / 12)} a month, it’s a yearly investment that needs to pay off.</p>
+            <p>For new cardmembers, a welcome offer can soften that initial outlay. A typical 2025 offer might be earning 80,000 Membership Rewards® Points after spending $8,000 in the first six months. Valuing these points at around 2 cents each when transferred to travel partners (see how we value points <a href="/your-valuation-methodology-article-link" target="_blank" rel="noopener">here</a>) means this bonus could be worth roughly $1,600 – easily covering the first year's fee. However, remember this is a one-time boost. Long-term value depends on consistently using the card’s ongoing benefits. The $8,000 spending threshold also signals that this card is geared towards those with significant purchasing power.</p>
             <p>Beyond the welcome bonus, here’s how you earn points:</p>
             <ul>
-                <li><strong>5X Points:</strong> On flights booked directly with airlines or via American Express Travel (on up to $500,000 of these purchases per calendar year). This also applies to prepaid hotels booked on AmexTravel.com.</li>
-                <li><strong>1X Points:</strong> On all other eligible purchases.</li>
+              <li><strong>5X Points:</strong> On flights booked directly with airlines or via American Express Travel (on up to $500,000 of these purchases per calendar year). This also applies to prepaid hotels booked on AmexTravel.com.</li>
+              <li><strong>1X Points:</strong> On all other eligible purchases.</li>
             </ul>
             <p>For frequent travelers, that 5X multiplier is compelling. However, the card is clearly a travel-focused product, not an all-around rewards earner, as the 1X rate on everyday spending isn't best-in-class.</p>
-            
-            <h4>Quick Look: Offsetting the ${annualFee} Fee</h4>
-            <p>Many cardholders look to the Platinum Card's statement credits to make the annual fee worthwhile. Here’s a snapshot of how quickly some popular credits can add up:</p>
-            <div className={styles.tableResponsive}>
-                <table className={styles.comparisonTable}>
-                    <thead>
-                        <tr>
-                            <th>Feature</th>
-                            <th>Annual Value</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Annual Fee</td>
-                            <td>${annualFee}</td>
-                        </tr>
-                        <tr>
-                            <td colSpan="2"><strong>Potential Offsets:</strong></td>
-                        </tr>
-                        <tr>
-                            <td>$200 Uber Cash</td>
-                            <td>$200</td>
-                        </tr>
-                        <tr>
-                            <td>$240 Digital Ent. Credit</td>
-                            <td>$240</td>
-                        </tr>
-                        <tr>
-                            <td>$200 Airline Fee Credit</td>
-                            <td>$200</td>
-                        </tr>
-                        <tr>
-                            <td>$199 CLEAR® Plus Credit</td>
-                            <td>$199</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Subtotal of 4 Credits</strong></td>
-                            <td><strong>$839</strong></td>
-                        </tr>
-                    </tbody>
-                </table>
+
+            <div className={styles.tableResponsive} style={{ marginTop: '2rem', marginBottom: '2rem' }}>
+              <h4 style={{textAlign: 'center'}}>Quick Look: Offsetting the ${reviewDataNew.annualFee} Fee</h4>
+              <table className={`${styles.comparisonTable} ${styles.noStickyFirstCol}`}>
+                <thead>
+                  <tr>
+                    <th>Feature</th>
+                    <th>Annual Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Annual Fee</strong></td>
+                    <td><strong>${reviewDataNew.annualFee}</strong></td>
+                  </tr>
+                  <tr>
+                    <td colSpan={2}><em>Potential Offsets:</em></td>
+                  </tr>
+                  <tr>
+                    <td>$200 Uber Cash</td>
+                    <td>$200</td>
+                  </tr>
+                  <tr>
+                    <td>$240 Digital Ent. Credit</td>
+                    <td>$240</td>
+                  </tr>
+                  <tr>
+                    <td>$200 Airline Fee Credit</td>
+                    <td>$200</td>
+                  </tr>
+                  <tr>
+                    <td>$189 CLEAR® Plus Credit (Note: text had $199, typically $189)</td>
+                    <td>$189</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Subtotal of 4 Credits</strong></td>
+                    <td><strong>$829</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+              <p style={{textAlign: 'center', fontSize: '0.9em', marginTop: '0.5em'}}>This simple example shows how utilizing just a few key credits you'd likely use anyway can more than cover the annual fee. The full list offers even more potential. Enrollment required for select benefits.</p>
             </div>
-            <p>This simple example shows how utilizing just a few key credits you'd likely use anyway can more than cover the annual fee. The full list offers even more potential.</p>
+          </section>
+
+          <section id="cta-amex-platinum-card" className={styles.ctaSection}>
+              <h2>Interested in the <b>{reviewDataNew.cardName}</b>?</h2>
+              <p>Unlock premium travel perks and valuable statement credits.</p>
+              <div className={styles.ctaButtons}>
+                <a href={reviewDataNew.applyLink} className={`${styles.btn} ${styles.btnApply}`} title={`Apply for the ${reviewDataNew.cardName} on the issuer's secure site`} target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
+                <a href={reviewDataNew.ratesLink} className={`${styles.btn} ${styles.btnRates}`} title={`See rates and fees for the ${reviewDataNew.cardName}`} target="_blank" rel="noopener noreferrer sponsored">See Rates & Fees</a>
+              </div>
           </section>
 
           <section id="platinum-credits" className={styles.reviewSection}>
             <h2>III. Decoding the Dollars: Your 2025 Guide to Platinum Credits</h2>
-            <p>The array of statement credits is where many cardholders look to justify the ${annualFee} fee. American Express claims "over $1,500 in value" here. Let’s see how that breaks down in 2025, keeping in mind that maximizing these often requires aligning them with your existing spending.</p>
+            <p>The array of statement credits is where many cardholders look to justify the ${reviewDataNew.annualFee} fee. {reviewDataNew.issuerName} claims "over $1,500 in value" here. Let’s see how that breaks down in 2025, keeping in mind that maximizing these often requires aligning them with your existing spending. Enrollment is required for many benefits.</p>
             <ul>
-                <li><strong>$200 Airline Fee Credit:</strong> Yearly credit for incidental fees (like baggage or in-flight snacks, not tickets) on one pre-selected qualifying airline. Enrollment required. This credit can be somewhat tricky to maximize depending on your travel habits.</li>
-                <li><strong>$200 Hotel Credit:</strong> Annual credit on prepaid bookings at Fine Hotels + Resorts® (FHR) or The Hotel Collection (THC) properties (THC requires a 2-night minimum) through American Express Travel. Highly beneficial for those who book luxury hotels via Amex Travel.</li>
-                <li><strong>$200 Uber Cash:</strong> $15 in Uber Cash monthly, plus a $20 December bonus (totaling $200 annually) for U.S. rides or Uber Eats. Your card must be linked to your Uber account. A very practical credit for regular Uber users, though it's a monthly "use-it-or-lose-it" perk.</li>
-                <li><strong>$240 Digital Entertainment Credit:</strong> Up to $20 back each month on eligible purchases with select services like Disney+, Hulu, Peacock, The New York Times, and The Wall Street Journal. Enrollment required. Great savings if you already subscribe to these services; also a monthly "use-it-or-lose-it" credit.</li>
-                <li><strong>$199 CLEAR® Plus Credit:</strong> Covers the annual cost of a CLEAR Plus membership for expedited airport security. Excellent for travelers who value airport speed and frequent airports with CLEAR lanes.</li>
-                <li><strong>$100 Saks Fifth Avenue Credit:</strong> $50 credited semi-annually (Jan-June & July-Dec) for Saks purchases. Enrollment required. Beneficial if you shop at Saks, but you need to remember to use it within each six-month window.</li>
-                <li><strong>$155 Walmart+ Credit:</strong> Covers the monthly Walmart+ membership fee (currently $12.95 + tax). Valuable for individuals who utilize Walmart+ for benefits like free grocery delivery and shipping.</li>
-                <li><strong>$300 Equinox Credit:</strong> Annual credit towards Equinox Fitness Club memberships or the Equinox+ digital app. Enrollment required. Can also apply to a SoulCycle at-home bike under certain conditions. Extremely valuable for existing Equinox members or those considering it, but quite niche for others.</li>
-                <li><strong>Global Entry or TSA PreCheck® Fee Credit:</strong> Covers the application fee every 4-4.5 years (up to $120). A standard and useful perk among high-end travel cards for streamlining airport security.</li>
+              <li><strong>$200 Airline Fee Credit:</strong> Yearly credit for incidental fees (like baggage or in-flight snacks, not tickets) on one pre-selected qualifying airline. Enrollment required. This credit can be somewhat tricky to maximize depending on your travel habits.</li>
+              <li><strong>$200 Hotel Credit:</strong> Annual credit on prepaid bookings at Fine Hotels + Resorts® (FHR) or The Hotel Collection (THC) properties (THC requires a 2-night minimum) through American Express Travel. Highly beneficial for those who book luxury hotels via Amex Travel.</li>
+              <li><strong>$200 Uber Cash:</strong> $15 in Uber Cash monthly, plus a $20 December bonus (totaling $200 annually) for U.S. rides or Uber Eats. Your card must be linked to your Uber account. A very practical credit for regular Uber users, though it's a monthly "use-it-or-lose-it" perk.</li>
+              <li><strong>$240 Digital Entertainment Credit:</strong> Up to $20 back each month on eligible purchases with select services like Disney+, Hulu, Peacock, The New York Times, and The Wall Street Journal. Enrollment required. Great savings if you already subscribe to these services; also a monthly "use-it-or-lose-it" credit.</li>
+              <li><strong>$189 CLEAR® Plus Credit:</strong> Covers the annual cost of a CLEAR Plus membership (value typically $189). Excellent for travelers who value airport speed and frequent airports with CLEAR lanes.</li>
+              <li><strong>$100 Saks Fifth Avenue Credit:</strong> $50 credited semi-annually (Jan-June & July-Dec) for Saks purchases. Enrollment required. Beneficial if you shop at Saks, but you need to remember to use it within each six-month window.</li>
+              <li><strong>$155 Walmart+ Credit:</strong> Covers the monthly Walmart+ membership fee (currently $12.95 + tax, approx. $155 annually). Valuable for individuals who utilize Walmart+ for benefits like free grocery delivery and shipping.</li>
+              <li><strong>$300 Equinox Credit:</strong> Annual credit towards Equinox Fitness Club memberships or the Equinox+ digital app. Enrollment required. Can also apply to a SoulCycle at-home bike under certain conditions. Extremely valuable for existing Equinox members or those considering it, but quite niche for others.</li>
+              <li><strong>Global Entry or TSA PreCheck® Fee Credit:</strong> Covers the application fee every 4-4.5 years (up to $100 for Global Entry or up to $85 for TSA PreCheck®). A standard and useful perk among high-end travel cards for streamlining airport security.</li>
             </ul>
-            <p>Total Potential Value: Around $1,800+ if you can use every credit.</p>
-            <p>Many of these are "use-it-or-lose-it," encouraging regular engagement. This sometimes leads to the "coupon book" critique – you need to be organized to get the full value. The actual worth of these credits truly hinges on whether they cover expenses you'd have anyway.</p>
+            <p><strong>Total Potential Value:</strong> Around $1,800+ if you can use every credit. Many of these are "use-it-or-lose-it," encouraging regular engagement. This sometimes leads to the "coupon book" critique – you need to be organized to get the full value. The actual worth of these credits truly hinges on whether they cover expenses you'd have anyway.</p>
           </section>
 
           <section id="travel-benefits" className={styles.reviewSection}>
             <h2>IV. The Globetrotter's Toolkit: Elite Travel Benefits in 2025</h2>
-            <p>Beyond direct credits, the Platinum Card is packed with travel-enhancing perks.</p>
+            <p>Beyond direct credits, the {reviewDataNew.cardName} is packed with travel-enhancing perks. Enrollment may be required.</p>
             <h3>The American Express Global Lounge Collection®:</h3>
             <p>This is a crown jewel, offering access to over 1,400 airport lounges worldwide, including:</p>
             <ul>
-                <li><strong>The Centurion® Lounges:</strong> Amex's premium lounges. Guest access typically costs $50 per adult and $30 per child, though cardmembers who spend $75,000 or more on their card in a calendar year can receive complimentary access for up to two guests.</li>
-                <li><strong>Priority Pass™ Select Lounges:</strong> Broad network (enrollment required).</li>
-                <li><strong>Delta Sky Club®:</strong> Access when flying Delta. Personal Platinum Card members now receive 10 complimentary visits per year; earning unlimited Delta Sky Club access requires $75,000 in eligible purchases on the card annually.</li>
-                <li><strong>Other partners</strong> like Escape Lounges and select Lufthansa lounges.</li>
+              <li><strong>The Centurion® Lounges:</strong> Amex's premium lounges. Guest access policies apply and may involve fees or spending requirements for complimentary guest access.</li>
+              <li><strong>Priority Pass™ Select Lounges:</strong> Broad network (enrollment required).</li>
+              <li><strong>Delta Sky Club®:</strong> Access when flying Delta. Note: Card Members will receive a limited number of complimentary visits each year unless certain annual spending thresholds are met for unlimited access.</li>
+              <li>Other partners like Escape Lounges and select Lufthansa lounges. While recent changes to guest policies tie unrestricted access more to higher spending or may involve fees, this network remains a travel game-changer for many.</li>
             </ul>
-            <p>While recent changes to Delta and Centurion guest policies tie unrestricted access more to higher spending, this network remains a travel game-changer for many.</p>
-            
             <h3>Elevated Stays: Hotel Elite Status:</h3>
             <ul>
-                <li><strong>Hilton Honors™ Gold Status</strong></li>
-                <li><strong>Marriott Bonvoy® Gold Elite Status</strong> (Enrollment required for both).</li>
+              <li><strong>Hilton Honors™ Gold Status</strong></li>
+              <li><strong>Marriott Bonvoy® Gold Elite Status</strong> (Enrollment required for both). These offer benefits like potential room upgrades, bonus points, and late check-out. While good, very frequent travelers might already hold higher status through direct loyalty.</li>
             </ul>
-            <p>These offer benefits like potential room upgrades, bonus points, and late check-out. While good, very frequent travelers might already hold higher status through direct loyalty.</p>
-
             <h3>Fine Hotels + Resorts® (FHR) and The Hotel Collection (THC):</h3>
             <p>Booking through these Amex Travel programs (and using the $200 hotel credit) unlocks extra perks like daily breakfast for two (FHR), room upgrades (when available), a $100 experience credit (FHR/THC), and late check-out. These are particularly valuable for luxury stays.</p>
-
             <h3>Car Rental Privileges:</h3>
             <p>Complimentary premium status with programs like Avis Preferred®, Hertz Gold Plus Rewards®, and National Car Rental® Emerald Club Executive® (enrollment required), offering upgrades and priority service.</p>
-
             <h3>No Foreign Transaction Fees:</h3>
             <p>A must for international travel, saving you ~3% on overseas purchases.</p>
           </section>
 
           <section id="travel-protections" className={styles.reviewSection}>
             <h2>V. Travel Confidently: Platinum's Suite of Protections in 2025</h2>
-            <p>The Platinum Card offers valuable insurance and protections, providing peace of mind.</p>
+            <p>The {reviewDataNew.cardName} offers valuable insurance and protections, providing peace of mind. Terms, conditions, and limitations apply. Coverage is often contingent on paying for the entire fare or rental with your card.</p>
             <ul>
-                <li><strong>Trip Cancellation and Interruption Insurance:</strong> Reimburses non-refundable travel expenses if your trip (paid entirely with the card) is cancelled or interrupted for a covered reason.</li>
-                <li><strong>Trip Delay Insurance:</strong> If your trip (paid entirely with the card) is delayed for a covered reason (often 6+ hours), this may cover reasonable extra expenses like meals and lodging.</li>
-                <li><strong>Baggage Insurance Plan:</strong> Coverage for lost, damaged, or stolen baggage when your common carrier ticket was paid entirely with the card.</li>
-                <li><strong>Car Rental Loss and Damage Insurance:</strong> Typically secondary coverage for damage or theft of a rental vehicle when you pay with the card and decline the rental company's CDW. (Not available in all countries; some vehicle exclusions). A crucial detail: "Entire fare" or "entire rental cost" must often be charged to the Platinum Card for these benefits to apply.</li>
-                <li><strong>Cell Phone Protection:</strong> Up to $800 per claim (two claims per year, $50 deductible) for repair or replacement of a damaged/stolen phone if your prior month's wireless bill was paid with the Platinum Card.</li>
-                <li><strong>Purchase Protection:</strong> Protects eligible new purchases against accidental damage or theft for 90 days (up to $10,000 per item, $50,000 per year).</li>
-                <li><strong>Extended Warranty:</strong> Adds up to one extra year to original manufacturer's warranties of 5 years or less.</li>
+              <li><strong>Trip Cancellation and Interruption Insurance:</strong> Reimburses non-refundable travel expenses if your trip (paid entirely with the card) is cancelled or interrupted for a covered reason.</li>
+              <li><strong>Trip Delay Insurance:</strong> If your trip (paid entirely with the card) is delayed for a covered reason (often 6+ hours), this may cover reasonable extra expenses like meals and lodging.</li>
+              <li><strong>Baggage Insurance Plan:</strong> Coverage for lost, damaged, or stolen baggage when your common carrier ticket was paid entirely with the card.</li>
+              <li><strong>Car Rental Loss and Damage Insurance:</strong> Typically secondary coverage for damage or theft of a rental vehicle when you pay with the card and decline the rental company's CDW. (Not available in all countries; some vehicle exclusions).</li>
+              <li><strong>Cell Phone Protection:</strong> Up to $800 per claim (two claims per 12-month period, $50 deductible per claim) for repair or replacement of a damaged/stolen phone if your prior month's wireless bill was paid with the {reviewDataNew.cardName}.</li>
+              <li><strong>Purchase Protection:</strong> Protects eligible new purchases against accidental damage or theft for 90 days (up to $10,000 per occurrence, $50,000 per Card Member account per calendar year).</li>
+              <li><strong>Extended Warranty:</strong> Adds up to one extra year to original U.S. manufacturer's warranties of 5 years or less.</li>
             </ul>
             <p>These protections add a significant layer of security, extending the card’s value beyond just travel perks.</p>
           </section>
 
           <section id="lifestyle-perks" className={styles.reviewSection}>
             <h2>VI. Beyond the Airport: Lifestyle Perks</h2>
-            <p>The Platinum Card's appeal isn't limited to travel.</p>
+            <p>The {reviewDataNew.cardName}'s appeal isn't limited to travel.</p>
             <ul>
-                <li><strong>Global Dining Access by Resy:</strong> Add your card to your Resy profile to unlock exclusive reservations at sought-after restaurants and invitations to special dining events. This is a nice touch for foodies.</li>
-                <li><strong>Amex Offers & Events:</strong> Access to targeted discounts or bonus points at various merchants, plus presales or preferred seating for concerts and shows. These vary but can offer ongoing value.</li>
+              <li><strong>Global Dining Access by Resy:</strong> Add your card to your Resy profile to unlock exclusive reservations at sought-after restaurants and invitations to special dining events. This is a nice touch for foodies.</li>
+              <li><strong>Amex Offers & Events:</strong> Access to targeted discounts or bonus points at various merchants, plus presales or preferred seating for concerts and shows. These vary but can offer ongoing value.</li>
             </ul>
             <p>These perks contribute to a "Platinum Lifestyle," adding a touch of luxury and exclusivity to everyday life, not just when you're on the road.</p>
           </section>
 
           <section id="verdict" className={styles.reviewSection}>
             <h2>VII. The Verdict: Is the Amex Platinum a Smart Investment for You in 2025?</h2>
-            <p>So, is the ${annualFee} Amex Platinum worth it in 2025? It truly depends on you.</p>
-            <p>If you can leverage many of the statement credits (potentially $1,800+ in value), the annual fee is more than covered. Add the value of lounge access, hotel statuses, and travel protections, and the financial case can be strong.</p>
-            
-            <div id="pros-cons" className={styles.reviewSubSection}>
-                <h3>Pros & Cons</h3>
-                <h4>Pros: Why It's a Great Fit</h4>
+            <p>So, is the ${reviewDataNew.annualFee} {reviewDataNew.cardName} worth it in 2025? It truly depends on you. If you can leverage many of the statement credits (potentially $1,800+ in value, enrollment required for some), the annual fee is more than covered. Add the value of lounge access, hotel statuses, and travel protections, and the financial case can be strong.</p>
+
+            <div className={styles.prosConsContainer}> {/* Optional: A container for side-by-side layout via CSS */}
+              <div className={styles.prosSection}>
+                <h3>Pros: Why It's a Great Fit</h3>
                 <ul>
-                    <li><strong>Unmatched Lounge Access:</strong> The Global Lounge Collection is a top-tier benefit for frequent flyers.</li>
-                    <li><strong>Substantial Credit Potential:</strong> If the credits align with your spending, they can significantly offset the fee.</li>
-                    <li><strong>Valuable Hotel Perks:</strong> Elite status and FHR/THC benefits elevate stays.</li>
-                    <li><strong>Robust Protections:</strong> Comprehensive travel and purchase insurance provides peace of mind.</li>
-                    <li><strong>Generous Welcome Offer:</strong> Often offsets the first year's fee and then some.</li>
-                    <li><strong>5X Points on Flights & Prepaid Hotels:</strong> Excellent for these specific bookings.</li>
+                  <li><strong>Unmatched Lounge Access:</strong> The Global Lounge Collection is a top-tier benefit for frequent flyers.</li>
+                  <li><strong>Substantial Credit Potential:</strong> If the credits align with your spending, they can significantly offset the fee. Enrollment required for some benefits.</li>
+                  <li><strong>Valuable Hotel Perks:</strong> Elite status with Hilton and Marriott Bonvoy and FHR/THC benefits elevate stays. Enrollment required.</li>
+                  <li><strong>Robust Protections:</strong> Comprehensive travel and purchase insurance provides peace of mind. Terms apply.</li>
+                  <li><strong>Generous Welcome Offer:</strong> Often offsets the first year's fee and then some.</li>
+                  <li><strong>5X Points on Flights & Prepaid Hotels:</strong> Excellent for these specific bookings through Amex Travel or directly with airlines.</li>
                 </ul>
-                <h4>Cons: Potential Downsides</h4>
+              </div>
+              <div className={styles.consSection}>
+                <h3>Cons: Potential Downsides</h3>
                 <ul>
-                    <li><strong>Steep ${annualFee} Annual Fee:</strong> It's a big commitment.</li>
-                    <li><strong>"Coupon Book" Management:</strong> Maximizing benefits requires enrollment and tracking.</li>
-                    <li><strong>Niche Credits:</strong> Some credits (like Equinox for non-members) may not fit everyone.</li>
-                    <li><strong>Low 1X Base Rewards:</strong> Not the best for general, non-bonused spending.</li>
-                    <li><strong>Less Value for Infrequent Travelers:</strong> Core benefits are travel-centric.</li>
+                  <li><strong>Steep ${reviewDataNew.annualFee} Annual Fee:</strong> It's a big commitment.</li>
+                  <li><strong>"Coupon Book" Management:</strong> Maximizing benefits requires enrollment and tracking for various credits and offers.</li>
+                  <li><strong>Niche Credits:</strong> Some credits (like Equinox for non-members) may not fit everyone.</li>
+                  <li><strong>Low 1X Base Rewards:</strong> Not the best for general, non-bonused spending.</li>
+                  <li><strong>Less Value for Infrequent Travelers:</strong> Core benefits are travel-centric.</li>
+                  <li><strong>Lounge Access Changes:</strong> Recent modifications to guest access and Delta Sky Club visits might reduce value for some.</li>
                 </ul>
+              </div>
             </div>
 
-            <div id="who-gains-most" className={styles.reviewSubSection}>
-                <h3>Who Gains the Most?</h3>
-                <ul>
-                    <li><strong>The Frequent Luxury Traveler:</strong> Values lounges, premium hotels (using FHR/THC), and their spending naturally uses many credits (Uber, entertainment, CLEAR®).</li>
-                    <li><strong>The Consistent Business Traveler:</strong> Values comfort, efficiency, and status perks, especially if they can utilize credits personally.</li>
-                    <li><strong>The Digitally Savvy, US-Based Consumer:</strong> Can easily maximize domestic perks like Uber Cash, Walmart+, CLEAR®, and digital entertainment credits.</li>
-                </ul>
-            </div>
-            
-            <div id="who-might-look-elsewhere" className={styles.reviewSubSection}>
-                <h3>Who Might Look Elsewhere?</h3>
-                <ul>
-                    <li><strong>The Budget-Focused Traveler:</strong> If minimizing costs is key, the high fee and luxury focus won't align.</li>
-                    <li><strong>The Very Infrequent Traveler:</strong> Won't get enough value from travel perks.</li>
-                    <li><strong>Fans of Simplicity:</strong> If you prefer straightforward rewards without tracking multiple credits.</li>
-                    <li><strong>Those Unwilling to Actively Manage Benefits:</strong> The "coupon book" will feel like a burden.</li>
-                </ul>
-            </div>
-            <p>American Express’s claim of "over $1,500 in value" is achievable if you use most credits for things you'd buy anyway. The card is increasingly blending travel perks with "premium lifestyle" benefits for high-spenders. For those who master its intricacies, the Platinum Card can feel like a win.</p>
-            <p>
-                Ready to elevate your travels? <a href="YOUR_AFFILIATE_APPLY_LINK_HERE" target="_blank" rel="noopener noreferrer">Apply for The Platinum Card® from American Express</a>
-                <br />
-                <a href="ISSUER_RATES_FEES_LINK_HERE" target="_blank" rel="noopener noreferrer">See Rates & Fees</a>
-            </p>
+            <h3 style={{marginTop: '2rem'}}>Who Gains the Most?</h3>
+            <ul>
+              <li><strong>The Frequent Luxury Traveler:</strong> Values lounges, premium hotels (using FHR/THC), and their spending naturally uses many credits (Uber, entertainment, CLEAR®). Enrollment required for some benefits.</li>
+              <li><strong>The Consistent Business Traveler:</strong> Values comfort, efficiency, and status perks, especially if they can utilize credits personally.</li>
+              <li><strong>The Digitally Savvy, US-Based Consumer:</strong> Can easily maximize domestic perks like Uber Cash, Walmart+, CLEAR®, and digital entertainment credits. Enrollment required for some benefits.</li>
+            </ul>
+
+            <h3>Who Might Look Elsewhere?</h3>
+            <ul>
+              <li><strong>The Budget-Focused Traveler:</strong> If minimizing costs is key, the high fee and luxury focus won't align.</li>
+              <li><strong>The Very Infrequent Traveler:</strong> Won't get enough value from travel perks.</li>
+              <li><strong>Fans of Simplicity:</strong> If you prefer straightforward rewards without tracking multiple credits.</li>
+              <li><strong>Those Unwilling to Actively Manage Benefits:</strong> The "coupon book" will feel like a burden.</li>
+            </ul>
+            <p>{reviewDataNew.issuerName}’s claim of "over $1,500 in value" from credits is achievable if you use most credits for things you'd buy anyway. The card is increasingly blending travel perks with "premium lifestyle" benefits for high-spenders. For those who master its intricacies, the {reviewDataNew.cardName} can feel like a win.</p>
           </section>
 
           <section id="conclusion" className={styles.reviewSection}>
             <h2>VIII. Conclusion: Crafting Your Platinum Journey in 2025</h2>
-            <p>The 2025 American Express Platinum Card isn't for everyone. Its ${annualFee} fee demands a lifestyle and spending pattern that can consistently extract superior value. It’s for the proactive cardholder who will actively manage benefits to enhance experiences they already seek.</p>
-            <p>Ask yourself: How often do I fly? Do I value lounges and hotel perks? Does my spending align with credits for Uber, entertainment, Walmart+, or Saks? Am I willing to track these?</p>
-            <p>If your answers align, the Platinum Card can be a powerful key to a world of elevated travel and convenience. But remember, the true value of any premium card is only realized if you manage it responsibly, paying your balance in full to avoid interest charges that negate your hard-earned perks.</p>
+            <p>The 2025 {reviewDataNew.cardName} isn't for everyone. Its ${reviewDataNew.annualFee} fee demands a lifestyle and spending pattern that can consistently extract superior value. It’s for the proactive cardholder who will actively manage benefits (enrollment required for some) to enhance experiences they already seek.</p>
+            <p>Ask yourself: How often do I fly? Do I value lounges and hotel perks? Does my spending align with credits for Uber, entertainment, Walmart+, or Saks? Am I willing to track these and enroll where needed?</p>
+            <p>If your answers align, the {reviewDataNew.cardName} can be a powerful key to a world of elevated travel and convenience. But remember, the true value of any premium card is only realized if you manage it responsibly, paying your balance in full to avoid interest charges that negate your hard-earned perks.</p>
+          </section>
+
+          <section className={`${styles.reviewSection} ${styles.finalCtaSection}`}>
+            <h2>Ready to elevate your travels with the {reviewDataNew.cardName}?</h2>
+            <p>If the premium benefits and credits align with your travel and spending habits, this card could unlock significant value.</p>
+            <div className={styles.ctaButtons}>
+              <a
+                href={reviewDataNew.applyLink}
+                className={`${styles.btn} ${styles.btnApply} ${styles.btnLarge}`}
+                target="_blank"
+                rel="noopener noreferrer sponsored"
+                title={`Apply for The ${reviewDataNew.cardName} from ${reviewDataNew.issuerName} on the issuer's secure site`}
+              >
+                Apply for The Platinum Card®
+              </a>
+              <a
+                href={reviewDataNew.ratesLink}
+                className={`${styles.btn} ${styles.btnRates} ${styles.btnLarge}`}
+                target="_blank"
+                rel="noopener noreferrer sponsored"
+                title={`See rates and fees for The ${reviewDataNew.cardName} from ${reviewDataNew.issuerName}`}
+              >
+                See Rates & Fees
+              </a>
+            </div>
+            <p className={styles.smallPrintTerms}>Terms Apply. Click links for details. Enrollment required for select American Express benefits and offers.</p>
           </section>
 
         </article>
       </main>
 
-      {/* <Footer /> */} {/* Uncomment if you have a Footer component */}
+      <div className={styles.stickyCtaContainer}>
+        <div className={styles.stickyCtaContent}>
+            <span className={styles.stickyCtaText}>The {reviewDataNew.cardName} - ${reviewDataNew.annualFee} Annual Fee.</span>
+            <div className={styles.stickyCtaButtons}>
+                <a
+                href={reviewDataNew.applyLink}
+                target="_blank"
+                rel="noopener noreferrer sponsored"
+                className={styles.ctaButtonApply}
+                >
+                Apply Now
+                </a>
+                <a
+                href={reviewDataNew.ratesLink} // Or reviewDataNew.learnMoreLink if more appropriate
+                target="_blank" // It's good practice for external links even for "learn more" if it's rates/fees
+                rel="noopener noreferrer sponsored"
+                className={styles.ctaButtonLearnMore}
+                >
+                See Rates & Fees
+                </a>
+            </div>
+        </div>
+      </div>
     </>
   );
 }
