@@ -351,6 +351,7 @@ export default function HomePage({ featuredReviews, latestNews }) {
                 <div className="reviews-grid">
                 {[
                     // Keep your existing array of review objects
+                    { img: "/images/amex-platinum-card-2025.png", alt: "The Platinum Card from American Express", title: "Amex Platinum 2025 Review: Are Premium Travel Perks Worth $695?", desc: "In-depth 2025 review of The Platinum Card® from American Express. Explore its $695 fee, extensive travel credits, lounge access, elite status, and protections to see if it's the right premium card for US travelers.", link: "/review/amex-platinum-review-2025", date: "2025-05-21" },
                     { img: "/eddy-billard-JOoOPt8tTPY-unsplash.webp", alt: "Montage of travel scenes and credit cards, symbolizing accessible travel with starter rewards cards in 2025.", title: "Best Starter Travel Cards 2025", desc: "Your guide to top beginner travel rewards cards for US travelers. Low fees, simple rewards.", link: "/review/BestStarterTravelCardsPage2025" },
                     { img: "/manuel-moreno-DGa0LQ0yDPc-unsplash.webp", alt: "Best Hotel Credit Cards for US Travelers in 2025, featuring luxury hotel imagery", title: "Hotel Rewards Showdown 2025: Elite Perks & Free Stays", desc: "Reviewing 2025's top hotel credit cards for US travelers seeking elite status and maximum free night value.", link: "/review/BestHotelCardsPage2025" },
                     { img: "/darrin-henein-sREvt-W52Tc-unsplash.webp", alt: "Alaska Airlines Visa Signature Card on a travel-themed background", title: "Alaska Airlines Visa Signature Card (2025)", desc: "West Coaster's top pick? Review Companion Fare, free bags, $95 fee & 2025 perks.", link: "/review/alaska-airlines-visa-signature-2025" },
@@ -359,18 +360,9 @@ export default function HomePage({ featuredReviews, latestNews }) {
                     { img: "/pexels-railgunbreaker-32008325.webp", alt: "Airplane wing with a credit card and passport", title: "Top Airline Credit Cards for Miles & Perks in 2025", desc: "Unlock free flights and luxury travel with 2025's best airline rewards credit cards.", link: "/review/Best Credit Cards for Booking Flights in 2025", },
                     { img: "/peter-hansen-MeGmdPNe36w-unsplash.webp", alt: "Chase Sapphire Preferred credit card art", title: "Chase Sapphire Preferred Review (2025)", desc: "Is the Chase Sapphire Preferred still the traveler's sweetheart for $95 in 2025? Our in-depth analysis.", link: "/review/chase-sapphire-preferred-2025" },
                     { img: "/simon-english-48nerZQCHgo-unsplash.webp", alt: "Wells Fargo Autograph Journey℠ Card", title: "Wells Fargo Autograph Journey Review 2025: Premium Travel Contender?", desc: "In-depth 2025 review of the Wells Fargo Autograph Journey℠ Card. Explore rewards, benefits, fees, and see if it's the right premium travel card for US travelers.", link: "/review/wells-fargo-autograph-journey-2025" },
-                    { img: "/618ad46b23745d001825bd89.webp", alt: "Capital One Venture and Venture X Cards", title: "Capital One Venture Rewards vs. Venture X: Which Travel Card Wins in 2025?", desc: "A comprehensive review comparing Capital One Venture and Venture X rewards, benefits, fees, and overall value to determine the best fit for US travelers in 2025", link: "/review/capital-one-venture-rewards-vs-venture-x-2025", date: "2025-05-07" },
-                    
-                   
-                    
-                   
                     
                     
-                    
-                   
-                    
-                    
-                ].map((review, index) => (
+                            ].map((review, index) => (
                     <div className="card review-card" key={review.link || index}>
                     <Link href={review.link || '#'} className="review-card__image-link">
                         <Image
