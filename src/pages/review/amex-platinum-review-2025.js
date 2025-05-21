@@ -457,7 +457,7 @@ export default function AmexPlatinumReview2025() {
 
           <section id="cta-amex-platinum-card" className={styles.ctaSection}>
               <h2>Interested in the <b>{reviewDataNew.cardName}</b>?</h2>
-              <p>Unlock premium travel perks and valuable statement credits.</p>
+              
               <div className={styles.ctaButtons}>
                 <a href={reviewDataNew.applyLink} className={`${styles.btn} ${styles.btnApply}`} title={`Apply for the ${reviewDataNew.cardName} on the issuer's secure site`} target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
                 <a href={reviewDataNew.ratesLink} className={`${styles.btn} ${styles.btnRates}`} title={`See rates and fees for the ${reviewDataNew.cardName}`} target="_blank" rel="noopener noreferrer sponsored">See Rates & Fees</a>
@@ -612,29 +612,7 @@ export default function AmexPlatinumReview2025() {
         </article>
       </main>
 
-      <div className={styles.stickyCtaContainer}>
-        <div className={styles.stickyCtaContent}>
-            <span className={styles.stickyCtaText}>The {reviewDataNew.cardName} - ${reviewDataNew.annualFee} Annual Fee.</span>
-            <div className={styles.stickyCtaButtons}>
-                <a
-                href={reviewDataNew.applyLink}
-                target="_blank"
-                rel="noopener noreferrer sponsored"
-                className={styles.ctaButtonApply}
-                >
-                Apply Now
-                </a>
-                <a
-                href={reviewDataNew.ratesLink} // Or reviewDataNew.learnMoreLink if more appropriate
-                target="_blank" // It's good practice for external links even for "learn more" if it's rates/fees
-                rel="noopener noreferrer sponsored"
-                className={styles.ctaButtonLearnMore}
-                >
-                See Rates & Fees
-                </a>
-            </div>
-        </div>
-      </div>
+     
     </>
   );
 }
