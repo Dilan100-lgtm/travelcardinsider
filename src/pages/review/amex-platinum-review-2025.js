@@ -56,7 +56,7 @@ const reviewDataNew = {
   pagePath: "/review/amex-platinum-2025",
   imageUrl: "/savvas-kalimeris-hO3do8FKJkQ-unsplash.webp", // IMPORTANT: Update this path to your card image in /public
   imageWidth: 760, // Main card image width
-  imageHeight: 480, // Main card image height
+  
   siteLogoUrl: "/images/logo.png", // IMPORTANT: Update this path to your site logo in /public
   publishDate: "2025-05-22", // IMPORTANT: Update as per your publishing date
   updateDate: "2025-05-22", // IMPORTANT: Update as per your update date
@@ -368,7 +368,7 @@ export default function AmexPlatinumReview2025() {
                 src={reviewDataNew.imageUrl}
                 alt={`${reviewDataNew.cardName} from ${reviewDataNew.issuerName}`}
                 width={reviewDataNew.imageWidth}
-                height={reviewDataNew.imageHeight}
+                
                 style={{ width: '100%', maxWidth: '1200px', height: 'auto', display: 'block', margin: '0 auto' }}
                 priority
               />
