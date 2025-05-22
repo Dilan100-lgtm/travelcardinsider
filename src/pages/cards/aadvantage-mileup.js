@@ -56,16 +56,16 @@ const reviewDataNew = {
       publishedStats: 'X+ in-depth card reviews per week', // Placeholder - UPDATE
       testedStats: 'Over Y+ credit card benefits across major brands', // Placeholder - UPDATE
       socialLinks: { // Placeholder - UPDATE
-          linkedin: 'https://www.linkedin.com/in/yourprofile',
-          twitter: 'https://x.com/yourhandle',
-          email: 'contact@yourcreditcardsite.com'
+          linkedin: 'https://www.linkedin.com/in/dilan-madushanka-b65293365',
+          twitter: 'https://x.com/team_dilan',
+          email: 'team@travelcardinsider.com'
       }
   },
   siteName: siteName,
   imageUrl        : '/CardArt-7.webp', // Placeholder: Replace with actual card image URL
   imageWidth      : 1290, // Placeholder - UPDATE if image dimensions differ
   imageHeight     : 812,  // Placeholder - UPDATE if image dimensions differ
-  ratingValue     : 6.1,  // Placeholder - UPDATE AS NEEDED (e.g. 3.9/5 * 2)
+  ratingValue     : 8.1,  // Placeholder - UPDATE AS NEEDED (e.g. 3.9/5 * 2)
   ratingCount     : 185,  // Placeholder - UPDATE AS NEEDED
   reviewBody      : 'Our editors evaluate the American Airlines AAdvantage® MileUp® Card based on its rewards structure (especially on groceries and AA purchases), welcome offer, lack of annual fee, Loyalty Point earning capability, in-flight benefits, and overall value for U.S.-based American Airlines flyers.',
   aprRange        : '20.24% – 29.24% variable',

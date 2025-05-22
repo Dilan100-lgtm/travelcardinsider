@@ -1,740 +1,1019 @@
-// Example Path: pages/reviews/aeroplan-card.js
-// Or: pages/reviews/[slug].js (if using dynamic routing with 'aeroplan-card' as slug)
+/* ------------------------------------------------------------------
+    File:  pages/reviews/chase-aeroplan-card.js
+    Route: https://www.yourwebsite.com/reviews/chase-aeroplan-card
+------------------------------------------------------------------- */
 
-// !!! WARNING: THIS FILE CONTAINS PLACEHOLDER DATA/URLs/DIMENSIONS !!!
-// !!! YOU MUST REPLACE ALL PLACEHOLDERS MARKED WITH '!!!' BEFORE DEPLOYMENT !!!
-// !!! VERIFY ALL CARD DETAILS & SCHEMA VALUES AGAINST OFFICIAL ISSUER INFO !!!
-
-import React, { useState, useEffect, useCallback, useRef } from 'react'; // Hooks for tooltip
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from '../../styles/ReviewPage.module.css'; // Using the REVIEW CSS module
-import Header from '../../components/Header'; // Assuming you have these components
-import Footer from '../../components/Footer'; // Assuming you have these components
+import dynamic from 'next/dynamic';
+import styles from '../../styles/ReviewPage.module.css'; // Assuming same CSS module
 
-// Simplified data object based on the final template structure
-const reviewData = {
-  cardName: 'Aeroplan® Credit Card',
-  title: 'Aeroplan® Credit Card (2025 Review) – Air Canada Perks, 3x Categories, Elite Boost',
-  description: 'A comprehensive 2000-word review of the Chase Aeroplan® Credit Card, covering Air Canada benefits, earning rates, 2025 updates, pros and cons, disclaimers, and advanced usage tips for Aeroplan travelers.',
-  keywords: 'Aeroplan, Air Canada, Chase, airline credit card, points, 2025 updates',
-  author: 'TravelCardInsider', // *** REPLACE with your actual author/site name ***
-  imageUrl: '/aeroplan_card.png', // *** VERIFY PATH in /public ***
-  ratingValue: 8.0, // From Aeroplan HTML
-  applyLink: 'https://creditcards.chase.com/travel-credit-cards/aircanada/aeroplan', // *** REPLACE with actual Aeroplan Card APPLY URL ***
-  ratesLink: 'https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC60518.html', // *** VERIFY URL ***
-  // Image dimensions (MUST BE ACCURATE for next/image)
-  imageWidth: 480, // *** REPLACE with actual image width *** (Example Placeholder)
-  imageHeight: 304, // *** REPLACE with actual image height *** (Example Placeholder)
+import TableOfContents    from '../../components/TableOfContents'; // Assuming same TOC component
+import IconGift from '../../components/icons/icon-gift.svg'; // UPDATE AS NEEDED (path to your icon)
+import IconStar from '../../components/icons/icon-star.svg'; // UPDATE AS NEEDED (path to your icon)
+import IconCheck from '../../components/icons/icon-Credit Card.svg'; // UPDATE AS NEEDED (path to your icon, e.g. a checkmark or fee icon)
+// import IconX from '../../components/icons/icon-Star + Arrow Up.svg'; // Not explicitly used in Aeroplan summary, but available
+import IconPlus from '../../components/icons/icon-target.svg'; // UPDATE AS NEEDED (path to your icon, represents 'Best For' or 'Key Benefit')
+
+const RatingTooltip = dynamic(() => import('../../components/RatingTooltip'), { ssr: false, loading: () => null });
+
+/* ──────────────────────────────
+    CONSTANTS & STATIC DATA
+    ────────────────────────────── */
+const siteName    = 'YourCreditCardSite'; // UPDATE AS NEEDED
+const siteUrl     = 'https://www.yourwebsite.com'; // UPDATE AS NEEDED: Replace with your actual site URL
+const pagePath    = '/reviews/chase-aeroplan-card'; // UPDATE AS NEEDED: if path differs
+const pageUrlFull = `${siteUrl}${pagePath}`;
+const publishDate = '2025-05-23'; // UPDATE AS NEEDED: Current date or actual publish date
+const updateDate  = '2025-05-23'; // UPDATE AS NEEDED: Current date or actual update date
+
+const reviewDataNew = {
+  cardName        : 'Chase Aeroplan Card',
+  title           : 'Chase Aeroplan Card Review (2025): US Guide to Star Alliance Rewards', // SEO Optimized Title
+  description     : 'In-depth 2025 review of the Chase Aeroplan Card for US travelers. Explore 3X rewards, Aeroplan 25K status, Pay Yourself Back, Star Alliance benefits, and $95 annual fee.', // SEO Optimized Description
+  keywords        : 'Chase Aeroplan review, Aeroplan card US, Star Alliance credit card, travel rewards card, Pay Yourself Back, Aeroplan 25K status, Air Canada credit card US, Chase credit card review',
+  author: { // Placeholder: UPDATE ALL AUTHOR DETAILS AS NEEDED
+      name: 'Your Name',
+      title: 'Founder & Lead Editor',
+      imageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // Placeholder - UPDATE
+      imageWidth: 40,
+      imageHeight: 40,
+      tooltipImageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // Placeholder - UPDATE
+      tooltipImageWidth: 60,
+      tooltipImageHeight: 60,
+      expertise: [
+          'Airline Credit Cards',
+          'Rewards Programs',
+          'Star Alliance',
+          'Points Strategy',
+          'Credit Card Analysis for US Travelers'
+      ],
+      bioSnippet: 'Your Name is the founder and lead editor of YourCreditCardSite.com, dedicated to demystifying credit cards and uncovering their real-world value for smarter travel.',
+      fullBioLink: '/author/your-name', // Placeholder - UPDATE
+      fullBio: `Your Name is the founder and lead editor of YourCreditCardSite.com, a platform dedicated to helping everyday people make smarter decisions with travel and rewards credit cards. [MORE BIO DETAILS TO BE ADDED BY USER]`,
+      publishedStats: 'X+ in-depth card reviews per week', // Placeholder - UPDATE
+      testedStats: 'Over Y+ credit card benefits across major brands', // Placeholder - UPDATE
+      socialLinks: { // Placeholder - UPDATE
+          linkedin: 'https://www.linkedin.com/in/dilan-madushanka-b65293365',
+          twitter: 'https://x.com/team_dilan',
+          email: 'team@travelcardinsider.com'
+      }
+  },
+  siteName: siteName,
+  imageUrl        : '/aeroplan_card.png', // Placeholder: Replace with actual card image URL
+  imageWidth      : 1290, // Placeholder - UPDATE if image dimensions differ (use actual dimensions for your image)
+  imageHeight     : 812,  // Placeholder - UPDATE if image dimensions differ
+  ratingValue     : 7.8,  // Placeholder - UPDATE AS NEEDED (e.g. 3.9/5 * 2) - Based on a ~4-star concept
+  ratingCount     : 162,  // Placeholder - UPDATE AS NEEDED
+  reviewBody      : 'Our editors evaluate the Chase Aeroplan Card based on its rewards structure (3X on Air Canada, groceries, dining), welcome offer, annual fee, Aeroplan 25K Elite Status benefits, Pay Yourself Back flexibility, Star Alliance partner access, and overall value for US-based travelers seeking international rewards.',
+  aprRange        : '20.49% to 28.99% variable',
+  annualFee       : 95,
+  applyLink       : 'https://creditcards.chase.com/travel-credit-cards/aircanada/aeroplan', // Placeholder - UPDATE with actual, trackable affiliate link
+  ratesLink       : 'https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC60518.html', // Placeholder - UPDATE with official rates and fees link from Chase
+  sku             : 'CHASE-AEROPLAN-YCCS-2025', // Placeholder - Example SKU
+  mpn             : 'CHASEAEROPLAN', // Placeholder - Example MPN
+  h1Content       : "Chase Aeroplan Card Review: Your US Ticket to Global Travel Rewards?",
 };
 
-// --- Rating Tooltip Content (Customize if needed for Aeroplan Card) ---
-const ratingCriteria = [ // *** VERIFY/CUSTOMIZE these criteria for Aeroplan Card Rating ***
-    'Aeroplan Points Earning (3x Categories)',
-    'Star Alliance Redemption Value',
-    'Welcome Bonus Potential',
-    'Elite Status Acceleration',
-    'Annual Fee ($95) vs. Perks',
+/* ──────────────────────────────
+    STRUCTURED DATA GRAPH
+    ────────────────────────────── */
+const structuredDataOptimized = {
+  '@context': 'https://schema.org',
+  '@graph'  : [
+    {
+      '@type'        : 'Product',
+      '@id'          : `${pageUrlFull}#product`,
+      name           : reviewDataNew.cardName,
+      image          : reviewDataNew.imageUrl, // Relative path is fine if base URL is correctly set elsewhere for schema, or use full URL
+      description    : reviewDataNew.description,
+      sku            : reviewDataNew.sku,
+      mpn            : reviewDataNew.mpn,
+      brand          : { '@type': 'Brand', name: 'Aeroplan' }, // The loyalty program brand
+      aggregateRating: {
+        '@type'    : 'AggregateRating',
+        ratingValue : reviewDataNew.ratingValue.toString(),
+        bestRating  : '10', // Assuming a 1-10 scale
+        worstRating : '1',
+        ratingCount : reviewDataNew.ratingCount.toString(),
+        reviewCount : '1', // Number of editorial reviews this schema refers to
+      },
+      offers: {
+        '@type'            : 'Offer',
+        url                : reviewDataNew.applyLink,
+        priceCurrency      : 'USD',
+        price              : reviewDataNew.annualFee.toString(),
+        priceValidUntil    : '2026-12-31', // UPDATE AS NEEDED
+        itemCondition      : 'https://schema.org/NewCondition',
+        availability       : 'https://schema.org/InStock',
+        priceSpecification: [
+          {
+            '@type'              : 'PriceSpecification',
+            priceCurrency        : 'USD',
+            price                : reviewDataNew.annualFee.toString(),
+            valueAddedTaxIncluded: 'false',
+            description          : `Annual fee: $${reviewDataNew.annualFee}.`,
+          },
+          {
+            '@type'              : 'PriceSpecification',
+            priceCurrency        : 'USD',
+            description          : `Purchase APR: ${reviewDataNew.aprRange}. Foreign Transaction Fee: $0.`,
+          },
+        ],
+        seller: { '@type': 'Organization', name: 'Chase' }, // The card issuer
+      },
+      review: { '@id': `${pageUrlFull}#editorReview` },
+    },
+    {
+      '@type'         : 'Review',
+      '@id'           : `${pageUrlFull}#editorReview`,
+      name            : `${reviewDataNew.cardName} – Review Updated ${updateDate}`,
+      itemReviewed    : { '@id': `${pageUrlFull}#product` },
+      reviewBody      : reviewDataNew.reviewBody,
+      reviewRating    : {
+        '@type'    : 'Rating',
+        ratingValue : reviewDataNew.ratingValue.toString(),
+        bestRating  : '10',
+        worstRating : '1',
+        description: `${siteName} editorial rating based on 10.0 scale, as of ${updateDate}.`
+      },
+      author          : {
+          '@type': 'Person',
+          'name': reviewDataNew.author.name,
+          'url': reviewDataNew.author.fullBioLink ? `${siteUrl}${reviewDataNew.author.fullBioLink}` : undefined
+      },
+      publisher       : {
+        '@type' : 'Organization',
+        name    : siteName,
+        logo    : { '@type': 'ImageObject', url: `${siteUrl}/images/logo/your-logo-schema.png` }, // UPDATE AS NEEDED
+      },
+      datePublished   : publishDate,
+      dateModified    : updateDate,
+    },
+    {
+      '@type'            : 'WebPage',
+      '@id'              : pageUrlFull,
+      url                : pageUrlFull,
+      name               : reviewDataNew.title,
+      description        : reviewDataNew.description,
+      inLanguage         : 'en-US',
+      isPartOf           : { '@id': `${siteUrl}#website` },
+      primaryImageOfPage : { '@id': `${pageUrlFull}#primaryImage` },
+      breadcrumb         : { '@id': `${pageUrlFull}#breadcrumbs` },
+      datePublished      : publishDate,
+      dateModified       : updateDate,
+       author: {
+          '@type': 'Person',
+          'name': reviewDataNew.author.name,
+          'url': reviewDataNew.author.fullBioLink ? `${siteUrl}${reviewDataNew.author.fullBioLink}` : undefined
+       },
+    },
+    {
+      '@type'   : 'ImageObject',
+      '@id'     : `${pageUrlFull}#primaryImage`,
+      url       : reviewDataNew.imageUrl, // Use relative or full path as appropriate for your setup
+      width     : reviewDataNew.imageWidth,
+      height    : reviewDataNew.imageHeight,
+      caption   : reviewDataNew.cardName,
+    },
+    {
+      '@type'        : 'BreadcrumbList',
+      '@id'          : `${pageUrlFull}#breadcrumbs`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: siteName, item: siteUrl },
+        { '@type': 'ListItem', position: 2, name: 'Credit Card Reviews', item: `${siteUrl}/reviews` }, // UPDATE AS NEEDED if review category path is different
+        { '@type': 'ListItem', position: 3, name: `${reviewDataNew.cardName} Review`, item: pageUrlFull },
+      ],
+    },
+    {
+      '@type'    : 'FAQPage',
+      '@id'      : `${pageUrlFull}#faqs`,
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'Do I get free checked bags on Air Canada with the Chase Aeroplan Card?',
+          acceptedAnswer: { '@type': 'Answer', text: "Yes, the primary cardmember and up to 8 companions on the same reservation get their first checked bag free when flying Air Canada. Ensure your Aeroplan number is on the booking." }
+        },
+        {
+          '@type': 'Question',
+          name: 'What is the best way to use Aeroplan points earned with this card?',
+          acceptedAnswer: { '@type': 'Answer', text: "The best value often comes from redeeming points for international business or first-class flights on Air Canada or Star Alliance partner airlines. Using Pay Yourself Back for travel purchases at 1.25 cents per point is also a strong, flexible option." }
+        },
+        {
+          '@type': 'Question',
+          name: 'Are there limits to the Pay Yourself Back feature?',
+          acceptedAnswer: { '@type': 'Answer', text: "For travel purchases, you can redeem points at 1.25 cents each, up to 200,000 points ($2,500 in statement credits) per year. You can also redeem 7,600 points for a $95 statement credit against the card's annual fee." }
+        },
+        {
+          '@type': 'Question',
+          name: 'Is the Chase Aeroplan Card good if I don’t fly Air Canada often?',
+          acceptedAnswer: { '@type': 'Answer', text: "Yes, it can still be very valuable. You can earn 3X points on groceries and dining, redeem points on over 45 partner airlines (including Star Alliance members like United), and use Pay Yourself Back for various travel expenses. The 10% bonus on Chase Ultimate Rewards transfers of 50,000+ points also adds value." }
+        },
+        {
+          '@type': 'Question',
+          name: 'What is the value of the NEXUS credit?',
+          acceptedAnswer: { '@type': 'Answer', text: "The card offers a statement credit of up to $120 every four years for Global Entry, TSA PreCheck, or NEXUS application fees. Since NEXUS costs $50 and includes Global Entry and TSA PreCheck benefits, this credit fully covers the NEXUS fee, offering excellent value for frequent US-Canada travelers." }
+        }
+      ],
+    },
+    {
+      '@type' : 'Organization',
+      '@id'   : `${siteUrl}#website`,
+      name    : siteName,
+      url     : siteUrl,
+      logo    : { '@type': 'ImageObject', url: `${siteUrl}/images/logo/your-logo-schema.png` }, // UPDATE AS NEEDED
+      sameAs  : [ // UPDATE AS NEEDED: Add actual social links for your organization
+        // "https://www.facebook.com/YourPage",
+        // "https://twitter.com/YourHandle",
+        // "https://www.linkedin.com/company/YourCompany"
+      ],
+    },
+  ],
+};
+
+const ratingCriteriaOriginal = [ // UPDATE AS NEEDED: Tailor these to your specific rating methodology for this card
+    'Welcome Bonus Value & Accessibility',
+    'Earning Rates: Groceries, Dining, Air Canada (3X)',
+    'Monthly Spend Bonus Value',
+    'Aeroplan 25K Elite Status Benefits (Initial Year)',
+    'Pay Yourself Back Flexibility & Value (1.25cpp)',
+    'Star Alliance Partner Redemption Value',
+    'Travel & Purchase Protections',
+    'Annual Fee Justification ($95)',
+    'Foreign Transaction Fee ($0)',
+    'Overall Value for US-Based Star Alliance Travelers'
 ];
 
-function AeroplanCardReviewPage() {
-  // --- Tooltip State and Logic ---
+const tocSections = [ // Derived from your content structure
+    { id: 'section-intro', title: 'Introduction: The Aeroplan Card in the US' },
+    { id: 'section-1', title: 'I. Card Snapshot & Key Details' },
+    { id: 'section-2', title: 'II. Understanding the Aeroplan Program for US Travelers' },
+    { id: 'section-3', title: 'III. Core Features: Earning Power and Travel Benefits' },
+    { id: 'section-4', title: 'IV. Deep Dive: Travel Perks & Protections' },
+    { id: 'section-5', title: 'V. Rates, Fees, and Overall Costs' },
+    { id: 'section-6', title: 'VI. Welcome Bonus and Ongoing Value' },
+    { id: 'section-7', title: 'VII. Earning Aeroplan Points: A US Cardholder\'s Guide' },
+    { id: 'section-8', title: 'VIII. Redeeming Aeroplan Points: Maximizing Your Rewards' },
+    { id: 'section-9', title: 'IX. The True Value of an Aeroplan Point for US Travelers' },
+    { id: 'section-10', title: 'X. Aeroplan Sweet Spots from the US' },
+    { id: 'section-11', title: 'XI. Aeroplan Elite Status with the Chase Card' },
+    { id: 'section-12', title: 'XII. The Pay Yourself Back Feature Explained' },
+    { id: 'section-13', title: 'XIII. Real-World Redemption Example for US Spenders' },
+    { id: 'section-14', title: 'XIV. Aeroplan Card vs. US Competitors' },
+    { id: 'section-15', title: 'XV. Who Should Get This Card in the US?' },
+    { id: 'section-16', title: 'XVI. Cardholder Experiences: Pros & Cons' },
+    { id: 'section-17', title: 'XVII. Potential Drawbacks to Consider' },
+    { id: 'section-faq', title: 'XVIII. Top 5 FAQs for the Chase Aeroplan Card' },
+    { id: 'section-verdict', title: 'XIX. Conclusion: Is the Aeroplan Card a Good Co-Pilot for US Travelers?' },
+  ];
+
+// DraggableTableWrapper Component (copied from your example, ensure it's correctly imported or defined if not global)
+function DraggableTableWrapper({ children }) {
+  const containerRef = useRef(null);
+  useEffect(() => {
+    if (typeof window === 'undefined' || window.innerWidth < 768) return;
+    const el = containerRef.current;
+    if (!el) return;
+    let isDragging = false, startX = 0, scrollStart = 0;
+    const startDrag = (e) => {
+      isDragging = true; el.classList.add(styles.grabbing);
+      startX = e.pageX || e.touches?.[0]?.pageX; scrollStart = el.scrollLeft;
+    };
+    const stopDrag = () => { isDragging = false; el.classList.remove(styles.grabbing); };
+    const onMove = (e) => {
+      if (!isDragging) return; e.preventDefault();
+      const x = e.pageX || e.touches?.[0]?.pageX;
+      el.scrollLeft = scrollStart - (x - startX);
+    };
+    el.addEventListener('mousedown', startDrag);
+    document.addEventListener('mouseup', stopDrag);
+    document.addEventListener('mouseleave', stopDrag);
+    el.addEventListener('mousemove', onMove);
+    el.addEventListener('touchstart', startDrag, { passive: true });
+    document.addEventListener('touchend', stopDrag);
+    el.addEventListener('touchmove', onMove, { passive: false });
+    return () => {
+      el.removeEventListener('mousedown', startDrag);
+      document.removeEventListener('mouseup', stopDrag);
+      document.removeEventListener('mouseleave', stopDrag);
+      el.removeEventListener('mousemove', onMove);
+      el.removeEventListener('touchstart', startDrag);
+      document.removeEventListener('touchend', stopDrag);
+      el.removeEventListener('touchmove', onMove);
+    };
+  }, []);
+  return (<div ref={containerRef} className={styles.draggableScrollContainer}>{children}</div>);
+}
+
+/* ──────────────────────────────
+    COMPONENT
+    ────────────────────────────── */
+function ChaseAeroplanReviewPage() {
   const [showRatingInfo, setShowRatingInfo] = useState(false);
-  const tooltipRef = useRef(null);
+  const [showAuthorBioTooltip, setShowAuthorBioTooltip] = useState(false);
+  const authorRef = useRef(null);
+  const authorTooltipRef = useRef(null);
+  const ratingTooltipRef = useRef(null);
 
   const handleIconClick = useCallback((event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        setShowRatingInfo(prevState => !prevState);
-    }, []);
+      event.preventDefault();
+      event.stopPropagation();
+      setShowRatingInfo(prevState => !prevState);
+  }, []);
 
-    const closeTooltip = useCallback(() => {
-        setShowRatingInfo(false);
-    }, []);
+  const handleAuthorMouseEnter = useCallback(() => {
+      setShowAuthorBioTooltip(true);
+  }, []);
 
-    useEffect(() => {
-        if (!showRatingInfo) return;
-        const handleClickOutside = (event) => {
-            const isInfoButton = event.target.closest(`.${styles.infoIconButton}`);
-            if (tooltipRef.current && !tooltipRef.current.contains(event.target) && !isInfoButton) {
-                closeTooltip();
-            }
-        };
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, [showRatingInfo, closeTooltip]);
-  // --- End Tooltip State and Logic ---
+  const handleAuthorMouseLeave = useCallback(() => {
+      const timerId = setTimeout(() => {
+          if (authorRef.current && authorTooltipRef.current) {
+              const isHoveringTrigger = authorRef.current.matches(':hover');
+              const isHoveringTooltip = authorTooltipRef.current.matches(':hover');
+              const isFocusWithinTrigger = authorRef.current.contains(document.activeElement);
+              const isFocusWithinTooltip = authorTooltipRef.current.contains(document.activeElement);
+              if (!isHoveringTrigger && !isHoveringTooltip && !isFocusWithinTrigger && !isFocusWithinTooltip) {
+                 setShowAuthorBioTooltip(false);
+              }
+          } else if (!authorRef.current?.matches(':hover') && !authorTooltipRef.current?.matches(':hover')) {
+               setShowAuthorBioTooltip(false);
+          }
+      }, 150);
+      if (authorRef.current) authorRef.current.tooltipTimeoutId = timerId;
+  }, [authorRef, authorTooltipRef]);
 
+   const handleAuthorClearTimeout = useCallback(() => {
+      if (authorRef.current?.tooltipTimeoutId) {
+          clearTimeout(authorRef.current.tooltipTimeoutId);
+      }
+   }, [authorRef]);
 
-  // Inline Structured Data
-  // !!! VERIFY all URLs, counts, and details FOR AEROPLAN CARD !!!
-  const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
-  const pageUrl = `${siteUrl}/cards/aeroplan-card`; // *** REPLACE with your actual page URL ***
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "Aeroplan® Credit Card",
-    "image": `${siteUrl}${reviewData.imageUrl}`, // *** Assuming imageUrl starts with / ***
-    "description": "The Aeroplan® Credit Card by Chase offers elevated Air Canada Aeroplan benefits, multiple bonus categories (3x points), and a path to Aeroplan Elite Status.", // Adjusted description
-    "brand": {
-      "@type": "Brand",
-      "name": "Chase" // Issuer
-    },
-     "review": {
-      "@type": "Review",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": reviewData.ratingValue.toString(),
-        "bestRating": "10",
-        "worstRating": "1"
-      },
-      "author": {
-        "@type": "Organization",
-        "name": reviewData.author
-      },
-      "reviewBody": reviewData.description // Use meta description
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": reviewData.ratingValue.toString(),
-      "bestRating": "10",
-      "worstRating": "1",
-      "ratingCount": 410, // *** REPLACE with actual or estimated count ***
-      "reviewCount": 410  // *** REPLACE with actual or estimated count ***
-    },
-    "offers": {
-      "@type": "Offer",
-      "url": reviewData.applyLink.startsWith('http') ? reviewData.applyLink : `${siteUrl}${reviewData.applyLink}`, // *** Ensure full APPLY URL ***
-      "priceCurrency": "USD",
-      "price": "95", // Annual Fee for Aeroplan Card
-      "availability": "https://schema.org/InStock",
-      "itemCondition": "https://schema.org/NewCondition"
-    }
-    // Consider adding "provider": { "@type": "Organization", "name": "Air Canada" }
-  };
+  useEffect(() => {
+      function handleClickOutside(event) {
+          if (showAuthorBioTooltip &&
+              authorRef.current && !authorRef.current.contains(event.target) &&
+              authorTooltipRef.current && !authorTooltipRef.current.contains(event.target)) {
+              setShowAuthorBioTooltip(false);
+          }
+          if (showRatingInfo &&
+              !event.target.closest(`.${styles.infoIconButton}`) && 
+              ratingTooltipRef.current && !ratingTooltipRef.current.contains(event.target)
+             ) {
+               setShowRatingInfo(false);
+          }
+      }
+      if (showAuthorBioTooltip || showRatingInfo) {
+          document.addEventListener("mousedown", handleClickOutside);
+      } else {
+           document.removeEventListener("mousedown", handleClickOutside);
+      }
+      return () => {
+          document.removeEventListener("mousedown", handleClickOutside);
+          if (authorRef.current?.tooltipTimeoutId) { 
+            clearTimeout(authorRef.current.tooltipTimeoutId);
+          }
+      };
+  }, [showAuthorBioTooltip, authorRef, authorTooltipRef, showRatingInfo, ratingTooltipRef]);
 
 
   return (
     <>
-      {/* ===== HEAD SECTION for Metadata & SEO ===== */}
       <Head>
-        <title dangerouslySetInnerHTML={{ __html: reviewData.title }}></title>
-        <meta name="description" content="Is the Aeroplan® Credit Card worth the $95 fee in 2025? Explore Air Canada perks, 3x earning on travel and dining, Global Entry credit, and elite status acceleration. Get the full breakdown now." />
-        <meta name="keywords" content={reviewData.keywords} />
-        <meta name="author" content={reviewData.author} />
-        <link rel="canonical" href={pageUrl} />
-        {/* Preload critical fonts */}
-        <link rel="preload" href="/fonts/Roboto_Condensed-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/Roboto_Condensed-Bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/PlayfairDisplay-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/Playfair-Display-Bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-
-        {/* OG/Twitter tags */}
-        <meta property="og:title" content={reviewData.title} />
-        <meta property="og:description" content={reviewData.description} />
-        <meta property="og:url" content={pageUrl} />
-        <meta property="og:image" content={structuredData.image} />
-        <meta property="og:type" content="article" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={reviewData.title} />
-        <meta name="twitter:description" content={reviewData.description} />
-        <meta name="twitter:image" content={structuredData.image} />
-
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-
-        {/* Structured Data (JSON-LD) */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
+        <title>{reviewDataNew.title}</title>
+        <meta name="description" content={reviewDataNew.description} />
+        <meta name="keywords" content={reviewDataNew.keywords} />
+        <meta name="author" content={reviewDataNew.author.name} />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta name="robots" content="index,follow,max-image-preview:large" />
+        <link rel="canonical" href={pageUrlFull} />
+        <link rel="alternate" href={pageUrlFull} hreflang="en-us" />
+        {/* UPDATE AS NEEDED: Preload actual card and author images */}
+        <link rel="preload" as="image" href={reviewDataNew.imageUrl} />
+        <link rel="preload" as="image" href={reviewDataNew.author.imageUrl} />
+        <link rel="preload" as="image" href={reviewDataNew.author.tooltipImageUrl} />
         <meta name="geo.region" content="US" />
-<meta name="geo.placename" content="United States" />
-<meta name="language" content="en-US" />
-<meta name="distribution" content="US" />
-<link rel="alternate" href="https://www.travelcardinsider.com" hreflang="en-us" />
+        <meta name="geo.placename" content="United States" />
+        <meta name="language" content="en-US" />
+        <meta name="distribution" content="US" />
+        {/* UPDATE AS NEEDED: Preload your actual fonts */}
+        {[
+          '/fonts/inter-v18-latin-regular.woff2',
+          '/fonts/inter-v18-latin-600.woff2',
+          '/fonts/inter-v18-latin-700.woff2',
+          '/fonts/Roboto_Condensed-Regular.ttf',
+          '/fonts/Roboto_Condensed-Bold.ttf',
+        ].map((f) => (
+          <link key={f} rel="preload" href={f} as="font" type={f.endsWith('woff2') ? 'font/woff2' : 'font/ttf'} crossOrigin="anonymous" />
+        ))}
+        <meta property="og:type"        content="article" />
+        <meta property="og:locale"      content="en_US" />
+        <meta property="og:site_name"   content={siteName} />
+        <meta property="og:title"       content={reviewDataNew.title} />
+        <meta property="og:description" content={reviewDataNew.description} />
+        <meta property="og:url"         content={pageUrlFull} />
+        <meta property="og:image"       content={`${siteUrl}${reviewDataNew.imageUrl}`} /> {/* Ensure full URL for OG image */}
+        <meta property="og:image:width" content={String(reviewDataNew.imageWidth)} />
+        <meta property="og:image:height" content={String(reviewDataNew.imageHeight)} />
+        <meta property="article:publisher" content={`https://www.facebook.com/YourPage`} /> {/* UPDATE AS NEEDED: Your Facebook page URL */}
+        <meta property="article:section"       content="Credit Card Reviews" /> {/* UPDATE AS NEEDED */}
+        <meta property="article:published_time" content={publishDate} />
+        <meta property="article:modified_time"  content={updateDate} />
+        <meta property="article:author" content={reviewDataNew.author.name} />
+        {reviewDataNew.keywords.split(',').map(keyword => (
+            <meta property="article:tag" content={keyword.trim()} key={keyword.trim()} />
+        ))}
+        <meta name="twitter:card"        content="summary_large_image" />
+        <meta name="twitter:site" content="@YourTwitterHandle" /> {/* UPDATE AS NEEDED: Your Twitter handle */}
+        <meta name="twitter:title"       content={reviewDataNew.title} />
+        <meta name="twitter:description" content={reviewDataNew.description} />
+        <meta name="twitter:image"       content={`${siteUrl}${reviewDataNew.imageUrl}`} /> {/* Ensure full URL for Twitter image */}
+        {/* UPDATE AS NEEDED: Favicon links */}
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredDataOptimized) }} />
       </Head>
 
-      
-
       <main>
-        {/* Spacing for fixed header */}
-        <div style={{ marginTop: '2rem' }}></div> {/* Adjusted margin from HTML */}
-
-        {/* Review Container using CSS Module */}
-        <div className={styles.reviewContainer}>
-          <article> {/* Wrap main content in article */}
-            {/* ============= REVIEW HEADER ============= */}
-            <header className={styles.reviewHeader}>
-               {/* Using dangerouslySetInnerHTML for ® */}
-              <h1 dangerouslySetInnerHTML={{ __html: "Aeroplan® Credit Card – 2025 Review" }}></h1>
-
-              {/* Section 1 Content (Part of Header Structure in Template) */}
-              <section id="section-1">
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <div className={styles.intro}>
-                  <p dangerouslySetInnerHTML={{ __html: "The <strong>Aeroplan® Credit Card</strong> by Chase is a popular choice for frequent (and aspiring) Air Canada travelers, offering robust opportunities to earn Aeroplan points on everyday and travel categories. With Air Canada’s increasingly global footprint and Star Alliance membership, Aeroplan points can be redeemed for flights worldwide. The card often grants <strong>solid sign-up bonuses</strong>, perks like a <strong>Global Entry/TSA PreCheck® credit</strong>, and accelerated paths to <strong>Aeroplan Elite Status</strong> in 2025. At a moderate <strong>$95 annual fee</strong>, it can be a strong mid-tier airline card if you’re partial to Air Canada’s service and alliances. Read on for our 20-section deep dive—covering quick stats, disclaimers, advanced usage tips, and more—to see if it aligns with your 2025 travel plans." }}></p>
-                </div>
-
-                {/* Image Container */}
-                <div className={styles.cardImageContainer}>
-                  {/* Class name adjusted */}
-                   <Image
-                     src={reviewData.imageUrl}
-                     alt={"Aeroplan® Credit Card"}
-                     width={reviewData.imageWidth} // *** REPLACE or use data ***
-                     height={reviewData.imageHeight} // *** REPLACE or use data ***
-                     className={styles.cardImage}
-                     priority
-                   />
-                 </div>
-
-                {/* RATING SECTION */}
-                <div className={styles.ratingSection}>
-                  <span className={styles.tciRating}>
-                    <button
-                      type="button"
-                      className={styles.infoIconButton} // Use CSS module class
-                      aria-label="Rating Information"
-                      title="Our TCI rating info"
-                      onClick={handleIconClick}
-                    >
-                       <svg aria-hidden="true" focusable="false" className={styles.infoIcon} viewBox="0 0 16 16">
-                         <path fillRule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                         <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-                       </svg>
-                    </button>
-                    TCI Rating: <strong>{reviewData.ratingValue.toFixed(1)}</strong>/10
-
-                    {/* --- Conditionally Rendered Tooltip --- */}
-                    {showRatingInfo && (
+        <div className={styles.reviewPageLayout}>
+          <div className={styles.mainContentArea}>
+            <section className={styles.heroSection}>
+              <div className={styles.heroTextContainer}>
+                <h1 className={styles.heroTitle}>
+                  {reviewDataNew.h1Content}
+                </h1>
+                <div
+                    className={styles.authorBioContainer}
+                    ref={authorRef}
+                    onMouseEnter={() => { handleAuthorClearTimeout(); handleAuthorMouseEnter(); }}
+                    onMouseLeave={handleAuthorMouseLeave}
+                    onFocus={handleAuthorMouseEnter} 
+                    onBlur={handleAuthorMouseLeave}  
+                    aria-haspopup="true"
+                    aria-expanded={showAuthorBioTooltip}
+                    tabIndex={0} 
+                >
+                    <Image
+                        src={reviewDataNew.author.imageUrl} // UPDATE AS NEEDED
+                        alt={`${reviewDataNew.author.name} headshot`}
+                        width={reviewDataNew.author.imageWidth}
+                        height={reviewDataNew.author.imageHeight}
+                        className={styles.authorImageSmall}
+                        priority
+                    />
+                    <div className={styles.authorInfoBlock}>
+                        <div className={styles.authorNameLine}>
+                            <span className={styles.authorPrefix}>By</span>
+                            <span className={styles.authorName}>{reviewDataNew.author.name}</span>
+                        </div>
+                        <span className={styles.authorTitle}>{reviewDataNew.author.title}</span>
+                        {updateDate && (
+                            <time dateTime={updateDate} className={styles.authorLastEdited}>
+                                Last updated: {new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                            </time>
+                        )}
+                        {reviewDataNew.author.socialLinks && ( // UPDATE AS NEEDED: Add actual social links for author
+                            <div className={styles.authorSocialLinks}>
+                                {reviewDataNew.author.socialLinks.linkedin && (
+                                    <a href={reviewDataNew.author.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${reviewDataNew.author.name} on LinkedIn`} className={styles.socialIconLink}>
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                    </a>
+                                )}
+                                {reviewDataNew.author.socialLinks.twitter && (
+                                    <a href={reviewDataNew.author.socialLinks.twitter} target="_blank" rel="noopener noreferrer" aria-label={`${reviewDataNew.author.name} on Twitter`} className={styles.socialIconLink}>
+                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-.422.724-.665 1.56-.665 2.452 0 1.697.864 3.198 2.18 4.078-.8-.025-1.555-.247-2.227-.616v.054c0 2.37 1.683 4.333 3.91 4.78-.426.116-.874.174-1.337.174-.31 0-.611-.03-.904-.085.622 1.936 2.421 3.338 4.553 3.377-1.672 1.309-3.781 2.088-6.072 2.088-.394 0-.784-.023-1.169-.069 2.16 1.389 4.723 2.202 7.482 2.202 8.979 0 13.897-7.446 13.897-13.898 0-.21 0-.42-.015-.63.953-.689 1.778-1.56 2.433-2.525z"/></svg>
+                                    </a>
+                                )}
+                                {reviewDataNew.author.socialLinks.email && (
+                                    <a href={`mailto:${reviewDataNew.author.socialLinks.email}`} aria-label={`Email ${reviewDataNew.author.name}`} className={styles.socialIconLink}>
+                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
+                                    </a>
+                                )}
+                            </div>
+                        )}
+                    </div>
+                    {showAuthorBioTooltip && reviewDataNew.author.bioSnippet && ( 
                         <div
-                            ref={tooltipRef}
-                            className={styles.ratingTooltip}
+                            className={styles.authorTooltip}
+                            ref={authorTooltipRef}
                             role="tooltip"
-                            aria-live="polite"
+                            onMouseEnter={handleAuthorClearTimeout} 
+                            onMouseLeave={handleAuthorMouseLeave}
+                            onFocus={handleAuthorMouseEnter} 
+                            onBlur={handleAuthorMouseLeave}
                         >
-                            <strong>TCI Rating: {reviewData.ratingValue.toFixed(1)}/10</strong>
-                            {/* Using ratingCriteria array */}
-                            <p className={styles.tooltipIntro}>Our TCI rating system criteria including rewards, welcome bonus, annual fee, redemption flexibility, travel benefits, APR, foreign transaction fees, user experience, and other features.</p>
-                            
+                             <div className={styles.authorTooltipHeader}>
+                                 <Image
+                                    src={reviewDataNew.author.tooltipImageUrl} // UPDATE AS NEEDED
+                                    alt={`${reviewDataNew.author.name} headshot`}
+                                    width={reviewDataNew.author.tooltipImageWidth}
+                                    height={reviewDataNew.author.tooltipImageHeight}
+                                    className={styles.authorTooltipImage}
+                                 />
+                                 <div className={styles.authorTooltipInfo}>
+                                     <span className={styles.authorTooltipName}>{reviewDataNew.author.name}</span>
+                                     <span className={styles.authorTooltipTitle}>{reviewDataNew.author.title}</span>
+                                 </div>
+                               </div>
+                               {reviewDataNew.author.expertise && reviewDataNew.author.expertise.length > 0 && (
+                                 <div className={styles.authorTooltipExpertise}>
+                                     <strong>Expertise</strong>
+                                     <ul>
+                                         {reviewDataNew.author.expertise.map(area => <li key={area}>{area}</li>)}
+                                     </ul>
+                                 </div>
+                               )}
+                               <p className={styles.authorTooltipBioSnippet}>{reviewDataNew.author.bioSnippet}</p>
+                               {reviewDataNew.author.fullBioLink && (
+                                   <Link href={reviewDataNew.author.fullBioLink} legacyBehavior>
+                                       <a className={styles.authorTooltipBioLink}>
+                                           See full bio
+                                       </a>
+                                   </Link>
+                               )}
+                               {reviewDataNew.author.socialLinks && ( 
+                                    <div className={styles.authorTooltipSocials}>
+                                        {reviewDataNew.author.socialLinks.linkedin && (
+                                             <a href={reviewDataNew.author.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${reviewDataNew.author.name} on LinkedIn`} className={styles.socialIconLink}>
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                             </a>
+                                         )}
+                                         {reviewDataNew.author.socialLinks.twitter && (
+                                             <a href={reviewDataNew.author.socialLinks.twitter} target="_blank" rel="noopener noreferrer" aria-label={`${reviewDataNew.author.name} on Twitter`} className={styles.socialIconLink}>
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-.422.724-.665 1.56-.665 2.452 0 1.697.864 3.198 2.18 4.078-.8-.025-1.555-.247-2.227-.616v.054c0 2.37 1.683 4.333 3.91 4.78-.426.116-.874.174-1.337.174-.31 0-.611-.03-.904-.085.622 1.936 2.421 3.338 4.553 3.377-1.672 1.309-3.781 2.088-6.072 2.088-.394 0-.784-.023-1.169-.069 2.16 1.389 4.723 2.202 7.482 2.202 8.979 0 13.897-7.446 13.897-13.898 0-.21 0-.42-.015-.63.953-.689 1.778-1.56 2.433-2.525z"/></svg>
+                                             </a>
+                                         )}
+                                         {reviewDataNew.author.socialLinks.email && (
+                                             <a href={`mailto:${reviewDataNew.author.socialLinks.email}`} aria-label={`Email ${reviewDataNew.author.name}`} className={styles.socialIconLink}>
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
+                                             </a>
+                                         )}
+                                    </div>
+                                )}
                         </div>
                     )}
+                </div>
+                <p className={styles.heroSubtitle}>
+                  Is an Air Canada co-branded credit card a smart pick for US travelers? This review gets straight to the point: are its robust earnings, elite-style perks, and flexible features like Pay Yourself Back compelling enough for your US-based travel strategy?
+                </p>
+                <div className={styles.heroCtaContainer}>
+                  <div>
+                    <a
+                      href={reviewDataNew.applyLink} // UPDATE AS NEEDED
+                      target="_blank"
+                      rel="noopener noreferrer sponsored" // Add 'sponsored' if it's an affiliate link
+                      className={`${styles.applyNowButton} ${styles.heroApplyButton}`}
+                    >
+                      Apply Securely Now
+                    </a>
+                    <span className={styles.heroApplyButtonDisclaimer}>
+                      on Chase's official site {/* UPDATE AS NEEDED if issuer is different or for clarity */}
+                    </span>
+                  </div>
+                  <Link href="#section-1" legacyBehavior>
+                    <a className={styles.heroSecondaryLink}>View Key Features</a>
+                  </Link>
+                </div>
+              </div>
+              <div className={styles.heroImageContainer}>
+                <div className={styles.cardImageContainer}>
+                  <Image
+                    src={reviewDataNew.imageUrl} // UPDATE AS NEEDED
+                    alt={reviewDataNew.cardName}
+                    width={reviewDataNew.imageWidth}
+                    height={reviewDataNew.imageHeight}
+                    className={styles.heroImage}
+                    priority
+                  />
+                </div>
+                <div className={styles.ratingSection}>
+                  <span className={styles.tciRating}> {/* tciRating classname might need to be generic if siteName changes */}
+                    <button
+                      type="button"
+                      className={styles.infoIconButton}
+                      aria-label="Rating Information"
+                      onClick={handleIconClick}
+                      aria-expanded={showRatingInfo}
+                    >
+                      <svg aria-hidden="true" focusable="false" className={styles.infoIcon} viewBox="0 0 16 16">
+                        <path fillRule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                      </svg>
+                    </button>
+                    {siteName} Rating: <strong>{reviewDataNew.ratingValue.toFixed(1)}</strong>/10
+                    {showRatingInfo && (
+                      <RatingTooltip
+                        ref={ratingTooltipRef}
+                        ratingValue={reviewDataNew.ratingValue}
+                        ratingCriteria={ratingCriteriaOriginal} 
+                        onClose={() => setShowRatingInfo(false)}
+                      />
+                    )}
                   </span>
-
-                  {/* STAR RATING */}
-                  <div className={styles.starRating} title={`Rated ${reviewData.ratingValue} out of 10 stars`} style={{ '--rating': `${reviewData.ratingValue * 10}%` }}>
-                    <span>★★★★★</span>
-                    <span className={styles.filledStars}>★★★★★</span>
-                  </div>
-
-                  <div className={styles.ratingDescription}>
-                     {/* Using dangerouslySetInnerHTML for ® &amp; */}
-                    <i dangerouslySetInnerHTML={{__html:"A strong Air Canada companion with flexible Star Alliance redemptions &amp; mid-range fee."}}></i>
+                  <div className={styles.starRating} title={`Rated ${reviewDataNew.ratingValue} out of 10 stars`}>
+                      ★★★★★
+                      <span className={styles.filledStars} style={{ '--rating': `${(reviewDataNew.ratingValue / 10) * 100}%` }}>
+                        ★★★★★
+                      </span>
                   </div>
                 </div>
-              </section>
-            </header>
-
-            {/* ============= REVIEW CONTENT SECTIONS (Hardcoded JSX) ============= */}
-
-             {/* Section 2: Quick Stats Table */}
-             <section id="section-2" className={styles.reviewSection}>
-                <h2>Quick Stats at a Glance</h2>
-                <div className={styles.tableContainer}>
-                    <table className={styles.statsTable}>
-                        <thead>
-                            <tr>
-                                <th>Feature</th>
-                                <th>Details</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td data-label="Feature">Annual Fee</td>
-                                <td data-label="Details">$95</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Feature">Welcome Bonus</td>
-                                <td data-label="Details">Often 60k–100k points after $2,000–$4,000 spend (subject to change)</td>
-                            </tr>
-                             {/* Using dangerouslySetInnerHTML for ® &amp; */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Feature">Earning Rates</td><td data-label="Details">3x on Air Canada &amp; groceries/dining (varies), 1x on others (verify for 2025)</td>'}}></tr>
-                            <tr>
-                                <td data-label="Feature">Elite Status Aid</td>
-                                <td data-label="Details">Card spend can accelerate Aeroplan Elite Status (conditions apply)</td>
-                            </tr>
-                             {/* Using dangerouslySetInnerHTML for ® */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Feature">Global Entry/TSA PreCheck®</td><td data-label="Details">$100 statement credit every 4 years</td>'}}></tr>
-                            <tr>
-                                <td data-label="Feature">No Foreign Transaction Fee</td>
-                                <td data-label="Details">Ideal for global Star Alliance usage</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Feature">Baggage/Seat Perks</td>
-                                <td data-label="Details">1st checked bag free for cardholder on Air Canada (check for 2025 updates)</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Feature">Points Transfer Partners</td>
-                                <td data-label="Details">Aeroplan is a Star Alliance program with broad redemption possibilities</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                 <div className={styles.ratingDescription}>
+                    <i>{reviewDataNew.cardName}: {reviewDataNew.description}</i>
+                 </div>
+              </div>
             </section>
 
-            {/* CTA Section */}
-             <section id="cta" className={styles.ctaSection}>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <h2 dangerouslySetInnerHTML={{__html:"Get the <b>Aeroplan® Credit Card</b> Today!"}}></h2>
-                <div className={styles.ctaButtons}>
-                    <a href={reviewData.applyLink} className={`${styles.btn} ${styles.btnApply}`} title="From card issuer's secure site" target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
-                     {/* Using dangerouslySetInnerHTML for &amp; */}
-                    <a href={reviewData.ratesLink} className={`${styles.btn} ${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored" dangerouslySetInnerHTML={{__html:"See Rates &amp; Fees"}}></a>
-                </div>
-            </section>
-
-             {/* Section 3: Card Overview & Positioning */}
-             <section id="section-3" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html: "Card Overview &amp; Positioning" }}></h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html: "The <b>Chase Aeroplan® Card</b> aligns with Air Canada’s globally recognized <b>Star Alliance</b> footprint. Aeroplan points can book flights on United, Lufthansa, Swiss, and other partners, making it an excellent choice if you want to travel internationally. With a modest <b>$95</b> annual fee, it’s not as premium as some top-tier airline cards, but it offers a strong everyday earning structure (like 3x on groceries or dining + Air Canada purchases). There’s also a <b>Global Entry</b> or <b>TSA PreCheck®</b> credit, typically found in premium cards, giving more bang for your buck. For 2025, if you’re eyeing Air Canada or Star Alliance flights, it’s worth considering over other mid-tier airline products." }}></p>
-            </section>
-
-            {/* Section 4: Earning Points in Detail */}
-            <section id="section-4" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html: "Earning Points &amp; Everyday Spending"}}></h2>
-                <p>
-                    Typically, you get:
-                </p>
-                <ul className={styles.featureList}>
-                    <li><strong>3x points</strong> on Air Canada purchases (including ancillaries) and possibly certain everyday categories like groceries/dining.</li>
-                    <li><strong>1x point</strong> on everything else.</li>
-                </ul>
-                 {/* Using dangerouslySetInnerHTML for &amp; */}
-                <p dangerouslySetInnerHTML={{ __html: "Because the exact categories can shift or expand—some versions also give 2x on travel— always confirm the current T&amp;Cs for 2025. If you frequently buy groceries or dine out, you can accumulate Aeroplan points quickly for future flights. For better daily multipliers (like 4x or 5x on groceries), you might pair this with a general card. But 3x on groceries/dining plus 3x on Air Canada is quite solid for a modest annual fee card."}}></p>
-            </section>
-
-             {/* Section 5: Redeeming Aeroplan Points */}
-             <section id="section-5" className={styles.reviewSection}>
-                <h2>Redeeming Aeroplan Points</h2>
-                <p>
-                    Aeroplan is known for its <b>flexibility</b> and wide partner network
-                    (all Star Alliance plus some non-alliance partners).
-                    You can redeem for economy, business, or first class seats globally.
-                    Air Canada uses a more dynamic pricing approach for its own flights,
-                    but partner awards often have a zone/distance-based chart
-                    leading to sweet spots (like certain flights on Lufthansa or Swiss).
-                    You might also see the “Stopovers for 5k points” policy
-                    allowing creative routings.
-                    If you want to explore Europe or Asia with a multi-city itinerary,
-                    Aeroplan can be extremely valuable.
-                    Factor in no or reduced surcharges on certain carriers
-                    to maximize your points’ worth.
-                </p>
-            </section>
-
-             {/* Section 6: Travel & Airline Perks */}
-             <section id="section-6" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html: "Travel &amp; Airline Perks" }}></h2>
-                <ul className={styles.featureList}>
-                    <li><strong>1st Checked Bag Free:</strong>
-                    Typically covers the cardholder on Air Canada flights (some disclaimers apply if you have multiple travelers).</li>
-                    {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Global Entry/TSA PreCheck®:</strong> Up to $100 statement credit every 4 years—uncommon in a mid-range card."}}></li>
-                    {/* Using dangerouslySetInnerHTML for ® &amp; */}
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Preferred Pricing &amp; Priority Perks:</strong> If you have or aim for certain Aeroplan Elite Tiers, having this card might unlock extra seat selection or priority check-in. Always confirm your specific tier."}}></li>
-                    <li><strong>Points Transfer Partnerships:</strong>
-                    If you hold Ultimate Rewards, Amex Membership Rewards, etc.,
-                    you might combine to top up your Aeroplan balance.
-                    The card synergy can help if you funnel multiple sources into one pot.</li>
-                </ul>
-                <p>
-                    A big highlight is the synergy with Aeroplan Elite Status,
-                    where card spend can contribute or accelerate your progress,
-                    making your travels even more rewarding globally across Star Alliance.
-                </p>
-            </section>
-
-            {/* Section 7: No Foreign Transaction Fee & Global Coverage */}
-             <section id="section-7" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html: "No Foreign Transaction Fee &amp; Global Coverage"}}></h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html: "Because it’s a Visa from Chase, you get <b>no FTF</b> and widespread global acceptance. This is crucial if you’re traveling internationally (like to Canada, Europe, or Asia) to book Star Alliance flights or pay for local expenses. If you pair it with the <b>Global Entry</b> credit, your international airport arrivals are smoother. Also, if you route on Air Canada to destinations in Europe or Asia, you’ll appreciate no extra fees for overseas spend."}}></p>
-            </section>
-
-            {/* Section 8: Annual Fee & Welcome Bonus */}
-             <section id="section-8" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html: "Annual Fee &amp; Welcome Bonus" }}></h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html: "The annual fee stands at <b>$95</b>. The sign-up bonus can be <b>60k–100k points</b> after a certain spend, often $2,000–$4,000 in 3 months. That’s quite appealing if you value Aeroplan points at ~1.5–2.0 cents each (especially for premium cabins or partner flights). Sometimes, promotions also include a statement credit or additional flight perks. For many, the welcome bonus + 3x categories can quickly net enough points for a transatlantic or transpacific flight if you strategize well."}}></p>
-            </section>
-
-            {/* Section 9: 2025 Updates & Potential Changes */}
-             <section id="section-9" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html: "2025 Updates &amp; Potential Changes"}}></h2>
-                <ol className={styles.numberedList}>
-                    <li><strong>Elite Status Earning Shifts:</strong>
-                    Air Canada might update how card spend translates to Elite Status (say, 1 point for each $5k).
-                    Keep an eye on official announcements.</li>
-                    <li><strong>Expanded or Rotated 3x Categories:</strong>
-                    Chase might tweak them. Possibly adding streaming or transit,
-                    or might remove a less-used category.</li>
-                    <li><strong>Partner Award Chart Adjustments:</strong>
-                    Aeroplan could change award rates for Star Alliance partners,
-                    affecting redemption sweet spots in 2025.
-                    Keep updated on official Aeroplan communications.</li>
-                    <li><strong>Potential Extra Perks:</strong>
-                    Some rumors about a Maple Leaf Lounge pass or partial lounge discount
-                    for cardholders, but nothing is guaranteed.
-                    Watch for official releases if that becomes a perk.</li>
-                </ol>
-                <p>
-                    Always confirm the official terms from Chase/Air Canada
-                    if any updates occur that might reshape your usage or redemption approach.
-                </p>
-            </section>
-
-             {/* Section 10: Real-Life Example Table */}
-             <section id="section-10" className={styles.reviewSection}>
-                <h2>Real-Life Example: Annual Value</h2>
-                <p>
-                    Suppose you spend $3,000 on Air Canada flights annually
-                    and $5,000 on groceries and dining (both at 3x),
-                    plus $7,000 on everything else. Let’s see your approximate yearly haul:
-                </p>
-                 <div className={styles.tableContainer}>
-                     <table className={styles.statsTable}>
-                        <thead>
-                            <tr>
-                                <th>Spend Category</th>
-                                <th>Annual Spend</th>
-                                <th>Points per $</th>
-                                <th>Total Points</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td data-label="Spend Category">Air Canada Flights</td>
-                                <td data-label="Annual Spend">$3,000</td>
-                                <td data-label="Points per $">3x</td>
-                                <td data-label="Total Points">9,000</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Spend Category">Groceries/Dining</td>
-                                <td data-label="Annual Spend">$5,000</td>
-                                <td data-label="Points per $">3x</td>
-                                <td data-label="Total Points">15,000</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Spend Category">Other Spend</td>
-                                <td data-label="Annual Spend">$7,000</td>
-                                <td data-label="Points per $">1x</td>
-                                <td data-label="Total Points">7,000</td>
-                            </tr>
-                            <tr style={{fontWeight: 'bold', borderTop: '2px solid #dee2e6'}}>
-                                <th data-label="Spend Category">Total</th>
-                                <th data-label="Annual Spend">$15,000</th>
-                                <th data-label="Points per $">—</th>
-                                <th data-label="Total Points">31,000</th>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <p>
-                    <b>31,000</b> Aeroplan points a year from normal spend
-                    can be quite valuable—worth easily $400+ in economy flights
-                    or even more in partner business class.
-                    If you also add a 60k sign-up bonus,
-                    you’re close to 91k total in year one,
-                    enough for a round-trip to Europe in economy
-                    or a one-way in business if you find a good partner redemption.
-                    That can overshadow the $95 annual fee,
-                    especially if you also use the bag perk or the Global Entry credit.
-                </p>
-            </section>
-
-             {/* Section 11: Competitor Analysis */}
-             <section id="section-11" className={styles.reviewSection}>
-                <h2>Competitor Analysis</h2>
-                <div className={styles.tableContainer}>
-                     <table className={styles.statsTable}>
-                        <thead>
-                            <tr>
-                                <th>Card</th>
-                                <th>Annual Fee</th>
-                                <th>Highlights</th>
-                                <th>Why Choose</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                             {/* Using dangerouslySetInnerHTML for ® */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Card">Aeroplan® Credit Card</td><td data-label="Annual Fee">$95</td><td data-label="Highlights">3x on Air Canada, groceries/dining; free bag, Global Entry credit</td><td data-label="Why Choose">Ideal for Air Canada/Star Alliance fans</td>'}}></tr>
-                             {/* Using dangerouslySetInnerHTML for ℠ */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Card">United℠ Explorer Card</td><td data-label="Annual Fee">$0 intro, then $95</td><td data-label="Highlights">2x on United, dining, hotels; 2 lounge passes, free bag</td><td data-label="Why Choose">Better if you prefer United’s route network over Air Canada’s</td>'}}></tr>
-                             {/* Using dangerouslySetInnerHTML for ® */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Card">Delta SkyMiles® Gold Amex</td><td data-label="Annual Fee">$0 intro, then ~$99</td><td data-label="Highlights">Free bag, priority boarding on Delta</td><td data-label="Why Choose">Focus on Delta flyers over Star Alliance usage</td>'}}></tr>
-                             {/* Using dangerouslySetInnerHTML for ® */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Card">Chase Sapphire Preferred®</td><td data-label="Annual Fee">$95</td><td data-label="Highlights">Flexible UR points, 2x–3x on travel/dining, transfer to Aeroplan or other partners</td><td data-label="Why Choose">Versatile if you want to move points across multiple airline/hotel programs</td>'}}></tr>
-                        </tbody>
-                    </table>
-                </div>
-                <p>
-                    The <b>Aeroplan</b> card stands out if you specifically want
-                    direct synergy with Air Canada,
-                    especially for <b>Star Alliance</b> flights.
-                    If your main hub is Chicago or Newark (heavy United presence)
-                    and you prefer United, that might overshadow the Aeroplan approach.
-                    However, for those wanting to explore global partner awards
-                    with a strong everyday earner at $95,
-                    the Aeroplan card is quite compelling.
-                </p>
-            </section>
-
-            {/* Section 12: Synergy with Other Chase or Travel Cards */}
-            <section id="section-12" className={styles.reviewSection}>
-                <h2>Pairing with Other Cards</h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"If you already have a <b>Chase Sapphire Preferred®</b> or <b>Reserve®</b>, you can transfer Ultimate Rewards → Aeroplan to top up your account. However, having the Aeroplan card itself can provide the free bag perk, possibly lounge or Maple Leaf lounge discounts for certain Elite Tiers, and direct advanced perks like Elite Status boost. Meanwhile, you might prefer using a different card for dining if you can get 4x or 5x, though 3x is still respectable. Because Aeroplan is also a partner of Amex Membership Rewards, Capital One, etc., some travelers might skip the co-branded card. But the annual fee + Global Entry credit + free bag can easily pay for itself if you fly Air Canada even once or twice."}}></p>
-            </section>
-
-             {/* Section 13: Aeroplan Elite Status Synergy */}
-             <section id="section-13" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html:"Aeroplan Elite Status &amp; Card Benefits"}}></h2>
-                <p>
-                    Aeroplan’s Elite program (25K, 35K, 50K, 75K, Super Elite)
-                    can be accelerated by holding the Aeroplan card.
-                    For instance, you might earn “Status Qualifying Miles”
-                    or “Status Qualifying Segments” from certain spend thresholds.
-                    Re-check 2025 rules for how many $ or points you need
-                    for each tier.
-                    Some mid-tier statuses provide Maple Leaf Lounge access,
-                    free upgrades on Air Canada, or Star Alliance Silver/Gold privileges.
-                    Combining flight activity plus card spend
-                    might be your best route to achieving or sustaining
-                    mid-level or higher Aeroplan Elite Status.
-                </p>
-            </section>
-
-            {/* Section 14: Potential Downsides */}
-            <section id="section-14" className={styles.reviewSection}>
-                 <h2>Potential Downsides</h2>
-                <ul className={styles.featureList}>
-                    <li><strong>$95 Annual Fee:</strong>
-                    Not huge, but some airline co-brands do $0 intro or $69–$79 fees.
-                    The offset depends on your usage of bag perks, etc.</li>
-                    <li><strong>Limited In-Canada Perks:</strong>
-                    Some might expect Maple Leaf lounge passes or major baggage benefits for companions.
-                    You only get 1st bag free for the cardholder typically (verify for 2025—some might extend to companions if same reservation).</li>
-                    <li><strong>No Broad Lounge Access:</strong>
-                    You get a Global Entry credit but no Priority Pass or Maple Leaf lounge passes by default.
-                    Elite status or separate membership might still be needed for lounge usage.</li>
-                    <li><strong>Dynamic Pricing on AC Metal:</strong>
-                    Aeroplan for Air Canada flights is subject to dynamic award costs
-                    that can be high during peak times,
-                    though partner flights might remain more consistent.</li>
-                </ul>
-            </section>
-
-             {/* Section 15: Advanced Usage Tips */}
-             <section id="section-15" className={styles.reviewSection}>
-                <h2>Advanced Usage Tips</h2>
-                <ol className={styles.numberedList}>
-                    <li><strong>Leverage 3x on Groceries/Dining (If Offered):</strong>
-                    Funnel big grocery/dining bills here if you want to pad your Aeroplan points quickly.</li>
-                    <li><strong>Combine with UR Transfers (If You Have Sapphire):</strong>
-                    Move UR → Aeroplan for large award bookings,
-                    then top up with card spend as needed.
-                    This synergy can yield huge redemption opportunities.</li>
-                    <li><strong>Aeroplan Family Sharing:</strong>
-                    If you have Family Sharing enabled,
-                    multiple members can pool points for bigger redemptions—
-                    ensures no small leftover accounts hamper your flight bookings.</li>
-                    <li><strong>Check Partner Sweet Spots:</strong>
-                    Airlines like Turkish, Lufthansa, or EVA often have valuable business class redemptions
-                    via Aeroplan.
-                    Plan around these for maximum cpm (cents per mile) value.</li>
-                    <li><strong>Track Elite Status Spend Thresholds:</strong>
-                    If the card offers a certain number of eUpgrade credits or SQM for each $5k or $10k in spend,
-                    plan to route big expenses here for a strong shot at 25K or 35K status each year.</li>
-                </ol>
-            </section>
-
-            {/* Section 16: Another Real-Life Scenario */}
-            <section id="section-16" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html:"Another Example: Earning &amp; Redeeming for Europe"}}></h2>
-                <p>
-                    Suppose you put $2,000 in Air Canada flights,
-                    $4,000 in groceries/dining,
-                    and $4,000 in general spend yearly.
-                    That yields:
-                </p>
-                 <div className={styles.tableContainer}>
-                    <table className={styles.statsTable}>
-                        <thead>
-                            <tr>
-                                <th>Spend Category</th>
-                                <th>Annual Spend</th>
-                                <th>Points per $</th>
-                                <th>Total Points</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td data-label="Spend Category">Air Canada</td>
-                                <td data-label="Annual Spend">$2,000</td>
-                                <td data-label="Points per $">3x</td>
-                                <td data-label="Total Points">6,000</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Spend Category">Groceries/Dining</td>
-                                <td data-label="Annual Spend">$4,000</td>
-                                <td data-label="Points per $">3x</td>
-                                <td data-label="Total Points">12,000</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Spend Category">Others</td>
-                                <td data-label="Annual Spend">$4,000</td>
-                                <td data-label="Points per $">1x</td>
-                                <td data-label="Total Points">4,000</td>
-                            </tr>
-                            <tr style={{fontWeight: 'bold', borderTop: '2px solid #dee2e6'}}>
-                                <th data-label="Spend Category">Total</th>
-                                <th data-label="Annual Spend">$10,000</th>
-                                <th data-label="Points per $">—</th>
-                                <th data-label="Total Points">22,000</th>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <p>
-                    That’s 22,000 Aeroplan points purely from spend.
-                    Add a sign-up bonus (let’s say 60k).
-                    Now you’re at 82k total—often enough for a round-trip
-                    from North America to Europe in economy on Air Canada or a Star Alliance partner
-                    if you find decent availability.
-                    That one redemption can easily beat the $95 AF,
-                    especially if you factor in the free first checked bag
-                    (worth $60–$70 round trip to Europe).
-                </p>
-            </section>
-
-            {/* Section 17: Who Should Get the Card? */}
-            <section id="section-17" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html:"Who Should Get the Aeroplan® Credit Card?"}}></h2>
-                 <div className={styles.prosCons}>
-                    <div className={styles.pros}>
-                        <h3>Ideal For:</h3>
-                        <ul className={styles.featureList}>
-                             {/* Using dangerouslySetInnerHTML for ® */}
-                            <li dangerouslySetInnerHTML={{__html:"<strong>Frequent Air Canada/Star Alliance Flyers:</strong> If you love AC’s global routes or need partner flights frequently"}}></li>
-                             {/* Using dangerouslySetInnerHTML for ® */}
-                            <li dangerouslySetInnerHTML={{__html:"<strong>Moderate Annual Fee Seekers:</strong> $95 is a sweet spot for an airline card with a Global Entry credit and nice 3x categories"}}></li>
-                            <li><strong>Aeroplan Elite Aspirants:</strong>
-                            Large card spend can expedite your path to Elite 25K or higher</li>
-                            <li><strong>Global Redemption Enthusiasts:</strong>
-                            Aeroplan’s wide Star Alliance and partner network
-                            ensures broad usage, including stopovers in premium cabins</li>
-                        </ul>
+            <div className={styles.reviewContainer}>
+              <article>
+                <header className={styles.reviewHeader}>
+                    <div className={styles.summaryBox} id="summaryBoxTitle">
+                        <h2 className={styles.summaryBoxTitle}>{reviewDataNew.cardName}: Key Insights</h2>
+                        <div className={styles.summaryGrid}>
+                            <div className={styles.summaryItem}>
+                                <span className={styles.summaryIcon}><IconGift /></span>
+                                <span className={styles.summaryLabel}>Welcome Bonus:</span>
+                                <span className={styles.summaryValue}>Typically up to 70,000 points (tiered structure).</span>
+                            </div>
+                            <div className={styles.summaryItem}>
+                                <span className={styles.summaryIcon}><IconCheck /></span>
+                                <span className={styles.summaryLabel}>Annual Fee:</span>
+                                <span className={styles.summaryValue}>${reviewDataNew.annualFee}.</span>
+                            </div>
+                            <div className={styles.summaryItem}>
+                                <span className={styles.summaryIcon}><IconStar /></span>
+                                <span className={styles.summaryLabel}>Top Earning:</span>
+                                <span className={styles.summaryValue}>3X on Air Canada, groceries, dining; 1X elsewhere; Plus 500 bonus points per $2,000 monthly spend.</span>
+                            </div>
+                            <div className={styles.summaryItem}>
+                                <span className={styles.summaryIcon}><IconPlus /></span>
+                                <span className={styles.summaryLabel}>Key Benefit:</span>
+                                <span className={styles.summaryValue}>Aeroplan 25K Status (initial); Free 1st checked bag (Air Canada); Global Entry/TSA/NEXUS credit; Pay Yourself Back.</span>
+                            </div>
+                            <div className={styles.summaryItem} data-full-width="true">
+                                <span className={styles.summaryIcon}><IconPlus /></span>
+                                <span className={styles.summaryLabel}>Best For:</span>
+                                <span className={styles.summaryValue}>US travelers seeking strong rewards on everyday spending (groceries, dining), a fast track to elite-like travel benefits, and flexible points for Star Alliance adventures, all for a moderate annual fee.</span>
+                            </div>
+                        </div>
+                        <div className={styles.summaryBoxActions}>
+                            <a href={reviewDataNew.ratesLink} className={styles.summaryRatesLink} target="_blank" rel="noopener noreferrer sponsored">
+                                See Card Rates & Fees
+                            </a>
+                             <a href='/rewards-calculator' className={`${styles.heroRewardsCalculator} ${styles.summaryButton}`} target="_blank" rel="noopener noreferrer"> {/* UPDATE link if needed */}
+                                Rewards Calculator
+                            </a>
+                        </div>
                     </div>
-                    <div className={styles.cons}>
-                        <h3>No, If You:</h3>
-                        <ul className={styles.featureList}>
-                            <li>Don’t need or want to fly Air Canada or Star Alliance routes</li>
-                            <li>Want a cheaper card (some airline cards have $0 intro or $69 fees, albeit fewer perks)</li>
-                             {/* Using dangerouslySetInnerHTML for ® */}
-                            <li dangerouslySetInnerHTML={{__html:"Prefer guaranteed lounge access or top-tier travel insurance (this card’s coverage is decent but not premium-lounge level)"}}></li>
-                            <li>Live in a region with minimal AC or Star Alliance flights, making it hard to use the perks</li>
-                        </ul>
+                </header>
+
+                <section id="section-intro" className={styles.reviewSection}>
+                  <h2>Introduction: The Aeroplan Card in the US</h2>
+                  <p>Is an Air Canada co-branded credit card a smart pick for US travelers? The Chase Aeroplan Card aims to be exactly that, offering a surprising gateway to global travel beyond just Canadian routes, thanks to a revamped Aeroplan program and its Star Alliance ties.</p>
+                  <p>This review gets straight to the point: are its robust earnings, elite-style perks, and flexible features like Pay Yourself Back compelling enough for your US-based travel strategy? Let's find out.</p>
+                </section>
+
+                <section id="section-1" className={styles.reviewSection}>
+                  <h2>I. Card Snapshot & Key Details</h2>
+                  <p>The Chase Aeroplan Card packs a punch for US travelers valuing flexible rewards and Star Alliance access.</p>
+                  <p><strong>'Best For' Tagline:</strong> Ideal for US travelers seeking strong rewards on everyday spending (groceries, dining), a fast track to elite-like travel benefits, and flexible points for Star Alliance adventures, all for a moderate annual fee.</p>
+                  <DraggableTableWrapper>
+                    <div className={styles.tableContainer}>
+                        <table className={`${styles.statsTable} ${styles.ratesFeesTable}`}>
+                            <thead>
+                                <tr>
+                                    <th>Feature</th>
+                                    <th>Details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td data-label="Feature">Annual Fee</td><td data-label="Details">$95</td></tr>
+                                <tr><td data-label="Feature">Welcome Bonus</td><td data-label="Details">Typically up to 70,000 points (tiered structure)</td></tr>
+                                <tr><td data-label="Feature">Key Earning Rates</td><td data-label="Details">3X on Air Canada, groceries, dining; 1X elsewhere; Plus 500 bonus points per $2,000 monthly spend (up to 1,500 pts/mo).</td></tr>
+                                <tr><td data-label="Feature">Standout Benefits</td><td data-label="Details">Aeroplan 25K Elite Status (initial); Free 1st checked bag on Air Canada (up to 8 companions); Global Entry/TSA PreCheck/NEXUS credit; Pay Yourself Back.</td></tr>
+                            </tbody>
+                        </table>
                     </div>
-                </div>
-            </section>
+                  </DraggableTableWrapper>
+                  <p>The monthly spend bonus effectively boosts earn rates (e.g., to 3.25X in 3X categories if spending $2k). The multi-part welcome bonus encourages longer-term cardholding.</p>
+                </section>
 
-            {/* Section 18: Disclaimers & Fine Print */}
-            <section id="section-18" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html: "Disclaimers &amp; Fine Print"}}></h2>
-                 {/* Using dangerouslySetInnerHTML for ® &amp; */}
-                <p dangerouslySetInnerHTML={{ __html:"All details (APR, sign-up bonus, earning categories) can change. Verify official info from Chase or Air Canada for the current T&amp;Cs. The card might require good/excellent credit. The free bag typically only covers the cardholder on AC flights if the card is used to purchase the ticket, or if your Aeroplan number is attached— disclaimers can shift each year. Global Entry/TSA PreCheck® credit is typically up to $100 every 4 years— if you have it from another card, you may not need duplication. If you revolve a balance, interest charges overshadow flight savings. Also confirm if transfer partner points count or not towards AC Elite. Terms for redemption or surcharges differ among partner airlines."}}></p>
-            </section>
+                {/* Placeholder for a relevant image. UPDATE src, alt, width, height as needed. */}
+                <Image
+                    src="/ian-dooley-3NCA3tbaE5I-unsplash (1).jpg" // UPDATE PATH
+                    alt="Scenic travel destination representing rewards" // UPDATE ALT TEXT
+                    width={800} // UPDATE with actual image width
+                    height={533} // UPDATE with actual image height
+                    className={styles.contentImage}
+                />
 
-             {/* Section 19: Final Thoughts */}
-             <section id="section-20" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html:"Final Thoughts: Is the Aeroplan® Credit Card Worth It?"}}></h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"If you’re looking for a <b>moderate annual fee</b> airline card that unlocks <b>worldwide Star Alliance</b> flight possibilities, the <strong>Aeroplan® Credit Card</strong> is a top contender. Its 3x categories, synergy with Aeroplan Elite Status, and <b>Global Entry</b> credit outperform many $95-tier airline cards. Whether you occasionally fly Air Canada or frequently hop across continents, Aeroplan’s wide partner network can stretch your points for premium flight experiences. Just confirm your route priorities and redemption goals to ensure you use the card effectively. If you do, you’ll find the value easily surpasses the $95 AF via sign-up bonuses, free bag, or advanced redemptions that transform your travel in 2025 and beyond."}}></p>
-                <h3>Disclaimer</h3>
-                <p>
-                    Card terms, sign-up bonuses, and redemption rates can change.
-                    Always refer to official Chase/Aeroplan websites for up-to-date details.
-                    We may earn affiliate commissions from certain links,
-                    but editorial opinions remain our own.
-                    Example values or redemption options are illustrative;
-                    your actual usage depends on route availability, partner surcharges, etc.
-                    If you carry a balance, interest charges likely negate any flight savings
-                    or sign-up benefits from the card.
-                </p>
-            </section>
+                <section id="section-2" className={styles.reviewSection}>
+                    <h2>II. Understanding the Aeroplan Program for US Travelers</h2>
+                    <p>Aeroplan has evolved far beyond a Canada-centric program into a global rewards powerhouse relevant to US travelers. Its Star Alliance membership unlocks award flights on over 45 airlines (like United, Lufthansa, Singapore Airlines) to 1,300+ destinations. Unique non-alliance partners like Emirates further expand this reach.</p>
+                    <p>Key features that appeal to US travelers include:</p>
+                    <ul className={styles.featureList}>
+                        <li><strong>Aeroplan Family Sharing:</strong> Pool points with up to 8 members for free, accelerating award goals.</li>
+                        <li><strong>Generous Stopover Policy:</strong> Add an international stopover for just 5,000 points, visiting two cities for nearly the price of one.</li>
+                        <li><strong>No Carrier-Imposed Surcharges (Mostly):</strong> Huge savings on award tickets on Air Canada and most partners.</li>
+                    </ul>
+                    <p>These elements offer significant advantages over many US-based programs.</p>
+                </section>
+                
+                <section id="cta-aeroplan-card" className={styles.ctaSection}>
+                  <h2>Interested in the <b>{reviewDataNew.cardName}</b>?</h2>
+                  <div className={styles.ctaButtons}>
+                    <a href={reviewDataNew.applyLink} className={`${styles.btn} ${styles.btnApply}`} title="From card issuer's secure site" target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
+                    <a href={reviewDataNew.ratesLink} className={`${styles.btn} ${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored">See Rates & Fees</a>
+                  </div>
+                </section>
 
-             {/* Section 20: E-A-T Statement */}
-             <section id="section-19" className={`${styles.reviewSection} ${styles.eatSection}`}> {/* Combined classes */}
-                 <h2 dangerouslySetInnerHTML={{ __html: "Our Commitment to E-A-T: Expertise, Authority &amp; Trustworthiness"}}></h2>
-                 {/* Using E-A-T text adapted for Aeroplan Card */}
-                <p>
-                    At <strong>TravelCardInsider</strong>,
-                    we prioritize reliable, well-researched reviews
-                    aligned with Google’s E-A-T framework:
-                </p>
-                <h3>1. Expertise</h3>
-                <ul className={styles.featureList}>
-                    {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Frequent AC Flyers:</strong> Our reviewers have tested Aeroplan redemptions, Star Alliance partner bookings, and tracked how the card’s spend influences Elite progress."}}></li>
-                     {/* Using dangerouslySetInnerHTML for &amp; */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Ongoing Verification:</strong> We watch for changes in Aeroplan’s partner charts, T&amp;Cs, or new promotions for 2025 and beyond."}}></li>
-                    <li><strong>Real-World Testing:</strong>
-                    We verify bag perks, use the card overseas,
-                    and check the statement for correct multipliers
-                    to ensure accurate advice.</li>
-                </ul>
-                <h3>2. Authority</h3>
-                <ul className={styles.featureList}>
-                    <li><strong>Detailed Reviews:</strong>
-                    This ~2,000-word coverage highlights from sign-up bonus
-                    to advanced partner redemptions—ensuring thoroughness.</li>
-                    <li><strong>Industry Mentions:</strong>
-                    We’re frequently quoted by recognized travel/finance media
-                    for unbiased airline card analysis.</li>
-                    <li><strong>Transparent Disclosure:</strong>
-                    If affiliate links exist, we label them
-                    so you know how we’re funded without editorial compromise.</li>
-                </ul>
-                <h3>3. Trustworthiness</h3>
-                <ul className={styles.featureList}>
-                    <li><strong>Independent Rating:</strong>
-                    Advertisers do not control our star rating or final verdict.</li>
-                    <li><strong>Reader Interaction:</strong>
-                    We welcome user experiences in the comments,
-                    refining our content if new data emerges.</li>
-                    <li><strong>Frequent Updates:</strong>
-                    If sign-up bonuses or terms shift, we revise promptly
-                    for factual accuracy.</li>
-                     {/* Using dangerouslySetInnerHTML for &amp; */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Privacy &amp; Security:</strong> As per our <a href='/privacy-policy'>Privacy Policy</a>, we safeguard user data from any subscriptions or feedback forms."}}></li> {/* Used relative link */}
-                </ul>
-                <p dangerouslySetInnerHTML={{ __html: "Following E-A-T principles, we aim to provide a trustworthy, thorough evaluation of the Aeroplan® Credit Card for 2025 so you can decide if it meets your global travel needs." }}></p>
-            </section>
+                <section id="section-3" className={styles.reviewSection}>
+                    <h2>III. Core Features: Earning Power and Travel Benefits</h2>
+                    <p>The Chase Aeroplan Card combines strong earning on US-centric categories with valuable travel perks.</p>
+                    <h3>Earning Structure:</h3>
+                    <ul className={styles.featureList}>
+                        <li><strong>3X Points:</strong> Air Canada, groceries, dining (including takeout/delivery).</li>
+                        <li><strong>1X Point:</strong> All other purchases.</li>
+                        <li><strong>Monthly Spending Bonus:</strong> 500 bonus points per $2,000 spent monthly (up to 1,500 bonus points), effectively boosting 3X to 3.25X.</li>
+                    </ul>
+                    <h3>Core Travel Benefits:</h3>
+                    <ul className={styles.featureList}>
+                        <li><strong>Automatic Aeroplan 25K Elite Status:</strong> For your first year and the subsequent calendar year.</li>
+                        <li><strong>First Checked Bag Free:</strong> On Air Canada for you and up to 8 companions.</li>
+                        <li><strong>Global Entry, TSA PreCheck, or NEXUS Fee Credit:</strong> Up to $120 every four years.</li>
+                        <li><strong>No Foreign Transaction Fees.</strong></li>
+                        <li><strong>Preferred Pricing on Flight Rewards:</strong> Potential for lower point costs on Air Canada awards.</li>
+                        <li><strong>Pay Yourself Back:</strong> Redeem points for statement credits against travel, annual fee, and sometimes other categories.</li>
+                        <li><strong>10% Bonus on Chase Ultimate Rewards Transfers:</strong> For single transfers of 50,000+ UR points (up to 25k bonus Aeroplan pts/yr).</li>
+                    </ul>
+                    <p>These features reward both travel and significant everyday US spending.</p>
+                </section>
 
-           
+                <section id="section-4" className={styles.reviewSection}>
+                    <h2>IV. Deep Dive: Travel Perks & Protections</h2>
+                    <p>Beyond the headlines, this card offers valuable protections:</p>
+                    <h3>Travel Benefits (Detailed):</h3>
+                     <p>The free checked bag on Air Canada (up to 23kg/50lbs each) can save a family hundreds. The NEXUS credit is especially useful for US-Canada travel as NEXUS includes Global Entry/TSA PreCheck benefits.</p>
+                    <h3>Purchase Protections & Insurance:</h3>
+                    <ul className={styles.featureList}>
+                        <li><strong>Trip Cancellation/Interruption:</strong> Up to $1,500 per person, $6,000 per trip.</li>
+                        <li><strong>Baggage Delay:</strong> Up to $100/day for 3 days (delays over 6 hours).</li>
+                        <li><strong>Trip Delay:</strong> Up to $500 per ticket (delays over 12 hours/overnight).</li>
+                        <li><strong>Auto Rental CDW:</strong> Secondary in the U.S., potentially primary internationally.</li>
+                        <li><strong>Purchase Protection:</strong> Covers new purchases against damage/theft for 120 days ($500/claim).</li>
+                        <li><strong>Extended Warranty Protection.</strong></li>
+                    </ul>
+                    <p>These benefits reduce travel risks and enhance purchase security, adding considerable peace of mind for US travelers.</p>
+                </section>
 
-          </article>
-        </div> {/* Close reviewContainer */}
+                <section id="section-5" className={styles.reviewSection}>
+                    <h2>V. Rates, Fees, and Overall Costs</h2>
+                    <p>Knowing the costs is vital for maximizing value.</p>
+                    <DraggableTableWrapper>
+                        <div className={styles.tableContainer}>
+                            <table className={`${styles.statsTable} ${styles.ratesFeesTable}`}>
+                                <thead>
+                                    <tr><th>Fee Type</th><th>Amount/Rate</th><th>Notes</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td data-label="Fee Type">Annual Fee</td><td data-label="Amount/Rate">$95</td><td data-label="Notes">Standard for its category.</td></tr>
+                                    <tr><td data-label="Fee Type">Purchase APR</td><td data-label="Amount/Rate">{reviewDataNew.aprRange}</td><td data-label="Notes">Pay in full to avoid.</td></tr>
+                                    <tr><td data-label="Fee Type">Foreign Transaction</td><td data-label="Amount/Rate">$0 (None)</td><td data-label="Notes">Essential for international travel.</td></tr>
+                                    <tr><td data-label="Fee Type">Late/Returned Payment</td><td data-label="Amount/Rate">Up to $40</td><td data-label="Notes">Can trigger penalty APR.</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </DraggableTableWrapper>
+                    <p>The $95 annual fee is easily offset by benefits like free checked bags or using Pay Yourself Back for the fee. No foreign transaction fees is a key saving for travel. Avoid interest by paying balances in full.</p>
+                </section>
+                
+                {/* Placeholder for another relevant image. UPDATE src, alt, width, height as needed. */}
+                <Image
+                    src="/eva-darron-oCdVtGFeDC0-unsplash (1).jpg" // UPDATE PATH
+                    alt="People enjoying a travel experience enabled by rewards" // UPDATE ALT TEXT
+                    width={800} // UPDATE with actual image width
+                    height={533} // UPDATE with actual image height
+                    className={styles.contentImage}
+                />
+
+                <section id="section-6" className={styles.reviewSection}>
+                    <h2>VI. Welcome Bonus and Ongoing Value</h2>
+                    <p>The welcome bonus offers a significant head start.</p>
+                    <ul className={styles.featureList}>
+                        <li><strong>Current Welcome Offer:</strong> Typically up to 70,000 bonus points, with a large portion after initial spend (e.g., 60,000 after $3,000 in 3 months) and the rest after the first annual renewal.</li>
+                        <li><strong>Valuation:</strong> 70,000 points can be worth $875 via Pay Yourself Back (travel @ 1.25 cpp) or potentially $980-$1,050+ towards flights.</li>
+                        <li><strong>Chase 5/24 Rule:</strong> Likely applies, so check your eligibility.</li>
+                        <li><strong>Ongoing Promotions:</strong> The 10% bonus on single Chase Ultimate Rewards transfers of 50,000+ points to Aeroplan (up to 25k bonus Aeroplan pts/yr) is a standout ongoing perk.</li>
+                    </ul>
+                    <p>The bonus structure encourages retention, while strategic UR transfers can significantly boost point value.</p>
+                </section>
+
+                <section id="section-7" className={styles.reviewSection}>
+                    <h2>VII. Earning Aeroplan Points: A US Cardholder's Guide</h2>
+                    <p>US cardholders can earn efficiently:</p>
+                    <ul className={styles.featureList}>
+                        <li><strong>Credit Card Spending:</strong> Maximize 3X on groceries, dining, and Air Canada. Aim for the monthly $2,000 spend thresholds for 500 bonus points.</li>
+                        <li><strong>Flying:</strong> Earn on Air Canada and Star Alliance partner flights.</li>
+                        <li><strong>Transferring from Other Programs:</strong> Aeroplan is a partner of Chase Ultimate Rewards (10% cardholder bonus on 50k+ transfers), Amex Membership Rewards, Capital One Miles, and Bilt Rewards. This is a powerful way for US members to accumulate points.</li>
+                        <li><strong>Aeroplan eStore:</strong> Earn points shopping online.</li>
+                    </ul>
+                    <p>Strategic credit card spending and point transfers are often the most effective earning paths for US cardholders.</p>
+                </section>
+
+                <section id="section-8" className={styles.reviewSection}>
+                    <h2>VIII. Redeeming Aeroplan Points: Maximizing Your Rewards</h2>
+                    <p>Aeroplan offers diverse redemptions, with flights providing top value.</p>
+                    <h3>Flight Rewards:</h3>
+                    <ul className={styles.featureList}>
+                        <li><strong>Air Canada Flights:</strong> "Every seat, every flight" available (dynamically priced), no carrier surcharges, just taxes/fees.</li>
+                        <li><strong>Partner Airlines:</strong> Access 45+ partners (Star Alliance included). Mostly distance-based charts, though dynamic pricing is expanding. Most have no carrier surcharges.</li>
+                        <li><strong>Cardholder Preferred Pricing:</strong> Potential for better point rates on AC.</li>
+                        <li><strong>Stopovers:</strong> Add an international stopover for only 5,000 points – a fantastic value.</li>
+                    </ul>
+                    <h3>Other Redemptions:</h3>
+                    <ul className={styles.featureList}>
+                        <li><strong>Upgrades (eUpgrades):</strong> For Aeroplan Elite members on Air Canada.</li>
+                        <li><strong>Pay Yourself Back:</strong> Redeem points for statement credits against travel (1.25 cpp), annual fee (1.25 cpp), and sometimes dining/groceries (0.8 cpp). This offers US cardholders excellent flexibility.</li>
+                        <li><strong>Other:</strong> Hotels, car rentals, gift cards generally offer lower value.</li>
+                        <li><strong>Family Sharing:</strong> Pool points with up to 8 family members for free.</li>
+                    </ul>
+                    <p>Prioritize flight redemptions (especially with stopovers) or Pay Yourself Back for travel to maximize value.</p>
+                </section>
+
+                <section id="section-9" className={styles.reviewSection}>
+                    <h2>IX. The True Value of an Aeroplan Point for US Travelers</h2>
+                    <p>Aeroplan point value varies by use.</p>
+                     <ul className={styles.featureList}>
+                        <li><strong>Independent Valuations:</strong> Experts often peg Aeroplan points around 1.4-1.5 cents per point (cpp) for good flight redemptions. Sweet spots can yield much more (3-5+ cpp).</li>
+                        <li><strong>Card-Specific Value:</strong> Pay Yourself Back offers a fixed 1.25 cpp for travel and the annual fee – a solid baseline for US users.</li>
+                        <li><strong>Lower Tier:</strong> Merchandise or gift cards yield &lt;1 cpp.</li>
+                    </ul>
+                    <p>Aim for flight redemptions exceeding 1.4 cpp, or use PYB for travel at 1.25 cpp. This card gives US travelers clear pathways to good value.</p>
+                </section>
+
+                <section id="section-10" className={styles.reviewSection}>
+                    <h2>X. Aeroplan Sweet Spots from the US</h2>
+                     <p>Aeroplan "sweet spots" offer high value, often on partner airlines from the US:</p>
+                     <ul className={styles.featureList}>
+                        <li><strong>US to Europe (Business):</strong> ~60,000-70,000 points one-way on partners (e.g., Lufthansa, SWISS).</li>
+                        <li><strong>US to Asia (Business/First):</strong> ~75,000+ points one-way to North Asia (e.g., ANA, EVA Air), or ~87,500+ to Southeast Asia.</li>
+                        <li><strong>Intra-North America (Economy):</strong> Short-hauls from 6,000 points; West Coast to Hawaii on United for ~12,500 points one-way.</li>
+                        <li><strong>Leveraging Stopovers:</strong> Add an international stopover for just 5,000 points to enhance any long-haul award.</li>
+                    </ul>
+                    <p>Finding these requires flexibility but offers incredible returns for US-based explorers.</p>
+                </section>
+
+                <section id="section-11" className={styles.reviewSection}>
+                    <h2>XI. Aeroplan Elite Status with the Chase Card</h2>
+                    <p>The card gives a strong start to Aeroplan Elite Status.</p>
+                     <ul className={styles.featureList}>
+                        <li><strong>Automatic Aeroplan 25K Status:</strong> For new cardholders (year of opening + next full year). This grants Star Alliance Silver.</li>
+                        <li><strong>Maintain 25K via Card Spend:</strong> $15,000 spend in a calendar year.</li>
+                        <li><strong>Status Boost:</strong> One-level boost with $50,000 annual spend (e.g., 25K to 35K).</li>
+                        <li><strong>Aeroplan 25K Benefits (on Air Canada):</strong> Includes 2 free checked bags (combining card/status perks), priority check-in/boarding (Zone 3), eUpgrade credits, and a chance to select Maple Leaf Lounge passes. Star Alliance Silver offers modest priority benefits on partners like United.</li>
+                    </ul>
+                    <p>For US travelers, 25K is most useful when flying Air Canada. The $50k spend boost is strategic if targeting a higher, more globally beneficial tier like 50K (Star Gold).</p>
+                </section>
+
+                <section id="section-12" className={styles.reviewSection}>
+                    <h2>XII. The Pay Yourself Back Feature Explained</h2>
+                    <p>Pay Yourself Back (PYB) is a key benefit for US cardholders, offering superb flexibility.</p>
+                     <ul className={styles.featureList}>
+                        <li><strong>How it Works:</strong> Charge eligible expenses, then redeem Aeroplan points within 90 days for a statement credit.</li>
+                        <li><strong>Eligible Categories & Rates:</strong>
+                            <ul className={styles.nestedList}>
+                                <li>Travel Purchases (any airline, hotel, etc.): 1.25 cents per point. (Annual redemption limit: 200,000 points / $2,500 credit).</li>
+                                <li>Card Annual Fee: 1.25 cents per point (7,600 points for $95).</li>
+                                <li>Dining/Groceries (occasionally): 0.8 cents per point.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Source of Points:</strong> Includes points from card spend and Chase Ultimate Rewards transfers.</li>
+                        <li><strong>Stacking Value:</strong> Combine the card's 10% UR transfer bonus with PYB for travel to get effective UR point values of ~1.375 cpp or higher.</li>
+                    </ul>
+                    <p>PYB at 1.25 cpp for travel makes Aeroplan points a highly flexible and valuable travel currency for US users.</p>
+                </section>
+
+                <section id="section-13" className={styles.reviewSection}>
+                    <h2>XIII. Real-World Redemption Example for US Spenders</h2>
+                    <p>Let's simplify: A US-based cardholder, "Alex," focuses spending on the card's 3X grocery/dining categories and meets the welcome bonus. Within a year, including leveraging the monthly spend bonuses, Alex could easily accumulate over 100,000 Aeroplan points.</p>
+                     <ul className={styles.featureList}>
+                        <li><strong>Redemption Goal:</strong> A round-trip business class flight from the US to Europe during a less busy period, potentially using a partner airline.</li>
+                        <li><strong>Point Cost:</strong> Could find options for around 120,000-140,000 points round-trip if flexible. Alex might be close or could top off with a Chase UR transfer.</li>
+                        <li><strong>Value:</strong> If a similar cash ticket costs $4,000, and Alex pays $200 in fees, the ~130,000 points used would yield over 3 cents per point – excellent value from everyday US spending. Alternatively, 100,000 points provide $1,250 in travel credits via Pay Yourself Back.</li>
+                    </ul>
+                    <p>This demonstrates achievable high value for US travelers.</p>
+                </section>
+
+                <section id="section-14" className={styles.reviewSection}>
+                    <h2>XIV. Aeroplan Card vs. US Competitors</h2>
+                    <p>How does the Chase Aeroplan Card stack up for US travelers?</p>
+                    <DraggableTableWrapper>
+                        <div className={styles.tableContainer}>
+                            <table className={`${styles.statsTable} ${styles.ratesFeesTable}`}>
+                                <thead>
+                                    <tr>
+                                        <th>Feature</th>
+                                        <th>Chase Aeroplan Card</th>
+                                        <th>Chase Sapphire Preferred</th>
+                                        <th>Amex Gold Card</th>
+                                        <th>Capital One Venture Rewards</th>
+                                        <th>United Explorer Card</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td data-label="Feature">Annual Fee</td><td data-label="Chase Aeroplan Card">$95</td><td data-label="Chase Sapphire Preferred">$95</td><td data-label="Amex Gold Card">$250</td><td data-label="Capital One Venture Rewards">$95</td><td data-label="United Explorer Card">$95 (after intro)</td></tr>
+                                    <tr><td data-label="Feature">Primary Rewards</td><td data-label="Chase Aeroplan Card">3X Aeroplan pts (AC, grocery, dining)</td><td data-label="Chase Sapphire Preferred">2X-5X UR pts (travel, dining, online grocery)</td><td data-label="Amex Gold Card">4X MR pts (dining, US supermarket)</td><td data-label="Capital One Venture Rewards">2X miles (all)</td><td data-label="United Explorer Card">2X United miles (United, dining, hotels)</td></tr>
+                                    <tr><td data-label="Feature">Key Airline Perk</td><td data-label="Chase Aeroplan Card">Aeroplan 25K Status (initial), AC bags</td><td data-label="Chase Sapphire Preferred">$50 Hotel Credit</td><td data-label="Amex Gold Card">Airline Fee Credit (select)</td><td data-label="Capital One Venture Rewards">Travel eraser</td><td data-label="United Explorer Card">United bags, Club passes</td></tr>
+                                    <tr><td data-label="Feature">Point Flexibility</td><td data-label="Chase Aeroplan Card">Aeroplan (Star Alliance), PYB</td><td data-label="Chase Sapphire Preferred">Chase UR (many partners)</td><td data-label="Amex Gold Card">Amex MR (many partners)</td><td data-label="Capital One Venture Rewards">Capital One Miles (partners)</td><td data-label="United Explorer Card">United MileagePlus</td></tr>
+                                    <tr><td data-label="Feature">Foreign Transaction Fee</td><td data-label="Chase Aeroplan Card">$0</td><td data-label="Chase Sapphire Preferred">$0</td><td data-label="Amex Gold Card">$0</td><td data-label="Capital One Venture Rewards">$0</td><td data-label="United Explorer Card">$0</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </DraggableTableWrapper>
+                    <p><strong>Aeroplan's Niche:</strong> It combines initial elite status, strong 3X everyday earning for valuable Aeroplan points, unique PYB flexibility, and a sub-$100 fee, making it a strong contender for US-based Star Alliance explorers and points optimizers.</p>
+                </section>
+
+                <section id="section-15" className={styles.reviewSection}>
+                    <h2>XV. Who Should Get This Card in the US?</h2>
+                    <p>This card shines for specific US travelers:</p>
+                     <ul className={styles.featureList}>
+                        <li><strong>The Savvy Star Alliance Explorer:</strong> US-based, travels internationally on Star Alliance, seeks premium cabin sweet spots, maximizes 3X categories and monthly bonuses. Fit: Excellent.</li>
+                        <li><strong>The Practical Points Optimizer:</strong> Mix of travel, values flexible rewards (especially PYB @ 1.25cpp for travel), focuses on 3X grocery/dining. Fit: Good to Excellent.</li>
+                        <li><strong>The Chase UR Collector:</strong> Uses the Aeroplan card to enhance UR point value via the 10% transfer bonus and PYB. Fit: Good (as companion card).</li>
+                        <li><strong>"Could Be Okay" User:</strong> Infrequent traveler, prefers simple cash back, modest spender. Other cards might be better.</li>
+                    </ul>
+                    <p>It's less compelling for those strictly loyal to other alliances or who won't engage with program features.</p>
+                </section>
+
+                <section id="section-16" className={styles.reviewSection}>
+                    <h2>XVI. Cardholder Experiences: Pros & Cons</h2>
+                    <p>Cardholders offer practical insights:</p>
+                     <ul className={styles.featureList}>
+                        <li><strong>Positive:</strong> Love Pay Yourself Back (PYB) for flexibility/value (1.25 cpp travel); strong 3X grocery/dining earn; free checked bags on AC; helpful for UR point maximization.</li>
+                        <li><strong>Mixed/Negative:</strong> Utility of 25K status (Star Silver) seen as marginal on partners; partner award availability can be tough; eUpgrade success variable.</li>
+                    </ul>
+                    <p>Satisfied users often leverage PYB, fly Air Canada, or are savvy points hobbyists. Partner award availability is a key pain point.</p>
+                </section>
+
+                <section id="section-17" className={styles.reviewSection}>
+                    <h2>XVII. Potential Drawbacks to Consider</h2>
+                    <p>Be aware of these for a balanced view:</p>
+                     <ul className={styles.featureList}>
+                        <li><strong>$95 Annual Fee:</strong> Needs to be offset by benefits.</li>
+                        <li><strong>Program Complexity:</strong> Aeroplan has a learning curve.</li>
+                        <li><strong>Partner Award Availability:</strong> Can be challenging.</li>
+                        <li><strong>Marginal 25K Status Value (if not flying AC):</strong> Star Silver benefits are limited.</li>
+                        <li><strong>Chase 5/24 Rule:</strong> Likely applies.</li>
+                        <li><strong>Low Value Non-Flight Redemptions:</strong> Avoid merchandise/gift cards.</li>
+                    </ul>
+                    <p>These don't negate the card's value but highlight areas where it might not be optimal.</p>
+                </section>
+                
+                <section id="section-faq" className={`${styles.reviewSection} ${styles.faqSection}`}>
+                    <h2>XVIII. {reviewDataNew.cardName}: Top 5 FAQs (Card Specific)</h2>
+                    <div className={styles.faqContainer}>
+                        {structuredDataOptimized['@graph'].find(item => item['@type'] === 'FAQPage').mainEntity.map((faq, index) => (
+                            <details key={index} className={styles.faqItem}>
+                                <summary className={styles.faqQuestion}>{`${index + 1}. ${faq.name}`}</summary>
+                                <div className={styles.faqAnswer}><p>{faq.acceptedAnswer.text}</p></div>
+                            </details>
+                        ))}
+                    </div>
+                </section>
+
+                <section id="section-verdict" className={styles.reviewSection}>
+                    <h2>XIX. Conclusion: Is the Aeroplan Card a Good Co-Pilot for US Travelers?</h2>
+                    <p>For US travelers, the Chase Aeroplan Card is a surprisingly robust offering. Its strength lies in strong 3X earning on groceries/dining, flexible Pay Yourself Back at 1.25 cpp for travel, initial Aeroplan 25K status, and a 10% bonus on Chase Ultimate Rewards transfers. The NEXUS credit is a distinct plus for US-Canada travel.</p>
+                    <p>While maximizing award flights requires some savvy, the card provides clear value paths. It's best for:</p>
+                    <ul className={styles.featureList}>
+                        <li>US-based Star Alliance enthusiasts.</li>
+                        <li>Strategic points collectors, especially with Chase Ultimate Rewards.</li>
+                        <li>Those with high grocery/dining spend.</li>
+                        <li>Frequent US-Canada travelers.</li>
+                    </ul>
+                    <p>For others, simpler cards might be better. But for the right US traveler, the Chase Aeroplan Card, with its reasonable $95 annual fee, is a powerful tool for more rewarding journeys and a worthy contender for a spot in your wallet.</p>
+                </section>
+
+
+                <section id="eat-expertise-authority-trustworthiness" className={`${styles.reviewSection} ${styles.eatSection}`}>
+                    <h2 dangerouslySetInnerHTML={{ __html: `Our Commitment to E-A-T: Expertise, Authority &amp; Trustworthiness`}}></h2>
+                    <p>At <strong>{siteName}</strong>, we ensure our content meets the highest standards. This review of the <strong>{reviewDataNew.cardName}</strong> is based on thorough research of the card's features, terms, and conditions as of {new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}, as well as comparisons to other cards in the market, to provide you with a reliable and comprehensive guide.</p>
+                </section>
+
+              </article>
+            </div>
+          </div>
+
+          <aside className={styles.sidebarArea}>
+            <TableOfContents sections={tocSections} />
+          </aside>
+        </div>
       </main>
-
-      
     </>
   );
 }
 
-export default AeroplanCardReviewPage;
+export default ChaseAeroplanReviewPage;
