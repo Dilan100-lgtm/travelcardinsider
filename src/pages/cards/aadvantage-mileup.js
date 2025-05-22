@@ -736,6 +736,14 @@ function AmericanAirlinesAadvantageMileupReviewPage() {
                   </div>
                 </section>
 
+                <Image
+        src="/luca-bravo-O453M2Liufs-unsplash.webp" // UPDATE PATH if you chose differently
+        alt="Wooden rowboat on a tranquil turquoise lake surrounded by majestic mountains, illustrating a travel reward destination."
+        width={800} // IMPORTANT: Use the actual width of your image
+        height={533} // IMPORTANT: Use the actual height of your image
+        className={styles.contentImage}
+      />
+
                 <section id="section-2" className={styles.reviewSection}>
                     <h2>II. Unpacking the Value: Rewards and Everyday Benefits</h2>
                     <p>Beyond the headline features, the true worth of a rewards card lies in the tangible benefits it delivers. Let's break down what the MileUp® card brings to the table.</p>
@@ -873,6 +881,14 @@ function AmericanAirlinesAadvantageMileupReviewPage() {
                         <li><strong>Pragmatists ("David"):</strong> Weigh the $0 fee against the lack of free checked bags (which can quickly offset savings) and the foreign transaction fee, sometimes questioning if a cash-back card might be better if AA travel isn't frequent enough.</li>
                     </ul>
                 </section>
+
+                <Image
+             src="/mesut-kaya-eOcyhe5-9sQ-unsplash.webp" // UPDATE PATH if you chose differently
+             alt="Travelers looking at hot air balloons over a scenic landscape, symbolizing experiences unlocked by travel rewards."
+             width={800} // IMPORTANT: Use the actual width of your image
+             height={533} // IMPORTANT: Use the actual height of your image
+             className={styles.contentImage}
+         />
 
                 <section id="section-6" className={styles.reviewSection}>
                     <h2>VI. The Competitive Arena: MileUp® vs. Other No-Fee Options</h2>
