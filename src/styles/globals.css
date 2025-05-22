@@ -1,5 +1,54 @@
 /* =============== GLOBALS & DEFAULTS (Refined) =============== */
 :root {
+  --amex-primary-blue: #0052cc; /* Amex-like Blue */
+  --amex-accent-gold: #ffc400;  /* Amex-like Gold/Yellow - Primary CTA background */
+  --amex-accent-gold-hover: #e6b300; /* Darker gold for hover */
+  --amex-accent-gold-border: #d4a100; /* Border for gold button */
+  --text-on-gold: #1f2937; /* Dark text for good contrast on gold */
+
+  --brand-green-highlight: #16a34a; /* For specific highlights like subtotal */
+
+  --text-dark: #1f2937;       /* For main body text, headings */
+  --text-medium: #4b5563;     /* For secondary text, descriptions */
+  --text-light: #6b7280;      /* For muted text, captions */
+  --text-on-primary: #ffffff; /* Text on dark/colored backgrounds */
+  --text-on-accent: var(--text-dark); /* Text on accent color (gold) */
+
+
+  --bg-white: #ffffff;
+  --bg-light: #f8f9fa;        /* Very light gray for subtle backgrounds (e.g., credit cards) */
+  --bg-grey-bar: #f0f2f5;    /* For slim grey bars like trust bar */
+  --bg-zebra-stripe: #fafafa; /* For table zebra striping */
+
+  --border-color: #d1d5db;     /* Standard border color */
+  --border-color-light: #e5e7eb; /* Lighter border for internal elements */
+
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  --border-radius-sm: 4px;
+  --border-radius-md: 6px;
+  --border-radius-lg: 8px;
+  --border-radius-xl: 12px;
+  --border-radius-pill: 9999px; /* For pill shapes */
+
+  --font-family-body: 'Inter', sans-serif;
+  --font-family-heading: 'Playfair Display', serif; /* Using Playfair Display for H1/H2 as per previous update */
+}
+
+/* Global Smooth Scroll for TOC */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Adjust based on your sticky header height */
+}
+:root {
   /* Existing Variables - Kept As Is */
   --bg-light-gray: #f9fafb;
   --bg-white: #ffffff;

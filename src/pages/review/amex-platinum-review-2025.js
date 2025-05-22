@@ -54,26 +54,25 @@ const reviewDataNew = {
   },
   siteName: "Your Travel Card Review Site", // IMPORTANT: Update this
   pagePath: "/review/amex-platinum-2025",
-  // Suggestion from feedback: custom, high-resolution Centurion-Lounge shot
-  imageUrl: "/savvas-kalimeris-hO3do8FKJkQ-unsplash.webp", // IMPORTANT: Update this path to your high-res WebP lounge image (<150kB)
-  imageWidth: 1600, // Example, adjust to your hero image's aspect ratio
-  imageHeight: 900, // Example, adjust to your hero image's aspect ratio
+  imageUrl: "/amex-centurion-lounge-hero-2025.webp",
+  heroImageObjectPosition: "center 30%", // Control image focus here
+  imageWidth: 1600,
+  imageHeight: 900,
   siteLogoUrl: "/images/logo.png",
-  publishDate: "2025-05-17", // Keep this as the original publish date
-  updateDate: "2025-05-22", // IMPORTANT: This should reflect the "Updated May 2025" badge
+  publishDate: "2025-05-17",
+  updateDate: "2025-05-22",
   ratingValue: 4.6,
   annualFee: 695,
   applyLink: "https://www.yourlink.com/apply-amex-platinum", // IMPORTANT: Update this with your affiliate link
   learnMoreLink: "/cards/amex-platinum-details",
   ratesLink: "https://www.yourlink.com/amex-platinum-rates-fees", // IMPORTANT: Update this with the official rates and fees link
-  h1Content: "The Amex Platinum Card 2025: A Deep Dive into its $695 Value", // Retained for main article title
-  // H1 for hero section might be slightly different if needed, e.g., more aspirational
+  h1Content: "The Amex Platinum Card 2025: A Deep Dive into its $695 Value",
   heroH1Content: "Amex Platinum 2025: Is The Iconic $695 Card Still The Key To Luxury Travel?",
   reviewBody: "Our comprehensive 2025 analysis of The Platinum Card® from American Express. Uncover its value through travel credits, lounge access, elite perks, and whether the $695 fee is justified for you.",
   sku: "AMEX-PLATINUM-TCI-2025",
   mpn: "AMEXPLATINUM",
   brandName: "American Express Platinum",
-  credits: [ // Data for the new credit cards section
+  credits: [
     { id: "airline", name: "$200 Airline Fee Credit", frequency: "Annual", details: "For incidental fees on one pre-selected airline. Enrollment required.", icon: "/icons/credit-airline.svg" },
     { id: "hotel", name: "$200 Hotel Credit", frequency: "Annual", details: "On prepaid FHR or The Hotel Collection (2-night min) bookings via Amex Travel.", icon: "/icons/credit-hotel.svg" },
     { id: "uber", name: "$200 Uber Cash", frequency: "Monthly", details: "$15/month + $20 Dec bonus for U.S. rides or Uber Eats. Card must be linked.", icon: "/icons/credit-uber.svg" },
@@ -83,7 +82,6 @@ const reviewDataNew = {
     { id: "walmart", name: "$155 Walmart+ Credit", frequency: "Monthly", details: "Covers monthly Walmart+ membership fee (approx. $155 annually). Enrollment required.", icon: "/icons/credit-walmart.svg" },
     { id: "equinox", name: "$300 Equinox Credit", frequency: "Annual", details: "For Equinox memberships or Equinox+ app. Enrollment required.", icon: "/icons/credit-equinox.svg" },
     { id: "globalentry", name: "Global Entry / TSA PreCheck® Credit", frequency: "Benefit", details: "Fee credit up to $100 for Global Entry or up to $85 for TSA PreCheck®.", icon: "/icons/credit-globalentry.svg" }
-    // IMPORTANT: Update icon paths with your actual icon files
   ]
 };
 
@@ -119,7 +117,6 @@ const structuredData = {
   "image": [ `${siteUrl}${reviewDataNew.imageUrl}` ]
 };
 
-// For Sticky "On This Page" Nav
 const TocLinks = [
   { href: "#introduction", label: "Introduction" },
   { href: "#core-economics", label: "Core Economics" },
@@ -136,7 +133,6 @@ export default function AmexPlatinumReview2025() {
   const authorTooltipRef = useRef(null);
   const [showAuthorBioTooltip, setShowAuthorBioTooltip] = useState(false);
 
-  // Sticky Nav state
   const [activeSection, setActiveSection] = useState('');
   const [showStickyNav, setShowStickyNav] = useState(false);
   const stickyNavRef = useRef(null);
@@ -151,7 +147,6 @@ export default function AmexPlatinumReview2025() {
     return () => { document.removeEventListener("mousedown", handleClickOutside); if(authorRef.current?.tooltipTimeoutId) clearTimeout(authorRef.current.tooltipTimeoutId); };
   }, [showAuthorBioTooltip, authorRef, authorTooltipRef]);
 
-  // Effect for sticky nav and active section highlighting
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -161,7 +156,7 @@ export default function AmexPlatinumReview2025() {
           }
         });
       },
-      { rootMargin: "-20% 0px -80% 0px", threshold: 0 } // Adjust rootMargin to control when section becomes active
+      { rootMargin: "-20% 0px -80% 0px", threshold: 0 }
     );
 
     const sections = TocLinks.map(link => document.querySelector(link.href));
@@ -170,8 +165,7 @@ export default function AmexPlatinumReview2025() {
     });
 
     const handleScroll = () => {
-      // Show sticky nav after scrolling 200px (or height of hero/trust bar)
-      if (window.scrollY > 200) { // IMPORTANT: Adjust this value based on your hero/header height
+      if (window.scrollY > 200) {
         setShowStickyNav(true);
       } else {
         setShowStickyNav(false);
@@ -229,7 +223,6 @@ export default function AmexPlatinumReview2025() {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       </Head>
 
-      {/* Trust Signal Bar */}
       <div className={styles.trustSignalBar}>
         <div className={styles.trustSignalContent}>
           {reviewDataNew.issuerLogoUrl && (
@@ -244,7 +237,6 @@ export default function AmexPlatinumReview2025() {
         </div>
       </div>
 
-      {/* Sticky "On This Page" Nav */}
       {showStickyNav && (
         <nav className={styles.stickyTocNav} ref={stickyNavRef}>
           <div className={styles.stickyTocContent}>
@@ -262,7 +254,6 @@ export default function AmexPlatinumReview2025() {
         </nav>
       )}
 
-      {/* Hero Section with Overlay */}
       <div className={styles.heroImageContainer}>
         <Image
           src={reviewDataNew.imageUrl}
@@ -272,14 +263,7 @@ export default function AmexPlatinumReview2025() {
           className={styles.heroImage}
           priority
           style={{
-            // Add the objectPosition property here
-            // Values are 'X Y'. 'X' can be left, center, right, or a percentage.
-            // 'Y' can be top, center, bottom, or a percentage.
-            objectPosition: reviewDataNew.heroImageObjectPosition || "center center", // Fallback to center if not specified
-            // For example, to focus on the top part of the image:
-             objectPosition: "center top",
-            // To focus slightly to the right and top:
-             objectPosition: "70% 20%",
+            objectPosition: reviewDataNew.heroImageObjectPosition || "center center",
           }}
         />
         <div className={styles.heroTextOverlay}>
@@ -287,11 +271,9 @@ export default function AmexPlatinumReview2025() {
         </div>
       </div>
 
-      <main className={styles.reviewPageMain}> {/* Changed from style={{ fontFamily... }} to use class */}
+      <main className={styles.reviewPageMain}>
         <article className={styles.reviewContainer}>
           <header className={styles.reviewHeader}>
-            {/* Main H1 for the article content itself, if different from Hero H1 */}
-            {/* <h1 className={styles.reviewTitle}>{reviewDataNew.h1Content}</h1> */}
             <div
                 className={styles.authorBioContainer}
                 ref={authorRef}
@@ -440,7 +422,7 @@ export default function AmexPlatinumReview2025() {
                   <div className={styles.creditCardHeader}>
                     {credit.icon && <Image src={credit.icon} alt="" width={24} height={24} className={styles.creditIcon} />}
                     <h5 className={styles.creditName}>{credit.name}</h5>
-                    <span className={`${styles.creditPill} ${styles['pill' + credit.frequency]}`}>{credit.frequency}</span>
+                    <span className={`${styles.creditPill} ${styles['pill' + credit.frequency.replace(/\s+/g, '')]}`}>{credit.frequency}</span>
                   </div>
                   <p className={styles.creditDetails}>{credit.details}</p>
                 </div>
@@ -448,17 +430,9 @@ export default function AmexPlatinumReview2025() {
             </div>
             <p style={{marginTop: '1rem'}}><strong>Total Potential Value:</strong> Around $1,800+ if you can use every credit. Many of these are "use-it-or-lose-it," encouraging regular engagement. This sometimes leads to the "coupon book" critique – you need to be organized to get the full value. The actual worth of these credits truly hinges on whether they cover expenses you'd have anyway.</p>
           </section>
-          
-          {/* Placeholder for custom infographic or image */}
-          {/* <div className={styles.customImageSection}>
-            <Image src="/path-to-your-credits-pie-chart.webp" alt="Amex Platinum Credits Breakdown Infographic" width={600} height={400} layout="responsive" />
-            <p className={styles.tableCaption}>Visual breakdown of available statement credits.</p>
-          </div>
-          */}
 
           <section id="travel-benefits" className={styles.reviewSection}>
             <h2>IV. The Globetrotter's Toolkit: Elite Travel Benefits in 2025</h2>
-            {/* ... content from your previous version ... */}
             <p>Beyond direct credits, the {reviewDataNew.cardName} is packed with travel-enhancing perks. Enrollment may be required.</p>
             <h3>The American Express Global Lounge Collection®:</h3>
             <p>This is a crown jewel, offering access to over 1,400 airport lounges worldwide, including:</p>
@@ -483,7 +457,6 @@ export default function AmexPlatinumReview2025() {
 
           <section id="travel-protections" className={styles.reviewSection}>
             <h2>V. Travel Confidently: Platinum's Suite of Protections in 2025</h2>
-            {/* ... content from your previous version ... */}
             <p>The {reviewDataNew.cardName} offers valuable insurance and protections, providing peace of mind. Terms, conditions, and limitations apply. Coverage is often contingent on paying for the entire fare or rental with your card.</p>
             <ul>
               <li><strong>Trip Cancellation and Interruption Insurance:</strong> Reimburses non-refundable travel expenses if your trip (paid entirely with the card) is cancelled or interrupted for a covered reason.</li>
@@ -499,7 +472,6 @@ export default function AmexPlatinumReview2025() {
 
           <section id="lifestyle-perks" className={styles.reviewSection}>
             <h2>VI. Beyond the Airport: Lifestyle Perks</h2>
-            {/* ... content from your previous version ... */}
             <p>The {reviewDataNew.cardName}'s appeal isn't limited to travel.</p>
             <ul>
               <li><strong>Global Dining Access by Resy:</strong> Add your card to your Resy profile to unlock exclusive reservations at sought-after restaurants and invitations to special dining events. This is a nice touch for foodies.</li>
@@ -510,7 +482,6 @@ export default function AmexPlatinumReview2025() {
 
           <section id="verdict" className={styles.reviewSection}>
             <h2>VII. The Verdict: Is the Amex Platinum a Smart Investment for You in 2025?</h2>
-            {/* ... content from your previous version, ensure ul for pros/cons are used ... */}
             <p>So, is the ${reviewDataNew.annualFee} {reviewDataNew.cardName} worth it in 2025? It truly depends on you. If you can leverage many of the statement credits (potentially $1,800+ in value, enrollment required for some), the annual fee is more than covered. Add the value of lounge access, hotel statuses, and travel protections, and the financial case can be strong.</p>
             <div className={styles.prosConsContainer}>
               <div className={styles.prosSection}>
@@ -554,7 +525,6 @@ export default function AmexPlatinumReview2025() {
 
           <section id="conclusion" className={styles.reviewSection}>
             <h2>VIII. Conclusion: Crafting Your Platinum Journey in 2025</h2>
-            {/* ... content from your previous version ... */}
             <p>The 2025 {reviewDataNew.cardName} isn't for everyone. Its ${reviewDataNew.annualFee} fee demands a lifestyle and spending pattern that can consistently extract superior value. It’s for the proactive cardholder who will actively manage benefits (enrollment required for some) to enhance experiences they already seek.</p>
             <p>Ask yourself: How often do I fly? Do I value lounges and hotel perks? Does my spending align with credits for Uber, entertainment, Walmart+, or Saks? Am I willing to track these and enroll where needed?</p>
             <p>If your answers align, the {reviewDataNew.cardName} can be a powerful key to a world of elevated travel and convenience. But remember, the true value of any premium card is only realized if you manage it responsibly, paying your balance in full to avoid interest charges that negate your hard-earned perks.</p>
@@ -580,8 +550,8 @@ export default function AmexPlatinumReview2025() {
         <div className={styles.stickyCtaContent}>
             <span className={styles.stickyCtaText}>The {reviewDataNew.cardName} - ${reviewDataNew.annualFee} Annual Fee.</span>
             <div className={styles.stickyCtaButtons}>
-                <a href={reviewDataNew.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.ctaButtonApply}>Apply Now</a>
-                <a href={reviewDataNew.ratesLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.ctaButtonLearnMore}>See Rates & Fees</a>
+                <a href={reviewDataNew.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.btn} ${styles.ctaButtonApply}`}>Apply Now</a>
+                <a href={reviewDataNew.ratesLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.btn} ${styles.ctaButtonLearnMore}`}>See Rates & Fees</a>
             </div>
         </div>
       </div>
