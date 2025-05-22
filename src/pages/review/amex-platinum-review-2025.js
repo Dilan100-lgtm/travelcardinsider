@@ -428,7 +428,7 @@ export default function AmexPlatinumReview2025() {
               {reviewDataNew.credits.map(credit => (
                 <div key={credit.id} className={styles.creditCard}>
                   <div className={styles.creditCardHeader}>
-                    {credit.icon && <Image src={credit.icon} alt="" width={24} height={24} className={styles.creditIcon} />}
+                    {/* SVG Icon Image tag removed */}
                     <h5 className={styles.creditName}>{credit.name}</h5>
                     <span className={`${styles.creditPill} ${styles['pill' + credit.frequency.replace(/\s+/g, '')]}`}>{credit.frequency}</span>
                   </div>
