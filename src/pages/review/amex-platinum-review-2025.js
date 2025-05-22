@@ -55,7 +55,7 @@ const reviewDataNew = {
   siteName: "Your Travel Card Review Site", // IMPORTANT: Update this
   pagePath: "/review/amex-platinum-2025",
   // Suggestion from feedback: custom, high-resolution Centurion-Lounge shot
-  imageUrl: "/amex-centurion-lounge-hero-2025.webp", // IMPORTANT: Update this path to your high-res WebP lounge image (<150kB)
+  imageUrl: "/savvas-kalimeris-hO3do8FKJkQ-unsplash.webp", // IMPORTANT: Update this path to your high-res WebP lounge image (<150kB)
   imageWidth: 1600, // Example, adjust to your hero image's aspect ratio
   imageHeight: 900, // Example, adjust to your hero image's aspect ratio
   siteLogoUrl: "/images/logo.png",
