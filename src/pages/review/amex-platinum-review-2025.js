@@ -63,7 +63,7 @@ const reviewDataNew = {
   ratingValue: 4.6, // Subjective rating, adjust as needed
   annualFee: 695,
   applyLink: "https://www.yourlink.com/apply-amex-platinum", // IMPORTANT: Update this with your affiliate link
-  learnMoreLink: "/cards/amex-platinum-details", // IMPORTANT: Update this to a relevant page or use ratesLink
+  learnMoreLink: "/cards/amex-platinum", // IMPORTANT: Update this to a relevant page or use ratesLink
   ratesLink: "https://www.yourlink.com/amex-platinum-rates-fees", // IMPORTANT: Update this with the official rates and fees link
   h1Content: "The Amex Platinum Card 2025: A Deep Dive into its $695 Value",
   reviewBody: "Our comprehensive 2025 analysis of The Platinum Card® from American Express. Uncover its value through travel credits, lounge access, elite perks, and whether the $695 fee is justified for you.",
@@ -460,7 +460,7 @@ export default function AmexPlatinumReview2025() {
               
               <div className={styles.ctaButtons}>
                 <a href={reviewDataNew.applyLink} className={`${styles.btn} ${styles.btnApply}`} title={`Apply for the ${reviewDataNew.cardName} on the issuer's secure site`} target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
-                <a href={reviewDataNew.ratesLink} className={`${styles.btn} ${styles.btnRates}`} title={`See rates and fees for the ${reviewDataNew.cardName}`} target="_blank" rel="noopener noreferrer sponsored">See Rates & Fees</a>
+                <a href={reviewDataNew.learnMoreLink} className={`${styles.btn} ${styles.btnRates}`} title={`See rates and fees for the ${reviewDataNew.cardName}`} target="_blank" rel="noopener noreferrer sponsored">Learn More</a>
               </div>
           </section>
 
