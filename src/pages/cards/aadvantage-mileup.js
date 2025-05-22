@@ -37,10 +37,10 @@ const reviewDataNew = {
   author: { // Placeholder: UPDATE ALL AUTHOR DETAILS AS NEEDED
       name: 'Dilan Madushanka',
       title: 'Founder & Lead Editor',
-      imageUrl: '/images/authors/dilan-madushanka-placeholder.jpg', // Placeholder - UPDATE
+      imageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // Placeholder - UPDATE
       imageWidth: 40,
       imageHeight: 40,
-      tooltipImageUrl: '/images/authors/dilan-madushanka-tooltip-placeholder.jpg', // Placeholder - UPDATE
+      tooltipImageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // Placeholder - UPDATE
       tooltipImageWidth: 60,
       tooltipImageHeight: 60,
       expertise: [
