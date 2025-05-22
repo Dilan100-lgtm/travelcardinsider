@@ -108,7 +108,7 @@
 /* Styles for CSS background image for the card (Priority 8) */
 .cardImageContainer { /* This div centers the background image div */
   margin: 1.5rem auto;
-  max-width: 480px; /* !!! Should ideally match your image's intended display width or reviewData.imageWidth !!! */
+  max-width: 480px; 
   line-height: 0;
   display: flex;
   justify-content: center;
@@ -116,21 +116,14 @@
 }
 
 .cardImageBackground {
-  width: 100%; /* Takes the width of cardImageContainer */
-  /* !!! Set a specific height or use padding-bottom for aspect ratio if width is 100% of a constrained parent !!! */
-  /* Example using aspect ratio: (imageHeight / imageWidth) * 100% */
-  /* For 480x304, aspect ratio is 304/480 = 0.6333. So padding-bottom: 63.33% */
-  /* This example assumes reviewData.imageWidth and reviewData.imageHeight are 480 and 304 respectively. */
-  /* !!! You MUST ensure your reviewData.imageUrl in amex-business-gold.js points to the correct image path in /public !!! */
-  /* The actual background-image is set inline in the JSX for dynamic URL */
-  height: 304px; /* !!! Or use padding-bottom for aspect ratio. Set to actual reviewData.imageHeight or desired fixed height !!! */
-  background-size: contain; /* Or 'cover' or specific dimensions */
+  width: 100%; 
+  height: 304px; 
+  background-size: contain; 
   background-repeat: no-repeat;
   background-position: center;
 }
 
 
-/* .cardImage class is no longer used by a next/image component for the main card, but might be used elsewhere */
 .cardImage { display: block; max-width: 100%; height: auto; }
 
 .ratingSection {
@@ -146,7 +139,7 @@
   border: 1px solid var(--color-border, #dfe1e6);
   padding: 0.4rem 1rem; border-radius: 15px;
   display: inline-flex; align-items: center; gap: 0.5rem;
-  position: relative; /* For tooltip positioning */
+  position: relative; 
 }
 .tciRating strong { color: var(--color-primary, #0052cc); }
 
@@ -173,7 +166,7 @@
 }
 .filledStars {
   position: absolute; left: 0; top: 0; white-space: nowrap;
-  overflow: hidden; color: #facc15; /* Gold color */
+  overflow: hidden; color: #facc15; 
   width: var(--rating, 0%);
 }
 .ratingDescription {
@@ -197,7 +190,6 @@
     .introAndImageWrapper { flex-direction: row; align-items: center; }
     .intro { flex: 1; text-align: left; }
     .intro p { margin-left: 0; margin-right: 0; }
-    /* .cardImageContainer flex-basis adjusted if it's only for background now */
     .cardImageContainer { flex-basis: 40%; max-width: 480px; margin: 0; }
 }
 
@@ -284,17 +276,8 @@
   background: none;
   color: var(--color-primary, #0052cc);
   border: 1px solid var(--color-border, #dfe1e6);
-  /* text-align: center; */ /* Already centered by flex container .summaryBoxActions */
-  /* font-size: 0.85rem; */ /* Overridden by more specific style above */
 }
-.summaryRatesLink a { /* This rule was less specific, can be removed if .summaryRatesLink itself is the <a> tag */
-  /* color: var(--text-light, #6b7f9b); */
-  /* text-decoration: underline; */
-  /* transition: color var(--transition-speed, 0.2s) ease; */
-}
-.summaryRatesLink a:hover {
-  /* color: var(--color-primary, #0052cc); */
-}
+
 @media (max-width: 600px) {
   .summaryGrid { grid-template-columns: 1fr; gap: var(--spacing-sm, 8px); }
   .summaryItem { flex-wrap: wrap; align-items: flex-start; }
@@ -305,12 +288,12 @@
 .summaryRatesLink:active { transform: translateY(0px) scale(0.98); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
 
 .summaryBoxActions {
-  display: flex; /* Enables Flexbox */
-  justify-content: center; /* Centers the buttons horizontally in the container */
-  align-items: center; /* Aligns buttons vertically if they have different heights */
-  gap: var(--spacing-md, 16px); /* Adds space between the buttons */
-  margin-top: var(--spacing-lg, 24px); /* Space above the button group */
-  flex-wrap: wrap; /* Allows buttons to wrap on smaller screens if they don't fit */
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  gap: var(--spacing-md, 16px); 
+  margin-top: var(--spacing-lg, 24px); 
+  flex-wrap: wrap; 
 }
 .heroRewardsCalculator {
   background:  #0d7eee;
@@ -332,12 +315,11 @@
 .heroRewardsCalculator:active { transform: translateY(0px) scale(0.98); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
 
 /* =============== NEWLY ADDED: CONTENT IMAGES SECTION =============== */
-/* Styles for the engagement images you added within the review text */
 .contentImageWrapper {
-  margin: 2rem auto; /* Centering the wrapper if it's narrower than parent */
-  padding: 0 1rem; /* Add some horizontal padding on mobile */
+  margin: 2rem auto; 
+  padding: 0 1rem; 
   text-align: center; 
-  max-width: 700px; /* Control max width of the image block */
+  max-width: 700px; 
 }
 
 .contentImage {
@@ -345,7 +327,7 @@
   max-width: 100%;   
   height: auto;      
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
-  display: block; /* Makes margin auto work for centering */
+  display: block; 
   margin-left: auto; 
   margin-right: auto; 
 }
@@ -355,19 +337,18 @@
   color: #555; 
   margin-top: 0.75rem;
   font-style: italic;
-  padding: 0 1rem; /* Keeps caption text from touching screen edges if wrapper is full width */
+  padding: 0 1rem; 
   line-height: 1.5;
 }
 
 
 /* =============== TABLES (Responsive Scroll) =============== */
-.tableContainer { /* This class styles the div directly wrapping the table, inside .draggableScrollContainer */
+.tableContainer { 
   width: 100%;
-  /* margin-bottom: 2rem; */ /* Margin now on .draggableScrollContainer or its parent */
   border: 1px solid var(--color-border, #dfe1e6);
-  border-radius: var(--border-radius-md, 6px);
+  border-radius: var(--border-radius-md, 6px); 
   box-shadow: var(--shadow-sm, 0 2px 4px rgba(23, 43, 77, 0.07));
-  overflow: hidden; /* This is important to ensure border-radius clips the table corners */
+  /* overflow: hidden; */ /* <<< REMOVED THIS LINE TO FIX DRAG SCROLLING */
 }
 
 .statsTable {
@@ -418,12 +399,12 @@
   margin: var(--spacing-xl, 32px) 0;
   box-shadow: none;
   position: sticky; top: 3rem;
-  height: 25vh; /* This was in your original CSS for .ctaSection */
+  height: 25vh; 
   z-index: 1000;
 }
 .ctaSection h2 {
   font-family: var(--font-condensed, 'Roboto Condensed', var(--font-family-sans, sans-serif));
-  font-size: 1rem; /* Corrected from '1 rem' */
+  font-size: 1rem; 
   color: var(--text-dark, #172b4d);
   margin-top: 0; margin-bottom: 0.5rem; border: none; display: block;
   line-height: 1.5rem;
@@ -467,7 +448,7 @@
     padding: 1rem;
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
-    height: 18vh; /* This was in your original CSS for .ctaSection with this media query */
+    height: 18vh; 
   }
   .ctaSection h2 {
     font-size: 1.4rem;
@@ -506,25 +487,25 @@
 /* =============== Tooltip Styles =============== */
 .ratingTooltip {
   position: absolute;
-  top: 120%; /* Adjust as needed based on icon size and desired spacing */
+  top: 120%; 
   left: 50%;
   transform: translateX(-50%);
   background-color: #ffffff;
-  border: 1px solid var(--color-border, #ced4da); /* #ced4da is var(--gray-400) in Bootstrap-like systems */
+  border: 1px solid var(--color-border, #ced4da); 
   border-radius: 6px;
   padding: 10px 15px;
-  width: 280px; /* Slightly wider for more content */
+  width: 280px; 
   box-shadow: var(--shadow-md, 0 5px 15px rgba(0, 0, 0, 0.15));
-  z-index: 1050; /* High z-index to appear above other elements */
+  z-index: 1050; 
   font-size: 0.85rem;
   line-height: 1.5;
-  color: var(--text-dark, #343a40); /* #343a40 is var(--gray-800) */
-  text-align: left; /* Ensure text is aligned left within the tooltip */
+  color: var(--text-dark, #343a40); 
+  text-align: left; 
 }
 .ratingTooltip strong {
   display: block;
   margin-bottom: 0.5rem;
-  color: var(--text-dark, #212529); /* #212529 is var(--gray-900) */
+  color: var(--text-dark, #212529); 
   font-weight: 700;
 }
 .tooltipIntro {
@@ -534,15 +515,15 @@
 }
 .tooltipList {
   list-style: disc;
-  padding-left: 1.5rem; /* Indent list items */
-  margin: 0; /* Reset margin */
+  padding-left: 1.5rem; 
+  margin: 0; 
 }
 .tooltipList li {
   margin-bottom: 0.25rem;
   color: var(--text-medium, #444);
-  padding-left: 0; /* Reset padding if any from global li styles */
+  padding-left: 0; 
 }
-.tooltipList li::before { /* Reset list item pseudo-elements if any from global styles */
+.tooltipList li::before { 
   content: none;
 }
 @media (max-width: 480px) {
@@ -578,10 +559,10 @@
   .reviewSection h2 { font-size: clamp(1.5rem, 4vw, 2rem); }
   .ctaSection h2 { font-size: 1.6rem; }
 }
-@media (min-width: 768px) { /* This was in your original file, kept as is */
+@media (min-width: 768px) { 
   
 }
-.heroImageContainer { /* This was in your original file, kept as is - now for the background image container */
+.heroImageContainer { 
   margin: auto;
 }
 
@@ -715,7 +696,7 @@
   gap: var(--spacing-md);
   margin-top: var(--spacing-sm);
 }
-.heroApplyButton { /* Potentially for hero-specific tweaks to .applyNowButton */ }
+.heroApplyButton { }
 .heroSecondaryLink {
   font-family: var(--font-family-main);
   font-size: 1rem;
@@ -731,14 +712,13 @@
   text-decoration: underline;
   background-color: rgba(0,0,0,0.03);
 }
-/* This .heroImageContainer style was already present; now applies to the CSS background image container */
 .heroImageContainer {
   width: 100%;
   max-width: 700px;
   margin-top: var(--spacing-lg);
   line-height: 0;
 }
-.heroImage { /* This class might not be used if you've fully switched to CSS background for hero */
+.heroImage { 
   border-radius: var(--border-radius-lg);
   box-shadow: 0 6px 12px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.06);
   width: 100%;
@@ -769,11 +749,11 @@
     justify-content: flex-start;
     gap: var(--spacing-lg);
   }
-  .heroImageContainer { /* This is the hero-specific image container style for desktop */
+  .heroImageContainer { 
     flex-basis: 45%;
     margin-top: 3rem;
-    max-width: 600px; /* Ensure this is sufficient for your image */
-    margin-left: auto; /* This was in your original file */
+    max-width: 600px; 
+    margin-left: auto; 
   }
 }
 .heroApplyButtonDisclaimer {
@@ -791,9 +771,7 @@
 }
 
 /* =============== FAQ SECTION STYLES (Premium Look) =============== */
-.faqSection { 
-  /* Styles for the overall FAQ section block */
-}
+.faqSection { }
 
 .faqContainer {
   max-width: 800px; 
@@ -836,13 +814,8 @@
   transition: background-color var(--transition-speed, 0.2s) ease;
 }
 
-.faqQuestion::-webkit-details-marker {
-  display: none; 
-}
-
-.faqQuestion::marker { 
-  display: none;
-}
+.faqQuestion::-webkit-details-marker { display: none; }
+.faqQuestion::marker { display: none; }
 
 .faqQuestion::after {
   content: '+'; 
@@ -874,9 +847,7 @@
   max-width: none; 
 }
 
-.faqAnswer p:last-child {
-  margin-bottom: 0;
-}
+.faqAnswer p:last-child { margin-bottom: 0; }
 
 .faqQuestion:focus-visible {
   outline: 2px solid var(--color-primary-light, rgba(0, 82, 204, 0.15));
@@ -891,16 +862,16 @@
 
 /* MODIFIED/ADDED FOR TABLE SCROLLING */
 .draggableScrollContainer {
-  overflow-x: auto; /* Essential for horizontal scrolling */
-  overflow-y: hidden; /* Prevents vertical scrollbar on the container itself */
-  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  overflow-x: auto; 
+  overflow-y: hidden; 
+  -webkit-overflow-scrolling: touch; 
   scroll-behavior: smooth; 
-  user-select: none; /* Prevents text selection during drag/scroll */
-  margin-bottom: 2rem; /* Add margin here if needed */
-  width: 100%; /* Ensure it takes available width */
+  user-select: none; 
+  margin-bottom: 2rem; 
+  width: 100%; 
 }
 
-@media (min-width: 768px) { /* Apply grab cursor only when dragging might be active */
+@media (min-width: 768px) { 
   .draggableScrollContainer {
     cursor: grab;
   }
@@ -908,27 +879,11 @@
     cursor: grabbing;
   }
 }
-/* REMOVED old media query for .tableContainer as .draggableScrollContainer handles it now */
-/* @media (max-width: 992px) {
-.tableContainer {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-} */
 
-/* This specific media query from your file is kept, but the .draggableScrollContainer now has base styles above */
 @media (min-width: 992px) {
-   /* .draggableScrollContainer styles for min-width: 992px are now handled by the general .draggableScrollContainer
-      and the @media (min-width: 768px) block above for cursors.
-      If there were other 992px+ specific styles for .draggableScrollContainer, they would go here.
-      The original overflow-x, overflow-y, etc. are now general.
-   */
+   /* Base styles for .draggableScrollContainer are now general.
+      This media query can be used for any overrides specific to 992px+ viewports if needed in the future. */
 }
-
-
-/* src/styles/ReviewPage.module.css */
-
-/* ... (Keep all your existing styles up to author bio) ... */
 
 
 /* =============== NEW: AUTHOR BIO & TOOLTIP STYLES (MODIFIED FOR RESPONSIVENESS) =============== */
@@ -941,16 +896,9 @@
   position: relative; 
   cursor: default; 
   padding: var(--spacing-xs) 0; 
-  /* border: 1px solid transparent; */ /* Kept user's commented out or transparent border */
 }
 
-.authorBioContainer:focus-within {
- /* Example: Add a subtle outline or background */
- /* outline: 2px solid var(--primary-blue-focus); */
- /* outline-offset: 2px; */
- /* background-color: rgba(0,0,0,0.02); */
- /* border-radius: var(--border-radius-sm); */
-}
+.authorBioContainer:focus-within { }
 
 
 .authorImageSmall {
@@ -960,20 +908,12 @@
   background-color: var(--border-color-light); 
 }
 
-.authorInfo { /* User had .authorInfo, ensure it means .authorInfoBlock from JSX */
+.authorInfoBlock { /* Assuming this is the class from JSX for the text part */
   display: flex;
   flex-direction: column;
   align-items: flex-start; 
   line-height: 1.3;
 }
-/* If .authorInfoBlock is the class from JSX for the text part: */
-.authorInfoBlock {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  line-height: 1.3;
-}
-
 
 .authorName {
   font-family: var(--font-family-main);
@@ -991,18 +931,18 @@
 
 .authorTooltip {
   position: absolute;
-  top: calc(100% + 12px); /* Increased gap slightly */
-  left: 50%; /* MODIFIED for centering */
-  transform: translateX(-50%); /* MODIFIED for centering */
+  top: calc(100% + 12px); 
+  left: 50%; 
+  transform: translateX(-50%); 
   background-color: var(--bg-white, #ffffff);
   border: 1px solid var(--border-color, #d1d5db);
   border-radius: var(--border-radius-md, 8px);
   padding: var(--spacing-md, 16px);
   
-  width: 90vw; /* ADDED for mobile responsiveness */
-  max-width: 320px; /* ADDED max-width */
-  min-width: 280px; /* ADDED min-width to prevent being too squished */
-  box-sizing: border-box; /* ADDED to include padding in width calculation */
+  width: 90vw; 
+  max-width: 320px; 
+  min-width: 280px; 
+  box-sizing: border-box; 
 
   box-shadow: var(--shadow-medium); 
   z-index: 1050; 
@@ -1012,16 +952,16 @@
   text-align: left;
   opacity: 1; 
   transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out; 
+  visibility: visible; 
 }
 
 .authorTooltip::before { 
   content: '';
   position: absolute;
   bottom: 100%; 
-  left: 50%; /* MODIFIED for centering arrow */
-  transform: translateX(-50%); /* MODIFIED for centering arrow */
-  /* margin-left: -5px; */ /* No longer needed if transformX(-50%) is used */
-  border-width: 7px; /* MODIFIED for slight size increase */
+  left: 50%; 
+  transform: translateX(-50%); 
+  border-width: 7px; 
   border-style: solid;
   border-color: transparent transparent var(--border-color) transparent; 
 }
@@ -1029,11 +969,10 @@
    content: '';
    position: absolute;
    bottom: 100%;
-   left: 50%; /* MODIFIED for centering arrow */
-   transform: translateX(-50%); /* MODIFIED for centering arrow */
-   /* margin-left: -4px; */ /* No longer needed */
-   margin-bottom: -1px; /* ADDED to ensure fill overlaps border slightly */
-   border-width: 6px; /* MODIFIED for slight size increase */
+   left: 50%; 
+   transform: translateX(-50%); 
+   margin-bottom: -1px; 
+   border-width: 6px; 
    border-style: solid;
    border-color: transparent transparent var(--bg-white) transparent;
 }
@@ -1160,5 +1099,3 @@
 
 
 /* =============== END AUTHOR BIO & TOOLTIP STYLES =============== */
-
-/* ... (Rest of your existing styles if any) ... */
