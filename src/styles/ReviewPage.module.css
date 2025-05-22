@@ -201,17 +201,6 @@
     .cardImageContainer { flex-basis: 40%; max-width: 480px; margin: 0; }
 }
 
-/* Remaining CSS from your original ReviewPage.module.css continues below */
-/* Ensure all other styles (.summaryBox, .statsTable, .ctaSection, .eatSection, etc.) */
-/* are preserved exactly as they were in your provided file. */
-/* ... (Your existing .summaryBox styles) ... */
-/* ... (Your existing .statsTable styles) ... */
-/* ... (Your existing .ctaSection styles) ... */
-/* ... (Your existing .eatSection styles) ... */
-/* ... (Your existing .ratingTooltip styles - these are still used by RatingTooltip.js) ... */
-/* ... (Your existing .reviewPageLayout, .mainContentArea, .sidebarArea styles) ... */
-/* ... (Your existing responsive adjustments and other miscellaneous styles) ... */
-
 /* =============== AT-A-GLANCE SUMMARY BOX (Refined) =============== */
 .summaryBox {
   background-color: var(--color-background-page, #f8f9fa);
@@ -285,25 +274,7 @@
   font-family: 'Roboto Condensed', sans-serif;
   font-style: italic;
 }
-.summaryRatesLink {
-  text-align: center;
-  
-  font-size: 0.85rem;
-}
-.summaryRatesLink a {
-  color: var(--text-light, #6b7f9b);
-  text-decoration: underline;
-  transition: color var(--transition-speed, 0.2s) ease;
-}
-.summaryRatesLink a:hover {
-  color: var(--color-primary, #0052cc);
-}
-@media (max-width: 600px) {
-  .summaryGrid { grid-template-columns: 1fr; gap: var(--spacing-sm, 8px); }
-  .summaryItem { flex-wrap: wrap; align-items: flex-start; }
-  .summaryLabel { margin-right: var(--spacing-sm, 8px); }
-  .summaryValue { text-align: left; flex-basis: 100%; margin-top: var(--spacing-xs, 4px); }
-}
+
 .summaryRatesLink {
   padding: 10px 24px; font-size: 1rem; font-weight: 700;
   border-radius: var(--border-radius-md, 6px);
@@ -313,9 +284,26 @@
   background: none;
   color: var(--color-primary, #0052cc);
   border: 1px solid var(--color-border, #dfe1e6);
+  /* text-align: center; */ /* Already centered by flex container .summaryBoxActions */
+  /* font-size: 0.85rem; */ /* Overridden by more specific style above */
+}
+.summaryRatesLink a { /* This rule was less specific, can be removed if .summaryRatesLink itself is the <a> tag */
+  /* color: var(--text-light, #6b7f9b); */
+  /* text-decoration: underline; */
+  /* transition: color var(--transition-speed, 0.2s) ease; */
+}
+.summaryRatesLink a:hover {
+  /* color: var(--color-primary, #0052cc); */
+}
+@media (max-width: 600px) {
+  .summaryGrid { grid-template-columns: 1fr; gap: var(--spacing-sm, 8px); }
+  .summaryItem { flex-wrap: wrap; align-items: flex-start; }
+  .summaryLabel { margin-right: var(--spacing-sm, 8px); }
+  .summaryValue { text-align: left; flex-basis: 100%; margin-top: var(--spacing-xs, 4px); }
 }
 .summaryRatesLink:hover { box-shadow: var(--shadow-md, 0 4px 8px rgba(23, 43, 77, 0.1)); transform: translateY(-2px); }
 .summaryRatesLink:active { transform: translateY(0px) scale(0.98); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+
 .summaryBoxActions {
   display: flex; /* Enables Flexbox */
   justify-content: center; /* Centers the buttons horizontally in the container */
@@ -343,14 +331,43 @@
 }
 .heroRewardsCalculator:active { transform: translateY(0px) scale(0.98); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
 
+/* =============== NEWLY ADDED: CONTENT IMAGES SECTION =============== */
+/* Styles for the engagement images you added within the review text */
+.contentImageWrapper {
+  margin: 2rem auto; /* Centering the wrapper if it's narrower than parent */
+  padding: 0 1rem; /* Add some horizontal padding on mobile */
+  text-align: center; 
+  max-width: 700px; /* Control max width of the image block */
+}
+
+.contentImage {
+  border-radius: 8px; 
+  max-width: 100%;   
+  height: auto;      
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+  display: block; /* Makes margin auto work for centering */
+  margin-left: auto; 
+  margin-right: auto; 
+}
+
+.caption {
+  font-size: 0.875rem;
+  color: #555; 
+  margin-top: 0.75rem;
+  font-style: italic;
+  padding: 0 1rem; /* Keeps caption text from touching screen edges if wrapper is full width */
+  line-height: 1.5;
+}
 
 
 /* =============== TABLES (Responsive Scroll) =============== */
-.tableContainer {
+.tableContainer { /* This class styles the div directly wrapping the table, inside .draggableScrollContainer */
   width: 100%;
-  margin-bottom: 2rem; border: 1px solid var(--color-border, #dfe1e6);
-  border-radius: var(--border-radius-md, 6px); /* Use variable */
-  box-shadow: var(--shadow-sm, 0 2px 4px rgba(23, 43, 77, 0.07)); /* Use variable */
+  /* margin-bottom: 2rem; */ /* Margin now on .draggableScrollContainer or its parent */
+  border: 1px solid var(--color-border, #dfe1e6);
+  border-radius: var(--border-radius-md, 6px);
+  box-shadow: var(--shadow-sm, 0 2px 4px rgba(23, 43, 77, 0.07));
+  overflow: hidden; /* This is important to ensure border-radius clips the table corners */
 }
 
 .statsTable {
@@ -358,28 +375,28 @@
   border: none; box-shadow: none; margin-bottom: 0; font-size: 0.95rem;
 }
 
-.statsTable thead { background-color: var(--color-background-subtle, #f1f3f5); } /* Use variable */
+.statsTable thead { background-color: var(--color-background-subtle, #f1f3f5); } 
 
 .statsTable th {
-  background-color: transparent; color: var(--color-text-secondary, #5e6c84); /* Use variable */
+  background-color: transparent; color: var(--color-text-secondary, #5e6c84); 
   font-weight: 600; text-align: left; padding: 1rem 1.2rem;
-  border-bottom: 2px solid var(--color-border, #dfe1e6); /* Use variable */
-  border-right: 1px solid var(--color-border-light, #ebecf0); /* Use variable */
+  border-bottom: 2px solid var(--color-border, #dfe1e6); 
+  border-right: 1px solid var(--color-border-light, #ebecf0); 
   white-space: nowrap;
 }
 .statsTable th:last-child { border-right: none; }
 
 .statsTable td {
   padding: 1rem 1.2rem; border: none;
-  border-bottom: 1px solid var(--color-border-light, #ebecf0); /* Use variable */
-  border-right: 1px solid var(--color-border-light, #ebecf0); /* Use variable */
-  vertical-align: middle; color: var(--text-medium, #42526e); /* Use variable */
+  border-bottom: 1px solid var(--color-border-light, #ebecf0); 
+  border-right: 1px solid var(--color-border-light, #ebecf0); 
+  vertical-align: middle; color: var(--text-medium, #42526e); 
   white-space: normal;
 }
 .statsTable td:last-child { border-right: none; }
 
 .statsTable tbody tr:last-child td { border-bottom: none; }
-.statsTable tbody tr:nth-child(odd) { background-color: var(--color-background-subtle, #f1f3f5); } /* Subtle striping */
+.statsTable tbody tr:nth-child(odd) { background-color: var(--color-background-subtle, #f1f3f5); } 
 .statsTable td:first-child { font-weight: 500; color: var(--text-dark, #172b4d); }
 
 @media (max-width: 650px) {
@@ -388,7 +405,7 @@
 
 .totalRow td {
   font-weight: bold; color: var(--text-dark, #172b4d);
-  background-color: var(--color-background-subtle, #f1f3f5); /* Use subtle background */
+  background-color: var(--color-background-subtle, #f1f3f5); 
 }
 .totalRow td:first-child { text-align: right; }
 
@@ -406,7 +423,8 @@
 }
 .ctaSection h2 {
   font-family: var(--font-condensed, 'Roboto Condensed', var(--font-family-sans, sans-serif));
-  font-size: 1 rem; color: var(--text-dark, #172b4d);
+  font-size: 1rem; /* Corrected from '1 rem' */
+  color: var(--text-dark, #172b4d);
   margin-top: 0; margin-bottom: 0.5rem; border: none; display: block;
   line-height: 1.5rem;
 }
@@ -454,9 +472,7 @@
   .ctaSection h2 {
     font-size: 1.4rem;
   }
-  }
-
-
+}
 
 /* =============== E-A-T Section (Refined) =============== */
 .eatSection {
@@ -759,8 +775,6 @@
     max-width: 600px; /* Ensure this is sufficient for your image */
     margin-left: auto; /* This was in your original file */
   }
- 
-
 }
 .heroApplyButtonDisclaimer {
   font-size: 0.75rem;
@@ -768,7 +782,6 @@
   margin-top: var(--spacing-xs, 4px);
   display: block;
   text-align: center;
-  
 }
 .ratesFeesList dt {
   font-size: 1.2rem;
@@ -778,18 +791,16 @@
 }
 
 /* =============== FAQ SECTION STYLES (Premium Look) =============== */
-.faqSection { /* Styles for the overall FAQ section block */
-  /* background-color: var(--color-background-subtle, #f8f9fa); */ /* Optional: subtle background for the whole section */
-  /* padding-top: var(--spacing-lg, 24px); */ /* Already handled by .reviewSection */
-  /* border-top: 1px solid var(--color-border-light, #ebecf0); */ /* Optional: if you want a top border distinct from other sections */
+.faqSection { 
+  /* Styles for the overall FAQ section block */
 }
 
 .faqContainer {
-  max-width: 800px; /* Or your preferred max-width for FAQ content */
-  margin: 0 auto; /* Center the FAQ container */
+  max-width: 800px; 
+  margin: 0 auto; 
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-sm, 8px); /* Space between FAQ items */
+  gap: var(--spacing-sm, 8px); 
 }
 
 .faqItem {
@@ -804,23 +815,21 @@
 }
 
 .faqItem[open] {
-  /* Styles for when the FAQ item is open */
   box-shadow: var(--shadow-md, 0 4px 8px -2px rgba(9, 30, 66, 0.1), 0 0 1px rgba(9, 30, 66, 0.08));
 }
 
 .faqItem[open] .faqQuestion {
   border-bottom: 1px solid var(--color-border-light, #e5e7eb);
-  /* color: var(--color-primary, #0052cc); */ /* Optional: Change question color when open */
 }
 
 .faqQuestion {
   padding: var(--spacing-md, 16px) var(--spacing-lg, 24px);
-  font-family: var(--font-family-main, 'Inter', sans-serif); /* Using Inter from your globals */
+  font-family: var(--font-family-main, 'Inter', sans-serif); 
   font-weight: var(--font-weight-semibold, 600);
-  font-size: 1.1rem; /* Slightly larger for questions */
+  font-size: 1.1rem; 
   color: var(--color-text-primary, #172b4d);
   cursor: pointer;
-  list-style: none; /* Remove default marker */
+  list-style: none; 
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -828,28 +837,26 @@
 }
 
 .faqQuestion::-webkit-details-marker {
-  display: none; /* Hide default marker in WebKit browsers */
+  display: none; 
 }
 
-.faqQuestion::marker { /* For Firefox */
+.faqQuestion::marker { 
   display: none;
 }
 
-/* Custom Icon for Open/Close State */
 .faqQuestion::after {
-  content: '+'; /* Plus icon for closed state */
-  font-size: 1.5em; /* Make icon larger */
+  content: '+'; 
+  font-size: 1.5em; 
   font-weight: var(--font-weight-regular, 400);
   color: var(--color-primary, #0052cc);
   transition: transform var(--transition-speed, 0.2s) ease-in-out;
-  line-height: 1; /* Ensure proper vertical alignment */
+  line-height: 1; 
   margin-left: var(--spacing-md, 16px);
 }
 
 .faqItem[open] .faqQuestion::after {
-  content: '\\2013'; /* Minus icon (en-dash) for open state */
-  transform: rotate(0deg); /* Keep minus horizontal */
-  /* color: var(--color-primary-hover, #0041a3); */ /* Optional: darker icon when open */
+  content: '\\2013'; 
+  transform: rotate(0deg); 
 }
 
 .faqAnswer {
@@ -857,74 +864,86 @@
   color: var(--color-text-secondary, #5e6c84);
   line-height: 1.7;
   font-size: 0.95rem;
-  border-top: none; /* Ensure no double border if summary also has bottom border */
-  background-color: var(--color-background-subtle, #f8f9fa); /* Slightly different bg for answer */
-  border-radius: 0 0 var(--border-radius-md, 8px) var(--border-radius-md, 8px); /* Rounded bottom corners when open */
+  border-top: none; 
+  background-color: var(--color-background-subtle, #f8f9fa); 
+  border-radius: 0 0 var(--border-radius-md, 8px) var(--border-radius-md, 8px); 
 }
 
 .faqAnswer p {
-  margin-bottom: var(--spacing-sm, 8px); /* Space between paragraphs in answer */
-  max-width: none; /* Override max-width from .reviewContainer p if needed */
+  margin-bottom: var(--spacing-sm, 8px); 
+  max-width: none; 
 }
 
 .faqAnswer p:last-child {
   margin-bottom: 0;
 }
 
-/* Focus state for accessibility */
 .faqQuestion:focus-visible {
   outline: 2px solid var(--color-primary-light, rgba(0, 82, 204, 0.15));
   outline-offset: 2px;
-  border-radius: var(--border-radius-sm, 4px); /* Match summary's rounding for focus */
+  border-radius: var(--border-radius-sm, 4px); 
 }
 .cardImageContainer2 {
   align-items: right;
   width: 100%;
   overflow: hidden;
-
 }
-@media (max-width: 992px) {
+
+/* MODIFIED/ADDED FOR TABLE SCROLLING */
+.draggableScrollContainer {
+  overflow-x: auto; /* Essential for horizontal scrolling */
+  overflow-y: hidden; /* Prevents vertical scrollbar on the container itself */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  scroll-behavior: smooth; 
+  user-select: none; /* Prevents text selection during drag/scroll */
+  margin-bottom: 2rem; /* Add margin here if needed */
+  width: 100%; /* Ensure it takes available width */
+}
+
+@media (min-width: 768px) { /* Apply grab cursor only when dragging might be active */
+  .draggableScrollContainer {
+    cursor: grab;
+  }
+  .draggableScrollContainer.grabbing {
+    cursor: grabbing;
+  }
+}
+/* REMOVED old media query for .tableContainer as .draggableScrollContainer handles it now */
+/* @media (max-width: 992px) {
 .tableContainer {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+}
+} */
 
-}
-}
+/* This specific media query from your file is kept, but the .draggableScrollContainer now has base styles above */
 @media (min-width: 992px) {
-   .draggableScrollContainer {
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-  cursor: grab;
-  user-select: none;
-  
+   /* .draggableScrollContainer styles for min-width: 992px are now handled by the general .draggableScrollContainer
+      and the @media (min-width: 768px) block above for cursors.
+      If there were other 992px+ specific styles for .draggableScrollContainer, they would go here.
+      The original overflow-x, overflow-y, etc. are now general.
+   */
 }
-
-.draggableScrollContainer.grabbing {
-  cursor: grabbing;
-}}
 
 
 /* src/styles/ReviewPage.module.css */
 
-/* ... (Keep all your existing styles) ... */
+/* ... (Keep all your existing styles up to author bio) ... */
 
 
-/* =============== NEW: AUTHOR BIO & TOOLTIP STYLES =============== */
+/* =============== NEW: AUTHOR BIO & TOOLTIP STYLES (MODIFIED FOR RESPONSIVENESS) =============== */
 
 .authorBioContainer {
-  display: inline-flex; /* Align items horizontally */
+  display: inline-flex; 
   align-items: center;
   gap: var(--spacing-sm, 8px);
-  margin-bottom: var(--spacing-md, 16px); /* Space below author bio */
-  position: relative; /* Needed for absolute positioning of the tooltip */
-  cursor: default; /* Or 'pointer' if the whole thing should feel clickable */
-  padding: var(--spacing-xs) 0; /* Minimal padding */
-  border: 1px solid transparent; /* Reserve space for potential focus outline */
+  margin-bottom: var(--spacing-md, 16px); 
+  position: relative; 
+  cursor: default; 
+  padding: var(--spacing-xs) 0; 
+  /* border: 1px solid transparent; */ /* Kept user's commented out or transparent border */
 }
 
-/* Add focus styles if needed, for keyboard navigation */
 .authorBioContainer:focus-within {
  /* Example: Add a subtle outline or background */
  /* outline: 2px solid var(--primary-blue-focus); */
@@ -935,32 +954,33 @@
 
 
 .authorImageSmall {
-  border-radius: 50%; /* Make it circular */
+  border-radius: 50%; 
   object-fit: cover;
-  flex-shrink: 0; /* Prevent image from shrinking */
-  background-color: var(--border-color-light); /* Placeholder bg */
+  flex-shrink: 0; 
+  background-color: var(--border-color-light); 
 }
 
-.authorInfo {
+.authorInfo { /* User had .authorInfo, ensure it means .authorInfoBlock from JSX */
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Align text to the left */
+  align-items: flex-start; 
   line-height: 1.3;
 }
+/* If .authorInfoBlock is the class from JSX for the text part: */
+.authorInfoBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.3;
+}
+
 
 .authorName {
   font-family: var(--font-family-main);
   font-weight: var(--font-weight-semibold, 600);
   font-size: 0.95rem;
   color: var(--text-medium, #4b5563);
-  /* Add underline on hover if desired */
-  /* text-decoration: none; */
-  /* transition: color 0.2s; */
 }
-/* .authorBioContainer:hover .authorName {
-   color: var(--color-primary);
-   text-decoration: underline;
-} */
 
 .authorTitle {
   font-family: var(--font-family-main);
@@ -969,46 +989,51 @@
   color: var(--text-light, #6b7280);
 }
 
-/* --- Author Tooltip Styles (Based on .ratingTooltip) --- */
 .authorTooltip {
   position: absolute;
-  top: calc(100% + 10px); /* Position below the author bio + gap */
-  left: 0; /* Align with the start of the author bio container */
-  /* or: left: 50%; transform: translateX(-50%); to center it */
+  top: calc(100% + 12px); /* Increased gap slightly */
+  left: 50%; /* MODIFIED for centering */
+  transform: translateX(-50%); /* MODIFIED for centering */
   background-color: var(--bg-white, #ffffff);
   border: 1px solid var(--border-color, #d1d5db);
   border-radius: var(--border-radius-md, 8px);
   padding: var(--spacing-md, 16px);
-  width: 300px; /* Adjust width as needed */
-  box-shadow: var(--shadow-medium); /* Use medium shadow */
-  z-index: 1050; /* Ensure it's above other content */
+  
+  width: 90vw; /* ADDED for mobile responsiveness */
+  max-width: 320px; /* ADDED max-width */
+  min-width: 280px; /* ADDED min-width to prevent being too squished */
+  box-sizing: border-box; /* ADDED to include padding in width calculation */
+
+  box-shadow: var(--shadow-medium); 
+  z-index: 1050; 
   font-size: 0.9rem;
   line-height: 1.6;
   color: var(--text-dark, #1f2937);
   text-align: left;
-  opacity: 1; /* Start visible */
-  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out; /* Add transition */
-  /* Add a small arrow/pointer */
-  /* visibility: visible; */ /* Control visibility via state */
+  opacity: 1; 
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out; 
 }
 
-.authorTooltip::before { /* Optional: Tooltip arrow */
+.authorTooltip::before { 
   content: '';
   position: absolute;
-  bottom: 100%; /* Position arrow above the tooltip */
-  left: 20px; /* Adjust horizontal position of the arrow */
-  margin-left: -5px;
-  border-width: 6px;
+  bottom: 100%; 
+  left: 50%; /* MODIFIED for centering arrow */
+  transform: translateX(-50%); /* MODIFIED for centering arrow */
+  /* margin-left: -5px; */ /* No longer needed if transformX(-50%) is used */
+  border-width: 7px; /* MODIFIED for slight size increase */
   border-style: solid;
-  border-color: transparent transparent var(--border-color) transparent; /* Arrow pointing up */
+  border-color: transparent transparent var(--border-color) transparent; 
 }
-.authorTooltip::after { /* Arrow inner part (to cover border) */
+.authorTooltip::after { 
    content: '';
    position: absolute;
    bottom: 100%;
-   left: 20px;
-   margin-left: -4px; /* Slightly smaller */
-   border-width: 5px;
+   left: 50%; /* MODIFIED for centering arrow */
+   transform: translateX(-50%); /* MODIFIED for centering arrow */
+   /* margin-left: -4px; */ /* No longer needed */
+   margin-bottom: -1px; /* ADDED to ensure fill overlaps border slightly */
+   border-width: 6px; /* MODIFIED for slight size increase */
    border-style: solid;
    border-color: transparent transparent var(--bg-white) transparent;
 }
@@ -1027,7 +1052,7 @@
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
-   background-color: var(--border-color-light); /* Placeholder bg */
+   background-color: var(--border-color-light); 
 }
 
 .authorTooltipInfo {
@@ -1060,8 +1085,8 @@
 }
 
 .authorTooltipExpertise ul {
-  list-style: none; /* Or 'disc' */
-  padding-left: 0; /* Adjust if using disc */
+  list-style: none; 
+  padding-left: 0; 
   margin: 0;
   display: flex;
   flex-wrap: wrap;
@@ -1074,10 +1099,7 @@
   background-color: var(--bg-light, #f3f4f6);
   padding: 2px 8px;
   border-radius: 12px;
-  /* margin-bottom: 0; Add if needed */
-  /* padding-left: 0; Add if needed */
 }
-/* .authorTooltipExpertise li::before { content: none; } Add if needed */
 
 .authorTooltipBioSnippet {
   font-size: 0.9rem;
@@ -1099,48 +1121,44 @@
   color: var(--primary-blue-dark, #1d4ed8);
   text-decoration: underline;
 }
-/* Style for the Last Edited Time */
 .authorLastEdited {
   font-family: var(--font-family-main);
-  font-size: 0.8rem; /* Smaller font size */
-  color: var(--text-muted, #6b7280); /* Muted color */
-  margin-top: var(--spacing-xs, 4px); /* Space above date */
-  display: block; /* Ensure it takes its own line */
+  font-size: 0.8rem; 
+  color: var(--text-muted, #6b7280); 
+  margin-top: var(--spacing-xs, 4px); 
+  display: block; 
 }
 
-/* Style for the Social Links Container */
 .authorSocialLinks {
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm, 8px); /* Space between icons */
-  margin-top: var(--spacing-sm, 8px); /* Space above icons */
+  gap: var(--spacing-sm, 8px); 
+  margin-top: var(--spacing-sm, 8px); 
 }
 
-/* Style for each Social Icon Link */
 .socialIconLink {
-  display: inline-flex; /* Use flex to center icon if needed */
+  display: inline-flex; 
   align-items: center;
   justify-content: center;
-  color: var(--text-light, #6b7280); /* Default icon color */
+  color: var(--text-light, #6b7280); 
   transition: color 0.2s ease;
-  line-height: 0; /* Prevent extra space */
+  line-height: 0; 
 }
 
 .socialIconLink:hover,
 .socialIconLink:focus {
-  color: var(--primary-blue, #2563eb); /* Icon color on hover/focus */
+  color: var(--primary-blue, #2563eb); 
   outline: none;
 }
-/* Style specifically for icons inside the tooltip if needed */
 .authorTooltipSocials {
    margin-top: var(--spacing-md, 12px);
    padding-top: var(--spacing-sm, 8px);
    border-top: 1px solid var(--border-color-light);
    display: flex;
-   gap: var(--spacing-md, 12px); /* Wider gap inside tooltip? */
+   gap: var(--spacing-md, 12px); 
 }
 
 
 /* =============== END AUTHOR BIO & TOOLTIP STYLES =============== */
 
-/* ... (Rest of your existing styles) ... */
+/* ... (Rest of your existing styles if any) ... */
