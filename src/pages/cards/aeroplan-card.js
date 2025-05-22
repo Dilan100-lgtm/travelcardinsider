@@ -22,8 +22,8 @@ const RatingTooltip = dynamic(() => import('../../components/RatingTooltip'), { 
 /* ──────────────────────────────
     CONSTANTS & STATIC DATA
     ────────────────────────────── */
-const siteName    = 'YourCreditCardSite'; // UPDATE AS NEEDED
-const siteUrl     = 'https://www.yourwebsite.com'; // UPDATE AS NEEDED: Replace with your actual site URL
+const siteName    = 'Travelcardinsider'; // UPDATE AS NEEDED
+const siteUrl     = 'https://www.travelcardinsider.com'; // UPDATE AS NEEDED: Replace with your actual site URL
 const pagePath    = '/reviews/chase-aeroplan-card'; // UPDATE AS NEEDED: if path differs
 const pageUrlFull = `${siteUrl}${pagePath}`;
 const publishDate = '2025-05-23'; // UPDATE AS NEEDED: Current date or actual publish date
