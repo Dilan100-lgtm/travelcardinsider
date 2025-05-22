@@ -296,9 +296,8 @@ export default function AmexPlatinumReview2025() {
             // For example, to focus on the top part of the image:
              objectPosition: "center top",
             // To focus slightly to the right and top:
-            / objectPosition: "70% 20%",
+             objectPosition: "70% 20%",
           }}
-        />
         />
         <div className={styles.heroTextOverlay}>
           <h1 className={styles.heroTitle}>{reviewDataNew.heroH1Content}</h1>
