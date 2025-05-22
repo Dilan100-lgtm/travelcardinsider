@@ -1,610 +1,824 @@
-/* ------------------------------
-   Global Reset/Basic Styles
----------------------------------*/
-
-
+/* Base Page Styles */
+.reviewPageMain { /* Applied to the <main> element */
+  font-family: var(--font-family-body);
+  font-size: 16px; /* Base font size 16px */
+  line-height: 1.6; /* Default line height */
+  color: var(--text-dark);
+  background-color: var(--bg-white); /* Or a very light page background */
+}
 
 .reviewContainer {
-  margin-top: 5rem;
+  max-width: 1200px; /* Max width of content area */
+  margin: 0 auto var(--spacing-xl) auto; /* Centered, with bottom margin */
+  padding: var(--spacing-md) var(--spacing-lg); /* Generous padding */
+  background: var(--bg-white);
+  /* box-shadow: 0 2px 5px rgba(0,0,0,0.1); Removed for a flatter design, or use var(--shadow-md) */
+}
+
+
+/* Trust Signal Bar */
+.trustSignalBar {
+  background-color: var(--bg-grey-bar);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-bottom: 1px solid var(--border-color-light);
+}
+.trustSignalContent {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1rem;
-  background: #fff;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  font-family:'Roboto Condensed', sans-serif;
-  line-height: 1.6;
-  color: black;
-  
-
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Or flex-start */
+  gap: var(--spacing-md);
+  font-size: 0.8rem;
+  color: var(--text-medium);
+  text-transform: uppercase; /* Small caps effect */
+  flex-wrap: wrap; /* Allow wrapping on small screens */
 }
-.reviewGuID {
-  font-style: italic;
-  font-weight: bolder;
-  font-size: 1.4em;
-  color: rgb(14, 117, 14);
+.issuerLogoSmall {
+  height: 20px; /* Adjust size as needed */
+  width: auto;
+  filter: grayscale(100%); /* Optional: for a muted look */
+  opacity: 0.8;
 }
-.reviewDisclaimer {
-  font-size: 0.9em;
-  color: #555;
-  margin-top: 0;
-  margin-bottom: 1rem;
+.trustSignalDivider {
+  color: var(--border-color);
 }
-.reviewImage {
-  background: center/cover no-repeat border-box;
-    margin-top: 0;
-    /* background-repeat: no-repeat;
-      background-origin: border-box;
-      background-clip: border-box; */
-    /* background-image: linear-gradient(180deg, red 70%, blue 60%, rgba(0,0,0,0.5)); */
-    /* background-image: radial-gradient(ellipse farthest-corner at 20% 50%, red, blue 70%, green); */
-    width: 100%;
-    height: auto;
-    /* border: 5px dashed red; */
-    position: relative;
-    
-  }
-  .reviewIntro {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-    color: #444;
-    line-height: 1.5;
-    font-family: 'Roboto Condensed', sans-serif;
-  }
-
-
-/* ------------------------------
-   Header/Intro
----------------------------------*/
-.reviewTitle {
-  color: #007bff;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  font-family: playfair display, serif;
-}
-
-.reviewHeader .reviewIntro {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  color: #444;
-  line-height: 1.5;
-}
-
-.reviewHeader ul {
-  margin-left: 2rem;
-  list-style: disc outside;
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-/* ------------------------------
-   Table of Contents
----------------------------------*/
-.reviewToc {
-  margin: 1rem 0;
-  padding: 1rem;
-  background: #eaf2ff;
-  border-left: 4px solid #007bff;
-  border-radius: 5px;
-}
-
-.reviewToc h2 {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-  color: #333;
-}
-
-.reviewToc ol {
-  margin-left: 1.5rem;
-  list-style-type: decimal;
-}
-
-.reviewToc ol li a {
-  text-decoration: none;
-  color: #007bff;
-  transition: color 0.3s;
-}
-
-.reviewToc ol li a:hover {
-  text-decoration: underline;
-  color: #0056b3;
-}
-
-/* ------------------------------
-   Sections
----------------------------------*/
-.reviewSection {
-  margin-bottom: 2rem;
-  font-size: 1.2rem;
-  color: #444;
-  font-family: 'Roboto Condensed', sans-serif;
-}
-
-.reviewSection h2 {
-  font-size: 1.8rem;
-  color: #007bff;
-  margin-bottom: 0.5rem;
-  font-family: 'Playfair Display', serif;
-}
-
-.reviewSection h3 {
-  font-size: 1.3rem;
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
-  color: #007bff;
-  font-family: 'Playfair Display', serif;
-}
-
-.reviewSection p {
-  line-height: 1.6;
-  margin-bottom: 1rem;
-  color: #444;
-}
-
-.reviewSection ul {
-  margin-left: 2rem;
-  list-style: disc;
-  margin-bottom: 1rem;
-  color: #444;
-}
-
-.reviewSection ul li {
-  margin-bottom: 0.5rem;
+.trustSignalBadge {
+  background-color: var(--amex-primary-blue);
+  color: var(--text-on-primary);
+  padding: 2px var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  font-weight: 500;
+  text-transform: none; /* Normal case for the badge */
 }
 
 
-
-
-
-/* ------------------------------
-   RESPONSIVE MEDIA QUERIES
----------------------------------*/
-
-/* SMALLER SCREENS (TABLET & MOBILE) */
-@media (max-width: 768px) {
-  .review-header h1 {
-    font-size: 1.6rem;
-  }
-
-  .reviewToc h2 {
-    font-size: 1rem;
-  }
-
-.reviewSection h2 {
-    font-size: 1.2rem;
-  }
-}
-
-/* VERY SMALL SCREENS */
-@media (max-width: 480px) {
-  .review-header h1 {
-    font-size: 1.4rem;
-  }
-
-  .intro {
-    font-size: 0.95rem;
-  }
-
-  .reviewToc {
-    padding: 0.5rem;
-  }
-
-  .reviewToc h2 {
-    font-size: 1.1rem;
-  }
-  .reviewSection {
-    font-size: 1rem;
-  }
-
-  .reviewToc ol {
-    margin-left: 1rem;
-  }
-
-.reviewSection h2 {
-    font-size: 1.2rem;
-  }
-  .reviewSection h3 {
-    font-size: 1.1rem;
-  }
-}
-
-.tablereviewSectionResponsive {
+/* Hero Section Styling */
+.heroImageContainer {
+  position: relative;
   width: 100%;
-  overflow-x: auto;
-  margin-top: 1rem;
+  height: 400px; /* Adjust height as needed, or use padding-bottom for aspect ratio */
+  /* max-height: 60vh; */
+  overflow: hidden; /* Ensures overlay and image stay contained */
+  background-color: #333; /* Fallback if image doesn't load */
 }
-
-.tablereviewSection {
+.heroImage {
   width: 100%;
-  border-collapse: collapse;
-  min-width: 600px; /* So smaller screens can scroll horizontally */
-  background: #fff;
+  height: 100%;
+  object-fit: cover; /* Cover the area, might crop */
+  object-position: center;
 }
-
-.tablereviewSection thead {
-  background: #007bff;
-  color: #fff;
+.heroImageContainer::before { /* Dark overlay */
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4); /* Adjust darkness (0.3-0.6 is usually good) */
+  z-index: 1;
 }
-
-.tablereviewSection th, .tablereviewSection td {
-  padding: 0.75rem;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-  font-size: 0.95rem;
+.heroTextOverlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2; /* Above overlay */
+  text-align: center;
+  padding: var(--spacing-lg);
+  width: 90%;
+  max-width: 800px;
 }
-
-.tablereviewSection tbody tr:hover {
-  background-color: #f9f9f9;
-}
-
-.tablereviewSection th {
-  font-weight: bold;
-}
-/* Add to your styles/reviews2025.module.css file */
-
-/* Responsive Table Container */
-.tableResponsive {
-  display: block; /* Ensures it behaves like a block for width and overflow */
-  width: 100%;   /* Takes full width of its parent */
-  overflow-x: auto; /* Enables horizontal scrolling if content overflows */
-  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS devices */
-  margin-bottom: 1.5rem; /* Adds some space below the table container */
-}
-
-/* Comparison Table Styling */
-.comparisonTable {
-  width: 100%; /* Table tries to take full width of its container (.tableResponsive) */
-  min-width: 800px; /* Set a minimum width for the table; adjust as needed. 
-                       This ensures that even on wider screens, if the content is less,
-                       it doesn't look too cramped, but on smaller screens, it will scroll
-                       once the viewport is narrower than this min-width. */
-  border-collapse: collapse; /* Merges cell borders */
-  margin: 0 auto; /* Centers table if its width is less than container (less likely with min-width) */
-  font-size: 0.9rem; /* Slightly smaller font for table data */
-}
-
-.comparisonTable th,
-.comparisonTable td {
-  border: 1px solid #ddd; /* Light grey border for cells */
-  padding: 10px 12px;      /* Padding within cells */
-  text-align: left;     /* Align text to the left */
-  vertical-align: top;  /* Aligns content to the top of the cell, useful for multi-line content */
-}
-
-.comparisonTable th {
-  background-color: #f5f5f5; /* Light grey background for header cells */
-  font-weight: bold;         /* Bold text for headers */
-  white-space: nowrap;       /* Prevents header text from wrapping, good for short headers */
-}
-
-.comparisonTable tbody tr:nth-child(even) {
-  background-color: #f9f9f9; /* Zebra striping for even rows in the body */
-}
-
-.comparisonTable tbody tr:hover {
-  background-color: #f0f0f0; /* Highlight row on hover */
-}
-
-/* Specific column styling if needed, e.g., for the first column */
-.comparisonTable td:first-child,
-.comparisonTable th:first-child {
-  
-     position: -webkit-sticky;
-     position: sticky;
-     left: 0;
-     background-color: #fff; 
-     z-index: 1;
-  
-}
-
-/* Ensure a slightly more prominent header for the feature column if it's descriptive */
-.comparisonTable th:first-child {
-    background-color: #e9e9e9; /* Slightly darker for the main feature header */
-}
-/* =============== Original CTA Section (Refined) - Preserved =============== */
-.ctaSection {
-  text-align: center; padding: 0.5rem;
-  background: var(--color-background-subtle, #f1f3f5);
-  border: 1px solid var(--color-border, #dfe1e6);
-  border-radius: var(--border-radius-md, 6px);
-  margin: var(--spacing-xl, 32px) 0;
-  box-shadow: none;
-  position: sticky; top: 3rem;
-  height: 20vh; /* This was in your original CSS for .ctaSection */
-  z-index: 1000;
-}
-.ctaSection h2 {
-  font-family: var(--font-condensed, 'Roboto Condensed', var(--font-family-sans, sans-serif));
-  font-size: 1 rem; color: var(--text-dark, #172b4d);
-  margin-top: 0; margin-bottom: 0.5rem; border: none; display: block;
-  line-height: 1.5rem;
-}
-.ctaSection h2 b { color: var(--color-primary, #0052cc); font-weight: 700; }
-.ctaButtons { display: flex; justify-content: center; gap: 0.5rem; flex-wrap: wrap; }
-.ctaButtons .btn {
-  padding: 10px 24px; font-size: 1rem; font-weight: 700;
-  border-radius: var(--border-radius-md, 6px);
-  box-shadow: var(--shadow-sm, 0 2px 4px rgba(23, 43, 77, 0.07));
-  transition: all 0.3s ease; border: none; cursor: pointer;
-  text-decoration: none; line-height: 1.5;
-}
-.ctaButtons .btn:hover { box-shadow: var(--shadow-md, 0 4px 8px rgba(23, 43, 77, 0.1)); transform: translateY(-2px); }
-.ctaButtons .btn:active { transform: translateY(0px) scale(0.98); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-.ctaButtons .btnApply {
-   background: var(--color-accent, var(--value-good, #16a34a));
-   color: var(--text-on-primary, white);
-}
-.ctaButtons .btnApply:hover { background: var(--color-accent-hover, #117e37); }
-.ctaButtons .btnRates {
-  background: none;
-  color: var(--color-primary, #0052cc);
-  border: 1px solid var(--color-border, #dfe1e6);
-  box-shadow: none;
-}
-
-.ctaButtons .btnRates:hover {
-  background: var(--color-background-subtle, #f1f3f5);
-  border-color: var(--color-primary, #0052cc);
-}
-.ctaButtons .btn:focus-visible {
-  outline: 3px solid var(--color-primary-light, rgba(0, 82, 204, 0.15));
-  outline-offset: 2px;
+.heroTitle {
+  font-family: var(--font-family-heading);
+  color: var(--text-on-primary); /* White text */
+  font-size: 2.2rem; /* Adjust as needed */
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Subtle shadow for readability */
 }
 @media (min-width: 768px) {
-  .ctaButtons {
-    gap: 2rem;
+  .heroImageContainer {
+    height: 500px; /* Larger hero on desktop */
   }
-  .ctaSection {
-    padding: 1rem;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
-    height: 18vh; /* This was in your original CSS for .ctaSection with this media query */
+  .heroTitle {
+    font-size: 2.8rem;
   }
-  .ctaSection h2 {
-    font-size: 1.4rem;
-  }
-  }
-/* Add this to your styles/reviews2025.module.css file */
-
-/* Override sticky positioning for the first table's first column */
-.comparisonTable.noStickyFirstCol td:first-child,
-.comparisonTable.noStickyFirstCol th:first-child {
-  position: static; /* This removes the stickiness */
-  /* z-index: auto; */ /* Reset z-index if it was set by sticky styles */
-}
-
-/* Reset the specific background for the first header cell if it was made sticky */
-.comparisonTable.noStickyFirstCol th:first-child {
-  background-color: #f5f5f5; /* This is the default background for 'th' in .comparisonTable */
-}
-/* =============== NEW: AUTHOR BIO & TOOLTIP STYLES =============== */
-
-.authorBioContainer {
-  display: inline-flex; /* Align items horizontally */
-  align-items: center;
-  gap: var(--spacing-sm, 8px);
-  margin-bottom: var(--spacing-md, 16px); /* Space below author bio */
-  position: relative; /* Needed for absolute positioning of the tooltip */
-  cursor: default; /* Or 'pointer' if the whole thing should feel clickable */
-  padding: var(--spacing-xs) 0; /* Minimal padding */
-  border: 1px solid transparent; /* Reserve space for potential focus outline */
-}
-
-/* Add focus styles if needed, for keyboard navigation */
-.authorBioContainer:focus-within {
- /* Example: Add a subtle outline or background */
- /* outline: 2px solid var(--primary-blue-focus); */
- /* outline-offset: 2px; */
- /* background-color: rgba(0,0,0,0.02); */
- /* border-radius: var(--border-radius-sm); */
 }
 
 
-.authorImageSmall {
-  border-radius: 50%; /* Make it circular */
-  object-fit: cover;
-  flex-shrink: 0; /* Prevent image from shrinking */
-  background-color: var(--border-color-light); /* Placeholder bg */
+/* Article Header (Author, Disclaimer etc. below Hero) */
+.reviewHeader {
+  margin-top: var(--spacing-lg); /* Space below hero */
+}
+.reviewDisclaimer {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  text-align: center; /* Or left */
+  border-top: 1px solid var(--border-color-light);
+  padding-top: var(--spacing-md);
 }
 
-.authorInfo {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* Align text to the left */
+
+/* Main Review Title (if used separately from hero) */
+.reviewTitle { /* This is the H1 inside the <article> if not using hero H1 */
+  font-family: var(--font-family-heading);
+  color: var(--amex-primary-blue);
+  font-size: 2rem;
+  margin-bottom: var(--spacing-md);
   line-height: 1.3;
 }
 
-.authorName {
-  font-family: var(--font-family-main);
-  font-weight: var(--font-weight-semibold, 600);
-  font-size: 0.95rem;
-  color: var(--text-medium, #4b5563);
-  /* Add underline on hover if desired */
-  /* text-decoration: none; */
-  /* transition: color 0.2s; */
-}
-/* .authorBioContainer:hover .authorName {
-   color: var(--color-primary);
-   text-decoration: underline;
-} */
 
-.authorTitle {
-  font-family: var(--font-family-main);
-  font-weight: var(--font-weight-regular, 400);
-  font-size: 0.85rem;
-  color: var(--text-light, #6b7280);
+/* Typography Updates */
+.reviewSection p {
+  line-height: 1.55; /* Increased for readability */
+  margin-bottom: var(--spacing-md);
+  color: var(--text-dark);
 }
-
-/* --- Author Tooltip Styles (Based on .ratingTooltip) --- */
-.authorTooltip {
-  position: absolute;
-  top: calc(100% + 10px); /* Position below the author bio + gap */
-  left: 0; /* Align with the start of the author bio container */
-  /* or: left: 50%; transform: translateX(-50%); to center it */
-  background-color: var(--bg-white, #ffffff);
-  border: 1px solid var(--border-color, #d1d5db);
-  border-radius: var(--border-radius-md, 8px);
-  padding: var(--spacing-md, 16px);
-  width: 300px; /* Adjust width as needed */
-  box-shadow: var(--shadow-medium); /* Use medium shadow */
-  z-index: 1050; /* Ensure it's above other content */
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: var(--text-dark, #1f2937);
-  text-align: left;
-  opacity: 1; /* Start visible */
-  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out; /* Add transition */
-  /* Add a small arrow/pointer */
-  /* visibility: visible; */ /* Control visibility via state */
+.reviewSection ul {
+  margin-left: var(--spacing-lg);
+  list-style: disc; /* Default, can be customized */
+  margin-bottom: var(--spacing-md);
+  color: var(--text-dark);
 }
-
-.authorTooltip::before { /* Optional: Tooltip arrow */
-  content: '';
-  position: absolute;
-  bottom: 100%; /* Position arrow above the tooltip */
-  left: 20px; /* Adjust horizontal position of the arrow */
-  margin-left: -5px;
-  border-width: 6px;
-  border-style: solid;
-  border-color: transparent transparent var(--border-color) transparent; /* Arrow pointing up */
+.reviewSection ul li {
+  margin-bottom: var(--spacing-sm);
+  padding-left: var(--spacing-xs); /* Space for custom bullet if added */
 }
-.authorTooltip::after { /* Arrow inner part (to cover border) */
-   content: '';
-   position: absolute;
-   bottom: 100%;
-   left: 20px;
-   margin-left: -4px; /* Slightly smaller */
-   border-width: 5px;
-   border-style: solid;
-   border-color: transparent transparent var(--bg-white) transparent;
+/* Optional: Custom bullets with accent color */
+.reviewSection ul li::marker {
+  /* color: var(--amex-accent-gold); */ /* This is the standard way */
 }
+.bulletIcon { /* For custom icons like thumbs up/down */
+  margin-right: var(--spacing-sm);
+  color: var(--amex-accent-gold); /* Default accent for bullets */
+}
+.prosSection .bulletIcon { color: var(--brand-green-highlight); } /* Green for pros */
+.consSection .bulletIcon { color: #ef4444; } /* Red for cons */
 
 
-.authorTooltipHeader {
+/* Section Headings (H2) Styling */
+.reviewSection h2 {
+  font-family: var(--font-family-heading);
+  font-size: 1.8rem;
+  color: var(--amex-primary-blue);
+  margin-top: var(--spacing-xl); /* 32px top margin */
+  margin-bottom: var(--spacing-lg); /* 24px bottom margin */
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 2px solid var(--amex-accent-gold); /* Accent underline */
+  line-height: 1.3;
+}
+.reviewSection h3 {
+  font-family: var(--font-family-heading);
+  font-size: 1.4rem; /* Slightly larger H3 */
+  margin-top: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+  color: var(--text-dark); /* Darker H3 for contrast if H2 is colored */
+  line-height: 1.3;
+}
+.reviewSection h4 {
+  font-family: var(--font-family-body); /* Sans-serif for H4 */
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-medium);
+}
+.reviewSection h5 { /* For credit card names */
+  font-family: var(--font-family-body);
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text-dark);
+}
+
+
+/* Table of Contents (Original) */
+.reviewToc {
+  margin: var(--spacing-lg) 0;
+  padding: var(--spacing-md);
+  background: var(--bg-light); /* Light background */
+  border-left: 4px solid var(--amex-primary-blue);
+  border-radius: var(--border-radius-md);
+}
+.reviewToc h2 {
+  font-family: var(--font-family-heading);
+  font-size: 1.3rem;
+  margin-top: 0;
+  margin-bottom: var(--spacing-md);
+  color: var(--text-dark);
+}
+.reviewToc ol {
+  margin-left: var(--spacing-md);
+  list-style-type: decimal;
+  padding-left: var(--spacing-sm);
+}
+.reviewToc ol li a {
+  text-decoration: none;
+  color: var(--amex-primary-blue);
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+.reviewToc ol li a:hover,
+.reviewToc ol li a:focus {
+  text-decoration: underline;
+  color: var(--amex-accent-gold); /* Hover to accent color */
+}
+
+
+/* Sticky "On This Page" Table of Contents */
+.stickyTocNav {
+  position: sticky;
+  top: 0; /* Stick to the top */
+  z-index: 1020; /* Below modals, above most content */
+  background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent white */
+  backdrop-filter: blur(8px); /* Frosted glass effect */
+  border-bottom: 1px solid var(--border-color-light);
+  box-shadow: var(--shadow-sm);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  opacity: 1;
+  transform: translateY(0);
+  /* Initially hidden, shown by JS adding a class or inline style for opacity/transform */
+}
+.stickyTocNav:not([data-visible="true"]) { /* Example of how to hide it */
+  opacity: 0;
+  transform: translateY(-100%);
+}
+.stickyTocContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
   display: flex;
   align-items: center;
-  gap: var(--spacing-md, 12px);
-  padding-bottom: var(--spacing-sm, 8px);
-  margin-bottom: var(--spacing-sm, 8px);
-  border-bottom: 1px solid var(--border-color-light);
+  height: 50px; /* Adjust height */
+}
+.stickyTocTitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-right: var(--spacing-lg);
+  white-space: nowrap;
+}
+.stickyTocList {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-x: auto; /* Allow horizontal scroll for many items */
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: var(--border-color) transparent; /* Firefox */
+}
+.stickyTocList::-webkit-scrollbar { height: 4px; }
+.stickyTocList::-webkit-scrollbar-thumb { background-color: var(--border-color); border-radius: 2px; }
+
+.stickyTocLink {
+  display: block;
+  padding: 0 var(--spacing-md);
+  line-height: 50px; /* Vertically center text */
+  font-size: 0.85rem;
+  color: var(--text-medium);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.stickyTocLink:hover,
+.stickyTocLink:focus {
+  color: var(--amex-primary-blue);
+}
+.activeStickyTocLink { /* Style for the currently active link */
+  composes: stickyTocLink; /* Inherits base styles */
+  color: var(--amex-primary-blue);
+  font-weight: 600;
+  border-bottom-color: var(--amex-primary-blue);
 }
 
-.authorTooltipImage {
+
+/* Credits Section - Card Styling */
+.creditGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-md);
+}
+.creditCard {
+  background-color: var(--bg-light); /* Pastel background */
+  border: 1px solid var(--border-color-light);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-md);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+.creditCard:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.creditCardHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+.creditIcon {
+  flex-shrink: 0;
+  /* Add color or filter if icons are SVGs and need styling */
+  opacity: 0.7;
+}
+.creditName { /* This is an h5 */
+  flex-grow: 1;
+  color: var(--amex-primary-blue); /* Credit name in brand color */
+}
+.creditPill {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px var(--spacing-sm);
+  border-radius: var(--border-radius-pill);
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--text-on-primary);
+}
+.pillAnnual { background-color: #2563eb; } /* Blue for Annual */
+.pillMonthly { background-color: #16a34a; } /* Green for Monthly */
+.pillSemi-Annual { background-color: #fbbf24; color: var(--text-dark); } /* Yellow for Semi-Annual */
+.pillBenefit { background-color: #6b7280; } /* Grey for general benefit */
+
+.creditDetails {
+  font-size: 0.85rem;
+  color: var(--text-medium);
+  line-height: 1.5;
+  margin: 0;
+}
+
+
+/* Table Styling (General Comparison Table) */
+.tableResponsive {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: var(--spacing-lg);
+}
+.comparisonTable {
+  width: 100%;
+  min-width: 600px; /* Adjust as needed */
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.comparisonTable th,
+.comparisonTable td {
+  border: 1px solid var(--border-color);
+  padding: var(--spacing-sm) var(--spacing-md); /* 8px 16px */
+  text-align: left;
+  vertical-align: top;
+}
+.comparisonTable th {
+  background-color: var(--bg-light);
+  font-weight: 600; /* Bolder headers */
+  white-space: nowrap;
+  color: var(--text-dark);
+}
+.comparisonTable tbody tr:nth-child(even) {
+  background-color: var(--bg-zebra-stripe); /* #fafafa */
+}
+.comparisonTable tbody tr:hover {
+  background-color: #f0f0f0; /* Keep hover subtle */
+}
+/* Sticky first column for general tables (can be overridden by .noStickyFirstCol) */
+.comparisonTable td:first-child,
+.comparisonTable th:first-child {
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0;
+  background-color: var(--bg-light); /* Match header or row bg */
+  z-index: 1;
+  box-shadow: 1px 0 0 var(--border-color); /* Subtle separator */
+}
+.comparisonTable th:first-child { background-color: #e9e9e9; }
+.comparisonTable tbody tr:nth-child(even) td:first-child { background-color: var(--bg-zebra-stripe); }
+.comparisonTable tbody tr:nth-child(odd) td:first-child { background-color: var(--bg-white); }
+
+
+/* Specific for "Quick Look" Value Table (Offsetting Fee Table) */
+.valueTableContainer { /* Wrapper if needed */
+  margin-top: var(--spacing-lg);
+}
+.valueTable th, .valueTable td {
+  font-size: 0.95rem; /* Slightly larger font for this specific table */
+}
+.subtotalHighlightRow td { /* Style for the subtotal row */
+  font-weight: bold !important;
+  color: var(--brand-green-highlight) !important; /* Brand green for positive sum */
+  background-color: #e6ffed !important; /* Light green background */
+}
+.tableCaption {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-light);
+  margin-top: var(--spacing-sm);
+}
+/* Responsive Stacked Cards for .valueTable (Quick Look Table) */
+@media (max-width: 600px) { /* Adjust breakpoint as needed */
+  .valueTable thead {
+    display: none; /* Hide table header on mobile */
+  }
+  .valueTable tr {
+    display: block;
+    margin-bottom: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+  }
+  .valueTable td {
+    display: block;
+    text-align: right; /* Align value to the right */
+    font-size: 0.9rem;
+    border-bottom: 1px dotted var(--border-color-light);
+    padding-left: 50%; /* Make space for label */
+    position: relative;
+  }
+  .valueTable td:before {
+    content: attr(data-label); /* Use data-label for the "header" */
+    position: absolute;
+    left: var(--spacing-md);
+    width: calc(50% - var(--spacing-lg)); /* Adjust width based on padding */
+    padding-right: var(--spacing-sm);
+    font-weight: 600;
+    text-align: left;
+    white-space: nowrap;
+    color: var(--text-dark);
+  }
+  .valueTable td:last-child {
+    border-bottom: none; /* Remove border for last cell in stacked card */
+  }
+  .valueTable tr:last-child {
+      margin-bottom: 0; /* No margin for the very last card */
+  }
+  /* Ensure subtotal highlight still looks good */
+  .subtotalHighlightRow.valueTable td {
+    background-color: #e6ffed !important;
+  }
+}
+
+
+/* No Sticky Column Utility */
+.comparisonTable.noStickyFirstCol td:first-child,
+.comparisonTable.noStickyFirstCol th:first-child {
+  position: static;
+  z-index: auto;
+  box-shadow: none;
+}
+.comparisonTable.noStickyFirstCol th:first-child {
+  background-color: var(--bg-light); /* Default TH background */
+}
+
+
+/* CTA Section Styling */
+.ctaSection { /* Inline CTA within article */
+  text-align: center;
+  padding: var(--spacing-lg);
+  background: var(--bg-light);
+  border: 1px solid var(--border-color-light);
+  border-radius: var(--border-radius-lg);
+  margin: var(--spacing-xl) 0;
+  box-shadow: var(--shadow-sm);
+  /* position: sticky; top: 3rem; */ /* Removed sticky from inline CTA based on new sticky TOC */
+  /* height: auto; */ /* Removed fixed height */
+  /* z-index: auto; */
+}
+.ctaSection h2 {
+  font-family: var(--font-family-heading);
+  font-size: 1.6rem;
+  color: var(--text-dark);
+  margin-top: 0;
+  margin-bottom: var(--spacing-sm);
+  border: none; /* remove border if it was from .reviewSection h2 */
+}
+.ctaSection h2 b {
+  color: var(--amex-primary-blue);
+  font-weight: 700;
+}
+.ctaSection p {
+  color: var(--text-medium);
+  margin-bottom: var(--spacing-lg);
+  font-size: 1rem;
+}
+.ctaButtons {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+.btn { /* Base button style */
+  padding: 12px 28px; /* Tap-friendly padding */
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease-out;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  line-height: 1.5;
+  min-height: 48px; /* For tap target size */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.btn:active {
+  transform: translateY(0px) scale(0.98);
+  box-shadow: var(--shadow-sm);
+}
+.btnApply {
+  background-color: var(--amex-primary-blue);
+  color: var(--text-on-primary);
+  border-color: var(--amex-primary-blue);
+}
+.btnApply:hover {
+  background-image: linear-gradient(to right, var(--amex-primary-blue), #006eff); /* Subtle gradient on hover */
+  border-color: #006eff;
+}
+.btnRates {
+  background-color: transparent;
+  color: var(--amex-primary-blue);
+  border: 1px solid var(--amex-primary-blue); /* Use primary color for border */
+}
+.btnRates:hover {
+  background-color: rgba(0, 82, 204, 0.05); /* Very light primary bg on hover */
+  border-color: var(--amex-primary-blue);
+}
+.btn:focus-visible {
+  outline: 3px solid var(--amex-primary-blue);
+  outline-offset: 2px;
+}
+.btnLarge { /* For final prominent CTAs */
+  padding: 14px 32px;
+  font-size: 1.1rem;
+}
+.finalCtaSection h2 { border-bottom: none; } /* No border for H2 in final CTA section */
+.smallPrintTerms {
+  font-size: 0.75rem;
+  color: var(--text-light);
+  margin-top: var(--spacing-md);
+}
+
+
+/* Sticky Bottom CTA Bar */
+.stickyCtaContainer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.9); /* semi-transparent white */
+  backdrop-filter: blur(5px); /* frosted glass effect */
+  padding: var(--spacing-sm) var(--spacing-md);
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+  z-index: 1030; /* High z-index */
+  border-top: 1px solid var(--border-color-light);
+}
+.stickyCtaContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+}
+.stickyCtaText {
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  font-weight: 500;
+  flex-shrink: 1; /* Allow text to shrink if buttons need space */
+}
+.stickyCtaButtons {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-shrink: 0; /* Prevent buttons from shrinking too much */
+}
+.ctaButtonApply, .ctaButtonLearnMore { /* These are <a> tags styled as buttons */
+  padding: var(--spacing-sm) var(--spacing-md); /* Slightly smaller for sticky bar */
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: var(--border-radius-md);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  min-height: 40px; /* Ensure tap-friendly */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.ctaButtonApply {
+  background-color: var(--amex-primary-blue);
+  color: var(--text-on-primary);
+}
+.ctaButtonApply:hover {
+  background-color: #0041a3; /* Darker blue */
+  transform: translateY(-1px);
+}
+.ctaButtonLearnMore {
+  background-color: var(--bg-light);
+  color: var(--amex-primary-blue);
+  border: 1px solid var(--border-color);
+}
+.ctaButtonLearnMore:hover {
+  background-color: var(--border-color-light);
+  border-color: var(--text-medium);
+  transform: translateY(-1px);
+}
+
+
+/* Author Bio & Tooltip (largely from your provided CSS, with minor tweaks for vars) */
+.authorBioContainer {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-md); /* Increased gap slightly */
+  margin-bottom: var(--spacing-lg);
+  position: relative;
+  cursor: default;
+  padding: var(--spacing-xs) 0;
+}
+.authorBioContainer:focus-within {
+  /* outline: 2px solid var(--amex-primary-blue); */
+  /* outline-offset: 2px; */
+}
+.authorImageSmall {
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
-   background-color: var(--border-color-light); /* Placeholder bg */
+  background-color: var(--border-color-light);
 }
-
-.authorTooltipInfo {
+.authorInfoBlock { /* New wrapper for text content next to image */
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
 }
-
-.authorTooltipName {
-  font-weight: var(--font-weight-bold, 700);
-  font-size: 1.05rem;
-  color: var(--text-dark);
-}
-
-.authorTooltipTitle {
-  font-size: 0.9rem;
-  color: var(--text-medium);
-}
-
-.authorTooltipExpertise {
-  margin-top: var(--spacing-sm, 8px);
-  margin-bottom: var(--spacing-md, 12px);
-}
-
-.authorTooltipExpertise strong {
-  font-weight: var(--font-weight-semibold, 600);
-  font-size: 0.9rem;
-  color: var(--text-dark);
-  display: block;
-  margin-bottom: var(--spacing-xs, 4px);
-}
-
-.authorTooltipExpertise ul {
-  list-style: none; /* Or 'disc' */
-  padding-left: 0; /* Adjust if using disc */
-  margin: 0;
+.authorNameLine {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--spacing-xs, 4px);
+  align-items: baseline; /* Align "By" and name nicely */
+  gap: var(--spacing-xs);
 }
-
-.authorTooltipExpertise li {
+.authorPrefix {
   font-size: 0.85rem;
-  color: var(--text-medium);
-  background-color: var(--bg-light, #f3f4f6);
-  padding: 2px 8px;
-  border-radius: 12px;
-  /* margin-bottom: 0; Add if needed */
-  /* padding-left: 0; Add if needed */
+  color: var(--text-light);
 }
-/* .authorTooltipExpertise li::before { content: none; } Add if needed */
-
-.authorTooltipBioSnippet {
-  font-size: 0.9rem;
-  line-height: 1.6;
+.authorName {
+  font-family: var(--font-family-body);
+  font-weight: 600;
+  font-size: 0.95rem;
   color: var(--text-medium);
-  margin-bottom: var(--spacing-md, 12px);
-}
-
-.authorTooltipBioLink {
-  display: inline-block;
-  font-weight: var(--font-weight-semibold, 600);
-  font-size: 0.9rem;
-  color: var(--primary-blue, #2563eb);
   text-decoration: none;
-  transition: color 0.2s;
 }
-
-.authorTooltipBioLink:hover {
-  color: var(--primary-blue-dark, #1d4ed8);
-  text-decoration: underline;
+.authorBioContainer:hover .authorName {
+   color: var(--amex-primary-blue);
+   text-decoration: underline;
 }
-/* Style for the Last Edited Time */
+.authorTitle {
+  font-family: var(--font-family-body);
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
 .authorLastEdited {
-  font-family: var(--font-family-main);
-  font-size: 0.8rem; /* Smaller font size */
-  color: var(--text-muted, #6b7280); /* Muted color */
-  margin-top: var(--spacing-xs, 4px); /* Space above date */
-  display: block; /* Ensure it takes its own line */
+  font-family: var(--font-family-body);
+  font-size: 0.8rem;
+  color: var(--text-light);
+  margin-top: var(--spacing-xs);
+  display: block;
 }
-
-/* Style for the Social Links Container */
 .authorSocialLinks {
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm, 8px); /* Space between icons */
-  margin-top: var(--spacing-sm, 8px); /* Space above icons */
+  gap: var(--spacing-md); /* Wider gap for socials */
+  margin-top: var(--spacing-sm);
 }
-
-/* Style for each Social Icon Link */
 .socialIconLink {
-  display: inline-flex; /* Use flex to center icon if needed */
-  align-items: center;
-  justify-content: center;
-  color: var(--text-light, #6b7280); /* Default icon color */
+  display: inline-flex;
+  color: var(--text-light);
   transition: color 0.2s ease;
-  line-height: 0; /* Prevent extra space */
 }
-
-.socialIconLink:hover,
-.socialIconLink:focus {
-  color: var(--primary-blue, #2563eb); /* Icon color on hover/focus */
+.socialIconLink:hover, .socialIconLink:focus {
+  color: var(--amex-primary-blue);
   outline: none;
 }
-/* Style specifically for icons inside the tooltip if needed */
+
+/* Author Tooltip */
+.authorTooltip {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  background-color: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg); /* Slightly larger radius */
+  padding: var(--spacing-lg); /* More padding */
+  width: 320px; /* Slightly wider */
+  box-shadow: var(--shadow-lg); /* More prominent shadow for tooltip */
+  z-index: 1050;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-dark);
+  text-align: left;
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+.authorTooltip::before {
+  content: ''; position: absolute; bottom: 100%; left: 20px; margin-left: -6px;
+  border-width: 7px; border-style: solid; border-color: transparent transparent var(--border-color) transparent;
+}
+.authorTooltip::after {
+   content: ''; position: absolute; bottom: 100%; left: 20px; margin-left: -5px;
+   border-width: 6px; border-style: solid; border-color: transparent transparent var(--bg-white) transparent;
+}
+.authorTooltipHeader {
+  display: flex; align-items: center; gap: var(--spacing-md);
+  padding-bottom: var(--spacing-md); margin-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color-light);
+}
+.authorTooltipImage {
+  border-radius: 50%; object-fit: cover; flex-shrink: 0;
+  background-color: var(--border-color-light);
+}
+.authorTooltipInfo { display: flex; flex-direction: column; }
+.authorTooltipName { font-weight: 700; font-size: 1.05rem; color: var(--text-dark); }
+.authorTooltipTitle { font-size: 0.9rem; color: var(--text-medium); }
+.authorTooltipExpertise { margin-top: var(--spacing-sm); margin-bottom: var(--spacing-md); }
+.authorTooltipExpertise strong {
+  font-weight: 600; font-size: 0.9rem; color: var(--text-dark);
+  display: block; margin-bottom: var(--spacing-sm); /* Increased margin */
+}
+.authorTooltipExpertise ul {
+  list-style: none; padding-left: 0; margin: 0;
+  display: flex; flex-wrap: wrap; gap: var(--spacing-sm); /* Increased gap for pills */
+}
+.authorTooltipExpertise li {
+  font-size: 0.8rem; color: var(--text-medium); background-color: var(--bg-light);
+  padding: 3px 10px; /* Slightly more padding */
+  border-radius: var(--border-radius-pill);
+  border: 1px solid var(--border-color-light); /* Add subtle border to pills */
+}
+.authorTooltipBioSnippet {
+  font-size: 0.9rem; line-height: 1.6; color: var(--text-medium);
+  margin-bottom: var(--spacing-md);
+}
+.authorTooltipBioLink {
+  display: inline-block; font-weight: 600; font-size: 0.9rem;
+  color: var(--amex-primary-blue); text-decoration: none; transition: color 0.2s;
+}
+.authorTooltipBioLink:hover { color: var(--amex-accent-gold); text-decoration: underline; }
 .authorTooltipSocials {
-   margin-top: var(--spacing-md, 12px);
-   padding-top: var(--spacing-sm, 8px);
+   margin-top: var(--spacing-md); padding-top: var(--spacing-md); /* Increased padding */
    border-top: 1px solid var(--border-color-light);
-   display: flex;
-   gap: var(--spacing-md, 12px); /* Wider gap inside tooltip? */
+   display: flex; gap: var(--spacing-lg); /* Wider gap for socials */
 }
 
 
-/* =============== END AUTHOR BIO & TOOLTIP STYLES =============== */
+/* Responsive Media Queries (Merging with existing) */
+@media (max-width: 768px) {
+  .reviewPageMain { font-size: 15px; } /* Adjust base for tablet if 16px is too large */
+  .heroTitle { font-size: 2rem; }
+  .reviewSection h2 { font-size: 1.5rem; margin-top: var(--spacing-lg); margin-bottom: var(--spacing-md); }
+  .reviewSection h3 { font-size: 1.2rem; }
+  .reviewToc h2 { font-size: 1.1rem; }
+  .trustSignalContent { font-size: 0.7rem; gap: var(--spacing-sm); justify-content: center; }
+  .trustSignalBadge { padding: 2px var(--spacing-xs); }
+  .stickyTocContent { padding: 0 var(--spacing-md); }
+  .stickyTocTitle { margin-right: var(--spacing-md); }
+  .stickyTocLink { padding: 0 var(--spacing-sm); font-size: 0.8rem; }
+  .ctaSection h2 {font-size: 1.3rem;}
+  .btn { padding: 10px 20px; font-size: 0.9rem;}
+  .creditGrid { grid-template-columns: 1fr; } /* Stack credits on smaller tablets */
+  .stickyCtaText { font-size: 0.8rem; }
+  .ctaButtonApply, .ctaButtonLearnMore { padding: var(--spacing-xs) var(--spacing-sm); font-size: 0.75rem; }
+}
+
+@media (max-width: 480px) { /* Very Small Screens */
+  .reviewPageMain { font-size: 14px; }
+  .heroTitle { font-size: 1.6rem; }
+  .reviewSection h2 { font-size: 1.3rem; }
+  .reviewSection h3 { font-size: 1.15rem; }
+  .reviewToc { padding: var(--spacing-sm); }
+  .reviewToc h2 { font-size: 1rem; }
+  .reviewToc ol { margin-left: var(--spacing-sm); }
+  .trustSignalContent { flex-direction: column; gap: var(--spacing-xs); text-align: center;}
+  .trustSignalDivider { display: none; } /* Hide dividers when stacked */
+  .stickyTocNav { display: none; } /* Optionally hide sticky TOC on very small screens */
+  .ctaSection h2 {font-size: 1.2rem;}
+  .btn { padding: 10px 16px; font-size: 0.85rem;}
+  .stickyCtaContainer { padding: var(--spacing-xs) var(--spacing-sm); }
+  .stickyCtaContent { flex-direction: column; gap: var(--spacing-xs); }
+  .stickyCtaText { text-align: center; }
+}
+
+/* Fallback for tablereviewSection - these were in your original, might be for another component */
+.tablereviewSectionResponsive { width: 100%; overflow-x: auto; margin-top: 1rem; }
+.tablereviewSection { width: 100%; border-collapse: collapse; min-width: 600px; background: var(--bg-white); }
+.tablereviewSection thead { background: var(--amex-primary-blue); color: var(--text-on-primary); }
+.tablereviewSection th, .tablereviewSection td { padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border-color); font-size: 0.95rem; }
+.tablereviewSection tbody tr:hover { background-color: #f0f0f0; }
+.tablereviewSection th { font-weight: bold; }
