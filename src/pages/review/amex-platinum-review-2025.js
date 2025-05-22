@@ -263,7 +263,15 @@ export default function AmexPlatinumReview2025() {
           className={styles.heroImage}
           priority
           style={{
-            objectPosition: reviewDataNew.heroImageObjectPosition || "center center",
+            // Add the objectPosition property here
+            // Values are 'X Y'. 'X' can be left, center, right, or a percentage.
+            // 'Y' can be top, center, bottom, or a percentage.
+            objectPosition: reviewDataNew.heroImageObjectPosition || "center center", // Fallback to center if not specified
+            // For example, to focus on the top part of the image:
+            objectPosition: "center top",
+            // To focus slightly to the right and top:
+            objectPosition: "70% 20%",
+
           }}
         />
         <div className={styles.heroTextOverlay}>
