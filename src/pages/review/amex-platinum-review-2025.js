@@ -54,7 +54,7 @@ const reviewDataNew = {
   },
   siteName: "Your Travel Card Review Site", // IMPORTANT: Update this
   pagePath: "/review/amex-platinum-2025",
-  imageUrl: "/amex-centurion-lounge-hero-2025.webp",
+  imageUrl: "/savvas-kalimeris-hO3do8FKJkQ-unsplash.webp",
   heroImageObjectPosition: "center 30%", // Control image focus here
   imageWidth: 1600,
   imageHeight: 900,
