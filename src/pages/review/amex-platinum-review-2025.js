@@ -74,24 +74,7 @@ const reviewDataNew = {
   mpn: "AMEXPLATINUM",
   brandName: "American Express Platinum",
   credits: [ // Data for the new credit cards section
-    { id: "airline", name: "$200 Airline Fee Credit", frequency: "Annual", details: "For incidental fees on one pre-selected airline. Enrollment required.", icon: <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="premiumGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#0052D4;stop-opacity:1" /> <stop offset="100%" style="stop-color:#65C7F7;stop-opacity:1" /> </linearGradient>
-    <linearGradient id="wingGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#B0B0B0;stop-opacity:1" /> <stop offset="100%" style="stop-color:#E0E0E0;stop-opacity:1" /> </linearGradient>
-  </defs>
-
-  <rect x="15" y="30" width="70" height="45" rx="8" fill="url(#premiumGradient)" stroke="#0033A0" stroke-width="2"/>
-
-  <rect x="25" y="38" width="15" height="10" rx="2" fill="#FFD700" opacity="0.8"/> <path d="M 50 15 L 50 30 L 85 30 Q 90 45, 75 55 L 60 45 Q 55 30, 50 15 Z" fill="url(#wingGradient)" stroke="#909090" stroke-width="1.5" transform="rotate(10 65 35)"/>
-
-  <path d="M 50 15 L 50 30 L 85 30 Q 90 45, 75 55 L 60 45 Q 55 30, 50 15 Z" fill="black" opacity="0.15" transform="translate(2 2) rotate(10 65 35)"/>
-  <rect x="15" y="30" width="70" height="45" rx="8" fill="black" opacity="0.1" transform="translate(2 2)"/>
-
-
-</svg>
- },
+    { id: "airline", name: "$200 Airline Fee Credit", frequency: "Annual", details: "For incidental fees on one pre-selected airline. Enrollment required.", icon: "/icons/credit-airline.svg" },
     { id: "hotel", name: "$200 Hotel Credit", frequency: "Annual", details: "On prepaid FHR or The Hotel Collection (2-night min) bookings via Amex Travel.", icon: "/icons/credit-hotel.svg" },
     { id: "uber", name: "$200 Uber Cash", frequency: "Monthly", details: "$15/month + $20 Dec bonus for U.S. rides or Uber Eats. Card must be linked.", icon: "/icons/credit-uber.svg" },
     { id: "digital", name: "$240 Digital Ent. Credit", frequency: "Monthly", details: "$20/month for select services (Disney+, Hulu, etc.). Enrollment required.", icon: "/icons/credit-digital.svg" },
