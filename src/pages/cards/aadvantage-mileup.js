@@ -397,8 +397,8 @@ function AmericanAirlinesAadvantageMileupReviewPage() {
   return (
     <>
       <Head>
-        <title>{reviewDataNew.title}</title>
-        <meta name="description" content={reviewDataNew.description} />
+        <title>MileUp® Card Review 2025 – $0 Fee, 2× Groceries & Loyalty Pts</title>
+        <meta name="description" content= "Earn 2× miles on groceries & AA flights with the $0-fee MileUp® Card. See the 2025 bonus, Loyalty Point tricks, rates & who should carry it." />
         <meta name="keywords" content={reviewDataNew.keywords} />
         <meta name="author" content={reviewDataNew.author.name} />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
