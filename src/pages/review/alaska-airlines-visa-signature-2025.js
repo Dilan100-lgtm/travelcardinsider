@@ -63,9 +63,9 @@ const reviewDataNew = {
   updateDate: "2025-05-17", // IMPORTANT: Update if content is refreshed
   ratingValue: 4.4,
   annualFee: 95,
-  applyLink: "https://www.yourlink.com/apply-alaska-visa", // IMPORTANT: Update this link
+  applyLink: "https://www.alaskaair.com/content/credit-card/visa-signature?srsltid=AfmBOopDXeo80pVEogV9HD0vekWjZ37Oa5Q3QSVRkVZWNhEaMZKv7F68", // IMPORTANT: Update this link
   learnMoreLink: "/cards/alaska-visa-signature", // Used by old sticky CTA, can be repurposed or use ratesLink
-  ratesLink: "https://www.yourlink.com/alaska-visa-rates-fees", // IMPORTANT: Add actual rates & fees link
+  ratesLink: "https://www.bankofamerica.com/credit-cards/products/alaska-airlines-credit-card/", // IMPORTANT: Add actual rates & fees link
   // Original H1 content
   h1Content: "The Alaska Airlines Visa Signature Card: My Honest Take for West Coasters in 2025",
   // New Hero H1 content for the image overlay
@@ -441,7 +441,7 @@ export default function AlaskaAirlinesVisaSignatureReview2025() {
             <span className={styles.stickyCtaText}>{reviewDataNew.cardName} - ${reviewDataNew.annualFee} Annual Fee.</span>
             <div className={styles.stickyCtaButtons}>
                 <a href={reviewDataNew.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.btn} ${styles.btnApply} ${styles.ctaButtonApply}`}>Apply Now</a>
-                <a href={reviewDataNew.ratesLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.btn} ${styles.btnRates} ${styles.ctaButtonLearnMore}`}>See Rates & Fees</a>
+                <a href={reviewDataNew.learnMoreLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.btn} ${styles.btnRates} ${styles.ctaButtonLearnMore}`}>Learn More</a>
             </div>
         </div>
       </div>
