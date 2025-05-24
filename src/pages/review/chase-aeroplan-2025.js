@@ -62,22 +62,24 @@ const reviewDataNew = {
   updateDate: "2025-05-24", // Adjust as needed
   ratingValue: 4.4, // IMPORTANT: Set your own rating for this card
   annualFee: 95,
-  applyLink: "https://www.travelcardinsider.com/apply/chase-aeroplan", // IMPORTANT: Update this with your affiliate link
-  ratesLink: "https://creditcards.chase.com/travel-credit-cards/aircanada/aeroplan", // Official card page, often links to rates & fees
+  applyLink: "https://creditcards.chase.com/travel-credit-cards/aircanada/aeroplan", // IMPORTANT: Update this with your affiliate link
+  ratesLink: "https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC60518.html", // Official card page, often links to rates & fees
+  learnMoreLink: "/cards/aeroplan-card",
   h1Content: "Chase Aeroplan® Card 2025: In-Depth Review",
   heroH1Content: "Chase Aeroplan® Card 2025: Top U.S. Pick for Star Alliance?",
   reviewBody: "Our detailed 2025 analysis of the Chase Aeroplan® Card. Discover its value through earning multipliers, Aeroplan 25K status, travel benefits, and whether the $95 fee is justified for U.S.-based Star Alliance flyers.",
   sku: "CHASE-AEROPLAN-TCI-2025",
   mpn: "CHASEAEROPLAN",
   brandName: "Chase Aeroplan Card",
-  keyPerks: [ // Adapted from 'credits' in Amex example
-    { id: "earning3x", name: "3X Points Categories", details: "On Air Canada purchases, grocery stores, and dining (including takeout/eligible delivery).", icon: "/icons/perk-points.svg" }, // IMPORTANT: Update icon path
-    { id: "earning1x", name: "1X Points General", details: "On all other purchases.", icon: "/icons/perk-points-alt.svg" }, // IMPORTANT: Update icon path
-    { id: "monthlyBonus", name: "Monthly Spending Bonus", details: "Extra 500 Aeroplan points for every $2,000 spent monthly, up to 1,500 bonus points.", icon: "/icons/perk-bonus.svg" }, // IMPORTANT: Update icon path
-    { id: "freeBags", name: "Free First Checked Bags", details: "For the primary cardmember and up to eight companions on the same Air Canada booking.", icon: "/icons/perk-bags.svg" }, // IMPORTANT: Update icon path
-    { id: "trustedTraveler", name: "Trusted Traveler Credit", details: "Up to $120 credit for Global Entry, TSA PreCheck®, or NEXUS application fee, every four years.", icon: "/icons/perk-trustedtraveler.svg" }, // IMPORTANT: Update icon path
-    { id: "eliteStatus", name: "Automatic Aeroplan 25K Status", details: "For the calendar year of account opening and the following calendar year. Maintain with $15k spend annually.", icon: "/icons/perk-status.svg" }, // IMPORTANT: Update icon path
-    { id: "noFtF", name: "No Foreign Transaction Fees", details: "Make purchases abroad without incurring foreign transaction fees.", icon: "/icons/perk-noftf.svg" } // IMPORTANT: Update icon path
+  // Updated keyPerks: removed icons, added frequency
+  keyPerks: [
+    { id: "earning3x", name: "3X Points Categories", details: "On Air Canada purchases, grocery stores, and dining (including takeout/eligible delivery).", frequency: "Benefit" },
+    { id: "earning1x", name: "1X Points General", details: "On all other purchases.", frequency: "Benefit" },
+    { id: "monthlyBonus", name: "Monthly Spending Bonus", details: "Extra 500 Aeroplan points for every $2,000 spent monthly, up to 1,500 bonus points.", frequency: "Monthly" },
+    { id: "freeBags", name: "Free First Checked Bags", details: "For the primary cardmember and up to eight companions on the same Air Canada booking.", frequency: "Benefit" }, // "Per Booking" could also be used if you have specific styles
+    { id: "trustedTraveler", name: "Trusted Traveler Credit", details: "Up to $120 credit for Global Entry, TSA PreCheck®, or NEXUS application fee, every four years.", frequency: "Benefit" }, // Or "Every 4 Years"
+    { id: "eliteStatus", name: "Automatic Aeroplan 25K Status", details: "For the calendar year of account opening and the following calendar year. Maintain with $15k spend annually.", frequency: "Annual" },
+    { id: "noFtF", name: "No Foreign Transaction Fees", details: "Make purchases abroad without incurring foreign transaction fees.", frequency: "Benefit" }
   ]
 };
 
@@ -87,9 +89,9 @@ const structuredData = {
   "@context": "https://schema.org",
   "@type": "Review",
   "itemReviewed": {
-    "@type": "Product", // Could also be "Service" if focused on the loyalty program aspect linked to the card
+    "@type": "Product",
     "name": reviewDataNew.cardName,
-    "brand": { "@type": "Brand", "name": reviewDataNew.issuerName }, // Chase is the issuer brand
+    "brand": { "@type": "Brand", "name": reviewDataNew.issuerName },
     "description": reviewDataNew.description,
     "image": `${siteUrl}${reviewDataNew.imageUrl}`,
     "sku": reviewDataNew.sku,
@@ -109,12 +111,12 @@ const structuredData = {
         },
         "seller": { "@type": "Organization", name: reviewDataNew.issuerName }
     },
-    "aggregateRating": { // You'll need to have actual reviews or a system to generate this count legitimately
+    "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": reviewDataNew.ratingValue.toString(),
         "bestRating": "5",
         "worstRating": "1",
-        "reviewCount": "1" // IMPORTANT: Update with actual number of reviews you have, or set to 1 if this is the primary review.
+        "reviewCount": "1" // IMPORTANT: Update with actual number of reviews
     }
   },
   "reviewRating": {
@@ -132,7 +134,7 @@ const structuredData = {
   },
   "datePublished": reviewDataNew.publishDate,
   "dateModified": reviewDataNew.updateDate,
-  "description": reviewDataNew.description, // Redundant with itemReviewed.description but common practice
+  "description": reviewDataNew.description,
   "keywords": reviewDataNew.keywords.join(', '),
   "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrlFull },
   "image": [ `${siteUrl}${reviewDataNew.imageUrl}` ]
@@ -178,7 +180,7 @@ export default function ChaseAeroplanReview2025() {
           }
         });
       },
-      { rootMargin: "-20% 0px -80% 0px", threshold: 0.1 } // Adjusted threshold slightly
+      { rootMargin: "-20% 0px -80% 0px", threshold: 0.1 }
     );
 
     const sections = TocLinks.map(link => document.querySelector(link.href));
@@ -187,9 +189,8 @@ export default function ChaseAeroplanReview2025() {
     });
 
     const handleScroll = () => {
-      // Adjust scrollY based on where your hero image ends or where you want the sticky nav to appear
       const heroImageHeight = document.querySelector(`.${styles.heroImageContainer}`)?.offsetHeight || 400;
-      if (window.scrollY > heroImageHeight * 0.8) { // Show when 80% of hero is scrolled
+      if (window.scrollY > heroImageHeight * 0.8) {
         setShowStickyNav(true);
       } else {
         setShowStickyNav(false);
@@ -204,7 +205,7 @@ export default function ChaseAeroplanReview2025() {
       });
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []); // Removed TocLinks from dependencies as section IDs are stable.
+  }, []);
 
   const formattedUpdateDate = new Date(reviewDataNew.updateDate).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
 
@@ -217,8 +218,6 @@ export default function ChaseAeroplanReview2025() {
         <meta name="author" content={reviewDataNew.author.name} />
         <meta name="robots" content="index,follow" />
         <link rel="canonical" href={pageUrlFull} />
-
-        {/* Open Graph Meta Tags */}
         <meta property="og:type" content="article" />
         <meta property="og:title" content={reviewDataNew.title} />
         <meta property="og:description" content={reviewDataNew.description} />
@@ -227,34 +226,24 @@ export default function ChaseAeroplanReview2025() {
         <meta property="og:image:width" content={String(reviewDataNew.imageWidth)} />
         <meta property="og:image:height" content={String(reviewDataNew.imageHeight)} />
         <meta property="og:site_name" content={reviewDataNew.siteName} />
-        {/* IMPORTANT: Update with your site's Facebook profile/page URL */}
         <meta property="article:publisher" content={`https://www.facebook.com/yourtravelcardinsiderprofile`} />
         <meta property="article:published_time" content={reviewDataNew.publishDate} />
         <meta property="article:modified_time" content={reviewDataNew.updateDate} />
-        <meta property="article:author" content={reviewDataNew.author.name} /> {/* Or a link to author's Facebook profile if preferred by OG */}
-
-        {/* Twitter Card Meta Tags */}
+        <meta property="article:author" content={reviewDataNew.author.name} />
         <meta name="twitter:card" content="summary_large_image" />
-        {/* IMPORTANT: Update with your site's Twitter handle */}
         <meta name="twitter:site" content="@TravelCardInsid" /> 
         <meta name="twitter:title" content={`${reviewDataNew.cardName} Review (${new Date(reviewDataNew.publishDate).getFullYear()}) | Is the $${reviewDataNew.annualFee} Fee Worth It?`} />
         <meta name="twitter:description" content={`Explore the ${new Date(reviewDataNew.publishDate).getFullYear()} ${reviewDataNew.cardName}: $${reviewDataNew.annualFee} fee, earning rates, travel perks like 25K status. Ideal for Star Alliance?`} />
         <meta name="twitter:image" content={`${siteUrl}${reviewDataNew.imageUrl}`} />
         <meta name="twitter:creator" content={reviewDataNew.author.socialLinks.twitter ? reviewDataNew.author.socialLinks.twitter.replace('https://x.com/', '@') : '@DilanMadushanka'} />
-
-
-        {/* Regional Meta Tags (Optional but good for SEO) */}
         <meta name="geo.region" content="US" />
-        <meta name="geo.placename" content="United States" /> {/* Assuming target audience is US */}
+        <meta name="geo.placename" content="United States" />
         <meta name="language" content="en-US" />
-        <meta name="distribution" content="global" /> {/* Or "US" if strictly US-focused */}
+        <meta name="distribution" content="global" />
         <link rel="alternate" hrefLang="en-us" href={pageUrlFull} />
-
-        {/* Structured Data */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       </Head>
 
-      {/* Trust Signal Bar */}
       <div className={styles.trustSignalBar}>
         <div className={styles.trustSignalContent}>
           {reviewDataNew.issuerLogoUrl && (
@@ -269,7 +258,6 @@ export default function ChaseAeroplanReview2025() {
         </div>
       </div>
 
-      {/* Sticky Table of Contents Navigation */}
       {showStickyNav && (
         <nav className={styles.stickyTocNav} ref={stickyNavRef}>
           <div className={styles.stickyTocContent}>
@@ -288,7 +276,6 @@ export default function ChaseAeroplanReview2025() {
         </nav>
       )}
 
-      {/* Hero Image Section */}
       <div className={styles.heroImageContainer}>
         <Image
           src={reviewDataNew.imageUrl}
@@ -306,7 +293,6 @@ export default function ChaseAeroplanReview2025() {
 
       <main className={styles.reviewPageMain}>
         <article className={styles.reviewContainer}>
-          {/* Author Bio and Disclaimer Section */}
           <header className={styles.reviewHeader}>
              <div
                 className={styles.authorBioContainer}
@@ -317,7 +303,7 @@ export default function ChaseAeroplanReview2025() {
                 onBlur={handleAuthorMouseLeave}
                 aria-haspopup="true"
                 aria-expanded={showAuthorBioTooltip}
-                tabIndex={0} // Make it focusable
+                tabIndex={0}
             >
                 <Image src={reviewDataNew.author.imageUrl} alt={`${reviewDataNew.author.name} headshot`} width={reviewDataNew.author.imageWidth} height={reviewDataNew.author.imageHeight} className={styles.authorImageSmall} priority />
                 <div className={styles.authorInfoBlock}>
@@ -333,7 +319,6 @@ export default function ChaseAeroplanReview2025() {
                             Fact checked: {new Date(reviewDataNew.updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                         </time>
                     )}
-                    {/* Social links for author - using SVG icons from Amex example */}
                     {reviewDataNew.author.socialLinks && (
                         <div className={styles.authorSocialLinks}>
                             {reviewDataNew.author.socialLinks.linkedin && ( <a href={reviewDataNew.author.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${reviewDataNew.author.name} on LinkedIn`} className={styles.socialIconLink}><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>)}
@@ -342,7 +327,6 @@ export default function ChaseAeroplanReview2025() {
                         </div>
                     )}
                 </div>
-                {/* Author Tooltip */}
                 {showAuthorBioTooltip && (
                     <div className={styles.authorTooltip} ref={authorTooltipRef} role="tooltip" onMouseEnter={handleTooltipMouseEnter} onMouseLeave={handleAuthorMouseLeave} onFocus={handleTooltipMouseEnter} onBlur={handleAuthorMouseLeave}>
                          <div className={styles.authorTooltipHeader}>
@@ -355,7 +339,6 @@ export default function ChaseAeroplanReview2025() {
                            {reviewDataNew.author.expertise && reviewDataNew.author.expertise.length > 0 && ( <div className={styles.authorTooltipExpertise}><strong>Expertise</strong><ul>{reviewDataNew.author.expertise.map(area => <li key={area}>{area}</li>)}</ul></div>)}
                            <p className={styles.authorTooltipBioSnippet}>{reviewDataNew.author.bioSnippet}</p>
                            {reviewDataNew.author.fullBioLink && ( <Link href={reviewDataNew.author.fullBioLink} legacyBehavior><a className={styles.authorTooltipBioLink}>See full bio</a></Link>)}
-                           {/* Social links in tooltip */}
                            {reviewDataNew.author.socialLinks && ( <div className={styles.authorTooltipSocials}>
                                 {reviewDataNew.author.socialLinks.linkedin && ( <a href={reviewDataNew.author.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={styles.socialIconLink}><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>)}
                                 {reviewDataNew.author.socialLinks.twitter && ( <a href={reviewDataNew.author.socialLinks.twitter} target="_blank" rel="noopener noreferrer" aria-label="Twitter" className={styles.socialIconLink}><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-.422.724-.665 1.56-.665 2.452 0 1.697.864 3.198 2.18 4.078-.8-.025-1.555-.247-2.227-.616v.054c0 2.37 1.683 4.333 3.91 4.78-.426.116-.874.174-1.337.174-.31 0-.611-.03-.904-.085.622 1.936 2.421 3.338 4.553 3.377-1.672 1.309-3.781 2.088-6.072 2.088-.394 0-.784-.023-1.169-.069 2.16 1.389 4.723 2.202 7.482 2.202 8.979 0 13.897-7.446 13.897-13.898 0-.21 0-.42-.015-.63.953-.689 1.778-1.56 2.433-2.525z"/></svg></a>)}
@@ -373,7 +356,6 @@ export default function ChaseAeroplanReview2025() {
             </p>
           </header>
 
-          {/* Table of Contents */}
           <nav className={styles.reviewToc}>
             <h2>In this {reviewDataNew.shortCardName} review:</h2>
             <ol>
@@ -382,8 +364,6 @@ export default function ChaseAeroplanReview2025() {
               ))}
             </ol>
           </nav>
-
-          {/* --- Main Review Content Starts --- */}
 
           <section id="introduction" className={styles.reviewSection}>
             <h2>I. Introduction: The {reviewDataNew.cardName} in 2025</h2>
@@ -403,7 +383,6 @@ export default function ChaseAeroplanReview2025() {
             </p>
           </section>
           
-          {/* Call to Action Section */}
           <section id="cta-aeroplan-card-1" className={styles.ctaSection}>
               <h2>Considering the <b>{reviewDataNew.cardName}</b>?</h2>
               <p>Unlock valuable Aeroplan points and travel benefits tailored for Star Alliance flyers.</p>
@@ -423,6 +402,7 @@ export default function ChaseAeroplanReview2025() {
             <p>A Monthly Bonus further sweetens the deal: an extra 500 Aeroplan points for every $2,000 spent in a calendar month, up to a maximum of 1,500 bonus points per month. Aeroplan points don’t expire as long as your card account remains open and in good standing.</p>
           </section>
 
+          {/* MODIFIED SECTION: Key Travel & Lifestyle Perks */}
           <section id="travel-lifestyle-perks" className={styles.reviewSection}>
             <h2>IV. Key Travel & Lifestyle Perks</h2>
             <p>Beyond points, the tangible benefits add significant value. Here's a look at some of the standout perks for the {reviewDataNew.cardName} (enrollment may be required for some benefits):</p>
@@ -430,8 +410,14 @@ export default function ChaseAeroplanReview2025() {
               {reviewDataNew.keyPerks.map(perk => (
                 <div key={perk.id} className={styles.creditCard}> {/* Using creditCard style */}
                   <div className={styles.creditCardHeader}>
-                    {perk.icon && <Image src={perk.icon} alt="" width={24} height={24} className={styles.creditIcon} />} {/* Assuming you have a creditIcon style */}
+                    {/* Icon/Image removed as per request */}
                     <h5 className={styles.creditName}>{perk.name}</h5>
+                    {/* Frequency pill/badge added */}
+                    {perk.frequency && (
+                      <span className={`${styles.creditPill} ${styles['pill' + perk.frequency.replace(/\s+/g, '')]}`}>
+                        {perk.frequency}
+                      </span>
+                    )}
                   </div>
                   <p className={styles.creditDetails}>{perk.details}</p>
                 </div>
@@ -440,6 +426,8 @@ export default function ChaseAeroplanReview2025() {
             <p style={{marginTop: '1rem'}}>Additionally, the card includes no foreign transaction fees, which is essential for international travel. It also bundles a strong suite of travel protections for a mid-tier card, covering trip cancellation/interruption, baggage/trip delays, auto rental collision damage waiver (secondary), and purchase/extended warranty protections, alongside World Elite Mastercard benefits.</p>
             <p>The card strategically blends strong everyday earning with valuable Air Canada-specific travel benefits and solid protections, aiming to be a primary card for Star Alliance aspirants.</p>
           </section>
+          {/* END OF MODIFIED SECTION */}
+
 
           <section id="aeroplan-program" className={styles.reviewSection}>
             <h2>V. Navigating the Aeroplan Program: Redemption & Status</h2>
@@ -535,7 +523,6 @@ export default function ChaseAeroplanReview2025() {
             <p>The {reviewDataNew.cardName} is an active tool, not a passive one. For U.S. travelers dedicated to Star Alliance, who value status perks, and are prepared to be strategic point redeemers, this card offers a powerful pathway. Its ultimate standing as "the best" will depend on how Aeroplan navigates the balance between award availability and cost in this more dynamic era; we strongly advise actively checking current redemption rates for key partners like United before making your decision.</p>
           </section>
           
-          {/* Final Call to Action Section */}
           <section className={`${styles.reviewSection} ${styles.finalCtaSection}`}>
             <h2>Ready to explore Star Alliance with the {reviewDataNew.cardName}?</h2>
             <p>If the benefits of Aeroplan 25K status and strong earning categories align with your travel goals, this card could be your ticket.</p>
@@ -549,17 +536,15 @@ export default function ChaseAeroplanReview2025() {
             </div>
             <p className={styles.smallPrintTerms}>Terms Apply. Click links for details. Enrollment may be required for select benefits. Images © Chase Bank USA, N.A.</p>
           </section>
-          {/* --- Main Review Content Ends --- */}
         </article>
       </main>
 
-      {/* Sticky Bottom CTA Bar */}
       <div className={styles.stickyCtaContainer}>
         <div className={styles.stickyCtaContent}>
             <span className={styles.stickyCtaText}>The {reviewDataNew.cardName} - ${reviewDataNew.annualFee} Annual Fee.</span>
             <div className={styles.stickyCtaButtons}>
                 <a href={reviewDataNew.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.btn} ${styles.btnApply} ${styles.ctaButtonApply}`}>Apply Now</a>
-                <a href={reviewDataNew.ratesLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.btn} ${styles.btnRates} ${styles.ctaButtonLearnMore}`}>See Rates & Fees</a>
+                <a href={reviewDataNew.learnMoreLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.btn} ${styles.btnRates} ${styles.ctaButtonLearnMore}`}>Learn More</a>
             </div>
         </div>
       </div>
