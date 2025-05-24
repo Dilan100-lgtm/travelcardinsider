@@ -53,7 +53,7 @@ const reviewDataNew = {
   },
   siteName: "TravelCardInsider.com",
   pagePath: "/review/chase-aeroplan-2025",
-  imageUrl: "/images/hero-chase-aeroplan.webp", // IMPORTANT: Update with a relevant hero image for the Chase Aeroplan Card
+  imageUrl: "/alev-takil-x6HpdNQ-iEM-unsplash.jpg", // IMPORTANT: Update with a relevant hero image for the Chase Aeroplan Card
   heroImageObjectPosition: "center center",
   imageWidth: 1600,
   imageHeight: 900,
