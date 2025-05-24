@@ -351,6 +351,7 @@ export default function HomePage({ featuredReviews, latestNews }) {
                 <div className="reviews-grid">
                 {[
                     // Keep your existing array of review objects
+                    { img: "/brandon-karaca-zMPKX6Ws3Sc-unsplash.webp", alt: "JetBlue Plus Credit Card design", title: "JetBlue Plus Card Review (2025)", desc: "JetBlue Plus ($99 fee): Still the top pick for 6X points, free bags & Mosaic perks in 2025? Our analysis.", link: "/review/jetblue-plus-card-2025" },
                     { img: "/alev-takil-x6HpdNQ-iEM-unsplash.jpg", alt: "Chase Aeroplan® Card", title: "Chase Aeroplan® Card Review 2025: The Smart U.S. Choice for Star Alliance?", desc: "Earn 3X on Air Canada, groceries, and dining. Get free bags, Aeroplan 25K status, and top Star Alliance value—all for a $95 fee.", link: "/review/chase-aeroplan-2025" },
                     { img: "/savvas-kalimeris-hO3do8FKJkQ-unsplash.webp", alt: "The Platinum Card from American Express", title: "Amex Platinum 2025 Review: Are Premium Travel Perks Worth $695?", desc: "Explore the Amex Platinum’s $695 fee, lounge access, travel credits, and elite perks in our 2025 review—built for premium U.S. travelers.", link: "/review/amex-platinum-review-2025", date: "2025-05-21" },
                     { img: "/eddy-billard-JOoOPt8tTPY-unsplash.webp", alt: "Montage of travel scenes and credit cards, symbolizing accessible travel with starter rewards cards in 2025.", title: "Best Starter Travel Cards 2025", desc: "Your guide to top beginner travel rewards cards for US travelers. Low fees, simple rewards.", link: "/review/BestStarterTravelCardsPage2025" },
@@ -359,7 +360,7 @@ export default function HomePage({ featuredReviews, latestNews }) {
                     { img: "/pexels-rdne-5778466.jpg", alt: "Citi Custom Cash Card", title: "Citi Custom Cash Card Review 2025: A Secret Weapon for Everyday Rewards?", desc: "Discover its adaptive 5% cash back, $0 annual fee, welcome bonus, and if it's the top choice for US consumers' everyday spending.", link: "/review/citi-custom-cash-2025" },
                     { img: "/jordan-ryskamp-kxI7siCTAyY-unsplash.webp", alt: "Marriott Bonvoy Boundless Credit Card", title: "Marriott Bonvoy Boundless 2025 Review", desc: "Is its $95 annual fee justified by its hotel loyalty perks for US travelers?", link: "/review/marriott-bonvoy-boundless-2025" },
                     { img: "/pexels-railgunbreaker-32008325.webp", alt: "Airplane wing with a credit card and passport", title: "Top Airline Credit Cards for Miles & Perks in 2025", desc: "Unlock free flights and luxury travel with 2025's best airline rewards credit cards.", link: "/review/Best Credit Cards for Booking Flights in 2025", },
-                    { img: "/peter-hansen-MeGmdPNe36w-unsplash.webp", alt: "Chase Sapphire Preferred credit card art", title: "Chase Sapphire Preferred Review (2025)", desc: "Is the Chase Sapphire Preferred still the traveler's sweetheart for $95 in 2025? Our in-depth analysis.", link: "/review/chase-sapphire-preferred-2025" },
+                    
                     
                     
                     
