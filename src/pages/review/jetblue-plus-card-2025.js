@@ -407,7 +407,7 @@ export default function JetBluePlusCardReview2025() {
           <section id="introduction" className={styles.reviewSection}>
             <h2>I. Introduction: The {reviewDataNew.cardName} in 2025</h2>
             <p>JetBlue has carved out a unique space in the U.S. airline market, praised for its customer-centric service and comfortable cabin experiences. For travelers frequently flying JetBlue, their co-branded credit cards, especially the {reviewDataNew.cardName} from {reviewDataNew.issuerName}, have long been a popular way to enhance journeys and maximize rewards. But as the TrueBlue loyalty program continues to evolve and the travel rewards landscape shifts in 2025, is this mid-tier card still the undisputed champion for JetBlue enthusiasts?</p>
-            <p>This isn't just a rundown of features; at {reviewDataNew.siteName}, we go deeper. We'll meticulously analyze the 2025 iteration of the {reviewDataNew.cardName}, its ${reviewDataNew.annualFee} annual fee, the real value of its acclaimed benefits like free checked bags and 6x points, its pathway to Mosaic status, and how it stacks up in a competitive market. Let’s determine if this card truly takes off for the savvy U.S. traveler.</p>
+            <p>This isn't just a rundown of features; at TravelCardInsider, we go deeper. We'll meticulously analyze the 2025 iteration of the {reviewDataNew.cardName}, its ${reviewDataNew.annualFee} annual fee, the real value of its acclaimed benefits like free checked bags and 6x points, its pathway to Mosaic status, and how it stacks up in a competitive market. Let’s determine if this card truly takes off for the savvy U.S. traveler.</p>
           </section>
 
           <section id="core-features" className={styles.reviewSection}>
@@ -544,7 +544,7 @@ export default function JetBluePlusCardReview2025() {
           </section>
 
           <section id="verdict" className={styles.reviewSection}>
-            <h2>VIII. The {reviewDataNew.siteName} Verdict for 2025: Who Should Get the {reviewDataNew.cardName}?</h2>
+            <h2>VIII. The travelcardinsider Verdict for 2025: Who Should Get the {reviewDataNew.cardName}?</h2>
             <p>So, is the {reviewDataNew.cardName} your best bet for smarter JetBlue travel in 2025? If you're an infrequent traveler, hop between many airlines, or prioritize ultimate redemption flexibility across various programs above all else, this probably isn't your primary card. Its strength lies in its deep integration with JetBlue.</p>
             <h3>Who Should Seriously Consider This Card:</h3>
             <ul>
