@@ -558,8 +558,8 @@ export default function ChaseAeroplanReview2025() {
         <div className={styles.stickyCtaContent}>
             <span className={styles.stickyCtaText}>The {reviewDataNew.cardName} - ${reviewDataNew.annualFee} Annual Fee.</span>
             <div className={styles.stickyCtaButtons}>
-                <a href={reviewDataNew.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.btn} ${styles.ctaButtonApply}`}>Apply Now</a>
-                <a href={reviewDataNew.ratesLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.btn} ${styles.ctaButtonLearnMore}`}>See Rates & Fees</a>
+                <a href={reviewDataNew.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.btn} ${styles.btnApply} ${styles.ctaButtonApply}`}>Apply Now</a>
+                <a href={reviewDataNew.ratesLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.btn} ${styles.btnRates} ${styles.ctaButtonLearnMore}`}>See Rates & Fees</a>
             </div>
         </div>
       </div>
