@@ -54,7 +54,7 @@ const reviewDataNew = {
   },
   siteName: "TravelCardInsider.com",
   pagePath: "/review/jetblue-plus-card-2025",
-  imageUrl: "/images/jetblue-plus-hero-2025.jpg", // IMPORTANT: Update
+  imageUrl: "/brandon-karaca-zMPKX6Ws3Sc-unsplash.webp", // IMPORTANT: Update
   heroImageObjectPosition: "center center",
   imageWidth: 1600,
   imageHeight: 900,
@@ -63,8 +63,8 @@ const reviewDataNew = {
   updateDate: "2025-05-24", // SEO: Keep updateDate current
   ratingValue: 4.3, // IMPORTANT: Set your own rating
   annualFee: 99,
-  applyLink: "https://www.jetbluepluscard.com/",
-  ratesLink: "https://www.jetbluepluscard.com/",
+  applyLink: "https://www.jetblue.com/trueblue/credit-cards/jetblue-card-comparison",
+  ratesLink: "https://www.jetblue.com/trueblue/credit-cards/jetblue-card-comparison",
   learnMoreLink: "/cards/jetblue-plus-card",
   // SEO OPTIMIZATION: Ensured H1s are keyword-rich
   h1Content: "JetBlue Plus Card 2025: Full Review & Value Analysis",
