@@ -13,10 +13,11 @@ const reviewDataNew = {
   shortCardName: "JetBlue Plus",
   issuerName: "Barclays",
   issuerLogoUrl: "/images/issuer-logo-barclays.svg", // IMPORTANT: Update with actual Barclays logo path
-  welcomeOfferHeadline: "70,000 Bonus Pts", // Example: "70,000 bonus TrueBlue points after meeting spend" - keep concise
-  // SEO OPTIMIZATION: Refined title and description for conciseness and keyword relevance
+  welcomeOfferHeadline: "70,000 Bonus Pts", // Example: "70,000 bonus TrueBlue points after meeting spend"
+  // SEO OPTIMIZATION: Refined title and description
   title: "JetBlue Plus Card Review (2025): $99 Fee, Perks & Is It Worth It?",
   description: "Is the JetBlue Plus Card ($99 fee) worth it in 2025? Our review covers its 6X points, free bags, Mosaic status, 5K anniversary bonus, and key travel benefits for JetBlue flyers.",
+  // SEO OPTIMIZATION: Expanded keywords slightly
   keywords: [
     "JetBlue Plus Card review 2025",
     "JetBlue credit card",
@@ -26,15 +27,15 @@ const reviewDataNew = {
     "Mosaic status",
     "JetBlue free checked bag",
     "travel rewards credit card US",
-    "best airline credit card" // Added broader keyword
+    "best airline credit card"
   ],
-  author: {
+  author: { // Using the same author details as your example
       name: 'Dilan Madushanka',
       title: 'Founder & Lead Editor',
-      imageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg',
+      imageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // IMPORTANT: Update
       imageWidth: 40,
       imageHeight: 40,
-      tooltipImageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg',
+      tooltipImageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // IMPORTANT: Update
       tooltipImageWidth: 60,
       tooltipImageHeight: 60,
       expertise: [
@@ -45,7 +46,7 @@ const reviewDataNew = {
           'Credit Card Benefits'
       ],
       bioSnippet: 'Dilan Madushanka is the founder and lead editor of TravelCardInsider.com, dedicated to demystifying credit cards and uncovering their real-world value for smarter travel.',
-      fullBioLink: '/author/dilan-madushanka',
+      fullBioLink: '/author/dilan-madushanka', // IMPORTANT: Update
       socialLinks: {
           linkedin: 'https://www.linkedin.com/in/dilan-madushanka-b65293365',
           twitter: 'https://x.com/team_dilan',
@@ -54,7 +55,7 @@ const reviewDataNew = {
   },
   siteName: "TravelCardInsider.com",
   pagePath: "/review/jetblue-plus-card-2025",
-  imageUrl: "/brandon-karaca-zMPKX6Ws3Sc-unsplash.webp", // IMPORTANT: Update
+  imageUrl: "/images/jetblue-plus-hero-2025.jpg", // IMPORTANT: Update
   heroImageObjectPosition: "center center",
   imageWidth: 1600,
   imageHeight: 900,
@@ -63,61 +64,65 @@ const reviewDataNew = {
   updateDate: "2025-05-24", // SEO: Keep updateDate current
   ratingValue: 4.3, // IMPORTANT: Set your own rating
   annualFee: 99,
-  applyLink: "https://www.jetblue.com/trueblue/credit-cards/jetblue-card-comparison",
-  ratesLink: "https://www.jetblue.com/trueblue/credit-cards/jetblue-card-comparison",
-  learnMoreLink: "/cards/jetblue-plus-card",
+  applyLink: "https://www.jetbluepluscard.com/",
+  ratesLink: "https://www.jetbluepluscard.com/", // Users find "Rates & Fees" or "Terms" link here
+  learnMoreLink: "/cards/jetblue-plus-card", // IMPORTANT: Create this page or adjust
   // SEO OPTIMIZATION: Ensured H1s are keyword-rich
   h1Content: "JetBlue Plus Card 2025: Full Review & Value Analysis",
   heroH1Content: "JetBlue Plus Card Review (2025): Is It Your Best Bet for JetBlue Travel?",
-  reviewBody: "Our 2025 deep dive into the Barclays JetBlue Plus Card. For a $99 fee, does it deliver enough value with its points, free bags, and Mosaic perks for loyal JetBlue flyers?", // SEO: Concise summary
+  // SEO OPTIMIZATION: Concise summary for reviewBody metadata
+  reviewBody: "Our 2025 deep dive into the Barclays JetBlue Plus Card. For a $99 fee, does it deliver enough value with its points, free bags, and Mosaic perks for loyal JetBlue flyers?",
   sku: "BARCLAYS-JETBLUEPLUS-TCI-2025",
   mpn: "JETBLUEPLUSCARD",
   brandName: "JetBlue Plus Card",
-  keyPerks: [ // Data for perks display, can be used for visual elements
+  // CONTENT PRESERVATION: Original keyPerk details maintained
+  keyPerks: [
     { id: "earning6x", name: "6X TrueBlue Points", details: "On eligible JetBlue purchases (flights, JetBlue Vacations, Paisly).", frequency: "Benefit" },
     { id: "earning2x", name: "2X TrueBlue Points", details: "At restaurants and eligible grocery stores.", frequency: "Benefit" },
-    { id: "freeBag", name: "First Checked Bag Free", details: "For primary cardmember + 3 companions on JetBlue flights.", frequency: "Benefit" },
-    { id: "anniversaryBonus", name: "5,000 Anniversary Points", details: "Annual bonus, effectively reducing net annual fee.", frequency: "Annual" },
-    { id: "vacationsCredit", name: "$100 Vacations Credit", details: "Annual credit on JetBlue Vacations packages ($100+).", frequency: "Annual" },
-    { id: "pointsRebate", name: "10% Points Back", details: "On JetBlue-operated award flight redemptions.", frequency: "Benefit" },
-    { id: "mosaicPath", name: "Path to Mosaic Status", details: "Earn 1 Tile per $1,000 spent towards elite status.", frequency: "Benefit" },
-    { id: "inflightSavings", name: "50% Inflight Savings", details: "On eligible inflight food & cocktail purchases.", frequency: "Benefit" },
-    { id: "noFtF", name: "No Foreign Transaction Fees", details: "Save on purchases made abroad.", frequency: "Benefit" }
+    { id: "freeBag", name: "First Checked Bag Free", details: "For the primary cardmember and up to 3 companions on the same JetBlue reservation.", frequency: "Benefit" },
+    { id: "anniversaryBonus", name: "5,000 Anniversary Points", details: "Receive 5,000 bonus TrueBlue points each year after your account anniversary.", frequency: "Annual" },
+    { id: "vacationsCredit", name: "$100 Vacations Credit", details: "Annual $100 statement credit on JetBlue Vacations packages of $100+.", frequency: "Annual" },
+    { id: "pointsRebate", name: "10% Points Back", details: "Get 10% of your points back when you redeem for JetBlue-operated award flights.", frequency: "Benefit" },
+    { id: "mosaicPath", name: "Path to Mosaic Status", details: "Earn 1 Tile towards Mosaic status for every $1,000 spent.", frequency: "Benefit" },
+    { id: "inflightSavings", name: "50% Inflight Savings", details: "On eligible inflight food and cocktail purchases on JetBlue flights.", frequency: "Benefit" },
+    { id: "noFtF", name: "No Foreign Transaction Fees", details: "Make purchases abroad without incurring foreign transaction fees.", frequency: "Benefit" }
   ]
 };
 
 const pageUrlFull = `${siteUrl}${reviewDataNew.pagePath}`;
 
-// VISUAL AIDS: Data structure for competitor comparison table
+// VISUAL AIDS: Data structure for competitor comparison table (Content preserved from original list)
 const competitorCardsData = [
   {
     id: "noFeeJetBlue",
     name: "No-Annual-Fee JetBlue Card",
     annualFee: "$0",
-    keyFeatures: "3X on JetBlue, 2X dining/groceries.",
-    comparisonPoint: "Lacks free bags, anniversary points, Vacations credit, and 10% points back. Plus Card offers significantly more value for regular flyers.",
-    officialLink: "https://www.jetbluecard.com/" // Link to comparison or specific card page
+    keyFeaturesNotes: "Offers fewer points and crucially lacks the free checked bag benefit, the 5,000 anniversary points, the $100 Vacations credit, and the 10% points back on redemptions.",
+    comparisonToJetBluePlus: "For anyone who checks bags even once or twice a year with a companion, or uses JetBlue Vacations, the Plus Card's $99 fee is easily recouped, making it the superior choice for most regular JetBlue flyers.",
+    officialLinkText: "Compare on Barclays Site",
+    officialLink: "https://www.jetbluecard.com/"
   },
   {
     id: "otherAirlineCards",
-    name: "Other Mid-Tier Airline Cards (e.g., Delta Gold, United Explorer)",
+    name: "Other Mid-Tier Airline Cards (e.g., Delta SkyMiles Gold, United Explorer)",
     annualFee: "~$99-$150",
-    keyFeatures: "Typically 1 free checked bag, ~2X on airline spend.",
-    comparisonPoint: "JetBlue Plus often has higher 6X earn on JetBlue. Its combined anniversary points & Vacations credit can offer clearer fee offset. 10% points back is a unique perk.",
-    officialLink: null // Generic category, specific links can be added if comparing one-on-one
+    keyFeaturesNotes: "Many competitor airline cards in this fee range also offer a free first checked bag and 2x earning on their respective airline.",
+    comparisonToJetBluePlus: "The JetBlue Plus Card's 6x points on JetBlue purchases is typically higher. Furthermore, the combination of the 5,000 anniversary points AND the $100 JetBlue Vacations credit often provides a clearer path to offsetting the annual fee. The 10% points back on award redemptions is also a unique and valuable differentiator. Some competitors might offer perks like limited lounge passes or broader travel credits, which the JetBlue Plus Card lacks.",
+    officialLinkText: null,
+    officialLink: null
   },
   {
     id: "chaseSapphirePreferred",
     name: "Chase Sapphire Preferred®",
     annualFee: "$95",
-    keyFeatures: "Flexible points transferable to partners (incl. JetBlue), broad travel/dining categories.",
-    comparisonPoint: "Lacks JetBlue-specific perks (free bags, inflight savings, direct Mosaic path). JetBlue Plus is better for dedicated JetBlue flyers maximizing airline-specific benefits.",
+    keyFeaturesNotes: "Offers points that can be transferred to multiple airline and hotel partners, including JetBlue TrueBlue (often 1:1). Boasts broad travel and dining bonus categories.",
+    comparisonToJetBluePlus: "Lacks JetBlue-specific perks like the free checked bags on JetBlue, the 50% inflight discount, the $100 Vacations credit, or a direct path to Mosaic status. For a dedicated JetBlue flyer, the airline-specific benefits of the Plus Card often outweigh the transfer flexibility if JetBlue is consistently their airline of choice.",
+    officialLinkText: "Official Chase Page",
     officialLink: "https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred"
   }
 ];
 
-
-const structuredData = { /* ... (structured data remains largely the same, ensure ratingValue and reviewCount are accurate) ... */
+const structuredData = {
   "@context": "https://schema.org",
   "@type": "Review",
   "itemReviewed": {
@@ -172,13 +177,13 @@ const structuredData = { /* ... (structured data remains largely the same, ensur
   "image": [ `${siteUrl}${reviewDataNew.imageUrl}` ]
 };
 
-const TocLinks = [
+const TocLinks = [ // CONTENT PRESERVATION: Original TOC Links
   { href: "#introduction", label: "Introduction" },
   { href: "#core-features", label: "Core Features & Financials" },
   { href: "#earning-points", label: "Earning TrueBlue Points" },
-  { href: "#key-perks", label: "Key Travel & Lifestyle Perks" }, // Renamed for clarity
-  { href: "#trueblue-mosaic", label: "TrueBlue Program & Mosaic Status" }, // Renamed
-  { href: "#competitors", label: "Competitor Comparison" }, // Renamed
+  { href: "#travel-lifestyle-perks", label: "Key Travel & Lifestyle Perks" },
+  { href: "#trueblue-program-mosaic", label: "Navigating TrueBlue & Mosaic" },
+  { href: "#competitor-comparison", label: "Competitor Comparison" },
   { href: "#pros-cons", label: "Pros & Cons" },
   { href: "#verdict", label: "The Verdict" },
 ];
@@ -192,17 +197,18 @@ export default function JetBluePlusCardReview2025() {
   const [showStickyNav, setShowStickyNav] = useState(false);
   const stickyNavRef = useRef(null);
 
+  // Author tooltip handlers (copied from your example)
   const handleAuthorMouseEnter = useCallback(() => { if (authorRef.current?.tooltipTimeoutId) clearTimeout(authorRef.current.tooltipTimeoutId); setShowAuthorBioTooltip(true); }, []);
   const handleAuthorMouseLeave = useCallback(() => { const timerId = setTimeout(() => { if (authorRef.current && authorTooltipRef.current) { const isHoveringTrigger = authorRef.current.matches(':hover'); const isHoveringTooltip = authorTooltipRef.current.matches(':hover'); const isFocusWithinTrigger = authorRef.current.contains(document.activeElement); const isFocusWithinTooltip = authorTooltipRef.current.contains(document.activeElement); if (!isHoveringTrigger && !isHoveringTooltip && !isFocusWithinTrigger && !isFocusWithinTooltip) setShowAuthorBioTooltip(false); } else if (!authorRef.current?.matches(':hover') && !authorTooltipRef.current?.matches(':hover')) setShowAuthorBioTooltip(false); }, 150); if (authorRef.current) authorRef.current.tooltipTimeoutId = timerId; }, [authorRef, authorTooltipRef]);
   const handleTooltipMouseEnter = useCallback(() => { if (authorRef.current?.tooltipTimeoutId) clearTimeout(authorRef.current.tooltipTimeoutId); }, []);
-
 
   useEffect(() => {
     function handleClickOutside(event) { if (showAuthorBioTooltip && authorRef.current && !authorRef.current.contains(event.target) && authorTooltipRef.current && !authorTooltipRef.current.contains(event.target)) setShowAuthorBioTooltip(false); }
     if (showAuthorBioTooltip) document.addEventListener("mousedown", handleClickOutside); else document.removeEventListener("mousedown", handleClickOutside);
     return () => { document.removeEventListener("mousedown", handleClickOutside); if(authorRef.current?.tooltipTimeoutId) clearTimeout(authorRef.current.tooltipTimeoutId); };
   }, [showAuthorBioTooltip, authorRef, authorTooltipRef]);
-
+  
+  // Sticky Nav and TOC Active Section handlers (copied from your example)
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -215,7 +221,7 @@ export default function JetBluePlusCardReview2025() {
       { rootMargin: "-20% 0px -80% 0px", threshold: 0.1 }
     );
 
-    const sections = TocLinks.map(link => document.getElementById(link.href.substring(1))); // Ensure getElementById is used if IDs are unique
+    const sections = TocLinks.map(link => document.getElementById(link.href.substring(1)));
     sections.forEach(section => {
       if (section) observer.observe(section);
     });
@@ -248,7 +254,6 @@ export default function JetBluePlusCardReview2025() {
         <title>{reviewDataNew.title}</title>
         <meta name="description" content={reviewDataNew.description} />
         <meta name="keywords" content={reviewDataNew.keywords.join(', ')} />
-        {/* ... other head tags from your original file, ensure they use reviewDataNew ... */}
         <meta name="author" content={reviewDataNew.author.name} />
         <meta name="robots" content="index,follow" />
         <link rel="canonical" href={pageUrlFull} />
@@ -260,12 +265,12 @@ export default function JetBluePlusCardReview2025() {
         <meta property="og:image:width" content={String(reviewDataNew.imageWidth)} />
         <meta property="og:image:height" content={String(reviewDataNew.imageHeight)} />
         <meta property="og:site_name" content={reviewDataNew.siteName} />
-        <meta property="article:publisher" content={`https://www.facebook.com/yourtravelcardinsiderprofile`} />
+        <meta property="article:publisher" content={`https://www.facebook.com/yourtravelcardinsiderprofile`} /> {/* IMPORTANT: Update */}
         <meta property="article:published_time" content={reviewDataNew.publishDate} />
         <meta property="article:modified_time" content={reviewDataNew.updateDate} />
         <meta property="article:author" content={reviewDataNew.author.name} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@TravelCardInsid" /> 
+        <meta name="twitter:site" content="@TravelCardInsid" />  {/* IMPORTANT: Update */}
         {/* SEO OPTIMIZATION: More engaging Twitter title & description */}
         <meta name="twitter:title" content={`${reviewDataNew.cardName} (2025): Is the $${reviewDataNew.annualFee} Fee Justified?`} />
         <meta name="twitter:description" content={`JetBlue Plus Card deep dive: 6X points, free bags, $100 credit & Mosaic. Our ${new Date(reviewDataNew.publishDate).getFullYear()} verdict on this $${reviewDataNew.annualFee} airline card.`} />
@@ -279,7 +284,6 @@ export default function JetBluePlusCardReview2025() {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       </Head>
 
-      {/* ... TrustSignalBar, StickyNav, HeroImageContainer ... (markup remains similar, ensure it uses reviewDataNew) */}
       <div className={styles.trustSignalBar}>
         <div className={styles.trustSignalContent}>
           {reviewDataNew.issuerLogoUrl && (
@@ -327,10 +331,8 @@ export default function JetBluePlusCardReview2025() {
         </div>
       </div>
 
-
       <main className={styles.reviewPageMain}>
         <article className={styles.reviewContainer}>
-          {/* ... Header with AuthorBio ... (markup remains similar) ... */}
           <header className={styles.reviewHeader}>
           <div
                 className={styles.authorBioContainer}
@@ -384,7 +386,11 @@ export default function JetBluePlusCardReview2025() {
                 )}
             </div>
             <p className={styles.reviewDisclaimer}>
-              {/* ... disclaimer ... */}
+              We may receive compensation when you click on links to certain credit card products
+              on our site. Our recommendations are based on our independent research and analysis.
+              Offers are subject to change and may have changed since the time of publication.
+              Please verify all terms and conditions with the issuer. Terms apply to credit card benefits and offers.
+              Enrollment may be required for select benefits.
             </p>
           </header>
 
@@ -397,176 +403,191 @@ export default function JetBluePlusCardReview2025() {
             </ol>
           </nav>
 
-          {/* CONCISENESS: Sections below use more bullet points and shorter paragraphs */}
+          {/* CONTENT PRESERVATION: Prose and structure below matches the original full JS file */}
           <section id="introduction" className={styles.reviewSection}>
             <h2>I. Introduction: The {reviewDataNew.cardName} in 2025</h2>
-            <p>JetBlue has carved a unique niche in the U.S. airline market with its customer-first service and comfortable cabins. For frequent JetBlue flyers, co-branded cards like the {reviewDataNew.cardName} from {reviewDataNew.issuerName} offer enhanced travel and rewards. As the TrueBlue program and travel landscape evolve in 2025, is this mid-tier card still the top choice for JetBlue loyalists?</p>
-            <p>At {reviewDataNew.siteName}, we provide more than a feature list. This review meticulously analyzes the 2025 {reviewDataNew.cardName}: its ${reviewDataNew.annualFee} fee, the true value of benefits like free bags and 6X points, the path to Mosaic status, and its competitive standing. Let's see if it’s the savvy U.S. traveler's best bet.</p>
+            <p>JetBlue has carved out a unique space in the U.S. airline market, praised for its customer-centric service and comfortable cabin experiences. For travelers frequently flying JetBlue, their co-branded credit cards, especially the {reviewDataNew.cardName} from {reviewDataNew.issuerName}, have long been a popular way to enhance journeys and maximize rewards. But as the TrueBlue loyalty program continues to evolve and the travel rewards landscape shifts in 2025, is this mid-tier card still the undisputed champion for JetBlue enthusiasts?</p>
+            <p>This isn't just a rundown of features; at {reviewDataNew.siteName}, we go deeper. We'll meticulously analyze the 2025 iteration of the {reviewDataNew.cardName}, its ${reviewDataNew.annualFee} annual fee, the real value of its acclaimed benefits like free checked bags and 6x points, its pathway to Mosaic status, and how it stacks up in a competitive market. Let’s determine if this card truly takes off for the savvy U.S. traveler.</p>
           </section>
 
           <section id="core-features" className={styles.reviewSection}>
-            <h2>II. {reviewDataNew.cardName}: Core Features & Financials</h2>
-            <p>Understanding the fundamentals – upfront value, ongoing costs, and point accumulation – is vital for assessing any travel card.</p>
-            
-            <h3>Annual Fee & Welcome Offer</h3>
-            <ul>
-              <li><strong>Annual Fee:</strong> ${reviewDataNew.annualFee}, typical for mid-tier airline cards.</li>
-              <li><strong>Welcome Offer:</strong> Often substantial, e.g., {reviewDataNew.welcomeOfferHeadline} after meeting initial spend (e.g., $1,000 in 90 days).
-                <ul><li><em>Always check current terms on the <a href={reviewDataNew.applyLink} target="_blank" rel="noopener noreferrer sponsored">official {reviewDataNew.cardName} page</a>.</em></li></ul>
-              </li>
-              <li><strong>Point Value:</strong> While not fixed by JetBlue (see <a href="https://www.jetblue.com/trueblue/using-points" target="_blank" rel="noopener noreferrer">TrueBlue redemption info</a>), third-party sites often value TrueBlue points at 1.3-1.5 cents each. A 70,000-point bonus could mean $910-$1,050 in travel.</li>
-            </ul>
-
-            <h3>Interest Rates & Other Financials</h3>
-            <ul>
-              <li><strong>Purchase APR:</strong> Variable, typically ~20%-30%, based on creditworthiness.</li>
-              <li><strong>Introductory APR:</strong> May offer 0% intro APR on balance transfers for a limited time.</li>
-              <li><strong>Recommendation:</strong> Pay your balance in full monthly to avoid interest negating reward value.</li>
-              <li><em>For current APRs and full terms, visit the <a href={reviewDataNew.ratesLink} target="_blank" rel="noopener noreferrer sponsored">official {reviewDataNew.cardName} page</a> and look for "Rates and Fees" or "Terms & Conditions."</em></li>
-            </ul>
-            <p>This card is designed for those deeply integrated into the JetBlue flying experience.</p>
-             {/* VISUAL AIDS Suggestion: Could add a small infographic here summarizing fees and key bonus value */}
+            <h2>II. {reviewDataNew.cardName}: Core Features & Financials Unpacked</h2>
+            <p>Understanding the fundamentals—the upfront value, ongoing costs, and how you rack up points—is key to assessing any travel card.</p>
+            <h3>Annual Fee & Welcome Offer:</h3>
+            <p>The {reviewDataNew.cardName} comes with a ${reviewDataNew.annualFee} annual fee, positioning it squarely in the mid-tier airline card category. New cardmembers are often greeted with a substantial welcome offer, for instance, {reviewDataNew.welcomeOfferHeadline} after meeting an initial spending requirement (e.g., $1,000 in purchases) and paying the annual fee within the first 90 days. Always check the current offer details and terms directly with {reviewDataNew.issuerName} on the <a href={reviewDataNew.applyLink} target="_blank" rel="noopener noreferrer sponsored">official {reviewDataNew.cardName} page</a>.</p>
+            <p>
+              What are these points worth? While {reviewDataNew.issuerName} and JetBlue do not assign a fixed cash value to TrueBlue points (see details on the <a href="https://www.jetblue.com/trueblue/using-points" target="_blank" rel="noopener noreferrer">official TrueBlue redemption page</a>), reputable third-party sources typically value TrueBlue points around 1.3 to 1.5 cents each. This means a 70,000-point bonus could translate to $910 to $1,050 in travel value – a significant initial return that can cover the annual fee many times over in the first year.
+            </p>
+            <h3>Interest Rates & Other Financials:</h3>
+            <p>
+              The card features a variable Annual Percentage Rate (APR) for purchases, typically ranging from around 20% to 30%, based on creditworthiness. You can find the current APRs and other terms by visiting the <a href={reviewDataNew.ratesLink} target="_blank" rel="noopener noreferrer sponsored">official {reviewDataNew.cardName} page</a> and navigating to the 'Rates and Fees' or 'Terms & Conditions' section. It may also offer a 0% introductory APR on balance transfers for a limited time after account opening. However, carrying a balance on purchases at the standard APRs can quickly negate the value of rewards earned. We always advise paying your balance in full each month.
+            </p>
+            <p>The {reviewDataNew.cardName} aims to be a primary card for those deeply invested in flying JetBlue, offering robust earnings where it counts most for them.</p>
           </section>
           
           <section id="cta-jetblue-plus-1" className={styles.ctaSection}>
-              {/* ... CTA remains the same ... */}
+              <h2>Considering the <b>{reviewDataNew.cardName}</b>?</h2>
+              <p>Unlock substantial TrueBlue points, free checked bags, and valuable travel credits with JetBlue's premium card.</p>
+              <div className={styles.ctaButtons}>
+                <a href={reviewDataNew.applyLink} className={`${styles.btn} ${styles.btnApply}`} title={`Apply for the ${reviewDataNew.cardName} on ${reviewDataNew.issuerName}'s secure site`} target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
+                <a href={reviewDataNew.ratesLink} className={`${styles.btn} ${styles.btnRates}`} title={`See rates and fees for the ${reviewDataNew.cardName}`} target="_blank" rel="noopener noreferrer sponsored">See Rates & Fees</a>
+              </div>
           </section>
 
           <section id="earning-points" className={styles.reviewSection}>
-            <h2>III. Earning TrueBlue Points: The Power of 6X</h2>
-            <p>The {reviewDataNew.cardName} heavily rewards spending within the JetBlue ecosystem:</p>
+            <h2>III. Earning TrueBlue Points: The Power of 6x</h2>
+            <p>The card's earning structure is heavily skewed towards rewarding your spending within the JetBlue ecosystem:</p>
             <ul>
-              <li><strong>6X POINTS:</strong> On eligible JetBlue purchases (flights, JetBlue Vacations, <a href="https://www.paisly.com/" target="_blank" rel="noopener noreferrer">Paisly by JetBlue</a>). This is a top-tier earning rate for airline spend.</li>
-              <li><strong>2X POINTS:</strong> At restaurants (including takeout/eligible delivery) and eligible grocery stores.</li>
+              <li><strong>6X POINTS:</strong> On eligible JetBlue purchases. This includes flights booked directly with JetBlue and purchases made through JetBlue Vacations and JetBlue's Paisly travel portal (for cars, stays, etc.). This is a highly competitive earning rate for airline-specific spend. For more on Paisly, visit the <a href="https://www.paisly.com/" target="_blank" rel="noopener noreferrer">official Paisly website</a>.</li>
+              <li><strong>2X POINTS:</strong> At restaurants (including takeout and eligible delivery services) and eligible grocery stores. This adds solid everyday value.</li>
               <li><strong>1X POINTS:</strong> On all other purchases.</li>
             </ul>
-            <p><strong>Key Detail:</strong> TrueBlue points earned via the card don't expire as long as your TrueBlue account is open (<a href="https://www.jetblue.com/trueblue" target="_blank" rel="noopener noreferrer">TrueBlue Program Details</a>).</p>
-            {/* VISUAL AIDS Suggestion: A simple bar chart showing earning rates by category would be effective here. */}
+            <p>A critical detail: TrueBlue points earned with the card do not expire as long as your TrueBlue account remains open, allowing for stress-free accumulation. (See <a href="https://www.jetblue.com/trueblue" target="_blank" rel="noopener noreferrer">TrueBlue Program Details</a>).</p>
           </section>
 
-          <section id="key-perks" className={styles.reviewSection}>
-            <h2>IV. Key Travel & Lifestyle Perks</h2>
-            <p>The {reviewDataNew.cardName} offers tangible benefits beyond points (enrollment may be required):</p>
-            {/* Using the keyPerks array to generate a list of perks - more concise */}
-            <ul className={styles.perkList}>
-                {reviewDataNew.keyPerks.map(perk => (
-                    <li key={perk.id}>
-                        <strong>{perk.name}:</strong> {perk.details} 
-                        {perk.id === "freeBag" && (
-                          <> (Typically saves $35-$45 per bag each way. Check current fees on <a href="https://www.jetblue.com/legal/fees" target="_blank" rel="noopener noreferrer">JetBlue's baggage fee page</a>.)</>
-                        )}
-                        {perk.id === "anniversaryBonus" && " This $65-$75 value (at 1.3-1.5 cpp) helps offset the annual fee."}
-                        {perk.id === "vacationsCredit" && " This alone can make the card profitable if you use JetBlue Vacations."}
-                    </li>
-                ))}
-            </ul>
-            <p><strong>Points Payback & Pooling:</strong> Redeem points for statement credits (usually lower value) or pool points with up to 7 others (see <a href="https://www.jetblue.com/trueblue/points-pooling" target="_blank" rel="noopener noreferrer">TrueBlue Points Pooling rules</a>).</p>
-            <p>These perks provide a strong value, especially for frequent JetBlue flyers who maximize bag fee waivers and credits.</p>
-          </section>
-
-          <section id="trueblue-mosaic" className={styles.reviewSection}>
-            <h2>V. TrueBlue Program & Mosaic Status</h2>
-            <p>This card enhances your TrueBlue experience and offers a shortcut to Mosaic elite status.</p>
-            <h3>TrueBlue Point Value & Redemption</h3>
-            <ul>
-              <li><strong>Revenue-Based Redemptions:</strong> Points needed for flights tie to cash prices (no traditional award charts/blackouts). Simplicity is key. (Official redemption guide: <a href="https://www.jetblue.com/trueblue/using-points" target="_blank" rel="noopener noreferrer">Using TrueBlue Points</a>).</li>
-              <li><strong>10% Points Back:</strong> Excellent cardholder perk; get 10% of redeemed points back on JetBlue-operated award flights.</li>
-              <li><strong>Cash + Points:</strong> Book with as few as 500 points + cash.</li>
-            </ul>
-
-            <h3>Accelerated Path to Mosaic Elite Status</h3>
-            <ul>
-              <li><strong>Tile Earning:</strong> 1 Tile per $1,000 spent on the card.</li>
-              <li><strong>Mosaic Tiers (2025):</strong> Mosaic 1 (50 tiles), Mosaic 2 (100), Mosaic 3 (150), Mosaic 4 (250).</li>
-              <li><strong>Key Mosaic Benefits:</strong> Free first two checked bags, priority services, complimentary alcoholic beverages, etc. (Full details: <a href="https://www.jetblue.com/trueblue/mosaic" target="_blank" rel="noopener noreferrer">Official JetBlue Mosaic Page</a>).</li>
-              <li><strong>$99 Mosaic 1 Statement Credit:</strong> A "Perk You Pick" upon reaching Mosaic 1 can be a $99 credit towards this card's annual fee, making it effectively free for that year.</li>
-              <li><strong>Note on Blue Basic:</strong> Be aware of 2025 changes reducing some Mosaic benefits on Blue Basic fares.</li>
-            </ul>
-            <p>The card's TrueBlue integration (points rebate, Mosaic tiles) is a major draw for JetBlue loyalists.</p>
-          </section>
-
-          <section id="competitors" className={styles.reviewSection}>
-            <h2>VI. Competitor Comparison</h2>
-            <p>How does the {reviewDataNew.cardName} compare in 2025?</p>
-            {/* VISUAL AIDS: Implementing a structured list that can be styled as a table */}
-            <div className={styles.comparisonTableContainer}>
-              {/* You would ideally create a <table> element here or a component that renders one */}
-              {/* For now, a structured div list for easier styling: */}
-              {competitorCardsData.map(card => (
-                <div key={card.id} className={styles.competitorRow}>
-                  <div className={styles.competitorName}><strong>{card.name}</strong> ({card.annualFee} fee)</div>
-                  <div className={styles.competitorFeatures}><em>Key Features:</em> {card.keyFeatures}</div>
-                  <div className={styles.competitorComparison}><em>vs. JetBlue Plus:</em> {card.comparisonPoint}
-                    {card.officialLink && (
-                      <> (<a href={card.officialLink} target="_blank" rel="noopener noreferrer sponsored">Official Details</a>)</>
+          {/* CONTENT PRESERVATION: Original structure for displaying Key Perks */}
+          <section id="travel-lifestyle-perks" className={styles.reviewSection}>
+            <h2>IV. Key Travel & Lifestyle Perks: More Than Just Points?</h2>
+            <p>Beyond the points, the {reviewDataNew.cardName} packs a suite of benefits that provide tangible value and enhance your travel experience (enrollment may be required for some benefits):</p>
+             <div className={styles.creditGrid}> {/* Assuming creditGrid is styled to show these as cards/distinct blocks */}
+              {reviewDataNew.keyPerks.filter(perk => ["anniversaryBonus", "vacationsCredit", "inflightSavings", "noFtF"].includes(perk.id)).map(perk => (
+                <div key={perk.id} className={styles.creditCard}>
+                  <div className={styles.creditCardHeader}>
+                    <h5 className={styles.creditName}>{perk.name}</h5>
+                    {perk.frequency && (
+                      <span className={`${styles.creditPill} ${styles['pill' + perk.frequency.replace(/\s+/g, '')]}`}>
+                        {perk.frequency}
+                      </span>
                     )}
                   </div>
+                  <p className={styles.creditDetails}>{perk.details}</p>
                 </div>
               ))}
             </div>
-            <p style={{marginTop: '1rem'}}>The best card depends on your loyalty. The JetBlue Plus Card is purpose-built to substantially reward primary JetBlue flyers.</p>
-            {/* VISUAL AIDS Suggestion: The above structure can be styled into a responsive table.
-                For a more visual approach, consider a feature comparison chart infographic linking to individual reviews. */}
+            <h3 style={{marginTop: '1.5rem'}}>First Checked Bag Free – A Core Saver:</h3>
+            <p>
+              This is a standout benefit. The primary cardmember and up to three companions on the same reservation get their first checked bag free on all JetBlue-operated flights. With JetBlue's first checked bag fees typically ranging from $35-$45 per bag each way domestically (and potentially more for last-minute or peak travel - see <a href="https://www.jetblue.com/legal/fees" target="_blank" rel="noopener noreferrer">JetBlue's official baggage fee page</a>), a family of four could save $280-$360 on a single round-trip. This perk alone can justify the ${reviewDataNew.annualFee} annual fee after just one or two trips.
+            </p>
+            <h3 style={{marginTop: '1.5rem'}}>Points Payback & Pooling:</h3>
+            <p>
+              The card offers flexibility with "Points Payback," allowing redemption of TrueBlue points for statement credits (though typically at a lower value than flights). You can also pool points with up to seven friends and family members, making it easier to reach award thresholds. For pooling rules, check the <a href="https://www.jetblue.com/trueblue/points-pooling" target="_blank" rel="noopener noreferrer">TrueBlue Points Pooling details</a>.
+            </p>
+            <p>These combined benefits create a strong value proposition, especially for regular JetBlue flyers who can maximize the bag fee waivers and statement credits.</p>
+          </section>
+
+          <section id="trueblue-program-mosaic" className={styles.reviewSection}>
+            <h2>V. Navigating the TrueBlue Program & Mosaic Status with Your Card</h2>
+            <p>The {reviewDataNew.cardName} is your key to unlocking more from the TrueBlue loyalty program, including a faster path to Mosaic elite status.</p>
+            <h3>TrueBlue Point Value & Redemption:</h3>
+            <p>As mentioned, TrueBlue points are revenue-based, meaning the number of points needed for an award flight is tied to the current cash price – no traditional award charts or blackout dates on JetBlue flights. This offers simplicity. For official details on using your points, visit <a href="https://www.jetblue.com/trueblue/using-points" target="_blank" rel="noopener noreferrer">JetBlue's guide to using TrueBlue points</a>.</p>
+            <p><strong>10% Points Back:</strong> A fantastic cardholder perk! When you redeem TrueBlue points for a JetBlue-operated award flight and complete the travel, you receive 10% of the redeemed points back into your account. This effectively makes your points more valuable for JetBlue flights.</p>
+            <p><strong>Cash + Points:</strong> Offers flexibility by allowing bookings with as few as 500 TrueBlue points, with the remainder paid in cash.</p>
+            <h3>Accelerated Path to Mosaic Elite Status:</h3>
+            <p>The {reviewDataNew.cardName} helps you earn "Tiles" towards TrueBlue's four-tiered Mosaic elite status. Cardmembers earn 1 Tile for every $1,000 in qualifying spend on their card. This complements tiles earned from flying.</p>
+            <p>Mosaic Tiers (2025): Mosaic 1 (50 tiles), Mosaic 2 (100), Mosaic 3 (150), Mosaic 4 (250). Key Mosaic Benefits vary by tier but generally include free first two checked bags, priority boarding/security, complimentary alcoholic beverages, and more. For the latest benefits, visit the <a href="https://www.jetblue.com/trueblue/mosaic" target="_blank" rel="noopener noreferrer">official JetBlue Mosaic benefits page</a>.</p>
+            <p><strong>$99 Mosaic 1 Statement Credit Perk:</strong> Crucially, upon reaching Mosaic 1, one of the "Perks You Pick" options is a $99 statement credit applicable to your {reviewDataNew.cardName} or JetBlue Business Card annual fee. If chosen, this makes the card effectively free for that qualifying year.</p>
+            <p>While achieving Mosaic solely through card spend is a high bar ($50,000 for Mosaic 1), the card undeniably accelerates progress for those who combine flying with significant card usage. However, be aware of the 2025 changes that reduce some Mosaic benefits on JetBlue's most basic fare (Blue Basic), which might affect the perceived value for some budget-conscious elite members.</p>
+            <p>The card’s integration with TrueBlue, especially the points rebate and Mosaic tile earning, are significant draws for those committed to the JetBlue ecosystem.</p>
+          </section>
+
+          {/* VISUAL AID UPGRADE: Using structured data for competitor comparison */}
+          <section id="competitor-comparison" className={styles.reviewSection}>
+            <h2>VI. {reviewDataNew.cardName} vs. Key Competitors in 2025</h2>
+            <p>How does the {reviewDataNew.cardName} hold its own against other travel rewards cards?</p>
+            <div className={styles.comparisonTableContainer}>
+              {/* VISUAL AIDS SUGGESTION: 
+                You would ideally style the .comparisonTableContainer and .competitorRow 
+                elements with CSS to look like a table or distinct comparison cards. 
+                This structure provides the data in a way that's easy to style.
+              */}
+              {competitorCardsData.map(card => (
+                <div key={card.id} className={styles.competitorRow}>
+                  <h4 className={styles.competitorName}>Vs. {card.name} ({card.annualFee} fee)</h4>
+                  <p><strong>Key Features/Notes:</strong> {card.keyFeaturesNotes}</p>
+                  <p><strong>Comparison to {reviewDataNew.shortCardName}:</strong> {card.comparisonToJetBluePlus}
+                    {card.officialLink && (
+                      <> <a href={card.officialLink} target="_blank" rel="noopener noreferrer sponsored">{card.officialLinkText || "Official Details"}</a></>
+                    )}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <p style={{marginTop: '1rem'}}>The best card depends on your loyalty. If JetBlue is your primary airline, the Plus Card is built to reward that loyalty directly and substantially.</p>
           </section>
 
           <section id="pros-cons" className={styles.reviewSection}>
-            <h2>VII. Pros & Cons: {reviewDataNew.cardName}</h2>
-            {/* This section is already well-structured with bullet points */}
+            <h2>VII. The Final Tally: {reviewDataNew.cardName} Pros & Cons</h2>
             <div className={styles.prosConsContainer}>
               <div className={styles.prosSection}>
                 <h3>Pros: Why It Takes Off</h3>
                 <ul>
-                  <li><span className={styles.bulletIcon}>👍</span><strong>High-Value Welcome Offer:</strong> Often far exceeds the annual fee in initial travel value.</li>
-                  <li><span className={styles.bulletIcon}>👍</span><strong>Exceptional 6X Points on JetBlue:</strong> Maximizes rewards in the JetBlue ecosystem.</li>
-                  <li><span className={styles.bulletIcon}>👍</span><strong>Free First Checked Bag (Self + 3):</strong> Significant savings for individuals and families.</li>
-                  <li><span className={styles.bulletIcon}>👍</span><strong>Annual Value Boosters:</strong> $100 Vacations Credit & 5,000 Anniversary Points effectively lower or negate the net annual fee.</li>
-                  <li><span className={styles.bulletIcon}>👍</span><strong>10% Points Back on Awards:</strong> Increases the value of TrueBlue points.</li>
-                  <li><span className={styles.bulletIcon}>👍</span><strong>Mosaic Status Shortcut:</strong> Tile earning plus a potential $99 annual fee credit at Mosaic 1.</li>
-                  <li><span className={styles.bulletIcon}>👍</span><strong>Extra Perks:</strong> 50% inflight savings & no foreign transaction fees.</li>
+                  <li><span className={styles.bulletIcon}>👍</span>High Value Welcome Offer: Often provides immediate travel value far exceeding the annual fee.</li>
+                  <li><span className={styles.bulletIcon}>👍</span>Exceptional 6x Points on JetBlue: Supercharges earnings within the JetBlue ecosystem.</li>
+                  <li><span className={styles.bulletIcon}>👍</span>Free First Checked Bag (Self + 3 Companions): A massive money-saver.</li>
+                  <li><span className={styles.bulletIcon}>👍</span>$100 JetBlue Vacations Credit & 5,000 Anniversary Points: These two perks alone can make the card "profitable" annually.</li>
+                  <li><span className={styles.bulletIcon}>👍</span>10% Points Back on Award Redemptions: Stretches TrueBlue point value significantly.</li>
+                  <li><span className={styles.bulletIcon}>👍</span>Accelerated Path to Mosaic Status & Potential $99 Annual Fee Credit.</li>
+                  <li><span className={styles.bulletIcon}>👍</span>50% Inflight Savings & No Foreign Transaction Fees: Nice additional comforts and savings.</li>
                 </ul>
               </div>
               <div className={styles.consSection}>
                 <h3>Cons: Potential Turbulence</h3>
                 <ul>
-                  <li><span className={styles.bulletIcon}>👎</span><strong>$99 Annual Fee:</strong> Not waived initially; requires benefit utilization to justify.</li>
-                  <li><span className={styles.bulletIcon}>👎</span><strong>JetBlue-Focused:</strong> Value diminishes if not primarily flying JetBlue.</li>
-                  <li><span className={styles.bulletIcon}>👎</span><strong>Paisly Portal Pricing:</strong> Always compare prices despite 6X earn. (Paisly help: <a href="https://www.paisly.com/shop/why-paisly/helpful-humans/" target="_blank" rel="noopener noreferrer">Paisly Support</a>).</li>
-                  <li><span className={styles.bulletIcon}>👎</span><strong>Mosaic on Blue Basic Changes:</strong> Reduced elite benefits on basic fares from 2025.</li>
-                  <li><span className={styles.bulletIcon}>👎</span><strong>No Luxury Travel Perks:</strong> Lacks airport lounge access or premium travel credits found on higher-tier cards.</li>
+                  <li><span className={styles.bulletIcon}>👎</span>$99 Annual Fee: Not waived the first year; benefits must be used.</li>
+                  <li><span className={styles.bulletIcon}>👎</span>JetBlue-Centricity: Value diminishes if not primarily flying JetBlue.</li>
+                  <li><span className={styles.bulletIcon}>👎</span>Paisly Portal Caveat: While Paisly purchases earn 6x, always compare prices. For Paisly help, see <a href="https://www.paisly.com/shop/why-paisly/helpful-humans/" target="_blank" rel="noopener noreferrer">Paisly's support page</a>.</li>
+                  <li><span className={styles.bulletIcon}>👎</span>Mosaic on Blue Basic Changes: Reduced benefits on Blue Basic fares from 2025 for Mosaic members.</li>
+                  <li><span className={styles.bulletIcon}>👎</span>No Luxury Travel Perks: Lacks airport lounge access or premium travel credits of higher-fee cards.</li>
                 </ul>
               </div>
             </div>
           </section>
 
           <section id="verdict" className={styles.reviewSection}>
-            <h2>VIII. The {reviewDataNew.siteName} Verdict for 2025</h2>
-            <p>Is the {reviewDataNew.cardName} the top choice for JetBlue travel in 2025? If you're an infrequent flyer or demand universal program flexibility, it might not be your primary card. Its strength is its deep JetBlue integration.</p>
-            
-            <h3>This Card Shines For:</h3>
+            <h2>VIII. The {reviewDataNew.siteName} Verdict for 2025: Who Should Get the {reviewDataNew.cardName}?</h2>
+            <p>So, is the {reviewDataNew.cardName} your best bet for smarter JetBlue travel in 2025? If you're an infrequent traveler, hop between many airlines, or prioritize ultimate redemption flexibility across various programs above all else, this probably isn't your primary card. Its strength lies in its deep integration with JetBlue.</p>
+            <h3>Who Should Seriously Consider This Card:</h3>
             <ul>
-              <li><strong>JetBlue Loyalist Families/Groups:</strong> Significant savings from free checked bags.</li>
-              <li><strong>JetBlue Vacations Users:</strong> The $100 credit + anniversary points can mean net profit.</li>
-              <li><strong>Aspiring/Current Mosaic Members:</strong> Tile earning & potential annual fee credit are key.</li>
-              <li><strong>Value-Driven Points Optimizers:</strong> Strong, clear returns within the JetBlue program (6X points, 10% rebate).</li>
+              <li><strong>The JetBlue Loyalist Family/Group Traveler:</strong> If you fly JetBlue multiple times a year and regularly check bags for yourself and companions, the math is overwhelmingly in favor.</li>
+              <li><strong>The JetBlue Vacations Enthusiast:</strong> If you book at least one JetBlue Vacations package annually, the $100 statement credit combined with the 5,000 anniversary points effectively pays you to hold the card.</li>
+              <li><strong>The Aspiring (or Current) Mosaic Member:</strong> If you value JetBlue elite status, the card's tile-earning capability provides a significant boost, and the potential $99 annual fee credit at Mosaic 1 is a game-changer.</li>
+              <li><strong>The Value-Conscious Points Optimizer:</strong> If you appreciate straightforward ways to extract strong value within a specific airline program (like the 6x earning, 10% points back, and anniversary bonus), this card delivers clear returns.</li>
             </ul>
-
-            <h3>Consider Other Options If You Are:</h3>
+            <h3>Who Might Want to Explore Other Options:</h3>
             <ul>
-              <li><strong>An Airline-Agnostic Traveler:</strong> A flexible points card (e.g., Chase Sapphire Preferred®) may offer broader utility.</li>
-              <li><strong>A "No Frills" Flyer:</strong> If you don't check bags or use JetBlue Vacations, easier value propositions are lost. The no-fee JetBlue Card could be enough.</li>
-              <li><strong>An Ultra-Budget Blue Basic Flyer (Post-2025 Mosaic Changes):</strong> Carefully weigh the diluted Mosaic benefits on these fares.</li>
+              <li><strong>The Airline-Agnostic Traveler:</strong> If you don't have a strong preference for JetBlue and want points that can be used across a wider range of airlines and hotels, a flexible points card (e.g., Chase Sapphire Preferred®) would likely be a better fit.</li>
+              <li><strong>The "Never Checks Bags, Never Buys Vacations" Flyer:</strong> If you consistently travel light and don't use JetBlue Vacations, you'll miss out on two of the card's easiest ways to recoup the annual fee. The no-annual-fee JetBlue Card might suffice.</li>
+              <li><strong>The Ultra-Budget Blue Basic Flyer with Mosaic Hopes (Post-2025 Changes):</strong> If your main reason for chasing Mosaic is to enhance Blue Basic travel, carefully evaluate the reduced benefits on these fares from March 2025. The card still saves on Blue Basic bag fees, but the elite experience on these fares is diminished.</li>
             </ul>
-            <p>The {reviewDataNew.cardName} is a powerful tool when actively used. For U.S. travelers loyal to JetBlue who can leverage its core perks, it remains a top contender in 2025, offering a strong mix of savings and rewards.</p>
+            <p>The {reviewDataNew.cardName} remains a powerful tool for the right type of traveler. Its value is maximized by actively engaging with its benefits and the JetBlue ecosystem. For U.S. travelers who frequently fly JetBlue and can leverage its core perks, this card continues to offer a compelling blend of savings and rewards in 2025, solidifying its place as a top contender among airline co-branded cards. Always check the latest terms and offers directly with {reviewDataNew.issuerName} and JetBlue before applying.</p>
           </section>
           
           <section className={`${styles.reviewSection} ${styles.finalCtaSection}`}>
-            {/* ... Final CTA remains the same ... */}
+            <h2>Ready to enhance your JetBlue travel with the {reviewDataNew.cardName}?</h2>
+            <p>If the substantial point earnings, free bag benefits, and path to Mosaic status align with your travel style, this card is worth a serious look.</p>
+            <div className={styles.ctaButtons}>
+              <a href={reviewDataNew.applyLink} className={`${styles.btn} ${styles.btnApply} ${styles.btnLarge}`} target="_blank" rel="noopener noreferrer sponsored" title={`Apply for The ${reviewDataNew.cardName} on ${reviewDataNew.issuerName}'s secure site`}>
+                Apply for The {reviewDataNew.cardName}
+              </a>
+              <a href={reviewDataNew.ratesLink} className={`${styles.btn} ${styles.btnRates} ${styles.btnLarge}`} target="_blank" rel="noopener noreferrer sponsored" title={`See rates and fees for The ${reviewDataNew.cardName} on ${reviewDataNew.issuerName}'s site`}>
+                See Rates & Fees
+              </a>
+            </div>
+            <p className={styles.smallPrintTerms}>Terms Apply. Click links for details. Enrollment may be required for select benefits. Images © Barclays Bank Delaware.</p>
           </section>
         </article>
       </main>
 
       <div className={styles.stickyCtaContainer}>
-        {/* ... Sticky CTA remains the same ... */}
+        <div className={styles.stickyCtaContent}>
+            <span className={styles.stickyCtaText}>The {reviewDataNew.cardName} - ${reviewDataNew.annualFee} Annual Fee.</span>
+            <div className={styles.stickyCtaButtons}>
+                <a href={reviewDataNew.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.btn} ${styles.btnApply} ${styles.ctaButtonApply}`}>Apply Now</a>
+                <Link href={reviewDataNew.learnMoreLink} legacyBehavior>
+                    <a className={`${styles.btn} ${styles.btnRates} ${styles.ctaButtonLearnMore}`}>Learn More</a>
+                </Link>
+            </div>
+        </div>
       </div>
     </>
   );
