@@ -11,9 +11,10 @@
   border: 1px solid var(--color-border-light, #ebecf0); /* Add subtle border */
   line-height: 1.7;
   font-size: 1rem;
-  margin-top: 4rem;
+  /* margin-top: 4rem; REMOVED to prevent double margin with hero */
   color: var(--text-medium, #42526e); /* Use variable */
   font-family: 'Roboto', Arial, sans-serif; /* Will be overridden by globals.css for Inter if not more specific */
+  margin-bottom: 120px; /* Add margin to the bottom of the review container to prevent overlap with sticky footer */
 }
 
 .reviewSection {
@@ -390,7 +391,8 @@
 }
 .totalRow td:first-child { text-align: right; }
 
-/* =============== Original CTA Section (Refined) - Preserved =============== */
+/* =============== REMOVED/MODIFIED Original CTA Section =============== */
+/*
 .ctaSection {
   text-align: center; padding: 0.5rem;
   background: var(--color-background-subtle, #f1f3f5);
@@ -398,7 +400,7 @@
   border-radius: var(--border-radius-md, 6px);
   margin: var(--spacing-xl, 32px) 0;
   box-shadow: none;
-  position: sticky; top: 3rem;
+  position: sticky; top: 3rem;  <-- REMOVE STICKY BEHAVIOR or whole block
   height: 25vh; 
   z-index: 1000;
 }
@@ -454,6 +456,7 @@
     font-size: 1.4rem;
   }
 }
+*/
 
 /* =============== E-A-T Section (Refined) =============== */
 .eatSection {
@@ -555,9 +558,9 @@
 /* =============== RESPONSIVE ADJUSTMENTS =============== */
 @media (max-width: 768px) {
   .reviewContainer { padding: 1.5rem clamp(1rem, 4vw, 2rem); }
-  .reviewHeader h1 { font-size: clamp(2rem, 5.5vw, 2.8rem); }
+  /* .reviewHeader h1 { font-size: clamp(2rem, 5.5vw, 2.8rem); } */ /* Handled by heroTitle */
   .reviewSection h2 { font-size: clamp(1.5rem, 4vw, 2rem); }
-  .ctaSection h2 { font-size: 1.6rem; }
+  /* .ctaSection h2 { font-size: 1.6rem; } */ /* Removed */
 }
 @media (min-width: 768px) { 
   
@@ -662,7 +665,7 @@
   padding: var(--spacing-xl) var(--spacing-md);
   background-color: var(--color-background-subtle);
   border-bottom: 1px solid var(--color-border-light);
-  margin-bottom: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl); /* This creates the space before the reviewContainer */
   text-align: center;
 }
 .heroTextContainer {
@@ -751,7 +754,7 @@
   }
   .heroImageContainer { 
     flex-basis: 45%;
-    margin-top: 3rem;
+    margin-top: 0; /* Adjusted from 3rem */
     max-width: 600px; 
     margin-left: auto; 
   }
@@ -915,11 +918,22 @@
   line-height: 1.3;
 }
 
+.authorNameLine { /* Added this class for "By Author Name" */
+  display: flex;
+  align-items: baseline;
+  gap: 0.3em;
+}
+.authorPrefix { /* Style for "By" */
+  font-size: 0.9rem;
+  color: var(--text-light, #6b7280);
+  font-weight: var(--font-weight-regular, 400);
+}
+
 .authorName {
   font-family: var(--font-family-main);
   font-weight: var(--font-weight-semibold, 600);
   font-size: 0.95rem;
-  color: var(--text-medium, #4b5563);
+  color: var(--text-medium, #4b5563); /* Slightly darker than prefix */
 }
 
 .authorTitle {
@@ -1096,6 +1110,114 @@
    display: flex;
    gap: var(--spacing-md, 12px); 
 }
-
-
 /* =============== END AUTHOR BIO & TOOLTIP STYLES =============== */
+
+/* =============== NEW STICKY FOOTER CTA STYLES =============== */
+.stickyFooterContainer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--color-background-subtle, #f1f3f5); /* Or any color you prefer */
+  border-top: 1px solid var(--color-border, #dfe1e6);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  padding: var(--spacing-sm, 12px) var(--spacing-md, 16px);
+  z-index: 1000; /* Ensure it's above other content */
+  display: flex;
+  justify-content: center; /* Center the content container */
+  align-items: center;
+}
+
+.stickyFooterContent {
+  display: flex;
+  justify-content: space-between; /* Distribute items */
+  align-items: center;
+  width: 100%;
+  max-width: var(--max-width-container, 1200px); /* Optional: if you want to limit content width */
+  gap: var(--spacing-md, 16px);
+}
+
+.stickyFooterCardName {
+  font-family: var(--font-condensed, 'Roboto Condensed', var(--font-family-sans, sans-serif));
+  font-size: 0.9rem; /* Adjusted for better fit */
+  font-weight: 600;
+  color: var(--text-dark, #172b4d);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  flex-shrink: 1; /* Allow shrinking if space is tight */
+}
+
+.stickyFooterButtons {
+  display: flex;
+  gap: var(--spacing-sm, 8px); /* Reduced gap for smaller footer */
+  flex-shrink: 0; /* Prevent buttons from shrinking too much */
+}
+
+.stickyFooterBtn {
+  padding: var(--spacing-xs, 8px) var(--spacing-md, 12px); /* Slightly smaller padding */
+  font-size: 0.9rem; /* Slightly smaller font */
+  font-weight: 700;
+  border-radius: var(--border-radius-md, 6px);
+  box-shadow: var(--shadow-sm, 0 1px 2px rgba(23, 43, 77, 0.05));
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  line-height: 1.4;
+  white-space: nowrap; /* Prevent button text from wrapping */
+}
+
+.stickyFooterBtn:hover {
+  box-shadow: var(--shadow-md, 0 2px 4px rgba(23, 43, 77, 0.1));
+  transform: translateY(-1px);
+}
+.stickyFooterBtn:active {
+  transform: translateY(0px) scale(0.98);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.stickyFooterBtnApply {
+  background: var(--color-accent, var(--value-good, #16a34a)); /* Same as .btnApply */
+  color: var(--text-on-primary, white);
+}
+.stickyFooterBtnApply:hover {
+  background: var(--color-accent-hover, #117e37); /* Same as .btnApply:hover */
+}
+
+.stickyFooterBtnRates {
+  background: none;
+  color: var(--color-primary, #0052cc); /* Same as .btnRates */
+  border: 1px solid var(--color-border, #dfe1e6);
+  box-shadow: none;
+}
+.stickyFooterBtnRates:hover {
+  background: var(--color-background-subtle, #f8f9fa); /* Adjusted hover for bordered button */
+  border-color: var(--color-primary, #0052cc);
+}
+
+/* Responsive adjustments for the sticky footer */
+@media (max-width: 600px) {
+  .stickyFooterContent {
+    flex-direction: column; /* Stack elements vertically on small screens */
+    align-items: stretch; /* Make items take full width */
+    gap: var(--spacing-sm, 8px);
+  }
+  .stickyFooterCardName {
+    text-align: center; /* Center card name when stacked */
+    font-size: 0.85rem;
+    margin-bottom: var(--spacing-xs, 4px);
+  }
+  .stickyFooterButtons {
+    justify-content: center; /* Center buttons when stacked */
+    width: 100%;
+  }
+  .stickyFooterBtn {
+    flex-grow: 1; /* Allow buttons to grow and fill space */
+    text-align: center;
+    font-size: 0.85rem;
+  }
+  .reviewContainer {
+    margin-bottom: 150px; /* Increase margin for taller sticky footer on mobile */
+  }
+}

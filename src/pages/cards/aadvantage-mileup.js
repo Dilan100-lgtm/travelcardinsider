@@ -728,21 +728,23 @@ function AmericanAirlinesAadvantageMileupReviewPage() {
                   <p>The card's structure, particularly the dual 2x earning categories on a no-fee airline card, is notable. While most no-fee airline cards limit bonus earning to direct airline spending, the MileUp® card’s inclusion of groceries broadens its appeal, making it a relevant earning tool even when travel isn't immediately on the horizon.</p>
                 </section>
 
-                <section id="cta-mileup-card" className={styles.ctaSection}> {/* Ensure ctaSection styles are defined */}
-                  <h2>Interested in the <b>{reviewDataNew.cardName}</b>?</h2>
-                  <div className={styles.ctaButtons}>
-                    <a href={reviewDataNew.applyLink} className={`${styles.btn} ${styles.btnApply}`} title="From card issuer's secure site" target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
-                    <a href={reviewDataNew.ratesLink} className={`${styles.btn} ${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored">See Rates & Fees</a>
-                  </div>
-                </section>
+                {/* REMOVED Sticky CTA Section from here:
+                  <section id="cta-mileup-card" className={styles.ctaSection}>
+                    <h2>Interested in the <b>{reviewDataNew.cardName}</b>?</h2>
+                    <div className={styles.ctaButtons}>
+                      <a href={reviewDataNew.applyLink} className={`${styles.btn} ${styles.btnApply}`} title="From card issuer's secure site" target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
+                      <a href={reviewDataNew.ratesLink} className={`${styles.btn} ${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored">See Rates & Fees</a>
+                    </div>
+                  </section> 
+                */}
 
                 <Image
-        src="/luca-bravo-O453M2Liufs-unsplash.webp" // UPDATE PATH if you chose differently
-        alt="Wooden rowboat on a tranquil turquoise lake surrounded by majestic mountains, illustrating a travel reward destination."
-        width={800} // IMPORTANT: Use the actual width of your image
-        height={533} // IMPORTANT: Use the actual height of your image
-        className={styles.contentImage}
-      />
+                    src="/luca-bravo-O453M2Liufs-unsplash.webp" // UPDATE PATH if you chose differently
+                    alt="Wooden rowboat on a tranquil turquoise lake surrounded by majestic mountains, illustrating a travel reward destination."
+                    width={800} // IMPORTANT: Use the actual width of your image
+                    height={533} // IMPORTANT: Use the actual height of your image
+                    className={styles.contentImage}
+                />
 
                 <section id="section-2" className={styles.reviewSection}>
                     <h2>II. Unpacking the Value: Rewards and Everyday Benefits</h2>
@@ -883,12 +885,12 @@ function AmericanAirlinesAadvantageMileupReviewPage() {
                 </section>
 
                 <Image
-             src="/mesut-kaya-eOcyhe5-9sQ-unsplash.webp" // UPDATE PATH if you chose differently
-             alt="Travelers looking at hot air balloons over a scenic landscape, symbolizing experiences unlocked by travel rewards."
-             width={800} // IMPORTANT: Use the actual width of your image
-             height={533} // IMPORTANT: Use the actual height of your image
-             className={styles.contentImage}
-         />
+                    src="/mesut-kaya-eOcyhe5-9sQ-unsplash.webp" // UPDATE PATH if you chose differently
+                    alt="Travelers looking at hot air balloons over a scenic landscape, symbolizing experiences unlocked by travel rewards."
+                    width={800} // IMPORTANT: Use the actual width of your image
+                    height={533} // IMPORTANT: Use the actual height of your image
+                    className={styles.contentImage}
+                />
 
                 <section id="section-6" className={styles.reviewSection}>
                     <h2>VI. The Competitive Arena: MileUp® vs. Other No-Fee Options</h2>
@@ -986,6 +988,31 @@ function AmericanAirlinesAadvantageMileupReviewPage() {
           </aside>
         </div>
       </main>
+
+      {/* NEW STICKY FOOTER CTA */}
+      <div className={styles.stickyFooterContainer}>
+        <div className={styles.stickyFooterContent}>
+            <span className={styles.stickyFooterCardName}>{reviewDataNew.cardName}</span>
+            <div className={styles.stickyFooterButtons}>
+                <a 
+                    href={reviewDataNew.applyLink} 
+                    className={`${styles.stickyFooterBtn} ${styles.stickyFooterBtnApply}`} 
+                    target="_blank" 
+                    rel="noopener noreferrer sponsored"
+                >
+                    Apply Now
+                </a>
+                <a 
+                    href={reviewDataNew.ratesLink} 
+                    className={`${styles.stickyFooterBtn} ${styles.stickyFooterBtnRates}`} 
+                    target="_blank" 
+                    rel="noopener noreferrer sponsored"
+                >
+                    See Rates & Fees
+                </a>
+            </div>
+        </div>
+      </div>
     </>
   );
 }
