@@ -16,6 +16,11 @@ import IconStar from '../../components/icons/icon-star.svg'; // UPDATE AS NEEDED
 import IconCheck from '../../components/icons/icon-Credit Card.svg'; // UPDATE AS NEEDED (path to your icon, e.g. a checkmark or fee icon)
 // import IconX from '../../components/icons/icon-Star + Arrow Up.svg'; // Not explicitly used in Aeroplan summary, but available
 import IconPlus from '../../components/icons/icon-target.svg'; // UPDATE AS NEEDED (path to your icon, represents 'Best For' or 'Key Benefit')
+// ...existing code...
+import IconBag from '../../components/icons/icon-bag.svg';      // Add this line
+import IconPlane from '../../components/icons/icon-plane.svg';  // Add this line
+import IconX from '../../components/icons/icon-Star\ +\ Arrow\ Up.svg'; // Add this line (update path if needed)
+// ...existing code...
 
 const RatingTooltip = dynamic(() => import('../../components/RatingTooltip'), { ssr: false, loading: () => null });
 
