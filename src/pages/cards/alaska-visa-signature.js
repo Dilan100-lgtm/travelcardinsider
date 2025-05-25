@@ -67,16 +67,16 @@ const reviewDataNew = {
       }
   },
   siteName: siteName,
-  imageUrl        : '/images/cards/alaska-airlines-visa-signature-card.webp', // Placeholder: Replace with actual card image URL
+  imageUrl        : '/1bbt_sigcm_v_mileageplan_250x158.png', // Placeholder: Replace with actual card image URL
   imageWidth      : 1290, // Placeholder - UPDATE if image dimensions differ
   imageHeight     : 812,  // Placeholder - UPDATE if image dimensions differ
-  ratingValue     : 8.5,  // Placeholder - UPDATE AS NEEDED (e.g. 4.25/5 * 2)
+  ratingValue     : 7.9,  // Placeholder - UPDATE AS NEEDED (e.g. 4.25/5 * 2)
   ratingCount     : 210,  // Placeholder - UPDATE AS NEEDED
   reviewBody      : 'Our editors evaluate the Alaska Airlines Visa Signature® Card based on its Companion Fare™, free checked bag benefit, mileage earning rates (especially on Alaska purchases), oneworld® Alliance access, annual fee, and overall value for U.S.-based travelers, particularly those on the West Coast.',
   aprRange        : '20.24% - 29.24% variable', // From your text
   annualFee       : 95, // From your text
   // IMPORTANT: REPLACE WITH YOUR ACTUAL AFFILIATE LINK
-  applyLink       : 'YOUR_ALASKA_CARD_AFFILIATE_LINK_HERE',
+  applyLink       : 'https://www.alaskaair.com/content/credit-card/visa-signature?srsltid=AfmBOopDXeo80pVEogV9HD0vekWjZ37Oa5Q3QSVRkVZWNhEaMZKv7F68',
   // Official rates link from research
   ratesLink       : 'https://www.bankofamerica.com/credit-cards/products/alaska-airlines-credit-card/',
   sku             : 'BOFA-ALASKA-SIG-TCI-2025', // Placeholder - Example SKU
@@ -566,7 +566,7 @@ function AlaskaAirlinesVisaSignatureReviewPage() {
                     )}
                 </div>
                 <p className={styles.heroSubtitle}>
-                  Dreaming of new horizons but wondering how to make travel more affordable and rewarding? For savvy U.S. travelers, especially those with a soft spot for the West Coast or an eye on global adventures, the {reviewDataNew.cardName} often comes up. Is it just another piece of plastic, or is it a strategic key to unlocking more travel, perks, and memories?
+                 Want more travel for less? If you're a U.S. explorer, especially with West Coast or global dreams, the Alaska Airlines Visa Signature® Card might be your ticket. Could it unlock more adventures and valuable perks?
                 </p>
                 <div className={styles.heroCtaContainer}>
                   <div>
