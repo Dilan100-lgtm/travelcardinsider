@@ -690,7 +690,7 @@ function AlaskaAirlinesVisaSignatureReviewPage() {
                 </section>
 
                 <Image
-                    src="/images/content/west-coast-travel-scene.webp" // UPDATE PATH: Example placeholder
+                    src="/miguel-angel-sanz-1tpJ00cSD4M-unsplash.webp" // UPDATE PATH: Example placeholder
                     alt="Scenic view of the U.S. West Coast, symbolizing Alaska Airlines' hub."
                     width={800}
                     height={500}
@@ -888,7 +888,7 @@ function AlaskaAirlinesVisaSignatureReviewPage() {
                 </section>
 
                 <Image
-                    src="/images/content/oneworld-alliance-destinations.webp" // UPDATE PATH: Example placeholder
+                    src="/maryland-latulola-PcqH1iEKkjE-unsplash.webp" // UPDATE PATH: Example placeholder
                     alt="Montage of iconic oneworld Alliance destinations."
                     width={800}
                     height={450}
