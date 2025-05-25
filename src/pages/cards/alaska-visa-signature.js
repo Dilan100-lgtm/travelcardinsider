@@ -10,12 +10,16 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import styles from '../../styles/ReviewPage.module.css'; // Assuming same CSS module as aadvantage-mileup.js
 
-import TableOfContents    from '../../components/TableOfContents'; // Assuming same TOC component
-import IconGift from '../../components/icons/icon-gift.svg'; // UPDATE AS NEEDED (path to your icon)
-import IconStar from '../../components/icons/icon-star.svg'; // UPDATE AS NEEDED (path to your icon)
-import IconCheck from '../../components/icons/icon-Credit Card.svg'; // UPDATE AS NEEDED (path to your icon, e.g. a checkmark or fee icon)
-// import IconX from '../../components/icons/icon-Star + Arrow Up.svg'; // Not explicitly used in Aeroplan summary, but available
-import IconPlus from '../../components/icons/icon-target.svg'; // UPDATE AS NEEDED (path to your icon, represents 'Best For' or 'Key Benefit')
+import TableOfContents from '../../components/TableOfContents'; // Assuming same TOC component
+// UPDATE ICON PATHS AS NEEDED for your project structure
+import IconGift from '../../components/icons/icon-gift.svg';
+import IconStar from '../../components/icons/icon-star.svg';
+import IconCheck from '../../components/icons/icon-Credit Card.svg'; // Represents fee or key features
+import IconX from '../../components/icons/icon-Star + Arrow Up.svg'; // Represents drawbacks or less positive aspects
+import IconPlus from '../../components/icons/icon-target.svg'; // Represents 'Best For' or 'Key Benefit'
+import IconPlane from '../../components/icons/icon-plane.svg'; // CORRECTED: Ensure this path is valid
+import IconBag from '../../components/icons/icon-briefcase.svg'; // CORRECTED: Ensure this path is valid
+import IconWorld from '../../components/icons/icon-globe.svg'; // Example: Specific for alliance benefits
 
 const RatingTooltip = dynamic(() => import('../../components/RatingTooltip'), { ssr: false, loading: () => null });
 
@@ -62,18 +66,18 @@ const reviewDataNew = {
       }
   },
   siteName: siteName,
-  imageUrl        : '/1bbt_sigcm_v_mileageplan_250x158.png', // Placeholder: Replace with actual card image URL
+  imageUrl        : '/images/cards/alaska-airlines-visa-signature-card.webp', // Placeholder: Replace with actual card image URL
   imageWidth      : 1290, // Placeholder - UPDATE if image dimensions differ
   imageHeight     : 812,  // Placeholder - UPDATE if image dimensions differ
-  ratingValue     : 7.9,  // Placeholder - UPDATE AS NEEDED (e.g. 4.25/5 * 2)
+  ratingValue     : 8.5,  // Placeholder - UPDATE AS NEEDED (e.g. 4.25/5 * 2)
   ratingCount     : 210,  // Placeholder - UPDATE AS NEEDED
   reviewBody      : 'Our editors evaluate the Alaska Airlines Visa Signature® Card based on its Companion Fare™, free checked bag benefit, mileage earning rates (especially on Alaska purchases), oneworld® Alliance access, annual fee, and overall value for U.S.-based travelers, particularly those on the West Coast.',
   aprRange        : '20.24% - 29.24% variable', // From your text
   annualFee       : 95, // From your text
   // IMPORTANT: REPLACE WITH YOUR ACTUAL AFFILIATE LINK
-  applyLink       : 'https://www.alaskaair.com/content/credit-card/visa-signature?srsltid=AfmBOopDXeo80pVEogV9HD0vekWjZ37Oa5Q3QSVRkVZWNhEaMZKv7F68',
+  applyLink       : 'YOUR_ALASKA_CARD_AFFILIATE_LINK_HERE',
   // Official rates link from research
-  ratesLink       : 'https://www.bankofamerica.com/credit-cards/products/alaska-airlines-credit-card/', //
+  ratesLink       : 'https://www.bankofamerica.com/credit-cards/products/alaska-airlines-credit-card/',
   sku             : 'BOFA-ALASKA-SIG-TCI-2025', // Placeholder - Example SKU
   mpn             : 'BOFAALASKASIG', // Placeholder - Example MPN
   h1Content       : "Alaska Airlines Visa Signature® Card: Your Co-Pilot for West Coast Adventures and Beyond?", // From your text
@@ -196,12 +200,12 @@ const structuredDataOptimized = {
         {
           '@type': 'Question',
           name: 'How much are Alaska Airlines miles worth?',
-          acceptedAnswer: { '@type': 'Answer', text: "Generally 1.3-1.5 cents each for economy, but can be 2-4+ cents for premium partner awards. You can find more details on the Alaska Airlines Mileage Plan™." } // Added general reference
+          acceptedAnswer: { '@type': 'Answer', text: "Generally 1.3-1.5 cents each for economy, but can be 2-4+ cents for premium partner awards. You can find more details on the Alaska Airlines Mileage Plan™." }
         },
         {
           '@type': 'Question',
           name: "Can I use Alaska's Famous Companion Fare™ on partner airlines?",
-          acceptedAnswer: { '@type': 'Answer', text: "No, it's only for flights marketed and operated by Alaska Airlines. Specific terms can be found on the Alaska Airlines website regarding their Companion Fare™." } // Added general reference
+          acceptedAnswer: { '@type': 'Answer', text: "No, it's only for flights marketed and operated by Alaska Airlines. Specific terms can be found on the Alaska Airlines website regarding their Companion Fare™." }
         },
         {
           '@type': 'Question',
@@ -211,12 +215,12 @@ const structuredDataOptimized = {
         {
           '@type': 'Question',
           name: 'What credit score do I typically need for the Alaska Airlines Visa Signature® Card?',
-          acceptedAnswer: { '@type': 'Answer', text: "Generally good to excellent credit (typically FICO 670+, often 700-720+ for Visa Signature). Approval depends on various factors from Bank of America." } // Added issuer
+          acceptedAnswer: { '@type': 'Answer', text: "Generally good to excellent credit (typically FICO 670+, often 700-720+ for Visa Signature). Approval depends on various factors from Bank of America." }
         },
         {
           '@type': 'Question',
           name: 'Does the free checked bag apply if I only pay taxes on an award ticket with the card?',
-          acceptedAnswer: { '@type': 'Answer', text: "Terms usually state 'purchase airfare' with the card. It's best to verify with Alaska Airlines for award tickets, as paying only taxes may not qualify according to their checked bag policy." } // Added reference
+          acceptedAnswer: { '@type': 'Answer', text: "Terms usually state 'purchase airfare' with the card. It's best to verify with Alaska Airlines for award tickets, as paying only taxes may not qualify according to their checked bag policy." }
         }
       ],
     },
@@ -273,10 +277,9 @@ const tocSections = [ // Generated from your 20 sections
     { id: 'section-18', title: '18. Pros & Cons: A Balanced View' },
     { id: 'section-19', title: '19. Card-Specific Frequently Asked Questions (FAQs)' },
     { id: 'section-20', title: '20. Conclusion: Charting Your Course with the Alaska Card' },
-    { id: 'section-eat', title: 'Our E-A-T Commitment' }, // Added for E-A-T section
+    { id: 'section-eat', title: 'Our E-A-T Commitment' },
 ];
 
-// DraggableTableWrapper Component (copied from your example, ensure it's correctly imported or defined in your project)
 function DraggableTableWrapper({ children }) {
   const containerRef = useRef(null);
   useEffect(() => {
@@ -324,7 +327,6 @@ function AlaskaAirlinesVisaSignatureReviewPage() {
   const authorTooltipRef = useRef(null);
   const ratingTooltipRef = useRef(null);
 
-  // Callbacks for tooltips (copied from your example)
   const handleIconClick = useCallback((event) => {
       event.preventDefault();
       event.stopPropagation();
@@ -385,11 +387,6 @@ function AlaskaAirlinesVisaSignatureReviewPage() {
       };
   }, [showAuthorBioTooltip, authorRef, authorTooltipRef, showRatingInfo, ratingTooltipRef]);
 
-  // Helper to create linked text for citations
-  const createCitedLink = (text, citationKey, url) => (
-    <a href={url} target="_blank" rel="noopener noreferrer sponsored">{text} [Official Citation]</a>
-  );
-
   return (
     <>
       <Head>
@@ -408,7 +405,6 @@ function AlaskaAirlinesVisaSignatureReviewPage() {
         <meta name="geo.placename" content="United States" />
         <meta name="language" content="en-US" />
         <meta name="distribution" content="US" />
-        {/* UPDATE AS NEEDED: Preload your actual fonts */}
         {[
           '/fonts/inter-v18-latin-regular.woff2',
           '/fonts/inter-v18-latin-600.woff2',
@@ -441,7 +437,6 @@ function AlaskaAirlinesVisaSignatureReviewPage() {
         <meta name="twitter:title"       content={reviewDataNew.title} />
         <meta name="twitter:description" content={reviewDataNew.description} />
         <meta name="twitter:image"       content={`${siteUrl}${reviewDataNew.imageUrl}`} />
-        {/* UPDATE AS NEEDED: Favicon links */}
         <link rel="icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -570,13 +565,12 @@ function AlaskaAirlinesVisaSignatureReviewPage() {
                     )}
                 </div>
                 <p className={styles.heroSubtitle}>
-                  {/* Using the original intro paragraph as a subtitle here */}
                   Dreaming of new horizons but wondering how to make travel more affordable and rewarding? For savvy U.S. travelers, especially those with a soft spot for the West Coast or an eye on global adventures, the {reviewDataNew.cardName} often comes up. Is it just another piece of plastic, or is it a strategic key to unlocking more travel, perks, and memories?
                 </p>
                 <div className={styles.heroCtaContainer}>
                   <div>
                     <a
-                      href={reviewDataNew.applyLink} // Your affiliate link
+                      href={reviewDataNew.applyLink}
                       target="_blank"
                       rel="noopener noreferrer sponsored"
                       className={`${styles.applyNowButton} ${styles.heroApplyButton}`}
@@ -584,7 +578,7 @@ function AlaskaAirlinesVisaSignatureReviewPage() {
                       Apply Securely Now
                     </a>
                     <span className={styles.heroApplyButtonDisclaimer}>
-                      on Bank of America's official site {/* Issuer */}
+                      on Bank of America's official site
                     </span>
                   </div>
                   <Link href="#section-1" legacyBehavior>
@@ -662,12 +656,12 @@ function AlaskaAirlinesVisaSignatureReviewPage() {
                                 <span className={styles.summaryValue}>3X miles on Alaska; 2X on gas, EV, transit, etc.</span>
                             </div>
                              <div className={styles.summaryItem}>
-                                <span className={styles.summaryIcon}><IconPlane /></span> {/* Custom Icon for Companion Fare */}
+                                <span className={styles.summaryIcon}><IconPlane /></span> {/* CORRECTED: IconPlane is now imported */}
                                 <span className={styles.summaryLabel}>Signature Perk:</span>
                                 <span className={styles.summaryValue}>Alaska's Famous Companion Fare™ from $122.</span>
                             </div>
                             <div className={styles.summaryItem}>
-                                <span className={styles.summaryIcon}><IconBag /></span> {/* Custom Icon for Bag Fee */}
+                                <span className={styles.summaryIcon}><IconBag /></span> {/* CORRECTED: IconBag is now imported */}
                                 <span className={styles.summaryLabel}>Bag Benefit:</span>
                                 <span className={styles.summaryValue}>First checked bag free for you + up to 6 guests.</span>
                             </div>
@@ -694,12 +688,11 @@ function AlaskaAirlinesVisaSignatureReviewPage() {
                   <p>The appeal of this card stretches beyond Alaska Airlines itself. As part of the <a href="https://www.oneworld.com/" target="_blank" rel="noopener noreferrer sponsored">oneworld® Alliance</a>, the miles you earn become a passport to worldwide exploration, making it relevant even if you don't exclusively fly Alaska. This review will break down its features, benefits, and costs, connecting them not just to savings, but to the real experiences they can unlock.</p>
                 </section>
 
-                {/* Placeholder for a thematic travel image, like in the example */}
                 <Image
                     src="/images/content/west-coast-travel-scene.webp" // UPDATE PATH: Example placeholder
                     alt="Scenic view of the U.S. West Coast, symbolizing Alaska Airlines' hub."
-                    width={800} // IMPORTANT: Use the actual width of your image
-                    height={500} // IMPORTANT: Use the actual height of your image
+                    width={800}
+                    height={500}
                     className={styles.contentImage}
                 />
 
@@ -708,7 +701,7 @@ function AlaskaAirlinesVisaSignatureReviewPage() {
                   <p>Here’s a quick look:</p>
                   <DraggableTableWrapper>
                     <div className={styles.tableContainer}>
-                        <table className={`${styles.statsTable} ${styles.highlightTable}`}> {/* Added highlightTable class for potential styling */}
+                        <table className={`${styles.statsTable} ${styles.highlightTable}`}>
                             <tbody>
                                 <tr><td>Card Name:</td><td><strong>Alaska Airlines Visa Signature® Card</strong></td></tr>
                                 <tr><td>Issuer:</td><td>Bank of America (<a href="https://www.bankofamerica.com/credit-cards/products/alaska-airlines-credit-card/" target="_blank" rel="noopener noreferrer sponsored">Official Card Page</a>)</td></tr>
@@ -893,12 +886,11 @@ function AlaskaAirlinesVisaSignatureReviewPage() {
                   <p>Always refer to your official Guide to Benefits for full terms and conditions. These can offer substantial value and peace of mind.</p>
                 </section>
 
-                 {/* Placeholder for another thematic travel image */}
                 <Image
                     src="/images/content/oneworld-alliance-destinations.webp" // UPDATE PATH: Example placeholder
                     alt="Montage of iconic oneworld Alliance destinations."
-                    width={800} // IMPORTANT: Use the actual width of your image
-                    height={450} // IMPORTANT: Use the actual height of your image
+                    width={800}
+                    height={450}
                     className={styles.contentImage}
                 />
 
@@ -917,7 +909,7 @@ function AlaskaAirlinesVisaSignatureReviewPage() {
 
                 <section id="section-15" className={styles.reviewSection}>
                   <h2>15. Real-World People Ideas: Meet Alex, Ben &amp; Chloe, and David</h2>
-                  <div className={styles.profileCardContainer}> {/* Added a container for better styling if needed */}
+                  <div className={styles.profileCardContainer}>
                     <div className={styles.profileCard}>
                         <h4>Alex, the Seattle-Based Tech Professional:</h4>
                         <p>Flies Alaska 4-5 times a year. The free checked bag saves him ~$250 annually, covering the fee. 3x miles on flights and priority boarding are sweet extras.</p>
@@ -1003,7 +995,7 @@ function AlaskaAirlinesVisaSignatureReviewPage() {
                   <h2>18. Pros &amp; Cons: A Balanced View</h2>
                   <div className={styles.prosConsContainer}>
                     <div className={styles.prosBox}>
-                      <h3>Pros <IconPlus className={styles.inlineIcon} /></h3> {/* Example icon */}
+                      <h3>Pros <IconPlus className={styles.inlineIcon} /></h3>
                       <ul className={styles.featureList}>
                           <li>Valuable Companion Fare™: Huge savings potential.</li>
                           <li>Generous Free Checked Bag Policy: Saves money for individuals/groups.</li>
@@ -1016,7 +1008,7 @@ function AlaskaAirlinesVisaSignatureReviewPage() {
                       </ul>
                     </div>
                     <div className={styles.consBox}>
-                      <h3>Cons <IconX className={styles.inlineIcon} /></h3> {/* Example icon */}
+                      <h3>Cons <IconX className={styles.inlineIcon} /></h3>
                       <ul className={styles.featureList}>
                           <li>$95 Annual Fee: Must justify with perk usage.</li>
                           <li>Anniversary Companion Fare™ Requires $6,000 Annual Spend.</li>
@@ -1063,7 +1055,6 @@ function AlaskaAirlinesVisaSignatureReviewPage() {
 
           <aside className={styles.sidebarArea}>
             <TableOfContents sections={tocSections} />
-            {/* You can add other sidebar widgets here, e.g., a small card summary or related posts */}
             <div className={styles.sidebarWidget}>
                 <h4>Quick Card Facts</h4>
                 <ul className={styles.quickFactsList}>
@@ -1096,7 +1087,7 @@ function AlaskaAirlinesVisaSignatureReviewPage() {
             </div>
             <div className={styles.stickyFooterButtons}>
                 <a
-                    href={reviewDataNew.applyLink} // Your affiliate link
+                    href={reviewDataNew.applyLink}
                     className={`${styles.stickyFooterBtn} ${styles.stickyFooterBtnApply}`}
                     target="_blank"
                     rel="noopener noreferrer sponsored"
