@@ -49,6 +49,19 @@ html {
   scroll-padding-top: 80px; /* Adjust based on your sticky header height */
 }
 :root {
+   /* IMPORTANT: Adjust --site-global-header-height to the actual height 
+    of your website's fixed/sticky global navigation header. 
+    If you don't have one, or it's not fixed/sticky, set this to 0px.
+  */
+  --site-global-header-height: 60px; /* <<<< ADJUST THIS VALUE! */
+
+  --toc-top-offset-desktop: var(--spacing-md, 16px); /* Current 'top' value for sticky TOC */
+  
+  --sticky-cta-footer-height-desktop: 55px;  /* Estimated height of the new sticky footer on desktop */
+  --sticky-cta-footer-height-mobile: 90px; /* Estimated height of the new sticky footer on mobile */
+
+  /* Optional: Extra spacing below the TOC before it would meet the sticky footer */
+  --toc-bottom-clearance: var(--spacing-md, 16px); 
   /* Existing Variables - Kept As Is */
   --bg-light-gray: #f9fafb;
   --bg-white: #ffffff;
