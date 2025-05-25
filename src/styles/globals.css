@@ -1,207 +1,162 @@
-/* =============== GLOBALS & DEFAULTS (Refined) =============== */
+/* =============== GLOBALS & DEFAULTS =============== */
 :root {
-  --amex-primary-blue: #0052cc; /* Amex-like Blue */
-  --amex-accent-gold: #ffc400;  /* Amex-like Gold/Yellow - Primary CTA background */
-  --amex-accent-gold-hover: #e6b300; /* Darker gold for hover */
-  --amex-accent-gold-border: #d4a100; /* Border for gold button */
-  --text-on-gold: #1f2937; /* Dark text for good contrast on gold */
-
-  --brand-green-highlight: #16a34a; /* For specific highlights like subtotal */
-
-  --text-dark: #1f2937;       /* For main body text, headings */
-  --text-medium: #4b5563;     /* For secondary text, descriptions */
-  --text-light: #6b7280;      /* For muted text, captions */
-  --text-on-primary: #ffffff; /* Text on dark/colored backgrounds */
-  --text-on-accent: var(--text-dark); /* Text on accent color (gold) */
-
-
-  --bg-white: #ffffff;
-  --bg-light: #f8f9fa;        /* Very light gray for subtle backgrounds (e.g., credit cards) */
-  --bg-grey-bar: #f0f2f5;    /* For slim grey bars like trust bar */
-  --bg-zebra-stripe: #fafafa; /* For table zebra striping */
-
-  --border-color: #d1d5db;     /* Standard border color */
-  --border-color-light: #e5e7eb; /* Lighter border for internal elements */
-
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-
-  --spacing-xs: 4px;
-  --spacing-sm: 8px;
-  --spacing-md: 16px;
-  --spacing-lg: 24px;
-  --spacing-xl: 32px;
-
-  --border-radius-sm: 4px;
-  --border-radius-md: 6px;
-  --border-radius-lg: 8px;
-  --border-radius-xl: 12px;
-  --border-radius-pill: 9999px; /* For pill shapes */
-
-  --font-family-body: 'Inter', sans-serif;
-  --font-family-heading: 'Playfair Display', serif; /* Using Playfair Display for H1/H2 as per previous update */
-}
-
-/* Global Smooth Scroll for TOC */
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 80px; /* Adjust based on your sticky header height */
-}
-:root {
-   /* IMPORTANT: Adjust --site-global-header-height to the actual height 
-    of your website's fixed/sticky global navigation header. 
-    If you don't have one, or it's not fixed/sticky, set this to 0px.
-  */
-  --site-global-header-height: 60px; /* <<<< ADJUST THIS VALUE! */
-
-  --toc-top-offset-desktop: var(--spacing-md, 16px); /* Current 'top' value for sticky TOC */
+  /* === Core Visual Identity & Layout Variables === */
   
-  --sticky-cta-footer-height-desktop: 55px;  /* Estimated height of the new sticky footer on desktop */
-  --sticky-cta-footer-height-mobile: 90px; /* Estimated height of the new sticky footer on mobile */
-
-  /* Optional: Extra spacing below the TOC before it would meet the sticky footer */
+  /* Site Structure Heights - ADJUST THESE AS NEEDED */
+  --site-global-header-height: 60px; /* Height of your fixed/sticky global navigation header */
+  --main-site-footer-height: 200px; /* Height of your main website footer (e.g., the dark blue one) */
+  --sticky-cta-footer-height-desktop: 55px;  /* Estimated height of the sticky card CTA on desktop */
+  --sticky-cta-footer-height-mobile: 90px; /* Estimated height of the sticky card CTA on mobile */
+  
+  /* TOC Related Offsets & Clearances */
+  --toc-top-offset-desktop: var(--spacing-md, 16px); 
   --toc-bottom-clearance: var(--spacing-md, 16px); 
-  /* Existing Variables - Kept As Is */
-  --bg-light-gray: #f9fafb;
-  --bg-white: #ffffff;
-  --bg-light: #f3f4f6; /* Added for selected card items */
-  --text-dark: #111827;
-  --text-medium: #374151;
-  --text-light: #6b7280;
-  --text-muted: #4b5563; /* Added for breakdown */
-  --border-color: #d1d5db;
-  --border-color-light: #e5e7eb;
-  --primary-blue: #2563eb;
-  --primary-blue-dark: #1d4ed8;
-  --primary-blue-focus: rgba(59, 130, 246, 0.2);
-  --primary-blue-light-bg: #eff6ff; /* Added for AI box */
-  --primary-blue-light-border: #bfdbfe; /* Added for AI box */
-  --primary-blue-text-dark: #1e3a8a; /* Added for AI h3 */
-  --secondary-gray: #6b7280;
-  --secondary-gray-dark: #4b5563;
-  --value-good: #16a34a;
-  --value-bad: #dc2626;
-  --info-bg: #eff6ff; /* Example for chips */
-  --info-heading: #1e40af; /* Example for chips */
-  --info-border: #bfdbfe; /* Example for chips */
-  --danger-color: #dc2626; /* For chip remove button */
-  --color-primary: #0052cc; /* Professional Blue */
-  --color-primary-hover: #0041a3;
-  --color-text-primary: #172b4d; /* Dark Slate Gray */
-  --color-text-secondary: #5e6c84; /* Medium Slate Gray */
-  --color-text-muted: #7a869a; /* Lighter Slate Gray */
-  --color-border: #dfe1e6;
-  --color-border-focus: #0052cc;
-  --color-background-light: #ffffff;
-  --color-background-overlay: rgba(23, 43, 77, 0.75); /* Dark Slate Gray overlay */
-  --color-success: #006644; /* Dark Green */
-  --color-success-background: #e3fcef; /* Light Green */
 
-  --font-family-sans: 'Roboto Condensed', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; /* Prioritize Roboto Condensed */
-  --font-family-serif: 'Playfair Display', Georgia, serif; /* Added serif option */
-
-  --spacing-xs: 4px;
-  --spacing-sm: 8px;
-  --spacing-md: 16px;
-  --spacing-lg: 24px;
-  --spacing-xl: 32px;
-
-  --border-radius-md: 8px;
-  --border-radius-lg: 16px; /* Large radius for the box */
-
-  --shadow-soft: 0 4px 8px rgba(9, 30, 66, 0.1);
-  --shadow-medium: 0 8px 16px rgba(9, 30, 66, 0.15);
-  --shadow-focus: 0 0 0 3px rgba(0, 82, 204, 0.2); /* Blue glow */
-
-  --transition-speed: 0.2s;
-  --color-primary: #0052cc;          /* Professional Blue */
-  --color-primary-hover: #0041a3;     /* Darker Blue */
-  --color-primary-light: rgba(0, 82, 204, 0.15); /* Light blue for focus */
+  /* Brand & Accent Colors */
+  --amex-primary-blue: #0052cc;
+  --amex-accent-gold: #ffc400; 
+  --amex-accent-gold-hover: #e6b300;
+  --amex-accent-gold-border: #d4a100;
+  --brand-green-highlight: #16a34a;
+  
+  /* Primary & Secondary Colors (Consolidated) */
+  --color-primary: #0056b3; /* Stronger Blue (was also #0052cc, #1e40af, #0052cc) - Choose one primary definition */
+  --color-primary-hover: #0041a3; /* Darker Blue (was also #1e3a8a, #004085) */
+  --color-primary-light: rgba(0, 82, 204, 0.15); 
   --color-primary-gradient-start: #0052cc;
-  --color-primary-gradient-end: #003aaa; /* Slightly less intense gradient end */
+  --color-primary-gradient-end: #003aaa; 
+  --secondary-color: #34d399; /* Tealish Green */
+  --secondary-color-dark: #10b981;
+  --color-accent-primary: #0033A0;    
+  --color-accent-secondary-cta: #D4AF37; 
+  --color-accent-gold-theming: #b58900; /* Renamed to avoid conflict with amex-accent-gold */
+  --color-accent-gold-light: #fdf7e7; 
 
-  --color-text-primary: #172b4d;      /* Dark Slate Gray */
-  --color-text-secondary: #5e6c84;    /* Medium Slate Gray */
-  --color-text-light: #7a869a;       /* Lighter Slate Gray */
-  --color-text-on-primary: #ffffff;   /* White */
+  /* Text Colors (Consolidated) */
+  --text-on-gold: #1f2937;
+  --text-dark: #111827; /* Near Black (was also #1f2937, #172b4d, #212529, #1a202c) */
+  --text-medium: #374151; /* Dark Gray (was also #4b5563, #5e6c84, #495057) */
+  --text-light: #6b7280; /* Medium Gray (was also #7a869a, #6c757d) */
+  --text-on-primary: #ffffff; 
+  --text-on-accent: var(--text-dark); 
+  --text-muted: #4b5563; /* For breakdown, also #6b7280 and #7a869a existed */
+  --color-text-primary: var(--text-dark); /* Aliasing to consolidated */
+  --color-text-secondary: var(--text-medium); /* Aliasing to consolidated */
+  --color-text-muted-alt: var(--text-light); /* Aliasing to consolidated, was --color-text-light & --color-text-muted */
+  --color-heading: var(--text-dark); /* Aliasing to consolidated */
+  --primary-blue-text-dark: #1e3a8a; 
 
-  --color-background-page: #f4f5f7;   /* Light Gray background */
-  --color-background-card: #ffffff;   /* White card */
+  /* Background Colors (Consolidated) */
+  --bg-white: #ffffff;
+  --bg-light: #f3f4f6; /* Light Gray for selected items, cards */
+  --bg-grey-bar: #f0f2f5;    
+  --bg-zebra-stripe: #fafafa; 
+  --bg-light-gray: #f9fafb; /* Very Light Gray for subtle backgrounds */
+  --primary-blue-light-bg: #eff6ff; 
+  --color-background-main: var(--bg-white);       
+  --color-background-subtle: #f8f9fa; /* Standard Light Gray */
+  --color-background-page: #f4f5f7;   /* Light Gray page background */
+  --color-background-card: var(--bg-white);   
+  --color-background-overlay: rgba(23, 43, 77, 0.75); 
+  --background-light: var(--bg-light-gray); /* Aliased */
+  --background-white: var(--bg-white); /* Aliased */
 
-  --color-border: #dfe1e6;          /* Light Gray border */
+  /* Border Colors (Consolidated) */
+  --border-color: #d1d5db; /* Standard border (was also #dee2e6) */
+  --border-color-light: #e5e7eb; /* Lighter border */
+  --primary-blue-light-border: #bfdbfe; 
+  --color-border: var(--border-color); /* Aliased (was also #dfe1e6) */
   --color-border-focus: var(--color-primary);
+  --color-border-medium: var(--border-color); 
 
-  --color-success: #006644;          /* Dark Green */
-  --color-success-background: #e3fcef; /* Light Green */
-  --color-error: #bf2600;            /* Dark Red */
-  --color-error-background: #ffebe6;   /* Light Red */
-
-  --color-spinner-base: #c1c7d0;     /* Medium Gray */
+  /* State Colors (Success, Error, Info, Warning - Consolidated) */
+  --color-success: #16a34a; /* Bootstrap Green (was also #006644, #198754) */
+  --color-success-background: #e3fcef; 
+  --color-danger: #dc3545; /* Bootstrap Red (was also #bf2600, #dc2626, #ef4444) */
+  --color-error-background: #ffebe6;  
+  --value-good: var(--color-success);
+  --value-bad: var(--color-danger);
+  --info-bg: #eff6ff; 
+  --info-text: #2563eb; 
+  --info-heading: #1e40af; 
+  --info-border: #bfdbfe; 
+  --success-bg: #f0fdf4; 
+  --success-text: var(--color-success); 
+  --warning-bg: #fffbeb; 
+  --warning-text: #f59e0b; 
+  --danger-bg: #fef2f2; 
+  --danger-text: var(--color-danger); 
+  --neutral-bg: #f3f4f6; 
+  --neutral-text: #4b5563; 
+  --color-spinner-base: #c1c7d0;     
   --color-spinner-accent: var(--color-primary);
 
-  /* Spacing */
-  --spacing-xs: 4px;
-  --spacing-sm: 8px;
-  --spacing-md: 16px;
-  --spacing-lg: 24px;
-  --spacing-xl: 32px;
-  --spacing-xxl: 48px;
+  /* Shadows (Consolidated) */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); /* Multiple definitions, kept one */
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); /* Multiple definitions, kept one */
+  --shadow-soft: 0 4px 8px rgba(9, 30, 66, 0.1);
+  --shadow-medium: 0 8px 16px rgba(9, 30, 66, 0.15);
+  --shadow-focus: 0 0 0 3px rgba(0, 82, 204, 0.2); 
 
-  /* Radii */
-  --border-radius-sm: 4px;  /* Inner elements */
-  --border-radius-md: 8px;  /* Card, buttons */
-  --border-radius-lg: 12px; /* Larger elements if needed */
+  /* Spacing (Consolidated) */
+  --spacing-xs: 0.25rem; /* 4px */
+  --spacing-sm: 0.5rem;  /* 8px */
+  --spacing-md: 1rem;    /* 16px */
+  --spacing-lg: 1.5rem;  /* 24px */
+  --spacing-xl: 2rem;    /* 32px */
+  --spacing-xxl: 3rem;   /* 48px */
+
+  /* Border Radius (Consolidated) */
+  --border-radius-sm: 0.2rem;    /* ~3px (was also 4px) */
+  --border-radius-md: 0.375rem;  /* ~6px (was also 6px, 8px) */
+  --border-radius-lg: 0.5rem;    /* ~8px (was also 8px, 12px, 16px) */
+  --border-radius-xl: 12px;
+  --border-radius-pill: 9999px; 
   --border-radius-full: 50%;
+  --border-radius: 8px; /* General fallback */
 
-  /* Shadows */
-  --shadow-sm: 0 1px 2px rgba(9, 30, 66, 0.07);
-  --shadow-md: 0 4px 8px -2px rgba(9, 30, 66, 0.1), 0 0 1px rgba(9, 30, 66, 0.08);
-  --shadow-lg: 0 12px 24px -4px rgba(9, 30, 66, 0.15), 0 0 1px rgba(9, 30, 66, 0.1);
+  /* Typography (Consolidated) */
+  --font-family-body: 'Inter', sans-serif;
+  --font-family-heading: 'Playfair Display', serif; 
+  --font-family-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-family-sans: 'Roboto Condensed', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; 
+  --font-family-serif: 'Playfair Display', Georgia, serif; 
+  --font-condensed: 'Roboto Condensed', var(--font-sans);
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
 
   /* Transitions */
   --transition-speed: 0.2s;
   --transition-timing: ease-in-out;
-  --color-text-primary: #212529; /* Near Black */
-    --color-text-secondary: #495057; /* Dark Gray */
-    --color-text-muted: #6c757d; /* Medium Gray */
-    --color-heading: #1a202c; /* Very Dark Gray-Blue */
-    --color-primary: #0056b3; /* Stronger Blue */
-    --color-primary-dark: #004085; /* Darker Blue */
-    /* Refined Gold - slightly more saturated */
-    --color-accent-gold: #b58900; /*#c09b5f; /* Muted Gold/Bronze */
-    --color-accent-gold-light: #fdf7e7; /* Very light gold/cream for bg */
-    --color-success: #198754; /* Bootstrap Green */
-    --color-danger: #dc3545; /* Bootstrap Red */
-    --color-background: #ffffff;
-    --color-background-subtle: #f8f9fa; /* Standard Light Gray */
-    --color-border: #dee2e6; /* Standard Border Gray */
-    --font-serif: 'Playfair Display', Georgia, serif;
-    --font-sans: 'Roboto', 'Segoe UI', Helvetica, Arial, sans-serif;
-    --font-condensed: 'Roboto Condensed', var(--font-sans);
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
-    --border-radius: 8px; /* Standard radius */
-    --primary-color: #1e40af; /* Deep Blue */
-    --primary-color-dark: #1e3a8a;
-    --secondary-color: #34d399; /* Tealish Green */
-    --secondary-color-dark: #10b981;
-    --text-color-primary: #1f2937; /* Dark Gray */
-    --text-color-secondary: #4b5563; /* Medium Gray */
-    --background-light: #f9fafb; /* Very Light Gray */
-    --background-white: #ffffff;
-    --border-color: #e5e7eb; /* Light Gray Border */
-    --border-radius: 8px;
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  /* Card Image Specifics */
+  --card-image-width: 280px; 
+  --card-image-height: 176px; 
+  --card-image-aspect-ratio: calc(var(--card-image-width) / var(--card-image-height)); 
+  --card-image-border-radius: 12px; 
+
+  /* Scrollbar */
+  --scrollbar-thumb-color: #cbd5e1;
+  --scrollbar-track-color: #f1f5f9;
+  --scrollbar-thumb-hover-color: #94a3b8;
+
+  /* Page Structure (examples, might be handled differently) */
+  --content-max-width: 1280px; 
+  --header-height: var(--site-global-header-height); /* Aliased for potential internal use */
+  --footer-height: var(--main-site-footer-height); /* Aliased for potential internal use */
+  --sidebar-width: 300px; 
 }
 
+/* Global Smooth Scroll for TOC & General Behavior */
 html {
+  scroll-behavior: smooth;
+  /* scroll-padding-top should ideally be header height + a small buffer */
+  scroll-padding-top: calc(var(--site-global-header-height) + var(--spacing-md, 16px)); 
   height: 100%;
   box-sizing: border-box;
-  scroll-behavior: smooth; /* Added for smoother anchor link scrolling */
 }
 *, *::before, *::after {
   box-sizing: inherit;
@@ -209,68 +164,63 @@ html {
 
 body {
   margin: 0;
-  font-family: var(--font-family-sans); /* Use variable */
-  color: var(--text-medium); /* Use variable */
-  background-color: var(--bg-white); /* Use variable */
+  font-family: var(--font-family-main); 
+  color: var(--text-medium); 
+  background-color: var(--color-background-page); 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  line-height: 1.6; /* Improve base readability */
+  line-height: 1.6; 
+  /* Add padding-top to body if header is fixed and not accounted for by main element margin */
+  padding-top: var(--site-global-header-height); 
 }
 
 main {
-  /* flex: 1 1 auto; */ /* Consider removing if using sticky footer pattern causes issues */
   display: block;
   width: 100%;
-  /* CRITICAL FIX: Ensure NO overflow property here that isn't 'visible' */
-  /* overflow: visible; */ /* Explicitly setting default, or just remove any overflow rule */
+  /* If header is fixed and body has padding-top, main might not need margin-top */
+  /* margin-top: var(--header-height-actual, 4rem); REMOVED, handled by body padding-top */
+  overflow-y: visible; 
 }
 
-/* If you have a specific class for main content like .main-content */
-main.main-content {
-  margin-top: var(--header-height-actual, 4rem); /* Use variable */
-  /* CRITICAL FIX: REMOVE overflow-x property */
-  /* overflow-x: clip; */ /* REMOVED */
-  overflow-y: visible; /* Keep as default */
-}
 
 /* Add word wrapping globally for safety */
-p, h1, h2, h3, h4, h5, h6, li, div, span { /* Added span */
+p, h1, h2, h3, h4, h5, h6, li, div, span { 
     overflow-wrap: break-word;
-    word-wrap: break-word; /* Older browsers */
+    word-wrap: break-word; 
 }
 
 /* General Container for consistent max-width and padding */
 .container {
   width: 90%;
-  max-width: 1200px; /* Keep consistent max-width */
+  max-width: var(--content-max-width, 1200px); 
   margin-left: auto;
   margin-right: auto;
-  padding-left: var(--spacing-md, 16px); /* Use spacing variables */
+  padding-left: var(--spacing-md, 16px); 
   padding-right: var(--spacing-md, 16px);
 }
 
 /* General Section Styling */
 .content-section {
-  padding-top: var(--spacing-xl, 32px); /* Consistent vertical spacing */
+  padding-top: var(--spacing-xl, 32px); 
   padding-bottom: var(--spacing-xl, 32px);
-  margin-top: 1rem; /* Add some space between sections */
+  margin-top: 1rem; 
 }
 
 /* General Section Title */
 .section-title {
   text-align: center;
-  color: var(--text-dark); /* Use variable */
-  font-family: var(--font-family-serif); /* Use Playfair for headings */
+  color: var(--color-heading); 
+  font-family: var(--font-family-serif); 
   font-weight: 700;
-  font-size: clamp(1.8rem, 5vw, 2.5rem); /* Responsive heading size */
-  margin: 0 auto var(--spacing-lg, 24px) auto; /* Center align and add bottom margin */
-  max-width: 800px; /* Prevent overly long titles on wide screens */
+  font-size: clamp(1.8rem, 5vw, 2.5rem); 
+  margin: 0 auto var(--spacing-lg, 24px) auto; 
+  max-width: 800px; 
   line-height: 1.3;
 }
 
 .section-description {
   text-align: center;
-  color: var(--text-medium);
+  color: var(--text-medium); /* Was --text-medium, aliased */
   font-size: clamp(1rem, 2.5vw, 1.1rem);
   max-width: 700px;
   margin: 0 auto var(--spacing-lg, 24px) auto;
@@ -278,13 +228,13 @@ p, h1, h2, h3, h4, h5, h6, li, div, span { /* Added span */
 }
 
 
-/* =============== FONT DEFINITIONS (Unchanged) =============== */
+/* =============== FONT DEFINITIONS =============== */
 @font-face {
   font-family: 'Roboto Condensed';
   src: url('/fonts/Roboto_Condensed-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
-  font-display: swap; /* Good for performance */
+  font-display: swap;
 }
 
 @font-face {
@@ -292,7 +242,7 @@ p, h1, h2, h3, h4, h5, h6, li, div, span { /* Added span */
   src: url('/fonts/Roboto_Condensed-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
-  font-display: swap; /* Good for performance */
+  font-display: swap;
 }
 
 @font-face {
@@ -311,11 +261,11 @@ p, h1, h2, h3, h4, h5, h6, li, div, span { /* Added span */
   src: url('/fonts/Playfair-Display-Bold.ttf') format('truetype');
 }
 @font-face {
-  font-family: 'Inter'; /* This is the name you'll use in your font-family CSS property */
-  src: url('/fonts/inter-v18-latin-regular.woff2') format('woff2'); /* Path to your font file */
-  font-weight: 400; /* Or 'normal' */
+  font-family: 'Inter'; 
+  src: url('/fonts/inter-v18-latin-regular.woff2') format('woff2'); 
+  font-weight: 400; 
   font-style: normal;
-  font-display: swap; /* Crucial for performance: renders text with a fallback font while Inter loads */
+  font-display: swap; 
 }
 
 @font-face {
@@ -337,25 +287,26 @@ p, h1, h2, h3, h4, h5, h6, li, div, span { /* Added span */
 @font-face {
   font-family: 'Inter';
   src: url('/fonts/inter-v18-latin-700.woff2') format('woff2');
-  font-weight: 700; /* Or 'bold' */
+  font-weight: 700; 
   font-style: normal;
   font-display: swap;
 }
 
 
-/* =============== HEADER (Unchanged) =============== */
+/* =============== HEADER =============== */
 .site-header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background: white; /* Check contrast if header color changes */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  z-index: 3000; /* Ensure header is above most content */
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background: var(--background-white); 
+  box-shadow: var(--shadow-sm); 
+  z-index: 3000; 
+  font-family: var(--font-family-main); 
   font-weight: 500;
   font-size: 1rem;
-  line-height: 1; /* Set base line-height */
+  line-height: 1; 
+  height: var(--site-global-header-height); 
 }
 
 .header-inner {
@@ -363,63 +314,64 @@ p, h1, h2, h3, h4, h5, h6, li, div, span { /* Added span */
   align-items: center;
   justify-content: space-between;
   margin: 0 auto;
-  max-width: 1200px;
-  height: 3.5rem; /* Define header height */
-  padding: 0 1rem;
+  max-width: var(--content-max-width, 1200px);
+  height: 100%; 
+  padding: 0 var(--spacing-md); 
 }
 
 .logo-toggle-container {
   display: flex;
   align-items: center;
-  flex-shrink: 0; /* Prevent shrinking */
+  flex-shrink: 0; 
 }
 
 .menu-toggle {
-  display: none;
+  display: none; /* Hidden by default, shown in media query */
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 0.5rem; /* Add padding for easier tapping */
-  margin: 0 1rem 0 -0.5rem; /* Adjust margin */
+  padding: 0.5rem; 
+  margin: 0 1rem 0 -0.5rem; 
 }
 
 .bar {
   display: block;
   width: 1.5rem;
   height: 0.2rem;
-  background: #000; /* Ensure high contrast */
-  margin: 4px 0; /* Slightly increased spacing */
-  transition: transform 0.3s ease, opacity 0.3s ease; /* Added opacity */
+  background: var(--text-dark); /* Was --text-color-primary */
+  margin: 4px 0; 
+  transition: transform 0.3s ease, opacity 0.3s ease; 
 }
 
-.menu-toggle.open .bar:nth-child(1) { transform: translateY(6px) rotate(45deg); } /* Adjusted transform */
+.menu-toggle.open .bar:nth-child(1) { transform: translateY(6px) rotate(45deg); } 
 .menu-toggle.open .bar:nth-child(2) { opacity: 0; }
-.menu-toggle.open .bar:nth-child(3) { transform: translateY(-6px) rotate(-45deg); } /* Adjusted transform */
+.menu-toggle.open .bar:nth-child(3) { transform: translateY(-6px) rotate(-45deg); } 
 
 .site-logo {
-    display: inline-block; /* Allows vertical alignment */
+    display: inline-block; 
 }
-.site-logo img { /* Styling might differ slightly for Next Image */
+.site-logo img { 
   display: block;
-  height: auto; /* Let width/height props control size */
+  height: auto; 
   width: auto;
-  max-height: calc(3.5rem - 1rem); /* Example: Limit height based on header */
+  /* Ensure logo fits header, adjust 1.5 factor as needed */
+  max-height: calc(var(--site-global-header-height) - (var(--spacing-md) * 1.5)); 
 }
 
 /* Main Navigation (Mobile - Slide out) */
 .main-nav {
   position: fixed;
-  top: 3.5rem;
+  top: var(--site-global-header-height); 
   left: 0;
-  width: min(70vw, 300px); /* Use min() for responsiveness */
-  height: calc(100vh - 3.5rem);
-  background: #fff;
-  box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+  width: min(70vw, 300px); 
+  height: calc(100vh - var(--site-global-header-height)); 
+  background: var(--background-white);
+  box-shadow: var(--shadow-lg); 
   transform: translateX(-100%);
   transition: transform 0.3s ease;
-  z-index: 3000; /* Above backdrop */
+  z-index: 2999; 
   overflow-y: auto;
-  padding: 1rem;
+  padding: var(--spacing-md); 
 }
 
 .main-nav.open {
@@ -433,30 +385,30 @@ p, h1, h2, h3, h4, h5, h6, li, div, span { /* Added span */
 }
 
 .nav-list li {
-  margin: 0; /* Reset margin for consistency */
+  margin: 0; 
 }
 
 .nav-list a,
-.nav-list button { /* Style buttons similarly if used */
+.nav-list button { 
   text-decoration: none;
-  color: #333; /* Check contrast */
+  color: var(--text-dark); /* Was --text-color-primary */
   font-weight: 500;
   font-size: 0.95rem;
   display: block;
-  padding: 0.75rem 0; /* Consistent padding */
+  padding: 0.75rem 0; 
   transition: color 0.3s ease, background-color 0.3s ease;
-  border-bottom: 1px solid #eee; /* Separator */
+  border-bottom: 1px solid var(--border-color-light); 
 }
 .nav-list li:last-child > a,
 .nav-list li:last-child > button {
-    border-bottom: none; /* Remove border from last item */
+    border-bottom: none; 
 }
 
 
 .nav-list a:hover,
 .nav-list button:hover {
-  color: #0056b3;
-  background-color: #f8f8f8;
+  color: var(--color-primary);
+  background-color: var(--background-subtle);
 }
 
 /* Mobile Submenu Styles */
@@ -464,9 +416,9 @@ p, h1, h2, h3, h4, h5, h6, li, div, span { /* Added span */
   display: none;
   list-style: none;
   margin: 0;
-  padding: 0 0 0 1rem; /* Padding left for indent */
-  background: #f8f8f8; /* Slightly different background */
-  border-left: none; /* Remove side border */
+  padding: 0 0 0 1rem; 
+  background: var(--background-subtle); 
+  border-left: none; 
 }
 .has-dropdown.submenu-open > .dropdown-menu {
   display: block;
@@ -477,8 +429,8 @@ p, h1, h2, h3, h4, h5, h6, li, div, span { /* Added span */
 .dropdown-menu a {
   padding: 0.5rem 0.8rem;
   font-size: 0.9rem;
-  color: #444; /* Check contrast */
-  border-bottom: 1px solid #ddd; /* Separator inside submenu */
+  color: var(--text-medium); /* Was --text-color-secondary */
+  border-bottom: 1px solid var(--border-color); 
 }
 .dropdown-menu li:last-child a {
     border-bottom: none;
@@ -487,7 +439,7 @@ p, h1, h2, h3, h4, h5, h6, li, div, span { /* Added span */
 /* Backdrop for mobile menu */
 .menu-backdrop {
   position: fixed;
-  top: 0;
+  top: 0; /* Should cover full screen including header area */
   left: 0;
   height: 100%;
   width: 100%;
@@ -495,7 +447,7 @@ p, h1, h2, h3, h4, h5, h6, li, div, span { /* Added span */
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.0s 0.3s linear;
-  z-index: 2500; /* Below nav, above content */
+  z-index: 2500; 
 }
 .menu-backdrop.open {
   opacity: 1;
@@ -504,160 +456,145 @@ p, h1, h2, h3, h4, h5, h6, li, div, span { /* Added span */
 }
 
 /* Header Actions (Search etc.) */
-/* This LI contains the search bar */
 .header-actions {
   display: flex;
   align-items: center;
-  padding: 0.5rem 0; /* Padding for search li on mobile */
-  border-bottom: 1px solid #eee;
+  padding: 0.5rem 0; 
+  border-bottom: 1px solid var(--border-color-light);
 }
 
-/* --- Header Search Bar Styles (Unchanged) --- */
+/* --- Header Search Bar Styles --- */
 .search-container {
-  position: relative; /* Needed for absolute positioning of dropdown */
-  margin: 0 1rem; /* Adjust horizontal margin */
+  position: relative; 
+  margin: 0 var(--spacing-md); 
 }
 
 .search-container input[type="search"] {
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 100%; /* Expand to container width */
-  max-width: 250px; /* Limit width on desktop */
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  width: 100%; 
+  max-width: 250px; 
   box-sizing: border-box;
-  font-size: 1rem; /* Match base font size */
+  font-size: 1rem; 
   transition: border-color 0.2s ease;
 }
 
 .search-container input[type="search"]:focus {
-  border-color: #007bff; /* Highlight border on focus (adjust color) */
-  outline: none; /* Remove default browser outline */
+  border-color: var(--color-primary); 
+  outline: none; 
 }
 
-/* Base styles for dropdown-like elements positioned below input */
 .search-results-base {
   position: absolute;
-  top: 100%; /* Position directly below the input */
+  top: 100%; 
   left: 0;
-  right: 0; /* Span the width of the relative container */
-  background-color: #ffffff; /* White background */
-  border: 1px solid #ccc; /* Match input border */
-  border-top: none; /* Avoid double border */
-  border-radius: 0 0 4px 4px; /* Rounded bottom corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  z-index: 3000; /* Ensure it appears above other content */
+  right: 0; 
+  background-color: var(--background-white); 
+  border: 1px solid var(--border-color); 
+  border-top: none; 
+  border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm); 
+  box-shadow: var(--shadow-md); 
+  z-index: 3000; 
   padding: 0;
   margin: 0;
-  max-width: 350px; /* Optional: Slightly wider than input for readability */
+  max-width: 350px; 
 }
 
-/* Styles for the results list */
 .search-results-dropdown {
   /* Inherit base styles */
   position: absolute;
   top: 100%;
   left: 0;
   right: 0;
-  background-color: #ffffff;
-  border: 1px solid #ccc;
+  background-color: var(--background-white);
+  border: 1px solid var(--border-color);
   border-top: none;
-  border-radius: 0 0 4px 4px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
+  box-shadow: var(--shadow-md);
   z-index: 3000;
   padding: 0;
   margin: 0;
   max-width: 350px;
-  /* Specific list styles */
   list-style: none;
-  max-height: 300px; /* Limit height and make scrollable */
-  overflow-y: auto; /* Add scrollbar if content overflows */
+  max-height: 300px; 
+  overflow-y: auto; 
 }
 
-/* Styles for the "No results" message */
 .search-no-results {
-   /* Inherit base styles */
   position: absolute;
   top: 100%;
   left: 0;
   right: 0;
-  background-color: #ffffff;
-  border: 1px solid #ccc;
+  background-color: var(--background-white);
+  border: 1px solid var(--border-color);
   border-top: none;
-  border-radius: 0 0 4px 4px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
+  box-shadow: var(--shadow-md);
   z-index: 3000;
-  padding: 0;
-  margin: 0;
-  max-width: 350px;
-  /* Specific "no results" styles */
-  padding: 10px 15px; /* Add padding */
-  color: #666; /* Grey text color */
+  padding: var(--spacing-sm) var(--spacing-md); 
+  color: var(--text-muted); 
   font-style: italic;
   text-align: center;
-  border-top: 1px solid #ccc; /* Re-add top border for separation */
+  border-top: 1px solid var(--border-color); 
+  max-width: 350px;
 }
 
-/* Styles for individual list items */
 .search-results-dropdown li {
   padding: 0;
   margin: 0;
 }
 
-/* Styles for the links within list items */
 .search-results-dropdown li a {
-  display: block; /* Make the entire area clickable */
-  padding: 10px 15px; /* Padding around text */
-  color: #333; /* Default text color */
-  text-decoration: none; /* Remove underline */
-  white-space: normal; /* Allow text wrapping for long names */
-  line-height: 1.4; /* Adjust line spacing for wrapped text */
-  transition: background-color 0.2s ease, color 0.2s ease; /* Smooth transitions */
-  font-size: 0.9rem; /* Adjusted font size */
+  display: block; 
+  padding: var(--spacing-sm) var(--spacing-md); 
+  color: var(--text-dark); /* Was --text-color-primary */
+  text-decoration: none; 
+  white-space: normal; 
+  line-height: 1.4; 
+  transition: background-color 0.2s ease, color 0.2s ease; 
+  font-size: 0.9rem; 
 }
 
-/* Hover/focus styles for result links */
 .search-results-dropdown li a:hover,
 .search-results-dropdown li a:focus {
-  background-color: #f0f0f0; /* Light grey background on hover/focus */
-  color: #0056b3; /* Link color on hover/focus (adjust) */
+  background-color: var(--background-subtle); 
+  color: var(--color-primary); 
 }
 
-/* Style for card name within the link */
 .search-result-name {
-    font-weight: 500; /* Slightly bolder name */
-    display: inline; /* Keep on same line as issuer potentially */
+    font-weight: 500; 
+    display: inline; 
 }
 
-/* Style for issuer name within the link */
 .search-result-issuer {
-    color: #555; /* Darker grey for issuer */
-    font-size: 0.9em; /* Slightly smaller text */
-    margin-left: 4px; /* Space between name and issuer */
-    display: inline; /* Keep on same line */
+    color: var(--text-muted); 
+    font-size: 0.9em; 
+    margin-left: var(--spacing-xs); 
+    display: inline; 
 }
-
 /* --- End Header Search Bar Styles --- */
 
 /* Mobile Subscribe Button */
-.nav-list li a[href="#subscribe"] {
-  display: inline-block;
-  background-color: #007bff;
-  color: white; /* Check contrast: White on blue is good */
+.nav-list li a[href="#subscribe"] { /* More specific to avoid affecting other .cta-button */
+  display: inline-block; /* Was inline-block, ensures it behaves like a button */
+  background-color: var(--color-primary); /* Primary color */
+  color: white; 
   padding: 10px 15px;
-  border-radius: 5px;
+  border-radius: var(--border-radius-md);
   font-weight: bold;
   text-decoration: none;
   transition: background-color 0.3s ease;
-  margin-top: 1rem;
-  border-bottom: none; /* Remove border */
+  margin-top: 1rem; /* Space above in mobile menu */
+  border-bottom: none; 
   text-align: center;
 }
 .nav-list li a[href="#subscribe"]:hover {
-  background-color: #0056b3;
+  background-color: var(--color-primary-hover); /* Darker shade */
 }
 
 
-/* ====== MOBILE HEADER STYLES (Unchanged) ====== */
+/* ====== MOBILE HEADER STYLES ====== */
 @media (max-width: 1099px) {
   .menu-toggle {
     display: flex;
@@ -665,61 +602,54 @@ p, h1, h2, h3, h4, h5, h6, li, div, span { /* Added span */
     justify-content: center;
     align-items: center;
   }
-  .main-nav {
-     position: fixed; /* Keep fixed positioning */
-  }
-  /* Mobile Submenu Toggle Button Styles */
+  /* .main-nav is already fixed */
+
    .submenu-toggle-button {
      background: transparent;
      border: none;
      padding: 0.5rem;
      cursor: pointer;
-     margin-left: auto; /* Push to right */
+     margin-left: auto; 
      font-size: 1.2em;
      line-height: 1;
-     color: #555; /* Check contrast */
+     color: var(--text-medium); /* Was --text-color-secondary */
     }
 
-  /* --- Responsive adjustments for Mobile Search (Unchanged) --- */
   .header-actions {
-      order: -1; /* Move search to top in mobile menu (adjust if needed) */
-      width: 100%; /* Take full width */
-      padding: 10px 15px; /* Add padding within mobile menu */
+      order: -1; 
+      width: 100%; 
+      padding: var(--spacing-sm) var(--spacing-md); 
       box-sizing: border-box;
-      border-bottom: 1px solid #eee; /* Keep border */
+      border-bottom: 1px solid var(--border-color-light); 
   }
   .search-container {
-      margin: 0; /* Remove horizontal margin */
-      width: 100%; /* Take full width */
+      margin: 0; 
+      width: 100%; 
   }
   .search-container input[type="search"] {
-      max-width: none; /* Allow input to take full width */
+      max-width: none; 
   }
 
-  /* Adjust positioning for dropdown/no-results on mobile */
-  .search-results-base, /* Apply base styles adjustment */
+  .search-results-base, 
   .search-results-dropdown,
   .search-no-results {
-      width: 100%; /* Full width */
-      position: static; /* Change positioning to flow naturally */
-      border: 1px solid #eee; /* Lighter border for mobile */
-      box-shadow: none; /* Remove shadow */
-      max-height: 200px; /* Reduce max height */
-      margin-top: 5px; /* Add space below input */
-      max-width: none; /* Remove max-width limit */
-      z-index: 3001; /* Ensure dropdown is above content but potentially below header */
+      width: 100%; 
+      position: static; 
+      border: 1px solid var(--border-color-light); 
+      box-shadow: none; 
+      max-height: 200px; 
+      margin-top: var(--spacing-xs); 
+      max-width: none; 
+      z-index: 3001; /* Ensure above main nav content if static */
   }
-  /* --- End Mobile Search Adjustments --- */
-
 }
 
-/* ====== DESKTOP HEADER STYLES (Unchanged) ====== */
+/* ====== DESKTOP HEADER STYLES ====== */
 @media (min-width: 1100px) {
   .menu-toggle, .menu-backdrop, .submenu-toggle-button {
-    display: none; /* Hide mobile-only elements */
+    display: none; 
   }
 
-  /* Override mobile nav styles */
   .main-nav {
     position: static;
     width: auto;
@@ -728,27 +658,19 @@ p, h1, h2, h3, h4, h5, h6, li, div, span { /* Added span */
     box-shadow: none;
     overflow: visible;
     padding: 0;
-    margin-left: 1rem; /* Adjusted margin logic */
+    margin-left: var(--spacing-md); 
     background: transparent;
     display: flex;
     flex-direction: row;
     align-items: center;
     transition: none;
     max-width: none;
-    z-index: 3000;
+    /* z-index was 3000, site-header is also 3000, this should be fine or slightly lower if needed */
   }
-
-  /* Keep search container separate if desired outside nav-list in HTML */
-  /* This assumes search stays INSIDE nav-list based on user req */
-   .header-inner .search-container { /* Example if search moved */
-       /* margin-left: auto; */ /* Push to right? */
-   }
-
 
   .nav-list {
     display: flex;
     flex-direction: row;
-    /* FIXED: Use baseline alignment */
     align-items: baseline;
     height: 100%;
     list-style: none;
@@ -758,43 +680,38 @@ p, h1, h2, h3, h4, h5, h6, li, div, span { /* Added span */
 
   .nav-list li {
     margin: 0 0.8rem;
-    /* REMOVED height: 100%; */
   }
 
-   /* Search bar styling within nav list on desktop */
-  .nav-list li.header-actions {
-     margin-right: 1.5rem; /* More space after search */
-     /* Reset mobile padding/border */
+   .nav-list li.header-actions {
+     margin-right: 1.5rem; 
      padding: 0;
      border: none;
-     display: flex; /* Use flex to align items */
+     display: flex; 
      align-items: center;
    }
   .nav-list li.header-actions .search-container {
      margin: 0;
-     width: auto; /* Don't force 100% width */
+     width: auto; 
   }
    .nav-list li.header-actions input[type="search"] {
-      width: 180px; /* Set desired desktop width */
+      width: 180px; 
       padding: 0.4rem 0.8rem;
-      max-width: 180px; /* Explicit max width */
+      max-width: 180px; 
    }
    .nav-list li.header-actions input[type="search"]:focus {
       width: 200px;
       max-width: 200px;
    }
 
-  /* General desktop link styling */
   .nav-list a,
-  .nav-list a.nav-link {
+  .nav-list a.nav-link { /* Ensure .nav-link is covered if used */
      display: inline-block;
      padding: 0.5rem 0.2rem;
      border-bottom: none;
      font-weight: 500;
      position: relative;
-     color: var(--text-medium); /* Use variable */
+     color: var(--text-medium); 
   }
-  /* Simple hover underline effect */
    .nav-list a:not([href="#subscribe"])::after {
       content: '';
       position: absolute;
@@ -803,28 +720,25 @@ p, h1, h2, h3, h4, h5, h6, li, div, span { /* Added span */
       display: block;
       margin-top: 4px;
       right: 0;
-      background: var(--color-primary); /* Use variable */
+      background: var(--color-primary); 
       transition: width .3s ease;
-      -webkit-transition: width .3s ease;
    }
    .nav-list a:not([href="#subscribe"]):hover::after {
       width: 100%;
       left: 0;
-      background-color: var(--color-primary); /* Use variable */
+      background-color: var(--color-primary); 
    }
-   .nav-list a:hover {
-     color: var(--color-primary); /* Change text color on hover */
+   .nav-list a:hover { /* General hover for non-button links */
+     color: var(--color-primary); 
    }
 
-
-  /* Desktop Subscribe Button Styles */
   .nav-list li a[href="#subscribe"] {
      display: inline-flex;
      align-items: center;
-     background-color: var(--color-primary); /* Use variable */
-     color: white;
+     background-color: var(--color-primary); 
+     color: white; /* Explicitly white for button */
      padding: 8px 15px;
-     border-radius: 5px;
+     border-radius: var(--border-radius-md);
      font-weight: bold;
      text-decoration: none;
      transition: background-color 0.3s ease;
@@ -833,50 +747,45 @@ p, h1, h2, h3, h4, h5, h6, li, div, span { /* Added span */
      border-bottom: none;
   }
   .nav-list li a[href="#subscribe"]:hover {
-    background-color: var(--color-primary-hover); /* Use variable */
+    background-color: var(--color-primary-hover); 
   }
 
-
-  /* --- DESKTOP DROPDOWN POSITIONING & FIX (Unchanged) --- */
   .nav-list li.has-dropdown {
      position: relative;
   }
 
   .has-dropdown .dropdown-menu {
     position: absolute;
-    background: white;
+    background: var(--background-white);
     margin-left: 0;
     padding: 0.5rem 0;
-    border: 1px solid #eee;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    border-radius: 4px;
+    border: 1px solid var(--border-color-light);
+    box-shadow: var(--shadow-lg); 
+    border-radius: var(--border-radius-sm);
     border-left: none;
-    display: none;
-    top: calc(100% + 8px); /* Visual gap */
+    display: none; /* Initially hidden */
+    top: calc(100% + 8px); 
     left: 0;
     min-width: 220px;
-    z-index: 3000;
+    z-index: 3001; /* Above main nav items */
     list-style: none;
   }
 
-  /* Invisible Bridge pseudo-element */
   .nav-list li.has-dropdown::after {
     content: '';
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
-    height: 8px; /* Match the gap */
+    height: 8px; 
     background: transparent;
-    z-index: 3000;
+    /* z-index was 3000, ensure it doesn't block dropdown if needed, or remove */
   }
 
-  /* Show dropdown on hover */
   .nav-list li.has-dropdown:hover > .dropdown-menu {
     display: block;
   }
 
-   /* Styling for items INSIDE dropdown */
   .dropdown-menu li {
       margin: 0;
       height: auto;
@@ -886,34 +795,31 @@ p, h1, h2, h3, h4, h5, h6, li, div, span { /* Added span */
       display: block;
       padding: 0.6rem 1.2rem;
       font-size: 0.9rem;
-      color: #444;
+      color: var(--text-medium); /* Was --text-color-secondary */
       white-space: nowrap;
       border: none;
       transition: background-color 0.2s ease, color 0.2s ease;
   }
    .dropdown-menu a:hover {
-      color: var(--color-primary); /* Use variable */
-      background-color: #f5f5f5;
+      color: var(--color-primary); 
+      background-color: var(--background-subtle);
    }
-   .dropdown-menu a::after { /* Remove hover underline from dropdown links */
+   .dropdown-menu a::after { 
        display: none;
    }
-  /* --- END DESKTOP DROPDOWN --- */
-
-} /* End Desktop Media Query */
+} 
 
 
-/* =============== HERO SECTION (Refined) =============== */
+/* =============== HERO SECTION =============== */
 .hero-section {
-  position: relative; /* Stacking context for overlay and content */
-  height: 70vh; /* Adjusted height */
-  min-height: 500px; /* Minimum height */
-  display: flex; /* Use flex to center content */
-  align-items: center; /* Vertically center */
-  justify-content: center; /* Horizontally center */
+  position: relative; 
+  height: 70vh; 
+  min-height: 500px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
   text-align: center;
-  overflow: hidden; /* Prevent image overflow */
-  /* margin-top: -3.5rem; Pull up to overlap potential header margin - REMOVED, handled by main margin */
+  overflow: hidden; 
 }
 
 .hero-background {
@@ -922,16 +828,16 @@ p, h1, h2, h3, h4, h5, h6, li, div, span { /* Added span */
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1; /* Behind content */
+  z-index: 1; 
 }
 
-/* Target potential Next.js Image wrapper */
-.hero-background > div {
+.hero-background > div { /* Next.js Image wrapper */
   height: 100%;
 }
 
-.hero-background img { /* Style the image itself */
-    object-position: center; /* Ensure image is centered */
+.hero-background img { 
+    object-fit: cover; /* Ensure image covers the container */
+    object-position: center; 
 }
 
 
@@ -941,27 +847,26 @@ p, h1, h2, h3, h4, h5, h6, li, div, span { /* Added span */
   left: 0;
   width: 100%;
   height: 100%;
-  /* Subtle overlay to improve text contrast */
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.45)); /* Adjusted gradient */
-  z-index: 2; /* Above image, below content */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.45)); 
+  z-index: 2; 
 }
 
 .hero-content-container {
-  position: relative; /* Ensure content is above overlay */
+  position: relative; 
   z-index: 3;
-  color: var(--bg-white); /* White text on dark overlay/image */
-  padding: var(--spacing-lg); /* Add padding */
-  max-width: 900px; /* Limit content width */
-  margin: 0 auto; /* Center */
+  color: var(--bg-white); 
+  padding: var(--spacing-lg); 
+  max-width: 900px; 
+  margin: 0 auto; 
 }
 
 .hero-section h1 {
-  font-family: var(--font-family-serif); /* Use Playfair */
-  font-size: clamp(2.2rem, 6vw, 3.5rem); /* Larger hero heading */
+  font-family: var(--font-family-serif); 
+  font-size: clamp(2.2rem, 6vw, 3.5rem); 
   font-weight: 700;
-  margin-bottom: var(--spacing-sm); /* Use spacing variables */
+  margin-bottom: var(--spacing-sm); 
   line-height: 1.2;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.6); /* Stronger shadow for readability */
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.6); 
 }
 
 .hero-subheading {
@@ -970,261 +875,263 @@ p, h1, h2, h3, h4, h5, h6, li, div, span { /* Added span */
   max-width: 65ch;
   line-height: 1.6;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-  opacity: 0.95; /* Slightly less transparent */
+  opacity: 0.95; 
 }
 
 .hero-actions {
   margin-top: var(--spacing-lg);
   display: flex;
-  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+  flex-wrap: wrap; 
   justify-content: center;
-  gap: var(--spacing-md); /* Space between buttons */
+  gap: var(--spacing-md); 
 }
 
-.hero-cta {
-  padding: 12px 28px !important; /* Larger padding for hero buttons - override general */
-  font-size: 1.1rem !important; /* Larger font size */
+.hero-cta { /* Class for primary hero button */
+  /* Inherits from .cta-button general styles */
+  padding: 12px 28px !important; 
+  font-size: 1.1rem !important; 
   min-width: 180px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Add shadow to hero buttons */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
 }
 
-/* Style secondary CTAs differently */
-.secondary-cta {
-  background-color: transparent !important; /* Transparent background */
-  color: var(--bg-white) !important; /* White text */
-  border: 2px solid var(--bg-white) !important; /* White border */
+.secondary-cta { /* Class for secondary hero button */
+  /* Inherits from .cta-button general styles if structure is similar */
+  background-color: transparent !important; 
+  color: var(--bg-white) !important; 
+  border: 2px solid var(--bg-white) !important; 
   transition: background-color 0.3s ease, color 0.3s ease;
-  box-shadow: none !important; /* Remove shadow from secondary */
+  box-shadow: none !important; 
+  padding: 10px 26px !important; /* Adjusted to match primary button padding - border */
+  font-size: 1.1rem !important;
+  min-width: 180px;
 }
 
 .secondary-cta:hover {
-  background-color: rgba(255, 255, 255, 0.15) !important; /* Slight white background on hover */
+  background-color: rgba(255, 255, 255, 0.15) !important; 
   color: var(--bg-white) !important;
 }
 
 
-/* =============== BUTTONS (Refined) =============== */
+/* =============== BUTTONS =============== */
 .cta-button,
-.Apply-button,
-.submit {
+.Apply-button, 
+.submit { 
   display: inline-block;
-  padding: 10px 20px; /* Adjusted padding */
-  border-radius: var(--border-radius-md, 8px); /* Use variable */
-  font-weight: 700; /* Bolder */
+  padding: 10px 20px; 
+  border-radius: var(--border-radius-md); 
+  font-weight: 700; 
   text-decoration: none;
   text-align: center;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.2s ease;
-  border: none; /* Ensure no default border */
-  margin: 0; /* Reset margin, handle spacing with gap or utility classes */
-  line-height: 1.5; /* Consistent line height */
-  font-family: var(--font-family-sans); /* Ensure consistent font */
+  border: none; 
+  margin: 0; 
+  line-height: 1.5; 
+  font-family: var(--font-family-main); /* Use main font */
 }
 .cta-button:active,
 .Apply-button:active,
 .submit:active {
-  transform: scale(0.97); /* Slightly more noticeable press */
+  transform: scale(0.97); 
 }
 
-/* Accessibility: Improve focus visibility */
 .cta-button:focus-visible,
 .Apply-button:focus-visible,
 .submit:focus-visible {
-    outline: 3px solid var(--primary-blue-focus, rgba(59, 130, 246, 0.3)); /* Use variable */
+    outline: 3px solid var(--primary-blue-focus); 
     outline-offset: 2px;
-    box-shadow: none; /* Remove inner shadow if focus ring is clear */
+    box-shadow: none; 
 }
 
-
-/* Specific Button Colors - Using Variables */
+/* Primary CTA Button (can be .cta-button or a more specific class) */
 .cta-button {
-    background-color: var(--color-primary, #0052cc); /* Primary color */
-    color: var(--bg-white, #fff);
+    background-color: var(--color-primary); 
+    color: var(--bg-white);
 }
 .cta-button:hover {
-    background-color: var(--color-primary-hover, #0041a3); /* Darker primary */
+    background-color: var(--color-primary-hover); 
 }
 
+/* Apply Button (often for success/positive action) */
 .Apply-button {
-    background-color: var(--color-success, #006644); /* Use success green */
-    color: var(--bg-white, #fff);
+    background-color: var(--color-success); 
+    color: var(--bg-white);
 }
 .Apply-button:hover {
-    background-color: #004d33; /* Darker green */
+    background-color: color-mix(in srgb, var(--color-success) 85%, black); /* Darker green */
 }
 
+/* Submit Button (often same as primary CTA) */
 .submit {
-    /* Matches primary CTA button */
-    background: var(--color-primary, #0052cc);
-    color: var(--bg-white, #fff);
+    background: var(--color-primary);
+    color: var(--bg-white);
 }
 .submit:hover {
-    background: var(--color-primary-hover, #0041a3);
+    background: var(--color-primary-hover);
 }
 
-/* Button variants (example) */
+/* Other Button Variants */
 .learn-more-button {
-  background-color: var(--secondary-gray, #6b7280);
-  color: var(--bg-white, #fff);
+  background-color: var(--secondary-gray);
+  color: var(--bg-white);
 }
 .learn-more-button:hover {
-  background-color: var(--secondary-gray-dark, #4b5563);
+  background-color: var(--secondary-gray-dark);
 }
 
 .read-more-button {
-  background-color: var(--color-primary, #0052cc);
-  color: var(--bg-white, #fff);
-  padding: 8px 16px; /* Slightly smaller */
+  background-color: var(--color-primary);
+  color: var(--bg-white);
+  padding: 8px 16px; 
   font-size: 0.9rem;
-  align-self: flex-start; /* Align to start of flex container */
-  margin-top: auto; /* Push to bottom */
+  align-self: flex-start; 
+  margin-top: auto; 
 }
 .read-more-button:hover {
-  background-color: var(--color-primary-hover, #0041a3);
+  background-color: var(--color-primary-hover);
 }
 
 
-/* =============== FEATURED CARDS SECTION (Refined) =============== */
+/* =============== FEATURED CARDS SECTION =============== */
 #featured-cards {
-  background-color: var(--bg-light-gray); /* Changed from yellow to light gray */
-  /* padding is handled by .content-section */
+  background-color: var(--background-subtle); /* Was --bg-light-gray */
 }
 
-.featured-cards-grid { /* Specific grid for featured cards */
-  display: grid; /* Ensure grid display */
-  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); /* Adjusted min size */
-  gap: var(--spacing-lg, 24px); /* Consistent gap */
+.featured-cards-grid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); 
+  gap: var(--spacing-lg); 
 }
 
 .featured-card {
   display: flex;
   flex-direction: column;
-  background-color: var(--bg-white);
+  background-color: var(--background-white);
   border-radius: var(--border-radius-md);
-  box-shadow: var(--shadow-soft); /* Use variable */
+  box-shadow: var(--shadow-soft); 
   overflow: hidden;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add hover transition */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+  border: 1px solid var(--border-color-light); 
 }
 
 .featured-card:hover {
     transform: translateY(-5px);
-    box-shadow: var(--shadow-medium); /* Enhance shadow on hover */
+    box-shadow: var(--shadow-medium); 
 }
 
 .featured-card__image-wrapper {
-  background-color: var(--bg-white); /* White background for image */
-  padding: var(--spacing-lg); /* More padding */
-  display: flex; /* Center image */
+  background-color: var(--background-white); 
+  padding: var(--spacing-lg); 
+  display: flex; 
   justify-content: center;
   align-items: center;
-  min-height: 160px; /* Adjust as needed */
+  min-height: 160px; 
   border-bottom: 1px solid var(--border-color-light);
 }
 
 .featured-card__image {
-  width: auto; /* Let height control */
-  max-height: 100px; /* Reduced card image height for cleaner look */
+  width: auto; 
+  max-height: 100px; 
   height: auto;
-  object-fit: contain; /* Ensure full card is visible */
-  display: block; /* Remove extra space */
-  margin: 0 auto; /* Center */
+  object-fit: contain; 
+  display: block; 
+  margin: 0 auto; 
 }
 
 
 .featured-card__description {
-  padding: var(--spacing-lg); /* Consistent padding */
+  padding: var(--spacing-lg); 
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center content */
-  flex-grow: 1; /* Ensure description takes remaining space */
+  /* align-items: center; Removed to allow text to align naturally if not centered by parent */
+  flex-grow: 1; 
+  text-align: center; 
 }
 
 .featured-card__description h3 {
     margin: 0 0 var(--spacing-sm) 0;
-    font-size: 1.2rem; /* Slightly smaller heading */
+    font-size: 1.2rem; 
     line-height: 1.3;
-    color: var(--text-dark);
-    font-weight: 700; /* Ensure bold */
+    color: var(--text-dark); /* Was --text-dark */
+    font-weight: 700; 
 }
 
-.featured-card__description p {
+.featured-card__description p, 
+.featured-card__text { 
     margin: 0 0 var(--spacing-md) 0;
     line-height: 1.5;
-    color: var(--text-medium);
+    color: var(--text-medium); /* Was --text-medium */
     font-size: 0.95rem;
-    flex-grow: 1; /* Allow paragraph to push buttons down */
-    min-height: 60px; /* Ensure consistent space */
+    flex-grow: 1; 
+    min-height: initial; 
 }
 
 .featured-card__actions {
     display: flex;
-    flex-direction: column; /* Stack buttons vertically */
-    gap: var(--spacing-sm); /* Space between stacked buttons */
-    width: 100%; /* Ensure buttons can be centered */
-    align-items: center; /* Center buttons */
-    margin-top: auto; /* Push action group to bottom */
-    padding-top: var(--spacing-sm); /* Space above buttons */
+    flex-direction: column; 
+    gap: var(--spacing-sm); 
+    width: 100%; 
+    align-items: center; 
+    margin-top: auto; 
+    padding-top: var(--spacing-sm); 
 }
 
 .featured-card__actions .cta-button,
 .featured-card__actions .Apply-button {
-    width: 100%; /* Make buttons full width within actions */
-    max-width: 220px; /* Limit max width for aesthetics */
-    margin: 0; /* Remove individual margins */
-    padding: 10px 15px; /* Adjust padding if needed */
-    font-size: 0.95rem; /* Adjust font size */
+    width: 100%; 
+    max-width: 220px; 
+    margin: 0; 
+    padding: 10px 15px; 
+    font-size: 0.95rem; 
 }
 
 .card-footnote {
-    grid-column: 1 / -1; /* Span full grid width */
+    grid-column: 1 / -1; 
     text-align: center;
     font-size: 0.8rem;
     color: var(--text-light);
     margin-top: var(--spacing-md);
-    padding: 0 var(--spacing-md); /* Add padding */
+    padding: 0 var(--spacing-md); 
 }
 
-/* Responsive stacking for featured cards (keep existing or adjust breakpoint) */
 @media (max-width: 988px) {
   .featured-cards-grid {
-     grid-template-columns: 1fr; /* Force single column */
+     grid-template-columns: 1fr; 
      gap: var(--spacing-md);
   }
   .featured-card {
-      max-width: 450px; /* Adjust max width for single column */
-      margin: 0 auto; /* Center single column card */
+      max-width: 450px; 
+      margin: 0 auto; 
   }
 }
 
 
-/* =============== COMPARISON SECTION (Refined) =============== */
-.comparison-section { /* Use specific class */
-  background-color: var(--primary-blue-light-bg); /* Use light blue background */
+/* =============== COMPARISON SECTION =============== */
+.comparison-section { 
+  background-color: var(--primary-blue-light-bg); 
   border-top: 1px solid var(--primary-blue-light-border);
   border-bottom: 1px solid var(--primary-blue-light-border);
-  /* padding handled by .content-section */
 }
 
-/* Styles for the comparison tool page if needed - these were placeholders */
-#compare label {
+#compare label { /* Assuming this is used on a specific page */
   margin-right: 0.5rem;
   font-weight: bold;
-  color: var(--text-dark);
+  color: var(--text-dark); /* Was --text-dark */
 }
 
 #compare select {
   padding: 0.6rem 1rem;
   border: 1px solid var(--border-color);
-  border-radius: 5px;
+  border-radius: var(--border-radius-md); 
   min-width: 220px;
-  background-color: var(--bg-white);
+  background-color: var(--background-white);
   font-size: 1rem;
 }
 
 .comparison-result {
   margin-top: 30px;
-  color: var(--text-medium);
+  color: var(--text-medium); /* Was --text-medium */
   font-weight: normal;
   font-size: 1rem;
   text-align: left;
@@ -1234,15 +1141,15 @@ p, h1, h2, h3, h4, h5, h6, li, div, span { /* Added span */
     font-size: 1.5rem;
     margin-bottom: 1rem;
     text-align: center;
-    color: var(--text-dark);
+    color: var(--text-dark); /* Was --text-dark */
 }
 
 .comparison-result table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
-  background-color: var(--bg-white);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  background-color: var(--background-white);
+  box-shadow: var(--shadow-sm); 
 }
 
 .comparison-result th,
@@ -1259,35 +1166,33 @@ p, h1, h2, h3, h4, h5, h6, li, div, span { /* Added span */
 }
 
 .comparison-result th {
-  background-color: var(--bg-light-gray);
+  background-color: var(--background-subtle); /* Was --bg-light-gray */
   font-weight: bold;
-  color: var(--text-dark);
+  color: var(--text-dark); /* Was --text-dark */
 }
 
 
-/* =============== REVIEWS SECTION (Refined) =============== */
-.reviews-news-section { /* Use specific class */
-  background-color: var(--bg-white);
-  /* Padding handled by .content-section */
+/* =============== REVIEWS SECTION =============== */
+.reviews-news-section { 
+  background-color: var(--background-white);
 }
 
-.reviews-grid {
+.reviews-grid { /* Also used for .news-grid-homepage potentially */
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted min-width */
-  gap: var(--spacing-lg); /* Use variable */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+  gap: var(--spacing-lg); 
 }
 
-/* Review Card Styling */
-.review-card { /* Renamed class */
-  background: var(--bg-white);
+.review-card { 
+  background: var(--background-white);
   border-radius: var(--border-radius-md);
   box-shadow: var(--shadow-soft);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  color: var(--text-medium);
-  border: 1px solid var(--border-color-light); /* Add subtle border */
+  color: var(--text-medium); /* Was --text-medium */
+  border: 1px solid var(--border-color-light); 
 }
 
 .review-card:hover {
@@ -1296,35 +1201,34 @@ p, h1, h2, h3, h4, h5, h6, li, div, span { /* Added span */
 }
 
 .review-card__image-link {
-    display: block; /* Ensure link wraps image properly */
-    line-height: 0; /* Remove potential space below image */
+    display: block; 
+    line-height: 0; 
 }
 
-.review-card__image { /* Renamed class */
+.review-card__image { 
   width: 100%;
-  height: 180px; /* Fixed height for consistent look */
-  object-fit: cover; /* Cover ensures aspect ratio is maintained */
+  height: 180px; 
+  object-fit: cover; 
   object-position: center;
   display: block;
-  /* border-bottom: 1px solid var(--border-color-light); removed border here, added to card */
 }
 
-.review-card__content { /* Renamed class */
+.review-card__content { 
     padding: var(--spacing-md);
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Takes remaining space */
+    flex-grow: 1; 
 }
 
 .review-card__content h3 {
-  color: var(--color-primary); /* Use primary color for link-like titles */
-  font-size: 1.15rem; /* Slightly smaller than featured */
+  color: var(--color-primary); 
+  font-size: 1.15rem; 
   margin: 0 0 var(--spacing-sm) 0;
   line-height: 1.3;
-  font-weight: 700; /* Make title bold */
+  font-weight: 700; 
 }
 .review-card__content h3 a {
-    color: inherit; /* Inherit color from h3 */
+    color: inherit; 
     text-decoration: none;
 }
 .review-card__content h3 a:hover {
@@ -1333,32 +1237,30 @@ p, h1, h2, h3, h4, h5, h6, li, div, span { /* Added span */
 
 .review-card__content p {
   font-size: 0.9rem;
-  color: var(--text-medium);
+  color: var(--text-medium); /* Was --text-medium */
   line-height: 1.5;
   margin: 0 0 var(--spacing-md) 0;
-  flex-grow: 1; /* Push button to bottom */
+  flex-grow: 1; 
 }
 
-/* Review Card Button */
-.review-card__content .read-more-button { /* Target specific button */
-  /* Styling defined in general button section */
-  align-self: flex-start; /* Align left */
-  margin-top: auto; /* Push to bottom */
+.review-card__content .read-more-button { 
+  align-self: flex-start; 
+  margin-top: auto; 
 }
 
 
-/* =============== FOOTER (Unchanged) =============== */
+/* =============== FOOTER =============== */
 .site-footer {
-  background: #000080;
-  color: #f0f0f0; /* Good contrast */
-  margin-top: var(--spacing-xl); /* Ensure space above footer */
+  background: #000080; 
+  color: #f0f0f0; 
+  margin-top: var(--spacing-xl); 
   padding: 2rem 1rem;
-  border-top: 4px solid #FFD700; /* Keep brand element */
-  font-family: var(--font-family-serif); /* Use Playfair */
+  border-top: 4px solid #FFD700; 
+  font-family: var(--font-family-main); 
 }
 
 .footer-inner {
-  max-width: 1200px;
+  max-width: var(--content-max-width, 1200px);
   margin: 0 auto;
 }
 
@@ -1374,7 +1276,7 @@ p, h1, h2, h3, h4, h5, h6, li, div, span { /* Added span */
   color: #fff;
   font-weight: 700;
   font-size: 1.2rem;
-  font-family: var(--font-family-sans); /* Use Sans for footer headings for clarity */
+  font-family: var(--font-family-main); 
 }
 
 .footer-col ul {
@@ -1387,12 +1289,11 @@ p, h1, h2, h3, h4, h5, h6, li, div, span { /* Added span */
   margin-bottom: 0.6rem;
 }
 
-/* Footer Links */
-.footlink a {
-  color: #d0d0d0; /* Contrast OK */
+.footlink a { 
+  color: #d0d0d0; 
   text-decoration: none;
   transition: color 0.3s ease;
-  font-family: var(--font-family-sans); /* Use Sans for links */
+  font-family: var(--font-family-main); 
   font-size: 0.95rem;
 }
 
@@ -1405,12 +1306,12 @@ p, h1, h2, h3, h4, h5, h6, li, div, span { /* Added span */
   margin-top: 2rem;
   font-size: 0.85rem;
   line-height: 1.5;
-  color: #ccc; /* Contrast OK */
+  color: #ccc; 
   text-align: center;
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
-  font-family: var(--font-family-sans); /* Use Sans */
+  font-family: var(--font-family-main); 
 }
 
 .footer-bottom {
@@ -1418,88 +1319,49 @@ p, h1, h2, h3, h4, h5, h6, li, div, span { /* Added span */
   padding: 1rem 0;
   text-align: center;
   font-size: 0.9rem;
-  color: #ccc; /* Contrast OK */
-  border-top: 1px solid #4a4a9c;
-  font-family: var(--font-family-sans); /* Use Sans */
+  color: #ccc; 
+  border-top: 1px solid #4a4a9c; 
+  font-family: var(--font-family-main); 
 }
 
 .footer-bottom p {
   margin: 0;
 }
 
-/* ===== REMOVED OLD/REDUNDANT STYLES ===== */
-/* Removed styles like #product-overview .img, .hero, .H2_featured-cards, */
-/* .H2_comparison, .reviews-container, .reviews-grid .card, .review_img etc. */
-/* as they are replaced by the new section/card/title classes */
-/* =============== STAR RATING STYLES (Update for SVG) =============== */
+/* =============== STAR RATING STYLES =============== */
 .star-rating {
   display: flex;
   align-items: center;
-  justify-content: center; /* Center align rating block */
-  gap: var(--spacing-sm, 8px); /* Space between number and SVG stars */
-  margin-bottom: var(--spacing-md, 16px); /* More space below stars */
-  color: var(--text-medium);
-  line-height: 1; /* Ensure consistent alignment */
+  justify-content: center; 
+  gap: var(--spacing-xs); 
+  margin-bottom: var(--spacing-md); 
+  color: var(--text-medium); /* Was --text-color-secondary */
+  line-height: 1; 
 }
 
 .rating-value {
   font-weight: 600;
-  font-size: 0.9rem; /* Slightly smaller number */
-  color: var(--text-secondary); /* Use secondary text color */
+  font-size: 0.9rem; 
+  color: var(--text-medium); /* Was --text-color-secondary */
 }
 
-/* Styling for the SVG icons */
 .star-rating .star {
-  display: inline-block; /* Treat SVGs like characters */
-  font-size: 1rem; /* Control SVG size via font-size */
-  color: #d1d5db; /* Default empty star color (light gray) */
-  vertical-align: middle; /* Align stars nicely with text */
+  display: inline-block; 
+  font-size: 1rem; 
+  color: var(--border-color-light); 
+  vertical-align: middle; 
 }
 
 .star-rating .star.filled {
-  color: #facc15; /* Yellow/Gold color for filled/half stars */
+  color: #facc15; 
 }
 
-/* Optional: specific color for empty if different from default gray */
 .star-rating .star.empty {
-   color: #e5e7eb; /* Even lighter gray for empty */
+   color: var(--border-color-light); 
 }
 
-/* --- Ensure Featured Card Description Alignment --- */
 
-/* Ensure the card itself uses flex column */
-.featured-card {
-  display: flex; /* Keep or add */
-  flex-direction: column; /* Keep or add */
-  /* rest of card styles... */
-}
-
-/* Ensure the description area grows and uses flex column */
-.featured-card__description {
-  display: flex; /* Keep or add */
-  flex-direction: column; /* Keep or add */
-  flex-grow: 1; /* Allows this section to expand vertically */
-  /* align-items: center; Replaced with below for better text alignment */
-  text-align: center; /* Center text elements */
-  /* rest of description styles... */
-}
-
-/* Ensure paragraph grows to push actions down, REMOVE fixed min-height */
-.featured-card__description .featured-card__text { /* Use specific class if needed */
-  flex-grow: 1; /* Allows paragraph to take up available space */
-  margin-top: var(--spacing-sm); /* Ensure space above paragraph */
-  margin-bottom: var(--spacing-md); /* Space below paragraph */
-  min-height: initial; /* REMOVE fixed min-height */
-  /* rest of paragraph styles... */
-}
-
-/* Ensure actions stay at the bottom */
-.featured-card__actions {
-  margin-top: auto; /* Keep or add, pushes actions to bottom */
-  /* rest of action styles... */
-}
-
-/* Add accessibility helper class if not already global */
+/* Accessibility helper class */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -1511,121 +1373,35 @@ p, h1, h2, h3, h4, h5, h6, li, div, span { /* Added span */
   white-space: nowrap;
   border-width: 0;
 }
-/* =============== EXISTING GLOBALS & DEFAULTS (Preserved) =============== */
-:root {
-  /* Existing Variables - Kept As Is */
-  --bg-light-gray: #f9fafb;
-  --bg-white: #ffffff;
-  --bg-light: #f3f4f6; /* Added for selected card items */
-  --text-dark: #111827;
-  --text-medium: #374151;
-  --text-light: #6b7280;
-  --text-muted: #4b5563; /* Added for breakdown */
-  --border-color: #d1d5db;
-  --border-color-light: #e5e7eb;
-  --primary-blue: #2563eb;
-  --primary-blue-dark: #1d4ed8;
-  --primary-blue-focus: rgba(59, 130, 246, 0.2);
-  --primary-blue-light-bg: #eff6ff; /* Added for AI box */
-  --primary-blue-light-border: #bfdbfe; /* Added for AI box */
-  --primary-blue-text-dark: #1e3a8a; /* Added for AI h3 */
-  --secondary-gray: #6b7280;
-  --secondary-gray-dark: #4b5563;
-  --value-good: #16a34a;
-  --value-bad: #dc2626;
-  --info-bg: #eff6ff; /* Example for chips */
-  --info-text: #2563eb; /* Example for chips */
-  --success-bg: #f0fdf4; /* Example for chips */
-  --success-text: #16a34a; /* Example for chips */
-  --warning-bg: #fffbeb; /* Example for chips */
-  --warning-text: #f59e0b; /* Example for chips */
-  --danger-bg: #fef2f2; /* Example for chips */
-  --danger-text: #ef4444; /* Example for chips */
-  --neutral-bg: #f3f4f6; /* Example for chips */
-  --neutral-text: #4b5563; /* Example for chips */
 
-  /* Card Image Specifics */
-  --card-image-width: 280px; /* Example: Increased base width */
-  --card-image-height: 176px; /* Example: Increased base height */
-  --card-image-aspect-ratio: calc(var(--card-image-width) / var(--card-image-height)); /* Approx 1.59 */
-  --card-image-border-radius: 12px; /* Example: Softer radius */
-
-
-  /* === NEW Core Visual Identity Variables (Integrated) === */
-
-  /* Neutrals - Aligned with new strategy, some may overlap or complement existing */
-  --color-background-main: var(--bg-white);       /* Bright White - Aliased to existing */
-  --color-background-subtle: var(--bg-light-gray); /* Soft, Light Gray - Aliased to existing */
-  --color-text-primary: var(--text-dark);        /* Dark Gray for primary text - Aliased */
-  --color-text-secondary: var(--text-medium);     /* Medium Gray for secondary text - Aliased */
-  --color-border-light: var(--border-color-light); /* Light Gray for borders - Aliased */
-  --color-border-medium: var(--border-color);      /* Medium Gray for borders - Aliased */
-
-  /* Accent Colors - Examples, choose actual hex codes based on your branding */
-  /* These are new and distinct from existing primary-blue for more refined control if needed */
-  --color-accent-primary: #0033A0;     /* Example: Refined Deep Blue for links, key highlights (can be same as --primary-blue or different) */
-  --color-accent-secondary-cta: #D4AF37; /* Example: Muted Elegant Gold for Call-to-Action buttons */
-
-  /* Typography Variables - Using Inter as the main font */
-  --font-family-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-
-  /* Font Weights (matching imported Inter weights) */
-  --font-weight-regular: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
-
-  /* Spacing and Sizing (examples, build out as needed for consistency) */
-  --spacing-xs: 0.25rem; /* 4px */
-  --spacing-sm: 0.5rem;  /* 8px */
-  --spacing-md: 1rem;    /* 16px */
-  --spacing-lg: 1.5rem;  /* 24px */
-  --spacing-xl: 2rem;    /* 32px */
-  --spacing-xxl: 3rem;   /* 48px */
-
-  /* Border Radius for elements like buttons, cards */
-  --border-radius-sm: 0.2rem;    /* ~3px */
-  --border-radius-md: 0.375rem;  /* ~6px */
-  --border-radius-lg: 0.5rem;    /* ~8px */
-
-  /* Added variables from existing globals.css for scrollbar, etc. */
-  --scrollbar-thumb-color: #cbd5e1;
-  --scrollbar-track-color: #f1f5f9;
-  --scrollbar-thumb-hover-color: #94a3b8;
-  --content-max-width: 1280px; /* Max width for main content areas */
-  --header-height: 64px; /* Assuming a fixed header height */
-  --footer-height: 120px; /* Assuming a fixed footer height */
-  --sidebar-width: 300px; /* Example width for a potential sidebar */
-}
-/* Add to your global CSS or homepage specific CSS */
+/* Homepage News Grid Specifics */
 .news-grid-homepage {
   display: grid;
-  gap: 1.5rem; /* Adjust gap as needed */
-  grid-template-columns: repeat(1, 1fr); /* Default for mobile */
+  gap: 1.5rem; 
+  grid-template-columns: repeat(1, 1fr); 
 }
 
-@media (min-width: 640px) { /* Small tablets and up */
+@media (min-width: 640px) { 
   .news-grid-homepage {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (min-width: 1024px) { /* Desktops and up */
+@media (min-width: 1024px) { 
   .news-grid-homepage {
-    grid-template-columns: repeat(4, 1fr); /* 4 columns for larger screens */
+    grid-template-columns: repeat(4, 1fr); 
   }
 }
 
-/* Ensure cards in the homepage news grid stretch to fill height if needed */
-.news-grid-homepage > div { /* Target the wrapper of NewsCard if any, or NewsCard itself */
-  height: 100%;
+.news-grid-homepage > div { 
+  height: 100%; /* Ensure card wrappers fill height */
 }
 
 .view-all-news-button {
-    background-color: #007bff; /* Example primary color */
+    background-color: var(--color-primary); 
     color: white;
     padding: 0.75rem 1.5rem;
-    border-radius: 6px;
+    border-radius: var(--border-radius-md);
     text-decoration: none;
     font-weight: 500;
     display: inline-block;
@@ -1633,26 +1409,5 @@ p, h1, h2, h3, h4, h5, h6, li, div, span { /* Added span */
 }
 
 .view-all-news-button:hover {
-    background-color: #0056b3; /* Darker shade on hover */
+    background-color: var(--color-primary-hover); 
 }
-
-/* You might also want a class for the section title similar to others */
-.section-title {
-  font-size: 2rem; /* Or your preferred size */
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 2rem; /* Or your preferred margin */
-  color: #333; /* Or your preferred color */
-}
-
-.container {
-  max-width: 1200px; /* Or your site's container width */
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-/* If NewsCard uses module CSS, you might need to ensure its root element stretches */
-/* This is generally handled by the card's own styling (.card height: 100%) */
-
