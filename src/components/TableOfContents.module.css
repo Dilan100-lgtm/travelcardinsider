@@ -95,14 +95,14 @@
   .tocContainer {
     position: sticky;          /* ← make it sticky here         */
     top: 96px;                 /* height of your fixed header   */
-    margin-bottom: 30rem;
+    margin-bottom: 25rem;
     /* Use var from globals or define fallback */
     width: var(--toc-width-desktop, 280px);
     align-self: flex-start; /* Align within sidebarArea if it were flex, harmless otherwise */
   }
   .tocList {
     /* Adjust based on final title height/padding and header height */
-    max-height: calc(100vh - var(--header-height-actual, 3.5rem) - var(--spacing-lg, 24px) - 80px);
+    max-height: calc(100vh - 8rem)
   }
 }
 
