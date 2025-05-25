@@ -1,791 +1,1125 @@
-// Example Path: pages/reviews/alaska-visa-signature.js
-// Or: pages/reviews/[slug].js (if using dynamic routing with 'alaska-visa-signature' as slug)
+/* ------------------------------------------------------------------
+    File:  pages/reviews/alaska-airlines-visa-signature-review.js
+    Route: https://www.yourwebsite.com/reviews/alaska-airlines-visa-signature-review
+------------------------------------------------------------------- */
 
-// !!! WARNING: THIS FILE CONTAINS PLACEHOLDER DATA/URLs/DIMENSIONS !!!
-// !!! YOU MUST REPLACE ALL PLACEHOLDERS MARKED WITH '!!!' BEFORE DEPLOYMENT !!!
-// !!! VERIFY ALL CARD DETAILS & SCHEMA VALUES AGAINST OFFICIAL ISSUER INFO !!!
-
-import React, { useState, useEffect, useCallback, useRef } from 'react'; // Hooks for tooltip
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from '../../styles/ReviewPage.module.css'; // Using the REVIEW CSS module
-import Header from '../../components/Header'; // Assuming you have these components
-import Footer from '../../components/Footer'; // Assuming you have these components
+import dynamic from 'next/dynamic';
+import styles from '../../styles/ReviewPage.module.css'; // Assuming same CSS module as aadvantage-mileup.js
 
-// Simplified data object based on the final template structure
-const reviewData = {
-  cardName: 'Alaska Airlines Visa Signature® Card',
-  title: 'Alaska Airlines Visa Signature® Card – In-Depth 2025 Review',
-  description: 'A 2,000-word review of the Alaska Airlines Visa Signature® Card by Bank of America, covering travel perks, companion fare, fees, 2025 updates, pros, cons, disclaimers, and advanced tips for frequent Alaska flyers.',
-  keywords: 'Alaska Airlines, Visa Signature, Bank of America, companion fare, airline credit card, 2025 updates',
-  author: 'TravelCardInsider', // *** REPLACE with your actual author/site name ***
-  imageUrl: '/1bbt_sigcm_v_mileageplan_250x158.png', // *** VERIFY PATH in /public ***
-  ratingValue: 7.9, // From Alaska HTML
-  applyLink: 'https://www.alaskaair.com/content/credit-card/visa-signature?srsltid=AfmBOopDXeo80pVEogV9HD0vekWjZ37Oa5Q3QSVRkVZWNhEaMZKv7F68', // *** REPLACE with actual Alaska APPLY URL ***
-  ratesLink: 'https://www.bankofamerica.com/credit-cards/products/alaska-airlines-credit-card/', // *** VERIFY URL ***
-  // Image dimensions (MUST BE ACCURATE for next/image) - Guessed from filename
-  imageWidth: 250, // *** REPLACE with actual image width ***
-  imageHeight: 158, // *** REPLACE with actual image height ***
+import TableOfContents from '../../components/TableOfContents'; // Assuming same TOC component
+// UPDATE ICON PATHS AS NEEDED for your project structure
+import IconGift from '../../components/icons/icon-gift.svg';
+import IconStar from '../../components/icons/icon-star.svg';
+import IconCheck from '../../components/icons/icon-Credit Card.svg'; // Represents fee or key features
+import IconX from '../../components/icons/icon-Star + Arrow Up.svg'; // Represents drawbacks or less positive aspects
+import IconPlus from '../../components/icons/icon-target.svg'; // Represents 'Best For' or 'Key Benefit'
+import IconPlane from '../../components/icons/icon-plane.svg'; // Example: Specific for travel perks
+import IconBag from '../../components/icons/icon-briefcase.svg'; // Example: Specific for bag benefits
+import IconWorld from '../../components/icons/icon-globe.svg'; // Example: Specific for alliance benefits
+
+const RatingTooltip = dynamic(() => import('../../components/RatingTooltip'), { ssr: false, loading: () => null });
+
+/* ──────────────────────────────
+    CONSTANTS & STATIC DATA
+    ────────────────────────────── */
+const siteName    = 'Travelcardinsider'; // UPDATE AS NEEDED
+const siteUrl     = 'https://www.travelcardinsider.com'; // UPDATE AS NEEDED: Replace with your actual site URL
+const pagePath    = '/reviews/alaska-airlines-visa-signature-review'; // UPDATE AS NEEDED
+const pageUrlFull = `${siteUrl}${pagePath}`;
+const publishDate = '2025-05-25'; // UPDATE AS NEEDED: Current date or actual publish date
+const updateDate  = '2025-05-25'; // UPDATE AS NEEDED: Current date or actual update date
+
+const reviewDataNew = {
+  cardName        : 'Alaska Airlines Visa Signature® Card',
+  title           : 'Alaska Airlines Visa Signature® Card Review (2025): Is It Your Best West Coast Co-Pilot?',
+  description     : 'In-depth 2025 review of the Alaska Airlines Visa Signature® Card: Companion Fare™, free checked bag, 3x miles on Alaska, oneworld® benefits, $95 fee. Ideal for West Coast travel & beyond.',
+  keywords        : 'Alaska Airlines Visa Signature review, Alaska Airlines credit card, Companion Fare, Mileage Plan, oneworld alliance, travel rewards card, Bank of America credit card, airline miles, free checked bag',
+  author: { // Placeholder: UPDATE ALL AUTHOR DETAILS AS NEEDED
+      name: 'Dilan Madushanka', // UPDATE
+      title: 'Founder & Lead Editor', // UPDATE
+      imageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // Placeholder - UPDATE
+      imageWidth: 40,
+      imageHeight: 40,
+      tooltipImageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // Placeholder - UPDATE
+      tooltipImageWidth: 60,
+      tooltipImageHeight: 60,
+      expertise: [ // UPDATE
+          'Airline Credit Cards',
+          'Travel Rewards Programs',
+          'Companion Passes',
+          'Loyalty Program Analysis',
+          'Credit Card Benefits Evaluation'
+      ],
+      bioSnippet: 'Dilan Madushanka is the founder and lead editor of Travelcardinsider, dedicated to demystifying credit cards and uncovering their real-world value for smarter travel.', // UPDATE
+      fullBioLink: '/author/dilan-madushanka', // Placeholder - UPDATE
+      fullBio: `Dilan Madushanka is the founder and lead editor of Travelcardinsider, a platform dedicated to helping everyday people make smarter decisions with travel and rewards credit cards. [MORE BIO DETAILS TO BE ADDED BY USER]`, // UPDATE
+      publishedStats: 'X+ in-depth card reviews per week', // Placeholder - UPDATE
+      testedStats: 'Over Y+ credit card benefits across major brands', // Placeholder - UPDATE
+      socialLinks: { // Placeholder - UPDATE
+          linkedin: 'https://www.linkedin.com/in/dilan-madushanka-b65293365',
+          twitter: 'https://x.com/team_dilan',
+          email: 'team@travelcardinsider.com'
+      }
+  },
+  siteName: siteName,
+  imageUrl        : '/1bbt_sigcm_v_mileageplan_250x158.png', // Placeholder: Replace with actual card image URL
+  imageWidth      : 1290, // Placeholder - UPDATE if image dimensions differ
+  imageHeight     : 812,  // Placeholder - UPDATE if image dimensions differ
+  ratingValue     : 7.9,  // Placeholder - UPDATE AS NEEDED (e.g. 4.25/5 * 2)
+  ratingCount     : 210,  // Placeholder - UPDATE AS NEEDED
+  reviewBody      : 'Our editors evaluate the Alaska Airlines Visa Signature® Card based on its Companion Fare™, free checked bag benefit, mileage earning rates (especially on Alaska purchases), oneworld® Alliance access, annual fee, and overall value for U.S.-based travelers, particularly those on the West Coast.',
+  aprRange        : '20.24% - 29.24% variable', // From your text
+  annualFee       : 95, // From your text
+  // IMPORTANT: REPLACE WITH YOUR ACTUAL AFFILIATE LINK
+  applyLink       : 'https://www.alaskaair.com/content/credit-card/visa-signature?srsltid=AfmBOopDXeo80pVEogV9HD0vekWjZ37Oa5Q3QSVRkVZWNhEaMZKv7F68',
+  // Official rates link from research
+  ratesLink       : 'https://www.bankofamerica.com/credit-cards/products/alaska-airlines-credit-card/', //
+  sku             : 'BOFA-ALASKA-SIG-TCI-2025', // Placeholder - Example SKU
+  mpn             : 'BOFAALASKASIG', // Placeholder - Example MPN
+  h1Content       : "Alaska Airlines Visa Signature® Card: Your Co-Pilot for West Coast Adventures and Beyond?", // From your text
 };
 
-// --- Rating Tooltip Content (Customize if needed for Alaska Card) ---
-const ratingCriteria = [ // *** VERIFY/CUSTOMIZE these criteria for Alaska Card Rating ***
-    'Companion Fare Value',
-    'Free Checked Bag Benefit',
-    'Alaska Mileage Plan™ Value',
-    'Welcome Bonus',
-    'Annual Fee ($95)'
+/* ──────────────────────────────
+    STRUCTURED DATA GRAPH
+    ────────────────────────────── */
+const structuredDataOptimized = {
+  '@context': 'https://schema.org',
+  '@graph'  : [
+    {
+      '@type'        : 'Product',
+      '@id'          : `${pageUrlFull}#product`,
+      name           : reviewDataNew.cardName,
+      image          : `${siteUrl}${reviewDataNew.imageUrl}`, // Ensure full URL
+      description    : reviewDataNew.description,
+      sku            : reviewDataNew.sku,
+      mpn            : reviewDataNew.mpn,
+      brand          : { '@type': 'Brand', name: 'Alaska Airlines' },
+      aggregateRating: {
+        '@type'    : 'AggregateRating',
+        ratingValue : reviewDataNew.ratingValue.toString(),
+        bestRating  : '10',
+        worstRating : '1',
+        ratingCount : reviewDataNew.ratingCount.toString(),
+        reviewCount : '1', // Assuming 1 editor review for this page
+      },
+      offers: {
+        '@type'            : 'Offer',
+        url                : reviewDataNew.applyLink, // Your affiliate link
+        priceCurrency      : 'USD',
+        price              : reviewDataNew.annualFee.toString(),
+        priceValidUntil    : '2026-12-31', // UPDATE AS NEEDED
+        itemCondition      : 'https://schema.org/NewCondition',
+        availability       : 'https://schema.org/InStock',
+        priceSpecification: [
+          {
+            '@type'              : 'PriceSpecification',
+            priceCurrency        : 'USD',
+            price                : reviewDataNew.annualFee.toString(),
+            valueAddedTaxIncluded: 'false',
+            description          : `Annual fee: $${reviewDataNew.annualFee}.`,
+          },
+          {
+            '@type'              : 'PriceSpecification',
+            priceCurrency        : 'USD',
+            description          : `Purchase APR: ${reviewDataNew.aprRange}. Foreign Transaction Fee: None.`, // Updated from text
+          },
+        ],
+        seller: { '@type': 'Organization', name: 'Bank of America' },
+      },
+      review: { '@id': `${pageUrlFull}#editorReview` },
+    },
+    {
+      '@type'         : 'Review',
+      '@id'           : `${pageUrlFull}#editorReview`,
+      name            : `${reviewDataNew.cardName} – Review Updated ${updateDate}`,
+      itemReviewed    : { '@id': `${pageUrlFull}#product` },
+      reviewBody      : reviewDataNew.reviewBody,
+      reviewRating    : {
+        '@type'    : 'Rating',
+        ratingValue : reviewDataNew.ratingValue.toString(),
+        bestRating  : '10',
+        worstRating : '1',
+        description: `${siteName} editorial rating based on a 10.0 scale, as of ${updateDate}.`
+      },
+      author          : {
+          '@type': 'Person',
+          'name': reviewDataNew.author.name,
+          'url': reviewDataNew.author.fullBioLink ? `${siteUrl}${reviewDataNew.author.fullBioLink}` : undefined
+      },
+      publisher       : {
+        '@type' : 'Organization',
+        name    : siteName,
+        logo    : { '@type': 'ImageObject', url: `${siteUrl}/images/logo/your-logo-schema.png` }, // UPDATE AS NEEDED
+      },
+      datePublished   : publishDate,
+      dateModified    : updateDate,
+    },
+    {
+      '@type'            : 'WebPage',
+      '@id'              : pageUrlFull,
+      url                : pageUrlFull,
+      name               : reviewDataNew.title,
+      description        : reviewDataNew.description,
+      inLanguage         : 'en-US',
+      isPartOf           : { '@id': `${siteUrl}#website` },
+      primaryImageOfPage : { '@id': `${pageUrlFull}#primaryImage` },
+      breadcrumb         : { '@id': `${pageUrlFull}#breadcrumbs` },
+      datePublished      : publishDate,
+      dateModified       : updateDate,
+       author: {
+          '@type': 'Person',
+          'name': reviewDataNew.author.name,
+          'url': reviewDataNew.author.fullBioLink ? `${siteUrl}${reviewDataNew.author.fullBioLink}` : undefined
+       },
+    },
+    {
+      '@type'   : 'ImageObject',
+      '@id'     : `${pageUrlFull}#primaryImage`,
+      url       : `${siteUrl}${reviewDataNew.imageUrl}`, // Ensure full URL
+      width     : reviewDataNew.imageWidth,
+      height    : reviewDataNew.imageHeight,
+      caption   : reviewDataNew.cardName,
+    },
+    {
+      '@type'        : 'BreadcrumbList',
+      '@id'          : `${pageUrlFull}#breadcrumbs`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: siteName, item: siteUrl },
+        { '@type': 'ListItem', position: 2, name: 'Credit Card Reviews', item: `${siteUrl}/reviews` }, // UPDATE AS NEEDED if review category path is different
+        { '@type': 'ListItem', position: 3, name: `${reviewDataNew.cardName} Review`, item: pageUrlFull },
+      ],
+    },
+    { // Populated from Section 19 of your text
+      '@type'    : 'FAQPage',
+      '@id'      : `${pageUrlFull}#faqs`,
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'How much are Alaska Airlines miles worth?',
+          acceptedAnswer: { '@type': 'Answer', text: "Generally 1.3-1.5 cents each for economy, but can be 2-4+ cents for premium partner awards. You can find more details on the Alaska Airlines Mileage Plan™." } // Added general reference
+        },
+        {
+          '@type': 'Question',
+          name: "Can I use Alaska's Famous Companion Fare™ on partner airlines?",
+          acceptedAnswer: { '@type': 'Answer', text: "No, it's only for flights marketed and operated by Alaska Airlines. Specific terms can be found on the Alaska Airlines website regarding their Companion Fare™." } // Added general reference
+        },
+        {
+          '@type': 'Question',
+          name: 'Do I need a Bank of America account for the 10% relationship miles bonus?',
+          acceptedAnswer: { '@type': 'Answer', text: "Yes, an eligible Bank of America® consumer checking/savings or a Merrill investment account is required." }
+        },
+        {
+          '@type': 'Question',
+          name: 'What credit score do I typically need for the Alaska Airlines Visa Signature® Card?',
+          acceptedAnswer: { '@type': 'Answer', text: "Generally good to excellent credit (typically FICO 670+, often 700-720+ for Visa Signature). Approval depends on various factors from Bank of America." } // Added issuer
+        },
+        {
+          '@type': 'Question',
+          name: 'Does the free checked bag apply if I only pay taxes on an award ticket with the card?',
+          acceptedAnswer: { '@type': 'Answer', text: "Terms usually state 'purchase airfare' with the card. It's best to verify with Alaska Airlines for award tickets, as paying only taxes may not qualify according to their checked bag policy." } // Added reference
+        }
+      ],
+    },
+    {
+      '@type' : 'Organization',
+      '@id'   : `${siteUrl}#website`,
+      name    : siteName,
+      url     : siteUrl,
+      logo    : { '@type': 'ImageObject', url: `${siteUrl}/images/logo/your-logo-schema.png` }, // UPDATE AS NEEDED
+      sameAs  : [ // UPDATE AS NEEDED: Add actual social links for your organization
+        "https://www.facebook.com/YourFacebookPageURL", // UPDATE
+        "https://twitter.com/YourTwitterHandle", // UPDATE
+        // "https://www.linkedin.com/company/YourCompany" // UPDATE
+      ],
+    },
+  ],
+};
+
+// UPDATE AS NEEDED: Tailor these to your specific rating methodology for this card
+const ratingCriteriaOriginal = [
+    'Companion Fare™ Value & Accessibility',
+    'Free Checked Bag Benefit (Self + Companions)',
+    'Alaska Airlines Purchase Rewards (3X Miles)',
+    'Bonus Rewards Categories (Gas, EV, Transit, etc. - 2X Miles)',
+    'Base Rewards Rate (1X Mile)',
+    'Annual Fee ($95) vs. Benefits',
+    'Welcome Offer & Initial Perks',
+    'Oneworld® Alliance & Partner Redemptions Value',
+    'Relationship Bonus with Bank of America®',
+    'Travel & Purchase Protections (Visa Signature)',
+    'Foreign Transaction Fee (None)',
+    'EQM Earning Potential (If applicable)',
 ];
 
-function AlaskaVisaSignatureReviewPage() {
-  // --- Tooltip State and Logic ---
+const tocSections = [ // Generated from your 20 sections
+    { id: 'section-intro', title: 'Introduction: Alaska Airlines Card – Your West Coast Co-Pilot?' },
+    { id: 'section-1', title: '1. Card Snapshot & "Best For" Tagline' },
+    { id: 'section-2', title: '2. Deep Dive: Welcome Offer & Initial Perks' },
+    { id: 'section-3', title: '3. Unpacking the Annual Fee: Is it Worth $95?' },
+    { id: 'section-4', title: '4. Earning Power: How Your Miles Take Flight (3-2-1 Rewards)' },
+    { id: 'section-5', title: "5. The Star: Alaska's Famous Companion Fare™ Explained" },
+    { id: 'section-6', title: '6. Fly Lighter: The Free Checked Bag Benefit' },
+    { id: 'section-7', title: '7. Board Sooner: Priority Boarding Perks' },
+    { id: 'section-8', title: '8. Sweeten the Journey: Inflight Discounts & Lounge Access Discount' },
+    { id: 'section-9', title: '9. Boost Your Earnings: The 10% Relationship Bonus' },
+    { id: 'section-10', title: "10. Beyond the Flight: Understanding Alaska's Mileage Plan™" },
+    { id: 'section-11', title: '11. The Fine Print: Full Spectrum of Rates & Fees' },
+    { id: 'section-12', title: '12. Security and Account Management Features' },
+    { id: 'section-13', title: "13. Travel & Purchase Protections: What's Covered?" },
+    { id: 'section-14', title: '14. Detailed User Profiling: Who Should Get This Card?' },
+    { id: 'section-15', title: '15. Real-World People Ideas: Meet Alex, Ben & Chloe, and David' },
+    { id: 'section-16', title: '16. Show Me the Value: A Real-World Example' },
+    { id: 'section-17', title: '17. Head-to-Head: Alaska Card vs. The Competition' },
+    { id: 'section-18', title: '18. Pros & Cons: A Balanced View' },
+    { id: 'section-19', title: '19. Card-Specific Frequently Asked Questions (FAQs)' },
+    { id: 'section-20', title: '20. Conclusion: Charting Your Course with the Alaska Card' },
+    { id: 'section-eat', title: 'Our E-A-T Commitment' }, // Added for E-A-T section
+];
+
+// DraggableTableWrapper Component (copied from your example, ensure it's correctly imported or defined in your project)
+function DraggableTableWrapper({ children }) {
+  const containerRef = useRef(null);
+  useEffect(() => {
+    if (typeof window === 'undefined' || window.innerWidth < 768) return;
+    const el = containerRef.current;
+    if (!el) return;
+    let isDragging = false, startX = 0, scrollStart = 0;
+    const startDrag = (e) => {
+      isDragging = true; el.classList.add(styles.grabbing);
+      startX = e.pageX || e.touches?.[0]?.pageX; scrollStart = el.scrollLeft;
+    };
+    const stopDrag = () => { isDragging = false; el.classList.remove(styles.grabbing); };
+    const onMove = (e) => {
+      if (!isDragging) return; e.preventDefault();
+      const x = e.pageX || e.touches?.[0]?.pageX;
+      el.scrollLeft = scrollStart - (x - startX);
+    };
+    el.addEventListener('mousedown', startDrag);
+    document.addEventListener('mouseup', stopDrag);
+    document.addEventListener('mouseleave', stopDrag);
+    el.addEventListener('mousemove', onMove);
+    el.addEventListener('touchstart', startDrag, { passive: true });
+    document.addEventListener('touchend', stopDrag);
+    el.addEventListener('touchmove', onMove, { passive: false });
+    return () => {
+      el.removeEventListener('mousedown', startDrag);
+      document.removeEventListener('mouseup', stopDrag);
+      document.removeEventListener('mouseleave', stopDrag);
+      el.removeEventListener('mousemove', onMove);
+      el.removeEventListener('touchstart', startDrag);
+      document.removeEventListener('touchend', stopDrag);
+      el.removeEventListener('touchmove', onMove);
+    };
+  }, []);
+  return (<div ref={containerRef} className={styles.draggableScrollContainer}>{children}</div>);
+}
+
+/* ──────────────────────────────
+    COMPONENT
+    ────────────────────────────── */
+function AlaskaAirlinesVisaSignatureReviewPage() {
   const [showRatingInfo, setShowRatingInfo] = useState(false);
-  const tooltipRef = useRef(null);
+  const [showAuthorBioTooltip, setShowAuthorBioTooltip] = useState(false);
+  const authorRef = useRef(null);
+  const authorTooltipRef = useRef(null);
+  const ratingTooltipRef = useRef(null);
 
+  // Callbacks for tooltips (copied from your example)
   const handleIconClick = useCallback((event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        setShowRatingInfo(prevState => !prevState);
-    }, []);
+      event.preventDefault();
+      event.stopPropagation();
+      setShowRatingInfo(prevState => !prevState);
+  }, []);
 
-    const closeTooltip = useCallback(() => {
-        setShowRatingInfo(false);
-    }, []);
+  const handleAuthorMouseEnter = useCallback(() => {
+      setShowAuthorBioTooltip(true);
+  }, []);
 
-    useEffect(() => {
-        if (!showRatingInfo) return;
-        const handleClickOutside = (event) => {
-            const isInfoButton = event.target.closest(`.${styles.infoIconButton}`);
-            if (tooltipRef.current && !tooltipRef.current.contains(event.target) && !isInfoButton) {
-                closeTooltip();
-            }
-        };
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, [showRatingInfo, closeTooltip]);
-  // --- End Tooltip State and Logic ---
+  const handleAuthorMouseLeave = useCallback(() => {
+      const timerId = setTimeout(() => {
+          if (authorRef.current && authorTooltipRef.current) {
+              const isHoveringTrigger = authorRef.current.matches(':hover');
+              const isHoveringTooltip = authorTooltipRef.current.matches(':hover');
+              const isFocusWithinTrigger = authorRef.current.contains(document.activeElement);
+              const isFocusWithinTooltip = authorTooltipRef.current.contains(document.activeElement);
+              if (!isHoveringTrigger && !isHoveringTooltip && !isFocusWithinTrigger && !isFocusWithinTooltip) {
+                 setShowAuthorBioTooltip(false);
+              }
+          } else if (!authorRef.current?.matches(':hover') && !authorTooltipRef.current?.matches(':hover')) {
+               setShowAuthorBioTooltip(false);
+          }
+      }, 150);
+      if (authorRef.current) authorRef.current.tooltipTimeoutId = timerId;
+  }, [authorRef, authorTooltipRef]);
 
+   const handleAuthorClearTimeout = useCallback(() => {
+      if (authorRef.current?.tooltipTimeoutId) {
+          clearTimeout(authorRef.current.tooltipTimeoutId);
+      }
+   }, [authorRef]);
 
-  // Inline Structured Data
-  // !!! VERIFY all URLs, counts, and details FOR ALASKA VISA SIGNATURE !!!
-  const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
-  const pageUrl = `${siteUrl}/cards/alaska-visa-signature`; // *** REPLACE with your actual page URL ***
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "Alaska Airlines Visa Signature® Card",
-    "image": `${siteUrl}${reviewData.imageUrl}`, // *** Assuming imageUrl starts with / ***
-    "description": "The Alaska Airlines Visa Signature® Card offers an annual companion fare, free checked bag, and other travel perks for loyal Alaska flyers.", // Adjusted description
-    "brand": {
-      "@type": "Brand",
-      "name": "Bank of America" // Issuer
-    },
-     "review": {
-      "@type": "Review",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": reviewData.ratingValue.toString(),
-        "bestRating": "10",
-        "worstRating": "1"
-      },
-      "author": {
-        "@type": "Organization",
-        "name": reviewData.author
-      },
-      "reviewBody": reviewData.description // Use meta description
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": reviewData.ratingValue.toString(),
-      "bestRating": "10",
-      "worstRating": "1",
-      "ratingCount": 680, // *** REPLACE with actual or estimated count ***
-      "reviewCount": 680  // *** REPLACE with actual or estimated count ***
-    },
-    "offers": {
-      "@type": "Offer",
-      "url": reviewData.applyLink.startsWith('http') ? reviewData.applyLink : `${siteUrl}${reviewData.applyLink}`, // *** Ensure full APPLY URL ***
-      "priceCurrency": "USD",
-      "price": "95", // Annual Fee for Alaska Visa Signature
-      "availability": "https://schema.org/InStock",
-      "itemCondition": "https://schema.org/NewCondition"
-    }
-    // Consider adding "provider": { "@type": "Organization", "name": "Alaska Airlines" }
-  };
+  useEffect(() => {
+      function handleClickOutside(event) {
+          if (showAuthorBioTooltip &&
+              authorRef.current && !authorRef.current.contains(event.target) &&
+              authorTooltipRef.current && !authorTooltipRef.current.contains(event.target)) {
+              setShowAuthorBioTooltip(false);
+          }
+          if (showRatingInfo &&
+              !event.target.closest(`.${styles.infoIconButton}`) &&
+              ratingTooltipRef.current && !ratingTooltipRef.current.contains(event.target)
+             ) {
+               setShowRatingInfo(false);
+          }
+      }
+      if (showAuthorBioTooltip || showRatingInfo) {
+          document.addEventListener("mousedown", handleClickOutside);
+      } else {
+           document.removeEventListener("mousedown", handleClickOutside);
+      }
+      return () => {
+          document.removeEventListener("mousedown", handleClickOutside);
+          if (authorRef.current?.tooltipTimeoutId) {
+            clearTimeout(authorRef.current.tooltipTimeoutId);
+          }
+      };
+  }, [showAuthorBioTooltip, authorRef, authorTooltipRef, showRatingInfo, ratingTooltipRef]);
 
+  // Helper to create linked text for citations
+  const createCitedLink = (text, citationKey, url) => (
+    <a href={url} target="_blank" rel="noopener noreferrer sponsored">{text} [Official Citation]</a>
+  );
 
   return (
     <>
-      {/* ===== HEAD SECTION for Metadata & SEO ===== */}
       <Head>
-        <title dangerouslySetInnerHTML={{ __html: reviewData.title }}></title>
-        <meta name="description" content={reviewData.description} />
-        <meta name="keywords" content={reviewData.keywords} />
-        <meta name="author" content={reviewData.author} />
-        <link rel="canonical" href={pageUrl} />
-        {/* Preload critical fonts */}
-        <link rel="preload" href="/fonts/Roboto_Condensed-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/Roboto_Condensed-Bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/PlayfairDisplay-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/Playfair-Display-Bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-
-        {/* OG/Twitter tags */}
-        <meta property="og:title" content={reviewData.title} />
-        <meta property="og:description" content={reviewData.description} />
-        <meta property="og:url" content={pageUrl} />
-        <meta property="og:image" content={structuredData.image} />
-        <meta property="og:type" content="article" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={reviewData.title} />
-        <meta name="twitter:description" content={reviewData.description} />
-        <meta name="twitter:image" content={structuredData.image} />
-
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-
-        {/* Structured Data (JSON-LD) */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
+        <title>{reviewDataNew.title} - {siteName}</title>
+        <meta name="description" content={reviewDataNew.description} />
+        <meta name="keywords" content={reviewDataNew.keywords} />
+        <meta name="author" content={reviewDataNew.author.name} />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta name="robots" content="index,follow,max-image-preview:large" />
+        <link rel="canonical" href={pageUrlFull} />
+        <link rel="alternate" href={pageUrlFull} hreflang="en-us" />
+        <link rel="preload" as="image" href={`${siteUrl}${reviewDataNew.imageUrl}`} />
+        <link rel="preload" as="image" href={reviewDataNew.author.imageUrl} /> {/* UPDATE AS NEEDED */}
+        <link rel="preload" as="image" href={reviewDataNew.author.tooltipImageUrl} />  {/* UPDATE AS NEEDED */}
         <meta name="geo.region" content="US" />
-<meta name="geo.placename" content="United States" />
-<meta name="language" content="en-US" />
-<meta name="distribution" content="US" />
-<link rel="alternate" href="https://www.travelcardinsider.com" hreflang="en-us" />
+        <meta name="geo.placename" content="United States" />
+        <meta name="language" content="en-US" />
+        <meta name="distribution" content="US" />
+        {/* UPDATE AS NEEDED: Preload your actual fonts */}
+        {[
+          '/fonts/inter-v18-latin-regular.woff2',
+          '/fonts/inter-v18-latin-600.woff2',
+          '/fonts/inter-v18-latin-700.woff2',
+          '/fonts/Roboto_Condensed-Regular.ttf',
+          '/fonts/Roboto_Condensed-Bold.ttf',
+        ].map((f) => (
+          <link key={f} rel="preload" href={f} as="font" type={f.endsWith('woff2') ? 'font/woff2' : 'font/ttf'} crossOrigin="anonymous" />
+        ))}
+        <meta property="og:type"        content="article" />
+        <meta property="og:locale"      content="en_US" />
+        <meta property="og:site_name"   content={siteName} />
+        <meta property="og:title"       content={reviewDataNew.title} />
+        <meta property="og:description" content={reviewDataNew.description} />
+        <meta property="og:url"         content={pageUrlFull} />
+        <meta property="og:image"       content={`${siteUrl}${reviewDataNew.imageUrl}`} />
+        <meta property="og:image:width" content={String(reviewDataNew.imageWidth)} />
+        <meta property="og:image:height" content={String(reviewDataNew.imageHeight)} />
+        <meta property="article:publisher" content={`https://www.facebook.com/YourFacebookPageURL`} /> {/* UPDATE AS NEEDED */}
+        <meta property="article:section"       content="Credit Card Reviews" /> {/* UPDATE AS NEEDED */}
+        <meta property="article:published_time" content={publishDate} />
+        <meta property="article:modified_time"  content={updateDate} />
+        <meta property="article:author" content={reviewDataNew.author.name} />
+        {reviewDataNew.keywords.split(',').map(keyword => (
+            <meta property="article:tag" content={keyword.trim()} key={keyword.trim()} />
+        ))}
+        <meta name="twitter:card"        content="summary_large_image" />
+        <meta name="twitter:site" content="@YourTwitterHandle" /> {/* UPDATE AS NEEDED */}
+        <meta name="twitter:creator" content={`@${reviewDataNew.author.socialLinks?.twitter?.split('/').pop() || 'YourAuthorTwitterHandle'}`} /> {/* UPDATE AS NEEDED */}
+        <meta name="twitter:title"       content={reviewDataNew.title} />
+        <meta name="twitter:description" content={reviewDataNew.description} />
+        <meta name="twitter:image"       content={`${siteUrl}${reviewDataNew.imageUrl}`} />
+        {/* UPDATE AS NEEDED: Favicon links */}
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredDataOptimized) }} />
       </Head>
 
-      
-
       <main>
-        {/* Spacing for fixed header */}
-        <div style={{ marginTop: '2rem' }}></div> {/* Adjusted margin from HTML */}
-
-        {/* Review Container using CSS Module */}
-        <div className={styles.reviewContainer}>
-          <article> {/* Wrap main content in article */}
-            {/* ============= REVIEW HEADER ============= */}
-            <header className={styles.reviewHeader}>
-               {/* Using dangerouslySetInnerHTML for ® */}
-              <h1 dangerouslySetInnerHTML={{ __html: "Alaska Airlines Visa Signature® Card – 2025 Review"}}></h1>
-
-              {/* Section 1 Content (Part of Header Structure in Template) */}
-              <section id="section-1">
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <div className={styles.intro}>
-                   <p dangerouslySetInnerHTML={{ __html: "The <strong>Alaska Airlines Visa Signature® Card</strong>, offered by Bank of America, is beloved for its annual <b>Companion Fare</b> (starting at $122 after taxes/fees, but typically saves $300+), free checked bag for the cardholder + companions, and strong mileage-earning potential—particularly on Alaska flights. At a moderate annual fee of <strong>$95</strong>, it’s a staple among frequent West Coast or Alaska Airlines flyers who love the airline’s partnership network (including oneworld and numerous global carriers). In this guide, we’ll explore 20 sections from quick stats to advanced usage tips, disclaimers ensuring you can decide if it’s right for your 2025 travel needs."}}></p>
+        <div className={styles.reviewPageLayout}>
+          <div className={styles.mainContentArea}>
+            <section className={styles.heroSection}>
+              <div className={styles.heroTextContainer}>
+                <h1 className={styles.heroTitle}>
+                  {reviewDataNew.h1Content}
+                </h1>
+                <div
+                    className={styles.authorBioContainer}
+                    ref={authorRef}
+                    onMouseEnter={() => { handleAuthorClearTimeout(); handleAuthorMouseEnter(); }}
+                    onMouseLeave={handleAuthorMouseLeave}
+                    onFocus={handleAuthorMouseEnter}
+                    onBlur={handleAuthorMouseLeave}
+                    aria-haspopup="true"
+                    aria-expanded={showAuthorBioTooltip}
+                    tabIndex={0}
+                >
+                    <Image
+                        src={reviewDataNew.author.imageUrl} // UPDATE AS NEEDED
+                        alt={`${reviewDataNew.author.name} headshot`}
+                        width={reviewDataNew.author.imageWidth}
+                        height={reviewDataNew.author.imageHeight}
+                        className={styles.authorImageSmall}
+                        priority
+                    />
+                    <div className={styles.authorInfoBlock}>
+                        <div className={styles.authorNameLine}>
+                            <span className={styles.authorPrefix}>By</span>
+                            <span className={styles.authorName}>{reviewDataNew.author.name}</span>
+                        </div>
+                        <span className={styles.authorTitle}>{reviewDataNew.author.title}</span>
+                        {updateDate && (
+                            <time dateTime={updateDate} className={styles.authorLastEdited}>
+                                Last updated: {new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                            </time>
+                        )}
+                        {reviewDataNew.author.socialLinks && (
+                            <div className={styles.authorSocialLinks}>
+                                {reviewDataNew.author.socialLinks.linkedin && (
+                                    <a href={reviewDataNew.author.socialLinks.linkedin} target="_blank" rel="noopener noreferrer me" aria-label={`${reviewDataNew.author.name} on LinkedIn`} className={styles.socialIconLink}>
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                    </a>
+                                )}
+                                {reviewDataNew.author.socialLinks.twitter && (
+                                    <a href={reviewDataNew.author.socialLinks.twitter} target="_blank" rel="noopener noreferrer me" aria-label={`${reviewDataNew.author.name} on Twitter`} className={styles.socialIconLink}>
+                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-.422.724-.665 1.56-.665 2.452 0 1.697.864 3.198 2.18 4.078-.8-.025-1.555-.247-2.227-.616v.054c0 2.37 1.683 4.333 3.91 4.78-.426.116-.874.174-1.337.174-.31 0-.611-.03-.904-.085.622 1.936 2.421 3.338 4.553 3.377-1.672 1.309-3.781 2.088-6.072 2.088-.394 0-.784-.023-1.169-.069 2.16 1.389 4.723 2.202 7.482 2.202 8.979 0 13.897-7.446 13.897-13.898 0-.21 0-.42-.015-.63.953-.689 1.778-1.56 2.433-2.525z"/></svg>
+                                    </a>
+                                )}
+                                {reviewDataNew.author.socialLinks.email && (
+                                    <a href={`mailto:${reviewDataNew.author.socialLinks.email}`} aria-label={`Email ${reviewDataNew.author.name}`} className={styles.socialIconLink}>
+                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
+                                    </a>
+                                )}
+                            </div>
+                        )}
+                    </div>
+                    {showAuthorBioTooltip && reviewDataNew.author.bioSnippet && (
+                        <div
+                            className={styles.authorTooltip}
+                            ref={authorTooltipRef}
+                            role="tooltip"
+                            onMouseEnter={handleAuthorClearTimeout}
+                            onMouseLeave={handleAuthorMouseLeave}
+                            onFocus={handleAuthorMouseEnter}
+                            onBlur={handleAuthorMouseLeave}
+                        >
+                             <div className={styles.authorTooltipHeader}>
+                                 <Image
+                                    src={reviewDataNew.author.tooltipImageUrl} // UPDATE AS NEEDED
+                                    alt={`${reviewDataNew.author.name} headshot`}
+                                    width={reviewDataNew.author.tooltipImageWidth}
+                                    height={reviewDataNew.author.tooltipImageHeight}
+                                    className={styles.authorTooltipImage}
+                                 />
+                                 <div className={styles.authorTooltipInfo}>
+                                     <span className={styles.authorTooltipName}>{reviewDataNew.author.name}</span>
+                                     <span className={styles.authorTooltipTitle}>{reviewDataNew.author.title}</span>
+                                 </div>
+                               </div>
+                               {reviewDataNew.author.expertise && reviewDataNew.author.expertise.length > 0 && (
+                                 <div className={styles.authorTooltipExpertise}>
+                                     <strong>Expertise</strong>
+                                     <ul>
+                                         {reviewDataNew.author.expertise.map(area => <li key={area}>{area}</li>)}
+                                     </ul>
+                                 </div>
+                               )}
+                               <p className={styles.authorTooltipBioSnippet}>{reviewDataNew.author.bioSnippet}</p>
+                               {reviewDataNew.author.fullBioLink && (
+                                   <Link href={reviewDataNew.author.fullBioLink} legacyBehavior>
+                                       <a className={styles.authorTooltipBioLink}>
+                                           See full bio
+                                       </a>
+                                   </Link>
+                               )}
+                               {reviewDataNew.author.socialLinks && (
+                                    <div className={styles.authorTooltipSocials}>
+                                        {reviewDataNew.author.socialLinks.linkedin && (
+                                             <a href={reviewDataNew.author.socialLinks.linkedin} target="_blank" rel="noopener noreferrer me" aria-label={`${reviewDataNew.author.name} on LinkedIn`} className={styles.socialIconLink}>
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                             </a>
+                                         )}
+                                         {reviewDataNew.author.socialLinks.twitter && (
+                                             <a href={reviewDataNew.author.socialLinks.twitter} target="_blank" rel="noopener noreferrer me" aria-label={`${reviewDataNew.author.name} on Twitter`} className={styles.socialIconLink}>
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-.422.724-.665 1.56-.665 2.452 0 1.697.864 3.198 2.18 4.078-.8-.025-1.555-.247-2.227-.616v.054c0 2.37 1.683 4.333 3.91 4.78-.426.116-.874.174-1.337.174-.31 0-.611-.03-.904-.085.622 1.936 2.421 3.338 4.553 3.377-1.672 1.309-3.781 2.088-6.072 2.088-.394 0-.784-.023-1.169-.069 2.16 1.389 4.723 2.202 7.482 2.202 8.979 0 13.897-7.446 13.897-13.898 0-.21 0-.42-.015-.63.953-.689 1.778-1.56 2.433-2.525z"/></svg>
+                                             </a>
+                                         )}
+                                         {reviewDataNew.author.socialLinks.email && (
+                                             <a href={`mailto:${reviewDataNew.author.socialLinks.email}`} aria-label={`Email ${reviewDataNew.author.name}`} className={styles.socialIconLink}>
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
+                                             </a>
+                                         )}
+                                    </div>
+                                )}
+                        </div>
+                    )}
                 </div>
-
-                {/* Image Container */}
+                <p className={styles.heroSubtitle}>
+                  {/* Using the original intro paragraph as a subtitle here */}
+                  Dreaming of new horizons but wondering how to make travel more affordable and rewarding? For savvy U.S. travelers, especially those with a soft spot for the West Coast or an eye on global adventures, the {reviewDataNew.cardName} often comes up. Is it just another piece of plastic, or is it a strategic key to unlocking more travel, perks, and memories?
+                </p>
+                <div className={styles.heroCtaContainer}>
+                  <div>
+                    <a
+                      href={reviewDataNew.applyLink} // Your affiliate link
+                      target="_blank"
+                      rel="noopener noreferrer sponsored"
+                      className={`${styles.applyNowButton} ${styles.heroApplyButton}`}
+                    >
+                      Apply Securely Now
+                    </a>
+                    <span className={styles.heroApplyButtonDisclaimer}>
+                      on Bank of America's official site {/* Issuer */}
+                    </span>
+                  </div>
+                  <Link href="#section-1" legacyBehavior>
+                    <a className={styles.heroSecondaryLink}>View Key Features</a>
+                  </Link>
+                </div>
+              </div>
+              <div className={styles.heroImageContainer}>
                 <div className={styles.cardImageContainer}>
-                  {/* Class name adjusted */}
-                   <Image
-                     src={reviewData.imageUrl}
-                     alt={"Alaska Airlines Visa Signature® Card"}
-                     width={reviewData.imageWidth} // *** REPLACE or use data ***
-                     height={reviewData.imageHeight} // *** REPLACE or use data ***
-                     className={styles.cardImage}
-                     priority
-                   />
-                 </div>
-
-                {/* RATING SECTION */}
+                  <Image
+                    src={reviewDataNew.imageUrl} // UPDATE AS NEEDED
+                    alt={reviewDataNew.cardName}
+                    width={reviewDataNew.imageWidth}
+                    height={reviewDataNew.imageHeight}
+                    className={styles.heroImage}
+                    priority
+                  />
+                </div>
                 <div className={styles.ratingSection}>
                   <span className={styles.tciRating}>
                     <button
                       type="button"
-                      className={styles.infoIconButton} // Use CSS module class
+                      className={styles.infoIconButton}
                       aria-label="Rating Information"
-                      title="Our TCI rating info"
                       onClick={handleIconClick}
+                      aria-expanded={showRatingInfo}
                     >
-                       <svg aria-hidden="true" focusable="false" className={styles.infoIcon} viewBox="0 0 16 16">
-                         <path fillRule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                         <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-                       </svg>
+                      <svg aria-hidden="true" focusable="false" className={styles.infoIcon} viewBox="0 0 16 16">
+                        <path fillRule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                      </svg>
                     </button>
-                    TCI Rating: <strong>{reviewData.ratingValue.toFixed(1)}</strong>/10
-
-                    {/* --- Conditionally Rendered Tooltip --- */}
+                    {siteName} Rating: <strong>{reviewDataNew.ratingValue.toFixed(1)}</strong>/10
                     {showRatingInfo && (
-                        <div
-                            ref={tooltipRef}
-                            className={styles.ratingTooltip}
-                            role="tooltip"
-                            aria-live="polite"
-                        >
-                            <strong>TCI Rating: {reviewData.ratingValue.toFixed(1)}/10</strong>
-                            {/* Using ratingCriteria array */}
-                            <p className={styles.tooltipIntro}>Our TCI rating system criteria including rewards, welcome bonus, annual fee, redemption flexibility, travel benefits, APR, foreign transaction fees, user experience, and other features.</p>
-                            
-                        </div>
+                      <RatingTooltip
+                        ref={ratingTooltipRef}
+                        ratingValue={reviewDataNew.ratingValue}
+                        ratingCriteria={ratingCriteriaOriginal}
+                        onClose={() => setShowRatingInfo(false)}
+                      />
                     )}
                   </span>
-
-                  {/* STAR RATING */}
-                  <div className={styles.starRating} title={`Rated ${reviewData.ratingValue} out of 10 stars`} style={{ '--rating': `${reviewData.ratingValue * 10}%` }}>
-                    <span>★★★★★</span>
-                    <span className={styles.filledStars}>★★★★★</span>
-                  </div>
-
-                  <div className={styles.ratingDescription}>
-                    <i>An excellent pick for loyal Alaska flyers, thanks to companion fare and free checked bags.</i>
+                  <div className={styles.starRating} title={`Rated ${reviewDataNew.ratingValue} out of 10 stars`}>
+                      ★★★★★
+                      <span className={styles.filledStars} style={{ '--rating': `${(reviewDataNew.ratingValue / 10) * 100}%` }}>
+                        ★★★★★
+                      </span>
                   </div>
                 </div>
-              </section>
-            </header>
-
-            {/* ============= REVIEW CONTENT SECTIONS (Hardcoded JSX) ============= */}
-
-             {/* Section 2: Quick Stats Table */}
-             <section id="section-2" className={styles.reviewSection}>
-                <h2>Quick Stats at a Glance</h2>
-                <div className={styles.tableContainer}>
-                    <table className={styles.statsTable}>
-                        <thead>
-                            <tr>
-                                <th>Feature</th>
-                                <th>Details</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td data-label="Feature">Annual Fee</td>
-                                <td data-label="Details">$95</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Feature">Welcome Bonus</td>
-                                <td data-label="Details">Often 40k+ miles after $2,000 in 3 months (varies), plus companion fare</td>
-                            </tr>
-                             {/* Using dangerouslySetInnerHTML for &amp; */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Feature">Earning Rates</td><td data-label="Details">3x on Alaska purchases, 2x on gas/transit, 1x elsewhere (subject to current offer)</td>'}}></tr>
-                             {/* Using dangerouslySetInnerHTML for &amp; */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Feature">Companion Fare</td><td data-label="Details">Annually from $122 ($99 + taxes/fees) – saves hundreds vs. buying a separate ticket</td>'}}></tr>
-                            <tr>
-                                <td data-label="Feature">Free Checked Bag</td>
-                                <td data-label="Details">For cardholder + up to 6 companions on same reservation</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Feature">Foreign Transaction Fee</td>
-                                <td data-label="Details">None</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Feature">Travel Insurance</td>
-                                <td data-label="Details">Baggage delay, auto rental collision damage waiver (secondary), more</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Feature">Partner Airlines</td>
-                                <td data-label="Details">Can redeem miles on oneworld carriers (AA, BA, etc.) + unique global partners (Singapore, etc.)</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                 <div className={styles.ratingDescription}>
+                    <i>{reviewDataNew.cardName}: {reviewDataNew.description}</i>
+                 </div>
+              </div>
             </section>
 
-             {/* CTA Section */}
-             <section id="cta" className={styles.ctaSection}>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <h2 dangerouslySetInnerHTML={{__html:"Get the <b>Alaska Airlines Visa Signature® Card</b> Today!"}}></h2>
-                <div className={styles.ctaButtons}>
-                    <a href={reviewData.applyLink} className={`${styles.btn} ${styles.btnApply}`} title="From card issuer's secure site" target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
-                    <a href={reviewData.ratesLink} className={`${styles.btn} ${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored" dangerouslySetInnerHTML={{__html:"See Rates &amp; Fees"}}></a>
-                </div>
-            </section>
-
-            {/* Section 3: Card Overview & Positioning */}
-            <section id="section-3" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html: "Card Overview and Positioning" }}></h2>
-                <p>
-                    Alaska’s card shines for its <strong>annual companion fare</strong>,
-                    which is among the best “buy-one-get-one” deals in the airline card space.
-                    Add free checked bags, easy-to-use miles (particularly for international partner flights),
-                    and you get a potent mid-tier airline card.
-                    If you frequently fly out of Alaska’s West Coast hubs (Seattle, Portland, etc.),
-                    or love their robust partner network,
-                    the annual fee becomes easy to justify—especially if you redeem that companion fare
-                    on flights typically priced at $300–$400 or more.
-                    The card also provides priority boarding with Alaska
-                    (some conditions apply),
-                    so you can nab overhead bin space early.
-                </p>
-            </section>
-
-            {/* Section 4: Earning Miles & Travel Emphasis */}
-             <section id="section-4" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html: "Earning Miles &amp; Travel Emphasis" }}></h2>
-                <p>
-                    Typically, you earn:
-                </p>
-                <ul className={styles.featureList}>
-                    <li><strong>3 miles per $1</strong> on Alaska Airlines purchases</li>
-                    <li><strong>2 miles per $1</strong> on gas, local transit, and rideshares (subject to change; verify current categories)</li>
-                    <li><strong>1 mile per $1</strong> on all other spend</li>
-                </ul>
-                 {/* Using dangerouslySetInnerHTML for ™ &amp; */}
-                <p dangerouslySetInnerHTML={{ __html:"The 3x on Alaska flights ensures you stack miles quickly, plus you earn flight miles from actually flying. The 2x on gas/transit is a relatively new perk (some versions might differ), so confirm your exact terms. The flexibility is good if you’re commuting or traveling regularly. All these miles go into your <b>Alaska Mileage Plan™</b> account, known for good redemption sweet spots with carriers like Qantas, Japan Airlines, or British Airways."}}></p>
-            </section>
-
-            {/* Section 5: Redeeming Alaska Miles */}
-            <section id="section-5" className={styles.reviewSection}>
-                 <h2>Redeeming Your Alaska Miles</h2>
-                <p>
-                    Alaska Airlines miles are prized for partner redemptions
-                    (some allow free stopovers),
-                    and typically have a region-based or distance-based approach
-                    for certain partners.
-                    You can find sweet deals, e.g.,
-                    70k miles for a one-way business class to Asia
-                    on Cathay Pacific or Japan Airlines.
-                    Domestically, you can also redeem on American,
-                    though availability can vary.
-                    For short flights on Alaska itself,
-                    you might find one-way economy from 5k–12.5k miles
-                    depending on demand.
-                </p>
-                <p>
-                    The <b>companion fare</b> coupon is separate from your miles
-                    — each card anniversary, you pay the base fare for one passenger
-                    and get the second passenger’s fare for $99 plus taxes (which start around $23).
-                    If that second ticket would’ve cost $350,
-                    you’ve saved ~$250 effectively.
-                    This is a major part of the card’s ROI.
-                </p>
-            </section>
-
-             {/* Section 6: Travel & Airline Perks */}
-             <section id="section-6" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html: "Travel &amp; Airline Perks" }}></h2>
-                <ul className={styles.featureList}>
-                    <li><strong>Free Checked Bag:</strong>
-                    You + up to 6 others on the same reservation each get a free first bag,
-                    saving $30+ each way per bag.</li>
-                    <li><strong>Priority Boarding:</strong>
-                    Board earlier than the main cabin (some disclaimers apply,
-                    might be “Boarding Group C” or similar for cardholders).
-                    Check Alaska’s updated policies if they shift in 2025.</li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Discounted Lounge Membership:</strong> Some card versions offer $100 off an annual Alaska Lounge membership if you fly Alaska often. (Check current terms—some promotions come and go.)"}}></li>
-                    <li><strong>20% Back on In-Flight Purchases:</strong>
-                    Usually 20% statement credit on in-flight food/beverages
-                    when using your card.
-                    Terms subject to change.</li>
-                </ul>
-                <p>
-                    These perks can easily offset the $95 fee if you check bags or use the companion fare
-                    at least once a year.
-                </p>
-            </section>
-
-            {/* Section 7: No Foreign Transaction Fee & Global Coverage */}
-            <section id="section-7" className={styles.reviewSection}>
-                <h2>No Foreign Transaction Fee</h2> {/* Simplified heading */}
-                <p>
-                    The card has <b>no FTF</b>,
-                    so you can safely swipe abroad or with foreign carriers
-                    (especially helpful if you use Alaska’s global partners
-                    like British Airways, Qantas, or Japan Airlines)
-                    without an extra 3% tacked on.
-                    As a Visa, acceptance is widespread,
-                    making it convenient for international travel.
-                </p>
-            </section>
-
-             {/* Section 8: Annual Fee & Welcome Bonus */}
-             <section id="section-8" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html: "Annual Fee &amp; Welcome Bonus" }}></h2>
-                <p>
-                    The <b>annual fee</b> is <strong>$95</strong> (not waived the first year, typically).
-                    The welcome bonus might be <b>40k–70k miles</b> plus a companion fare
-                    after meeting a spending threshold (often $2,000 in first 90 days).
-                    The exact promotional details can vary, so always verify.
-                    If you secure a 50k miles + companion fare bonus,
-                    you might quickly get $700+ in flight value.
-                    That’s huge for a $95 AF,
-                    though you do pay the AF in your first billing cycles
-                    unless a special promo says otherwise.
-                </p>
-            </section>
-
-            {/* Section 9: 2025 Updates & Potential Changes */}
-            <section id="section-9" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html: "2025 Updates &amp; Potential Changes" }}></h2>
-                <ol className={styles.numberedList}>
-                    <li><strong>Companion Fare Pricing:</strong>
-                    It might shift from $99 + taxes to another formula or dynamic approach.
-                    Keep an eye on official announcements.</li>
-                     {/* Using dangerouslySetInnerHTML for &amp; */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Earning Categories:</strong> Bank of America could expand 2x categories (like groceries or streaming) or revert them. Confirm your statement for the newest list."}}></li>
-                    <li><strong>Partner Award Charts:</strong>
-                    Alaska might revise partner award charts or remove sweet spots,
-                    impacting redemption value.
-                    They joined oneworld in 2021,
-                    but 2025 might see new alliances or dynamic pricing changes.</li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Lounge/Discount Codes:</strong> The $100 discount on lounge membership might become an annual statement credit or shift in structure. No guarantee, but watch for synergy with oneworld lounge access developments."}}></li>
-                </ol>
-                <p>
-                    Because airline landscapes evolve,
-                    always check official statements from Alaska or Bank of America
-                    for the latest changes.
-                </p>
-            </section>
-
-            {/* Section 10: Real-Life Example Table */}
-             <section id="section-10" className={styles.reviewSection}>
-                <h2>Real-Life Example: Family Savings</h2>
-                <p>
-                    Suppose you fly from Seattle to Hawaii once a year with a spouse.
-                    Each ticket costs $400. You also each check a bag each way,
-                    plus you do a short weekend trip to California with a single bag each.
-                    Let’s see potential savings:
-                </p>
-                <div className={styles.tableContainer}>
-                    <table className={styles.statsTable}>
-                        <thead>
-                            <tr>
-                                <th>Benefit/Expense</th>
-                                <th>Annual Count</th>
-                                <th>Cost w/o Card</th>
-                                <th>Cost w/ Card</th>
-                                <th>Potential Savings</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td data-label="Benefit/Expense">Hawaii Flight (Companion Fare)</td>
-                                <td data-label="Annual Count">2 tickets</td>
-                                <td data-label="Cost w/o Card">$800 total ($400 each)</td>
-                                <td data-label="Cost w/ Card">$400 + $99 + ~$23 tax/fees = ~$522</td>
-                                <td data-label="Potential Savings">~$278</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Benefit/Expense">Bags to Hawaii</td>
-                                <td data-label="Annual Count">2 round-trip x $30 each way = 4 bag fees</td>
-                                <td data-label="Cost w/o Card">$120 total</td>
-                                <td data-label="Cost w/ Card">$0 for first bag each</td>
-                                <td data-label="Potential Savings">$120</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Benefit/Expense">Bags to California</td>
-                                <td data-label="Annual Count">2 round-trip x $30 each = 4 fees</td>
-                                <td data-label="Cost w/o Card">$120 total</td>
-                                <td data-label="Cost w/ Card">$0 for first bag each</td>
-                                <td data-label="Potential Savings">$120</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <p>
-                    That’s ~$518 in ticket/baggage savings,
-                    overshadowing the $95 fee.
-                    You also earn miles for each flight + 3x if you purchase with the card,
-                    building your next award trip.
-                    This scenario highlights the card’s synergy for at least 1–2 bigger trips a year.
-                </p>
-            </section>
-
-             {/* Section 11: Competitor Analysis */}
-             <section id="section-11" className={styles.reviewSection}>
-                <h2>Competitor Analysis</h2>
-                <div className={styles.tableContainer}>
-                    <table className={styles.statsTable}>
-                        <thead>
-                            <tr>
-                                <th>Card</th>
-                                <th>Annual Fee</th>
-                                <th>Primary Perk</th>
-                                <th>Why Choose</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                             {/* Using dangerouslySetInnerHTML for ® &amp; */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Card">Alaska Airlines Visa Signature®</td><td data-label="Annual Fee">$95</td><td data-label="Primary Perk">Companion fare, free checked bag</td><td data-label="Why Choose">Big saver on a BOGO flight &amp; strong mileage program</td>'}}></tr>
-                             {/* Using dangerouslySetInnerHTML for ® */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Card">Delta SkyMiles® Gold Amex</td><td data-label="Annual Fee">$0 intro, then ~$99</td><td data-label="Primary Perk">Free bag, priority boarding</td><td data-label="Why Choose">Better if you’re a Delta loyalist vs. Alaska</td>'}}></tr>
-                             {/* Using dangerouslySetInnerHTML for ® */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Card">Southwest Rapid Rewards® Plus/Premier</td><td data-label="Annual Fee">$69–$99</td><td data-label="Primary Perk">2x on Southwest purchases, unique bag policies (2 free bags anyway)</td><td data-label="Why Choose">Better for Southwest routes, but no companion fare akin to Alaska’s</td>'}}></tr>
-                             {/* Using dangerouslySetInnerHTML for ® */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Card">American Airlines AAdvantage® Platinum Select®</td><td data-label="Annual Fee">$99 (waived first year often)</td><td data-label="Primary Perk">Free bag, priority boarding</td><td data-label="Why Choose">AA fans, but lacks a strong companion discount like Alaska’s</td>'}}></tr>
-                        </tbody>
-                    </table>
-                </div>
-                <p>
-                    If you primarily fly <b>Alaska</b>,
-                    the companion fare easily outperforms competitor freebies.
-                    Southwest has 2 free bags but no direct “companion fare”
-                    unless you earn the Companion Pass via heavy flights/spending.
-                    So for that specific BOGO opportunity,
-                    Alaska’s card stands out in the airline space.
-                </p>
-            </section>
-
-            {/* Section 12: Pairing with Bank of America or Other Cards */}
-             <section id="section-12" className={styles.reviewSection}>
-                <h2>Pairing the Alaska Card with Other Cards</h2>
-                <p>
-                    Bank of America has a “Preferred Rewards” program that can boost
-                    credit card reward rates for certain BofA products,
-                    but typically the Alaska card’s mileage structure is separate.
-                    Still, if you have large balances with BofA,
-                    you might get certain benefits or waived banking fees,
-                    though the synergy is more general than specific to Alaska’s card.
-                </p>
-                <p>
-                    If you want stronger everyday categories (groceries, streaming, etc.),
-                    you might keep a separate card (like a 2% or 3% back card)
-                    for daily purchases. Then use the Alaska card specifically
-                    for flights, companion fare usage,
-                    and those gas/transit categories if it’s 2x.
-                    Also, for global lounge coverage or premium perks,
-                    you might add an Amex Platinum or Chase Sapphire Reserve
-                    while still using the Alaska card for flights
-                    to ensure you get the free bag perk and 3x miles.
-                </p>
-            </section>
-
-            {/* Section 13: Elite Status with Alaska & Card Benefits */}
-             <section id="section-13" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html:"Elite Status with Alaska &amp; Card Benefits"}}></h2>
-                <p>
-                    If you want to achieve or maintain MVP, MVP Gold, or MVP Gold 75k (now 100k)
-                    with Alaska, your flight activity is key.
-                    The credit card itself does not directly accelerate status (like some other airlines might do with spend).
-                    However, the card ensures you keep the free bag perk even if you’re not MVP,
-                    plus the companion fare is useful for budget or personal trips.
-                    Once you do hold status,
-                    your miles on flights are multiplied further,
-                    so combining a good flight schedule, MVP,
-                    and the card can result in a large mileage bank quickly.
-                </p>
-            </section>
-
-            {/* Section 14: Potential Downsides */}
-            <section id="section-14" className={styles.reviewSection}>
-                 <h2>Potential Downsides</h2>
-                <ul className={styles.featureList}>
-                    <li><strong>$95 Annual Fee (No Intro Waiver Usually):</strong>
-                    You pay it right away, but hopefully recoup from the companion fare/bag perk.</li>
-                    <li><strong>Limited 2x Categories:</strong>
-                    Some might prefer broader 2x or 3x categories (like groceries/dining).
-                    This card focuses on flight/gas/transit,
-                    so consider a second card for everyday spend.</li>
-                    <li><strong>No Lounge Passes Built-In:</strong>
-                    You only get a discount on lounge membership sometimes,
-                    not free passes. If you want frequent lounge visits,
-                    consider Alaska Lounge membership or an alternative premium card.</li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Companion Fare Still Has $99 + taxes:</strong> It’s not truly free—though it can be a huge discount if the second ticket is pricey. Some travellers expect a near-$0 second ticket and may be surprised by $120+ out-of-pocket fees."}}></li>
-                </ul>
-            </section>
-
-            {/* Section 15: Advanced Usage Tips */}
-             <section id="section-15" className={styles.reviewSection}>
-                <h2>Advanced Usage Tips</h2>
-                <ol className={styles.numberedList}>
-                    <li><strong>Maximize Companion Fare:</strong>
-                    Try using it on a route where the second ticket is $400+ to see big savings.
-                    Also, book early if it’s a popular route, as seat availability can be limited.</li>
-                    <li><strong>Check Partner Redemption Sweet Spots:</strong>
-                    Alaska miles can be amazing for flights on Japan Airlines, Cathay Pacific, or Qantas.
-                    Watch for multi-city or stopover deals to get more out of each redemption.</li>
-                    <li><strong>Use Gas/Transit for 2x:</strong>
-                    If you commute or spend heavily on rideshares, that can accelerate your mile earnings.
-                    This can offset not having a separate gas card if you do big monthly fill-ups.</li>
-                    <li><strong>Calendar the Companion Fare Expiration:</strong>
-                    The annual companion fare codes typically expire after a year.
-                    Mark your renewal date to ensure you don’t let it go to waste.</li>
-                    <li><strong>Combine with Another Travel Card:</strong>
-                    If you have an Amex Gold or Chase Sapphire for broad categories,
-                    you can funnel flights to the Alaska card for 3x on Alaska purchases,
-                    ensuring the free bag triggers.
-                    Then use your other card for groceries/dining if you want 3–4x there.
-                    This synergy can yield more total points across programs.</li>
-                </ol>
-            </section>
-
-             {/* Section 16: Another Real-Life Scenario */}
-             <section id="section-16" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html:"Another Real-Life Scenario: Frequent Gas &amp; Seattle Flyer"}}></h2>
-                <p>
-                    Suppose you drive a lot and fill up $250 monthly on gas,
-                    also do $1,000 on Alaska flights yearly,
-                    $500 on local transit/rideshares,
-                    and $6,000 on everything else.
-                    Here’s approximate annual mileage:
-                </p>
-                <div className={styles.tableContainer}>
-                    <table className={styles.statsTable}>
-                        <thead>
-                            <tr>
-                                <th>Category</th>
-                                <th>Annual Spend</th>
-                                <th>Miles per $</th>
-                                <th>Miles Earned</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td data-label="Category">Alaska Flights</td>
-                                <td data-label="Annual Spend">$1,000</td>
-                                <td data-label="Miles per $">3x</td>
-                                <td data-label="Miles Earned">3,000</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Category">Gas</td>
-                                <td data-label="Annual Spend">$3,000 ($250×12)</td>
-                                <td data-label="Miles per $">2x</td>
-                                <td data-label="Miles Earned">6,000</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Category">Transit/Rideshare</td>
-                                <td data-label="Annual Spend">$500</td>
-                                <td data-label="Miles per $">2x</td>
-                                <td data-label="Miles Earned">1,000</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Category">All Else</td>
-                                <td data-label="Annual Spend">$6,000</td>
-                                <td data-label="Miles per $">1x</td>
-                                <td data-label="Miles Earned">6,000</td>
-                            </tr>
-                            <tr style={{fontWeight: 'bold', borderTop: '2px solid #dee2e6'}}>
-                                <th data-label="Category">Total</th>
-                                <th data-label="Annual Spend">$10,500</th>
-                                <th data-label="Miles per $">—</th>
-                                <th data-label="Total Points">16,000</th>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <p>
-                    That’s ~16,000 miles from spend alone,
-                    plus flight miles earned from actually flying (which can be another ~1k–2k miles).
-                    Add in the <b>companion fare</b> on a $400 route,
-                    free bag or two, and you can easily justify the $95 AF
-                    if you’re an Alaska loyalist.
-                </p>
-            </section>
-
-            {/* Section 17: Who Should Get the Card? */}
-            <section id="section-17" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html:"Who Should Get the Alaska Airlines Visa Signature® Card?"}}></h2>
-                <div className={styles.prosCons}>
-                    <div className={styles.pros}>
-                        <h3>Ideal For:</h3>
-                        <ul className={styles.featureList}>
-                            <li><strong>Alaska Airlines Loyalists:</strong>
-                            If you regularly fly Alaska or its oneworld partners from a West Coast or PNW hub</li>
-                            <li><strong>Seeking a Generous Companion Fare:</strong>
-                            Possibly the best “annual BOGO” among airline cards for domestic flights</li>
-                            <li><strong>Families/Groups:</strong>
-                            Free first bag can apply up to 6 companions—big savings if traveling in groups</li>
-                            <li><strong>Moderate Annual Fee:</strong>
-                            $95 is not too high, easily offset by 1–2 round trips with checked bags</li>
-                        </ul>
+            <div className={styles.reviewContainer}>
+              <article>
+                <header className={styles.reviewHeader}>
+                    <div className={styles.summaryBox} id="summaryBoxTitle">
+                        <h2 className={styles.summaryBoxTitle}>{reviewDataNew.cardName}: Key Insights</h2>
+                        <div className={styles.summaryGrid}>
+                            <div className={styles.summaryItem}>
+                                <span className={styles.summaryIcon}><IconGift /></span>
+                                <span className={styles.summaryLabel}>Welcome Offer:</span>
+                                <span className={styles.summaryValue}>E.g., 60,000 bonus miles + Companion Fare™ (after meeting spend).</span>
+                            </div>
+                            <div className={styles.summaryItem}>
+                                <span className={styles.summaryIcon}><IconCheck /></span>
+                                <span className={styles.summaryLabel}>Annual Fee:</span>
+                                <span className={styles.summaryValue}>${reviewDataNew.annualFee}.</span>
+                            </div>
+                            <div className={styles.summaryItem}>
+                                <span className={styles.summaryIcon}><IconStar /></span>
+                                <span className={styles.summaryLabel}>Top Earning:</span>
+                                <span className={styles.summaryValue}>3X miles on Alaska; 2X on gas, EV, transit, etc.</span>
+                            </div>
+                             <div className={styles.summaryItem}>
+                                <span className={styles.summaryIcon}><IconPlane /></span> {/* Custom Icon for Companion Fare */}
+                                <span className={styles.summaryLabel}>Signature Perk:</span>
+                                <span className={styles.summaryValue}>Alaska's Famous Companion Fare™ from $122.</span>
+                            </div>
+                            <div className={styles.summaryItem}>
+                                <span className={styles.summaryIcon}><IconBag /></span> {/* Custom Icon for Bag Fee */}
+                                <span className={styles.summaryLabel}>Bag Benefit:</span>
+                                <span className={styles.summaryValue}>First checked bag free for you + up to 6 guests.</span>
+                            </div>
+                            <div className={styles.summaryItem} data-full-width="true">
+                                <span className={styles.summaryIcon}><IconPlus /></span>
+                                <span className={styles.summaryLabel}>Best For:</span>
+                                <span className={styles.summaryValue}>West Coast loyalists, oneworld® explorers, and anyone who loves flying with a friend for less.</span>
+                            </div>
+                        </div>
+                        <div className={styles.summaryBoxActions}>
+                            <a href={reviewDataNew.ratesLink} className={styles.summaryRatesLink} target="_blank" rel="noopener noreferrer sponsored">
+                                See Card Rates & Fees
+                            </a>
+                             <a href='/rewards-compare' className={`${styles.heroRewardsCalculator} ${styles.summaryButton}`} target="_blank" rel="noopener noreferrer"> {/* UPDATE link if needed */}
+                                Rewards Calculator
+                            </a>
+                        </div>
                     </div>
-                    <div className={styles.cons}>
-                        <h3>No, If You:</h3>
-                        <ul className={styles.featureList}>
-                            <li><strong>Rarely Fly Alaska</strong> or you live in a region with minimal Alaska routes</li>
-                            <li>Want <strong>Premium Lounge Access</strong> or more robust benefits (like a top-tier “club” card)
-                            with unlimited lounge visits</li>
-                            <li>Desire <strong>Higher Earning on Everyday Categories</strong>
-                            (like 3–4x on groceries/dining—this card only does 1x or 2x on select categories)</li>
-                            <li>Need <strong>Global Alliance Reciprocity</strong>
-                            with bigger airline coverage (like Delta or AA, though Alaska does have many partners,
-                            it’s not as large as some alliances historically)</li>
-                        </ul>
+                </header>
+
+                <section id="section-intro" className={styles.reviewSection}>
+                  <h2>Introduction: Alaska Airlines Card – Your West Coast Co-Pilot?</h2>
+                  <p>Dreaming of new horizons but wondering how to make travel more affordable and rewarding? For savvy U.S. travelers, especially those with a soft spot for the West Coast or an eye on global adventures, the Alaska Airlines Visa Signature® Card often comes up. Is it just another piece of plastic, or is it a strategic key to unlocking more travel, perks, and memories? Let's dive in and see if this card is the ideal co-pilot for your journeys.</p>
+                  <p>The appeal of this card stretches beyond Alaska Airlines itself. As part of the <a href="https://www.oneworld.com/" target="_blank" rel="noopener noreferrer sponsored">oneworld® Alliance</a>, the miles you earn become a passport to worldwide exploration, making it relevant even if you don't exclusively fly Alaska. This review will break down its features, benefits, and costs, connecting them not just to savings, but to the real experiences they can unlock.</p>
+                </section>
+
+                {/* Placeholder for a thematic travel image, like in the example */}
+                <Image
+                    src="/images/content/west-coast-travel-scene.webp" // UPDATE PATH: Example placeholder
+                    alt="Scenic view of the U.S. West Coast, symbolizing Alaska Airlines' hub."
+                    width={800} // IMPORTANT: Use the actual width of your image
+                    height={500} // IMPORTANT: Use the actual height of your image
+                    className={styles.contentImage}
+                />
+
+                <section id="section-1" className={styles.reviewSection}>
+                  <h2>1. Card Snapshot &amp; &quot;Best For&quot; Tagline</h2>
+                  <p>Here’s a quick look:</p>
+                  <DraggableTableWrapper>
+                    <div className={styles.tableContainer}>
+                        <table className={`${styles.statsTable} ${styles.highlightTable}`}> {/* Added highlightTable class for potential styling */}
+                            <tbody>
+                                <tr><td>Card Name:</td><td><strong>Alaska Airlines Visa Signature® Card</strong></td></tr>
+                                <tr><td>Issuer:</td><td>Bank of America (<a href="https://www.bankofamerica.com/credit-cards/products/alaska-airlines-credit-card/" target="_blank" rel="noopener noreferrer sponsored">Official Card Page</a>)</td></tr>
+                                <tr><td>Network:</td><td>Visa Signature</td></tr>
+                                <tr><td>Annual Fee:</td><td><strong>$95</strong></td></tr>
+                                <tr><td>Primary Rewards:</td><td>Alaska Airlines Mileage Plan™ miles</td></tr>
+                                <tr><td>Key Standout Perk:</td><td>Alaska's Famous Companion Fare™</td></tr>
+                                <tr><td>&quot;Best For&quot; Tagline:</td><td>The Alaska Airlines Visa Signature® Card: Ideal for West Coast loyalists, oneworld® explorers, and anyone who loves flying with a friend for less.</td></tr>
+                            </tbody>
+                        </table>
                     </div>
-                </div>
-            </section>
+                  </DraggableTableWrapper>
+                  <p>The $95 annual fee positions this card in the mid-tier, aiming to offer benefits—like the Companion Fare™ or free checked bags—that easily justify the cost. The Visa Signature label also means you get a baseline of travel and purchase protections.</p>
+                </section>
 
-             {/* Section 18: Disclaimers & Fine Print */}
-             <section id="section-18" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html:"Disclaimers &amp; Fine Print"}}></h2>
-                 {/* Using dangerouslySetInnerHTML for ® &amp; */}
-                <p dangerouslySetInnerHTML={{ __html:"Always confirm the current sign-up bonus, APR, and specific 2x categories on the official Bank of America or Alaska Airlines websites. The <b>companion fare</b> typically requires you to purchase an Alaska flight with your card to use it, and seat availability can be limited. Taxes &amp; fees from ~$23 are in addition to the $99 companion cost. Free checked bag requires you to have the card open and use it for the flight purchase. Baggage fees and lounge membership discounts can change at any time. Also note that if you revolve a balance, interest charges may overshadow any flight perks. This card typically requires good-excellent credit for approval."}}></p>
-            </section>
+                <section id="section-2" className={styles.reviewSection}>
+                  <h2>2. Deep Dive: The Current Welcome Offer &amp; Initial Perks</h2>
+                  <p>New cardholders get an attractive welcome package after meeting a spending requirement (typically $3,000 in purchases within the first 90 days). The current offer often includes:</p>
+                  <ul className={styles.featureList}>
+                      <li><strong>Bonus Mileage Plan™ Miles:</strong> For example, 60,000 bonus miles. Alaska miles are generally valued around 1.5 cents each, making 60,000 miles worth roughly $900 towards flights, potentially more for premium partner redemptions.</li>
+                      <li><strong>Alaska's Famous Companion Fare™:</strong> This allows a companion to fly with you from just $99 plus taxes and fees (starting from $23).</li>
+                      <li><strong>Flight Discount Code:</strong> Often a percentage off a future flight booking.</li>
+                  </ul>
+                  <p>This multi-part bonus delivers immediate value, encouraging you to integrate the card into your spending habits to quickly unlock these upfront benefits. Make sure you can comfortably meet the spending threshold.</p>
+                </section>
 
-             {/* Section 19 (was 20): Final Thoughts */}
-             <section id="section-19" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html:"Final Thoughts: Is the Alaska Airlines Visa Signature® Worth It?"}}></h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"If you fly Alaska even once or twice a year—especially with a companion— the <strong>Alaska Airlines Visa Signature® Card</strong> can pay off easily via the <b>companion fare</b> and free bags. At a modest $95 annual fee, the BOGO ticket alone can yield several hundred dollars in savings. You’ll also accumulate miles (often more valuable than some other airline programs), redeemable on a wide range of carriers from American to Qantas. The 3x on Alaska flights and 2x on gas/transit is a decent way to top off your mileage account quickly."}}></p>
-                <p>
-                    If you rarely use Alaska or live in a region they don’t serve much,
-                    you might not maximize the card’s perks.
-                    But for West Coast flyers or those who appreciate
-                    a global partner network with creative routing options,
-                    it’s a top competitor.
-                    Add in the intangible perks of priority boarding
-                    and the potential lounge membership discount,
-                    and you have a robust airline card
-                    that’s easy to justify year after year—
-                    as long as you leverage that precious companion fare annually.
-                </p>
-            </section>
+                <section id="section-3" className={styles.reviewSection}>
+                  <h2>3. Unpacking the Annual Fee: Is it Worth $95?</h2>
+                  <p>Is the $95 annual fee (details on the <a href="https://www.bankofamerica.com/credit-cards/products/alaska-airlines-credit-card/" target="_blank" rel="noopener noreferrer sponsored">Bank of America Alaska Airlines Card Page</a>) a good deal? For many, absolutely – often with just one or two perks:</p>
+                  <ul className={styles.featureList}>
+                      <li><strong>Free Checked Bag:</strong> Your first checked bag is free for you and up to six companions on the same Alaska Airlines reservation. With bag fees around $30-$35 each way, a single round-trip for two could save $120-$140, covering the annual fee in one go.</li>
+                      <li><strong>Alaska's Famous Companion Fare™:</strong> After the welcome offer, you can earn another each account anniversary by spending $6,000 on the card annually. Using this on a moderately priced ticket (think cross-country or Hawaii) can easily save you $200+ on the second ticket.</li>
+                  </ul>
+                  <p>Your travel habits determine the value. If you fly Alaska often, travel with a companion, and check bags, the $95 fee is likely a small price for significant savings. The $6,000 annual spend for the anniversary Companion Fare™ is key for long-term value.</p>
+                </section>
 
-             {/* Section 20 (was E-A-T): E-A-T Statement */}
-             <section id="section-20" className={`${styles.reviewSection} ${styles.eatSection}`}>
-                 <h2 dangerouslySetInnerHTML={{ __html: "Our Commitment to E-A-T: Expertise, Authority, Trustworthiness"}}></h2>
-                 {/* Using E-A-T text adapted for Alaska Card */}
-                <p>
-                    At <strong>TravelCardInsider</strong>,
-                    we emphasize accurate, thorough credit card reviews for airline loyalty.
-                    Our approach follows Google’s E‑A‑T (Expertise, Authority, Trustworthiness):
-                </p>
-                <h3>1. Expertise</h3>
-                <ul className={styles.featureList}>
-                    <li><strong>Alaska Flyer Insights:</strong>
-                    Our reviewers include frequent Alaska travelers
-                    who leverage the companion fare in real scenarios and understand Mileage Plan nuances.</li>
-                     {/* Using dangerouslySetInnerHTML for &amp; */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Up-to-Date Research:</strong> We revise this piece when Bank of America or Alaska alters mileage categories, lounge discounts, or the companion fare structure."}}></li>
-                    <li><strong>Practical Testing:</strong>
-                    We’ve used the card for flights, tracked baggage fee waivers,
-                    and redeemed miles for partner flights to confirm real-world value.</li>
-                </ul>
-                <h3>2. Authority</h3>
-                <ul className={styles.featureList}>
-                    {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>In-Depth Content:</strong> Our 2,000-word coverage addresses from sign-up bonuses to advanced redemption strategies for the Alaska Airlines Visa Signature® Card."}}></li>
-                    <li><strong>Recognized by Industry:</strong>
-                    We’re often referenced by travel/finance media
-                    for unbiased airline card evaluations.</li>
-                    <li><strong>Transparency:</strong>
-                    If we earn commissions from affiliate links, we disclose that,
-                    preserving editorial independence.</li>
-                </ul>
-                <h3>3. Trustworthiness</h3>
-                <ul className={styles.featureList}>
-                    <li><strong>Independent Ratings:</strong>
-                    Advertisers do not dictate our star rating or final verdict.</li>
-                    <li><strong>Reader-Driven Updates:</strong>
-                    We welcome user comments on real experiences,
-                    shaping ongoing accuracy and clarity.</li>
-                    <li><strong>Frequent Edits:</strong>
-                    We promptly modify content if major policy changes occur
-                    (e.g., new companion fare rules or bag fees).</li>
-                     {/* Using Link component for internal link */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Privacy &amp; Data Security:</strong> As per our <a href='/privacy-policy'>Privacy Policy</a>, we safeguard user data from any subscriptions or feedback forms."}}>
-                        {/* Corrected to use Next/Link for internal routing */}
-                        {/* <strong>Privacy &amp; Data Security:</strong> As per our <Link href="/privacy-policy"><a>Privacy Policy</a></Link>, we safeguard user data from any subscriptions or feedback forms. */}
+                <section id="section-4" className={styles.reviewSection}>
+                  <h2>4. Earning Power: How Your Miles Take Flight (3-2-1 Rewards)</h2>
+                  <p>The card’s tiered rewards accelerate mileage earning:</p>
+                  <DraggableTableWrapper>
+                    <div className={styles.tableContainer}>
+                      <table className={`${styles.statsTable} ${styles.earningRatesTable}`}>
+                        <thead>
+                          <tr>
+                            <th>Miles per $1 Spent</th>
+                            <th>Eligible Purchase Categories</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td data-label="Miles per $1"><strong>3 miles</strong></td>
+                            <td data-label="Categories">On eligible Alaska Airlines purchases (tickets, inflight food/beverages, lounge memberships, vacation packages booked directly).</td>
+                          </tr>
+                          <tr>
+                            <td data-label="Miles per $1"><strong>2 miles</strong></td>
+                            <td data-label="Categories">On eligible gas, EV charging, cable, streaming services, and local transit (rideshares, trains, buses, tolls, ferries).</td>
+                          </tr>
+                          <tr>
+                            <td data-label="Miles per $1"><strong>1 mile</strong></td>
+                            <td data-label="Categories">On all other purchases.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </DraggableTableWrapper>
+                  <p>There’s no cap on miles earned, and they don’t expire with an active account. The 2-mile categories cover common household expenses, turning everyday spending into faster award travel. This makes the card a consistent mile-generator, not just for booking flights.</p>
+                </section>
+
+                <section id="section-5" className={styles.reviewSection}>
+                  <h2>5. The Star of the Show: Alaska&apos;s Famous Companion Fare™ Explained</h2>
+                  <p>This is arguably the card&apos;s most celebrated perk. It lets the primary cardholder book a round-trip coach ticket for a companion on Alaska Airlines flights from $122 ($99 base fare + taxes/fees from $23) – see official <a href="https://www.alaskaair.com/content/mileage-plan/frequently-asked-questions/faq-companion-discount-code" target="_blank" rel="noopener noreferrer sponsored">Alaska Airlines Companion Fare Terms</a>. You both travel on the same paid published coach airfare, booked together on alaskaair.com.</p>
+                  <h3>How to get it:</h3>
+                  <ul className={styles.featureList}>
+                      <li><strong>Welcome Offer:</strong> Meet the initial spending requirement.</li>
+                      <li><strong>Anniversary Benefit:</strong> Spend $6,000 or more on net purchases annually by your card anniversary.</li>
+                  </ul>
+                  <p>Redeem your Companion Fare discount code via your Mileage Plan™ account on Alaska&apos;s website. Book travel within 12 months of issuance (travel can be later). You must use your Alaska Airlines credit card for the purchase. It’s valid only on Alaska-marketed and -operated flights (not partners) for coach travel, and both travelers earn miles. Savings can be substantial, especially on pricier routes, often far exceeding the annual fee.</p>
+                </section>
+
+                <section id="section-6" className={styles.reviewSection}>
+                  <h2>6. Fly Lighter: The Free Checked Bag Benefit</h2>
+                  <p>Baggage fees are a common travel pain point. This card offers relief: the primary cardholder and up to six guests on the same reservation each get their first standard bag checked free on qualifying Alaska Airlines flights. Refer to the official <a href="https://www.alaskaair.com/content/travel-info/baggage/checked-bags" target="_blank" rel="noopener noreferrer sponsored">Alaska Airlines Checked Bag Policy</a> for full details.</p>
+                  <p>To qualify, purchase the airfare with your Alaska card and include your Mileage Plan™ number in the reservation. It applies to flights marketed and operated by Alaska Airlines, Horizon Air, or SkyWest (not codeshares with other carriers). For a couple, this saves $120-$140 per round trip; a family of four could save $240-$280. This perk alone can easily justify the annual fee.</p>
+                </section>
+
+                <section id="section-7" className={styles.reviewSection}>
+                  <h2>7. Board Sooner: Priority Boarding Perks</h2>
+                  <p>Enjoy a smoother boarding process with priority boarding for you and up to six guests on the same reservation. You&apos;ll board after elite members and First/Premium Class but before general boarding.</p>
+                  <p>Like the bag benefit, you must buy the airfare with your Alaska card and include your Mileage Plan™ number. This &quot;soft perk&quot; means less waiting, more overhead bin space, and a calmer start to your flight – especially valued by families or those who prefer a less rushed experience.</p>
+                </section>
+
+                <section id="section-8" className={styles.reviewSection}>
+                  <h2>8. Sweeten the Journey: Inflight Discounts &amp; Lounge Access Discount</h2>
+                  <p>A couple of extra perks to enhance your travel:</p>
+                  <ul className={styles.featureList}>
+                      <li><strong>20% Inflight Rebate:</strong> Get 20% back as a statement credit on food, beverages, and Wi-Fi purchased onboard Alaska flights with your card. Credits typically post within seven days.</li>
+                      <li><strong>$100 Off Alaska Lounge+ Membership:</strong> Get a $100 discount on an annual Alaska Lounge+ Membership when purchased with your card. This is best for those who already value or are considering lounge access, as it doesn&apos;t grant free entry.</li>
+                  </ul>
+                </section>
+
+                <section id="section-9" className={styles.reviewSection}>
+                  <h2>9. Boost Your Earnings: The 10% Relationship Bonus</h2>
+                  <p>A unique perk: get a 10% bonus on miles earned from card purchases if you also have an eligible Bank of America® consumer checking/savings account or a Merrill investment account.</p>
+                  <p>This effectively boosts your earning rates:</p>
+                  <ul className={styles.featureList}>
+                      <li>Alaska Airlines purchases: <strong>3.3 miles per dollar</strong></li>
+                      <li>Gas, EV charging, cable, streaming, local transit: <strong>2.2 miles per dollar</strong></li>
+                      <li>All other purchases: <strong>1.1 miles per dollar</strong></li>
+                  </ul>
+                  <p>A &quot;Qualifying Account&quot; is easy to maintain (e.g., an active checking account). This is a significant incentive for Bank of America/Merrill customers, enhancing the card&apos;s rewards without extra effort.</p>
+                </section>
+
+                <section id="section-10" className={styles.reviewSection}>
+                  <h2>10. Beyond the Flight: Understanding Alaska&apos;s Mileage Plan™</h2>
+                  <p>Miles earned go into Alaska Airlines&apos; highly-regarded Mileage Plan™ loyalty program. For comprehensive information, visit the official <a href="https://www.alaskaair.com/content/mileage-plan/my-account/my-account-overview" target="_blank" rel="noopener noreferrer sponsored">Alaska Airlines Mileage Plan Details</a> page.</p>
+                  <ul className={styles.featureList}>
+                      <li><strong>Earning:</strong> Fly Alaska (often distance-based), or use partners (airlines, hotels, car rentals, dining, shopping).</li>
+                      <li><strong>Redeeming:</strong> For Alaska flights (no blackout dates touted), upgrades, or, powerfully, on partner airlines. Alaska is in the oneworld® Alliance (American, British Airways, Cathay Pacific, JAL, Qantas, Qatar Airways, etc.) and has other global partners (Aer Lingus, Condor, Korean Air, Singapore Airlines). This opens up over 1,000 destinations. You can often mix multiple oneworld® partners on one award ticket.</li>
+                      <li><strong>Mile Value:</strong> Generally 1.3-1.5 cents each for economy, but can soar to 4+ cents for premium international partner awards.</li>
+                      <li><strong>Elite Status:</strong> MVP®, MVP® Gold, MVP® Gold 75K/100K offer upgrades, bonus miles, etc. For 2025, card spending can earn Elite Qualifying Miles (EQMs): 1 EQM per $3 spent, up to 30,000 EQMs/year – a big help towards status.</li>
+                  </ul>
+                  <p>The strength of Mileage Plan™ lies in its partner network, transforming this card into a tool for global travel. Stay updated on program changes to maximize redemptions.</p>
+                </section>
+
+                <section id="section-11" className={styles.reviewSection}>
+                  <h2>11. The Fine Print: Full Spectrum of Rates &amp; Fees</h2>
+                  <p>Always understand the costs. Refer to Bank of America's official page for the most current terms.</p>
+                  <DraggableTableWrapper>
+                    <div className={styles.tableContainer}>
+                      <table className={`${styles.statsTable} ${styles.ratesFeesTable}`}>
+                        <thead>
+                          <tr>
+                            <th>Fee/Rate Category</th>
+                            <th>Details</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr><td>Annual Fee:</td><td>$95</td></tr>
+                          <tr><td>Purchase APR:</td><td>Variable, typically 20.24% - 29.24% based on creditworthiness. Avoid interest by paying your balance in full monthly.</td></tr>
+                          <tr><td>Balance Transfer APR &amp; Fee:</td><td>Bank of America's official page lists a 4% fee. Verify current terms if considering.</td></tr>
+                          <tr><td>Cash Advance APR &amp; Fee:</td><td>Higher APR (e.g., 28.24% - 29.24%) plus a 5% fee. Avoid cash advances.</td></tr>
+                          <tr><td>Foreign Transaction Fee:</td><td><strong>None.</strong> This is excellent for international travel.</td></tr>
+                          <tr><td>Late Payment Fee:</td><td>Up to $29 (first time), then up to $40.</td></tr>
+                          <tr><td>Returned Payment Fee:</td><td>Check your cardmember agreement (often around $40).</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </DraggableTableWrapper>
+                  <p><small>APRs are variable. Paying in full each month is key to maximizing rewards. All rates and fees are subject to change; please refer to the issuer's official documentation for the latest information.</small></p>
+                </section>
+
+                <section id="section-12" className={styles.reviewSection}>
+                  <h2>12. Security and Account Management Features</h2>
+                  <p>Bank of America provides standard, robust features:</p>
+                  <ul className={styles.featureList}>
+                      <li><strong>$0 Liability Guarantee:</strong> For unauthorized fraudulent transactions.</li>
+                      <li><strong>Contactless Chip Technology &amp; Digital Wallet Compatibility:</strong> Secure and convenient payments (Apple Pay®, Google Pay™, Samsung Pay®).</li>
+                      <li><strong>Online &amp; Mobile Banking:</strong> Manage your account, pay bills, etc.</li>
+                      <li><strong>Account Alerts:</strong> Customizable notifications.</li>
+                      <li><strong>Free FICO® Score:</strong> Opt-in to monitor your credit health. Check <a href="https://www.bankofamerica.com/credit-cards/free-fico-credit-score/" target="_blank" rel="noopener noreferrer sponsored">Bank of America FICO Score Benefit Details</a>.</li>
+                      <li><strong>Paperless Statement Option.</strong></li>
+                      <li><strong>Balance Connect® for Overdraft Protection:</strong> Optional service linking to a BoA checking account (fees and interest may apply).</li>
+                  </ul>
+                  <p>These ensure a secure, user-friendly experience.</p>
+                </section>
+
+                <section id="section-13" className={styles.reviewSection}>
+                  <h2>13. Travel &amp; Purchase Protections: What&apos;s Covered?</h2>
+                  <p>Visa Signature cards include protections. Specifics are in your Guide to Benefits from Bank of America, but typically include:</p>
+                  <ul className={styles.featureList}>
+                      <li><strong>Auto Rental Collision Damage Waiver (CDW):</strong> Secondary coverage for damage/theft when you pay with the card and decline the rental company&apos;s CDW.</li>
+                      <li><strong>Lost Luggage Reimbursement:</strong> For lost/stolen checked luggage.</li>
+                      <li><strong>Trip Cancellation/Interruption Insurance:</strong> Reimbursement for non-refundable expenses for covered reasons.</li>
+                      <li><strong>Trip Delay Reimbursement:</strong> For expenses like meals/lodging during significant covered delays.</li>
+                      <li><strong>Baggage Delay Insurance:</strong> For essential item purchases if bags are delayed.</li>
+                      <li><strong>Travel and Emergency Assistance Services:</strong> 24/7 referral service (you pay third-party costs).</li>
+                      <li><strong>Roadside Dispatch®:</strong> Pay-per-use roadside assistance.</li>
+                      <li><strong>Extended Warranty Protection:</strong> Extends manufacturer&apos;s U.S. warranty on eligible items.</li>
+                      <li><strong>Purchase Security:</strong> May cover new retail purchases against theft/damage for a short period.</li>
+                      <li><strong>Concierge Services:</strong> Assistance with bookings, reservations, etc.</li>
+                  </ul>
+                  <p>Always refer to your official Guide to Benefits for full terms and conditions. These can offer substantial value and peace of mind.</p>
+                </section>
+
+                 {/* Placeholder for another thematic travel image */}
+                <Image
+                    src="/images/content/oneworld-alliance-destinations.webp" // UPDATE PATH: Example placeholder
+                    alt="Montage of iconic oneworld Alliance destinations."
+                    width={800} // IMPORTANT: Use the actual width of your image
+                    height={450} // IMPORTANT: Use the actual height of your image
+                    className={styles.contentImage}
+                />
+
+                <section id="section-14" className={styles.reviewSection}>
+                  <h2>14. Detailed User Profiling: Who Should Get This Card?</h2>
+                  <p>This card shines for specific travelers:</p>
+                  <ul className={styles.featureList}>
+                      <li><strong>The West Coast Wanderer:</strong> If you live on or frequently fly along the U.S. West Coast, Alaska&apos;s network and card perks are highly valuable.</li>
+                      <li><strong>The Couple/Family Traveler (Companion Fare Maximizer):</strong> Regularly travel with a companion? The Companion Fare™ (if you meet the $6k annual spend for the anniversary one) and multi-person checked bag benefit offer huge savings.</li>
+                      <li><strong>The Aspiring oneworld® Explorer:</strong> Aiming for international premium cabin travel? Alaska miles are great for high-value redemptions on renowned partner airlines.</li>
+                      <li><strong>The Bank of America Customer:</strong> The 10% relationship bonus boosts all your mileage earnings.</li>
+                      <li><strong>The Status Seeker (Especially for 2025):</strong> The EQM earning feature through card spend is a significant shortcut to elite perks.</li>
+                  </ul>
+                  <p>It might be less compelling if you rarely fly Alaska/partners, travel solo, don&apos;t check bags, prefer cash-back, or aren&apos;t near an Alaska hub.</p>
+                </section>
+
+                <section id="section-15" className={styles.reviewSection}>
+                  <h2>15. Real-World People Ideas: Meet Alex, Ben &amp; Chloe, and David</h2>
+                  <div className={styles.profileCardContainer}> {/* Added a container for better styling if needed */}
+                    <div className={styles.profileCard}>
+                        <h4>Alex, the Seattle-Based Tech Professional:</h4>
+                        <p>Flies Alaska 4-5 times a year. The free checked bag saves him ~$250 annually, covering the fee. 3x miles on flights and priority boarding are sweet extras.</p>
+                    </div>
+                    <div className={styles.profileCard}>
+                        <h4>Ben &amp; Chloe, the Portland-Based Adventure Couple:</h4>
+                        <p>Their annual big trip (Hawaii, Mexico) becomes much cheaper with the Companion Fare™, saving $400-$600. Free bags for both save ~$120 per trip. As BoA customers, the 10% mileage bonus accelerates their next award.</p>
+                    </div>
+                    <div className={styles.profileCard}>
+                        <h4>David, the Points &amp; Miles Strategist in Chicago:</h4>
+                        <p>Uses Alaska miles for premium international travel on partners like JAL or Qatar. The 2x on gas/transit helps accumulate miles, and no foreign transaction fees are key. The 2025 EQM benefit helps his oneworld® status goals.</p>
+                    </div>
+                  </div>
+                  <p>These examples show how different travelers find value by aligning perks with their habits.</p>
+                </section>
+
+                <section id="section-16" className={styles.reviewSection}>
+                  <h2>16. Show Me the Value: A Real-World Example with Calculations</h2>
+                  <p>Imagine the Miller family of four, flying from California to Maui on Alaska Airlines.</p>
+                  <h3>Assumptions:</h3>
+                  <ul className={styles.featureList}>
+                      <li>Round-trip tickets $600/person.</li>
+                      <li>They have the anniversary Companion Fare™ (met $6k spend).</li>
+                      <li>Each checks one bag.</li>
+                      <li>$50 inflight spend.</li>
+                  </ul>
+                  <h3>Calculations:</h3>
+                  <p><strong>Without the Card:</strong> Flights ($2400) + Bag Fees ($280 based on $35/bag each way for 4 people) + Inflight ($50) = <strong>$2,730</strong></p>
+                  <p><strong>With the Card:</strong></p>
+                  <ul className={styles.featureList}>
+                    <li>Flights: 1 full price ($600) + 1 Companion Fare™ (approx. $122 base + $37 taxes/fees = $159) + 2 full price ($1200) = $1959</li>
+                    <li>Bag Fees: $0 (savings of $280)</li>
+                    <li>Inflight: $50 - 20% rebate ($10) = $40</li>
+                    <li>Annual Fee: +$95</li>
+                    <li><strong>Total With Card: $1959 + $40 + $95 = $2,094</strong></li>
+                  </ul>
+                  <p><strong>Net Savings for this Trip: $2,730 - $2,094 = $636</strong></p>
+                  <p><strong>Miles Earned (approximate):</strong></p>
+                  <ul className={styles.featureList}>
+                    <li>From Alaska purchases (flights for 3.265 tickets @ $600 equivalent before companion discount value, roughly $1959 spent on card for flights): $1959 x 3 miles/$ = 5,877 miles.</li>
+                    <li>(Plus potential 10% BoA relationship bonus: 587 miles).</li>
+                  </ul>
+                  <p>This one trip shows substantial savings far exceeding the annual fee, plus thousands of miles earned.</p>
+                </section>
+
+                <section id="section-17" className={styles.reviewSection}>
+                  <h2>17. Head-to-Head: Alaska Airlines Visa Signature® vs. The Competition</h2>
+                  <p>How does it stack up? Key competitors include United Explorer℠, Delta SkyMiles® Gold Amex, Chase Sapphire Preferred®, and Citi® / AAdvantage® Platinum Select®.</p>
+                  <DraggableTableWrapper>
+                    <div className={styles.tableContainer}>
+                      <table className={`${styles.statsTable} ${styles.comparisonTable}`}>
+                        <thead>
+                          <tr>
+                            <th>Feature</th>
+                            <th>Alaska Airlines Visa Signature®</th>
+                            <th>United Explorer℠ Card</th>
+                            <th>Delta SkyMiles® Gold Amex</th>
+                            <th>Chase Sapphire Preferred®</th>
+                            <th>Citi® / AAdvantage® Platinum Select®</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr><td data-label="Feature">Annual Fee</td><td data-label="Alaska">$95</td><td data-label="United">$0 intro, then $95</td><td data-label="Delta">$0 intro, then $150</td><td data-label="Chase">$95</td><td data-label="AA">$0 intro, then $99</td></tr>
+                          <tr><td data-label="Feature">Typical Welcome Bonus</td><td data-label="Alaska">60k miles + Comp. Fare + Discount</td><td data-label="United">50-60k miles</td><td data-label="Delta">40-70k miles</td><td data-label="Chase">60k points</td><td data-label="AA">50k miles</td></tr>
+                          <tr><td data-label="Feature">Airline Purchase</td><td data-label="Alaska">3x Alaska miles</td><td data-label="United">2x United miles</td><td data-label="Delta">2x Delta miles</td><td data-label="Chase">5x on travel via Chase; 2x other travel</td><td data-label="AA">2x AA miles</td></tr>
+                          <tr><td data-label="Feature">Key Bonus Categories</td><td data-label="Alaska">2x (gas, EV, transit, cable, streaming)</td><td data-label="United">2x (dining, hotels directly with United)</td><td data-label="Delta">2x (dining, US Supermarkets)</td><td data-label="Chase">3x (dining, online grocery, streaming)</td><td data-label="AA">2x (dining, gas)</td></tr>
+                          <tr><td data-label="Feature">Signature Perk</td><td data-label="Alaska">Annual Companion Fare™ (from $122, w/ $6k spend); Free bag for up to 7</td><td data-label="United">2 United Club passes/yr; Free first bag</td><td data-label="Delta">$200 Delta Flight Credit (w/ $10k spend)</td><td data-label="Chase">$50 annual hotel credit (Chase Travel)</td><td data-label="AA">$125 AA Flight Discount (w/ $20k spend)</td></tr>
+                          <tr><td data-label="Feature">Foreign Trans. Fee</td><td data-label="Alaska">None</td><td data-label="United">None</td><td data-label="Delta">None</td><td data-label="Chase">None</td><td data-label="AA">None</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </DraggableTableWrapper>
+                  <p><small>(Note: Offers/perks vary and are subject to change. Table reflects typicals.)</small></p>
+                  <h3>Quick Comparison:</h3>
+                  <ul className={styles.featureList}>
+                      <li><strong>vs. United/Delta/AA cards:</strong> Similar fees and basic perks (free bag). Alaska&apos;s Companion Fare™ is often more uniquely valuable than club passes or spend-based flight credits if you travel with someone. Alaska&apos;s broader 2x everyday categories (gas, transit, streaming) are strong. Choice depends on airline loyalty and route network.</li>
+                      <li><strong>vs. Chase Sapphire Preferred®:</strong> Sapphire offers flexible points transferable to many partners (including some oneworld). It lacks airline-specific perks like Alaska&apos;s Companion Fare™ or primary free bag benefit with Alaska. Alaska card for Alaska loyalists; Sapphire for ultimate flexibility.</li>
+                  </ul>
+                  <p>The Alaska card stands out for its Companion Fare™ and generous everyday earning categories within its ecosystem.</p>
+                </section>
+
+                <section id="section-18" className={styles.reviewSection}>
+                  <h2>18. Pros &amp; Cons: A Balanced View</h2>
+                  <div className={styles.prosConsContainer}>
+                    <div className={styles.prosBox}>
+                      <h3>Pros <IconPlus className={styles.inlineIcon} /></h3> {/* Example icon */}
+                      <ul className={styles.featureList}>
+                          <li>Valuable Companion Fare™: Huge savings potential.</li>
+                          <li>Generous Free Checked Bag Policy: Saves money for individuals/groups.</li>
+                          <li>Strong Earning on Alaska Purchases (3x) & Useful 2x Bonus Categories.</li>
+                          <li>10% Relationship Bonus with Bank of America: Enhances mileage earning.</li>
+                          <li>No Foreign Transaction Fees.</li>
+                          <li>Access to Valuable oneworld® & Global Partner Redemptions.</li>
+                          <li>Priority Boarding & Inflight Discounts.</li>
+                          <li>Potential to Earn Elite Qualifying Miles (EQMs) (e.g., for 2025).</li>
+                      </ul>
+                    </div>
+                    <div className={styles.consBox}>
+                      <h3>Cons <IconX className={styles.inlineIcon} /></h3> {/* Example icon */}
+                      <ul className={styles.featureList}>
+                          <li>$95 Annual Fee: Must justify with perk usage.</li>
+                          <li>Anniversary Companion Fare™ Requires $6,000 Annual Spend.</li>
+                          <li>Best for Those Who Fly Alaska or its Partners: Limited value otherwise.</li>
+                          <li>Miles Tied to Mileage Plan™: Less flexible than transferable bank points.</li>
+                          <li>Alaska&apos;s Route Network Focus: Primarily West Coast (though partners expand reach).</li>
+                      </ul>
+                    </div>
+                  </div>
+                </section>
+
+                <section id="section-19" className={`${styles.reviewSection} ${styles.faqSection}`}>
+                  <h2>19. Card-Specific Frequently Asked Questions (FAQs)</h2>
+                  <div className={styles.faqContainer}>
+                      {structuredDataOptimized['@graph'].find(item => item['@type'] === 'FAQPage').mainEntity.map((faq, index) => (
+                          <details key={index} className={styles.faqItem} name={`faq-${index + 1}`}>
+                              <summary className={styles.faqQuestion}>{`${index + 1}. ${faq.name}`}</summary>
+                              <div className={styles.faqAnswer}><p>
+                                {faq.acceptedAnswer.text.includes("Alaska Airlines Mileage Plan™") ? <>Generally 1.3-1.5 cents each for economy, but can be 2-4+ cents for premium partner awards. You can find more details on the <a href="https://www.alaskaair.com/content/mileage-plan/my-account/my-account-overview" target="_blank" rel="noopener noreferrer sponsored">Alaska Airlines Mileage Plan™</a>.</> :
+                                faq.acceptedAnswer.text.includes("Companion Fare™") ? <>No, it's only for flights marketed and operated by Alaska Airlines. Specific terms can be found on the <a href="https://www.alaskaair.com/content/mileage-plan/frequently-asked-questions/faq-companion-discount-code" target="_blank" rel="noopener noreferrer sponsored">Alaska Airlines website regarding their Companion Fare™</a>.</> :
+                                faq.acceptedAnswer.text.includes("checked bag policy") ? <>Terms usually state 'purchase airfare' with the card. It's best to verify with Alaska Airlines for award tickets, as paying only taxes may not qualify according to their <a href="https://www.alaskaair.com/content/travel-info/baggage/checked-bags" target="_blank" rel="noopener noreferrer sponsored">checked bag policy</a>.</> :
+                                faq.acceptedAnswer.text}
+                              </p></div>
+                          </details>
+                      ))}
+                  </div>
+                </section>
+
+                <section id="section-20" className={styles.reviewSection}>
+                  <h2>20. Conclusion: Charting Your Course with the Alaska Card</h2>
+                  <p>The Alaska Airlines Visa Signature® Card is a compelling choice for many U.S. travelers, especially if your travel patterns involve the West Coast, flying with a companion, or leveraging the oneworld® Alliance. Its standout perks like the Companion Fare™, free checked bags, and solid mileage earning can deliver substantial savings and richer travel experiences, particularly if you can maximize the $6,000 annual spend for the anniversary Companion Fare and qualify for the BoA relationship bonus.</p>
+                  <p>The $95 annual fee is often easily offset. However, if you prioritize ultimate flexibility with points or rarely fly Alaska and its partners, a general travel rewards card might be a better fit.</p>
+                  <p>Ultimately, assess your travel habits and spending. If this card’s unique benefits align with your style, it has great potential to be a rewarding co-pilot on your adventures.</p>
+                </section>
+
+                <section id="section-eat" className={`${styles.reviewSection} ${styles.eatSection}`}>
+                    <h2 dangerouslySetInnerHTML={{ __html: `Our Commitment to E-A-T: Expertise, Authority &amp; Trustworthiness`}}></h2>
+                    <p>At <strong>{siteName}</strong>, we ensure our content meets the highest standards. This review of the <strong>{reviewDataNew.cardName}</strong> is based on thorough research of the card&apos;s features, terms, and conditions as of {new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}, cross-referenced with official issuer documentation and datapoints from the travel rewards community, to provide you with a reliable and comprehensive guide.</p>
+                </section>
+
+              </article>
+            </div>
+          </div>
+
+          <aside className={styles.sidebarArea}>
+            <TableOfContents sections={tocSections} />
+            {/* You can add other sidebar widgets here, e.g., a small card summary or related posts */}
+            <div className={styles.sidebarWidget}>
+                <h4>Quick Card Facts</h4>
+                <ul className={styles.quickFactsList}>
+                    <li><strong>Annual Fee:</strong> ${reviewDataNew.annualFee}</li>
+                    <li><strong>Companion Fare™:</strong> Yes (details in review)</li>
+                    <li><strong>Free Checked Bag:</strong> Yes (details in review)</li>
+                    <li><strong>Foreign Transaction Fees:</strong> None</li>
+                    <li>
+                        <a href={reviewDataNew.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.sidebarApplyLink}>
+                            Apply Now
+                        </a>
+                    </li>
+                     <li>
+                        <a href={reviewDataNew.ratesLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.sidebarRatesLink}>
+                            See Rates & Fees
+                        </a>
                     </li>
                 </ul>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html: "By adhering to E-A-T, we aim to provide a reliable, user-focused review so you can confidently decide if the Alaska Visa Signature® Card is your next move."}}></p>
-            </section>
-
-          </article>
-        </div> {/* Close reviewContainer */}
+            </div>
+          </aside>
+        </div>
       </main>
 
-      
+      <div className={styles.stickyFooterContainer}>
+        <div className={styles.stickyFooterContent}>
+            <Image src={`${siteUrl}${reviewDataNew.imageUrl}`} alt={`${reviewDataNew.cardName} small image`} width={60} height={38} className={styles.stickyFooterCardImage} />
+            <div className={styles.stickyFooterText}>
+              <span className={styles.stickyFooterCardName}>{reviewDataNew.cardName}</span>
+              <span className={styles.stickyFooterRating}>{siteName} Rating: {reviewDataNew.ratingValue.toFixed(1)}/10</span>
+            </div>
+            <div className={styles.stickyFooterButtons}>
+                <a
+                    href={reviewDataNew.applyLink} // Your affiliate link
+                    className={`${styles.stickyFooterBtn} ${styles.stickyFooterBtnApply}`}
+                    target="_blank"
+                    rel="noopener noreferrer sponsored"
+                >
+                    Apply Now
+                </a>
+                <a
+                    href={reviewDataNew.ratesLink}
+                    className={`${styles.stickyFooterBtn} ${styles.stickyFooterBtnRates}`}
+                    target="_blank"
+                    rel="noopener noreferrer sponsored"
+                >
+                    See Rates & Fees
+                </a>
+            </div>
+        </div>
+      </div>
     </>
   );
 }
 
-export default AlaskaVisaSignatureReviewPage;
+export default AlaskaAirlinesVisaSignatureReviewPage;
