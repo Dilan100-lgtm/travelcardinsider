@@ -1079,33 +1079,8 @@ function AlaskaAirlinesVisaSignatureReviewPage() {
         </div>
       </main>
 
-      <div className={styles.stickyFooterContainer}>
-        <div className={styles.stickyFooterContent}>
-            <Image src={reviewDataNew.imageUrl} alt={`${reviewDataNew.cardName} small image`} width={60} height={38} className={styles.stickyFooterCardImage} />
-            <div className={styles.stickyFooterText}>
-              <span className={styles.stickyFooterCardName}>{reviewDataNew.cardName}</span>
-              <span className={styles.stickyFooterRating}>{siteName} Rating: {reviewDataNew.ratingValue.toFixed(1)}/10</span>
-            </div>
-            <div className={styles.stickyFooterButtons}>
-                <a
-                    href={reviewDataNew.applyLink}
-                    className={`${styles.stickyFooterBtn} ${styles.stickyFooterBtnApply}`}
-                    target="_blank"
-                    rel="noopener noreferrer sponsored"
-                >
-                    Apply Now
-                </a>
-                <a
-                    href={reviewDataNew.ratesLink}
-                    className={`${styles.stickyFooterBtn} ${styles.stickyFooterBtnRates}`}
-                    target="_blank"
-                    rel="noopener noreferrer sponsored"
-                >
-                    See Rates & Fees
-                </a>
-            </div>
-        </div>
-      </div>
+      
+      
     </>
   );
 }
