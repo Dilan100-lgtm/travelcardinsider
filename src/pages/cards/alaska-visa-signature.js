@@ -10,16 +10,12 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import styles from '../../styles/ReviewPage.module.css'; // Assuming same CSS module as aadvantage-mileup.js
 
-import TableOfContents from '../../components/TableOfContents'; // Assuming same TOC component
-// UPDATE ICON PATHS AS NEEDED for your project structure
-import IconGift from '../../components/icons/icon-gift.svg';
-import IconStar from '../../components/icons/icon-star.svg';
-import IconCheck from '../../components/icons/icon-Credit Card.svg'; // Represents fee or key features
-import IconX from '../../components/icons/icon-Star + Arrow Up.svg'; // Represents drawbacks or less positive aspects
-import IconPlus from '../../components/icons/icon-target.svg'; // Represents 'Best For' or 'Key Benefit'
-import IconPlane from '../../components/icons/icon-plane.svg'; // Example: Specific for travel perks
-import IconBag from '../../components/icons/icon-briefcase.svg'; // Example: Specific for bag benefits
-import IconWorld from '../../components/icons/icon-globe.svg'; // Example: Specific for alliance benefits
+import TableOfContents    from '../../components/TableOfContents'; // Assuming same TOC component
+import IconGift from '../../components/icons/icon-gift.svg'; // UPDATE AS NEEDED (path to your icon)
+import IconStar from '../../components/icons/icon-star.svg'; // UPDATE AS NEEDED (path to your icon)
+import IconCheck from '../../components/icons/icon-Credit Card.svg'; // UPDATE AS NEEDED (path to your icon, e.g. a checkmark or fee icon)
+// import IconX from '../../components/icons/icon-Star + Arrow Up.svg'; // Not explicitly used in Aeroplan summary, but available
+import IconPlus from '../../components/icons/icon-target.svg'; // UPDATE AS NEEDED (path to your icon, represents 'Best For' or 'Key Benefit')
 
 const RatingTooltip = dynamic(() => import('../../components/RatingTooltip'), { ssr: false, loading: () => null });
 
