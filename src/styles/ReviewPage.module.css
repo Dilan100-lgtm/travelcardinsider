@@ -1,5 +1,22 @@
 /* src/styles/ReviewPage.module.css */
 
+/* Define heights for calculation. YOU MIGHT NEED TO ADJUST THESE. */
+:root {
+  /* IMPORTANT: Adjust --site-global-header-height to the actual height 
+    of your website's fixed/sticky global navigation header. 
+    If you don't have one, or it's not fixed/sticky, set this to 0px.
+  */
+  --site-global-header-height: 60px; /* <<<< ADJUST THIS VALUE! */
+
+  --toc-top-offset-desktop: var(--spacing-md, 16px); /* Current 'top' value for sticky TOC */
+  
+  --sticky-cta-footer-height-desktop: 55px;  /* Estimated height of the new sticky footer on desktop */
+  --sticky-cta-footer-height-mobile: 90px; /* Estimated height of the new sticky footer on mobile */
+
+  /* Optional: Extra spacing below the TOC before it would meet the sticky footer */
+  --toc-bottom-clearance: var(--spacing-md, 16px); 
+}
+
 /* =============== BASE & CONTAINER =============== */
 .reviewContainer {
   max-width: 1200px;
@@ -11,10 +28,17 @@
   border: 1px solid var(--color-border-light, #ebecf0); /* Add subtle border */
   line-height: 1.7;
   font-size: 1rem;
-  /* margin-top: 4rem; REMOVED to prevent double margin with hero */
+  /* margin-top: 4rem; REMOVED as heroSection has margin-bottom */
   color: var(--text-medium, #42526e); /* Use variable */
   font-family: 'Roboto', Arial, sans-serif; /* Will be overridden by globals.css for Inter if not more specific */
-  margin-bottom: 120px; /* Add margin to the bottom of the review container to prevent overlap with sticky footer */
+  /* Adjust margin-bottom to prevent content from being hidden by the sticky footer. */
+  margin-bottom: calc(var(--sticky-cta-footer-height-desktop) + 20px); 
+}
+
+@media (max-width: 600px) {
+  .reviewContainer {
+    margin-bottom: calc(var(--sticky-cta-footer-height-mobile) + 20px);
+  }
 }
 
 .reviewSection {
@@ -349,7 +373,7 @@
   border: 1px solid var(--color-border, #dfe1e6);
   border-radius: var(--border-radius-md, 6px); 
   box-shadow: var(--shadow-sm, 0 2px 4px rgba(23, 43, 77, 0.07));
-  /* overflow: hidden; */ /* <<< REMOVED THIS LINE TO FIX DRAG SCROLLING */
+  /* overflow: hidden; <<< REMOVED THIS LINE TO FIX DRAG SCROLLING (already removed in previous step) */
 }
 
 .statsTable {
@@ -391,71 +415,14 @@
 }
 .totalRow td:first-child { text-align: right; }
 
-/* =============== REMOVED/MODIFIED Original CTA Section =============== */
-/*
-.ctaSection {
-  text-align: center; padding: 0.5rem;
-  background: var(--color-background-subtle, #f1f3f5);
-  border: 1px solid var(--color-border, #dfe1e6);
-  border-radius: var(--border-radius-md, 6px);
-  margin: var(--spacing-xl, 32px) 0;
-  box-shadow: none;
-  position: sticky; top: 3rem;  <-- REMOVE STICKY BEHAVIOR or whole block
-  height: 25vh; 
-  z-index: 1000;
-}
-.ctaSection h2 {
-  font-family: var(--font-condensed, 'Roboto Condensed', var(--font-family-sans, sans-serif));
-  font-size: 1rem; 
-  color: var(--text-dark, #172b4d);
-  margin-top: 0; margin-bottom: 0.5rem; border: none; display: block;
-  line-height: 1.5rem;
-}
-.ctaSection h2 b { color: var(--color-primary, #0052cc); font-weight: 700; }
-.ctaButtons { display: flex; justify-content: center; gap: 0.5rem; flex-wrap: wrap; }
-.ctaButtons .btn {
-  padding: 10px 24px; font-size: 1rem; font-weight: 700;
-  border-radius: var(--border-radius-md, 6px);
-  box-shadow: var(--shadow-sm, 0 2px 4px rgba(23, 43, 77, 0.07));
-  transition: all 0.3s ease; border: none; cursor: pointer;
-  text-decoration: none; line-height: 1.5;
-}
-.ctaButtons .btn:hover { box-shadow: var(--shadow-md, 0 4px 8px rgba(23, 43, 77, 0.1)); transform: translateY(-2px); }
-.ctaButtons .btn:active { transform: translateY(0px) scale(0.98); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-.ctaButtons .btnApply {
-   background: var(--color-accent, var(--value-good, #16a34a));
-   color: var(--text-on-primary, white);
-}
-.ctaButtons .btnApply:hover { background: var(--color-accent-hover, #117e37); }
-.ctaButtons .btnRates {
-  background: none;
-  color: var(--color-primary, #0052cc);
-  border: 1px solid var(--color-border, #dfe1e6);
-  box-shadow: none;
-}
-
-.ctaButtons .btnRates:hover {
-  background: var(--color-background-subtle, #f1f3f5);
-  border-color: var(--color-primary, #0052cc);
-}
-.ctaButtons .btn:focus-visible {
-  outline: 3px solid var(--color-primary-light, rgba(0, 82, 204, 0.15));
-  outline-offset: 2px;
-}
-@media (min-width: 768px) {
-  .ctaButtons {
-    gap: 2rem;
-  }
-  .ctaSection {
-    padding: 1rem;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
-    height: 18vh; 
-  }
-  .ctaSection h2 {
-    font-size: 1.4rem;
-  }
-}
+/* =============== Original CTA Section (REMOVED as requested) =============== */
+/* .ctaSection { ... }
+.ctaSection h2 { ... }
+.ctaButtons { ... }
+.ctaButtons .btn { ... }
+.ctaButtons .btnApply { ... }
+.ctaButtons .btnRates { ... }
+@media (min-width: 768px) { ... }
 */
 
 /* =============== E-A-T Section (Refined) =============== */
@@ -538,38 +505,54 @@
   display: flex; flex-direction: column;
   gap: var(--spacing-xl, 32px);
   max-width: 1600px;
-  margin: var(--spacing-lg, 24px) auto var(--spacing-xl, 32px) auto;
+  margin: 0 auto; /* Centering the layout */
   padding: 0 var(--spacing-md, 16px);
-  overflow-y: visible;
+  overflow-y: visible; /* This was in original, keeping it */
+   /* If you have a global fixed header, the page layout might need a top margin 
+    equal to that header's height so the content isn't obscured.
+    This depends on your overall site structure.
+    Example: margin-top: var(--site-global-header-height); 
+  */
 }
-.mainContentArea { flex-grow: 1; min-width: 0; overflow-y: visible; }
-.sidebarArea { width: 100%; align-self: flex-start }
+.mainContentArea { flex-grow: 1; min-width: 0; overflow-y: visible; } /* This was in original, keeping it */
+.sidebarArea { 
+  width: 100%; 
+  align-self: flex-start;
+}
+
 @media (min-width: 1024px) {
-  .reviewPageLayout { flex-direction: row; align-items: flex-start; }
+  .reviewPageLayout { 
+    flex-direction: row; 
+    align-items: flex-start;
+    /* If using margin-top for global header, ensure it's applied here too or on a parent */
+  }
   .sidebarArea {
-      width: var(--toc-width-desktop, 280px);
-      flex-shrink: 0;
-      padding-top: var(--spacing-sm, 8px);
-      overflow: visible;
-      position: sticky; top: 0;
+    width: var(--toc-width-desktop, 280px);
+    flex-shrink: 0;
+    position: sticky;
+    top: var(--toc-top-offset-desktop); 
+    max-height: calc(100vh - var(--site-global-header-height) - var(--toc-top-offset-desktop) - var(--sticky-cta-footer-height-desktop) - var(--toc-bottom-clearance));
+    overflow-y: auto; 
+    padding-top: 0; /* Adjusted from var(--spacing-sm, 8px) as 'top' handles offset */
+    overflow: visible; /* This was in original for desktop, keeping it, though overflow-y: auto will take precedence for y-axis*/
   }
 }
 
 /* =============== RESPONSIVE ADJUSTMENTS =============== */
 @media (max-width: 768px) {
   .reviewContainer { padding: 1.5rem clamp(1rem, 4vw, 2rem); }
-  /* .reviewHeader h1 { font-size: clamp(2rem, 5.5vw, 2.8rem); } */ /* Handled by heroTitle */
+  /* .reviewHeader h1 { font-size: clamp(2rem, 5.5vw, 2.8rem); } */ /* Handled by .heroTitle */
   .reviewSection h2 { font-size: clamp(1.5rem, 4vw, 2rem); }
   /* .ctaSection h2 { font-size: 1.6rem; } */ /* Removed */
 }
 @media (min-width: 768px) { 
-  
+  /* Empty in original, kept as is */
 }
 .heroImageContainer { 
   margin: auto;
 }
 
-/* --- NEW/UPDATED STYLES FOR CALLS-TO-ACTION (CTAs) --- */
+/* --- NEW/UPDATED STYLES FOR CALLS-TO-ACTION (CTAs) in HERO --- */
 .applyNowButton {
   display: inline-block;
   padding: var(--spacing-md) var(--spacing-xl);
@@ -665,7 +648,7 @@
   padding: var(--spacing-xl) var(--spacing-md);
   background-color: var(--color-background-subtle);
   border-bottom: 1px solid var(--color-border-light);
-  margin-bottom: var(--spacing-xl); /* This creates the space before the reviewContainer */
+  margin-bottom: var(--spacing-xl); 
   text-align: center;
 }
 .heroTextContainer {
@@ -699,7 +682,7 @@
   gap: var(--spacing-md);
   margin-top: var(--spacing-sm);
 }
-.heroApplyButton { }
+.heroApplyButton { /* This class was on the button itself, can be used for specific hero button overrides */ }
 .heroSecondaryLink {
   font-family: var(--font-family-main);
   font-size: 1rem;
@@ -715,19 +698,19 @@
   text-decoration: underline;
   background-color: rgba(0,0,0,0.03);
 }
-.heroImageContainer {
+.heroImageContainer { /* Already defined above, but kept from original structure */
   width: 100%;
-  max-width: 700px;
-  margin-top: var(--spacing-lg);
-  line-height: 0;
+  max-width: 700px; /* Max width for the image container in hero */
+  margin-top: var(--spacing-lg); /* Space above image if text is shorter */
+  line-height: 0; /* To remove bottom space from inline image */
 }
 .heroImage { 
   border-radius: var(--border-radius-lg);
   box-shadow: 0 6px 12px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.06);
   width: 100%;
-  margin: auto;
+  margin: auto; /* This was in the original CSS, ensuring it's centered */
   height: auto;
-  object-fit: cover;
+  object-fit: cover; /* Ensure image covers the area if aspect ratios differ */
 }
 @media (min-width: 992px) {
   .heroSection {
@@ -754,7 +737,7 @@
   }
   .heroImageContainer { 
     flex-basis: 45%;
-    margin-top: 0; /* Adjusted from 3rem */
+    margin-top: 0; /* Adjusted */
     max-width: 600px; 
     margin-left: auto; 
   }
@@ -764,9 +747,9 @@
   color: var(--color-text-secondary, #5e6c84);
   margin-top: var(--spacing-xs, 4px);
   display: block;
-  text-align: center;
+  text-align: center; /* Or 'left' if used in row layout and aligned left */
 }
-.ratesFeesList dt {
+.ratesFeesList dt { /* Kept from original */
   font-size: 1.2rem;
   color: #0052cc;
   font-weight: 700;
@@ -774,7 +757,7 @@
 }
 
 /* =============== FAQ SECTION STYLES (Premium Look) =============== */
-.faqSection { }
+.faqSection { /* Empty in original, kept as is */ }
 
 .faqContainer {
   max-width: 800px; 
@@ -818,7 +801,7 @@
 }
 
 .faqQuestion::-webkit-details-marker { display: none; }
-.faqQuestion::marker { display: none; }
+.faqQuestion::marker { display: none; } /* For Firefox */
 
 .faqQuestion::after {
   content: '+'; 
@@ -831,8 +814,8 @@
 }
 
 .faqItem[open] .faqQuestion::after {
-  content: '\\2013'; 
-  transform: rotate(0deg); 
+  content: '\\2013'; /* Unicode for en-dash, a common minus sign */
+  transform: rotate(0deg); /* No rotation needed for minus */
 }
 
 .faqAnswer {
@@ -847,7 +830,7 @@
 
 .faqAnswer p {
   margin-bottom: var(--spacing-sm, 8px); 
-  max-width: none; 
+  max-width: none; /* Allow p to take full width of answer box */
 }
 
 .faqAnswer p:last-child { margin-bottom: 0; }
@@ -857,7 +840,7 @@
   outline-offset: 2px;
   border-radius: var(--border-radius-sm, 4px); 
 }
-.cardImageContainer2 {
+.cardImageContainer2 { /* Kept from original */
   align-items: right;
   width: 100%;
   overflow: hidden;
@@ -892,36 +875,38 @@
 /* =============== NEW: AUTHOR BIO & TOOLTIP STYLES (MODIFIED FOR RESPONSIVENESS) =============== */
 
 .authorBioContainer {
-  display: inline-flex; 
+  display: inline-flex; /* Changed from flex to inline-flex to play nice with text alignment in hero */
   align-items: center;
   gap: var(--spacing-sm, 8px);
   margin-bottom: var(--spacing-md, 16px); 
   position: relative; 
-  cursor: default; 
-  padding: var(--spacing-xs) 0; 
+  cursor: default; /* Or 'pointer' if the whole block should indicate clickability for tooltip */
+  padding: var(--spacing-xs) 0; /* Small padding for focus outline */
 }
 
-.authorBioContainer:focus-within { }
+.authorBioContainer:focus-within { /* Style when container or its children has focus */
+  /* outline: 2px solid var(--color-primary-light); /* Example focus style */
+}
 
 
 .authorImageSmall {
   border-radius: 50%; 
   object-fit: cover;
-  flex-shrink: 0; 
-  background-color: var(--border-color-light); 
+  flex-shrink: 0; /* Prevent image from shrinking */
+  background-color: var(--border-color-light); /* Placeholder bg for unloaded images */
 }
 
 .authorInfoBlock { /* Assuming this is the class from JSX for the text part */
   display: flex;
   flex-direction: column;
-  align-items: flex-start; 
+  align-items: flex-start; /* Align text to the left */
   line-height: 1.3;
 }
 
 .authorNameLine { /* Added this class for "By Author Name" */
   display: flex;
-  align-items: baseline;
-  gap: 0.3em;
+  align-items: baseline; /* Aligns "By" and "Name" nicely */
+  gap: 0.3em; /* Small space between "By" and "Name" */
 }
 .authorPrefix { /* Style for "By" */
   font-size: 0.9rem;
@@ -945,50 +930,51 @@
 
 .authorTooltip {
   position: absolute;
-  top: calc(100% + 12px); 
-  left: 50%; 
-  transform: translateX(-50%); 
+  top: calc(100% + 12px); /* Position below the author bio */
+  left: 50%; /* Start at center of author bio */
+  transform: translateX(-50%); /* Adjust to truly center */
   background-color: var(--bg-white, #ffffff);
   border: 1px solid var(--border-color, #d1d5db);
   border-radius: var(--border-radius-md, 8px);
   padding: var(--spacing-md, 16px);
   
-  width: 90vw; 
-  max-width: 320px; 
-  min-width: 280px; 
-  box-sizing: border-box; 
+  width: 90vw; /* Responsive width */
+  max-width: 320px; /* Max width of tooltip */
+  min-width: 280px; /* Min width to prevent squishing */
+  box-sizing: border-box; /* Include padding and border in width/height */
 
-  box-shadow: var(--shadow-medium); 
-  z-index: 1050; 
+  box-shadow: var(--shadow-medium); /* Use your shadow variables */
+  z-index: 1050; /* Ensure it's above other content */
   font-size: 0.9rem;
   line-height: 1.6;
   color: var(--text-dark, #1f2937);
-  text-align: left;
-  opacity: 1; 
-  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out; 
-  visibility: visible; 
+  text-align: left; /* Ensure text inside tooltip is left-aligned */
+  opacity: 1; /* Assuming controlled by JS state */
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out; /* Smooth appearance */
+  visibility: visible; /* Assuming controlled by JS state */
 }
 
-.authorTooltip::before { 
+/* Arrow for the tooltip */
+.authorTooltip::before { /* Outer border part of arrow */
   content: '';
   position: absolute;
-  bottom: 100%; 
+  bottom: 100%; /* Position arrow at the top of the tooltip pointing upwards */
   left: 50%; 
   transform: translateX(-50%); 
   border-width: 7px; 
   border-style: solid;
-  border-color: transparent transparent var(--border-color) transparent; 
+  border-color: transparent transparent var(--border-color) transparent; /* Arrow color matches border */
 }
-.authorTooltip::after { 
+.authorTooltip::after { /* Inner fill part of arrow */
    content: '';
    position: absolute;
    bottom: 100%;
    left: 50%; 
    transform: translateX(-50%); 
-   margin-bottom: -1px; 
+   margin-bottom: -1px; /* Position slightly above outer border to overlap */
    border-width: 6px; 
    border-style: solid;
-   border-color: transparent transparent var(--bg-white) transparent;
+   border-color: transparent transparent var(--bg-white) transparent; /* Arrow color matches tooltip background */
 }
 
 
@@ -1005,7 +991,7 @@
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
-   background-color: var(--border-color-light); 
+   background-color: var(--border-color-light); /* Placeholder bg */
 }
 
 .authorTooltipInfo {
@@ -1038,8 +1024,8 @@
 }
 
 .authorTooltipExpertise ul {
-  list-style: none; 
-  padding-left: 0; 
+  list-style: none; /* Remove default list styles */
+  padding-left: 0; /* Remove default padding */
   margin: 0;
   display: flex;
   flex-wrap: wrap;
@@ -1051,7 +1037,7 @@
   color: var(--text-medium);
   background-color: var(--bg-light, #f3f4f6);
   padding: 2px 8px;
-  border-radius: 12px;
+  border-radius: 12px; /* Pill shape for tags */
 }
 
 .authorTooltipBioSnippet {
@@ -1062,16 +1048,16 @@
 }
 
 .authorTooltipBioLink {
-  display: inline-block;
+  display: inline-block; /* Or block if it should take full width */
   font-weight: var(--font-weight-semibold, 600);
   font-size: 0.9rem;
-  color: var(--primary-blue, #2563eb);
+  color: var(--primary-blue, #2563eb); /* Use your color variable */
   text-decoration: none;
   transition: color 0.2s;
 }
 
 .authorTooltipBioLink:hover {
-  color: var(--primary-blue-dark, #1d4ed8);
+  color: var(--primary-blue-dark, #1d4ed8); /* Darker shade on hover */
   text-decoration: underline;
 }
 .authorLastEdited {
@@ -1079,7 +1065,7 @@
   font-size: 0.8rem; 
   color: var(--text-muted, #6b7280); 
   margin-top: var(--spacing-xs, 4px); 
-  display: block; 
+  display: block; /* Ensure it takes its own line if needed */
 }
 
 .authorSocialLinks {
@@ -1090,27 +1076,28 @@
 }
 
 .socialIconLink {
-  display: inline-flex; 
+  display: inline-flex; /* Important for icon alignment */
   align-items: center;
   justify-content: center;
-  color: var(--text-light, #6b7280); 
+  color: var(--text-light, #6b7280); /* Default icon color */
   transition: color 0.2s ease;
-  line-height: 0; 
+  line-height: 0; /* Remove extra space if SVG has it */
 }
 
 .socialIconLink:hover,
 .socialIconLink:focus {
-  color: var(--primary-blue, #2563eb); 
-  outline: none;
+  color: var(--primary-blue, #2563eb); /* Icon color on hover/focus */
+  outline: none; /* Remove default focus outline if using custom */
 }
 .authorTooltipSocials {
    margin-top: var(--spacing-md, 12px);
    padding-top: var(--spacing-sm, 8px);
    border-top: 1px solid var(--border-color-light);
    display: flex;
-   gap: var(--spacing-md, 12px); 
+   gap: var(--spacing-md, 12px); /* Space between social icons in tooltip */
 }
 /* =============== END AUTHOR BIO & TOOLTIP STYLES =============== */
+
 
 /* =============== NEW STICKY FOOTER CTA STYLES =============== */
 .stickyFooterContainer {
@@ -1118,45 +1105,47 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: var(--color-background-subtle, #f1f3f5); /* Or any color you prefer */
+  background-color: var(--color-background-subtle, #f1f3f5); 
   border-top: 1px solid var(--color-border, #dfe1e6);
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
   padding: var(--spacing-sm, 12px) var(--spacing-md, 16px);
-  z-index: 1000; /* Ensure it's above other content */
+  z-index: 1000; 
   display: flex;
-  justify-content: center; /* Center the content container */
+  justify-content: center; 
   align-items: center;
+  height: var(--sticky-cta-footer-height-desktop); /* Set height for desktop */
+  box-sizing: border-box; /* Ensure padding doesn't add to height */
 }
 
 .stickyFooterContent {
   display: flex;
-  justify-content: space-between; /* Distribute items */
+  justify-content: space-between; 
   align-items: center;
   width: 100%;
-  max-width: var(--max-width-container, 1200px); /* Optional: if you want to limit content width */
+  max-width: var(--max-width-container, 1200px); 
   gap: var(--spacing-md, 16px);
 }
 
 .stickyFooterCardName {
   font-family: var(--font-condensed, 'Roboto Condensed', var(--font-family-sans, sans-serif));
-  font-size: 0.9rem; /* Adjusted for better fit */
+  font-size: 0.9rem; 
   font-weight: 600;
   color: var(--text-dark, #172b4d);
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  flex-shrink: 1; /* Allow shrinking if space is tight */
+  flex-shrink: 1; 
 }
 
 .stickyFooterButtons {
   display: flex;
-  gap: var(--spacing-sm, 8px); /* Reduced gap for smaller footer */
-  flex-shrink: 0; /* Prevent buttons from shrinking too much */
+  gap: var(--spacing-sm, 8px); 
+  flex-shrink: 0; 
 }
 
 .stickyFooterBtn {
-  padding: var(--spacing-xs, 8px) var(--spacing-md, 12px); /* Slightly smaller padding */
-  font-size: 0.9rem; /* Slightly smaller font */
+  padding: var(--spacing-xs, 8px) var(--spacing-md, 12px); 
+  font-size: 0.9rem; 
   font-weight: 700;
   border-radius: var(--border-radius-md, 6px);
   box-shadow: var(--shadow-sm, 0 1px 2px rgba(23, 43, 77, 0.05));
@@ -1165,7 +1154,7 @@
   cursor: pointer;
   text-decoration: none;
   line-height: 1.4;
-  white-space: nowrap; /* Prevent button text from wrapping */
+  white-space: nowrap; 
 }
 
 .stickyFooterBtn:hover {
@@ -1178,46 +1167,46 @@
 }
 
 .stickyFooterBtnApply {
-  background: var(--color-accent, var(--value-good, #16a34a)); /* Same as .btnApply */
+  background: var(--color-accent, var(--value-good, #16a34a)); 
   color: var(--text-on-primary, white);
 }
 .stickyFooterBtnApply:hover {
-  background: var(--color-accent-hover, #117e37); /* Same as .btnApply:hover */
+  background: var(--color-accent-hover, #117e37); 
 }
 
 .stickyFooterBtnRates {
   background: none;
-  color: var(--color-primary, #0052cc); /* Same as .btnRates */
+  color: var(--color-primary, #0052cc); 
   border: 1px solid var(--color-border, #dfe1e6);
   box-shadow: none;
 }
 .stickyFooterBtnRates:hover {
-  background: var(--color-background-subtle, #f8f9fa); /* Adjusted hover for bordered button */
+  background: var(--color-background-subtle, #f8f9fa); 
   border-color: var(--color-primary, #0052cc);
 }
 
 /* Responsive adjustments for the sticky footer */
 @media (max-width: 600px) {
+  .stickyFooterContainer {
+     height: var(--sticky-cta-footer-height-mobile); /* Set height for mobile */
+  }
   .stickyFooterContent {
-    flex-direction: column; /* Stack elements vertically on small screens */
-    align-items: stretch; /* Make items take full width */
+    flex-direction: column; 
+    align-items: stretch; 
     gap: var(--spacing-sm, 8px);
   }
   .stickyFooterCardName {
-    text-align: center; /* Center card name when stacked */
+    text-align: center; 
     font-size: 0.85rem;
     margin-bottom: var(--spacing-xs, 4px);
   }
   .stickyFooterButtons {
-    justify-content: center; /* Center buttons when stacked */
+    justify-content: center; 
     width: 100%;
   }
   .stickyFooterBtn {
-    flex-grow: 1; /* Allow buttons to grow and fill space */
+    flex-grow: 1; 
     text-align: center;
     font-size: 0.85rem;
-  }
-  .reviewContainer {
-    margin-bottom: 150px; /* Increase margin for taller sticky footer on mobile */
   }
 }
