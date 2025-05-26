@@ -1054,31 +1054,36 @@ function AlaskaAirlinesVisaSignatureReviewPage() {
             </div>
           </div>
 
-          <aside className={styles.sidebarArea}>
-            <TableOfContents sections={tocSections} />
-            <div className={styles.sidebarWidget}>
-                <h4>Quick Card Facts</h4>
-                <ul className={styles.quickFactsList}>
-                    <li><strong>Annual Fee:</strong> ${reviewDataNew.annualFee}</li>
-                    <li><strong>Companion Fare™:</strong> Yes (details in review)</li>
-                    <li><strong>Free Checked Bag:</strong> Yes (details in review)</li>
-                    <li><strong>Foreign Transaction Fees:</strong> None</li>
-                    <li>
-                        <a href={reviewDataNew.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.sidebarApplyLink}>
-                            Apply Now
-                        </a>
-                    </li>
-                     <li>
-                        <a href={reviewDataNew.ratesLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.sidebarRatesLink}>
-                            See Rates & Fees
-                        </a>
-                    </li>
-                </ul>
-            </div>
-          </aside>
+        
         </div>
       </main>
-
+        <div className={styles.stickyFooterContainer}>
+        <div className={styles.stickyFooterContent}>
+            <Image src={`${siteUrl}${reviewDataNew.imageUrl}`} alt={`${reviewDataNew.cardName} small image`} width={60} height={38} className={styles.stickyFooterCardImage} />
+            <div className={styles.stickyFooterText}>
+              <span className={styles.stickyFooterCardName}>{reviewDataNew.cardName}</span>
+              <span className={styles.stickyFooterRating}>{siteName} Rating: {reviewDataNew.ratingValue.toFixed(1)}/10</span>
+            </div>
+            <div className={styles.stickyFooterButtons}>
+                <a
+                    href={reviewDataNew.applyLink}
+                    className={`${styles.stickyFooterBtn} ${styles.stickyFooterBtnApply}`}
+                    target="_blank"
+                    rel="noopener noreferrer sponsored"
+                >
+                    Apply Now
+                </a>
+                <a
+                    href={reviewDataNew.ratesLink}
+                    className={`${styles.stickyFooterBtn} ${styles.stickyFooterBtnRates}`}
+                    target="_blank"
+                    rel="noopener noreferrer sponsored"
+                >
+                    See Rates & Fees
+                </a>
+            </div>
+        </div>
+      </div>
       
       
     </>
