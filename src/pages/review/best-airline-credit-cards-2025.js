@@ -51,10 +51,10 @@ const airlineCardData = [
   {
     id: 'amexPlatinum',
     name: 'The Platinum Card® from American Express',
-    imageSrc: '/placeholder-amex-platinum-card.webp', // ❗ Replace
+    imageSrc: '/NUS000000237_480x304_straight_withname.avif', // ❗ Replace
     imageAlt: 'The Platinum Card from American Express',
-    ratingValue: 0.0, // ✏️ Add rating
-    ratingStars: 0.0, // ✏️ Add rating
+    ratingValue: 9.4, // ✏️ Add rating
+    ratingStars: 5.0, // ✏️ Add rating
     annualFee: '$695',
     officialCardPageLink: 'https://www.americanexpress.com/us/credit-cards/card/platinum/',
     loungeAccess: "Amex Global Lounge Collection: Centurion Lounges, Priority Pass Select (enrollment required, typically no restaurant credits), Delta Sky Clubs (when flying Delta, with visit limits from Feb 1, 2025, unless you hit $75k annual spend), and more. Guest Policy: Centurion guests typically $50/adult. Priority Pass guests usually incur a fee. Delta Sky Club guests are $50/person.",
@@ -64,16 +64,16 @@ const airlineCardData = [
     userTake: "My family flies a couple of times a year, and that $200 Amex credit usually covers bag fees for one or two of us on at least one round trip. It's not 'free bags' exactly, but it helps!",
     vibe2025: "Lounge crowding, especially Centurion, is a real pain point. The \"coupon book\" of credits is fantastic if you use them all, but many find it hard to maximize. The Delta Sky Club visit cap is a new factor to consider.",
     applyLink: 'https://www.americanexpress.com/us/credit-cards/card/platinum/', // Official link
-    ratesFeesLink: 'https://www.americanexpress.com/us/credit-cards/card/platinum/', // Often on the same page or linked from it
+    ratesFeesLink: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/platinum-card/25330-10-0#FeeTable', // Often on the same page or linked from it
     learnMoreLink: '/cards/amex-platinum', // Internal link
   },
   {
     id: 'chaseSapphireReserve',
     name: 'Chase Sapphire Reserve®',
-    imageSrc: '/placeholder-chase-sapphire-reserve-card.webp', // ❗ Replace
+    imageSrc: '/sapphire_reserve_card.png', // ❗ Replace
     imageAlt: 'Chase Sapphire Reserve Card',
-    ratingValue: 0.0, // ✏️ Add rating
-    ratingStars: 0.0, // ✏️ Add rating
+    ratingValue: 9.2, // ✏️ Add rating
+    ratingStars: 4.6, // ✏️ Add rating
     annualFee: '$550',
     loungeAccess: "Priority Pass Select (cardholder + 2 guests free!) and access to the growing Chase Sapphire Lounge network.",
     freeCheckedBags: "No direct perk, but the super-flexible $300 annual travel credit automatically reimburses travel purchases, including bag fees.",
@@ -82,16 +82,16 @@ const airlineCardData = [
     userTake: "I love how easy the Sapphire Reserve's $300 credit is. Last year, it covered checked bags, an Uber, and part of a hotel stay without me lifting a finger.",
     vibe2025: "Justifying the fee often comes down to how easily you use that $300 credit. Priority Pass lounges can still get crowded. The choice of redeeming via the portal or transferring points is a fun strategy game.",
     applyLink: 'https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve', // Official link
-    ratesFeesLink: 'https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve', // Typically found on product page
+    ratesFeesLink: 'https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC56007.html', // Typically found on product page
     learnMoreLink: '/cards/chase-sapphire-reserve',
   },
   {
     id: 'capitalOneVentureX',
     name: 'Capital One Venture X Rewards Credit Card',
-    imageSrc: '/placeholder-capital-one-venture-x-card.webp', // ❗ Replace
+    imageSrc: '/venturex-cg-static-card-1000x630-2.avif', // ❗ Replace
     imageAlt: 'Capital One Venture X Rewards Credit Card',
-    ratingValue: 0.0, // ✏️ Add rating
-    ratingStars: 0.0, // ✏️ Add rating
+    ratingValue: 9.0, // ✏️ Add rating
+    ratingStars: 4.5, // ✏️ Add rating
     annualFee: '$395',
     loungeAccess: "Capital One Lounges (DFW, DEN, IAD – and growing) and Priority Pass Select. Guest Policy: Capital One Lounges: cardholder + 2 guests free. Priority Pass: cardholder + unlimited guests free (subject to lounge capacity)! Authorized users (free to add!) also get their own full lounge access.",
     freeCheckedBags: "Via the $300 annual travel credit for bookings through Capital One Travel.",
@@ -106,10 +106,10 @@ const airlineCardData = [
   {
     id: 'deltaSkyMilesReserve',
     name: 'Delta SkyMiles® Reserve American Express Card',
-    imageSrc: '/placeholder-delta-reserve-amex-card.webp', // ❗ Replace
+    imageSrc: '/NUS000000270_480x304_straight_withname.avif', // ❗ Replace
     imageAlt: 'Delta SkyMiles Reserve American Express Card',
-    ratingValue: 0.0, // ✏️ Add rating
-    ratingStars: 0.0, // ✏️ Add rating
+    ratingValue: 8.8, // ✏️ Add rating
+    ratingStars: 4.4, // ✏️ Add rating
     annualFee: '$650',
     officialCardPageLink: 'https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-reserve-american-express-card/',
     loungeAccess: "Delta Sky Club (15 visits/year from Feb 1, 2025, or unlimited with $75k spend; 4 guest passes/year). Centurion Lounge access (when flying Delta).",
@@ -117,55 +117,55 @@ const airlineCardData = [
     flightRewardsAndPerks: "Annual round-trip companion certificate (First/Comfort+/Main), $2,500 MQD Headstart + MQD Boost (earn $1 MQD per $10 spent), 15% off award flights (TakeOff 15).",
     userTake: "I fly Delta for work almost exclusively. The Reserve's Sky Club access is key, though the 15-visit limit is a new wrinkle. The companion pass alone often saves more than the annual fee for our anniversary trip.",
     applyLink: 'https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-reserve-american-express-card/', // Official Link
-    ratesFeesLink: 'https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-reserve-american-express-card/', // Check Amex site
+    ratesFeesLink: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/delta-skymiles-reserve-american-express-card/25330-10-0#FeeTable', // Check Amex site
     learnMoreLink: '/cards/delta-skymiles-reserve',
   },
   {
     id: 'unitedClubInfinite',
     name: 'United Club℠ Infinite Card',
-    imageSrc: '/placeholder-united-club-infinite-card.webp', // ❗ Replace
+    imageSrc: '/united_club_infinite_card.png', // ❗ Replace
     imageAlt: 'United Club Infinite Card',
-    ratingValue: 0.0, // ✏️ Add rating
-    ratingStars: 0.0, // ✏️ Add rating
+    ratingValue: 8.9, // ✏️ Add rating
+    ratingStars: 4.5, // ✏️ Add rating
     annualFee: '$525', // User text mentions "official United site often shows $525 - confirm current fee"
     loungeAccess: "United Club membership for you and eligible guests.",
     freeCheckedBags: "First and second checked bags free for you and one companion on United flights.",
     flightRewardsAndPerks: "Premier Access (priority services), PQP earning towards status (1 PQP per $15 spent), award discounts.",
     userTake: "Flying United out of a hub, the Club Infinite is a lifesaver. Lounge access, two free bags each for me and my wife – it adds up. Sometimes I use points with 'Pay Yourself Back' to cover part of the fee.",
     applyLink: 'https://creditcards.chase.com/travel-credit-cards/united/club-infinite', // Usually issued by Chase for United
-    ratesFeesLink: 'https://creditcards.chase.com/travel-credit-cards/united/club-infinite',
+    ratesFeesLink: 'https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC57973.html',
     learnMoreLink: '/cards/united-club-infinite',
   },
   {
     id: 'citiAAdvantageExecutive',
     name: 'Citi® / AAdvantage® Executive World Elite Mastercard®',
-    imageSrc: '/placeholder-citi-aadvantage-executive-card.webp', // ❗ Replace
+    imageSrc: '/CardArt-8.webp', // ❗ Replace
     imageAlt: 'Citi AAdvantage Executive World Elite Mastercard',
-    ratingValue: 0.0, // ✏️ Add rating
-    ratingStars: 0.0, // ✏️ Add rating
+    ratingValue: 8.6, // ✏️ Add rating
+    ratingStars: 4.3, // ✏️ Add rating
     annualFee: '$595',
     loungeAccess: "Admirals Club membership for you and immediate family or up to two guests. Authorized users also get access (for a fee).",
     freeCheckedBags: "First checked bag free for you and up to 8 companions on domestic AA flights.",
     flightRewardsAndPerks: "Loyalty Point bonuses for status, enhanced airport experience (priority boarding, etc.).",
     userTake: "I fly AA a few times a year. Admirals Club access pretty much covers the fee if I value each visit. Plus, the Loyalty Points from card spend help me hit Gold status.",
-    applyLink: 'https://creditcards.citi.com/credit-cards/citi-aadvantage-executive-world-elite-mastercard', // Official Citi link
-    ratesFeesLink: 'https://creditcards.citi.com/credit-cards/citi-aadvantage-executive-world-elite-mastercard',
+    applyLink: 'https://creditcards.aa.com/credit-cards/citi-executive-card-american-airlines-direct/', // Official Citi link
+    ratesFeesLink: 'https://creditcards.aa.com/credit-cards/citi-executive-card-american-airlines-direct/#pricing',
     learnMoreLink: '/cards/citi-aadvantage-executive',
   },
   {
     id: 'southwestPriority',
     name: 'Southwest Rapid Rewards® Priority Credit Card',
-    imageSrc: '/placeholder-southwest-priority-card.webp', // ❗ Replace
+    imageSrc: '/banner_card_art_priority.png', // ❗ Replace
     imageAlt: 'Southwest Rapid Rewards Priority Credit Card',
-    ratingValue: 0.0, // ✏️ Add rating
-    ratingStars: 0.0, // ✏️ Add rating
+    ratingValue: 8.0, // ✏️ Add rating
+    ratingStars: 4.0, // ✏️ Add rating
     annualFee: '$149',
     loungeAccess: "None (Southwest doesn't have lounges).",
     freeCheckedBags: "Crucial 2025 Update: Southwest is changing its \"Bags Fly Free.\" From May 28, 2025, for new bookings, it's not universal. Cardholders like those with the Priority Card will get a credit for one checked bag, essentially keeping it free.",
     flightRewardsAndPerks: "$75 Southwest annual travel credit, 7,500 anniversary bonus points, four Upgraded Boardings/year, points count towards the coveted Companion Pass.",
     userTake: "With Southwest's new bag policy, our Priority card is suddenly even more vital. That free first bag per person will save us a ton, and the $75 credit makes the fee easy to swallow. We're always aiming for that Companion Pass!",
     applyLink: 'https://creditcards.chase.com/travel-credit-cards/southwest/priority', // Usually issued by Chase for Southwest
-    ratesFeesLink: 'https://creditcards.chase.com/travel-credit-cards/southwest/priority',
+    ratesFeesLink: 'https://creditcards.chase.com/southwest/priority-credit-card',
     learnMoreLink: '/cards/southwest-priority',
   }
 ];
