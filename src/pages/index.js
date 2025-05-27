@@ -351,6 +351,7 @@ export default function HomePage({ featuredReviews, latestNews }) {
                 <div className="reviews-grid">
                 {[
                     // Keep your existing array of review objects
+                    { img: "/placeholder-hero-chase-capone.jpg", alt: "Chase and Capital One credit cards side-by-side, symbolizing a comparison for travel rewards in 2025.", title: "Chase vs. Capital One: Best Travel Credit Cards in 2025", desc: "In-depth 2025 review comparing Chase and Capital One travel credit cards. Analyze rewards, benefits, fees, and user experiences to choose the best card.", link: "/reviews/chase-vs-capital-one-travel-cards-2025" },
                     { img: "/images/best-airline-cards-2025-hero.webp", alt: "Stylized image of various credit cards with an airplane in the background", title: "Best Airline Credit Cards of 2025: Lounge, Bags & Rewards", desc: "Our comprehensive 2025 guide to top airline cards for US travelers, analyzing lounge access, free bags, & flight rewards.", link: "/reviews/best-airline-credit-cards-2025", },
                     { img: "/brandon-karaca-zMPKX6Ws3Sc-unsplash.webp", alt: "JetBlue Plus Credit Card design", title: "JetBlue Plus Card Review (2025)", desc: "JetBlue Plus ($99 fee): Still the top pick for 6X points, free bags & Mosaic perks in 2025? Our analysis.", link: "/review/jetblue-plus-card-2025" },
                     { img: "/alev-takil-x6HpdNQ-iEM-unsplash.jpg", alt: "Chase Aeroplan® Card", title: "Chase Aeroplan® Card Review 2025: The Smart U.S. Choice for Star Alliance?", desc: "Earn 3X on Air Canada, groceries, and dining. Get free bags, Aeroplan 25K status, and top Star Alliance value—all for a $95 fee.", link: "/review/chase-aeroplan-2025" },
@@ -359,7 +360,7 @@ export default function HomePage({ featuredReviews, latestNews }) {
                     { img: "/manuel-moreno-DGa0LQ0yDPc-unsplash.webp", alt: "Best Hotel Credit Cards for US Travelers in 2025, featuring luxury hotel imagery", title: "Hotel Rewards Showdown 2025: Elite Perks & Free Stays", desc: "Reviewing 2025's top hotel credit cards for US travelers seeking elite status and maximum free night value.", link: "/review/BestHotelCardsPage2025" },
                     { img: "/darrin-henein-sREvt-W52Tc-unsplash.webp", alt: "Alaska Airlines Visa Signature Card on a travel-themed background", title: "Alaska Airlines Visa Signature Card (2025)", desc: "West Coaster's top pick? Review Companion Fare, free bags, $95 fee & 2025 perks.", link: "/review/alaska-airlines-visa-signature-2025" },
                     { img: "/pexels-rdne-5778466.jpg", alt: "Citi Custom Cash Card", title: "Citi Custom Cash Card Review 2025: A Secret Weapon for Everyday Rewards?", desc: "Discover its adaptive 5% cash back, $0 annual fee, welcome bonus, and if it's the top choice for US consumers' everyday spending.", link: "/review/citi-custom-cash-2025" },
-                    { img: "/jordan-ryskamp-kxI7siCTAyY-unsplash.webp", alt: "Marriott Bonvoy Boundless Credit Card", title: "Marriott Bonvoy Boundless 2025 Review", desc: "Is its $95 annual fee justified by its hotel loyalty perks for US travelers?", link: "/review/marriott-bonvoy-boundless-2025" },
+                    
                     
                     
                     
