@@ -127,7 +127,7 @@ const airlineCardData = [
     imageAlt: 'United Club Infinite Card',
     ratingValue: 8.9, // ✏️ Add rating
     ratingStars: 4.5, // ✏️ Add rating
-    annualFee: '$525', // User text mentions "official United site often shows $525 - confirm current fee"
+    annualFee: '$695', // User text mentions "official United site often shows $525 - confirm current fee"
     loungeAccess: "United Club membership for you and eligible guests.",
     freeCheckedBags: "First and second checked bags free for you and one companion on United flights.",
     flightRewardsAndPerks: "Premier Access (priority services), PQP earning towards status (1 PQP per $15 spent), award discounts.",
@@ -649,7 +649,6 @@ function BestAirlineCardsPage2025() {
                 </div>
                 <ul>
                   <li><strong>Annual Fee:</strong> {card.annualFee} {card.id === 'deltaSkyMilesReserve' && <a href={card.officialCardPageLink} target="_blank" rel="noopener noreferrer sponsored">(Official Card Page)</a>}
-                    {card.id === 'unitedClubInfinite' && " (Note: Provided text mentioned $695, but official United site often shows $525 - confirm current fee via official links.)"}
                   </li>
                   <li><strong>Lounge Access:</strong> {card.loungeAccess}</li>
                   <li><strong>Free Checked Bags:</strong> {card.freeCheckedBags}</li>
