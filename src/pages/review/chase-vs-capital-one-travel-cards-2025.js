@@ -16,7 +16,7 @@ const SITE_BASE_URL = 'https://www.travelcardinsider.com'; // Your website's bas
 const PAGE_PATH = '/reviews/chase-vs-capital-one-travel-cards-2025';
 const PAGE_URL = `${SITE_BASE_URL}${PAGE_PATH}`;
 const SITE_NAME = 'Travel Card Insider';
-const HERO_IMAGE_SRC = '/placeholder-hero-chase-capone.jpg'; // ❗ Replace with your optimised hero image
+const HERO_IMAGE_SRC = '/ian-dooley-3NCA3tbaE5I-unsplash (2).webp'; // ❗ Replace with your optimised hero image
 const HERO_IMAGE_ALT = 'Chase and Capital One credit cards side-by-side, symbolizing a comparison for travel rewards in 2025.';
 const DATE_PUBLISHED = '2025-05-27'; // ✏️ Update as per actual publish date
 const DATE_MODIFIED = '2025-05-27'; // ✏️ Update whenever you edit copy
@@ -95,13 +95,13 @@ const chaseCapOneCardData = [
     id: 'capitalOneVentureX',
     name: 'Capital One Venture X Rewards Credit Card',
     issuer: 'Capital One',
-    imageSrc: '/placeholder-cap1-venture-x.png', // ❗ Replace
+    imageSrc: '/venturex-cg-static-card-1000x630-2.avif', // ❗ Replace
     imageAlt: 'Capital One Venture X Rewards Credit Card',
     annualFee: '$395',
     officialCardPageLink: 'https://www.capitalone.com/credit-cards/venture-x/',
     applyLink: 'https://www.capitalone.com/credit-cards/venture-x/',
     ratesFeesLink: 'https://www.capitalone.com/credit-cards/venture-x/', // Verify direct link
-    learnMoreLink: '/cards/capital-one-venture-x-review',
+    learnMoreLink: '/cards/capital-one-venture-x',
     signUpBonus: "Typically 75,000 miles after meeting spending requirements (worth $750 for travel).",
     earningRates: "Unlimited 2X miles on all purchases; 5X on flights and 10X on hotels/rental cars booked via Capital One Travel.",
     premiumPerks: [
@@ -117,13 +117,13 @@ const chaseCapOneCardData = [
     id: 'capitalOneVenture',
     name: 'Capital One Venture Rewards Credit Card',
     issuer: 'Capital One',
-    imageSrc: '/placeholder-cap1-venture.png', // ❗ Replace
+    imageSrc: '/venture_cardart_prim_323x203-1.avif', // ❗ Replace
     imageAlt: 'Capital One Venture Rewards Credit Card',
     annualFee: '$95',
     officialCardPageLink: 'https://www.capitalone.com/credit-cards/venture/',
     applyLink: 'https://www.capitalone.com/credit-cards/venture/',
     ratesFeesLink: 'https://www.capitalone.com/credit-cards/venture/', // Verify direct link
-    learnMoreLink: '/cards/capital-one-venture-review',
+    learnMoreLink: '/cards/capital-one-venture',
     signUpBonus: "Often 75,000 miles (worth $750 for travel).",
     earningRates: "Unlimited 2X miles on every purchase; 5X on hotels and rental cars via Capital One Travel.",
     solidValue: [
@@ -135,13 +135,13 @@ const chaseCapOneCardData = [
     id: 'capitalOneVentureOne',
     name: 'Capital One VentureOne Rewards Credit Card',
     issuer: 'Capital One',
-    imageSrc: '/placeholder-cap1-venture-one.png', // ❗ Replace
+    imageSrc: '/ventureone_cardart_prim_323x203.avif', // ❗ Replace
     imageAlt: 'Capital One VentureOne Rewards Credit Card',
     annualFee: '$0', // No annual fee
     officialCardPageLink: 'https://www.capitalone.com/credit-cards/ventureone/', // Example link, verify
     applyLink: 'https://www.capitalone.com/credit-cards/ventureone/', // Example link, verify
     ratesFeesLink: 'https://www.capitalone.com/credit-cards/ventureone/', // Verify direct link
-    learnMoreLink: '/cards/capital-one-venture-one-review',
+    learnMoreLink: '/cards/capital-one-ventureone',
     earningRates: "1.25X miles on all purchases; 5X on hotels/rental cars via Capital One Travel.",
     description: "A no-annual-fee option good for beginners."
   }
