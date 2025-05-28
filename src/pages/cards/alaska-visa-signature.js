@@ -1059,7 +1059,7 @@ function AlaskaAirlinesVisaSignatureReviewPage() {
       </main>
         <div className={styles.stickyFooterContainer}>
         <div className={styles.stickyFooterContent}>
-            <Image src={`${siteUrl}${reviewDataNew.imageUrl}`} alt={`${reviewDataNew.cardName} small image`} width={60} height={38} className={styles.stickyFooterCardImage} />
+            <Image src={reviewDataNew.imageUrl} alt={`${reviewDataNew.cardName} small image`} width={60} height={38} className={styles.stickyFooterCardImage} />
             <div className={styles.stickyFooterText}>
               <span className={styles.stickyFooterCardName}>{reviewDataNew.cardName}</span>
               <span className={styles.stickyFooterRating}>{siteName} Rating: {reviewDataNew.ratingValue.toFixed(1)}/10</span>
