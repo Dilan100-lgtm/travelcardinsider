@@ -350,7 +350,7 @@ function ChaseVsCapitalOnePage2025() {
               rel="noopener noreferrer sponsored" 
               className={`${styles.cardButton} ${styles.applyButton}`}
             >
-              View Offer Details
+              Apply Now
             </a>
              <a
               href={card.ratesFeesLink} // Ensure this points to actual rates and fees
