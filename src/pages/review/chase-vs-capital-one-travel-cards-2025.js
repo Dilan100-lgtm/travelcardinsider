@@ -154,7 +154,7 @@ function generateJsonLD() {
       '@type': 'Product',
       name: card.name,
       url: `${SITE_BASE_URL}${card.learnMoreLink}`,
-      image: `${SITE_BASE_URL}${card.imageSrc}`, // From user-provided file
+      image: `${SITE_BASE_URL}${card.imageSrc}`, 
       description: card.signUpBonus || card.earningRates,
       brand: { '@type': 'Brand', name: card.issuer },
       manufacturer: { '@type': 'Organization', name: card.issuer === 'Chase' ? 'Chase Bank' : 'Capital One' },
@@ -175,28 +175,28 @@ function generateJsonLD() {
     '@type': 'ReviewNewsArticle',
     mainEntityOfPage: { "@type": "WebPage", "@id": PAGE_URL },
     headline: 'Chase vs. Capital One: Our Expert Pick for the Best Travel Card in 2025',
-    description: 'Tired of marketing fluff? We cut through the noise in this Chase vs. Capital One travel card showdown for 2025, with real-world advice and insider tips.', // Enhanced description
-    image: [`${SITE_BASE_URL}${HERO_IMAGE_SRC}`], // From user-provided file
+    description: 'Tired of marketing fluff? We cut through the noise in this Chase vs. Capital One travel card showdown for 2025, with real-world advice and insider tips.', 
+    image: [`${SITE_BASE_URL}${HERO_IMAGE_SRC}`], 
     author: {
       '@type': 'Person',
-      name: author.name, // From user-provided file
-      url: author.social.linkedin, // From user-provided file
-      image: `${SITE_BASE_URL}${author.imageLarge || author.image}`, // From user-provided file
-      jobTitle: author.title, // From user-provided file
-      description: author.bio.substring(0, 200), // From user-provided file
-      sameAs: Object.values(author.social).filter(Boolean) // From user-provided file
+      name: author.name, 
+      url: author.social.linkedin, 
+      image: `${SITE_BASE_URL}${author.imageLarge || author.image}`, 
+      jobTitle: author.title, 
+      description: author.bio.substring(0, 200), 
+      sameAs: Object.values(author.social).filter(Boolean) 
     },
     publisher: {
       '@type': 'Organization',
       name: SITE_NAME,
       logo: { '@type': 'ImageObject', url: `${SITE_BASE_URL}/images/logo-120.png`}, 
     },
-    datePublished: DATE_PUBLISHED, // From user-provided file
+    datePublished: DATE_PUBLISHED, 
     dateModified: DATE_MODIFIED,
     itemReviewed: {
         '@type': 'ProductGroup',
         name: 'Chase and Capital One Travel Credit Cards',
-        description: 'An expert, in-depth comparison of leading travel credit cards from Chase and Capital One for 2025, focusing on real-world value and user experiences.' // Enhanced description
+        description: 'An expert, in-depth comparison of leading travel credit cards from Chase and Capital One for 2025, focusing on real-world value and user experiences.'
     }
   };
 
