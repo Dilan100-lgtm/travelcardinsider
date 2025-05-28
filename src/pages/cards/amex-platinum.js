@@ -65,16 +65,16 @@ const reviewDataNew = {
       }
   },
   siteName: siteName,
-  imageUrl        : '/amex-platinum-card-hero-image.webp', // /* UPDATE THIS */ Placeholder path for Amex Platinum card image
+  imageUrl        : '/NUS000000237_480x304_straight_withname.avif', // /* UPDATE THIS */ Placeholder path for Amex Platinum card image
   imageWidth      : 1290, // /* UPDATE THIS */ if image dimensions differ
   imageHeight     : 812,  // /* UPDATE THIS */ if image dimensions differ
-  ratingValue     : 9.2,  // /* UPDATE THIS */ Example rating (out of 10)
+  ratingValue     : 9.4,  // /* UPDATE THIS */ Example rating (out of 10)
   ratingCount     : 310,  // /* UPDATE THIS */ Example review count
   reviewBody      : 'Our editors evaluate The Platinum Card® from American Express based on its extensive suite of luxury travel benefits (Global Lounge Collection, Fine Hotels + Resorts), comprehensive statement credits (Airline, Hotel, Uber, Digital Ent., Walmart+, Saks, CLEAR), Membership Rewards® earning (5X on flights & prepaid hotels), travel & purchase protections, the $695 annual fee, and overall value for U.S.-based frequent luxury travelers.',
   aprRange        : 'See Pay Over Time APR. For the Pay Over Time feature, APRs such as 21.24%-29.24% variable have been noted (subject to change). Refer to official rates.',
   annualFee       : 695,
   applyLink       : 'https://www.americanexpress.com/us/credit-cards/card/platinum/', // /* UPDATE THIS with your affiliate link if available, else official */
-  ratesLink       : 'https://www.americanexpress.com/us/credit-cards/card/platinum/', // Users click "Rates and Fees" on this page
+  ratesLink       : 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/platinum-card/25330-10-0#FeeTable', // Users click "Rates and Fees" on this page
   officialOverviewLink: 'https://www.americanexpress.com/us/credit-cards/card/platinum/',
   officialWelcomeOfferLink: 'https://www.americanexpress.com/us/credit-cards/card/platinum/',
   officialMembershipRewardsLink: 'https://www.americanexpress.com/en-us/benefits/rewards/membership-rewards/',
@@ -738,7 +738,7 @@ function AmericanExpressPlatinumCardReviewPage() {
                 </section>
 
                 <Image
-                    src="/placeholder-luxury-travel-image.webp"
+                    src="/pexels-asadphoto-3155666.webp"
                     alt="Illustrative image of luxury travel or premium service"
                     width={800}
                     height={500}
@@ -1013,6 +1013,15 @@ function AmericanExpressPlatinumCardReviewPage() {
                     </div>
                     <p>The key is lifestyle/spending alignment with benefits or a dedicated effort to maximize them.</p>
                 </section>
+
+                <Image
+                    src="/pexels-pixabay-271681.webp"
+                    alt="Illustrative image of luxury travel or premium service"
+                    width={800}
+                    height={500}
+                    className={styles.contentImage}
+                    loading="lazy"
+                />
 
                 <section id="section-part6-18" className={styles.reviewSection}>
                     <h2>18. Platinum vs. The Pack: Competitor Card Comparison Table</h2>
