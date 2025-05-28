@@ -610,7 +610,7 @@ function AmericanExpressGoldCardReviewPage() {
                     )}
                 </div>
                 <p className={styles.heroSubtitle}> {/* Your intro text from original file */}
-                  Welcome, discerning traveler and culinary enthusiast, to {siteName}! If you're navigating the bustling U.S. credit card market, you're likely searching for a card that’s more than just a payment method—you want a key to unlocking enhanced experiences. The {reviewDataNew.cardName} has long been a prominent name, shimmering with the promise of rich rewards, particularly for those whose passions lie in gastronomy and globetrotting. But in an ever-evolving landscape of premium cards, does the Amex Gold still hold its coveted luster?
+                  Dreaming of a credit card that supercharges your dining rewards and travel perks in 2025? The American Express® Gold Card promises just that, especially for U.S. food lovers and globetrotters. Welcome to TravelCardInsider, where we present the ultimate Amex Gold Card review! We'll dissect its famous 4X points on restaurants and U.S. supermarkets, explore its valuable travel credits, and see if the real-world benefits justify the buzz for U.S. cardholders. Is this your golden ticket to a more rewarding lifestyle? Let's find out
                 </p>
                 <div className={styles.heroCtaContainer}>
                   <div>
