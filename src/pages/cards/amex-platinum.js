@@ -65,16 +65,16 @@ const reviewDataNew = {
       }
   },
   siteName: siteName,
-  imageUrl        : '/NUS000000237_480x304_straight_withname.avif', // /* UPDATE THIS */ Placeholder path for Amex Platinum card image
+  imageUrl        : '/amex-platinum-card-hero-image.webp', // /* UPDATE THIS */ Placeholder path for Amex Platinum card image
   imageWidth      : 1290, // /* UPDATE THIS */ if image dimensions differ
   imageHeight     : 812,  // /* UPDATE THIS */ if image dimensions differ
-  ratingValue     : 9.4,  // /* UPDATE THIS */ Example rating (out of 10)
+  ratingValue     : 9.2,  // /* UPDATE THIS */ Example rating (out of 10)
   ratingCount     : 310,  // /* UPDATE THIS */ Example review count
   reviewBody      : 'Our editors evaluate The Platinum Card® from American Express based on its extensive suite of luxury travel benefits (Global Lounge Collection, Fine Hotels + Resorts), comprehensive statement credits (Airline, Hotel, Uber, Digital Ent., Walmart+, Saks, CLEAR), Membership Rewards® earning (5X on flights & prepaid hotels), travel & purchase protections, the $695 annual fee, and overall value for U.S.-based frequent luxury travelers.',
   aprRange        : 'See Pay Over Time APR. For the Pay Over Time feature, APRs such as 21.24%-29.24% variable have been noted (subject to change). Refer to official rates.', // From your text
   annualFee       : 695, // From your text
   applyLink       : 'https://www.americanexpress.com/us/credit-cards/card/platinum/', // /* UPDATE THIS with your affiliate link if available, else official */
-  ratesLink       : 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/platinum-card/25330-10-0#FeeTable', // Users click "Rates and Fees" on this page
+  ratesLink       : 'https://www.americanexpress.com/us/credit-cards/card/platinum/', // Users click "Rates and Fees" on this page
   officialOverviewLink: 'https://www.americanexpress.com/us/credit-cards/card/platinum/',
   officialWelcomeOfferLink: 'https://www.americanexpress.com/us/credit-cards/card/platinum/', // Welcome offer is on main page
   officialMembershipRewardsLink: 'https://www.americanexpress.com/en-us/benefits/rewards/membership-rewards/',
@@ -303,9 +303,8 @@ const tocSections = [ // Generated from your Platinum review structure
     { id: 'section-part6-17', title: '17. Is The Platinum For You? User Profiling' },
     { id: 'section-part6-18', title: '18. Platinum vs. The Pack: Competitor Comparison' },
     { id: 'section-part7-19', title: '19. User Testimonials: From the Source' },
-    // FAQ section is rendered from structured data, not a separate ToC item for main flow
+    { id: 'section-faqs-jump', title: 'Card-Specific FAQs' },
     { id: 'section-part7-21', title: '21. The Final Take: Your Golden Ticket?' },
-    { id: 'section-faqs-jump', title: 'Card-Specific FAQs' }, // Added jump link for visible FAQs
     { id: 'section-eat', title: 'Our E-A-T Commitment' },
 ];
 
@@ -398,7 +397,7 @@ function AmericanExpressPlatinumCardReviewPage() {
               setShowAuthorBioTooltip(false);
           }
           if (showRatingInfo &&
-              !event.target.closest(`.${styles.infoIconButton}`) && 
+              !event.target.closest(`.${styles.infoIconButton}`) &&
               ratingTooltipRef.current && !ratingTooltipRef.current.contains(event.target)
              ) {
                setShowRatingInfo(false);
@@ -411,7 +410,7 @@ function AmericanExpressPlatinumCardReviewPage() {
       }
       return () => {
           document.removeEventListener("mousedown", handleClickOutside);
-          if (authorRef.current?.tooltipTimeoutId) { 
+          if (authorRef.current?.tooltipTimeoutId) {
             clearTimeout(authorRef.current.tooltipTimeoutId);
           }
       };
@@ -495,7 +494,7 @@ function AmericanExpressPlatinumCardReviewPage() {
                 <h1 className={styles.heroTitle}>
                   {reviewDataNew.h1Content}
                 </h1>
-                 <div 
+                 <div
                     className={styles.authorBioContainer}
                     ref={authorRef}
                     onMouseEnter={() => { handleAuthorClearTimeout(); handleAuthorMouseEnter(); }}
@@ -737,7 +736,7 @@ function AmericanExpressPlatinumCardReviewPage() {
                   <p><strong>Example:</strong> Arriving at a Fine Hotels + Resorts® property, stated benefits are concrete, but Platinum status might also encourage staff to accommodate special requests, a subtle aspect of the card's aura.</p>
                   <p><strong>User Recommendation:</strong> Before applying, assess your travel and spending. Do they align with the Platinum Card’s offerings, or would it lead to uneconomical spending changes?</p>
                 </section>
-                
+
                 {/* Optional: Illustrative Image */}
                 <Image
                     src="/placeholder-luxury-travel-image.webp" // /* UPDATE THIS */ path and alt text
@@ -753,7 +752,7 @@ function AmericanExpressPlatinumCardReviewPage() {
                     <p><strong>Best For:</strong> Frequent U.S.-based luxury travelers and dedicated perks maximizers who can consistently leverage its premium credits and benefits.</p>
                     <p><strong>Not Ideal For:</strong> Occasional or budget travelers, or those preferring straightforward rewards without managing multiple credits.</p>
                     <p>The Platinum Card® suits individuals whose spending and travel naturally align with its reward categories and credits. It’s about a lifestyle that benefits from its distinct offerings. A frequent flyer using major airlines and high-end hotels will find more value than one using low-cost carriers. The $695 annual fee (<a href={reviewDataNew.officialGeneralRatesFeesLink} target="_blank" rel="noopener noreferrer sponsored">see rates and fees</a>) necessitates proactive benefit use to avoid it becoming a net expense.</p>
-                    
+
                     <DraggableTableWrapper>
                         <div className={styles.tableContainer}>
                             <table className={`${styles.statsTable} ${styles.highlightTable}`}>
@@ -800,10 +799,10 @@ function AmericanExpressPlatinumCardReviewPage() {
                     <h2>3. Your Welcome Aboard: The Current New Card Member Offer</h2>
                     <p>New Platinum Card® holders often receive a welcome offer like 80,000 Membership Rewards® points after an $8,000 spend in six months. These points can be valuable, potentially covering flights or upgrades, especially when transferred to airline partners. (<a href={reviewDataNew.officialMembershipRewardsLink} target="_blank" rel="noopener noreferrer sponsored">Learn more about Membership Rewards®</a>).</p>
                     <blockquote className={styles.highlightQuote}>
-                        Current Welcome Offer: Typically <strong>Earn 80,000 Membership Rewards® points after you spend $8,000</strong> on purchases on your new Card in your first 6 months of Card Membership. 
+                        Current Welcome Offer: Typically <strong>Earn 80,000 Membership Rewards® points after you spend $8,000</strong> on purchases on your new Card in your first 6 months of Card Membership.
                         (<a href={reviewDataNew.officialWelcomeOfferLink} target="_blank" rel="noopener noreferrer sponsored">See official welcome offer details and terms</a>)
                     </blockquote>
-                    <p>Be aware of Amex's "once per lifetime" rule for welcome offers: if you've had the card, you might be ineligible for the bonus again. The $8,000 spend requirement in six months orients the card towards higher spenders or those timing it with large purchases. This rule encourages careful application timing to maximize value.</p>
+                    <p>Be aware of Amex's "once per lifetime" rule for welcome offers: if you've had this card before, you may not be eligible for the bonus again. The $8,000 spend requirement in six months orients the card towards higher spenders or those timing it with large purchases. This rule encourages careful application timing to maximize value.</p>
                     <p><strong>User Recommendation:</strong> Evaluate if you can meet the spending threshold organically. Avoid manufactured spend that negates point value.</p>
                 </section>
 
@@ -945,7 +944,7 @@ function AmericanExpressPlatinumCardReviewPage() {
                     </ul>
                     <p>These "soft" benefits provide intangible, but potentially immense, value.</p>
                 </section>
-                
+
                 {/* Part 5 Section */}
                 <section id="section-part5-15" className={styles.reviewSection}>
                     <h2>15. Understanding the Costs: Annual Fee, APRs, and Other Charges</h2>
@@ -1103,7 +1102,7 @@ function AmericanExpressPlatinumCardReviewPage() {
                         </blockquote>
                     </div>
                 </section>
-                
+
                 <section id="section-faqs-jump" className={`${styles.reviewSection} ${styles.faqSection}`}>
                   <h2>20. Your Platinum Questions Answered: Card-Specific FAQs</h2>
                   <div className={styles.faqContainer}>
@@ -1162,7 +1161,7 @@ function AmericanExpressPlatinumCardReviewPage() {
                         Apply Now
                     </a>
                     <a
-                        href={reviewDataNew.officialGeneralRatesFeesLink} 
+                        href={reviewDataNew.officialGeneralRatesFeesLink}
                         className={`${styles.stickyFooterBtn} ${styles.stickyFooterBtnRates}`}
                         target="_blank"
                         rel="noopener noreferrer sponsored"
