@@ -650,3 +650,80 @@
   padding-left: 20px;
 }
 /* =============== END EETA Section styles =============== */
+/* Premium CSS for Comparison Table 
+  Add this to your NoFTFCardsReview.module.css (or relevant CSS Module file)
+*/
+
+.comparisonTableContainer {
+  margin-top: 2rem;
+  margin-bottom: 2.5rem;
+  overflow-x: auto; /* Ensures table is scrollable on small screens if it's too wide */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  border-radius: 8px; /* Subtle rounded corners for the container */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Soft shadow for a lifted effect */
+  background-color: #ffffff; /* Assuming a white background for the table area */
+}
+
+.comparisonTable {
+  width: 100%;
+  border-collapse: collapse; /* Removes default spacing between cells */
+  min-width: 800px; /* Minimum width before horizontal scrolling kicks in, adjust as needed */
+  font-size: 0.95rem; /* Slightly adjusted font size for readability */
+  line-height: 1.6;
+  color: #333; /* Dark grey for primary text content */
+}
+
+.comparisonTable th,
+.comparisonTable td {
+  padding: 1rem 1.25rem; /* Generous padding for readability */
+  text-align: left;
+  vertical-align: top; /* Align content to the top of the cell */
+  border-bottom: 1px solid #e9ecef; /* Light, subtle border for rows */
+}
+
+.comparisonTable th {
+  background-color: #f8f9fa; /* Very light grey for header background */
+  color: #212529; /* Darker text for header for emphasis */
+  font-weight: 600; /* Bold header text */
+  text-transform: uppercase; /* Uppercase header text for a formal look */
+  letter-spacing: 0.05em; /* Slight letter spacing for header */
+  border-top: 1px solid #dee2e6; /* Top border for header */
+  border-bottom-width: 2px; /* Stronger bottom border for header */
+  border-bottom-color: #007bff; /* Accent color for header bottom border - choose your brand color */
+}
+
+/* Zebra-striping for rows for enhanced readability */
+.comparisonTable tbody tr:nth-of-type(even) {
+  background-color: #fdfdfe; /* Slightly off-white for even rows, very subtle */
+}
+
+.comparisonTable tbody tr:hover {
+  background-color: #e9f5ff; /* Light blue hover effect for rows - adjust color as preferred */
+  /* transition: background-color 0.2s ease-in-out; Optional: adds a smooth transition */
+}
+
+/* Styling for the first column (Feature) if you want to make it stand out */
+.comparisonTable td:first-child {
+  font-weight: 500;
+  color: #0056b3; /* Accent color for feature names - choose your brand color */
+}
+
+/* Responsive considerations: Stack table on very small screens (optional) */
+@media (max-width: 767px) {
+  /* For very small screens, you might consider a stacked layout if overflow-x isn't enough.
+    This is more complex and involves changing display properties.
+    The overflow-x: auto on the container is often a good first step.
+    If you need a fully stacked table, it usually requires JavaScript or more complex CSS.
+    For now, the horizontal scroll is the primary responsive mechanism.
+  */
+
+  .comparisonTable th,
+  .comparisonTable td {
+    padding: 0.75rem; /* Reduce padding slightly on smaller screens */
+    font-size: 0.9rem;
+  }
+
+  .comparisonTable th {
+    font-size: 0.85rem; /* Adjust header font size for smaller screens */
+  }
+}
