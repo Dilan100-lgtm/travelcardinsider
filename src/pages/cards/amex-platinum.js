@@ -726,9 +726,7 @@ function AmericanExpressPlatinumCardReviewPage() {
                     </div>
                 </header>
 
-                <section id="section-intro" className={styles.reviewSection}>
-                  <h2>Introduction: The Amex Platinum Experience</h2>
-                </section>
+                
 
                 <section id="section-part1-1" className={styles.reviewSection}>
                   <h2>1. The American Express Platinum Card®: More Than Just Metal</h2>
