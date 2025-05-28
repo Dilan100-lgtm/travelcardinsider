@@ -37,7 +37,7 @@ const reviewDataNew = {
   title           : 'The American Express Platinum Card®: Comprehensive U.S. Traveler Review (2025)', // SEO Optimized Title
   description     : 'In-depth 2025 review of The Platinum Card® from American Express. Explore luxury travel perks, $1500+ in credits (Airline, Hotel, Uber, CLEAR & more), lounge access, and the $695 fee. Ideal for U.S. frequent flyers.', // Meta Description
   keywords        : 'American Express Platinum Card review, Amex Platinum, Amex Platinum benefits, Amex travel credits, Centurion Lounge, FHR, Membership Rewards, Amex Platinum 2025', // Keywords
-  author: { // /* UPDATE ALL AUTHOR DETAILS AS NEEDED */ - Copied from Gold, update for Platinum context if different
+  author: { // /* UPDATE ALL AUTHOR DETAILS AS NEEDED */
       name: 'Dilan Madushanka',
       title: 'Founder & Lead Editor',
       imageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // /* UPDATE THIS */
@@ -71,21 +71,21 @@ const reviewDataNew = {
   ratingValue     : 9.2,  // /* UPDATE THIS */ Example rating (out of 10)
   ratingCount     : 310,  // /* UPDATE THIS */ Example review count
   reviewBody      : 'Our editors evaluate The Platinum Card® from American Express based on its extensive suite of luxury travel benefits (Global Lounge Collection, Fine Hotels + Resorts), comprehensive statement credits (Airline, Hotel, Uber, Digital Ent., Walmart+, Saks, CLEAR), Membership Rewards® earning (5X on flights & prepaid hotels), travel & purchase protections, the $695 annual fee, and overall value for U.S.-based frequent luxury travelers.',
-  aprRange        : 'See Pay Over Time APR. For the Pay Over Time feature, APRs such as 21.24%-29.24% variable have been noted (subject to change). Refer to official rates.', // From your text
-  annualFee       : 695, // From your text
+  aprRange        : 'See Pay Over Time APR. For the Pay Over Time feature, APRs such as 21.24%-29.24% variable have been noted (subject to change). Refer to official rates.',
+  annualFee       : 695,
   applyLink       : 'https://www.americanexpress.com/us/credit-cards/card/platinum/', // /* UPDATE THIS with your affiliate link if available, else official */
   ratesLink       : 'https://www.americanexpress.com/us/credit-cards/card/platinum/', // Users click "Rates and Fees" on this page
   officialOverviewLink: 'https://www.americanexpress.com/us/credit-cards/card/platinum/',
-  officialWelcomeOfferLink: 'https://www.americanexpress.com/us/credit-cards/card/platinum/', // Welcome offer is on main page
+  officialWelcomeOfferLink: 'https://www.americanexpress.com/us/credit-cards/card/platinum/',
   officialMembershipRewardsLink: 'https://www.americanexpress.com/en-us/benefits/rewards/membership-rewards/',
   officialAirlineFeeCreditLink: 'https://global.americanexpress.com/card-benefits/detail/airline-fee-credit/platinum',
   officialClearWebsiteLink: 'https://www.clearme.com/',
   officialGlobalEntryTSALink: 'https://ttp.dhs.gov/',
-  officialTravelProtectionsLink: 'https://www.americanexpress.com/us/credit-cards/features-benefits/policies/trip-cancellation-terms.html', // Leads to Guide to Benefits
-  officialGeneralRatesFeesLink: 'https://www.americanexpress.com/us/credit-cards/card/platinum/', // Main page, find "Rates & Fees"
+  officialTravelProtectionsLink: 'https://www.americanexpress.com/us/credit-cards/features-benefits/policies/trip-cancellation-terms.html',
+  officialGeneralRatesFeesLink: 'https://www.americanexpress.com/us/credit-cards/card/platinum/',
   sku             : 'AMEX-PLAT-TCI-2025', // /* UPDATE THIS */ Example SKU
   mpn             : 'AMEXPLATINUM', // /* UPDATE THIS */ Example MPN
-  h1Content       : "The American Express Platinum Card®: Ultimate Review for U.S. Luxury Travelers (2025)", // Derived from your text
+  h1Content       : "The American Express Platinum Card®: Ultimate Review for U.S. Luxury Travelers (2025)",
 };
 
 /* ──────────────────────────────
@@ -109,11 +109,11 @@ const structuredDataOptimized = {
         bestRating  : '10',
         worstRating : '1',
         ratingCount : reviewDataNew.ratingCount.toString(),
-        reviewCount : '1', // Assuming 1 editor review for this page
+        reviewCount : '1',
       },
       offers: {
         '@type'            : 'Offer',
-        url                : reviewDataNew.applyLink, // Your affiliate link
+        url                : reviewDataNew.applyLink,
         priceCurrency      : 'USD',
         price              : reviewDataNew.annualFee.toString(),
         priceValidUntil    : '2026-12-31', // /* UPDATE THIS AS NEEDED */
@@ -158,7 +158,7 @@ const structuredDataOptimized = {
       publisher       : {
         '@type' : 'Organization',
         name    : siteName,
-        logo    : { '@type': 'ImageObject', url: `${siteUrl}/images/logo/your-logo-schema.png` }, // /* UPDATE THIS */ path to your logo for schema
+        logo    : { '@type': 'ImageObject', url: `${siteUrl}/images/logo/your-logo-schema.png` }, // /* UPDATE THIS */
       },
       datePublished   : publishDate,
       dateModified    : updateDate,
@@ -194,11 +194,11 @@ const structuredDataOptimized = {
       '@id'          : `${pageUrlFull}#breadcrumbs`,
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: siteName, item: siteUrl },
-        { '@type': 'ListItem', position: 2, name: 'Credit Card Reviews', item: `${siteUrl}/reviews` }, // /* UPDATE THIS */ if review category path is different
+        { '@type': 'ListItem', position: 2, name: 'Credit Card Reviews', item: `${siteUrl}/reviews` }, // /* UPDATE THIS */
         { '@type': 'ListItem', position: 3, name: `${reviewDataNew.cardName} Review`, item: pageUrlFull },
       ],
     },
-    { // Populated from Section 20 of your text
+    {
       '@type'    : 'FAQPage',
       '@id'      : `${pageUrlFull}#faqs`,
       mainEntity: [
@@ -260,7 +260,7 @@ const structuredDataOptimized = {
       name    : siteName,
       url     : siteUrl,
       logo    : { '@type': 'ImageObject', url: `${siteUrl}/images/logo/your-logo-schema.png` }, // /* UPDATE THIS */
-      sameAs  : [ // /* UPDATE THESE */ Add actual social links for your organization
+      sameAs  : [ // /* UPDATE THESE */
         "https://www.facebook.com/YourTravelCardInsiderFacebookPage",
         "https://twitter.com/YourTravelCardInsiderTwitterHandle",
       ],
@@ -268,7 +268,7 @@ const structuredDataOptimized = {
   ],
 };
 
-const ratingCriteriaOriginal = [ // /* UPDATE AS NEEDED */ Tailored for Amex Platinum
+const ratingCriteriaOriginal = [ // /* UPDATE AS NEEDED */
     'Value & Utilization of Annual Travel Credits (Airline, Hotel, Uber)',
     'Value & Utilization of Lifestyle Credits (Digital Ent., Walmart+, Saks)',
     'Airport Lounge Access Quality & Network (Global Lounge Collection®, Centurion®)',
@@ -282,7 +282,7 @@ const ratingCriteriaOriginal = [ // /* UPDATE AS NEEDED */ Tailored for Amex Pla
     'Quality of Premium Services (Concierge, Premium Global Assist®)',
 ];
 
-const tocSections = [ // Generated from your Platinum review structure
+const tocSections = [
     { id: 'section-intro', title: 'Introduction: The Amex Platinum Experience' },
     { id: 'section-part1-1', title: '1. More Than Just Metal' },
     { id: 'section-part1-2', title: '2. Quick Look: Card Snapshot & Who It’s Best For' },
@@ -417,7 +417,7 @@ function AmericanExpressPlatinumCardReviewPage() {
   }, [showAuthorBioTooltip, authorRef, authorTooltipRef, showRatingInfo, ratingTooltipRef]);
 
 
-  const summaryBoxData = { // Derived from your Platinum review text (Section 2 primarily)
+  const summaryBoxData = {
     welcomeOffer: "Typically: Earn 80,000 Membership Rewards® points after $8,000 spend in 6 months. Offers vary.",
     annualFee: `$${reviewDataNew.annualFee}`,
     topEarning: "5X on flights (direct/Amex Travel, up to $500k/yr); 5X on prepaid hotels (AmexTravel.com).",
@@ -428,7 +428,11 @@ function AmericanExpressPlatinumCardReviewPage() {
 
 
   return (
-    <>
+    // If this entire page component is wrapped by a parent that uses React.Children.only,
+    // then this top-level Fragment needs to be a single element like a <div>.
+    // Otherwise, a Fragment is fine for a standard Next.js page.
+    // Applying the requested change assuming it's needed due to such a parent:
+    <div>
       <Head>
         <title>{reviewDataNew.title} - {siteName}</title>
         <meta name="description" content={reviewDataNew.description} />
@@ -445,7 +449,7 @@ function AmericanExpressPlatinumCardReviewPage() {
         <meta name="geo.placename" content="United States" />
         <meta name="language" content="en-US" />
         <meta name="distribution" content="US" />
-        {[ /* UPDATE AS NEEDED with your actual font paths */
+        {[
           '/fonts/inter-v18-latin-regular.woff2',
           '/fonts/inter-v18-latin-600.woff2',
           '/fonts/inter-v18-latin-700.woff2',
@@ -477,7 +481,6 @@ function AmericanExpressPlatinumCardReviewPage() {
         <meta name="twitter:title"       content={reviewDataNew.title} />
         <meta name="twitter:description" content={reviewDataNew.description} />
         <meta name="twitter:image"       content={`${siteUrl}${reviewDataNew.imageUrl}`} />
-        
         <link rel="icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -506,7 +509,7 @@ function AmericanExpressPlatinumCardReviewPage() {
                     tabIndex={0}
                 >
                     <Image
-                        src={reviewDataNew.author.imageUrl} // /* UPDATE THIS */
+                        src={reviewDataNew.author.imageUrl}
                         alt={`${reviewDataNew.author.name} headshot`}
                         width={reviewDataNew.author.imageWidth}
                         height={reviewDataNew.author.imageHeight}
@@ -556,7 +559,7 @@ function AmericanExpressPlatinumCardReviewPage() {
                         >
                              <div className={styles.authorTooltipHeader}>
                                  <Image
-                                    src={reviewDataNew.author.tooltipImageUrl} // /* UPDATE THIS */
+                                    src={reviewDataNew.author.tooltipImageUrl}
                                     alt={`${reviewDataNew.author.name} large headshot`}
                                     width={reviewDataNew.author.tooltipImageWidth}
                                     height={reviewDataNew.author.tooltipImageHeight}
@@ -605,13 +608,13 @@ function AmericanExpressPlatinumCardReviewPage() {
                         </div>
                     )}
                 </div>
-                <p className={styles.heroSubtitle}> {/* Intro text for Amex Platinum Review */}
+                <p className={styles.heroSubtitle}>
                   For the U.S. traveler seeking unparalleled luxury, extensive benefits, and a statement of prestige, The Platinum Card® from American Express has long been a benchmark. At TravelCardInsider, we dive deep into its 2025 offerings: from the coveted Global Lounge Collection® and Fine Hotels + Resorts® perks to over $1,500 in potential statement credits. But does its hefty $695 annual fee translate to real-world value for you? Let's unravel the Amex Platinum experience.
                 </p>
                 <div className={styles.heroCtaContainer}>
                   <div>
                     <a
-                      href={reviewDataNew.applyLink} // /* UPDATE THIS with your affiliate link */
+                      href={reviewDataNew.applyLink}
                       target="_blank"
                       rel="noopener noreferrer sponsored"
                       className={`${styles.applyNowButton} ${styles.heroApplyButton}`}
@@ -622,7 +625,7 @@ function AmericanExpressPlatinumCardReviewPage() {
                       on American Express&apos;s official site
                     </span>
                   </div>
-                  <Link href="#section-part1-2" legacyBehavior> {/* Link to Card Snapshot */}
+                  <Link href="#section-part1-2" legacyBehavior>
                     <a className={styles.heroSecondaryLink}>View Key Features</a>
                   </Link>
                 </div>
@@ -630,10 +633,10 @@ function AmericanExpressPlatinumCardReviewPage() {
               <div className={styles.heroImageContainer}>
                 <div className={styles.cardImageContainer}>
                   <Image
-                    src={reviewDataNew.imageUrl} // /* UPDATE THIS */
+                    src={reviewDataNew.imageUrl}
                     alt={reviewDataNew.cardName}
-                    width={reviewDataNew.imageWidth} // /* UPDATE THIS */
-                    height={reviewDataNew.imageHeight} // /* UPDATE THIS */
+                    width={reviewDataNew.imageWidth}
+                    height={reviewDataNew.imageHeight}
                     className={styles.heroImage}
                     priority
                   />
@@ -670,7 +673,7 @@ function AmericanExpressPlatinumCardReviewPage() {
                   </div>
                 </div>
                  <div className={styles.ratingDescription}>
-                    <i>{reviewDataNew.cardName}: {reviewDataNew.description}</i> 
+                    <i>{reviewDataNew.cardName}: {reviewDataNew.description}</i>
                  </div>
               </div>
             </section>
@@ -723,11 +726,8 @@ function AmericanExpressPlatinumCardReviewPage() {
                     </div>
                 </header>
 
-                {/* CONTENT SECTIONS START HERE - Based on your Amex Platinum review text */}
-
                 <section id="section-intro" className={styles.reviewSection}>
                   <h2>Introduction: The Amex Platinum Experience</h2>
-                  {/* Content from Part 1 Introduction of your review text */}
                 </section>
 
                 <section id="section-part1-1" className={styles.reviewSection}>
@@ -737,9 +737,8 @@ function AmericanExpressPlatinumCardReviewPage() {
                   <p><strong>User Recommendation:</strong> Before applying, assess your travel and spending. Do they align with the Platinum Card’s offerings, or would it lead to uneconomical spending changes?</p>
                 </section>
 
-                {/* Optional: Illustrative Image */}
                 <Image
-                    src="/placeholder-luxury-travel-image.webp" // /* UPDATE THIS */ path and alt text
+                    src="/placeholder-luxury-travel-image.webp"
                     alt="Illustrative image of luxury travel or premium service"
                     width={800}
                     height={500}
@@ -813,7 +812,6 @@ function AmericanExpressPlatinumCardReviewPage() {
                     <p><strong>Real-World Example:</strong> Sarah finds a flight on Airline X for $400, or $385 on a third-party site. Booking direct earns 2,000 MR points; the third-party site (not Amex Travel) earns 385 points but saves $15. She must weigh 1,615 extra points against $15.</p>
                 </section>
 
-                {/* Part 3 Sections */}
                 <section id="section-part3-5" className={styles.reviewSection}>
                     <h2>5. Travel Credits Unveiled: Airline, Hotel & Uber Deep Dive</h2>
                     <p>The Platinum Card’s® value often lies in its statement credits and travel benefits, valued by Amex at over $1,500 annually. Maximizing these requires understanding terms and often, enrollment.</p>
@@ -904,7 +902,6 @@ function AmericanExpressPlatinumCardReviewPage() {
                     </ul>
                 </section>
 
-                {/* Part 4 Sections */}
                 <section id="section-part4-12" className={styles.reviewSection}>
                     <h2>12. Travel Confidently: A Look at Amex Platinum’s Insurance Suite</h2>
                     <p>When eligible travel is charged to the card:</p>
@@ -945,7 +942,6 @@ function AmericanExpressPlatinumCardReviewPage() {
                     <p>These "soft" benefits provide intangible, but potentially immense, value.</p>
                 </section>
 
-                {/* Part 5 Section */}
                 <section id="section-part5-15" className={styles.reviewSection}>
                     <h2>15. Understanding the Costs: Annual Fee, APRs, and Other Charges</h2>
                     <p>Understanding the cost structure is crucial. The Platinum Card® is a charge card (balance typically due monthly) but has "Pay Over Time," allowing carried balances with interest on eligible charges. Interest can negate rewards, so pay in full. Additional Platinum Cards cost $195 each; no-fee Companion Cards (Gold/Green with fewer benefits) are an option. (<a href={reviewDataNew.officialGeneralRatesFeesLink} target="_blank" rel="noopener noreferrer sponsored">Refer to Amex General Rates & Fees</a>).</p>
@@ -975,7 +971,6 @@ function AmericanExpressPlatinumCardReviewPage() {
                     <p><small>Note: APRs are variable. Confirm specifics in Cardmember Agreement.</small></p>
                 </section>
 
-                {/* Part 6 Sections */}
                 <section id="section-part6-16" className={styles.reviewSection}>
                     <h2>16. The Platinum Value Equation: A Real-World Calculation Example</h2>
                     <p>Consider "Alex," a frequent U.S. traveler: 6 domestic, 2 international flights; prefers Delta; 3-4 FHR stays/year; uses Uber weekly; subscribes to WSJ/Disney Bundle; shops at Saks; uses Walmart+; values lounges/CLEAR.</p>
@@ -1071,7 +1066,6 @@ function AmericanExpressPlatinumCardReviewPage() {
                     <p><small>Note: Offers/benefits subject to change. Check issuer terms.</small></p>
                 </section>
 
-                {/* Part 7 Sections */}
                 <section id="section-part7-19" className={styles.reviewSection}>
                     <h2>19. From the Source: Real User Testimonials</h2>
                     <div className={styles.testimonialContainer}>
@@ -1113,7 +1107,7 @@ function AmericanExpressPlatinumCardReviewPage() {
                                 <p dangerouslySetInnerHTML={{ __html:
                                   faq.acceptedAnswer.text
                                     .replace("American Express online account", `<a href="${reviewDataNew.officialOverviewLink}" target="_blank" rel="noopener noreferrer sponsored">American Express online account</a>`)
-                                    .replace("American Express Travel", `<a href="https://www.amextravel.com" target="_blank" rel="noopener noreferrer sponsored">American Express Travel</a>`) // /* UPDATE THIS */ if Amex Travel has a more specific link
+                                    .replace("American Express Travel", `<a href="https://www.amextravel.com" target="_blank" rel="noopener noreferrer sponsored">American Express Travel</a>`)
                                 }} />
                               </div>
                           </details>
@@ -1146,14 +1140,14 @@ function AmericanExpressPlatinumCardReviewPage() {
       </main>
         <div className={styles.stickyFooterContainer}>
             <div className={styles.stickyFooterContent}>
-                <Image src={reviewDataNew.imageUrl} alt={`${reviewDataNew.cardName} small image`} width={60} height={38} className={styles.stickyFooterCardImage} /> 
+                <Image src={reviewDataNew.imageUrl} alt={`${reviewDataNew.cardName} small image`} width={60} height={38} className={styles.stickyFooterCardImage} />
                 <div className={styles.stickyFooterText}>
                   <span className={styles.stickyFooterCardName}>{reviewDataNew.cardName}</span>
                   <span className={styles.stickyFooterRating}>{siteName} Rating: {reviewDataNew.ratingValue.toFixed(1)}/10</span>
                 </div>
                 <div className={styles.stickyFooterButtons}>
                     <a
-                        href={reviewDataNew.applyLink} // /* UPDATE THIS with your affiliate link */
+                        href={reviewDataNew.applyLink}
                         className={`${styles.stickyFooterBtn} ${styles.stickyFooterBtnApply}`}
                         target="_blank"
                         rel="noopener noreferrer sponsored"
@@ -1171,7 +1165,7 @@ function AmericanExpressPlatinumCardReviewPage() {
                 </div>
             </div>
       </div>
-    </>
+    </div> // Closing the top-level div wrapper
   );
 }
 
