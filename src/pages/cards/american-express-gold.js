@@ -734,13 +734,13 @@ function AmericanExpressGoldCardReviewPage() {
 
                 <section id="section-intro" className={styles.reviewSection}>
                   <h2>Introduction: Why the Amex Gold Continues to Captivate</h2>
-                  <p>In a financial world saturated with credit cards, each vying for attention, the American Express® Gold Card has cultivated a distinct identity. It’s not merely a piece of metal; it's often perceived as a lifestyle accessory, subtly communicating an appreciation for experiences, especially those centered around dining and travel. For the U.S. traveler who views every meal as a discovery and every journey as a chapter in their life's story, the Gold Card positions itself as an essential companion.</p>
-                  <p>Its enduring appeal isn’t accidental. It’s built on a potent rewards structure focused on everyday spending categories that resonate deeply with food lovers and frequent flyers, combined with an array of statement credits designed to deliver tangible, recurring value. (<a href={reviewDataNew.officialOverviewLink} target="_blank" rel="noopener noreferrer sponsored">Official Amex Gold Card Overview</a>) This card aims to be actively used, rewarding you generously for spending you likely already do. However, with a notable annual fee (currently ${reviewDataNew.annualFee}) and a benefits structure that demands engagement, the crucial question remains: Does it truly deliver on its golden promise in today's competitive market? This review will dig deep to help you find that answer.</p>
+                  <p>In a crowded credit card market, the American Express® Gold Card stands out. It’s more than metal; it's a lifestyle statement for U.S. travelers who savor every meal and journey. Its allure? Rich rewards on global dining and travel, plus real-value statement credits, all designed for active use. [Placeholder for Official Amex Gold Card Overview Link] But with a $325 annual fee and a need to engage with its benefits, does the Amex Gold truly deliver today? This review digs deep for the answer</p>
+                 
                 </section>
 
                 {/* Placeholder for an illustrative image - UPDATE PATH AND ALT TEXT */}
                 <Image
-                    src="/images/content/amex-gold-lifestyle-dining.jpg" // /* UPDATE THIS */
+                    src="/pexels-riciardus-307008.webp" // /* UPDATE THIS */
                     alt="Elegant dining scene symbolizing Amex Gold rewards"
                     width={800}
                     height={500}
@@ -909,7 +909,7 @@ function AmericanExpressGoldCardReviewPage() {
 
                 {/* Placeholder for another illustrative image */}
                 <Image
-                    src="/images/content/amex-travel-montage.jpg" // /* UPDATE THIS */
+                    src="/pexels-freestockpro-2166553.webp" // /* UPDATE THIS */
                     alt="Montage of travel destinations accessible with Amex Membership Rewards"
                     width={800}
                     height={450}
