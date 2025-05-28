@@ -1053,7 +1053,9 @@ function AlaskaAirlinesVisaSignatureReviewPage() {
               </article>
             </div>
           </div>
-
+          <aside className={styles.sidebarArea}>
+                      <TableOfContents sections={tocSections} />
+                    </aside>
         
         </div>
       </main>
