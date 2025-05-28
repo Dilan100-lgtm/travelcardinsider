@@ -681,9 +681,7 @@ function AmericanExpressGoldCardReviewPage() {
 
              <div className={styles.reviewContainer}> {/* Main content wrapper */}
                 {/* Optional: Table of Contents - You can place it here or in a sidebar */}
-                <div className={styles.tocContainerMobile}> {/* Ensure styles exist for this */}
-                    <TableOfContents sections={tocSections} />
-                </div>
+                
 
               <article>
                 <header className={styles.reviewHeader}>
@@ -1293,7 +1291,7 @@ function AmericanExpressGoldCardReviewPage() {
       </main>
         <div className={styles.stickyFooterContainer}> {/* Sticky Footer CTA */}
         <div className={styles.stickyFooterContent}>
-            <Image src={`${siteUrl}${reviewDataNew.imageUrl}`} alt={`${reviewDataNew.cardName} small image`} width={60} height={38} className={styles.stickyFooterCardImage} /> 
+            <Image src={reviewDataNew.imageUrl} alt={`${reviewDataNew.cardName} small image`} width={60} height={38} className={styles.stickyFooterCardImage} /> 
             <div className={styles.stickyFooterText}>
               <span className={styles.stickyFooterCardName}>{reviewDataNew.cardName}</span>
               <span className={styles.stickyFooterRating}>{siteName} Rating: {reviewDataNew.ratingValue.toFixed(1)}/10</span>
