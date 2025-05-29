@@ -593,7 +593,7 @@ export default function HiltonSurpassCardReview2025() {
             <p>If automatic Gold status, handy credits, and a solid points-earning setup at Hilton properties sound like a good deal for your travels, this card is definitely worth a closer look.</p>
             <div className={styles.ctaButtons}>
               <a href={reviewDataNew.applyLink} className={`${styles.btn} ${styles.btnApply} ${styles.btnLarge}`} target="_blank" rel="noopener noreferrer sponsored" title={`Apply for The ${reviewDataNew.cardName} on ${reviewDataNew.issuerName}'s secure site`}>
-                Learn More & Apply for The {reviewDataNew.cardName}
+                Apply for The {reviewDataNew.cardName}
               </a>
               <a href={reviewDataNew.ratesLink} className={`${styles.btn} ${styles.btnRates} ${styles.btnLarge}`} target="_blank" rel="noopener noreferrer sponsored" title={`See rates and fees for The ${reviewDataNew.cardName} on ${reviewDataNew.issuerName}'s site`}>
                 See Current Rates & Fees
