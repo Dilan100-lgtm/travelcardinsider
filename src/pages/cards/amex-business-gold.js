@@ -66,17 +66,17 @@ const reviewData = {
       }
   },
   siteName: siteName,
-  imageUrl        : '/images/amex-business-gold-card-review-travelcardinsider.png', // /* UPDATE THIS with actual card image path */
+  imageUrl        : '/business-gold.avif', // /* UPDATE THIS with actual card image path */
   imageWidth      : 1290, // /* UPDATE THIS if image dimensions differ */
   imageHeight     : 812,  // /* UPDATE THIS if image dimensions differ */
-  ratingValue     : 9.1,  // /* UPDATE THIS */ Example rating for Business Gold (out of 10)
+  ratingValue     : 8.5,  // /* UPDATE THIS */ Example rating for Business Gold (out of 10)
   ratingCount     : 185,  // /* UPDATE THIS */ Example review count for Business Gold
   reviewBody      : 'Our editors evaluate the American Express® Business Gold Card based on its adaptive 4X rewards categories, valuable statement credits (Flexible Business Credit, Walmart+), Membership Rewards® program, business management tools, travel perks, the $375 annual fee, and overall value for U.S.-based businesses with specific spending patterns.', // For Schema
   aprRange        : 'Potentially 19.49% - 28.49% variable for Pay Over Time, after any introductory 0% APR period. Refer to official rates and terms.', // From content
   annualFee       : 375,  // From content
   // /* USER ACTION: UPDATE ALL LINKS BELOW WITH OFFICIAL AMEX BUSINESS GOLD URLs */
-  applyLink       : 'https://card.americanexpress.com/d/business-gold-card/', // Placeholder - Official Apply Link
-  ratesFeesLink   : 'https://www.americanexpress.com/us/credit-cards/business/business-gold-card/terms?key=ratesAndFees', // Placeholder - Official Rates & Fees (Cited)
+  applyLink       : 'https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/american-express-business-gold-card-amex/', // Placeholder - Official Apply Link
+  ratesFeesLink   : 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/businessgold-card/45094-9-0?key=tncBody&rwdFlag=rwd', // Placeholder - Official Rates & Fees (Cited)
   officialOverviewLink: 'https://www.americanexpress.com/us/credit-cards/business/business-gold-card/', // Placeholder - Official Card Page
   officialWelcomeOfferLink: 'https://www.americanexpress.com/us/credit-cards/business/business-gold-card/offer/', // Placeholder - Official Welcome Offer Page (Cited)
   officialMembershipRewardsLink: 'https://www.americanexpress.com/en-us/rewards/membership-rewards/terms', // Placeholder - Official MR Terms (Cited)
@@ -293,8 +293,8 @@ const tocSections = [
 ];
 
 // Placeholder for content images, update paths as needed
-const contentImage1 = "/images/business-meeting-collaborating.webp"; // /* UPDATE THIS */
-const contentImage2 = "/images/travel-laptop-desk.webp"; // /* UPDATE THIS */
+const contentImage1 = "/drif-riadh-YpkuRn54y4w-unsplash.webp";
+const contentImage2 = "/ian-schneider-jk8rarn6lmw-unsplash.webp"; // /* UPDATE THIS */
 
 
 function DraggableTableWrapper({ children }) {
