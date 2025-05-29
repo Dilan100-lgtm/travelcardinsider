@@ -926,8 +926,8 @@ function AmericanExpressBusinessGoldCardReviewPage() {
                     <ul className={styles.featureList}>
                         <li><strong>Car Rental Loss and Damage Insurance:</strong> Secondary coverage (up to $50,000) when declining rental CDW.</li>
                         <li><strong>Baggage Insurance Plan:</strong> For lost, damaged, stolen baggage on common carriers (limits apply).</li>
-                        <li><strong>Trip Delay Insurance:</strong> Reimburses expenses (up to $300/trip, 2 claims/year) for >12-hour delays.</li>
-                        <li><strong>Global Assist® Hotline:</strong> 24/7 referral service for medical/legal needs when >100 miles from home (user pays third-party costs).</li>
+                        <li><strong>Trip Delay Insurance:</strong> Reimburses expenses (up to $300/trip, 2 claims/year) for &gt;12-hour delays.</li>
+                        <li><strong>Global Assist® Hotline:</strong> 24/7 referral service for medical/legal needs when &gt;100 miles from home (user pays third-party costs).</li>
                         <li><strong>The Hotel Collection:</strong> With 2+ night bookings via Amex Travel, get $100 hotel credit and room upgrade (when available) at participating properties.</li>
                         <li><strong>No Foreign Transaction Fees:</strong> Saves ~3% on international purchases.</li>
                         <li><strong>Cell Phone Protection:</strong> Up to $800/claim ($50 deductible, 2 claims/year) for damaged/stolen phone when the bill is paid with the card.</li>
