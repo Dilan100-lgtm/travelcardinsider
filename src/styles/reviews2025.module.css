@@ -669,3 +669,29 @@
 .tablereviewSection th, .tablereviewSection td { padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border-color); font-size: 0.95rem; }
 .tablereviewSection tbody tr:hover { background-color: #f0f0f0; }
 .tablereviewSection th { font-weight: bold; }
+/* In reviews2025.module.css */
+
+.stickyCtaContent {
+  /* Existing styles */
+  display: flex; /* To align image and text/buttons block */
+  align-items: center; /* Vertically align items */
+  gap: 10px; /* Space between image and text/buttons block */
+}
+
+.stickyCtaImageContainer {
+  flex-shrink: 0; /* Prevent image container from shrinking */
+}
+
+.stickyCtaCardImage {
+  border-radius: 3px; /* Optional: if you want rounded corners for the card image */
+  /* Add any other specific styling for the image itself */
+}
+
+.stickyCtaTextAndButtons {
+  display: flex; /* To manage layout of text and buttons if needed */
+  flex-direction: column; /* Stack text and buttons vertically */
+  flex-grow: 1; /* Allow this block to take available space */
+   /* Or use flex-direction: row; align-items: center; if you want them side-by-side */
+}
+
+/* Adjust .stickyCtaText and .stickyCtaButtons as needed for spacing within .stickyCtaTextAndButtons */
