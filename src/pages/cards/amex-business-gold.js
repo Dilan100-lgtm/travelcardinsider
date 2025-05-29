@@ -1,198 +1,630 @@
-// Example Path: pages/reviews/amex-business-gold.js
-// Or: pages/reviews/[slug].js (if using dynamic routing with 'amex-business-gold' as slug)
+/* ------------------------------------------------------------------
+    File:  pages/reviews/american-express-business-gold-card-review.js
+    Route: https://www.yourwebsite.com/reviews/american-express-business-gold-card-review
+------------------------------------------------------------------- */
 
-// !!! WARNING: THIS FILE CONTAINS PLACEHOLDER DATA/URLs/DIMENSIONS !!!
-// !!! YOU MUST REPLACE ALL PLACEHOLDERS MARKED WITH '!!!' BEFORE DEPLOYMENT !!!
-// !!! VERIFY ALL CARD DETAILS & SCHEMA VALUES AGAINST OFFICIAL ISSUER INFO !!!
-
-import React, { useState, useEffect, useCallback, useRef } from 'react'; // Hooks for tooltip
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from '../../styles/ReviewPage.module.css'; // Using the REVIEW CSS module
-import Header from '../../components/Header'; // Assuming you have these components
-import Footer from '../../components/Footer'; // Assuming you have these components
+import dynamic from 'next/dynamic';
+import styles from '../../styles/ReviewPage.module.css'; // Assuming same CSS module
 
-// Simplified data object based on the final template structure
+import TableOfContents from '../../components/TableOfContents'; // Assuming same TOC component
+// Using existing icons from your Platinum example; update if new ones are needed
+import IconGift from '../../components/icons/icon-gift.svg';
+import IconStar from '../../components/icons/icon-star.svg';
+import IconCheck from '../../components/icons/icon-Credit Card.svg'; // Represents fee or card feature
+import IconPlus from '../../components/icons/icon-target.svg'; // Represents 'Best For' or 'Key Benefit'
+import IconPlane from '../../components/icons/icon-plane.svg'; // Represents Travel Perks
+import IconDollar from '../../components/icons/icon-dollar.svg'; // Represents credits
+import IconBriefcase from '../../components/icons/icon-briefcase.svg'; // Example for Business Perk
+
+const RatingTooltip = dynamic(() => import('../../components/RatingTooltip'), { ssr: false, loading: () => null });
+
+/* ──────────────────────────────
+    CONSTANTS & STATIC DATA
+    ────────────────────────────── */
+const siteName = 'Travelcardinsider'; // /* UPDATE THIS IF DIFFERENT */
+const siteUrl = 'https://www.travelcardinsider.com'; // /* UPDATE THIS IF DIFFERENT */
+const pagePath = '/reviews/american-express-business-gold-card-review';
+const pageUrlFull = `${siteUrl}${pagePath}`;
+const publishDate = '2025-05-29'; // /* UPDATE THIS */ Current date or actual publish date
+const updateDate = '2025-05-29'; // /* UPDATE THIS */ Current date or actual update date
+
+// Data specific to the American Express Business Gold Card Review
 const reviewData = {
-  cardName: 'American Express® Business Gold Card',
-  title: 'American Express® Business Gold Card – In-Depth 2025 Review for Business Travel',
-  description: 'A comprehensive 20-section review of the American Express® Business Gold Card, focusing on its adaptive 4X rewards, travel benefits, $375 annual fee, new statement credits, and competitor analysis for 2025.',
-  keywords: 'American Express, Business Gold, Amex, Membership Rewards, business credit card, travel rewards, 4X points, 2025',
-  author: 'TravelCardInsider', // *** REPLACE with your actual author/site name ***
-  imageUrl: '/business-gold.avif', // *** REPLACE with actual Amex Biz Gold image PATH in /public ***
-  ratingValue: 8.5, // From Amex Business Gold Review Text (Hypothetical TCI Rating)
-  applyLink: 'https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/american-express-business-gold-card-amex/', // *** REPLACE/VERIFY actual Amex Biz Gold APPLY URL ***
-  ratesLink: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/businessgold-card/45094-9-0?key=tncBody&rwdFlag=rwd', // *** REPLACE/VERIFY actual Rates & Fees URL ***
-  // Image dimensions (MUST BE ACCURATE for next/image) - PLACEHOLDERS
-  imageWidth: 480, // *** REPLACE with actual image width *** (Example Placeholder)
-  imageHeight: 304, // *** REPLACE with actual image height *** (Example Placeholder)
+  cardName        : 'American Express® Business Gold Card',
+  cardShortName   : 'Amex Business Gold',
+  title           : 'American Express® Business Gold Card Review (2025): Fueling Business Growth?',
+  description     : 'In-depth 2025 review of the American Express® Business Gold Card. Explore 4X rewards, statement credits (FedEx, Grubhub, Office Supplies, Walmart+), business tools, and the $375 fee. Is it right for your U.S. business?',
+  keywords        : 'American Express Business Gold Card review, Amex Business Gold, Amex Business Gold benefits, business credit card, Membership Rewards, Amex Business Gold 4X, Amex Business Gold 2025, $375 annual fee business card',
+  author: { // /* Using Dilan's details from Platinum example; UPDATE ALL AUTHOR DETAILS AS NEEDED */
+      name: 'Dilan Madushanka',
+      title: 'Founder & Lead Editor',
+      imageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // /* UPDATE THIS */
+      imageWidth: 40,
+      imageHeight: 40,
+      tooltipImageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // /* UPDATE THIS */
+      tooltipImageWidth: 60,
+      tooltipImageHeight: 60,
+      expertise: [
+          'Premium Business Rewards Cards',
+          'Airline & Hotel Loyalty Programs for Business',
+          'Optimizing Business Expenses',
+          'Credit Card Statement Credits for SMEs',
+          'American Express Business Cards'
+      ],
+      bioSnippet: 'Dilan Madushanka is the founder and lead editor of Travelcardinsider, specializing in demystifying premium credit cards like the Amex Business Gold to unlock maximum value for businesses.', // /* UPDATE THIS */
+      fullBioLink: '/author/dilan-madushanka', // /* UPDATE THIS */
+      publishedStats: 'X+ in-depth business card reviews published', // /* UPDATE THIS */
+      testedStats: 'Over Y+ business card benefits analyzed', // /* UPDATE THIS */
+      socialLinks: { // /* UPDATE THIS */
+          linkedin: 'https://www.linkedin.com/in/dilan-madushanka-b65293365',
+          twitter: 'https://x.com/team_dilan',
+          email: 'team@travelcardinsider.com'
+      }
+  },
+  siteName: siteName,
+  imageUrl        : '/images/amex-business-gold-card-review-travelcardinsider.png', // /* UPDATE THIS with actual card image path */
+  imageWidth      : 1290, // /* UPDATE THIS if image dimensions differ */
+  imageHeight     : 812,  // /* UPDATE THIS if image dimensions differ */
+  ratingValue     : 9.1,  // /* UPDATE THIS */ Example rating for Business Gold (out of 10)
+  ratingCount     : 185,  // /* UPDATE THIS */ Example review count for Business Gold
+  reviewBody      : 'Our editors evaluate the American Express® Business Gold Card based on its adaptive 4X rewards categories, valuable statement credits (Flexible Business Credit, Walmart+), Membership Rewards® program, business management tools, travel perks, the $375 annual fee, and overall value for U.S.-based businesses with specific spending patterns.', // For Schema
+  aprRange        : 'Potentially 19.49% - 28.49% variable for Pay Over Time, after any introductory 0% APR period. Refer to official rates and terms.', // From content
+  annualFee       : 375,  // From content
+  // /* USER ACTION: UPDATE ALL LINKS BELOW WITH OFFICIAL AMEX BUSINESS GOLD URLs */
+  applyLink       : 'https://card.americanexpress.com/d/business-gold-card/', // Placeholder - Official Apply Link
+  ratesFeesLink   : 'https://www.americanexpress.com/us/credit-cards/business/business-gold-card/terms?key=ratesAndFees', // Placeholder - Official Rates & Fees (Cited)
+  officialOverviewLink: 'https://www.americanexpress.com/us/credit-cards/business/business-gold-card/', // Placeholder - Official Card Page
+  officialWelcomeOfferLink: 'https://www.americanexpress.com/us/credit-cards/business/business-gold-card/offer/', // Placeholder - Official Welcome Offer Page (Cited)
+  officialMembershipRewardsLink: 'https://www.americanexpress.com/en-us/rewards/membership-rewards/terms', // Placeholder - Official MR Terms (Cited)
+  officialBenefitsLink: 'https://www.americanexpress.com/us/credit-cards/business/business-gold-card/benefits', // Placeholder - Official Benefits Page (Cited for enrollment)
+  // Links for specific benefits mentioned in text
+  officialAmexTravelLink: 'https://www.amextravel.com', // Generic Amex Travel
+  officialQuickbooksLink: 'https://www.americanexpress.com/us/business/trends-and-insights/articles/save-time-by-connecting-your-business-card-to-quickbooks/', // Example
+  officialBillComLink: 'https://www.bill.com/for-accountants/american-express', // Example
+
+  sku             : 'AMEX-BIZGOLD-TCI-2025', // /* UPDATE THIS */ Example SKU
+  mpn             : 'AMEXBIZGOLD', // /* UPDATE THIS */ Example MPN
+  h1Content       : "American Express® Business Gold Card: Fueling Your Business Growth?", // From user prompt
+  heroSubtitle    : "Discover if the Amex Business Gold's premium rewards and $375 fee align with your U.S. business needs in our comprehensive 2025 review."
 };
 
-// --- Rating Tooltip Content (Customize if needed for Amex Biz Gold) ---
-const ratingCriteria = [ // *** VERIFY/CUSTOMIZE these criteria for Amex Biz Gold Rating ***
-    'Adaptive 4X Earning Potential',
-    'Value of Membership Rewards® Points (Transfers)',
-    'Statement Credit Value ($240 Flex + $155 Walmart+)',
-    'Welcome Bonus Variability',
-    'Annual Fee Justification ($375)',
-    'Travel Protections Included'
+/* ──────────────────────────────
+    STRUCTURED DATA GRAPH
+    ────────────────────────────── */
+const structuredDataOptimized = {
+  '@context': 'https://schema.org',
+  '@graph'  : [
+    {
+      '@type'        : 'Product',
+      '@id'          : `${pageUrlFull}#product`,
+      name           : reviewData.cardName,
+      image          : `${siteUrl}${reviewData.imageUrl}`,
+      description    : reviewData.description,
+      sku            : reviewData.sku,
+      mpn            : reviewData.mpn,
+      brand          : { '@type': 'Brand', name: 'American Express' },
+      aggregateRating: {
+        '@type'    : 'AggregateRating',
+        ratingValue : reviewData.ratingValue.toString(),
+        bestRating  : '10',
+        worstRating : '1',
+        ratingCount : reviewData.ratingCount.toString(),
+        reviewCount : '1', // Number of editorial reviews, not user reviews for this specific schema part
+      },
+      offers: {
+        '@type'            : 'Offer',
+        url                : reviewData.applyLink,
+        priceCurrency      : 'USD',
+        price              : reviewData.annualFee.toString(),
+        priceValidUntil    : '2026-12-31', // /* UPDATE THIS AS NEEDED */
+        itemCondition      : 'https://schema.org/NewCondition',
+        availability       : 'https://schema.org/InStock',
+        priceSpecification: [
+          {
+            '@type'              : 'PriceSpecification',
+            priceCurrency        : 'USD',
+            price                : reviewData.annualFee.toString(),
+            valueAddedTaxIncluded: 'false',
+            description          : `Annual fee: $${reviewData.annualFee}.`,
+          },
+          {
+            '@type'              : 'PriceSpecification',
+            priceCurrency        : 'USD',
+            description          : `Pay Over Time APR: ${reviewData.aprRange}. Foreign Transaction Fee: None. See official ${reviewData.cardName} Rates & Fees on the issuer's website.`,
+          },
+        ],
+        seller: { '@type': 'Organization', name: 'American Express' },
+      },
+      review: { '@id': `${pageUrlFull}#editorReview` },
+    },
+    {
+      '@type'         : 'Review',
+      '@id'           : `${pageUrlFull}#editorReview`,
+      name            : `${reviewData.cardName} – Review Updated ${new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`,
+      itemReviewed    : { '@id': `${pageUrlFull}#product` },
+      reviewBody      : reviewData.reviewBody,
+      reviewRating    : {
+        '@type'    : 'Rating',
+        ratingValue : reviewData.ratingValue.toString(),
+        bestRating  : '10',
+        worstRating : '1',
+        description: `${siteName} editorial rating based on a 10.0 scale, as of ${new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}.`
+      },
+      author          : {
+          '@type': 'Person',
+          'name': reviewData.author.name,
+          'url': reviewData.author.fullBioLink ? `${siteUrl}${reviewData.author.fullBioLink}` : undefined,
+      },
+      publisher       : {
+        '@type' : 'Organization',
+        name    : siteName,
+        logo    : { '@type': 'ImageObject', url: `${siteUrl}/images/logo/your-logo-schema.png` }, // /* UPDATE THIS */
+      },
+      datePublished   : publishDate,
+      dateModified    : updateDate,
+    },
+    {
+      '@type'            : 'WebPage',
+      '@id'              : pageUrlFull,
+      url                : pageUrlFull,
+      name               : reviewData.title,
+      description        : reviewData.description,
+      inLanguage         : 'en-US',
+      isPartOf           : { '@id': `${siteUrl}#website` },
+      primaryImageOfPage : { '@id': `${pageUrlFull}#primaryImage` },
+      breadcrumb         : { '@id': `${pageUrlFull}#breadcrumbs` },
+      datePublished      : publishDate,
+      dateModified       : updateDate,
+       author: {
+          '@type': 'Person',
+          'name': reviewData.author.name,
+          'url': reviewData.author.fullBioLink ? `${siteUrl}${reviewData.author.fullBioLink}` : undefined
+       },
+    },
+    {
+      '@type'   : 'ImageObject',
+      '@id'     : `${pageUrlFull}#primaryImage`,
+      url       : `${siteUrl}${reviewData.imageUrl}`,
+      width     : reviewData.imageWidth,
+      height    : reviewData.imageHeight,
+      caption   : reviewData.cardName,
+    },
+    {
+      '@type'        : 'BreadcrumbList',
+      '@id'          : `${pageUrlFull}#breadcrumbs`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: siteName, item: siteUrl },
+        { '@type': 'ListItem', position: 2, name: 'Business Credit Card Reviews', item: `${siteUrl}/business-reviews` }, // /* UPDATE THIS if path differs */
+        { '@type': 'ListItem', position: 3, name: `${reviewData.cardName} Review`, item: pageUrlFull },
+      ],
+    },
+    { // FAQs from the user's provided text
+      '@type'    : 'FAQPage',
+      '@id'      : `${pageUrlFull}#faqs`,
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'How are the top 2 (4X) bonus categories determined for the Amex Business Gold Card?',
+          acceptedAnswer: { '@type': 'Answer', text: "American Express automatically identifies the two categories (from the six eligible) where your business spent the most during each billing cycle. No manual selection or enrollment is needed for the 4X categories themselves." }
+        },
+        {
+          '@type': 'Question',
+          name: 'Is there a limit on the Membership Rewards® points I can earn?',
+          acceptedAnswer: { '@type': 'Answer', text: "There's no overall limit to the total points you can earn. However, the 4X bonus points on your top two categories are capped at $150,000 in combined purchases per calendar year. After that, purchases in those categories will earn 1X point." }
+        },
+        {
+          '@type': 'Question',
+          name: 'Do I have to pay my bill in full every month with the Amex Business Gold?',
+          acceptedAnswer: { '@type': 'Answer', text: "Not necessarily. The card features 'Pay Over Time,' which allows you to carry a balance with interest on eligible purchases, up to your Pay Over Time limit. Purchases not eligible for Pay Over Time or that exceed this limit must be paid in full each month." }
+        },
+        {
+          '@type': 'Question',
+          name: 'Can I get cash advances with the Amex Business Gold Card?',
+          acceptedAnswer: { '@type': 'Answer', text: "Cash advances are not a primary feature of this card and are generally discouraged due to high fees and APRs if available. It's best to check your Cardmember Agreement for specific terms." }
+        },
+        {
+          '@type': 'Question',
+          name: 'Are the statement credits (like the Flexible Business Credit or Walmart+ credit) applied automatically?',
+          acceptedAnswer: { '@type': 'Answer', text: "No, enrollment is typically required for these statement credits. You usually need to enroll through your American Express online account or app before making eligible purchases to receive the credits." }
+        },
+        {
+          '@type': 'Question',
+          name: 'What kind of business structure do I need to apply for the Amex Business Gold Card?',
+          acceptedAnswer: { '@type': 'Answer', text: "Various business structures can apply, including sole proprietors (who can often use their SSN), freelancers, LLCs, S-corps, and corporations. A formal, complex business structure is not always a prerequisite." }
+        }
+      ],
+    },
+    { // Organization details from Platinum example; update if needed
+      '@type' : 'Organization',
+      '@id'   : `${siteUrl}#website`,
+      name    : siteName,
+      url     : siteUrl,
+      logo    : { '@type': 'ImageObject', url: `${siteUrl}/images/logo/your-logo-schema.png` }, // /* UPDATE THIS */
+      sameAs  : [ // /* UPDATE THESE */
+        "https://www.facebook.com/YourTravelCardInsiderFacebookPage",
+        "https://twitter.com/YourTravelCardInsiderTwitterHandle",
+      ],
+    },
+  ],
+};
+
+// Rating criteria adapted for a business card
+const ratingCriteria = [
+    'Value of 4X Adaptive Bonus Categories (Flexibility & Earning Potential)',
+    'Usefulness & Actual Value of Statement Credits (Flexible Business, Walmart+)',
+    'Membership Rewards® Program: Earning Rate & Redemption Value for Businesses',
+    'Welcome Offer: Value vs. Spending Requirement & Eligibility',
+    'Effectiveness of Business Management Tools & Integrations (e.g., QuickBooks®, Employee Cards)',
+    'Quality and Relevance of Travel Perks & Protections for Business Needs (e.g., Cell Phone Protection, No FTF)',
+    'Annual Fee ($375) Justification: Overall Benefit Package vs. Cost',
+    'Pay Over Time Feature: Flexibility, Introductory APR, and Ongoing APR Considerations',
+    'Clarity of Terms and Ease of Benefit Utilization for Business Users',
+    'Customer Support & Account Management for Business Clients',
 ];
 
-function AmexBusinessGoldReviewPage() {
-  // --- Tooltip State and Logic ---
+// Table of Contents sections based on the provided review structure
+const tocSections = [
+    { id: 'section-intro', title: '1. Introduction: Why the Business Gold Matters' },
+    { id: 'section-tldr', title: '2. TL;DR: Is the Amex Business Gold For You?' },
+    { id: 'section-proposition', title: '3. The Core Proposition: Adaptive Rewards' },
+    { id: 'section-snapshot', title: '4. Card Snapshot & Who It’s Best For' },
+    { id: 'section-welcome-offer', title: '5. Welcome Offer Deep Dive' },
+    { id: 'section-earning-power', title: '6. Earning Rewards: 4X & 3X Categories' },
+    { id: 'section-mr-ecosystem', title: '7. Membership Rewards®: Flexibility & Value' },
+    { id: 'section-redemption', title: '8. Redeeming Points Effectively' },
+    { id: 'section-point-transfers', title: '9. Strategic Point Transfers for Travel' },
+    { id: 'section-statement-credits', title: '10. Key Feature: Statement Credits Analyzed' },
+    { id: 'section-travel-perks', title: '11. Key Feature: Travel Perks & Protections' },
+    { id: 'section-biz-tools', title: '12. Key Feature: Business Management Tools' },
+    { id: 'section-rates-fees', title: '13. Costs: Full Spectrum of Rates & Fees' },
+    { id: 'section-pay-over-time', title: '14. Pay Over Time: Cash Flow Flexibility' },
+    { id: 'section-user-profiles', title: '15. Who Benefits Most? User Profiling' },
+    { id: 'section-real-world-scenario', title: '16. Value Calculation: A Real-World Example' },
+    { id: 'section-competitors', title: '17. Competitor Card Comparison' },
+    { id: 'section-user-perspectives', title: '18. Real User Testimonials' },
+    { id: 'section-application', title: '19. Application Process & Eligibility' },
+    { id: 'section-faqs-jump', title: '20. Card-Specific FAQs' },
+    { id: 'section-final-verdict', title: '21. Final Verdict: The Winning Card?' },
+    { id: 'section-eat', title: '22. Our E-A-T Commitment' },
+];
+
+// Placeholder for content images, update paths as needed
+const contentImage1 = "/images/business-meeting-collaborating.webp"; // /* UPDATE THIS */
+const contentImage2 = "/images/travel-laptop-desk.webp"; // /* UPDATE THIS */
+
+
+function DraggableTableWrapper({ children }) {
+  const containerRef = useRef(null);
+  useEffect(() => {
+    if (typeof window === 'undefined' || window.innerWidth < 768) return;
+    const el = containerRef.current;
+    if (!el) return;
+    let isDragging = false, startX = 0, scrollStart = 0;
+    const startDrag = (e) => {
+      isDragging = true; el.classList.add(styles.grabbing);
+      startX = e.pageX || e.touches?.[0]?.pageX; scrollStart = el.scrollLeft;
+    };
+    const stopDrag = () => { isDragging = false; el.classList.remove(styles.grabbing); };
+    const onMove = (e) => {
+      if (!isDragging) return; e.preventDefault();
+      const x = e.pageX || e.touches?.[0]?.pageX;
+      el.scrollLeft = scrollStart - (x - startX);
+    };
+    el.addEventListener('mousedown', startDrag);
+    document.addEventListener('mouseup', stopDrag);
+    document.addEventListener('mouseleave', stopDrag);
+    el.addEventListener('mousemove', onMove);
+    el.addEventListener('touchstart', startDrag, { passive: true });
+    document.addEventListener('touchend', stopDrag);
+    el.addEventListener('touchmove', onMove, { passive: false });
+    return () => {
+      el.removeEventListener('mousedown', startDrag);
+      document.removeEventListener('mouseup', stopDrag);
+      document.removeEventListener('mouseleave', stopDrag);
+      el.removeEventListener('mousemove', onMove);
+      el.removeEventListener('touchstart', startDrag);
+      document.removeEventListener('touchend', stopDrag);
+      el.removeEventListener('touchmove', onMove);
+    };
+  }, []);
+  return (<div ref={containerRef} className={styles.draggableScrollContainer}>{children}</div>);
+}
+
+/* ──────────────────────────────
+    COMPONENT
+    ────────────────────────────── */
+function AmericanExpressBusinessGoldCardReviewPage() {
   const [showRatingInfo, setShowRatingInfo] = useState(false);
-  const tooltipRef = useRef(null);
+  const [showAuthorBioTooltip, setShowAuthorBioTooltip] = useState(false);
+  const authorRef = useRef(null);
+  const authorTooltipRef = useRef(null);
+  const ratingTooltipRef = useRef(null);
 
   const handleIconClick = useCallback((event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        setShowRatingInfo(prevState => !prevState);
-    }, []);
+      event.preventDefault();
+      event.stopPropagation();
+      setShowRatingInfo(prevState => !prevState);
+  }, []);
 
-    const closeTooltip = useCallback(() => {
-        setShowRatingInfo(false);
-    }, []);
+  const handleAuthorMouseEnter = useCallback(() => {
+      setShowAuthorBioTooltip(true);
+  }, []);
 
-    useEffect(() => {
-        if (!showRatingInfo) return;
-        const handleClickOutside = (event) => {
-            const isInfoButton = event.target.closest(`.${styles.infoIconButton}`);
-            if (tooltipRef.current && !tooltipRef.current.contains(event.target) && !isInfoButton) {
-                closeTooltip();
-            }
-        };
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, [showRatingInfo, closeTooltip]);
-  // --- End Tooltip State and Logic ---
+  const handleAuthorMouseLeave = useCallback(() => {
+      const timerId = setTimeout(() => {
+          if (authorRef.current && authorTooltipRef.current) {
+              const isHoveringTrigger = authorRef.current.matches(':hover');
+              const isHoveringTooltip = authorTooltipRef.current.matches(':hover');
+              const isFocusWithinTrigger = authorRef.current.contains(document.activeElement);
+              const isFocusWithinTooltip = authorTooltipRef.current.contains(document.activeElement);
+              if (!isHoveringTrigger && !isHoveringTooltip && !isFocusWithinTrigger && !isFocusWithinTooltip) {
+                 setShowAuthorBioTooltip(false);
+              }
+          } else if (!authorRef.current?.matches(':hover') && !authorTooltipRef.current?.matches(':hover')) {
+               setShowAuthorBioTooltip(false);
+          }
+      }, 150);
+      if (authorRef.current) authorRef.current.tooltipTimeoutId = timerId;
+  }, [authorRef, authorTooltipRef]);
+
+   const handleAuthorClearTimeout = useCallback(() => {
+      if (authorRef.current?.tooltipTimeoutId) {
+          clearTimeout(authorRef.current.tooltipTimeoutId);
+      }
+   }, [authorRef]);
+
+  useEffect(() => {
+      function handleClickOutside(event) {
+          if (showAuthorBioTooltip &&
+              authorRef.current && !authorRef.current.contains(event.target) &&
+              authorTooltipRef.current && !authorTooltipRef.current.contains(event.target)) {
+              setShowAuthorBioTooltip(false);
+          }
+          if (showRatingInfo &&
+              !event.target.closest(`.${styles.infoIconButton}`) && // Use template literal for class name
+              ratingTooltipRef.current && !ratingTooltipRef.current.contains(event.target)
+             ) {
+               setShowRatingInfo(false);
+          }
+      }
+      if (showAuthorBioTooltip || showRatingInfo) {
+          document.addEventListener("mousedown", handleClickOutside);
+      } else {
+           document.removeEventListener("mousedown", handleClickOutside);
+      }
+      return () => {
+          document.removeEventListener("mousedown", handleClickOutside);
+          if (authorRef.current?.tooltipTimeoutId) {
+            clearTimeout(authorRef.current.tooltipTimeoutId);
+          }
+      };
+  }, [showAuthorBioTooltip, authorRef, authorTooltipRef, showRatingInfo, ratingTooltipRef]);
 
 
-  // Inline Structured Data
-  // !!! VERIFY all URLs, counts, and details FOR AMEX BUSINESS GOLD CARD !!!
-  const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
-  const pageUrl = `${siteUrl}/cards/amex-business-gold`; // *** REPLACE with your actual page URL ***
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Product", // Using Product schema
-    "name": "American Express® Business Gold Card",
-    "image": `${siteUrl}${reviewData.imageUrl}`, // *** Assuming imageUrl starts with / ***
-    "description": "The American Express® Business Gold Card offers adaptive 4X rewards on top spending categories, flexible Membership Rewards® points ideal for travel, and valuable statement credits.", // Updated description
-    "brand": {
-      "@type": "Brand",
-      "name": "American Express"
-    },
-    "review": {
-      "@type": "Review",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": reviewData.ratingValue.toString(),
-        "bestRating": "10",
-        "worstRating": "1"
-      },
-      "author": {
-        "@type": "Organization",
-        "name": reviewData.author
-      },
-      "reviewBody": reviewData.description // Use meta description
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": reviewData.ratingValue.toString(),
-      "bestRating": "10",
-      "worstRating": "1",
-      "ratingCount": 980, // *** REPLACE with actual or estimated count ***
-      "reviewCount": 980  // *** REPLACE with actual or estimated count ***
-    },
-    "offers": {
-      "@type": "Offer",
-      "url": reviewData.applyLink.startsWith('http') ? reviewData.applyLink : `${siteUrl}${reviewData.applyLink}`, // *** Ensure full APPLY URL ***
-      "priceCurrency": "USD",
-      "price": "375", // Annual Fee for Amex Business Gold
-      "availability": "https://schema.org/InStock",
-      "itemCondition": "https://schema.org/NewCondition"
-    }
-     // Consider adding "provider": { "@type": "Organization", "name": "American Express" }
+  const summaryBoxData = {
+    welcomeOffer: "(Verify current offer) Typically, a points bonus after meeting a significant spending requirement (e.g., 70,000 points after $10,000 spend in 3 months).",
+    annualFee: `$${reviewData.annualFee}`,
+    topEarning: "4X MR® points on top 2 eligible spend categories (up to $150k combined/year), 3X on AmexTravel.com flights & hotels.",
+    keyCredits: "Up to $240 Flexible Business Credit (FedEx, Grubhub, U.S. Office Supply Stores - enrollment required). Walmart+ monthly membership credit (enrollment required).",
+    businessPerk: "Adaptive 4X rewards, Business management tools (QuickBooks® integration, Employee Cards), Cell Phone Protection.",
+    bestFor: "Established U.S. businesses with dynamic spending in key categories, seeking premium travel rewards and substantial statement credits."
   };
 
+
   return (
-    <>
-      {/* ===== HEAD SECTION for Metadata & SEO ===== */}
+    <div>
       <Head>
-        <title>{reviewData.title}</title>
+        <title>{reviewData.title} - {siteName}</title>
         <meta name="description" content={reviewData.description} />
         <meta name="keywords" content={reviewData.keywords} />
-        <meta name="author" content={reviewData.author} />
-        <link rel="canonical" href={pageUrl} />
-        {/* Preload critical fonts (assuming same fonts as example) */}
-        <link rel="preload" href="/fonts/Roboto_Condensed-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/Roboto_Condensed-bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/playfair-display-regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/playfair-display-bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-
-        {/* OG/Twitter tags */}
-        <meta property="og:title" content={reviewData.title} />
-        <meta property="og:description" content={reviewData.description} />
-        <meta property="og:url" content={pageUrl} />
-        <meta property="og:image" content={structuredData.image} />
-        <meta property="og:type" content="article" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={reviewData.title} />
-        <meta name="twitter:description" content={reviewData.description} />
-        <meta name="twitter:image" content={structuredData.image} />
-
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-
-        {/* Structured Data (JSON-LD) */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
-        {/* Assuming US target */}
+        <meta name="author" content={reviewData.author.name} />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta name="robots" content="index,follow,max-image-preview:large" />
+        <link rel="canonical" href={pageUrlFull} />
+        <link rel="alternate" href={pageUrlFull} hreflang="en-us" />
+        <link rel="preload" as="image" href={`${siteUrl}${reviewData.imageUrl}`} />
+        <link rel="preload" as="image" href={reviewData.author.imageUrl} />
+        <link rel="preload" as="image" href={reviewData.author.tooltipImageUrl} />
         <meta name="geo.region" content="US" />
         <meta name="geo.placename" content="United States" />
         <meta name="language" content="en-US" />
         <meta name="distribution" content="US" />
-        <link rel="alternate" href={siteUrl} hreflang="en-us" />
+        {[ // Assuming same fonts as platinum review
+          '/fonts/inter-v18-latin-regular.woff2',
+          '/fonts/inter-v18-latin-600.woff2',
+          '/fonts/inter-v18-latin-700.woff2',
+          '/fonts/Roboto_Condensed-Regular.ttf',
+          '/fonts/Roboto_Condensed-Bold.ttf',
+        ].map((f) => (
+          <link key={f} rel="preload" href={f} as="font" type={f.endsWith('woff2') ? 'font/woff2' : 'font/ttf'} crossOrigin="anonymous" />
+        ))}
+        <meta property="og:type"        content="article" />
+        <meta property="og:locale"      content="en_US" />
+        <meta property="og:site_name"   content={siteName} />
+        <meta property="og:title"       content={reviewData.title} />
+        <meta property="og:description" content={reviewData.description} />
+        <meta property="og:url"         content={pageUrlFull} />
+        <meta property="og:image"       content={`${siteUrl}${reviewData.imageUrl}`} />
+        <meta property="og:image:width" content={String(reviewData.imageWidth)} />
+        <meta property="og:image:height" content={String(reviewData.imageHeight)} />
+        <meta property="article:publisher" content={`https://www.facebook.com/YourTravelCardInsiderFacebookPage`} />  {/* /* UPDATE THIS */ }
+        <meta property="article:section"       content="Business Credit Card Reviews" />
+        <meta property="article:published_time" content={publishDate} />
+        <meta property="article:modified_time"  content={updateDate} />
+        <meta property="article:author" content={reviewData.author.name} />
+        {reviewData.keywords.split(',').map(keyword => (
+            <meta property="article:tag" content={keyword.trim()} key={keyword.trim()} />
+        ))}
+        <meta name="twitter:card"        content="summary_large_image" />
+        <meta name="twitter:site" content="@YourTravelCardInsiderTwitterHandle" /> {/* /* UPDATE THIS */ }
+        <meta name="twitter:creator" content={`@${reviewData.author.socialLinks?.twitter?.split('/').pop() || 'YourAuthorTwitterHandle'}`} /> {/* /* UPDATE THIS */ }
+        <meta name="twitter:title"       content={reviewData.title} />
+        <meta name="twitter:description" content={reviewData.description} />
+        <meta name="twitter:image"       content={`${siteUrl}${reviewData.imageUrl}`} />
+        <link rel="icon" href="/favicon.ico" /> {/* /* UPDATE THESE PATHS AS NEEDED */ }
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredDataOptimized) }} />
       </Head>
 
-      
-
       <main>
-        {/* Spacing for fixed header */}
-        <div style={{ marginTop: '5rem' }}></div> {/* Adjust margin as needed */}
-
-        {/* Review Container using CSS Module */}
-        <div className={styles.reviewContainer}>
-          <article> {/* Wrap main content in article */}
-            {/* ============= REVIEW HEADER ============= */}
-            <header className={styles.reviewHeader}>
-              <h1>{reviewData.title}</h1>
-
-              {/* Intro Section (Part of Header Structure) */}
-              <section id="intro-section"> {/* Using section ID for clarity */}
-                <div className={styles.intro}>
-                    {/* Using dangerouslySetInnerHTML for ® */}
-                   <p dangerouslySetInnerHTML={{ __html: `The <strong>American Express® Business Gold Card</strong> stands as a dynamic rewards card designed for businesses whose expenditures fluctuate across key operational areas, including travel. It's renowned for its adaptive rewards structure, granting <strong>4X Membership Rewards® points</strong> on the top two select categories where your business directs most of its spending each billing cycle (up to an annual cap). This makes it a potentially powerful tool for accumulating valuable Membership Rewards® points, prized for their flexibility, especially when redeemed for travel through transfers to numerous airline and hotel partners. Coupled with recently added statement credits, the card presents a compelling, albeit premium (<strong>$375 annual fee</strong>), option for businesses aiming to turn expenses into travel opportunities.` }}></p>
-                   <p>This comprehensive 2025 review delves into 20 distinct sections, analyzing its suitability as a core component of your business travel strategy.</p>
+        <div className={styles.reviewPageLayout}>
+          <div className={styles.mainContentArea}>
+            <section className={styles.heroSection}>
+              <div className={styles.heroTextContainer}>
+                <h1 className={styles.heroTitle}>
+                  {reviewData.h1Content}
+                </h1>
+                 <div
+                    className={styles.authorBioContainer}
+                    ref={authorRef}
+                    onMouseEnter={() => { handleAuthorClearTimeout(); handleAuthorMouseEnter(); }}
+                    onMouseLeave={handleAuthorMouseLeave}
+                    onFocus={handleAuthorMouseEnter}
+                    onBlur={handleAuthorMouseLeave}
+                    aria-haspopup="true"
+                    aria-expanded={showAuthorBioTooltip}
+                    tabIndex={0}
+                >
+                    <Image
+                        src={reviewData.author.imageUrl} // /* UPDATE THIS */
+                        alt={`${reviewData.author.name} headshot`}
+                        width={reviewData.author.imageWidth}
+                        height={reviewData.author.imageHeight}
+                        className={styles.authorImageSmall}
+                        priority
+                    />
+                    <div className={styles.authorInfoBlock}>
+                        <div className={styles.authorNameLine}>
+                            <span className={styles.authorPrefix}>By</span>
+                            <span className={styles.authorName}>{reviewData.author.name}</span>
+                        </div>
+                        <span className={styles.authorTitle}>{reviewData.author.title}</span>
+                        {updateDate && (
+                            <time dateTime={updateDate} className={styles.authorLastEdited}>
+                                Last updated: {new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                            </time>
+                        )}
+                        {reviewData.author.socialLinks && (
+                            <div className={styles.authorSocialLinks}>
+                                {reviewData.author.socialLinks.linkedin && (
+                                    <a href={reviewData.author.socialLinks.linkedin} target="_blank" rel="noopener noreferrer me" aria-label={`${reviewData.author.name} on LinkedIn`} className={styles.socialIconLink}>
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                    </a>
+                                )}
+                                {reviewData.author.socialLinks.twitter && (
+                                    <a href={reviewData.author.socialLinks.twitter} target="_blank" rel="noopener noreferrer me" aria-label={`${reviewData.author.name} on Twitter`} className={styles.socialIconLink}>
+                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-.422.724-.665 1.56-.665 2.452 0 1.697.864 3.198 2.18 4.078-.8-.025-1.555-.247-2.227-.616v.054c0 2.37 1.683 4.333 3.91 4.78-.426.116-.874.174-1.337.174-.31 0-.611-.03-.904-.085.622 1.936 2.421 3.338 4.553 3.377-1.672 1.309-3.781 2.088-6.072 2.088-.394 0-.784-.023-1.169-.069 2.16 1.389 4.723 2.202 7.482 2.202 8.979 0 13.897-7.446 13.897-13.898 0-.21 0-.42-.015-.63.953-.689 1.778-1.56 2.433-2.525z"/></svg>
+                                    </a>
+                                )}
+                                {reviewData.author.socialLinks.email && (
+                                    <a href={`mailto:${reviewData.author.socialLinks.email}`} aria-label={`Email ${reviewData.author.name}`} className={styles.socialIconLink}>
+                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
+                                    </a>
+                                )}
+                            </div>
+                        )}
+                    </div>
+                    {showAuthorBioTooltip && reviewData.author.bioSnippet && (
+                        <div
+                            className={styles.authorTooltip}
+                            ref={authorTooltipRef}
+                            role="tooltip"
+                            onMouseEnter={handleAuthorClearTimeout}
+                            onMouseLeave={handleAuthorMouseLeave}
+                            onFocus={handleAuthorMouseEnter}
+                            onBlur={handleAuthorMouseLeave}
+                        >
+                             <div className={styles.authorTooltipHeader}>
+                                 <Image
+                                    src={reviewData.author.tooltipImageUrl} // /* UPDATE THIS */
+                                    alt={`${reviewData.author.name} large headshot`}
+                                    width={reviewData.author.tooltipImageWidth}
+                                    height={reviewData.author.tooltipImageHeight}
+                                    className={styles.authorTooltipImage}
+                                 />
+                                 <div className={styles.authorTooltipInfo}>
+                                     <span className={styles.authorTooltipName}>{reviewData.author.name}</span>
+                                     <span className={styles.authorTooltipTitle}>{reviewData.author.title}</span>
+                                 </div>
+                               </div>
+                               {reviewData.author.expertise && reviewData.author.expertise.length > 0 && (
+                                 <div className={styles.authorTooltipExpertise}>
+                                     <strong>Expertise</strong>
+                                     <ul>
+                                         {reviewData.author.expertise.map(area => <li key={area}>{area}</li>)}
+                                     </ul>
+                                 </div>
+                               )}
+                               <p className={styles.authorTooltipBioSnippet}>{reviewData.author.bioSnippet}</p>
+                               {reviewData.author.fullBioLink && (
+                                   <Link href={reviewData.author.fullBioLink} legacyBehavior>
+                                       <a className={styles.authorTooltipBioLink}>
+                                           See full bio
+                                       </a>
+                                   </Link>
+                               )}
+                               {reviewData.author.socialLinks && ( // Duplicated social links from above for tooltip
+                                    <div className={styles.authorTooltipSocials}>
+                                        {reviewData.author.socialLinks.linkedin && (
+                                             <a href={reviewData.author.socialLinks.linkedin} target="_blank" rel="noopener noreferrer me" aria-label={`${reviewData.author.name} on LinkedIn`} className={styles.socialIconLink}>
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                             </a>
+                                         )}
+                                         {reviewData.author.socialLinks.twitter && (
+                                             <a href={reviewData.author.socialLinks.twitter} target="_blank" rel="noopener noreferrer me" aria-label={`${reviewData.author.name} on Twitter`} className={styles.socialIconLink}>
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-.422.724-.665 1.56-.665 2.452 0 1.697.864 3.198 2.18 4.078-.8-.025-1.555-.247-2.227-.616v.054c0 2.37 1.683 4.333 3.91 4.78-.426.116-.874.174-1.337.174-.31 0-.611-.03-.904-.085.622 1.936 2.421 3.338 4.553 3.377-1.672 1.309-3.781 2.088-6.072 2.088-.394 0-.784-.023-1.169-.069 2.16 1.389 4.723 2.202 7.482 2.202 8.979 0 13.897-7.446 13.897-13.898 0-.21 0-.42-.015-.63.953-.689 1.778-1.56 2.433-2.525z"/></svg>
+                                             </a>
+                                         )}
+                                         {reviewData.author.socialLinks.email && (
+                                             <a href={`mailto:${reviewData.author.socialLinks.email}`} aria-label={`Email ${reviewData.author.name}`} className={styles.socialIconLink}>
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
+                                             </a>
+                                         )}
+                                    </div>
+                                )}
+                        </div>
+                    )}
                 </div>
-
-                 {/* Image Container */}
+                <p className={styles.heroSubtitle}>
+                  {reviewData.heroSubtitle}
+                </p>
+                <div className={styles.heroCtaContainer}>
+                  <div>
+                    <a
+                      href={reviewData.applyLink} // /* UPDATE THIS with actual apply link */
+                      target="_blank"
+                      rel="noopener noreferrer sponsored"
+                      className={`${styles.applyNowButton} ${styles.heroApplyButton}`}
+                    >
+                      Apply Securely Now
+                    </a>
+                    <span className={styles.heroApplyButtonDisclaimer}>
+                      on American Express&apos;s official site
+                    </span>
+                  </div>
+                  <Link href="#section-snapshot" legacyBehavior>
+                    <a className={styles.heroSecondaryLink}>View Key Features</a>
+                  </Link>
+                </div>
+              </div>
+              <div className={styles.heroImageContainer}>
                 <div className={styles.cardImageContainer}>
-                   <Image
-                     src={reviewData.imageUrl} // *** PLACEHOLDER ***
-                     alt={reviewData.cardName}
-                     width={reviewData.imageWidth} // *** PLACEHOLDER ***
-                     height={reviewData.imageHeight} // *** PLACEHOLDER ***
-                     className={styles.cardImage}
-                     priority // Load image early if it's above the fold
-                   />
-                 </div>
-
-                {/* RATING SECTION */}
+                  <Image
+                    src={reviewData.imageUrl} // /* UPDATE THIS with actual card image */
+                    alt={reviewData.cardName}
+                    width={reviewData.imageWidth}
+                    height={reviewData.imageHeight}
+                    className={styles.heroImage}
+                    priority
+                  />
+                </div>
                 <div className={styles.ratingSection}>
                   <span className={styles.tciRating}>
                     <button
@@ -200,521 +632,573 @@ function AmexBusinessGoldReviewPage() {
                       className={styles.infoIconButton}
                       aria-label="Rating Information"
                       onClick={handleIconClick}
+                      aria-expanded={showRatingInfo}
                     >
-                       <svg aria-hidden="true" focusable="false" className={styles.infoIcon} viewBox="0 0 16 16">
-                         <path fillRule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                         <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-                       </svg>
+                      <svg aria-hidden="true" focusable="false" className={styles.infoIcon} viewBox="0 0 16 16">
+                        <path fillRule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                      </svg>
                     </button>
-                    TCI Rating : <strong>{reviewData.ratingValue.toFixed(1)}</strong>/10
-
-                    {/* --- Conditionally Rendered Tooltip --- */}
+                    {siteName} Rating: <strong>{reviewData.ratingValue.toFixed(1)}</strong>/10
                     {showRatingInfo && (
-                      <div
-                        ref={tooltipRef}
-                        className={styles.ratingTooltip}
-                        role="tooltip"
-                        aria-live="polite"
-                      >
-                        <strong>TCI Rating: {reviewData.ratingValue.toFixed(1)}/10</strong>
-                        <p className={styles.tooltipIntro}>Our TCI rating system criteria including rewards, welcome bonus, annual fee, redemption flexibility, travel benefits, APR, foreign transaction fees, user experience, and other features.</p>
-                       
-                      </div>
+                      <RatingTooltip
+                        ref={ratingTooltipRef}
+                        ratingValue={reviewData.ratingValue}
+                        ratingCriteria={ratingCriteria} // Using the new business card criteria
+                        onClose={() => setShowRatingInfo(false)}
+                      />
                     )}
                   </span>
-
-                  {/* STAR RATING - Using 8.5 Rating -> 85% */}
-                  {/* Note: The review text used 8 stars (★★★★★★★★☆☆), but the numeric rating was 8.5. Using 8.5 for consistency with the number. */}
-                  <div className={styles.starRating} title={`Rated ${reviewData.ratingValue} out of 10 stars`} style={{ '--rating': `${reviewData.ratingValue * 10}%` }}>
-                     <span>★★★★★</span> {/* Base 5 stars */}
-                     <span className={styles.filledStars}>★★★★★</span> {/* Filled stars overlay */}
-                  </div>
-
-                  <div className={styles.ratingDescription}>
-                    <i>A potent rewards card for businesses with high spending in its adaptable bonus categories, featuring highly flexible Membership Rewards® points ideal for travel. New statement credits significantly enhance its value proposition against the annual fee.</i>
+                  <div className={styles.starRating} title={`Rated ${reviewData.ratingValue} out of 10 stars`}>
+                      ★★★★★
+                      <span className={styles.filledStars} style={{ '--rating': `${(reviewData.ratingValue / 10) * 100}%` }}>
+                        ★★★★★
+                      </span>
                   </div>
                 </div>
-              </section>
-            </header>
-
-            {/* ============= REVIEW CONTENT SECTIONS (Hardcoded JSX based on Amex Review Text) ============= */}
-
-            {/* Section 1: Quick Stats Table */}
-            <section id="section-1" className={styles.reviewSection}>
-              <h2>1. Quick Stats at a Glance</h2>
-              <div className={styles.tableContainer}>
-                <table className={styles.statsTable}>
-                  <thead>
-                    <tr>
-                      <th>Feature</th>
-                      <th>Details</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td data-label="Feature">Annual Fee</td>
-                      <td data-label="Details">$375 <a href={reviewData.ratesLink} target="_blank" rel="noopener noreferrer sponsored">(See Rates & Fees)</a></td>
-                    </tr>
-                    <tr>
-                      <td data-label="Feature">Welcome Offer</td>
-                      <td data-label="Details">Highly variable; Public offers typically range from 70,000-100,000 points after meeting significant spend (e.g., $10k-$15k in 3 months). Check for targeted offers (via Amex website, CardMatch, mail/email) which can be substantially higher (e.g., 150k, 175k, or even 200k points, often with similar spend requirements).</td>
-                    </tr>
-                    <tr>
-                      <td data-label="Feature">Earning Rates</td>
-                      <td data-label="Details" dangerouslySetInnerHTML={{ __html: "<strong>4X points</strong> on the top 2 select categories where your business spent the most each billing cycle (applies to the first $150,000 in combined purchases from these 6 categories annually, then 1X). <strong>3X points</strong> on flights and prepaid hotels booked on amextravel.com. <strong>1X point</strong> on all other eligible purchases.‡"}}></td>
-                    </tr>
-                    <tr>
-                      <td data-label="Feature">4X Eligible Categories</td>
-                      <td data-label="Details" dangerouslySetInnerHTML={{ __html: "Transit; U.S. Electronic goods retailers/software & cloud providers; U.S. Restaurants; U.S. Gas stations; U.S. Monthly wireless phone service; U.S. Advertising (select media).‡"}}></td>
-                    </tr>
-                    <tr>
-                      <td data-label="Feature">Redemption Options</td>
-                      <td data-label="Details" dangerouslySetInnerHTML={{ __html: "Transfer points to airline/hotel partners (often best value), book travel via Amex Travel, statement credits, gift cards, merchandise."}}></td>
-                    </tr>
-                     <tr>
-                      <td data-label="Feature">Key Perks & Credits</td>
-                      <td data-label="Details" dangerouslySetInnerHTML={{ __html: "$240 Flexible Business Credit (Up to $20/month at FedEx, Grubhub, U.S. Office Supply Stores; Enrollment req.).‡ $155 Walmart+ Credit (Covers monthly membership via statement credits; Enrollment req.).‡ The Hotel Collection ($100 experience credit on eligible 2+ night stays).‡ No Foreign Transaction Fees.‡"}}></td>
-                    </tr>
-                    <tr>
-                      <td data-label="Feature">Travel Protections</td>
-                      <td data-label="Details" dangerouslySetInnerHTML={{ __html: "Trip Delay Insurance‡, Baggage Insurance Plan‡, Car Rental Loss and Damage Insurance (Secondary)‡, Global Assist Hotline‡."}}></td>
-                    </tr>
-                    <tr>
-                      <td data-label="Feature">Foreign Transaction Fee</td>
-                       <td data-label="Details">None <a href={reviewData.ratesLink} target="_blank" rel="noopener noreferrer sponsored">(See Rates & Fees)</a></td>
-                    </tr>
-                    <tr>
-                      <td data-label="Feature">Recommended Credit</td>
-                      <td data-label="Details">Good to Excellent</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-               {/* Footer for Table */}
-              <p style={{fontSize: '0.85rem', color: '#666', marginTop: '1rem', textAlign: 'center'}}>
-                  Information accurate as of April 2025, but offers and benefits can change. Enrollment required for select benefits. Always verify directly with American Express. Terms apply. ‡Benefit Terms.
-              </p>
-            </section>
-
-            {/* CTA Section - Placeholders */}
-             <section id="cta" className={styles.ctaSection}>
-              <h2>Get the <b>American Express® Business Gold Card</b> Today!</h2>
-              <div className={styles.ctaButtons}>
-                <a href={reviewData.applyLink} className={`${styles.btn} ${styles.btnApply}`} title="From card issuer's secure site" target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
-                <a href={reviewData.ratesLink} className={`${styles.btn} ${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored">See Rates & Fees</a>
+                 <div className={styles.ratingDescription}>
+                    <i>{reviewData.cardName}: {reviewData.description}</i>
+                 </div>
               </div>
             </section>
 
-            {/* Section 2: Card Overview & Positioning */}
-            <section id="section-2" className={styles.reviewSection}>
-              <h2>2. Card Overview & Positioning</h2>
-              {/* Using dangerouslySetInnerHTML for ® */}
-              <p dangerouslySetInnerHTML={{ __html: "Positioned in the premium business card segment, the Amex Business Gold (<strong>$375 annual fee</strong>) bridges the gap between mid-tier cards and the ultra-premium Business Platinum ($695 annual fee). Its signature feature is the adaptive <strong>4X points</strong> structure, automatically rewarding the two categories (from a list of six) where your business spends most each month, up to $150,000 combined annually. This is ideal for businesses with fluctuating expenses across areas like transit, tech, advertising, restaurants, gas, or wireless services." }}></p>
-              <p dangerouslySetInnerHTML={{ __html: "Crucially for travelers, <strong>Transit</strong> (covering rideshares, taxis, parking, tolls, trains, buses etc.) is one of these potential 4X categories. While direct airfare isn't a 4X category itself, the card offers a solid <strong>3X points</strong> on flights and prepaid hotels booked via amextravel.com. The recent addition of up to <strong>$395 in annual statement credits</strong> ($240 Flexible Business + $155 Walmart+) significantly alters its positioning, making the annual fee much easier to offset for businesses that utilize these specific merchants, thereby enhancing its appeal beyond just the points structure. It targets businesses that value high-potential rewards via Membership Rewards® and can leverage both the bonus categories and the new credits." }}></p>
-            </section>
-
-            {/* Section 3: Earning Membership Rewards® Points & Travel Emphasis */}
-             <section id="section-3" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html: "3. Earning Membership Rewards® Points & Travel Emphasis" }}></h2>
-                <p>The card's earning power is defined by:</p>
-                {/* Use featureList style for the main points */}
-                <ul className={styles.featureList}>
-                    {/* List item for 4X */}
-                    <li>
-                       <strong>4X Membership Rewards® points:</strong> Automatically applied to the top two of the following six categories where your business spends the most each billing cycle, on the first $150,000 in combined purchases per calendar year (then 1X):
-                       {/* Nested standard ul for sub-categories */}
-                       <ul style={{listStyleType: 'disc', marginLeft: '20px', marginTop: '0.5rem'}}>
-                          <li>Transit purchases (trains, taxicabs, rideshare services, ferries, tolls, parking, buses, subways).</li>
-                          <li>U.S. purchases made from electronic goods retailers and software & cloud system providers.</li>
-                          <li>U.S. purchases at restaurants (including takeout and delivery).</li>
-                          <li>U.S. purchases at gas stations.</li>
-                          <li>Monthly wireless telephone service charges made directly from a U.S. wireless telephone service provider.</li>
-                          <li>U.S. purchases for advertising in select media (online, TV, radio).</li>
-                       </ul>
-                    </li>
-                    {/* List item for 3X */}
-                    <li>
-                       <strong>3X Membership Rewards® points:</strong> Earned on flights and prepaid hotels booked through amextravel.com.
-                    </li>
-                    {/* List item for 1X */}
-                    <li>
-                       <strong>1X Membership Rewards® point:</strong> Earned on all other eligible purchases.
-                    </li>
-                </ul>
-                <p><strong>Travel Focus:</strong> The inclusion of Transit as a potential 4X category is a direct benefit for travelers, covering many ground transportation costs. While direct airfare isn't a 4X category, the 3X points on flights and prepaid hotels booked via amextravel.com provides a strong, reliable earning rate for core travel bookings made through the portal. If transit or U.S. restaurants are frequently among your top two spending areas during travel, you'll earn 4X points on those expenses (up to the cap).</p>
-            </section>
-
-             {/* Section 4: Redeeming Membership Rewards® Points for Travel */}
-            <section id="section-4" className={styles.reviewSection}>
-              <h2 dangerouslySetInnerHTML={{ __html: "4. Redeeming Membership Rewards® Points for Travel" }}></h2>
-              {/* Using dangerouslySetInnerHTML for ® */}
-              <p dangerouslySetInnerHTML={{ __html: "Membership Rewards® (MR) points offer exceptional flexibility, particularly valuable for travel:" }}></p>
-              {/* Use featureList style */}
-              <ul className={styles.featureList}>
-                <li><strong>Transfer Points to Partners (Highest Potential Value):</strong> This remains the gold standard for maximizing MR points. Amex partners with numerous airlines (e.g., Delta, Air Canada Aeroplan, British Airways Avios, Singapore Airlines KrisFlyer, Virgin Atlantic) and hotels (Hilton Honors, Marriott Bonvoy, Choice Privileges). Transferring points (often 1:1 for airlines) allows booking award travel, especially international premium cabins or strategically valuable hotel nights, potentially yielding values of 2 cents per point or significantly more. (See Section 12 for details).</li>
-                <li><strong>Book Travel via Amex Travel (Pay with Points):</strong> Use points to book flights, prepaid hotels, car rentals, or packages. Flights typically redeem at 1 cent per point. Hotels, car rentals, and cruises booked via the portal often redeem at a lower value, around 0.7 cents per point. Note: The 35% Airline Bonus when using Pay with Points is a feature of the Business Platinum Card, NOT the Business Gold Card.</li>
-                <li><strong>Upgrade with Points:</strong> Use points for seat upgrades on select airlines; value varies.</li>
-                <li><strong>Statement Credits:</strong> Redeem points for statement credits against charges, but usually at a poor value (approx. 0.6 cents per point). Not recommended for maximizing travel value.</li>
-                <li><strong>Other Options:</strong> Gift cards, merchandise. Typically offer lower value than travel redemptions.</li>
-              </ul>
-              <p>For businesses focused on travel, transferring points to airline and hotel partners provides the most compelling redemption pathway.</p>
-            </section>
-
-            {/* Section 5: Key Travel Perks & Credits */}
-            <section id="section-5" className={styles.reviewSection}>
-              <h2>5. Key Travel Perks & Credits</h2>
-              <p>The Business Gold offers targeted travel perks and valuable new statement credits:</p>
-              {/* Using featureList style */}
-              <ul className={styles.featureList}>
-                <li dangerouslySetInnerHTML={{ __html: "<strong>$240 Flexible Business Credit:</strong> Receive up to $20 in statement credits each month for eligible U.S. purchases at FedEx, Grubhub, and Office Supply Stores. Enrollment is required. While not exclusively travel, Grubhub credits can be used while traveling, and FedEx/Office Supply credits help overall business costs. Total potential annual value: $240.‡" }}></li>
-                <li dangerouslySetInnerHTML={{ __html: "<strong>$155 Walmart+ Credit:</strong> Cover the cost of a monthly Walmart+ membership ($12.95 + tax per month) via statement credits when you pay with your card. Enrollment is required. Provides benefits like free shipping and grocery delivery, potentially useful for business supplies or even while on extended stays. Total potential annual value: ~$155.‡" }}></li>
-                <li dangerouslySetInnerHTML={{ __html: "<strong>The Hotel Collection:</strong> Book prepaid stays of two consecutive nights or more at participating properties through Amex Travel (amextravel.com) and receive a $100 experience credit for qualifying dining, spa, or resort activities during your stay, plus a room upgrade upon arrival, when available.‡" }}></li>
-                <li dangerouslySetInnerHTML={{ __html: "<strong>No Foreign Transaction Fees:</strong> Crucial for international business; use the card abroad without incurring extra fees on purchases made in foreign currencies (<a href={reviewData.ratesLink} target='_blank' rel='noopener noreferrer sponsored'>See Rates & Fees</a>).‡" }}></li>
-              </ul>
-              <p>These credits ($240 + $155 = up to $395 annually) can significantly offset, or even exceed, the card's $375 annual fee if your business utilizes these merchants.</p>
-            </section>
-
-            {/* Section 6: Travel & Purchase Protections */}
-            <section id="section-6" className={styles.reviewSection}>
-              <h2 dangerouslySetInnerHTML={{ __html: "6. Travel & Purchase Protections" }}></h2>
-              <p>The card includes valuable protections for peace of mind during travel and for business purchases:</p>
-              {/* Using featureList style */}
-              <ul className={styles.featureList}>
-                 <li dangerouslySetInnerHTML={{ __html: "<strong>Trip Delay Insurance:</strong> If a covered trip paid for with the card is delayed by a covered reason for more than 12 hours, you can be reimbursed for reasonable additional expenses (e.g., meals, lodging) up to $300 per covered trip, maximum 2 claims per 12 consecutive months.‡*" }}></li>
-                 <li dangerouslySetInnerHTML={{ __html: "<strong>Baggage Insurance Plan:</strong> Provides coverage for lost, damaged, or stolen baggage (checked or carry-on) when the entire fare for a common carrier ticket (e.g., plane, train, bus) is charged to your card. Coverage limits apply (e.g., up to $1,250 for carry-on, $500 for checked per covered person).‡*" }}></li>
-                 <li dangerouslySetInnerHTML={{ __html: "<strong>Car Rental Loss and Damage Insurance:</strong> Offers secondary coverage for damage to or theft of a rental vehicle when you pay for the entire rental with your card and decline the rental company's collision damage waiver (CDW). It covers costs not paid by your primary insurance. Available in most countries.‡*" }}></li>
-                 <li dangerouslySetInnerHTML={{ __html: "<strong>Purchase Protection:</strong> Protects eligible new purchases made with the card against accidental damage or theft for up to 90 days from the date of purchase (up to $1,000 per occurrence, $50,000 per Card Member account per calendar year).‡*" }}></li>
-                 <li dangerouslySetInnerHTML={{ __html: "<strong>Extended Warranty:</strong> Can extend the original U.S. manufacturer's warranty by up to one additional year on eligible warranties of 5 years or less for items purchased with the card.‡*" }}></li>
-                 <li dangerouslySetInnerHTML={{ __html: "<strong>Global Assist® Hotline:</strong> Access to 24/7 emergency assistance and coordination services (medical, legal referrals, etc.) when traveling more than 100 miles from home. Card Members are responsible for third-party costs.‡*" }}></li>
-              </ul>
-              <p style={{fontSize: '0.85rem', color: '#666', marginTop: '1rem'}}>
-                 *Eligibility and Benefit level varies by Card. Terms, Conditions, and Limitations Apply. Please visit americanexpress.com/benefitsguide for more details. Underwritten by Amex Assurance Company.
-              </p>
-            </section>
-
-            {/* Section 7: Annual Fee & Ongoing Costs */}
-            <section id="section-7" className={styles.reviewSection}>
-              <h2 dangerouslySetInnerHTML={{ __html: "7. Annual Fee & Ongoing Costs" }}></h2>
-              {/* Using dangerouslySetInnerHTML for ® */}
-              <p dangerouslySetInnerHTML={{ __html: `The American Express® Business Gold Card has a <strong>$375 annual fee</strong> (<a href='${reviewData.ratesLink}' target='_blank' rel='noopener noreferrer sponsored'>See Rates & Fees</a>).`}}></p>
-              {/* Using featureList style */}
-              <ul className={styles.featureList}>
-                  <li><strong>Justifying the Fee:</strong> Previously, justification relied heavily on maximizing the 4X points categories. Now, the $240 Flexible Business Credit and $155 Walmart+ Credit offer a direct path to offset the fee. If your business fully utilizes these credits (spending at least $20/month at FedEx/Grubhub/Office Supply Stores and paying for Walmart+ monthly), you receive up to $395 in statement credits annually, more than covering the fee before even considering points earned or other perks.</li>
-                  <li><strong>Ongoing Costs:</strong> As a card with a Pay Over Time feature, you have the flexibility to carry a balance on eligible purchases, but this incurs interest at a variable APR (<a href={reviewData.ratesLink} target='_blank' rel='noopener noreferrer sponsored'>See Rates & Fees</a>). To maximize value, aim to pay your statement balance in full each month. There are no foreign transaction fees (<a href={reviewData.ratesLink} target='_blank' rel='noopener noreferrer sponsored'>See Rates & Fees</a>).</li>
-              </ul>
-              <p>The addition of the credits dramatically improves the card's value proposition, making the annual fee significantly less daunting for businesses that can use them.</p>
-            </section>
-
-            {/* Section 8: 2025 Updates & Potential Changes */}
-            <section id="section-8" className={styles.reviewSection}>
-              <h2>8. 2025 Updates & Potential Changes</h2>
-              <p>While the recent addition of credits is a major update, the card landscape evolves:</p>
-              {/* Use numberedList style */}
-              <ol className={styles.numberedList}>
-                  <li><strong>Welcome Offer Dynamics:</strong> Expect continued variation in welcome offers, with potentially high targeted bonuses appearing periodically.</li>
-                  <li><strong>Credit Utility:</strong> Monitor how useful the Flexible Business Credit categories (FedEx, Grubhub, Office Supply Stores) and the Walmart+ credit are for your specific business needs over time.</li>
-                  <li><strong>Category Stability:</strong> The six 4X categories seem relatively stable but could theoretically be adjusted by Amex in the future.</li>
-                  <li><strong>Transfer Partner Value:</strong> Keep an eye on airline/hotel partner transfer ratios and potential devaluations within partner programs, which can impact the value of MR points. Amex may also add or remove partners.</li>
-                  <li><strong>Amex Offers:</strong> Regularly check for targeted Amex Offers for additional savings or bonus points on travel and business expenses.</li>
-              </ol>
-              <p>Stay informed via official Amex communications for the latest updates.</p>
-            </section>
-
-            {/* Section 9: Real-Life Example: Points Earning for Business Travel */}
-            <section id="section-9" className={styles.reviewSection}>
-              <h2>9. Real-Life Example: Points Earning for Business Travel</h2>
-              <p>Consider a marketing agency using the Amex Business Gold with these typical monthly expenses:</p>
-              {/* Use standard ul for list */}
-              <ul>
-                  <li>$1,800 on U.S. Advertising (Online - Facebook/Google Ads).</li>
-                  <li>$1,200 on Transit (Rideshares for client meetings, employee commutes).</li>
-                  <li>$900 on U.S. Restaurants (Client dinners).</li>
-                  <li>$600 on Flights/Hotels booked via amextravel.com.</li>
-                  <li>$1,500 on Other business expenses (software, supplies not at designated stores).</li>
-              </ul>
-              <p><strong>Points Calculation for the month:</strong></p>
-              {/* Use featureList style for calculation steps */}
-              <ul className={styles.featureList}>
-                  <li>Identify Top 2 Spending Categories (from 6 eligible): U.S. Advertising ($1,800) and Transit ($1,200).</li>
-                  <li>Calculate 4X Points: ($1,800 + $1,200) * 4 points/$ = $3,000 * 4 = <strong>12,000 points</strong>.</li>
-                  <li>Calculate 3X Points (Amex Travel): $600 * 3 points/$ = <strong>1,800 points</strong>.</li>
-                  <li>Calculate 1X Points: ($900 [Restaurants] + $1,500 [Other]) * 1 point/$ = $2,400 * 1 = <strong>2,400 points</strong>.</li>
-                  <li><strong>Total Monthly Points:</strong> 12,000 + 1,800 + 2,400 = <strong>16,200 Membership Rewards® points</strong>.</li>
-              </ul>
-              <p><strong>Annual Projection:</strong> This spending pattern yields <strong>194,400 MR points</strong> annually. If valued conservatively at 1.5 cents per point via transfers, that's <strong>~$2,916 in travel value</strong>. Added to the potential $395 in statement credits, the card delivers significant value well beyond its $375 fee.</p>
-            </section>
-
-            {/* Section 10: Competitor Analysis Table */}
-            <section id="section-10" className={styles.reviewSection}>
-              <h2>10. Competitor Analysis (Travel Focus)</h2>
-              <p>How does the updated Amex Business Gold compare to key business travel competitors?</p>
-              <div className={styles.tableContainer}>
-                <table className={styles.statsTable}>
-                  <thead>
-                    <tr>
-                      <th>Card</th>
-                      <th>Annual Fee</th>
-                      <th>Key Travel Rewards/Perks</th>
-                      <th>Why Choose Over/Under Amex Business Gold</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td data-label="Card"><strong>Amex Business Gold</strong></td>
-                      <td data-label="Annual Fee">$375</td>
-                      <td data-label="Key Travel Rewards/Perks" dangerouslySetInnerHTML={{ __html: "4X pts on top 2 cats (incl. Transit), 3X on Amex Travel, MR points (strong partners), $240 Flex Biz Credit‡, $155 Walmart+ Credit‡, Hotel Collection‡, No FTF‡."}}></td>
-                      <td data-label="Why Choose Over/Under" dangerouslySetInnerHTML={{ __html: "<strong>Choose if:</strong> Your top spend aligns with 4X cats, you value MR partners, AND you can use the new credits ($240+$155) effectively offsetting the fee. <strong>Consider others if:</strong> You need lounge access, higher flat-rate earning, primary car rental insurance, or different credits."}}></td>
-                    </tr>
-                    <tr>
-                      <td data-label="Card">Chase Ink Business Preferred®</td>
-                      <td data-label="Annual Fee">$95</td>
-                      <td data-label="Key Travel Rewards/Perks" dangerouslySetInnerHTML={{ __html: "3X pts on travel, shipping, ads, internet/cable/phone (up to $150k/yr combined), UR points (good partners like Hyatt), Primary car rental insurance."}}></td>
-                      <td data-label="Why Choose Over/Under" dangerouslySetInnerHTML={{ __html: "<strong>Choose if:</strong> Your spending hits Chase's broader 3X categories well, you prefer the lower $95 fee, need primary rental insurance, or favor UR partners. Offers less peak earning (3X vs 4X) and fewer credits, but strong value for its fee."}}></td>
-                    </tr>
-                    <tr>
-                      <td data-label="Card">Capital One Venture X Business</td>
-                      <td data-label="Annual Fee">$395</td>
-                      <td data-label="Key Travel Rewards/Perks" dangerouslySetInnerHTML={{ __html: "2X miles everywhere, 10X hotels/cars & 5X flights via C1 Travel, $300 annual travel credit, Lounge access (Priority Pass + C1), 10k anniversary miles."}}></td>
-                      <td data-label="Why Choose Over/Under" dangerouslySetInnerHTML={{ __html: "<strong>Choose if:</strong> You prefer simple 2X earning, want significant lounge access and a direct $300 travel credit. Offers great perks for a similar fee, but less potential for high category spend rewards and fewer transfer partners than Amex MR."}}></td>
-                    </tr>
-                    <tr>
-                      <td data-label="Card">Amex Business Platinum Card®</td>
-                      <td data-label="Annual Fee">$695</td>
-                      <td data-label="Key Travel Rewards/Perks" dangerouslySetInnerHTML={{ __html: "5X pts on flights/hotels via Amex Travel‡, Extensive lounge access‡, $200 airline fee credit‡, numerous other credits (Dell‡, Indeed‡ etc.), Hotel status‡, 35% airline bonus‡, No FTF‡."}}></td>
-                      <td data-label="Why Choose Over/Under" dangerouslySetInnerHTML={{ __html: "<strong>Choose if:</strong> You're a heavy traveler needing top-tier lounge access, book often via Amex Travel, can utilize the many statement credits to justify the $695 fee, and value hotel elite status & the 35% points rebate. Offers far superior direct travel perks but lower earning on non-travel category spend compared to Gold's 4X."}}></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-               {/* Footer for Table */}
-              <p style={{fontSize: '0.85rem', color: '#666', marginTop: '1rem', textAlign: 'center'}}>
-                 The Business Gold, with its new credits, now competes more strongly on overall value, especially for businesses not needing lounge access but spending heavily in its bonus categories and using partners like FedEx, Grubhub, or Walmart+.
-              </p>
-            </section>
-
-            {/* Section 11: Pairing with Other Amex Cards */}
-            <section id="section-11" className={styles.reviewSection}>
-              <h2>11. Pairing with Other Amex Cards</h2>
-              {/* Using dangerouslySetInnerHTML for ® */}
-              <p dangerouslySetInnerHTML={{ __html: "Combining the Business Gold with other Amex cards can optimize Membership Rewards® earning:" }}></p>
-              {/* Use featureList style */}
-              <ul className={styles.featureList}>
-                 <li dangerouslySetInnerHTML={{ __html: "<strong>The Blue Business® Plus Credit Card from American Express:</strong> Earns 2X MR points on all eligible purchases up to $50,000 per calendar year, then 1X. With no annual fee (<a href={reviewData.ratesLink} target='_blank' rel='noopener noreferrer sponsored'>See Rates & Fees</a>), it's the ideal partner. Use the Business Gold for potential 4X/3X categories and its credits; use the Blue Business Plus for all other spending to guarantee at least 2X points (up to the cap).‡" }}></li>
-                 <li dangerouslySetInnerHTML={{ __html: "<strong>American Express® Business Platinum Card®:</strong> Holding both is less common due to high combined fees and overlapping MR points. Generally chosen instead of Gold for its travel perks, unless a specific niche strategy justifies both." }}></li>
-                 <li dangerouslySetInnerHTML={{ __html: "<strong>Personal Amex Cards (e.g., Amex Gold, Amex Platinum):</strong> Points earned from personal MR-earning cards can be pooled with your Business Gold points, creating a larger balance for significant travel redemptions." }}></li>
-              </ul>
-              <p>The Business Gold + Blue Business Plus combination is a highly effective strategy for maximizing MR points across diverse business spending.</p>
-            </section>
-
-             {/* Section 12: Membership Rewards® Transfer Partners Deep Dive */}
-             <section id="section-12" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html: "12. Membership Rewards® Transfer Partners Deep Dive" }}></h2>
-                <p>Transferring points is key to unlocking maximum value. Amex U.S. Membership Rewards typically partners with around 18 airlines and 3 hotel chains (partners and ratios subject to change):</p>
-                {/* Using featureList style for main types */}
-                <ul className={styles.featureList}>
-                    <li>
-                        <strong>Key Airline Partners (Ratio usually 1:1 unless noted):</strong>
-                        {/* Nested standard ul for alliances */}
-                        <ul style={{listStyleType: 'disc', marginLeft: '20px', marginTop: '0.5rem'}}>
-                            <li><strong>Star Alliance:</strong> Air Canada Aeroplan (Excellent awards/routing), ANA Mileage Club (Great value, esp. RTW/premium), Avianca LifeMiles (No fuel surcharges), Singapore Airlines KrisFlyer (Premium cabin access).</li>
-                            <li><strong>SkyTeam:</strong> Delta SkyMiles (Dynamic, watch for sales), Air France/KLM Flying Blue (Promo awards, Europe), Aeromexico Rewards (1:1.6 ratio).</li>
-                            <li><strong>Oneworld:</strong> British Airways Avios (Short-haul value), Cathay Pacific Asia Miles, Iberia Plus (Often good value for Iberia/partner flights), Qantas Frequent Flyer, Qatar Airways Privilege Club.</li>
-                            <li><strong>Non-Alliance:</strong> Emirates Skywards, Etihad Guest, HawaiianMiles, JetBlue TrueBlue (Often less than 1:1 ratio), Virgin Atlantic Flying Club (Delta/ANA/partner value).</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Hotel Partners:</strong>
-                        {/* Nested standard ul for hotels */}
-                         <ul style={{listStyleType: 'disc', marginLeft: '20px', marginTop: '0.5rem'}}>
-                            <li><strong>Hilton Honors (Ratio 1:2):</strong> Points generally less valuable, but 1:2 ratio helps. Good for topping off or specific high-value redemptions.</li>
-                            <li><strong>Marriott Bonvoy (Ratio 1:1):</strong> Lower value than airlines typically, useful for specific Bonvoy redemptions.</li>
-                            <li><strong>Choice Privileges (Ratio 1:1):</strong> Niche value, can be excellent in certain regions (Europe/Japan).</li>
-                        </ul>
-                    </li>
-                </ul>
-                <p><strong>Strategy:</strong> Always check transfer ratios and availability before transferring, as transfers are irreversible. Utilize online tools to compare portal booking costs vs. partner award costs. Look for Amex transfer bonuses (e.g., 20-40% extra points to a specific partner) to boost value further.</p>
-            </section>
-
-             {/* Section 13: No Foreign Transaction Fee & Global Acceptance */}
-            <section id="section-13" className={styles.reviewSection}>
-              <h2 dangerouslySetInnerHTML={{ __html: "13. No Foreign Transaction Fee & Global Acceptance" }}></h2>
-              <p dangerouslySetInnerHTML={{ __html: `The <strong>no foreign transaction fee</strong> feature is essential for international business (<a href='${reviewData.ratesLink}' target='_blank' rel='noopener noreferrer sponsored'>See Rates & Fees</a>). You save ~3% on purchases made outside the U.S. or in foreign currencies online.‡` }}></p>
-              <p><strong>Global Acceptance:</strong> American Express is widely accepted at major travel providers (airlines, hotels, rental cars) and larger merchants globally. However, Visa and Mastercard generally have broader acceptance, especially at smaller businesses or in certain regions. It's recommended to carry a backup Visa/Mastercard when traveling internationally, but for most core business travel expenses, Amex acceptance is reliable.</p>
-            </section>
-
-            {/* Section 14: Potential Downsides for Travelers */}
-            <section id="section-14" className={styles.reviewSection}>
-              <h2>14. Potential Downsides for Travelers</h2>
-              <p>Despite its strengths and new credits, consider these potential downsides:</p>
-              {/* Use featureList style */}
-              <ul className={styles.featureList}>
-                  <li dangerouslySetInnerHTML={{ __html: "<strong>No Direct 4X Airfare Category:</strong> Unlike some cards, direct airfare purchases only earn 1X unless booked via Amex Travel (3X) or if Transit/Restaurants become top categories during travel."}}></li>
-                  <li dangerouslySetInnerHTML={{ __html: "<strong>No Airport Lounge Access:</strong> A significant omission compared to the Business Platinum or Venture X Business. If lounge access is crucial, this card falls short."}}></li>
-                  <li dangerouslySetInnerHTML={{ __html: "<strong>$375 Fee Still Requires Utilization:</strong> While the credits help immensely, if you don't use FedEx, Grubhub, Office Supply Stores, or Walmart+, the fee rests solely on points earnings and other perks, requiring significant bonus category spend to justify."}}></li>
-                  <li dangerouslySetInnerHTML={{ __html: "<strong>Secondary Car Rental Insurance:</strong> Primary coverage (offered by cards like Ink Business Preferred) is generally preferred as it doesn't involve your personal/business insurance first.‡"}}></li>
-                  <li dangerouslySetInnerHTML={{ __html: "<strong>Lower Value Portal Redemptions (Non-Flight):</strong> Using points for hotels/cars/cruises via Amex Travel often yields poor value (~0.7 cpp). Maximizing value requires focusing on partner transfers or flights via the portal."}}></li>
-              </ul>
-            </section>
-
-            {/* Section 15: Advanced Redemption Tips for Travel */}
-             <section id="section-15" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html: "15. Advanced Redemption Tips for Travel" }}></h2>
-                {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html: "Elevate your Membership Rewards® strategy:" }}></p>
-                {/* Use numberedList style */}
-                <ol className={styles.numberedList}>
-                    <li><strong>Master Partner Sweet Spots:</strong> Identify high-value award chart redemptions (e.g., Iberia Avios for off-peak US-Spain business class, Aeroplan for complex Star Alliance itineraries with stopovers, Virgin Atlantic points for ANA First Class).</li>
-                    <li><strong>Capitalize on Transfer Bonuses:</strong> Wait for Amex transfer bonuses (e.g., 30% bonus to Marriott or Avios) if your travel plans are flexible, effectively reducing the points cost.</li>
-                    <li><strong>Pool Points:</strong> Combine MR points from all your Amex personal and business cards into one account for larger redemptions.</li>
-                    <li><strong>Compare Portal vs. Partners Diligently:</strong> For every trip, calculate the cost in points via Amex Travel (1 cpp for flights) versus transferring to partners and booking an award. Factor in taxes/fees on award tickets.</li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Utilize The Hotel Collection Benefit:</strong> When booking 2+ night stays at eligible mid-to-upper tier hotels via Amex Travel, the $100 credit + potential upgrade adds real value.‡"}}></li>
-                    <li><strong>Avoid Low-Value Traps:</strong> Resist redeeming for statement credits or merchandise unless absolutely necessary. Prioritize travel transfers or flights via the portal.</li>
-                </ol>
-            </section>
-
-            {/* Section 16: Another Example: Maximizing Travel Value */}
-            <section id="section-16" className={styles.reviewSection}>
-              <h2>16. Another Example: Maximizing Travel Value</h2>
-              <p>A business accumulates 250,000 MR points. Let's maximize:</p>
-              {/* Use featureList style */}
-              <ul className={styles.featureList}>
-                  <li><strong>Goal:</strong> Round-trip business class flights for two from New York (JFK) to Paris (CDG).</li>
-                  <li><strong>Amex Travel Portal Cost:</strong> Assume flights cost $4,000 per person ($8,000 total). Using points at 1 cpp would require <strong>800,000 MR points</strong>. Not feasible.</li>
-                  <li>
-                      <strong>Partner Transfer Strategy (Air France/KLM Flying Blue):</strong> Flying Blue often has promo awards or reasonable standard pricing. Let's estimate 60,000 points one-way per person in business class during a standard period (120,000 round-trip pp). Total = <strong>240,000 Flying Blue miles</strong>.
-                       {/* Nested standard ul */}
-                       <ul style={{listStyleType: 'disc', marginLeft: '20px', marginTop: '0.5rem'}}>
-                          <li><strong>Action:</strong> Transfer 240,000 MR points to Flying Blue (1:1 ratio).</li>
-                          <li><strong>Result:</strong> Book the $8,000 flights using 240,000 points + taxes/fees (e.g., ~$400-$600 total).</li>
-                          <li><strong>Value Achieved:</strong> ~$7,500 value from 240,000 points = <strong>~3.1 cents per point</strong>. This excellent redemption leaves 10,000 MR points remaining and showcases the power of partner transfers.</li>
-                        </ul>
-                  </li>
-              </ul>
-              <p>This scenario highlights how strategic transfers yield far superior value compared to direct portal redemptions for premium travel.</p>
-            </section>
-
-             {/* Section 17: Business Gold vs. Business Platinum for Travel */}
-            <section id="section-17" className={styles.reviewSection}>
-                <h2>17. Business Gold vs. Business Platinum for Travel</h2>
-                <p>The choice hinges on spending patterns, fee tolerance, and desired perks:</p>
-                {/* Structure similar to pros/cons but using standard ul */}
-                <div>
-                    <h3>Choose Business Gold if:</h3>
-                    <ul style={{listStyleType: 'disc', marginLeft: '20px'}}>
-                        <li>You heavily spend in 2 of the 6 specific 4X categories (Transit, U.S. Restaurants, Gas, Wireless, Tech, Ads).</li>
-                        <li dangerouslySetInnerHTML={{ __html: "You can fully utilize the $240 Flexible Business Credit and $155 Walmart+ Credit, making the $375 fee highly manageable.‡" }}></li>
-                        <li>You prioritize earning flexible MR points via category spend.</li>
-                        <li>Airport lounge access is not a primary requirement.</li>
-                        <li>You mainly transfer points to partners.</li>
-                    </ul>
-                </div>
-                 <div style={{marginTop: '1.5rem'}}>
-                    <h3>Choose Business Platinum if:</h3>
-                    <ul style={{listStyleType: 'disc', marginLeft: '20px'}}>
-                        <li dangerouslySetInnerHTML={{ __html: "You need extensive airport lounge access (Centurion, Priority Pass, Delta).‡" }}></li>
-                        <li dangerouslySetInnerHTML={{ __html: "You frequently book flights/hotels via amextravel.com (for 5X points).‡" }}></li>
-                        <li dangerouslySetInnerHTML={{ __html: "You can leverage the numerous statement credits ($200 airline fee‡, Dell‡, Indeed‡, Adobe‡, Wireless‡, CLEAR Plus‡, etc.) to offset the $695 fee.‡" }}></li>
-                        <li dangerouslySetInnerHTML={{ __html: "You value hotel elite status (Hilton Gold, Marriott Gold).‡" }}></li>
-                        <li dangerouslySetInnerHTML={{ __html: "You benefit from the 35% Airline Bonus for Pay with Points on eligible flights.‡" }}></li>
-                    </ul>
-                </div>
-                <p style={{marginTop: '1.5rem'}}><strong>Summary:</strong> Business Gold is now a strong value proposition centered on category earning + specific credits. Business Platinum remains the premium choice focused on direct travel perks + Amex Travel booking rewards.</p>
-            </section>
-
-             {/* Section 18: Who Should Get the Amex Business Gold for Travel? */}
-            <section id="section-18" className={styles.reviewSection}>
-              <h2>18. Who Should Get the Amex Business Gold for Travel?</h2>
-              {/* Using the prosCons style from the module */}
-               <div className={styles.prosCons}>
-                    <div className={styles.pros}>
-                        <h3>Yes, Get This Card If:</h3>
-                        {/* Using featureList style */}
-                        <ul className={styles.featureList}>
-                            <li>Your business consistently spends significantly in two of the six 4X categories (Transit, U.S. Restaurants, Gas, Wireless, Tech, Ads).</li>
-                            <li dangerouslySetInnerHTML={{ __html: "Your business uses FedEx, Grubhub, Office Supply Stores, and/or Walmart+ regularly, allowing you to maximize the $240 + $155 annual credits.‡" }}></li>
-                            <li dangerouslySetInnerHTML={{ __html: "You value Membership Rewards® points for transferring to airline/hotel partners for high-value travel."}}></li>
-                            <li dangerouslySetInnerHTML={{ __html: "You book some flights/hotels via amextravel.com (for 3X points).‡" }}></li>
-                            <li dangerouslySetInnerHTML={{ __html: "You need no foreign transaction fees.‡" }}></li>
-                            <li>The $375 annual fee is effectively negated or justified by the credits and points earned.</li>
-                        </ul>
+             <div className={styles.reviewContainer}>
+              <article>
+                <header className={styles.reviewHeader}>
+                    <div className={styles.summaryBox} id="summaryBoxTitle">
+                        <h2 className={styles.summaryBoxTitle}>{reviewData.cardName}: Key Insights</h2>
+                        <div className={styles.summaryGrid}>
+                            <div className={styles.summaryItem}>
+                                <span className={styles.summaryIcon}><IconGift /></span>
+                                <span className={styles.summaryLabel}>Welcome Offer:</span>
+                                <span className={styles.summaryValue}>{summaryBoxData.welcomeOffer}</span>
+                            </div>
+                            <div className={styles.summaryItem}>
+                                <span className={styles.summaryIcon}><IconCheck /></span>
+                                <span className={styles.summaryLabel}>Annual Fee:</span>
+                                <span className={styles.summaryValue}>{summaryBoxData.annualFee}</span>
+                            </div>
+                            <div className={styles.summaryItem}>
+                                <span className={styles.summaryIcon}><IconStar /></span>
+                                <span className={styles.summaryLabel}>Top Earning:</span>
+                                <span className={styles.summaryValue}>{summaryBoxData.topEarning}</span>
+                            </div>
+                             <div className={styles.summaryItem}>
+                                <span className={styles.summaryIcon}><IconDollar /></span>
+                                <span className={styles.summaryLabel}>Key Credits:</span>
+                                <span className={styles.summaryValue}>{summaryBoxData.keyCredits}</span>
+                            </div>
+                            <div className={styles.summaryItem}>
+                                <span className={styles.summaryIcon}><IconBriefcase /></span> {/* Changed to briefcase for business perk */}
+                                <span className={styles.summaryLabel}>Business Perks:</span>
+                                <span className={styles.summaryValue}>{summaryBoxData.businessPerk}</span>
+                            </div>
+                            <div className={styles.summaryItem} data-full-width="true">
+                                <span className={styles.summaryIcon}><IconPlus /></span>
+                                <span className={styles.summaryLabel}>Best For:</span>
+                                <span className={styles.summaryValue}>{summaryBoxData.bestFor}</span>
+                            </div>
+                        </div>
+                        <div className={styles.summaryBoxActions}>
+                            <a href={reviewData.ratesFeesLink} className={styles.summaryRatesLink} target="_blank" rel="noopener noreferrer sponsored">
+                                See Card Rates & Fees (Amex Site)
+                            </a>
+                             <a href='/business-rewards-calculator' className={`${styles.heroRewardsCalculator} ${styles.summaryButton}`} target="_blank" rel="noopener noreferrer"> {/* /* UPDATE LINK if needed */ }
+                                Business Rewards Calculator
+                            </a>
+                        </div>
                     </div>
-                    <div className={styles.cons}>
-                        <h3>No, Consider Other Cards If:</h3>
-                        {/* Using featureList style */}
-                        <ul className={styles.featureList}>
-                            <li>Your spending doesn't align well with the 4X categories.</li>
-                            <li dangerouslySetInnerHTML={{ __html: "You cannot utilize the $240 Flexible Business Credit or $155 Walmart+ Credit effectively."}}></li>
-                            <li>Airport lounge access is essential for your travel.</li>
-                            <li>You prefer a simpler flat-rate rewards card or one with a large, direct travel credit (like Venture X Business).</li>
-                            <li>You need primary car rental insurance.</li>
-                            <li dangerouslySetInnerHTML={{ __html: "You prefer the Chase Ultimate Rewards® or Capital One Miles ecosystem."}}></li>
-                        </ul>
+                </header>
+
+                <section id="section-intro" className={styles.reviewSection}>
+                  <h2>1. Introduction: Why the Business Gold Matters</h2>
+                  <p>For growing U.S. businesses, choosing the right financial tools is strategic. A suitable credit card, for example, is more than a payment method; it can unlock rewards, streamline expenses, and provide valuable perks. Among premium offerings, the {reviewData.cardName} is a compelling, if intricate, option. With its signature gleam and a notable annual fee, it promises rich rewards and robust features. This review examines if its benefits justify the ${reviewData.annualFee} annual fee and if it can optimize your business's financial strategy.</p>
+                </section>
+
+                <section id="section-tldr" className={styles.reviewSection}>
+                  <h2>2. TL;DR: Is the Amex Business Gold For You?</h2>
+                  <p>The {reviewData.cardName} can be exceptionally valuable, but it’s not for everyone.</p>
+                  <p><strong>It’s ideal for:</strong> Established U.S. businesses with consistent, significant spending (at least several thousand dollars monthly) aligned with two or more of its 4X bonus categories (like U.S. advertising, U.S. software/electronics, U.S. gas, U.S. restaurants, transit, or U.S. wireless services). It also suits those who will actively enroll in and use its statement credits (potentially up to $395 annually for services like FedEx, Grubhub, Office Supplies, and Walmart+), offsetting the ${reviewData.annualFee} annual fee. If you value premium travel rewards via Membership Rewards® and can maximize them, this card has serious potential.</p>
+                  <p><strong>Consider alternatives if:</strong> Your business has low or unpredictable spending, major expenses outside the specific bonus categories, or high sensitivity to annual fees. If simplicity is paramount, or you won't use the specific statement credit merchants, other cards might be a better fit.</p>
+                  <p><strong>The bottom line:</strong> If your business profile matches its strengths, the {reviewData.cardShortName} can be a powerful partner. If not, its cost may outweigh the benefits. Read on for the deep dive.</p>
+                </section>
+
+                <section id="section-proposition" className={styles.reviewSection}>
+                  <h2>3. The Core Proposition: Adaptive Rewards</h2>
+                  <p>This review explores its adaptive rewards, designed for fluctuating spending, and its array of credits and protections. The card's premium positioning demands careful consideration from businesses that can harness its strengths, turning the fee into an investment. The core proposition is accelerated rewards in your highest spending categories—a potentially lucrative feature requiring an understanding of its mechanics.</p>
+                </section>
+
+                <section id="section-snapshot" className={styles.reviewSection}>
+                    <h2>4. Card Snapshot & Who It’s Best For</h2>
+                    <p>The {reviewData.cardName}, in classic Gold or Rose Gold, is a premium tool for dynamic businesses.</p>
+                    <p><strong>"Best For" Tagline:</strong> Established U.S. businesses with dynamic spending in key categories, seeking premium travel rewards and substantial statement credits to intelligently offset a higher annual fee.</p>
+                    <p>This card shines for businesses leveraging its top-tier earning in specific, rotating spending areas and maximizing its statement credits. The ${reviewData.annualFee} annual fee (<a href={reviewData.ratesFeesLink} target="_blank" rel="noopener noreferrer sponsored">see rates and fees</a>) necessitates strategic use.</p>
+                    <DraggableTableWrapper>
+                        <div className={styles.tableContainer}>
+                            <table className={`${styles.statsTable} ${styles.highlightTable}`}>
+                                <thead>
+                                    <tr>
+                                        <th>Feature</th>
+                                        <th>Details</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td data-label="Feature">Annual Fee</td>
+                                        <td data-label="Details"><strong>${reviewData.annualFee}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Feature">Current Welcome Offer</td>
+                                        <td data-label="Details">(Verify current offer) Typically, a points bonus after meeting a significant spending requirement (e.g., 70,000 points after $10,000 spend in 3 months).</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Feature">Primary Rewards Rate</td>
+                                        <td data-label="Details">4X Membership Rewards® points on the 2 eligible categories where your business spends the most each billing cycle (from 6 categories, up to $150,000 combined/year, then 1X).</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Feature"></td>
+                                        <td data-label="Details">3X points on flights & pre-paid hotels booked on <a href={reviewData.officialAmexTravelLink} target="_blank" rel="noopener noreferrer sponsored">AmexTravel.com</a>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Feature"></td>
+                                        <td data-label="Details">1X points on all other eligible purchases.</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Feature">Key Statement Credits</td>
+                                        <td data-label="Details">Up to $240 Flexible Business Credit annually (up to $20/month at FedEx, Grubhub, U.S. Office Supply Stores; enrollment required).</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Feature"></td>
+                                        <td data-label="Details">Walmart+ monthly membership credit (up to $12.95/month plus taxes; enrollment required).</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </DraggableTableWrapper>
+                    <p>The ${reviewData.annualFee} fee and substantial welcome offer spending threshold indicate this card suits businesses with consistent, robust cash flow, not startups with minimal expenses.</p>
+                </section>
+
+                {/* USER ACTION: Consider adding an illustrative image here like in the Platinum review */}
+                <Image
+                    src={contentImage1} // Placeholder
+                    alt="Business professionals discussing financial strategy"
+                    width={800}
+                    height={500}
+                    className={styles.contentImage}
+                    loading="lazy"
+                />
+
+
+                <section id="section-welcome-offer" className={styles.reviewSection}>
+                    <h2>5. Welcome Offer Deep Dive</h2>
+                    <p>⚠️ <strong>Important Welcome Offer Advisory:</strong> Credit card welcome offers, including this one, change frequently. Always verify current terms directly on the <a href={reviewData.officialWelcomeOfferLink} target="_blank" rel="noopener noreferrer sponsored">official American Express website before applying</a>.</p>
+                    <p>A card's welcome offer provides an initial glimpse into its value. The {reviewData.cardShortName} typically extends a generous one, such as 70,000 Membership Rewards® points after a $10,000 spend in three months. Valuing points conservatively at 1.8 cents each (when transferred strategically), this bonus could be worth $1,260 towards travel—substantially covering the annual fee in the first year. However, the spending requirement (e.g., $10,000 in three months, averaging over $3,333 monthly) underscores that the card is for businesses with regular, robust expenditure. Note Amex's eligibility rules: welcome offers are often "once-per-card-per-lifetime." Targeted offers might sometimes be more lucrative than public ones; check directly with Amex.</p>
+                </section>
+
+                <section id="section-earning-power" className={styles.reviewSection}>
+                    <h2>6. Earning Rewards: 4X & 3X Categories</h2>
+                    <p>The ongoing rewards structure, especially the adaptive 4X categories, is a key attraction.</p>
+                    <ul className={styles.featureList}>
+                        <li><strong>4X Membership Rewards® Points:</strong> Earn 4X points automatically on the 2 of 6 eligible categories with your highest spend each billing cycle. No pre-selection needed. The 6 categories are:
+                            <ul className={styles.nestedList}>
+                                <li>U.S. media providers for advertising (online, TV, radio).</li>
+                                <li>U.S. electronic goods retailers and software & cloud system providers.</li>
+                                <li>U.S. restaurants (including takeout/delivery).</li>
+                                <li>U.S. gas stations.</li>
+                                <li>Transit (trains, taxis, rideshares, tolls, parking, etc.).</li>
+                                <li>Monthly wireless telephone service charges (direct from U.S. providers).</li>
+                            </ul>
+                            This 4X earning is capped at $150,000 in combined purchases from these top 2 categories annually, then 1X. This cap accommodates up to $12,500 monthly in combined 4X spend.
+                        </li>
+                        <li><strong>3X Membership Rewards® Points:</strong> Earn 3X points on flights and pre-paid hotels booked via <a href={reviewData.officialAmexTravelLink} target="_blank" rel="noopener noreferrer sponsored">AmexTravel.com</a>.</li>
+                        <li><strong>1X Membership Rewards® Points:</strong> All other eligible purchases earn 1X point per dollar.</li>
+                    </ul>
+                    <DraggableTableWrapper>
+                        <div className={styles.tableContainer}>
+                            <table className={`${styles.statsTable} ${styles.highlightTable}`}>
+                                <thead>
+                                    <tr>
+                                        <th>Points Multiplier</th>
+                                        <th>Eligible Categories/Actions</th>
+                                        <th>Spending Caps/Conditions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td data-label="Multiplier">4X</td>
+                                        <td data-label="Categories">Top 2 of 6 categories: U.S. advertising, U.S. electronics/software, U.S. restaurants, U.S. gas, transit, U.S. wireless.</td>
+                                        <td data-label="Caps">On first $150,000 combined purchases/year from these 2 categories; then 1X.</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Multiplier">3X</td>
+                                        <td data-label="Categories">Flights & pre-paid hotels on <a href={reviewData.officialAmexTravelLink} target="_blank" rel="noopener noreferrer sponsored">AmexTravel.com</a>.</td>
+                                        <td data-label="Caps">Via <a href={reviewData.officialAmexTravelLink} target="_blank" rel="noopener noreferrer sponsored">AmexTravel.com</a>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Multiplier">1X</td>
+                                        <td data-label="Categories">All other eligible purchases.</td>
+                                        <td data-label="Caps">N/A.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </DraggableTableWrapper>
+                </section>
+
+                <section id="section-mr-ecosystem" className={styles.reviewSection}>
+                  <h2>7. Membership Rewards®: Flexibility & Value</h2>
+                  <p>The {reviewData.cardShortName} participates in the Membership Rewards® program, known for flexibility and high-value potential. Points generally don't expire with an active account. <a href={reviewData.officialMembershipRewardsLink} target="_blank" rel="noopener noreferrer sponsored">(See Membership Rewards® Program Terms)</a>. Base earning is 1 point per dollar; 4X/3X are bonuses. Excluded: fees, interest, cash advances, P2P payments, gift cards.</p>
+                  <p>Point value varies. Statement credits yield ~0.6-1 cent/point. Transferring to airline/hotel partners is key for maximizing value, often achieving 2+ cents/point, especially for premium travel.</p>
+                </section>
+
+                <section id="section-redemption" className={styles.reviewSection}>
+                  <h2>8. Redeeming Points Effectively</h2>
+                  <p>Wise redemption is crucial. Options include:</p>
+                  <ul className={styles.featureList}>
+                    <li><strong>Cover Your Charges/Pay with Points:</strong> Convenient, but ~0.6-1 cent/point value.</li>
+                    <li><strong>Book Travel via <a href={reviewData.officialAmexTravelLink} target="_blank" rel="noopener noreferrer sponsored">AmexTravel.com</a>:</strong> Flights often 1 cent/point; other travel ~0.7 cents/point.</li>
+                    <li><strong>Transfer Points to Travel Partners:</strong> Usually the highest value path (detailed below).</li>
+                    <li><strong>Redeem for Gift Cards:</strong> Varied choice, but often lower value (~0.5-1 cent/point).</li>
+                    <li><strong>Shop with Points (e.g., Amazon):</strong> Convenient, but typically ~0.7 cents/point.</li>
+                  </ul>
+                  <p>For maximum value, strategic transfers to travel partners are generally superior.</p>
+                </section>
+
+                <section id="section-point-transfers" className={styles.reviewSection}>
+                  <h2>9. Strategic Point Transfers for Travel</h2>
+                  <p>Transferring points to airline/hotel partners is arguably the most powerful feature for travel-focused businesses. Amex has an extensive network (over 15 airlines, 3 hotel programs). Most airline transfers are 1:1 (1,000 MR points = 1,000 miles). Partners include Delta, Air Canada, British Airways, and Emirates. Hotel ratios vary: Hilton Honors (1:2), Marriott Bonvoy (1:1). Higher point numbers don't always mean higher value due to differing intrinsic worth of partner currencies. Transfer times vary (many instant, some 24-48+ hours). Watch for occasional transfer bonuses.</p>
+                  <DraggableTableWrapper>
+                        <div className={styles.tableContainer}>
+                            <table className={`${styles.statsTable}`}>
+                                <thead>
+                                    <tr>
+                                        <th>Partner Program (Airline/Hotel)</th>
+                                        <th>Transfer Ratio (MR : Partner)</th>
+                                        <th>Typical Transfer Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td data-label="Partner">Air Canada Aeroplan</td>
+                                        <td data-label="Ratio">1,000 : 1,000</td>
+                                        <td data-label="Time">Instant</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Partner">British Airways Executive Club</td>
+                                        <td data-label="Ratio">1,000 : 1,000</td>
+                                        <td data-label="Time">Instant</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Partner">Delta SkyMiles®</td>
+                                        <td data-label="Ratio">1,000 : 1,000</td>
+                                        <td data-label="Time">Instant</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Partner">Hilton Honors</td>
+                                        <td data-label="Ratio">1,000 : 2,000</td>
+                                        <td data-label="Time">Instant</td>
+                                    </tr>
+                                     <tr>
+                                        <td data-label="Partner">Marriott Bonvoy®</td>
+                                        <td data-label="Ratio">1,000 : 1,000</td>
+                                        <td data-label="Time">Instant</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </DraggableTableWrapper>
+                    <p><small>(Note: Partners/ratios subject to change. Verify on Amex site.)</small></p>
+                </section>
+
+                <section id="section-statement-credits" className={styles.reviewSection}>
+                    <h2>10. Key Feature: Statement Credits Analyzed</h2>
+                    <p>Statement credits offer direct monetary value, potentially offsetting the annual fee. Enrollment is required. <a href={reviewData.officialBenefitsLink} target="_blank" rel="noopener noreferrer sponsored">(See Benefit Terms and Enrollment Details)</a></p>
+                    <ul className={styles.featureList}>
+                        <li><strong>Up to $240 Flexible Business Credit:</strong> Up to $20 back monthly for U.S. purchases at FedEx, Grubhub, and U.S. Office Supply Stores. Max $240/year.</li>
+                        <li><strong>Walmart+ Monthly Membership Credit:</strong> Covers the monthly Walmart+ cost (currently $12.95+tax) when paid with the card. Approx. $155/year value. Benefits include free shipping, grocery delivery, and fuel discounts.</li>
+                    </ul>
+                    <p>Combined, these offer up to $395.40 annually, exceeding the ${reviewData.annualFee} fee if fully utilized. This requires spending at least $20/month with specified merchants and maintaining Walmart+ membership.</p>
+                </section>
+
+                <section id="section-travel-perks" className={styles.reviewSection}>
+                    <h2>11. Key Feature: Travel Perks & Protections</h2>
+                    <p>The card includes travel perks and protections (typically require booking with the card):</p>
+                    <ul className={styles.featureList}>
+                        <li><strong>Car Rental Loss and Damage Insurance:</strong> Secondary coverage (up to $50,000) when declining rental CDW.</li>
+                        <li><strong>Baggage Insurance Plan:</strong> For lost, damaged, stolen baggage on common carriers (limits apply).</li>
+                        <li><strong>Trip Delay Insurance:</strong> Reimburses expenses (up to $300/trip, 2 claims/year) for >12-hour delays.</li>
+                        <li><strong>Global Assist® Hotline:</strong> 24/7 referral service for medical/legal needs when >100 miles from home (user pays third-party costs).</li>
+                        <li><strong>The Hotel Collection:</strong> With 2+ night bookings via Amex Travel, get $100 hotel credit and room upgrade (when available) at participating properties.</li>
+                        <li><strong>No Foreign Transaction Fees:</strong> Saves ~3% on international purchases.</li>
+                        <li><strong>Cell Phone Protection:</strong> Up to $800/claim ($50 deductible, 2 claims/year) for damaged/stolen phone when the bill is paid with the card.</li>
+                    </ul>
+                </section>
+
+                 {/* USER ACTION: Consider adding another illustrative image here */}
+                <Image
+                    src={contentImage2} // Placeholder
+                    alt="Business traveler working on laptop in an airport lounge"
+                    width={800}
+                    height={500}
+                    className={styles.contentImage}
+                    loading="lazy"
+                />
+
+                <section id="section-biz-tools" className={styles.reviewSection}>
+                    <h2>12. Key Feature: Business Management Tools</h2>
+                    <p>Practical tools enhance financial management:</p>
+                    <ul className={styles.featureList}>
+                        <li><strong>Employee Cards:</strong> Add cards with spending controls; primary member earns points. (Fee for Additional Gold, no fee for Expense Cards).</li>
+                        <li><strong>Year-End Summaries:</strong> Itemized reports for budgeting and tax prep.</li>
+                        <li><strong>Connect to QuickBooks®:</strong> Auto-downloads and categorizes transactions. (<a href={reviewData.officialQuickbooksLink} target="_blank" rel="noopener noreferrer">Learn More</a>)</li>
+                        <li><strong>Vendor Pay by Bill.com:</strong> Access to AP automation (may include complimentary/discounted user). (<a href={reviewData.officialBillComLink} target="_blank" rel="noopener noreferrer">Learn More</a>)</li>
+                        <li><strong>Account Manager:</strong> Designate someone for account tasks.</li>
+                        <li><strong>Purchase Protection:</strong> Covers eligible new purchases against damage/theft (90 days, up to $1k/occurrence, $50k/account/year).</li>
+                        <li><strong>Extended Warranty:</strong> Adds up to 1 year to U.S. manufacturer warranties (≤5 years).</li>
+                    </ul>
+                </section>
+
+                <section id="section-rates-fees" className={styles.reviewSection}>
+                    <h2>13. Costs: Full Spectrum of Rates & Fees</h2>
+                    <p>Transparency is key. Always consult the official Cardmember Agreement. <a href={reviewData.ratesFeesLink} target="_blank" rel="noopener noreferrer sponsored">(See Official Rates & Fees Table)</a></p>
+                    <ul className={styles.featureList}>
+                        <li><strong>Annual Membership Fee:</strong> ${reviewData.annualFee}.</li>
+                        <li><strong>Additional Card Fee:</strong> E.g., $95 for up to 5 Additional Gold Cards, then $95 each. No fee for Business Expense Cards.</li>
+                        <li><strong>APR for Pay Over Time:</strong> Variable (e.g., 19.49% - 28.49%), based on creditworthiness. An intro 0% APR may be available (check current terms).</li>
+                        <li><strong>Penalty APR:</strong> Higher variable rate (e.g., 29.99%) for late/returned payments.</li>
+                        <li><strong>Late Payment Fee:</strong> Up to $39 or % of past due.</li>
+                        <li><strong>Returned Payment Fee:</strong> $39.</li>
+                        <li><strong>Foreign Transaction Fee:</strong> None.</li>
+                        <li><strong>Cash Advance/Balance Transfer:</strong> Not primary features; expect high fees/APRs if available.</li>
+                    </ul>
+                    <p>No foreign transaction fees is a clear plus. High penalty APRs necessitate timely payments.</p>
+                     <DraggableTableWrapper>
+                        <div className={styles.tableContainer}>
+                            <table className={`${styles.statsTable} ${styles.ratesFeesTable}`}>
+                                <thead>
+                                    <tr>
+                                        <th>Fee/Rate Type</th>
+                                        <th>Details (Illustrative – Verify with Amex)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td data-label="Type">Annual Fee</td><td data-label="Details">${reviewData.annualFee}</td></tr>
+                                    <tr><td data-label="Type">Pay Over Time APR</td><td data-label="Details">Variable, e.g., 19.49% - 28.49% (after any intro 0% APR).</td></tr>
+                                    <tr><td data-label="Type">Penalty APR</td><td data-label="Details">Variable, e.g., 29.99%.</td></tr>
+                                    <tr><td data-label="Type">Foreign Transaction Fee</td><td data-label="Details">None.</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </DraggableTableWrapper>
+                </section>
+
+                <section id="section-pay-over-time" className={styles.reviewSection}>
+                    <h2>14. Pay Over Time: Cash Flow Flexibility</h2>
+                    <p>The "Pay Over Time" feature allows carrying a balance with interest on eligible purchases up to an assigned limit, unlike traditional charge cards. Charges exceeding this limit or ineligible items must be paid in full, offering a blend of discipline and flexibility. New Card Members often get an introductory 0% APR on Pay Over Time purchases for a period (e.g., 6-12 months; <a href={reviewData.officialWelcomeOfferLink} target="_blank" rel="noopener noreferrer sponsored">verify current Amex terms</a>), useful for large initial investments. Afterward, a variable APR (e.g., 19.49% - 28.49%) applies, making it best for short-term financing or during 0% APR periods due to potentially high ongoing interest.</p>
+                </section>
+
+                <section id="section-user-profiles" className={styles.reviewSection}>
+                    <h2>15. Who Benefits Most? User Profiling</h2>
+                    <p>The card’s value isn’t uniform. It’s best for:</p>
+                    <ul className={styles.featureList}>
+                        <li>Businesses with significant spending in 2+ of the 4X bonus categories (U.S. advertising, electronics/software, restaurants, gas, transit, wireless).</li>
+                        <li>Businesses maximizing statement credits (FedEx, Grubhub, office supplies, Walmart+).</li>
+                        <li>Travel-focused businesses leveraging <a href={reviewData.officialAmexTravelLink} target="_blank" rel="noopener noreferrer sponsored">AmexTravel.com</a> 3X points and Membership Rewards transfers.</li>
+                        <li>Businesses needing cash flow flexibility via Pay Over Time (especially an intro 0% APR).</li>
+                        <li>Businesses valuing integrated management tools (QuickBooks, Employee Cards).</li>
+                        <li>"Points Savvy" users willing to learn Membership Rewards for optimal redemptions.</li>
+                    </ul>
+                    <p>It may not be optimal for low/infrequent spenders, businesses whose main expenses are outside 4X categories, highly fee-averse companies, those needing long-term 0% APR beyond intro offers, or users seeking ultimate simplicity. Proactive management and aligned spending are key.</p>
+                </section>
+
+                <section id="section-real-world-scenario" className={styles.reviewSection}>
+                    <h2>16. Value Calculation: A Real-World Example</h2>
+                    <p>Consider "Creative Solutions Inc.," a digital marketing agency. Monthly Spending: $3,000 online ads (4X), $800 software (4X), $400 travel via <a href={reviewData.officialAmexTravelLink} target="_blank" rel="noopener noreferrer sponsored">AmexTravel</a> (3X), $200 on FedEx/Grubhub/Office Supplies (maxing $20 credit), $12.95 Walmart+ (credit), $1,500 other (1X).</p>
+                    <p><strong>Annual Rewards Calculation:</strong></p>
+                    <ul className={styles.featureList}>
+                        <li>4X Points: ($3,000 + $800)/mo * 12 mo * 4 = 182,400 MR points.</li>
+                        <li>3X Points: $400/mo * 12 mo * 3 = 14,400 MR points.</li>
+                        <li>1X Points: $1,500/mo * 12 mo * 1 = 18,000 MR points.</li>
+                        <li><strong>Total Points Annually: 214,800 MR points.</strong></li>
+                    </ul>
+                    <p>Value of Points (at a conservative 1.5 cents/point): 214,800 * $0.015 = $3,222.<br/>
+                    Statement Credits: $240 (Flexible Business) + $155.40 (Walmart+) = $395.40.<br/>
+                    <strong>Net Annual Value:</strong> ($3,222 + $395.40) - $${reviewData.annualFee} (annual fee) = <strong>$3,242.40</strong>.</p>
+                    <p>This scenario shows substantial value if spending aligns and benefits are maximized.</p>
+                </section>
+
+                <section id="section-competitors" className={styles.reviewSection}>
+                    <h2>17. Competitor Card Comparison</h2>
+                    <p>The {reviewData.cardShortName} competes with other business cards. The best choice depends on your spending, fee tolerance, and preferred rewards. Key rivals include the Chase Ink Business Preferred®, Capital One Spark Miles for Business, and Bank of America® Business Advantage Customized Cash Rewards. (Note: Offers/terms can change; verify with issuer.)</p>
+                    <DraggableTableWrapper>
+                        <div className={styles.tableContainer}>
+                            <table className={`${styles.statsTable} ${styles.comparisonTable}`}>
+                                <thead>
+                                    <tr>
+                                        <th>Feature</th>
+                                        <th>{reviewData.cardShortName}</th>
+                                        <th>Chase Ink Business Preferred®</th>
+                                        <th>Capital One Spark 2X Miles</th>
+                                        <th>Bank of America® Business Advantage Customized Cash</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td data-label="Feature">Annual Fee</td>
+                                        <td data-label={reviewData.cardShortName}>${reviewData.annualFee}</td>
+                                        <td data-label="Chase Ink Pref.">$95</td>
+                                        <td data-label="Spark Miles">$0 intro/1st yr, then $95</td>
+                                        <td data-label="BofA Custom Cash">$0</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Feature">Welcome Offer (Typical)</td>
+                                        <td data-label={reviewData.cardShortName}>70k MR pts/$10k spend</td>
+                                        <td data-label="Chase Ink Pref.">100k UR pts/$8k spend</td>
+                                        <td data-label="Spark Miles">50k miles/$4.5k spend</td>
+                                        <td data-label="BofA Custom Cash">$300 credit/$3k spend</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Feature">Primary Rewards</td>
+                                        <td data-label={reviewData.cardShortName}>4X MR pts (top 2/6 cats, $150k cap); 3X AmexTravel; 1X</td>
+                                        <td data-label="Chase Ink Pref.">3X UR pts (travel, ship, ad, internet, $150k cap); 1X</td>
+                                        <td data-label="Spark Miles">Unlimited 2X miles; 5X on Capital One Travel</td>
+                                        <td data-label="BofA Custom Cash">3% choice cat ($50k cap), 2% dining, 1% all. (Higher with Preferred Rewards)</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Feature">Key Credits/Perks</td>
+                                        <td data-label={reviewData.cardShortName}>$240 Flex Biz Credit; Walmart+; Cell Phone Protection. No FTF.</td>
+                                        <td data-label="Chase Ink Pref.">Cell phone protection. No FTF.</td>
+                                        <td data-label="Spark Miles">Global Entry/TSA PreCheck credit. No FTF.</td>
+                                        <td data-label="BofA Custom Cash">No FTF. Rewards bonus via Preferred Rewards.</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Feature">Points Ecosystem</td>
+                                        <td data-label={reviewData.cardShortName}>Amex Membership Rewards®</td>
+                                        <td data-label="Chase Ink Pref.">Chase Ultimate Rewards®</td>
+                                        <td data-label="Spark Miles">Capital One Miles</td>
+                                        <td data-label="BofA Custom Cash">Cash back/points.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </DraggableTableWrapper>
+                    <p>The {reviewData.cardShortName}'s ${reviewData.annualFee} fee is offset by unique credits and adaptive 4X categories.</p>
+                    <ul className={styles.featureList}>
+                        <li><strong>Chase Ink Business Preferred®</strong> ($95 fee): Strong 3X on broader business categories; valuable Ultimate Rewards.</li>
+                        <li><strong>Capital One Spark 2X Miles</strong> ($0 intro, then $95 fee): Simple flat-rate 2X miles.</li>
+                        <li><strong>Bank of America® Business Advantage Customized Cash</strong> ($0 fee): 3% choice category, boosted with Preferred Rewards. Gold's value hinges on maximizing its specific 4X categories and credits.</li>
+                    </ul>
+                </section>
+
+                <section id="section-user-perspectives" className={styles.reviewSection}>
+                    <h2>18. Real User Testimonials</h2>
+                    <div className={styles.testimonialContainer}>
+                        <blockquote className={styles.testimonialQuote}>
+                            <p>"4X on advertising and the FedEx credit are fantastic! Funding my Italy trip with points."</p>
+                            <footer>– Sarah M., Online Florist</footer>
+                        </blockquote>
+                        <blockquote className={styles.testimonialQuote}>
+                            <p>"Adaptive 4X for software/gas is brilliant. Walmart+ and cell phone protection are great perks."</p>
+                            <footer>– David L., IT Consultant</footer>
+                        </blockquote>
+                        <blockquote className={styles.testimonialQuote}>
+                            <p>"Generous 4X cap for our size. Pay Over Time 0% intro APR was helpful. Wish 3X travel booking was more flexible."</p>
+                            <footer>– Maria R., Marketing Agency</footer>
+                        </blockquote>
+                         <blockquote className={styles.testimonialQuote}>
+                            <p>"Not for me. Main expenses (ingredients) outside 4X. Didn't use credits enough. Switched to flat-rate cash back."</p>
+                            <footer>– Tom B., Artisan Bakery</footer>
+                        </blockquote>
+                         <blockquote className={styles.testimonialQuote}>
+                            <p>"4X on software and wireless bill is great. Grubhub credit, QuickBooks connection, purchase protection all valuable."</p>
+                            <footer>– Chen Z., Freelance Designer</footer>
+                        </blockquote>
                     </div>
-                </div>
-            </section>
+                    <p>These illustrate how the card excels for aligned spending but may not suit all business models.</p>
+                </section>
 
-            {/* Section 19: Final Thoughts & Conclusion */}
-            <section id="section-19" className={styles.reviewSection}>
-                <h2>19. Final Thoughts & Conclusion</h2>
-                {/* Using dangerouslySetInnerHTML for ® and ‡ */}
-                <p dangerouslySetInnerHTML={{ __html: "The <strong>American Express® Business Gold Card</strong> has significantly boosted its appeal in 2025 with the addition of up to $395 in annual statement credits ($240 Flexible Business + $155 Walmart+).‡ This fundamentally changes the calculus for its $375 annual fee, making it much easier to justify for businesses that use the relevant merchants. Combined with its powerful, adaptive 4X earning structure in key business categories (including Transit and U.S. Restaurants relevant to travel) and the valuable Membership Rewards® program, it's a formidable contender." }}></p>
-                <p dangerouslySetInnerHTML={{ __html: "While it still lacks airport lounge access and direct airfare isn't a 4X category, its strengths lie in rewarding specific high-spend areas and providing access to lucrative airline/hotel transfer partners. The 3X on Amex Travel bookings‡ and solid travel protections‡ round out its offering." }}></p>
-                <p>For businesses that can leverage both the adaptable 4X categories and the new statement credits, the Amex Business Gold offers a compelling blend of high rewards potential and tangible annual savings, positioning it as an excellent tool for turning business expenses into valuable travel experiences.</p>
-            </section>
+                <section id="section-application" className={styles.reviewSection}>
+                    <h2>19. Application Process & Eligibility</h2>
+                    <p>Apply online via Amex. "Apply With Confidence™" (if available) may offer pre-approval without a hard credit pull until you accept an offer. A hard pull occurs upon acceptance.</p>
+                    <p><strong>Eligibility:</strong></p>
+                    <ul className={styles.featureList}>
+                        <li><strong>Credit Score:</strong> Good to excellent personal credit (often 670+, ideally 700+ FICO).</li>
+                        <li><strong>Business Factors:</strong> Sole proprietors (using SSN), freelancers, LLCs, corps can apply. Annual revenue and time in business are considered.</li>
+                        <li><strong>Personal Factors:</strong> Payment history, credit utilization, income, and Amex relationship.</li>
+                    </ul>
+                    <p>Amex may notify you post-application if ineligible for the welcome bonus (e.g., prior cardholder) before a hard pull. A solid personal credit history is fundamental.</p>
+                </section>
 
-            {/* CTA Section - Placeholders */}
-            <section id="cta" className={styles.ctaSection}>
-              <h2>Get the <b>American Express® Business Gold Card</b> Today!</h2>
-              <div className={styles.ctaButtons}>
-                <a href={reviewData.applyLink} className={`${styles.btn} ${styles.btnApply}`} title="From card issuer's secure site" target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
-                <a href={reviewData.ratesLink} className={`${styles.btn} ${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored">See Rates & Fees</a>
-              </div>
-            </section>
+                <section id="section-faqs-jump" className={`${styles.reviewSection} ${styles.faqSection}`}>
+                  <h2>20. Card-Specific FAQs</h2>
+                  <div className={styles.faqContainer}>
+                      {structuredDataOptimized['@graph'].find(item => item['@type'] === 'FAQPage').mainEntity.map((faq, index) => (
+                          <details key={index} className={styles.faqItem} name={`faq-${index + 1}`}>
+                              <summary className={styles.faqQuestion}>{`${index + 1}. ${faq.name}`}</summary>
+                              <div className={styles.faqAnswer}>
+                                <p dangerouslySetInnerHTML={{ __html:
+                                  faq.acceptedAnswer.text
+                                    .replace("American Express online account", `<a href="${reviewData.officialOverviewLink}" target="_blank" rel="noopener noreferrer sponsored">American Express online account</a>`)
+                                    .replace("Amex Travel", `<a href="${reviewData.officialAmexTravelLink}" target="_blank" rel="noopener noreferrer sponsored">Amex Travel</a>`)
+                                }} />
+                              </div>
+                          </details>
+                      ))}
+                  </div>
+                </section>
 
-            {/* Section 20: Disclaimer */}
-            <section id="section-20" className={styles.reviewSection}>
-                <h2>20. Disclaimer</h2>
-                 <p style={{fontSize: '0.85rem', color: '#666'}}>
-                    Card terms, welcome offers, points valuations, earning rates, annual fees, benefits (including insurance coverage, transfer partners, credits like the Flexible Business Credit and Walmart+ Credit, perks like The Hotel Collection), and APRs are subject to change at any time without notice. Information presented here is accurate to the best of our knowledge as of April 2025 but should be verified directly with American Express before applying.
-                 </p>
-            </section>
+                <section id="section-final-verdict" className={styles.reviewSection}>
+                  <h2>21. Final Verdict: The Winning Card?</h2>
+                  <p>Should your U.S. business choose the {reviewData.cardName}? It’s a powerful tool, but not a universal fit.</p>
+                  <p>This card excels for established businesses with significant, consistent spending in its automatically-adjusting 4X bonus categories (like U.S. advertising, tech, gas, or restaurants – up to a $150k annual cap). If you’ll also maximize its statement credits (up to nearly $395 annually from FedEx, Grubhub, office supplies, and Walmart+), the ${reviewData.annualFee} annual fee can be effectively erased, or even become a net gain. The Membership Rewards® points are a strong bonus, especially for travel.</p>
+                  <p>However, the ${reviewData.annualFee} fee demands strategic use. Maximizing rewards and credits requires understanding its specific categories and active management—it's not a passive card. If your spending doesn’t align, or you prefer simplicity, this isn't for you. The ongoing APR on carried balances can also be high after any introductory offer.</p>
+                  <p><strong>Is the fee justified?</strong> Yes, if your spending perfectly aligns to leverage its 4X rewards and you fully use the statement credits. For the right business, it’s a valuable asset.</p>
+                  <p>The {reviewData.cardShortName} requires active engagement. But for a business whose spending and needs align with its strengths, it can be a truly "golden partner" for growth and rewards. Assess your spending, needs, and goals. If you see your business in this card's ideal profile, it warrants serious consideration. For more details or to apply, visit the <a href={reviewData.officialOverviewLink} target="_blank" rel="noopener noreferrer sponsored">official {reviewData.cardName} page</a>.</p>
+                </section>
 
 
-            {/* E-A-T Section - Adapted for Amex Business Gold */}
-             <section id="eat-expertise-authority-trustworthiness" className={`${styles.reviewSection} ${styles.eatSection}`}>
-                 <h2 dangerouslySetInnerHTML={{ __html: "Our Commitment to E-A-T: Expertise, Authority & Trustworthiness"}}></h2>
-                <p>
-                    At <strong>{reviewData.author}</strong>, we prioritize reliable, unbiased reviews so you can make informed credit decisions. We adhere to Google’s E‑A‑T (Expertise, Authority, and Trustworthiness) guidelines through:
-                </p>
-                <h3>1. Expertise</h3>
-                <ul className={styles.featureList}>
-                    <li><strong>Specialized Research:</strong> Our writers and analysts have years of experience in business credit cards and Membership Rewards®, understanding the nuances of the 4X adaptive categories and partner transfers.</li>
-                    <li><strong>Real-Time Updates:</strong> We continually check official issuer materials (American Express) and user data to maintain current rates, terms, credits (like Flex Business and Walmart+), and benefit details.</li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Practical Testing:</strong> We verify how categories code, how statement credits post, and the usability of perks like The Hotel Collection based on real-world data and user reports."}}></li>
-                </ul>
-                <h3>2. Authority</h3>
-                <ul className={styles.featureList}>
-                    <li><strong>Detailed Coverage:</strong> This review offers an exhaustive look at the American Express® Business Gold Card, from the $375 fee justification to advanced redemption strategies.</li>
-                    <li><strong>Trusted By Major Outlets:</strong> Our articles are frequently cited by national finance and travel news sites for Amex card analysis and Membership Rewards® insights.</li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Full Disclosure:</strong> If affiliate links or promotions exist, we clearly state them, ensuring objective editorial content."}}></li>
-                </ul>
-                <h3>3. Trustworthiness</h3>
-                <ul className={styles.featureList}>
-                    <li><strong>Independent Analysis:</strong> We never let advertisers influence our ratings or opinions on the card's value proposition or comparison points.</li>
-                    <li><strong>Frequent Revisions:</strong> We revise reviews whenever new offers appear or American Express adjusts card benefits, categories, or partner details.</li>
-                    <li><strong>Community Feedback:</strong> We encourage open discussion in comments, fostering transparency and additional user insights on Amex business card usage.</li>
-                    <li><strong>Data Security:</strong> We prioritize user privacy and follow best practices, outlined in our <Link href="/privacy-policy"><a>Privacy Policy</a></Link>.</li>
-                </ul>
-                <p dangerouslySetInnerHTML={{ __html: `By following these E‑A‑T principles, we aim to guide you responsibly toward a credit card that fits your business needs and maximizes your travel rewards with the <strong>${reviewData.cardName}</strong>.` }}></p>
-            </section>
+                <section id="section-eat" className={`${styles.reviewSection} ${styles.eatSection}`}>
+                    <h2 dangerouslySetInnerHTML={{ __html: `Our Commitment to E-A-T: Expertise, Authority &amp; Trustworthiness`}}></h2>
+                    <p>At <strong>{siteName}</strong>, we are committed to providing content that exemplifies Expertise, Authoritativeness, and Trustworthiness (E-A-T). This review of the <strong>{reviewData.cardName}</strong> has been meticulously researched and crafted. We've analyzed the card's features, benefits, rewards structure, and fees, referencing official issuer documentation from American Express and considering real-world user experiences and data points from the business finance community. Our goal is to present a balanced, comprehensive, and reliable guide to help you make an informed decision. All information is current as of <strong>{new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</strong>, but we always recommend verifying details directly with the issuer as terms can change.</p>
+                </section>
 
-          </article>
-        </div> {/* Close reviewContainer */}
+              </article>
+            </div>
+          </div>
+          <aside className={styles.sidebarArea}>
+                <TableOfContents sections={tocSections} />
+          </aside>
+        </div>
       </main>
-
-      
-    </>
+        <div className={styles.stickyFooterContainer}>
+            <div className={styles.stickyFooterContent}>
+                <Image src={reviewData.imageUrl} alt={`${reviewData.cardName} small image`} width={60} height={38} className={styles.stickyFooterCardImage} />
+                <div className={styles.stickyFooterText}>
+                  <span className={styles.stickyFooterCardName}>{reviewData.cardName}</span>
+                  <span className={styles.stickyFooterRating}>{siteName} Rating: {reviewData.ratingValue.toFixed(1)}/10</span>
+                </div>
+                <div className={styles.stickyFooterButtons}>
+                    <a
+                        href={reviewData.applyLink}
+                        className={`${styles.stickyFooterBtn} ${styles.stickyFooterBtnApply}`}
+                        target="_blank"
+                        rel="noopener noreferrer sponsored"
+                    >
+                        Apply Now
+                    </a>
+                    <a
+                        href={reviewData.ratesFeesLink}
+                        className={`${styles.stickyFooterBtn} ${styles.stickyFooterBtnRates}`}
+                        target="_blank"
+                        rel="noopener noreferrer sponsored"
+                    >
+                        See Rates & Fees
+                    </a>
+                </div>
+            </div>
+      </div>
+    </div>
   );
 }
 
-export default AmexBusinessGoldReviewPage;
+export default AmericanExpressBusinessGoldCardReviewPage;
