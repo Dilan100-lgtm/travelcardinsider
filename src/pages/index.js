@@ -361,12 +361,7 @@ export default function HomePage({ featuredReviews, latestNews }) {
                     { img: "/manuel-moreno-DGa0LQ0yDPc-unsplash.webp", alt: "Best Hotel Credit Cards for US Travelers in 2025, featuring luxury hotel imagery", title: "Hotel Rewards Showdown 2025: Elite Perks & Free Stays", desc: "Reviewing 2025's top hotel credit cards for US travelers seeking elite status and maximum free night value.", link: "/review/BestHotelCardsPage2025" },
                     { img: "/darrin-henein-sREvt-W52Tc-unsplash.webp", alt: "Alaska Airlines Visa Signature Card on a travel-themed background", title: "Alaska Airlines Visa Signature Card (2025)", desc: "West Coaster's top pick? Review Companion Fare, free bags, $95 fee & 2025 perks.", link: "/review/alaska-airlines-visa-signature-2025" },
                     
-                    
-                    
-                    
-                    
-                    
-                    
+                  
                             ].map((review, index) => (
                     <div className="card review-card" key={review.link || index}>
                     <Link href={review.link || '#'} className="review-card__image-link">
