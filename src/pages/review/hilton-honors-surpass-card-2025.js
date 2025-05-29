@@ -612,8 +612,8 @@ export default function HiltonSurpassCardReview2025() {
                 <Image
                   src={reviewDataNew.cardImageUrl} // IMPORTANT: Update this path
                   alt={`${reviewDataNew.shortCardName} card image`}
-                  width={80} // Adjust as needed for your design
-                  height={50} // Adjust as needed for your design (maintain aspect ratio)
+                  width={90} // Adjust as needed for your design
+                  height={55} // Adjust as needed for your design (maintain aspect ratio)
                   className={styles.stickyCtaCardImage} // Add CSS for this class
                   priority // If you want it to load quickly
                 />
