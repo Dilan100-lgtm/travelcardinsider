@@ -609,7 +609,7 @@ function AmericanExpressPlatinumCardReviewPage() {
                     )}
                 </div>
                 <p className={styles.heroSubtitle}>
-                  For the U.S. traveler seeking unparalleled luxury, extensive benefits, and a statement of prestige, The Platinum Card® from American Express has long been a benchmark. At TravelCardInsider, we dive deep into its 2025 offerings: from the coveted Global Lounge Collection® and Fine Hotels + Resorts® perks to over $1,500 in potential statement credits. But does its hefty $695 annual fee translate to real-world value for you? Let's unravel the Amex Platinum experience.
+                  U.S. travelers: Is the luxury Amex Platinum® worth its $695 fee? TravelCardInsider reviews 2025's lounge access, Fine Hotels + Resorts® perks, and $1,500+ in credits. We analyze if its prestige and benefits offer real value for you. Unravel the Platinum experience with our deep dive.
                 </p>
                 <div className={styles.heroCtaContainer}>
                   <div>
