@@ -54,15 +54,15 @@ const reviewDataNew = {
   },
   siteName: "TravelCardInsider.com",
   pagePath: "/review/hilton-honors-surpass-card-2025",
-  imageUrl: "/frugal-flyer-eALtkVMTCZ4-unsplash.webp", // IMPORTANT: Update with a relevant hero image for Hilton Surpass
-  cardImageUrl: "/NUS000000328_480x304_straight_withname.avif", // IMPORTANT: Update with path to a smaller card image for the CTA
+  imageUrl: "/images/hilton-surpass-hero-2025.jpg", // IMPORTANT: Update with a relevant hero image for Hilton Surpass
+  cardImageUrl: "/images/hilton-surpass-card-cta.png", // IMPORTANT: Update with path to a smaller card image for the CTA
   heroImageObjectPosition: "center center",
   imageWidth: 1600,
   imageHeight: 900,
   siteLogoUrl: "/images/logo.png", // IMPORTANT: Update
   publishDate: "2025-05-29", 
   updateDate: "2025-05-29", 
-  ratingValue: 4.6, // IMPORTANT: Set your own rating, slightly adjusted to reflect more nuanced review
+  ratingValue: 4.6, // IMPORTANT: Set your own rating
   annualFee: 150,
   applyLink: "https://www.americanexpress.com/us/credit-cards/card/hilton-honors-surpass/",
   ratesLink: "https://www.americanexpress.com/us/credit-cards/card/hilton-honors-surpass/", 
@@ -417,6 +417,7 @@ export default function HiltonSurpassCardReview2025() {
             </ol>
           </nav>
 
+          {/* Review content sections with revised tone and phrasing */}
           <section id="introduction" className={styles.reviewSection}>
             <h2 style={{textAlign:'center'}}>{reviewDataNew.h1Content}</h2>
             <p>The world of hotel credit cards can feel like a maze, right? But if you're someone who often finds themselves checking into a Hilton, the {reviewDataNew.cardName} likely pops up on your radar. Especially with its 2024 refresh tinkering with the annual fee and benefits, you're probably wondering: for 2025, does this card *actually* make sense for my travel style and wallet?</p>
@@ -593,7 +594,7 @@ export default function HiltonSurpassCardReview2025() {
             <p>If automatic Gold status, handy credits, and a solid points-earning setup at Hilton properties sound like a good deal for your travels, this card is definitely worth a closer look.</p>
             <div className={styles.ctaButtons}>
               <a href={reviewDataNew.applyLink} className={`${styles.btn} ${styles.btnApply} ${styles.btnLarge}`} target="_blank" rel="noopener noreferrer sponsored" title={`Apply for The ${reviewDataNew.cardName} on ${reviewDataNew.issuerName}'s secure site`}>
-                Apply for The {reviewDataNew.cardName}
+                Learn More & Apply for The {reviewDataNew.cardName}
               </a>
               <a href={reviewDataNew.ratesLink} className={`${styles.btn} ${styles.btnRates} ${styles.btnLarge}`} target="_blank" rel="noopener noreferrer sponsored" title={`See rates and fees for The ${reviewDataNew.cardName} on ${reviewDataNew.issuerName}'s site`}>
                 See Current Rates & Fees
@@ -604,29 +605,31 @@ export default function HiltonSurpassCardReview2025() {
         </article>
       </main>
 
-      {/* STICKY CTA SECTION MODIFIED TO INCLUDE IMAGE */}
+      {/* STICKY CTA SECTION - MODIFIED FOR BUTTONS ON RIGHT */}
       <div className={styles.stickyCtaContainer}>
         <div className={styles.stickyCtaContent}>
-            {reviewDataNew.cardImageUrl && (
-              <div className={styles.stickyCtaImageContainer}>
-                <Image
-                  src={reviewDataNew.cardImageUrl} // IMPORTANT: Update this path
-                  alt={`${reviewDataNew.shortCardName} card image`}
-                  width={90} // Adjust as needed for your design
-                  height={55} // Adjust as needed for your design (maintain aspect ratio)
-                  className={styles.stickyCtaCardImage} // Add CSS for this class
-                  priority // If you want it to load quickly
-                />
-              </div>
-            )}
-            <div className={styles.stickyCtaTextAndButtons}>
-              <span className={styles.stickyCtaText}>The {reviewDataNew.shortCardName} - ${reviewDataNew.annualFee} Annual Fee.</span>
-              <div className={styles.stickyCtaButtons}>
-                  <a href={reviewDataNew.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.btn} ${styles.btnApply} ${styles.ctaButtonApply}`}>Apply Now</a>
-                  <Link href={reviewDataNew.learnMoreLink} legacyBehavior>
-                      <a className={`${styles.btn} ${styles.btnRates} ${styles.ctaButtonLearnMore}`}>Learn More</a>
-                  </Link>
-              </div>
+            <div className={styles.stickyCtaLeftGroup}> {/* Wrapper for image and text */}
+                {reviewDataNew.cardImageUrl && (
+                  <div className={styles.stickyCtaImageContainer}>
+                    <Image
+                      src={reviewDataNew.cardImageUrl} // IMPORTANT: Update this path
+                      alt={`${reviewDataNew.shortCardName} card image`}
+                      width={80} // Adjust as needed for your design
+                      height={50} // Adjust as needed for your design (maintain aspect ratio)
+                      className={styles.stickyCtaCardImage} 
+                      priority 
+                    />
+                  </div>
+                )}
+                <span className={styles.stickyCtaText}>
+                  {reviewDataNew.shortCardName} - ${reviewDataNew.annualFee} AF
+                </span>
+            </div>
+            <div className={styles.stickyCtaButtons}>
+                <a href={reviewDataNew.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.btn} ${styles.btnApply} ${styles.ctaButtonApply}`}>Apply Now</a>
+                <Link href={reviewDataNew.learnMoreLink} legacyBehavior>
+                    <a className={`${styles.btn} ${styles.btnRates} ${styles.ctaButtonLearnMore}`}>Learn More</a>
+                </Link>
             </div>
         </div>
       </div>

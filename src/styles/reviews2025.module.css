@@ -3,7 +3,42 @@
 /* IMPORTANT: Ensure you have 'Inter' and 'Playfair Display' fonts linked in your project (e.g., in _app.js or _document.js from Google Fonts) */
 
 /* CSS Variables (Customize these as needed) */
-
+/* These were not in your provided file, but often a good practice to define here or globally */
+/* Example variables (if you were to use them consistently):
+:root {
+  --font-family-body: 'Inter', sans-serif;
+  --font-family-heading: 'Playfair Display', serif;
+  --text-dark: #333;
+  --text-medium: #555;
+  --text-light: #777;
+  --text-on-primary: #ffffff;
+  --text-on-accent: #2d3748; 
+  --bg-white: #ffffff;
+  --bg-light: #f8f9fa;
+  --bg-grey-bar: #f0f2f5;
+  --bg-zebra-stripe: #f9f9f9;
+  --border-color: #dee2e6;
+  --border-color-light: #e9ecef;
+  --amex-primary-blue: #0052cc; 
+  --amex-accent-gold: #c1a061; 
+  --amex-accent-gold-hover: #b08f51; 
+  --amex-accent-gold-border: #a8854b; 
+  --brand-green-highlight: #28a745;
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
+  --border-radius-sm: 3px;
+  --border-radius-md: 6px;
+  --border-radius-lg: 8px;
+  --border-radius-pill: 20px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.03);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -1px rgba(0,0,0,0.04);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.07), 0 4px 6px -2px rgba(0,0,0,0.03);
+}
+*/
 
 
 /* Base Page Styles */
@@ -553,7 +588,7 @@
   z-index: 1030;
   border-top: 1px solid var(--border-color-light);
 }
-.stickyCtaContent {
+.stickyCtaContent { /* This is the primary definition and should be used */
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
@@ -561,16 +596,33 @@
   justify-content: space-between;
   gap: var(--spacing-md);
 }
+.stickyCtaLeftGroup { /* New class to group image and text */
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm); /* Space between image and text, adjust as needed */
+  flex-shrink: 1; /* Allow this group to shrink if necessary */
+  min-width: 0; /* Allows flex-shrink to work properly on flex items */
+}
+.stickyCtaImageContainer {
+  flex-shrink: 0; /* Prevent image container from shrinking */
+}
+.stickyCtaCardImage {
+  border-radius: 3px; /* Optional: if you want rounded corners for the card image */
+  object-fit: contain; /* Ensures the card image is not distorted */
+}
 .stickyCtaText {
   font-size: 0.9rem;
   color: var(--text-dark);
   font-weight: 500;
-  flex-shrink: 1;
+  flex-shrink: 1; /* Allows text to shrink if space is very tight */
+  white-space: nowrap; /* Prevent text from wrapping to multiple lines */
+  overflow: hidden; /* Hide overflow if text is too long */
+  text-overflow: ellipsis; /* Add ellipsis for very long text */
 }
 .stickyCtaButtons {
   display: flex;
   gap: var(--spacing-sm);
-  flex-shrink: 0;
+  flex-shrink: 0; /* Buttons don't shrink */
 }
 /* Ensure sticky CTA buttons also use the .btn and .btnApply/.btnRates for consistency */
 .ctaButtonApply { /* Specific class for sticky button if needed, but prefer composing with .btn.btnApply */
@@ -654,13 +706,43 @@
   .reviewToc ol { margin-left: var(--spacing-sm); }
   .trustSignalContent { flex-direction: column; gap: var(--spacing-xs); text-align: center;}
   .trustSignalDivider { display: none; }
-  .stickyTocNav { display: none; }
+  .stickyTocNav { display: none; } /* Hides sticky TOC on small screens, sticky CTA bar will still show */
   .ctaSection h2 {font-size: 1.2rem;}
   .btn { padding: 10px 16px; font-size: 0.85rem;}
   .stickyCtaContainer { padding: var(--spacing-xs) var(--spacing-sm); }
-  .stickyCtaContent { flex-direction: column; gap: var(--spacing-xs); }
-  .stickyCtaText { text-align: center; }
+  .stickyCtaContent { 
+    flex-direction: row; /* Keep as row even on small screens to utilize space-between */
+    flex-wrap: nowrap; /* Prevent wrapping if possible, rely on text truncation */
+    gap: var(--spacing-xs); 
+  }
+  .stickyCtaLeftGroup {
+    min-width: 0; /* Allow shrinking */
+    flex-shrink: 1; /* Allow shrinking */
+  }
+  .stickyCtaText { 
+    text-align: left; /* Align text to left within its group */
+    font-size: 0.75rem; /* Slightly smaller text on very small screens */
+    /* white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;  Are already applied */
+  }
+  .stickyCtaButtons {
+    gap: var(--spacing-xs); /* Smaller gap between buttons */
+  }
+  .stickyCtaButtons .btn { /* Make buttons in sticky CTA smaller on mobile */
+    padding: 8px 10px;
+    font-size: 0.75rem;
+    min-height: 32px;
+  }
+  .stickyCtaCardImage { /* Adjust image size on small screens if needed */
+    /* Example:
+    width: 60px !important; 
+    height: 38px !important; 
+    The width/height on Image component in JS might need to be dynamic or this needs !important
+    */
+  }
 }
+
 
 /* Fallback for tablereviewSection */
 .tablereviewSectionResponsive { width: 100%; overflow-x: auto; margin-top: 1rem; }
@@ -669,29 +751,6 @@
 .tablereviewSection th, .tablereviewSection td { padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border-color); font-size: 0.95rem; }
 .tablereviewSection tbody tr:hover { background-color: #f0f0f0; }
 .tablereviewSection th { font-weight: bold; }
-/* In reviews2025.module.css */
 
-.stickyCtaContent {
-  /* Existing styles */
-  display: flex; /* To align image and text/buttons block */
-  align-items: center; /* Vertically align items */
-  gap: 10px; /* Space between image and text/buttons block */
-}
-
-.stickyCtaImageContainer {
-  flex-shrink: 0; /* Prevent image container from shrinking */
-}
-
-.stickyCtaCardImage {
-  border-radius: 3px; /* Optional: if you want rounded corners for the card image */
-  /* Add any other specific styling for the image itself */
-}
-
-.stickyCtaTextAndButtons {
-  display: flex; /* To manage layout of text and buttons if needed */
-  flex-direction: column; /* Stack text and buttons vertically */
-  flex-grow: 1; /* Allow this block to take available space */
-   /* Or use flex-direction: row; align-items: center; if you want them side-by-side */
-}
-
-/* Adjust .stickyCtaText and .stickyCtaButtons as needed for spacing within .stickyCtaTextAndButtons */
+/* Cleaned up the end of the file: removed duplicate/obsolete CTA styles */
+/* The necessary styles for .stickyCtaImageContainer and .stickyCtaCardImage are now part of the main .stickyCta... block */
