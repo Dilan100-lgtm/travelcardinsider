@@ -1,635 +1,791 @@
-// File: pages/review/hilton-honors-surpass-card-2025.js
+// Example Path: pages/reviews/hilton-honors-surpass.js
+// Or: pages/reviews/[slug].js (if using dynamic routing with 'hilton-honors-surpass' as slug)
 
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+// !!! WARNING: THIS FILE CONTAINS PLACEHOLDER DATA/URLs/DIMENSIONS !!!
+// !!! CTA LINKS IN SOURCE HTML WERE INCORRECT - PLACEHOLDERS USED BELOW !!!
+// !!! E-A-T SECTION IN SOURCE HTML WAS INCORRECT - GENERIC TEXT USED BELOW !!!
+// !!! YOU MUST REPLACE ALL PLACEHOLDERS MARKED WITH '!!!' BEFORE DEPLOYMENT !!!
+// !!! VERIFY ALL CARD DETAILS & SCHEMA VALUES AGAINST OFFICIAL ISSUER INFO !!!
+
+import React, { useState, useEffect, useCallback, useRef } from 'react'; // Hooks for tooltip
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from '../../styles/reviews2025.module.css'; // Ensure this path is correct
+import styles from '../../styles/ReviewPage.module.css'; // Using the REVIEW CSS module
+import Header from '../../components/Header'; // Assuming you have these components
+import Footer from '../../components/Footer'; // Assuming you have these components
 
-const siteUrl = 'https://www.travelcardinsider.com'; // Your actual site URL
-
-const reviewDataNew = {
-  cardName: "Hilton Honors American Express Surpass® Card",
-  shortCardName: "Hilton Surpass",
-  issuerName: "American Express",
-  issuerLogoUrl: "/images/issuer-logo-amex.svg", // IMPORTANT: Update with actual American Express logo path
-  welcomeOfferHeadline: "130K Bonus Points", // Example: "130,000 Hilton Honors Bonus Points after meeting spend"
-  title: "Hilton Honors Surpass Card Review (2025): Your Ticket to Elite Hilton Perks?",
-  description: "Is the $150 Hilton Honors Surpass Card your best bet for 2025? We dig into real-world value: Gold status, $200 credit, free night potential, and how those points actually add up.",
-  keywords: [
-    "Hilton Honors American Express Surpass Card review 2025",
-    "Hilton Surpass card",
-    "American Express hotel card",
-    "$150 annual fee card",
-    "Hilton Honors points",
-    "Hilton Gold status",
-    "Hilton free night reward",
-    "travel rewards credit card US",
-    "best hotel credit card",
-    "Amex Hilton Surpass review"
-  ],
-  author: { // Using the same author details as your example
-      name: 'Dilan Madushanka',
-      title: 'Founder & Lead Editor',
-      imageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // IMPORTANT: Update
-      imageWidth: 40,
-      imageHeight: 40,
-      tooltipImageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // IMPORTANT: Update
-      tooltipImageWidth: 60,
-      tooltipImageHeight: 60,
-      expertise: [
-          'Hotel Co-brand Cards',
-          'Travel Rewards Programs',
-          'Loyalty Program Analysis',
-          'Maximizing Point Redemptions',
-          'Credit Card Benefits'
-      ],
-      bioSnippet: 'Dilan Madushanka is the founder and lead editor of TravelCardInsider.com, dedicated to demystifying credit cards and uncovering their real-world value for smarter travel.',
-      fullBioLink: '/author/dilan-madushanka', // IMPORTANT: Update
-      socialLinks: {
-          linkedin: 'https://www.linkedin.com/in/dilan-madushanka-b65293365',
-          twitter: 'https://x.com/team_dilan',
-          email: 'team@travelcardinsider.com'
-      }
-  },
-  siteName: "TravelCardInsider.com",
-  pagePath: "/review/hilton-honors-surpass-card-2025",
-  imageUrl: "/images/hilton-surpass-hero-2025.jpg", // IMPORTANT: Update with a relevant hero image for Hilton Surpass
-  cardImageUrl: "/images/hilton-surpass-card-cta.png", // IMPORTANT: Update with path to a smaller card image for the CTA
-  heroImageObjectPosition: "center center",
-  imageWidth: 1600,
-  imageHeight: 900,
-  siteLogoUrl: "/images/logo.png", // IMPORTANT: Update
-  publishDate: "2025-05-29", 
-  updateDate: "2025-05-29", 
-  ratingValue: 4.6, // IMPORTANT: Set your own rating, slightly adjusted to reflect more nuanced review
-  annualFee: 150,
-  applyLink: "https://www.americanexpress.com/us/credit-cards/card/hilton-honors-surpass/",
-  ratesLink: "https://www.americanexpress.com/us/credit-cards/card/hilton-honors-surpass/", 
-  learnMoreLink: "/cards/hilton-surpass-card", // IMPORTANT: Create this page or adjust
-  h1Content: "Hilton Honors Surpass® Card 2025: A Traveler's Honest Look",
-  heroH1Content: "Hilton Surpass® Card (2025): Is It *Really* Worth the $150 Fee?",
-  reviewBody: "Our 2025 hands-on review of the Amex Hilton Honors Surpass Card. We explore if the $150 annual fee genuinely pays off with Gold status, credits, and point-earning for real-world Hilton travelers.",
-  sku: "AMEX-HILTONSURPASS-TCI-2025",
-  mpn: "HILTONSURPASSCARD",
-  brandName: "Hilton Honors American Express Surpass® Card",
-  keyPerks: [
-    { id: "goldStatus", name: "Hilton Honors™ Gold Status", details: "Complimentary Gold status with benefits like 80% points bonus on stays, space-available room upgrades, and daily Food & Beverage credit (U.S. hotels) or Continental Breakfast (non-U.S. hotels).", frequency: "Benefit" },
-    { id: "hiltonCredit", name: "$200 Annual Hilton Credit", details: "Receive up to $50 in statement credits each quarter for eligible Hilton purchases charged to your Card.", frequency: "Annual (Quarterly)" },
-    { id: "freeNightReward", name: "Earnable Free Night Reward", details: "Earn a Free Night Reward from Hilton Honors after you spend $15,000 on eligible purchases on your Card in a calendar year.", frequency: "Benefit (Annual Spend)" },
-    { id: "earn12x", name: "12X Hilton Points", details: "For each dollar of eligible purchases charged directly with a hotel or resort within the Hilton portfolio.", frequency: "Benefit" },
-    { id: "earn6x", name: "6X Points (U.S. Categories)", details: "At U.S. restaurants, U.S. supermarkets, and U.S. gas stations.", frequency: "Benefit" },
-    { id: "earn4x", name: "4X Points (U.S. Online Retail)", details: "On U.S. online retail purchases.", frequency: "Benefit" },
-    { id: "noFtF", name: "No Foreign Transaction Fees", details: "Make purchases abroad without incurring foreign transaction fees.", frequency: "Benefit" },
-    { id: "diamondPath", name: "Path to Diamond Status", details: "Spend $40,000 on eligible purchases on your Card in a calendar year and get upgraded to Hilton Honors Diamond status.", frequency: "Benefit (Annual Spend)" },
-    { id: "nationalStatus", name: "National Car Rental® Status", details: "Enjoy complimentary Emerald Club Executive® status (enrollment in the Emerald Club is required).", frequency: "Benefit" }
-  ]
+// Simplified data object based on the final template structure
+const reviewData = {
+  cardName: 'Hilton Honors American Express Surpass® Card',
+  title: 'Hilton Honors American Express Surpass® Card – In-Depth 2025 Review',
+  description: 'A comprehensive 2000-word review of the Hilton Honors American Express Surpass® Card, focusing on travel benefits, earning potential, Hilton Honors synergy, 2025 updates, pros, cons, and advanced usage tips.',
+  keywords: 'Hilton Honors, Amex Surpass, hotel credit card, travel rewards, 2025',
+  author: 'TravelCardInsider', // *** REPLACE with your actual author/site name ***
+  imageUrl: '/NUS000000328_480x304_straight_withname.avif', // *** VERIFY PATH in /public ***
+  ratingValue: 8.1, // From Hilton Surpass HTML
+  applyLink: 'https://www.americanexpress.com/us/credit-cards/card/hilton-honors-surpass/', // *** REPLACE: Source HTML had incorrect Discover link ***
+  // !!! Source HTML had incorrect Discover link for Rates & Fees. Using placeholder. Find correct Amex link. !!!
+  ratesLink: 'https://www.americanexpress.com/us/credit-cards/card/hilton-honors-surpass/', // *** REPLACE WITH CORRECT RATES/FEES LINK ***
+  // Image dimensions (MUST BE ACCURATE for next/image) - Guessed from filename
+  imageWidth: 480, // *** REPLACE with actual image width ***
+  imageHeight: 304, // *** REPLACE with actual image height ***
 };
 
-const pageUrlFull = `${siteUrl}${reviewDataNew.pagePath}`;
-
-const competitorCardsData = [
-  {
-    id: "hiltonNoFee",
-    name: "Hilton Honors American Express Card (No Annual Fee)",
-    annualFee: "$0",
-    keyFeaturesNotes: "Offers basic Silver status and fewer perks. Suited for very infrequent Hilton guests who want to earn some points without an annual commitment.",
-    comparisonToHiltonSurpass: "The Surpass offers significantly better value for regular Hilton guests due to Gold status (worth much more than Silver), the $200 Hilton credit, and the potential for a Free Night Reward. The higher earning rates on Surpass also accelerate rewards.",
-    officialLinkText: "Compare on Amex Site", 
-    officialLink: "https://www.americanexpress.com/us/credit-cards/card/hilton-honors/" 
-  },
-  {
-    id: "hiltonAspire",
-    name: "Hilton Honors Aspire Card from American Express",
-    annualFee: "$550", 
-    keyFeaturesNotes: "Premium card offering automatic Diamond status, multiple statement credits (e.g., airline fee, Hilton resort), and an annual Free Night Reward upon renewal.",
-    comparisonToHiltonSurpass: "The Aspire is for the ultimate Hilton loyalist who can maximize its extensive credits to offset the higher annual fee. The Surpass is the mid-tier sweet spot, offering strong Gold status and valuable perks without the Aspire's premium price tag.",
-    officialLinkText: "Details on Amex Site",
-    officialLink: "https://www.americanexpress.com/us/credit-cards/card/hilton-honors-aspire/"
-  },
-  {
-    id: "marriottBrilliant",
-    name: "Marriott Bonvoy Brilliant® American Express® Card",
-    annualFee: "$650", 
-    keyFeaturesNotes: "Offers Marriott Bonvoy Platinum Elite status, annual Free Night Award (up to 85K points), dining credits, and other premium travel perks.",
-    comparisonToHiltonSurpass: "A direct competitor for Marriott loyalists. The choice depends on hotel brand preference. Both offer strong elite status and property credits relative to their fees.",
-    officialLinkText: "Details on Amex Site",
-    officialLink: "https://www.americanexpress.com/us/credit-cards/card/marriott-bonvoy-brilliant/"
-  },
-  {
-    id: "chaseSapphirePreferred",
-    name: "Chase Sapphire Preferred® Card",
-    annualFee: "$95",
-    keyFeaturesNotes: "Offers flexible Chase Ultimate Rewards® points transferable to various airline and hotel partners. Includes a $50 annual hotel credit through Chase Travel.",
-    comparisonToHiltonSurpass: "Better for travelers seeking flexibility across brands rather than deep loyalty to Hilton. Lacks Hilton-specific elite benefits and higher Hilton earning rates offered by Surpass.",
-    officialLinkText: "Official Chase Page",
-    officialLink: "https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred"
-  }
+// --- Rating Tooltip Content (Customize if needed for Hilton Surpass) ---
+const ratingCriteria = [ // *** VERIFY/CUSTOMIZE these criteria for Hilton Surpass Rating ***
+    'Hilton Points Earning Rate (12x/6x/3x)',
+    'Automatic Gold Status Value',
+    'Priority Pass™ Lounge Visits (10)',
+    'Welcome Bonus Value',
+    'Annual Fee ($95)'
 ];
 
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "Review",
-  "itemReviewed": {
-    "@type": "Product", 
-    "name": reviewDataNew.cardName,
-    "brand": { "@type": "Brand", "name": reviewDataNew.issuerName },
-    "description": reviewDataNew.description,
-    "image": `${siteUrl}${reviewDataNew.imageUrl}`,
-    "sku": reviewDataNew.sku,
-    "mpn": reviewDataNew.mpn,
-    "offers": {
-        "@type": "Offer",
-        "url": reviewDataNew.applyLink,
-        "priceCurrency": "USD",
-        "price": reviewDataNew.annualFee.toString(),
-        "priceSpecification": {
-            "@type": "PriceSpecification",
-            "price": reviewDataNew.annualFee,
-            "priceCurrency": "USD",
-            "valueAddedTaxIncluded": "false",
-            "billingIncrement": "1",
-            "unitText": "ANNUAL"
-        },
-        "seller": { "@type": "Organization", name: reviewDataNew.issuerName }
+function HiltonHonorsSurpassReviewPage() {
+  // --- Tooltip State and Logic ---
+  const [showRatingInfo, setShowRatingInfo] = useState(false);
+  const tooltipRef = useRef(null);
+
+  const handleIconClick = useCallback((event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        setShowRatingInfo(prevState => !prevState);
+    }, []);
+
+    const closeTooltip = useCallback(() => {
+        setShowRatingInfo(false);
+    }, []);
+
+    useEffect(() => {
+        if (!showRatingInfo) return;
+        const handleClickOutside = (event) => {
+            const isInfoButton = event.target.closest(`.${styles.infoIconButton}`);
+            if (tooltipRef.current && !tooltipRef.current.contains(event.target) && !isInfoButton) {
+                closeTooltip();
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [showRatingInfo, closeTooltip]);
+  // --- End Tooltip State and Logic ---
+
+
+  // Inline Structured Data
+  // !!! VERIFY all URLs, counts, and details FOR HILTON SURPASS AMEX !!!
+  const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
+  const pageUrl = `${siteUrl}/cards/hilton-honors-surpass`; // *** REPLACE with your actual page URL ***
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Hilton Honors American Express Surpass® Card",
+    "image": `${siteUrl}${reviewData.imageUrl}`, // *** Assuming imageUrl starts with / ***
+    "description": "The Hilton Honors American Express Surpass® Card offers high rewards at Hilton properties (12x), automatic Gold status, lounge passes, and synergy in the Hilton Honors ecosystem.", // Adjusted description
+    "brand": {
+      "@type": "Brand",
+      "name": "American Express" // Issuer
+    },
+     "review": {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": reviewData.ratingValue.toString(),
+        "bestRating": "10",
+        "worstRating": "1"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": reviewData.author
+      },
+      "reviewBody": reviewData.description // Use meta description
     },
     "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": reviewDataNew.ratingValue.toString(),
-        "bestRating": "5",
-        "worstRating": "1",
-        "reviewCount": "1" // IMPORTANT: Update with actual number of reviews if you aggregate them
+      "@type": "AggregateRating",
+      "ratingValue": reviewData.ratingValue.toString(),
+      "bestRating": "10",
+      "worstRating": "1",
+      "ratingCount": 610, // *** REPLACE with actual or estimated count ***
+      "reviewCount": 610  // *** REPLACE with actual or estimated count ***
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": reviewData.applyLink.startsWith('http') ? reviewData.applyLink : `${siteUrl}${reviewData.applyLink}`, // *** Ensure full APPLY URL ***
+      "priceCurrency": "USD",
+      "price": "95", // Annual Fee for Hilton Surpass
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition"
     }
-  },
-  "reviewRating": {
-    "@type": "Rating",
-    "ratingValue": reviewDataNew.ratingValue.toString(),
-    "bestRating": "5",
-    "worstRating": "1"
-  },
-  "headline": reviewDataNew.title,
-  "author": { "@type": "Person", "name": reviewDataNew.author.name },
-  "publisher": {
-    "@type": "Organization",
-    "name": reviewDataNew.siteName,
-    "logo": { "@type": "ImageObject", "url": `${siteUrl}${reviewDataNew.siteLogoUrl}` }
-  },
-  "datePublished": reviewDataNew.publishDate,
-  "dateModified": reviewDataNew.updateDate,
-  "description": reviewDataNew.description, 
-  "keywords": reviewDataNew.keywords.join(', '),
-  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrlFull },
-  "image": [ `${siteUrl}${reviewDataNew.imageUrl}` ] 
-};
+     // Consider adding "provider": { "@type": "Organization", "name": "Hilton" }
+  };
 
-const TocLinks = [
-  { href: "#introduction", label: "Introduction: Why Surpass?" },
-  { href: "#decoding-surpass", label: "The Surpass Lowdown: Costs & Offer" },
-  { href: "#unpacking-perks", label: "Perks Unpacked: Real-World Value" },
-  { href: "#earning-points", label: "How You'll Rack Up Hilton Points" }, 
-  { href: "#real-voices", label: "Beyond the Hype: Cardholder Takes" },
-  { href: "#surpass-us-international", label: "Surpass: At Home & Abroad" },
-  { href: "#competitor-comparison", label: "Surpass vs. The Field" },
-  { href: "#pros-cons", label: "The Good, The Bad, The Surpass" },
-  { href: "#verdict", label: "Our 2025 Verdict: Is It For You?" },
-  { href: "#final-thoughts", label: "Final Takeaways" },
-];
-
-export default function HiltonSurpassCardReview2025() {
-  const authorRef = useRef(null);
-  const authorTooltipRef = useRef(null);
-  const [showAuthorBioTooltip, setShowAuthorBioTooltip] = useState(false);
-
-  const [activeSection, setActiveSection] = useState('');
-  const [showStickyNav, setShowStickyNav] = useState(false);
-  const stickyNavRef = useRef(null);
-
-  const handleAuthorMouseEnter = useCallback(() => { if (authorRef.current?.tooltipTimeoutId) clearTimeout(authorRef.current.tooltipTimeoutId); setShowAuthorBioTooltip(true); }, []);
-  const handleAuthorMouseLeave = useCallback(() => { const timerId = setTimeout(() => { if (authorRef.current && authorTooltipRef.current) { const isHoveringTrigger = authorRef.current.matches(':hover'); const isHoveringTooltip = authorTooltipRef.current.matches(':hover'); const isFocusWithinTrigger = authorRef.current.contains(document.activeElement); const isFocusWithinTooltip = authorTooltipRef.current.contains(document.activeElement); if (!isHoveringTrigger && !isHoveringTooltip && !isFocusWithinTrigger && !isFocusWithinTooltip) setShowAuthorBioTooltip(false); } else if (!authorRef.current?.matches(':hover') && !authorTooltipRef.current?.matches(':hover')) setShowAuthorBioTooltip(false); }, 150); if (authorRef.current) authorRef.current.tooltipTimeoutId = timerId; }, [authorRef, authorTooltipRef]);
-  const handleTooltipMouseEnter = useCallback(() => { if (authorRef.current?.tooltipTimeoutId) clearTimeout(authorRef.current.tooltipTimeoutId); }, []);
-
-  useEffect(() => {
-    function handleClickOutside(event) { if (showAuthorBioTooltip && authorRef.current && !authorRef.current.contains(event.target) && authorTooltipRef.current && !authorTooltipRef.current.contains(event.target)) setShowAuthorBioTooltip(false); }
-    if (showAuthorBioTooltip) document.addEventListener("mousedown", handleClickOutside); else document.removeEventListener("mousedown", handleClickOutside);
-    return () => { document.removeEventListener("mousedown", handleClickOutside); if(authorRef.current?.tooltipTimeoutId) clearTimeout(authorRef.current.tooltipTimeoutId); };
-  }, [showAuthorBioTooltip, authorRef, authorTooltipRef]);
-  
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { rootMargin: "-20% 0px -80% 0px", threshold: 0.1 }
-    );
-
-    const sections = TocLinks.map(link => document.getElementById(link.href.substring(1)));
-    sections.forEach(section => {
-      if (section) observer.observe(section);
-    });
-
-    const handleScroll = () => {
-      const heroImageEl = document.querySelector(`.${styles.heroImageContainer}`);
-      const heroImageHeight = heroImageEl ? heroImageEl.offsetHeight : 400; 
-      if (window.scrollY > heroImageHeight * 0.8) {
-        setShowStickyNav(true);
-      } else {
-        setShowStickyNav(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      sections.forEach(section => {
-        if (section) observer.unobserve(section);
-      });
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []); 
-
-  const formattedUpdateDate = new Date(reviewDataNew.updateDate).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
 
   return (
     <>
+      {/* ===== HEAD SECTION for Metadata & SEO ===== */}
       <Head>
-        <title>{reviewDataNew.title}</title>
-        <meta name="description" content={reviewDataNew.description} />
-        <meta name="keywords" content={reviewDataNew.keywords.join(', ')} />
-        <meta name="author" content={reviewDataNew.author.name} />
-        <meta name="robots" content="index,follow" />
-        <link rel="canonical" href={pageUrlFull} />
+        <title dangerouslySetInnerHTML={{ __html: reviewData.title }}></title>
+        <meta name="description" content={reviewData.description} />
+        <meta name="keywords" content={reviewData.keywords} />
+        <meta name="author" content={reviewData.author} />
+        <link rel="canonical" href={pageUrl} />
+        {/* Preload critical fonts */}
+        <link rel="preload" href="/fonts/Roboto_Condensed-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/Roboto_Condensed-Bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/PlayfairDisplay-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/Playfair-Display-Bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+
+        {/* OG/Twitter tags */}
+        <meta property="og:title" content={reviewData.title} />
+        <meta property="og:description" content={reviewData.description} />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:image" content={structuredData.image} />
         <meta property="og:type" content="article" />
-        <meta property="og:title" content={reviewDataNew.title} />
-        <meta property="og:description" content={reviewDataNew.description} />
-        <meta property="og:url" content={pageUrlFull} />
-        <meta property="og:image" content={`${siteUrl}${reviewDataNew.imageUrl}`} />
-        <meta property="og:image:width" content={String(reviewDataNew.imageWidth)} />
-        <meta property="og:image:height" content={String(reviewDataNew.imageHeight)} />
-        <meta property="og:site_name" content={reviewDataNew.siteName} />
-        <meta property="article:publisher" content={`https://www.facebook.com/yourtravelcardinsiderprofile`} /> 
-        <meta property="article:published_time" content={reviewDataNew.publishDate} />
-        <meta property="article:modified_time" content={reviewDataNew.updateDate} />
-        <meta property="article:author" content={reviewDataNew.author.name} /> 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@TravelCardInsid" /> 
-        <meta name="twitter:title" content={`${reviewDataNew.shortCardName} (2025): Does $${reviewDataNew.annualFee} Unlock Real Hilton Value?`} />
-        <meta name="twitter:description" content={`Our honest ${new Date(reviewDataNew.publishDate).getFullYear()} take on the Hilton Surpass: Gold status, $200 credit, Free Night perks & more. Is this $${reviewDataNew.annualFee} card a keeper?`} />
-        <meta name="twitter:image" content={`${siteUrl}${reviewDataNew.imageUrl}`} />
-        <meta name="twitter:creator" content={reviewDataNew.author.socialLinks.twitter ? reviewDataNew.author.socialLinks.twitter.replace('https://x.com/', '@') : '@DilanMadushanka'} /> 
-        <meta name="geo.region" content="US" /> 
-        <meta name="geo.placename" content="United States" />
-        <meta name="language" content="en-US" />
-        <meta name="distribution" content="global" />
-        <link rel="alternate" hrefLang="en-us" href={pageUrlFull} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+        <meta name="twitter:title" content={reviewData.title} />
+        <meta name="twitter:description" content={reviewData.description} />
+        <meta name="twitter:image" content={structuredData.image} />
+
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+        {/* Structured Data (JSON-LD) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+        <link rel="alternate" href="https://www.travelcardinsider.com" hreflang="en-us" />
       </Head>
 
-      <div className={styles.trustSignalBar}>
-        <div className={styles.trustSignalContent}>
-          {reviewDataNew.issuerLogoUrl && (
-            <Image src={reviewDataNew.issuerLogoUrl} alt={`${reviewDataNew.issuerName} logo`} width={24} height={24} className={styles.issuerLogoSmall} />
-          )}
-          <span>{reviewDataNew.shortCardName}</span>
-          <span className={styles.trustSignalDivider}>·</span>
-          <span>${reviewDataNew.annualFee} AF</span>
-          <span className={styles.trustSignalDivider}>·</span>
-          <span>{reviewDataNew.welcomeOfferHeadline}</span>
-          <span className={styles.trustSignalBadge}>Updated {formattedUpdateDate}</span>
-        </div>
-      </div>
+      
 
-      {showStickyNav && (
-        <nav className={styles.stickyTocNav} ref={stickyNavRef}>
-          <div className={styles.stickyTocContent}>
-            <span className={styles.stickyTocTitle}>On this page: {reviewDataNew.shortCardName}</span>
-            <ul className={styles.stickyTocList}>
-              {TocLinks.map(link => (
-                <li key={link.href}>
-                  <a href={link.href} className={activeSection === link.href.substring(1) ? styles.activeStickyTocLink : styles.stickyTocLink}>
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-             <a href={reviewDataNew.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.stickyTocApplyBtn}`}>Apply Now</a>
-          </div>
-        </nav>
-      )}
+      <main>
+        {/* Spacing for fixed header */}
+        <div style={{ marginTop: '5rem' }}></div> {/* Reverted to 5rem like template */}
 
-      <div className={styles.heroImageContainer}>
-        <Image
-          src={reviewDataNew.imageUrl} 
-          alt={`${reviewDataNew.cardName} from ${reviewDataNew.issuerName} - benefits and rewards review 2025`}
-          width={reviewDataNew.imageWidth}
-          height={reviewDataNew.imageHeight}
-          className={styles.heroImage}
-          priority
-          style={{ objectPosition: reviewDataNew.heroImageObjectPosition || "center center" }}
-        />
-        <div className={styles.heroTextOverlay}>
-          <h1 className={styles.heroTitle}>{reviewDataNew.heroH1Content}</h1>
-        </div>
-      </div>
+        {/* Review Container using CSS Module */}
+        <div className={styles.reviewContainer}>
+          <article> {/* Wrap main content in article */}
+            {/* ============= REVIEW HEADER ============= */}
+            <header className={styles.reviewHeader}>
+               {/* Using dangerouslySetInnerHTML for ® */}
+              <h1 dangerouslySetInnerHTML={{ __html: "Hilton Honors American Express Surpass® Card – In-Depth 2025 Review"}}></h1>
 
-      <main className={styles.reviewPageMain}>
-        <article className={styles.reviewContainer}>
-          <header className={styles.reviewHeader}>
-          <div
-                className={styles.authorBioContainer}
-                ref={authorRef}
-                onMouseEnter={handleAuthorMouseEnter}
-                onMouseLeave={handleAuthorMouseLeave}
-                onFocus={handleAuthorMouseEnter}
-                onBlur={handleAuthorMouseLeave}
-                aria-haspopup="true"
-                aria-expanded={showAuthorBioTooltip}
-                tabIndex={0} 
-            >
-                <Image 
-                    src={reviewDataNew.author.imageUrl} 
-                    alt={`${reviewDataNew.author.name} headshot`} 
-                    width={reviewDataNew.author.imageWidth} 
-                    height={reviewDataNew.author.imageHeight} 
-                    className={styles.authorImageSmall} 
-                    priority 
-                />
-                <div className={styles.authorInfoBlock}>
-                    <div className={styles.authorNameLine}>
-                        <span className={styles.authorPrefix}>By</span>
-                        <Link href={reviewDataNew.author.fullBioLink || '#'} legacyBehavior>
-                          <a className={styles.authorName}>{reviewDataNew.author.name}</a>
-                        </Link>
-                    </div>
-                    <span className={styles.authorTitle}>{reviewDataNew.author.title}</span>
-                    {reviewDataNew.updateDate && (
-                        <time dateTime={reviewDataNew.updateDate} className={styles.authorLastEdited}>
-                            Fact checked: {new Date(reviewDataNew.updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-                        </time>
-                    )}
-                    {reviewDataNew.author.socialLinks && (
-                        <div className={styles.authorSocialLinks}>
-                            {reviewDataNew.author.socialLinks.linkedin && ( <a href={reviewDataNew.author.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${reviewDataNew.author.name} on LinkedIn`} className={styles.socialIconLink}><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>)}
-                            {reviewDataNew.author.socialLinks.twitter && ( <a href={reviewDataNew.author.socialLinks.twitter} target="_blank" rel="noopener noreferrer" aria-label={`${reviewDataNew.author.name} on Twitter`} className={styles.socialIconLink}><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-.422.724-.665 1.56-.665 2.452 0 1.697.864 3.198 2.18 4.078-.8-.025-1.555-.247-2.227-.616v.054c0 2.37 1.683 4.333 3.91 4.78-.426.116-.874.174-1.337.174-.31 0-.611-.03-.904-.085.622 1.936 2.421 3.338 4.553 3.377-1.672 1.309-3.781 2.088-6.072 2.088-.394 0-.784-.023-1.169-.069 2.16 1.389 4.723 2.202 7.482 2.202 8.979 0 13.897-7.446 13.897-13.898 0-.21 0-.42-.015-.63.953-.689 1.778-1.56 2.433-2.525z"/></svg></a>)}
-                            {reviewDataNew.author.socialLinks.email && ( <a href={`mailto:${reviewDataNew.author.socialLinks.email}`} aria-label={`Email ${reviewDataNew.author.name}`} className={styles.socialIconLink}><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg></a>)}
+              {/* Section 1 Content (Part of Header Structure in Template) */}
+              <section id="section-1">
+                 {/* Using dangerouslySetInnerHTML for ® & ™ */}
+                <div className={styles.intro}>
+                  <p dangerouslySetInnerHTML={{ __html: "The <strong>Hilton Honors American Express Surpass® Card</strong> hits the sweet spot for travelers wanting <strong>high-value Hilton points</strong>, <strong>automatic Gold status</strong>, and moderate perks without the $450+ premium fees. Priced at <strong>$95/year</strong>, it offers <strong>up to 12x</strong> at Hilton properties, <strong>6x</strong> at U.S. restaurants/groceries/gas, plus additional benefits like 10 free lounge passes via Priority Pass™. This ~2,000-word review covers 20 sections—from quick stats (including APR details) to synergy with Hilton’s loyalty program, disclaimers, advanced usage tips, and how it performs in 2025’s travel rewards environment." }}></p>
+                </div>
+
+                {/* Image Container */}
+                <div className={styles.cardImageContainer}>
+                  {/* Class name adjusted */}
+                   <Image
+                     src={reviewData.imageUrl}
+                      /* Using dangerouslySetInnerHTML for ® */
+                     alt={"Hilton Honors American Express Surpass® Card"}
+                     width={reviewData.imageWidth} // *** REPLACE or use data ***
+                     height={reviewData.imageHeight} // *** REPLACE or use data ***
+                     className={styles.cardImage}
+                     priority
+                   />
+                 </div>
+
+                {/* RATING SECTION */}
+                <div className={styles.ratingSection}>
+                  <span className={styles.tciRating}>
+                    <button
+                      type="button"
+                      className={styles.infoIconButton}
+                      aria-label="Rating Information"
+                      title="Our TCI rating info"
+                      onClick={handleIconClick}
+                    >
+                       <svg aria-hidden="true" focusable="false" className={styles.infoIcon} viewBox="0 0 16 16">
+                         <path fillRule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                         <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                       </svg>
+                    </button>
+                    TCI Rating: <strong>{reviewData.ratingValue.toFixed(1)}</strong>/10
+
+                    {/* --- Conditionally Rendered Tooltip --- */}
+                    {showRatingInfo && (
+                        <div
+                            ref={tooltipRef}
+                            className={styles.ratingTooltip}
+                            role="tooltip"
+                            aria-live="polite"
+                        >
+                            <strong>TCI Rating: {reviewData.ratingValue.toFixed(1)}/10</strong>
+                            {/* Using ratingCriteria array */}
+                            <p className={styles.tooltipIntro}>Our TCI rating system criteria including rewards, welcome bonus, annual fee, redemption flexibility, travel benefits, APR, foreign transaction fees, user experience, and other features.</p>
+                            
+                                 
                         </div>
                     )}
+                  </span>
+
+                  {/* STAR RATING */}
+                  <div className={styles.starRating} title={`Rated ${reviewData.ratingValue} out of 10 stars`} style={{ '--rating': `${reviewData.ratingValue * 10}%` }}>
+                    <span>★★★★★</span>
+                    <span className={styles.filledStars}>★★★★★</span>
+                  </div>
+
+                  <div className={styles.ratingDescription}>
+                     {/* Using dangerouslySetInnerHTML for ® */}
+                    <i dangerouslySetInnerHTML={{__html:"A strong mid-tier Hilton card with high earning, Gold status, and 10 lounge visits for a $95 fee—ideal for frequent Hilton guests."}}></i>
+                  </div>
                 </div>
-                {showAuthorBioTooltip && ( 
-                    <div className={styles.authorTooltip} ref={authorTooltipRef} role="tooltip" onMouseEnter={handleTooltipMouseEnter} onMouseLeave={handleAuthorMouseLeave} onFocus={handleTooltipMouseEnter} onBlur={handleAuthorMouseLeave}>
-                         <div className={styles.authorTooltipHeader}>
-                             <Image 
-                                src={reviewDataNew.author.tooltipImageUrl} 
-                                alt={`${reviewDataNew.author.name} headshot`} 
-                                width={reviewDataNew.author.tooltipImageWidth} 
-                                height={reviewDataNew.author.tooltipImageHeight} 
-                                className={styles.authorTooltipImage}
-                              />
-                             <div className={styles.authorTooltipInfo}>
-                                 <span className={styles.authorTooltipName}>{reviewDataNew.author.name}</span>
-                                 <span className={styles.authorTooltipTitle}>{reviewDataNew.author.title}</span>
-                             </div>
-                           </div>
-                           {reviewDataNew.author.expertise && reviewDataNew.author.expertise.length > 0 && ( <div className={styles.authorTooltipExpertise}><strong>Expertise</strong><ul>{reviewDataNew.author.expertise.map(area => <li key={area}>{area}</li>)}</ul></div>)}
-                           <p className={styles.authorTooltipBioSnippet}>{reviewDataNew.author.bioSnippet}</p>
-                           {reviewDataNew.author.fullBioLink && ( <Link href={reviewDataNew.author.fullBioLink} legacyBehavior><a className={styles.authorTooltipBioLink}>See full bio</a></Link>)}
+              </section>
+            </header>
+
+            {/* ============= REVIEW CONTENT SECTIONS (Hardcoded JSX) ============= */}
+
+            {/* Section 2: Quick Stats Table */}
+            <section id="section-2" className={styles.reviewSection}>
+              <h2>Quick Stats at a Glance</h2>
+              <div className={styles.tableContainer}>
+                <table className={styles.statsTable}>
+                  <thead>
+                    <tr>
+                      <th>Feature</th>
+                      <th>Details</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {/* Data from HTML Table */}
+                    <tr>
+                      <td data-label="Feature">Annual Fee</td>
+                      <td data-label="Details">$95</td>
+                    </tr>
+                    <tr>
+                      <td data-label="Feature">APR Range</td>
+                      <td data-label="Details" dangerouslySetInnerHTML={{__html:"19.49%–28.49% Variable"}}></td>
+                    </tr>
+                    <tr>
+                      <td data-label="Feature">Sign-Up Bonus</td>
+                      <td data-label="Details">Often ~130k–150k Hilton Honors Points after $2k in 3 months (varies by promo)</td>
+                    </tr>
+                    <tr>
+                      <td data-label="Feature">Rewards Rate</td>
+                      <td data-label="Details">12x at Hilton properties, 6x at U.S. restaurants/groceries/gas, 3x elsewhere</td>
+                    </tr>
+                    <tr>
+                      <td data-label="Feature">Lounge Benefit</td>
+                       {/* Using dangerouslySetInnerHTML for ™ */}
+                      <td data-label="Details" dangerouslySetInnerHTML={{__html:"10 Priority Pass™ visits yearly (registrations required)"}}></td>
+                    </tr>
+                    <tr>
+                      <td data-label="Feature">Status Benefit</td>
+                      <td data-label="Details">Automatic Hilton Honors Gold, path to Diamond via $40k annual spend</td>
+                    </tr>
+                    <tr>
+                      <td data-label="Feature">Foreign Transaction Fee</td>
+                      <td data-label="Details">None</td>
+                    </tr>
+                    <tr>
+                      <td data-label="Feature">Recommended Credit Score</td>
+                      <td data-label="Details">Good–Excellent (700+ typically)</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+             {/* CTA Section - !!! USES PLACEHOLDER LINKS DUE TO SOURCE HTML ERROR !!! */}
+             <section id="cta" className={styles.ctaSection}>
+                {/* Using dangerouslySetInnerHTML for ® */}
+                <h2 dangerouslySetInnerHTML={{__html:"Get the <b>Hilton Honors American Express Surpass® Card</b> Today!"}}></h2>
+                <div className={styles.ctaButtons}>
+                     {/* !!! WARNING: REPLACE hrefs with CORRECT Apply and Rates links for Hilton Surpass !!! */}
+                    <a href={reviewData.applyLink} className={`${styles.btn} ${styles.btnApply}`} title="From card issuer's secure site" target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
+                    <a href={reviewData.ratesLink} className={`${styles.btn} ${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored" dangerouslySetInnerHTML={{ __html:"See Rates &amp; Fees"}}></a>
+                </div>
+            </section>
+
+            {/* Section 3: Card Overview & Positioning */}
+            <section id="section-3" className={styles.reviewSection}>
+               {/* Using dangerouslySetInnerHTML for ® */}
+                <h2 dangerouslySetInnerHTML={{ __html: "Card Overview &amp; Positioning" }}></h2>
+                <p dangerouslySetInnerHTML={{ __html: "The <strong>Hilton Honors American Express Surpass®</strong> is a mid-tier co-branded hotel card bridging simpler no-fee versions (like the basic Hilton Amex) and the luxury $450+ Aspire Card. At <strong>$95</strong>, Surpass® grants <strong>Gold status</strong> automatically, robust daily earning on Hilton stays and select everyday categories, plus 10 Priority Pass lounge visits. For those who want more than base-level Hilton perks but don’t require the full premium scope (Aspire’s diamond status, resort credits, etc.), Surpass can significantly enhance your Hilton experience in 2025 without a huge fee." }}></p>
+            </section>
+
+            {/* Section 4: Earning Rates & Hilton Multipliers */}
+            <section id="section-4" className={styles.reviewSection}>
+                <h2 dangerouslySetInnerHTML={{ __html: "Earning Rates &amp; Hilton Multipliers" }}></h2>
+                <p>
+                    Surpass typically offers:
+                </p>
+                <ul className={styles.featureList}>
+                    <li><strong>12x Hilton Honors Points</strong> at Hilton properties worldwide</li>
+                    <li><strong>6x Points</strong> at U.S. restaurants, U.S. supermarkets, U.S. gas stations</li>
+                    <li><strong>3x Points</strong> on all other eligible purchases</li>
+                </ul>
+                <p>
+                    Combined with the standard Hilton base points (10x at most brands),
+                    your total points can climb quickly on stays.
+                    Also, Gold status yields a bonus on base points (usually 80% extra),
+                    further amplifying your net.
+                    The 6x for common everyday categories (dining, groceries, gas)
+                    is quite generous for a $95 card,
+                    though you must factor in that <strong>Hilton points</strong> are typically valued lower (0.5¢ on average, though can be higher or lower depending on redemption).
+                </p>
+            </section>
+
+             {/* Section 5: Sign-Up Bonus & Potential Redemption */}
+             <section id="section-5" className={styles.reviewSection}>
+                <h2 dangerouslySetInnerHTML={{ __html: "Sign-Up Bonus &amp; Potential Redemption" }}></h2>
+                <p>
+                    Often, Surpass’s sign-up bonus hovers around <strong>130k–150k</strong> Hilton Honors points after spending ~$2,000 in 3 months,
+                    with occasional statement credits or free night certificates.
+                    Valuing Hilton points at ~0.5¢ each,
+                    150k can be ~$750 in lodging if used carefully (sometimes 0.6–0.7¢).
+                    Enough for multiple nights at mid-tier Hiltons or 1–2 nights at a higher-tier property.
+                    If used at lower category hotels, you could stretch it even further.
+                    With 12x on Hilton spending plus the sign-up,
+                    you can accumulate large point balances quickly for 2025 vacations or business stays.
+                </p>
+            </section>
+
+            {/* Section 6: Automatic Gold Status & Path to Diamond */}
+            <section id="section-6" className={styles.reviewSection}>
+                <h2>Automatic Gold Status & Path to Diamond</h2>
+                 {/* Using dangerouslySetInnerHTML for ® */}
+                <p dangerouslySetInnerHTML={{ __html: "One of the Surpass’s strongest draws is <strong>automatic Hilton Gold</strong>. Gold includes:"}}></p>
+                <ul className={styles.featureList}>
+                    <li>~80% bonus on base points earned from Hilton stays</li>
+                    <li dangerouslySetInnerHTML={{ __html: "Complimentary breakfast at many brands, or a food &amp; beverage credit in the U.S. (brand-dependent)"}}></li>
+                    <li>Room upgrades (if available), late checkout, free Wi-Fi, etc.</li>
+                </ul>
+                <p>
+                    Also, you can achieve <strong>Diamond</strong> if you spend <strong>$40,000</strong> on the card in a calendar year.
+                    Diamond includes better upgrades (suites sometimes),
+                    lounge access (if the hotel has an executive lounge),
+                    and higher point bonuses.
+                    That’s a big threshold, but if you’re a heavy spender,
+                    you can skip the usual ~30 stays or 60 nights required to earn Diamond organically.
+                    For frequent Hilton guests, that can be a game-changer.
+                </p>
+            </section>
+
+             {/* Section 7: 10 Priority Pass™ Lounge Visits */}
+             <section id="section-7" className={styles.reviewSection}>
+                <h2 dangerouslySetInnerHTML={{ __html: "10 Priority Pass™ Lounge Visits"}}></h2>
+                 {/* Using dangerouslySetInnerHTML for ® & ™ */}
+                <p dangerouslySetInnerHTML={{ __html: "Surpass® includes <strong>10 single-use Priority Pass lounge passes</strong> each year (enrollment required). That’s not unlimited access, but enough for occasional travelers. Each pass typically covers the cardholder only, though some lounge policies might allow you to pay extra for guests. If you fly a few times a year, those visits can significantly improve airport experiences with free snacks, drinks, or comfortable seating. If you need unlimited lounge visits or want free guest privileges, a higher-tier card (like Amex Platinum or the Hilton Aspire) might be necessary. But for a $95 card, 10 visits are a nice mid-level perk."}}></p>
+            </section>
+
+             {/* Section 8: 2025 Updates & Potential Changes */}
+             <section id="section-8" className={styles.reviewSection}>
+                <h2 dangerouslySetInnerHTML={{ __html: "2025 Updates &amp; Potential Changes" }}></h2>
+                <ol className={styles.numberedList}>
+                    {/* Using dangerouslySetInnerHTML for ® */}
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Annual Fee Adjustments:</strong> Amex might move Surpass® from $95 to $99 or $110 if new perks are added or costs change."}}></li>
+                    {/* Using dangerouslySetInnerHTML for &amp; */}
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Category Earning Tweaks:</strong> Possible expansions, e.g., 6x on streaming or phone bills, or promotional multipliers at certain times. Keep an eye on official T&amp;Cs or limited-time offers."}}></li>
+                    <li><strong>Sign-Up Bonus Variations:</strong>
+                    We might see 160k or 180k bonuses occasionally, or free night certificates combined.
+                    If you see a significantly higher promo, it might be prime time to apply.</li>
+                    <li><strong>Diamond Qualification Via Spend:</strong>
+                    The $40k threshold might shift or new spend-based milestones appear.
+                    Amex and Hilton regularly refine co-brand benefits to remain competitive.</li>
+                </ol>
+                 {/* Using dangerouslySetInnerHTML for ® */}
+                <p dangerouslySetInnerHTML={{ __html: "Typically, Surpass remains stable with 12x on Hilton, 6x on everyday categories, 10 lounge passes, and Gold. But verifying official updates each year ensures no surprises in your 2025 strategy." }}></p>
+            </section>
+
+            {/* Section 9: Real-Life Example Table */}
+            <section id="section-9" className={styles.reviewSection}>
+                <h2>Real-Life Example: Annual Spend & Points Earned</h2>
+                <p>
+                    Suppose you spend:
+                </p>
+                <ul className={styles.featureList}>
+                    <li>$2,000/year at Hilton properties</li>
+                    <li>$4,000/year on U.S. restaurants + $3,000 groceries + $2,000 gas = $9k at 6x</li>
+                    <li>$10,000 on other categories at 3x</li>
+                </ul>
+                <p>
+                    Totals:
+                </p>
+                <div className={styles.tableContainer}>
+                    <table className={styles.statsTable}>
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Annual Spend</th>
+                                <th>Points per $</th>
+                                <th>Total Points</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-label="Category">Hilton Spend</td>
+                                <td data-label="Annual Spend">$2,000</td>
+                                <td data-label="Points per $">12x</td>
+                                <td data-label="Total Points">24,000</td>
+                            </tr>
+                            <tr>
+                                <td data-label="Category">Restaurants/Groceries/Gas</td>
+                                <td data-label="Annual Spend">$9,000</td>
+                                <td data-label="Points per $">6x</td>
+                                <td data-label="Total Points">54,000</td>
+                            </tr>
+                            <tr>
+                                <td data-label="Category">All Other</td>
+                                <td data-label="Annual Spend">$10,000</td>
+                                <td data-label="Points per $">3x</td>
+                                <td data-label="Total Points">30,000</td>
+                            </tr>
+                            <tr style={{fontWeight: 'bold', borderTop: '2px solid #dee2e6'}}>
+                                <th data-label="Category">Total</th>
+                                <th data-label="Annual Spend">$21,000</th>
+                                <th data-label="Points per $">—</th>
+                                <th data-label="Total Points">108,000</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>
+                    That’s <strong>108,000</strong> from spending alone.
+                    Add a sign-up bonus (~150k points) = 258k total.
+                    At an average 0.5¢ each, that’s ~$1,290 in potential Hilton value.
+                    Subtract the $95 fee, it’s still an easy net positive for loyal Hilton travelers.
+                    Meanwhile, <strong>Gold status</strong> adds an ~80% bonus on base points at stays for extra synergy (this calculation only includes the card’s 12x, not the additional Gold multiplier).
+                </p>
+            </section>
+
+            {/* Section 10: Competitor Analysis */}
+             <section id="section-10" className={styles.reviewSection}>
+                <h2>Competitor Analysis</h2>
+                <p>
+                    Other mid-level hotel co-brands or comparable:
+                </p>
+                <div className={styles.tableContainer}>
+                    <table className={styles.statsTable}>
+                        <thead>
+                            <tr>
+                                <th>Card</th>
+                                <th>Annual Fee</th>
+                                <th>Key Features</th>
+                                <th>Notable Perk</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                 {/* Using dangerouslySetInnerHTML for ® */}
+                                <td data-label="Card" dangerouslySetInnerHTML={{__html:"Hilton Honors Surpass®"}}></td>
+                                <td data-label="Annual Fee">$95</td>
+                                <td data-label="Key Features">12x at Hilton, 6x dining/groceries/gas, lounge passes</td>
+                                <td data-label="Notable Perk">Gold status, 10 Priority Pass visits</td>
+                            </tr>
+                            <tr>
+                                <td data-label="Card">Hilton Honors Amex (No Fee)</td>
+                                <td data-label="Annual Fee">$0</td>
+                                <td data-label="Key Features">7x at Hilton, 5x dining/groceries/gas</td>
+                                <td data-label="Notable Perk">Silver status, no lounge passes, lesser earn rates</td>
+                            </tr>
+                            <tr>
+                                <td data-label="Card">Marriott Bonvoy Boundless</td>
+                                <td data-label="Annual Fee">$95</td>
+                                <td data-label="Key Features">Up to 17x at Marriott (with membership), free night certificate each year</td>
+                                <td data-label="Notable Perk">Complimentary Silver status, 1 annual free night up to 35k points</td>
+                            </tr>
+                            <tr>
+                                <td data-label="Card">IHG Rewards Premier</td>
+                                <td data-label="Annual Fee">$99</td>
+                                <td data-label="Key Features">10x at IHG, 2x or 3x everyday, free anniversary night</td>
+                                <td data-label="Notable Perk">IHG Platinum status, 4th night free on awards</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                 {/* Using dangerouslySetInnerHTML for ® */}
+                <p dangerouslySetInnerHTML={{ __html: "The Surpass stands out for <strong>strong earning</strong> (12x Hilton, 6x everyday categories) plus <strong>Gold status</strong> (including breakfast). Marriott or IHG counterparts might yield annual free night certificates. If you prefer that approach or a different hotel chain, weigh your options. But if you’re loyal to Hilton, Surpass arguably hits the best mid-tier sweet spot with lounge passes for occasional flyers."}}></p>
+            </section>
+
+            {/* Section 11: Additional Benefits & Insurance */}
+            <section id="section-11" className={styles.reviewSection}>
+                 <h2 dangerouslySetInnerHTML={{ __html: "Additional Benefits &amp; Insurance Coverage" }}></h2>
+                <p>
+                    Surpass offers:
+                </p>
+                <ul className={styles.featureList}>
+                     {/* Using dangerouslySetInnerHTML for &amp; */}
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Purchase Protection &amp; Extended Warranty:</strong> Standard Amex coverage for eligible items (often 90–120 days for damage/theft, plus 1 extra year warranty on <1-year manufacturer warranties)."}}></li>
+                    {/* Using dangerouslySetInnerHTML for &amp; */}
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Car Rental Loss &amp; Damage Insurance (Secondary):</strong> Typically secondary in the U.S. If you want primary coverage, consider other Amex or competitor cards."}}></li>
+                     {/* Using dangerouslySetInnerHTML for ® */}
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Global Assist® Hotline:</strong> 24/7 assistance with emergencies, translation, or legal/medical referrals if traveling >100 miles from home."}}></li>
+                    <li><strong>No FTF:</strong>
+                    Great for overseas Hilton stays or dining internationally, no 2–3% extra fees.</li>
+                     {/* Using dangerouslySetInnerHTML for ® */}
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Amex Offers:</strong> Potential statement credits or bonus points at select merchants. Check your account regularly to see if you can save $10 here or 15% there, stacking with your normal earn rates."}}></li>
+                </ul>
+                <p>
+                    The coverage is moderately robust for a $95 card, though not as extensive as premium products.
+                    Make sure to pay with Surpass to activate coverage on relevant purchases/travels,
+                    and consult your benefits guide for exact terms and claim processes.
+                </p>
+            </section>
+
+            {/* Section 12: APR & Carrying a Balance */}
+            <section id="section-12" className={styles.reviewSection}>
+                 <h2 dangerouslySetInnerHTML={{ __html: "APR &amp; Carrying a Balance"}}></h2>
+                <p>
+                    The Surpass typically has a <strong>variable APR</strong> around <strong>19.49%–28.49%</strong> for purchases.
+                    No special 0% intro is standard for this co-brand (occasionally short promos might appear).
+                    Revolving high balances at ~20–28% can quickly negate your points.
+                    If you need to carry a balance, a dedicated low-interest or 0% card is safer.
+                    Use Surpass for monthly pay-in-full to maximize net returns from the 12x or 6x.
+                    The same caution applies to cash advances—excessive fees and interest at ~28–29%.
+                </p>
+            </section>
+
+            {/* Section 13: Potential Downsides */}
+            <section id="section-13" className={styles.reviewSection}>
+                <h2>Potential Downsides</h2>
+                <ul className={styles.featureList}>
+                    <li><strong>Hilton Points = Lower Value (~0.5¢ avg.):</strong>
+                    12x is big, but per-point value is often half of some competitor currencies.
+                    You can see higher value if you research sweet spots, but if you prefer simpler points (like 1¢ each), might be disappointed.</li>
+                    <li><strong>$95 Annual Fee, No Automatic Free Night:</strong>
+                    Some $95 competitor hotel cards give a free night certificate annually.
+                    Surpass does not; you can only earn a free weekend night certificate after $15k yearly spend.</li>
+                    <li><strong>Only 10 Lounge Visits, Not Unlimited:</strong>
+                    If you travel more than 10 times/year, you might want unlimited lounge access from a higher-tier card (Aspire or Amex Platinum, etc.).</li>
+                    <li><strong>Secondary Car Rental Coverage:</strong>
+                    If you want primary coverage for collisions, you may need Amex’s premium rental coverage add-on or another card with built-in primary coverage.</li>
+                    <li><strong>Carryover from the Past:</strong>
+                    If you had a bonus on the Surpass or a Hilton co-brand recently, you might be restricted from another sign-up bonus.
+                    Check Amex “once per lifetime” rules or general co-brand limitations.</li>
+                </ul>
+            </section>
+
+            {/* Section 14: Advanced Hilton Strategies */}
+            <section id="section-14" className={styles.reviewSection}>
+                <h2>Advanced Hilton Strategies</h2>
+                <ol className={styles.numberedList}>
+                    <li><strong>Maximize Gold Breakfast Perks:</strong>
+                    That can save $10–$30 daily if you regularly stay at Hilton properties.
+                    Over multiple nights annually, you could offset the $95 quickly.</li>
+                    <li><strong>Use the 10 Lounge Passes Strategically:</strong>
+                    If you have 2–3 trips with layovers or multiple travelers, consider how to best utilize your passes each calendar year.
+                    They do not roll over, so ensure you re-register if needed each year.</li>
+                    <li><strong>Free Weekend Night Certificate at $15k Spend:</strong>
+                    This is an important threshold. If you spend $15k on Surpass in a calendar year,
+                    you typically earn a free weekend night at many Hilton brands.
+                    That can be worth $250–$400 if redeemed at a mid/high-tier property.
+                    Factor that into your strategy if your monthly overhead can route here.</li>
+                    <li><strong>Target High-Value Hilton Redemptions:</strong>
+                    Avoid random 0.3–0.4¢ conversions.
+                    Focus on off-peak or sweet-spot properties,
+                    all-inclusives in the Caribbean or high-end Hiltons in major cities.
+                    Checking daily or flexible dates can push value near 0.6–0.7¢ each.</li>
+                    <li><strong>$40k to Diamond:</strong>
+                    If Diamond is your end goal (upgraded lounge access, better upgrades, 100% bonus points),
+                    see if $40k annual spend is feasible or if you'd prefer the Aspire card’s automatic Diamond for a $450 fee.
+                    Weigh your typical spending and benefits usage carefully.</li>
+                </ol>
+            </section>
+
+            {/* Section 15: Another Real-Life Example */}
+            <section id="section-15" className={styles.reviewSection}>
+                <h2>Another Example: Frequent Domestic Commuter</h2>
+                <p>
+                    Suppose you:
+                </p>
+                <ul className={styles.featureList}>
+                    <li>$3,000 at Hilton hotels yearly</li>
+                    <li>$5,000 on restaurants, $4,000 groceries, $3,000 gas = $12k total at 6x</li>
+                    <li>$10,000 everything else at 3x</li>
+                </ul>
+                <p>
+                    That’s $25k total.
+                    Breakdown:
+                </p>
+                <ul className={styles.featureList}>
+                    <li><strong>Hilton:</strong> $3k → 12x = 36k points</li>
+                    <li><strong>U.S. restaurants/groceries/gas:</strong> $12k → 6x = 72k points</li>
+                    <li><strong>Others:</strong> $10k → 3x = 30k points</li>
+                </ul>
+                 {/* Using dangerouslySetInnerHTML for ® */}
+                <p dangerouslySetInnerHTML={{ __html: "Summation = <strong>138k</strong> from normal spend alone. Add sign-up bonus ~130k = 268k total. If redeemed at ~0.5¢ each, that’s <strong>$1,340</strong> in lodging, overshadowing the $95 fee. You’d also be near that $15k threshold for a free weekend night if you want to route more spend onto it. If you do $15k, you get an additional weekend certificate, possibly valued at $300+ at a good property." }}></p>
+            </section>
+
+             {/* Section 16: Synergy with Other Amex Cards */}
+             <section id="section-16" className={styles.reviewSection}>
+                <h2>Synergy with Other Amex Cards</h2>
+                 {/* Using dangerouslySetInnerHTML for ® */}
+                <p dangerouslySetInnerHTML={{ __html: "Because Surpass is a <strong>co-brand</strong> focusing on <strong>Hilton</strong> points, it doesn’t feed into Amex Membership Rewards. Still, synergy exists with:" }}></p>
+                <ul className={styles.featureList}>
+                    {/* Using dangerouslySetInnerHTML for ® */}
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Amex Gold or Blue Cash Everyday®</strong> for groceries/dining if you want flexible MR points or daily cash back. But if Surpass yields 6x at groceries/dining, you might prefer Surpass if you specifically want Hilton points. Compare potential net values from each approach (MR can be more flexible, Hilton points are more specialized for hotel stays)."}}></li>
+                    {/* Using dangerouslySetInnerHTML for ® */}
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Platinum Card® from Amex</strong> for broader lounge access, airline fee credits, and premium travel coverage. Surpass does not have robust travel insurance or universal lounge visits, so pairing with a Platinum could fill that gap. But that’s a big combined annual fee if you do both."}}></li>
+                    {/* Using dangerouslySetInnerHTML for ® */}
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Hilton Aspire® from Amex</strong> If you eventually upgrade for automatic Diamond status, $250 resort credit, free annual weekend night, etc. But that’s a $450 fee. Many users start with Surpass to see if the advanced perks are needed, then consider Aspire if they want unlimited lounge visits, Diamond, or big statement credits."}}></li>
+                </ul>
+                <p>
+                    So, Surpass stands alone well for mid-level Hilton loyalty,
+                    but you may incorporate other Amex cards for everyday MR or additional travel benefits if you have broader needs.
+                    Just note each card’s annual fees carefully so as not to overlap unnecessarily.
+                </p>
+            </section>
+
+            {/* Section 17: Redemption & Hilton Points Value */}
+            <section id="section-17" className={styles.reviewSection}>
+                 <h2 dangerouslySetInnerHTML={{ __html: "Redemption &amp; Hilton Points Value Insights"}}></h2>
+                <p>
+                    Hilton doesn’t publish an official award chart,
+                    so rates can vary widely.
+                    Typically, <strong>0.5¢</strong> each is a decent baseline.
+                    Some tips to maximize:
+                </p>
+                <ul className={styles.featureList}>
+                    <li><strong>Look for Off-Peak or Limited Time Sales:</strong>
+                    Hilton does dynamic pricing, so certain nights/properties might cost fewer points.
+                    If you’re flexible, you might see 0.6–0.7¢ value or more.</li>
+                    <li><strong>All-Inclusive or Resorts Abroad:</strong>
+                    Some Caribbean, Mexican, or Asian all-inclusive Hiltons can yield great returns if cash rates are high but point requirements moderate.</li>
+                    <li><strong>Fifth Night Free for Elites:</strong>
+                    If you have Silver or above (Surpass = Gold), you get the 5th night free on standard room awards.
+                    That can push your average points per night lower and your redemption value higher.</li>
+                    <li><strong>Avoid Low-End if Cash is Cheap:</strong>
+                    If a property is $100 but costs 30k points, that’s only ~0.33¢ each.
+                    Evaluate if paying cash is better or if you want to save points for a property with a higher ratio.</li>
+                </ul>
+                <p>
+                    If your aim is always to snag ~0.5–0.6¢,
+                    Surpass’s 12x effectively becomes a 6–7% return at Hilton properties—very solid for a $95 fee card, especially with Gold benefits stacked.
+                </p>
+            </section>
+
+            {/* Section 18: Competitor & Alternative Cards */}
+            <section id="section-18" className={styles.reviewSection}>
+                 <h2 dangerouslySetInnerHTML={{ __html: "Competitor &amp; Alternative Cards"}}></h2>
+                 {/* Using dangerouslySetInnerHTML for ℠ */}
+                <p dangerouslySetInnerHTML={{ __html: "If Surpass doesn’t align, consider:" }}></p>
+                <ul className={styles.featureList}>
+                    <li><strong>Hilton Honors American Express Card (no fee):</strong>
+                    7x at Hilton, 5x gas/groceries/dining, Silver status.
+                    Less robust, but no fee.
+                    If you rarely stay at Hilton or want to keep costs at $0, that could suffice.</li>
+                    <li><strong>Hilton Honors Aspire (Amex):</strong>
+                    $450 fee, automatic Diamond status, $250 resort credit, $250 airline fee credit, unlimited lounge access.
+                    Great if you leverage those credits fully, but steep if you don’t travel frequently.</li>
+                    <li><strong>Marriott Bonvoy Boundless (Chase):</strong>
+                    $95 fee, up to 17x at Marriott with membership, annual free night, Silver status.
+                    Different hotel chain if you prefer Marriott’s coverage or a guaranteed free night certificate each year.</li>
+                    <li><strong>IHG Rewards Premier (Chase):</strong>
+                    $99 fee, strong synergy with IHG, free anniversary night, 4th night free on awards, Platinum status.
+                    Another mid-tier competitor with a certificate approach if you prefer IHG’s network.</li>
+                </ul>
+                <p>
+                    Surpass stands out if you love Hilton’s brand variety (Waldorf Astoria, Conrad, DoubleTree, etc.)
+                    and want automatic Gold with lounge passes for occasional airports.
+                    If you prefer Marriott or IHG or want a free night certificate each year,
+                    consider competitor co-brands.
+                    All depends on your loyalty preferences and how often you’ll exploit the brand’s coverage globally.
+                </p>
+            </section>
+
+            {/* Section 19: Who Should Get the Card? */}
+            <section id="section-19" className={styles.reviewSection}>
+                 {/* Using dangerouslySetInnerHTML for ® */}
+                <h2 dangerouslySetInnerHTML={{ __html: "Should You Get the Hilton Honors Amex Surpass®?"}}></h2>
+                <div className={styles.prosCons}>
+                    <div className={styles.pros}>
+                        <h3>Yes, If You:</h3>
+                        <ul className={styles.featureList}>
+                            <li>Stay at <strong>Hilton properties frequently</strong> or want a major hotel chain with wide coverage</li>
+                            <li>Desire <strong>Gold status</strong> for free breakfast/room upgrades</li>
+                            <li>Want a <strong>$95 card</strong> with robust earn rates (12x Hilton, 6x dining/groceries/gas)</li>
+                            <li>Find occasional lounge visits beneficial (10 Priority Pass passes are enough for you)</li>
+                            <li>Plan to pay in full monthly and avoid high APR interest</li>
+                        </ul>
                     </div>
-                )}
-            </div>
-            <p className={styles.reviewDisclaimer}>
-              We may receive compensation when you click on links to certain credit card products
-              on our site. Our recommendations are based on our independent research and analysis.
-              Offers are subject to change and may have changed since the time of publication.
-              Please verify all terms and conditions with the issuer. Terms apply to credit card benefits and offers.
-              Enrollment may be required for select benefits.
-            </p>
-          </header>
-
-          <nav className={styles.reviewToc}>
-            <h2>In this {reviewDataNew.shortCardName} review:</h2>
-            <ol>
-              {TocLinks.map(link => (
-                <li key={link.href}><a href={link.href}>{link.label}</a></li>
-              ))}
-            </ol>
-          </nav>
-
-          <section id="introduction" className={styles.reviewSection}>
-            <h2 style={{textAlign:'center'}}>{reviewDataNew.h1Content}</h2>
-            <p>The world of hotel credit cards can feel like a maze, right? But if you're someone who often finds themselves checking into a Hilton, the {reviewDataNew.cardName} likely pops up on your radar. Especially with its 2024 refresh tinkering with the annual fee and benefits, you're probably wondering: for 2025, does this card *actually* make sense for my travel style and wallet?</p>
-            <p>Let's be real, "best" is super personal. It hinges on how often you pack your bags, your loyalty to Hilton, your spending game, and what perks truly light you up. So, this isn't just another features list. We're giving you the genuine scoop on the Surpass card, specifically for US-based travelers like us. We’ll unpack everything from its core offerings to the tangible value of that automatic Gold status (it's pretty sweet, by the way), the updated credits, and what folks who actually *use* the card are chattering about. Hilton's clearly doubling down on direct benefits with this one, so let's see if it’s the ace up your sleeve for 2025 travels.</p>
-          </section>
-
-          <section id="decoding-surpass" className={styles.reviewSection}>
-            <h2>I. The Surpass Lowdown: What You Get and What It Costs (2025)</h2>
-            <p>Alright, let's get down to brass tacks with the {reviewDataNew.cardName}. What are you really looking at in terms of offers and fees?</p>
-            <h3>The Welcome Offer: A Nice Kickstart</h3>
-            <p>If you're new to the card, Amex is currently dangling a pretty enticing carrot: <strong>{reviewDataNew.welcomeOfferHeadline} Hilton Honors Bonus Points</strong>. To snag these, you'll need to spend $3,000 on eligible purchases within your first 6 months. (Just a heads-up, these offers can shift, so it's always smart to double-check the current terms directly on the <a href={reviewDataNew.applyLink} target="_blank" rel="noopener noreferrer sponsored">official {reviewDataNew.issuerName} offer page</a>). Now, what's that bonus *really* worth? Hilton points usually hover around 0.5 to 0.6 cents apiece in value. Do the math, and that's roughly $650 to $780 you can put towards future stays – a pretty solid hello from Amex.</p>
-            
-            <h3>The Annual Fee: The $150 Question</h3>
-            <p>The {reviewDataNew.shortCardName} Card rolls with a <strong>${reviewDataNew.annualFee} annual fee</strong>. You can see all the nitty-gritty on the <a href={reviewDataNew.ratesLink} target="_blank" rel="noopener noreferrer sponsored">official {reviewDataNew.issuerName} card details, rates and fees page</a>. This did jump from its old $95 price tag, but Amex added some new goodies they hope will make up for the increase. We'll dig into whether that trade-off works out.</p>
-
-            <h3>Other Key Fees to Watch:</h3>
-            <ul>
-                <li><strong>APR for Purchases:</strong> This can vary, typically sitting between 20.24% and 29.24% depending on your creditworthiness. As always, peek at the current rates before you leap. My advice? Try to pay it off monthly if you can.</li>
-                <li><strong>Foreign Transaction Fees:</strong> Zero. Zip. Nada. That's a must-have for any travel card worth its salt if you plan on using it abroad.</li>
-                <li><strong>Late/Returned Payment Fees:</strong> These can sting, potentially up to $40.</li>
-            </ul>
-            <p>No doubt, this card has U.S. travelers in its sights. And while no foreign transaction fees is a big plus, remember that Amex isn't *quite* as universally accepted overseas as Visa or Mastercard. Maybe pack a backup, just in case.</p>
-          </section>
-
-          <section id="cta-hilton-surpass-1" className={styles.ctaSection}>
-              <h2>Thinking the <b>{reviewDataNew.cardName}</b> Might Be for You?</h2>
-              <p>It could be your key to unlocking those coveted Hilton perks, statement credits that save you cash, and a hefty points bonus to get you started.</p>
-              <div className={styles.ctaButtons}>
-                <a href={reviewDataNew.applyLink} className={`${styles.btn} ${styles.btnApply}`} title={`Apply for the ${reviewDataNew.cardName} on ${reviewDataNew.issuerName}'s secure site`} target="_blank" rel="noopener noreferrer sponsored">Check Current Offer</a>
-                <a href={reviewDataNew.ratesLink} className={`${styles.btn} ${styles.btnRates}`} title={`See rates and fees for the ${reviewDataNew.cardName}`} target="_blank" rel="noopener noreferrer sponsored">See Rates & Fees</a>
-              </div>
-          </section>
-
-          <section id="earning-points" className={styles.reviewSection}>
-            <h2>II. How You'll Rack Up Hilton Points with Surpass</h2>
-            <p>Now for the fun part: earning those Hilton Honors points! The {reviewDataNew.shortCardName} Card is set up to reward your spending, especially here in the U.S., in some pretty common categories:</p>
-            <ul className={styles.earningRatesList}> 
-              <li>A hefty <strong>12X Hilton Honors Bonus Points</strong> for every dollar you charge directly with a Hilton hotel or resort. Booking straight through Hilton really pays off here.</li>
-              <li>A very useful <strong>6X Points</strong> at U.S. restaurants (takeout counts!), U.S. supermarkets, and U.S. gas stations. Think about your weekly grocery run or filling up the tank – those points can accumulate quickly. I've heard of folks covering a good chunk of a weekend stay just from points earned on their regular U.S. supermarket and gas spending over a year!</li>
-              <li>A solid <strong>4X Points</strong> on your U.S. online retail therapy.</li>
-              <li>And <strong>3X Points</strong> on pretty much everything else you buy that's eligible.</li>
-            </ul>
-            <p>So, whether it's your morning coffee, your big weekly shop, or that Hilton stay you've been dreaming of, this card works to keep the points flowing.</p>
-          </section>
-          
-          <section id="unpacking-perks" className={styles.reviewSection}>
-            <h2>III. Perks Unpacked: What's the Real-World Value Here?</h2>
-            <p>That ${reviewDataNew.annualFee} annual fee starts to look a lot more interesting when you weigh it against the perks. And let me tell you, the Surpass is laser-focused on making your Hilton stays better (and maybe even cheaper).</p>
-            
-            <h3>Complimentary Hilton Honors™ Gold Status: This is a Biggie.</h3>
-            <p>You get Hilton Gold status just for holding the card, and frankly, it's one of the more valuable mid-tier hotel statuses out there. Don't just take my word for it; check out the full details on the <a href="https://www.hilton.com/en/hilton-honors/member-benefits/" target="_blank" rel="noopener noreferrer">Hilton Honors Gold Benefits page</a>. What does it usually get you?</p>
-            <ul>
-              <li><strong>80% Points Bonus on Stays:</strong> You're earning 18 points per dollar on most Hilton stays (that's 10 base points plus an 8-point bonus). Combine that with the 12X points from using your Surpass card, and you could be looking at up to 30 points per dollar. Sweet!</li>
-              <li><strong>Space-Available Room Upgrades:</strong> Who doesn't love a surprise upgrade? It's not guaranteed, but Gold status puts you in the running.</li>
-              <li><strong>Daily Food & Beverage Credit (U.S. hotels) / Continental Breakfast (non-U.S. hotels):</strong> This can be a *huge* money-saver. In the U.S., it’s a daily credit for you and a guest (often $10-$25 per person, depending on the brand). Traveling internationally? It’s typically a complimentary continental breakfast. This perk alone can chip away at that annual fee pretty quickly.</li>
-              <li><strong>Fifth Night Free on Reward Stays:</strong> Booking a longer points stay? Your fifth night is on the house. Yes, please!</li>
-            </ul>
-
-            <h3>$200 Annual Hilton Credit (Paid Quarterly):</h3>
-            <p>This is a newer perk designed to directly offset that annual fee. You can get up to $200 back in statement credits each year for Hilton purchases you charge to your Surpass. It's broken down into $50 per quarter. You can dive into the fine print on the <a href="https://global.americanexpress.com/card-benefits/detail/hilton-credit/hilton-surpass" target="_blank" rel="noopener noreferrer sponsored">official {reviewDataNew.issuerName} benefit terms page</a>. This applies to room rates and even things like charges to your room from the hotel restaurant. If you can max this out each quarter, you're already $50 ahead on the annual fee before anything else. The catch? It's a "use-it-or-lose-it" $50 each quarter, so you need to have some Hilton spending every three months to get the full $200 back.</p>
-
-            <h3>That Coveted Free Night Reward (If You Spend Enough):</h3>
-            <p>If you can channel $15,000 in eligible purchases onto your Surpass card in a calendar year, Hilton Honors will gift you a Free Night Reward. This isn't just for any old motel; it can be used at most Hilton properties worldwide. Think about those fancy resorts or city-center hotels – this reward could easily be worth $500 or more. That $15k spend might seem like a lot, but with those 6X bonus categories on everyday U.S. spending, it might be more doable than you think.</p>
-
-            <h3>Want to Aim for Diamond? There's a Path:</h3>
-            <p>For the truly dedicated Hilton fans, if you spend $40,000 on the card in a calendar year, Amex will bump you up to Hilton's top-tier Diamond status through the end of the *next* calendar year. That's some serious hotel cred.</p>
-
-            <h3>Little Extra: National Car Rental® Status</h3>
-            <p>You also get complimentary Emerald Club Executive® status with National Car Rental. You'll need to enroll (usually via a link in your Amex online benefits section), but it can mean car upgrades and a speedier rental process. Nice touch.</p>
-            
-            <p>Of course, you also get the standard Amex travel protections like secondary car rental coverage and purchase protection. One thing to note: the Priority Pass lounge access that some travel cards offer was removed from the Surpass, really homing in on Hilton-specific value.</p>
-          </section>
-
-          <section id="real-voices" className={styles.reviewSection}>
-            <h2>IV. Beyond the Hype: What Are Real Cardholders Saying?</h2>
-            <p>It's one thing to list features, but what's the word on the street from folks who actually have the Surpass in their wallet? We peeked at what travel experts and everyday users are saying.</p>
-            <p>For instance, Augusta Stone over at The Points Guy seemed pretty keen on the Gold status and those food and beverage credits, mentioning how the quarterly $50 credits jazzed up her trips. She even cashed in her Free Night Reward in Rome for a room that would have cost nearly $629! Her take? Even if you're not a die-hard Hilton loyalist, this card can still play a smart role in your overall travel strategy.</p>
-            <p>And scrolling through online forums like Reddit, you'll find users like "StantheMansicle" calling the Surpass their "favorite card." They highlighted the awesome returns, especially if you hit that $15k spend for the Free Night Certificate (FNC), which they valued at a cool $600 or more.</p>
-            <h4>Here's a quick vibe check on common praises:</h4>
-            <ul>
-              <li>That $200 Hilton credit? Many feel it cancels out, or even beats, the annual fee.</li>
-              <li>Automatic Gold status is a consistent crowd-pleaser. Seriously, people love it.</li>
-              <li>The Free Night Reward, if you can earn it, offers seriously good bang for your buck.</li>
-              <li>Those U.S. everyday spending bonus categories (groceries, gas, restaurants) get a lot of thumbs up.</li>
-            </ul>
-            <h4>And on the flip side, some common grumbles include:</h4>
-            <ul>
-              <li>The quarterly $50 credit can be a bit of a pain if you don't stay at Hiltons that often. You have to remember to use it.</li>
-              <li>The value of Hilton points can feel a bit like a moving target sometimes.</li>
-              <li>Some folks are still a bit salty about losing the Priority Pass lounge access.</li>
-              <li>For some, hitting that $15k spend for the Free Night Reward feels like a stretch.</li>
-            </ul>
-            <p>So, it's a mixed bag of experiences, but generally, those who align their travel with Hilton seem to find good reasons to keep the card.</p>
-          </section>
-
-          <section id="surpass-us-international" className={styles.reviewSection}>
-            <h2>V. The Surpass: How It Plays Out at Home & Abroad</h2>
-            <p>If you're mostly a U.S.-based traveler, the Surpass lines up pretty nicely. Those 6X bonus categories on U.S. supermarkets, restaurants, and gas, plus the 4X on U.S. online retail, are tailored for domestic spending. And with a ton of Hilton properties across the U.S. (Hilton boasts over 7,000 properties worldwide – you can get a sense of their scale from the <a href="https://stories.hilton.com/media-kit-hilton-corporate" target="_blank" rel="noopener noreferrer">Hilton Corporate Media Kit</a>), you'll have plenty of chances to use those benefits.</p>
-            <p>Heading overseas? The "no foreign transaction fees" is a definite win. However, it's worth remembering that American Express isn't always as widely accepted as Visa or Mastercard in every nook and cranny of the world. Smart move? Always have a Visa or Mastercard as a backup when you're traveling internationally, just in case.</p>
-          </section>
-
-          <section id="competitor-comparison" className={styles.reviewSection}>
-            <h2>VI. Surpass vs. The Field: How Does It Stack Up?</h2>
-            <p>Okay, no card lives in a vacuum. So, how does the Hilton Surpass look when you put it side-by-side with some of the other players in the travel card game?</p>
-            <div className={styles.comparisonTableContainer}>
-              {competitorCardsData.map(card => (
-                <div key={card.id} className={styles.competitorRow}>
-                  <h4 className={styles.competitorName}>Let's say, versus the {card.name} (which has a {card.annualFee} fee)...</h4>
-                  <p><strong>What that card generally brings to the table:</strong> {card.keyFeaturesNotes}</p>
-                  <p><strong>And how the Surpass compares:</strong> {card.comparisonToHiltonSurpass}
-                    {card.officialLink && (
-                      <> You can usually find out more on the <a href={card.officialLink} target="_blank" rel="noopener noreferrer sponsored">{card.officialLinkText || "Official Details Page"}</a>.</>
-                    )}
-                  </p>
+                    <div className={styles.cons}>
+                        <h3>No, If You:</h3>
+                        <ul className={styles.featureList}>
+                            <li>Rarely use <strong>Hilton hotels</strong> or prefer different loyalty programs (Marriott, IHG, Hyatt, etc.)</li>
+                            <li>Want an <strong>annual free night certificate</strong> automatically or a bigger lounge coverage</li>
+                            <li>Need a <strong>$0 annual fee</strong> or prefer a premium $450+ card with Diamond status and bigger statement credits</li>
+                            <li>Expect unlimited lounge access or advanced travel coverage (like primary car rental insurance)</li>
+                             {/* Using dangerouslySetInnerHTML for ® */}
+                            <li dangerouslySetInnerHTML={{__html:"Carry large balances, overshadowing your points with ~19–28% interest"}}></li>
+                        </ul>
+                    </div>
                 </div>
-              ))}
-            </div>
-            <p style={{marginTop: '1rem'}}>Bottom line here? The Surpass really shines if you're already in the Hilton camp and want solid mid-tier perks without shelling out for a super-premium card.</p>
-          </section>
+            </section>
 
-          <section id="pros-cons" className={styles.reviewSection}>
-            <h2>VII. The Good, The Bad, The Surpass: A Quick Rundown</h2>
-            <div className={styles.prosConsContainer}>
-              <div className={styles.prosSection}>
-                <h3>Pros: Why You Might Love It</h3>
-                <ul>
-                  <li><span className={styles.bulletIcon}>👍</span><strong>Automatic Hilton Gold Status:</strong> This is a gem, seriously. Great perks without chasing stays.</li>
-                  <li><span className={styles.bulletIcon}>👍</span><strong>$200 Annual Hilton Credit:</strong> If you use it, this quarterly credit ($50/quarter) can make the annual fee feel like a bargain.</li>
-                  <li><span className={styles.bulletIcon}>👍</span><strong>Potential Free Night Reward:</strong> Spending $15k in a year gets you a free night that can be incredibly valuable.</li>
-                  <li><span className={styles.bulletIcon}>👍</span><strong>Solid Points Earning:</strong> 12x at Hilton is great, and those 6x categories for U.S. groceries, dining, and gas are everyday winners. 4x for U.S. online retail is nice too.</li>
-                  <li><span className={styles.bulletIcon}>👍</span><strong>No Pesky Foreign Transaction Fees.</strong></li>
-                  <li><span className={styles.bulletIcon}>👍</span><strong>A Leg Up to Diamond Status:</strong> If you're a big spender, Diamond is within reach via card spend.</li>
+            {/* Section 20: Final Thoughts & Disclaimer */}
+            <section id="section-20" className={styles.reviewSection}>
+                 <h2 dangerouslySetInnerHTML={{ __html:"Final Thoughts &amp; Disclaimer"}}></h2>
+                 {/* Using dangerouslySetInnerHTML for ® & ™ */}
+                <p dangerouslySetInnerHTML={{ __html: "The <strong>Hilton Honors American Express Surpass® Card</strong> stands as a top mid-tier pick for consistent Hilton travelers. <strong>12x</strong> at Hilton, <strong>6x</strong> on everyday categories (restaurants, groceries, gas), plus <strong>automatic Gold</strong> (free breakfast, better upgrades) deliver strong day-to-day returns. The <strong>10 Priority Pass lounge visits</strong> add occasional airport luxury for those not flying often enough to need unlimited access. With a <strong>$95</strong> annual fee, it’s relatively easy to justify, especially if you utilize the high earning rates, sign-up bonus, and select sweet-spot Hilton redemptions near 0.5–0.6¢. While it lacks an automatic free night or comprehensive travel coverage, the synergy with Gold status and decent lounge benefits keeps it well-placed among 2025’s mid-tier hotel cards." }}></p>
+                <p dangerouslySetInnerHTML={{ __html: "<strong>Disclaimer:</strong> Terms, APR, sign-up bonus, or lounge pass benefits can change. Always verify the <strong>current</strong> info with American Express or Hilton. We may earn affiliate commissions from some links, but editorial opinions remain our own. The 19–28% APR quickly negates your points if you revolve big balances—best to pay in full monthly. If you prefer a different hotel brand, free annual nights, or unlimited lounge visits, investigate competitor options before applying. For moderate Hilton loyalty, Surpass is a prime solution in 2025." }}></p>
+            </section>
+
+            {/* E-A-T Section - Using Generic Text from Template as Source HTML was Incorrect */}
+             <section id="eat-expertise-authority-trustworthiness" className={`${styles.reviewSection} ${styles.eatSection}`}>
+                <h2 dangerouslySetInnerHTML={{ __html: "Our Commitment to E-A-T: Expertise, Authority &amp; Trustworthiness"}}></h2>
+                 {/* !!! E-A-T Text below is generic; adapted from template. Review/replace if needed. !!! */}
+                <p>
+                    At <strong>TravelCardInsider</strong>, we prioritize
+                    reliable, unbiased reviews so you can make informed
+                    credit decisions. We adhere to Google’s E‑A‑T
+                    (Expertise, Authority, and Trustworthiness) guidelines
+                    through:
+                </p>
+                <h3>1. Expertise</h3>
+                <ul className={styles.featureList}>
+                    <li><strong>Specialized Research:</strong>
+                    Our writers and analysts have years of experience
+                    in credit cards and travel rewards, ensuring thorough,
+                    accurate content, including hotel co-brand cards like the Hilton Surpass.</li>
+                    <li><strong>Real-Time Updates:</strong>
+                    We continually check official issuer materials (Amex/Hilton)
+                    and user data to maintain current rates, benefits, and terms.</li>
+                    <li dangerouslySetInnerHTML={{ __html: "<strong>Conferences &amp; Webinars:</strong> Our team attends financial and travel events, enriching our knowledge base with industry insights on hotel loyalty programs."}}></li>
                 </ul>
-              </div>
-              <div className={styles.consSection}>
-                <h3>Cons: Things to Consider</h3>
-                <ul>
-                  <li><span className={styles.bulletIcon}>👎</span><strong>That $150 Annual Fee:</strong> It's not waived the first year, so you need to be sure you'll use the benefits.</li>
-                  <li><span className={styles.bulletIcon}>👎</span><strong>Quarterly Credit Juggling:</strong> You've got to make a Hilton purchase each quarter to get the full $200 credit. Can be a hassle if you don't travel that consistently.</li>
-                  <li><span className={styles.bulletIcon}>👎</span><strong>Amex Acceptance Abroad:</strong> It's good, but not always as universal as Visa or Mastercard.</li>
-                  <li><span className={styles.bulletIcon}>👎</span><strong>High Spend for Top Perks:</strong> That $15k for the Free Night Reward and $40k for Diamond are significant spending thresholds.</li>
-                  <li><span className={styles.bulletIcon}>👎</span><strong>No Airport Lounge Pass:</strong> If Priority Pass was your jam, it's gone from this card.</li>
+                <h3>2. Authority</h3>
+                <ul className={styles.featureList}>
+                    <li><strong>Detailed Coverage:</strong>
+                    This review offers an exhaustive look
+                    at the {reviewData.cardName}, from fees to redemption tips for Hilton Honors points.</li>
+                    <li><strong>Trusted By Major Outlets:</strong>
+                    Our articles are frequently cited by national finance
+                    and travel news sites for hotel card analysis.</li>
+                    <li><strong>Full Disclosure:</strong>
+                    If affiliate links or promotions exist, we clearly state them,
+                    ensuring objective editorial content.</li>
                 </ul>
-              </div>
-            </div>
-          </section>
+                <h3>3. Trustworthiness</h3>
+                <ul className={styles.featureList}>
+                    <li><strong>Independent Analysis:</strong>
+                    We never let advertisers influence our ratings or opinions on cards like the Surpass.</li>
+                    <li><strong>Frequent Revisions:</strong>
+                    We revise reviews whenever new offers appear or benefits change (like lounge access rules).</li>
+                    <li><strong>Community Feedback:</strong>
+                    We encourage open discussion in comments,
+                    fostering transparency and additional user insights on Hilton stays.</li>
+                    <li>
+                        <strong>Data Security:</strong> We prioritize user privacy and follow best practices,
+                        outlined in our <Link href="/privacy-policy"><a>Privacy Policy</a></Link>.
+                    </li>
+                </ul>
+                <p dangerouslySetInnerHTML={{ __html: "By following these E‑A‑T principles, we aim to guide you responsibly toward a credit card that fits your needs and maximizes your travel rewards, specifically within the Hilton Honors program." }}></p>
+            </section>
 
-          <section id="verdict" className={styles.reviewSection}>
-            <h2>VIII. Our 2025 Verdict: Is the Hilton Surpass the Right Card for *You*?</h2>
-            <p>So, after all that, is the {reviewDataNew.cardName} the ultimate hotel card for U.S. travelers in 2025? Well, like any good travel companion, it depends on where you're going and what you value.</p>
-            <p><strong>This card could be a fantastic fit if:</strong></p>
-            <ul>
-              <li>You're pretty loyal to Hilton and can actually *use* those Gold benefits and the quarterly credits. Think free breakfast or F&B credits, potential room upgrades...</li>
-              <li>You appreciate solid mid-tier elite status. Hilton Gold, as we've said, packs a decent punch.</li>
-              <li>You're someone who can strategically put about $15,000 of your annual spending on this card to snag that valuable Free Night Reward. Maybe you're renovating, or you have significant U.S. grocery, gas, and dining expenses.</li>
-            </ul>
-            <p><strong>However, you might want to look at other options if:</strong></p>
-            <ul>
-              <li>You rarely find yourself at Hilton properties. The value just won't be there.</li>
-              <li>That quarterly credit system feels more like a chore than a benefit. If you don't want to track it, it's lost money.</li>
-              <li>You're all about maximum point flexibility and want a currency you can transfer to a bunch of different airlines and hotels.</li>
-              <li>You absolutely need one card that's accepted everywhere when you travel internationally.</li>
-            </ul>
-          </section>
-
-          <section id="final-thoughts" className={styles.reviewSection}>
-            <h2>IX. Final Takeaways on the Surpass</h2>
-            <p>Look, the {reviewDataNew.cardName} isn't going to be everyone's cup of tea. And that's okay! But for a specific type of U.S. traveler – the one who's frequently booking with Hilton, genuinely values what Gold status offers, and can make those credits and spending bonuses work for them – this card lays out a pretty attractive proposition.</p>
-            <p>If you play your cards right (pun intended!), that $200 in Hilton credits can more than wipe out the $150 annual fee, and if you hit the spend for the Free Night Reward, you're looking at a seriously nice bonus. It’s a card that definitely wants you to engage with the Hilton brand. If that sounds like your travel style, then yes, the Surpass could very well be your key to more rewarding stays in 2025. As always, though, take a good look at your own spending habits and travel plans, and peek at the latest terms on the <a href={reviewDataNew.applyLink} target="_blank" rel="noopener noreferrer sponsored">official {reviewDataNew.issuerName} website</a> before you make a decision.</p>
-          </section>
-          
-          <section className={`${styles.reviewSection} ${styles.finalCtaSection}`}>
-            <h2>Ready to Give Your Hilton Stays an Upgrade with the {reviewDataNew.cardName}?</h2>
-            <p>If automatic Gold status, handy credits, and a solid points-earning setup at Hilton properties sound like a good deal for your travels, this card is definitely worth a closer look.</p>
-            <div className={styles.ctaButtons}>
-              <a href={reviewDataNew.applyLink} className={`${styles.btn} ${styles.btnApply} ${styles.btnLarge}`} target="_blank" rel="noopener noreferrer sponsored" title={`Apply for The ${reviewDataNew.cardName} on ${reviewDataNew.issuerName}'s secure site`}>
-                Learn More & Apply for The {reviewDataNew.cardName}
-              </a>
-              <a href={reviewDataNew.ratesLink} className={`${styles.btn} ${styles.btnRates} ${styles.btnLarge}`} target="_blank" rel="noopener noreferrer sponsored" title={`See rates and fees for The ${reviewDataNew.cardName} on ${reviewDataNew.issuerName}'s site`}>
-                See Current Rates & Fees
-              </a>
-            </div>
-            <p className={styles.smallPrintTerms}>Terms Apply. Click links for details. Enrollment may be required for select benefits. Images & Trademarks © American Express Company.</p>
-          </section>
-        </article>
+          </article>
+        </div> {/* Close reviewContainer */}
       </main>
 
-      {/* STICKY CTA SECTION MODIFIED TO INCLUDE IMAGE */}
-      <div className={styles.stickyCtaContainer}>
-        <div className={styles.stickyCtaContent}>
-            {reviewDataNew.cardImageUrl && (
-              <div className={styles.stickyCtaImageContainer}>
-                <Image
-                  src={reviewDataNew.cardImageUrl} // IMPORTANT: Update this path
-                  alt={`${reviewDataNew.shortCardName} card image`}
-                  width={80} // Adjust as needed for your design
-                  height={50} // Adjust as needed for your design (maintain aspect ratio)
-                  className={styles.stickyCtaCardImage} // Add CSS for this class
-                  priority // If you want it to load quickly
-                />
-              </div>
-            )}
-            <div className={styles.stickyCtaTextAndButtons}>
-              <span className={styles.stickyCtaText}>The {reviewDataNew.shortCardName} - ${reviewDataNew.annualFee} Annual Fee.</span>
-              <div className={styles.stickyCtaButtons}>
-                  <a href={reviewDataNew.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.btn} ${styles.btnApply} ${styles.ctaButtonApply}`}>Apply Now</a>
-                  <Link href={reviewDataNew.learnMoreLink} legacyBehavior>
-                      <a className={`${styles.btn} ${styles.btnRates} ${styles.ctaButtonLearnMore}`}>Learn More</a>
-                  </Link>
-              </div>
-            </div>
-        </div>
-      </div>
+      
     </>
   );
 }
+
+export default HiltonHonorsSurpassReviewPage;
