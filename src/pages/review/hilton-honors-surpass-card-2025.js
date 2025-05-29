@@ -54,8 +54,8 @@ const reviewDataNew = {
   },
   siteName: "TravelCardInsider.com",
   pagePath: "/review/hilton-honors-surpass-card-2025",
-  imageUrl: "/images/hilton-surpass-hero-2025.jpg", // IMPORTANT: Update with a relevant hero image for Hilton Surpass
-  cardImageUrl: "/images/hilton-surpass-card-cta.png", // IMPORTANT: Update with path to a smaller card image for the CTA
+  imageUrl: "/frugal-flyer-eALtkVMTCZ4-unsplash.webp", // IMPORTANT: Update with a relevant hero image for Hilton Surpass
+  cardImageUrl: "/NUS000000328_480x304_straight_withname.avif", // IMPORTANT: Update with path to a smaller card image for the CTA
   heroImageObjectPosition: "center center",
   imageWidth: 1600,
   imageHeight: 900,
