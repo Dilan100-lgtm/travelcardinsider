@@ -54,8 +54,8 @@ const reviewDataNew = {
   },
   siteName: "TravelCardInsider.com",
   pagePath: "/review/hilton-honors-surpass-card-2025",
-  imageUrl: "/images/hilton-surpass-hero-2025.jpg", // IMPORTANT: Update with a relevant hero image for Hilton Surpass
-  cardImageUrl: "/images/hilton-surpass-card-cta.png", // IMPORTANT: Update with path to a smaller card image for the CTA
+  imageUrl: "/frugal-flyer-eALtkVMTCZ4-unsplash.webp", // IMPORTANT: Update with a relevant hero image for Hilton Surpass
+  cardImageUrl: "/NUS000000328_480x304_straight_withname.avif", // IMPORTANT: Update with path to a smaller card image for the CTA
   heroImageObjectPosition: "center center",
   imageWidth: 1600,
   imageHeight: 900,
@@ -66,7 +66,7 @@ const reviewDataNew = {
   annualFee: 150,
   applyLink: "https://www.americanexpress.com/us/credit-cards/card/hilton-honors-surpass/",
   ratesLink: "https://www.americanexpress.com/us/credit-cards/card/hilton-honors-surpass/", 
-  learnMoreLink: "/cards/hilton-surpass-card", // IMPORTANT: Create this page or adjust
+  learnMoreLink: "/cards/hilton-honors-surpass", // IMPORTANT: Create this page or adjust
   h1Content: "Hilton Honors Surpass® Card 2025: A Traveler's Honest Look",
   heroH1Content: "Hilton Surpass® Card (2025): Is It *Really* Worth the $150 Fee?",
   reviewBody: "Our 2025 hands-on review of the Amex Hilton Honors Surpass Card. We explore if the $150 annual fee genuinely pays off with Gold status, credits, and point-earning for real-world Hilton travelers.",
@@ -594,7 +594,7 @@ export default function HiltonSurpassCardReview2025() {
             <p>If automatic Gold status, handy credits, and a solid points-earning setup at Hilton properties sound like a good deal for your travels, this card is definitely worth a closer look.</p>
             <div className={styles.ctaButtons}>
               <a href={reviewDataNew.applyLink} className={`${styles.btn} ${styles.btnApply} ${styles.btnLarge}`} target="_blank" rel="noopener noreferrer sponsored" title={`Apply for The ${reviewDataNew.cardName} on ${reviewDataNew.issuerName}'s secure site`}>
-                Learn More & Apply for The {reviewDataNew.cardName}
+                Apply for The {reviewDataNew.cardName}
               </a>
               <a href={reviewDataNew.ratesLink} className={`${styles.btn} ${styles.btnRates} ${styles.btnLarge}`} target="_blank" rel="noopener noreferrer sponsored" title={`See rates and fees for The ${reviewDataNew.cardName} on ${reviewDataNew.issuerName}'s site`}>
                 See Current Rates & Fees
