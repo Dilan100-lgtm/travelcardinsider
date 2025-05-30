@@ -715,7 +715,7 @@ function BofABusinessAdvantageTravelRewardsReviewPage() {
                         </div>
                         <div className={styles.summaryBoxActions}>
                             <a href={reviewDataNew.ratesLink} className={styles.summaryRatesLink} target="_blank" rel="noopener noreferrer sponsored">
-                                See Card Rates & Fees (BofA Site)
+                                See Card Rates & Fees
                             </a>
                              <a href='/rewards-compare' className={`${styles.heroRewardsCalculator} ${styles.summaryButton}`} target="_blank" rel="noopener noreferrer"> {/* /* UPDATE THIS LINK if it exists */ }
                                 Business Rewards Calculator
