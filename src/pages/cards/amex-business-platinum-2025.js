@@ -70,7 +70,7 @@ const reviewDataNew = {
       }
   },
   siteName: siteName,
-  imageUrl        : '/placeholder-amex-biz-platinum.png', // /* UPDATE THIS */ Placeholder: Replace with actual Amex Business Platinum card image URL
+  imageUrl        : '/platinum-card-image-alt.avif', // /* UPDATE THIS */ Placeholder: Replace with actual Amex Business Platinum card image URL
   imageWidth      : 1290, // Placeholder - UPDATE if image dimensions differ
   imageHeight     : 812,  // Placeholder - UPDATE if image dimensions differ
   ratingValue     : 9.2,  // /* UPDATE THIS */ Placeholder - Example rating
@@ -81,7 +81,7 @@ const reviewDataNew = {
   // IMPORTANT: REPLACE WITH YOUR ACTUAL AFFILIATE LINK FOR AMEX BUSINESS PLATINUM
   applyLink       : 'https://www.americanexpress.com/us/credit-cards/business/business-platinum/', // /* UPDATE THIS */
   // Official rates link - Main page usually has a "Rates and Fees" link
-  ratesLink       : 'https://www.americanexpress.com/us/credit-cards/business/business-platinum/', // /* UPDATE THIS */ Users click "Rates and Fees" on this page. More direct: card-application/apply/prospect/terms/...
+  ratesLink       : 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/business-platinum-charge-card/45094-9-0?key=tncBody', // /* UPDATE THIS */ Users click "Rates and Fees" on this page. More direct: card-application/apply/prospect/terms/...
   officialOverviewLink: 'https://www.americanexpress.com/us/credit-cards/business/business-platinum/',
   officialWelcomeOfferLink: 'https://www.americanexpress.com/us/credit-cards/business/business-platinum/', // Welcome offer is on main page
   officialBenefitsCreditsLink: 'https://www.americanexpress.com/us/credit-cards/business/business-platinum/', // Refer to "Offer & Benefit Terms"
@@ -617,10 +617,7 @@ function AmericanExpressBusinessPlatinumCardReviewPage() {
                     )}
                 </div>
                 <p className={styles.heroSubtitle}>
-                  The {reviewDataNew.cardName} is a premier choice for US-based frequent business travelers seeking luxury perks.
-                  It offers unparalleled airport lounge access, complimentary Hilton and Marriott Gold status, and over $1,500 in potential annual statement credits for services
-                  like Dell, airline fees, and CLEAR®. Membership Rewards points offer flexible,
-                  high-value redemptions, including a 35% airline bonus. Is it the ultimate travel companion for your business?
+                  The Amex Business Platinum offers US frequent business travelers luxury perks: unparalleled lounge access, hotel status, $1500+ credits, and flexible points with a 35% airline bonus. Is it your ultimate companion?
                 </p>
                 <div className={styles.heroCtaContainer}>
                   <div>
@@ -747,7 +744,7 @@ function AmericanExpressBusinessPlatinumCardReviewPage() {
 
                 
                 <Image
-                    src="/placeholder-business-travel.webp" // Example path
+                    src="/anete-lusina-rFKBUwLg_WQ-unsplash.webp" // Example path
                     alt="Business executive working in an airport lounge, symbolizing Amex Business Platinum perks"
                     width={800}
                     height={500}
@@ -1182,6 +1179,15 @@ function AmericanExpressBusinessPlatinumCardReviewPage() {
                       ))}
                   </div>
                 </section>
+
+                <Image
+                    src="/rebe-adelaida-zunQwMy5B6M-unsplash.webp" // Example path
+                    alt="Business executive working in an airport lounge, symbolizing Amex Business Platinum perks"
+                    width={800}
+                    height={500}
+                    className={styles.contentImage}
+                    loading="lazy"
+                />
 
                 <section id="section-19" className={styles.reviewSection}>
                   <h2>19. Expert Strategies: Maximizing Every Business Platinum Perk</h2>
