@@ -953,14 +953,7 @@ function AmericanExpressBlueCashEverydayCardReviewPage() {
                     </div>
                 </section>
 
-                <Image
-                    src="/images/blue-cash-everyday-lifestyle-2.jpg" // Placeholder - UPDATE THIS IMAGE
-                    alt="Couple planning a trip using a laptop, with Blue Cash Everyday card nearby"
-                    width={800}
-                    height={500}
-                    className={styles.contentImage}
-                    loading="lazy"
-                />
+                
 
                 <section id="section-5" className={styles.reviewSection}>
                   <h2>5. Welcome Offer: A Closer Look at the Initial $200 Bonus</h2>
