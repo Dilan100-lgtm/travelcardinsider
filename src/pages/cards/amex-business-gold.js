@@ -703,7 +703,7 @@ function AmericanExpressBusinessGoldCardReviewPage() {
                             <a href={reviewData.ratesFeesLink} className={styles.summaryRatesLink} target="_blank" rel="noopener noreferrer sponsored">
                                 See Card Rates & Fees (Amex Site)
                             </a>
-                             <a href='/business-rewards-calculator' className={`${styles.heroRewardsCalculator} ${styles.summaryButton}`} target="_blank" rel="noopener noreferrer"> {/* /* UPDATE LINK if needed */ }
+                             <a href='/rewards-compare' className={`${styles.heroRewardsCalculator} ${styles.summaryButton}`} target="_blank" rel="noopener noreferrer"> {/* /* UPDATE LINK if needed */ }
                                 Business Rewards Calculator
                             </a>
                         </div>
