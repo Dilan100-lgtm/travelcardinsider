@@ -607,7 +607,7 @@ function AmericanExpressBusinessPlatinumCardReviewPage() {
                     )}
                 </div>
                 <p className={styles.heroSubtitle}> {/* Intro paragraph from your Amex Biz Plat text */}
-                  For U.S. business owners whose operations thrive on travel and efficiency, The Business Platinum Card® from American Express stands as a beacon of premium service. It’s a card designed not just for spending, but for enhancing the entire business journey—from luxurious airport lounge access and valuable travel credits to elite hotel statuses and robust rewards. But with a significant ${reviewDataNew.annualFee} annual fee, the critical question is: does it deliver enough tangible value for your specific business needs? This review dives deep.
+                  The Amex Business Platinum Card® offers U.S. businesses premium travel perks. Costing $695 annually, does its value justify the fee? This review explores if its benefits suit your travel-focused operations.
                 </p>
                 <div className={styles.heroCtaContainer}>
                   <div>
