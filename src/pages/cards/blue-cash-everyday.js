@@ -73,10 +73,10 @@ const reviewDataBCE = {
       }
   },
   siteName: siteName,
-  imageUrl        : '/blue-cash-everyday-card-image.png', // /* UPDATE THIS */ Placeholder: Replace with actual Amex BCE card image URL
+  imageUrl        : '/NUS000000305_480x304_straight_withname.avif', // /* UPDATE THIS */ Placeholder: Replace with actual Amex BCE card image URL
   imageWidth      : 1024, // Placeholder - UPDATE if image dimensions differ (typical card images are wider than tall)
   imageHeight     : 648,  // Placeholder - UPDATE if image dimensions differ
-  ratingValue     : 8.8,  // /* UPDATE THIS */ Placeholder - Example rating for BCE
+  ratingValue     : 7.7,  // /* UPDATE THIS */ Placeholder - Example rating for BCE
   ratingCount     : 250,  // /* UPDATE THIS */ Placeholder - Example rating count for BCE
   reviewBody      : 'Our editors evaluate the Blue Cash Everyday® Card from American Express based on its cash back earning rates (U.S. supermarkets, U.S. gas stations, U.S. online retail), statement credits (Disney Bundle, Home Chef), welcome offer, $0 annual fee, introductory APR, and overall value proposition for U.S. consumers focused on everyday spending.',
   aprRange        : '0% intro APR on purchases and balance transfers for 15 months from the date of account opening, then a variable APR, 19.24% - 29.99%.', // From your text
@@ -84,7 +84,7 @@ const reviewDataBCE = {
   // IMPORTANT: REPLACE WITH YOUR ACTUAL AFFILIATE LINK FOR AMEX BLUE CASH EVERYDAY
   applyLink       : 'https://www.americanexpress.com/us/credit-cards/card/blue-cash-everyday/', // /* UPDATE THIS */
   // Official links based on previous turn's findings
-  ratesLink       : 'https://www.americanexpress.com/us/credit-cards/card/blue-cash-everyday/', // Users click "Rates and Fees" on this page
+  ratesLink       : 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/blue-cash-everyday-credit-card/25330-10-0#FeeTable', // Users click "Rates and Fees" on this page
   officialOverviewLink: 'https://www.americanexpress.com/us/credit-cards/card/blue-cash-everyday/',
   officialWelcomeOfferLink: 'https://www.americanexpress.com/us/credit-cards/card/blue-cash-everyday/', // Welcome offer is on main page
   officialBenefitsCreditsLink: 'https://www.americanexpress.com/us/credit-cards/card/blue-cash-everyday/', // Refer to "Offer & Benefit Terms"
@@ -747,7 +747,7 @@ function AmericanExpressBlueCashEverydayCardReviewPage() {
 
                 
                 <Image
-                    src="/images/blue-cash-everyday-lifestyle-1.jpg" // Placeholder - UPDATE THIS IMAGE
+                    src="/anete-lusina-GOZxrAlNIt4-unsplash.webp" // Placeholder - UPDATE THIS IMAGE
                     alt="Family enjoying a day out, funded by Blue Cash Everyday savings"
                     width={800}
                     height={500}
@@ -1194,6 +1194,15 @@ function AmericanExpressBlueCashEverydayCardReviewPage() {
                       </blockquote>
                   </div>
                 </section>
+
+                <Image
+                    src="/jack-anstey-XVoyX7l9ocY-unsplash.webp" // Placeholder - UPDATE THIS IMAGE
+                    alt="Family enjoying a day out, funded by Blue Cash Everyday savings"
+                    width={800}
+                    height={500}
+                    className={styles.contentImage}
+                    loading="lazy"
+                />
                 
                 <section id="section-14" className={`${styles.reviewSection} ${styles.faqSection}`}>
                   <h2>14. Blue Cash Everyday® FAQs: Your Key Questions Answered</h2>
@@ -1208,6 +1217,7 @@ function AmericanExpressBlueCashEverydayCardReviewPage() {
                 </section>
 
 
+
                 <section id="section-15" className={styles.reviewSection}>
                   <h2>15. Expert Verdict: Should BCE Be Your Next Everyday Card?</h2>
                   <p>So, the Blue Cash Everyday® Card from American Express. It confidently carves out its space as a top-tier player in the no-annual-fee credit card game. Its real strength? Delivering straightforward, robust cash back on U.S. spending categories that are, let's face it, the backbone of many household budgets. An intelligent choice for savvy consumers looking to make their money work a bit harder.</p>
@@ -1219,7 +1229,7 @@ function AmericanExpressBlueCashEverydayCardReviewPage() {
                   <p>If you’re seeking a reliable, rewarding, no-annual-fee card from a reputable issuer to manage everyday U.S. expenses and help fund those cherished domestic trips, the Blue Cash Everyday® Card from American Express absolutely deserves a prime spot in your wallet. It’s a smart, practical tool for turning daily purchases into future adventures. Boom.</p>
                    <div className={styles.ctaButtonContainer}>
                         <a href={reviewDataBCE.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.applyNowButton}>
-                            Apply for the Blue Cash Everyday® Card
+                            Apply Now Securely
                         </a>
                         <p className={styles.applyDisclaimer}>Review rates, fees, and terms on the <a href={reviewDataBCE.officialOverviewLink} target="_blank" rel="noopener noreferrer sponsored">official American Express site</a> before applying.</p>
                     </div>
@@ -1235,22 +1245,7 @@ function AmericanExpressBlueCashEverydayCardReviewPage() {
                 </article>
             </div>
           </div>
-          <aside className={styles.sidebarArea}>
-            <TableOfContents sections={tocSectionsBCE} />
-             {/* You can add other sidebar elements here, like "Other Cards to Consider" or "Quick Tips" */}
-            <div className={styles.sidebarWidget}>
-                <h3 className={styles.sidebarTitle}>Quick Card Facts</h3>
-                <ul className={styles.quickFactsList}>
-                    <li><strong>Annual Fee:</strong> $0</li>
-                    <li><strong>Welcome Offer:</strong> $200 Credit (spend $2k/6mo)</li>
-                    <li><strong>Top Cash Back:</strong> 3% (US Supermarkets, Gas, Online Retail - $6k caps)</li>
-                    <li><strong>Key Credits:</strong> Disney Bundle, Home Chef</li>
-                    <li><strong>Intro APR:</strong> Yes, 15 months</li>
-                    <li><strong>Foreign Fee:</strong> 2.7%</li>
-                </ul>
-                <a href={reviewDataBCE.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.applyNowButton} ${styles.sidebarApplyButton}`}>Learn More & Apply</a>
-            </div>
-          </aside>
+          
 
         </div>
       </main>
