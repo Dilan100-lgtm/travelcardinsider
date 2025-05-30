@@ -617,7 +617,7 @@ function BofABusinessAdvantageTravelRewardsReviewPage() {
                       rel="noopener noreferrer sponsored"
                       className={`${styles.applyNowButton} ${styles.heroApplyButton}`}
                     >
-                      Apply Securely on BofA Site
+                      Apply Now
                     </a>
                     <span className={styles.heroApplyButtonDisclaimer}>
                       on Bank of America&apos;s official site
