@@ -73,7 +73,7 @@ const reviewDataNew = {
   imageUrl        : '/platinum-card-image-alt.avif', // /* UPDATE THIS */ Placeholder: Replace with actual Amex Business Platinum card image URL
   imageWidth      : 1290, // Placeholder - UPDATE if image dimensions differ
   imageHeight     : 812,  // Placeholder - UPDATE if image dimensions differ
-  ratingValue     : 9.2,  // /* UPDATE THIS */ Placeholder - Example rating
+  ratingValue     : 9.0,  // /* UPDATE THIS */ Placeholder - Example rating
   ratingCount     : 310,  // /* UPDATE THIS */ Placeholder - Example rating count
   reviewBody      : 'Our editors evaluate The Business Platinum Card® from American Express based on its extensive travel benefits (Global Lounge Collection®, Fine Hotels + Resorts®, elite status), comprehensive statement credits (Dell, Airline, Hilton, Indeed, Adobe, Wireless, CLEAR®), Membership Rewards® earning (including 5X on travel, 1.5X on large purchases), the 35% Airline Bonus, business-centric features, purchase protections, the annual fee, and its overall value proposition for U.S.-based businesses with significant travel and operational expenses.',
   aprRange        : 'Pay Over Time APR: See Pay Over Time APR Rate & Fee Information on issuer\'s site (e.g., Prime Rate + 10.99% to Prime Rate + 19.99%, not to exceed 29.99%, subject to change).',
