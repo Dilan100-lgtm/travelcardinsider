@@ -676,10 +676,7 @@ function AmericanExpressBusinessPlatinumCardReviewPage() {
               </div>
             </section>
 
-             {/* Table of Contents for mobile/tablet - Placed after hero */}
-            <div className={`${styles.mobileOnlyToc} ${styles.reviewContainer}`}>
-                <TableOfContents sections={tocSections} isMobile={true} />
-            </div>
+            
 
 
              <div className={styles.reviewContainer}>
