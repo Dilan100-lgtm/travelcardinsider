@@ -592,11 +592,7 @@ function AmericanExpressBusinessGoldCardReviewPage() {
                         </div>
                     )}
                 </div>
-                <div className={styles.authorityBadges}>
-                  <span className={styles.badgePlaceholder}>Quoted in: Forbes</span>
-                  <span className={styles.badgePlaceholder}>Member: Credit Card Writers Guild</span>
-                  <div className={styles.badgePlaceholder}>Rated 4.8/5 on TrustPilot</div>
-                </div>
+                
                 <p className={styles.heroSubtitle}>
                   {reviewData.heroSubtitle}
                 </p>
@@ -660,7 +656,6 @@ function AmericanExpressBusinessGoldCardReviewPage() {
                         ★★★★★
                       </span>
                   </div>
-                  <p className={styles.howWeRateHeroLink}>Our rating is based on a comprehensive <Link href={reviewData.howWeRateLink}><a>evaluation methodology</a></Link>.</p>
                 </div>
                  <div className={styles.ratingDescription}>
                     <i>{reviewData.cardName}: {reviewData.description}</i>
