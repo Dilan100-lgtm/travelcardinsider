@@ -77,16 +77,16 @@ const reviewDataNew = {
       }
   },
   siteName: siteName,
-  imageUrl        : '/images/cards/bofa-business-advantage-travel-rewards-card.png', // /* UPDATE THIS */ Placeholder path for BofA card image
+  imageUrl        : '/assets-images-site-sb-credit-cards-card-arts-en-bofa_trvbuswldcm_mc-CSX44dee15a.png', // /* UPDATE THIS */ Placeholder path for BofA card image
   imageWidth      : 1290, // /* UPDATE THIS */ Example, use actual dimensions
   imageHeight     : 812,  // /* UPDATE THIS */ Example, use actual dimensions
-  ratingValue     : 8.8,  // /* UPDATE THIS */ Example rating (out of 10)
+  ratingValue     : 7.3,  // /* UPDATE THIS */ Example rating (out of 10)
   ratingCount     : 175,  // /* UPDATE THIS */ Example review count
   reviewBody      : 'Our editors evaluate the Bank of America® Business Advantage Travel Rewards card based on its rewards structure (1.5x base, 3x via BofA Travel Center, up to 2.625x with Preferred Rewards), $0 annual fee, welcome bonus, travel protections, and overall value for U.S. small businesses, especially those with Bank of America banking relationships.',
   aprRange        : 'Variable, typically 17.49% to 27.49% (after 0% intro APR for 9 billing cycles on purchases). Subject to change.', // From review text
   annualFee       : 0,
-  applyLink       : bofaCardProductPage, // Official product page
-  ratesLink       : bofaCardProductPage, // Rates and fees are usually on the product page
+  applyLink       : '/https://www.bankofamerica.com/smallbusiness/credit-cards/products/travel-rewards-business-credit-card/', // Official product page
+  ratesLink       : '/https://www.bankofamerica.com/smallbusiness/credit-cards/terms-and-conditions/?campaignid=4069740&productoffercode=GU&locale=en_US', // Rates and fees are usually on the product page
   officialOverviewLink: bofaCardProductPage,
   officialWelcomeOfferLink: bofaCardProductPage,
   officialRewardsProgramLink: bofaPreferredRewardsPage, // For Preferred Rewards
