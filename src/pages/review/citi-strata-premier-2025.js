@@ -1,11 +1,13 @@
 // File: pages/review/citi-strata-premier-2025.js
 // IMPORTANT: Review and update all placeholders, especially siteUrl, image paths, affiliate links, author details, and site-specific info.
+// ASSUMPTION: You have a StarRating component at '../../components/StarRating.js'
 
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from '../../styles/reviews2025.module.css'; // Ensure this CSS module is in your styles folder
+import StarRating from '../../components/StarRating'; // 👈 IMPORT THE PREMIUM STAR COMPONENT
 
 // IMPORTANT: Update this to your actual site URL
 const siteUrl = 'https://www.yourtravelcardreviewsite.com';
@@ -15,7 +17,7 @@ const reviewDataNew = {
   shortCardName: "Citi Strata Premier",
   issuerName: "Citi",
   issuerLogoUrl: "/images/issuer-logo-citi.svg", // IMPORTANT: Update with actual Citi logo path
-  welcomeOfferHeadline: "60,000 Bonus Pts", // Based on "60,000 points for a $4,000 spend in 3 months"
+  welcomeOfferHeadline: "60,000 Bonus Pts",
   title: "Citi Strata Premier℠ Review 2025: Does It Truly Elevate Your Travel Game?",
   description: "This 2025 review dissects the Citi Strata Premier℠ Card for US travelers. Explore its $95 fee, 10X ThankYou® Points on CitiTravel.com, 3X everyday categories, $100 hotel credit, and reinstated travel protections. Is it a stronger pick for your wallet?",
   keywords: [
@@ -28,7 +30,7 @@ const reviewDataNew = {
     "Citi credit card review",
     "EV charging rewards"
   ],
-  author: { // IMPORTANT: Update with your actual author details or use from Amex example if intended
+  author: {
       name: 'Dilan Madushanka',
       title: 'Founder & Lead Editor',
       imageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg',
@@ -52,19 +54,19 @@ const reviewDataNew = {
           email: 'team@travelcardinsider.com'
       }
   },
-  siteName: "Your Travel Card Review Site", // IMPORTANT: Update this
+  siteName: "Your Travel Card Review Site",
   pagePath: "/review/citi-strata-premier-2025",
-  imageUrl: "/images/citi-strata-premier-hero.webp", // IMPORTANT: Update with an actual image path for Citi Strata Premier (Hero Image)
+  imageUrl: "/images/citi-strata-premier-hero.webp", 
   cardImageUrl: "/images/citi-strata-premier-card-face.png", // IMPORTANT: Update with actual card face image path
   heroImageObjectPosition: "center center",
   imageWidth: 1600,
   imageHeight: 900,
-  siteLogoUrl: "/images/logo.png", // IMPORTANT: Update this
+  siteLogoUrl: "/images/logo.png",
   publishDate: "2025-05-28",
-  updateDate: "2025-06-01", // Current date as of last major update
-  ratingValue: 4.4, // This is out of 5
+  updateDate: "2025-06-01",
+  ratingValue: 4.4, // This is out of 5, used for StarRating component and text
   annualFee: 95,
-  applyLink: "https://www.yourlink.com/apply-citi-strata-premier", // IMPORTANT: Update this with your affiliate link
+  applyLink: "https://www.yourlink.com/apply-citi-strata-premier",
   learnMoreLink: "/cards/citi-strata-premier-details",
   
   thankYouRewardsProgramLink: "https://www.thankyou.com/",
@@ -118,8 +120,8 @@ const structuredData = {
     },
     "aggregateRating": {
       "@type": "AggregateRating",
-      "ratingValue": reviewDataNew.ratingValue.toString(), // This is out of 5
-      "bestRating": "5",
+      "ratingValue": reviewDataNew.ratingValue.toString(),
+      "bestRating": "5", // Assuming your StarRating component uses a 5-star scale
       "worstRating": "1",
       "reviewCount": "1"
     },
@@ -128,8 +130,8 @@ const structuredData = {
   },
   "reviewRating": {
     "@type": "Rating",
-    "ratingValue": reviewDataNew.ratingValue.toString(), // This is out of 5
-    "bestRating": "5",
+    "ratingValue": reviewDataNew.ratingValue.toString(),
+    "bestRating": "5", // Consistent with aggregateRating
     "worstRating": "1"
   },
   "headline": reviewDataNew.title,
@@ -159,22 +161,7 @@ const TocLinks = [
   { href: "#final-take", label: "Final Take (Conclusion)" },
 ];
 
-// Helper function to render stars
-const renderStars = (ratingOutOf5) => {
-  const fullStars = Math.floor(ratingOutOf5);
-  const halfStar = ratingOutOf5 % 1 >= 0.4 ? 1 : 0; // Using 0.4 to round .5 up more easily
-  const emptyStars = 5 - fullStars - halfStar;
-  
-  let stars = '';
-  for (let i = 0; i < fullStars; i++) stars += '★';
-  if (halfStar) stars += '½'; // Or use a specific half-star icon/SVG
-  for (let i = 0; i < emptyStars; i++) stars += '☆';
-  
-  return stars;
-  // For better visuals, consider using SVGs or an icon library:
-  // Example: return <><FullStarIcon /><FullStarIcon /><HalfStarIcon /><EmptyStarIcon /><EmptyStarIcon /></>;
-};
-
+// The text-based renderStars function is now removed, assuming StarRating component handles visuals.
 
 export default function CitiStrataPremierReview2025() {
   const authorRef = useRef(null);
@@ -393,35 +380,35 @@ export default function CitiStrataPremierReview2025() {
           <section id="introduction" className={styles.reviewSection}>
             <h2>I. Introduction</h2>
             
-            {/* --- NEWLY ADDED CARD IMAGE AND RATINGS --- */}
-            <div className={styles.introCardDetailsContainer}> {/* You'll need to style this container */}
+            <div className={styles.introCardDetailsContainer}>
               <div className={styles.introCardImage}>
                 <Image 
                   src={reviewDataNew.cardImageUrl} 
                   alt={`${reviewDataNew.cardName} card image`} 
-                  width={220} // Adjust as needed
-                  height={140} // Adjust as needed
-                  layout="intrinsic" // Or "responsive" depending on your CSS
+                  width={220} 
+                  height={140}
+                  layout="intrinsic"
                 />
               </div>
               <div className={styles.introCardRatings}>
-                <p className={styles.starRating}>
-                  {renderStars(reviewDataNew.ratingValue)} 
-                  <span className={styles.ratingValueText}> ({reviewDataNew.ratingValue.toFixed(1)} / 5 Stars)</span>
+                <div className={styles.starRating}> {/* Ensure your StarRating component fits well here */}
+                  {reviewDataNew.ratingValue && <StarRating rating={reviewDataNew.ratingValue} />}
+                </div>
+                <p className={styles.ratingValueText}>
+                   ({reviewDataNew.ratingValue.toFixed(1)} / 5 Stars)
                 </p>
                 <p className={styles.ratingOutOfTen}>
                   Overall Rating: <strong>{ratingOutOf10} / 10</strong>
                 </p>
-                {/* You can add more summary details here if desired, e.g., Annual Fee */}
                  <p className={styles.ratingAnnualFee}>Annual Fee: ${reviewDataNew.annualFee}</p>
               </div>
             </div>
-            {/* --- END OF NEWLY ADDED CONTENT --- */}
 
             <p>Travelers are constantly seeking smarter reward strategies. Citi has refreshed a key offering: the Citi Premier® is now the {reviewDataNew.cardName}. But is this a genuine step up, or just a new name for an old favorite? This 2025 review dissects the Strata Premier℠ for US travelers to see if it’s a stronger pick for your wallet.</p>
             <p>The "Strata Premier" name, while keeping the ${reviewDataNew.annualFee} annual fee, suggests refinement. Citi may be building a "Strata" card family (<a href={reviewDataNew.thankYouRewardsProgramLink} target="_blank" rel="noopener noreferrer sponsored">Citi Official Website - ThankYou Rewards Program</a>), but this review focuses on the {reviewDataNew.cardName}.</p>
           </section>
 
+          {/* ... rest of your sections ... */}
           <section id="what-it-packs" className={styles.reviewSection}>
             <h2>II. What the Strata Premier℠ Packs: More Than Just a Fee</h2>
             <p>The {reviewDataNew.cardName} sticks to its accessible ${reviewDataNew.annualFee} annual fee while aiming to deliver significant value. New cardholders often find a hefty ThankYou® Points welcome bonus after meeting an initial spend (for instance, 60,000 points for a $4,000 spend in 3 months – but <a href={reviewDataNew.applyLink} target="_blank" rel="noopener noreferrer sponsored">always check current offers</a>). You'll generally want a "Good" to "Excellent" credit score (typically 670-850) to apply.</p>
