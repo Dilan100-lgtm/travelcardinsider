@@ -98,8 +98,8 @@ const loungeCardData = [
     applyLink: 'https://www.capitalone.com/credit-cards/venture-x/', // Official link
     ratesFeesLink: 'https://www.capitalone.com/credit-cards/venture-x/', // Official link (often found under 'View all rates and terms')
     learnMoreLink: '/cards/capital-one-venture-x', // ✏️ Create this internal page later
-    // ratingValue: 9.3,
-    // ratingStars: 4.5,
+     ratingValue: 9.0,
+     ratingStars: 4.5,
   },
   {
     id: 'amexBusinessPlatinumLounge',
@@ -114,8 +114,8 @@ const loungeCardData = [
     applyLink: 'https://www.americanexpress.com/us/credit-cards/business/business-platinum/', // Official link
     ratesFeesLink: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/business-platinum-charge-card/45094-9-0?key=tncBody', // Official link
     learnMoreLink: '/cards/amex-business-platinum', // ✏️ Create this internal page later
-    // ratingValue: 9.1,
-    // ratingStars: 4.5,
+     ratingValue: 9.0,
+     ratingStars: 4.5,
   },
   {
     id: 'marriottBonvoyBrilliantLounge',
@@ -131,8 +131,8 @@ const loungeCardData = [
     applyLink: 'https://www.americanexpress.com/us/credit-cards/card/marriott-bonvoy-brilliant/', // Official link
     ratesFeesLink: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/marriott-bonvoy-brilliant-card/25330-10-0#FeeTable', // Official link
     learnMoreLink: '/cards/marriott-bonvoy-brilliant', // ✏️ Create this internal page later
-    // ratingValue: 8.8,
-    // ratingStars: 4.0,
+     ratingValue: 8.9,
+     ratingStars: 4.5,
   }
 ];
 
