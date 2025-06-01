@@ -50,7 +50,7 @@ const loungeCardData = [
   {
     id: 'amexPlatinumLounge',
     name: 'The Platinum Card® from American Express',
-    imageSrc: '/images/cards/amex-platinum-card-2025.png', // ❗ Replace with actual card image
+    imageSrc: '/NUS000000237_480x304_straight_withname.avif', // ❗ Replace with actual card image
     imageAlt: 'The Platinum Card from American Express',
     annualFee: '$695',
     officialCardPageLink: 'https://www.americanexpress.com/us/credit-cards/card/platinum/',
@@ -59,15 +59,15 @@ const loungeCardData = [
     bestFor: "Luxury travelers who frequently visit Centurion Lounges and can effectively maximize the diverse array of statement credits.",
     userQuote: "User Sarah says, \"Centurion access saves me on meals; the credits make the fee worth it.\"",
     applyLink: 'https://www.americanexpress.com/us/credit-cards/card/platinum/', // Official link
-    ratesFeesLink: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/platinum-card/25330-10-0', // Official link
-    learnMoreLink: '/reviews/lounge-cards/amex-platinum', // ✏️ Create this internal page later
-    // ratingValue: 9.5, // ✏️ Add rating if you implement this
-    // ratingStars: 5, // ✏️ Add rating if you implement this
+    ratesFeesLink: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/platinum-card/25330-10-0#FeeTable', // Official link
+    learnMoreLink: '/cards/amex-platinum', // ✏️ Create this internal page later
+     ratingValue: 9.4, // ✏️ Add rating if you implement this
+     ratingStars: 5, // ✏️ Add rating if you implement this
   },
   {
     id: 'chaseSapphireReserveLounge',
     name: 'Chase Sapphire Reserve®',
-    imageSrc: '/images/cards/chase-sapphire-reserve-card-2025.png', // ❗ Replace
+    imageSrc: '/sapphire_reserve_card.png', // ❗ Replace
     imageAlt: 'Chase Sapphire Reserve Card',
     annualFee: '$550 ($75 for each authorized user)',
     officialCardPageLink: 'https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve',
@@ -77,14 +77,14 @@ const loungeCardData = [
     userQuote: "Mark & Lisa note, \"The $300 credit is easy; Priority Pass and Chase lounges are great for our family.\"",
     applyLink: 'https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve', // Official link
     ratesFeesLink: 'https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC56007.html', // Official link
-    learnMoreLink: '/reviews/lounge-cards/chase-sapphire-reserve', // ✏️ Create this internal page later
-    // ratingValue: 9.2,
-    // ratingStars: 4.5,
+    learnMoreLink: '/cards/chase-sapphire-reserve', // ✏️ Create this internal page later
+    ratingValue: 9.2,
+    ratingStars: 4.5,
   },
   {
     id: 'capitalOneVentureXLounge',
     name: 'Capital One Venture X Rewards Credit Card',
-    imageSrc: '/images/cards/capital-one-venture-x-card-2025.png', // ❗ Replace
+    imageSrc: '/venturex-cg-static-card-1000x630-2.avif', // ❗ Replace
     imageAlt: 'Capital One Venture X Rewards Credit Card',
     annualFee: '$395 (Authorized Users can be added for no additional annual fee)',
     officialCardPageLink: 'https://www.capitalone.com/credit-cards/venture-x/',
@@ -93,8 +93,8 @@ const loungeCardData = [
     bestFor: "Overall value, particularly for families or groups, thanks to its generous authorized user policy for lounge access and a low effective annual cost.",
     userQuote: "The Chens add an AU for their teen: \"Our family of four gets lounge access; the card pays for itself!\"",
     applyLink: 'https://www.capitalone.com/credit-cards/venture-x/', // Official link
-    ratesFeesLink: 'https://www.capitalone.com/credit-cards/venture-x/#disclosures-2', // Official link (often found under 'View all rates and terms')
-    learnMoreLink: '/reviews/lounge-cards/capital-one-venture-x', // ✏️ Create this internal page later
+    ratesFeesLink: 'https://www.capitalone.com/credit-cards/venture-x/', // Official link (often found under 'View all rates and terms')
+    learnMoreLink: '/cards/capital-one-venture-x', // ✏️ Create this internal page later
     // ratingValue: 9.3,
     // ratingStars: 4.5,
   },
