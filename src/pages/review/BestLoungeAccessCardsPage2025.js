@@ -9,8 +9,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from '../../styles/NoFTFCardsReview.module.css'; // Ensure this path is correct
-// import StarRating from '../../components/StarRating'; // Uncomment if you use a StarRating component
-
+ import StarRating from '../../components/StarRating'; 
 // ... rest of your file content
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -184,14 +183,14 @@ function generateJsonLD() {
         price: card.annualFee.replace(/\$|(\s*\(.*\))/g, '').trim(), // Basic cleaning for price
         url: card.applyLink, // Direct link to apply
       },
-      // ...(card.ratingValue && { // Uncomment if you implement ratings
-      //   aggregateRating: {
-      //     '@type': 'AggregateRating',
-      //     ratingValue: card.ratingValue,
-      //     bestRating: '10',
-      //     ratingCount: 1, // Indicates "Our Rating"
-      //   },
-      // })
+     ...(card.ratingValue && {
+       aggregateRating: {
+         '@type': 'AggregateRating',
+         ratingValue: card.ratingValue,
+           bestRating: '10',
+          ratingCount: 1, // Indicates "Our Rating"
+        },
+     })
     },
   }));
 
