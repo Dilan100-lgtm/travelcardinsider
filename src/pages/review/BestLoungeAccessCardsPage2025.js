@@ -1,13 +1,17 @@
-// File: pages/reviews/BestLoungeAccessCardsPage2025.js – FINAL COMPLETE VERSION
+// File: pages/reviews/BestLoungeAccessCardsPage2025.js
+"use client"; // 👈 Add this line at the very top
+
 // ❗ Replace image src paths (in loungeCardData and constants) with your optimised, WebP‑or‑AVIF images.
 // The paths below are placeholders. Card images should ideally be ~150x95px or similar aspect ratio.
 
-import React, { useState, useRef, useEffect, useCallback } from 'next';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from '../../styles/NoFTFCardsReview.module.css'; // Ensure this path is correct
 // import StarRating from '../../components/StarRating'; // Uncomment if you use a StarRating component
+
+// ... rest of your file content
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 🔗 CONFIG
