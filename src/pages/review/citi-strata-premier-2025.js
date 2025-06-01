@@ -56,7 +56,7 @@ const reviewDataNew = {
   },
   siteName: "Your Travel Card Review Site",
   pagePath: "/review/citi-strata-premier-2025",
-  imageUrl: "/images/citi-strata-premier-hero.webp", 
+  imageUrl: "/download1.png", 
   cardImageUrl: "/images/citi-strata-premier-card-face.png", // IMPORTANT: Update with actual card face image path
   heroImageObjectPosition: "center center",
   imageWidth: 1600,
@@ -64,17 +64,17 @@ const reviewDataNew = {
   siteLogoUrl: "/images/logo.png",
   publishDate: "2025-05-28",
   updateDate: "2025-06-01",
-  ratingValue: 4.4, // This is out of 5, used for StarRating component and text
+  ratingValue: 3.7, // This is out of 5, used for StarRating component and text
   annualFee: 95,
-  applyLink: "https://www.yourlink.com/apply-citi-strata-premier",
-  learnMoreLink: "/cards/citi-strata-premier-details",
+  applyLink: "https://www.citi.com/credit-cards/citi-strata-premier-credit-card",
+  learnMoreLink: "/cards/citi-strata-premier",
   
   thankYouRewardsProgramLink: "https://www.thankyou.com/",
   guideToBenefitsLink: "https://www.citi.com/credit-cards/citi-strata-premier-credit-card",
   thankYouPartnersListLink: "https://www.thankyou.com/partnerProgramsListing.htm",
   mastercardWorldEliteBenefitsLink: "https://www.mastercard.com/content/mastercardcom/us/en/personal/find-a-card/world-elite-mastercard-credit.html",
   officialCardAgreementLink: "https://www.citi.com/credit-cards/compare-credit-cards/assets/pdf/citi-strata-premier-cardmember-agreement.pdf",
-  ratesLink: "https://www.citi.com/credit-cards/compare-credit-cards/assets/pdf/citi-strata-premier-cardmember-agreement.pdf",
+  ratesLink: "https://www.citi.com/credit-cards/citi-strata-premier-credit-card",
 
   h1Content: "Citi Strata Premier℠ Review (2025): A $95 Powerhouse?",
   heroH1Content: "Citi Strata Premier℠ 2025: Does It Truly Elevate Your Travel Game?",
@@ -398,7 +398,7 @@ export default function CitiStrataPremierReview2025() {
                    ({reviewDataNew.ratingValue.toFixed(1)} / 5 Stars)
                 </p>
                 <p className={styles.ratingOutOfTen}>
-                  Overall Rating: <strong>{ratingOutOf10} / 10</strong>
+                  TCI Rating: <strong>7.7 / 10</strong>
                 </p>
                  <p className={styles.ratingAnnualFee}>Annual Fee: ${reviewDataNew.annualFee}</p>
               </div>
