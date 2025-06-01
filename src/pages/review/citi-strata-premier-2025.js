@@ -29,24 +29,24 @@ const reviewDataNew = {
     "EV charging rewards"
   ],
   author: { // IMPORTANT: Update with your actual author details or use from Amex example if intended
-      name: 'Dilan Madushanka', // Placeholder from Amex example
-      title: 'Founder & Lead Editor', // Placeholder from Amex example
-      imageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // Placeholder from Amex example
-      imageWidth: 40, // Placeholder from Amex example
-      imageHeight: 40, // Placeholder from Amex example
-      tooltipImageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // Placeholder from Amex example
-      tooltipImageWidth: 60, // Placeholder from Amex example
-      tooltipImageHeight: 60, // Placeholder from Amex example
-      expertise: [ // Placeholder from Amex example, update for Citi Strata Premier context
+      name: 'Dilan Madushanka',
+      title: 'Founder & Lead Editor',
+      imageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg',
+      imageWidth: 40,
+      imageHeight: 40,
+      tooltipImageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg',
+      tooltipImageWidth: 60,
+      tooltipImageHeight: 60,
+      expertise: [
           'Mid-Tier Credit Cards',
           'Travel Rewards Programs',
           'Citi ThankYou Points',
           'Maximizing Card Benefits',
           'Credit Card Analysis'
       ],
-      bioSnippet: 'Dilan Madushanka is the founder and lead editor of TravelCardInsider.com, dedicated to demystifying credit cards and uncovering their real-world value for smarter travel.', // Placeholder from Amex example
-      fullBioLink: '/author/dilan-madushanka', // Placeholder from Amex example
-      socialLinks: { // Placeholder from Amex example
+      bioSnippet: 'Dilan Madushanka is the founder and lead editor of TravelCardInsider.com, dedicated to demystifying credit cards and uncovering their real-world value for smarter travel.',
+      fullBioLink: '/author/dilan-madushanka',
+      socialLinks: {
           linkedin: 'https://www.linkedin.com/in/dilan-madushanka-b65293365',
           twitter: 'https://x.com/team_dilan',
           email: 'team@travelcardinsider.com'
@@ -54,48 +54,46 @@ const reviewDataNew = {
   },
   siteName: "Your Travel Card Review Site", // IMPORTANT: Update this
   pagePath: "/review/citi-strata-premier-2025",
-  imageUrl: "/images/citi-strata-premier-hero.webp", // IMPORTANT: Update with an actual image path for Citi Strata Premier
-  heroImageObjectPosition: "center center", // Control image focus here, e.g., "center 30%"
-  imageWidth: 1600, // Recommended image width
-  imageHeight: 900, // Recommended image height
+  imageUrl: "/images/citi-strata-premier-hero.webp", // IMPORTANT: Update with an actual image path for Citi Strata Premier (Hero Image)
+  cardImageUrl: "/images/citi-strata-premier-card-face.png", // IMPORTANT: Update with actual card face image path
+  heroImageObjectPosition: "center center",
+  imageWidth: 1600,
+  imageHeight: 900,
   siteLogoUrl: "/images/logo.png", // IMPORTANT: Update this
-  publishDate: "2025-05-28", // IMPORTANT: Update with actual publish date
-  updateDate: "2025-06-01", // IMPORTANT: Update with actual update date (e.g., today's date)
-  ratingValue: 4.4, // Based on positive review tone, adjust as needed
+  publishDate: "2025-05-28",
+  updateDate: "2025-06-01", // Current date as of last major update
+  ratingValue: 4.4, // This is out of 5
   annualFee: 95,
   applyLink: "https://www.yourlink.com/apply-citi-strata-premier", // IMPORTANT: Update this with your affiliate link
-  learnMoreLink: "/cards/citi-strata-premier-details", // IMPORTANT: Update if you have a details page
+  learnMoreLink: "/cards/citi-strata-premier-details",
   
-  // Official Links for citations
   thankYouRewardsProgramLink: "https://www.thankyou.com/",
-  guideToBenefitsLink: "https://www.citi.com/credit-cards/citi-strata-premier-credit-card", // Main card page, benefits guide usually linked
+  guideToBenefitsLink: "https://www.citi.com/credit-cards/citi-strata-premier-credit-card",
   thankYouPartnersListLink: "https://www.thankyou.com/partnerProgramsListing.htm",
   mastercardWorldEliteBenefitsLink: "https://www.mastercard.com/content/mastercardcom/us/en/personal/find-a-card/world-elite-mastercard-credit.html",
   officialCardAgreementLink: "https://www.citi.com/credit-cards/compare-credit-cards/assets/pdf/citi-strata-premier-cardmember-agreement.pdf",
-  // Use officialCardAgreementLink also for general ratesLink if specific one isn't different
   ratesLink: "https://www.citi.com/credit-cards/compare-credit-cards/assets/pdf/citi-strata-premier-cardmember-agreement.pdf",
 
-
-  h1Content: "Citi Strata Premier℠ Review (2025): A $95 Powerhouse?", // Adjusted for conciseness
-  heroH1Content: "Citi Strata Premier℠ 2025: Does It Truly Elevate Your Travel Game?", // From review text
-  reviewBody: "This 2025 review dissects the Strata Premier℠ for US travelers to see if it’s a stronger pick for your wallet.", // From review text
+  h1Content: "Citi Strata Premier℠ Review (2025): A $95 Powerhouse?",
+  heroH1Content: "Citi Strata Premier℠ 2025: Does It Truly Elevate Your Travel Game?",
+  reviewBody: "This 2025 review dissects the Strata Premier℠ for US travelers to see if it’s a stronger pick for your wallet.",
   sku: "CITI-STRATA-PREMIER-TCI-2025",
   mpn: "CITISTRATAPREMIER",
   brandName: "Citi Strata Premier",
-  credits: [ // Citi Strata Premier has one primary credit mentioned
-    { id: "hotel", name: "$100 Annual Hotel Credit", frequency: "Annual", details: "For a single portal-booked hotel stay of $500+ (pre-tax) via CitiTravel.com.", icon: "/icons/credit-hotel.svg" } // IMPORTANT: Create/update icon path if using icons like Amex example
+  credits: [
+    { id: "hotel", name: "$100 Annual Hotel Credit", frequency: "Annual", details: "For a single portal-booked hotel stay of $500+ (pre-tax) via CitiTravel.com.", icon: "/icons/credit-hotel.svg" }
   ]
 };
 
 const pageUrlFull = `${siteUrl}${reviewDataNew.pagePath}`;
 
-const structuredData = { // Based on Amex example, adapted for Citi
+const structuredData = {
   "@context": "https://schema.org",
   "@type": "Review",
   "itemReviewed": {
-    "@type": "FinancialProduct", // More specific than "Product"
+    "@type": "FinancialProduct",
     "name": reviewDataNew.cardName,
-    "brand": { "@type": "Brand", "name": reviewDataNew.issuerName }, // Issuer as brand
+    "brand": { "@type": "Brand", "name": reviewDataNew.issuerName },
     "description": reviewDataNew.description,
     "image": `${siteUrl}${reviewDataNew.imageUrl}`,
     "sku": reviewDataNew.sku,
@@ -120,17 +118,17 @@ const structuredData = { // Based on Amex example, adapted for Citi
     },
     "aggregateRating": {
       "@type": "AggregateRating",
-      "ratingValue": reviewDataNew.ratingValue.toString(),
+      "ratingValue": reviewDataNew.ratingValue.toString(), // This is out of 5
       "bestRating": "5",
       "worstRating": "1",
-      "reviewCount": "1" // IMPORTANT: Update if you aggregate reviews or this isn't the first
+      "reviewCount": "1"
     },
     "feesAndCommissionsSpecification": reviewDataNew.ratesLink,
     "interestRate": "Refer to issuer's terms and conditions"
   },
   "reviewRating": {
     "@type": "Rating",
-    "ratingValue": reviewDataNew.ratingValue.toString(),
+    "ratingValue": reviewDataNew.ratingValue.toString(), // This is out of 5
     "bestRating": "5",
     "worstRating": "1"
   },
@@ -149,7 +147,7 @@ const structuredData = { // Based on Amex example, adapted for Citi
   "image": [`${siteUrl}${reviewDataNew.imageUrl}`]
 };
 
-const TocLinks = [ // Based on the latest review text structure
+const TocLinks = [
   { href: "#introduction", label: "Introduction" },
   { href: "#what-it-packs", label: "What It Packs (Features)" },
   { href: "#whats-new", label: "What’s New & Better?" },
@@ -161,8 +159,24 @@ const TocLinks = [ // Based on the latest review text structure
   { href: "#final-take", label: "Final Take (Conclusion)" },
 ];
 
+// Helper function to render stars
+const renderStars = (ratingOutOf5) => {
+  const fullStars = Math.floor(ratingOutOf5);
+  const halfStar = ratingOutOf5 % 1 >= 0.4 ? 1 : 0; // Using 0.4 to round .5 up more easily
+  const emptyStars = 5 - fullStars - halfStar;
+  
+  let stars = '';
+  for (let i = 0; i < fullStars; i++) stars += '★';
+  if (halfStar) stars += '½'; // Or use a specific half-star icon/SVG
+  for (let i = 0; i < emptyStars; i++) stars += '☆';
+  
+  return stars;
+  // For better visuals, consider using SVGs or an icon library:
+  // Example: return <><FullStarIcon /><FullStarIcon /><HalfStarIcon /><EmptyStarIcon /><EmptyStarIcon /></>;
+};
+
+
 export default function CitiStrataPremierReview2025() {
-  // Hooks for author tooltip, sticky nav, active section are from Amex example
   const authorRef = useRef(null);
   const authorTooltipRef = useRef(null);
   const [showAuthorBioTooltip, setShowAuthorBioTooltip] = useState(false);
@@ -171,7 +185,6 @@ export default function CitiStrataPremierReview2025() {
   const [showStickyNav, setShowStickyNav] = useState(false);
   const stickyNavRef = useRef(null);
 
-  // Callbacks and useEffect for author tooltip functionality
   const handleAuthorMouseEnter = useCallback(() => { if (authorRef.current?.tooltipTimeoutId) clearTimeout(authorRef.current.tooltipTimeoutId); setShowAuthorBioTooltip(true); }, []);
   const handleAuthorMouseLeave = useCallback(() => { const timerId = setTimeout(() => { if (authorRef.current && authorTooltipRef.current) { const isHoveringTrigger = authorRef.current.matches(':hover'); const isHoveringTooltip = authorTooltipRef.current.matches(':hover'); const isFocusWithinTrigger = authorRef.current.contains(document.activeElement); const isFocusWithinTooltip = authorTooltipRef.current.contains(document.activeElement); if (!isHoveringTrigger && !isHoveringTooltip && !isFocusWithinTrigger && !isFocusWithinTooltip) setShowAuthorBioTooltip(false); } else if (!authorRef.current?.matches(':hover') && !authorTooltipRef.current?.matches(':hover')) setShowAuthorBioTooltip(false); }, 150); if (authorRef.current) authorRef.current.tooltipTimeoutId = timerId; }, [authorRef, authorTooltipRef]);
   const handleTooltipMouseEnter = useCallback(() => { if (authorRef.current?.tooltipTimeoutId) clearTimeout(authorRef.current.tooltipTimeoutId); }, []);
@@ -182,7 +195,6 @@ export default function CitiStrataPremierReview2025() {
     return () => { document.removeEventListener("mousedown", handleClickOutside); if(authorRef.current?.tooltipTimeoutId) clearTimeout(authorRef.current.tooltipTimeoutId); };
   }, [showAuthorBioTooltip, authorRef, authorTooltipRef]);
 
-  // useEffect for IntersectionObserver and sticky nav scroll
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -192,7 +204,7 @@ export default function CitiStrataPremierReview2025() {
           }
         });
       },
-      { rootMargin: "-20% 0px -80% 0px", threshold: 0 } // Adjust rootMargin as needed
+      { rootMargin: "-20% 0px -80% 0px", threshold: 0 }
     );
 
     const sections = TocLinks.map(link => document.querySelector(link.href));
@@ -201,7 +213,7 @@ export default function CitiStrataPremierReview2025() {
     });
 
     const handleScroll = () => {
-      if (window.scrollY > 200) { // Show sticky nav after 200px scroll
+      if (window.scrollY > 200) {
         setShowStickyNav(true);
       } else {
         setShowStickyNav(false);
@@ -216,13 +228,14 @@ export default function CitiStrataPremierReview2025() {
       });
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []); // Empty dependency array ensures this runs only on mount and unmount
+  }, []);
 
   const formattedUpdateDate = new Date(reviewDataNew.updateDate).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+  const ratingOutOf10 = (reviewDataNew.ratingValue * 2).toFixed(1);
 
   return (
     <>
-      <Head> {/* SEO metadata from reviewDataNew, structure from Amex example */}
+      <Head>
         <title>{reviewDataNew.title}</title>
         <meta name="description" content={reviewDataNew.description} />
         <meta name="keywords" content={reviewDataNew.keywords.join(', ')} />
@@ -230,7 +243,6 @@ export default function CitiStrataPremierReview2025() {
         <meta name="robots" content="index,follow" />
         <link rel="canonical" href={pageUrlFull} />
 
-        {/* Open Graph Meta Tags */}
         <meta property="og:type" content="article" />
         <meta property="og:title" content={reviewDataNew.title} />
         <meta property="og:description" content={reviewDataNew.description} />
@@ -239,18 +251,17 @@ export default function CitiStrataPremierReview2025() {
         <meta property="og:image:width" content={String(reviewDataNew.imageWidth)} />
         <meta property="og:image:height" content={String(reviewDataNew.imageHeight)} />
         <meta property="og:site_name" content={reviewDataNew.siteName} />
-        <meta property="article:publisher" content={`https://www.facebook.com/yourtravelcardinsiderprofile`} /> {/* IMPORTANT: Update FB profile */}
+        <meta property="article:publisher" content={`https://www.facebook.com/yourtravelcardinsiderprofile`} />
         <meta property="article:published_time" content={reviewDataNew.publishDate} />
         <meta property="article:modified_time" content={reviewDataNew.updateDate} />
         <meta property="article:author" content={reviewDataNew.author.name} />
 
-        {/* Twitter Card Meta Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@YourSiteTwitterHandle" /> {/* IMPORTANT: Update Twitter handle */}
-        <meta name="twitter:title" content={`${reviewDataNew.cardName} Review (2025) | Is the $${reviewDataNew.annualFee} Fee Worth It?`} /> {/* Tailored Twitter title */}
-        <meta name="twitter:description" content={`Our 2025 Citi Strata Premier review: $${reviewDataNew.annualFee} fee, ThankYou® Points, travel credits, and more.`} /> {/* Tailored Twitter description */}
+        <meta name="twitter:site" content="@YourSiteTwitterHandle" />
+        <meta name="twitter:title" content={`${reviewDataNew.cardName} Review (2025) | Is the $${reviewDataNew.annualFee} Fee Worth It?`} />
+        <meta name="twitter:description" content={`Our 2025 Citi Strata Premier review: $${reviewDataNew.annualFee} fee, ThankYou® Points, travel credits, and more.`} />
         <meta name="twitter:image" content={`${siteUrl}${reviewDataNew.imageUrl}`} />
-        <meta name="twitter:creator" content={reviewDataNew.author.socialLinks.twitter ? reviewDataNew.author.socialLinks.twitter.replace('https://x.com/', '@') : '@AuthorTwitterHandle'} /> {/* IMPORTANT: Update Author Twitter handle */}
+        <meta name="twitter:creator" content={reviewDataNew.author.socialLinks.twitter ? reviewDataNew.author.socialLinks.twitter.replace('https://x.com/', '@') : '@AuthorTwitterHandle'} />
 
         <meta name="geo.region" content="US" />
         <meta name="geo.placename" content="United States" />
@@ -260,7 +271,6 @@ export default function CitiStrataPremierReview2025() {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       </Head>
 
-      {/* Trust Signal Bar */}
       <div className={styles.trustSignalBar}>
         <div className={styles.trustSignalContent}>
           {reviewDataNew.issuerLogoUrl && (
@@ -275,7 +285,6 @@ export default function CitiStrataPremierReview2025() {
         </div>
       </div>
 
-      {/* Sticky Table of Contents Navigation */}
       {showStickyNav && (
         <nav className={styles.stickyTocNav} ref={stickyNavRef}>
           <div className={styles.stickyTocContent}>
@@ -293,7 +302,6 @@ export default function CitiStrataPremierReview2025() {
         </nav>
       )}
 
-      {/* Hero Image Section */}
       <div className={styles.heroImageContainer}>
         <Image
           src={reviewDataNew.imageUrl}
@@ -302,7 +310,7 @@ export default function CitiStrataPremierReview2025() {
           height={reviewDataNew.imageHeight}
           className={styles.heroImage}
           priority
-          style={{ objectPosition: reviewDataNew.heroImageObjectPosition || "center center" }} // Corrected objectPosition usage
+          style={{ objectPosition: reviewDataNew.heroImageObjectPosition || "center center" }}
         />
         <div className={styles.heroTextOverlay}>
           <h1 className={styles.heroTitle}>{reviewDataNew.heroH1Content}</h1>
@@ -311,7 +319,6 @@ export default function CitiStrataPremierReview2025() {
 
       <main className={styles.reviewPageMain}>
         <article className={styles.reviewContainer}>
-          {/* Author Bio and Disclaimer Section */}
           <header className={styles.reviewHeader}>
             <div
                 className={styles.authorBioContainer}
@@ -371,11 +378,9 @@ export default function CitiStrataPremierReview2025() {
               We may receive compensation when you click on links to certain credit card products
               on our site. However, our recommendations remain our own, and offers are subject to
               change. Always verify details with the official issuer. Terms apply to credit card benefits and offers.
-              {/* Citi specific: "Enrollment may be required for select Citi benefits and offers." - confirm if needed */}
             </p>
           </header>
 
-          {/* In-Page Table of Contents */}
           <nav className={styles.reviewToc}>
             <h2>In this review:</h2>
             <ol>
@@ -385,10 +390,34 @@ export default function CitiStrataPremierReview2025() {
             </ol>
           </nav>
 
-          {/* --- Review Content Sections --- */}
-
           <section id="introduction" className={styles.reviewSection}>
             <h2>I. Introduction</h2>
+            
+            {/* --- NEWLY ADDED CARD IMAGE AND RATINGS --- */}
+            <div className={styles.introCardDetailsContainer}> {/* You'll need to style this container */}
+              <div className={styles.introCardImage}>
+                <Image 
+                  src={reviewDataNew.cardImageUrl} 
+                  alt={`${reviewDataNew.cardName} card image`} 
+                  width={220} // Adjust as needed
+                  height={140} // Adjust as needed
+                  layout="intrinsic" // Or "responsive" depending on your CSS
+                />
+              </div>
+              <div className={styles.introCardRatings}>
+                <p className={styles.starRating}>
+                  {renderStars(reviewDataNew.ratingValue)} 
+                  <span className={styles.ratingValueText}> ({reviewDataNew.ratingValue.toFixed(1)} / 5 Stars)</span>
+                </p>
+                <p className={styles.ratingOutOfTen}>
+                  Overall Rating: <strong>{ratingOutOf10} / 10</strong>
+                </p>
+                {/* You can add more summary details here if desired, e.g., Annual Fee */}
+                 <p className={styles.ratingAnnualFee}>Annual Fee: ${reviewDataNew.annualFee}</p>
+              </div>
+            </div>
+            {/* --- END OF NEWLY ADDED CONTENT --- */}
+
             <p>Travelers are constantly seeking smarter reward strategies. Citi has refreshed a key offering: the Citi Premier® is now the {reviewDataNew.cardName}. But is this a genuine step up, or just a new name for an old favorite? This 2025 review dissects the Strata Premier℠ for US travelers to see if it’s a stronger pick for your wallet.</p>
             <p>The "Strata Premier" name, while keeping the ${reviewDataNew.annualFee} annual fee, suggests refinement. Citi may be building a "Strata" card family (<a href={reviewDataNew.thankYouRewardsProgramLink} target="_blank" rel="noopener noreferrer sponsored">Citi Official Website - ThankYou Rewards Program</a>), but this review focuses on the {reviewDataNew.cardName}.</p>
           </section>
@@ -399,7 +428,6 @@ export default function CitiStrataPremierReview2025() {
             <p>When it comes to earning, the card offers a powerful mix: a whopping <strong>10X ThankYou® Points</strong> on hotels, car rentals, and attractions booked through CitiTravel.com, and a solid <strong>3X points</strong> in practical everyday categories like air travel, other hotel purchases (even direct bookings), restaurants, supermarkets, gas stations, and even EV charging. For everything else, it’s a standard 1X point. Add to this a <strong>$100 annual hotel credit</strong> (for a single portal-booked stay of $500+ pre-tax) and <strong>no foreign transaction fees</strong> – crucial for international adventures – and you have a compelling package. The main catch? Those top-tier 10X points and the hotel credit are tied to using Citi's travel portal, a key consideration if you prioritize direct bookings for loyalty or price.</p>
           </section>
           
-          {/* Call to Action Section - Placed after core features */}
           <section id="cta-citi-strata-premier-1" className={styles.ctaSection}>
               <h2>Interested in the <b>{reviewDataNew.cardName}</b>?</h2>
               <p>Explore its earning potential and travel benefits.</p>
@@ -458,7 +486,7 @@ export default function CitiStrataPremierReview2025() {
 
           <section id="cardholder-feedback" className={styles.reviewSection}>
             <h2>VII. From the Horse's Mouth: Real Cardholder Feedback</h2>
-            <div className={styles.infoBox}> {/* Using a simple div, can be styled further in CSS */}
+            <div className={styles.infoBox}>
                 <p><strong>The Good:</strong> Many users praise the card's (and its predecessor's) solid earning rates and valuable international transfer partners, especially for a ${reviewDataNew.annualFee} fee. As Reddit user "techtrashbrogrammer" put it, the similar Citi Premier was "underrated."</p>
                 <p><strong>The Not-So-Good:</strong> It’s not always smooth sailing. Some cardholders, like "Livid_Ad_300," have reported frustrating experiences with the Strata Premier frequently flagging legitimate purchases as fraudulent while traveling – even after setting travel notices.</p>
                 <p><strong>The Reality:</strong> Experiences naturally vary. Many others report good earnings and have successfully redeemed points for significant travel without such hitches.</p>
@@ -469,7 +497,7 @@ export default function CitiStrataPremierReview2025() {
           <section id="advisors-angle" className={styles.reviewSection}>
             <h2>VIII. The Advisor's Angle: Is Strata Premier Your Ideal Travel Partner?</h2>
             <p>So, who gets the most from the {reviewDataNew.cardName}? It truly depends on your spending habits, travel style, and how you prefer to manage rewards.</p>
-            <div className={styles.prosConsContainer}> {/* Structure from Amex example */}
+            <div className={styles.prosConsContainer}>
               <div className={styles.prosSection}>
                 <h3>This Card Could Be a Great Fit If You:</h3>
                 <ul>
@@ -507,7 +535,6 @@ export default function CitiStrataPremierReview2025() {
             <p>However, "better on paper" doesn't always translate to the "best for everyone." The true worth of the {reviewDataNew.cardName} in 2025 really hinges on your individual travel style, your willingness to navigate its ecosystem (especially the CitiTravel.com portal and ThankYou® transfer partners), and, critically, a smooth and reliable experience when you're actually using the card. For US travelers whose spending aligns with the card’s strengths, who value its specific transfer partners and the hotel credit, and who want a good set of travel protections without a premium price tag, the {reviewDataNew.cardName} is indeed a very appealing upgrade and a formidable player in the mid-tier travel card field. It rewards those who are willing to learn its ins and outs to unlock truly valuable travel experiences.</p>
           </section>
 
-          {/* Final Call to Action Section */}
           <section className={`${styles.reviewSection} ${styles.finalCtaSection}`}>
             <h2>Ready to elevate your travels with the {reviewDataNew.cardName}?</h2>
             <p>If the premium benefits and credits align with your travel and spending habits, this card could unlock significant value.</p>
@@ -524,7 +551,6 @@ export default function CitiStrataPremierReview2025() {
         </article>
       </main>
 
-      {/* Sticky Bottom Call to Action */}
       <div className={styles.stickyCtaContainer}>
         <div className={styles.stickyCtaContent}>
             <span className={styles.stickyCtaText}>{reviewDataNew.cardName} - ${reviewDataNew.annualFee} Annual Fee.</span>
