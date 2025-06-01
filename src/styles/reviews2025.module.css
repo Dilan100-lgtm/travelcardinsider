@@ -754,3 +754,56 @@
 
 /* Cleaned up the end of the file: removed duplicate/obsolete CTA styles */
 /* The necessary styles for .stickyCtaImageContainer and .stickyCtaCardImage are now part of the main .stickyCta... block */
+/* Add to your styles/reviews2025.module.css */
+
+.introCardDetailsContainer {
+  display: flex; /* Example: for side-by-side layout */
+  align-items: center; /* Example: vertically align items */
+  gap: 20px; /* Example: space between image and text */
+  margin-bottom: 1.5rem; /* Space below this block */
+  padding: 1rem;
+  background-color: #f9f9f9; /* Light background for the block */
+  border-radius: 8px;
+}
+
+.introCardImage {
+  flex-shrink: 0; /* Prevent image from shrinking */
+}
+
+.introCardRatings {
+  font-size: 0.95rem;
+}
+
+.introCardRatings p {
+  margin-bottom: 0.5rem;
+}
+
+.starRating {
+  font-size: 1.2rem; /* Make stars a bit bigger */
+  color: #f0ad4e; /* Example star color */
+  margin-bottom: 0.25rem !important;
+}
+
+.ratingValueText {
+  font-size: 0.9rem;
+  color: #555;
+  margin-left: 0.5rem;
+}
+
+.ratingOutOfTen {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+}
+.ratingAnnualFee {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* Responsive adjustments if needed */
+@media (max-width: 600px) {
+  .introCardDetailsContainer {
+    flex-direction: column; /* Stack on smaller screens */
+    align-items: flex-start;
+  }
+}
