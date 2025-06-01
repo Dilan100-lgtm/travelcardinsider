@@ -105,23 +105,23 @@ const loungeCardData = [
   {
     id: 'amexBusinessPlatinumLounge',
     name: 'The Business Platinum Card® from American Express',
-    imageSrc: '/images/cards/amex-business-platinum-card-2025.png', // ❗ Replace
+    imageSrc: '/platinum-card-image-alt.avif', // ❗ Replace
     imageAlt: 'The Business Platinum Card from American Express',
     annualFee: '$695',
     officialCardPageLink: 'https://www.americanexpress.com/us/credit-cards/business/business-platinum-card/',
     loungeAccess: "Access to the American Express Global Lounge Collection®, which is the same comprehensive access as the personal Platinum Card®.",
     valueProposition: "Offers a suite of business-centric credits (e.g., Dell Technologies, Indeed, Adobe, wireless telephone service credits) in addition to the airline fee credit and CLEAR® Plus credit. The $75,000 annual spend requirement for Centurion Lounge guest privileges may be more attainable with business expenditures.",
     bestFor: "Business owners who can maximize both the business-specific credits and the premium travel and lounge perks.",
-    applyLink: 'https://www.americanexpress.com/us/credit-cards/business/business-platinum-card/', // Official link
-    ratesFeesLink: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/business-platinum-card/terms?key=tncBody&benefitId=businessdiningcredit', // Official link
-    learnMoreLink: '/reviews/lounge-cards/amex-business-platinum', // ✏️ Create this internal page later
+    applyLink: 'https://www.americanexpress.com/us/credit-cards/business/business-platinum/', // Official link
+    ratesFeesLink: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/business-platinum-charge-card/45094-9-0?key=tncBody', // Official link
+    learnMoreLink: '/cards/amex-business-platinum', // ✏️ Create this internal page later
     // ratingValue: 9.1,
     // ratingStars: 4.5,
   },
   {
     id: 'marriottBonvoyBrilliantLounge',
     name: 'Marriott Bonvoy Brilliant® American Express® Card',
-    imageSrc: '/images/cards/marriott-bonvoy-brilliant-card-2025.png', // ❗ Replace
+    imageSrc: '/NUS000000313_480x304_straight_withname.avif', // ❗ Replace
     imageAlt: 'Marriott Bonvoy Brilliant American Express Card',
     annualFee: '$650',
     officialCardPageLink: 'https://www.americanexpress.com/us/credit-cards/card/marriott-bonvoy-brilliant/',
@@ -130,8 +130,8 @@ const loungeCardData = [
     bestFor: "Dedicated Marriott loyalists who prioritize hotel benefits such as elite status and free nights, with Priority Pass access as a valuable secondary perk.",
     userQuote: "David, a Marriott loyalist, says, \"Platinum status and the free night are key; dining credits help. Priority Pass is a nice bonus.\"",
     applyLink: 'https://www.americanexpress.com/us/credit-cards/card/marriott-bonvoy-brilliant/', // Official link
-    ratesFeesLink: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/marriott-bonvoy-brilliant/terms?key=tncBody&benefitId=prioritypassselect', // Official link
-    learnMoreLink: '/reviews/lounge-cards/marriott-bonvoy-brilliant', // ✏️ Create this internal page later
+    ratesFeesLink: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/marriott-bonvoy-brilliant-card/25330-10-0#FeeTable', // Official link
+    learnMoreLink: '/cards/marriott-bonvoy-brilliant', // ✏️ Create this internal page later
     // ratingValue: 8.8,
     // ratingStars: 4.0,
   }
@@ -525,8 +525,8 @@ function BestLoungeAccessCardsPage2025() {
                     </div>
                     <div className={styles.cardTitleRating}>
                       <h3>{index + 1}. {card.name}</h3>
-                      {/* {card.ratingStars && <StarRating rating={card.ratingStars} />} */}
-                      {/* {card.ratingValue && <span className={styles.ratingValue}>Our Rating: {card.ratingValue.toFixed(1)}/10</span>} */}
+                      {card.ratingStars && <StarRating rating={card.ratingStars} />} 
+                      {card.ratingValue && <span className={styles.ratingValue}>Our Rating: {card.ratingValue.toFixed(1)}/10</span>}
                     </div>
                 </div>
                 <ul>
