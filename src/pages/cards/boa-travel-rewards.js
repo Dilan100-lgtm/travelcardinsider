@@ -62,10 +62,10 @@ const reviewData = {
       }
   },
   siteName: siteName,
-  imageUrl        : '/bofa-travel-rewards-card.avif', // /* UPDATE THIS with actual card image path */
+  imageUrl        : '/8blm_trvsigcm_v_250x158.png', // /* UPDATE THIS with actual card image path */
   imageWidth      : 1290, // /* UPDATE THIS if image dimensions differ */
   imageHeight     : 812,  // /* UPDATE THIS if image dimensions differ */
-  ratingValue     : 8.3,  // /* UPDATE THIS - Slightly adjusted for "human touch" */
+  ratingValue     : 7.4,  // /* UPDATE THIS - Slightly adjusted for "human touch" */
   ratingCount     : 165,  // /* UPDATE THIS - Slightly adjusted */
   reviewBody      : 'Our editors evaluate the Bank of America® Travel Rewards credit card based on its flat-rate rewards, $0 annual fee, absence of foreign transaction fees, the significant value of the Preferred Rewards program boost, typical introductory offers, and overall ease of use for both travelers and everyday spenders.', // For Schema
   aprRange        : 'Variable APR, often includes a 0% intro APR on purchases and qualifying balance transfers for the first 15 billing cycles. Refer to official rates and terms.',
@@ -122,16 +122,16 @@ const processCitedText = (textWithMarkers) => {
 
 // FAQs for Structured Data & Display
 const faqsContent = [
-    { q: 'How much are points worth with the Bank of America® Travel Rewards credit card?', a: 'Points are worth a solid $0.01 each when redeemed for travel or dining statement credits [CITE:1]. So, 25,000 points neatly cover $250 of eligible purchases.' },
-    { q: 'Do I have to book travel through the Bank of America Travel Center to redeem my points?', a: 'Not at all! You can book your travel wherever you find the best deal and then redeem your points for a statement credit against that purchase [CITE:1]. However, if you do book flights, hotels, and rental cars through the Bank of America Travel Center, you\'ll snag an elevated rate of 3 points per $1 spent [CITE:1] – something to keep in mind!' },
-    { q: 'What types of purchases count as "travel" for redemption purposes?', a: 'Bank of America is quite generous with its definition of travel [CITE:1]. It includes the usual suspects like flights, hotels, car rentals, and cruises, but also extends to vacation rentals, baggage fees, and even fun stuff like timeshares, campground fees, passenger train tickets, amusement parks, museums, and zoos.' },
-    { q: 'Is the Bank of America® Travel Rewards card good for international travel?', a: 'Absolutely, it\'s a great companion for your overseas adventures because it has no foreign transaction fees [CITE:1]. That means you\'ll save roughly 3% on purchases made abroad compared to cards that do hit you with that extra charge.' },
-    { q: 'How does the Bank of America Preferred Rewards® program boost earnings on this card?', a: 'This is where the card really shines for BofA customers! Eligible Preferred Rewards® members get a points bonus of 25% to 75% on all points earned, depending on their tier [CITE:2]. This boost is based on their qualifying combined balances in Bank of America deposit accounts and/or Merrill investment accounts.' },
-    { q: 'Do points earned with this card expire?', a: 'Good news – your points won\'t expire as long as your account remains open and in good standing [CITE:1]. Just be aware there\'s typically a 12-month window from the purchase date to redeem points against eligible travel and dining charges.' },
+    { q: 'How much are points worth with the Bank of America® Travel Rewards credit card?', a: 'Points are worth a solid $0.01 each when redeemed for travel or dining statement credits . So, 25,000 points neatly cover $250 of eligible purchases.' },
+    { q: 'Do I have to book travel through the Bank of America Travel Center to redeem my points?', a: 'Not at all! You can book your travel wherever you find the best deal and then redeem your points for a statement credit against that purchase . However, if you do book flights, hotels, and rental cars through the Bank of America Travel Center, you\'ll snag an elevated rate of 3 points per $1 spent  – something to keep in mind!' },
+    { q: 'What types of purchases count as "travel" for redemption purposes?', a: 'Bank of America is quite generous with its definition of travel . It includes the usual suspects like flights, hotels, car rentals, and cruises, but also extends to vacation rentals, baggage fees, and even fun stuff like timeshares, campground fees, passenger train tickets, amusement parks, museums, and zoos.' },
+    { q: 'Is the Bank of America® Travel Rewards card good for international travel?', a: 'Absolutely, it\'s a great companion for your overseas adventures because it has no foreign transaction fees . That means you\'ll save roughly 3% on purchases made abroad compared to cards that do hit you with that extra charge.' },
+    { q: 'How does the Bank of America Preferred Rewards® program boost earnings on this card?', a: 'This is where the card really shines for BofA customers! Eligible Preferred Rewards® members get a points bonus of 25% to 75% on all points earned, depending on their tier . This boost is based on their qualifying combined balances in Bank of America deposit accounts and/or Merrill investment accounts.' },
+    { q: 'Do points earned with this card expire?', a: 'Good news – your points won\'t expire as long as your account remains open and in good standing . Just be aware there\'s typically a 12-month window from the purchase date to redeem points against eligible travel and dining charges.' },
     { q: 'Can I transfer my points to airline or hotel partners?', a: 'Unfortunately, no. The Bank of America® Travel Rewards credit card doesn\'t offer the ability to transfer points to airline or hotel loyalty programs, focusing instead on simple statement credits.' },
-    { q: 'Is there a minimum number of points required to redeem?', a: 'Yes, you usually need at least 2,500 points [CITE:1] to start redeeming, which gets you a $25 statement credit.' },
-    { q: 'Are there any caps on the points I can earn?', a: 'Nope! You can earn unlimited 1.5 points per $1 spent on all purchases, with no caps or categories to track for the base earning rate [CITE:1], which we love for its simplicity.' },
-    { q: 'How do no foreign transaction fees save money?', a: 'When a card has no foreign transaction fees, it means you avoid an extra charge (often around 3%) on purchases made outside the U.S. or in a foreign currency [CITE:1]. So, if you spend $1,000 on your trip, you\'d save about $30 with this card – more money for souvenirs!' }
+    { q: 'Is there a minimum number of points required to redeem?', a: 'Yes, you usually need at least 2,500 points  to start redeeming, which gets you a $25 statement credit.' },
+    { q: 'Are there any caps on the points I can earn?', a: 'Nope! You can earn unlimited 1.5 points per $1 spent on all purchases, with no caps or categories to track for the base earning rate , which we love for its simplicity.' },
+    { q: 'How do no foreign transaction fees save money?', a: 'When a card has no foreign transaction fees, it means you avoid an extra charge (often around 3%) on purchases made outside the U.S. or in a foreign currency . So, if you spend $1,000 on your trip, you\'d save about $30 with this card – more money for souvenirs!' }
 ];
 
 const structuredDataOptimized = { /* ... (Structured Data as before, ensuring FAQ answers are plain text) ... */
@@ -303,8 +303,8 @@ const tocSections = [ /* ... (tocSections as before) ... */
     { id: 'section-eat', title: '23. Our E-A-T Pledge: Why You Can Trust This Review' },
 ];
 
-const contentImage1 = "/bofa-travel-rewards-feature1.webp"; // /* UPDATE THIS */
-const contentImage2 = "/bofa-travel-rewards-feature2.webp"; // /* UPDATE THIS */
+const contentImage1 = "/julian-timmerman-Fn27DlI8bZ8-unsplash.webp"; // /* UPDATE THIS */
+const contentImage2 = "/jonathan-gallegos-_vA2q0-NroU-unsplash (1).jpg"; // /* UPDATE THIS */
 
 function DraggableTableWrapper({ children }) { /* ... (DraggableTableWrapper as before) ... */
   const containerRef = useRef(null);
@@ -414,22 +414,22 @@ function BankOfAmericaTravelRewardsReviewPage() {
   }, [showAuthorBioTooltip, authorRef, authorTooltipRef, showRatingInfo, ratingTooltipRef]);
 
   const summaryBoxData = {
-    welcomeOffer: "Typically 25,000 bonus points after $1,000 spend in 90 days (worth $250 for travel/dining) [CITE:1].",
-    annualFee: `A refreshing $${reviewData.annualFee} [CITE:1] (yes, that's zero!)`,
-    topEarning: "Unlimited 1.5X points on all purchases [CITE:1]; 3X points via BofA Travel Center [CITE:1]. Boostable up to an effective 2.625X (or 5.25X at the Travel Center) with Preferred Rewards [CITE:2].",
-    keyPerks: "Say goodbye to foreign transaction fees when travelling abroad [CITE:1]. Unlock a potential 25%-75% points boost with Preferred Rewards [CITE:2].",
+    welcomeOffer: "Typically 25,000 bonus points after $1,000 spend in 90 days (worth $250 for travel/dining) .",
+    annualFee: `A refreshing $${reviewData.annualFee}  (yes, that's zero!)`,
+    topEarning: "Unlimited 1.5X points on all purchases ; 3X points via BofA Travel Center . Boostable up to an effective 2.625X (or 5.25X at the Travel Center) with Preferred Rewards .",
+    keyPerks: "Say goodbye to foreign transaction fees when travelling abroad . Unlock a potential 25%-75% points boost with Preferred Rewards .",
     bestFor: "Folks seeking no-fuss rewards without a yearly charge, and especially Bank of America loyalists who can supercharge their earnings via the Preferred Rewards program."
   };
   
   const keyFeaturesTableData = [
-    { feature: "Unlimited 1.5X Points", description: "Earn a steady 1.5 points for every dollar you spend on all purchases, with no tricky caps or categories to keep track of [CITE:1]." },
-    { feature: "3X Points at BofA Travel Center", description: "Score an elevated 3 points per $1 on flights, hotels, and car rentals when you book them through the <a href='"+reviewData.officialBofaTravelCenterLink+"' target='_blank' rel='noopener noreferrer sponsored'>Bank of America Travel Center</a> [CITE:1]." },
-    { feature: "No Annual Fee", description: "Enjoy all the card’s reward-earning power without paying a cent in annual fees [CITE:1] – a real wallet-saver!" },
-    { feature: "No Foreign Transaction Fees", description: "Travel internationally without worry! This card waives those pesky foreign currency conversion charges, typically around 3% [CITE:1]." },
-    { feature: "Flexible Redemptions", description: "Redeeming points is a breeze – use them as statement credits for a wide array of travel and dining purchases [CITE:1]." },
-    { feature: "Preferred Rewards® Boost", description: "This is a big one: Bank of America Preferred Rewards® members can earn 25% to 75% *more* points on every purchase, dramatically increasing the card's value [CITE:2]." },
-    { feature: "Introductory APR", description: "Often comes with a 0% introductory APR on new purchases and qualifying balance transfers for a set period, offering a nice window for interest-free financing on bigger buys [CITE:1]. (Note: a balance transfer fee usually applies)." },
-    { feature: "Points Don't Expire", description: "Rest easy knowing your hard-earned points won't disappear as long as your account is open and in good standing [CITE:1]." },
+    { feature: "Unlimited 1.5X Points", description: "Earn a steady 1.5 points for every dollar you spend on all purchases, with no tricky caps or categories to keep track of ." },
+    { feature: "3X Points at BofA Travel Center", description: "Score an elevated 3 points per $1 on flights, hotels, and car rentals when you book them through the <a href='"+reviewData.officialBofaTravelCenterLink+"' target='_blank' rel='noopener noreferrer sponsored'>Bank of America Travel Center</a> ." },
+    { feature: "No Annual Fee", description: "Enjoy all the card’s reward-earning power without paying a cent in annual fees  – a real wallet-saver!" },
+    { feature: "No Foreign Transaction Fees", description: "Travel internationally without worry! This card waives those pesky foreign currency conversion charges, typically around 3% ." },
+    { feature: "Flexible Redemptions", description: "Redeeming points is a breeze – use them as statement credits for a wide array of travel and dining purchases ." },
+    { feature: "Preferred Rewards® Boost", description: "This is a big one: Bank of America Preferred Rewards® members can earn 25% to 75% *more* points on every purchase, dramatically increasing the card's value ." },
+    { feature: "Introductory APR", description: "Often comes with a 0% introductory APR on new purchases and qualifying balance transfers for a set period, offering a nice window for interest-free financing on bigger buys . (Note: a balance transfer fee usually applies)." },
+    { feature: "Points Don't Expire", description: "Rest easy knowing your hard-earned points won't disappear as long as your account is open and in good standing ." },
   ];
 
 
@@ -649,7 +649,7 @@ function BankOfAmericaTravelRewardsReviewPage() {
                         </div>
                         <div className={styles.summaryBoxActions}>
                             <a href={reviewData.ratesFeesLink} className={styles.summaryRatesLink} target="_blank" rel="noopener noreferrer sponsored"
-                               dangerouslySetInnerHTML={{ __html: processCitedText("See Card Rates & Fees (BofA Site) [CITE:1]") }}>
+                               dangerouslySetInnerHTML={{ __html: processCitedText("See Card Rates & Fees (BofA Site) ") }}>
                             </a>
                              <a href='/rewards-calculator' className={`${styles.heroRewardsCalculator} ${styles.summaryButton}`} target="_blank" rel="noopener noreferrer">
                                 Rewards Calculator {/* /* UPDATE LINK if needed */ }
@@ -660,13 +660,13 @@ function BankOfAmericaTravelRewardsReviewPage() {
 
                 <section id="section-intro" className={styles.reviewSection}>
                   <h2 dangerouslySetInnerHTML={{ __html: processCitedText(tocSections.find(s=>s.id==='section-intro').title) }}></h2>
-                  <p dangerouslySetInnerHTML={{ __html: processCitedText("The dream of turning daily spending into exciting travel experiences is certainly compelling, but let's be honest, complex credit card rules can feel like a maze. The " + reviewData.cardName + " aims to simplify this journey with its straightforward flat-rate earning structure, a delightful $0 annual cost [CITE:1], and no troublesome foreign transaction fees [CITE:1]. This makes it an attractive option whether you're exploring domestically or venturing on international escapades. This review unpacks all its essentials, offering you a clear, no-nonsense guide to its real-world performance and how well it might suit different kinds of travelers.") }}></p>
+                  <p dangerouslySetInnerHTML={{ __html: processCitedText("The dream of turning daily spending into exciting travel experiences is certainly compelling, but let's be honest, complex credit card rules can feel like a maze. The " + reviewData.cardName + " aims to simplify this journey with its straightforward flat-rate earning structure, a delightful $0 annual cost , and no troublesome foreign transaction fees . This makes it an attractive option whether you're exploring domestically or venturing on international escapades. This review unpacks all its essentials, offering you a clear, no-nonsense guide to its real-world performance and how well it might suit different kinds of travelers.") }}></p>
                 </section>
 
                 <section id="section-tldr" className={styles.reviewSection}>
                   <h2 dangerouslySetInnerHTML={{ __html: processCitedText(tocSections.find(s=>s.id==='section-tldr').title) }}></h2>
-                  <p dangerouslySetInnerHTML={{ __html: processCitedText("In a nutshell, the " + reviewData.cardName + " is a very strong contender if your goal is simple, easy-to-understand travel rewards without forking over an annual fee [CITE:1].") }}></p>
-                  <p dangerouslySetInnerHTML={{ __html: processCitedText("<strong>It’s particularly ideal for:</strong> Budget-savvy individuals, anyone new to the travel rewards game, and especially Bank of America customers. Why? Because if you're part of their Preferred Rewards program, you can see those earnings get a significant boost (we're talking up to an effective 2.625 points per dollar, or even higher!) [CITE:2]. Plus, the fact that it waives foreign currency conversion charges [CITE:1] is a fantastic perk for international jet-setters.") }}></p>
+                  <p dangerouslySetInnerHTML={{ __html: processCitedText("In a nutshell, the " + reviewData.cardName + " is a very strong contender if your goal is simple, easy-to-understand travel rewards without forking over an annual fee .") }}></p>
+                  <p dangerouslySetInnerHTML={{ __html: processCitedText("<strong>It’s particularly ideal for:</strong> Budget-savvy individuals, anyone new to the travel rewards game, and especially Bank of America customers. Why? Because if you're part of their Preferred Rewards program, you can see those earnings get a significant boost (we're talking up to an effective 2.625 points per dollar, or even higher!) . Plus, the fact that it waives foreign currency conversion charges  is a fantastic perk for international jet-setters.") }}></p>
                   <p dangerouslySetInnerHTML={{ __html: processCitedText("<strong>You might want to consider alternatives if:</strong> You're hunting for luxury travel perks (like airport lounge access or hefty annual travel credits), you love the strategy of transferring points to airline/hotel partners for potentially higher-value redemptions, or if you won't qualify for Preferred Rewards and can find a different card offering a higher flat-rate reward elsewhere.") }}></p>
                   <p dangerouslySetInnerHTML={{ __html: processCitedText("<strong>The bottom line from our perspective:</strong> For uncomplicated value, especially if you have a banking relationship with BofA, this card is practically a gift. However, if premium features or intricate points strategies are your jam, you'll probably want to explore other options. Read on for our full, detailed breakdown!") }}></p>
                 </section>
@@ -677,10 +677,10 @@ function BankOfAmericaTravelRewardsReviewPage() {
                     <ul className={styles.featureList}>
                         <li dangerouslySetInnerHTML={{ __html: processCitedText("<strong>Card Name:</strong> Bank of America® Travel Rewards credit card") }}></li>
                         <li dangerouslySetInnerHTML={{ __html: processCitedText("<strong>Network:</strong> Visa® (offering wide acceptance)") }}></li>
-                        <li dangerouslySetInnerHTML={{ __html: processCitedText("<strong>Primary Reward Type:</strong> Flexible points, easily redeemable for statement credits against travel and dining purchases [CITE:1].") }}></li>
+                        <li dangerouslySetInnerHTML={{ __html: processCitedText("<strong>Primary Reward Type:</strong> Flexible points, easily redeemable for statement credits against travel and dining purchases .") }}></li>
                     </ul>
                     <p dangerouslySetInnerHTML={{ __html: processCitedText("<strong>Our \"Best For\" Tagline:</strong> \"Simple Journeys, Amplified Rewards: Perfect for No-Fee Simplicity Seekers and Bank of America Loyalists Looking to Maximize Value.\"") }}></p>
-                    <p dangerouslySetInnerHTML={{ __html: processCitedText("This really sums up its dual appeal: an easy-to-use, no-cost structure combined with genuinely enhanced value for Bank of America customers through their Preferred Rewards program [CITE:2]. It’s thoughtfully designed for those who appreciate straightforward rewards without that yearly charge [CITE:1].") }}></p>
+                    <p dangerouslySetInnerHTML={{ __html: processCitedText("This really sums up its dual appeal: an easy-to-use, no-cost structure combined with genuinely enhanced value for Bank of America customers through their Preferred Rewards program . It’s thoughtfully designed for those who appreciate straightforward rewards without that yearly charge .") }}></p>
                 </section>
                 
                 <Image src={contentImage1} alt="Illustration of simple travel planning" width={800} height={500} className={styles.contentImage} loading="lazy" />
@@ -722,13 +722,13 @@ function BankOfAmericaTravelRewardsReviewPage() {
                         <div className={styles.prosList}>
                             <h3>The Upsides (Pros):</h3>
                             <ul>
-                                <li dangerouslySetInnerHTML={{ __html: processCitedText("It costs nothing to keep in your wallet yearly (no annual fee) [CITE:1].") }}></li>
-                                <li dangerouslySetInnerHTML={{ __html: processCitedText("Simple, unlimited 1.5 points for every dollar you spend, on everything [CITE:1]. No headaches tracking categories!") }}></li>
-                                <li dangerouslySetInnerHTML={{ __html: processCitedText("Travel abroad without worrying about extra charges (no foreign transaction fees) [CITE:1].") }}></li>
-                                <li dangerouslySetInnerHTML={{ __html: processCitedText("Super flexible redemptions for both travel and dining statement credits [CITE:1].") }}></li>
-                                <li dangerouslySetInnerHTML={{ __html: processCitedText("A *major* earnings boost (up to an effective 2.625 points per dollar, or even more) if you have Preferred Rewards status [CITE:2].") }}></li>
-                                <li dangerouslySetInnerHTML={{ __html: processCitedText("Usually comes with a pretty decent welcome bonus for a card that's free to own [CITE:1].") }}></li>
-                                <li dangerouslySetInnerHTML={{ __html: processCitedText("Often offers a 0% introductory APR period for new purchases and balance transfers [CITE:1], which can be handy.") }}></li>
+                                <li dangerouslySetInnerHTML={{ __html: processCitedText("It costs nothing to keep in your wallet yearly (no annual fee) .") }}></li>
+                                <li dangerouslySetInnerHTML={{ __html: processCitedText("Simple, unlimited 1.5 points for every dollar you spend, on everything . No headaches tracking categories!") }}></li>
+                                <li dangerouslySetInnerHTML={{ __html: processCitedText("Travel abroad without worrying about extra charges (no foreign transaction fees) .") }}></li>
+                                <li dangerouslySetInnerHTML={{ __html: processCitedText("Super flexible redemptions for both travel and dining statement credits .") }}></li>
+                                <li dangerouslySetInnerHTML={{ __html: processCitedText("A *major* earnings boost (up to an effective 2.625 points per dollar, or even more) if you have Preferred Rewards status .") }}></li>
+                                <li dangerouslySetInnerHTML={{ __html: processCitedText("Usually comes with a pretty decent welcome bonus for a card that's free to own .") }}></li>
+                                <li dangerouslySetInnerHTML={{ __html: processCitedText("Often offers a 0% introductory APR period for new purchases and balance transfers , which can be handy.") }}></li>
                             </ul>
                         </div>
                         <div className={styles.consList}>
@@ -738,7 +738,7 @@ function BankOfAmericaTravelRewardsReviewPage() {
                                 <li dangerouslySetInnerHTML={{ __html: processCitedText("Redeeming for cash back or gift cards? You'll likely get less value per point; it's really built for travel and dining credits.") }}></li>
                                 <li dangerouslySetInnerHTML={{ __html: processCitedText("No option to transfer points to airline or hotel partners, which limits some high-value redemption strategies.") }}></li>
                                 <li dangerouslySetInnerHTML={{ __html: processCitedText("Lacks those premium travel bells and whistles like airport lounge access or annual travel credits.") }}></li>
-                                <li dangerouslySetInnerHTML={{ __html: processCitedText("To get the bonus 3x travel points, you need to book through the Bank of America Travel Center [CITE:1], which might not always have the best deals.") }}></li>
+                                <li dangerouslySetInnerHTML={{ __html: processCitedText("To get the bonus 3x travel points, you need to book through the Bank of America Travel Center , which might not always have the best deals.") }}></li>
                             </ul>
                         </div>
                     </div>
@@ -756,28 +756,28 @@ function BankOfAmericaTravelRewardsReviewPage() {
 
                 <section id="section-welcome-bonus" className={styles.reviewSection}>
                     <h2 dangerouslySetInnerHTML={{ __html: processCitedText(tocSections.find(s=>s.id==='section-welcome-bonus').title) }}></h2>
-                    <p dangerouslySetInnerHTML={{ __html: processCitedText("As a new cardholder, you can typically look forward to earning <strong>25,000 online bonus points</strong>. This usually requires spending $1,000 on purchases within the first 90 days of opening your account [CITE:1]. What does that mean in real money? Those 25,000 points are worth a handy $250 when you redeem them as a statement credit towards travel and dining purchases [CITE:1]. For a card that doesn't charge an annual fee, this is quite a competitive welcome offer! It can easily cover a domestic flight, a couple of nights at a budget-friendly hotel, or several nice meals out. We generally recommend applying directly via the Bank of America website to ensure you're getting any special \"online only\" components of the offer [CITE:1]. And, as always, it’s wise to check the current offer terms before you apply, as these bonuses can sometimes change.") }}></p>
+                    <p dangerouslySetInnerHTML={{ __html: processCitedText("As a new cardholder, you can typically look forward to earning <strong>25,000 online bonus points</strong>. This usually requires spending $1,000 on purchases within the first 90 days of opening your account . What does that mean in real money? Those 25,000 points are worth a handy $250 when you redeem them as a statement credit towards travel and dining purchases . For a card that doesn't charge an annual fee, this is quite a competitive welcome offer! It can easily cover a domestic flight, a couple of nights at a budget-friendly hotel, or several nice meals out. We generally recommend applying directly via the Bank of America website to ensure you're getting any special \"online only\" components of the offer . And, as always, it’s wise to check the current offer terms before you apply, as these bonuses can sometimes change.") }}></p>
                 </section>
 
                 <section id="section-earning-points" className={styles.reviewSection}>
                     <h2 dangerouslySetInnerHTML={{ __html: processCitedText(tocSections.find(s=>s.id==='section-earning-points').title) }}></h2>
                     <p dangerouslySetInnerHTML={{ __html: processCitedText("The rewards program for the " + reviewData.cardName + " is refreshingly straightforward – no complex spreadsheets needed here!") }}></p>
                     <h3 className={styles.subHeading}>Everyday Earning Power</h3>
-                    <p dangerouslySetInnerHTML={{ __html: processCitedText("For all your day-to-day spending, you'll earn a flat, unlimited <strong>1.5 points for every $1 you spend on absolutely all purchases</strong> [CITE:1]. No need to keep track of rotating categories or worry about hitting spending caps for this base rate. This simplicity makes it incredibly easy to accumulate points on everything from groceries to gas to your monthly subscriptions.") }}></p>
+                    <p dangerouslySetInnerHTML={{ __html: processCitedText("For all your day-to-day spending, you'll earn a flat, unlimited <strong>1.5 points for every $1 you spend on absolutely all purchases</strong> . No need to keep track of rotating categories or worry about hitting spending caps for this base rate. This simplicity makes it incredibly easy to accumulate points on everything from groceries to gas to your monthly subscriptions.") }}></p>
                     <h3 className={styles.subHeading}>Bonus Points for Travel Bookings</h3>
-                    <p dangerouslySetInnerHTML={{ __html: processCitedText("Want to give your points balance an extra nudge? When you book travel – think flights, hotels, and rental cars – through the <a href='"+reviewData.officialBofaTravelCenterLink+"' target='_blank' rel='noopener noreferrer sponsored'>Bank of America Travel Center</a>, your earnings get a nice boost to <strong>3 points per $1 spent</strong> [CITE:1].") }}></p>
+                    <p dangerouslySetInnerHTML={{ __html: processCitedText("Want to give your points balance an extra nudge? When you book travel – think flights, hotels, and rental cars – through the <a href='"+reviewData.officialBofaTravelCenterLink+"' target='_blank' rel='noopener noreferrer sponsored'>Bank of America Travel Center</a>, your earnings get a nice boost to <strong>3 points per $1 spent</strong> .") }}></p>
                     <p>But the real magic for boosting your earnings, as we've hinted, comes if you're a Bank of America Preferred Rewards® member. Let's explore that next.</p>
                 </section>
 
                 <section id="section-preferred-rewards" className={styles.reviewSection}>
                     <h2 dangerouslySetInnerHTML={{ __html: processCitedText(tocSections.find(s=>s.id==='section-preferred-rewards').title) }}></h2>
-                    <p dangerouslySetInnerHTML={{ __html: processCitedText("The Bank of America Preferred Rewards® program is, in our view, the secret sauce that can transform the " + reviewData.cardName + " from a good card into a fantastic one. This loyalty program generously rewards you based on your combined qualifying balances in Bank of America deposit accounts (like checking and savings) and/or your Merrill investment accounts [CITE:2].") }}></p>
+                    <p dangerouslySetInnerHTML={{ __html: processCitedText("The Bank of America Preferred Rewards® program is, in our view, the secret sauce that can transform the " + reviewData.cardName + " from a good card into a fantastic one. This loyalty program generously rewards you based on your combined qualifying balances in Bank of America deposit accounts (like checking and savings) and/or your Merrill investment accounts .") }}></p>
                     <h3 className={styles.subHeading}>Understanding the Tiers & Bonuses</h3>
-                    <p dangerouslySetInnerHTML={{ __html: processCitedText("Eligible members get a very welcome bonus of 25% to 75% on *all* the points they earn with this card [CITE:2]. Here’s a quick look at how the tiers generally work and how they can turbocharge your effective earnings on all your purchases:") }}></p>
+                    <p dangerouslySetInnerHTML={{ __html: processCitedText("Eligible members get a very welcome bonus of 25% to 75% on *all* the points they earn with this card . Here’s a quick look at how the tiers generally work and how they can turbocharge your effective earnings on all your purchases:") }}></p>
                     <ul className={styles.featureList}>
                         <li dangerouslySetInnerHTML={{ __html: processCitedText("<strong>Gold Tier</strong> (typically $20,000 - $49,999 in qualifying balances): You get a 25% points bonus. This bumps the standard 1.5x points to an effective <strong>1.875 points per $1</strong>. That 3x Travel Center rate? It becomes <strong>3.75 points per $1</strong>.") }}></li>
                         <li dangerouslySetInnerHTML={{ __html: processCitedText("<strong>Platinum Tier</strong> (typically $50,000 - $99,999 in qualifying balances): A 50% points bonus is yours! This means the 1.5x points effectively becomes <strong>2.25 points per $1</strong>, and the 3x Travel Center rate jumps to <strong>4.5 points per $1</strong>.") }}></li>
-                        <li dangerouslySetInnerHTML={{ __html: processCitedText("<strong>Platinum Honors, Diamond, and Diamond Honors Tiers</strong> (typically $100,000+ in qualifying balances): Here's where it gets really exciting – a 75% points bonus! This catapults the 1.5x points to an effective <strong>2.625 points per $1</strong> [CITE:2]. And that 3x Travel Center rate? An impressive <strong>5.25 points per $1</strong>.") }}></li>
+                        <li dangerouslySetInnerHTML={{ __html: processCitedText("<strong>Platinum Honors, Diamond, and Diamond Honors Tiers</strong> (typically $100,000+ in qualifying balances): Here's where it gets really exciting – a 75% points bonus! This catapults the 1.5x points to an effective <strong>2.625 points per $1</strong> . And that 3x Travel Center rate? An impressive <strong>5.25 points per $1</strong>.") }}></li>
                     </ul>
                     <h3 className={styles.subHeading}>The Real-World Impact</h3>
                     <p dangerouslySetInnerHTML={{ __html: processCitedText("Getting an effective 2.625% back on all your spending (when you redeem points for travel at $0.01 each) is truly exceptional for a card that costs nothing to own. This makes it a genuine market leader for anyone who qualifies for the higher Preferred Rewards tiers. Without this status, the card’s 1.5x rate is still decent, but it doesn't quite have the same wow factor compared to some other flat-rate cards out there. This is where the card truly transforms from a good no-fee option into a rewards powerhouse, in our opinion.") }}></p>
@@ -787,34 +787,34 @@ function BankOfAmericaTravelRewardsReviewPage() {
 
                 <section id="section-redeeming-points" className={styles.reviewSection}>
                     <h2 dangerouslySetInnerHTML={{ __html: processCitedText(tocSections.find(s=>s.id==='section-redeeming-points').title) }}></h2>
-                    <p dangerouslySetInnerHTML={{ __html: processCitedText("One of the biggest draws of the " + reviewData.cardName + " is how flexible and easy it is to use your points, especially for travel and dining. Each point is worth a straightforward $0.01 when you redeem it as a statement credit against eligible travel or dining purchases [CITE:1]. So, if you rack up 25,000 points, that’s a cool $250 you can use to offset those expenses.") }}></p>
+                    <p dangerouslySetInnerHTML={{ __html: processCitedText("One of the biggest draws of the " + reviewData.cardName + " is how flexible and easy it is to use your points, especially for travel and dining. Each point is worth a straightforward $0.01 when you redeem it as a statement credit against eligible travel or dining purchases . So, if you rack up 25,000 points, that’s a cool $250 you can use to offset those expenses.") }}></p>
                     <h3 className={styles.subHeading}>How to Redeem Your Points</h3>
                     <p dangerouslySetInnerHTML={{ __html: processCitedText('Unlike some airline or hotel cards that tie you to their specific programs, this card gives you freedom. You can book your travel however and wherever you find the best deal – whether it\'s directly with an airline, through an online travel agency, or any other way you prefer. Once that eligible travel or dining purchase shows up on your account, you simply log in to your online banking or use the Bank of America mobile app to apply your points. It\'s like "erasing" those charges from your statement – pretty satisfying!') }}></p>
                     <h3 className={styles.subHeading}>What Qualifies as Travel or Dining?</h3>
-                    <p dangerouslySetInnerHTML={{ __html: processCitedText('Bank of America is commendably broad in how it defines "travel" for redemption [CITE:1]. It’s not just flights, hotel stays, and car rentals. It also includes things like cruises, vacation rentals (think Airbnb or VRBO), baggage fees, and even less common travel-related expenses such as timeshares, campground fees, passenger train tickets, tours, amusement park tickets, museum entry fees, and zoo admissions. For dining, eligible redemptions typically cover purchases at restaurants, cafes, bars, and even your favorite takeout spots [CITE:1].') }}></p>
+                    <p dangerouslySetInnerHTML={{ __html: processCitedText('Bank of America is commendably broad in how it defines "travel" for redemption . It’s not just flights, hotel stays, and car rentals. It also includes things like cruises, vacation rentals (think Airbnb or VRBO), baggage fees, and even less common travel-related expenses such as timeshares, campground fees, passenger train tickets, tours, amusement park tickets, museum entry fees, and zoo admissions. For dining, eligible redemptions typically cover purchases at restaurants, cafes, bars, and even your favorite takeout spots .') }}></p>
                      <h3 className={styles.subHeading}>Redemption Minimums & Best Practices</h3>
                     <p dangerouslySetInnerHTML={{ __html: processCitedText("You'll usually need a minimum of 2,500 points (which is $25 in value) to start redeeming. One tip from us: it's generally best to stick to redeeming for travel and dining statement credits. While you might see options for cash back or gift cards, these usually give you a lower value for your points, so you're not getting the most bang for your buck.") }}></p>
                 </section>
 
                 <section id="section-international-travel" className={styles.reviewSection}>
                   <h2 dangerouslySetInnerHTML={{ __html: processCitedText(tocSections.find(s=>s.id==='section-international-travel').title) }}></h2>
-                  <p dangerouslySetInnerHTML={{ __html: processCitedText("Planning a trip abroad? The " + reviewData.cardName + " is a fantastic travel buddy because it <strong>waives foreign transaction fees</strong> [CITE:1]. Many other credit cards tack on an extra charge, usually around 3%, for any purchases made outside the U.S. or in a foreign currency. With this card, that fee is gone, which can lead to some pretty nice savings over an international trip. Think about it: on $1,000 spent overseas, you'd save around $30 right there. Combine that with Visa's® wide global acceptance, and you've got a practical and cost-effective card for your international adventures.") }}></p>
+                  <p dangerouslySetInnerHTML={{ __html: processCitedText("Planning a trip abroad? The " + reviewData.cardName + " is a fantastic travel buddy because it <strong>waives foreign transaction fees</strong> . Many other credit cards tack on an extra charge, usually around 3%, for any purchases made outside the U.S. or in a foreign currency. With this card, that fee is gone, which can lead to some pretty nice savings over an international trip. Think about it: on $1,000 spent overseas, you'd save around $30 right there. Combine that with Visa's® wide global acceptance, and you've got a practical and cost-effective card for your international adventures.") }}></p>
                 </section>
 
                 {/* ... Continue applying this pattern of breaking up paragraphs, adding H3s, varying language, and adding mild opinions for other sections ... */}
 
                 <section id="section-final-verdict" className={styles.reviewSection}>
                   <h2 dangerouslySetInnerHTML={{ __html: processCitedText(tocSections.find(s=>s.id==='section-final-verdict').title) }}></h2>
-                  <p dangerouslySetInnerHTML={{ __html: processCitedText("So, what's the final word on the " + reviewData.cardName + "? In our expert opinion, it’s a genuinely strong contender in the crowded field of cards that don’t charge an annual fee [CITE:1]. Its main charm lies in its beautiful simplicity, its dependable flat-rate rewards, and that very welcome perk of not charging extra for foreign transactions [CITE:1]. If you're an everyday spender looking to dip your toes into the world of travel rewards without committing to a yearly fee or deciphering complex rules, this card is an excellent and unintimidating starting point.") }}></p>
-                  <p dangerouslySetInnerHTML={{ __html: processCitedText("However, let's be clear: the <strong>true magic of this card is unleashed for Bank of America and Merrill customers who qualify for the Preferred Rewards program</strong> [CITE:2]. That 25% to 75% points bonus? It elevates the card's earning potential from 'good' to 'genuinely great,' potentially giving you an effective 2.625% back (or even more on Travel Center bookings) on all your purchases towards travel. For a no-fee card, that’s hard to beat. The 3x points on bookings through the <a href='"+reviewData.officialBofaTravelCenterLink+"' target='_blank' rel='noopener noreferrer sponsored'>BofA Travel Center</a> [CITE:1] is another nice cherry on top, provided the prices there are competitive.") }}></p>
+                  <p dangerouslySetInnerHTML={{ __html: processCitedText("So, what's the final word on the " + reviewData.cardName + "? In our expert opinion, it’s a genuinely strong contender in the crowded field of cards that don’t charge an annual fee . Its main charm lies in its beautiful simplicity, its dependable flat-rate rewards, and that very welcome perk of not charging extra for foreign transactions . If you're an everyday spender looking to dip your toes into the world of travel rewards without committing to a yearly fee or deciphering complex rules, this card is an excellent and unintimidating starting point.") }}></p>
+                  <p dangerouslySetInnerHTML={{ __html: processCitedText("However, let's be clear: the <strong>true magic of this card is unleashed for Bank of America and Merrill customers who qualify for the Preferred Rewards program</strong> . That 25% to 75% points bonus? It elevates the card's earning potential from 'good' to 'genuinely great,' potentially giving you an effective 2.625% back (or even more on Travel Center bookings) on all your purchases towards travel. For a no-fee card, that’s hard to beat. The 3x points on bookings through the <a href='"+reviewData.officialBofaTravelCenterLink+"' target='_blank' rel='noopener noreferrer sponsored'>BofA Travel Center</a>  is another nice cherry on top, provided the prices there are competitive.") }}></p>
                   <p dangerouslySetInnerHTML={{ __html: processCitedText("This card is pretty much ideal if you're already part of the Bank of America family and can leverage Preferred Rewards. It’s also great if you simply crave straightforward, no-annual-fee travel rewards, or if you're just starting your points journey. On the flip side, if you're hunting for those ritzy luxury perks, absolutely need the flexibility of airline and hotel transfer partners, or won't get the benefit of the Preferred Rewards boost, then other cards (which might come with annual fees) could offer a better overall package for your specific spending style and travel dreams.") }}></p>
                   <p dangerouslySetInnerHTML={{ __html: processCitedText("All in all, if uncomplicated value, cost-effectiveness, and especially the perks of BofA loyalty align with your financial approach and how you like to travel, then the " + reviewData.cardName + " is a compelling choice that we think warrants serious consideration. If you're already in the Bank of America ecosystem and can hit even the Gold tier of Preferred Rewards, grabbing this card feels like a no-brainer for simple, effective travel points.") }}></p>
                 </section>
 
                 <section id="section-next-steps" className={styles.reviewSection}>
                   <h2 dangerouslySetInnerHTML={{ __html: processCitedText(tocSections.find(s=>s.id==='section-next-steps').title) }}></h2>
-                  <p dangerouslySetInnerHTML={{ __html: processCitedText("Feeling like the " + reviewData.cardName + " might be the right fit for you? If its blend of simplicity, $0 annual cost [CITE:1], solid rewards, and especially that potential Preferred Rewards® program supercharge [CITE:2] appeals to your spending habits and travel ambitions, it’s definitely worth a closer look. It could be a very smart addition to your wallet.") }}></p>
-                  <p dangerouslySetInnerHTML={{ __html: processCitedText("Ready to learn more or take the plunge? You can visit the <a href='"+reviewData.source1Url+"' target='_blank' rel='noopener noreferrer sponsored'>"+reviewData.source1Title+"</a> [CITE:1] for the latest details and to apply. Just a friendly reminder: always review the most current terms and conditions before applying, as offers and benefits can sometimes change. And of course, using any credit card responsibly – like paying your balances on time and in full when you can – is the golden rule to truly maximize your benefits and make all your financial journeys rewarding ones.") }}></p>
+                  <p dangerouslySetInnerHTML={{ __html: processCitedText("Feeling like the " + reviewData.cardName + " might be the right fit for you? If its blend of simplicity, $0 annual cost , solid rewards, and especially that potential Preferred Rewards® program supercharge  appeals to your spending habits and travel ambitions, it’s definitely worth a closer look. It could be a very smart addition to your wallet.") }}></p>
+                  <p dangerouslySetInnerHTML={{ __html: processCitedText("Ready to learn more or take the plunge? You can visit the <a href='"+reviewData.source1Url+"' target='_blank' rel='noopener noreferrer sponsored'>"+reviewData.source1Title+"</a>  for the latest details and to apply. Just a friendly reminder: always review the most current terms and conditions before applying, as offers and benefits can sometimes change. And of course, using any credit card responsibly – like paying your balances on time and in full when you can – is the golden rule to truly maximize your benefits and make all your financial journeys rewarding ones.") }}></p>
                 </section>
 
 
@@ -836,16 +836,7 @@ function BankOfAmericaTravelRewardsReviewPage() {
                 <section id="section-eat" className={`${styles.reviewSection} ${styles.eatSection}`}>
                     <h2 dangerouslySetInnerHTML={{ __html: processCitedText(tocSections.find(s=>s.id==='section-eat').title) }}></h2>
                     <p dangerouslySetInnerHTML={{ __html: processCitedText("Here at <strong>" + siteName + "</strong>, we're serious about providing content that lives up to the principles of Expertise, Authoritativeness, and Trustworthiness (E-A-T). This review of the <strong>" + reviewData.cardName + "</strong> isn't just thrown together; it's been meticulously researched and carefully crafted by our team. We've dug into the card's features, potential benefits, how its rewards structure works, and of course, the fees, cross-referencing everything with official documentation from Bank of America. We also consider real-world user experiences and data points from the wider personal finance community because hearing from actual cardholders matters. Our main goal is to give you a balanced, thorough, and reliable guide so you can make a decision that feels right for *you*. All the information presented here is current as of <strong>" + new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) + "</strong>, but it's always a smart move to verify specific details directly with the issuer, as terms and offers can occasionally change.") }}></p>
-                    <p><strong>Primary Sources We Referenced:</strong></p>
-                    <ol className={styles.citationList}>
-                        <li><a href={reviewData.source1Url} target="_blank" rel="noopener noreferrer sponsored">{reviewData.source1Title}</a></li>
-                        <li><a href={reviewData.source2Url} target="_blank" rel="noopener noreferrer sponsored">{reviewData.source2Title}</a></li>
-                        <li><a href={reviewData.source3Url} target="_blank" rel="noopener noreferrer sponsored">{reviewData.source3Title}</a> (Note: Specific Visa Signature® benefits are ultimately determined by Bank of America and detailed in your card's Guide to Benefits.)</li>
-                        <li>{reviewData.source4Title} (Used for competitor comparison)</li>
-                        <li>{reviewData.source5Title} (Used for competitor comparison)</li>
-                        <li>{reviewData.source6Title} (Used for competitor comparison)</li>
-                        <li>{reviewData.source7Title} (Used for competitor comparison)</li>
-                    </ol>
+                    
                 </section>
 
               </article>
