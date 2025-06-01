@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styles from '../../styles/reviews2025.module.css'; // Using the same enhanced CSS module
 
-const siteUrl = 'https://www.yourtravelcardreviewsite.com'; // IMPORTANT: Update this
+const siteUrl = 'https://www.travelcardinsider.com'; // IMPORTANT: Update this
 
 const reviewDataNew = {
   cardName: "Alaska Airlines Visa Signature Card",

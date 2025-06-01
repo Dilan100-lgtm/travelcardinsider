@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styles from '../../styles/reviews2025.module.css';
 
-const siteUrl = 'https://www.yourtravelcardreviewsite.com'; // IMPORTANT: Update this to your actual site URL
+const siteUrl = 'https://www.travelcardinsider.com'; // IMPORTANT: Update this to your actual site URL
 
 const reviewDataNew = {
   cardName: "The Platinum Card® from American Express",

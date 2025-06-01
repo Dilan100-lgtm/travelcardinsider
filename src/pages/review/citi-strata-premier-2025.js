@@ -10,7 +10,7 @@ import styles from '../../styles/reviews2025.module.css'; // Ensure this CSS mod
 import StarRating from '../../components/StarRating'; // 👈 IMPORT THE PREMIUM STAR COMPONENT
 
 // IMPORTANT: Update this to your actual site URL
-const siteUrl = 'https://www.yourtravelcardreviewsite.com';
+const siteUrl = 'https://www.travelcardinsider.com';
 
 const reviewDataNew = {
   cardName: "Citi Strata Premier℠ Card",
@@ -56,8 +56,8 @@ const reviewDataNew = {
   },
   siteName: "Your Travel Card Review Site",
   pagePath: "/review/citi-strata-premier-2025",
-  imageUrl: "/download1.png", 
-  cardImageUrl: "/images/citi-strata-premier-card-face.png", // IMPORTANT: Update with actual card face image path
+  imageUrl: "/erik-mclean-VtHK0R6sARg-unsplash.webp", 
+  cardImageUrl: "/download1.png", // IMPORTANT: Update with actual card face image path
   heroImageObjectPosition: "center center",
   imageWidth: 1600,
   imageHeight: 900,
