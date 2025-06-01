@@ -1326,3 +1326,42 @@
 .quickFactsList li:has(> .sidebarRatesLink) {
     padding-top: var(--spacing-xs, 4px); /* Less space if it's the second button */
 }
+/* Add to your ReviewPage.module.css or equivalent */
+.midArticleCta {
+  background-color: #f0f6ff; /* Light blue, adjust as needed */
+  padding: 20px;
+  margin: 30px 0;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid #cce0ff;
+}
+.midArticleCta h3 {
+  margin-top: 0;
+  color: #003366; /* Darker blue */
+}
+.midArticleCta p {
+  margin-bottom: 15px;
+  font-size: 0.95em;
+}
+.midCtaButton { /* Can reuse .applyNowButton styles or define separately */
+  /* Inherits from .applyNowButton, or add specific styles */
+}
+.ctaDisclaimer {
+  display: block;
+  font-size: 0.8em;
+  color: #555;
+  margin-top: 8px;
+}
+.authorNameLink { /* Style for the author's name link in the hero */
+    font-weight: 600;
+    color: #0052cc; /* Primary color */
+    text-decoration: none;
+}
+.authorNameLink:hover {
+    text-decoration: underline;
+}
+.reviewedByLine {
+    font-size: 0.9em;
+    color: #555; /* Adjust color */
+    margin-bottom: 10px; /* Space before the author image block */
+}
