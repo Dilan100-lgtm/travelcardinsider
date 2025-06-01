@@ -1051,15 +1051,7 @@ function BankOfAmericaTravelRewardsReviewPage() {
                     <h2 dangerouslySetInnerHTML={{ __html: processCitedText(tocSections.find(s=>s.id==='section-eat').title) }}></h2>
                     <p dangerouslySetInnerHTML={{ __html: processCitedText("At <strong>" + siteName + "</strong>, we are committed to providing content that exemplifies Expertise, Authoritativeness, and Trustworthiness (E-A-T). This review of the <strong>" + reviewData.cardName + "</strong> has been meticulously researched and crafted. We've analyzed the card's features, benefits, rewards structure, and fees, referencing official issuer documentation from Bank of America and considering real-world user experiences and data points from the personal finance community. Our goal is to present a balanced, comprehensive, and reliable guide to help you make an informed decision. All information is current as of <strong>" + new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) + "</strong>, but we always recommend verifying details directly with the issuer as terms can change.") }}></p>
                     <p><strong>Cited Sources:</strong></p>
-                    <ol className={styles.citationList}>
-                        <li><a href={reviewData.source1Url} target="_blank" rel="noopener noreferrer sponsored">{reviewData.source1Title}</a></li>
-                        <li><a href={reviewData.source2Url} target="_blank" rel="noopener noreferrer sponsored">{reviewData.source2Title}</a></li>
-                        <li><a href={reviewData.source3Url} target="_blank" rel="noopener noreferrer sponsored">{reviewData.source3Title}</a> (Note: Specific benefits are determined by Bank of America.)</li>
-                        <li>{reviewData.source4Title} (Used for comparison)</li>
-                        <li>{reviewData.source5Title} (Used for comparison)</li>
-                        <li>{reviewData.source6Title} (Used for comparison)</li>
-                        <li>{reviewData.source7Title} (Used for comparison)</li>
-                    </ol>
+                    
                 </section>
 
               </article>
