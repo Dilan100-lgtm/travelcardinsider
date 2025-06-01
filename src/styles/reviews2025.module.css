@@ -807,3 +807,41 @@
     align-items: flex-start;
   }
 }
+/* Add or modify these in your styles/reviews2025.module.css */
+
+/* Base button style (if you want to ensure consistency) */
+.btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  border: none; /* Assuming borderless for a modern look */
+  cursor: pointer;
+}
+
+/* Premium Apply Button (Gold/Amber) */
+.ctaButtonApply {
+  background: linear-gradient(145deg, #F0B90B, #FFD700); /* Rich gold gradient */
+  color: #1A237E; /* Dark indigo text for contrast and premium feel */
+  /* box-shadow: 0 2px 5px rgba(0,0,0,0.15); */ /* Optional subtle shadow */
+}
+
+.ctaButtonApply:hover {
+  background: linear-gradient(145deg, #e0ac0a, #e6c300); /* Slightly darker gold on hover */
+  transform: translateY(-1px); /* Slight lift on hover */
+}
+
+/* Premium Learn More Button (Sophisticated Dark Blue/Gray) */
+.ctaButtonLearnMore {
+  background-color: #2c3e50; /* Dark slate blue */
+  color: #FFFFFF;
+  border: 1px solid #34495e; /* Optional subtle border */
+}
+
+.ctaButtonLearnMore:hover {
+  background-color: #34495e; /* Slightly lighter on hover */
+  transform: translateY(-1px);
+}
