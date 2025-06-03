@@ -120,7 +120,7 @@ const loungeCardData = [
   {
     id: 'marriottBonvoyBrilliantLounge',
     name: 'Marriott Bonvoy Brilliant® American Express® Card',
-    imageSrc: '/NUS000000313_480x304_straight_withname.avif', // ❗ Replace
+    imageSrc: '/NUS000000313_480x304_straight_withname.avif',
     imageAlt: 'Marriott Bonvoy Brilliant American Express Card',
     annualFee: '$650',
     officialCardPageLink: 'https://www.americanexpress.com/us/credit-cards/card/marriott-bonvoy-brilliant/',

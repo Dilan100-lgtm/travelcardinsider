@@ -77,7 +77,7 @@ const companionCardData = [
   {
     id: 'capitalOneVentureXPairing',
     name: 'Capital One Venture X Rewards Credit Card',
-    imageSrc: '/images/cards/capital-one-venture-x-card-art.webp', // ❗ Replace
+    imageSrc: '/venturex-cg-static-card-1000x630-2.avif', // ❗ Replace
     imageAlt: 'Capital One Venture X Rewards Credit Card',
     annualFee: '$395',
     officialCardPageLink: 'https://www.capitalone.com/credit-cards/venture-x/',
@@ -95,7 +95,7 @@ const companionCardData = [
   {
     id: 'chaseSapphirePreferredPairing',
     name: 'Chase Sapphire Preferred® Card',
-    imageSrc: '/images/cards/chase-sapphire-preferred-card-art.webp', // ❗ Replace
+    imageSrc: '/sapphire_preferred_card.png', // ❗ Replace
     imageAlt: 'Chase Sapphire Preferred Card',
     annualFee: '$95',
     officialCardPageLink: 'https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred',
@@ -106,8 +106,8 @@ const companionCardData = [
     applyLink: 'https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred',
     ratesFeesLink: 'https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred',
     learnMoreLink: '/reviews/credit-cards/chase-sapphire-preferred-card',
-    ratingValue: 9.2,
-    ratingStars: 4.5, // Representing 4.6 as 4.5 for standard star display
+    ratingValue: 8.4,
+    ratingStars: 4.0, // Representing 4.6 as 4.5 for standard star display
   },
   {
     id: 'amexBlueBusinessPlusPairing',
