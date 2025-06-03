@@ -29,8 +29,8 @@ const DATE_MODIFIED = '2025-06-03'; // ✏️ Update whenever you edit copy
 const author = {
   name: 'Dilan Madushanka',
   title: 'Lead Rewards Strategist',
-  image: '/images/authors/dilan-madushanka-40px.jpeg', // ❗ Your 40x40px web‑optimised headshot
-  imageLarge: '/images/authors/dilan-madushanka-60px.jpeg', // ❗ Your 60x60px for tooltip
+  image: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // ❗ Your 40x40px web‑optimised headshot
+  imageLarge: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // ❗ Your 60x60px for tooltip
   bio: 'Seasoned rewards strategist dedicated to helping travelers maximize their credit card benefits and build powerful card pairings.',
   expertise: [
     'Amex Membership Rewards®',

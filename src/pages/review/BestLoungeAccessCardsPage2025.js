@@ -19,7 +19,7 @@ const SITE_BASE_URL = 'https://www.travelcardinsider.com'; // As per your exampl
 const PAGE_PATH = '/reviews/best-lounge-access-credit-cards-2025';
 const PAGE_URL = `${SITE_BASE_URL}${PAGE_PATH}`;
 const SITE_NAME = 'Travel Card Insider'; // As per your example file
-const HERO_IMAGE_SRC = '/cardmapr-nl-EjAkfNQb46k-unsplash.webp'; // ❗ Replace with your optimised hero image for lounge access
+const HERO_IMAGE_SRC = '/aparna-johri-7oyjkZB6O6k-unsplash.webp'; // ❗ Replace with your optimised hero image for lounge access
 const HERO_IMAGE_ALT = 'Comfortable airport lounge seating area – symbolizing top credit cards for airport lounge access in 2025';
 const DATE_PUBLISHED = '2025-06-01'; // ✏️ Adjust to your actual publish date
 const DATE_MODIFIED = '2025-06-01'; // ✏️ update whenever you edit copy
@@ -120,7 +120,7 @@ const loungeCardData = [
   {
     id: 'marriottBonvoyBrilliantLounge',
     name: 'Marriott Bonvoy Brilliant® American Express® Card',
-    imageSrc: '/NUS000000313_480x304_straight_withname.avif',
+    imageSrc: '/NUS000000313_480x304_straight_withname.avif', // ❗ Replace
     imageAlt: 'Marriott Bonvoy Brilliant American Express Card',
     annualFee: '$650',
     officialCardPageLink: 'https://www.americanexpress.com/us/credit-cards/card/marriott-bonvoy-brilliant/',
