@@ -88,7 +88,7 @@ const companionCardData = [
     userTip: 'Sarah K. says, "Gold for food, Venture X for everything else. The $300 credit is easy to use. Watching those lounge changes, though."',
     applyLink: 'https://www.capitalone.com/credit-cards/venture-x/',
     ratesFeesLink: 'https://www.capitalone.com/credit-cards/venture-x/',
-    learnMoreLink: '/reviews/credit-cards/capital-one-venture-x-rewards-credit-card',
+    learnMoreLink: '/cards/capital-one-venture-x',
     ratingValue: 9.0,
     ratingStars: 4.5,
   },
@@ -105,7 +105,7 @@ const companionCardData = [
     userTip: 'Mark T. notes, "CSP is key for my online groceries and that primary rental car insurance. Transferring to Hyatt for family trips offers incredible value."',
     applyLink: 'https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred',
     ratesFeesLink: 'https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred',
-    learnMoreLink: '/reviews/credit-cards/chase-sapphire-preferred-card',
+    learnMoreLink: '/cards/chase-sapphire-preferred',
     ratingValue: 8.4,
     ratingStars: 4.0, // Representing 4.6 as 4.5 for standard star display
   },
@@ -140,7 +140,7 @@ const companionCardData = [
     userTip: '"My go-to for gas. The hotel credit can be a bit specific to use, but the 3X on gas, travel, and supermarkets is solid for the $95 fee." - Community Feedback',
     applyLink: 'https://www.citi.com/credit-cards/citi-strata-premier-credit-card',
     ratesFeesLink: 'https://www.citi.com/credit-cards/citi-strata-premier-credit-card',
-    learnMoreLink: '/reviews/credit-cards/citi-strata-premier-card',
+    learnMoreLink: '/cards/citi-strata-premier',
     ratingValue: 7.7,
     ratingStars: 4.0,
   }
