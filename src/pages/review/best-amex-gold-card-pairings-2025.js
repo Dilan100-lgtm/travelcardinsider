@@ -112,7 +112,7 @@ const companionCardData = [
   {
     id: 'amexBlueBusinessPlusPairing',
     name: 'American Express® Blue Business® Plus Credit Card',
-    imageSrc: '/images/cards/amex-blue-business-plus-card-art.webp', // ❗ Replace
+    imageSrc: '/blue-business-plus.avif', // ❗ Replace
     imageAlt: 'American Express Blue Business Plus Credit Card',
     annualFee: '$0',
     officialCardPageLink: 'https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/american-express-blue-business-plus-credit-card-amex/',
@@ -130,7 +130,7 @@ const companionCardData = [
   {
     id: 'citiStrataPremierPairing',
     name: 'Citi Strata Premier℠ Card',
-    imageSrc: '/images/cards/citi-strata-premier-card-art.webp', // ❗ Replace
+    imageSrc: '/download1.png', // ❗ Replace
     imageAlt: 'Citi Strata Premier Card',
     annualFee: '$95',
     officialCardPageLink: 'https://www.citi.com/credit-cards/citi-strata-premier-card',
@@ -138,11 +138,11 @@ const companionCardData = [
     goldSynergy: "Its 3X points on gas and EV charging is a significant advantage over Amex Gold's typical 1X on fuel. The broad 3X on supermarkets can supplement Gold's U.S. supermarket cap or cover international grocery spend. Diversifies points into Citi ThankYou® Rewards. Offers a $100 annual hotel savings benefit on a single hotel stay of $500 or more (excluding taxes and fees) booked through CitiTravel.com.",
     bestFor: 'Travelers with high gas station expenditure, who value broad 3X category coverage, and can effectively use the CitiTravel.com portal for the hotel benefit.',
     userTip: '"My go-to for gas. The hotel credit can be a bit specific to use, but the 3X on gas, travel, and supermarkets is solid for the $95 fee." - Community Feedback',
-    applyLink: 'https://www.citi.com/credit-cards/citi-strata-premier-card',
-    ratesFeesLink: 'https://www.citi.com/credit-cards/citi-strata-premier-card',
+    applyLink: 'https://www.citi.com/credit-cards/citi-strata-premier-credit-card',
+    ratesFeesLink: 'https://www.citi.com/credit-cards/citi-strata-premier-credit-card',
     learnMoreLink: '/reviews/credit-cards/citi-strata-premier-card',
-    ratingValue: 8.9,
-    ratingStars: 4.5,
+    ratingValue: 7.7,
+    ratingStars: 4.0,
   }
 ];
 
