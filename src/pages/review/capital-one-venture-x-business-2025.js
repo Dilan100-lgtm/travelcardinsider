@@ -430,7 +430,7 @@ export default function CapitalOneVentureXBusinessReview2025() {
               <p>Unlock significant travel rewards with its powerful welcome offer and earning rates.</p>
               <div className={styles.ctaButtons}>
                 <a href={reviewDataNew.applyLink} className={`${styles.btn} ${styles.btnApply}`} title={`Apply for the ${reviewDataNew.cardName} on Capital One's secure site`} target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
-                <a href={reviewDataNew.ratesAndFeesLink} className={`${styles.btn} ${styles.btnRates}`} title={`See rates and fees for the ${reviewDataNew.cardName}`} target="_blank" rel="noopener noreferrer sponsored">See Rates & Fees</a>
+                <a href={reviewDataNew.learnMoreLink} className={`${styles.btn} ${styles.btnRates}`} title={`See rates and fees for the ${reviewDataNew.cardName}`} target="_blank" rel="noopener noreferrer sponsored">Learn More</a>
               </div>
           </section>
 
