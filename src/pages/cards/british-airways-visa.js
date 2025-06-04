@@ -271,8 +271,8 @@ const tocSections = [ // SEO-friendly titles for sections
     { id: 'section-eat', title: '20. Our E-A-T Pledge' }, // Kept EAT for trust
 ];
 
-const contentImage1 = "/ba-visa-lifestyle-image1-concise.webp"; // Placeholder - UPDATE THIS
-const contentImage2 = "/avios-rewards-chart-example-concise.webp"; // Placeholder - UPDATE THIS
+const contentImage1 = "/belinda-fewings-47MjlWS6lpU-unsplash.webp"; // Placeholder - UPDATE THIS
+const contentImage2 = "/lydia-matzal-1cB1ie1SoDo-unsplash.webp"; // Placeholder - UPDATE THIS
 
 function DraggableTableWrapper({ children }) { /* ... Same DraggableTableWrapper as before ... */
   const containerRef = useRef(null);
@@ -366,7 +366,7 @@ function BritishAirwaysVisaSignatureReviewConcisePage() {
     welcomeOffer: "Earn 75,000 Avios after $5,000 spend in first 3 months . (Verify current offer.)",
     annualFee: `$${reviewData.annualFee} `,
     topEarning: "3 Avios/$1 on BA group; 2 Avios/$1 direct hotels; 1 Avios/$1 others .",
-    keyPerks: "Travel Together Ticket, up to $600 Reward Flight Credits, 10% off BA flights from U.S. [CITE:1, 3, 4]",
+    keyPerks: "Travel Together Ticket, up to $600 Reward Flight Credits, 10% off BA flights from U.S.",
     bestFor: "BA Loyalists & Transatlantic Voyagers Seeking Premium Perks."
   };
   
@@ -609,7 +609,7 @@ function BritishAirwaysVisaSignatureReviewConcisePage() {
       <p>If you're undecided, or need more flexibility or different perks, explore further. ${siteName} has many reviews to help find your perfect travel card.</p>
     `,
     'section-eat': `
-        <p>Here at <strong>${siteName}</strong>, we're serious about providing content that lives up to the principles of Expertise, Authoritativeness, and Trustworthiness (E-A-T). This review of the <strong>${reviewData.cardName}</strong> has been carefully assembled based on its known features, benefits, rewards structure, and fees, cross-referencing information with official documentation from Chase  and British Airways [CITE:2, 3, 4]. Our goal is to give you a balanced, thorough, and reliable guide so you can make a decision that feels right for you. All information presented here is current as of <strong>${new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</strong>, but it's always a smart move to verify specific details directly with the issuer, as terms and offers can occasionally change.</p>
+        <p>Here at <strong>${siteName}</strong>, we're serious about providing content that lives up to the principles of Expertise, Authoritativeness, and Trustworthiness (E-A-T). This review of the <strong>${reviewData.cardName}</strong> has been carefully assembled based on its known features, benefits, rewards structure, and fees, cross-referencing information with official documentation from Chase  and British Airways . Our goal is to give you a balanced, thorough, and reliable guide so you can make a decision that feels right for you. All information presented here is current as of <strong>${new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</strong>, but it's always a smart move to verify specific details directly with the issuer, as terms and offers can occasionally change.</p>
     `
   };
 
@@ -896,7 +896,7 @@ function BritishAirwaysVisaSignatureReviewConcisePage() {
                                 <div dangerouslySetInnerHTML={{ __html: processCitedText(sectionContent[section.id]) }} />
                                 {/* Add content images if applicable to the section, e.g., after section-earning-avios */}
                                 {section.id === 'section-earning-avios' && reviewData.imageUrl && <Image src={contentImage1} alt="Visual related to earning Avios" width={800} height={450} className={styles.contentImage} loading="lazy" />}
-                                {section.id === 'section-travel-together-ticket' && reviewData.imageUrl && <Image src={contentImage2} alt="Visual related to Travel Together Ticket" width={800} height={450} className={styles.contentImage} loading="lazy" />}
+                                {section.id === 'section-competitors' && reviewData.imageUrl && <Image src={contentImage2} alt="Visual related to Travel Together Ticket" width={800} height={450} className={styles.contentImage} loading="lazy" />}
                             </section>
                         );
                     }
