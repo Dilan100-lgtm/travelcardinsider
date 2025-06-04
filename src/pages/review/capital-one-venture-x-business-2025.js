@@ -56,8 +56,8 @@ const reviewDataNew = {
   },
   siteName: "TravelCardInsider.com", // Updated to your site name
   pagePath: "/review/capital-one-venture-x-business-2025",
-  imageUrl: "/images/hero/venture-x-business-hero.webp", // IMPORTANT: Update with actual hero image path
-  cardImageUrl: "/images/card-art/capital-one-venture-x-business.png", // IMPORTANT: Update with actual card face image path
+  imageUrl: "/bruce-mars-S8ffHr_dxHo-unsplash (1).webp", // IMPORTANT: Update with actual hero image path
+  cardImageUrl: "/vxb-card-alt-at-2x.avif", // IMPORTANT: Update with actual card face image path
   heroImageObjectPosition: "center center",
   imageWidth: 1600,
   imageHeight: 900,
@@ -66,8 +66,8 @@ const reviewDataNew = {
   updateDate: "2025-06-04", // Current date or last review update
   ratingValue: 4.3, // Example Rating: Out of 5, based on review tone
   annualFee: 395,
-  applyLink: "https://www.capitalone.com/small-business/credit-cards/venture-x-business/", // Official Link
-  learnMoreLink: "/learn/capital-one-venture-x-business-guide", // Example internal learn more link
+  applyLink: "http://capitalone.com/small-business/credit-cards/venture-x-business/", // Official Link
+  learnMoreLink: "/cards/capital-one-venture-x-business", // Example internal learn more link
   
   // Specific links for Venture X Business
   officialCardPageLink: "https://www.capitalone.com/small-business/credit-cards/venture-x-business/",
