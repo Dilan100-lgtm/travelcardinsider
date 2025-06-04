@@ -582,7 +582,7 @@ export default function CapitalOneVentureXBusinessReview2025() {
             <span className={styles.stickyCtaText}>{reviewDataNew.cardName} - ${reviewDataNew.annualFee} Annual Fee.</span>
             <div className={styles.stickyCtaButtons}>
                 <a href={reviewDataNew.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.btn} ${styles.ctaButtonApply}`}>Apply Now</a>
-                <a href={reviewDataNew.ratesAndFeesLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.btn} ${styles.ctaButtonLearnMore}`}>See Rates & Fees</a>
+                <a href={reviewDataNew.learnMoreLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.btn} ${styles.ctaButtonLearnMore}`}>Learn More</a>
             </div>
         </div>
       </div>
