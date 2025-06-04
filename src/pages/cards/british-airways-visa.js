@@ -129,9 +129,9 @@ const faqsContent = [ // Re-instated [CITE:N] markers
     { q: 'Can 10% flight discount combine with other BA offers?', a: 'Usually no. Code `BACHASE10` terms typically exclude other offers. Check at booking. [CITE:4]' },
     { q: 'Do card Avios count for BA elite status?', a: 'No. Card Avios are for redemptions, not Tier Points for elite status. [CITE:2]' },
     { q: 'What if I cancel the card – what about my Avios?', a: 'Avios are in your BA Executive Club account, separate from the card. Ensure Avios activity every 36 months to prevent expiry. [CITE:2]' },
-    { q: 'Limit on Avios earned?', a: 'No general limit from spending. Welcome bonus is one-time. [CITE:1]' },
-    { q: 'How long for Reward Flight Credits to post?', a: 'Usually within 45 days after flight ticketing/payment, then 1-2 billing cycles. [CITE:1]' },
-    { q: 'What purchases don\'t earn Avios?', a: 'Typically balance transfers, cash advances, money orders, gambling, interest, fees. [CITE:1]' },
+    { q: 'Limit on Avios earned?', a: 'No general limit from spending. Welcome bonus is one-time. ' },
+    { q: 'How long for Reward Flight Credits to post?', a: 'Usually within 45 days after flight ticketing/payment, then 1-2 billing cycles. ' },
+    { q: 'What purchases don\'t earn Avios?', a: 'Typically balance transfers, cash advances, money orders, gambling, interest, fees. ' },
     { q: 'Authorized users get 10% discount/credits?', a: '10% discount requires primary cardmember traveling. Credits apply to primary account. Their spend counts for Travel Together Ticket.' },
     { q: 'Does Chase 5/24 rule apply?', a: 'Yes, generally. Chase may deny if you\'ve opened 5+ new cards (any bank) in 24 months.' }
 ];
@@ -175,7 +175,7 @@ const structuredDataOptimized = { /* ... Structured data remains largely the sam
           {
             '@type'              : 'PriceSpecification',
             priceCurrency        : 'USD',
-            description          : `Purchase APR: ${reviewData.aprRange}. Foreign Transaction Fee: $0. See official ${reviewData.cardName} Rates & Fees. [CITE:1]`, // Added CITE
+            description          : `Purchase APR: ${reviewData.aprRange}. Foreign Transaction Fee: $0. See official ${reviewData.cardName} Rates & Fees. `, // Added CITE
           },
         ],
         seller: { '@type': 'Organization', name: 'Chase' },
@@ -362,10 +362,10 @@ function BritishAirwaysVisaSignatureReviewConcisePage() {
   }, [showAuthorBioTooltip, authorRef, authorTooltipRef, showRatingInfo, ratingTooltipRef]);
 
   const summaryBoxData = { 
-    welcomeOffer: "Earn 75,000 Avios after $5,000 spend in first 3 months [CITE:1]. (Verify current offer.)",
-    annualFee: `$${reviewData.annualFee} [CITE:1]`,
-    topEarning: "3 Avios/$1 on BA group; 2 Avios/$1 direct hotels; 1 Avios/$1 others [CITE:1].",
-    keyPerks: "Travel Together Ticket [CITE:3], up to $600 Reward Flight Credits [CITE:1], 10% off BA flights from U.S. [CITE:4]",
+    welcomeOffer: "Earn 75,000 Avios after $5,000 spend in first 3 months . (Verify current offer.)",
+    annualFee: `$${reviewData.annualFee} `,
+    topEarning: "3 Avios/$1 on BA group; 2 Avios/$1 direct hotels; 1 Avios/$1 others .",
+    keyPerks: "Travel Together Ticket [CITE:3], up to $600 Reward Flight Credits , 10% off BA flights from U.S. [CITE:4]",
     bestFor: "BA Loyalists & Transatlantic Voyagers Seeking Premium Perks."
   };
   
@@ -373,13 +373,13 @@ function BritishAirwaysVisaSignatureReviewConcisePage() {
     { feature: "Card Name", description: "British Airways Visa Signature® Card" },
     { feature: "Issuer", description: "Chase" },
     { feature: "Network", description: "Visa Signature" },
-    { feature: "Annual Fee", description: "$95 [CITE:1]" },
-    { feature: "Welcome Offer (Example)", description: "Earn 75,000 Avios after $5,000 spend in first 3 months [CITE:1]. (Verify current offer.)" },
+    { feature: "Annual Fee", description: "$95 " },
+    { feature: "Welcome Offer (Example)", description: "Earn 75,000 Avios after $5,000 spend in first 3 months . (Verify current offer.)" },
     { feature: "Rewards", description: "Avios" },
     { feature: "Key Perk: Travel Together Ticket", description: "Earn after $30K annual spend; companion flies for Avios (pays fees) or 50% solo Avios discount [CITE:3]." },
-    { feature: "Key Perk: Reward Flight Credits", description: "Up to $600 annually for surcharges on BA reward flights to London [CITE:1]." },
+    { feature: "Key Perk: Reward Flight Credits", description: "Up to $600 annually for surcharges on BA reward flights to London ." },
     { feature: "Key Perk: 10% Off BA Flights", description: "On BA flights from U.S. with code `BACHASE10` [CITE:4]." },
-    { feature: "Key Perk: No Foreign Transaction Fees", description: "Yes [CITE:1]." },
+    { feature: "Key Perk: No Foreign Transaction Fees", description: "Yes ." },
   ];
 
   const sectionContent = { // Re-instated [CITE:N] markers
@@ -392,21 +392,21 @@ function BritishAirwaysVisaSignatureReviewConcisePage() {
         <li><strong>Card Name:</strong> British Airways Visa Signature® Card</li>
         <li><strong>Issuer:</strong> Chase</li>
         <li><strong>Network:</strong> Visa Signature</li>
-        <li><strong>Annual Fee:</strong> $95 [CITE:1]</li>
-        <li><strong>Welcome Offer:</strong> Earn 75,000 Avios after $5,000 spend in first 3 months [CITE:1]. (Verify current offer.)</li>
+        <li><strong>Annual Fee:</strong> $95 </li>
+        <li><strong>Welcome Offer:</strong> Earn 75,000 Avios after $5,000 spend in first 3 months . (Verify current offer.)</li>
         <li><strong>Rewards:</strong> Avios</li>
-        <li><strong>Key Perks:</strong> Travel Together Ticket [CITE:3], up to $600 in Reward Flight Statement Credits [CITE:1], 10% off BA flights from U.S. [CITE:4]</li>
+        <li><strong>Key Perks:</strong> Travel Together Ticket [CITE:3], up to $600 in Reward Flight Statement Credits , 10% off BA flights from U.S. [CITE:4]</li>
         <li><strong>'Best For':</strong> BA Loyalists & Transatlantic Voyagers Seeking Premium Perks.</li>
       </ul>
     `,
     'section-welcome-bonus': `
-      <p>The British Airways Visa Signature® Card typically features an attractive welcome offer. Currently, new cardmembers can earn 75,000 bonus Avios after spending $5,000 on purchases within the first three months [CITE:1]. Always check the latest offer with Chase before applying.</p>
+      <p>The British Airways Visa Signature® Card typically features an attractive welcome offer. Currently, new cardmembers can earn 75,000 bonus Avios after spending $5,000 on purchases within the first three months . Always check the latest offer with Chase before applying.</p>
       <p>That 75k Avios haul can easily get you a round-trip to Europe — or score you a lie-flat seat if you’re smart about redemptions. Avios are usable not just on British Airways but also with oneworld® alliance partners like American Airlines, offering flexibility, especially for short-haul North American flights [CITE:2].</p>
       <p>Meeting the $5,000 spend in three months (around $1,667 monthly) is a standard threshold for such cards. Regular spending or planned large purchases can help achieve this. A key benefit: Avios in your British Airways Executive Club account don't expire if you collect, spend, purchase, or share at least one Avios every 36 months [CITE:2]. Using this card ensures that activity.</p>
     `,
     'section-earning-avios': `
       <p>Understanding the Avios earning rate is key to this card's long-term value. It’s structured to reward spending with British Airways, its partner airlines, and direct hotel bookings.</p>
-      <p>You’ll earn [CITE:1]:</p>
+      <p>You’ll earn :</p>
       <ul>
         <li><strong>3 Avios per $1</strong> on British Airways, Iberia, Aer Lingus, and LEVEL purchases.</li>
         <li><strong>2 Avios per $1</strong> on hotel accommodations booked directly with the hotel.</li>
@@ -427,9 +427,9 @@ function BritishAirwaysVisaSignatureReviewConcisePage() {
       <p>The Travel Together Ticket shines for long-haul Business (Club World) or First Class, where Avios savings can be thousands of dollars, easily justifying the annual fee and even the associated charges. This perk is best for dedicated, high-spending BA loyalists.</p>
     `,
     'section-reward-flight-credits': `
-      <p>British Airways often has significant carrier-imposed surcharges on its award flights. This card helps offset that with its Reward Flight Statement Credit benefit [CITE:1].</p>
+      <p>British Airways often has significant carrier-imposed surcharges on its award flights. This card helps offset that with its Reward Flight Statement Credit benefit .</p>
       <p><strong>The Perk:</strong> Receive statement credits when booking a BA reward flight to London and using your card for taxes, fees, and carrier charges.</p>
-      <p><strong>Credit Amounts</strong> (up to three times per year, max $600 annually) [CITE:1]:</p>
+      <p><strong>Credit Amounts</strong> (up to three times per year, max $600 annually) :</p>
       <ul>
         <li><strong>$100 credit</strong> for an Economy (World Traveller) or Premium Economy (World Traveller Plus) seat.</li>
         <li><strong>$200 credit</strong> for a Business (Club World) or First Class seat.</li>
@@ -450,7 +450,7 @@ function BritishAirwaysVisaSignatureReviewConcisePage() {
     'section-other-perks': `
       <p>A few underrated perks round out the package — stuff that adds real value if you travel often:</p>
       <ul>
-        <li><strong>No Foreign Transaction Fees</strong> [CITE:1].</li>
+        <li><strong>No Foreign Transaction Fees</strong> .</li>
         <li><strong>Automatic BA Executive Club Membership:</strong> Streamlines Avios earning for new members [CITE:2].</li>
         <li><strong>Contactless Payment:</strong> "Tap to pay" for secure checkouts.</li>
         <li><strong>Travel and Purchase Coverage:</strong> Includes Visa Signature protections like Baggage Delay Insurance, Lost Luggage Reimbursement, Purchase Protection, and Extended Warranty Protection (terms apply) [CITE:5].</li>
@@ -477,7 +477,7 @@ function BritishAirwaysVisaSignatureReviewConcisePage() {
       <p>Avios are valid with activity every 36 months (card use counts). Transfer Avios between BA, Iberia, Aer Lingus, Qatar Airways programs.</p>
     `,
     'section-rates-fees': `
-      <p>Always check the current Cardmember Agreement for exact figures [CITE:1].</p>
+      <p>Always check the current Cardmember Agreement for exact figures .</p>
       <ul>
         <li><strong>Annual Fee:</strong> $95</li>
         <li><strong>Purchase APR:</strong> Variable, e.g., 21.49% - 28.49%. (Varies with Prime Rate.)</li>
@@ -504,12 +504,12 @@ function BritishAirwaysVisaSignatureReviewConcisePage() {
       <p>Take Taylor, for example — she’s planning a premium economy getaway to London with her partner.</p>
       <p><strong>Strategy:</strong></p>
       <ol>
-        <li>Taylor gets the BA Visa, spends $5,000 in 3 months for <strong>75,000 bonus Avios</strong> [CITE:1].</li>
+        <li>Taylor gets the BA Visa, spends $5,000 in 3 months for <strong>75,000 bonus Avios</strong> .</li>
         <li>Spends $30,000 total in a year for the <strong>Travel Together Ticket</strong> [CITE:3]. Assuming:
           <ul>
-            <li>$3K on BA flights: $3,000 x 3 Avios = 9,000 Avios [CITE:1].</li>
-            <li>$2K on direct hotels: $2,000 x 2 Avios = 4,000 Avios [CITE:1].</li>
-            <li>$25K other: $25,000 x 1 Avios = 25,000 Avios [CITE:1].</li>
+            <li>$3K on BA flights: $3,000 x 3 Avios = 9,000 Avios .</li>
+            <li>$2K on direct hotels: $2,000 x 2 Avios = 4,000 Avios .</li>
+            <li>$25K other: $25,000 x 1 Avios = 25,000 Avios .</li>
           </ul>
         </li>
       </ol>
@@ -523,7 +523,7 @@ function BritishAirwaysVisaSignatureReviewConcisePage() {
       <p><strong>Card Benefits Applied:</strong></p>
       <ul>
         <li>Travel Together Ticket: Saves 80,000 Avios.</li>
-        <li>Reward Flight Credits: Two $100 credits for premium economy to London = $200 back [CITE:1].</li>
+        <li>Reward Flight Credits: Two $100 credits for premium economy to London = $200 back .</li>
       </ul>
       <p><strong>Net Cost:</strong></p>
       <ul>
@@ -542,9 +542,9 @@ function BritishAirwaysVisaSignatureReviewConcisePage() {
       <p>This card suits specific travelers.</p>
       <p><strong>Perfect For You If:</strong></p>
       <ul>
-        <li>You fly BA or partners often (3x Avios on BA group [CITE:1]).</li>
+        <li>You fly BA or partners often (3x Avios on BA group ).</li>
         <li>You spend $30K+ annually for the Travel Together Ticket [CITE:3].</li>
-        <li>You travel to/through London (to use Reward Flight Credits [CITE:1]).</li>
+        <li>You travel to/through London (to use Reward Flight Credits ).</li>
         <li>You aim for premium cabin travel (maximizes Travel Together Ticket).</li>
         <li>You're Avios-savvy (can navigate partner awards, use 10% flight discount [CITE:4]).</li>
       </ul>
@@ -560,19 +560,19 @@ function BritishAirwaysVisaSignatureReviewConcisePage() {
     'section-user-testimonials': `
       <p>Illustrative scenarios based on common card uses:</p>
       <ol>
-        <li><strong>Sarah, Transatlantic Commuter:</strong> "The 10% BA flight discount [CITE:4] saves my company money, and 3x Avios [CITE:1] on those work flights boost my holiday fund!"
+        <li><strong>Sarah, Transatlantic Commuter:</strong> "The 10% BA flight discount [CITE:4] saves my company money, and 3x Avios  on those work flights boost my holiday fund!"
           <ul><li><em>Profile:</em> Regular BA business traveler. <em>Summary:</em> Values cash savings and Avios boost.</li></ul>
         </li>
         <li><strong>David & Lisa, Anniversary Trip:</strong> "Hitting $30K spend for the Travel Together Ticket [CITE:3] let us fly Business to Italy via London – my wife only paid fees on her ticket. Incredible savings!"
           <ul><li><em>Profile:</em> Couple targeting luxury redemption. <em>Summary:</em> Leveraged high spend for premium travel.</li></ul>
         </li>
-        <li><strong>Maria, Points Strategist:</strong> "I love using Avios for short AA flights in the U.S. [CITE:2]. The BA card tops up my Avios, and statement credits [CITE:1] help with occasional BA flights to family."
+        <li><strong>Maria, Points Strategist:</strong> "I love using Avios for short AA flights in the U.S. [CITE:2]. The BA card tops up my Avios, and statement credits  help with occasional BA flights to family."
           <ul><li><em>Profile:</em> Understands Avios and partner awards. <em>Summary:</em> Values partner redemptions and surcharge offsets.</li></ul>
         </li>
-        <li><strong>Tom, Hotel Booker:</strong> "Earning 2 Avios/$ [CITE:1] on direct hotel bookings with the BA card is a nice extra on top of my hotel points."
+        <li><strong>Tom, Hotel Booker:</strong> "Earning 2 Avios/$  on direct hotel bookings with the BA card is a nice extra on top of my hotel points."
           <ul><li><em>Profile:</em> Frequent traveler booking hotels directly. <em>Summary:</em> Benefits from bonus Avios on hotels.</li></ul>
         </li>
-        <li><strong>Priya, Occasional UK Visitor:</strong> "The welcome bonus [CITE:1] was great. The 10% discount [CITE:4] or Reward Flight Credits [CITE:1] make UK visits more affordable. No foreign fees [CITE:1] is key."
+        <li><strong>Priya, Occasional UK Visitor:</strong> "The welcome bonus  was great. The 10% discount [CITE:4] or Reward Flight Credits  make UK visits more affordable. No foreign fees  is key."
           <ul><li><em>Profile:</em> Periodic UK traveler. <em>Summary:</em> Appreciates cost-saving perks for important trips.</li></ul>
         </li>
       </ol>
@@ -581,7 +581,7 @@ function BritishAirwaysVisaSignatureReviewConcisePage() {
       <p>The card is issued by Chase, offering robust account management.</p>
       <p><strong>Digital Tools:</strong></p>
       <ul>
-        <li><strong>Chase Online/Mobile® App:</strong> View activity, manage rewards, make payments, set alerts [CITE:1].</li>
+        <li><strong>Chase Online/Mobile® App:</strong> View activity, manage rewards, make payments, set alerts .</li>
         <li><strong>Account Alerts:</strong> For transactions, payment dues, spending limits.</li>
       </ul>
       <p><strong>Customer Service:</strong></p>
@@ -589,9 +589,9 @@ function BritishAirwaysVisaSignatureReviewConcisePage() {
     `,
     'section-final-verdict': `
       <p>The British Airways Visa Signature® Card offers a specific, strong value for certain U.S. travelers.</p>
-      <p><strong>Strongest Points:</strong> The <strong>Travel Together Ticket</strong> (after $30K annual spend [CITE:3]) is a massive potential saver, especially for premium cabins. Up to <strong>$600 annually in Reward Flight Statement Credits</strong> [CITE:1] significantly offsets BA's London flight surcharges. The <strong>10% discount on BA cash fares</strong> from the U.S. [CITE:4] adds immediate value. Earning 3 Avios/$ on BA group airlines [CITE:1] is good for loyalists.</p>
+      <p><strong>Strongest Points:</strong> The <strong>Travel Together Ticket</strong> (after $30K annual spend [CITE:3]) is a massive potential saver, especially for premium cabins. Up to <strong>$600 annually in Reward Flight Statement Credits</strong>  significantly offsets BA's London flight surcharges. The <strong>10% discount on BA cash fares</strong> from the U.S. [CITE:4] adds immediate value. Earning 3 Avios/$ on BA group airlines  is good for loyalists.</p>
       <p><strong>Considerations:</strong> The $30K spend for the Travel Together Ticket is high. BA award surcharges persist, though credits help. It's less flexible than general travel cards and lacks perks like free bags as a direct card benefit.</p>
-      <p><strong>Recommendation:</strong> The $95 fee [CITE:1] is justified if you:</p>
+      <p><strong>Recommendation:</strong> The $95 fee  is justified if you:</p>
       <ul>
         <li>Fly BA/partners consistently.</li>
         <li>Can spend $30K+ annually on the card.</li>
@@ -601,11 +601,11 @@ function BritishAirwaysVisaSignatureReviewConcisePage() {
       <p>For others, a general travel card might be better. This is a specialist card; its value unlocks via BA loyalty and using its specific perks.</p>
     `,
     'section-next-steps': `
-      <p>If this card’s unique offerings—Travel Together Ticket [CITE:3], Reward Flight Credits [CITE:1], 10% BA flight discount [CITE:4], and solid Avios earning—align with your travel and spending, it could be a great asset. The 75,000 Avios welcome bonus [CITE:1] is a strong start. Applying might be your next step to enhance BA journeys.</p>
+      <p>If this card’s unique offerings—Travel Together Ticket [CITE:3], Reward Flight Credits , 10% BA flight discount [CITE:4], and solid Avios earning—align with your travel and spending, it could be a great asset. The 75,000 Avios welcome bonus  is a strong start. Applying might be your next step to enhance BA journeys.</p>
       <p>If you're undecided, or need more flexibility or different perks, explore further. ${siteName} has many reviews to help find your perfect travel card.</p>
     `,
     'section-eat': `
-        <p>Here at <strong>${siteName}</strong>, we're serious about providing content that lives up to the principles of Expertise, Authoritativeness, and Trustworthiness (E-A-T). This review of the <strong>${reviewData.cardName}</strong> has been carefully assembled based on its known features, benefits, rewards structure, and fees, cross-referencing information with official documentation from Chase [CITE:1] and British Airways [CITE:2, 3, 4]. Our goal is to give you a balanced, thorough, and reliable guide so you can make a decision that feels right for you. All information presented here is current as of <strong>${new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</strong>, but it's always a smart move to verify specific details directly with the issuer, as terms and offers can occasionally change.</p>
+        <p>Here at <strong>${siteName}</strong>, we're serious about providing content that lives up to the principles of Expertise, Authoritativeness, and Trustworthiness (E-A-T). This review of the <strong>${reviewData.cardName}</strong> has been carefully assembled based on its known features, benefits, rewards structure, and fees, cross-referencing information with official documentation from Chase  and British Airways [CITE:2, 3, 4]. Our goal is to give you a balanced, thorough, and reliable guide so you can make a decision that feels right for you. All information presented here is current as of <strong>${new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</strong>, but it's always a smart move to verify specific details directly with the issuer, as terms and offers can occasionally change.</p>
     `
   };
 
@@ -765,7 +765,7 @@ function BritishAirwaysVisaSignatureReviewConcisePage() {
                             <div className={styles.summaryItem} data-full-width="true"><span className={styles.summaryIcon}><IconPlane /></span><span className={styles.summaryLabel}>Best For:</span><span className={styles.summaryValue} dangerouslySetInnerHTML={{ __html: processCitedText(summaryBoxData.bestFor) }}></span></div>
                         </div>
                         <div className={styles.summaryBoxActions}>
-                            <a href={reviewData.ratesFeesLink} className={styles.summaryRatesLink} target="_blank" rel="noopener noreferrer sponsored" dangerouslySetInnerHTML={{ __html: processCitedText("See Card Rates & Fees (Chase) [CITE:1]") }}></a>
+                            <a href={reviewData.ratesFeesLink} className={styles.summaryRatesLink} target="_blank" rel="noopener noreferrer sponsored" dangerouslySetInnerHTML={{ __html: processCitedText("See Card Rates & Fees (Chase) ") }}></a>
                             {/* NEW Rewards Calculator Button */}
                             <a href='/rewards-calculator' className={`${styles.heroRewardsCalculator} ${styles.summaryButton}`} target="_blank" rel="noopener noreferrer">
                                 Rewards Calculator
@@ -827,7 +827,7 @@ function BritishAirwaysVisaSignatureReviewConcisePage() {
                                             <thead>
                                                 <tr>
                                                     <th>Feature</th>
-                                                    <th>British Airways Visa Signature® [CITE:1]</th>
+                                                    <th>British Airways Visa Signature® </th>
                                                     <th>Chase Sapphire Preferred® [CITE:6]</th>
                                                     <th>American Express® Gold [CITE:7]</th>
                                                     <th>Citi Strata Premier℠ [CITE:8]</th>
@@ -876,25 +876,25 @@ function BritishAirwaysVisaSignatureReviewConcisePage() {
                                     <div className={styles.prosList}>
                                         <h3>The Bright Sides (Pros):</h3>
                                         <ul dangerouslySetInnerHTML={{ __html: processCitedText(`
-                                            <li>Significant Welcome Bonus: Typically offers a large Avios bonus that can kickstart your reward travel [CITE:1].</li>
+                                            <li>Significant Welcome Bonus: Typically offers a large Avios bonus that can kickstart your reward travel .</li>
                                             <li>Travel Together Ticket: A highly valuable perk for couples or solo travelers who meet the annual spend, potentially saving thousands on companion fares or Avios [CITE:3].</li>
-                                            <li>Reward Flight Statement Credits: Up to $600 annually helps offset high BA surcharges on reward flights to London [CITE:1].</li>
+                                            <li>Reward Flight Statement Credits: Up to $600 annually helps offset high BA surcharges on reward flights to London .</li>
                                             <li>10% Off BA Flights: Direct cash savings on BA flights booked from the U.S. can quickly cover the annual fee [CITE:4].</li>
-                                            <li>Strong Avios Earning on IAG Airlines: 3 Avios per $1 spent on BA, Iberia, Aer Lingus, and LEVEL is competitive for loyalists [CITE:1].</li>
-                                            <li>No Foreign Transaction Fees: Essential for international travelers, saving ~3% on purchases abroad [CITE:1].</li>
-                                            <li>Good Hotel Earning Rate: 2 Avios per $1 on direct hotel bookings is a nice bonus [CITE:1].</li>
+                                            <li>Strong Avios Earning on IAG Airlines: 3 Avios per $1 spent on BA, Iberia, Aer Lingus, and LEVEL is competitive for loyalists .</li>
+                                            <li>No Foreign Transaction Fees: Essential for international travelers, saving ~3% on purchases abroad .</li>
+                                            <li>Good Hotel Earning Rate: 2 Avios per $1 on direct hotel bookings is a nice bonus .</li>
                                             <li>Access to Oneworld Partner Redemptions: Avios can be used on partner airlines like American Airlines, sometimes offering better value or lower fees [CITE:2].</li>
                                         `)}}></ul>
                                     </div>
                                     <div className={styles.consList}>
                                         <h3>Points to Consider (Cons):</h3>
                                         <ul dangerouslySetInnerHTML={{ __html: processCitedText(`
-                                            <li>$95 Annual Fee: While moderate, you need to use the benefits to justify it [CITE:1].</li>
+                                            <li>$95 Annual Fee: While moderate, you need to use the benefits to justify it .</li>
                                             <li>High Spend for Travel Together Ticket: $30,000 in a calendar year can be a stretch for many [CITE:3].</li>
                                             <li>BA Surcharges Persist: Even with credits, BA's own reward flights can have significant taxes, fees, and carrier charges [CITE:2].</li>
                                             <li>Avios Value Can Vary: Maximizing Avios requires some knowledge of the BA Executive Club program and sweet spots [CITE:2].</li>
                                             <li>Less Flexible Rewards: Unlike general travel cards, Avios are primarily tied to airline redemptions within the BA ecosystem.</li>
-                                            <li>1 Avios Per $1 on General Spend: Not the best rate for everyday purchases outside of bonus categories [CITE:1].</li>
+                                            <li>1 Avios Per $1 on General Spend: Not the best rate for everyday purchases outside of bonus categories .</li>
                                             <li>No Automatic Elite Perks: The card doesn't grant BA elite status benefits like lounge access or priority boarding directly (these come from flying and earning Tier Points).</li>
                                         `)}}></ul>
                                     </div>
@@ -903,7 +903,7 @@ function BritishAirwaysVisaSignatureReviewConcisePage() {
                                   <h3>Intrigued by the Avios Potential?</h3>
                                   <p>Welcome bonuses and specific card terms can change. It's always a good idea to check the latest offer directly with Chase before you apply for the British Airways Visa Signature® Card.</p>
                                   <a href={reviewData.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.applyNowButton} ${styles.midCtaButton}`}>
-                                    Check Current Offer on Chase.com [CITE:1]
+                                    Check Current Offer on Chase.com 
                                   </a>
                                   <span className={styles.ctaDisclaimer}>on Chase's official site</span>
                                 </div>

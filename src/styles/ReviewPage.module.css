@@ -1365,3 +1365,50 @@
     color: #555; /* Adjust color */
     margin-bottom: 10px; /* Space before the author image block */
 }
+/* Add this to your ReviewPage.module.css */
+
+.ctaSecondaryButton {
+  display: inline-block;
+  padding: var(--spacing-sm, 10px) var(--spacing-md, 16px); /* Standard button padding */
+  font-family: var(--font-family-main); /* Use your main font */
+  font-size: 1rem; /* Adjust as needed, can match .applyNowButton or be slightly smaller */
+  font-weight: var(--font-weight-medium); /* Medium or semibold */
+  color: var(--color-primary, #0052cc); /* Text color - using your primary blue */
+  background-color: transparent; /* No solid background for a secondary button */
+  border: 1px solid var(--color-primary, #0052cc); /* Border matching the text color */
+  border-radius: var(--border-radius-md, 6px); /* Consistent border radius */
+  text-align: center;
+  text-decoration: none; /* Remove underline for button look */
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  line-height: 1.4;
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.ctaSecondaryButton:hover,
+.ctaSecondaryButton:focus {
+  background-color: rgba(0, 82, 204, 0.05); /* Very subtle primary color background on hover/focus */
+  color: color-mix(in srgb, var(--color-primary, #0052cc) 90%, black); /* Slightly darken text on hover */
+  text-decoration: none; /* Ensure no underline on hover */
+  outline: none;
+}
+
+.ctaSecondaryButton:focus-visible {
+  outline: 2px solid var(--color-primary, #0052cc); /* Focus outline using primary color */
+  outline-offset: 2px;
+}
+
+.ctaSecondaryButton:active {
+  transform: translateY(1px); /* Simple press effect */
+  background-color: rgba(0, 82, 204, 0.1); /* Slightly more noticeable background on active/press */
+}
+
+/* If you want to specifically use the ratesFeesLinkButton class for it, you can do: */
+.ratesFeesLinkButton {
+  /* You can either make it an alias by doing nothing if ctaSecondaryButton is always present with it, 
+     OR apply the same styles as ctaSecondaryButton if used independently */
+  /* For example, to ensure it gets button styling if used alone: */
+  /* display: inline-block;
+     padding: var(--spacing-sm, 10px) var(--spacing-md, 16px);
+     ... (copy styles from .ctaSecondaryButton) ... */
+}
