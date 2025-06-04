@@ -63,10 +63,10 @@ const reviewData = {
       }
   },
   siteName: siteName,
-  imageUrl        : '/british-airways-visa-signature-card-image.png', // Placeholder - UPDATE THIS
+  imageUrl        : '/hero_Card.png', // Placeholder - UPDATE THIS
   imageWidth      : 1290,
   imageHeight     : 812,
-  ratingValue     : 8.3,  // Example rating
+  ratingValue     : 7.7,  // Example rating
   ratingCount     : 175,  // Example count
   reviewBody      : 'Evaluation of the British Airways Visa Signature® Card based on its Avios earning, Travel Together Ticket, statement credits, flight discounts, annual fee, welcome offer, and utility for transatlantic and oneworld® travelers.', // Concise for Schema
   aprRange        : 'Variable APR, e.g., 21.49% - 28.49% (Varies with Prime Rate). See official Chase terms.',
