@@ -57,7 +57,7 @@ const reviewDataNew = {
   siteName: "TravelCardInsider.com",
   pagePath: "/review/chase-sapphire-reserve-2025",
   imageUrl: "/peter-conlan-LEgwEaBVGMo-unsplash.webp", // IMPORTANT: Update with actual hero image path
-  cardImageUrl: "/cards/chase-sapphire-reserve.png", // IMPORTANT: Update with actual card face image path
+  cardImageUrl: "/sapphire_reserve_card.png", // IMPORTANT: Update with actual card face image path
   heroImageObjectPosition: "center 30%",
   imageWidth: 1600,
   imageHeight: 900,
