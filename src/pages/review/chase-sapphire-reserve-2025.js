@@ -33,10 +33,10 @@ const reviewDataNew = {
   author: {
       name: 'Dilan Madushanka',
       title: 'Founder & Lead Editor',
-      imageUrl: '/images/authors/dilan-madushanka.jpg', // Corrected Path
+      imageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // Corrected Path
       imageWidth: 40,
       imageHeight: 40,
-      tooltipImageUrl: '/images/authors/dilan-madushanka.jpg', // Corrected Path
+      tooltipImageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // Corrected Path
       tooltipImageWidth: 60,
       tooltipImageHeight: 60,
       expertise: [
@@ -56,15 +56,15 @@ const reviewDataNew = {
   },
   siteName: "TravelCardInsider.com",
   pagePath: "/review/chase-sapphire-reserve-2025",
-  imageUrl: "/images/reviews/chase-sapphire-reserve-hero.webp", // Corrected Path
-  cardImageUrl: "/images/cards/chase-sapphire-reserve.png", // Corrected Path
+  imageUrl: "/peter-conlan-LEgwEaBVGMo-unsplash.webp", // Corrected Path
+  cardImageUrl: "/sapphire_reserve_card.png", // Corrected Path
   heroImageObjectPosition: "center 30%",
   imageWidth: 1600,
   imageHeight: 900,
   siteLogoUrl: "/images/logos/travel-card-insider-logo.png", // Corrected Path
   publishDate: "2025-06-07",
   updateDate: "2025-06-07", // Updated to current date
-  ratingValue: 4.7,
+  ratingValue: 4.6,
   annualFee: 550,
   applyLink: "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve", // Verified Link
   
