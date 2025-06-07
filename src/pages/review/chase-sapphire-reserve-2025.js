@@ -1,5 +1,5 @@
 // File: pages/review/chase-sapphire-reserve-2025.js
-// All placeholders have been reviewed and updated as of June 7, 2025.
+// IMPORTANT: Review and update all placeholders, especially siteUrl, image paths, affiliate links, author details, and site-specific info.
 // ASSUMPTION: You have a StarRating component at '../../components/StarRating.js'
 
 import React, { useState, useRef, useEffect, useCallback } from 'react';
@@ -9,14 +9,14 @@ import Link from 'next/link';
 import styles from '../../styles/reviews2025.module.css'; // Ensure this CSS module is in your styles folder
 import StarRating from '../../components/StarRating'; // 👈 IMPORT THE PREMIUM STAR COMPONENT
 
-// Site URL is confirmed.
+// IMPORTANT: Update this to your actual site URL if different
 const siteUrl = 'https://www.travelcardinsider.com';
 
 const reviewDataNew = {
   cardName: "Chase Sapphire Reserve®",
   shortCardName: "Sapphire Reserve",
   issuerName: "Chase",
-  issuerLogoUrl: "/images/issuer-logos/chase-logo.svg", // Corrected Path
+  issuerLogoUrl: "/images/issuer-logos/chase-logo.svg", // IMPORTANT: Update with actual Chase logo path
   welcomeOfferHeadline: "60,000 Bonus Points",
   title: "The 2025 Chase Sapphire Reserve Review: Navigating Value and Luxury",
   description: "Our definitive 2025 review of the Chase Sapphire Reserve. Explore its $550 annual fee, $300 travel credit, lounge access, point transfers, and whether it's the right premium card for you.",
@@ -33,10 +33,10 @@ const reviewDataNew = {
   author: {
       name: 'Dilan Madushanka',
       title: 'Founder & Lead Editor',
-      imageUrl: '/images/authors/dilan-madushanka.jpg', // Corrected Path
+      imageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // Placeholder, update
       imageWidth: 40,
       imageHeight: 40,
-      tooltipImageUrl: '/images/authors/dilan-madushanka.jpg', // Corrected Path
+      tooltipImageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // Placeholder, update
       tooltipImageWidth: 60,
       tooltipImageHeight: 60,
       expertise: [
@@ -56,26 +56,26 @@ const reviewDataNew = {
   },
   siteName: "TravelCardInsider.com",
   pagePath: "/review/chase-sapphire-reserve-2025",
-  imageUrl: "/images/reviews/chase-sapphire-reserve-hero.webp", // Corrected Path
-  cardImageUrl: "/images/cards/chase-sapphire-reserve.png", // Corrected Path
+  imageUrl: "/peter-conlan-LEgwEaBVGMo-unsplash.webp", // IMPORTANT: Update with actual hero image path
+  cardImageUrl: "/cards/chase-sapphire-reserve.png", // IMPORTANT: Update with actual card face image path
   heroImageObjectPosition: "center 30%",
   imageWidth: 1600,
   imageHeight: 900,
-  siteLogoUrl: "/images/logos/travel-card-insider-logo.png", // Corrected Path
-  publishDate: "2025-06-07",
-  updateDate: "2025-06-07", // Updated to current date
-  ratingValue: 4.7,
+  siteLogoUrl: "/images/logo.png", // IMPORTANT: Update with your site logo path
+  publishDate: "2025-05-22",
+  updateDate: "2025-06-05", // Current date or last review update
+  ratingValue: 4.7, // Based on review tone: Strong card with future uncertainties
   annualFee: 550,
-  applyLink: "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve", // Verified Link
+  applyLink: "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve", // Official Link
   
-  // Specific links for Chase Sapphire Reserve - All links verified
+  // Specific links for Chase Sapphire Reserve
   officialCardPageLink: "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
   benefitsGuideLink: "https://www.chasecardbenefits.com/",
   ultimateRewardsPartnersLink: "https://www.chase.com/personal/credit-cards/ultimate-rewards",
   sapphireLoungeLink: "https://account.chase.com/sapphire-airport-lounge",
   dailyDropLink: "https://www.dailydrop.com/",
   priorityPassLink: "https://www.prioritypass.com/",
-  ratesAndFeesLink: "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+  ratesAndFeesLink: "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve", // Often same as apply link for details
 
   h1Content: "Chase Sapphire Reserve® Review (2025): Still the King of Premium Travel?",
   heroH1Content: "2025 Chase Sapphire Reserve®: Navigating the Crossroads of Value and Luxury",
@@ -84,7 +84,7 @@ const reviewDataNew = {
   mpn: "SAPPHIRERESERVE",
   brandName: "Chase Sapphire Reserve",
   credits: [
-    { id: "travel", name: "$300 Annual Travel Credit", frequency: "Annual", details: "Automatic statement credit for nearly any travel purchase.", icon: "/images/icons/credit-travel.svg" }, // Corrected Path
+    { id: "travel", name: "$300 Annual Travel Credit", frequency: "Annual", details: "Automatic statement credit for nearly any travel purchase.", icon: "/icons/credit-travel.svg" }, // IMPORTANT: Update icon path
   ]
 };
 
@@ -116,7 +116,7 @@ const structuredData = {
         },
         "category": "CreditCard",
         "areaServed": "US",
-        "eligibleCustomerType": "https://schema.org/Person",
+        "eligibleCustomerType": "https://schema.org/Person", // For Personal cards
         "seller": { "@type": "Organization", name: reviewDataNew.issuerName }
     },
     "aggregateRating": {
@@ -124,7 +124,7 @@ const structuredData = {
       "ratingValue": reviewDataNew.ratingValue.toString(),
       "bestRating": "5",
       "worstRating": "1",
-      "reviewCount": "1" // This should be updated based on your actual review count
+      "reviewCount": "1"
     },
     "feesAndCommissionsSpecification": reviewDataNew.ratesAndFeesLink,
   },
@@ -234,7 +234,7 @@ export default function ChaseSapphireReserveReview2025() {
         <meta property="og:image:width" content={String(reviewDataNew.imageWidth)} />
         <meta property="og:image:height" content={String(reviewDataNew.imageHeight)} />
         <meta property="og:site_name" content={reviewDataNew.siteName} />
-        <meta property="article:publisher" content="https://www.facebook.com/travelcardinsider" /> 
+        <meta property="article:publisher" content={`https://www.facebook.com/yourtravelcardinsiderprofile`} /> 
         <meta property="article:published_time" content={reviewDataNew.publishDate} />
         <meta property="article:modified_time" content={reviewDataNew.updateDate} />
         <meta property="article:author" content={reviewDataNew.author.name} />
@@ -269,7 +269,7 @@ export default function ChaseSapphireReserveReview2025() {
       </div>
 
       {showStickyNav && (
-        <nav className={styles.stickyTocNav} ref={stickyNavRef}>
+        <nav className={styles.stickyTocNav} ref={stickyNavNavRef}>
           <div className={styles.stickyTocContent}>
             <span className={styles.stickyTocTitle}>On this page</span>
             <ul className={styles.stickyTocList}>
