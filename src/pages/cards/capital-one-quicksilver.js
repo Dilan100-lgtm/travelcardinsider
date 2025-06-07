@@ -73,7 +73,6 @@ const reviewData = {
   applyLink       : 'https://www.capitalone.com/credit-cards/quicksilver/your-affiliate-id', // **ACTION**: Replace with your affiliate link
   ratesFeesLink   : 'https://www.capitalone.com/credit-cards/quicksilver/terms/', // **ACTION**: Replace with your affiliate link for rates & fees
   
-  // **CORRECTED SOURCE LINKS**
   source1Url      : 'https://www.capitalone.com/credit-cards/quicksilver/', // **ACTION**: Replace with your affiliate or source link for main product page
   source1Title    : 'Capital One Quicksilver Official Card Details',
   source2Url      : 'https://www.capitalone.com/support-center/credit-cards/rewards-benefits/', // **ACTION**: Replace with your source link for benefits
@@ -122,8 +121,8 @@ const processCitedText = (textWithMarkers) => {
 const faqsContent = [
     { q: 'Do my cash back rewards expire?', a: 'No, your cash back rewards do not expire for the life of the account [CITE:2].' },
     { q: 'Is there a minimum to redeem my cash back?', a: 'No, one of the user-friendly features of the Quicksilver card is that there is no minimum redemption amount. You can redeem your cash back for any amount, at any time.' },
-    { q: 'Can I use this card for international travel?', a: 'Absolutely. The Capital One Quicksilver card has no foreign transaction fees on purchases made outside of the United States, making it an excellent choice for travel [CITE:5].' },
-    { q: 'What credit score do I need to qualify for the Capital One Quicksilver card?', a: 'The Capital One Quicksilver card generally requires good to excellent credit for approval. While specific score requirements aren\'t published, this typically means FICO scores in the 690-850 range. Use the Capital One pre-approval tool to check your odds without impacting your score [CITE:4].' },
+    { q: 'Can I use this card for international travel?', a: `Absolutely. The Capital One Quicksilver card has <a href="${reviewData.ratesFeesLink}" target="_blank" rel="noopener noreferrer sponsored">no foreign transaction fees</a> on purchases made outside of the United States, making it an excellent choice for travel [CITE:5].` },
+    { q: 'What credit score do I need to qualify for the Capital One Quicksilver card?', a: `The Capital One Quicksilver card generally requires good to excellent credit for approval. While specific score requirements aren't published, this typically means FICO scores in the 690-850 range. Use the <a href="${reviewData.source4Url}" target="_blank" rel="noopener noreferrer sponsored">Capital One pre-approval tool</a> to check your odds without impacting your score [CITE:4].` },
     { q: 'Can I add an authorized user to my Capital One Quicksilver card?', a: 'Yes, Capital One allows primary cardholders to add authorized users to their Quicksilver account. You can also track spending by user, which can be helpful for managing a family budget.' }
 ];
 
@@ -260,9 +259,8 @@ const tocSections = [
     { id: 'section-eat', title: '19. Our E-A-T Pledge' },
 ];
 
-// **ACTION**: Replace with your actual image paths
-const contentImage1 = "/person-shopping-online.webp";
-const contentImage2 = "/traveler-at-airport.webp";
+const contentImage1 = "/person-shopping-online.webp"; // **ACTION**: Replace
+const contentImage2 = "/traveler-at-airport.webp"; // **ACTION**: Replace
 
 function DraggableTableWrapper({ children }) {
   const containerRef = useRef(null);
@@ -350,39 +348,39 @@ function CapitalOneQuicksilverReviewPage() {
   }, [showAuthorBioTooltip, authorRef, authorTooltipRef, showRatingInfo, ratingTooltipRef]);
 
   const summaryBoxData = { 
-    welcomeOffer: "Earn a $200 cash bonus after spending $500 in the first 3 months [CITE:1].",
-    annualFee: `$${reviewData.annualFee} [CITE:1]`,
-    topEarning: "Unlimited 1.5% cash back on every purchase, plus 5% on hotels/rental cars via Capital One Travel [CITE:1].",
-    keyPerks: "No foreign transaction fees [CITE:5], 0% intro APR for 15 months [CITE:1], no minimum redemption.",
+    welcomeOffer: `Earn a <a href="${reviewData.applyLink}" target="_blank" rel="noopener noreferrer sponsored">$200 cash bonus</a> after spending $500 in the first 3 months [CITE:1].`,
+    annualFee: `<a href="${reviewData.ratesFeesLink}" target="_blank" rel="noopener noreferrer sponsored">$${reviewData.annualFee}</a> [CITE:1]`,
+    topEarning: `Unlimited 1.5% cash back, plus <a href="${reviewData.source1Url}" target="_blank" rel="noopener noreferrer sponsored">5% on hotels/rental cars</a> via Capital One Travel [CITE:1].`,
+    keyPerks: `<a href="${reviewData.ratesFeesLink}" target="_blank" rel="noopener noreferrer sponsored">No foreign transaction fees</a>, <a href="${reviewData.ratesFeesLink}" target="_blank" rel="noopener noreferrer sponsored">0% intro APR for 15 months</a>, no minimum redemption.`,
     bestFor: "The savvy traveler craving simplicity and reliable rewards without an annual fee."
   };
   
   const keyFeaturesTableData = [
-    { feature: "Annual Fee", details: "$0 [CITE:1]" },
-    { feature: "Welcome Bonus", details: "$200 cash bonus after spending $500 in the first 3 months [CITE:1]" },
+    { feature: "Annual Fee", details: `<a href="${reviewData.ratesFeesLink}" target="_blank" rel="noopener noreferrer sponsored">$0</a> [CITE:1]` },
+    { feature: "Welcome Bonus", details: `<a href="${reviewData.applyLink}" target="_blank" rel="noopener noreferrer sponsored">$200 cash bonus after spending $500 in the first 3 months</a> [CITE:1]` },
     { feature: "Rewards Rate", details: "Unlimited 1.5% cash back on every purchase, every day" },
-    { feature: "Bonus Rewards", details: "5% cash back on hotels and rental cars booked via Capital One Travel [CITE:1]" },
-    { feature: "Intro APR", details: "0% intro APR for 15 months on purchases & balance transfers [CITE:1]" },
-    { feature: "Foreign Fees", details: "None [CITE:5]" },
+    { feature: "Bonus Rewards", details: `<a href="${reviewData.source1Url}" target="_blank" rel="noopener noreferrer sponsored">5% cash back on hotels and rental cars</a> booked via Capital One Travel [CITE:1]` },
+    { feature: "Intro APR", details: `<a href="${reviewData.ratesFeesLink}" target="_blank" rel="noopener noreferrer sponsored">0% intro APR for 15 months</a> on purchases & balance transfers [CITE:1]` },
+    { feature: "Foreign Fees", details: `<a href="${reviewData.ratesFeesLink}" target="_blank" rel="noopener noreferrer sponsored">None</a> [CITE:5]` },
     { feature: "Credit Needed", details: "Good to Excellent" },
   ];
 
   const sectionContent = {
     'section-intro': `
       <p>In a world overflowing with complex credit card rewards, have you ever wished for something… simpler? The <strong>Capital One Quicksilver Cash Rewards Credit Card</strong> has built its reputation on being the answer to that question. It's a card designed for people who want to earn valuable rewards without needing a spreadsheet to track rotating categories or complicated rules.</p>
-      <p>This review is for you if you're a savvy spender who wants your everyday purchases—from groceries to gas to online shopping—to help fund your next vacation. We'll dive deep into the Quicksilver card, exploring its straightforward cash-back program, travel-friendly features, and overall value. For readers of ${siteName}, even a simple cash-back card needs to pull its weight on the road. We’ll show you why the Quicksilver’s surprising perks, especially its lack of foreign transaction fees, make it a powerful contender for your wallet, both at home and abroad.</p>
+      <p>This review is for you if you're a savvy spender who wants your everyday purchases—from groceries to gas to online shopping—to help fund your next vacation. We'll dive deep into the Quicksilver card, exploring its straightforward cash-back program, travel-friendly features, and overall value. For readers of ${siteName}, even a simple cash-back card needs to pull its weight on the road. We’ll show you why the Quicksilver’s surprising perks, especially its lack of <a href="${reviewData.ratesFeesLink}" target="_blank" rel="noopener noreferrer sponsored">foreign transaction fees</a>, make it a powerful contender for your wallet, both at home and abroad.</p>
     `,
     'section-snapshot': `
       <p>Here’s a quick look at the card's main features. The powerful combination of these benefits makes the Quicksilver an incredibly attractive and low-risk option for a wide range of people. It’s an accessible entry point into the Capital One ecosystem, which includes fantastic digital tools we’ll explore later.</p>
     `,
     'section-welcome-bonus': `
-      <p>Let's start with the fun part. The Capital One Quicksilver greets you with a fantastic welcome offer: earn a one-time <strong>$200 cash bonus after you spend just $500 on purchases within your first 3 months</strong> [CITE:1].</p>
+      <p>Let's start with the fun part. The Capital One Quicksilver greets you with a fantastic welcome offer: earn a one-time <a href="${reviewData.applyLink}" target="_blank" rel="noopener noreferrer sponsored"><strong>$200 cash bonus after you spend just $500 on purchases within your first 3 months</strong></a> [CITE:1].</p>
       <p>This is one of the most accessible and valuable bonuses you can find on a no-annual-fee card. That $200 bonus represents a massive 40% return on your first $500 of spending! Capital One has made the spending target easy to hit for anyone using the card for regular monthly expenses. It’s a strategic move designed to give you an immediate, tangible win, reinforcing the value of the card from day one and making it a top-of-wallet choice for your everyday transactions.</p>
     `,
     'section-earning': `
       <p>The heart of the Quicksilver card is its beautiful simplicity. You earn a clean, <strong>unlimited 1.5% cash back on every single purchase</strong>, every single day. There are no rotating categories to track, no spending caps to hit, and no offers to activate each quarter. This is the ultimate "set it and forget it" rewards card, freeing you from the mental effort of optimizing your spending.</p>
       <p>Even better, your cash back never expires as long as your account is open, and there's no limit to how much you can earn [CITE:2]. This gives you total flexibility and peace of mind.</p>
-      <p>While the 1.5% rate is your steady workhorse, the Quicksilver card adds a valuable travel boost: an impressive <strong>5% cash back on hotels and rental cars booked through the Capital One Travel portal</strong> [CITE:1]. For the occasional traveler, this perk can seriously accelerate your vacation savings. The card’s value isn't just in its solid rewards rate, but in the sheer ease and predictability it offers.</p>
+      <p>While the 1.5% rate is your steady workhorse, the Quicksilver card adds a valuable travel boost: an impressive <a href="${reviewData.source1Url}" target="_blank" rel="noopener noreferrer sponsored"><strong>5% cash back on hotels and rental cars booked through the Capital One Travel portal</strong></a> [CITE:1]. For the occasional traveler, this perk can seriously accelerate your vacation savings. The card’s value isn't just in its solid rewards rate, but in the sheer ease and predictability it offers.</p>
     `,
     'section-redeeming': `
       <p>Capital One ensures that accessing your earned cash back is as straightforward as earning it. You have a ton of flexible options to suit your preference:</p>
@@ -391,21 +389,21 @@ function CapitalOneQuicksilverReviewPage() {
         <li><strong>Check by Mail:</strong> Get a physical check sent to you.</li>
         <li><strong>Cover a Purchase:</strong> "Erase" eligible recent transactions from your statement.</li>
         <li><strong>Gift Cards:</strong> Swap your cash back for gift cards from top retailers.</li>
-        <li><strong>Pay with Rewards:</strong> Link your card to use rewards directly at Amazon.com or with PayPal [CITE:3].</li>
+        <li><strong>Pay with Rewards:</strong> Link your card to use rewards directly at <a href="https://www.amazon.com/dp/B0798D8Y46" target="_blank" rel="noopener noreferrer sponsored">Amazon.com</a> or with <a href="https://www.paypal.com/us/digital-wallet/manage-money/pay-with-rewards" target="_blank" rel="noopener noreferrer sponsored">PayPal</a> [CITE:2].</li>
       </ul>
       <p>The absolute standout feature here? <strong>There is no minimum redemption amount</strong>. Unlike other cards that make you wait until you've saved up $25, Quicksilver lets you cash out any amount, any time. That $1.50 you earned on your morning coffee? It’s yours to redeem instantly, making your rewards feel more real and accessible.</p>
     `,
     'section-intro-apr': `
-      <p>The Quicksilver card gives your budget some serious breathing room with its introductory APR offers. New cardholders get <strong>0% intro APR on purchases for 15 months</strong> from account opening [CITE:1]. This is a powerful tool for financing a large, planned purchase—like a new laptop, a set of tires, or home repairs—allowing you to pay it off over an extended period without a penny of interest.</p>
-      <p>Simultaneously, the card offers a <strong>0% intro APR on balance transfers</strong> for the same 15 months, though a standard balance transfer fee applies [CITE:1]. This is your chance to consolidate debt from high-interest cards and save a significant amount of money. This dual offer makes the Quicksilver a versatile financial tool right from the start.</p>
+      <p>The Quicksilver card gives your budget some serious breathing room with its introductory APR offers. New cardholders get a <a href="${reviewData.ratesFeesLink}" target="_blank" rel="noopener noreferrer sponsored"><strong>0% intro APR on purchases for 15 months</strong></a> from account opening [CITE:1]. This is a powerful tool for financing a large, planned purchase—like a new laptop, a set of tires, or home repairs—allowing you to pay it off over an extended period without a penny of interest.</p>
+      <p>Simultaneously, the card offers a <a href="${reviewData.ratesFeesLink}" target="_blank" rel="noopener noreferrer sponsored"><strong>0% intro APR on balance transfers</strong></a> for the same 15 months, though a standard balance transfer fee applies [CITE:1]. This is your chance to consolidate debt from high-interest cards and save a significant amount of money. This dual offer makes the Quicksilver a versatile financial tool right from the start.</p>
     `,
-     'section-rates-fees': `
-      <p>Transparency is key, so let's break down the costs. The Quicksilver is built to save you money, but it’s crucial to use it responsibly.</p>
+    'section-rates-fees': `
+      <p>Transparency is key, so let's break down the costs. It’s crucial to use the card responsibly by reviewing the full <a href="${reviewData.ratesFeesLink}" target="_blank" rel="noopener noreferrer sponsored">official rates and fees</a>.</p>
       <ul>
-        <li><strong>Annual Fee:</strong> $0. A huge plus [CITE:1].</li>
-        <li><strong>Foreign Transaction Fee:</strong> None. This is a standout feature for travelers, saving you the typical 3% fee other cards charge abroad [CITE:5].</li>
-        <li><strong>Regular Purchase APR:</strong> After the intro period, a variable APR of ${reviewData.aprRange} applies [CITE:1]. This rate depends on your creditworthiness, making it vital to pay your balance in full each month to avoid interest.</li>
-        <li><strong>Balance Transfer Fee:</strong> A fee of 4% applies to amounts transferred during the promotional period [CITE:1].</li>
+        <li><strong><a href="${reviewData.ratesFeesLink}" target="_blank" rel="noopener noreferrer sponsored">Annual Fee</a>:</strong> $0. A huge plus [CITE:1].</li>
+        <li><strong><a href="${reviewData.ratesFeesLink}" target="_blank" rel="noopener noreferrer sponsored">Foreign Transaction Fee</a>:</strong> None. This is a standout feature for travelers, saving you the typical 3% fee other cards charge abroad [CITE:5].</li>
+        <li><strong><a href="${reviewData.ratesFeesLink}" target="_blank" rel="noopener noreferrer sponsored">Regular Purchase APR</a>:</strong> After the intro period, a variable APR of ${reviewData.aprRange} applies. This rate depends on your creditworthiness, making it vital to pay your balance in full each month to avoid interest [CITE:1].</li>
+        <li><strong><a href="${reviewData.ratesFeesLink}" target="_blank" rel="noopener noreferrer sponsored">Balance Transfer Fee</a>:</strong> A fee of 4% applies to amounts transferred during the promotional period [CITE:1].</li>
         <li><strong>Late Payment Fee:</strong> Up to $40.</li>
       </ul>
       <p>The bottom line here is incredibly positive. With no annual fee and no foreign transaction fees, the Quicksilver eliminates two of the most common costs associated with credit cards, making it a champion for budget-conscious consumers and travelers alike.</p>
@@ -416,19 +414,19 @@ function CapitalOneQuicksilverReviewPage() {
       <ul>
         <li><strong>No Foreign Transaction Fees:</strong> A must-have for international trips [CITE:5].</li>
         <li><strong>5% Back via Capital One Travel:</strong> Supercharge your earnings on hotels and rental cars [CITE:1].</li>
-        <li><strong>Travel Accident Insurance:</strong> Automatic coverage for covered losses at no extra charge when you purchase your fare with the card [CITE:3].</li>
+        <li><strong>Travel Accident Insurance:</strong> Automatic coverage for covered losses at no extra charge when you purchase your fare with the card [CITE:2].</li>
         <li><strong>24-Hour Travel Assistance:</strong> Get an emergency card replacement and a cash advance if your card is lost or stolen on the road.</li>
       </ul>
       <h3>For Security & Shopping:</h3>
       <ul>
         <li><strong>$0 Fraud Liability:</strong> You're never responsible for unauthorized charges [CITE:2].</li>
-        <li><strong>Eno®, Your Capital One Assistant:</strong> A digital helper that monitors for suspicious activity and generates secure virtual card numbers for online shopping [CITE:3].</li>
+        <li><strong><a href="${reviewData.source3Url}" target="_blank" rel="noopener noreferrer sponsored">Eno®, Your Capital One Assistant</a>:</strong> A digital helper that monitors for suspicious activity and generates secure virtual card numbers for online shopping [CITE:3].</li>
         <li><strong>Card Lock:</strong> Instantly lock your card from the mobile app if it's misplaced.</li>
         <li><strong>Extended Warranty Protection:</strong> Adds extra warranty coverage to eligible items you buy with your card.</li>
       </ul>
       <h3>For Your Financial Wellness:</h3>
       <ul>
-        <li><strong>CreditWise® from Capital One:</strong> Get free access to monitor your credit score and get alerts about important changes to your credit report [CITE:2].</li>
+        <li><strong><a href="https://www.capitalone.com/creditwise/" target="_blank" rel="noopener noreferrer sponsored">CreditWise® from Capital One</a>:</strong> Get free access to monitor your credit score and get alerts about important changes to your credit report [CITE:2].</li>
       </ul>
       <p>This suite of benefits, especially the robust digital tools and travel-friendly features, makes the Quicksilver a surprisingly comprehensive package.</p>
     `,
@@ -461,8 +459,8 @@ function CapitalOneQuicksilverReviewPage() {
       <p><strong>The Analysis:</strong></p>
       <ul>
         <li>If you travel abroad, the <strong>Quicksilver is the undisputed winner</strong>. Its lack of foreign transaction fees is a massive advantage over every other card on this list, potentially saving you hundreds of dollars on a single trip.</li>
-        <li>If you want the absolute highest flat cash-back rate for domestic spending, the <strong>Citi Double Cash [CITE:7]</strong> and <strong>Wells Fargo Active Cash [CITE:8]</strong> cards edge it out with a 2% return.</li>
-        <li>If you spend heavily on dining and drugstores, the <strong>Chase Freedom Unlimited® [CITE:6]</strong> is a compelling choice.</li>
+        <li>If you want the absolute highest flat cash-back rate for domestic spending, the <a href="${reviewData.source7Url}" target="_blank" rel="noopener noreferrer sponsored"><strong>Citi Double Cash</strong></a> and <a href="${reviewData.source8Url}" target="_blank" rel="noopener noreferrer sponsored"><strong>Wells Fargo Active Cash</strong></a> cards edge it out with a 2% return.</li>
+        <li>If you spend heavily on dining and drugstores, the <a href="${reviewData.source6Url}" target="_blank" rel="noopener noreferrer sponsored"><strong>Chase Freedom Unlimited®</strong></a> is a compelling choice.</li>
       </ul>
       <p>However, no other card on this list offers Quicksilver's potent combination of a solid 1.5% base rate, an elevated travel bonus, and no foreign transaction fees. It strikes the perfect balance for the user who wants one great card for everything, everywhere.</p>
     `,
@@ -472,7 +470,7 @@ function CapitalOneQuicksilverReviewPage() {
       <ul>
         <li>You crave simplicity and want one reliable card for everything.</li>
         <li>You travel internationally, even just occasionally, and want to avoid foreign transaction fees [CITE:5].</li>
-        <li>You want a card with a $0 annual fee [CITE:1].</li>
+        <li>You want a card with a <a href="${reviewData.ratesFeesLink}" target="_blank" rel="noopener noreferrer sponsored">$0 annual fee</a> [CITE:1].</li>
         <li>You appreciate a strong welcome bonus and a 0% intro APR period [CITE:1].</li>
         <li>You love a seamless, top-rated mobile app and digital banking experience.</li>
       </ul>
@@ -485,16 +483,16 @@ function CapitalOneQuicksilverReviewPage() {
     `,
     'section-application': `
       <p>Ready to apply? The process is simple and can be done online in minutes. Capital One generally looks for applicants with <strong>good to excellent credit</strong> (typically FICO scores of 690+).</p>
-      <p>One of the best features Capital One offers is its <strong>pre-approval tool</strong> [CITE:4]. You can check your likelihood of approval online with only a "soft" credit inquiry, which does not affect your credit score. This is a customer-friendly way to see where you stand before committing to a full application.</p>
+      <p>One of the best features Capital One offers is its <a href="${reviewData.source4Url}" target="_blank" rel="noopener noreferrer sponsored"><strong>pre-approval tool</strong></a> [CITE:4]. You can check your likelihood of approval online with only a "soft" credit inquiry, which does not affect your credit score. This is a customer-friendly way to see where you stand before committing to a full application.</p>
     `,
     'section-maximizing': `
       <p>To get the most out of your Quicksilver, follow these pro tips:</p>
       <ul>
-        <li><strong>Nail the Bonus:</strong> Hit the $500 spend in the first 3 months to pocket that easy $200 [CITE:1].</li>
+        <li><strong>Nail the Bonus:</strong> Hit the $500 spend in the first 3 months to <a href="${reviewData.applyLink}" target="_blank" rel="noopener noreferrer sponsored">pocket that easy $200</a> [CITE:1].</li>
         <li><strong>Make It Your Go-To Abroad:</strong> Always use it for international purchases to avoid fees [CITE:5].</li>
-        <li><strong>Check the Travel Portal:</strong> Before booking a hotel or rental car, check Capital One Travel for that 5% cash back [CITE:1].</li>
+        <li><strong>Check the Travel Portal:</strong> Before booking a hotel or rental car, check Capital One Travel for that <a href="${reviewData.source1Url}" target="_blank" rel="noopener noreferrer sponsored">5% cash back</a> [CITE:1].</li>
         <li><strong>Pay in Full:</strong> Avoid the high regular APR by paying your statement balance in full each month.</li>
-        <li><strong>Use Virtual Cards:</strong> Shop online more securely by generating virtual card numbers with Eno [CITE:3].</li>
+        <li><strong>Use Virtual Cards:</strong> Shop online more securely by generating virtual card numbers with <a href="${reviewData.source3Url}" target="_blank" rel="noopener noreferrer sponsored">Eno</a> [CITE:3].</li>
         <li><strong>Set Up Alerts:</strong> Use the app to get notifications for payments and purchases to stay on top of your account.</li>
       </ul>
     `,
@@ -509,7 +507,7 @@ function CapitalOneQuicksilverReviewPage() {
     `,
     'section-final-verdict': `
       <p>The <strong>Capital One Quicksilver Cash Rewards Credit Card</strong> earns its place as one of the best all-around cards on the market. It masterfully delivers on its promise of simplicity and reliable value. While its 1.5% cash-back rate isn't the absolute highest, the card's overall package is nearly unbeatable for its target audience.</p>
-      <p>You should apply for the Quicksilver card if you want a single, low-maintenance card that pairs a solid rewards rate with a $0 annual fee and, most importantly, $0 foreign transaction fees. It's the perfect financial tool for the savvy pragmatist—the person who wants outstanding value without the hassle. For the occasional traveler, it's a non-negotiable choice in the no-annual-fee space. The Quicksilver isn't just a credit card; it's a simple, powerful, and trustworthy key to unlocking rewards on your journey, wherever it takes you.</p>
+      <p>You should apply for the Quicksilver card if you want a single, low-maintenance card that pairs a solid rewards rate with a <a href="${reviewData.ratesFeesLink}" target="_blank" rel="noopener noreferrer sponsored">$0 annual fee</a> and, most importantly, <a href="${reviewData.ratesFeesLink}" target="_blank" rel="noopener noreferrer sponsored">$0 foreign transaction fees</a>. It's the perfect financial tool for the savvy pragmatist—the person who wants outstanding value without the hassle. For the occasional traveler, it's a non-negotiable choice in the no-annual-fee space. The Quicksilver isn't just a credit card; it's a simple, powerful, and trustworthy key to unlocking rewards on your journey, wherever it takes you.</p>
     `,
     'section-eat': `
         <p>Here at <strong>${siteName}</strong>, we're serious about providing content that lives up to the principles of Expertise, Authoritativeness, and Trustworthiness (E-A-T). This review of the <strong>${reviewData.cardName}</strong> has been carefully assembled based on its known features, benefits, rewards structure, and fees, cross-referencing information with official documentation from Capital One [CITE:1]. Our goal is to give you a balanced, thorough, and reliable guide so you can make a decision that feels right for you. All information presented here is current as of <strong>${new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</strong>, but it's always a smart move to verify specific details directly with the issuer, as terms and offers can occasionally change.</p>
@@ -520,6 +518,7 @@ function CapitalOneQuicksilverReviewPage() {
     <div>
       <Head>
         <title>{reviewData.title} - {siteName}</title>
+        {/* ... The rest of the Head component remains the same ... */}
         <meta name="description" content={reviewData.description} />
         <meta name="keywords" content={reviewData.keywords} />
         <meta name="author" content={reviewData.author.name} />
