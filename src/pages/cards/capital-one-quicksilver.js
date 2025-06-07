@@ -70,24 +70,25 @@ const reviewData = {
   reviewBody      : 'Full evaluation of the Capital One Quicksilver Card, covering its 1.5% cash back rate, welcome bonus, 0% intro APR, redemption flexibility, travel perks like no foreign transaction fees, and comparison to other flat-rate cards.',
   aprRange        : '19.99% - 29.99% (Variable)',
   annualFee       : 0,
-  applyLink       : 'https://www.capitalone.com/credit-cards/quicksilver-pre-approval-link', // **ACTION**: Replace with your affiliate link
-  ratesFeesLink   : 'https://www.capitalone.com/credit-cards/quicksilver-rates-fees', // **ACTION**: Replace with your affiliate link
+  applyLink       : 'https://www.capitalone.com/credit-cards/quicksilver/your-affiliate-id', // **ACTION**: Replace with your affiliate link
+  ratesFeesLink   : 'https://www.capitalone.com/credit-cards/quicksilver/terms/', // **ACTION**: Replace with your affiliate link for rates & fees
   
-  source1Url      : 'https://www.capitalone.com/credit-cards/quicksilver/', // **ACTION**: Replace with your affiliate or source link
+  // **CORRECTED SOURCE LINKS**
+  source1Url      : 'https://www.capitalone.com/credit-cards/quicksilver/', // **ACTION**: Replace with your affiliate or source link for main product page
   source1Title    : 'Capital One Quicksilver Official Card Details',
-  source2Url      : 'https://www.capitalone.com/support-center/credit-cards/rewards-and-benefits/', // **ACTION**: Replace with your affiliate or source link
+  source2Url      : 'https://www.capitalone.com/support-center/credit-cards/rewards-benefits/', // **ACTION**: Replace with your source link for benefits
   source2Title    : 'Capital One Rewards Program & Benefits',
-  source3Url      : 'https://www.capitalone.com/applications/digital-banking/eno/', // **ACTION**: Replace with your affiliate or source link
+  source3Url      : 'https://www.capitalone.com/digital/eno/', // **ACTION**: Replace with your source link for Eno
   source3Title    : 'Eno from Capital One',
-  source4Url      : 'https://www.capitalone.com/credit-cards/preapprove/', // **ACTION**: Replace with your affiliate or source link
+  source4Url      : 'https://www.capitalone.com/credit-cards/preapprove/', // **ACTION**: Replace with your source link for pre-approval tool
   source4Title    : 'Capital One Pre-Approval Tool',
-  source5Url      : 'https://www.capitalone.com/credit-cards/quicksilver/', // **ACTION**: Replace with your affiliate or source link
+  source5Url      : 'https://www.capitalone.com/credit-cards/quicksilver/', // **ACTION**: This can point to the main page which highlights no foreign fees
   source5Title    : 'Capital One No Foreign Transaction Fee Cards',
-  source6Url      : 'https://creditcards.chase.com/cash-back-credit-cards/freedom/unlimited', // **ACTION**: Replace with your affiliate or source link
+  source6Url      : 'https://creditcards.chase.com/freedom/unlimited', // **ACTION**: Replace with your affiliate/source link for Chase Freedom Unlimited
   source6Title    : 'Chase Freedom Unlimited® Official Page',
-  source7Url      : 'https://www.citi.com/credit-cards/citi-double-cash-credit-card', // **ACTION**: Replace with your affiliate or source link
+  source7Url      : 'https://www.citi.com/credit-cards/citi-double-cash-credit-card', // **ACTION**: Replace with your affiliate/source link for Citi Double Cash
   source7Title    : 'Citi Double Cash® Card Official Page',
-  source8Url      : 'https://creditcards.wellsfargo.com/active-cash-card', // **ACTION**: Replace with your affiliate or source link
+  source8Url      : 'https://creditcards.wellsfargo.com/active-cash-card', // **ACTION**: Replace with your affiliate/source link for Wells Fargo Active Cash
   source8Title    : 'Wells Fargo Active Cash® Card Official Page',
   
   sku             : 'CAP1-QUICKSILVER-TCI-2025',
@@ -160,12 +161,12 @@ const structuredDataOptimized = {
             priceCurrency        : 'USD',
             price                : reviewData.annualFee.toString(),
             valueAddedTaxIncluded: 'false',
-            description          : `Annual fee: $${reviewData.annualFee}. [CITE:1]`,
+            description          : `Annual fee: $${reviewData.annualFee}.`,
           },
           {
             '@type'              : 'PriceSpecification',
             priceCurrency        : 'USD',
-            description          : `Purchase APR: ${reviewData.aprRange}. Foreign Transaction Fee: $0. See official ${reviewData.cardName} Rates & Fees. [CITE:1]`,
+            description          : `Purchase APR: ${reviewData.aprRange}. Foreign Transaction Fee: $0. See official ${reviewData.cardName} Rates & Fees.`,
           },
         ],
         seller: { '@type': 'Organization', name: 'Capital One' },
@@ -734,7 +735,7 @@ function CapitalOneQuicksilverReviewPage() {
                                 <section id={section.id} className={styles.reviewSection}>
                                     <h2 dangerouslySetInnerHTML={{ __html: processCitedText(section.title) }}></h2>
                                     <div dangerouslySetInnerHTML={{ __html: processCitedText(sectionContent[section.id]) }} />
-                                    <div className={styles.ratingDescription} style={{textAlign: 'center', marginTop: '1rem'}}><strong>${siteName}.com Score: {reviewData.ratingValue}/10</strong></div>
+                                    <div className={styles.ratingDescription} style={{textAlign: 'center', marginTop: '1rem'}}><strong>{siteName}.com Score: {reviewData.ratingValue}/10</strong></div>
                                 </section>
                                 <section className={`${styles.reviewSection} ${styles.postVerdictCtaSection}`}>
                                     <h3>Ready for Simple, Reliable Cash Back?</h3>
