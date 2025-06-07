@@ -671,7 +671,7 @@ function CapitalOneQuicksilverReviewPage() {
                         </div>
                         <div className={styles.summaryBoxActions}>
                             <a href={reviewData.ratesFeesLink} className={styles.summaryRatesLink} target="_blank" rel="noopener noreferrer sponsored" dangerouslySetInnerHTML={{ __html: processCitedText("See Card Rates & Fees (Capital One) ") }}></a>
-                            <a href='/rewards-calculator' className={`${styles.heroRewardsCalculator} ${styles.summaryButton}`} target="_blank" rel="noopener noreferrer">
+                            <a href='/rewards-compare' className={`${styles.heroRewardsCalculator} ${styles.summaryButton}`} target="_blank" rel="noopener noreferrer">
                                 Rewards Calculator
                             </a>
                         </div>
