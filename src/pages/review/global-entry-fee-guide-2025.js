@@ -26,7 +26,7 @@ const reviewDataNew = {
     "travel perks 2025"
   ],
   pagePath: "/guides/global-entry-fee-guide-2025",
-  imageUrl: "/images/guides/global-entry-hero-2025.jpg", // Suggested Path: Create an engaging hero image
+  imageUrl: "/pexels-patrick-995764.webp", // Suggested Path: Create an engaging hero image
   heroImageObjectPosition: "center 40%",
   imageWidth: 1600,
   imageHeight: 900,
