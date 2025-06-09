@@ -243,7 +243,7 @@ function DraggableTableWrapper({ children }) {
     };
     el.addEventListener('mousedown', startDrag);
     document.addEventListener('mouseup', stopDrag);
-    el.addEventListener('mouseleave', stopDrag);
+    document.addEventListener('mouseleave', stopDrag);
     el.addEventListener('mousemove', onMove);
     el.addEventListener('touchstart', startDrag, { passive: true });
     document.addEventListener('touchend', stopDrag);
@@ -302,6 +302,7 @@ function CapitalOneQuicksilverOneReviewPage() {
 
   // --- Data for Tables & Content ---
   const summaryBoxData = { 
+    welcomeOffer: `No welcome bonus offered; focus is on credit building.`,
     annualFee: `<a href="${reviewData.ratesFeesLink}" target="_blank" rel="noopener noreferrer sponsored">$${reviewData.annualFee}</a> [CITE:1]`,
     topEarning: `Unlimited 1.5% cash back, plus <a href="${reviewData.source2Url}" target="_blank" rel="noopener noreferrer sponsored">5% on hotels/rental cars</a> via Capital One Travel [CITE:2].`,
     keyPerks: `<a href="${reviewData.ratesFeesLink}" target="_blank" rel="noopener noreferrer sponsored">No foreign transaction fees</a>, automatic credit line reviews [CITE:1].`,
@@ -426,7 +427,7 @@ function CapitalOneQuicksilverOneReviewPage() {
       <p>Ready to apply? Capital One generally looks for applicants with <strong>fair to average credit</strong> (typically FICO scores in the low-to-mid 600s). The most important first step is Capital One’s <a href="${reviewData.source4Url}" target="_blank" rel="noopener noreferrer sponsored"><strong>pre-approval tool</strong></a> [CITE:4]. This lets you check if you’re likely to be approved without impacting your credit score. When you formally apply, you’ll need standard personal information like your name, address, Social Security number, and total annual income.</p>
     `,
     'section-maximizing': `
-      <p>To get the most out of your QuicksilverOne, follow these simple tips:</p>
+      <p>To get the most out of your QuicksilverOne, follow these pro tips:</p>
       <ul>
         <li><strong>Pay On Time, Every Time:</strong> This is the #1 rule for building credit. Set up Autopay for at least the minimum payment to be safe.</li>
         <li><strong>Pay in Full Monthly:</strong> Avoid the high APR by paying your full statement balance each month.</li>
@@ -485,26 +486,62 @@ function CapitalOneQuicksilverOneReviewPage() {
                         ref={authorRef}
                         onMouseEnter={() => { handleAuthorClearTimeout(); handleAuthorMouseEnter(); }}
                         onMouseLeave={handleAuthorMouseLeave}
+                        onFocus={handleAuthorMouseEnter}
+                        onBlur={handleAuthorMouseLeave}
+                        aria-haspopup="true"
+                        aria-expanded={showAuthorBioTooltip}
+                        tabIndex={0}
                      >
                        <Image src={reviewData.author.imageUrl} alt={`${reviewData.author.name} headshot`} width={reviewData.author.imageWidth} height={reviewData.author.imageHeight} className={styles.authorImageSmall} priority />
                         <div className={styles.authorInfoBlock}>
                             <div className={styles.authorNameLine}><span className={styles.authorName}>{reviewData.author.name}</span></div>
                             <span className={styles.authorTitle}>{reviewData.author.title}</span>
                         </div>
-                        {showAuthorBioTooltip && <div className={styles.authorTooltip} ref={authorTooltipRef}>{/* ... Tooltip content ... */}</div>}
+                        {showAuthorBioTooltip && reviewData.author.bioSnippet && (
+                            <div className={styles.authorTooltip} ref={authorTooltipRef} role="tooltip"
+                                 onMouseEnter={handleAuthorClearTimeout} onMouseLeave={handleAuthorMouseLeave}
+                                 onFocus={handleAuthorMouseEnter} onBlur={handleAuthorMouseLeave}>
+                               <div className={styles.authorTooltipHeader}>
+                                 <Image src={reviewData.author.tooltipImageUrl} alt={`${reviewData.author.name} large headshot`}
+                                        width={reviewData.author.tooltipImageWidth} height={reviewData.author.tooltipImageHeight}
+                                        className={styles.authorTooltipImage} />
+                                 <div className={styles.authorTooltipInfo}>
+                                     <span className={styles.authorTooltipName}>{reviewData.author.name}</span>
+                                     <span className={styles.authorTooltipTitle}>{reviewData.author.title}</span>
+                                 </div>
+                               </div>
+                               {reviewData.author.expertise && reviewData.author.expertise.length > 0 && (
+                                 <div className={styles.authorTooltipExpertise}><strong>Expertise</strong><ul>{reviewData.author.expertise.map(area => <li key={area}>{area}</li>)}</ul></div>
+                               )}
+                               <p className={styles.authorTooltipBioSnippet}>{reviewData.author.bioSnippet}</p>
+                               {reviewData.author.fullBioLink && (<Link href={reviewData.author.fullBioLink} legacyBehavior><a className={styles.authorTooltipBioLink}>See full bio</a></Link>)}
+                            </div>
+                        )}
                     </div>
                     <p className={styles.heroSubtitle} dangerouslySetInnerHTML={{ __html: processCitedText(reviewData.heroSubtitle) }}></p>
+                    <div className={styles.heroCtaContainer}>
+                        <div>
+                            <a href={reviewData.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.applyNowButton} ${styles.heroApplyButton}`}>
+                                Apply on CapitalOne.com
+                            </a>
+                            <span className={styles.heroApplyButtonDisclaimer}>on Capital One's official site</span>
+                        </div>
+                        <Link href="#section-snapshot" legacyBehavior><a className={styles.heroSecondaryLink}>Card Snapshot</a></Link>
+                    </div>
                 </div>
                 <div className={styles.heroImageContainer}>
                     <div className={styles.cardImageContainer}><Image src={reviewData.imageUrl} alt={reviewData.cardName} width={reviewData.imageWidth} height={reviewData.imageHeight} className={styles.heroImage} priority /></div>
                      <div className={styles.ratingSection}>
                         <span className={styles.tciRating}>
-                             <button type="button" className={styles.infoIconButton} onClick={handleIconClick} aria-label="Rating Information"><svg>...</svg></button>
+                             <button type="button" className={styles.infoIconButton} aria-label="Rating Information" onClick={handleIconClick} aria-expanded={showRatingInfo}>
+                                <svg aria-hidden="true" focusable="false" className={styles.infoIcon} viewBox="0 0 16 16"><path fillRule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>
+                             </button>
                              {siteName} Rating: <strong>{reviewData.ratingValue.toFixed(1)}</strong>/10
                              {showRatingInfo && (<RatingTooltip ref={ratingTooltipRef} ratingValue={reviewData.ratingValue} ratingCriteria={ratingCriteria} onClose={() => setShowRatingInfo(false)} />)}
                         </span>
                         <div className={styles.starRating} title={`Rated ${reviewData.ratingValue} out of 10 stars`}>★★★★★<span className={styles.filledStars} style={{ '--rating': `${(reviewData.ratingValue / 10) * 100}%` }}>★★★★★</span></div>
                     </div>
+                    <div className={styles.ratingDescription}><i>{reviewData.cardShortName}: A simple start to solid rewards.</i></div>
                 </div>
             </section>
             
@@ -514,6 +551,7 @@ function CapitalOneQuicksilverOneReviewPage() {
                     <div className={styles.summaryBox}>
                         <h2 className={styles.summaryBoxTitle}>{reviewData.cardName}: Key Insights</h2>
                         <div className={styles.summaryGrid}>
+                            <div className={styles.summaryItem}><span className={styles.summaryIcon}><IconGift /></span><span className={styles.summaryLabel}>Welcome Offer:</span><span className={styles.summaryValue} dangerouslySetInnerHTML={{ __html: processCitedText(summaryBoxData.welcomeOffer) }}></span></div>
                             <div className={styles.summaryItem}><span className={styles.summaryIcon}><IconCheck /></span><span className={styles.summaryLabel}>Annual Fee:</span><span className={styles.summaryValue} dangerouslySetInnerHTML={{ __html: processCitedText(summaryBoxData.annualFee) }}></span></div>
                             <div className={styles.summaryItem}><span className={styles.summaryIcon}><IconStar /></span><span className={styles.summaryLabel}>Top Earning:</span><span className={styles.summaryValue} dangerouslySetInnerHTML={{ __html: processCitedText(summaryBoxData.topEarning) }}></span></div>
                             <div className={styles.summaryItem}><span className={styles.summaryIcon}><IconPlus /></span><span className={styles.summaryLabel}>Key Perks:</span><span className={styles.summaryValue} dangerouslySetInnerHTML={{ __html: processCitedText(summaryBoxData.keyPerks) }}></span></div>
