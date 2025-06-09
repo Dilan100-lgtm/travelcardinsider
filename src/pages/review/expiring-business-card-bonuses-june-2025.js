@@ -40,6 +40,7 @@ const author = {
     twitter: 'https://x.com/team_dilan',
     email: 'team@travelcardinsider.com',
   },
+  fullBioLink: '/about/dilan-madushanka'
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
