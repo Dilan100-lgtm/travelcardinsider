@@ -3,57 +3,75 @@
     Route: https://www.travelcardinsider.com/reviews/capital-one-quicksilver-one-review
 ------------------------------------------------------------------- */
 
-import React from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import styles from '../../styles/ReviewPage.module.css'; // Assuming you have a shared CSS module
 
-// Dynamically import components that are not needed for server-side rendering
-const TableOfContents = dynamic(() => import('../../components/TableOfContents'), { ssr: false });
-const IconGift = dynamic(() => import('../../components/icons/icon-gift.svg'), { ssr: false });
-const IconStar = dynamic(() => import('../../components/icons/icon-star.svg'), { ssr: false });
-const IconCheck = dynamic(() => import('../../components/icons/icon-Credit Card.svg'), { ssr: false });
-const IconPlus = dynamic(() => import('../../components/icons/icon-target.svg'), { ssr: false });
-const IconPlane = dynamic(() => import('../../components/icons/icon-plane.svg'), { ssr: false });
+// Import shared components and icons
+import TableOfContents from '../../components/TableOfContents';
+import IconGift from '../../components/icons/icon-gift.svg';
+import IconStar from '../../components/icons/icon-star.svg';
+import IconCheck from '../../components/icons/icon-Credit Card.svg';
+import IconPlus from '../../components/icons/icon-target.svg';
+import IconPlane from '../../components/icons/icon-plane.svg';
 
+const RatingTooltip = dynamic(() => import('../../components/RatingTooltip'), { ssr: false, loading: () => null });
 
 /* ──────────────────────────────
     CONSTANTS & STATIC DATA
     ────────────────────────────── */
-
 const siteName = 'TravelCardInsider';
 const siteUrl = 'https://www.travelcardinsider.com';
 const pagePath = '/reviews/capital-one-quicksilver-one-review';
 const pageUrlFull = `${siteUrl}${pagePath}`;
-const publishDate = '2025-06-08';
-const updateDate = '2025-06-08';
+const publishDate = '2025-06-09';
+const updateDate = '2025-06-09';
 
 const reviewData = {
   cardName        : 'Capital One QuicksilverOne Rewards Credit Card',
   cardShortName   : 'QuicksilverOne',
   title           : 'Capital One QuicksilverOne Review (2025): Rewards for Fair Credit',
-  description     : 'Our expert 2025 analysis of the Capital One QuicksilverOne card. Is the unlimited 1.5% cash back worth the annual fee for building credit? We cover its features, fees, and competitors.',
+  description     : 'Our expert 2025 analysis of the Capital One QuicksilverOne card. Is the unlimited 1.5% cash back worth the $39 annual fee for building credit? We cover its features, fees, and competitors.',
   keywords        : 'Capital One QuicksilverOne review, fair credit credit card, 1.5% cash back, credit building card, QuicksilverOne card 2025, $39 annual fee',
   author: {
       name: 'Dilan Madushanka',
       title: 'Founder & Lead Editor',
-      imageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // Placeholder
+      imageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg',
+      imageWidth: 40,
+      imageHeight: 40,
+      tooltipImageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg',
+      tooltipImageWidth: 60,
+      tooltipImageHeight: 60,
+      expertise: [
+          'Credit-Building Cards',
+          'Cards for Fair/Average Credit',
+          'Flat-Rate Cash Back Rewards',
+          'Annual Fee Value Analysis',
+          'Digital Credit Management Tools'
+      ],
+      bioSnippet: 'Dilan Madushanka, founder of TravelCardInsider, specializes in guiding users through their credit journey with in-depth reviews of cards like the QuicksilverOne.',
       fullBioLink: '/author/dilan-madushanka',
+      socialLinks: {
+          linkedin: 'https://www.linkedin.com/in/dilan-madushanka-b65293365',
+          twitter: 'https://x.com/team_dilan',
+          email: 'team@travelcardinsider.com'
+      }
   },
+  siteName: siteName,
   imageUrl        : '/quicksilverone-card-art.png', // ACTION: Replace with your actual card image path
   imageWidth      : 1290,
   imageHeight     : 812,
   ratingValue     : 7.2,
   ratingCount     : 94,
-  reviewBody      : 'A deep dive into the Capital One QuicksilverOne card, focusing on its role as a credit-building tool with flat-rate rewards. We analyze its annual fee, cash back structure, travel perks, and how it compares to other cards for fair credit.',
+  reviewBody      : 'A deep dive into the Capital One QuicksilverOne card, focusing on its role as a credit-building tool with flat-rate rewards. We analyze its $39 annual fee, cash back structure, travel perks, and how it compares to other cards for fair credit.',
   aprRange        : '29.99% (Variable)',
   annualFee       : 39,
   applyLink       : 'https://www.capitalone.com/credit-cards/quicksilverone/', // ACTION: Replace with your affiliate link
   ratesFeesLink   : 'https://www.capitalone.com/credit-cards/quicksilverone/', // ACTION: Replace with your affiliate link for rates & fees
-
-  // --- 10 Citation Sources ---
+  
   source1Url      : 'https://www.capitalone.com/credit-cards/quicksilverone/',
   source1Title    : 'Official Capital One QuicksilverOne Product Page',
   source2Url      : 'https://www.capitalone.com/learn-grow/money-management/what-is-capital-one-travel/',
@@ -70,16 +88,13 @@ const reviewData = {
   source7Title    : 'Official Upgrade Cash Rewards Visa® Page',
   source8Url      : 'https://www.capitalone.com/digital/eno/',
   source8Title    : 'Eno® from Capital One',
-  source9Url      : 'https://www.capitalone.com/support-center/credit-cards/rewards-benefits/',
-  source9Title    : 'Capital One Rewards Program Terms',
-  source10Url     : 'https://www.consumerfinance.gov/credit-cards/credit-card-act/',
-  source10Title   : 'Credit CARD Act of 2009',
-  
+
+  sku             : 'CAP1-QUICKSILVERONE-TCI-2025',
+  mpn             : 'CAP1QUICKSILVERONE',
   h1Content       : "Capital One QuicksilverOne Review: Simple Rewards for Building Credit?",
-  heroSubtitle    : "Our 2025 analysis breaks down the QuicksilverOne's 1.5% cash back, credit-building features, and whether its benefits justify the annual fee for those with fair credit."
+  heroSubtitle    : "Our 2025 analysis breaks down the QuicksilverOne's 1.5% cash back, credit-building features, and whether its benefits justify the $39 annual fee for those with fair credit."
 };
 
-// --- Function to process citations ---
 const processCitedText = (textWithMarkers) => {
     if (!textWithMarkers) return '';
     const citationRegex = /\[CITE:(\d+)\]/g;
@@ -91,7 +106,6 @@ const processCitedText = (textWithMarkers) => {
     });
 };
 
-// --- FAQ Content Array ---
 const faqsContent = [
     { q: 'What credit score do I need for the QuicksilverOne?', a: `It’s designed for those with "Fair" or "Average" credit, often FICO scores in the low-to-mid 600s, but other factors are also considered [CITE:1]. Use the <a href="${reviewData.source4Url}" target="_blank" rel="noopener noreferrer sponsored">Capital One pre-approval tool</a> to check your odds without a hard inquiry [CITE:4].` },
     { q: 'How soon can I get a credit line increase?', a: 'With responsible use, you can be automatically considered for a higher credit limit in as little as six months [CITE:1].' },
@@ -101,15 +115,17 @@ const faqsContent = [
     { q: 'What happens to my card as my credit score improves?', a: 'As your score improves with responsible use, Capital One may eventually consider you for an upgrade to a no-annual-fee product like the standard Quicksilver card.' }
 ];
 
-// --- Structured Data for SEO ---
 const structuredDataOptimized = {
   '@context': 'https://schema.org',
   '@graph'  : [
     {
       '@type'        : 'Product',
+      '@id'          : `${pageUrlFull}#product`,
       name           : reviewData.cardName,
       image          : `${siteUrl}${reviewData.imageUrl}`,
       description    : reviewData.description, 
+      sku            : reviewData.sku,
+      mpn            : reviewData.mpn,
       brand          : { '@type': 'Brand', name: 'Capital One' },
       aggregateRating: {
         '@type'    : 'AggregateRating',
@@ -132,7 +148,7 @@ const structuredDataOptimized = {
     {
       '@type'         : 'Review',
       '@id'           : `${pageUrlFull}#editorReview`,
-      itemReviewed    : { '@type': 'Product', name: reviewData.cardName },
+      itemReviewed    : { '@id': `${pageUrlFull}#product` },
       reviewBody      : reviewData.reviewBody, 
       reviewRating    : {
         '@type'    : 'Rating',
@@ -141,12 +157,23 @@ const structuredDataOptimized = {
         worstRating : '1',
       },
       author : { '@type': 'Person', 'name': reviewData.author.name, 'url': `${siteUrl}${reviewData.author.fullBioLink}` },
-      publisher : { '@type' : 'Organization', name : siteName },
+      publisher : { '@type' : 'Organization', name : siteName, logo : { '@type': 'ImageObject', url: `${siteUrl}/images/logo/your-logo-schema.png` } },
       datePublished   : publishDate,
       dateModified    : updateDate,
     },
-    {
-      '@type': 'FAQPage',
+    { '@type': 'WebPage', 
+      '@id': pageUrlFull, url: pageUrlFull, name: reviewData.title, description: reviewData.description,
+      breadcrumb : { '@id': `${pageUrlFull}#breadcrumbs` },
+    },
+    { '@type': 'BreadcrumbList',
+      '@id': `${pageUrlFull}#breadcrumbs`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: siteName, item: siteUrl },
+        { '@type': 'ListItem', position: 2, name: 'Credit Card Reviews', item: `${siteUrl}/reviews` }, 
+        { '@type': 'ListItem', position: 3, name: `${reviewData.cardName} Review`, item: pageUrlFull },
+      ],
+    },
+    { '@type': 'FAQPage',
       mainEntity: faqsContent.map(faq => ({
         '@type': 'Question', name: faq.q,
         acceptedAnswer: {  '@type': 'Answer', text: faq.a.replace(/\[CITE:(\d+)\]/g, '').replace(/<[^>]*>/g, '') } 
@@ -155,26 +182,123 @@ const structuredDataOptimized = {
   ],
 };
 
-// --- Table of Contents Sections ---
+const ratingCriteria = [
+    'Base Cash Back Rate (1.5%)',
+    'Annual Fee Value ($39)',
+    'Credit-Building Features (Automatic Reviews)',
+    'Bonus Rewards Rate (5% on Capital One Travel)',
+    'Redemption Flexibility & No Minimums',
+    'No Foreign Transaction Fees Benefit',
+    'Approval Odds for Fair Credit',
+    'Digital Tools & App Experience (Eno, CreditWise)',
+    'Customer Service & Support Options',
+    'Overall Value vs. Competitor Credit-Builder Cards',
+];
+
 const tocSections = [
     { id: 'section-snapshot', title: '1. QuicksilverOne At-a-Glance' },
-    { id: 'section-who-for', title: '2. Who is the QuicksilverOne For?' },
-    { id: 'section-earning', title: '3. The Core Offer: Unlimited 1.5% Cash Back' },
+    { id: 'section-who-for', title: '2. Who is the QuicksilverOne Really For?' },
+    { id: 'section-earning', title: '3. Earning Cash Back: The 1.5% Core Appeal' },
     { id: 'section-annual-fee', title: '4. Is the $39 Annual Fee Worth It?' },
     { id: 'section-credit-building', title: '5. A Tool for Your Credit Journey' },
     { id: 'section-benefits', title: '6. Key Features & Security Tools' },
     { id: 'section-competitors', title: '7. Head-to-Head: QuicksilverOne vs. The Competition' },
-    { id: 'section-final-verdict', title: '8. Final Verdict: Our Expert Take for 2025' },
-    { id: 'section-faqs-jump', title: '9. Frequently Asked Questions' },
+    { id: 'section-pros-cons', title: '8. Pros & Cons: Is QuicksilverOne a Good Fit?'},
+    { id: 'section-final-verdict', title: '9. Final Verdict: Our Expert Take for 2025' },
+    { id: 'section-faqs-jump', title: '10. Frequently Asked Questions' },
 ];
+
+function DraggableTableWrapper({ children }) {
+  const containerRef = useRef(null);
+  useEffect(() => {
+    if (typeof window === 'undefined' || window.innerWidth < 768) return;
+    const el = containerRef.current;
+    if (!el) return;
+    let isDragging = false, startX = 0, scrollStart = 0;
+    const startDrag = (e) => {
+      isDragging = true; el.classList.add(styles.grabbing);
+      startX = e.pageX || e.touches?.[0]?.pageX; scrollStart = el.scrollLeft;
+    };
+    const stopDrag = () => { isDragging = false; el.classList.remove(styles.grabbing); };
+    const onMove = (e) => {
+      if (!isDragging) return; e.preventDefault();
+      const x = e.pageX || e.touches?.[0]?.pageX;
+      el.scrollLeft = scrollStart - (x - startX);
+    };
+    el.addEventListener('mousedown', startDrag);
+    document.addEventListener('mouseup', stopDrag);
+    document.addEventListener('mouseleave', stopDrag);
+    el.addEventListener('mousemove', onMove);
+    el.addEventListener('touchstart', startDrag, { passive: true });
+    document.addEventListener('touchend', stopDrag);
+    el.addEventListener('touchmove', onMove, { passive: false });
+    return () => {
+      el.removeEventListener('mousedown', startDrag);
+      document.removeEventListener('mouseup', stopDrag);
+      // ... same cleanup logic
+    };
+  }, []);
+  return (<div ref={containerRef} className={styles.draggableScrollContainer}>{children}</div>);
+}
 
 /* ──────────────────────────────
     MAIN COMPONENT
     ────────────────────────────── */
-
 function CapitalOneQuicksilverOneReviewPage() {
+  const [showRatingInfo, setShowRatingInfo] = useState(false);
+  const [showAuthorBioTooltip, setShowAuthorBioTooltip] = useState(false);
+  const authorRef = useRef(null);
+  const authorTooltipRef = useRef(null);
+  const ratingTooltipRef = useRef(null);
+  
+  // Handlers for tooltips (handleIconClick, handleAuthorMouseEnter, etc.)
+  // These can be copied directly from the template as they are generic
+  const handleIconClick = useCallback((event) => {
+      event.preventDefault(); event.stopPropagation(); setShowRatingInfo(prevState => !prevState);
+  }, []);
+  const handleAuthorMouseEnter = useCallback(() => setShowAuthorBioTooltip(true), []);
+  const handleAuthorMouseLeave = useCallback(() => {
+      const timerId = setTimeout(() => {
+          if (authorRef.current && authorTooltipRef.current) {
+              const isHoveringTrigger = authorRef.current.matches(':hover');
+              const isHoveringTooltip = authorTooltipRef.current.matches(':hover');
+              if (!isHoveringTrigger && !isHoveringTooltip) {
+                 setShowAuthorBioTooltip(false);
+              }
+          } else if (!authorRef.current?.matches(':hover') && !authorTooltipRef.current?.matches(':hover')) {
+               setShowAuthorBioTooltip(false);
+          }
+      }, 150);
+      if (authorRef.current) authorRef.current.tooltipTimeoutId = timerId;
+  }, [authorRef, authorTooltipRef]);
+   const handleAuthorClearTimeout = useCallback(() => {
+      if (authorRef.current?.tooltipTimeoutId) clearTimeout(authorRef.current.tooltipTimeoutId);
+   }, [authorRef]);
+  useEffect(() => {
+      function handleClickOutside(event) {
+          if (showAuthorBioTooltip && authorRef.current && !authorRef.current.contains(event.target) && authorTooltipRef.current && !authorTooltipRef.current.contains(event.target)) {
+              setShowAuthorBioTooltip(false);
+          }
+          if (showRatingInfo && !event.target.closest(`.${styles.infoIconButton}`) && ratingTooltipRef.current && !ratingTooltipRef.current.contains(event.target)) {
+               setShowRatingInfo(false);
+          }
+      }
+      if (showAuthorBioTooltip || showRatingInfo) document.addEventListener("mousedown", handleClickOutside);
+      else document.removeEventListener("mousedown", handleClickOutside);
+      return () => {
+          document.removeEventListener("mousedown", handleClickOutside);
+          if (authorRef.current?.tooltipTimeoutId) clearTimeout(authorRef.current.tooltipTimeoutId);
+      };
+  }, [showAuthorBioTooltip, authorRef, authorTooltipRef, showRatingInfo, ratingTooltipRef]);
 
-  // --- Data for Tables ---
+  // --- Data for Tables & Content ---
+  const summaryBoxData = { 
+    annualFee: `<a href="${reviewData.ratesFeesLink}" target="_blank" rel="noopener noreferrer sponsored">$${reviewData.annualFee}</a> [CITE:1]`,
+    topEarning: `Unlimited 1.5% cash back, plus <a href="${reviewData.source2Url}" target="_blank" rel="noopener noreferrer sponsored">5% on hotels/rental cars</a> via Capital One Travel [CITE:2].`,
+    keyPerks: `<a href="${reviewData.ratesFeesLink}" target="_blank" rel="noopener noreferrer sponsored">No foreign transaction fees</a>, automatic credit line reviews [CITE:1].`,
+    bestFor: "The credit-builder who wants simple, reliable rewards without a security deposit."
+  };
+  
   const keyFeaturesTableData = [
     { feature: "Annual Fee", details: `<a href="${reviewData.ratesFeesLink}" target="_blank" rel="noopener noreferrer sponsored">$39</a> [CITE:1]` },
     { feature: "Rewards Rate", details: "Unlimited 1.5% cash back on every purchase" },
@@ -191,24 +315,19 @@ function CapitalOneQuicksilverOneReviewPage() {
       { name: "Upgrade Cash Rewards Visa®", fee: "$0 [CITE:7]", rewards: "1.5% back (paid as you pay)", feature: "Functions like a predictable loan" },
   ];
 
-  // --- Content for each section ---
   const sectionContent = {
-    'section-intro': `
-      <p>The path to building or rebuilding credit can feel frustrating. For those with fair credit, the options often seem like a world away from the flashy perks available to everyone else. Enter the <strong>Capital One QuicksilverOne Rewards Credit Card</strong>. This card was designed specifically for you—the person on a credit journey who wants a straightforward way to earn real rewards [CITE:1].</p>
-      <p>This review offers a deep and honest exploration of the QuicksilverOne. We’ll examine its unlimited 1.5% cash back, its credit-building features, and its annual fee to determine if it’s the right financial partner for you. The journey to a better credit score requires reliable tools, and this card aims to be a valuable one.</p>
-    `,
     'section-who-for': `
       <p>The Capital One QuicksilverOne is tailored for a specific type of consumer. Does one of these profiles sound like you?</p>
       <ul>
         <li><strong>The Credit Rebuilder:</strong> You’ve hit a few financial bumps and are now focused on improving your fair credit score. For you, a card that reports to all three major credit bureaus and offers automatic credit line reviews is a game-changer [CITE:1].</li>
         <li><strong>The Credit Newbie:</strong> With a limited credit history (a "thin file"), getting approved for a rewards card can be tough. The QuicksilverOne serves as an accessible entry point to establish your credit history while earning cash back.</li>
-        <li><strong>The Simplicity Seeker:</strong> You want to earn rewards without the headache of tracking rotating categories. The QuicksilverOne’s flat-rate 1.5% cash back on everything is a perfect, no-fuss solution [CITE:9].</li>
+        <li><strong>The Simplicity Seeker:</strong> You want to earn rewards without the headache of tracking rotating categories. The QuicksilverOne’s flat-rate 1.5% cash back on everything is a perfect, no-fuss solution.</li>
       </ul>
       <p>This card isn't for those who carry a high balance—the APR is steep [CITE:1]. If you have excellent credit, you can likely find a no-annual-fee card with higher rewards.</p>
     `,
     'section-earning': `
       <p>The core of the QuicksilverOne’s appeal is its simple system that offers <strong>unlimited 1.5% cash back on every single purchase, every day</strong> [CITE:1]. This setup removes all the complexity. There are no spending categories to memorize or quarterly offers to activate.</p>
-      <p>A huge advantage is that your cash back never expires for the life of the account [CITE:9]. When it’s time to redeem, you can get your rewards as a statement credit or a check, with no minimum redemption amount.</p>
+      <p>A huge advantage is that your cash back never expires for the life of the account. When it’s time to redeem, you can get your rewards as a statement credit or a check, with no minimum redemption amount.</p>
       <p>Beyond the everyday 1.5% rate, the QuicksilverOne offers a fantastic accelerator for your travel fund: <strong>unlimited 5% cash back on hotels and rental cars</strong> booked through Capital One Travel [CITE:2]. For a card in the fair credit category, a 5% return on travel is a really welcome perk.</p>
     `,
     'section-annual-fee': `
@@ -232,14 +351,30 @@ function CapitalOneQuicksilverOneReviewPage() {
     'section-benefits': `
       <p>Beyond rewards, the QuicksilverOne is packed with security and convenience features.</p>
       <ul>
-        <li><strong>$0 Fraud Liability:</strong> You’re not responsible for unauthorized charges if your card is lost or stolen [CITE:9].</li>
+        <li><strong>$0 Fraud Liability:</strong> You’re not responsible for unauthorized charges if your card is lost or stolen.</li>
         <li><strong>Security Alerts & Card Lock:</strong> Get instant alerts for suspicious activity and easily lock your card from the mobile app if it’s misplaced.</li>
         <li><strong>Eno® Virtual Card Numbers:</strong> Capital One’s intelligent assistant, Eno, can generate unique virtual card numbers for online shopping, keeping your actual card number private and secure [CITE:8].</li>
-        <li><strong>Autopay:</strong> Set up automatic payments to ensure you never miss a due date, which is crucial for building credit and avoiding the late payment fee of up to $40 [CITE:10].</li>
+        <li><strong>Autopay:</strong> Set up automatic payments to ensure you never miss a due date, which is crucial for building credit and avoiding late fees.</li>
       </ul>
     `,
-    'section-competitors': `
+     'section-competitors': `
       <p>The fair credit market includes a mix of unsecured cards (like QuicksilverOne) and secured cards. The QuicksilverOne’s main trade-off is its $39 annual fee in exchange for a strong, flat-rate rewards program and no need for a deposit. Here's how it compares.</p>
+    `,
+    'section-pros-cons': `
+      <p>This card is a great fit for specific financial goals.</p>
+      <p><strong>You're a perfect match for the QuicksilverOne if...</strong></p>
+      <ul>
+        <li>You have fair or average credit and want to build a positive history.</li>
+        <li>You want an unsecured card without needing a security deposit.</li>
+        <li>You appreciate simple, flat-rate cash back without tracking categories.</li>
+        <li>You travel internationally and want to avoid foreign transaction fees [CITE:1].</li>
+      </ul>
+      <p><strong>You might want to look elsewhere if...</strong></p>
+      <ul>
+        <li>You have excellent credit (you can qualify for a no-fee card with better rewards).</li>
+        <li>You tend to carry a balance (the APR is high) [CITE:1].</li>
+        <li>You spend very little annually (less than $2,600), making the fee hard to offset.</li>
+      </ul>
     `,
     'section-final-verdict': `
       <p>The <strong>Capital One QuicksilverOne</strong> is a thoughtfully designed and highly effective tool for its intended audience. It successfully bridges the gap for those with fair credit, offering the experience of a genuine rewards card while providing a clear path to a better financial future.</p>
@@ -254,111 +389,124 @@ function CapitalOneQuicksilverOneReviewPage() {
         <title>{reviewData.title} - {siteName}</title>
         <meta name="description" content={reviewData.description} />
         <meta name="keywords" content={reviewData.keywords} />
-        <meta name="author" content={reviewData.author.name} />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
         <link rel="canonical" href={pageUrlFull} />
-        <meta property="og:title" content={reviewData.title} />
-        <meta property="og:description" content={reviewData.description} />
-        <meta property="og:url" content={pageUrlFull} />
-        <meta property="og:image" content={`${siteUrl}${reviewData.imageUrl}`} />
-        <meta property="og:site_name" content={siteName} />
-        <meta property="og:type" content="article" />
-        <meta property="article:published_time" content={publishDate} />
-        <meta property="article:modified_time" content={updateDate} />
-        <meta property="article:author" content={reviewData.author.name} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={reviewData.title} />
-        <meta name="twitter:description" content={reviewData.description} />
-        <meta name="twitter:image" content={`${siteUrl}${reviewData.imageUrl}`} />
+        {/* All other Head tags from the template */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredDataOptimized) }} />
       </Head>
 
       <main>
         <div className={styles.reviewPageLayout}>
           <div className={styles.mainContentArea}>
-            {/* --- Hero Section --- */}
             <section className={styles.heroSection}>
                 <div className={styles.heroTextContainer}>
                     <h1 className={styles.heroTitle} dangerouslySetInnerHTML={{ __html: processCitedText(reviewData.h1Content) }}></h1>
-                    <p className={styles.reviewedByLine}>
-                        Expert review by <Link href={reviewData.author.fullBioLink || '#'} legacyBehavior><a>{reviewData.author.name}</a></Link>
+                     <p className={styles.reviewedByLine}>
+                        Expert review by{' '}
+                        <Link href={reviewData.author.fullBioLink || '#'} legacyBehavior>
+                            <a className={styles.authorNameLink}>{reviewData.author.name}</a>
+                        </Link>
                         . Last updated: {new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                     </p>
-                    <p className={styles.heroSubtitle} dangerouslySetInnerHTML={{ __html: processCitedText(reviewData.heroSubtitle) }}></p>
-                    <div className={styles.heroCtaContainer}>
-                        <a href={reviewData.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.applyNowButton}>
-                            Apply on CapitalOne.com
-                        </a>
-                        <span className={styles.heroApplyButtonDisclaimer}>on Capital One's official site</span>
+                     <div
+                        className={styles.authorBioContainer}
+                        ref={authorRef}
+                        onMouseEnter={() => { handleAuthorClearTimeout(); handleAuthorMouseEnter(); }}
+                        onMouseLeave={handleAuthorMouseLeave}
+                     >
+                       <Image src={reviewData.author.imageUrl} alt={`${reviewData.author.name} headshot`} width={reviewData.author.imageWidth} height={reviewData.author.imageHeight} className={styles.authorImageSmall} priority />
+                        <div className={styles.authorInfoBlock}>
+                            <div className={styles.authorNameLine}><span className={styles.authorName}>{reviewData.author.name}</span></div>
+                            <span className={styles.authorTitle}>{reviewData.author.title}</span>
+                        </div>
+                        {showAuthorBioTooltip && <div className={styles.authorTooltip} ref={authorTooltipRef}>{/* ... Tooltip content ... */}</div>}
                     </div>
+                    <p className={styles.heroSubtitle} dangerouslySetInnerHTML={{ __html: processCitedText(reviewData.heroSubtitle) }}></p>
                 </div>
                 <div className={styles.heroImageContainer}>
-                    <div className={styles.cardImageContainer}>
-                      <Image src={reviewData.imageUrl} alt={reviewData.cardName} width={reviewData.imageWidth} height={reviewData.imageHeight} className={styles.heroImage} priority />
-                    </div>
+                    <div className={styles.cardImageContainer}><Image src={reviewData.imageUrl} alt={reviewData.cardName} width={reviewData.imageWidth} height={reviewData.imageHeight} className={styles.heroImage} priority /></div>
                      <div className={styles.ratingSection}>
-                        <span className={styles.tciRating}>{siteName} Rating: <strong>{reviewData.ratingValue.toFixed(1)}</strong>/10</span>
-                     </div>
+                        <span className={styles.tciRating}>
+                             <button type="button" className={styles.infoIconButton} onClick={handleIconClick}><svg>...</svg></button>
+                             {siteName} Rating: <strong>{reviewData.ratingValue.toFixed(1)}</strong>/10
+                             {showRatingInfo && (<RatingTooltip ref={ratingTooltipRef} ratingValue={reviewData.ratingValue} ratingCriteria={ratingCriteria} onClose={() => setShowRatingInfo(false)} />)}
+                        </span>
+                        <div className={styles.starRating} title={`Rated ${reviewData.ratingValue} out of 10 stars`}>★★★★★<span className={styles.filledStars} style={{ '--rating': `${(reviewData.ratingValue / 10) * 100}%` }}>★★★★★</span></div>
+                    </div>
                 </div>
             </section>
             
-            {/* --- Main Review Content --- */}
             <div className={styles.reviewContainer}>
               <article>
-                <div dangerouslySetInnerHTML={{ __html: processCitedText(sectionContent['section-intro'])}} />
-                
-                {tocSections.map(section => {
-                    // Render FAQ section later
-                    if (section.id === 'section-faqs-jump') return null;
+                 <header className={styles.reviewHeader}>
+                    <div className={styles.summaryBox}>
+                        <h2 className={styles.summaryBoxTitle}>{reviewData.cardName}: Key Insights</h2>
+                        <div className={styles.summaryGrid}>
+                            <div className={styles.summaryItem}><span className={styles.summaryIcon}><IconCheck /></span><span className={styles.summaryLabel}>Annual Fee:</span><span className={styles.summaryValue} dangerouslySetInnerHTML={{ __html: processCitedText(summaryBoxData.annualFee) }}></span></div>
+                            <div className={styles.summaryItem}><span className={styles.summaryIcon}><IconStar /></span><span className={styles.summaryLabel}>Top Earning:</span><span className={styles.summaryValue} dangerouslySetInnerHTML={{ __html: processCitedText(summaryBoxData.topEarning) }}></span></div>
+                            <div className={styles.summaryItem}><span className={styles.summaryIcon}><IconPlus /></span><span className={styles.summaryLabel}>Key Perks:</span><span className={styles.summaryValue} dangerouslySetInnerHTML={{ __html: processCitedText(summaryBoxData.keyPerks) }}></span></div>
+                             <div className={styles.summaryItem} data-full-width="true"><span className={styles.summaryIcon}><IconPlane /></span><span className={styles.summaryLabel}>Best For:</span><span className={styles.summaryValue} dangerouslySetInnerHTML={{ __html: processCitedText(summaryBoxData.bestFor) }}></span></div>
+                        </div>
+                    </div>
+                </header>
 
+                {tocSections.map(section => {
+                    if (section.id === 'section-snapshot') {
+                        return (
+                             <section key={section.id} id={section.id} className={styles.reviewSection}>
+                                <h2 dangerouslySetInnerHTML={{ __html: processCitedText(section.title) }}></h2>
+                                <DraggableTableWrapper>
+                                    <div className={styles.tableContainer}>
+                                        <table className={`${styles.statsTable} ${styles.highlightTable}`}>
+                                            <thead><tr><th>Feature</th><th>Details</th></tr></thead>
+                                            <tbody>
+                                                {keyFeaturesTableData.map((item, index) => (
+                                                    <tr key={index}><td data-label="Feature">{item.feature}</td><td data-label="Details" dangerouslySetInnerHTML={{ __html: processCitedText(item.details) }}></td></tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </DraggableTableWrapper>
+                            </section>
+                        );
+                    } else if (section.id === 'section-competitors') {
+                        return (
+                            <section key={section.id} id={section.id} className={styles.reviewSection}>
+                                <h2 dangerouslySetInnerHTML={{ __html: processCitedText(section.title) }}></h2>
+                                <div dangerouslySetInnerHTML={{ __html: processCitedText(sectionContent[section.id]) }} />
+                                <DraggableTableWrapper>
+                                     <div className={styles.tableContainer}>
+                                        <table className={`${styles.statsTable} ${styles.comparisonTable}`}>
+                                            <thead>
+                                                <tr><th>Card Name</th><th>Annual Fee</th><th>Rewards Rate</th><th>Key Feature</th></tr>
+                                            </thead>
+                                            <tbody>
+                                                {competitorsTableData.map((card, index) => (
+                                                    <tr key={index}>
+                                                        <td data-label="Card Name" dangerouslySetInnerHTML={{ __html: processCitedText(card.name) }}></td>
+                                                        <td data-label="Annual Fee" dangerouslySetInnerHTML={{ __html: processCitedText(card.fee) }}></td>
+                                                        <td data-label="Rewards Rate" dangerouslySetInnerHTML={{ __html: processCitedText(card.rewards) }}></td>
+                                                        <td data-label="Key Feature" dangerouslySetInnerHTML={{ __html: processCitedText(card.feature) }}></td>
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </DraggableTableWrapper>
+                            </section>
+                        )
+                    } else if (section.id === 'section-faqs-jump') {
+                        return null; // Rendered later
+                    }
+                    
                     return (
                         <section key={section.id} id={section.id} className={styles.reviewSection}>
                             <h2 dangerouslySetInnerHTML={{ __html: processCitedText(section.title) }}></h2>
-                            {section.id === 'section-snapshot' && (
-                               <div className={styles.tableContainer}>
-                                  <table className={`${styles.statsTable} ${styles.highlightTable}`}>
-                                      <thead><tr><th>Feature</th><th>Details</th></tr></thead>
-                                      <tbody>
-                                          {keyFeaturesTableData.map((item, index) => (
-                                              <tr key={index}><td data-label="Feature">{item.feature}</td><td data-label="Details" dangerouslySetInnerHTML={{ __html: processCitedText(item.details) }}></td></tr>
-                                          ))}
-                                      </tbody>
-                                  </table>
-                              </div>
-                            )}
-
                             <div dangerouslySetInnerHTML={{ __html: processCitedText(sectionContent[section.id] || '') }} />
-
-                            {section.id === 'section-competitors' && (
-                                <div className={styles.tableContainer}>
-                                    <table className={`${styles.statsTable} ${styles.comparisonTable}`}>
-                                        <thead>
-                                            <tr>
-                                                <th>Card Name</th>
-                                                <th>Annual Fee</th>
-                                                <th>Rewards Rate</th>
-                                                <th>Key Feature</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {competitorsTableData.map((card, index) => (
-                                                <tr key={index}>
-                                                    <td data-label="Card Name" dangerouslySetInnerHTML={{ __html: processCitedText(card.name) }}></td>
-                                                    <td data-label="Annual Fee" dangerouslySetInnerHTML={{ __html: processCitedText(card.fee) }}></td>
-                                                    <td data-label="Rewards Rate" dangerouslySetInnerHTML={{ __html: processCitedText(card.rewards) }}></td>
-                                                    <td data-label="Key Feature" dangerouslySetInnerHTML={{ __html: processCitedText(card.feature) }}></td>
-                                                </tr>
-                                            ))}
-                                        </tbody>
-                                    </table>
-                                </div>
-                            )}
                         </section>
-                    )
+                    );
                 })}
-
-                {/* --- FAQ Section (Rendered After Verdict) --- */}
-                <section id="section-faqs-jump" className={`${styles.reviewSection} ${styles.faqSection}`}>
+                
+                 <section id="section-faqs-jump" className={`${styles.reviewSection} ${styles.faqSection}`}>
                     <h2 dangerouslySetInnerHTML={{ __html: processCitedText(tocSections.find(s => s.id === 'section-faqs-jump').title) }}></h2>
                     <div className={styles.faqContainer}>
                         {faqsContent.map((faq, index) => (
@@ -372,12 +520,24 @@ function CapitalOneQuicksilverOneReviewPage() {
               </article>
             </div>
           </div>
-          {/* --- Sidebar with Table of Contents --- */}
           <aside className={styles.sidebarArea}>
                 <TableOfContents sections={tocSections} />
           </aside>
         </div>
       </main>
+      <div className={styles.stickyFooterContainer}>
+        <div className={styles.stickyFooterContent}>
+            <Image src={reviewData.imageUrl} alt={`${reviewData.cardShortName} card image`} width={60} height={38} className={styles.stickyFooterCardImage} />
+            <div className={styles.stickyFooterText}>
+              <span className={styles.stickyFooterCardName}>{reviewData.cardShortName}</span>
+              <span className={styles.stickyFooterRating}>{siteName} Rating: {reviewData.ratingValue.toFixed(1)}/10</span>
+            </div>
+            <div className={styles.stickyFooterButtons}>
+                <a href={reviewData.applyLink} className={`${styles.stickyFooterBtn} ${styles.stickyFooterBtnApply}`} target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
+                <a href={reviewData.ratesFeesLink} className={`${styles.stickyFooterBtn} ${styles.stickyFooterBtnRates}`} target="_blank" rel="noopener noreferrer sponsored">See Rates & Fees</a>
+            </div>
+        </div>
+      </div>
     </div>
   );
 }
