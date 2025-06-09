@@ -15,7 +15,7 @@ const SITE_BASE_URL = 'https://www.travelcardinsider.com';
 const PAGE_PATH = '/reviews/expiring-business-card-bonuses-june-2025';
 const PAGE_URL = `${SITE_BASE_URL}${PAGE_PATH}`;
 const SITE_NAME = 'Travel Card Insider';
-const HERO_IMAGE_SRC = '/benjamin-voros-phIFdC6lA4E-unsplash.jpg'; // ❗ Replace with a relevant, optimised hero image
+const HERO_IMAGE_SRC = '/barbara-maier-zp4q3mOSyBA-unsplash.webp'; // ❗ Replace with a relevant, optimised hero image
 const HERO_IMAGE_ALT = 'An hourglass with sand running out, set against a backdrop of a travel map and airplane, symbolizing expiring travel offers.';
 const DATE_PUBLISHED = '2025-06-08'; // Published just before the first expiry
 const DATE_MODIFIED = '2025-06-08';
@@ -49,7 +49,7 @@ const expiringCardData = [
   {
     id: 'capitalOneVentureXBusiness',
     name: 'Capital One Venture X Business',
-    imageSrc: '/venturex-business-card.png', // ❗ Replace with actual card image
+    imageSrc: '/vxb-card-alt-at-2x.avif', // ❗ Replace with actual card image
     imageAlt: 'Capital One Venture X Business Card',
     annualFee: '$395',
     offer: 'Earn a massive bonus of up to 350,000 miles. You’ll get 150,000 miles after spending $30,000 in the first 3 months and another 200,000 miles if you spend a total of $200,000 in the first 6 months.',
@@ -70,7 +70,7 @@ const expiringCardData = [
   {
     id: 'amexBusinessGold',
     name: 'American Express Business Gold Card',
-    imageSrc: '/amex-business-gold-card.png', // ❗ Replace with actual card image
+    imageSrc: '/business-gold.avif', // ❗ Replace with actual card image
     imageAlt: 'American Express Business Gold Card',
     annualFee: '$375',
     offer: 'Earn 100,000 Membership Rewards® points after spending $15,000 on eligible purchases in the first three months. This offer also includes a $500 statement credit after you spend $2,500 on flights booked directly with airlines or through Amex Travel in the first three months.',
