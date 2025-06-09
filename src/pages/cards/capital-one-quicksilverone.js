@@ -237,8 +237,8 @@ const tocSections = [
     { id: 'section-eat', title: '20. Our E-A-T Pledge' },
 ];
 
-const contentImage1 = "/credit-journey-visual.webp"; // ACTION: Replace
-const contentImage2 = "/app-and-eno-visual.webp";   // ACTION: Replace
+const contentImage1 = "/elimende-inagella-h1cjajmECUU-unsplash.webp"; // ACTION: Replace
+const contentImage2 = "/patrick-robert-doyle-AH8zKXqFITA-unsplash.webp";   // ACTION: Replace
 
 // IMPROVEMENT: Added 'zebra' class to table for styling
 function DraggableTableWrapper({ children }) {
