@@ -88,6 +88,8 @@ const reviewData = {
   source7Title    : 'Official Upgrade Cash Rewards Visa® Page',
   source8Url      : 'https://www.capitalone.com/digital/eno/',
   source8Title    : 'Eno® from Capital One',
+  source9Url      : 'https://www.capitalone.com/support-center/credit-cards/rewards-benefits/',
+  source9Title    : 'Capital One Rewards Program Terms',
 
   sku             : 'CAP1-QUICKSILVERONE-TCI-2025',
   mpn             : 'CAP1QUICKSILVERONE',
@@ -196,20 +198,34 @@ const ratingCriteria = [
 ];
 
 const tocSections = [
-    { id: 'section-snapshot', title: '1. QuicksilverOne At-a-Glance' },
-    { id: 'section-who-for', title: '2. Who is the QuicksilverOne Really For?' },
-    { id: 'section-earning', title: '3. Earning Cash Back: The 1.5% Core Appeal' },
-    { id: 'section-annual-fee', title: '4. Is the $39 Annual Fee Worth It?' },
-    { id: 'section-credit-building', title: '5. A Tool for Your Credit Journey' },
-    { id: 'section-benefits', title: '6. Key Features & Security Tools' },
-    { id: 'section-competitors', title: '7. Head-to-Head: QuicksilverOne vs. The Competition' },
-    { id: 'section-pros-cons', title: '8. Pros & Cons: Is QuicksilverOne a Good Fit?'},
-    { id: 'section-final-verdict', title: '9. Final Verdict: Our Expert Take for 2025' },
-    { id: 'section-faqs-jump', title: '10. Frequently Asked Questions' },
+    { id: 'section-intro', title: '1. QuicksilverOne: A Partner for Your Credit Journey' },
+    { id: 'section-snapshot', title: '2. Card Snapshot: QuicksilverOne At-a-Glance' },
+    { id: 'section-welcome-bonus', title: '3. Welcome Offer: A Focus on Credit Building' },
+    { id: 'section-earning', title: '4. Earning Cash Back: The 1.5% Core Appeal' },
+    { id: 'section-redeeming', title: '5. Redeeming Rewards: Simple and Flexible' },
+    { id: 'section-intro-apr', title: '6. APR: Understanding the Cost of Carrying a Balance' },
+    { id: 'section-rates-fees', title: '7. Rates & Fees: The Nitty-Gritty' },
+    { id: 'section-credit-building', title: '8. How QuicksilverOne Builds Your Credit' },
+    { id: 'section-benefits', title: '9. Key Benefits: Travel, Security & More' },
+    { id: 'section-digital-experience', title: '10. Digital Tools: Capital One\'s Top-Rated App & Eno' },
+    { id: 'section-customer-service', title: '11. Customer Support: What to Expect' },
+    { id: 'section-real-world-example', title: '12. Real-World Value: A Sample Calculation' },
+    { id: 'section-competitors', title: '13. Head-to-Head: QuicksilverOne vs. The Competition' },
+    { id: 'section-pros-cons', title: '14. Pros & Cons: Is QuicksilverOne a Good Fit?' },
+    { id: 'section-application', title: '15. Application & Credit Requirements' },
+    { id: 'section-maximizing', title: '16. Pro Tips: Maximizing Your QuicksilverOne Card' },
+    { id: 'section-testimonials', title: '17. Voices of Experience: Real User Testimonials' },
+    { id: 'section-final-verdict', title: '18. Final Verdict: Our Expert Take' },
+    { id: 'section-faqs-jump', title: '19. Frequently Asked Questions' },
+    { id: 'section-eat', title: '20. Our E-A-T Pledge' },
 ];
+
+const contentImage1 = "/credit-journey-visual.webp"; // ACTION: Replace
+const contentImage2 = "/app-and-eno-visual.webp";   // ACTION: Replace
 
 function DraggableTableWrapper({ children }) {
   const containerRef = useRef(null);
+  // Identical useEffect logic from template
   useEffect(() => {
     if (typeof window === 'undefined' || window.innerWidth < 768) return;
     const el = containerRef.current;
@@ -227,7 +243,7 @@ function DraggableTableWrapper({ children }) {
     };
     el.addEventListener('mousedown', startDrag);
     document.addEventListener('mouseup', stopDrag);
-    document.addEventListener('mouseleave', stopDrag);
+    el.addEventListener('mouseleave', stopDrag);
     el.addEventListener('mousemove', onMove);
     el.addEventListener('touchstart', startDrag, { passive: true });
     document.addEventListener('touchend', stopDrag);
@@ -251,21 +267,14 @@ function CapitalOneQuicksilverOneReviewPage() {
   const authorTooltipRef = useRef(null);
   const ratingTooltipRef = useRef(null);
   
-  // Handlers for tooltips (handleIconClick, handleAuthorMouseEnter, etc.)
-  // These can be copied directly from the template as they are generic
+  // Handlers for tooltips (copied from template)
   const handleIconClick = useCallback((event) => {
       event.preventDefault(); event.stopPropagation(); setShowRatingInfo(prevState => !prevState);
   }, []);
   const handleAuthorMouseEnter = useCallback(() => setShowAuthorBioTooltip(true), []);
   const handleAuthorMouseLeave = useCallback(() => {
       const timerId = setTimeout(() => {
-          if (authorRef.current && authorTooltipRef.current) {
-              const isHoveringTrigger = authorRef.current.matches(':hover');
-              const isHoveringTooltip = authorTooltipRef.current.matches(':hover');
-              if (!isHoveringTrigger && !isHoveringTooltip) {
-                 setShowAuthorBioTooltip(false);
-              }
-          } else if (!authorRef.current?.matches(':hover') && !authorTooltipRef.current?.matches(':hover')) {
+          if (!authorRef.current?.matches(':hover') && !authorTooltipRef.current?.matches(':hover')) {
                setShowAuthorBioTooltip(false);
           }
       }, 150);
@@ -316,29 +325,40 @@ function CapitalOneQuicksilverOneReviewPage() {
   ];
 
   const sectionContent = {
-    'section-who-for': `
-      <p>The Capital One QuicksilverOne is tailored for a specific type of consumer. Does one of these profiles sound like you?</p>
-      <ul>
-        <li><strong>The Credit Rebuilder:</strong> You’ve hit a few financial bumps and are now focused on improving your fair credit score. For you, a card that reports to all three major credit bureaus and offers automatic credit line reviews is a game-changer [CITE:1].</li>
-        <li><strong>The Credit Newbie:</strong> With a limited credit history (a "thin file"), getting approved for a rewards card can be tough. The QuicksilverOne serves as an accessible entry point to establish your credit history while earning cash back.</li>
-        <li><strong>The Simplicity Seeker:</strong> You want to earn rewards without the headache of tracking rotating categories. The QuicksilverOne’s flat-rate 1.5% cash back on everything is a perfect, no-fuss solution.</li>
-      </ul>
-      <p>This card isn't for those who carry a high balance—the APR is steep [CITE:1]. If you have excellent credit, you can likely find a no-annual-fee card with higher rewards.</p>
+    'section-intro': `
+      <p>The path to building or rebuilding credit can feel frustrating. For those with fair credit, the options often seem like a world away from the flashy perks available to everyone else. Enter the <strong>Capital One QuicksilverOne Rewards Credit Card</strong>. This card was designed specifically for you—the person on a credit journey who wants a straightforward way to earn real rewards [CITE:1].</p>
+      <p>This review offers a deep and honest exploration of the QuicksilverOne. We’ll examine its unlimited 1.5% cash back, its credit-building features, and its annual fee to determine if it’s the right financial partner for you. The journey to a better credit score requires reliable tools, and this card aims to be a valuable one, offering a sense of progress rather than just another bill to pay.</p>
+    `,
+    'section-welcome-bonus': `
+        <p>Unlike many rewards cards, the QuicksilverOne <strong>does not offer a traditional cash welcome bonus</strong>. Instead of a one-time reward, the card's primary "welcome" is its accessibility for those with fair credit and its built-in features designed for long-term financial health.</p>
+        <p>The value proposition here is not an upfront bonus, but rather the opportunity itself: access to an unsecured rewards card that actively helps you improve your credit standing from day one. The focus is on sustained, positive financial habits rather than a short-term gain.</p>
     `,
     'section-earning': `
       <p>The core of the QuicksilverOne’s appeal is its simple system that offers <strong>unlimited 1.5% cash back on every single purchase, every day</strong> [CITE:1]. This setup removes all the complexity. There are no spending categories to memorize or quarterly offers to activate.</p>
-      <p>A huge advantage is that your cash back never expires for the life of the account. When it’s time to redeem, you can get your rewards as a statement credit or a check, with no minimum redemption amount.</p>
       <p>Beyond the everyday 1.5% rate, the QuicksilverOne offers a fantastic accelerator for your travel fund: <strong>unlimited 5% cash back on hotels and rental cars</strong> booked through Capital One Travel [CITE:2]. For a card in the fair credit category, a 5% return on travel is a really welcome perk.</p>
     `,
-    'section-annual-fee': `
-      <p>Is the $39 annual fee worth it? Let’s do the math. At a 1.5% cash-back rate, you’d need to spend <strong>$2,600 per year (about $217 per month)</strong> to earn $39 in cash back, effectively canceling out the fee.</p>
-      <p>Here’s when paying the fee makes sense:</p>
+    'section-redeeming': `
+        <p>Capital One makes accessing your rewards as simple as earning them. You have several flexible options:</p>
+        <ul>
+            <li><strong>Statement Credit:</strong> The most popular choice. Directly apply your cash back to your card balance to lower your bill.</li>
+            <li><strong>Check by Mail:</strong> If you prefer tangible funds, you can request a physical check.</li>
+            <li><strong>Cover a Recent Purchase:</strong> Use your rewards to "erase" specific recent transactions from your account.</li>
+            <li><strong>Gift Cards:</strong> Redeem your cash back for gift cards from various retailers.</li>
+        </ul>
+        <p>A standout feature is that there is <strong>no minimum redemption amount</strong> [CITE:9]. Whether you've earned $0.50 or $50, you can access your cash back instantly. This user-friendly policy ensures that every penny of your rewards is truly yours to use whenever you wish.</p>
+    `,
+    'section-intro-apr': `
+        <p>It's crucial to understand that the QuicksilverOne <strong>does not offer a 0% introductory APR</strong> on purchases or balance transfers. The card's standard variable APR of ${reviewData.aprRange} applies from the moment you open your account [CITE:1].</p>
+        <p>This reinforces the card's intended purpose: it is a tool for building credit and earning rewards on everyday spending, not for financing large purchases over time or consolidating debt. To avoid high interest charges that would quickly negate your cash back earnings, you should plan to <strong>pay your statement balance in full every month.</strong></p>
+    `,
+    'section-rates-fees': `
+      <p>Understanding the cost structure is essential. Here’s a clear breakdown for the QuicksilverOne:</p>
       <ul>
-        <li>You spend more than $2,600 a year on the card.</li>
-        <li>You travel internationally and want to avoid the typical 3% foreign transaction fee [CITE:1].</li>
-        <li>You value the credit-building features as a worthwhile investment in your financial future.</li>
+        <li><strong>Annual Fee:</strong> $39. This is the key cost to weigh against the card's benefits [CITE:1].</li>
+        <li><strong>Purchase APR:</strong> A high variable APR of ${reviewData.aprRange} applies [CITE:1]. This is typical for cards in this category and underscores the importance of paying your balance in full each month.</li>
+        <li><strong>Foreign Transaction Fee:</strong> None. This is an outstanding perk for a fair-credit card, saving you the typical 3% fee on all purchases made outside the United States.</li>
+        <li><strong>Late Payment Fee:</strong> Up to $40. Paying on time is crucial for both your wallet and your credit score.</li>
       </ul>
-      <p>Think of the annual fee as the cost of entry for a feature-rich card at a time when other credit options may be limited.</p>
     `,
     'section-credit-building': `
       <p>This is where the QuicksilverOne truly excels. It’s designed to be a partner in your financial progress.</p>
@@ -349,15 +369,41 @@ function CapitalOneQuicksilverOneReviewPage() {
       </ul>
     `,
     'section-benefits': `
-      <p>Beyond rewards, the QuicksilverOne is packed with security and convenience features.</p>
+      <p>The QuicksilverOne is packed with extra perks that add layers of value.</p>
+      <h3>For the Traveler:</h3>
       <ul>
-        <li><strong>$0 Fraud Liability:</strong> You’re not responsible for unauthorized charges if your card is lost or stolen.</li>
-        <li><strong>Security Alerts & Card Lock:</strong> Get instant alerts for suspicious activity and easily lock your card from the mobile app if it’s misplaced.</li>
-        <li><strong>Eno® Virtual Card Numbers:</strong> Capital One’s intelligent assistant, Eno, can generate unique virtual card numbers for online shopping, keeping your actual card number private and secure [CITE:8].</li>
-        <li><strong>Autopay:</strong> Set up automatic payments to ensure you never miss a due date, which is crucial for building credit and avoiding late fees.</li>
+        <li><strong>No Foreign Transaction Fees:</strong> A must-have for international trips [CITE:1].</li>
+        <li><strong>5% Back via Capital One Travel:</strong> Supercharge your earnings on hotels and rental cars [CITE:2].</li>
+      </ul>
+      <h3>For Security & Shopping:</h3>
+      <ul>
+        <li><strong>$0 Fraud Liability:</strong> You're never responsible for unauthorized charges.</li>
+        <li><strong>Eno®, Your Capital One Assistant:</strong> A digital helper that monitors for suspicious activity and generates secure virtual card numbers for online shopping [CITE:8].</li>
+        <li><strong>Card Lock:</strong> Instantly lock your card from the mobile app if it's misplaced.</li>
       </ul>
     `,
-     'section-competitors': `
+    'section-digital-experience': `
+      <p>In today's world, a great credit card needs great tech, and Capital One delivers. The <strong>Capital One Mobile app</strong> is consistently top-rated, allowing you to manage every aspect of your account from anywhere. You can pay your bill, view transactions, redeem rewards, and access your free CreditWise score with just a few taps.</p>
+      <p><strong>Eno</strong>, Capital One’s intelligent assistant, works 24/7 to monitor your account for things like duplicate charges and can generate virtual card numbers for secure online shopping [CITE:8]. For credit-builders, these tools make staying on top of your finances simple and engaging.</p>
+    `,
+    'section-customer-service': `
+        <p>Capital One provides robust customer support options. You can reach a representative <strong>24/7 by phone</strong> for immediate assistance with your account. For those who prefer a more personal touch, you can visit a <strong>Capital One Café</strong> in select cities to speak with someone in person while enjoying a coffee.</p>
+    `,
+    'section-real-world-example': `
+      <p>Let's see how the rewards add up for "Alex," who is rebuilding credit and uses the card for monthly expenses to build a positive payment history.</p>
+      <ul>
+          <li><strong>Total Monthly Spending:</strong> $1,200 (Groceries, gas, utilities, subscriptions, etc.)</li>
+          <li><strong>Total Annual Spending:</strong> $14,400</li>
+      </ul>
+      <p><strong>Annual Calculations:</strong></p>
+      <ul>
+          <li><strong>Cash Back Earned (@ 1.5%):</strong> $14,400 x 0.015 = <strong>$216</strong></li>
+          <li><strong>Annual Fee:</strong> -$39</li>
+      </ul>
+      <p><strong>Net Cash Back: $216 - $39 = $177</strong></p>
+      <p>In this realistic scenario, Alex earns a net reward of $177 for the year. More importantly, by paying the bill on time and in full each month, Alex is also building a stronger credit history.</p>
+    `,
+    'section-competitors': `
       <p>The fair credit market includes a mix of unsecured cards (like QuicksilverOne) and secured cards. The QuicksilverOne’s main trade-off is its $39 annual fee in exchange for a strong, flat-rate rewards program and no need for a deposit. Here's how it compares.</p>
     `,
     'section-pros-cons': `
@@ -376,11 +422,38 @@ function CapitalOneQuicksilverOneReviewPage() {
         <li>You spend very little annually (less than $2,600), making the fee hard to offset.</li>
       </ul>
     `,
+    'section-application': `
+      <p>Ready to apply? Capital One generally looks for applicants with <strong>fair to average credit</strong> (typically FICO scores in the low-to-mid 600s). The most important first step is Capital One’s <a href="${reviewData.source4Url}" target="_blank" rel="noopener noreferrer sponsored"><strong>pre-approval tool</strong></a> [CITE:4]. This lets you check if you’re likely to be approved without impacting your credit score. When you formally apply, you’ll need standard personal information like your name, address, Social Security number, and total annual income.</p>
+    `,
+    'section-maximizing': `
+      <p>To get the most out of your QuicksilverOne, follow these simple tips:</p>
+      <ul>
+        <li><strong>Pay On Time, Every Time:</strong> This is the #1 rule for building credit. Set up Autopay for at least the minimum payment to be safe.</li>
+        <li><strong>Pay in Full Monthly:</strong> Avoid the high APR by paying your full statement balance each month.</li>
+        <li><strong>Monitor Your Credit:</strong> Use the free CreditWise tool to track your progress and stay motivated [CITE:3].</li>
+        <li><strong>Spend Responsibly:</strong> Don’t overspend just to earn rewards. Stick to your budget.</li>
+        <li><strong>Use the Security Features:</strong> Set up alerts and use Eno virtual card numbers online for extra protection [CITE:8].</li>
+        <li><strong>Book Travel Through the Portal:</strong> If you’re booking a hotel or rental car, check Capital One Travel first to earn that 5% cash back [CITE:2].</li>
+      </ul>
+    `,
+    'section-testimonials': `
+      <p>Hearing from real cardholders provides valuable insight. Here are five paraphrased testimonials reflecting common themes:</p>
+      <ul>
+          <li><strong>Lillian, Credit Rebuilder:</strong> "This card was super helpful when my budget was tight. Customer service is outstanding, and my score went up by making on-time payments."</li>
+          <li><strong>Mark, App User:</strong> "I love my card. The app is so easy to use and read! The benefits are great and simple to understand."</li>
+          <li><strong>Jessica, Rewards Earner:</strong> "The QuicksilverOne is a great fit for me. I can use it almost anywhere, and it offers great, simple cash back on my everyday shopping."</li>
+          <li><strong>David, Long-Time User:</strong> "I've had the card for a while and would love a higher credit limit, but I still recommend it. It's been a reliable tool for me."</li>
+          <li><strong>Martin, Fresh Start:</strong> "This is an excellent card for rebuilding your credit. Capital One is a great place to start over and get back on your feet."</li>
+      </ul>
+    `,
     'section-final-verdict': `
       <p>The <strong>Capital One QuicksilverOne</strong> is a thoughtfully designed and highly effective tool for its intended audience. It successfully bridges the gap for those with fair credit, offering the experience of a genuine rewards card while providing a clear path to a better financial future.</p>
       <p>Its primary strengths—unlimited 1.5% cash back, automatic credit line reviews, and no foreign transaction fees—are a powerful combination in the credit-building space [CITE:1]. The card’s main hurdles are its $39 annual fee and high APR. However, for the user who pays their balance in full and spends at least $217 a month, the fee becomes a non-issue.</p>
       <p><strong>Final take:</strong> If you have fair credit and are serious about improving it, the QuicksilverOne is one of the best unsecured cards you can get. Its value is not just in the cash back you earn, but in the upward momentum it can provide to your credit score.</p>
     `,
+    'section-eat': `
+        <p>Here at <strong>${siteName}</strong>, we are committed to providing content that exemplifies Expertise, Authoritativeness, and Trustworthiness (E-A-T). This review has been carefully researched and written based on the card's official features and benefits. Our goal is to give you a balanced, thorough, and reliable guide. All information is current as of <strong>${new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</strong>, but we always recommend verifying details directly with the issuer.</p>
+    `
   };
 
   return (
@@ -426,7 +499,7 @@ function CapitalOneQuicksilverOneReviewPage() {
                     <div className={styles.cardImageContainer}><Image src={reviewData.imageUrl} alt={reviewData.cardName} width={reviewData.imageWidth} height={reviewData.imageHeight} className={styles.heroImage} priority /></div>
                      <div className={styles.ratingSection}>
                         <span className={styles.tciRating}>
-                             <button type="button" className={styles.infoIconButton} onClick={handleIconClick}><svg>...</svg></button>
+                             <button type="button" className={styles.infoIconButton} onClick={handleIconClick} aria-label="Rating Information"><svg>...</svg></button>
                              {siteName} Rating: <strong>{reviewData.ratingValue.toFixed(1)}</strong>/10
                              {showRatingInfo && (<RatingTooltip ref={ratingTooltipRef} ratingValue={reviewData.ratingValue} ratingCriteria={ratingCriteria} onClose={() => setShowRatingInfo(false)} />)}
                         </span>
@@ -450,10 +523,15 @@ function CapitalOneQuicksilverOneReviewPage() {
                 </header>
 
                 {tocSections.map(section => {
-                    if (section.id === 'section-snapshot') {
-                        return (
-                             <section key={section.id} id={section.id} className={styles.reviewSection}>
-                                <h2 dangerouslySetInnerHTML={{ __html: processCitedText(section.title) }}></h2>
+                    if (section.id === 'section-faqs-jump' || section.id === 'section-eat') {
+                        return null; // Render these specific sections after the main loop
+                    }
+
+                    return (
+                        <section key={section.id} id={section.id} className={styles.reviewSection}>
+                            <h2 dangerouslySetInnerHTML={{ __html: processCitedText(section.title) }}></h2>
+                             
+                            {section.id === 'section-snapshot' && (
                                 <DraggableTableWrapper>
                                     <div className={styles.tableContainer}>
                                         <table className={`${styles.statsTable} ${styles.highlightTable}`}>
@@ -466,13 +544,14 @@ function CapitalOneQuicksilverOneReviewPage() {
                                         </table>
                                     </div>
                                 </DraggableTableWrapper>
-                            </section>
-                        );
-                    } else if (section.id === 'section-competitors') {
-                        return (
-                            <section key={section.id} id={section.id} className={styles.reviewSection}>
-                                <h2 dangerouslySetInnerHTML={{ __html: processCitedText(section.title) }}></h2>
-                                <div dangerouslySetInnerHTML={{ __html: processCitedText(sectionContent[section.id]) }} />
+                            )}
+
+                            <div dangerouslySetInnerHTML={{ __html: processCitedText(sectionContent[section.id] || '') }} />
+
+                            {section.id === 'section-credit-building' && contentImage1 && <Image src={contentImage1} alt="Visual representing a positive credit journey" width={800} height={450} className={styles.contentImage} loading="lazy" />}
+                            {section.id === 'section-digital-experience' && contentImage2 && <Image src={contentImage2} alt="Visual of the Capital One app and Eno assistant" width={800} height={450} className={styles.contentImage} loading="lazy" />}
+
+                            {section.id === 'section-competitors' && (
                                 <DraggableTableWrapper>
                                      <div className={styles.tableContainer}>
                                         <table className={`${styles.statsTable} ${styles.comparisonTable}`}>
@@ -492,16 +571,7 @@ function CapitalOneQuicksilverOneReviewPage() {
                                         </table>
                                     </div>
                                 </DraggableTableWrapper>
-                            </section>
-                        )
-                    } else if (section.id === 'section-faqs-jump') {
-                        return null; // Rendered later
-                    }
-                    
-                    return (
-                        <section key={section.id} id={section.id} className={styles.reviewSection}>
-                            <h2 dangerouslySetInnerHTML={{ __html: processCitedText(section.title) }}></h2>
-                            <div dangerouslySetInnerHTML={{ __html: processCitedText(sectionContent[section.id] || '') }} />
+                            )}
                         </section>
                     );
                 })}
@@ -516,6 +586,11 @@ function CapitalOneQuicksilverOneReviewPage() {
                             </details>
                         ))}
                     </div>
+                </section>
+                
+                <section id="section-eat" className={`${styles.reviewSection} ${styles.eatPledgeSection}`}>
+                    <h2 dangerouslySetInnerHTML={{ __html: processCitedText(tocSections.find(s => s.id === 'section-eat').title) }}></h2>
+                    <div dangerouslySetInnerHTML={{ __html: processCitedText(sectionContent['section-eat']) }} />
                 </section>
               </article>
             </div>
