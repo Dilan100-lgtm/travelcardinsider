@@ -114,11 +114,11 @@ const processCitedText = (textWithMarkers) => {
 };
 
 const faqsContent = [
-    { q: 'What credit score do I need for the QuicksilverOne?', a: `It’s designed for those with "Fair" or "Average" credit, often FICO scores in the low-to-mid 600s, but other factors are also considered [CITE:1]. Use the <a href="${reviewData.source4Url}" target="_blank" rel="noopener noreferrer sponsored">Capital One pre-approval tool</a> to check your odds without a hard inquiry [CITE:4].` },
-    { q: 'How soon can I get a credit line increase?', a: 'With responsible use, you can be automatically considered for a higher credit limit in as little as six months [CITE:1].' },
-    { q: 'Can I use this card internationally?', a: 'Yes! A key benefit is that it has no foreign transaction fees, saving you the typical 3% on purchases abroad [CITE:1].' },
+    { q: 'What credit score do I need for the QuicksilverOne?', a: `It’s designed for those with "Fair" or "Average" credit, often FICO scores in the low-to-mid 600s, but other factors are also considered . Use the <a href="${reviewData.source4Url}" target="_blank" rel="noopener noreferrer sponsored">Capital One pre-approval tool</a> to check your odds without a hard inquiry .` },
+    { q: 'How soon can I get a credit line increase?', a: 'With responsible use, you can be automatically considered for a higher credit limit in as little as six months .' },
+    { q: 'Can I use this card internationally?', a: 'Yes! A key benefit is that it has no foreign transaction fees, saving you the typical 3% on purchases abroad .' },
     { q: 'How is this different from the regular Quicksilver card?', a: 'The QuicksilverOne is for building credit and has a $39 annual fee. The regular Quicksilver is for good-to-excellent credit, has no annual fee, and typically offers a welcome bonus and intro APR.' },
-    { q: 'Does using the CreditWise tool hurt my credit score?', a: 'No. Monitoring your score with CreditWise is a "soft" inquiry and does not affect your credit score [CITE:3].' },
+    { q: 'Does using the CreditWise tool hurt my credit score?', a: 'No. Monitoring your score with CreditWise is a "soft" inquiry and does not affect your credit score .' },
     { q: 'What happens to my card as my credit score improves?', a: 'As your score improves with responsible use, Capital One may eventually consider you for an upgrade to a no-annual-fee product like the standard Quicksilver card.' }
 ];
 
@@ -321,31 +321,31 @@ function CapitalOneQuicksilverOneReviewPage() {
   // --- Data for Tables & Content ---
   const summaryBoxData = { 
     welcomeOffer: `No welcome bonus offered; focus is on credit building.`,
-    annualFee: `<a href="${reviewData.ratesFeesLink}" target="_blank" rel="noopener noreferrer sponsored">$${reviewData.annualFee}</a> [CITE:1]`,
-    topEarning: `Unlimited 1.5% cash back, plus <a href="${reviewData.source2Url}" target="_blank" rel="noopener noreferrer sponsored">5% on hotels/rental cars</a> via Capital One Travel [CITE:2].`,
-    keyPerks: `<a href="${reviewData.internalLinkNoFtf}">No foreign transaction fees</a>, automatic credit line reviews [CITE:1].`,
+    annualFee: `<a href="${reviewData.ratesFeesLink}" target="_blank" rel="noopener noreferrer sponsored">$${reviewData.annualFee}</a> `,
+    topEarning: `Unlimited 1.5% cash back, plus <a href="${reviewData.source2Url}" target="_blank" rel="noopener noreferrer sponsored">5% on hotels/rental cars</a> via Capital One Travel .`,
+    keyPerks: `<a href="${reviewData.internalLinkNoFtf}">No foreign transaction fees</a>, automatic credit line reviews .`,
     bestFor: "The credit-builder who wants simple, reliable rewards without a security deposit."
   };
   
   const keyFeaturesTableData = [
-    { feature: "Annual Fee", details: `<a href="${reviewData.ratesFeesLink}" target="_blank" rel="noopener noreferrer sponsored">$39</a> [CITE:1]` },
+    { feature: "Annual Fee", details: `<a href="${reviewData.ratesFeesLink}" target="_blank" rel="noopener noreferrer sponsored">$39</a> ` },
     { feature: "Rewards Rate", details: "Unlimited 1.5% cash back on every purchase" },
-    { feature: "Bonus Rewards", details: `Unlimited 5% cash back on hotels & rental cars via <a href="${reviewData.source2Url}" target="_blank" rel="noopener noreferrer sponsored">Capital One Travel</a> [CITE:2]` },
+    { feature: "Bonus Rewards", details: `Unlimited 5% cash back on hotels & rental cars via <a href="${reviewData.source2Url}" target="_blank" rel="noopener noreferrer sponsored">Capital One Travel</a> ` },
     { feature: "Credit Required", details: "Fair / Average" },
-    { feature: "Key Perk", details: "Automatic credit line reviews in as little as 6 months [CITE:1]" },
-    { feature: "Foreign Fees", details: "None [CITE:1]" },
+    { feature: "Key Perk", details: "Automatic credit line reviews in as little as 6 months " },
+    { feature: "Foreign Fees", details: "None " },
   ];
 
   const competitorsTableData = [
-      { name: "Capital One QuicksilverOne", fee: "$39 [CITE:1]", rewards: "1.5% flat-rate", feature: "Automatic credit line reviews" },
-      { name: "Discover it® Secured", fee: "$0 [CITE:5]", rewards: "2% at Gas/Restaurants; 1% other", feature: "Cashback Match first year" },
-      { name: "Petal® 2 Visa®", fee: "$0 [CITE:6]", rewards: "1% up to 1.5% back", feature: "No fees of any kind" },
-      { name: "Upgrade Cash Rewards Visa®", fee: "$0 [CITE:7]", rewards: "1.5% back (paid as you pay)", feature: "Functions like a predictable loan" },
+      { name: "Capital One QuicksilverOne", fee: "$39 ", rewards: "1.5% flat-rate", feature: "Automatic credit line reviews" },
+      { name: "Discover it® Secured", fee: "$0 ", rewards: "2% at Gas/Restaurants; 1% other", feature: "Cashback Match first year" },
+      { name: "Petal® 2 Visa®", fee: "$0 ", rewards: "1% up to 1.5% back", feature: "No fees of any kind" },
+      { name: "Upgrade Cash Rewards Visa®", fee: "$0 ", rewards: "1.5% back (paid as you pay)", feature: "Functions like a predictable loan" },
   ];
 
   const sectionContent = {
     'section-intro': `
-      <p>The path to building or rebuilding credit can feel frustrating. For those with fair credit, the options often seem like a world away from the flashy perks available to everyone else. Enter the <strong>Capital One QuicksilverOne Rewards Credit Card</strong>. This card was designed specifically for you—the person on a credit journey who wants a straightforward way to earn real rewards [CITE:1].</p>
+      <p>The path to building or rebuilding credit can feel frustrating. For those with fair credit, the options often seem like a world away from the flashy perks available to everyone else. Enter the <strong>Capital One QuicksilverOne Rewards Credit Card</strong>. This card was designed specifically for you—the person on a credit journey who wants a straightforward way to earn real rewards .</p>
       <p>This review offers a deep and honest exploration of the QuicksilverOne. We’ll examine its unlimited 1.5% cash back, its credit-building features, and its annual fee to determine if it’s the right financial partner for you. The journey to a better credit score requires reliable tools, and this card aims to be a valuable one, offering a sense of progress rather than just another bill to pay.</p>
     `,
     'section-welcome-bonus': `
@@ -353,8 +353,8 @@ function CapitalOneQuicksilverOneReviewPage() {
         <p>The value proposition here is not an upfront bonus, but rather the opportunity itself: access to an unsecured rewards card that actively helps you improve your credit standing from day one. The focus is on sustained, positive financial habits rather than a short-term gain.</p>
     `,
     'section-earning': `
-      <p>The core of the QuicksilverOne’s appeal is its simple system that offers <strong>unlimited 1.5% cash back on every single purchase, every day</strong> [CITE:1]. This setup removes all the complexity. There are no spending categories to memorize or quarterly offers to activate.</p>
-      <p>Beyond the everyday 1.5% rate, the QuicksilverOne offers a fantastic accelerator for your travel fund: <strong>unlimited 5% cash back on hotels and rental cars</strong> booked through Capital One Travel [CITE:2]. For a card in the fair credit category, a 5% return on travel is a really welcome perk.</p>
+      <p>The core of the QuicksilverOne’s appeal is its simple system that offers <strong>unlimited 1.5% cash back on every single purchase, every day</strong> . This setup removes all the complexity. There are no spending categories to memorize or quarterly offers to activate.</p>
+      <p>Beyond the everyday 1.5% rate, the QuicksilverOne offers a fantastic accelerator for your travel fund: <strong>unlimited 5% cash back on hotels and rental cars</strong> booked through Capital One Travel . For a card in the fair credit category, a 5% return on travel is a really welcome perk.</p>
     `,
     'section-redeeming': `
         <p>Capital One makes accessing your rewards as simple as earning them. You have several flexible options:</p>
@@ -364,17 +364,17 @@ function CapitalOneQuicksilverOneReviewPage() {
             <li><strong>Cover a Recent Purchase:</strong> Use your rewards to "erase" specific recent transactions from your account.</li>
             <li><strong>Gift Cards:</strong> Redeem your cash back for gift cards from various retailers.</li>
         </ul>
-        <p>A standout feature is that there is <strong>no minimum redemption amount</strong> [CITE:9]. Whether you've earned $0.50 or $50, you can access your cash back instantly. This user-friendly policy ensures that every penny of your rewards is truly yours to use whenever you wish.</p>
+        <p>A standout feature is that there is <strong>no minimum redemption amount</strong> . Whether you've earned $0.50 or $50, you can access your cash back instantly. This user-friendly policy ensures that every penny of your rewards is truly yours to use whenever you wish.</p>
     `,
     'section-intro-apr': `
-        <p>It's crucial to understand that the QuicksilverOne <strong>does not offer a 0% introductory APR</strong> on purchases or balance transfers. The card's standard variable APR of ${reviewData.aprRange} applies from the moment you open your account [CITE:1].</p>
+        <p>It's crucial to understand that the QuicksilverOne <strong>does not offer a 0% introductory APR</strong> on purchases or balance transfers. The card's standard variable APR of ${reviewData.aprRange} applies from the moment you open your account .</p>
         <p>This reinforces the card's intended purpose: it is a tool for building credit and earning rewards on everyday spending, not for financing large purchases over time or consolidating debt. To avoid high interest charges that would quickly negate your cash back earnings, you should plan to <strong>pay your statement balance in full every month.</strong></p>
     `,
     'section-rates-fees': `
       <p>Understanding the cost structure is essential. Here’s a clear breakdown for the QuicksilverOne:</p>
       <ul>
-        <li><strong>Annual Fee:</strong> $39. This is the key cost to weigh against the card's benefits [CITE:1].</li>
-        <li><strong>Purchase APR:</strong> A high variable APR of ${reviewData.aprRange} applies [CITE:1]. This is typical for cards in this category and underscores the importance of paying your balance in full each month.</li>
+        <li><strong>Annual Fee:</strong> $39. This is the key cost to weigh against the card's benefits .</li>
+        <li><strong>Purchase APR:</strong> A high variable APR of ${reviewData.aprRange} applies . This is typical for cards in this category and underscores the importance of paying your balance in full each month.</li>
         <li><strong>Foreign Transaction Fee:</strong> <a href="${reviewData.internalLinkNoFtf}">None</a>. This is an outstanding perk for a fair-credit card, saving you the typical 3% fee on all purchases made outside the United States.</li>
         <li><strong>Late Payment Fee:</strong> Up to $40. Paying on time is crucial for both your wallet and your credit score.</li>
       </ul>
@@ -382,28 +382,28 @@ function CapitalOneQuicksilverOneReviewPage() {
     'section-credit-building': `
       <p>This is where the QuicksilverOne truly excels. It’s designed to be a partner in your financial progress.</p>
       <ul>
-        <li><strong>Automatic Credit Line Reviews:</strong> This is the standout feature. After as little as six months of responsible use (like making on-time payments), Capital One will automatically consider you for a higher credit line [CITE:1]. A higher limit can lower your credit utilization ratio, a major factor in your credit score.</li>
+        <li><strong>Automatic Credit Line Reviews:</strong> This is the standout feature. After as little as six months of responsible use (like making on-time payments), Capital One will automatically consider you for a higher credit line . A higher limit can lower your credit utilization ratio, a major factor in your credit score.</li>
         <li><strong>Reports to All 3 Bureaus:</strong> Capital One reports your payment history to Equifax, Experian, and TransUnion. This ensures your responsible habits are seen and recorded.</li>
-        <li><strong>CreditWise® from Capital One:</strong> You get free access to <a href="${reviewData.internalLinkCreditBuilding}">CreditWise</a>, a powerful tool that lets you monitor your credit score and see what’s affecting it [CITE:3]. This empowers you to track your progress in real-time.</li>
+        <li><strong>CreditWise® from Capital One:</strong> You get free access to <a href="${reviewData.internalLinkCreditBuilding}">CreditWise</a>, a powerful tool that lets you monitor your credit score and see what’s affecting it . This empowers you to track your progress in real-time.</li>
       </ul>
     `,
     'section-benefits': `
       <p>The QuicksilverOne is packed with extra perks that add layers of value.</p>
       <h3>For the Traveler:</h3>
       <ul>
-        <li><strong><a href="${reviewData.internalLinkNoFtf}">No Foreign Transaction Fees</a>:</strong> A must-have for international trips [CITE:1].</li>
-        <li><strong>5% Back via Capital One Travel:</strong> Supercharge your earnings on hotels and rental cars [CITE:2].</li>
+        <li><strong><a href="${reviewData.internalLinkNoFtf}">No Foreign Transaction Fees</a>:</strong> A must-have for international trips .</li>
+        <li><strong>5% Back via Capital One Travel:</strong> Supercharge your earnings on hotels and rental cars .</li>
       </ul>
       <h3>For Security & Shopping:</h3>
       <ul>
         <li><strong>$0 Fraud Liability:</strong> You're never responsible for unauthorized charges.</li>
-        <li><strong>Eno®, Your Capital One Assistant:</strong> A digital helper that monitors for suspicious activity and generates secure virtual card numbers for online shopping [CITE:8].</li>
+        <li><strong>Eno®, Your Capital One Assistant:</strong> A digital helper that monitors for suspicious activity and generates secure virtual card numbers for online shopping .</li>
         <li><strong>Card Lock:</strong> Instantly lock your card from the mobile app if it's misplaced.</li>
       </ul>
     `,
     'section-digital-experience': `
       <p>In today's world, a great credit card needs great tech, and Capital One delivers. The <strong>Capital One Mobile app</strong> is consistently top-rated, allowing you to manage every aspect of your account from anywhere. You can pay your bill, view transactions, redeem rewards, and access your free CreditWise score with just a few taps.</p>
-      <p><strong>Eno</strong>, Capital One’s intelligent assistant, works 24/7 to monitor your account for things like duplicate charges and can generate virtual card numbers for secure online shopping [CITE:8]. For credit-builders, these tools make staying on top of your finances simple and engaging.</p>
+      <p><strong>Eno</strong>, Capital One’s intelligent assistant, works 24/7 to monitor your account for things like duplicate charges and can generate virtual card numbers for secure online shopping . For credit-builders, these tools make staying on top of your finances simple and engaging.</p>
     `,
     'section-customer-service': `
         <p>Capital One provides robust customer support options. You can reach a representative <strong>24/7 by phone</strong> for immediate assistance with your account. For those who prefer a more personal touch, you can visit a <strong>Capital One Café</strong> in select cities to speak with someone in person while enjoying a coffee.</p>
@@ -432,27 +432,27 @@ function CapitalOneQuicksilverOneReviewPage() {
         <li>You have fair or average credit and want to build a positive history.</li>
         <li>You want an unsecured card without needing a security deposit.</li>
         <li>You appreciate simple, flat-rate cash back without tracking categories.</li>
-        <li>You travel internationally and want to <a href="${reviewData.internalLinkNoFtf}">avoid foreign transaction fees</a> [CITE:1].</li>
+        <li>You travel internationally and want to <a href="${reviewData.internalLinkNoFtf}">avoid foreign transaction fees</a> .</li>
       </ul>
       <p><strong>You might want to look elsewhere if...</strong></p>
       <ul>
         <li>You have excellent credit (you can qualify for a no-fee card with better rewards).</li>
-        <li>You tend to carry a balance (the APR is high) [CITE:1].</li>
+        <li>You tend to carry a balance (the APR is high) .</li>
         <li>You spend very little annually (less than $2,600), making the fee hard to offset.</li>
       </ul>
     `,
     'section-application': `
-      <p>Ready to apply? Capital One generally looks for applicants with <strong>fair to average credit</strong> (typically FICO scores in the low-to-mid 600s). The most important first step is Capital One’s <a href="${reviewData.source4Url}" target="_blank" rel="noopener noreferrer sponsored"><strong>pre-approval tool</strong></a> [CITE:4]. This lets you check if you’re likely to be approved without impacting your credit score. When you formally apply, you’ll need standard personal information like your name, address, Social Security number, and total annual income.</p>
+      <p>Ready to apply? Capital One generally looks for applicants with <strong>fair to average credit</strong> (typically FICO scores in the low-to-mid 600s). The most important first step is Capital One’s <a href="${reviewData.source4Url}" target="_blank" rel="noopener noreferrer sponsored"><strong>pre-approval tool</strong></a> . This lets you check if you’re likely to be approved without impacting your credit score. When you formally apply, you’ll need standard personal information like your name, address, Social Security number, and total annual income.</p>
     `,
     'section-maximizing': `
       <p>To get the most out of your QuicksilverOne, follow these pro tips:</p>
       <ul>
         <li><strong>Pay On Time, Every Time:</strong> This is the #1 rule for building credit. Set up Autopay for at least the minimum payment to be safe.</li>
         <li><strong>Pay in Full Monthly:</strong> Avoid the high APR by paying your full statement balance each month.</li>
-        <li><strong>Monitor Your Credit:</strong> Use the free <a href="${reviewData.internalLinkCreditBuilding}">CreditWise</a> tool to track your progress and stay motivated [CITE:3].</li>
+        <li><strong>Monitor Your Credit:</strong> Use the free <a href="${reviewData.internalLinkCreditBuilding}">CreditWise</a> tool to track your progress and stay motivated .</li>
         <li><strong>Spend Responsibly:</strong> Don’t overspend just to earn rewards. Stick to your budget.</li>
-        <li><strong>Use the Security Features:</strong> Set up alerts and use Eno virtual card numbers online for extra protection [CITE:8].</li>
-        <li><strong>Book Travel Through the Portal:</strong> If you’re booking a hotel or rental car, check Capital One Travel first to earn that 5% cash back [CITE:2].</li>
+        <li><strong>Use the Security Features:</strong> Set up alerts and use Eno virtual card numbers online for extra protection .</li>
+        <li><strong>Book Travel Through the Portal:</strong> If you’re booking a hotel or rental car, check Capital One Travel first to earn that 5% cash back .</li>
       </ul>
     `,
     'section-testimonials': `
@@ -467,7 +467,7 @@ function CapitalOneQuicksilverOneReviewPage() {
     `,
     'section-final-verdict': `
       <p>The <strong>Capital One QuicksilverOne</strong> is a thoughtfully designed and highly effective tool for its intended audience. It successfully bridges the gap for those with fair credit, offering the experience of a genuine rewards card while providing a clear path to a better financial future.</p>
-      <p>Its primary strengths—unlimited 1.5% cash back, automatic credit line reviews, and <a href="${reviewData.internalLinkNoFtf}">no foreign transaction fees</a>—are a powerful combination in the credit-building space [CITE:1]. The card’s main hurdles are its $39 annual fee and high APR. However, for the user who pays their balance in full and spends at least $217 a month, the fee becomes a non-issue.</p>
+      <p>Its primary strengths—unlimited 1.5% cash back, automatic credit line reviews, and <a href="${reviewData.internalLinkNoFtf}">no foreign transaction fees</a>—are a powerful combination in the credit-building space . The card’s main hurdles are its $39 annual fee and high APR. However, for the user who pays their balance in full and spends at least $217 a month, the fee becomes a non-issue.</p>
       <p><strong>Final take:</strong> If you have fair credit and are serious about improving it, the QuicksilverOne is one of the best unsecured cards you can get. Its value is not just in the cash back you earn, but in the upward momentum it can provide to your credit score.</p>
     `,
     'section-eat': `
