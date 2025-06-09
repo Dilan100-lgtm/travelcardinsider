@@ -62,10 +62,10 @@ const reviewData = {
       }
   },
   siteName: siteName,
-  imageUrl        : '/quicksilverone-card-art.png', // ACTION: Replace with your actual card image path
+  imageUrl        : '/qs1_cardart_prim_1290x812.avif', // ACTION: Replace with your actual card image path
   imageWidth      : 1290,
   imageHeight     : 812,
-  ratingValue     : 7.2,
+  ratingValue     : 5.4,
   ratingCount     : 94,
   reviewBody      : 'A deep dive into the Capital One QuicksilverOne card, focusing on its role as a credit-building tool with flat-rate rewards. We analyze its $39 annual fee, cash back structure, travel perks, and how it compares to other cards for fair credit.',
   aprRange        : '29.99% (Variable)',
