@@ -540,7 +540,7 @@ function CapitalOneQuicksilverOneReviewPage() {
                     <div className={styles.heroCtaContainer}>
                         <div>
                             <a href={reviewData.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.applyNowButton} ${styles.heroApplyButton}`}>
-                                Apply on CapitalOne.com
+                                Apply Now
                             </a>
                             <span className={styles.heroApplyButtonDisclaimer}>on Capital One's official site</span>
                         </div>
@@ -647,7 +647,7 @@ function CapitalOneQuicksilverOneReviewPage() {
                      <div className={styles.ctaButtonContainer}>
                          <a href={reviewData.source4Url} target="_blank" rel="noopener noreferrer sponsored"
                             className={`${styles.applyNowButton} ${styles.ctaApplyButton}`}>
-                             Check Your Pre-Approval (No Credit Impact)
+                             Check Your Pre-Approval
                          </a>
                          <span className={styles.ctaDisclaimer}>You are now leaving {siteName} for Capital One's official site.</span>
                      </div>
