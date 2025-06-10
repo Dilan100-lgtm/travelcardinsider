@@ -55,14 +55,14 @@ const reviewData = {
   siteName: "TravelCardInsider.com",
   pagePath: "/review/hyatt-business-card-2025",
   imageUrl: "/pexels-kelly-1179532-2869215.webp", // IMPORTANT: Update with a relevant hero image path
-  cardImageUrl: "/hyatt-business-card-product.png", // 👈 NEW: IMPORTANT: Update with actual card image path
+  cardImageUrl: "/HYCOM-090821-WOH-Business-Card.webp", // 👈 NEW: IMPORTANT: Update with actual card image path
   heroImageObjectPosition: "center 40%",
   imageWidth: 1600,
   imageHeight: 900,
   siteLogoUrl: "/images/logos/travel-card-insider-logo.png", // IMPORTANT: Update with your logo path
   publishDate: "2025-06-11",
   updateDate: "2025-06-11",
-  ratingValue: 4.7,
+  ratingValue: 4.2,
   annualFee: 199,
   applyLink: "https://www.yourlink.com/apply-hyatt-business", // IMPORTANT: Update this with your affiliate link
   ratesLink: "https://www.chase.com/business/credit-cards/ink/world-of-hyatt-business-card", // IMPORTANT: Update with the official rates and fees link
