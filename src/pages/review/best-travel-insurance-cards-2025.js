@@ -16,7 +16,7 @@ const SITE_BASE_URL = 'https://www.travelcardinsider.com';
 const PAGE_PATH = '/reviews/best-credit-cards-for-travel-insurance-2025';
 const PAGE_URL = `${SITE_BASE_URL}${PAGE_PATH}`;
 const SITE_NAME = 'Travel Card Insider';
-const HERO_IMAGE_SRC = '/path-to-your/hero-travel-insurance.jpg'; // ❗ Replace with your optimised hero image
+const HERO_IMAGE_SRC = '/pexels-tobiasbjorkli-2104152.webp'; // ❗ Replace with your optimised hero image
 const HERO_IMAGE_ALT = 'A suitcase packed and ready for travel, with a passport and credit card on top, symbolizing travel preparedness.';
 const DATE_PUBLISHED = '2025-06-11';
 const DATE_MODIFIED = '2025-06-11'; // ✏️ update whenever you edit copy
@@ -62,14 +62,14 @@ const travelInsuranceCardData = [
         author: "Jerry M., Travel Forum Contributor"
     },
     benefitsLink: "https://www.chase.com/card-benefits/sapphirereserve/travel",
-    applyLink: '/your-affiliate-link-for-chase-sapphire-reserve', // ❗ Replace with your affiliate link
+    applyLink: 'https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve', // ❗ Replace with your affiliate link
     learnMoreLink: '/cards/chase-sapphire-reserve', // Internal link
   },
   {
     id: 'chaseSapphirePreferred',
     name: 'Chase Sapphire Preferred® Card',
     subtitle: 'The Smart Value Pick',
-    imageSrc: '/path-to-your/sapphire-preferred.png', // ❗ Replace
+    imageSrc: '/sapphire_preferred_card.png', // ❗ Replace
     imageAlt: 'Chase Sapphire Preferred Card',
     annualFee: '$95',
     atAGlance: "A modest $95 annual fee makes this a great choice for robust coverage without the high price tag.",
@@ -80,7 +80,7 @@ const travelInsuranceCardData = [
         author: "Maria S., Cardholder"
     },
     benefitsLink: "https://www.chase.com/card-benefits/sapphirepreferred/travel",
-    applyLink: '/your-affiliate-link-for-chase-sapphire-preferred', // ❗ Replace
+    applyLink: 'https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred', // ❗ Replace
     learnMoreLink: '/cards/chase-sapphire-preferred',
   },
   {
@@ -98,7 +98,7 @@ const travelInsuranceCardData = [
         author: "Alex R., Online Reviewer"
     },
     benefitsLink: "https://www.capitalone.com/credit-cards/venture-x/",
-    applyLink: '/your-affiliate-link-for-capital-one-venture-x', // ❗ Replace
+    applyLink: 'https://www.capitalone.com/credit-cards/venture-x/', // ❗ Replace
     learnMoreLink: '/cards/capital-one-venture-x',
   },
   {
@@ -116,14 +116,14 @@ const travelInsuranceCardData = [
         author: "Michael T., Cardholder"
     },
     benefitsLink: "https://www.americanexpress.com/us/credit-cards/card-benefits/the-platinum-card/",
-    applyLink: '/your-affiliate-link-for-amex-platinum', // ❗ Replace
+    applyLink: 'https://www.americanexpress.com/us/credit-cards/card/platinum/', // ❗ Replace
     learnMoreLink: '/cards/amex-platinum',
   },
   {
     id: 'bofaPremiumElite',
     name: 'Bank of America® Premium Rewards® Elite credit card',
     subtitle: 'Top-Tier for BofA Loyalists',
-    imageSrc: '/path-to-your/bofa-elite.png', // ❗ Replace
+    imageSrc: '/prmeltcm_v_infinite_250px.png', // ❗ Replace
     imageAlt: 'Bank of America Premium Rewards Elite credit card',
     annualFee: '$550',
     atAGlance: "With a $550 fee, this card is ideal for Bank of America Preferred Rewards members.",
@@ -134,14 +134,14 @@ const travelInsuranceCardData = [
         author: "David P., BofA Customer"
     },
     benefitsLink: "https://www.bankofamerica.com/credit-cards/products/premium-rewards-elite-credit-card/",
-    applyLink: '/your-affiliate-link-for-bofa-elite', // ❗ Replace
+    applyLink: 'https://www.bankofamerica.com/credit-cards/products/premium-rewards-elite-credit-card/', // ❗ Replace
     learnMoreLink: '/cards/bofa-premium-elite',
   },
   {
     id: 'bofaPremium',
     name: 'Bank of America® Premium Rewards® credit card',
     subtitle: 'Solid Benefits for BofA Customers',
-    imageSrc: '/path-to-your/bofa-premium.png', // ❗ Replace
+    imageSrc: '/bofa_prmsigcm_255x158.png', // ❗ Replace
     imageAlt: 'Bank of America Premium Rewards credit card',
     annualFee: '$95',
     atAGlance: "A $95 fee makes this a great entry point for BofA customers wanting good travel protections.",
@@ -152,14 +152,14 @@ const travelInsuranceCardData = [
         author: "Linda W., Cardholder"
     },
     benefitsLink: "https://www.bankofamerica.com/credit-cards/products/premium-rewards-credit-card/",
-    applyLink: '/your-affiliate-link-for-bofa-premium', // ❗ Replace
+    applyLink: 'https://www.bankofamerica.com/credit-cards/products/premium-rewards-credit-card/', // ❗ Replace
     learnMoreLink: '/cards/bofa-premium',
   },
   {
     id: 'marriottBonvoyBrilliant',
     name: 'Marriott Bonvoy Brilliant® American Express® Card',
     subtitle: 'For the Marriott Loyalist',
-    imageSrc: '/path-to-your/marriott-brilliant.png', // ❗ Replace
+    imageSrc: '/NUS000000313_480x304_straight_withname.avif', // ❗ Replace
     imageAlt: 'Marriott Bonvoy Brilliant American Express Card',
     annualFee: '$650',
     atAGlance: "With a $650 fee, this card is a must-have for frequent Marriott guests who also want strong insurance.",
@@ -170,7 +170,7 @@ const travelInsuranceCardData = [
         author: "The Miller Family, Marriott Bonvoy Members"
     },
     benefitsLink: "https://www.americanexpress.com/us/credit-cards/card-benefits/marriott-bonvoy-brilliant/",
-    applyLink: '/your-affiliate-link-for-marriott-brilliant', // ❗ Replace
+    applyLink: 'https://www.americanexpress.com/us/credit-cards/card/marriott-bonvoy-brilliant/', // ❗ Replace
     learnMoreLink: '/cards/marriott-bonvoy-brilliant',
   },
 ];
