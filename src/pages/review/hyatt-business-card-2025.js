@@ -64,7 +64,7 @@ const reviewData = {
   updateDate: "2025-06-11",
   ratingValue: 4.2,
   annualFee: 199,
-  applyLink: "https://www.yourlink.com/apply-hyatt-business", // IMPORTANT: Update this with your affiliate link
+  applyLink: "https://world.hyatt.com/content/gp/en/rewards/hyatt-credit-card.html", // IMPORTANT: Update this with your affiliate link
   ratesLink: "https://www.chase.com/business/credit-cards/ink/world-of-hyatt-business-card", // IMPORTANT: Update with the official rates and fees link
   officialLinks: {
       eliteStatus: "https://world.hyatt.com/content/gp/en/tiers-and-benefits.html",
