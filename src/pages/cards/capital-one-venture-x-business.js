@@ -640,16 +640,8 @@ function CapitalOneVentureXBusinessReviewPage() {
             <p>Editorial Note: The opinions expressed here are the author's alone, not those of any bank, credit card issuer, airline or hotel chain, and have not been reviewed, approved or otherwise endorsed by any of these entities.</p>
         </div>
 
-        {/* End Review Sections */}
-        
-                        <section id="eat-expertise-authority-trustworthiness" className={`${styles.reviewSection} ${styles.eatSection}`}>
-                            <h2 dangerouslySetInnerHTML={{ __html: "Our Commitment to E-A-T: Expertise, Authority &amp; Trustworthiness"}}></h2>
-                            <p>At <strong>{siteName}</strong>, we ensure our content meets the highest standards.</p>
-                             <p>
-                              This review of the <strong>{reviewDataNew.cardName}</strong> is based on thorough research of the card's features, terms, and conditions as of {updateDate}, as well as comparisons to other cards in the market, to provide you with a reliable and comprehensive guide.
-                            </p>
-                        </section>
-                        
+      
+
       </main>
       
       <div className={styles.stickyFooterContainer}>
