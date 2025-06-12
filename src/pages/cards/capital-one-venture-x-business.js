@@ -232,7 +232,6 @@ const tocSections = [
     { id: 'section-faqs-jump', title: '16. Frequently Asked Questions' },
 ];
 
-// **NEW**: Added placeholder images
 const contentImage1 = "/business-travel-planning.webp"; // **ACTION**: Replace with a relevant image
 const contentImage2 = "/airport-lounge-working.webp"; // **ACTION**: Replace with a relevant image
 
@@ -510,6 +509,11 @@ function CapitalOneVentureXBusinessReviewPage() {
                     <div className={styles.ratingDescription}><i>{reviewData.cardShortName}: A powerhouse for business travel.</i></div>
                 </div>
             </section>
+            
+            {/* **NEW**: Hero Disclaimer Section */}
+            <div className={styles.heroDisclaimer}>
+                <p>We may receive a commission from our partners for products mentioned in this review, but our opinions are our own. The information provided is for informational purposes only and does not constitute financial advice. Card details, including offers and fees, are subject to change; always verify with the issuer.</p>
+            </div>
 
             <div className={styles.reviewContainer}>
               <article>
@@ -529,7 +533,7 @@ function CapitalOneVentureXBusinessReviewPage() {
                 {/* --- Main Content Sections --- */}
                 {tocSections.map(section => {
                     // Manual render for sections needing special components
-                    if (['section-snapshot', 'section-competitors', 'section-final-verdict', 'section-faqs-jump'].includes(section.id)) {
+                    if (['section-snapshot', 'section-competitors', 'section-testimonials', 'section-final-verdict', 'section-faqs-jump'].includes(section.id)) {
                         return null;
                     }
 
@@ -539,14 +543,13 @@ function CapitalOneVentureXBusinessReviewPage() {
                                 <h2 dangerouslySetInnerHTML={{ __html: section.title }}></h2>
                                 <div dangerouslySetInnerHTML={{ __html: (sectionContent[section.id] || '<p>Content coming soon...</p>') }} />
                             </section>
-                            {/* **NEW**: Added Content Images */}
                             {section.id === 'section-transfer-partners' && contentImage1 && <Image src={contentImage1} alt="Business professional planning travel rewards on a laptop" width={800} height={450} className={styles.contentImage} loading="lazy" />}
                             {section.id === 'section-lounge-access' && contentImage2 && <Image src={contentImage2} alt="Business traveler working comfortably in an airport lounge" width={800} height={450} className={styles.contentImage} loading="lazy" />}
                         </React.Fragment>
                     );
                 })}
 
-                {/* --- Snapshot Section --- */}
+                {/* Manually render special sections in correct order */}
                 <section id="section-snapshot" className={styles.reviewSection}>
                     <h2 dangerouslySetInnerHTML={{ __html: tocSections.find(s => s.id === 'section-snapshot').title }}></h2>
                     <div dangerouslySetInnerHTML={{ __html: sectionContent['section-snapshot'] }} />
@@ -564,7 +567,6 @@ function CapitalOneVentureXBusinessReviewPage() {
                     </DraggableTableWrapper>
                 </section>
 
-                {/* --- Competitors Section --- */}
                 <section id="section-competitors" className={styles.reviewSection}>
                     <h2 dangerouslySetInnerHTML={{ __html: tocSections.find(s => s.id === 'section-competitors').title }}></h2>
                     <div dangerouslySetInnerHTML={{ __html: sectionContent['section-competitors'] }} />
@@ -590,8 +592,12 @@ function CapitalOneVentureXBusinessReviewPage() {
                         </div>
                     </DraggableTableWrapper>
                 </section>
-                
-                {/* --- Final Verdict, CTA, and FAQs (in order) --- */}
+
+                <section id="section-testimonials" className={styles.reviewSection}>
+                    <h2 dangerouslySetInnerHTML={{ __html: tocSections.find(s => s.id === 'section-testimonials').title }}></h2>
+                    <div dangerouslySetInnerHTML={{ __html: sectionContent['section-testimonials'] }} />
+                </section>
+
                 <section id="section-final-verdict" className={styles.reviewSection}>
                     <h2 dangerouslySetInnerHTML={{ __html: tocSections.find(s => s.id === 'section-final-verdict').title }}></h2>
                     <div dangerouslySetInnerHTML={{ __html: sectionContent['section-final-verdict'] }} />
@@ -625,6 +631,13 @@ function CapitalOneVentureXBusinessReviewPage() {
           <aside className={styles.sidebarArea}>
                 <TableOfContents sections={tocSections} />
           </aside>
+        </div>
+        
+        {/* **NEW**: Full-width Disclaimer at bottom of page */}
+        <div className={styles.fullWidthDisclaimer}>
+            <h3>Advertiser & Editorial Disclosure</h3>
+            <p>DISCLAIMER: TravelCardInsider is an independent, advertising-supported comparison service. The card offers that appear on this site are from companies from which TravelCardInsider receives compensation. This compensation may impact how and where products appear on this site (including, for example, the order in which they appear). This site does not include all credit card companies or all available credit card offers. Please view our advertising policy page for more information.</p>
+            <p>Editorial Note: The opinions expressed here are the author's alone, not those of any bank, credit card issuer, airline or hotel chain, and have not been reviewed, approved or otherwise endorsed by any of these entities.</p>
         </div>
       </main>
       
