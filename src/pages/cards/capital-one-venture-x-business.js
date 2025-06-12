@@ -1,6 +1,7 @@
 /* ------------------------------------------------------------------
     File:  pages/reviews/capital-one-venture-x-business-review.js
     Route: https://www.travelcardinsider.com/reviews/capital-one-venture-x-business-review
+    Last Updated: June 12, 2025
 ------------------------------------------------------------------- */
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
@@ -38,10 +39,10 @@ const reviewData = {
   author: {
       name: 'Dilan Madushanka',
       title: 'Founder & Lead Editor',
-      imageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // **ACTION**: Use your actual image path
+      imageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg',
       imageWidth: 40,
       imageHeight: 40,
-      tooltipImageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // **ACTION**: Use your actual image path
+      tooltipImageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg',
       tooltipImageWidth: 60,
       tooltipImageHeight: 60,
       expertise: [
@@ -54,15 +55,15 @@ const reviewData = {
       bioSnippet: 'Dilan Madushanka, founder of TravelCardInsider, specializes in breaking down travel rewards programs to help business owners maximize every dollar spent.',
       fullBioLink: '/author/dilan-madushanka',
       socialLinks: {
-          twitter: 'https://twitter.com/YourTravelCardInsiderTwitterHandle', // **ACTION**: Update URL
-          instagram: 'https://www.instagram.com/YourTravelCardInsiderInstaHandle', // **ACTION**: Update URL
-          facebook: 'https://www.facebook.com/YourTravelCardInsiderFacebookPage', // **ACTION**: Update URL
-          linkedin: 'https://www.linkedin.com/in/dilan-madushanka-b65293365', // **ACTION**: Update URL
-          email: 'team@travelcardinsider.com' // **ACTION**: Update Email
+          twitter: 'https://twitter.com/YourTravelCardInsiderTwitterHandle',
+          instagram: 'https://www.instagram.com/YourTravelCardInsiderInstaHandle',
+          facebook: 'https://www.facebook.com/YourTravelCardInsiderFacebookPage',
+          linkedin: 'https://www.linkedin.com/in/dilan-madushanka-b65293365',
+          email: 'team@travelcardinsider.com'
       }
   },
   siteName: siteName,
-  imageUrl        : '/venture-x-business-card-hero.avif', // **ACTION**: Replace with your actual card image path
+  imageUrl        : '/venture-x-business-card-hero.avif',
   imageWidth      : 1290,
   imageHeight     : 812,
   ratingValue     : 9.2,
@@ -194,8 +195,8 @@ const structuredDataOptimized = {
     },
     { '@type' : 'Organization',
       '@id'   : `${siteUrl}#website`, name : siteName, url : siteUrl,
-      logo    : { '@type': 'ImageObject', url: `${siteUrl}/images/logo/your-logo-schema.png` }, // **ACTION**: Replace with your actual logo
-      sameAs  : [ "https://www.facebook.com/YourTravelCardInsiderFacebookPage", "https://twitter.com/YourTravelCardInsiderTwitterHandle", "https://www.instagram.com/YourTravelCardInsiderInstaHandle" ], // **ACTION**: Replace
+      logo    : { '@type': 'ImageObject', url: `${siteUrl}/images/logo/your-logo-schema.png` },
+      sameAs  : [ "https://www.facebook.com/YourTravelCardInsiderFacebookPage", "https://twitter.com/YourTravelCardInsiderTwitterHandle", "https://www.instagram.com/YourTravelCardInsiderInstaHandle" ],
     },
   ],
 };
@@ -230,11 +231,11 @@ const tocSections = [
     { id: 'section-understated-perks', title: '14. Understated Perks You Shouldn’t Ignore' },
     { id: 'section-final-verdict', title: '15. Final Verdict: The TravelCardInsider Bottom Line' },
     { id: 'section-faqs-jump', title: '16. Frequently Asked Questions' },
-     { id: 'section-eat', title: '17. Our E-A-T Commitment' },
+    { id: 'section-eat', title: '17. Our E-A-T Commitment' },
 ];
 
-const contentImage1 = "/business-travel-planning.webp"; // **ACTION**: Replace with a relevant image
-const contentImage2 = "/airport-lounge-working.webp"; // **ACTION**: Replace with a relevant image
+const contentImage1 = "/business-travel-planning.webp";
+const contentImage2 = "/airport-lounge-working.webp";
 
 
 function DraggableTableWrapper({ children }) {
@@ -356,7 +357,8 @@ function CapitalOneVentureXBusinessReviewPage() {
     'section-testimonials': `<div class="${styles.testimonialContainer}"><blockquote class="${styles.testimonialQuote}"><p>"The flat 2X miles on everything is a lifesaver. I spend a ton on ads and inventory, and I don't have time to track categories. The miles add up incredibly fast."</p><footer>– Sarah, E-commerce Owner</footer></blockquote><blockquote class="${styles.testimonialQuote}"><p>"I travel constantly. The lounge access is non-negotiable, and the $300 credit and anniversary miles completely offset the annual fee. It’s a no-brainer."</p><footer>– Mark, Management Consultant</footer></blockquote><blockquote class="${styles.testimonialQuote}"><p>"We used the welcome bonus to fund our team's flights for our annual retreat. Meeting the spend threshold was easy by timing it with our quarterly tax payment."</p><footer>– Jenna, Agency Founder</footer></blockquote><blockquote class="${styles.testimonialQuote}"><p>"I love the simplicity. I book my travel through the portal to get the 10X on hotels, use the $300 credit, and the card pays for itself. So much easier than the Amex Platinum."</p><footer>– David, Tech Startup CEO</footer></blockquote></div>`,
     'section-understated-perks': `<p>Beyond the big-ticket items, the Venture X Business offers a suite of valuable protections that you can explore in the official <a href="${reviewData.urls.benefitsGuide}" target="_blank" rel="noopener noreferrer sponsored" class="${styles.inlineLink}">Guide to Benefits</a>.</p><ul><li><strong>Cell Phone Protection:</strong> Pay your wireless bill with the card and get up to $800 in coverage per claim if your phone is stolen or damaged (deductible applies).</li><li><strong>Primary Auto Rental Insurance:</strong> Can save you money and hassle when renting cars for business.</li><li><strong>Extended Warranty Protection:</strong> Doubles the manufacturer's warranty for up to one additional year on eligible purchases.</li><li><strong>Free Employee Cards:</strong> Add employees at no extra cost and earn rewards on all their business spending. <a href="${reviewData.urls.accountManagement}" target="_blank" rel="noopener noreferrer sponsored" class="${styles.inlineLink}">(Management Features)</a></li><li><strong>No Foreign Transaction Fees:</strong> A must-have for international business.</li></ul>`,
     'section-final-verdict': `<p>The <strong>${reviewData.cardName}</strong> is a formidable tool for the right kind of business. It masterfully blends straightforward, high-value rewards with the premium travel perks that truly matter, all while making its annual fee remarkably easy to justify. The simple foundation of unlimited 2X miles, supercharged by the 5X and 10X portal bonuses, creates a powerful rewards engine.</p><p>This card is tailor-made for high-spending businesses with stable cash flow that can manage a pay-in-full card. It successfully carves out a unique space, offering premium benefits with an unbeatable effective cost. If your business values simplicity, powerful rewards, and tangible travel benefits, the Venture X Business isn’t just a good choice—it’s a brilliant one.</p>`,
-    'section-faqs-jump': `<p>Here are answers to the most common questions about the ${reviewData.cardName}:</p>`
+    'section-faqs-jump': `<p>Here are answers to the most common questions about the ${reviewData.cardName}:</p>`,
+    'section-eat': `<p>At <strong>${siteName}</strong>, we are committed to providing content that exemplifies Expertise, Authoritativeness, and Trustworthiness (E-A-T). This review of the <strong>${reviewData.cardName}</strong> has been meticulously researched and crafted.</p><p>We've analyzed the card's features, benefits, rewards structure, and fees, referencing official issuer documentation and considering real-world user experiences and data points from the business finance community. Our goal is to present a balanced, comprehensive, and reliable guide to help you make an informed decision. All information is current as of <strong>${new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</strong>, but we always recommend verifying details directly with the issuer as terms can change.</p>`
   };
 
   return (
@@ -402,7 +404,6 @@ function CapitalOneVentureXBusinessReviewPage() {
       <main>
         <div className={styles.reviewPageLayout}>
           <div className={styles.mainContentArea}>
-            {/* --- Hero Section --- */}
             <section className={styles.heroSection}>
                 <div className={styles.heroTextContainer}>
                     <h1 className={styles.heroTitle} dangerouslySetInnerHTML={{ __html: reviewData.h1Content }}></h1>
@@ -511,7 +512,6 @@ function CapitalOneVentureXBusinessReviewPage() {
                 </div>
             </section>
             
-            {/* **NEW**: Hero Disclaimer Section */}
             <div className={styles.heroDisclaimer}>
                 <p>We may receive a commission from our partners for products mentioned in this review, but our opinions are our own. The information provided is for informational purposes only and does not constitute financial advice. Card details, including offers and fees, are subject to change; always verify with the issuer.</p>
             </div>
@@ -531,10 +531,8 @@ function CapitalOneVentureXBusinessReviewPage() {
                     </div>
                 </header>
 
-                {/* --- Main Content Sections --- */}
                 {tocSections.map(section => {
-                    // Manual render for sections needing special components
-                    if (['section-snapshot', 'section-competitors', 'section-testimonials', 'section-final-verdict', 'section-faqs-jump'].includes(section.id)) {
+                    if (['section-snapshot', 'section-competitors', 'section-testimonials', 'section-final-verdict', 'section-faqs-jump', 'section-eat'].includes(section.id)) {
                         return null;
                     }
 
@@ -550,7 +548,6 @@ function CapitalOneVentureXBusinessReviewPage() {
                     );
                 })}
 
-                {/* Manually render special sections in correct order */}
                 <section id="section-snapshot" className={styles.reviewSection}>
                     <h2 dangerouslySetInnerHTML={{ __html: tocSections.find(s => s.id === 'section-snapshot').title }}></h2>
                     <div dangerouslySetInnerHTML={{ __html: sectionContent['section-snapshot'] }} />
@@ -598,7 +595,7 @@ function CapitalOneVentureXBusinessReviewPage() {
                     <h2 dangerouslySetInnerHTML={{ __html: tocSections.find(s => s.id === 'section-testimonials').title }}></h2>
                     <div dangerouslySetInnerHTML={{ __html: sectionContent['section-testimonials'] }} />
                 </section>
-
+                
                 <section id="section-final-verdict" className={styles.reviewSection}>
                     <h2 dangerouslySetInnerHTML={{ __html: tocSections.find(s => s.id === 'section-final-verdict').title }}></h2>
                     <div dangerouslySetInnerHTML={{ __html: sectionContent['section-final-verdict'] }} />
@@ -626,13 +623,11 @@ function CapitalOneVentureXBusinessReviewPage() {
                         ))}
                     </div>
                 </section>
-                {/* **NEW**: E-A-T Section */}
+
                 <section id="section-eat" className={`${styles.reviewSection} ${styles.eatSection}`}>
                     <h2 dangerouslySetInnerHTML={{ __html: tocSections.find(s => s.id === 'section-eat').title }}></h2>
                     <div dangerouslySetInnerHTML={{ __html: sectionContent['section-eat'] }} />
                 </section>
-              
-          
               </article>
             </div>
           </div>
@@ -641,10 +636,11 @@ function CapitalOneVentureXBusinessReviewPage() {
           </aside>
         </div>
         
-        
-
-      
-
+        <div className={styles.fullWidthDisclaimer}>
+            <h3>Advertiser & Editorial Disclosure</h3>
+            <p>DISCLAIMER: TravelCardInsider is an independent, advertising-supported comparison service. The card offers that appear on this site are from companies from which TravelCardInsider receives compensation. This compensation may impact how and where products appear on this site (including, for example, the order in which they appear). This site does not include all credit card companies or all available credit card offers. Please view our advertising policy page for more information.</p>
+            <p>Editorial Note: The opinions expressed here are the author's alone, not those of any bank, credit card issuer, airline or hotel chain, and have not been reviewed, approved or otherwise endorsed by any of these entities.</p>
+        </div>
       </main>
       
       <div className={styles.stickyFooterContainer}>
