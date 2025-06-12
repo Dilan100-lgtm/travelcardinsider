@@ -63,16 +63,16 @@ const reviewData = {
       }
   },
   siteName: siteName,
-  imageUrl        : '/venture-x-business-card-hero.avif',
+  imageUrl        : '/vxb-card-alt-at-2x.avif',
   imageWidth      : 1290,
   imageHeight     : 812,
-  ratingValue     : 9.2,
+  ratingValue     : 8.8,
   ratingCount     : 188,
   reviewBody      : 'A comprehensive expert analysis of the Capital One Venture X Business card, covering its powerful 2X earning rate, 10X travel portal bonus, flexible redemption options including airline transfer partners, $300 travel credit, airport lounge access, and overall value proposition for businesses.',
   aprRange        : 'N/A (Pay-in-full card)',
   annualFee       : 395,
-  applyLink       : 'https://www.capitalone.com/small-business/credit-cards/venture-x-business/',
-  ratesFeesLink   : 'https://www.capitalone.com/small-business/credit-cards/venture-x-business/',
+  applyLink       : 'http://capitalone.com/small-business/credit-cards/venture-x-business/',
+  ratesFeesLink   : 'http://capitalone.com/small-business/credit-cards/venture-x-business/',
   urls: {
       offerDetails: 'https://thepointsguy.com/credit-cards/capital-one/venture-x-business-card/',
       rewardsProgram: 'https://www.capitalone.com/small-business/credit-cards/venture-x-business/',
@@ -234,8 +234,8 @@ const tocSections = [
     { id: 'section-eat', title: '17. Our E-A-T Commitment' },
 ];
 
-const contentImage1 = "/business-travel-planning.webp";
-const contentImage2 = "/airport-lounge-working.webp";
+const contentImage1 = "/pexels-te-lensfix-380994-1371360 (1).webp";
+const contentImage2 = "/pexels-haleyve-2087391.webp";
 
 
 function DraggableTableWrapper({ children }) {
@@ -636,11 +636,7 @@ function CapitalOneVentureXBusinessReviewPage() {
           </aside>
         </div>
         
-        <div className={styles.fullWidthDisclaimer}>
-            <h3>Advertiser & Editorial Disclosure</h3>
-            <p>DISCLAIMER: TravelCardInsider is an independent, advertising-supported comparison service. The card offers that appear on this site are from companies from which TravelCardInsider receives compensation. This compensation may impact how and where products appear on this site (including, for example, the order in which they appear). This site does not include all credit card companies or all available credit card offers. Please view our advertising policy page for more information.</p>
-            <p>Editorial Note: The opinions expressed here are the author's alone, not those of any bank, credit card issuer, airline or hotel chain, and have not been reviewed, approved or otherwise endorsed by any of these entities.</p>
-        </div>
+        
       </main>
       
       <div className={styles.stickyFooterContainer}>
