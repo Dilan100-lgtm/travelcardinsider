@@ -625,6 +625,13 @@ function CapitalOneVentureXBusinessReviewPage() {
                         ))}
                     </div>
                 </section>
+                {/* **NEW**: E-A-T Section */}
+                <section id="section-eat" className={`${styles.reviewSection} ${styles.eatSection}`}>
+                    <h2 dangerouslySetInnerHTML={{ __html: tocSections.find(s => s.id === 'section-eat').title }}></h2>
+                    <div dangerouslySetInnerHTML={{ __html: sectionContent['section-eat'] }} />
+                </section>
+              
+          
               </article>
             </div>
           </div>
