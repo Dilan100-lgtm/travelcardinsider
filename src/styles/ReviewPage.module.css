@@ -1,4 +1,7 @@
-/* src/styles/ReviewPage.module.css */
+/* =================================================
+   TravelCardInsider - Main Review Page Stylesheet
+   Final Version with Professional Link Styles
+   ================================================= */
 
 /* =============== BASE & CONTAINER =============== */
 .reviewContainer {
@@ -28,9 +31,7 @@
   border-bottom: none;
 }
 
-/* =============== TYPOGRAPHY =============== */
-
-
+/* =============== TYPOGRAPHY & LINKS =============== */
 .reviewSection h2 {
   font-family: var(--font-family-serif, 'Playfair Display', serif);
   font-size: clamp(1.8rem, 4.8vw, 2.4rem);
@@ -80,6 +81,61 @@
   padding-left: 0.5rem;
 }
 
+/* --- NEW: Professional Link Styles (Integrated) --- */
+/* This is the new default for any link within a paragraph or list. */
+.reviewContainer p a,
+.reviewContainer li a {
+  color: var(--color-primary, #0052cc);
+  text-decoration: none;
+  background-image: linear-gradient(var(--color-primary, #0052cc), var(--color-primary, #0052cc));
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 2px; /* Underline starts with 0 width */
+  transition: background-size 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.3s ease;
+  padding-bottom: 2px; /* Gives a little space for the underline */
+  font-weight: 500; /* Makes links slightly more substantial than regular text */
+}
+
+/* On hover or focus, the underline animates in. */
+.reviewContainer p a:hover,
+.reviewContainer p a:focus,
+.reviewContainer li a:hover,
+.reviewContainer li a:focus {
+  background-size: 100% 2px; /* Underline animates to full width */
+  color: color-mix(in srgb, var(--color-primary, #0052cc) 80%, black); /* Darken slightly for contrast */
+  outline: none;
+}
+
+/* --- NEW: Subtle Inline Citation/Source Link --- */
+.inlineLink {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text-light, #6b7f9b);
+  border: 1px solid var(--color-border-light, #ebecf0);
+  border-radius: 4px;
+  padding: 1px 6px;
+  margin-left: 5px;
+  transition: all 0.2s ease-in-out;
+  vertical-align: baseline;
+}
+
+.inlineLink:hover,
+.inlineLink:focus {
+  background-color: var(--color-background-subtle, #f1f3f5);
+  border-color: var(--color-border, #dfe1e6);
+  color: var(--color-primary, #0052cc);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  outline: none;
+}
+
+/* Ensures strong tags inside links inherit the link's color */
+.reviewContainer a strong {
+  color: inherit;
+  font-weight: 700;
+}
+
 .featureList {
   list-style: none;
   padding-left: 0;
@@ -106,15 +162,13 @@
   border-bottom: 1px solid var(--color-border-light, #ebecf0);
 }
 
-/* Styles for CSS background image for the card (Priority 8) */
-.cardImageContainer { /* This div centers the background image div */
+.cardImageContainer {
   margin: 1.5rem auto;
   max-width: 480px;
   line-height: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  
 }
 
 .cardImageBackground {
@@ -124,7 +178,6 @@
   background-repeat: no-repeat;
   background-position: center;
 }
-
 
 .cardImage { display: block; max-width: 100%; height: auto; }
 
@@ -186,7 +239,6 @@
   font-size: 1.1rem; line-height: 1.8; max-width: 75ch;
   margin: 0 auto 0 auto; color: var(--text-medium, #42526e);
   text-align: left;
-
 }
 @media (min-width: 768px) {
     .introAndImageWrapper { flex-direction: row; align-items: center; }
@@ -316,7 +368,7 @@
 }
 .heroRewardsCalculator:active { transform: translateY(0px) scale(0.98); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
 
-/* =============== NEWLY ADDED: CONTENT IMAGES SECTION =============== */
+/* =============== CONTENT IMAGES SECTION =============== */
 .contentImageWrapper {
   margin: 2rem auto;
   padding: 0 1rem;
@@ -350,7 +402,6 @@
   border: 1px solid var(--color-border, #dfe1e6);
   border-radius: var(--border-radius-md, 6px);
   box-shadow: var(--shadow-sm, 0 2px 4px rgba(23, 43, 77, 0.07));
-  /* overflow: hidden; */ /* <<< REMOVED THIS LINE TO FIX DRAG SCROLLING */
 }
 
 .statsTable {
@@ -391,73 +442,6 @@
   background-color: var(--color-background-subtle, #f1f3f5);
 }
 .totalRow td:first-child { text-align: right; }
-
-/* =============== REMOVED/MODIFIED Original CTA Section =============== */
-/*
-.ctaSection {
-  text-align: center; padding: 0.5rem;
-  background: var(--color-background-subtle, #f1f3f5);
-  border: 1px solid var(--color-border, #dfe1e6);
-  border-radius: var(--border-radius-md, 6px);
-  margin: var(--spacing-xl, 32px) 0;
-  box-shadow: none;
-  position: sticky; top: 3rem;  <-- REMOVE STICKY BEHAVIOR or whole block
-  height: 25vh;
-  z-index: 1000;
-}
-.ctaSection h2 {
-  font-family: var(--font-condensed, 'Roboto Condensed', var(--font-family-sans, sans-serif));
-  font-size: 1rem;
-  color: var(--text-dark, #172b4d);
-  margin-top: 0; margin-bottom: 0.5rem; border: none; display: block;
-  line-height: 1.5rem;
-}
-.ctaSection h2 b { color: var(--color-primary, #0052cc); font-weight: 700; }
-.ctaButtons { display: flex; justify-content: center; gap: 0.5rem; flex-wrap: wrap; }
-.ctaButtons .btn {
-  padding: 10px 24px; font-size: 1rem; font-weight: 700;
-  border-radius: var(--border-radius-md, 6px);
-  box-shadow: var(--shadow-sm, 0 2px 4px rgba(23, 43, 77, 0.07));
-  transition: all 0.3s ease; border: none; cursor: pointer;
-  text-decoration: none; line-height: 1.5;
-}
-.ctaButtons .btn:hover { box-shadow: var(--shadow-md, 0 4px 8px rgba(23, 43, 77, 0.1)); transform: translateY(-2px); }
-.ctaButtons .btn:active { transform: translateY(0px) scale(0.98); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-.ctaButtons .btnApply {
-   background: var(--color-accent, var(--value-good, #16a34a));
-   color: var(--text-on-primary, white);
-}
-.ctaButtons .btnApply:hover { background: var(--color-accent-hover, #117e37); }
-.ctaButtons .btnRates {
-  background: none;
-  color: var(--color-primary, #0052cc);
-  border: 1px solid var(--color-border, #dfe1e6);
-  box-shadow: none;
-}
-
-.ctaButtons .btnRates:hover {
-  background: var(--color-background-subtle, #f1f3f5);
-  border-color: var(--color-primary, #0052cc);
-}
-.ctaButtons .btn:focus-visible {
-  outline: 3px solid var(--color-primary-light, rgba(0, 82, 204, 0.15));
-  outline-offset: 2px;
-}
-@media (min-width: 768px) {
-  .ctaButtons {
-    gap: 2rem;
-  }
-  .ctaSection {
-    padding: 1rem;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
-    height: 18vh;
-  }
-  .ctaSection h2 {
-    font-size: 1.4rem;
-  }
-}
-*/
 
 /* =============== E-A-T Section (Refined) =============== */
 .eatSection {
@@ -559,18 +543,14 @@
 /* =============== RESPONSIVE ADJUSTMENTS =============== */
 @media (max-width: 768px) {
   .reviewContainer { padding: 1.5rem clamp(1rem, 4vw, 2rem); }
-  /* .reviewHeader h1 { font-size: clamp(2rem, 5.5vw, 2.8rem); } */ /* Handled by heroTitle */
   .reviewSection h2 { font-size: clamp(1.5rem, 4vw, 2rem); }
-  /* .ctaSection h2 { font-size: 1.6rem; } */ /* Removed */
 }
-@media (min-width: 768px) {
 
-}
 .heroImageContainer {
   margin: auto;
 }
 
-/* --- NEW/UPDATED STYLES FOR CALLS-TO-ACTION (CTAs) --- */
+/* --- BUTTON & CALL-TO-ACTION (CTA) STYLES --- */
 .applyNowButton {
   display: inline-block;
   padding: var(--spacing-md) var(--spacing-xl);
@@ -734,8 +714,7 @@
   .heroSection {
     flex-direction: row;
     justify-content: space-between;
-    /* MODIFIED FOR CARD IMAGE ALIGNMENT */
-    align-items: flex-start; /* Was: align-items: center; */
+    align-items: flex-start;
     text-align: left;
     padding: var(--spacing-xxl) clamp(1.5rem, 6vw, 4rem);
   }
@@ -756,7 +735,7 @@
   }
   .heroImageContainer {
     flex-basis: 45%;
-    margin-top: 0; /* Adjusted from 3rem */
+    margin-top: 0;
     max-width: 600px;
     margin-left: auto;
   }
@@ -775,7 +754,7 @@
   font-family: var(--font-condensed, 'Roboto Condensed', var(--font-family-sans, sans-serif));
 }
 
-/* =============== FAQ SECTION STYLES (Premium Look) =============== */
+/* =============== FAQ SECTION STYLES =============== */
 .faqSection { }
 
 .faqContainer {
@@ -865,7 +844,7 @@
   overflow: hidden;
 }
 
-/* MODIFIED/ADDED FOR TABLE SCROLLING */
+/* =============== TABLE SCROLLING WRAPPER =============== */
 .draggableScrollContainer {
   overflow-x: auto;
   overflow-y: hidden;
@@ -885,14 +864,7 @@
   }
 }
 
-@media (min-width: 992px) {
-   /* Base styles for .draggableScrollContainer are now general.
-      This media query can be used for any overrides specific to 992px+ viewports if needed in the future. */
-}
-
-
-/* =============== NEW: AUTHOR BIO & TOOLTIP STYLES (MODIFIED FOR RESPONSIVENESS) =============== */
-
+/* =============== AUTHOR BIO & TOOLTIP =============== */
 .authorBioContainer {
   display: inline-flex;
   align-items: center;
@@ -903,9 +875,6 @@
   padding: var(--spacing-xs) 0;
 }
 
-.authorBioContainer:focus-within { }
-
-
 .authorImageSmall {
   border-radius: 50%;
   object-fit: cover;
@@ -913,29 +882,24 @@
   background-color: var(--border-color-light);
 }
 
-.authorInfoBlock { /* Assuming this is the class from JSX for the text part */
+.authorInfoBlock {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   line-height: 1.3;
 }
 
-.authorNameLine { /* Added this class for "By Author Name" */
+.authorNameLine {
   display: flex;
   align-items: baseline;
   gap: 0.3em;
-}
-.authorPrefix { /* Style for "By" */
-  font-size: 0.9rem;
-  color: var(--text-light, #6b7280);
-  font-weight: var(--font-weight-regular, 400);
 }
 
 .authorName {
   font-family: var(--font-family-main);
   font-weight: var(--font-weight-semibold, 600);
   font-size: 0.95rem;
-  color: var(--text-medium, #4b5563); /* Slightly darker than prefix */
+  color: var(--text-medium, #4b5563);
 }
 
 .authorTitle {
@@ -954,12 +918,10 @@
   border: 1px solid var(--border-color, #d1d5db);
   border-radius: var(--border-radius-md, 8px);
   padding: var(--spacing-md, 16px);
-
   width: 90vw;
   max-width: 320px;
   min-width: 280px;
   box-sizing: border-box;
-
   box-shadow: var(--shadow-medium);
   z-index: 1050;
   font-size: 0.9rem;
@@ -993,7 +955,6 @@
    border-color: transparent transparent var(--bg-white) transparent;
 }
 
-
 .authorTooltipHeader {
   display: flex;
   align-items: center;
@@ -1026,43 +987,6 @@
   color: var(--text-medium);
 }
 
-.authorTooltipExpertise {
-  margin-top: var(--spacing-sm, 8px);
-  margin-bottom: var(--spacing-md, 12px);
-}
-
-.authorTooltipExpertise strong {
-  font-weight: var(--font-weight-semibold, 600);
-  font-size: 0.9rem;
-  color: var(--text-dark);
-  display: block;
-  margin-bottom: var(--spacing-xs, 4px);
-}
-
-.authorTooltipExpertise ul {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--spacing-xs, 4px);
-}
-
-.authorTooltipExpertise li {
-  font-size: 0.85rem;
-  color: var(--text-medium);
-  background-color: var(--bg-light, #f3f4f6);
-  padding: 2px 8px;
-  border-radius: 12px;
-}
-
-.authorTooltipBioSnippet {
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: var(--text-medium);
-  margin-bottom: var(--spacing-md, 12px);
-}
-
 .authorTooltipBioLink {
   display: inline-block;
   font-weight: var(--font-weight-semibold, 600);
@@ -1076,89 +1000,52 @@
   color: var(--primary-blue-dark, #1d4ed8);
   text-decoration: underline;
 }
-.authorLastEdited {
-  font-family: var(--font-family-main);
-  font-size: 0.8rem;
-  color: var(--text-muted, #6b7280);
-  margin-top: var(--spacing-xs, 4px);
-  display: block;
-}
 
-.authorSocialLinks {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm, 8px);
-  margin-top: var(--spacing-sm, 8px);
-}
-
-.socialIconLink {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-light, #6b7280);
-  transition: color 0.2s ease;
-  line-height: 0;
-}
-
-.socialIconLink:hover,
-.socialIconLink:focus {
-  color: var(--primary-blue, #2563eb);
-  outline: none;
-}
-.authorTooltipSocials {
-   margin-top: var(--spacing-md, 12px);
-   padding-top: var(--spacing-sm, 8px);
-   border-top: 1px solid var(--border-color-light);
-   display: flex;
-   gap: var(--spacing-md, 12px);
-}
-/* =============== END AUTHOR BIO & TOOLTIP STYLES =============== */
-
-/* =============== NEW STICKY FOOTER CTA STYLES =============== */
+/* =============== STICKY FOOTER CTA STYLES =============== */
 .stickyFooterContainer {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: var(--color-background-subtle, #f1f3f5); /* Or any color you prefer */
+  background-color: var(--color-background-subtle, #f1f3f5);
   border-top: 1px solid var(--color-border, #dfe1e6);
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
   padding: var(--spacing-sm, 12px) var(--spacing-md, 16px);
-  z-index: 1000; /* Ensure it's above other content */
+  z-index: 1000;
   display: flex;
-  justify-content: center; /* Center the content container */
+  justify-content: center;
   align-items: center;
 }
 
 .stickyFooterContent {
   display: flex;
-  justify-content: space-between; /* Distribute items */
+  justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: var(--max-width-container, 1200px); /* Optional: if you want to limit content width */
+  max-width: var(--max-width-container, 1200px);
   gap: var(--spacing-md, 16px);
 }
 
 .stickyFooterCardName {
   font-family: var(--font-condensed, 'Roboto Condensed', var(--font-family-sans, sans-serif));
-  font-size: 0.9rem; /* Adjusted for better fit */
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--text-dark, #172b4d);
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  flex-shrink: 1; /* Allow shrinking if space is tight */
+  flex-shrink: 1;
 }
 
 .stickyFooterButtons {
   display: flex;
-  gap: var(--spacing-sm, 8px); /* Reduced gap for smaller footer */
-  flex-shrink: 0; /* Prevent buttons from shrinking too much */
+  gap: var(--spacing-sm, 8px);
+  flex-shrink: 0;
 }
 
 .stickyFooterBtn {
-  padding: var(--spacing-xs, 8px) var(--spacing-md, 12px); /* Slightly smaller padding */
-  font-size: 0.9rem; /* Slightly smaller font */
+  padding: var(--spacing-xs, 8px) var(--spacing-md, 12px);
+  font-size: 0.9rem;
   font-weight: 700;
   border-radius: var(--border-radius-md, 6px);
   box-shadow: var(--shadow-sm, 0 1px 2px rgba(23, 43, 77, 0.05));
@@ -1167,7 +1054,7 @@
   cursor: pointer;
   text-decoration: none;
   line-height: 1.4;
-  white-space: nowrap; /* Prevent button text from wrapping */
+  white-space: nowrap;
 }
 
 .stickyFooterBtn:hover {
@@ -1180,69 +1067,68 @@
 }
 
 .stickyFooterBtnApply {
-  background: var(--color-accent, var(--value-good, #16a34a)); /* Same as .btnApply */
+  background: var(--color-accent, var(--value-good, #16a34a));
   color: var(--text-on-primary, white);
 }
 .stickyFooterBtnApply:hover {
-  background: var(--color-accent-hover, #117e37); /* Same as .btnApply:hover */
+  background: var(--color-accent-hover, #117e37);
 }
 
 .stickyFooterBtnRates {
   background: none;
-  color: var(--color-primary, #0052cc); /* Same as .btnRates */
+  color: var(--color-primary, #0052cc);
   border: 1px solid var(--color-border, #dfe1e6);
   box-shadow: none;
 }
 .stickyFooterBtnRates:hover {
-  background: var(--color-background-subtle, #f8f9fa); /* Adjusted hover for bordered button */
+  background: var(--color-background-subtle, #f8f9fa);
   border-color: var(--color-primary, #0052cc);
 }
 
-/* Responsive adjustments for the sticky footer */
 @media (max-width: 600px) {
   .stickyFooterContent {
-    flex-direction: column; /* Stack elements vertically on small screens */
-    align-items: stretch; /* Make items take full width */
+    flex-direction: column;
+    align-items: stretch;
     gap: var(--spacing-sm, 8px);
   }
   .stickyFooterCardName {
-    text-align: center; /* Center card name when stacked */
+    text-align: center;
     font-size: 0.85rem;
     margin-bottom: var(--spacing-xs, 4px);
   }
   .stickyFooterButtons {
-    justify-content: center; /* Center buttons when stacked */
+    justify-content: center;
     width: 100%;
   }
   .stickyFooterBtn {
-    flex-grow: 1; /* Allow buttons to grow and fill space */
+    flex-grow: 1;
     text-align: center;
     font-size: 0.85rem;
   }
   .reviewContainer {
-    margin-bottom: 150px; /* Increase margin for taller sticky footer on mobile */
+    margin-bottom: 150px;
   }
 }
 
-/* =============== PREMIUM SIDEBAR WIDGET STYLES =============== */
+/* =============== SIDEBAR WIDGET =============== */
 .sidebarWidget {
   background-color: var(--color-background-card, #ffffff);
   border: 1px solid var(--color-border-light, #ebecf0);
-  border-radius: var(--border-radius-lg, 12px); /* Softer, larger radius */
+  border-radius: var(--border-radius-lg, 12px);
   padding: var(--spacing-lg, 24px);
-  margin-top: var(--spacing-xl, 32px); /* Space from TOC or previous widget */
-  box-shadow: var(--shadow-md, 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06)); /* Refined shadow */
+  margin-top: var(--spacing-xl, 32px);
+  box-shadow: var(--shadow-md, 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06));
 }
 
 .sidebarWidget h4 {
   font-family: var(--font-condensed, 'Roboto Condensed', var(--font-family-sans, sans-serif));
-  font-size: 1.2rem; /* Adjusted size */
+  font-size: 1.2rem;
   font-weight: 600;
-  color: var(--color-primary, #0052cc); /* Using primary color for the heading */
+  color: var(--color-primary, #0052cc);
   margin-top: 0;
   margin-bottom: var(--spacing-md, 16px);
-  padding-bottom: var(--spacing-sm, 10px); /* Increased padding */
-  border-bottom: 1px solid var(--color-border, #dfe1e6); /* Clearer separator */
+  padding-bottom: var(--spacing-sm, 10px);
+  border-bottom: 1px solid var(--color-border, #dfe1e6);
 }
 
 .quickFactsList {
@@ -1253,15 +1139,15 @@
 
 .quickFactsList li {
   font-family: var(--font-family-main, 'Inter', sans-serif);
-  font-size: 0.925rem; /* Slightly adjusted for readability */
+  font-size: 0.925rem;
   color: var(--text-medium, #42526e);
-  padding: var(--spacing-sm, 10px) var(--spacing-xs, 4px); /* Added horizontal padding */
-  border-bottom: 1px solid var(--color-background-subtle, #f1f3f5); /* Lighter, more subtle separator */
+  padding: var(--spacing-sm, 10px) var(--spacing-xs, 4px);
+  border-bottom: 1px solid var(--color-background-subtle, #f1f3f5);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap; /* Ensure content wraps if too long */
-  gap: var(--spacing-xs, 4px); /* Gap between label and value if they wrap */
+  flex-wrap: wrap;
+  gap: var(--spacing-xs, 4px);
 }
 
 .quickFactsList li:last-child {
@@ -1269,36 +1155,35 @@
 }
 
 .quickFactsList li strong {
-  font-weight: 500; /* Standard weight for labels */
+  font-weight: 500;
   color: var(--text-dark, #172b4d);
-  margin-right: var(--spacing-sm, 8px); /* More space after label */
-  flex-shrink: 0; /* Prevent label from shrinking */
+  margin-right: var(--spacing-sm, 8px);
+  flex-shrink: 0;
 }
 
-/* Styles for links within the Quick Facts, making them look like distinct buttons */
 .sidebarApplyLink,
 .sidebarRatesLink {
   display: block;
-  flex-grow: 1; /* Allow buttons to take available space if li is flex */
+  flex-grow: 1;
   text-align: center;
   padding: var(--spacing-sm, 10px) var(--spacing-md, 12px);
   font-size: 0.9rem;
-  font-weight: 600; /* Bold for CTA */
+  font-weight: 600;
   border-radius: var(--border-radius-md, 6px);
   text-decoration: none;
   transition: all 0.2s ease-in-out;
-  margin-top: var(--spacing-xs, 4px); /* Space if it's the only item or wrapped */
-  min-width: 100px; /* Ensure buttons have a decent minimum width */
+  margin-top: var(--spacing-xs, 4px);
+  min-width: 100px;
 }
 
 .sidebarApplyLink {
-  background-color: var(--color-accent, #16a34a); /* Assuming --color-accent is your primary action green */
+  background-color: var(--color-accent, #16a34a);
   color: var(--text-on-primary, white);
   border: 1px solid transparent;
 }
 .sidebarApplyLink:hover,
 .sidebarApplyLink:focus {
-  background-color: color-mix(in srgb, var(--color-accent, #16a34a) 85%, black); /* Darken on hover */
+  background-color: color-mix(in srgb, var(--color-accent, #16a34a) 85%, black);
   transform: translateY(-2px);
   box-shadow: var(--shadow-sm);
 }
@@ -1310,25 +1195,15 @@
 }
 .sidebarRatesLink:hover,
 .sidebarRatesLink:focus {
-  background-color: rgba(0, 82, 204, 0.05); /* Very light primary background */
-  color: color-mix(in srgb, var(--color-primary, #0052cc) 85%, black); /* Darken text slightly */
+  background-color: rgba(0, 82, 204, 0.05);
+  color: color-mix(in srgb, var(--color-primary, #0052cc) 85%, black);
   transform: translateY(-2px);
   box-shadow: var(--shadow-xs);
 }
 
-/* Ensure list items with only links give them proper spacing */
-.quickFactsList li > a:only-child {
-   margin-top: var(--spacing-sm, 8px);
-}
-.quickFactsList li:has(> .sidebarApplyLink) { /* Better targeting for li containing links */
-    padding-top: var(--spacing-md, 12px); /* More space above button rows */
-}
-.quickFactsList li:has(> .sidebarRatesLink) {
-    padding-top: var(--spacing-xs, 4px); /* Less space if it's the second button */
-}
-/* Add to your ReviewPage.module.css or equivalent */
+/* =============== MID-ARTICLE CTA =============== */
 .midArticleCta {
-  background-color: #f0f6ff; /* Light blue, adjust as needed */
+  background-color: #f0f6ff;
   padding: 20px;
   margin: 30px 0;
   border-radius: 8px;
@@ -1337,14 +1212,11 @@
 }
 .midArticleCta h3 {
   margin-top: 0;
-  color: #003366; /* Darker blue */
+  color: #003366;
 }
 .midArticleCta p {
   margin-bottom: 15px;
   font-size: 0.95em;
-}
-.midCtaButton { /* Can reuse .applyNowButton styles or define separately */
-  /* Inherits from .applyNowButton, or add specific styles */
 }
 .ctaDisclaimer {
   display: block;
@@ -1352,9 +1224,9 @@
   color: #555;
   margin-top: 8px;
 }
-.authorNameLink { /* Style for the author's name link in the hero */
+.authorNameLink {
     font-weight: 600;
-    color: #0052cc; /* Primary color */
+    color: #0052cc;
     text-decoration: none;
 }
 .authorNameLink:hover {
@@ -1362,66 +1234,47 @@
 }
 .reviewedByLine {
     font-size: 0.9em;
-    color: #555; /* Adjust color */
-    margin-bottom: 10px; /* Space before the author image block */
+    color: #555;
+    margin-bottom: 10px;
 }
-/* Add this to your ReviewPage.module.css */
 
-.ctaSecondaryButton {
+.ctaSecondaryButton,
+.ratesFeesLinkButton {
   display: inline-block;
-  padding: var(--spacing-sm, 10px) var(--spacing-md, 16px); /* Standard button padding */
-  font-family: var(--font-family-main); /* Use your main font */
-  font-size: 1rem; /* Adjust as needed, can match .applyNowButton or be slightly smaller */
-  font-weight: var(--font-weight-medium); /* Medium or semibold */
-  color: var(--color-primary, #0052cc); /* Text color - using your primary blue */
-  background-color: transparent; /* No solid background for a secondary button */
-  border: 1px solid var(--color-primary, #0052cc); /* Border matching the text color */
-  border-radius: var(--border-radius-md, 6px); /* Consistent border radius */
+  padding: var(--spacing-sm, 10px) var(--spacing-md, 16px);
+  font-family: var(--font-family-main);
+  font-size: 1rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-primary, #0052cc);
+  background-color: transparent;
+  border: 1px solid var(--color-primary, #0052cc);
+  border-radius: var(--border-radius-md, 6px);
   text-align: center;
-  text-decoration: none; /* Remove underline for button look */
+  text-decoration: none;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   line-height: 1.4;
-  white-space: nowrap; /* Prevent text wrapping */
+  white-space: nowrap;
 }
 
 .ctaSecondaryButton:hover,
-.ctaSecondaryButton:focus {
-  background-color: rgba(0, 82, 204, 0.05); /* Very subtle primary color background on hover/focus */
-  color: color-mix(in srgb, var(--color-primary, #0052cc) 90%, black); /* Slightly darken text on hover */
-  text-decoration: none; /* Ensure no underline on hover */
+.ctaSecondaryButton:focus,
+.ratesFeesLinkButton:hover,
+.ratesFeesLinkButton:focus {
+  background-color: rgba(0, 82, 204, 0.05);
+  color: color-mix(in srgb, var(--color-primary, #0052cc) 90%, black);
+  text-decoration: none;
   outline: none;
 }
 
-.ctaSecondaryButton:focus-visible {
-  outline: 2px solid var(--color-primary, #0052cc); /* Focus outline using primary color */
+.ctaSecondaryButton:focus-visible,
+.ratesFeesLinkButton:focus-visible {
+  outline: 2px solid var(--color-primary, #0052cc);
   outline-offset: 2px;
 }
 
-.ctaSecondaryButton:active {
-  transform: translateY(1px); /* Simple press effect */
-  background-color: rgba(0, 82, 204, 0.1); /* Slightly more noticeable background on active/press */
-}
-
-/* If you want to specifically use the ratesFeesLinkButton class for it, you can do: */
-.ratesFeesLinkButton {
-  /* You can either make it an alias by doing nothing if ctaSecondaryButton is always present with it, 
-     OR apply the same styles as ctaSecondaryButton if used independently */
-  /* For example, to ensure it gets button styling if used alone: */
-  /* display: inline-block;
-     padding: var(--spacing-sm, 10px) var(--spacing-md, 16px);
-     ... (copy styles from .ctaSecondaryButton) ... */
-}
-/* Add to your ReviewPage.module.css */
-.inlineLink {
-  font-size: 0.8em;
-  font-weight: 500;
-  text-decoration: none;
-  color: #555;
-  margin-left: 4px;
-}
-
-.inlineLink:hover {
-  text-decoration: underline;
-  color: #0056b3;
+.ctaSecondaryButton:active,
+.ratesFeesLinkButton:active {
+  transform: translateY(1px);
+  background-color: rgba(0, 82, 204, 0.1);
 }
