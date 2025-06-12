@@ -633,12 +633,7 @@ function CapitalOneVentureXBusinessReviewPage() {
           </aside>
         </div>
         
-        {/* **NEW**: Full-width Disclaimer at bottom of page */}
-        <div className={styles.fullWidthDisclaimer}>
-            <h3>Advertiser & Editorial Disclosure</h3>
-            <p>DISCLAIMER: TravelCardInsider is an independent, advertising-supported comparison service. The card offers that appear on this site are from companies from which TravelCardInsider receives compensation. This compensation may impact how and where products appear on this site (including, for example, the order in which they appear). This site does not include all credit card companies or all available credit card offers. Please view our advertising policy page for more information.</p>
-            <p>Editorial Note: The opinions expressed here are the author's alone, not those of any bank, credit card issuer, airline or hotel chain, and have not been reviewed, approved or otherwise endorsed by any of these entities.</p>
-        </div>
+        
 
       
 
