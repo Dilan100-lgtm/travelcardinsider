@@ -552,7 +552,7 @@ function CapitalOneSparkMilesReviewPage() {
                     <div className={styles.heroCtaContainer}>
                         <div>
                             <a href={reviewData.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.applyNowButton} ${styles.heroApplyButton}`}>
-                                Apply on CapitalOne.com
+                                Apply Now
                             </a>
                             <span className={styles.heroApplyButtonDisclaimer}>on Capital One's official site</span>
                         </div>
@@ -658,7 +658,7 @@ function CapitalOneSparkMilesReviewPage() {
                                     </p>
                                     <div className={styles.ctaButtonContainer}>
                                         <a href={reviewData.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.applyNowButton} ${styles.ctaApplyButton}`}>
-                                            View Offer & Apply on CapitalOne.com
+                                            View Offer & Apply Now
                                         </a>
                                         {reviewData.applyLink && reviewData.applyLink.includes("capitalone.com") &&
                                             <span className={styles.ctaDisclaimer}>You are now leaving {siteName} for Capital One's official site.</span>
