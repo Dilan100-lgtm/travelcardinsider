@@ -62,10 +62,10 @@ const reviewData = {
       }
   },
   siteName: siteName,
-  imageUrl        : '/spark_miles_card_art.png', // **ACTION**: Replace with your actual card image path
+  imageUrl        : '/miles_new_2021.avif', // **ACTION**: Replace with your actual card image path
   imageWidth      : 1290,
   imageHeight     : 812,
-  ratingValue     : 8.8,
+  ratingValue     : 8.0,
   ratingCount     : 215,
   reviewBody      : 'A comprehensive expert analysis of the Capital One Spark Miles for Business card, covering its powerful 2X earning rate, 5X travel portal bonus, flexible redemption options including airline transfer partners, Global Entry credit, and tools for business expense management.',
   aprRange        : '25.99% (Variable)',
@@ -233,8 +233,8 @@ const tocSections = [
     { id: 'section-faqs-jump', title: '18. Frequently Asked Questions' },
 ];
 
-const contentImage1 = "/christina-wocintechchat-com-Plikk1r0_M-unsplash.webp"; // **ACTION**: Replace
-const contentImage2 = "/annie-spratt-sggw4-qDD54-unsplash.webp"; // **ACTION**: Replace
+const contentImage1 = "/blake-wisz-q3o_8MteFM0-unsplash_result.webp"; // **ACTION**: Replace
+const contentImage2 = "/microsoft-edge-5bM6nLQ9Qv0-unsplash_result.webp"; // **ACTION**: Replace
 
 function DraggableTableWrapper({ children }) {
   const containerRef = useRef(null);
