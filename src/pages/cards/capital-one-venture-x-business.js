@@ -230,6 +230,7 @@ const tocSections = [
     { id: 'section-understated-perks', title: '14. Understated Perks You Shouldn’t Ignore' },
     { id: 'section-final-verdict', title: '15. Final Verdict: The TravelCardInsider Bottom Line' },
     { id: 'section-faqs-jump', title: '16. Frequently Asked Questions' },
+     { id: 'section-eat', title: '17. Our E-A-T Commitment' },
 ];
 
 const contentImage1 = "/business-travel-planning.webp"; // **ACTION**: Replace with a relevant image
