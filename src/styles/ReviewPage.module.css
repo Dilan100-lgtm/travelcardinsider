@@ -1278,3 +1278,53 @@
   transform: translateY(1px);
   background-color: rgba(0, 82, 204, 0.1);
 }
+/* ============================================= */
+/* PREMIUM FULL WIDTH DISCLAIMER STYLES         */
+/* ============================================= */
+
+.fullWidthDisclaimer {
+  background-color: #f7f8fa; /* A very light, neutral grey for separation */
+  color: #5a6471;             /* A soft, dark grey for readability */
+  padding: 48px 24px;         /* Generous padding for a premium feel */
+  margin-top: 40px;           /* Space above the disclaimer section */
+  border-top: 1px solid #e1e4e8; /* Clean separator line */
+  font-size: 14px;            /* Slightly smaller, legible font size */
+  line-height: 1.7;           /* Enhanced line-height for dense text */
+  text-align: left;
+}
+
+.fullWidthDisclaimer h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2d3748;             /* A stronger, darker color for the heading */
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+.fullWidthDisclaimer p {
+  max-width: 850px;            /* Optimal max-width for readability on large screens */
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 16px;         /* Spacing between paragraphs */
+}
+
+.fullWidthDisclaimer p:last-of-type {
+  margin-bottom: 0;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+  .fullWidthDisclaimer {
+    padding: 32px 20px;
+    margin-top: 24px;
+  }
+
+  .fullWidthDisclaimer h3 {
+    font-size: 18px;
+  }
+
+  .fullWidthDisclaimer {
+    font-size: 13px;
+  }
+}
