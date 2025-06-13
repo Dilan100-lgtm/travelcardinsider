@@ -18,7 +18,7 @@ const SITE_BASE_URL = 'https://www.travelcardinsider.com';
 const PAGE_PATH = '/reviews/best-0-apr-travel-credit-cards-2025';
 const PAGE_URL = `${SITE_BASE_URL}${PAGE_PATH}`;
 const SITE_NAME = 'Travel Card Insider';
-const HERO_IMAGE_SRC = '/matthew-smith-Rfflri94rs8-unsplash.webp'; // ❗ Replace with your optimised hero image for 0% APR cards
+const HERO_IMAGE_SRC = '/pexels-haleyve-2087391.webp'; // ❗ Replace with your optimised hero image for 0% APR cards
 const HERO_IMAGE_ALT = 'Airplane wing flying over clouds at sunset, symbolizing a dream trip made possible by 0% APR travel cards';
 const DATE_PUBLISHED = '2025-06-12'; // ✏️ Adjust to your actual publish date
 const DATE_MODIFIED = '2025-06-12'; // ✏️ Update whenever you edit copy
@@ -52,7 +52,7 @@ const introAprCardData = [
   {
     id: 'chaseFreedomUnlimited',
     name: 'Chase Freedom Unlimited®',
-    imageSrc: '/chase-freedom-unlimited-card.avif', // ❗ Replace
+    imageSrc: '/freedom_unlimited_card_alt (1).png', // ❗ Replace
     imageAlt: 'Chase Freedom Unlimited® Card',
     annualFee: '$0',
     officialCardPageLink: 'https://creditcards.chase.com/cash-back-credit-cards/freedom/unlimited',
@@ -61,15 +61,15 @@ const introAprCardData = [
     take: "The best all-around value for its strong, flexible cash back rewards combined with a generous 0% APR period.",
     catch: "It usually has a 3% foreign transaction fee, so it's best for booking travel from the US, not for spending abroad.",
     applyLink: 'https://creditcards.chase.com/cash-back-credit-cards/freedom/unlimited',
-    ratesFeesLink: 'https://creditcards.chase.com/cash-back-credit-cards/freedom/unlimited/pricing-and-terms', // Often on the main page, find direct link
+    ratesFeesLink: 'https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC56029.html', // Often on the main page, find direct link
     learnMoreLink: '/cards/chase-freedom-unlimited', // ✏️ Create this internal page later
-    ratingValue: 9.5, // ✏️ Add rating
-    ratingStars: 5,   // ✏️ Add rating
+    ratingValue: 9.0, // ✏️ Add rating
+    ratingStars: 4.5,   // ✏️ Add rating
   },
   {
     id: 'capitalOneVentureOne',
     name: 'Capital One VentureOne Rewards Credit Card',
-    imageSrc: '/capital-one-ventureone-card.avif', // ❗ Replace
+    imageSrc: '/ventureone_cardart_prim_323x203.avif', // ❗ Replace
     imageAlt: 'Capital One VentureOne Rewards Credit Card',
     annualFee: '$0',
     officialCardPageLink: 'https://www.capitalone.com/credit-cards/ventureone/',
@@ -78,15 +78,15 @@ const introAprCardData = [
     take: "A fantastic, no-fuss travel miles card for beginners. It has no annual fee and no foreign transaction fees, making it a great travel companion.",
     bonus: "No foreign transaction fees. A must-have for international trips.",
     applyLink: 'https://www.capitalone.com/credit-cards/ventureone/',
-    ratesFeesLink: 'https://www.capitalone.com/credit-cards/ventureone/terms-disclaimer/', // Find and link to terms
+    ratesFeesLink: 'https://www.capitalone.com/credit-cards/ventureone/', // Find and link to terms
     learnMoreLink: '/cards/capital-one-ventureone', // ✏️ Create this internal page later
-    ratingValue: 9.1,
-    ratingStars: 4.5,
+    ratingValue: 7.2,
+    ratingStars: 3.6,
   },
   {
     id: 'discoverItMiles',
     name: 'Discover it® Miles',
-    imageSrc: '/discover-it-miles-card.avif', // ❗ Replace
+    imageSrc: '/cardart-travel-beachcard-620-382.webp', // ❗ Replace
     imageAlt: 'Discover it® Miles Card',
     annualFee: '$0',
     officialCardPageLink: 'https://www.discover.com/credit-cards/travel/',
@@ -95,15 +95,15 @@ const introAprCardData = [
     take: "Simple, straightforward, and a powerhouse in your first year. The unique mile-for-mile match bonus is unmatched for a no-annual-fee card.",
     bonus: "No foreign transaction fees.",
     applyLink: 'https://www.discover.com/credit-cards/travel/',
-    ratesFeesLink: 'https://www.discover.com/credit-cards/travel/discover-it-miles-terms.html',
+    ratesFeesLink: 'https://www.discovercard.com/application/website/ratesrewards?srcCde=GJX4&adobe_mc=TS%3D1741447882%7CMCMID%3D39379935660807998981588704922154453327%7CMCORGID%3D0D6C4673527839230A490D45%2540AdobeOrg&sv_session_undefined=true&_gl=1*1ec64ug*_gcl_au*MTYyMTU5ODAxMS4xNzQwMzE1MDcw*_ga*MTk0MTA3MDUwOC4xNzQwMzE1MDcx*_ga_3MJNPV4VSE*MTc0MTQ0Nzg3NS40LjAuMTc0MTQ0Nzg3NS42MC4wLjA.',
     learnMoreLink: '/cards/discover-it-miles', // ✏️ Create this internal page later
-    ratingValue: 9.0,
-    ratingStars: 4.5,
+    ratingValue: 7.0,
+    ratingStars: 3.5,
   },
   {
     id: 'bofaTravelRewards',
     name: 'Bank of America® Travel Rewards Credit Card',
-    imageSrc: '/bofa-travel-rewards-card.avif', // ❗ Replace
+    imageSrc: '/8blm_trvsigcm_v_250x158.png', // ❗ Replace
     imageAlt: 'Bank of America® Travel Rewards Credit Card',
     annualFee: '$0',
     officialCardPageLink: 'https://www.bankofamerica.com/credit-cards/products/travel-rewards-credit-card/',
@@ -112,10 +112,10 @@ const introAprCardData = [
     take: "A solid choice for flat-rate rewards, but it becomes a superstar if you're a Bank of America Preferred Rewards member.",
     bonus: "No foreign transaction fees.",
     applyLink: 'https://www.bankofamerica.com/credit-cards/products/travel-rewards-credit-card/',
-    ratesFeesLink: 'https://www.bankofamerica.com/credit-cards/products/travel-rewards-credit-card/terms-and-conditions/',
-    learnMoreLink: '/cards/bofa-travel-rewards', // ✏️ Create this internal page later
-    ratingValue: 8.8,
-    ratingStars: 4.5,
+    ratesFeesLink: 'https://www.bankofamerica.com/credit-cards/products/travel-rewards-credit-card/',
+    learnMoreLink: '/cards/boa-travel-rewards', // ✏️ Create this internal page later
+    ratingValue: 7.4,
+    ratingStars: 3.7,
   }
 ];
 
