@@ -352,8 +352,9 @@ function Best0AprTravelCardsPage2025() {
                                   Last updated: {new Date(DATE_MODIFIED).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                               </time>
                           )}
-                          {/* Social links can be added here if desired */}
                       </div>
+                      
+                      {/* --- UPDATED TOOLTIP SECTION --- */}
                       {showTooltip && (
                           <div 
                               className={styles.authorTooltip}
@@ -364,7 +365,7 @@ function Best0AprTravelCardsPage2025() {
                           >
                                <div className={styles.authorTooltipHeader}>
                                    <Image
-                                      src={author.imageLarge}
+                                      src={author.imageLarge} // ❗ Replace
                                       alt={`${author.name} headshot`} 
                                       width={60} 
                                       height={60} 
@@ -384,9 +385,32 @@ function Best0AprTravelCardsPage2025() {
                                    </div>
                                  )}
                                  <p className={styles.authorTooltipBioSnippet}>{author.bio}</p> 
-                                 {/* Tooltip social links */}
+                                 
+                                 <div className={styles.authorTooltipFooter}>
+                                     <div className={styles.authorTooltipSocials}>
+                                          {author.social.linkedin && ( 
+                                               <a href={author.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${author.name} on LinkedIn`} className={styles.socialIconLink}>
+                                                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                               </a>
+                                           )}
+                                           {author.social.twitter && ( 
+                                               <a href={author.social.twitter} target="_blank" rel="noopener noreferrer" aria-label={`${author.name} on Twitter`} className={styles.socialIconLink}>
+                                                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-.422.724-.665 1.56-.665 2.452 0 1.697.864 3.198 2.18 4.078-.8-.025-1.555-.247-2.227-.616v.054c0 2.37 1.683 4.333 3.91 4.78-.426.116-.874.174-1.337.174-.31 0-.611-.03-.904-.085.622 1.936 2.421 3.338 4.553 3.377-1.672 1.309-3.781 2.088-6.072 2.088-.394 0-.784-.023-1.169-.069 2.16 1.389 4.723 2.202 7.482 2.202 8.979 0 13.897-7.446 13.897-13.898 0-.21 0-.42-.015-.63.953-.689 1.778-1.56 2.433-2.525z"/></svg>
+                                               </a>
+                                           )}
+                                           {author.social.email && ( 
+                                               <a href={`mailto:${author.social.email}`} aria-label={`Email ${author.name}`} className={styles.socialIconLink}>
+                                                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
+                                               </a>
+                                           )}
+                                     </div>
+                                     <Link href={`/author/${author.name.toLowerCase().replace(' ', '-')}`} legacyBehavior>
+                                        <a className={styles.authorBioLink}>See Full Bio</a>
+                                     </Link>
+                                 </div>
                           </div>
                       )}
+                      {/* --- END OF UPDATE --- */}
                   </div>
                 </header>
 
@@ -413,7 +437,6 @@ function Best0AprTravelCardsPage2025() {
                         <p>Imagine it: the warm Hawaiian sun on your skin, the vibrant energy of New Orleans pulsing around you, the profound quiet of a sunrise over the Grand Canyon. These dream trips are what we work for. But often, the significant upfront cost can feel like a barrier, forcing you to delay or downsize your plans.</p>
                         <p>What if you could book that dream trip now and pay for it over the next year or more, without paying a single cent of interest?</p>
                         <p>Welcome to the "Fly Now, Pay Later" strategy, made possible by 0% Annual Percentage Rate (APR) travel credit cards. This isn't about going into debt; it's about smart financial planning. By using an introductory 0% APR offer, you can cover your major travel expenses—flights, hotels, tours—and spread the cost over several months. It gives you breathing room and makes your travel goals achievable.</p>
-                        <p>This guide is your insider look at the best 0% APR cards for US travelers planning for June 2025 and beyond. We’ll break down which cards offer the best value, how to use them wisely, and what pitfalls to avoid.</p>
                     </section>
 
                     <section id="why-use-0-apr" className={styles.reviewSection}>
