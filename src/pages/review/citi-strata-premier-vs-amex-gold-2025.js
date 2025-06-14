@@ -304,7 +304,7 @@ function CitiVsAmexShowdownPage2025() {
 
                              <div className={styles.cardButtonsContainer}>
                                 <a href={citiStrataPremierData.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.cardButton} ${styles.applyButton}`}>Visit Official Site</a>
-                                <a href={citiStrataPremierData.ratesFeesLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.cardButton} ${styles.secondaryButton}`}>Rates & Fees</a>
+                                <a href={citiStrataPremierData.learnMoreLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.cardButton} ${styles.secondaryButton}`}>Learn More</a>
                             </div>
                         </div>
                     </section>
@@ -350,7 +350,7 @@ function CitiVsAmexShowdownPage2025() {
 
                              <div className={styles.cardButtonsContainer}>
                                 <a href={amexGoldData.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.cardButton} ${styles.applyButton}`}>Visit Official Site</a>
-                                <a href={amexGoldData.ratesFeesLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.cardButton} ${styles.secondaryButton}`}>Rates & Fees</a>
+                                <a href={amexGoldData.learnMoreLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.cardButton} ${styles.secondaryButton}`}>Learn More</a>
                             </div>
                         </div>
                     </section>
