@@ -337,7 +337,7 @@ function CitiVsAmexShowdownPage2025() {
                                  <li><strong>$120 Uber Cash:</strong> You get $10 in Uber Cash each month, good for Uber rides or Uber Eats orders in the U.S.</li>
                                  <li><strong>$120 Dining Credit:</strong> You get $10 in statement credits each month when you use your card at Grubhub, The Cheesecake Factory, and other select partners.</li>
                              </ul>
-                             <p>If you are already a regular user of these services, these credits provide $240 in annual value, bringing your effective annual fee down to just $10. For the right person, this is an amazing deal. However, if you have to go out of your way to use them, their value diminishes.</p>
+                             <p>If you are already a regular user of these services, these credits provide $240 in annual value, bringing your effective annual fee down. For the right person, this is an amazing deal. However, if you have to go out of your way to use them, their value diminishes.</p>
 
                             <h4>Amex Membership Rewards®: The Premium Points Powerhouse</h4>
                             <p>Membership Rewards are widely considered one of the most valuable points currencies. The program has an extensive list of transfer partners, giving you incredible redemption options.</p>
