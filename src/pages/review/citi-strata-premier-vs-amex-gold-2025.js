@@ -51,7 +51,7 @@ const author = {
 const citiStrataPremierData = {
     id: 'citiStrataPremier',
     name: 'Citi Strata Premier℠ Card',
-    imageSrc: '/citi-strata-premier-card-art.png', // ❗ Replace with actual card image
+    imageSrc: '/download1.png', // ❗ Replace with actual card image
     imageAlt: 'Citi Strata Premier℠ Card',
     officialCardPageLink: 'https://www.citi.com/credit-cards/citi-strata-premier-credit-card',
     applyLink: 'https://www.citi.com/credit-cards/citi-strata-premier-credit-card', // Replace with affiliate link if available
@@ -62,19 +62,19 @@ const citiStrataPremierData = {
 const amexGoldData = {
     id: 'amexGold',
     name: 'American Express® Gold Card',
-    imageSrc: '/amex-gold-card-art.png', // ❗ Replace with actual card image
+    imageSrc: '/NUS000000174_480x304_straight_withname.avif', // ❗ Replace with actual card image
     imageAlt: 'American Express® Gold Card',
     officialCardPageLink: 'https://www.americanexpress.com/us/credit-cards/card/gold-card/',
     applyLink: 'https://www.americanexpress.com/us/credit-cards/card/gold-card/', // Replace with affiliate link
     ratesFeesLink: 'https://www.americanexpress.com/us/credit-cards/card-applications/apply/gold-card/ep-3642#offer-terms',
-    learnMoreLink: '/cards/amex-gold', // ✏️ Create this internal page later
+    learnMoreLink: '/cards/american-express-gold', // ✏️ Create this internal page later
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 📊 COMPARISON TABLE DATA
 // ─────────────────────────────────────────────────────────────────────────────
 const comparisonTableData = [
-  { feature: 'Annual Fee', citi: '$95', amex: '$250' },
+  { feature: 'Annual Fee', citi: '$95', amex: '$325' },
   { feature: 'Welcome Bonus', citi: '60,000 ThankYou® Points (after $4,000 spend in 3 months)', amex: '60,000 Membership Rewards® Points (after $6,000 spend in 6 months)' },
   { feature: 'Dining Rewards', citi: '3X Points', amex: '4X Points' },
   { feature: 'Gas Station Rewards', citi: '3X Points (includes EV charging)', amex: '1X Point' },
