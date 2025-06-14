@@ -4,7 +4,7 @@
 // ❗ Replace image src paths with your optimised, WebP‑or‑AVIF images.
 // Card images should ideally be ~250x158px or a similar aspect ratio.
 
-import React from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
