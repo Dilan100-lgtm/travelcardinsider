@@ -332,7 +332,7 @@ function CitiVsAmexShowdownPage2025() {
                              <p>That 4X multiplier on dining and groceries is best-in-class and can rack up points at an incredible rate for those who spend heavily in these areas.</p>
 
                             <h4>The Credit System: Your Key to Unlocking Value</h4>
-                            <p>The card's $250 annual fee is offset by a collection of monthly statement credits. To win with this card, you need to use them.</p>
+                            <p>The card's $325 annual fee is offset by a collection of monthly statement credits. To win with this card, you need to use them.</p>
                              <ul>
                                  <li><strong>$120 Uber Cash:</strong> You get $10 in Uber Cash each month, good for Uber rides or Uber Eats orders in the U.S.</li>
                                  <li><strong>$120 Dining Credit:</strong> You get $10 in statement credits each month when you use your card at Grubhub, The Cheesecake Factory, and other select partners.</li>
