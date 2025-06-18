@@ -68,14 +68,26 @@ const reviewData = {
   annualFee: 250,
   applyLink: "https://www.americanexpress.com/us/credit-cards/card/marriott-bonvoy-bevy/",
 
-  // Specific links for Marriott Bonvoy Bevy - All links verified
+  // External links
   officialCardPageLink: "https://www.americanexpress.com/us/credit-cards/card/marriott-bonvoy-bevy/",
   officialCardBenefitsLink: "https://www.americanexpress.com/us/credit-cards/card/marriott-bonvoy-bevy/34945/?veid=34945",
   goldEliteBenefitsLink: "https://www.marriott.com/loyalty/member-benefits/gold.mi",
+  
+  // External links to competitor cards - for direct comparison
   brilliantCardLink: "https://www.americanexpress.com/us/credit-cards/card/marriott-bonvoy-brilliant/",
   boundlessCardLink: "https://creditcards.chase.com/marriott/cardmember/boundless",
   sapphirePreferredLink: "https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred",
   ratesAndFeesLink: "https://www.americanexpress.com/us/credit-cards/card/marriott-bonvoy-bevy/34945/?veid=34945",
+
+  // Internal links for SEO and user navigation
+  internalLinks: {
+    brilliantReview: "/review/marriott-bonvoy-brilliant-2025", // Assuming this will be created
+    boundlessReview: "/review/marriott-bonvoy-boundless-2025",
+    sapphirePreferredReview: "/review/chase-sapphire-preferred-2025",
+    bestHotelCards: "/review/BestHotelCardsPage2025",
+    pointsAndMilesGuide: "/review/2025-Points-&-Miles-Trends-Best-Ways-to-Redeem-for-Luxury-Travel-on-a-Budget",
+    premiumVsBudget: "/review/Premium-vs-Budget-Travel-Cards-Is-Paying-a-$500+Annual-Fee-Really-Worth-It"
+  },
 
   h1Content: "Marriott Bonvoy Bevy™ Review (2025): The Awkward Middle Child",
   heroH1Content: "The 2025 Marriott Bonvoy Bevy™ Review: Is the Mid-Tier Marriott Worth $250?",
@@ -210,13 +222,13 @@ export default function MarriottBonvoyBevyReview2025() {
         <meta property="og:image:width" content={String(reviewData.imageWidth)} />
         <meta property="og:image:height" content={String(reviewData.imageHeight)} />
         <meta property="og:site_name" content={reviewData.siteName} />
-        <meta property="article:publisher" content="https://www.facebook.com/travelcardinsider" /> 
+        <meta property="article:publisher" content="https://www.facebook.com/travelcardinsider" />
         <meta property="article:published_time" content={reviewData.publishDate} />
         <meta property="article:modified_time" content={reviewData.updateDate} />
         <meta property="article:author" content={reviewData.author.name} />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@TravelCardInsid" /> 
+        <meta name="twitter:site" content="@TravelCardInsid" />
         <meta name="twitter:title" content={`${reviewData.cardName} Review (2025) | Is It Worth the $${reviewData.annualFee} Fee?`} />
         <meta name="twitter:description" content={reviewData.description} />
         <meta name="twitter:image" content={`${siteUrl}${reviewData.imageUrl}`} />
@@ -283,7 +295,7 @@ export default function MarriottBonvoyBevyReview2025() {
             </header>
 
             <nav className={styles.reviewToc}><h2>In this review:</h2><ol>{TocLinks.map(link => (<li key={link.href}><a href={link.href}>{link.label}</a></li>))}</ol></nav>
-            
+
             <section id="introduction" className={styles.reviewSection}>
                 <h2>I. Introduction: Marriott's Awkward Middle Child</h2>
                  <div className={styles.introCardDetailsContainer}>
@@ -295,17 +307,17 @@ export default function MarriottBonvoyBevyReview2025() {
                         <p className={styles.ratingAnnualFee}>Annual Fee: ${reviewData.annualFee}</p>
                     </div>
                 </div>
-                <p>In the bustling world of travel rewards credit cards, every product seems to have a clear place. You have your entry-level cards, the dependable workhorses for a modest fee, and your ultra-premium options, which justify their high price tags with a wealth of luxury perks. And then, there’s the {reviewData.cardName}. Positioned awkwardly between these two poles, the Bevy is Marriott and American Express's attempt to win over the "mid-tier" traveler. However, since its launch, it has been plagued by one critical question: does it offer enough value to justify its ${reviewData.annualFee} annual fee?</p>
+                <p>In the bustling world of travel rewards credit cards, every product seems to have a clear place. You have your entry-level cards, the dependable workhorses for a modest fee, and your <Link href={reviewData.internalLinks.premiumVsBudget}><a>ultra-premium options</a></Link>, which justify their high price tags with a wealth of luxury perks. And then, there’s the {reviewData.cardName}. Positioned awkwardly between these two poles, the Bevy is Marriott and American Express's attempt to win over the "mid-tier" traveler. However, since its launch, it has been plagued by one critical question: does it offer enough value to justify its ${reviewData.annualFee} annual fee?</p>
                 <p>The Bevy holds a peculiar spot in the extensive Marriott co-branded card lineup. The most significant point of contention is its break from a long-standing industry norm: the absence of an automatic annual Free Night Award. This review will take a deep dive into the financial-less of the card for 2025, specifically for the savvy U.S. traveler.</p>
             </section>
 
             <section id="deconstructing-value" className={styles.reviewSection}>
                 <h2>II. Deconstructing the Bevy's Value</h2>
-                <p>To determine if the {reviewData.cardName} is a smart financial move, we need to treat it like any other investment. Its returns—in the form of points and perks—must be carefully weighed against its cost.</p>
+                <p>To determine if the {reviewData.cardName} is a smart financial move, we need to treat it like any other investment. Its returns—in the form of <Link href={reviewData.internalLinks.pointsAndMilesGuide}><a>points and perks</a></Link>—must be carefully weighed against its cost.</p>
                 <h3>The Welcome Offer: A Powerful, but Temporary, Boost</h3>
                 <p>The most immediately attractive feature of the card is its welcome offer. New cardholders can earn a significant number of Marriott Bonvoy bonus points. While offers can change, a conservative valuation for Marriott Bonvoy points in 2025 is around 0.8 cents per point. This initial bonus can easily cover the ${reviewData.annualFee} annual fee for the first year. However, it's a one-time benefit. For the current offer, please refer to the <a href={reviewData.officialCardPageLink} target="_blank" rel="noopener noreferrer sponsored">official American Express website</a>.</p>
             </section>
-            
+
             <section id="cta-bevy-1" className={styles.ctaSection}>
                 <h2>Is the <b>{reviewData.cardName}</b> Right for You?</h2>
                 <p>Explore its earning rates, elite status, and bonus points offer.</p>
@@ -336,10 +348,10 @@ export default function MarriottBonvoyBevyReview2025() {
 
             <section id="competitor-comparison" className={styles.reviewSection}>
                 <h2>V. How the Bevy Stacks Up Against Its Fiercest Rivals</h2>
-                <p>The Bevy's value is best understood in context:</p>
+                <p>The Bevy's value is best understood in context. See our guide to the <Link href={reviewData.internalLinks.bestHotelCards}><a>Best Hotel Credit Cards</a></Link> for a full market comparison.</p>
                 <ul className={styles.featureList}>
-                    <li><strong>vs. Brilliant ($650):</strong> The top-tier <a href={reviewData.brilliantCardLink} target="_blank" rel="noopener noreferrer">Marriott Bonvoy Brilliant®</a> offers far more value for frequent travelers with an automatic 85,000-point FNA, Platinum status, and dining credits that easily offset its higher fee.</li>
-                    <li><strong>vs. Boundless ($95):</strong> The Chase-issued <a href={reviewData.boundlessCardLink} target="_blank" rel="noopener noreferrer">Marriott Bonvoy Boundless®</a> is a value champion. It has a low $95 fee and provides an *automatic* 35,000-point FNA each year, making it a keeper for almost any Marriott traveler.</li>
+                    <li><strong>vs. Brilliant ($650):</strong> The top-tier <Link href={reviewData.internalLinks.brilliantReview}><a>Marriott Bonvoy Brilliant®</a></Link> offers far more value for frequent travelers with an automatic 85,000-point FNA, Platinum status, and dining credits that easily offset its higher fee.</li>
+                    <li><strong>vs. Boundless ($95):</strong> The Chase-issued <Link href={reviewData.internalLinks.boundlessReview}><a>Marriott Bonvoy Boundless®</a></Link> is a value champion. It has a low $95 fee and provides an *automatic* 35,000-point FNA each year, making it a keeper for almost any Marriott traveler.</li>
                 </ul>
             </section>
 
@@ -367,9 +379,9 @@ export default function MarriottBonvoyBevyReview2025() {
                   <div className={styles.consSection}>
                     <h3>Better Alternatives Exist For:</h3>
                     <ul>
-                      <li><span className={styles.bulletIcon}>👎</span>Occasional Marriott Guests (Choose the <a href={reviewData.boundlessCardLink} target="_blank" rel="noopener noreferrer">Boundless Card</a>).</li>
-                      <li><span className={styles.bulletIcon}>👎</span>Serious Marriott Loyalists (Choose the <a href={reviewData.brilliantCardLink} target="_blank" rel="noopener noreferrer">Brilliant Card</a>).</li>
-                      <li><span className={styles.bulletIcon}>👎</span>Flexible Travelers (Choose a card like the <a href={reviewData.sapphirePreferredLink} target="_blank" rel="noopener noreferrer">Chase Sapphire Preferred®</a>).</li>
+                      <li><span className={styles.bulletIcon}>👎</span>Occasional Marriott Guests (Choose the <Link href={reviewData.internalLinks.boundlessReview}><a>Boundless Card</a></Link>).</li>
+                      <li><span className={styles.bulletIcon}>👎</span>Serious Marriott Loyalists (Choose the <Link href={reviewData.internalLinks.brilliantReview}><a>Brilliant Card</a></Link>).</li>
+                      <li><span className={styles.bulletIcon}>👎</span>Flexible Travelers (Choose a card like the <Link href={reviewData.internalLinks.sapphirePreferredReview}><a>Chase Sapphire Preferred®</a></Link>).</li>
                     </ul>
                   </div>
                 </div>
