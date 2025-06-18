@@ -67,7 +67,7 @@ const reviewData = {
   imageWidth      : 1290,
   imageHeight     : 812,
   ratingValue     : 8.5,
-  ratingCount     : 254, // Example number
+  ratingCount     : 254,
   reviewBody      : 'An in-depth analysis of the Capital One Venture Rewards Credit Card, detailing its unlimited 2X miles, 5X travel portal bonus, flexible redemption methods, Global Entry credit, lounge passes, and overall value for travelers who prioritize simplicity and flexibility.',
   aprRange        : 'Variable APR, see rates and fees',
   annualFee       : 95,
@@ -79,7 +79,7 @@ const reviewData = {
       cardholderAgreement: 'https://www.capitalone.com/credit-cards/lp/credit-card-agreements/',
       travelPortal: 'https://capitalonetravel.com/consumer-travel-benefits',
       rewardsRedemption: 'https://www.capitalone.com/support-center/credit-cards/redeem-rewards',
-      transferPartners: 'https://thepointsguy.com/guide/capital-one-transfer-partners/', // Using a reliable third-party guide
+      transferPartners: 'https://thepointsguy.com/guide/capital-one-transfer-partners/',
       loungeAccess: 'https://www.capitalone.com/credit-cards/lounge-access/',
       benefitsGuide: 'https://ecm.capitalone.com/WCM/card/benefits-guide/mastercard-benefits-guides/mc-guide-to-benefits---english.pdf',
       globalEntry: 'https://ttp.dhs.gov/',
@@ -120,85 +120,89 @@ const faqsContent = [
 ];
 
 const structuredDataOptimized = {
-  '@context': 'https://schema.org',
-  '@graph'  : [
-    {
-      '@type'        : 'Product',
-      '@id'          : `${pageUrlFull}#product`,
-      name           : reviewData.cardName,
-      image          : `${siteUrl}${reviewData.imageUrl}`,
-      description    : reviewData.description,
-      sku            : reviewData.sku,
-      mpn            : reviewData.mpn,
-      brand          : { '@type': 'Brand', name: 'Capital One' },
-      aggregateRating: {
-        '@type'    : 'AggregateRating',
-        ratingValue : reviewData.ratingValue.toString(),
-        bestRating  : '10',
-        worstRating : '1',
-        ratingCount : reviewData.ratingCount.toString(),
-        reviewCount : '1',
-      },
-      offers: {
-        '@type'            : 'Offer',
-        url                : reviewData.applyLink,
-        priceCurrency      : 'USD',
-        price              : reviewData.annualFee.toString(),
-        priceValidUntil    : '2026-12-31',
-        itemCondition      : 'https://schema.org/NewCondition',
-        availability       : 'https://schema.org/InStock',
-        seller: { '@type': 'Organization', name: 'Capital One' },
-      },
-      review: { '@id': `${pageUrlFull}#editorReview` },
-    },
-    {
-      '@type'         : 'Review',
-      '@id'           : `${pageUrlFull}#editorReview`,
-      name            : `${reviewData.cardName} – Expert Review ${new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`,
-      itemReviewed    : { '@id': `${pageUrlFull}#product` },
-      reviewBody      : reviewData.reviewBody,
-      reviewRating    : {
-        '@type'    : 'Rating',
-        ratingValue : reviewData.ratingValue.toString(),
-        bestRating  : '10',
-        worstRating : '1',
-      },
-      author : { '@type': 'Person', 'name': reviewData.author.name, 'url': `${siteUrl}${reviewData.author.fullBioLink}` },
-      publisher : { '@type' : 'Organization', name : siteName, logo : { '@type': 'ImageObject', url: `${siteUrl}/images/logo/your-logo-schema.png` } },
-      datePublished   : publishDate,
-      dateModified    : updateDate,
-    },
-    { '@type': 'WebPage',
-      '@id'              : pageUrlFull, url : pageUrlFull, name : reviewData.title, description : reviewData.description,
-      inLanguage : 'en-US', isPartOf : { '@id': `${siteUrl}#website` }, primaryImageOfPage : { '@id': `${pageUrlFull}#primaryImage` },
-      breadcrumb : { '@id': `${pageUrlFull}#breadcrumbs` }, datePublished : publishDate, dateModified : updateDate,
-    },
-    { '@type': 'ImageObject',
-      '@id'     : `${pageUrlFull}#primaryImage`, url : `${siteUrl}${reviewData.imageUrl}`,
-      width : reviewData.imageWidth, height : reviewData.imageHeight, caption : reviewData.cardName,
-    },
-    { '@type': 'BreadcrumbList',
-      '@id'          : `${pageUrlFull}#breadcrumbs`,
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: siteName, item: siteUrl },
-        { '@type': 'ListItem', position: 2, name: 'Credit Card Reviews', item: `${siteUrl}/reviews` },
-        { '@type': 'ListItem', position: 3, name: `${reviewData.cardName} Review`, item: pageUrlFull },
-      ],
-    },
-    {
-      '@type'    : 'FAQPage',
-      '@id'      : `${pageUrlFull}#faqs`,
-      mainEntity: faqsContent.map(faq => ({
-        '@type': 'Question', name: faq.q,
-        acceptedAnswer: {  '@type': 'Answer', text: faq.a.replace(/<[^>]*>/g, '') }
-      })),
-    },
-    { '@type' : 'Organization',
-      '@id'   : `${siteUrl}#website`, name : siteName, url : siteUrl,
-      logo    : { '@type': 'ImageObject', url: `${siteUrl}/images/logo/your-logo-schema.png` },
-      sameAs  : [ "https://www.facebook.com/YourTravelCardInsiderFacebookPage", "https://twitter.com/YourTravelCardInsiderTwitterHandle", "https://www.instagram.com/YourTravelCardInsiderInstaHandle" ],
-    },
-  ],
+    '@context': 'https://schema.org',
+    '@graph': [
+        {
+            '@type': 'Product',
+            '@id': `${pageUrlFull}#product`,
+            name: reviewData.cardName,
+            image: `${siteUrl}${reviewData.imageUrl}`,
+            description: reviewData.description,
+            sku: reviewData.sku,
+            mpn: reviewData.mpn,
+            brand: { '@type': 'Brand', name: 'Capital One' },
+            aggregateRating: {
+                '@type': 'AggregateRating',
+                ratingValue: reviewData.ratingValue.toString(),
+                bestRating: '10',
+                worstRating: '1',
+                ratingCount: reviewData.ratingCount.toString(),
+                reviewCount: '1',
+            },
+            offers: {
+                '@type': 'Offer',
+                url: reviewData.applyLink,
+                priceCurrency: 'USD',
+                price: reviewData.annualFee.toString(),
+                priceValidUntil: '2026-12-31',
+                itemCondition: 'https://schema.org/NewCondition',
+                availability: 'https://schema.org/InStock',
+                seller: { '@type': 'Organization', name: 'Capital One' },
+            },
+            review: { '@id': `${pageUrlFull}#editorReview` },
+        },
+        {
+            '@type': 'Review',
+            '@id': `${pageUrlFull}#editorReview`,
+            name: `${reviewData.cardName} – Expert Review ${new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`,
+            itemReviewed: { '@id': `${pageUrlFull}#product` },
+            reviewBody: reviewData.reviewBody,
+            reviewRating: {
+                '@type': 'Rating',
+                ratingValue: reviewData.ratingValue.toString(),
+                bestRating: '10',
+                worstRating: '1',
+            },
+            author: { '@type': 'Person', 'name': reviewData.author.name, 'url': `${siteUrl}${reviewData.author.fullBioLink}` },
+            publisher: { '@type': 'Organization', name: siteName, logo: { '@type': 'ImageObject', url: `${siteUrl}/images/logo/your-logo-schema.png` } },
+            datePublished: publishDate,
+            dateModified: updateDate,
+        },
+        {
+            '@type': 'WebPage',
+            '@id': pageUrlFull, url: pageUrlFull, name: reviewData.title, description: reviewData.description,
+            inLanguage: 'en-US', isPartOf: { '@id': `${siteUrl}#website` }, primaryImageOfPage: { '@id': `${pageUrlFull}#primaryImage` },
+            breadcrumb: { '@id': `${pageUrlFull}#breadcrumbs` }, datePublished: publishDate, dateModified: updateDate,
+        },
+        {
+            '@type': 'ImageObject',
+            '@id': `${pageUrlFull}#primaryImage`, url: `${siteUrl}${reviewData.imageUrl}`,
+            width: reviewData.imageWidth, height: reviewData.imageHeight, caption: reviewData.cardName,
+        },
+        {
+            '@type': 'BreadcrumbList',
+            '@id': `${pageUrlFull}#breadcrumbs`,
+            itemListElement: [
+                { '@type': 'ListItem', position: 1, name: siteName, item: siteUrl },
+                { '@type': 'ListItem', position: 2, name: 'Credit Card Reviews', item: `${siteUrl}/reviews` },
+                { '@type': 'ListItem', position: 3, name: `${reviewData.cardName} Review`, item: pageUrlFull },
+            ],
+        },
+        {
+            '@type': 'FAQPage',
+            '@id': `${pageUrlFull}#faqs`,
+            mainEntity: faqsContent.map(faq => ({
+                '@type': 'Question', name: faq.q,
+                acceptedAnswer: { '@type': 'Answer', text: faq.a.replace(/<[^>]*>/g, '') }
+            })),
+        },
+        {
+            '@type': 'Organization',
+            '@id': `${siteUrl}#website`, name: siteName, url: siteUrl,
+            logo: { '@type': 'ImageObject', url: `${siteUrl}/images/logo/your-logo-schema.png` },
+            sameAs: ["https://www.facebook.com/YourTravelCardInsiderFacebookPage", "https://twitter.com/YourTravelCardInsiderTwitterHandle", "https://www.instagram.com/YourTravelCardInsiderInstaHandle"],
+        },
+    ],
 };
 
 const ratingCriteria = [
@@ -238,346 +242,288 @@ const contentImage1 = "/pexels-te-lensfix-380994-1371360 (1).webp";
 const contentImage2 = "/pexels-haleyve-2087391.webp";
 
 function DraggableTableWrapper({ children }) {
-  const containerRef = useRef(null);
-  useEffect(() => {
-    if (typeof window === 'undefined' || window.innerWidth < 768) return;
-    const el = containerRef.current;
-    if (!el) return;
-    let isDragging = false, startX = 0, scrollStart = 0;
-    const startDrag = (e) => {
-      isDragging = true; el.classList.add(styles.grabbing);
-      startX = e.pageX || e.touches?.[0]?.pageX; scrollStart = el.scrollLeft;
-    };
-    const stopDrag = () => { isDragging = false; el.classList.remove(styles.grabbing); };
-    const onMove = (e) => {
-      if (!isDragging) return; e.preventDefault();
-      const x = e.pageX || e.touches?.[0]?.pageX;
-      el.scrollLeft = scrollStart - (x - startX);
-    };
-    el.addEventListener('mousedown', startDrag);
-    document.addEventListener('mouseup', stopDrag);
-    el.addEventListener('mousemove', onMove);
-    return () => {
-      el.removeEventListener('mousedown', startDrag);
-      document.removeEventListener('mouseup', stopDrag);
-      el.removeEventListener('mousemove', onMove);
-    };
-  }, []);
-  return (<div ref={containerRef} className={styles.draggableScrollContainer}>{children}</div>);
+    const containerRef = useRef(null);
+    useEffect(() => {
+        if (typeof window === 'undefined' || window.innerWidth < 768) return;
+        const el = containerRef.current;
+        if (!el) return;
+        let isDragging = false, startX = 0, scrollStart = 0;
+        const startDrag = (e) => {
+            isDragging = true; el.classList.add(styles.grabbing);
+            startX = e.pageX || e.touches?.[0]?.pageX; scrollStart = el.scrollLeft;
+        };
+        const stopDrag = () => { isDragging = false; el.classList.remove(styles.grabbing); };
+        const onMove = (e) => {
+            if (!isDragging) return; e.preventDefault();
+            const x = e.pageX || e.touches?.[0]?.pageX;
+            el.scrollLeft = scrollStart - (x - startX);
+        };
+        el.addEventListener('mousedown', startDrag);
+        document.addEventListener('mouseup', stopDrag);
+        el.addEventListener('mousemove', onMove);
+        return () => {
+            el.removeEventListener('mousedown', startDrag);
+            document.removeEventListener('mouseup', stopDrag);
+            el.removeEventListener('mousemove', onMove);
+        };
+    }, []);
+    return (<div ref={containerRef} className={styles.draggableScrollContainer}>{children}</div>);
 }
 
 /* ──────────────────────────────
     MAIN COMPONENT
     ────────────────────────────── */
 function CapitalOneVentureRewardsReviewPage() {
-  const [showRatingInfo, setShowRatingInfo] = useState(false);
-  const ratingTooltipRef = useRef(null);
+    const [showRatingInfo, setShowRatingInfo] = useState(false);
+    const [showAuthorBioTooltip, setShowAuthorBioTooltip] = useState(false);
+    const authorRef = useRef(null);
+    const authorTooltipRef = useRef(null);
+    const ratingTooltipRef = useRef(null);
 
-  const handleIconClick = useCallback((event) => {
-      event.preventDefault(); event.stopPropagation(); setShowRatingInfo(prevState => !prevState);
-  }, []);
+    const handleIconClick = useCallback((event) => {
+        event.preventDefault(); event.stopPropagation(); setShowRatingInfo(prevState => !prevState);
+    }, []);
 
-  useEffect(() => {
-      function handleClickOutside(event) {
-          if (showRatingInfo && !event.target.closest(`.${styles.infoIconButton}`) && ratingTooltipRef.current && !ratingTooltipRef.current.contains(event.target)) {
-               setShowRatingInfo(false);
-          }
-      }
-      if (showRatingInfo) document.addEventListener("mousedown", handleClickOutside);
-      else document.removeEventListener("mousedown", handleClickOutside);
-      return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [showRatingInfo, ratingTooltipRef]);
+    const handleAuthorMouseEnter = useCallback(() => setShowAuthorBioTooltip(true), []);
+    const handleAuthorMouseLeave = useCallback(() => {
+        const timerId = setTimeout(() => {
+            if (authorRef.current && authorTooltipRef.current) {
+                const isHoveringTrigger = authorRef.current.matches(':hover');
+                const isHoveringTooltip = authorTooltipRef.current.matches(':hover');
+                if (!isHoveringTrigger && !isHoveringTooltip) {
+                    setShowAuthorBioTooltip(false);
+                }
+            } else if (!authorRef.current?.matches(':hover') && !authorTooltipRef.current?.matches(':hover')) {
+                setShowAuthorBioTooltip(false);
+            }
+        }, 150);
+        if (authorRef.current) authorRef.current.tooltipTimeoutId = timerId;
+    }, [authorRef, authorTooltipRef]);
 
-  const summaryBoxData = {
-    welcomeOffer: `Earn <a href="${reviewData.urls.offerDetails}" target="_blank" rel="noopener noreferrer sponsored">75,000 bonus miles</a> after spending $4,000 in the first 3 months.`,
-    annualFee: `<a href="${reviewData.ratesFeesLink}" target="_blank" rel="noopener noreferrer sponsored">$${reviewData.annualFee}</a>.`,
-    topEarning: `Unlimited 2X miles on every purchase, plus <a href="${reviewData.urls.travelPortal}" target="_blank" rel="noopener noreferrer sponsored">5X on hotels & rental cars</a> via Capital One Travel.`,
-    keyPerks: `<a href="${reviewData.urls.globalEntry}" target="_blank" rel="noopener noreferrer sponsored">Up to $100 credit</a> for Global Entry or TSA PreCheck®, plus <a href="${reviewData.urls.loungeAccess}" target="_blank" rel="noopener noreferrer sponsored">2 annual lounge visits</a>.`,
-    bestFor: "Travelers who want a simple, high-value rewards card with ultimate flexibility and no complex categories to track."
-  };
+    const handleAuthorClearTimeout = useCallback(() => {
+        if (authorRef.current?.tooltipTimeoutId) clearTimeout(authorRef.current.tooltipTimeoutId);
+    }, [authorRef]);
 
-  const keyFeaturesTableData = [
-    { feature: "Annual Fee", details: `<a href="${reviewData.ratesFeesLink}" target="_blank" rel="noopener noreferrer sponsored">$95</a>` },
-    { feature: "Welcome Bonus", details: `75,000 bonus miles after spending $4,000 on purchases within the first 3 months. <a href="${reviewData.urls.offerDetails}" target="_blank" rel="noopener noreferrer sponsored">(Source)</a>` },
-    { feature: "Base Rewards Rate", details: "Unlimited 2X miles on every purchase, every day." },
-    { feature: "Bonus Rewards", details: `5 miles per dollar on hotels and rental cars booked through Capital One Travel. <a href="${reviewData.urls.travelPortal}" target="_blank" rel="noopener noreferrer sponsored">(Source)</a>` },
-    { feature: "Global Entry/TSA PreCheck® Credit", details: `Up to $100 statement credit for the application fee. <a href="${reviewData.urls.globalEntry}" target="_blank" rel="noopener noreferrer sponsored">(Source)</a>` },
-    { feature: "Lounge Access", details: `2 complimentary visits per year to Capital One Lounges or Plaza Premium Lounges. <a href="${reviewData.urls.loungeAccess}" target="_blank" rel="noopener noreferrer sponsored">(Source)</a>` },
-    { feature: "Foreign Transaction Fees", details: "None." },
-    { feature: "Credit Needed", details: "Good to Excellent" },
-  ];
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (showAuthorBioTooltip && authorRef.current && !authorRef.current.contains(event.target) && authorTooltipRef.current && !authorTooltipRef.current.contains(event.target)) {
+                setShowAuthorBioTooltip(false);
+            }
+            if (showRatingInfo && !event.target.closest(`.${styles.infoIconButton}`) && ratingTooltipRef.current && !ratingTooltipRef.current.contains(event.target)) {
+                setShowRatingInfo(false);
+            }
+        }
+        if (showAuthorBioTooltip || showRatingInfo) document.addEventListener("mousedown", handleClickOutside);
+        else document.removeEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+            if (authorRef.current?.tooltipTimeoutId) clearTimeout(authorRef.current.tooltipTimeoutId);
+        };
+    }, [showAuthorBioTooltip, authorRef, authorTooltipRef, showRatingInfo, ratingTooltipRef]);
+
+    const summaryBoxData = {
+        welcomeOffer: `Earn <a href="${reviewData.urls.offerDetails}" target="_blank" rel="noopener noreferrer sponsored">75,000 bonus miles</a> after spending $4,000 in the first 3 months.`,
+        annualFee: `<a href="${reviewData.ratesFeesLink}" target="_blank" rel="noopener noreferrer sponsored">$${reviewData.annualFee}</a>.`,
+        topEarning: `Unlimited 2X miles on every purchase, plus <a href="${reviewData.urls.travelPortal}" target="_blank" rel="noopener noreferrer sponsored">5X on hotels & rental cars</a> via Capital One Travel.`,
+        keyPerks: `<a href="${reviewData.urls.globalEntry}" target="_blank" rel="noopener noreferrer sponsored">Up to $100 credit</a> for Global Entry or TSA PreCheck®, plus <a href="${reviewData.urls.loungeAccess}" target="_blank" rel="noopener noreferrer sponsored">2 annual lounge visits</a>.`,
+        bestFor: "Travelers who want a simple, high-value rewards card with ultimate flexibility and no complex categories to track."
+    };
+
+    const keyFeaturesTableData = [
+        { feature: "Annual Fee", details: `<a href="${reviewData.ratesFeesLink}" target="_blank" rel="noopener noreferrer sponsored">$95</a>` },
+        { feature: "Welcome Bonus", details: `75,000 bonus miles after spending $4,000 on purchases within the first 3 months. <a href="${reviewData.urls.offerDetails}" target="_blank" rel="noopener noreferrer sponsored">(Source)</a>` },
+        { feature: "Base Rewards Rate", details: "Unlimited 2X miles on every purchase, every day." },
+        { feature: "Bonus Rewards", details: `5 miles per dollar on hotels and rental cars booked through Capital One Travel. <a href="${reviewData.urls.travelPortal}" target="_blank" rel="noopener noreferrer sponsored">(Source)</a>` },
+        { feature: "Global Entry/TSA PreCheck® Credit", details: `Up to $100 statement credit for the application fee. <a href="${reviewData.urls.globalEntry}" target="_blank" rel="noopener noreferrer sponsored">(Source)</a>` },
+        { feature: "Lounge Access", details: `2 complimentary visits per year to Capital One Lounges or Plaza Premium Lounges. <a href="${reviewData.urls.loungeAccess}" target="_blank" rel="noopener noreferrer sponsored">(Source)</a>` },
+        { feature: "Foreign Transaction Fees", details: "None." },
+        { feature: "Credit Needed", details: "Good to Excellent" },
+    ];
   
-  const sectionContent = {
-    'section-intro': `<p>The modern traveler is often caught in a paradox of choice. The credit card market is a dizzying landscape of complex rewards programs, each promising a faster path to a free vacation. If you're new to this world, our guide to <a href="${reviewData.urls.internal.creditCardBasics}" class="${styles.inlineLink}">credit card basics</a> can help. Cardholders find themselves juggling multiple cards, trying to remember which one offers 5X points on groceries this quarter, which provides 3X on dining, and which requires navigating a labyrinth of transfer partner charts to unlock value. This "mental load" can turn the exciting game of earning rewards into a chore, leaving many to wonder if there's a simpler, more elegant way to fund their adventures.</p><p>This environment of complexity is precisely where the <strong>${reviewData.cardName}</strong> carves out its identity. It was designed as an answer to the traveler's dilemma, built on a foundation of powerful simplicity.</p>`,
-    'section-snapshot': `<p>For those seeking a quick overview, here are the core features that define the ${reviewData.cardName}. These are the essential facts you need to know, distilled into a simple, scannable format.</p>`,
-    'section-philosophy': `<p>The Capital One Venture card’s philosophy is built on a brilliant, two-pronged approach that masterfully caters to both simplicity and the opportunity for maximization. It proposes that earning valuable travel rewards shouldn't require a spreadsheet. This review will explore every facet of the Venture card, from its straightforward earning engine to its flexible redemption paths, to determine if it truly delivers on its promise of making travel more rewarding without the headache.</p>`,
-    'section-welcome-bonus': `<p>The Capital One Venture card greets new cardholders with a substantial welcome offer: earn <strong>75,000 bonus miles</strong> after spending $4,000 on purchases within the first 3 months of account opening. <a href="${reviewData.urls.offerDetails}" target="_blank" rel="noopener noreferrer sponsored" class="${styles.inlineLink}">(Source: Capital One, Venture Rewards Card Application Page)</a></p><p>This bonus provides a significant head start on travel savings. When redeemed for travel, these 75,000 miles translate directly into <strong>$750 worth of travel</strong>. That's enough value to cover a round-trip flight to many domestic destinations, a multi-night stay at a quality hotel, or an entire weekend getaway rental car. It is one of the most generous welcome offers available for a card with an annual fee under $100, providing immediate, overwhelming value in the first year.</p>`,
-    'section-earning-engine': `<h3>The Foundation - Unlimited 2X Miles on Everything</h3><p>The bedrock of the Venture card's appeal is its unlimited 2 miles per dollar earning rate on every single purchase. This is not a promotional rate, and there are no caps or categories to track. From your morning coffee and weekly grocery haul to your monthly utility bills and your child's soccer club fees, every transaction earns a consistent 2X miles. This structure eliminates the need to carry multiple cards for different types of spending, making the Venture card a powerful "catch-all" card. <a href="${reviewData.urls.rewardsProgram}" target="_blank" rel="noopener noreferrer sponsored" class="${styles.inlineLink}">(Source: Capital One, Venture Rewards Card Benefits)</a></p><h3>The Accelerator - 5X Miles via Capital One Travel</h3><p>For cardholders willing to engage a bit more strategically, the card offers an accelerated earning tier. Purchases of hotels and rental cars made through the Capital One Travel portal earn an elevated 5 miles per dollar. <a href="${reviewData.urls.travelPortal}" target="_blank" rel="noopener noreferrer sponsored" class="${styles.inlineLink}">(Source: Capital One, Capital One Travel Portal Terms)</a></p><p>This dual structure creates two distinct user pathways: use the card as a simple, everyday 2X workhorse, or strategically use the portal for specific travel bookings to significantly boost your mileage balance.</p>`,
-    'section-redeeming-value': `<h3>Path 1: The Ultimate in Simplicity (Cover Your Travel Purchases)</h3><p>The card's signature redemption feature allows you to use your miles to receive a statement credit for any purchase coded as "travel" made within the past 90 days. This includes a broad range of expenses like flights on any airline, stays at any hotel, rental cars, cruises, train tickets, and even some rideshare services. Miles are redeemed at a fixed value of 1 cent per mile.</p><h3>Path 2: Other Options (Cash Back & Gift Cards)</h3><p>For maximum flexibility, miles can also be redeemed for non-travel options like cash back or gift cards. However, this path comes with a significant trade-off, as the redemption rate is typically much lower (often 0.5 cents per mile). This option should generally be avoided. <a href="${reviewData.urls.rewardsRedemption}" target="_blank" rel="noopener noreferrer sponsored" class="${styles.inlineLink}">(Source: Capital One, Rewards Redemption Catalog)</a></p>`,
-    'section-transfer-partners': `<p>For those looking to elevate their rewards game, the most powerful redemption method is transferring miles to Capital One's network of over 15 airline and hotel loyalty programs. By moving miles to a partner program, it's possible to book premium cabin flights or hotel stays for a fraction of their cash price. <a href="${reviewData.urls.transferPartners}" target="_blank" rel="noopener noreferrer sponsored" class="${styles.inlineLink}">(Source: Capital One, Mileage Transfer Program Details)</a></p><p>Key transfer partners include Air Canada Aeroplan, Air France/KLM Flying Blue, and British Airways Executive Club. While there are no direct major U.S. airline partners, you can use these international programs to book flights on their U.S. alliance partners (e.g., use British Airways Avios to book an American Airlines flight). This workaround is the key to unlocking domestic travel with this advanced strategy.</p>`,
-    'section-lounge-access': `<p>The Venture card provides a taste of airport lounge luxury without a premium price tag. Each year, cardholders receive two complimentary lounge visits. These passes can be used at the growing network of Capital One Lounges or at any lounge within the global Plaza Premium network. This is a clear step up from no-annual-fee cards and serves as a perfect introduction to a valuable travel perk for the occasional traveler. For more on this, see our <a href="${reviewData.urls.internal.loungeAccessGuide}" class="${styles.inlineLink}">ultimate guide to lounge access</a>. <a href="${reviewData.urls.loungeAccess}" target="_blank" rel="noopener noreferrer sponsored" class="${styles.inlineLink}">(Source: Capital One, Airport Lounge Access Benefits)</a></p><p>The card also includes the Global Entry & TSA PreCheck® Credit. One of the most tangible benefits of the Venture card is its statement credit for either Global Entry or TSA PreCheck®. When a cardholder uses their Venture card to pay the application fee, Capital One will provide a statement credit to cover the cost, up to $100. This benefit is available once every four years. <a href="${reviewData.urls.globalEntry}" target="_blank" rel="noopener noreferrer sponsored" class="${styles.inlineLink}">(Source: U.S. Department of Homeland Security, Trusted Traveler Programs)</a></p>`,
-    'section-annual-fee': `<p>A key question for any card with an annual fee is whether its benefits justify the cost. For the Venture card, the math is compelling. In year one, the $100 Global Entry credit more than offsets the $95 fee.</p><p>In subsequent years, the value depends on your spending. To offset the $95 fee purely with rewards, you'd need to earn 9,500 miles. With the 2X earning rate, this requires spending $4,750 on the card annually, or just under $400 per month. For most individuals using this as their primary card, this threshold is easily achievable.</p>`,
-    'section-user-profile': `<p>The "best" credit card is highly personal. To help determine if the Venture card aligns with your habits, use our <a href="${reviewData.urls.internal.cardFinder}" class="${styles.inlineLink}">Card Finder tool</a> or consider these three profiles.</p><h3>Profile 1: "The Casual Adventurer"</h3><p>This individual travels one to three times per year and wants simple rewards. The Venture card is a perfect fit, offering easy earning and straightforward redemptions.</p><h3>Profile 2: "The Aspiring Points Pro"</h3><p>This person is interested in travel rewards but intimidated by high fees. The Venture card is a fantastic gateway into the world of transferable rewards, making it one of the <a href="${reviewData.urls.internal.bestStarterCards}" class="${styles.inlineLink}">best starter travel cards</a> without a steep commitment.</p><h3>Profile 3: "The Road Warrior"</h3><p>This individual travels frequently and needs premium perks. The Venture is a good card, but the <a href="${reviewData.urls.internal.ventureVsVentureX}" class="${styles.inlineLink}">Capital One Venture X</a> is likely a better fit due to its unlimited lounge access and superior travel credits.</p>`,
-    'section-real-world-example': `<h3>Calculating Your Savings on a Weekend Getaway</h3><p>To make the value of Venture miles tangible, consider this hypothetical weekend trip for two.</p><ul><li><strong>Flights:</strong> $600 (Miles Earned: 1,200)</li><li><strong>Hotel (via C1 Portal):</strong> $900 (Miles Earned: 4,500)</li><li><strong>Rental Car (via C1 Portal):</strong> $200 (Miles Earned: 1,000)</li><li><strong>Dining & Activities:</strong> $500 (Miles Earned: 1,000)</li><li><strong>Total Miles Earned from Trip: 7,700 miles</strong></li></ul><p>If the cardholder uses 60,000 miles from their welcome bonus to "erase" the $600 flight cost, their flights become free. This example demonstrates how the welcome bonus alone can fund a significant portion of a vacation.</p>`,
-    'section-competitors': `<p>The Venture card's value is best understood when compared against its primary rivals. Use our <a href="${reviewData.urls.internal.compareTool}" class="${styles.inlineLink}">card comparison tool</a> to see a side-by-side analysis.</p>`,
-    'section-testimonials': `<div class="${styles.testimonialContainer}"><blockquote class="${styles.testimonialQuote}"><p>"I love that I don't have to think. I use it for my business supplies and groceries and know I'm getting a solid 2X return. The simplicity is its best feature."</p><footer>– Sarah, the Side-Hustler</footer></blockquote><blockquote class="${styles.testimonialQuote}"><p>"I was floored when they approved me for a $20,000 limit. It was far more than I expected and made it easy to put larger expenses on it to earn miles."</p><footer>– James, the Homeowner</footer></blockquote><blockquote class="${styles.testimonialQuote}"><p>"I was happy until I tried to cancel a car rental booked through the portal. Getting the points refunded was a nightmare... It’s a reminder that portals can add complexity."</p><footer>– Maria, the Planner</footer></blockquote><blockquote class="${styles.testimonialQuote}"><p>"No direct partner for Delta is the big drawback for me. I know you can book through partners, but I'd prefer the convenience of transferring directly to the airline I actually fly."</p><footer>– David, the Loyal Flyer</footer></blockquote><blockquote class="${styles.testimonialQuote}"><p>"My advice? Go for the Venture X if you travel more than twice a year. The $300 travel credit makes its effective annual fee the same as the regular Venture, but with way more perks."</p><footer>– Chloe, the Upgrader</footer></blockquote></div>`,
-    'section-understated-perks': `<p>Beyond the headliners, the Venture card includes valuable benefits you shouldn't ignore. When booking hotels through the Capital One Travel portal, Venture cardholders gain access to the Lifestyle Collection, a curated selection of stylish and boutique hotels worldwide. Booking a stay from this collection unlocks a suite of valuable perks designed to enhance the travel experience, including a $50 experience credit, potential room upgrades, and early check-in/late-check-out when available. <a href="${reviewData.urls.lifestyleCollection}" target="_blank" rel="noopener noreferrer sponsored" class="${styles.inlineLink}">(Source)</a></p><p>The card also comes equipped with a suite of insurance and protection benefits. Key among them is the Auto Rental Collision Damage Waiver. This coverage is secondary within your country of residence but becomes primary for most international rentals. For a deeper dive, check out our list of the <a href="${reviewData.urls.internal.travelInsuranceCards}" class="${styles.inlineLink}">best cards for travel insurance</a>. <a href="${reviewData.urls.benefitsGuide}" target="_blank" rel="noopener noreferrer sponsored" class="${styles.inlineLink}">(Source)</a> Finally, Capital One supports its cards with a strong suite of modern, user-friendly digital tools, including the highly-rated mobile app and Eno®, the Capital One Assistant for virtual card numbers. <a href="${reviewData.urls.security}" target="_blank" rel="noopener noreferrer sponsored" class="${styles.inlineLink}">(Source)</a></p>`,
-    'section-final-verdict': `<p>After an exhaustive analysis, the <strong>${reviewData.cardName}</strong> stands firm as the champion of powerful simplicity in the travel rewards world. It’s not the flashiest card, nor is it designed for the elite-status road warrior. Instead, it is an elegant and effective tool for the vast majority of American travelers who want their everyday spending to lead to more affordable adventures.</p><p>The card’s genius lies in its unwavering 2X earning rate and the beautifully intuitive "Cover Your Travel Purchases" redemption feature. These two elements work in perfect harmony to remove the friction that plagues so many other rewards programs. The substantial welcome bonus and the Global Entry credit provide an immense burst of first-year value that is nearly impossible for no-fee cards to overcome.</p><p>While the lack of direct U.S. airline transfer partners is a valid critique for advanced users, it’s a non-issue for the target audience who values flexibility over complex optimization.</p><p>If you are looking for one card to make travel simpler and cheaper, the Capital One Venture Card is an outstanding choice. It delivers on its promise, turning your daily life into your next destination with unparalleled ease.</p>`,
-    'section-faqs-jump': `<p>Here are answers to the most common questions about the ${reviewData.cardName}:</p>`,
-    'section-eat': `<p>At <strong>${siteName}</strong>, we are committed to providing content that exemplifies Expertise, Authoritativeness, and Trustworthiness (E-A-T). This review of the <strong>${reviewData.cardName}</strong> has been meticulously researched and crafted.</p><p>We've analyzed the card's features, benefits, rewards structure, and fees, referencing official issuer documentation and considering real-world user experiences and data points from the travel rewards community. Our goal is to present a balanced, comprehensive, and reliable guide to help you make an informed decision. All information is current as of <strong>${new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</strong>, but we always recommend verifying details directly with the issuer as terms can change.</p>`
-  };
+    const sectionContent = {
+        'section-intro': `<p>The modern traveler is often caught in a paradox of choice. The credit card market is a dizzying landscape of complex rewards programs, each promising a faster path to a free vacation. If you're new to this world, our guide to <a href="${reviewData.urls.internal.creditCardBasics}" class="${styles.inlineLink}">credit card basics</a> can help. Cardholders find themselves juggling multiple cards, trying to remember which one offers 5X points on groceries this quarter, which provides 3X on dining, and which requires navigating a labyrinth of transfer partner charts to unlock value. This "mental load" can turn the exciting game of earning rewards into a chore, leaving many to wonder if there's a simpler, more elegant way to fund their adventures.</p><p>This environment of complexity is precisely where the <strong>${reviewData.cardName}</strong> carves out its identity. It was designed as an answer to the traveler's dilemma, built on a foundation of powerful simplicity.</p>`,
+        'section-snapshot': `<p>For those seeking a quick overview, here are the core features that define the ${reviewData.cardName}. These are the essential facts you need to know, distilled into a simple, scannable format.</p>`,
+        'section-philosophy': `<p>The Capital One Venture card’s philosophy is built on a brilliant, two-pronged approach that masterfully caters to both simplicity and the opportunity for maximization. It proposes that earning valuable travel rewards shouldn't require a spreadsheet. This review will explore every facet of the Venture card, from its straightforward earning engine to its flexible redemption paths, to determine if it truly delivers on its promise of making travel more rewarding without the headache.</p>`,
+        'section-welcome-bonus': `<p>The Capital One Venture card greets new cardholders with a substantial welcome offer: earn <strong>75,000 bonus miles</strong> after spending $4,000 on purchases within the first 3 months of account opening. <a href="${reviewData.urls.offerDetails}" target="_blank" rel="noopener noreferrer sponsored" class="${styles.inlineLink}">(Source: Capital One, Venture Rewards Card Application Page)</a></p><p>This bonus provides a significant head start on travel savings. When redeemed for travel, these 75,000 miles translate directly into <strong>$750 worth of travel</strong>. That's enough value to cover a round-trip flight to many domestic destinations, a multi-night stay at a quality hotel, or an entire weekend getaway rental car. It is one of the most generous welcome offers available for a card with an annual fee under $100, providing immediate, overwhelming value in the first year.</p>`,
+        'section-earning-engine': `<h3>The Foundation - Unlimited 2X Miles on Everything</h3><p>The bedrock of the Venture card's appeal is its unlimited 2 miles per dollar earning rate on every single purchase. This is not a promotional rate, and there are no caps or categories to track. From your morning coffee and weekly grocery haul to your monthly utility bills and your child's soccer club fees, every transaction earns a consistent 2X miles. This structure eliminates the need to carry multiple cards for different types of spending, making the Venture card a powerful "catch-all" card. <a href="${reviewData.urls.rewardsProgram}" target="_blank" rel="noopener noreferrer sponsored" class="${styles.inlineLink}">(Source: Capital One, Venture Rewards Card Benefits)</a></p><h3>The Accelerator - 5X Miles via Capital One Travel</h3><p>For cardholders willing to engage a bit more strategically, the card offers an accelerated earning tier. Purchases of hotels and rental cars made through the Capital One Travel portal earn an elevated 5 miles per dollar. <a href="${reviewData.urls.travelPortal}" target="_blank" rel="noopener noreferrer sponsored" class="${styles.inlineLink}">(Source: Capital One, Capital One Travel Portal Terms)</a></p><p>This dual structure creates two distinct user pathways: use the card as a simple, everyday 2X workhorse, or strategically use the portal for specific travel bookings to significantly boost your mileage balance.</p>`,
+        'section-redeeming-value': `<h3>Path 1: The Ultimate in Simplicity (Cover Your Travel Purchases)</h3><p>The card's signature redemption feature allows you to use your miles to receive a statement credit for any purchase coded as "travel" made within the past 90 days. This includes a broad range of expenses like flights on any airline, stays at any hotel, rental cars, cruises, train tickets, and even some rideshare services. Miles are redeemed at a fixed value of 1 cent per mile.</p><h3>Path 2: Other Options (Cash Back & Gift Cards)</h3><p>For maximum flexibility, miles can also be redeemed for non-travel options like cash back or gift cards. However, this path comes with a significant trade-off, as the redemption rate is typically much lower (often 0.5 cents per mile). This option should generally be avoided. <a href="${reviewData.urls.rewardsRedemption}" target="_blank" rel="noopener noreferrer sponsored" class="${styles.inlineLink}">(Source: Capital One, Rewards Redemption Catalog)</a></p>`,
+        'section-transfer-partners': `<p>For those looking to elevate their rewards game, the most powerful redemption method is transferring miles to Capital One's network of over 15 airline and hotel loyalty programs. By moving miles to a partner program, it's possible to book premium cabin flights or hotel stays for a fraction of their cash price. <a href="${reviewData.urls.transferPartners}" target="_blank" rel="noopener noreferrer sponsored" class="${styles.inlineLink}">(Source: Capital One, Mileage Transfer Program Details)</a></p><p>Key transfer partners include Air Canada Aeroplan, Air France/KLM Flying Blue, and British Airways Executive Club. While there are no direct major U.S. airline partners, you can use these international programs to book flights on their U.S. alliance partners (e.g., use British Airways Avios to book an American Airlines flight). This workaround is the key to unlocking domestic travel with this advanced strategy.</p>`,
+        'section-lounge-access': `<p>The Venture card provides a taste of airport lounge luxury without a premium price tag. Each year, cardholders receive two complimentary lounge visits. These passes can be used at the growing network of Capital One Lounges or at any lounge within the global Plaza Premium network. This is a clear step up from no-annual-fee cards and serves as a perfect introduction to a valuable travel perk for the occasional traveler. For more on this, see our <a href="${reviewData.urls.internal.loungeAccessGuide}" class="${styles.inlineLink}">ultimate guide to lounge access</a>. <a href="${reviewData.urls.loungeAccess}" target="_blank" rel="noopener noreferrer sponsored" class="${styles.inlineLink}">(Source: Capital One, Airport Lounge Access Benefits)</a></p><p>The card also includes the Global Entry & TSA PreCheck® Credit. One of the most tangible benefits of the Venture card is its statement credit for either Global Entry or TSA PreCheck®. When a cardholder uses their Venture card to pay the application fee, Capital One will provide a statement credit to cover the cost, up to $100. This benefit is available once every four years. <a href="${reviewData.urls.globalEntry}" target="_blank" rel="noopener noreferrer sponsored" class="${styles.inlineLink}">(Source: U.S. Department of Homeland Security, Trusted Traveler Programs)</a></p>`,
+        'section-annual-fee': `<p>A key question for any card with an annual fee is whether its benefits justify the cost. For the Venture card, the math is compelling. In year one, the $100 Global Entry credit more than offsets the $95 fee.</p><p>In subsequent years, the value depends on your spending. To offset the $95 fee purely with rewards, you'd need to earn 9,500 miles. With the 2X earning rate, this requires spending $4,750 on the card annually, or just under $400 per month. For most individuals using this as their primary card, this threshold is easily achievable.</p>`,
+        'section-user-profile': `<p>The "best" credit card is highly personal. To help determine if the Venture card aligns with your habits, use our <a href="${reviewData.urls.internal.cardFinder}" class="${styles.inlineLink}">Card Finder tool</a> or consider these three profiles.</p><h3>Profile 1: "The Casual Adventurer"</h3><p>This individual travels one to three times per year and wants simple rewards. The Venture card is a perfect fit, offering easy earning and straightforward redemptions.</p><h3>Profile 2: "The Aspiring Points Pro"</h3><p>This person is interested in travel rewards but intimidated by high fees. The Venture card is a fantastic gateway into the world of transferable rewards, making it one of the <a href="${reviewData.urls.internal.bestStarterCards}" class="${styles.inlineLink}">best starter travel cards</a> without a steep commitment.</p><h3>Profile 3: "The Road Warrior"</h3><p>This individual travels frequently and needs premium perks. The Venture is a good card, but the <a href="${reviewData.urls.internal.ventureVsVentureX}" class="${styles.inlineLink}">Capital One Venture X</a> is likely a better fit due to its unlimited lounge access and superior travel credits.</p>`,
+        'section-real-world-example': `<h3>Calculating Your Savings on a Weekend Getaway</h3><p>To make the value of Venture miles tangible, consider this hypothetical weekend trip for two.</p><ul><li><strong>Flights:</strong> $600 (Miles Earned: 1,200)</li><li><strong>Hotel (via C1 Portal):</strong> $900 (Miles Earned: 4,500)</li><li><strong>Rental Car (via C1 Portal):</strong> $200 (Miles Earned: 1,000)</li><li><strong>Dining & Activities:</strong> $500 (Miles Earned: 1,000)</li><li><strong>Total Miles Earned from Trip: 7,700 miles</strong></li></ul><p>If the cardholder uses 60,000 miles from their welcome bonus to "erase" the $600 flight cost, their flights become free. This example demonstrates how the welcome bonus alone can fund a significant portion of a vacation.</p>`,
+        'section-competitors': `<p>The Venture card's value is best understood when compared against its primary rivals. Use our <a href="${reviewData.urls.internal.compareTool}" class="${styles.inlineLink}">card comparison tool</a> to see a side-by-side analysis.</p>`,
+        'section-testimonials': `<div class="${styles.testimonialContainer}"><blockquote class="${styles.testimonialQuote}"><p>"I love that I don't have to think. I use it for my business supplies and groceries and know I'm getting a solid 2X return. The simplicity is its best feature."</p><footer>– Sarah, the Side-Hustler</footer></blockquote><blockquote class="${styles.testimonialQuote}"><p>"I was floored when they approved me for a $20,000 limit. It was far more than I expected and made it easy to put larger expenses on it to earn miles."</p><footer>– James, the Homeowner</footer></blockquote><blockquote class="${styles.testimonialQuote}"><p>"I was happy until I tried to cancel a car rental booked through the portal. Getting the points refunded was a nightmare... It’s a reminder that portals can add complexity."</p><footer>– Maria, the Planner</footer></blockquote><blockquote class="${styles.testimonialQuote}"><p>"No direct partner for Delta is the big drawback for me. I know you can book through partners, but I'd prefer the convenience of transferring directly to the airline I actually fly."</p><footer>– David, the Loyal Flyer</footer></blockquote><blockquote class="${styles.testimonialQuote}"><p>"My advice? Go for the Venture X if you travel more than twice a year. The $300 travel credit makes its effective annual fee the same as the regular Venture, but with way more perks."</p><footer>– Chloe, the Upgrader</footer></blockquote></div>`,
+        'section-understated-perks': `<p>Beyond the headliners, the Venture card includes valuable benefits you shouldn't ignore. When booking hotels through the Capital One Travel portal, Venture cardholders gain access to the Lifestyle Collection, a curated selection of stylish and boutique hotels worldwide. Booking a stay from this collection unlocks a suite of valuable perks designed to enhance the travel experience, including a $50 experience credit, potential room upgrades, and early check-in/late-check-out when available. <a href="${reviewData.urls.lifestyleCollection}" target="_blank" rel="noopener noreferrer sponsored" class="${styles.inlineLink}">(Source)</a></p><p>The card also comes equipped with a suite of insurance and protection benefits. Key among them is the Auto Rental Collision Damage Waiver. This coverage is secondary within your country of residence but becomes primary for most international rentals. For a deeper dive, check out our list of the <a href="${reviewData.urls.internal.travelInsuranceCards}" class="${styles.inlineLink}">best cards for travel insurance</a>. <a href="${reviewData.urls.benefitsGuide}" target="_blank" rel="noopener noreferrer sponsored" class="${styles.inlineLink}">(Source)</a> Finally, Capital One supports its cards with a strong suite of modern, user-friendly digital tools, including the highly-rated mobile app and Eno®, the Capital One Assistant for virtual card numbers. <a href="${reviewData.urls.security}" target="_blank" rel="noopener noreferrer sponsored" class="${styles.inlineLink}">(Source)</a></p>`,
+        'section-final-verdict': `<p>After an exhaustive analysis, the <strong>${reviewData.cardName}</strong> stands firm as the champion of powerful simplicity in the travel rewards world. It’s not the flashiest card, nor is it designed for the elite-status road warrior. Instead, it is an elegant and effective tool for the vast majority of American travelers who want their everyday spending to lead to more affordable adventures.</p><p>The card’s genius lies in its unwavering 2X earning rate and the beautifully intuitive "Cover Your Travel Purchases" redemption feature. These two elements work in perfect harmony to remove the friction that plagues so many other rewards programs. The substantial welcome bonus and the Global Entry credit provide an immense burst of first-year value that is nearly impossible for no-fee cards to overcome.</p><p>While the lack of direct U.S. airline transfer partners is a valid critique for advanced users, it’s a non-issue for the target audience who values flexibility over complex optimization.</p><p>If you are looking for one card to make travel simpler and cheaper, the Capital One Venture Card is an outstanding choice. It delivers on its promise, turning your daily life into your next destination with unparalleled ease.</p>`,
+        'section-faqs-jump': `<p>Here are answers to the most common questions about the ${reviewData.cardName}:</p>`,
+        'section-eat': `<p>At <strong>${siteName}</strong>, we are committed to providing content that exemplifies Expertise, Authoritativeness, and Trustworthiness (E-A-T). This review of the <strong>${reviewData.cardName}</strong> has been meticulously researched and crafted.</p><p>We've analyzed the card's features, benefits, rewards structure, and fees, referencing official issuer documentation and considering real-world user experiences and data points from the travel rewards community. Our goal is to present a balanced, comprehensive, and reliable guide to help you make an informed decision. All information is current as of <strong>${new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</strong>, but we always recommend verifying details directly with the issuer as terms can change.</p>`
+    };
 
-  return (
-    <div>
-      <Head>
-        <title>{reviewData.title} - {siteName}</title>
-        <meta name="description" content={reviewData.description} />
-        <meta name="keywords" content={reviewData.keywords} />
-        <meta name="author" content={reviewData.author.name} />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <meta name="robots" content="index,follow,max-image-preview:large" />
-        <link rel="canonical" href={pageUrlFull} />
-        <link rel="alternate" href={pageUrlFull} hreflang="en-us" />
-        <meta property="og:type" content="article" />
-        <meta property="og:site_name" content={siteName} />
-        <meta property="og:title" content={reviewData.title} />
-        <meta property="og:description" content={reviewData.description} />
-        <meta property="og:url" content={pageUrlFull} />
-        <meta property="og:image" content={`${siteUrl}${reviewData.imageUrl}`} />
-        <meta property="article:published_time" content={publishDate} />
-        <meta property="article:modified_time"  content={updateDate} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@YourTravelCardInsiderTwitterHandle" />
-        <meta name="twitter:title" content={reviewData.title} />
-        <meta name="twitter:description" content={reviewData.description} />
-        <meta name="twitter:image" content={`${siteUrl}${reviewData.imageUrl}`} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredDataOptimized) }} />
-      </Head>
+    return (
+        <div>
+            <Head>
+                <title>{reviewData.title} - {siteName}</title>
+                <meta name="description" content={reviewData.description} />
+                <meta name="keywords" content={reviewData.keywords} />
+                <meta name="author" content={reviewData.author.name} />
+                <meta name="viewport" content="width=device-width,initial-scale=1" />
+                <meta name="robots" content="index,follow,max-image-preview:large" />
+                <link rel="canonical" href={pageUrlFull} />
+                <link rel="alternate" href={pageUrlFull} hreflang="en-us" />
+                <meta property="og:type" content="article" />
+                <meta property="og:site_name" content={siteName} />
+                <meta property="og:title" content={reviewData.title} />
+                <meta property="og:description" content={reviewData.description} />
+                <meta property="og:url" content={pageUrlFull} />
+                <meta property="og:image" content={`${siteUrl}${reviewData.imageUrl}`} />
+                <meta property="article:published_time" content={publishDate} />
+                <meta property="article:modified_time" content={updateDate} />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:site" content="@YourTravelCardInsiderTwitterHandle" />
+                <meta name="twitter:title" content={reviewData.title} />
+                <meta name="twitter:description" content={reviewData.description} />
+                <meta name="twitter:image" content={`${siteUrl}${reviewData.imageUrl}`} />
+                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredDataOptimized) }} />
+            </Head>
 
-      <main>
-        <div className={styles.reviewPageLayout}>
-          <div className={styles.mainContentArea}>
-            <section className={styles.heroSection}>
-                <div className={styles.heroTextContainer}>
-                    <h1 className={styles.heroTitle} dangerouslySetInnerHTML={{ __html: reviewData.h1Content }}></h1>
-                     <p className={styles.reviewedByLine}>
-                        Expert review by{' '}
-                        <Link href={reviewData.author.fullBioLink || '#'} legacyBehavior>
-                            <a className={styles.authorNameLink}>{reviewData.author.name}</a>
-                        </Link>
-                        . Last updated: {new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-                    </p>
-                    <p className={styles.heroSubtitle} dangerouslySetInnerHTML={{ __html: reviewData.heroSubtitle }}></p>
-                    <div className={styles.heroCtaContainer}>
-                        <div>
-                            <a href={reviewData.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.applyNowButton} ${styles.heroApplyButton}`}>
-                                Apply Now
-                            </a>
-                            <span className={styles.heroApplyButtonDisclaimer}>on Capital One's official site</span>
+            <main>
+                <div className={styles.reviewPageLayout}>
+                    <div className={styles.mainContentArea}>
+                        <section className={styles.heroSection}>
+                            <div className={styles.heroTextContainer}>
+                                <h1 className={styles.heroTitle} dangerouslySetInnerHTML={{ __html: reviewData.h1Content }}></h1>
+                                <div
+                                    className={styles.reviewedByLine}
+                                    ref={authorRef}
+                                    onMouseEnter={() => { handleAuthorClearTimeout(); handleAuthorMouseEnter(); }}
+                                    onMouseLeave={handleAuthorMouseLeave}
+                                    onFocus={handleAuthorMouseEnter}
+                                    onBlur={handleAuthorMouseLeave}
+                                    aria-haspopup="true"
+                                    aria-expanded={showAuthorBioTooltip}
+                                >
+                                    <Image src={reviewData.author.imageUrl} alt={`${reviewData.author.name} headshot`} width={reviewData.author.imageWidth} height={reviewData.author.imageHeight} className={styles.authorImageSmall} priority />
+                                    <div className={styles.authorInfoBlock}>
+                                        <span>Expert review by{' '}
+                                            <Link href={reviewData.author.fullBioLink || '#'} legacyBehavior>
+                                                <a className={styles.authorNameLink}>{reviewData.author.name}</a>
+                                            </Link>
+                                        </span>
+                                        <span className={styles.lastUpdatedText}>
+                                            . Last updated: {new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                                        </span>
+                                    </div>
+                                    {showAuthorBioTooltip && (
+                                        <div className={styles.authorTooltip} ref={authorTooltipRef} role="tooltip" onMouseEnter={handleAuthorClearTimeout} onMouseLeave={handleAuthorMouseLeave}>
+                                            <div className={styles.authorTooltipHeader}>
+                                                <Image src={reviewData.author.tooltipImageUrl} alt={`${reviewData.author.name} large headshot`} width={reviewData.author.tooltipImageWidth} height={reviewData.author.tooltipImageHeight} className={styles.authorTooltipImage} />
+                                                <div className={styles.authorTooltipInfo}>
+                                                    <span className={styles.authorTooltipName}>{reviewData.author.name}</span>
+                                                    <span className={styles.authorTooltipTitle}>{reviewData.author.title}</span>
+                                                </div>
+                                            </div>
+                                            {reviewData.author.expertise && reviewData.author.expertise.length > 0 && (
+                                                <div className={styles.authorTooltipExpertise}><strong>Expertise</strong><ul>{reviewData.author.expertise.map(area => <li key={area}>{area}</li>)}</ul></div>
+                                            )}
+                                            <p className={styles.authorTooltipBioSnippet}>{reviewData.author.bioSnippet}</p>
+                                            <div className={styles.authorTooltipSocials}>
+                                                {reviewData.author.socialLinks.linkedin && <a href={reviewData.author.socialLinks.linkedin} target="_blank" rel="noopener noreferrer me" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>}
+                                                {reviewData.author.socialLinks.twitter && <a href={reviewData.author.socialLinks.twitter} target="_blank" rel="noopener noreferrer me" aria-label="Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-.422.724-.665 1.56-.665 2.452 0 1.697.864 3.198 2.18 4.078-.8-.025-1.555-.247-2.227-.616v.054c0 2.37 1.683 4.333 3.91 4.78-.426.116-.874.174-1.337.174-.31 0-.611-.03-.904-.085.622 1.936 2.421 3.338 4.553 3.377-1.672 1.309-3.781 2.088-6.072 2.088-.394 0-.784-.023-1.169-.069 2.16 1.389 4.723 2.202 7.482 2.202 8.979 0 13.897-7.446 13.897-13.898 0-.21 0-.42-.015-.63.953-.689 1.778-1.56 2.433-2.525z"/></svg></a>}
+                                                {reviewData.author.socialLinks.email && <a href={`mailto:${reviewData.author.socialLinks.email}`} aria-label="Email"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg></a>}
+                                            </div>
+                                            {reviewData.author.fullBioLink && (<Link href={reviewData.author.fullBioLink} legacyBehavior><a className={styles.authorTooltipBioLink}>See full bio</a></Link>)}
+                                        </div>
+                                    )}
+                                </div>
+                                <p className={styles.heroSubtitle} dangerouslySetInnerHTML={{ __html: reviewData.heroSubtitle }}></p>
+                                <div className={styles.heroCtaContainer}>
+                                    <div>
+                                        <a href={reviewData.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.applyNowButton} ${styles.heroApplyButton}`}>
+                                            Apply Now
+                                        </a>
+                                        <span className={styles.heroApplyButtonDisclaimer}>on Capital One's official site</span>
+                                    </div>
+                                    <Link href="#section-snapshot" legacyBehavior><a className={styles.heroSecondaryLink}>See Card Snapshot</a></Link>
+                                </div>
+                            </div>
+                            <div className={styles.heroImageContainer}>
+                                <div className={styles.cardImageContainer}><Image src={reviewData.imageUrl} alt={reviewData.cardName} width={reviewData.imageWidth} height={reviewData.imageHeight} className={styles.heroImage} priority /></div>
+                                <div className={styles.ratingSection}>
+                                    <span className={styles.tciRating}>
+                                        <button type="button" className={styles.infoIconButton} aria-label="Rating Information" onClick={handleIconClick} aria-expanded={showRatingInfo}>
+                                            <svg aria-hidden="true" focusable="false" className={styles.infoIcon} viewBox="0 0 16 16"><path fillRule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>
+                                        </button>
+                                        {siteName} Rating: <strong>{reviewData.ratingValue.toFixed(1)}</strong>/10
+                                        {showRatingInfo && (<RatingTooltip ref={ratingTooltipRef} ratingValue={reviewData.ratingValue} ratingCriteria={ratingCriteria} onClose={() => setShowRatingInfo(false)} />)}
+                                    </span>
+                                    <div className={styles.starRating} title={`Rated ${reviewData.ratingValue} out of 10 stars`}>★★★★★<span className={styles.filledStars} style={{ '--rating': `${(reviewData.ratingValue / 10) * 100}%` }}>★★★★★</span></div>
+                                </div>
+                                <div className={styles.ratingDescription}><i>{reviewData.cardShortName}: The ultimate "set it and forget it" travel card.</i></div>
+                            </div>
+                        </section>
+                        
+                        <div className={styles.heroDisclaimer}>
+                            <p>We may receive a commission from our partners for products mentioned in this review, but our opinions are our own. Card details are subject to change; always verify with the issuer.</p>
                         </div>
-                        <Link href="#section-snapshot" legacyBehavior><a className={styles.heroSecondaryLink}>See Card Snapshot</a></Link>
+
+                        <div className={styles.reviewContainer}>
+                            <article>
+                                <header className={styles.reviewHeader}>
+                                    <div className={styles.summaryBox} id="summaryBoxTitle">
+                                        <h2 className={styles.summaryBoxTitle}>{reviewData.cardName}: Key Insights</h2>
+                                        <div className={styles.summaryGrid}>
+                                            <div className={styles.summaryItem}><span className={styles.summaryIcon}><IconGift /></span><span className={styles.summaryLabel}>Welcome Offer:</span><span className={styles.summaryValue} dangerouslySetInnerHTML={{ __html: summaryBoxData.welcomeOffer }}></span></div>
+                                            <div className={styles.summaryItem}><span className={styles.summaryIcon}><IconCheck /></span><span className={styles.summaryLabel}>Annual Fee:</span><span className={styles.summaryValue} dangerouslySetInnerHTML={{ __html: summaryBoxData.annualFee }}></span></div>
+                                            <div className={styles.summaryItem}><span className={styles.summaryIcon}><IconStar /></span><span className={styles.summaryLabel}>Top Earning:</span><span className={styles.summaryValue} dangerouslySetInnerHTML={{ __html: summaryBoxData.topEarning }}></span></div>
+                                            <div className={styles.summaryItem}><span className={styles.summaryIcon}><IconPlus /></span><span className={styles.summaryLabel}>Key Perks:</span><span className={styles.summaryValue} dangerouslySetInnerHTML={{ __html: summaryBoxData.keyPerks }}></span></div>
+                                            <div className={styles.summaryItem} data-full-width="true"><span className={styles.summaryIcon}><IconPlane /></span><span className={styles.summaryLabel}>Best For:</span><span className={styles.summaryValue} dangerouslySetInnerHTML={{ __html: summaryBoxData.bestFor }}></span></div>
+                                        </div>
+                                    </div>
+                                </header>
+                                
+                                {tocSections.map(section => (
+                                    <React.Fragment key={section.id}>
+                                        <section id={section.id} className={styles.reviewSection}>
+                                            <h2 dangerouslySetInnerHTML={{ __html: section.title.split('. ')[1] }} />
+                                            <div dangerouslySetInnerHTML={{ __html: sectionContent[section.id] || '<p>Content coming soon...</p>' }} />
+                                        </section>
+                                        {section.id === 'section-transfer-partners' && contentImage1 && <Image src={contentImage1} alt="Traveler planning a trip using airline partner rewards" width={800} height={450} className={styles.contentImage} loading="lazy" />}
+                                        {section.id === 'section-competitors' && contentImage2 && <Image src={contentImage2} alt="Traveler comparing credit cards on a laptop" width={800} height={450} className={styles.contentImage} loading="lazy" />}
+                                    </React.Fragment>
+                                ))}
+                                
+                                <section className={`${styles.reviewSection} ${styles.postVerdictCtaSection}`}>
+                                    <h3>Ready for Simplified Travel Rewards?</h3>
+                                    <p>If our expert verdict on the Capital One Venture Card aligns with your travel style, take the next step. Check the latest offer and see how easy earning your next trip can be.</p>
+                                    <div className={styles.ctaButtonContainer}>
+                                        <a href={reviewData.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.applyNowButton} ${styles.ctaApplyButton}`}>View Offer & Apply Now</a>
+                                        <span className={styles.ctaDisclaimer}>You are now leaving {siteName} for Capital One's official site.</span>
+                                    </div>
+                                </section>
+                            </article>
+                        </div>
+                    </div>
+                    <aside className={styles.sidebarArea}>
+                        <TableOfContents sections={tocSections} />
+                    </aside>
+                </div>
+            </main>
+            <div className={styles.stickyFooterContainer}>
+                <div className={styles.stickyFooterContent}>
+                    <Image src={reviewData.imageUrl} alt={`${reviewData.cardShortName} card image`} width={60} height={38} className={styles.stickyFooterCardImage} />
+                    <div className={styles.stickyFooterText}>
+                        <span className={styles.stickyFooterCardName}>{reviewData.cardShortName}</span>
+                        <span className={styles.stickyFooterRating}>{siteName} Rating: {reviewData.ratingValue.toFixed(1)}/10</span>
+                    </div>
+                    <div className={styles.stickyFooterButtons}>
+                        <a href={reviewData.applyLink} className={`${styles.stickyFooterBtn} ${styles.stickyFooterBtnApply}`} target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
+                        <a href={reviewData.ratesFeesLink} className={`${styles.stickyFooterBtn} ${styles.stickyFooterBtnRates}`} target="_blank" rel="noopener noreferrer sponsored">See Rates & Fees</a>
                     </div>
                 </div>
-                <div className={styles.heroImageContainer}>
-                    <div className={styles.cardImageContainer}><Image src={reviewData.imageUrl} alt={reviewData.cardName} width={reviewData.imageWidth} height={reviewData.imageHeight} className={styles.heroImage} priority /></div>
-                    <div className={styles.ratingSection}>
-                        <span className={styles.tciRating}>
-                            <button type="button" className={styles.infoIconButton} aria-label="Rating Information" onClick={handleIconClick} aria-expanded={showRatingInfo}>
-                                <svg aria-hidden="true" focusable="false" className={styles.infoIcon} viewBox="0 0 16 16"><path fillRule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>
-                            </button>
-                            {siteName} Rating: <strong>{reviewData.ratingValue.toFixed(1)}</strong>/10
-                            {showRatingInfo && (<RatingTooltip ref={ratingTooltipRef} ratingValue={reviewData.ratingValue} ratingCriteria={ratingCriteria} onClose={() => setShowRatingInfo(false)} />)}
-                        </span>
-                        <div className={styles.starRating} title={`Rated ${reviewData.ratingValue} out of 10 stars`}>★★★★★<span className={styles.filledStars} style={{ '--rating': `${(reviewData.ratingValue / 10) * 100}%` }}>★★★★★</span></div>
-                    </div>
-                    <div className={styles.ratingDescription}><i>{reviewData.cardShortName}: The ultimate "set it and forget it" travel card.</i></div>
-                </div>
-            </section>
-            
-            <div className={styles.heroDisclaimer}>
-                <p>We may receive a commission from our partners for products mentioned in this review, but our opinions are our own. Card details are subject to change; always verify with the issuer.</p>
-            </div>
-
-            <div className={styles.reviewContainer}>
-              <article>
-                <header className={styles.reviewHeader}>
-                    <div className={styles.summaryBox} id="summaryBoxTitle">
-                        <h2 className={styles.summaryBoxTitle}>{reviewData.cardName}: Key Insights</h2>
-                        <div className={styles.summaryGrid}>
-                            <div className={styles.summaryItem}><span className={styles.summaryIcon}><IconGift /></span><span className={styles.summaryLabel}>Welcome Offer:</span><span className={styles.summaryValue} dangerouslySetInnerHTML={{ __html: summaryBoxData.welcomeOffer }}></span></div>
-                            <div className={styles.summaryItem}><span className={styles.summaryIcon}><IconCheck /></span><span className={styles.summaryLabel}>Annual Fee:</span><span className={styles.summaryValue} dangerouslySetInnerHTML={{ __html: summaryBoxData.annualFee }}></span></div>
-                            <div className={styles.summaryItem}><span className={styles.summaryIcon}><IconStar /></span><span className={styles.summaryLabel}>Top Earning:</span><span className={styles.summaryValue} dangerouslySetInnerHTML={{ __html: summaryBoxData.topEarning }}></span></div>
-                            <div className={styles.summaryItem}><span className={styles.summaryIcon}><IconPlus /></span><span className={styles.summaryLabel}>Key Perks:</span><span className={styles.summaryValue} dangerouslySetInnerHTML={{ __html: summaryBoxData.keyPerks }}></span></div>
-                            <div className={styles.summaryItem} data-full-width="true"><span className={styles.summaryIcon}><IconPlane /></span><span className={styles.summaryLabel}>Best For:</span><span className={styles.summaryValue} dangerouslySetInnerHTML={{ __html: summaryBoxData.bestFor }}></span></div>
-                        </div>
-                    </div>
-                </header>
-
-                <section id="section-intro" className={styles.reviewSection}>
-                    <h2>{tocSections.find(s => s.id === 'section-intro').title.split('. ')[1]}</h2>
-                    <div dangerouslySetInnerHTML={{ __html: sectionContent['section-intro'] }} />
-                </section>
-                
-                <section id="section-snapshot" className={styles.reviewSection}>
-                    <h2>{tocSections.find(s => s.id === 'section-snapshot').title.split('. ')[1]}</h2>
-                    <div dangerouslySetInnerHTML={{ __html: sectionContent['section-snapshot'] }} />
-                    <DraggableTableWrapper>
-                        <div className={styles.tableContainer}>
-                            <table className={`${styles.statsTable} ${styles.highlightTable}`}>
-                                <thead><tr><th>Feature</th><th>Details</th></tr></thead>
-                                <tbody>
-                                    {keyFeaturesTableData.map((item, index) => (
-                                        <tr key={index}><td data-label="Feature" dangerouslySetInnerHTML={{ __html: item.feature }}></td><td data-label="Details" dangerouslySetInnerHTML={{ __html: item.details }}></td></tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
-                    </DraggableTableWrapper>
-                </section>
-                
-                <section id="section-philosophy" className={styles.reviewSection}>
-                    <h2>{tocSections.find(s => s.id === 'section-philosophy').title.split('. ')[1]}</h2>
-                    <div dangerouslySetInnerHTML={{ __html: sectionContent['section-philosophy'] }} />
-                </section>
-                
-                <section id="section-welcome-bonus" className={styles.reviewSection}>
-                    <h2>{tocSections.find(s => s.id === 'section-welcome-bonus').title.split('. ')[1]}</h2>
-                    <div dangerouslySetInnerHTML={{ __html: sectionContent['section-welcome-bonus'] }} />
-                </section>
-                
-                <section id="section-earning-engine" className={styles.reviewSection}>
-                    <h2>{tocSections.find(s => s.id === 'section-earning-engine').title.split('. ')[1]}</h2>
-                    <div dangerouslySetInnerHTML={{ __html: sectionContent['section-earning-engine'] }} />
-                </section>
-                
-                <section id="section-redeeming-value" className={styles.reviewSection}>
-                    <h2><a href={reviewData.urls.internal.rewardsAndPerks} style={{textDecoration:'none', color:'inherit'}}>{tocSections.find(s => s.id === 'section-redeeming-value').title.split('. ')[1]}</a></h2>
-                    <div dangerouslySetInnerHTML={{ __html: sectionContent['section-redeeming-value'] }} />
-                </section>
-                
-                <section id="section-transfer-partners" className={styles.reviewSection}>
-                    <h2>{tocSections.find(s => s.id === 'section-transfer-partners').title.split('. ')[1]}</h2>
-                    <div dangerouslySetInnerHTML={{ __html: sectionContent['section-transfer-partners'] }} />
-                </section>
-                
-                {contentImage1 && <Image src={contentImage1} alt="Traveler planning a trip using airline partner rewards" width={800} height={450} className={styles.contentImage} loading="lazy" />}
-
-                <section id="section-lounge-access" className={styles.reviewSection}>
-                    <h2>{tocSections.find(s => s.id === 'section-lounge-access').title.split('. ')[1]}</h2>
-                    <div dangerouslySetInnerHTML={{ __html: sectionContent['section-lounge-access'] }} />
-                </section>
-                
-                <section id="section-annual-fee" className={styles.reviewSection}>
-                    <h2>{tocSections.find(s => s.id === 'section-annual-fee').title.split('. ')[1]}</h2>
-                    <div dangerouslySetInnerHTML={{ __html: sectionContent['section-annual-fee'] }} />
-                </section>
-
-                <section id="section-user-profile" className={styles.reviewSection}>
-                    <h2>{tocSections.find(s => s.id === 'section-user-profile').title.split('. ')[1]}</h2>
-                    <div dangerouslySetInnerHTML={{ __html: sectionContent['section-user-profile'] }} />
-                </section>
-                
-                <section id="section-real-world-example" className={styles.reviewSection}>
-                    <h2>{tocSections.find(s => s.id === 'section-real-world-example').title.split('. ')[1]}</h2>
-                    <div dangerouslySetInnerHTML={{ __html: sectionContent['section-real-world-example'] }} />
-                </section>
-
-                <section id="section-competitors" className={styles.reviewSection}>
-                    <h2><a href={reviewData.urls.internal.compareTool} style={{textDecoration:'none', color:'inherit'}}>{tocSections.find(s => s.id === 'section-competitors').title.split('. ')[1]}</a></h2>
-                    <div dangerouslySetInnerHTML={{ __html: sectionContent['section-competitors'] }} />
-                    <DraggableTableWrapper>
-                        <div className={styles.tableContainer}>
-                            <table className={`${styles.statsTable} ${styles.comparisonTable}`}>
-                                <thead>
-                                    <tr>
-                                        <th>Feature</th>
-                                        <th>Capital One Venture</th>
-                                        <th><a href={reviewData.urls.internal.chaseVsCapitalOne} style={{color: 'inherit'}}>Chase Sapphire Preferred®</a></th>
-                                        <th>Capital One Venture X</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td data-label="Feature"><strong>Annual Fee</strong></td><td data-label="Venture">$95</td><td data-label="Sapphire Preferred">$95</td><td data-label="Venture X">$395</td></tr>
-                                    <tr><td data-label="Feature"><strong>Base Earning Rate</strong></td><td data-label="Venture">2X</td><td data-label="Sapphire Preferred">1X</td><td data-label="Venture X">2X</td></tr>
-                                    <tr><td data-label="Feature"><strong>Key Annual Credit</strong></td><td data-label="Venture">None</td><td data-label="Sapphire Preferred">$50 Hotel Credit</td><td data-label="Venture X">$300 Travel Credit</td></tr>
-                                    <tr><td data-label="Feature"><strong>Lounge Access</strong></td><td data-label="Venture">2 annual passes</td><td data-label="Sapphire Preferred">None</td><td data-label="Venture X">Unlimited</td></tr>
-                                    <tr><td data-label="Feature"><strong>Global Entry Credit</strong></td><td data-label="Venture">Yes</td><td data-label="Sapphire Preferred">No</td><td data-label="Venture X">Yes</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </DraggableTableWrapper>
-                </section>
-
-                <section id="section-testimonials" className={styles.reviewSection}>
-                    <h2>{tocSections.find(s => s.id === 'section-testimonials').title.split('. ')[1]}</h2>
-                    <div dangerouslySetInnerHTML={{ __html: sectionContent['section-testimonials'] }} />
-                </section>
-
-                {contentImage2 && <Image src={contentImage2} alt="Traveler relaxing in an airport lounge" width={800} height={450} className={styles.contentImage} loading="lazy" />}
-
-                <section id="section-understated-perks" className={styles.reviewSection}>
-                    <h2>{tocSections.find(s => s.id === 'section-understated-perks').title.split('. ')[1]}</h2>
-                    <div dangerouslySetInnerHTML={{ __html: sectionContent['section-understated-perks'] }} />
-                </section>
-
-                <section id="section-final-verdict" className={styles.reviewSection}>
-                    <h2>{tocSections.find(s => s.id === 'section-final-verdict').title.split('. ')[1]}</h2>
-                    <div dangerouslySetInnerHTML={{ __html: sectionContent['section-final-verdict'] }} />
-                    <div className={styles.ratingDescription} style={{textAlign: 'center', marginTop: '1rem'}}><strong>{siteName}.com Score: {reviewData.ratingValue}/10</strong></div>
-                </section>
-                
-                <section className={`${styles.reviewSection} ${styles.postVerdictCtaSection}`}>
-                    <h3>Ready for Simplified Travel Rewards?</h3>
-                    <p>If our expert verdict on the Capital One Venture Card aligns with your travel style, take the next step. Check the latest offer and see how easy earning your next trip can be.</p>
-                    <div className={styles.ctaButtonContainer}>
-                        <a href={reviewData.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.applyNowButton} ${styles.ctaApplyButton}`}>View Offer & Apply Now</a>
-                        <span className={styles.ctaDisclaimer}>You are now leaving {siteName} for Capital One's official site.</span>
-                    </div>
-                </section>
-
-                 <section id="section-faqs-jump" className={`${styles.reviewSection} ${styles.faqSection}`}>
-                    <h2>{tocSections.find(s => s.id === 'section-faqs-jump').title.split('. ')[1]}</h2>
-                    <div dangerouslySetInnerHTML={{ __html: sectionContent['section-faqs-jump'] }} />
-                    <div className={styles.faqContainer}>
-                        {faqsContent.map((faq, index) => (
-                            <details key={index} className={styles.faqItem} name={`faq-${index + 1}`}>
-                                <summary className={styles.faqQuestion}>{`${index + 1}. ${faq.q}`}</summary>
-                                <div className={styles.faqAnswer}><p dangerouslySetInnerHTML={{ __html: faq.a }} /></div>
-                            </details>
-                        ))}
-                    </div>
-                </section>
-
-                <section id="section-eat" className={`${styles.reviewSection} ${styles.eatSection}`}>
-                    <h2>{tocSections.find(s => s.id === 'section-eat').title.split('. ')[1]}</h2>
-                    <div dangerouslySetInnerHTML={{ __html: sectionContent['section-eat'] }} />
-                </section>
-
-              </article>
-            </div>
-          </div>
-          <aside className={styles.sidebarArea}>
-                <TableOfContents sections={tocSections} />
-          </aside>
-        </div>
-        
-      </main>
-      
-      <div className={styles.stickyFooterContainer}>
-        <div className={styles.stickyFooterContent}>
-            <Image src={reviewData.imageUrl} alt={`${reviewData.cardShortName} card image`} width={60} height={38} className={styles.stickyFooterCardImage} />
-            <div className={styles.stickyFooterText}>
-              <span className={styles.stickyFooterCardName}>{reviewData.cardShortName}</span>
-              <span className={styles.stickyFooterRating}>{siteName} Rating: {reviewData.ratingValue.toFixed(1)}/10</span>
-            </div>
-            <div className={styles.stickyFooterButtons}>
-                <a href={reviewData.applyLink} className={`${styles.stickyFooterBtn} ${styles.stickyFooterBtnApply}`} target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
-                <a href={reviewData.ratesFeesLink} className={`${styles.stickyFooterBtn} ${styles.stickyFooterBtnRates}`} target="_blank" rel="noopener noreferrer sponsored">See Rates & Fees</a>
             </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 }
 
 export default CapitalOneVentureRewardsReviewPage;
