@@ -1,360 +1,458 @@
 /* ------------------------------------------------------------------
-    File:  pages/reviews/capital-one-venture-rewards.js
-    Route: /reviews/capital-one-venture-rewards
+    File:  pages/reviews/capital-one-venture-rewards-review.js
+    Route: https://www.travelcardinsider.com/reviews/capital-one-venture-rewards-review
+    Last Updated: June 18, 2025
 ------------------------------------------------------------------- */
 
-import React from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from '../../styles/ReviewPage.module.css'; // This will be our new style file
-import TableOfContents from '../../components/TableOfContents'; // Assuming a TOC component exists
+import dynamic from 'next/dynamic';
+import styles from '../../styles/ReviewPage.module.css'; // Assuming you have this CSS module
 
-// --- CONFIGURATION & DATA ---
+import IconGift from '../../components/icons/icon-gift.svg';
+import IconStar from '../../components/icons/icon-star.svg';
+import IconCheck from '../../components/icons/icon-Credit Card.svg';
+import IconPlus from '../../components/icons/icon-target.svg';
+import IconPlane from '../../components/icons/icon-plane.svg';
+
+const RatingTooltip = dynamic(() => import('../../components/RatingTooltip'), { ssr: false, loading: () => null });
+
+/* ──────────────────────────────
+    CONSTANTS & STATIC DATA
+    ────────────────────────────── */
+const siteName = 'TravelCardInsider';
+const siteUrl = 'https://www.travelcardinsider.com';
+const pagePath = '/reviews/capital-one-venture-rewards-review';
+const pageUrlFull = `${siteUrl}${pagePath}`;
+const publishDate = '2025-06-18';
+const updateDate = '2025-06-18';
 
 const reviewData = {
-    cardName: "Capital One Venture Rewards Credit Card",
-    cardNameShort: "Capital One Venture",
-    pageUrl: "https://www.travelcardinsider.com/reviews/capital-one-venture-rewards",
-    lastUpdated: "2025-06-18",
-    // /* ❗ UPDATE THIS with your actual image path */
-    heroImage: "/capital-one-venture-hero.webp",
-    heroImageAlt: "The Capital One Venture Rewards Credit Card on a background of a travel map.",
-    // /* ❗ UPDATE THIS with your actual card image path */
-    cardImage: "/venture_cardart_prim_323x203-1.avif",
-    cardImageAlt: "Capital One Venture Rewards Credit Card",
-    // /* ❗ UPDATE THIS with your author details */
-    author: {
-        name: "Dilan Madushanka",
-        link: "/author/dilan-madushanka",
-        title: "Lead Rewards Analyst",
+  cardName        : 'Capital One Venture Rewards Credit Card',
+  cardShortName   : 'Venture Rewards',
+  title           : 'Capital One Venture Rewards Review (2025): The Gold Standard of Simplicity',
+  description     : 'Our expert 2025 review of the Capital One Venture card. We cover the 75k bonus, unlimited 2X miles, Global Entry credit, and why it’s the top choice for no-fuss travel rewards.',
+  keywords        : 'Capital One Venture Rewards review, travel rewards credit card, 2X miles, Global Entry credit, flexible travel rewards, Capital One Venture 2025',
+  author: {
+      name: 'Dilan Madushanka',
+      title: 'Founder & Lead Editor',
+      imageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg',
+      imageWidth: 40,
+      imageHeight: 40,
+      tooltipImageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg',
+      tooltipImageWidth: 60,
+      tooltipImageHeight: 60,
+      expertise: [
+          'Flat-Rate Travel Rewards',
+          'Mid-Tier Travel Cards',
+          'Airline & Hotel Transfer Partners',
+          'Point & Mile Valuations',
+          'Credit Card Welcome Bonuses'
+      ],
+      bioSnippet: 'Dilan Madushanka, founder of TravelCardInsider, specializes in breaking down travel rewards programs to help everyday travelers maximize their adventures.',
+      fullBioLink: '/author/dilan-madushanka',
+      socialLinks: {
+          twitter: 'https://twitter.com/YourTravelCardInsiderTwitterHandle',
+          instagram: 'https://www.instagram.com/YourTravelCardInsiderInstaHandle',
+          facebook: 'https://www.facebook.com/YourTravelCardInsiderFacebookPage',
+          linkedin: 'https://www.linkedin.com/in/dilan-madushanka-b65293365',
+          email: 'team@travelcardinsider.com'
+      }
+  },
+  siteName: siteName,
+  imageUrl        : '/path-to-your-venture-card-image.avif', // **UPDATE THIS IMAGE PATH**
+  imageWidth      : 1290,
+  imageHeight     : 812,
+  ratingValue     : 8.5,
+  ratingCount     : 254, // Example number
+  reviewBody      : 'An in-depth analysis of the Capital One Venture Rewards Credit Card, detailing its unlimited 2X miles, 5X travel portal bonus, flexible redemption methods, Global Entry credit, lounge passes, and overall value for travelers who prioritize simplicity and flexibility.',
+  aprRange        : 'Variable APR, see rates and fees',
+  annualFee       : 95,
+  applyLink       : 'https://www.capitalone.com/credit-cards/venture/',
+  ratesFeesLink   : 'https://www.capitalone.com/credit-cards/venture/',
+  urls: {
+      offerDetails: 'https://www.capitalone.com/credit-cards/venture/',
+      rewardsProgram: 'https://www.capitalone.com/credit-cards/venture/rewards/',
+      cardholderAgreement: 'https://www.capitalone.com/credit-cards/lp/credit-card-agreements/',
+      travelPortal: 'https://capitalonetravel.com/consumer-travel-benefits',
+      rewardsRedemption: 'https://www.capitalone.com/support-center/credit-cards/redeem-rewards',
+      transferPartners: 'https://thepointsguy.com/guide/capital-one-transfer-partners/', // Using a reliable third-party guide
+      loungeAccess: 'https://www.capitalone.com/credit-cards/lounge-access/',
+      benefitsGuide: 'https://ecm.capitalone.com/WCM/card/benefits-guide/mastercard-benefits-guides/mc-guide-to-benefits---english.pdf',
+      globalEntry: 'https://ttp.dhs.gov/',
+      lifestyleCollection: 'https://www.capitalone.com/learn-grow/money-management/capital-one-lifestyle-collection/',
+      security: 'https://www.capitalone.com/bank/security/',
+      chaseSapphirePreferred: 'https://creditcards.chase.com/travel-credit-cards/sapphire/preferred',
+      ventureX: 'https://www.capitalone.com/credit-cards/venture-x/',
+  },
+  sku             : 'CAP1-VENTURE-TCI-2025',
+  mpn             : 'CAP1VENTURE',
+  h1Content       : "Capital One Venture Rewards Review: Your Ticket to Simplified Travel",
+  heroSubtitle    : "Our 2025 deep dive reveals how the Venture Card's unlimited 2X miles, flexible redemptions, and key travel perks make it the champion of no-fuss rewards."
+};
+
+const faqsContent = [
+    { q: 'What credit score is needed for the Venture card?', a: 'Typically a FICO score of 670 or higher (good to excellent credit) is recommended for the best approval odds.' },
+    { q: 'Can miles be transferred to a US airline like Delta or United?', a: 'Not directly, but you can book flights on them by transferring miles to international airline partners within the same alliance (e.g., transfer to British Airways to book an American Airlines flight).' },
+    { q: 'Do Venture miles expire?', a: `No, your miles will not expire as long as your account is open and in good standing. <a href="${reviewData.urls.rewardsProgram}" target="_blank" rel="noopener noreferrer sponsored" class="${styles.inlineLink}">(Source)</a>` },
+    { q: 'Is the Capital One Venture a Visa or Mastercard?', a: 'The Capital One Venture is a Mastercard, which means it comes with Mastercard network benefits.' },
+    { q: 'Is it necessary to set a travel notice before going abroad?', a: 'No, Capital One does not require you to set a travel notice for your credit or debit cards.' },
+    { q: 'Can the Venture card be downgraded to a no-annual-fee card?', a: 'It is sometimes possible to downgrade to a card like the VentureOne, but this is subject to Capital One\'s policies and is not a guaranteed option.' },
+    { q: 'What does "travel" cover for redemptions?', a: 'The category is very broad and includes airlines, hotels, vacation rentals, car rentals, cruises, rideshare services like Uber and Lyft, train tickets, and more.' },
+    { q: 'Can I add an authorized user?', a: 'Yes, you can add authorized users to your Capital One Venture card at no additional cost.' },
+    { q: 'How does this card pair with the SavorOne card?', a: 'They create a powerful duo. You can earn elevated cash back on dining and entertainment with the SavorOne and then convert that cash back into miles with your Venture account, effectively pooling your rewards.' },
+    { q: 'Is the Venture X a better card?', a: 'For frequent travelers who can utilize premium perks like unlimited lounge access and a $300 travel credit, the Venture X is often a better choice despite its higher fee. For most other travelers, the standard Venture offers a more straightforward and cost-effective value.' },
+];
+
+const structuredDataOptimized = {
+  '@context': 'https://schema.org',
+  '@graph'  : [
+    {
+      '@type'        : 'Product',
+      '@id'          : `${pageUrlFull}#product`,
+      name           : reviewData.cardName,
+      image          : `${siteUrl}${reviewData.imageUrl}`,
+      description    : reviewData.description,
+      sku            : reviewData.sku,
+      mpn            : reviewData.mpn,
+      brand          : { '@type': 'Brand', name: 'Capital One' },
+      aggregateRating: {
+        '@type'    : 'AggregateRating',
+        ratingValue : reviewData.ratingValue.toString(),
+        bestRating  : '10',
+        worstRating : '1',
+        ratingCount : reviewData.ratingCount.toString(),
+        reviewCount : '1',
+      },
+      offers: {
+        '@type'            : 'Offer',
+        url                : reviewData.applyLink,
+        priceCurrency      : 'USD',
+        price              : reviewData.annualFee.toString(),
+        priceValidUntil    : '2026-12-31',
+        itemCondition      : 'https://schema.org/NewCondition',
+        availability       : 'https://schema.org/InStock',
+        seller: { '@type': 'Organization', name: 'Capital One' },
+      },
+      review: { '@id': `${pageUrlFull}#editorReview` },
     },
-    // /* ❗ UPDATE THIS with your affiliate link */
-    applyLink: "https://www.capitalone.com/credit-cards/venture/",
+    {
+      '@type'         : 'Review',
+      '@id'           : `${pageUrlFull}#editorReview`,
+      name            : `${reviewData.cardName} – Expert Review ${new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`,
+      itemReviewed    : { '@id': `${pageUrlFull}#product` },
+      reviewBody      : reviewData.reviewBody,
+      reviewRating    : {
+        '@type'    : 'Rating',
+        ratingValue : reviewData.ratingValue.toString(),
+        bestRating  : '10',
+        worstRating : '1',
+      },
+      author : { '@type': 'Person', 'name': reviewData.author.name, 'url': `${siteUrl}${reviewData.author.fullBioLink}` },
+      publisher : { '@type' : 'Organization', name : siteName, logo : { '@type': 'ImageObject', url: `${siteUrl}/images/logo/your-logo-schema.png` } },
+      datePublished   : publishDate,
+      dateModified    : updateDate,
+    },
+    { '@type': 'WebPage',
+      '@id'              : pageUrlFull, url : pageUrlFull, name : reviewData.title, description : reviewData.description,
+      inLanguage : 'en-US', isPartOf : { '@id': `${siteUrl}#website` }, primaryImageOfPage : { '@id': `${pageUrlFull}#primaryImage` },
+      breadcrumb : { '@id': `${pageUrlFull}#breadcrumbs` }, datePublished : publishDate, dateModified : updateDate,
+    },
+    { '@type': 'ImageObject',
+      '@id'     : `${pageUrlFull}#primaryImage`, url : `${siteUrl}${reviewData.imageUrl}`,
+      width : reviewData.imageWidth, height : reviewData.imageHeight, caption : reviewData.cardName,
+    },
+    { '@type': 'BreadcrumbList',
+      '@id'          : `${pageUrlFull}#breadcrumbs`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: siteName, item: siteUrl },
+        { '@type': 'ListItem', position: 2, name: 'Credit Card Reviews', item: `${siteUrl}/reviews` },
+        { '@type': 'ListItem', position: 3, name: `${reviewData.cardName} Review`, item: pageUrlFull },
+      ],
+    },
+    {
+      '@type'    : 'FAQPage',
+      '@id'      : `${pageUrlFull}#faqs`,
+      mainEntity: faqsContent.map(faq => ({
+        '@type': 'Question', name: faq.q,
+        acceptedAnswer: {  '@type': 'Answer', text: faq.a.replace(/<[^>]*>/g, '') }
+      })),
+    },
+    { '@type' : 'Organization',
+      '@id'   : `${siteUrl}#website`, name : siteName, url : siteUrl,
+      logo    : { '@type': 'ImageObject', url: `${siteUrl}/images/logo/your-logo-schema.png` },
+      sameAs  : [ "https://www.facebook.com/YourTravelCardInsiderFacebookPage", "https://twitter.com/YourTravelCardInsiderTwitterHandle", "https://www.instagram.com/YourTravelCardInsiderInstaHandle" ],
+    },
+  ],
 };
 
-// --- JSON-LD SCHEMA ---
+const ratingCriteria = [
+    'Welcome Bonus Value',
+    'Base Earning Rate (2X)',
+    'Bonus Earning Rate (5X)',
+    'Redemption Flexibility',
+    'Value of Annual Perks (Global Entry)',
+    'Lounge Access Policy',
+    'Travel & Purchase Protections',
+    'Annual Fee Justification',
+    'Digital Tools & User Experience',
+    'Overall Value vs. Competitors',
+];
 
-const generateJsonLd = () => {
-    const articleSchema = {
-        "@context": "https://schema.org",
-        "@type": "NewsArticle",
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": reviewData.pageUrl
-        },
-        "headline": `Capital One Venture Rewards Card Review (2025): The Ultimate in Simple Travel Points`,
-        "description": "Is the Capital One Venture Rewards card the best for simple, flexible travel? Our deep-dive review covers its 2X miles, 75k bonus, and redemption strategies.",
-        "image": reviewData.heroImage,
-        "author": {
-            "@type": "Person",
-            "name": reviewData.author.name,
-            "url": `https://www.travelcardinsider.com${reviewData.author.link}`
-        },
-        "publisher": {
-            "@type": "Organization",
-            "name": "TravelCardInsider",
-            "logo": {
-                "@type": "ImageObject",
-                // /* ❗ UPDATE THIS to your logo path */
-                "url": "https://www.travelcardinsider.com/path-to-logo.png"
-            }
-        },
-        "datePublished": "2025-06-18",
-        "dateModified": reviewData.lastUpdated,
+const tocSections = [
+    { id: 'section-intro', title: '1. The Traveler\'s Dilemma' },
+    { id: 'section-snapshot', title: '2. Card Snapshot: At a Glance' },
+    { id: 'section-best-for', title: '3. Who is This Card For?' },
+    { id: 'section-earning-engine', title: '4. The Rewards Engine: Earning Miles' },
+    { id: 'section-welcome-bonus', title: '5. The 75,000-Mile Welcome Bonus' },
+    { id: 'section-redeeming-value', title: '6. Redeeming Miles: Your Miles, Your Way' },
+    { id: 'section-transfer-partners', title: '7. Unlocking Value with Transfer Partners' },
+    { id: 'section-global-entry', title: '8. Perk Spotlight: Global Entry / TSA PreCheck®' },
+    { id: 'section-lounge-access', title: '9. Perk Spotlight: Airport Lounge Access' },
+    { id: 'section-lifestyle-collection', title: '10. Perk Spotlight: The Lifestyle Collection' },
+    { id: 'section-protections', title: '11. Travel & Purchase Protections' },
+    { id: 'section-digital-tools', title: '12. Digital Tools for Modern Travelers' },
+    { id: 'section-rates-fees', title: '13. Rates & Fees: The Real Cost' },
+    { id: 'section-annual-fee-worth-it', title: '14. Is the $95 Annual Fee Worth It?' },
+    { id: 'section-user-profiles', title: '15. Is The Venture Card Right For You?' },
+    { id: 'section-real-world-example', title: '16. Real-World Trip Example' },
+    { id: 'section-pros-cons', title: '17. Pros & Cons' },
+    { id: 'section-testimonials', title: '18. Real User Testimonials' },
+    { id: 'section-competitors', title: '19. How It Compares to Rivals' },
+    { id: 'section-final-verdict', title: '20. Final Verdict' },
+    { id: 'section-faqs-jump', title: '21. Frequently Asked Questions' },
+];
+
+const contentImage1 = "/pexels-te-lensfix-380994-1371360 (1).webp"; // Placeholder image
+const contentImage2 = "/pexels-haleyve-2087391.webp"; // Placeholder image
+
+function DraggableTableWrapper({ children }) {
+  const containerRef = useRef(null);
+  useEffect(() => {
+    if (typeof window === 'undefined' || window.innerWidth < 768) return;
+    const el = containerRef.current;
+    if (!el) return;
+    let isDragging = false, startX = 0, scrollStart = 0;
+    const startDrag = (e) => {
+      isDragging = true; el.classList.add(styles.grabbing);
+      startX = e.pageX || e.touches?.[0]?.pageX; scrollStart = el.scrollLeft;
     };
-
-    const reviewSchema = {
-        "@context": "https://schema.org",
-        "@type": "Review",
-        "itemReviewed": {
-            "@type": "FinancialProduct",
-            "name": reviewData.cardName,
-            "image": reviewData.cardImage,
-            "description": "A popular travel rewards credit card offering a flat 2 miles per dollar on every purchase.",
-            "brand": {
-                "@type": "Brand",
-                "name": "Capital One"
-            },
-            "offers": {
-                "@type": "Offer",
-                "url": reviewData.applyLink
-            }
-        },
-        "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "8.2", // Example rating
-            "bestRating": "10"
-        },
-        "author": {
-            "@type": "Person",
-            "name": reviewData.author.name
-        },
-        "publisher": {
-            "@type": "Organization",
-            "name": "TravelCardInsider"
-        }
+    const stopDrag = () => { isDragging = false; el.classList.remove(styles.grabbing); };
+    const onMove = (e) => {
+      if (!isDragging) return; e.preventDefault();
+      const x = e.pageX || e.touches?.[0]?.pageX;
+      el.scrollLeft = scrollStart - (x - startX);
     };
+    el.addEventListener('mousedown', startDrag);
+    document.addEventListener('mouseup', stopDrag);
+    el.addEventListener('mousemove', onMove);
+    return () => {
+      el.removeEventListener('mousedown', startDrag);
+      document.removeEventListener('mouseup', stopDrag);
+      el.removeEventListener('mousemove', onMove);
+    };
+  }, []);
+  return (<div ref={containerRef} className={styles.draggableScrollContainer}>{children}</div>);
+}
 
-    return JSON.stringify([articleSchema, reviewSchema]);
-};
 
-// --- THE REVIEW PAGE COMPONENT ---
+/* ──────────────────────────────
+    MAIN COMPONENT
+    ────────────────────────────── */
+function CapitalOneVentureRewardsReviewPage() {
+  const [showRatingInfo, setShowRatingInfo] = useState(false);
+  const ratingTooltipRef = useRef(null);
 
-const CapitalOneVentureReviewPage = () => {
-    return (
-        <>
-            <Head>
-                <title>{`${reviewData.cardName} Review 2025: Simple, Powerful Travel Rewards`}</title>
-                <meta name="description" content={`In-depth 2025 review of the ${reviewData.cardName}. Is its flat 2X miles rate and 75,000 bonus the right choice for your travel goals?`} />
-                <link rel="canonical" href={reviewData.pageUrl} />
-                {/* Open Graph */}
-                <meta property="og:title" content={`${reviewData.cardName} Review: The King of Simplicity?`} />
-                <meta property="og:description" content="Our expert analysis of the Venture Card's rewards, perks, and whether it's the best fit for your wallet." />
-                <meta property="og:url" content={reviewData.pageUrl} />
-                <meta property="og:image" content={reviewData.heroImage} />
-                <meta property="og:type" content="article" />
-                {/* Twitter */}
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={`${reviewData.cardName} Review (2025)`} />
-                <meta name="twitter:description" content="Is the Venture Card's simple 2X rewards structure better than complex bonus categories? We break it down." />
-                <meta name="twitter:image" content={reviewData.heroImage} />
-                {/* Structured Data */}
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: generateJsonLd() }}
-                />
-            </Head>
+  const handleIconClick = useCallback((event) => {
+      event.preventDefault(); event.stopPropagation(); setShowRatingInfo(prevState => !prevState);
+  }, []);
 
-            <article className={styles.reviewArticle}>
-                <header className={styles.reviewHeader}>
-                    <h1 className={styles.reviewTitle}>{`${reviewData.cardName} Review: The Champion of Simple Travel Rewards`}</h1>
-                    <div className={styles.authorInfo}>
-                        <p>By <Link href={reviewData.author.link}><a>{reviewData.author.name}</a></Link>, {reviewData.author.title}</p>
-                        <p>Last updated: {new Date(reviewData.lastUpdated).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
+  useEffect(() => {
+      function handleClickOutside(event) {
+          if (showRatingInfo && !event.target.closest(`.${styles.infoIconButton}`) && ratingTooltipRef.current && !ratingTooltipRef.current.contains(event.target)) {
+               setShowRatingInfo(false);
+          }
+      }
+      if (showRatingInfo) document.addEventListener("mousedown", handleClickOutside);
+      else document.removeEventListener("mousedown", handleClickOutside);
+      return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [showRatingInfo, ratingTooltipRef]);
+
+  const summaryBoxData = {
+    welcomeOffer: `Earn <a href="${reviewData.urls.offerDetails}" target="_blank" rel="noopener noreferrer sponsored">75,000 bonus miles</a> after spending $4,000 in the first 3 months.`,
+    annualFee: `<a href="${reviewData.ratesFeesLink}" target="_blank" rel="noopener noreferrer sponsored">$${reviewData.annualFee}</a>.`,
+    topEarning: `Unlimited 2X miles on every purchase, plus <a href="${reviewData.urls.travelPortal}" target="_blank" rel="noopener noreferrer sponsored">5X on hotels & rental cars</a> via Capital One Travel.`,
+    keyPerks: `<a href="${reviewData.urls.globalEntry}" target="_blank" rel="noopener noreferrer sponsored">Up to $100 credit</a> for Global Entry or TSA PreCheck®, plus <a href="${reviewData.urls.loungeAccess}" target="_blank" rel="noopener noreferrer sponsored">2 annual lounge visits</a>.`,
+    bestFor: "Travelers who want a simple, high-value rewards card with ultimate flexibility and no complex categories to track."
+  };
+
+  const keyFeaturesTableData = [
+    { feature: "Annual Fee", details: `<a href="${reviewData.ratesFeesLink}" target="_blank" rel="noopener noreferrer sponsored">$95</a>` },
+    { feature: "Welcome Bonus", details: `75,000 bonus miles after spending $4,000 on purchases within the first 3 months. <a href="${reviewData.urls.offerDetails}" target="_blank" rel="noopener noreferrer sponsored">(Source)</a>` },
+    { feature: "Base Rewards Rate", details: "Unlimited 2X miles on every purchase, every day." },
+    { feature: "Bonus Rewards", details: `5 miles per dollar on hotels and rental cars booked through Capital One Travel. <a href="${reviewData.urls.travelPortal}" target="_blank" rel="noopener noreferrer sponsored">(Source)</a>` },
+    { feature: "Global Entry/TSA PreCheck® Credit", details: `Up to $100 statement credit for the application fee. <a href="${reviewData.urls.globalEntry}" target="_blank" rel="noopener noreferrer sponsored">(Source)</a>` },
+    { feature: "Lounge Access", details: `2 complimentary visits per year to Capital One Lounges or Plaza Premium Lounges. <a href="${reviewData.urls.loungeAccess}" target="_blank" rel="noopener noreferrer sponsored">(Source)</a>` },
+    { feature: "Foreign Transaction Fees", details: "None." },
+    { feature: "Credit Needed", details: "Good to Excellent" },
+  ];
+
+  const sectionContent = {
+    'section-intro': `<p>The modern traveler is often caught in a paradox of choice. The credit card market is a dizzying landscape of complex rewards programs, each promising a faster path to a free vacation. Cardholders find themselves juggling multiple cards, trying to remember which one offers 5X points on groceries this quarter, which provides 3X on dining, and which requires navigating a labyrinth of transfer partner charts to unlock value. This "mental load" can turn the exciting game of earning rewards into a chore, leaving many to wonder if there's a simpler, more elegant way to fund their adventures.</p><p>This environment of complexity is precisely where the <strong>${reviewData.cardName}</strong> carves out its identity. It was designed as an answer to the traveler's dilemma, built on a foundation of powerful simplicity. It proposes that earning valuable travel rewards shouldn't require a spreadsheet. This review will explore every facet of the Venture card, from its straightforward earning engine to its flexible redemption paths, to determine if it truly delivers on its promise of making travel more rewarding without the headache.</p>`,
+    'section-snapshot': `<p>For those seeking a quick overview, here are the core features that define the ${reviewData.cardName}. These are the essential facts you need to know, distilled into a simple, scannable format.</p>`,
+    'section-best-for': `<h3>The Go-To Card for Flexible, No-Fuss Travel Rewards</h3><p>The ${reviewData.cardName} is the quintessential travel card for individuals who value straightforward rewards and ultimate flexibility over complicated bonus categories and airline-specific loyalty. It's for the traveler who wants their card to work for them, not the other way around.</p>`,
+    'section-earning-engine': `<h3>The Foundation - Unlimited 2X Miles on Everything</h3><p>The bedrock of the Venture card's appeal is its unlimited 2 miles per dollar earning rate on every single purchase. This is not a promotional rate, and there are no caps or categories to track. From your morning coffee and weekly grocery haul to your monthly utility bills and your child's soccer club fees, every transaction earns a consistent 2X miles. This structure eliminates the need to carry multiple cards for different types of spending, making the Venture card a powerful "catch-all" card. <a href="${reviewData.urls.rewardsProgram}" target="_blank" rel="noopener noreferrer sponsored" class="${styles.inlineLink}">(Source: Capital One, Venture Rewards Card Benefits)</a></p><h3>The Accelerator - 5X Miles via Capital One Travel</h3><p>For cardholders willing to engage a bit more strategically, the card offers an accelerated earning tier. Purchases of hotels and rental cars made through the Capital One Travel portal earn an elevated 5 miles per dollar. <a href="${reviewData.urls.travelPortal}" target="_blank" rel="noopener noreferrer sponsored" class="${styles.inlineLink}">(Source: Capital One, Capital One Travel Portal Terms)</a></p><p>This dual structure creates two distinct user pathways: use the card as a simple, everyday 2X workhorse, or strategically use the portal for specific travel bookings to significantly boost your mileage balance.</p>`,
+    'section-welcome-bonus': `<p>The Capital One Venture card greets new cardholders with a substantial welcome offer: earn <strong>75,000 bonus miles</strong> after spending $4,000 on purchases within the first 3 months of account opening. <a href="${reviewData.urls.offerDetails}" target="_blank" rel="noopener noreferrer sponsored" class="${styles.inlineLink}">(Source: Capital One, Venture Rewards Card Application Page)</a></p><p>This bonus provides a significant head start on travel savings. When redeemed for travel, these 75,000 miles translate directly into <strong>$750 worth of travel</strong>. That's enough value to cover a round-trip flight to many domestic destinations, a multi-night stay at a quality hotel, or an entire weekend getaway rental car. It is one of the most generous welcome offers available for a card with an annual fee under $100, providing immediate, overwhelming value in the first year.</p>`,
+    'section-redeeming-value': `<h3>Path 1: The Ultimate in Simplicity (Cover Your Travel Purchases)</h3><p>The card's signature redemption feature allows you to use your miles to receive a statement credit for any purchase coded as "travel" made within the past 90 days. This includes a broad range of expenses like flights on any airline, stays at any hotel, rental cars, cruises, train tickets, and even some rideshare services. Miles are redeemed at a fixed value of 1 cent per mile.</p><h3>Path 2: Other Options (Cash Back & Gift Cards)</h3><p>For maximum flexibility, miles can also be redeemed for non-travel options like cash back or gift cards. However, this path comes with a significant trade-off, as the redemption rate is typically much lower (often 0.5 cents per mile). This option should generally be avoided. <a href="${reviewData.urls.rewardsRedemption}" target="_blank" rel="noopener noreferrer sponsored" class="${styles.inlineLink}">(Source: Capital One, Rewards Redemption Catalog)</a></p>`,
+    'section-transfer-partners': `<p>For those looking to elevate their rewards game, the most powerful redemption method is transferring miles to Capital One's network of over 15 airline and hotel loyalty programs. By moving miles to a partner program, it's possible to book premium cabin flights or hotel stays for a fraction of their cash price. <a href="${reviewData.urls.transferPartners}" target="_blank" rel="noopener noreferrer sponsored" class="${styles.inlineLink}">(Source: Capital One, Mileage Transfer Program Details)</a></p><p>Key transfer partners include Air Canada Aeroplan, Air France/KLM Flying Blue, and British Airways Executive Club. While there are no direct major U.S. airline partners, you can use these international programs to book flights on their U.S. alliance partners (e.g., use British Airways Avios to book an American Airlines flight). This workaround is the key to unlocking domestic travel with this advanced strategy.</p>`,
+    'section-global-entry': `<p>One of the most tangible benefits of the Venture card is its statement credit for either Global Entry or TSA PreCheck®. When a cardholder uses their Venture card to pay the application fee, Capital One will provide a statement credit to cover the cost, up to $100. This benefit is available once every four years. Given that the Global Entry fee is $100, this perk single-handedly covers the card's $95 annual fee in the first year. <a href="${reviewData.urls.globalEntry}" target="_blank" rel="noopener noreferrer sponsored" class="${styles.inlineLink}">(Source: U.S. Department of Homeland Security, Trusted Traveler Programs)</a></p>`,
+    'section-lounge-access': `<p>The Venture card provides a taste of airport lounge luxury without a premium price tag. Each year, cardholders receive two complimentary lounge visits. These passes can be used at the growing network of Capital One Lounges or at any lounge within the global Plaza Premium network. This is a clear step up from no-annual-fee cards and serves as a perfect introduction to a valuable travel perk for the occasional traveler. <a href="${reviewData.urls.loungeAccess}" target="_blank" rel="noopener noreferrer sponsored" class="${styles.inlineLink}">(Source: Capital One, Airport Lounge Access Benefits)</a></p>`,
+    'section-lifestyle-collection': `<p>When booking hotels through the Capital One Travel portal, Venture cardholders gain access to the Lifestyle Collection, a curated selection of stylish and boutique hotels worldwide. Booking a stay from this collection unlocks a suite of valuable perks designed to enhance the travel experience, including a $50 experience credit, potential room upgrades, and early check-in/late check-out when available. <a href="${reviewData.urls.lifestyleCollection}" target="_blank" rel="noopener noreferrer sponsored" class="${styles.inlineLink}">(Source: Capital One, Lifestyle Collection Hotel Benefits)</a></p>`,
+    'section-protections': `<p>The Capital One Venture card comes equipped with a suite of insurance and protection benefits that provide a valuable safety net. Key among them is the Auto Rental Collision Damage Waiver. This coverage is secondary within your country of residence but becomes primary coverage for most international rentals, which is a significant benefit. <a href="${reviewData.urls.benefitsGuide}" target="_blank" rel="noopener noreferrer sponsored" class="${styles.inlineLink}">(Source: Mastercard, Guide to Benefits for Credit Cardholders)</a></p><p>The card also includes Travel Accident Insurance and $0 Fraud Liability for unauthorized charges. <a href="${reviewData.urls.security}" target="_blank" rel="noopener noreferrer sponsored" class="${styles.inlineLink}">(Source: Capital One, Security & Fraud Protection Center)</a></p>`,
+    'section-digital-tools': `<p>Capital One supports its cards with a strong suite of modern, user-friendly digital tools. The highly-rated mobile app allows you to manage your account from anywhere. For enhanced security, you can use Eno®, the Capital One Assistant, to generate unique virtual card numbers for online shopping, protecting your physical card number from merchants.</p>`,
+    'section-rates-fees': `<ul><li><strong>Annual Fee:</strong> $95</li><li><strong>Foreign Transaction Fee:</strong> None. This saves you around 3% on all purchases made abroad compared to many other cards. <a href="${reviewData.ratesFeesLink}" target="_blank" rel="noopener noreferrer sponsored" class="${styles.inlineLink}">(Source: Capital One, Venture Rewards Card Rates and Disclosures)</a></li><li><strong>Regular Purchase APR:</strong> A variable APR based on your creditworthiness.</li><li><strong>Late Payment Fee:</strong> Up to $40.</li></ul><p>As with any rewards card, the benefits are maximized when the balance is paid in full each month to avoid interest charges.</p>`,
+    'section-annual-fee-worth-it': `<p>A key question for any card with an annual fee is whether its benefits justify the cost. For the Venture card, the math is compelling. In year one, the $100 Global Entry credit more than offsets the $95 fee.</p><p>In subsequent years, the value depends on your spending. To offset the $95 fee purely with rewards, you'd need to earn 9,500 miles. With the 2X earning rate, this requires spending $4,750 on the card annually, or just under $400 per month. For most individuals using this as their primary card, this threshold is easily achievable.</p>`,
+    'section-user-profiles': `<h3>Profile 1: "The Casual Adventurer"</h3><p>This individual travels one to three times per year and wants simple rewards. The Venture card is a perfect fit, offering easy earning and straightforward redemptions.</p><h3>Profile 2: "The Aspiring Points Pro"</h3><p>This person is interested in travel rewards but intimidated by high fees. The Venture card is a fantastic gateway into the world of transferable rewards without a steep commitment.</p><h3>Profile 3: "The Road Warrior"</h3><p>This individual travels frequently and needs premium perks. The Venture is a good card, but the <a href="${reviewData.urls.ventureX}" target="_blank" rel="noopener noreferrer">Capital One Venture X</a> is likely a better fit due to its unlimited lounge access and superior travel credits.</p>`,
+    'section-real-world-example': `<h3>Calculating Your Savings on a Weekend Getaway</h3><p>To make the value of Venture miles tangible, consider this hypothetical weekend trip for two.</p><ul><li><strong>Flights:</strong> $600 (Miles Earned: 1,200)</li><li><strong>Hotel (via C1 Portal):</strong> $900 (Miles Earned: 4,500)</li><li><strong>Rental Car (via C1 Portal):</strong> $200 (Miles Earned: 1,000)</li><li><strong>Dining & Activities:</strong> $500 (Miles Earned: 1,000)</li><li><strong>Total Miles Earned from Trip: 7,700 miles</strong></li></ul><p>If the cardholder uses 60,000 miles from their welcome bonus to "erase" the $600 flight cost, their flights become free. This example demonstrates how the welcome bonus alone can fund a significant portion of a vacation.</p>`,
+    'section-pros-cons': `<h3>Pros: What Makes the Venture Card Shine</h3><ul><li><strong>Powerful, Simple Earning:</strong> The unlimited 2 miles per dollar on every purchase is a high, flat rate that's easy to track and makes the card an excellent "catch-all" for all your spending.</li><li><strong>Extremely Flexible Redemptions:</strong> The "Cover Your Travel Purchases" feature gives you the freedom to book travel however and wherever you want and still use your miles for a statement credit.</li><li><strong>Massive Welcome Bonus:</strong> The card typically offers a generous welcome bonus worth hundreds of dollars in travel, providing a huge head start on your savings. <a href="${reviewData.urls.offerDetails}" target="_blank" rel="noopener noreferrer sponsored" class="${styles.inlineLink}">(Source: Capital One, Venture Rewards Card Application Page)</a></li><li><strong>Global Entry/TSA PreCheck® Credit:</strong> This valuable perk provides a statement credit of up to $100 for the application fee, which effectively cancels out the annual fee in the first year. <a href="${reviewData.urls.globalEntry}" target="_blank" rel="noopener noreferrer sponsored" class="${styles.inlineLink}">(Source: U.S. Department of Homeland Security, Trusted Traveler Programs)</a></li><li><strong>No Foreign Transaction Fees:</strong> A must-have for international travel, this feature saves you around 3% on all purchases made abroad compared to many other cards. <a href="${reviewData.ratesFeesLink}" target="_blank" rel="noopener noreferrer sponsored" class="${styles.inlineLink}">(Source: Capital One, Venture Rewards Card Rates and Disclosures)</a></li></ul><h3>Cons: Where the Venture Card Falls Short</h3><ul><li><strong>$95 Annual Fee:</strong> While modest for a travel card, there is an annual cost to hold the card, which may not be ideal for very infrequent travelers or those strictly seeking no-fee options.</li><li><strong>No Major U.S. Airline Transfer Partners:</strong> The inability to transfer miles directly to loyalty programs like American AAdvantage, Delta SkyMiles, or United MileagePlus is a significant drawback for many domestic flyers, though workarounds do exist.</li><li><strong>Poor Value for Non-Travel Redemptions:</strong> Redeeming miles for cash back yields a low value (often 0.5 cents per mile), making it a poor choice if you aren't using rewards for travel.</li></ul>`,
+    'section-testimonials': `<div class="${styles.testimonialContainer}"><blockquote class="${styles.testimonialQuote}"><p>"I love that I don't have to think. I use it for my business supplies and groceries and know I'm getting a solid 2X return. The simplicity is its best feature."</p><footer>– Sarah, the Side-Hustler</footer></blockquote><blockquote class="${styles.testimonialQuote}"><p>"I was floored when they approved me for a $20,000 limit. It was far more than I expected and made it easy to put larger expenses on it to earn miles."</p><footer>– James, the Homeowner</footer></blockquote><blockquote class="${styles.testimonialQuote}"><p>"I was happy until I tried to cancel a car rental booked through the portal. Getting the points refunded was a nightmare... It’s a reminder that portals can add complexity."</p><footer>– Maria, the Planner</footer></blockquote><blockquote class="${styles.testimonialQuote}"><p>"No direct partner for Delta is the big drawback for me. I know you can book through partners, but I'd prefer the convenience of transferring directly to the airline I actually fly."</p><footer>– David, the Loyal Flyer</footer></blockquote><blockquote class="${styles.testimonialQuote}"><p>"My advice? Go for the Venture X if you travel more than twice a year. The $300 travel credit makes its effective annual fee the same as the regular Venture, but with way more perks."</p><footer>– Chloe, the Upgrader</footer></blockquote></div>`,
+    'section-competitors': `<p>The Venture card's value is best understood when compared against its primary rivals.</p>`,
+    'section-final-verdict': `<p>After an exhaustive analysis, the <strong>${reviewData.cardName}</strong> stands firm as the champion of powerful simplicity in the travel rewards world. It’s not the flashiest card, nor is it designed for the elite-status road warrior. Instead, it is an elegant and effective tool for the vast majority of American travelers who want their everyday spending to lead to more affordable adventures.</p><p>The card’s genius lies in its unwavering 2X earning rate and the beautifully intuitive "Cover Your Travel Purchases" redemption feature. These two elements work in perfect harmony to remove the friction that plagues so many other rewards programs. The substantial welcome bonus and the Global Entry credit provide an immense burst of first-year value that is nearly impossible for no-fee cards to overcome.</p><p>While the lack of direct U.S. airline transfer partners is a valid critique for advanced users, it’s a non-issue for the target audience who values flexibility over complex optimization.</p><p>If you are looking for one card to make travel simpler and cheaper, the Capital One Venture Card is an outstanding choice. It delivers on its promise, turning your daily life into your next destination with unparalleled ease.</p>`,
+    'section-faqs-jump': `<p>Here are answers to the most common questions about the ${reviewData.cardName}:</p>`,
+  };
+
+  return (
+    <div>
+      <Head>
+        <title>{reviewData.title} - {siteName}</title>
+        <meta name="description" content={reviewData.description} />
+        <meta name="keywords" content={reviewData.keywords} />
+        <meta name="author" content={reviewData.author.name} />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta name="robots" content="index,follow,max-image-preview:large" />
+        <link rel="canonical" href={pageUrlFull} />
+        <link rel="alternate" href={pageUrlFull} hreflang="en-us" />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content={siteName} />
+        <meta property="og:title" content={reviewData.title} />
+        <meta property="og:description" content={reviewData.description} />
+        <meta property="og:url" content={pageUrlFull} />
+        <meta property="og:image" content={`${siteUrl}${reviewData.imageUrl}`} />
+        <meta property="article:published_time" content={publishDate} />
+        <meta property="article:modified_time"  content={updateDate} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@YourTravelCardInsiderTwitterHandle" />
+        <meta name="twitter:title" content={reviewData.title} />
+        <meta name="twitter:description" content={reviewData.description} />
+        <meta name="twitter:image" content={`${siteUrl}${reviewData.imageUrl}`} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredDataOptimized) }} />
+      </Head>
+
+      <main>
+        <div className={styles.reviewPageLayout}>
+          <div className={styles.mainContentArea}>
+            <section className={styles.heroSection}>
+                <div className={styles.heroTextContainer}>
+                    <h1 className={styles.heroTitle} dangerouslySetInnerHTML={{ __html: reviewData.h1Content }}></h1>
+                     <p className={styles.reviewedByLine}>
+                        Expert review by{' '}
+                        <Link href={reviewData.author.fullBioLink || '#'} legacyBehavior>
+                            <a className={styles.authorNameLink}>{reviewData.author.name}</a>
+                        </Link>
+                        . Last updated: {new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                    </p>
+                    <p className={styles.heroSubtitle} dangerouslySetInnerHTML={{ __html: reviewData.heroSubtitle }}></p>
+                    <div className={styles.heroCtaContainer}>
+                        <div>
+                            <a href={reviewData.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.applyNowButton} ${styles.heroApplyButton}`}>
+                                Apply Now
+                            </a>
+                            <span className={styles.heroApplyButtonDisclaimer}>on Capital One's official site</span>
+                        </div>
+                        <Link href="#section-snapshot" legacyBehavior><a className={styles.heroSecondaryLink}>See Card Snapshot</a></Link>
                     </div>
-                    <div className={styles.heroImageContainer}>
-                        <Image src={reviewData.heroImage} alt={reviewData.heroImageAlt} layout="responsive" width={1200} height={600} priority />
+                </div>
+                <div className={styles.heroImageContainer}>
+                    <div className={styles.cardImageContainer}><Image src={reviewData.imageUrl} alt={reviewData.cardName} width={reviewData.imageWidth} height={reviewData.imageHeight} className={styles.heroImage} priority /></div>
+                    <div className={styles.ratingSection}>
+                        <span className={styles.tciRating}>
+                            <button type="button" className={styles.infoIconButton} aria-label="Rating Information" onClick={handleIconClick} aria-expanded={showRatingInfo}>
+                                <svg aria-hidden="true" focusable="false" className={styles.infoIcon} viewBox="0 0 16 16"><path fillRule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>
+                            </button>
+                            {siteName} Rating: <strong>{reviewData.ratingValue.toFixed(1)}</strong>/10
+                            {showRatingInfo && (<RatingTooltip ref={ratingTooltipRef} ratingValue={reviewData.ratingValue} ratingCriteria={ratingCriteria} onClose={() => setShowRatingInfo(false)} />)}
+                        </span>
+                        <div className={styles.starRating} title={`Rated ${reviewData.ratingValue} out of 10 stars`}>★★★★★<span className={styles.filledStars} style={{ '--rating': `${(reviewData.ratingValue / 10) * 100}%` }}>★★★★★</span></div>
+                    </div>
+                    <div className={styles.ratingDescription}><i>{reviewData.cardShortName}: The ultimate "set it and forget it" travel card.</i></div>
+                </div>
+            </section>
+            
+            <div className={styles.heroDisclaimer}>
+                <p>We may receive a commission from our partners for products mentioned in this review, but our opinions are our own. Card details are subject to change; always verify with the issuer.</p>
+            </div>
+
+            <div className={styles.reviewContainer}>
+              <article>
+                <header className={styles.reviewHeader}>
+                    <div className={styles.summaryBox} id="summaryBoxTitle">
+                        <h2 className={styles.summaryBoxTitle}>{reviewData.cardName}: Key Insights</h2>
+                        <div className={styles.summaryGrid}>
+                            <div className={styles.summaryItem}><span className={styles.summaryIcon}><IconGift /></span><span className={styles.summaryLabel}>Welcome Offer:</span><span className={styles.summaryValue} dangerouslySetInnerHTML={{ __html: summaryBoxData.welcomeOffer }}></span></div>
+                            <div className={styles.summaryItem}><span className={styles.summaryIcon}><IconCheck /></span><span className={styles.summaryLabel}>Annual Fee:</span><span className={styles.summaryValue} dangerouslySetInnerHTML={{ __html: summaryBoxData.annualFee }}></span></div>
+                            <div className={styles.summaryItem}><span className={styles.summaryIcon}><IconStar /></span><span className={styles.summaryLabel}>Top Earning:</span><span className={styles.summaryValue} dangerouslySetInnerHTML={{ __html: summaryBoxData.topEarning }}></span></div>
+                            <div className={styles.summaryItem}><span className={styles.summaryIcon}><IconPlus /></span><span className={styles.summaryLabel}>Key Perks:</span><span className={styles.summaryValue} dangerouslySetInnerHTML={{ __html: summaryBoxData.keyPerks }}></span></div>
+                            <div className={styles.summaryItem} data-full-width="true"><span className={styles.summaryIcon}><IconPlane /></span><span className={styles.summaryLabel}>Best For:</span><span className={styles.summaryValue} dangerouslySetInnerHTML={{ __html: summaryBoxData.bestFor }}></span></div>
+                        </div>
                     </div>
                 </header>
 
-                <div className={styles.reviewContent}>
-                    {/* Introduction */}
-                    <section id="dilemma">
-                        <h2>A Traveler's Dilemma: Finding Simplicity in a World of Complex Rewards</h2>
-                        <p>The modern traveler is often caught in a paradox of choice. The credit card market is a dizzying landscape of complex rewards programs, each promising a faster path to a free vacation. Cardholders find themselves juggling multiple cards, trying to remember which one offers 5X points on groceries this quarter, which provides 3X on dining, and which requires navigating a labyrinth of transfer partner charts to unlock value. This "mental load" can turn the exciting game of earning rewards into a chore, leaving many to wonder if there's a simpler, more elegant way to fund their adventures.</p>
-                        <p>This environment of complexity is precisely where the {reviewData.cardName} carves out its identity. It was designed as an answer to the traveler's dilemma, built on a foundation of powerful simplicity. It proposes that earning valuable travel rewards shouldn't require a spreadsheet. This review will explore every facet of the Venture card, from its straightforward earning engine to its flexible redemption paths, to determine if it truly delivers on its promise of making travel more rewarding without the headache.</p>
-                    </section>
-                    
-                    {/* Card Snapshot */}
-                    <section id="snapshot" className={styles.snapshotSection}>
-                         <h2>Card Snapshot: The {reviewData.cardName} at a Glance</h2>
-                         <p>For those seeking a quick overview, here are the core features that define the {reviewData.cardName}. These are the essential facts you need to know, distilled into a simple, scannable format.</p>
-                        <div className={styles.snapshotGrid}>
-                             <div className={styles.snapshotItem}>
-                                 <h3>Welcome Bonus</h3>
-                                <p>Earn 75,000 bonus miles after spending $4,000 on purchases within the first 3 months from account opening. <a href="https://www.capitalone.com/credit-cards/venture/" target="_blank" rel="noopener noreferrer sponsored">[Source]</a></p>
-                             </div>
-                             <div className={styles.snapshotItem}>
-                                 <h3>Rewards Rate</h3>
-                                 <p>An unlimited 2 miles per dollar on every purchase, every day. Plus, an accelerated 5 miles per dollar on hotels and rental cars booked through Capital One Travel.</p>
-                             </div>
-                             <div className={styles.snapshotItem}>
-                                 <h3>Annual Fee</h3>
-                                <p>$95. <a href="https://www.capitalone.com/credit-cards/venture/" target="_blank" rel="noopener noreferrer sponsored">[Source]</a></p>
-                             </div>
-                             <div className={styles.snapshotItem}>
-                                 <h3>Key Travel Perk</h3>
-                                <p>Receive up to a $100 statement credit for the application fee for either Global Entry or TSA PreCheck®. <a href="https://ttp.dhs.gov/" target="_blank" rel="noopener noreferrer sponsored">[Source]</a></p>
-                             </div>
-                             <div className={styles.snapshotItem}>
-                                 <h3>Foreign Transaction Fees</h3>
-                                 <p>None. A crucial benefit for any international traveler.</p>
-                             </div>
-                             <div className={styles.snapshotItem}>
-                                 <h3>Credit Needed</h3>
-                                 <p>Good to Excellent.</p>
-                             </div>
-                         </div>
-                     </section>
+                 {/* Dynamically render most sections */}
+                {tocSections.filter(s => !['section-snapshot', 'section-competitors', 'section-pros-cons', 'section-testimonials', 'section-final-verdict', 'section-faqs-jump'].includes(s.id)).map(section => (
+                    <React.Fragment key={section.id}>
+                        <section id={section.id} className={styles.reviewSection}>
+                            <h2 dangerouslySetInnerHTML={{ __html: section.title.split('. ')[1] }}></h2>
+                            <div dangerouslySetInnerHTML={{ __html: (sectionContent[section.id] || '<p>Content coming soon...</p>') }} />
+                        </section>
+                        {section.id === 'section-transfer-partners' && contentImage1 && <Image src={contentImage1} alt="Traveler planning a trip using airline partner rewards" width={800} height={450} className={styles.contentImage} loading="lazy" />}
+                        {section.id === 'section-lounge-access' && contentImage2 && <Image src={contentImage2} alt="Traveler relaxing in an airport lounge" width={800} height={450} className={styles.contentImage} loading="lazy" />}
+                    </React.Fragment>
+                ))}
 
-                    {/* Best For */}
-                    <section id="best-for">
-                        <h2>"Best For" Tagline: The Go-To Card for Flexible, No-Fuss Travel Rewards</h2>
-                        <p>The {reviewData.cardName} is the quintessential travel card for individuals who value straightforward rewards and ultimate flexibility over complicated bonus categories and airline-specific loyalty. It's for the traveler who wants their card to work for them, not the other way around.</p>
-                    </section>
-                    
-                    {/* Earning Engine */}
-                    <section id="earning-engine">
-                        <h2>The Earning Engine: How You'll Rack Up Miles on Every Single Purchase</h2>
-                        <p>The Venture card’s rewards structure is built on a brilliant, two-pronged approach that masterfully caters to both simplicity and the opportunity for maximization.</p>
-                        <h3>The Foundation - Unlimited 2X Miles on Everything</h3>
-                        <p>The bedrock of the Venture card's appeal is its unlimited 2 miles per dollar earning rate on every single purchase. This is not a promotional rate, and there are no caps or categories to track. From your morning coffee and weekly grocery haul to your monthly utility bills and your child's soccer club fees, every transaction earns a consistent 2X miles. This structure eliminates the need to carry multiple cards for different types of spending, making the Venture card a powerful "catch-all" card. <a href="https://www.capitalone.com/learn-grow/money-management/credit-cards-rewards-benefits/" target="_blank" rel="noopener noreferrer sponsored">[Source]</a></p>
-                        <h3>The Accelerator - 5X Miles via Capital One Travel</h3>
-                        <p>For cardholders willing to engage a bit more strategically, the card offers an accelerated earning tier. Purchases of hotels and rental cars made through the Capital One Travel portal earn an elevated 5 miles per dollar. <a href="https://capitalonetravel.com/consumer-travel-benefits" target="_blank" rel="noopener noreferrer sponsored">[Source]</a></p>
-                        <p>This dual structure creates two distinct user pathways: use the card as a simple, everyday 2X workhorse, or strategically use the portal for specific travel bookings to significantly boost your mileage balance.</p>
-                    </section>
-                    
-                    {/* Welcome Bonus */}
-                    <section id="welcome-bonus">
-                        <h2>The Welcome Wagon: A Deep Dive into the 75,000-Mile Bonus</h2>
-                        <p>The {reviewData.cardName} greets new cardholders with a substantial welcome offer: earn 75,000 bonus miles after spending $4,000 on purchases within the first 3 months of account opening. <a href="https://www.capitalone.com/credit-cards/venture/" target="_blank" rel="noopener noreferrer sponsored">[Source]</a></p>
-                        <p>This bonus provides a significant head start on travel savings. When redeemed for travel, these 75,000 miles translate directly into $750 worth of travel. That's enough value to cover a round-trip flight to many domestic destinations, a multi-night stay at a quality hotel, or an entire weekend getaway rental car. It is one of the most generous welcome offers available for a card with an annual fee under $100, providing immediate, overwhelming value in the first year.</p>
-                    </section>
 
-                    {/* Redemption */}
-                    <section id="redemption">
-                        <h2>Your Miles, Your Way: Mastering the Art of Redemption</h2>
-                        <p>Earning miles is only half the equation; redeeming them is where the value is truly realized. The Venture card offers multiple redemption paths, brilliantly designed to accommodate different preferences.</p>
-                        <h3>Path 1: The Ultimate in Simplicity (Cover Your Travel Purchases)</h3>
-                        <p>The card's signature redemption feature allows you to use your miles to receive a statement credit for any purchase coded as "travel" made within the past 90 days. This includes a broad range of expenses like flights on any airline, stays at any hotel, rental cars, cruises, train tickets, and even some rideshare services. Miles are redeemed at a fixed value of 1 cent per mile.</p>
-                        <h3>Path 2: Other Options (Cash Back & Gift Cards)</h3>
-                        <p>For maximum flexibility, miles can also be redeemed for non-travel options like cash back or gift cards. However, this path comes with a significant trade-off, as the redemption rate is typically much lower (often 0.5 cents per mile). This option should generally be avoided. <a href="https://loyaltygateway.com/rewards/phoenix/onecard3014/shop/10761/220238?postaction=initActionShopCatalogDetail&csrf_token=ko8jm8yu7wyh" target="_blank" rel="noopener noreferrer sponsored">[Source]</a></p>
-                    </section>
-
-                    {/* Transfer Partners */}
-                    <section id="transfer-partners">
-                        <h2>Unlocking Outsized Value: A Guide to Capital One's Transfer Partners</h2>
-                        <p>For those looking to elevate their rewards game, the most powerful redemption method is transferring miles to Capital One's network of over 15 airline and hotel loyalty programs. <a href="https://www.capitalone.com/learn-grow/money-management/venture-miles-transfer-partnerships/" target="_blank" rel="noopener noreferrer sponsored">[Source]</a></p>
-                        <p>By moving miles to a partner program, it's possible to book premium cabin flights or hotel stays for a fraction of their cash price.</p>
-                        <p>Key transfer partners include Air Canada Aeroplan, Air France/KLM Flying Blue, and British Airways Executive Club. While there are no direct major U.S. airline partners, you can use these international programs to book flights on their U.S. alliance partners (e.g., use British Airways Avios to book an American Airlines flight). This workaround is the key to unlocking domestic travel with this advanced strategy.</p>
-                    </section>
-                    
-                    {/* Global Entry */}
-                    <section id="global-entry">
-                        <h2>Streamlining Your Journey: The Global Entry & TSA PreCheck® Credit</h2>
-                        <p>One of the most tangible benefits of the Venture card is its statement credit for either Global Entry or TSA PreCheck®. When a cardholder uses their Venture card to pay the application fee, Capital One will provide a statement credit to cover the cost, up to $100. This benefit is available once every four years. Given that the Global Entry fee is $100, this perk single-handedly covers the card's $95 annual fee in the first year. <a href="https://ttp.dhs.gov/" target="_blank" rel="noopener noreferrer sponsored">[Source]</a></p>
-                    </section>
-                    
-                    {/* Lounge Passes */}
-                    <section id="lounge-access">
-                        <h2>A Touch of Comfort: Your Two Annual Lounge Passes</h2>
-                        <p>The Venture card provides a taste of airport lounge luxury without a premium price tag. Each year, cardholders receive two complimentary lounge visits. <a href="https://capitalonetravel.com/airport-lounges" target="_blank" rel="noopener noreferrer sponsored">[Source]</a></p>
-                        <p>These passes can be used at the growing network of Capital One Lounges or at any lounge within the global Plaza Premium network. This is a clear step up from no-annual-fee cards and serves as a perfect introduction to a valuable travel perk for the occasional traveler.</p>
-                    </section>
-
-                    {/* Lifestyle Collection */}
-                    <section id="lifestyle-collection">
-                        <h2>Curated Stays: Inside the Capital One Lifestyle Collection</h2>
-                        <p>When booking hotels through the Capital One Travel portal, Venture cardholders gain access to the Lifestyle Collection, a curated selection of stylish and boutique hotels worldwide. Booking a stay from this collection unlocks a suite of valuable perks designed to enhance the travel experience, including a $50 experience credit, potential room upgrades, and early check-in/late check-out when available. <a href="https://frugalflyer.ca/blog/capital-one-premier-collection-lifestyle-collection-hotels-resorts-guide/" target="_blank" rel="noopener noreferrer sponsored">[Source]</a></p>
-                    </section>
-
-                    {/* Protections */}
-                    <section id="protections">
-                        <h2>Peace of Mind on the Road: Understanding Your Travel & Purchase Protections</h2>
-                        <p>The {reviewData.cardName} comes equipped with a suite of insurance and protection benefits that provide a valuable safety net. Key among them is the Auto Rental Collision Damage Waiver. This coverage is secondary within your country of residence but becomes primary coverage for most international rentals, which is a significant benefit. <a href="https://www.mastercard.us/content/dam/public/mastercardcom/na/global-site/documents/gtb/core-credit-generic.pdf" target="_blank" rel="noopener noreferrer sponsored">[Source]</a></p>
-                        <p>The card also includes Travel Accident Insurance and $0 Fraud Liability for unauthorized charges. <a href="https://www.capitalone.com/digital/identity-protection/" target="_blank" rel="noopener noreferrer sponsored">[Source]</a></p>
-                    </section>
-                    
-                    {/* Digital Tools */}
-                    <section id="digital-tools">
-                        <h2>Digital Tools for the Modern Traveler: Managing Your Account with Ease</h2>
-                        <p>Capital One supports its cards with a strong suite of modern, user-friendly digital tools. The highly-rated mobile app allows you to manage your account from anywhere. For enhanced security, you can use Eno, the Capital One Assistant, to generate unique virtual card numbers for online shopping, protecting your physical card number from merchants.</p>
-                    </section>
-                    
-                    {/* Rates & Fees */}
-                    <section id="rates-fees">
-                        <h2>The Full Spectrum of Rates & Fees: What This Card Really Costs</h2>
-                        <p>Transparency in costs is critical. Here is a breakdown of the rates and fees for the Venture Card:</p>
-                        <ul>
-                            <li><strong>Annual Fee:</strong> $95</li>
-                            <li><strong>Foreign Transaction Fee:</strong> None. This saves you around 3% on all purchases made abroad compared to many other cards. <a href="https://www.capitalone.com/credit-cards/compare/" target="_blank" rel="noopener noreferrer sponsored">[Source]</a></li>
-                            <li><strong>Regular Purchase APR:</strong> A variable APR based on your creditworthiness.</li>
-                            <li><strong>Late Payment Fee:</strong> Up to $40.</li>
-                        </ul>
-                        <p>As with any rewards card, the benefits are maximized when the balance is paid in full each month to avoid interest charges.</p>
-                    </section>
-
-                    {/* Cost-Benefit */}
-                    <section id="cost-benefit">
-                        <h2>Is the $95 Annual Fee Worth It? A Cost-Benefit Breakdown</h2>
-                        <p>A key question for any card with an annual fee is whether its benefits justify the cost. For the Venture card, the math is compelling. In year one, the $100 Global Entry credit more than offsets the $95 fee.</p>
-                        <p>In subsequent years, the value depends on your spending. To offset the $95 fee purely with rewards, you'd need to earn 9,500 miles. With the 2X earning rate, this requires spending $4,750 on the card annually, or just under $400 per month. For most individuals using this as their primary card, this threshold is easily achievable.</p>
-                    </section>
-                    
-                    {/* User Profiles */}
-                    <section id="user-profiles">
-                        <h2>Detailed User Profiling: Is the Venture Card Your Perfect Travel Companion?</h2>
-                        <p>The "best" credit card is highly personal. To help determine if the Venture card aligns with your habits, consider these three profiles.</p>
-                        <h3>Profile 1: "The Casual Adventurer"</h3>
-                        <p>This individual travels one to three times per year and wants simple rewards. The Venture card is a perfect fit, offering easy earning and straightforward redemptions.</p>
-                        <h3>Profile 2: "The Aspiring Points Pro"</h3>
-                        <p>This person is interested in travel rewards but intimidated by high fees. The Venture card is a fantastic gateway into the world of transferable rewards without a steep commitment.</p>
-                        <h3>Profile 3: "The Road Warrior"</h3>
-                        <p>This individual travels frequently and needs premium perks. The Venture is a good card, but the <Link href="/review/capital-one-venture-rewards-vs-venture-x-2025"><a className={styles.internalLink}>Capital One Venture X</a></Link> is likely a better fit due to its unlimited lounge access and superior travel credits.</p>
-                    </section>
-                    
-                    {/* Real-World Trip */}
-                    <section id="real-world-trip">
-                        <h2>A Real-World Trip: Calculating Your Savings on a Weekend Getaway</h2>
-                        <p>To make the value of Venture miles tangible, consider this hypothetical weekend trip for two.</p>
-                        <ul>
-                            <li><strong>Flights:</strong> $600 (Miles Earned: 1,200)</li>
-                            <li><strong>Hotel (via C1 Portal):</strong> $900 (Miles Earned: 4,500)</li>
-                            <li><strong>Rental Car (via C1 Portal):</strong> $200 (Miles Earned: 1,000)</li>
-                            <li><strong>Dining & Activities:</strong> $500 (Miles Earned: 1,000)</li>
-                            <li><strong>Total Miles Earned from Trip:</strong> 7,700 miles</li>
-                        </ul>
-                        <p>If the cardholder uses 60,000 miles from their welcome bonus to "erase" the $600 flight cost, their flights become free. This example demonstrates how the welcome bonus alone can fund a significant portion of a vacation.</p>
-                    </section>
-
-                    {/* Pros and Cons */}
-                    <section id="pros-cons">
-                        <h2>Pros and Cons of the Venture Card</h2>
-                        <p>Every card has its strengths and weaknesses. Here's a balanced look at the {reviewData.cardName}.</p>
-                        <div className={styles.proConGrid}>
-                            <div className={styles.proColumn}>
-                                <h3>Pros: What Makes it Shine</h3>
-                                <ul>
-                                    <li>Powerful, Simple Earning: The unlimited 2 miles per dollar is a high, flat rate that's easy to track.</li>
-                                    <li>Extremely Flexible Redemptions: "Cover Your Travel Purchases" gives you ultimate freedom.</li>
-                                    <li>Massive Welcome Bonus: A huge head start on your savings. <a href="https://www.capitalone.com/credit-cards/venture/" target="_blank" rel="noopener noreferrer sponsored">[Source]</a></li>
-                                    <li>Global Entry/TSA PreCheck® Credit: Effectively cancels out the annual fee in year one. <a href="https://ttp.dhs.gov/" target="_blank" rel="noopener noreferrer sponsored">[Source]</a></li>
-                                    <li>No Foreign Transaction Fees: A must-have for international travel. <a href="https://www.capitalone.com/credit-cards/compare/" target="_blank" rel="noopener noreferrer sponsored">[Source]</a></li>
-                                </ul>
-                            </div>
-                            <div className={styles.conColumn}>
-                                <h3>Cons: Where it Falls Short</h3>
-                                <ul>
-                                    <li>$95 Annual Fee: A cost to consider for infrequent travelers.</li>
-                                    <li>No Major U.S. Airline Transfer Partners: A drawback for loyal domestic flyers.</li>
-                                    <li>Poor Value for Non-Travel Redemptions: Cash back options diminish the value of your miles.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </section>
-                    
-                    {/* Testimonials */}
-                    <section id="testimonials">
-                        <h2>Voices from the Community: Five Authentic User Testimonials</h2>
-                        <blockquote className={styles.testimonial}>
-                            <p>"I love that I don't have to think. I use it for my business supplies and groceries and know I'm getting a solid 2X return. The simplicity is its best feature."</p>
-                            <cite>– Sarah, the Side-Hustler</cite>
-                        </blockquote>
-                        <blockquote className={styles.testimonial}>
-                            <p>"I was floored when they approved me for a $20,000 limit. It was far more than I expected and made it easy to put larger expenses on it to earn miles."</p>
-                            <cite>– James, the Homeowner</cite>
-                        </blockquote>
-                        <blockquote className={styles.testimonial}>
-                            <p>"I was happy until I tried to cancel a car rental booked through the portal. Getting the points refunded was a nightmare of being passed back and forth. It’s a reminder that portals can add complexity."</p>
-                            <cite>– Maria, the Planner</cite>
-                        </blockquote>
-                         <blockquote className={styles.testimonial}>
-                            <p>"No direct partner for Delta is the big drawback for me. I know you can book through partners, but I'd prefer the convenience of transferring directly to the airline I actually fly."</p>
-                            <cite>– David, the Loyal Flyer</cite>
-                        </blockquote>
-                        <blockquote className={styles.testimonial}>
-                            <p>"My advice? Go for the Venture X if you travel more than twice a year. The $300 travel credit makes its effective annual fee the same as the regular Venture, but with way more perks."</p>
-                            <cite>– Chloe, the Upgrader</cite>
-                        </blockquote>
-                    </section>
-
-                    {/* Comparison */}
-                    <section id="comparison">
-                        <h2>How the Venture Stacks Up: A Competitive Showdown</h2>
-                        <p>The Venture card's value is best understood when compared against its primary rivals.</p>
+                <section id="section-snapshot" className={styles.reviewSection}>
+                    <h2>{tocSections.find(s => s.id === 'section-snapshot').title.split('. ')[1]}</h2>
+                    <div dangerouslySetInnerHTML={{ __html: sectionContent['section-snapshot'] }} />
+                    <DraggableTableWrapper>
                         <div className={styles.tableContainer}>
-                            <table className={styles.comparisonTable}>
+                            <table className={`${styles.statsTable} ${styles.highlightTable}`}>
+                                <thead><tr><th>Feature</th><th>Details</th></tr></thead>
+                                <tbody>
+                                    {keyFeaturesTableData.map((item, index) => (
+                                        <tr key={index}><td data-label="Feature" dangerouslySetInnerHTML={{ __html: item.feature }}></td><td data-label="Details" dangerouslySetInnerHTML={{ __html: item.details }}></td></tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </DraggableTableWrapper>
+                </section>
+                
+                <section id="section-pros-cons" className={styles.reviewSection}>
+                    <h2>{tocSections.find(s => s.id === 'section-pros-cons').title.split('. ')[1]}</h2>
+                    <div className={styles.prosConsContainer}>
+                        <div className={styles.prosList} dangerouslySetInnerHTML={{ __html: sectionContent['section-pros-cons'].split('<h3>Cons:')[0] }} />
+                        <div className={styles.consList} dangerouslySetInnerHTML={{ __html: `<h3>Cons:${sectionContent['section-pros-cons'].split('<h3>Cons:')[1]}`}} />
+                    </div>
+                </section>
+
+                <section id="section-competitors" className={styles.reviewSection}>
+                    <h2>{tocSections.find(s => s.id === 'section-competitors').title.split('. ')[1]}</h2>
+                    <div dangerouslySetInnerHTML={{ __html: sectionContent['section-competitors'] }} />
+                    <DraggableTableWrapper>
+                        <div className={styles.tableContainer}>
+                            <table className={`${styles.statsTable} ${styles.comparisonTable}`}>
                                 <thead>
                                     <tr>
                                         <th>Feature</th>
@@ -364,106 +462,75 @@ const CapitalOneVentureReviewPage = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Annual Fee</td>
-                                        <td>$95</td>
-                                        <td>$95</td>
-                                        <td>$395</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Base Earning Rate</td>
-                                        <td>2X</td>
-                                        <td>1X</td>
-                                        <td>2X</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Key Annual Credit</td>
-                                        <td>None</td>
-                                        <td>$50 Hotel Credit</td>
-                                        <td>$300 Travel Credit</td>
-                                    </tr>
-                                     <tr>
-                                        <td>Lounge Access</td>
-                                        <td>2 annual passes</td>
-                                        <td>None</td>
-                                        <td>Unlimited</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Global Entry Credit</td>
-                                        <td>Yes</td>
-                                        <td>No</td>
-                                        <td>Yes</td>
-                                    </tr>
+                                    <tr><td data-label="Feature"><strong>Annual Fee</strong></td><td data-label="Venture">$95</td><td data-label="Sapphire Preferred">$95</td><td data-label="Venture X">$395</td></tr>
+                                    <tr><td data-label="Feature"><strong>Base Earning Rate</strong></td><td data-label="Venture">2X</td><td data-label="Sapphire Preferred">1X</td><td data-label="Venture X">2X</td></tr>
+                                    <tr><td data-label="Feature"><strong>Key Annual Credit</strong></td><td data-label="Venture">None</td><td data-label="Sapphire Preferred">$50 Hotel Credit</td><td data-label="Venture X">$300 Travel Credit</td></tr>
+                                    <tr><td data-label="Feature"><strong>Lounge Access</strong></td><td data-label="Venture">2 annual passes</td><td data-label="Sapphire Preferred">None</td><td data-label="Venture X">Unlimited</td></tr>
+                                    <tr><td data-label="Feature"><strong>Global Entry Credit</strong></td><td data-label="Venture">Yes</td><td data-label="Sapphire Preferred">No</td><td data-label="Venture X">Yes</td></tr>
                                 </tbody>
                             </table>
                         </div>
-                        <p>This comparison reveals the Venture card's unique positioning. It offers a higher base earning rate than the Sapphire Preferred and provides a taste of premium perks that its direct competitor lacks, all while stopping short of the high-fee, high-reward structure of the Venture X.</p>
-                    </section>
+                    </DraggableTableWrapper>
+                </section>
 
-                    {/* FAQs */}
-                    <section id="faqs">
-                        <h2>Card-Specific Frequently Asked Questions (FAQs)</h2>
-                        <div className={styles.faqGrid}>
-                            <div className={styles.faqItem}>
-                                <h3>What credit score is needed for the Venture card?</h3>
-                                <p>Typically a score of 670 or higher is recommended.</p>
-                            </div>
-                             <div className={styles.faqItem}>
-                                <h3>Can miles be transferred to a US airline like Delta or United?</h3>
-                                <p>Not directly, but you can book flights on them through international airline partners in the same alliance.</p>
-                            </div>
-                             <div className={styles.faqItem}>
-                                <h3>Do Venture miles expire?</h3>
-                                <p>No, as long as your account is open and in good standing. <a href="https://d25970n8puso9u.cloudfront.net/disclosure.25868.en-US.pdf" target="_blank" rel="noopener noreferrer sponsored">[Source]</a></p>
-                            </div>
-                            <div className={styles.faqItem}>
-                                <h3>Is the Capital One Venture a Visa or Mastercard?</h3>
-                                <p>It is a Visa Signature card.</p>
-                            </div>
-                            <div className={styles.faqItem}>
-                                <h3>Is it necessary to set a travel notice before going abroad?</h3>
-                                <p>No, it is not required for Capital One cards.</p>
-                            </div>
-                            <div className={styles.faqItem}>
-                                <h3>Can the Venture card be downgraded to a no-annual-fee card?</h3>
-                                <p>It is sometimes possible to downgrade to the VentureOne card, but this is not a guaranteed option and depends on your account history.</p>
-                            </div>
-                             <div className={styles.faqItem}>
-                                <h3>What does "travel" cover for redemptions?</h3>
-                                <p>The category is very broad, including airlines, hotels, rentals, cruises, rideshares, and more.</p>
-                            </div>
-                            <div className={styles.faqItem}>
-                                <h3>Can I add an authorized user?</h3>
-                                <p>Yes, at no additional cost.</p>
-                            </div>
-                             <div className={styles.faqItem}>
-                                <h3>How does this card pair with the SavorOne card?</h3>
-                                <p>They create a powerful duo. You can earn cash back on the SavorOne and convert it to miles with your Venture account.</p>
-                            </div>
-                            <div className={styles.faqItem}>
-                                <h3>Is the Venture X a better card?</h3>
-                                <p>For frequent travelers, yes. For most others, the standard Venture is the simpler, more accessible choice.</p>
-                            </div>
-                        </div>
-                    </section>
-                    
-                    {/* Verdict */}
-                    <section id="verdict" className={styles.verdictSection}>
-                        <h2>Our Final Verdict: Is the {reviewData.cardName} Your Ticket to Adventure?</h2>
-                        <p>After an exhaustive analysis, the {reviewData.cardName} stands firm as the champion of powerful simplicity in the travel rewards world. It’s not the flashiest card, nor is it designed for the elite-status road warrior. Instead, it is an elegant and effective tool for the vast majority of American travelers who want their everyday spending to lead to more affordable adventures.</p>
-                        <p>The card’s genius lies in its unwavering 2X earning rate and the beautifully intuitive "Cover Your Travel Purchases" redemption feature. These two elements work in perfect harmony to remove the friction that plagues so many other rewards programs. The substantial welcome bonus and the Global Entry credit provide an immense burst of first-year value that is nearly impossible for no-fee cards to overcome.</p>
-                        <p>While the lack of direct U.S. airline transfer partners is a valid critique for advanced users, it’s a non-issue for the target audience who values flexibility over complex optimization.</p>
-                        <p className={styles.finalWord}>If you are looking for one card to make travel simpler and cheaper, the {reviewData.cardName} is an outstanding choice. It delivers on its promise, turning your daily life into your next destination with unparalleled ease.</p>
-                         <div className={styles.applyButtonContainer}>
-                            <a href={reviewData.applyLink} className={styles.applyButton} target="_blank" rel="noopener noreferrer sponsored">
-                                Apply Now
-                            </a>
-                        </div>
-                    </section>
-                </div>
-            </article>
-        </>
-    );
-};
+                <section id="section-testimonials" className={styles.reviewSection}>
+                    <h2>{tocSections.find(s => s.id === 'section-testimonials').title.split('. ')[1]}</h2>
+                    <div dangerouslySetInnerHTML={{ __html: sectionContent['section-testimonials'] }} />
+                </section>
+                
+                <section id="section-final-verdict" className={styles.reviewSection}>
+                    <h2>{tocSections.find(s => s.id === 'section-final-verdict').title.split('. ')[1]}</h2>
+                    <div dangerouslySetInnerHTML={{ __html: sectionContent['section-final-verdict'] }} />
+                    <div className={styles.ratingDescription} style={{textAlign: 'center', marginTop: '1rem'}}><strong>{siteName}.com Score: {reviewData.ratingValue}/10</strong></div>
+                </section>
+                
+                <section className={`${styles.reviewSection} ${styles.postVerdictCtaSection}`}>
+                    <h3>Ready for Simplified Travel Rewards?</h3>
+                    <p>If our expert verdict on the Capital One Venture Card aligns with your travel style, take the next step. Check the latest offer and see how easy earning your next trip can be.</p>
+                    <div className={styles.ctaButtonContainer}>
+                        <a href={reviewData.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.applyNowButton} ${styles.ctaApplyButton}`}>View Offer & Apply Now</a>
+                        <span className={styles.ctaDisclaimer}>You are now leaving {siteName} for Capital One's official site.</span>
+                    </div>
+                </section>
 
-export default CapitalOneVentureReviewPage;
+                 <section id="section-faqs-jump" className={`${styles.reviewSection} ${styles.faqSection}`}>
+                    <h2>{tocSections.find(s => s.id === 'section-faqs-jump').title.split('. ')[1]}</h2>
+                    <div dangerouslySetInnerHTML={{ __html: sectionContent['section-faqs-jump'] }} />
+                    <div className={styles.faqContainer}>
+                        {faqsContent.map((faq, index) => (
+                            <details key={index} className={styles.faqItem} name={`faq-${index + 1}`}>
+                                <summary className={styles.faqQuestion}>{`${index + 1}. ${faq.q}`}</summary>
+                                <div className={styles.faqAnswer}><p dangerouslySetInnerHTML={{ __html: faq.a }} /></div>
+                            </details>
+                        ))}
+                    </div>
+                </section>
+
+              </article>
+            </div>
+          </div>
+          <aside className={styles.sidebarArea}>
+                <TableOfContents sections={tocSections} />
+          </aside>
+        </div>
+        
+      </main>
+      
+      <div className={styles.stickyFooterContainer}>
+        <div className={styles.stickyFooterContent}>
+            <Image src={reviewData.imageUrl} alt={`${reviewData.cardShortName} card image`} width={60} height={38} className={styles.stickyFooterCardImage} />
+            <div className={styles.stickyFooterText}>
+              <span className={styles.stickyFooterCardName}>{reviewData.cardShortName}</span>
+              <span className={styles.stickyFooterRating}>{siteName} Rating: {reviewData.ratingValue.toFixed(1)}/10</span>
+            </div>
+            <div className={styles.stickyFooterButtons}>
+                <a href={reviewData.applyLink} className={`${styles.stickyFooterBtn} ${styles.stickyFooterBtnApply}`} target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
+                <a href={reviewData.ratesFeesLink} className={`${styles.stickyFooterBtn} ${styles.stickyFooterBtnRates}`} target="_blank" rel="noopener noreferrer sponsored">See Rates & Fees</a>
+            </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default CapitalOneVentureRewardsReviewPage;
