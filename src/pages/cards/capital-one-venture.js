@@ -16,6 +16,8 @@ import IconStar from '../../components/icons/icon-star.svg';
 import IconCheck from '../../components/icons/icon-Credit Card.svg';
 import IconPlus from '../../components/icons/icon-target.svg';
 import IconPlane from '../../components/icons/icon-plane.svg';
+// Add this line to your imports
+import TableOfContents from '../../components/TableOfContents';
 
 const RatingTooltip = dynamic(() => import('../../components/RatingTooltip'), { ssr: false, loading: () => null });
 
