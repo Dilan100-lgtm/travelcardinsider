@@ -56,8 +56,8 @@ const reviewData = {
   },
   siteName: "TravelCardInsider.com",
   pagePath: "/review/marriott-bonvoy-bevy-2025",
-  imageUrl: "/marriott-bevy-hero-image.jpg", // Placeholder Path
-  cardImageUrl: "/marriott-bonvoy-bevy-card.png", // Placeholder Path
+  imageUrl: "/upgraded-points-xjTp2RjWg3A-unsplash.jpg", // Placeholder Path
+  cardImageUrl: "/NUS000000311_480x304_straight_withname.avif", // Placeholder Path
   heroImageObjectPosition: "center 40%",
   imageWidth: 1600,
   imageHeight: 900,
