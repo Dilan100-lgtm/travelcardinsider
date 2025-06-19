@@ -63,10 +63,10 @@ const reviewDataNew = {
       }
   },
   siteName: siteName,
-  imageUrl        : '/capital-one-ventureone-card.png', // Placeholder: Replace with actual VentureOne card image URL
+  imageUrl        : '/ventureone_cardart_prim_323x203.avif', // Placeholder: Replace with actual VentureOne card image URL
   imageWidth      : 1290,
   imageHeight     : 812,
-  ratingValue     : 8.2,  // Rating reflects its status as a strong entry-level card
+  ratingValue     : 7.2,  // Rating reflects its status as a strong entry-level card
   ratingCount     : 185,  // Placeholder user rating count
   reviewBody      : 'Our editors evaluate the Capital One VentureOne Card based on its rewards rate (1.25x base, 5x on portal bookings), welcome bonus accessibility, access to transfer partners, lack of an annual fee, and overall value for travelers starting their rewards journey.',
   aprRange        : '19.24% - 29.24% variable APR',
@@ -703,7 +703,7 @@ function CapitalOneVentureOneReviewPage() {
                 </section>
                 
                 <Image
-                    src="/pexels-leeloothefirst-5428830.webp" // Placeholder image for travel
+                    src="/pexels-pawan-yadav-1321878-2577274.jpg" // Placeholder image for travel
                     alt="Map and passport, symbolizing accessible travel with the VentureOne card"
                     width={800}
                     height={500}
@@ -863,6 +863,15 @@ function CapitalOneVentureOneReviewPage() {
                         </div>
                     </div>
                 </section>
+
+                <Image
+                    src="/pexels-cahilrom-2088282.jpg" // Placeholder image for travel
+                    alt="Map and passport, symbolizing accessible travel with the VentureOne card"
+                    width={800}
+                    height={500}
+                    className={styles.contentImage}
+                    loading="lazy"
+                />
 
                 <section id="section-12" className={styles.reviewSection}>
                     <h2>12. The Cons: Where Does It Fall Short?</h2>
