@@ -602,7 +602,7 @@ function CapitalOneVentureCardReviewPage() {
                     )}
                 </div>
                 <p className={styles.heroSubtitle}>
-                  The modern traveler is often caught in a paradox of choice. The credit card market is a dizzying landscape of complex rewards programs, each promising a faster path to a free vacation. This "mental load" can turn the exciting game of earning rewards into a chore. The Capital One Venture card carves out its identity as an answer to this dilemma, built on powerful simplicity.
+                  Today’s traveler faces reward overload. With so many complex credit card programs, earning points can feel like work. The Capital One Venture card solves this with one thing: powerful simplicity.
                 </p>
                 <div className={styles.heroCtaContainer}>
                   <div>
