@@ -581,7 +581,7 @@ function CapitalOneVentureOneReviewPage() {
                     )}
                 </div>
                 <p className={styles.heroSubtitle}>
-                  The world of travel rewards can feel like an exclusive club with a high cost of entry. Enter the {reviewDataNew.cardName}. Think of it as your friendly guide to the world of travel rewards, a welcoming, "no-strings-attached" solution designed to make earning travel simple.
+                  Travel rewards often feel out of reach—but the Capital One VentureOne Rewards Card changes that. It’s a no-annual-fee, beginner-friendly way to start earning flexible miles with zero hassle.
                 </p>
                 <div className={styles.heroCtaContainer}>
                   <div>
