@@ -55,7 +55,7 @@ const reviewDataNew = {
   },
   siteName: "TravelCardInsider.com",
   pagePath: "/guides/capital-one-transfer-partners-2025",
-  imageUrl: "/images/heros/capital-one-transfer-partners-hero.webp", // Placeholder path for a relevant hero image
+  imageUrl: "/pexels-cliford-mervil-988071-2398220.webp", // Placeholder path for a relevant hero image
   heroImageObjectPosition: "center 40%",
   imageWidth: 1600,
   imageHeight: 900,
