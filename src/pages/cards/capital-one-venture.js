@@ -64,10 +64,10 @@ const reviewData = {
       }
   },
   siteName: siteName,
-  imageUrl: '/capital-one-venture-card.png', // Placeholder: Replace with actual Venture card image URL
+  imageUrl: '/venture_cardart_prim_323x203-1.avif', // Placeholder: Replace with actual Venture card image URL
   imageWidth: 1290,
   imageHeight: 812,
-  ratingValue: 9.0,  // Placeholder Rating: Adjust as needed
+  ratingValue: 8.2,  // Placeholder Rating: Adjust as needed
   ratingCount: 310,  // Placeholder Count: Adjust as needed
   reviewBody: 'Our editors evaluate the Capital One Venture Rewards Credit Card based on its simple and powerful rewards structure (unlimited 2X miles), valuable welcome bonus, flexible redemption options including transfer partners, key travel perks like the Global Entry credit, the annual fee, and its overall value for travelers who prioritize simplicity and flexibility.',
   aprRange: 'A variable APR based on your creditworthiness.',
@@ -721,7 +721,7 @@ function CapitalOneVentureCardReviewPage() {
                 </section>
 
                 <Image
-                    src="/travel-dilemma-image.jpg" // Placeholder: Replace with a relevant image
+                    src="/upgraded-points-xjTp2RjWg3A-unsplash.jpg" // Placeholder: Replace with a relevant image
                     alt="A traveler looking at a map, symbolizing the choice and planning involved in travel."
                     width={800}
                     height={500}
