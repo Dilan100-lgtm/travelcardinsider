@@ -18,7 +18,7 @@ const SITE_BASE_URL = 'https://www.travelcardinsider.com';
 const PAGE_PATH = '/reviews/best-credit-cards-for-cruise-travelers-2025';
 const PAGE_URL = `${SITE_BASE_URL}${PAGE_PATH}`;
 const SITE_NAME = 'Travel Card Insider';
-const HERO_IMAGE_SRC = '/cruise-ship-deck-sunset.webp'; // ❗ Replace with your optimised hero image for cruise cards
+const HERO_IMAGE_SRC = '/pexels-s-n-b-m-827240-1703909.webp'; // ❗ Replace with your optimised hero image for cruise cards
 const HERO_IMAGE_ALT = 'View from a cruise ship deck at sunset, overlooking the ocean, symbolizing a rewarding cruise vacation.';
 const DATE_PUBLISHED = '2025-06-20'; // ✏️ Adjust to your actual publish date
 const DATE_MODIFIED = '2025-06-20'; // ✏️ Update whenever you edit copy
@@ -53,7 +53,7 @@ const cruiseCardData = [
     id: 'chaseSapphirePreferred',
     name: 'Chase Sapphire Preferred® Card',
     category: 'Mid-Tier',
-    imageSrc: '/chase-sapphire-preferred.png', // ❗ Replace
+    imageSrc: '/sapphire_preferred_card.png', // ❗ Replace
     imageAlt: 'Chase Sapphire Preferred® Card',
     annualFee: '$95',
     officialCardPageLink: 'https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred',
@@ -61,16 +61,16 @@ const cruiseCardData = [
     feature: 'Comprehensive trip cancellation/interruption insurance up to $20,000 per trip.',
     rewards: 'Earns 2x points on all general travel (including cruises) and 5x on travel booked through the Chase portal. The welcome bonus is typically worth $750 in travel via the Chase portal.',
     applyLink: 'https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred',
-    ratesFeesLink: 'https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred', // Find and link to terms
+    ratesFeesLink: 'https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC56014.html', // Find and link to terms
     learnMoreLink: '/cards/chase-sapphire-preferred', // ✏️ Create this internal page later
-    ratingValue: 9.2, // ✏️ Add rating
-    ratingStars: 4.6,   // ✏️ Add rating
+    ratingValue: 8.2, // ✏️ Add rating
+    ratingStars: 4.1,   // ✏️ Add rating
   },
   {
     id: 'capitalOneVentureX',
     name: 'Capital One Venture X Rewards Credit Card',
     category: 'Premium',
-    imageSrc: '/capital-one-venture-x.png', // ❗ Replace
+    imageSrc: '/venturex-cg-static-card-1000x630-2.avif', // ❗ Replace
     imageAlt: 'Capital One Venture X Rewards Credit Card',
     annualFee: '$395',
     officialCardPageLink: 'https://www.capitalone.com/credit-cards/venture-x/',
@@ -87,7 +87,7 @@ const cruiseCardData = [
     id: 'chaseSapphireReserve',
     name: 'Chase Sapphire Reserve®',
     category: 'Premium',
-    imageSrc: '/chase-sapphire-reserve.png', // ❗ Replace
+    imageSrc: '/sapphire_reserve_card.png', // ❗ Replace
     imageAlt: 'Chase Sapphire Reserve® Card',
     annualFee: '$550',
     officialCardPageLink: 'https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve',
@@ -95,16 +95,16 @@ const cruiseCardData = [
     feature: 'Robust trip cancellation insurance (up to $20,000 per trip) and up to $100,000 in emergency evacuation coverage—a key benefit for any cruiser.',
     rewards: 'Earn 3x points on travel (after using the $300 travel credit) and dining. The $300 annual travel credit is simple to use and applies to most travel purchases, including cruises.',
     applyLink: 'https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve',
-    ratesFeesLink: 'https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve',
+    ratesFeesLink: 'https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC56007.html',
     learnMoreLink: '/cards/chase-sapphire-reserve', // ✏️ Create this internal page later
-    ratingValue: 8.8,
-    ratingStars: 4.4,
+    ratingValue: 9.2,
+    ratingStars: 4.6,
   },
   {
     id: 'amexPlatinum',
     name: 'The Platinum Card® from American Express',
     category: 'Premium',
-    imageSrc: '/amex-platinum.png', // ❗ Replace
+    imageSrc: '/NUS000000237_480x304_straight_withname.avif', // ❗ Replace
     imageAlt: 'The Platinum Card® from American Express',
     annualFee: '$695',
     officialCardPageLink: 'https://www.americanexpress.com/us/credit-cards/card/platinum/',
@@ -112,16 +112,16 @@ const cruiseCardData = [
     feature: 'Access the American Express Cruise Privileges Program. Booking an eligible cruise of five nights or more through Amex Travel gets you up to $300 in onboard credit per stateroom.',
     rewards: 'Earn 5x points on flights booked directly with airlines or on amextravel.com. The strategy is to book your cruise via Amex Travel for the credits and enjoy luxury benefits like Centurion Lounge access.',
     applyLink: 'https://www.americanexpress.com/us/credit-cards/card/platinum/',
-    ratesFeesLink: 'https://www.americanexpress.com/us/credit-cards/card/platinum/pricing-and-terms',
+    ratesFeesLink: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/platinum-card/25330-10-0#FeeTable',
     learnMoreLink: '/cards/amex-platinum', // ✏️ Create this internal page later
-    ratingValue: 8.5,
-    ratingStars: 4.3,
+    ratingValue: 9.4,
+    ratingStars: 4.7,
   },
     {
     id: 'carnivalMastercard',
     name: 'Carnival® World Mastercard®',
     category: 'Co-Branded',
-    imageSrc: '/carnival-mastercard.png', // ❗ Replace
+    imageSrc: '/SMC_NewMC_card_angled_359x246_L.png', // ❗ Replace
     imageAlt: 'Carnival® World Mastercard®',
     annualFee: '$0',
     officialCardPageLink: 'https://www.carnival.com/credit-card',
