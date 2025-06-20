@@ -636,7 +636,7 @@ function ChaseFreedomUnlimitedReviewPage() {
 
                 <section id="section-mid-cta" className={styles.midArticleCta}>
                     <h3>Ready to Start Earning with Freedom Unlimited®?</h3>
-                    <p>With a powerful rewards structure and a $0 annual fee, it's one of the best all-around cards available.</p>
+                    
                     <a href={reviewData.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.applyNowButton}>Apply on Chase's Secure Site</a>
                     <span className={styles.ctaDisclaimer}>Terms apply. Applications are processed on the official issuer's website.</span>
                 </section>
@@ -704,20 +704,20 @@ function ChaseFreedomUnlimitedReviewPage() {
                         <div className={styles.prosBox}>
                             <h4>The Good Stuff</h4>
                             <ul className={styles.featureList}>
-                                <li>✅ All these perks for a $0 annual fee.</li>
-                                <li>✅ Strong tiered rewards with a high floor (1.5%) and ceiling (3-5%).</li>
-                                <li>✅ Lucrative bonus categories that reward common spending.</li>
-                                <li>✅ Accessible welcome bonus that doesn't force weird spending.</li>
-                                <li>✅ Outstanding protections like trip insurance, a huge win on a no-fee card. (<a href="https://www.forbes.com/advisor/credit-cards/best/no-annual-fee/" target="_blank" rel="noopener noreferrer">Forbes Advisor Source</a>)</li>
+                                <li> All these perks for a $0 annual fee.</li>
+                                <li> Strong tiered rewards with a high floor (1.5%) and ceiling (3-5%).</li>
+                                <li> Lucrative bonus categories that reward common spending.</li>
+                                <li> Accessible welcome bonus that doesn't force weird spending.</li>
+                                <li> Outstanding protections like trip insurance, a huge win on a no-fee card. (<a href="https://www.forbes.com/advisor/credit-cards/best/no-annual-fee/" target="_blank" rel="noopener noreferrer">Forbes Advisor Source</a>)</li>
                             </ul>
                         </div>
                         <div className={styles.consBox}>
                             <h4>The Not-So-Good Stuff</h4>
                              <ul className={styles.featureList}>
-                                <li>❌ That 3% foreign transaction fee is a dealbreaker for international use.</li>
-                                <li>❌ The 1.5% base rate is lower than some flat 2% competitors.</li>
-                                <li>❌ You need to pair it with a Sapphire card to get the maximum value from points.</li>
-                                <li>❌ It requires good-to-excellent credit, so it's not for those <Link href="/learn/credit-management-guide">just starting to build credit</Link>. (<a href="https://ficoforums.myfico.com/t5/Credit-Card-Applications/bd-p/5" target="_blank" rel="noopener noreferrer">MyFICO Forums Data</a>)</li>
+                                <li> That 3% foreign transaction fee is a dealbreaker for international use.</li>
+                                <li> The 1.5% base rate is lower than some flat 2% competitors.</li>
+                                <li> You need to pair it with a Sapphire card to get the maximum value from points.</li>
+                                <li> It requires good-to-excellent credit, so it's not for those <Link href="/learn/credit-management-guide">just starting to build credit</Link>. (<a href="https://ficoforums.myfico.com/t5/Credit-Card-Applications/bd-p/5" target="_blank" rel="noopener noreferrer">MyFICO Forums Data</a>)</li>
                             </ul>
                         </div>
                     </div>
