@@ -52,7 +52,7 @@ const guideData = {
   },
   siteName: "TravelCardInsider.com",
   pagePath: "/guides/southwest-companion-pass-strategy-2025",
-  imageUrl: "/images/heroes/southwest-companion-pass-hero.jpg", // Suggested new hero image path
+  imageUrl: "/pexels-ensearchofyou-2152213354-32558283.webp", // Suggested new hero image path
   heroImageObjectPosition: "center 40%",
   imageWidth: 1600,
   imageHeight: 900,
