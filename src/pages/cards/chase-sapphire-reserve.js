@@ -64,7 +64,7 @@ const reviewDataNew = {
       }
   },
   siteName: siteName,
-  imageUrl        : '/chase-sapphire-reserve-card.png', // Placeholder: Replace with actual CSR card image URL
+  imageUrl        : '/sapphire_reserve_card.png', // Placeholder: Replace with actual CSR card image URL
   imageWidth      : 1290, // Placeholder - UPDATE if image dimensions differ
   imageHeight     : 812,  // Placeholder - UPDATE if image dimensions differ
   ratingValue     : 9.2,  // Placeholder - UPDATE AS NEEDED (e.g. 4.6/5 * 2)
@@ -692,7 +692,7 @@ function ChaseSapphireReserveReviewPage() {
                 </section>
 
                 <Image
-                    src="/travel-lifestyle-montage.jpg" // Placeholder: create a lifestyle image
+                    src="/pexels-jvdm-1457842.webp" // Placeholder: create a lifestyle image
                     alt="A montage showing upscale dining, travel, and lifestyle activities"
                     width={800}
                     height={500}
