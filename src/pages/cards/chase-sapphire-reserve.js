@@ -568,7 +568,7 @@ function ChaseSapphireReserveReviewPage() {
                     )}
                 </div>
                 <p className={styles.heroSubtitle}>
-                  Here in mid-2025, the ground has irrevocably shifted in the world of premium credit cards. Chase has radically transformed its iconic Sapphire Reserve®, a move that has sent ripples through the wallets of travelers everywhere. It’s no longer the straightforward travel workhorse we knew; it has been reborn as a complex, high-end lifestyle card with a jaw-dropping $795 annual fee. This review will be your guide through that hunt.
+                 In mid-2025, Chase reimagined the Sapphire Reserve®—no longer just a travel card, but a premium lifestyle tool with a $795 annual fee. This review breaks down what’s changed and who it’s really for.
                 </p>
                 <div className={styles.heroCtaContainer}>
                   <div>
