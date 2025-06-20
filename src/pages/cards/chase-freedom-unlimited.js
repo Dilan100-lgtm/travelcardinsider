@@ -56,16 +56,16 @@ const reviewData = {
       fullBioLink: '/author/dilan-madushanka',
   },
   siteName: siteName,
-  imageUrl        : '/chase-freedom-unlimited-card-image.png',
+  imageUrl        : '/freedom_unlimited_card_alt (1).png',
   imageWidth      : 1290,
   imageHeight     : 812,
-  ratingValue     : 9.2,
+  ratingValue     : 9.0,
   ratingCount     : 310,
   reviewBody      : 'Our editors evaluate the Chase Freedom Unlimited® based on its tiered rewards structure (5% on travel via Chase, 3% on dining/drugstores, 1.5% everywhere else), its $0 annual fee, the value of Ultimate Rewards® points, its introductory offers, and its valuable built-in protections like trip cancellation insurance, making it a top-tier no-annual-fee card.',
   aprRange        : '20.49%–29.24% Variable',
   annualFee       : 0,
   applyLink       : 'https://creditcards.chase.com/cash-back-credit-cards/freedom/unlimited',
-  ratesLink       : 'https://creditcards.chase.com/cash-back-credit-cards/freedom/unlimited',
+  ratesLink       : 'https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC56029.html',
   officialOverviewLink: 'https://creditcards.chase.com/cash-back-credit-cards/freedom/unlimited',
   officialBenefitsGuideLink: 'https://www.chase.com/personal/credit-cards/card-resource-center/chase-benefits',
   officialUltimateRewardsLink: 'https://www.chase.com/personal/credit-cards/ultimate-rewards',
@@ -621,6 +621,15 @@ function ChaseFreedomUnlimitedReviewPage() {
                     <p>Okay, let's talk about that 3% fee. For a card that’s so good for earning travel rewards, this feels like a slap in the face. Using this card outside the U.S. will completely erase your rewards. On a $3,000 trip, that’s an extra $90 in fees.</p>
                     <p>But it’s by design. Chase wants the Freedom Unlimited® to be your at-home workhorse. For international trips, they want you to get a card like the <Link href="/review/chase-sapphire-preferred-2025">Chase Sapphire Preferred®</Link>, which has no foreign transaction fees. It’s a clever system to get you deeper into their ecosystem.</p>
                 </section>
+
+                <Image
+                                    src="/pexels-jose-parra-325935170-32609062 (1).jpg" // UPDATE THIS with a relevant image
+                                    alt="A person studying a world map and planning a trip, symbolizing travel rewards education"
+                                    width={800}
+                                    height={500}
+                                    className={styles.contentImage}
+                                    loading="lazy"
+                                />
                 
                 <section id="section-perks" className={styles.reviewSection}>
                     <h2>9. The Built-In Safety Net (Perks People Forget)</h2>
