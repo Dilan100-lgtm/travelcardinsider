@@ -65,10 +65,10 @@ const reviewDataNew = {
       }
   },
   siteName: siteName,
-  imageUrl        : '/chase-sapphire-preferred-card-hero.png', // Placeholder: Replace with actual CSP card image URL
+  imageUrl        : '/sapphire_preferred_card.png', // Placeholder: Replace with actual CSP card image URL
   imageWidth      : 1290,
   imageHeight     : 812,
-  ratingValue     : 9.2,  // Placeholder - UPDATE AS NEEDED
+  ratingValue     : 8.4,  // Placeholder - UPDATE AS NEEDED
   ratingCount     : 310,  // Placeholder - UPDATE AS NEEDED
   reviewBody      : 'Our editors evaluate the Chase Sapphire Preferred® Card based on its valuable Ultimate Rewards® earning structure (5X on Chase Travel℠, 3X on dining), powerful welcome bonus, flexible redemption options including 1:1 partner transfers, comprehensive travel protections like primary auto rental insurance, and its overall value proposition for travelers new to rewards.',
   aprRange        : '21.49%–28.49% variable APR.', // From your text, updated
@@ -76,7 +76,7 @@ const reviewDataNew = {
   // IMPORTANT: REPLACE WITH YOUR ACTUAL AFFILIATE LINK
   applyLink       : 'https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred', //
   // Official links from your citations
-  ratesLink       : 'https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred', // Users find "Pricing & Terms" here
+  ratesLink       : 'https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC56014.html', // Users find "Pricing & Terms" here
   officialOverviewLink: 'https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred', //
   officialWelcomeOfferLink: 'https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred', //
   officialBenefitsLink: 'https://www.chase.com/personal/credit-cards/sapphire/preferred/benefits', //
@@ -660,7 +660,7 @@ function ChaseSapphirePreferredCardReviewPage() {
                 </section>
 
                 <Image
-                    src="/pexels-leeloo-thefirst-5428830.webp" // UPDATE THIS with a relevant image
+                    src="/pexels-crystal-vega-2101621860-32563052 (1).jpg" // UPDATE THIS with a relevant image
                     alt="A person studying a world map and planning a trip, symbolizing travel rewards education"
                     width={800}
                     height={500}
@@ -777,7 +777,7 @@ function ChaseSapphirePreferredCardReviewPage() {
                 </section>
 
                 <Image
-                    src="/pexels-george-dolgikh-1303098.webp" // UPDATE THIS with a relevant image
+                    src="/pexels-lazarus-ziridis-351891426-32639132.webp" // UPDATE THIS with a relevant image
                     alt="Collage of airline and hotel logos like Hyatt and United, symbolizing transfer partners"
                     width={800}
                     height={450}
