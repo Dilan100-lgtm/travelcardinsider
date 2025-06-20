@@ -1,843 +1,928 @@
-// Example Path: pages/reviews/chase-sapphire-reserve.js
-// Or: pages/reviews/[slug].js (if using dynamic routing with 'chase-sapphire-reserve' as slug)
+/* ------------------------------------------------------------------
+    File:  pages/reviews/chase-sapphire-reserve-review.js
+    Route: https://www.travelcardinsider.com/reviews/chase-sapphire-reserve-review
+------------------------------------------------------------------- */
 
-// !!! WARNING: THIS FILE CONTAINS PLACEHOLDER DATA/URLs/DIMENSIONS !!!
-// !!! YOU MUST REPLACE ALL PLACEHOLDERS MARKED WITH '!!!' BEFORE DEPLOYMENT !!!
-// !!! VERIFY ALL CARD DETAILS & SCHEMA VALUES AGAINST OFFICIAL ISSUER INFO !!!
-
-import React, { useState, useEffect, useCallback, useRef } from 'react'; // Hooks for tooltip
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from '../../styles/ReviewPage.module.css'; // Using the REVIEW CSS module
-import Header from '../../components/Header'; // Assuming you have these components
-import Footer from '../../components/Footer'; // Assuming you have these components
+import dynamic from 'next/dynamic';
+import styles from '../../styles/ReviewPage.module.css'; // Assuming same CSS module
 
-// Simplified data object based on the final template structure
-const reviewData = {
-  cardName: 'Chase Sapphire Reserve', // Removed ® for variable naming consistency
-  title: 'Chase Sapphire Reserve – In-Depth 2025 Review',
-  description: 'A comprehensive 2000-word review of the Chase Sapphire Reserve, focusing on top travel benefits, lounge access, Ultimate Rewards, 2025 updates, and advanced usage strategies.',
-  keywords: 'Chase, Sapphire Reserve, travel credit card, lounge access, ultimate rewards, 2025',
-  author: 'TravelCardInsider', // *** REPLACE with your actual author/site name ***
-  imageUrl: '/sapphire_reserve_card.png', // *** VERIFY PATH in /public ***
-  ratingValue: 9.2, // From Chase Sapphire Reserve HTML
-  applyLink: 'https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve', // *** REPLACE with actual CSR APPLY URL ***
-  ratesLink: 'https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC56007.html', // *** VERIFY URL ***
-  // Image dimensions (MUST BE ACCURATE for next/image)
-  imageWidth: 480, // *** REPLACE with actual image width *** (Example Placeholder)
-  imageHeight: 304, // *** REPLACE with actual image height *** (Example Placeholder)
+import TableOfContents from '../../components/TableOfContents'; // Assuming same TOC component
+import IconGift from '../../components/icons/icon-gift.svg'; 
+import IconStar from '../../components/icons/icon-star.svg'; 
+import IconCheck from '../../components/icons/icon-Credit Card.svg'; 
+import IconPlus from '../../components/icons/icon-target.svg'; 
+import IconPlane from '../../components/icons/icon-plane.svg';  
+import IconDollar from '../../components/icons/icon-dollar.svg'; 
+import IconX from '../../components/icons/icon-Star + Arrow Up.svg'; 
+
+const RatingTooltip = dynamic(() => import('../../components/RatingTooltip'), { ssr: false, loading: () => null });
+
+/* ──────────────────────────────
+    CONSTANTS & STATIC DATA
+    ────────────────────────────── */
+const siteName = 'Travelcardinsider'; 
+const siteUrl = 'https://www.travelcardinsider.com'; 
+const pagePath = '/reviews/chase-sapphire-reserve-review'; 
+const pageUrlFull = `${siteUrl}${pagePath}`;
+const publishDate = '2025-06-20'; // UPDATE AS NEEDED: Current date or actual publish date
+const updateDate = '2025-06-20'; // UPDATE AS NEEDED: Current date or actual update date
+
+const reviewDataNew = {
+  cardName        : 'Chase Sapphire Reserve®',
+  title           : 'Chase Sapphire Reserve® Review (2025): A $795 Lifestyle Revolution', // SEO Optimized Title
+  description     : 'In-depth 2025 review of the overhauled Chase Sapphire Reserve®. Explore the $795 fee, 8X travel points, new lifestyle credits, and industry-leading insurance. Is this complex card for you?', // Meta Description
+  keywords        : 'Chase Sapphire Reserve review, CSR 2025, Chase Sapphire Reserve benefits, Ultimate Rewards, Chase travel portal, premium travel credit card, Chase Sapphire Reserve $795 fee', // Keywords
+  author: { // Placeholder: UPDATE ALL AUTHOR DETAILS AS NEEDED
+      name: 'Dilan Madushanka', 
+      title: 'Founder & Lead Editor', 
+      imageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', 
+      imageWidth: 40,
+      imageHeight: 40,
+      tooltipImageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', 
+      tooltipImageWidth: 60,
+      tooltipImageHeight: 60,
+      expertise: [ 
+          'Premium Travel Credit Cards',
+          'Airline & Hotel Loyalty Programs',
+          'Credit Card Rewards Optimization',
+          'Travel Hacking Strategies',
+          'Chase Ultimate Rewards'
+      ],
+      bioSnippet: 'Dilan Madushanka is the founder and lead editor of Travelcardinsider, dedicated to demystifying credit cards and uncovering their real-world value for smarter travel and rewards.', 
+      fullBioLink: '/author/dilan-madushanka', 
+      fullBio: `Dilan Madushanka is the founder and lead editor of Travelcardinsider, a platform dedicated to helping everyday people make smarter decisions with travel and rewards credit cards. [MORE BIO DETAILS TO BE ADDED BY USER]`, 
+      publishedStats: 'X+ in-depth card reviews per week', 
+      testedStats: 'Over Y+ credit card benefits across major brands', 
+      socialLinks: { 
+          linkedin: 'https://www.linkedin.com/in/dilan-madushanka-b65293365',
+          twitter: 'https://x.com/team_dilan',
+          email: 'team@travelcardinsider.com'
+      }
+  },
+  siteName: siteName,
+  imageUrl        : '/chase-sapphire-reserve-card.png', // Placeholder: Replace with actual CSR card image URL
+  imageWidth      : 1290, // Placeholder - UPDATE if image dimensions differ
+  imageHeight     : 812,  // Placeholder - UPDATE if image dimensions differ
+  ratingValue     : 9.2,  // Placeholder - UPDATE AS NEEDED (e.g. 4.6/5 * 2)
+  ratingCount     : 310,  // Placeholder - UPDATE AS NEEDED
+  reviewBody      : 'Our editors evaluate the Chase Sapphire Reserve® based on its redefined rewards structure (8X on Chase Travel), comprehensive lifestyle credits, industry-leading travel insurance, the Ultimate Rewards® ecosystem, its premium $795 annual fee, and its overall value for a specific profile of high-spending, organized travelers.',
+  aprRange        : 'See issuer\'s site for current APR details. Variable APRs apply.', // General placeholder
+  annualFee       : 795, 
+  // IMPORTANT: REPLACE WITH YOUR ACTUAL AFFILIATE LINK FOR CSR
+  applyLink       : 'https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve', // /* UPDATE THIS */
+  // Official links from your document
+  ratesLink       : 'https://www.chase.com/personal/credit-cards/agreements',
+  officialOverviewLink: 'https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve',
+  officialBenefitsCreditsLink: 'https://www.chase.com/card-benefits/sapphirereserve/travel',
+  officialTravelShoppingProtectionsLink: 'https://www.chase.com/card-benefits/sapphirereserve/travel',
+  officialUltimateRewardsLink: 'https://www.chase.com/personal/credit-cards/ultimate-rewards',
+  chaseTravelPortalLink: 'https://www.chasetravel.com',
+  freedomFlexLink: 'https://creditcards.chase.com/cash-back-credit-cards/freedom/flex',
+  sapphirePreferredLink: 'https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred',
+  loungeAccessLink: 'https://www.chase.com/personal/credit-cards/sapphire-lounge',
+  sku             : 'CHASE-CSR-TCI-2025', // Placeholder - Example SKU
+  mpn             : 'CHASESAPPHIRERESERVE', // Placeholder - Example MPN
+  h1Content       : "The New Chase Sapphire Reserve®: An In-Depth Review of the $795 Premium Lifestyle Card", // From your text
 };
 
-// --- Rating Tooltip Content (Customize if needed for CSR) ---
-const ratingCriteria = [ // *** VERIFY/CUSTOMIZE these criteria for CSR Rating ***
-    '$300 Travel Credit & Lounge Access',
-    'Travel & Dining Rewards (3x)',
-    'Ultimate Rewards® Value (1.5x Portal / Transfers)',
-    'Premium Travel Protections',
-    'Annual Fee vs. Benefits ($550)'
+/* ──────────────────────────────
+    STRUCTURED DATA GRAPH
+    ────────────────────────────── */
+const structuredDataOptimized = {
+  '@context': 'https://schema.org',
+  '@graph'  : [
+    {
+      '@type'        : 'Product',
+      '@id'          : `${pageUrlFull}#product`,
+      name           : reviewDataNew.cardName,
+      image          : `${siteUrl}${reviewDataNew.imageUrl}`,
+      description    : reviewDataNew.description,
+      sku            : reviewDataNew.sku,
+      mpn            : reviewDataNew.mpn,
+      brand          : { '@type': 'Brand', name: 'Chase' },
+      aggregateRating: {
+        '@type'    : 'AggregateRating',
+        ratingValue : reviewDataNew.ratingValue.toString(),
+        bestRating  : '10',
+        worstRating : '1',
+        ratingCount : reviewDataNew.ratingCount.toString(),
+        reviewCount : '1', // Assuming 1 editor review for this page
+      },
+      offers: {
+        '@type'            : 'Offer',
+        url                : reviewDataNew.applyLink, // Your affiliate link
+        priceCurrency      : 'USD',
+        price              : reviewDataNew.annualFee.toString(),
+        priceValidUntil    : '2026-12-31', // UPDATE AS NEEDED
+        itemCondition      : 'https://schema.org/NewCondition',
+        availability       : 'https://schema.org/InStock',
+        priceSpecification: [
+          {
+            '@type'              : 'PriceSpecification',
+            priceCurrency        : 'USD',
+            price                : reviewDataNew.annualFee.toString(),
+            valueAddedTaxIncluded: 'false',
+            description          : `Annual fee: $${reviewDataNew.annualFee}. Authorized User Fee: $195.`,
+          },
+          {
+            '@type'              : 'PriceSpecification',
+            priceCurrency        : 'USD',
+            description          : `See official ${reviewDataNew.cardName} Pricing & Terms on the issuer's website for current APRs and fees.`,
+          },
+        ],
+        seller: { '@type': 'Organization', name: 'Chase' },
+      },
+      review: { '@id': `${pageUrlFull}#editorReview` },
+    },
+    {
+      '@type'         : 'Review',
+      '@id'           : `${pageUrlFull}#editorReview`,
+      name            : `${reviewDataNew.cardName} – Review Updated ${new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`,
+      itemReviewed    : { '@id': `${pageUrlFull}#product` },
+      reviewBody      : reviewDataNew.reviewBody,
+      reviewRating    : {
+        '@type'    : 'Rating',
+        ratingValue : reviewDataNew.ratingValue.toString(),
+        bestRating  : '10',
+        worstRating : '1',
+        description: `${siteName} editorial rating based on a 10.0 scale, as of ${new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}.`
+      },
+      author          : {
+          '@type': 'Person',
+          'name': reviewDataNew.author.name,
+          'url': reviewDataNew.author.fullBioLink ? `${siteUrl}${reviewDataNew.author.fullBioLink}` : undefined,
+      },
+      publisher       : {
+        '@type' : 'Organization',
+        name    : siteName,
+        logo    : { '@type': 'ImageObject', url: `${siteUrl}/images/logo/your-logo-schema.png` }, // /* UPDATE THIS */ path to your logo for schema
+      },
+      datePublished   : publishDate,
+      dateModified    : updateDate,
+    },
+    {
+      '@type'            : 'WebPage',
+      '@id'              : pageUrlFull,
+      url                : pageUrlFull,
+      name               : reviewDataNew.title,
+      description        : reviewDataNew.description,
+      inLanguage         : 'en-US',
+      isPartOf           : { '@id': `${siteUrl}#website` },
+      primaryImageOfPage : { '@id': `${pageUrlFull}#primaryImage` },
+      breadcrumb         : { '@id': `${pageUrlFull}#breadcrumbs` },
+      datePublished      : publishDate,
+      dateModified       : updateDate,
+       author: {
+          '@type': 'Person',
+          'name': reviewDataNew.author.name,
+          'url': reviewDataNew.author.fullBioLink ? `${siteUrl}${reviewDataNew.author.fullBioLink}` : undefined
+       },
+    },
+    {
+      '@type'   : 'ImageObject',
+      '@id'     : `${pageUrlFull}#primaryImage`,
+      url       : `${siteUrl}${reviewDataNew.imageUrl}`,
+      width     : reviewDataNew.imageWidth,
+      height    : reviewDataNew.imageHeight,
+      caption   : reviewDataNew.cardName,
+    },
+    {
+      '@type'        : 'BreadcrumbList',
+      '@id'          : `${pageUrlFull}#breadcrumbs`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: siteName, item: siteUrl },
+        { '@type': 'ListItem', position: 2, name: 'Credit Card Reviews', item: `${siteUrl}/reviews` },
+        { '@type': 'ListItem', position: 3, name: `${reviewDataNew.cardName} Review`, item: pageUrlFull },
+      ],
+    },
+    {
+      '@type'    : 'FAQPage',
+      '@id'      : `${pageUrlFull}#faqs`,
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'Is the Chase Sapphire Reserve $795 annual fee worth it in 2025?',
+          acceptedAnswer: { '@type': 'Answer', text: "It depends entirely on your spending. If you are a high-spender whose lifestyle naturally aligns with the card's specific credit categories (like The Edit by Chase, Sapphire Dining, StubHub, Apple, Peloton) and you travel enough to maximize the 8x points via the Chase portal, the value can easily exceed the fee. For others, a card with a lower fee might be better." }
+        },
+        {
+          '@type': 'Question',
+          name: 'What is the biggest change to the Sapphire Reserve rewards?',
+          acceptedAnswer: { '@type': 'Answer', text: "The biggest change is the devaluation of the 'general travel' category from 3x to 1x points. This makes the card less rewarding for purchases like cruises, tours, or travel not booked via Chase Travel or directly with airlines/hotels. The focus has shifted heavily to bookings made through Chase's ecosystem." }
+        },
+        {
+          '@type': 'Question',
+          name: 'What are the new semi-annual credits on the Chase Sapphire Reserve?',
+          acceptedAnswer: { '@type': 'Answer', text: "The new model includes several credits split into semi-annual allotments (e.g., Jan-Jun and Jul-Dec). These include a $500 credit for 'The Edit by Chase' ($250 per half), a $300 Sapphire Dining credit ($150 per half), and a $300 StubHub credit ($150 per half). These are 'use it or lose it' and require careful tracking." }
+        },
+        {
+          '@type': 'Question',
+          name: 'Is the travel insurance on the Sapphire Reserve still good?',
+          acceptedAnswer: { '@type': 'Answer', text: "Yes, the travel insurance suite on the Chase Sapphire Reserve® remains industry-leading. It includes Primary Auto Rental Collision Damage Waiver, Trip Cancellation/Interruption Insurance, Trip Delay Reimbursement, and more. For many loyalists, these protections alone are a major reason to keep the card." }
+        },
+        {
+          '@type': 'Question',
+          name: "Who is the ideal cardholder for the new Sapphire Reserve?",
+          acceptedAnswer: { '@type': 'Answer', text: "The ideal cardholder is a highly organized, high-spending individual in a major metropolitan area. They already use services like DoorDash, Lyft, and Apple Music, and they travel frequently by booking flights and hotels through portals or directly. They see tracking credits not as a chore, but as a challenge." }
+        },
+      ],
+    },
+    {
+      '@type' : 'Organization',
+      '@id'   : `${siteUrl}#website`,
+      name    : siteName,
+      url     : siteUrl,
+      logo    : { '@type': 'ImageObject', url: `${siteUrl}/images/logo/your-logo-schema.png` }, // /* UPDATE THIS */
+      sameAs  : [ // /* UPDATE THESE */
+        "https://www.facebook.com/YourTravelCardInsiderFacebookPage",
+        "https://twitter.com/YourTravelCardInsiderTwitterHandle",
+      ],
+    },
+  ],
+};
+
+const ratingCriteriaOriginal = [
+    'Value of Lifestyle & Travel Credits vs. Annual Fee',
+    'Rewards on Chase Travel Portal Bookings (8x)',
+    'Rewards on Direct Flight/Hotel Bookings (4x)',
+    'Quality and Breadth of Travel Insurance Protections',
+    'Ultimate Rewards® Program Flexibility & Value',
+    'Proprietary Lounge Access (Sapphire Lounges)',
+    'Authorized User Fee ($195) vs. Shared Benefits',
+    'Devaluation of General Travel Earning (1x)',
+    'Complexity of "Coupon Book" Credit System',
+    'Overall Value Proposition for the Target User',
+];
+
+const tocSections = [
+    { id: 'section-intro', title: 'Executive Summary: The 2025 Overhaul & The End of an Era' },
+    { id: 'section-1', title: 'The Ideal Cardholder: A Detailed User Profile' },
+    { id: 'section-2', title: 'Deconstructing the Rewards: The New Points Earning Structure' },
+    { id: 'section-3', title: 'Unlocking True Value: The Ultimate Rewards Ecosystem' },
+    { id: 'section-4', title: 'Unpacking the "Coupon Book": A Guide to the New Lifestyle Credits' },
+    { id: 'section-5', title: 'The Protections: Why Many Loyalists Stay' },
+    { id: 'section-6', title: 'A First-Person Test Drive: Using the "Edit" Portal' },
+    { id: 'section-7', title: 'The Bottom Line: A Real-World Spending Example' },
+    { id: 'section-8', title: 'The Premium Gauntlet: How the Sapphire Reserve Stacks Up' },
+    { id: 'section-9', title: 'The Verdict: A Balanced Look at Pros and Cons' },
+    { id: 'section-10', title: 'Final Verdict: Who Should Get the Chase Sapphire Reserve in 2025?' },
+    { id: 'section-faq', title: 'Frequently Asked Questions (FAQs)' },
+    { id: 'section-eat', title: 'Our E-A-T Commitment' },
 ];
 
 
+function DraggableTableWrapper({ children }) {
+  const containerRef = useRef(null);
+  useEffect(() => {
+    if (typeof window === 'undefined' || window.innerWidth < 768) return;
+    const el = containerRef.current;
+    if (!el) return;
+    let isDragging = false, startX = 0, scrollStart = 0;
+    const startDrag = (e) => {
+      isDragging = true; el.classList.add(styles.grabbing);
+      startX = e.pageX || e.touches?.[0]?.pageX; scrollStart = el.scrollLeft;
+    };
+    const stopDrag = () => { isDragging = false; el.classList.remove(styles.grabbing); };
+    const onMove = (e) => {
+      if (!isDragging) return; e.preventDefault();
+      const x = e.pageX || e.touches?.[0]?.pageX;
+      el.scrollLeft = scrollStart - (x - startX);
+    };
+    el.addEventListener('mousedown', startDrag);
+    document.addEventListener('mouseup', stopDrag);
+    document.addEventListener('mouseleave', stopDrag);
+    el.addEventListener('mousemove', onMove);
+    el.addEventListener('touchstart', startDrag, { passive: true });
+    document.addEventListener('touchend', stopDrag);
+    el.addEventListener('touchmove', onMove, { passive: false });
+    return () => {
+      el.removeEventListener('mousedown', startDrag);
+      document.removeEventListener('mouseup', stopDrag);
+      document.removeEventListener('mouseleave', stopDrag);
+      el.removeEventListener('mousemove', onMove);
+      el.removeEventListener('touchstart', startDrag);
+      document.removeEventListener('touchend', stopDrag);
+      el.removeEventListener('touchmove', onMove);
+    };
+  }, []);
+  return (<div ref={containerRef} className={styles.draggableScrollContainer}>{children}</div>);
+}
+
+/* ──────────────────────────────
+    COMPONENT
+    ────────────────────────────── */
 function ChaseSapphireReserveReviewPage() {
-  // --- Tooltip State and Logic ---
   const [showRatingInfo, setShowRatingInfo] = useState(false);
-  const tooltipRef = useRef(null);
+  const [showAuthorBioTooltip, setShowAuthorBioTooltip] = useState(false);
+  const authorRef = useRef(null);
+  const authorTooltipRef = useRef(null);
+  const ratingTooltipRef = useRef(null);
 
   const handleIconClick = useCallback((event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        setShowRatingInfo(prevState => !prevState);
-    }, []);
+      event.preventDefault();
+      event.stopPropagation();
+      setShowRatingInfo(prevState => !prevState);
+  }, []);
 
-    const closeTooltip = useCallback(() => {
-        setShowRatingInfo(false);
-    }, []);
+  const handleAuthorMouseEnter = useCallback(() => {
+      setShowAuthorBioTooltip(true);
+  }, []);
 
-    useEffect(() => {
-        if (!showRatingInfo) return;
-        const handleClickOutside = (event) => {
-            const isInfoButton = event.target.closest(`.${styles.infoIconButton}`);
-            if (tooltipRef.current && !tooltipRef.current.contains(event.target) && !isInfoButton) {
-                closeTooltip();
-            }
-        };
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, [showRatingInfo, closeTooltip]);
-  // --- End Tooltip State and Logic ---
+  const handleAuthorMouseLeave = useCallback(() => {
+      const timerId = setTimeout(() => {
+          if (authorRef.current && authorTooltipRef.current) {
+              const isHoveringTrigger = authorRef.current.matches(':hover');
+              const isHoveringTooltip = authorTooltipRef.current.matches(':hover');
+              if (!isHoveringTrigger && !isHoveringTooltip) {
+                 setShowAuthorBioTooltip(false);
+              }
+          } else {
+               setShowAuthorBioTooltip(false);
+          }
+      }, 150);
+      if (authorRef.current) authorRef.current.tooltipTimeoutId = timerId;
+  }, [authorRef, authorTooltipRef]);
 
+   const handleAuthorClearTimeout = useCallback(() => {
+      if (authorRef.current?.tooltipTimeoutId) {
+          clearTimeout(authorRef.current.tooltipTimeoutId);
+      }
+   }, [authorRef]);
 
-  // Inline Structured Data
-  // !!! VERIFY all URLs, counts, and details FOR CHASE SAPPHIRE RESERVE® !!!
-  const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
-  const pageUrl = `${siteUrl}/cards/chase-sapphire-reserve`; // *** REPLACE with your actual page URL ***
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "Chase Sapphire Reserve", // Removed ® here for consistency if needed
-    "image": `${siteUrl}${reviewData.imageUrl}`, // *** Assuming imageUrl starts with / ***
-    "description": "The Chase Sapphire Reserve offers premium travel perks, lounge access, up to 3x points on travel and dining, and flexible Ultimate Rewards points valued highly for frequent travelers.", // Updated description
-    "brand": {
-      "@type": "Brand",
-      "name": "Chase"
-    },
-    "review": {
-      "@type": "Review",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": reviewData.ratingValue.toString(),
-        "bestRating": "10",
-        "worstRating": "1"
-      },
-      "author": {
-        "@type": "Organization",
-        "name": reviewData.author
-      },
-      "reviewBody": reviewData.description // Use meta description
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": reviewData.ratingValue.toString(),
-      "bestRating": "10",
-      "worstRating": "1",
-      "ratingCount": 1620, // *** REPLACE with actual or estimated count ***
-      "reviewCount": 1620  // *** REPLACE with actual or estimated count ***
-    },
-    "offers": {
-      "@type": "Offer",
-      "url": reviewData.applyLink.startsWith('http') ? reviewData.applyLink : `${siteUrl}${reviewData.applyLink}`, // *** Ensure full APPLY URL ***
-      "priceCurrency": "USD",
-      "price": "550", // Annual Fee for CSR
-      "availability": "https://schema.org/InStock",
-      "itemCondition": "https://schema.org/NewCondition"
-    }
+  useEffect(() => {
+      function handleClickOutside(event) {
+          if (showAuthorBioTooltip &&
+              authorRef.current && !authorRef.current.contains(event.target) &&
+              authorTooltipRef.current && !authorTooltipRef.current.contains(event.target)) {
+              setShowAuthorBioTooltip(false);
+          }
+          if (showRatingInfo &&
+              !event.target.closest(`.${styles.infoIconButton}`) && 
+              ratingTooltipRef.current && !ratingTooltipRef.current.contains(event.target)
+             ) {
+               setShowRatingInfo(false);
+          }
+      }
+      if (showAuthorBioTooltip || showRatingInfo) {
+          document.addEventListener("mousedown", handleClickOutside);
+      } else {
+           document.removeEventListener("mousedown", handleClickOutside);
+      }
+      return () => {
+          document.removeEventListener("mousedown", handleClickOutside);
+          if (authorRef.current?.tooltipTimeoutId) { 
+            clearTimeout(authorRef.current.tooltipTimeoutId);
+          }
+      };
+  }, [showAuthorBioTooltip, authorRef, authorTooltipRef, showRatingInfo, ratingTooltipRef]);
+
+  const summaryBoxData = {
+    welcomeOffer: "Varies by offer. Check Chase's site for the current bonus.", // CSR offers can vary widely
+    annualFee: `$${reviewDataNew.annualFee}`,
+    topEarning: "8x points on All Travel via Chase Travel; 10x on Chase Dining.",
+    keyCredits: "Over $1,500 in potential credits (The Edit, Sapphire Dining, StubHub, etc.).",
+    travelPerk: "Industry-leading travel insurance; Priority Pass & Sapphire Lounges.",
+    bestFor: "Organized, high-spending travelers who can maximize portal bookings and a complex web of lifestyle credits."
   };
 
 
   return (
     <>
-      {/* ===== HEAD SECTION for Metadata & SEO ===== */}
       <Head>
-        <title>{reviewData.title}</title>
-        <meta name="description" content={reviewData.description} />
-        <meta name="keywords" content={reviewData.keywords} />
-        <meta name="author" content={reviewData.author} />
-        <link rel="canonical" href={pageUrl} />
-        {/* Preload critical fonts */}
-        <link rel="preload" href="/fonts/Roboto_Condensed-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/Roboto_Condensed-Bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/PlayfairDisplay-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/Playfair-Display-Bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-
-        {/* OG/Twitter tags */}
-        <meta property="og:title" content={reviewData.title} />
-        <meta property="og:description" content={reviewData.description} />
-        <meta property="og:url" content={pageUrl} />
-        <meta property="og:image" content={structuredData.image} />
-        <meta property="og:type" content="article" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={reviewData.title} />
-        <meta name="twitter:description" content={reviewData.description} />
-        <meta name="twitter:image" content={structuredData.image} />
-
+        <title>{reviewDataNew.title} - {siteName}</title>
+        <meta name="description" content={reviewDataNew.description} />
+        <meta name="keywords" content={reviewDataNew.keywords} />
+        <meta name="author" content={reviewDataNew.author.name} />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta name="robots" content="index,follow,max-image-preview:large" />
+        <link rel="canonical" href={pageUrlFull} />
+        <link rel="alternate" href={pageUrlFull} hreflang="en-us" />
+        <link rel="preload" as="image" href={`${siteUrl}${reviewDataNew.imageUrl}`} />
+        <link rel="preload" as="image" href={reviewDataNew.author.imageUrl} />
+        <link rel="preload" as="image" href={reviewDataNew.author.tooltipImageUrl} />
+        <meta name="geo.region" content="US" />
+        <meta name="geo.placename" content="United States" />
+        <meta name="language" content="en-US" />
+        <meta name="distribution" content="US" />
+        {[ 
+          '/fonts/inter-v18-latin-regular.woff2',
+          '/fonts/inter-v18-latin-600.woff2',
+          '/fonts/inter-v18-latin-700.woff2',
+          '/fonts/Roboto_Condensed-Regular.ttf',
+          '/fonts/Roboto_Condensed-Bold.ttf',
+        ].map((f) => (
+          <link key={f} rel="preload" href={f} as="font" type={f.endsWith('woff2') ? 'font/woff2' : 'font/ttf'} crossOrigin="anonymous" />
+        ))}
+        <meta property="og:type"        content="article" />
+        <meta property="og:locale"      content="en_US" />
+        <meta property="og:site_name"   content={siteName} />
+        <meta property="og:title"       content={reviewDataNew.title} />
+        <meta property="og:description" content={reviewDataNew.description} />
+        <meta property="og:url"         content={pageUrlFull} />
+        <meta property="og:image"       content={`${siteUrl}${reviewDataNew.imageUrl}`} />
+        <meta property="og:image:width" content={String(reviewDataNew.imageWidth)} />
+        <meta property="og:image:height" content={String(reviewDataNew.imageHeight)} />
+        <meta property="article:publisher" content={`https://www.facebook.com/YourTravelCardInsiderFacebookPage`} /> 
+        <meta property="article:section"       content="Credit Card Reviews" />
+        <meta property="article:published_time" content={publishDate} />
+        <meta property="article:modified_time"  content={updateDate} />
+        <meta property="article:author" content={reviewDataNew.author.name} />
+        {reviewDataNew.keywords.split(',').map(keyword => (
+            <meta property="article:tag" content={keyword.trim()} key={keyword.trim()} />
+        ))}
+        <meta name="twitter:card"        content="summary_large_image" />
+        <meta name="twitter:site" content="@YourTravelCardInsiderTwitterHandle" /> 
+        <meta name="twitter:creator" content={`@${reviewDataNew.author.socialLinks?.twitter?.split('/').pop() || 'YourAuthorTwitterHandle'}`} /> 
+        <meta name="twitter:title"       content={reviewDataNew.title} />
+        <meta name="twitter:description" content={reviewDataNew.description} />
+        <meta name="twitter:image"       content={`${siteUrl}${reviewDataNew.imageUrl}`} />
         <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-
-        {/* Structured Data (JSON-LD) */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredDataOptimized) }} />
       </Head>
 
-      
-
       <main>
-        {/* Spacing for fixed header */}
-        <div style={{ marginTop: '5rem' }}></div>
-
-        {/* Review Container using CSS Module */}
-        <div className={styles.reviewContainer}>
-          <article> {/* Wrap main content in article */}
-            {/* ============= REVIEW HEADER ============= */}
-            <header className={styles.reviewHeader}>
-              {/* H1 styled by .reviewHeader h1 */}
-              <h1>{reviewData.title}</h1>
-
-              {/* Section 1 Content (Part of Header Structure in Template) */}
-              <section id="section-1">
-                 <div className={styles.intro}>
-                    {/* Using dangerouslySetInnerHTML for ® */}
-                    <p dangerouslySetInnerHTML={{ __html: "The <strong>Chase Sapphire Reserve</strong> sits among the elite tier of travel credit cards, known for its <strong>extensive benefits</strong>—including up to 3x points on travel and dining, a <strong>$300 annual travel credit</strong>, <strong>Priority Pass lounge access</strong>, and synergy with <strong>Chase Ultimate Rewards®</strong>. With a <strong>$550 annual fee</strong>, it targets frequent travelers who leverage lounge access, top-tier travel insurances, and valuable partner redemptions." }}></p>
-                 </div>
-
-                {/* Image Container */}
+        <div className={styles.reviewPageLayout}>
+          <div className={styles.mainContentArea}>
+            <section className={styles.heroSection}>
+              <div className={styles.heroTextContainer}>
+                <h1 className={styles.heroTitle}>
+                  {reviewDataNew.h1Content}
+                </h1>
+                 <div 
+                    className={styles.authorBioContainer}
+                    ref={authorRef}
+                    onMouseEnter={() => { handleAuthorClearTimeout(); handleAuthorMouseEnter(); }}
+                    onMouseLeave={handleAuthorMouseLeave}
+                    onFocus={handleAuthorMouseEnter} 
+                    onBlur={handleAuthorMouseLeave}  
+                    aria-haspopup="true" 
+                    aria-expanded={showAuthorBioTooltip} 
+                    tabIndex={0}
+                >
+                    <Image
+                        src={reviewDataNew.author.imageUrl} 
+                        alt={`${reviewDataNew.author.name} headshot`}
+                        width={reviewDataNew.author.imageWidth}
+                        height={reviewDataNew.author.imageHeight}
+                        className={styles.authorImageSmall}
+                        priority 
+                    />
+                    <div className={styles.authorInfoBlock}>
+                        <div className={styles.authorNameLine}>
+                            <span className={styles.authorPrefix}>By</span>
+                            <span className={styles.authorName}>{reviewDataNew.author.name}</span>
+                        </div>
+                        <span className={styles.authorTitle}>{reviewDataNew.author.title}</span>
+                        {updateDate && (
+                            <time dateTime={updateDate} className={styles.authorLastEdited}>
+                                Last updated: {new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                            </time>
+                        )}
+                        {reviewDataNew.author.socialLinks && (
+                            <div className={styles.authorSocialLinks}>
+                                {reviewDataNew.author.socialLinks.linkedin && (
+                                    <a href={reviewDataNew.author.socialLinks.linkedin} target="_blank" rel="noopener noreferrer me" aria-label={`${reviewDataNew.author.name} on LinkedIn`} className={styles.socialIconLink}>
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                    </a>
+                                )}
+                                {reviewDataNew.author.socialLinks.twitter && (
+                                    <a href={reviewDataNew.author.socialLinks.twitter} target="_blank" rel="noopener noreferrer me" aria-label={`${reviewDataNew.author.name} on Twitter`} className={styles.socialIconLink}>
+                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-.422.724-.665 1.56-.665 2.452 0 1.697.864 3.198 2.18 4.078-.8-.025-1.555-.247-2.227-.616v.054c0 2.37 1.683 4.333 3.91 4.78-.426.116-.874.174-1.337.174-.31 0-.611-.03-.904-.085.622 1.936 2.421 3.338 4.553 3.377-1.672 1.309-3.781 2.088-6.072 2.088-.394 0-.784-.023-1.169-.069 2.16 1.389 4.723 2.202 7.482 2.202 8.979 0 13.897-7.446 13.897-13.898 0-.21 0-.42-.015-.63.953-.689 1.778-1.56 2.433-2.525z"/></svg>
+                                    </a>
+                                )}
+                                {reviewDataNew.author.socialLinks.email && (
+                                    <a href={`mailto:${reviewDataNew.author.socialLinks.email}`} aria-label={`Email ${reviewDataNew.author.name}`} className={styles.socialIconLink}>
+                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
+                                    </a>
+                                )}
+                            </div>
+                        )}
+                    </div>
+                    {showAuthorBioTooltip && reviewDataNew.author.bioSnippet && ( 
+                        <div
+                            className={styles.authorTooltip}
+                            ref={authorTooltipRef}
+                            role="tooltip" 
+                            onMouseEnter={handleAuthorClearTimeout} 
+                            onMouseLeave={handleAuthorMouseLeave}
+                            onFocus={handleAuthorMouseEnter}
+                            onBlur={handleAuthorMouseLeave}  
+                        >
+                             <div className={styles.authorTooltipHeader}>
+                                 <Image
+                                    src={reviewDataNew.author.tooltipImageUrl} 
+                                    alt={`${reviewDataNew.author.name} large headshot`}
+                                    width={reviewDataNew.author.tooltipImageWidth}
+                                    height={reviewDataNew.author.tooltipImageHeight}
+                                    className={styles.authorTooltipImage}
+                                 />
+                                 <div className={styles.authorTooltipInfo}>
+                                     <span className={styles.authorTooltipName}>{reviewDataNew.author.name}</span>
+                                     <span className={styles.authorTooltipTitle}>{reviewDataNew.author.title}</span>
+                                 </div>
+                               </div>
+                               {reviewDataNew.author.expertise && reviewDataNew.author.expertise.length > 0 && (
+                                 <div className={styles.authorTooltipExpertise}>
+                                     <strong>Expertise</strong>
+                                     <ul>
+                                         {reviewDataNew.author.expertise.map(area => <li key={area}>{area}</li>)}
+                                     </ul>
+                                 </div>
+                               )}
+                               <p className={styles.authorTooltipBioSnippet}>{reviewDataNew.author.bioSnippet}</p>
+                               {reviewDataNew.author.fullBioLink && (
+                                   <Link href={reviewDataNew.author.fullBioLink} legacyBehavior>
+                                       <a className={styles.authorTooltipBioLink}>
+                                           See full bio
+                                       </a>
+                                   </Link>
+                               )}
+                               {reviewDataNew.author.socialLinks && (
+                                    <div className={styles.authorTooltipSocials}>
+                                        {reviewDataNew.author.socialLinks.linkedin && (
+                                             <a href={reviewDataNew.author.socialLinks.linkedin} target="_blank" rel="noopener noreferrer me" aria-label={`${reviewDataNew.author.name} on LinkedIn`} className={styles.socialIconLink}>
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                             </a>
+                                         )}
+                                         {reviewDataNew.author.socialLinks.twitter && (
+                                             <a href={reviewDataNew.author.socialLinks.twitter} target="_blank" rel="noopener noreferrer me" aria-label={`${reviewDataNew.author.name} on Twitter`} className={styles.socialIconLink}>
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-.422.724-.665 1.56-.665 2.452 0 1.697.864 3.198 2.18 4.078-.8-.025-1.555-.247-2.227-.616v.054c0 2.37 1.683 4.333 3.91 4.78-.426.116-.874.174-1.337.174-.31 0-.611-.03-.904-.085.622 1.936 2.421 3.338 4.553 3.377-1.672 1.309-3.781 2.088-6.072 2.088-.394 0-.784-.023-1.169-.069 2.16 1.389 4.723 2.202 7.482 2.202 8.979 0 13.897-7.446 13.897-13.898 0-.21 0-.42-.015-.63.953-.689 1.778-1.56 2.433-2.525z"/></svg>
+                                             </a>
+                                         )}
+                                         {reviewDataNew.author.socialLinks.email && (
+                                             <a href={`mailto:${reviewDataNew.author.socialLinks.email}`} aria-label={`Email ${reviewDataNew.author.name}`} className={styles.socialIconLink}>
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
+                                             </a>
+                                         )}
+                                    </div>
+                                )}
+                        </div>
+                    )}
+                </div>
+                <p className={styles.heroSubtitle}>
+                  Here in mid-2025, the ground has irrevocably shifted in the world of premium credit cards. Chase has radically transformed its iconic Sapphire Reserve®, a move that has sent ripples through the wallets of travelers everywhere. It’s no longer the straightforward travel workhorse we knew; it has been reborn as a complex, high-end lifestyle card with a jaw-dropping $795 annual fee. This review will be your guide through that hunt.
+                </p>
+                <div className={styles.heroCtaContainer}>
+                  <div>
+                    <a
+                      href={reviewDataNew.applyLink} 
+                      target="_blank"
+                      rel="noopener noreferrer sponsored" 
+                      className={`${styles.applyNowButton} ${styles.heroApplyButton}`}
+                    >
+                      Apply Securely Now
+                    </a>
+                    <span className={styles.heroApplyButtonDisclaimer}>
+                      on Chase&apos;s official site
+                    </span>
+                  </div>
+                  <Link href="#section-1" legacyBehavior>
+                    <a className={styles.heroSecondaryLink}>View Ideal Profile</a>
+                  </Link>
+                </div>
+              </div>
+              <div className={styles.heroImageContainer}>
                 <div className={styles.cardImageContainer}>
-                   {/* Class name adjusted from HTML to match CSS module */}
-                   <Image
-                     src={reviewData.imageUrl}
-                     alt="Chase Sapphire Reserve Card front design" // More descriptive alt text
-                     width={reviewData.imageWidth} // *** REPLACE or use data ***
-                     height={reviewData.imageHeight} // *** REPLACE or use data ***
-                     className={styles.cardImage}
-                     priority
-                   />
-                 </div>
-
-                {/* RATING SECTION */}
+                  <Image
+                    src={reviewDataNew.imageUrl}
+                    alt={reviewDataNew.cardName}
+                    width={reviewDataNew.imageWidth} 
+                    height={reviewDataNew.imageHeight}
+                    className={styles.heroImage}
+                    priority 
+                  />
+                </div>
                 <div className={styles.ratingSection}>
                   <span className={styles.tciRating}>
                     <button
                       type="button"
                       className={styles.infoIconButton}
                       aria-label="Rating Information"
-                      title="Our TCI rating info"
                       onClick={handleIconClick}
+                      aria-expanded={showRatingInfo}
                     >
-                       <svg aria-hidden="true" focusable="false" className={styles.infoIcon} viewBox="0 0 16 16">
-                         <path fillRule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                         <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-                       </svg>
+                      <svg aria-hidden="true" focusable="false" className={styles.infoIcon} viewBox="0 0 16 16">
+                        <path fillRule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                      </svg>
                     </button>
-                    TCI Rating: <strong>{reviewData.ratingValue.toFixed(1)}</strong>/10
-
-                     {/* --- Conditionally Rendered Tooltip --- */}
-                    {showRatingInfo && (
-                        <div
-                            ref={tooltipRef}
-                            className={styles.ratingTooltip}
-                            role="tooltip"
-                            aria-live="polite"
-                        >
-                            <strong>TCI Rating: {reviewData.ratingValue.toFixed(1)}/10</strong>
-                            {/* Simplified tooltip text from this HTML */}
-                            <p className={styles.tooltipIntro}>Our TCI rating system criteria including rewards, welcome bonus, annual fee, redemption flexibility, travel benefits, APR, foreign transaction fees, user experience, and other features.</p>
-                            {/* Using ratingCriteria Array if defined */}
-                           {/* <ul className={styles.tooltipList}>
-                                {ratingCriteria.map((criterion, index) => <li key={index}>{criterion}</li>)}
-                           </ul> */}
-                        </div>
+                    {siteName} Rating: <strong>{reviewDataNew.ratingValue.toFixed(1)}</strong>/10
+                    {showRatingInfo && ( 
+                      <RatingTooltip
+                        ref={ratingTooltipRef}
+                        ratingValue={reviewDataNew.ratingValue}
+                        ratingCriteria={ratingCriteriaOriginal} 
+                        onClose={() => setShowRatingInfo(false)}
+                      />
                     )}
                   </span>
-
-                  {/* STAR RATING */}
-                  <div className={styles.starRating} title={`Rated ${reviewData.ratingValue} out of 10 stars`} style={{ '--rating': `${reviewData.ratingValue * 10}%` }}>
-                    <span>★★★★★</span>
-                    <span className={styles.filledStars}>★★★★★</span>
-                  </div>
-
-                  <div className={styles.ratingDescription}>
-                    <i>A top-tier travel card with lounge access, big earn potential, and flexible redemptions—ideal for frequent travelers despite a high fee.</i>
+                  <div className={styles.starRating} title={`Rated ${reviewDataNew.ratingValue} out of 10 stars`}>
+                      ★★★★★
+                      <span className={styles.filledStars} style={{ '--rating': `${(reviewDataNew.ratingValue / 10) * 100}%` }}>
+                        ★★★★★
+                      </span>
                   </div>
                 </div>
-              </section>
-            </header>
-
-            {/* ============= REVIEW CONTENT SECTIONS (Hardcoded JSX) ============= */}
-
-             {/* Section 2: Quick Stats Table */}
-             <section id="section-2" className={styles.reviewSection}>
-                <h2>Quick Stats at a Glance</h2>
-                <div className={styles.tableContainer}>
-                    <table className={styles.statsTable}>
-                        <thead>
-                            <tr>
-                                <th>Feature</th>
-                                <th>Details</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td data-label="Feature">Annual Fee</td>
-                                <td data-label="Details">$550 (plus $75 per authorized user)</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Feature">APR Range</td>
-                                <td data-label="Details" dangerouslySetInnerHTML={{ __html:"20.49%–27.49% Variable"}}></td>
-                            </tr>
-                            <tr>
-                                <td data-label="Feature">Sign-Up Bonus</td>
-                                <td data-label="Details" dangerouslySetInnerHTML={{ __html:"Often ~60k UR points after $4k in 3 months"}}></td>
-                            </tr>
-                            <tr>
-                                <td data-label="Feature">Rewards Rate</td>
-                                <td data-label="Details" dangerouslySetInnerHTML={{ __html:"3x on travel (after $300 travel credit) &amp; dining, 1x on others"}}></td>
-                            </tr>
-                            <tr>
-                                <td data-label="Feature">Annual Travel Credit</td>
-                                <td data-label="Details">$300 on travel purchases</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Feature">Lounge Access</td>
-                                <td data-label="Details">Priority Pass Select (1,300+ lounges worldwide)</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Feature">Foreign Transaction Fee</td>
-                                <td data-label="Details">None</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Feature">Recommended Credit Score</td>
-                                <td data-label="Details">Good–Excellent (700+ typically)</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                 <div className={styles.ratingDescription}> 
+                    <i>{reviewDataNew.cardName}: {reviewDataNew.description}</i>
+                 </div>
+              </div>
             </section>
 
-             {/* CTA Section */}
-             <section id="cta" className={styles.ctaSection}>
-                <h2>Get the <b>Chase Sapphire Reserve</b> Card Today!</h2>
-                <div className={styles.ctaButtons}>
-                    <a href={reviewData.applyLink} className={`${styles.btn} ${styles.btnApply}`} title="From card issuer's secure site" target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
-                    <a href={reviewData.ratesLink} className={`${styles.btn} ${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored">See Rates & Fees</a>
-                </div>
-            </section>
-
-            {/* Section 3: Card Overview & Positioning */}
-            <section id="section-3" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html: "Card Overview &amp; Positioning" }}></h2>
-                <p dangerouslySetInnerHTML={{ __html: "The <strong>Chase Sapphire Reserve</strong> is a <strong>premium travel card</strong> designed for those wanting top-tier lounge access, elevated rewards on travel/dining, and a flexible points system (Chase Ultimate Rewards) known for <strong>transfer partnerships</strong>. Priced at <strong>$550</strong>, it’s one of the heavier fees in the market. However, the annual <strong>$300 travel credit</strong> effectively reduces net cost, plus you get robust travel protections and an array of intangible benefits (Priority Pass, Global Entry/TSA PreCheck credit, etc.). In 2025, the Reserve remains a staple among the “big 3” premium cards (along with Amex Platinum and Citi Prestige—though Prestige is less visible now). If you’re a frequent traveler who can utilize lounge access and redemption strategies, the Reserve can deliver substantial annual savings." }}></p>
-            </section>
-
-            {/* Section 4: Earning Structure & Category Multipliers */}
-             <section id="section-4" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html: "Earning Structure &amp; Category Multipliers" }}></h2>
-                <p>
-                    The card typically offers:
-                </p>
-                <ul className={styles.featureList}>
-                    <li><strong>3x points</strong> on travel (after the $300 travel credit is used) and dining globally</li>
-                    <li><strong>10x on Lyft rides</strong> (through a partnership, valid at least until March 2025—subject to renewal)</li>
-                    <li><strong>1x points</strong> on all other purchases</li>
-                </ul>
-                <p>
-                    Before the $300 travel credit is exhausted, travel purchases earn 1x, but you do get statement credits until you hit $300.
-                    After that, you’re in the 3x zone.
-                    “Travel” is broadly defined—airlines, hotels, car rentals, even tolls or parking might code.
-                    Meanwhile, <strong>dining</strong> includes restaurants, cafes, bars worldwide.
-                    If you spend heavily on flights, lodging, or dining,
-                    3x can accumulate quickly.
-                    Pair that with frequent partner promotions (like 5x–10x on special categories or Chase Offers) for bigger returns.
-                </p>
-            </section>
-
-            {/* Section 5: Redeeming Ultimate Rewards® & Partners */}
-            <section id="section-5" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html: "Redemption: Ultimate Rewards &amp; Partner Transfers"}}></h2>
-                <p>
-                    Chase Ultimate Rewards can be redeemed in multiple ways:
-                </p>
-                <ol className={styles.numberedList}>
-                    <li><strong>Travel Through UR Portal:</strong>
-                    With Sapphire Reserve, you get <strong>1.5¢</strong> per point on travel booked in the UR portal (flights, hotels, cars).
-                    If you have 60k points, that’s $900 in travel credit, a straightforward approach.</li>
-                    <li><strong>Transfer to Partners 1:1:</strong>
-                    Such as United, Southwest, JetBlue, British Airways, Emirates, Virgin Atlantic, Air Canada, Hyatt, Marriott, IHG, etc.
-                    Some travelers get 2¢ or more per point with high-value airline or Hyatt redemptions, especially premium cabins or top-tier hotels.</li>
-                    <li><strong>Statement Credits, Gift Cards, Shopping:</strong>
-                    Typically ~1¢ or less in value, suboptimal.
-                    Not recommended unless you can’t use travel redemptions effectively.</li>
-                </ol>
-                <p>
-                    The <strong>1.5x</strong> portal rate is appealing for ease.
-                    However, partner transfers often yield even higher potential if you find sweet-spot awards—
-                    e.g., Hyatt or certain airline routes.
-                    Combining 3x earn with 1.5–2.0¢ redemptions can effectively net 4.5–6% return on those categories.
-                    That’s a big reason travelers covet the Reserve’s synergy with UR points.
-                </p>
-            </section>
-
-             {/* Section 6: $300 Travel Credit & Priority Pass Lounge Access */}
-             <section id="section-6" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html: "$300 Travel Credit &amp; Priority Pass Lounge Access"}}></h2>
-                <p>
-                    A hallmark of the <strong>Sapphire Reserve</strong> is the <strong>$300 annual travel credit</strong>.
-                    Any travel purchase triggers it automatically (airfare, hotels, rideshares, etc.),
-                    reimbursing up to $300.
-                    This effectively reduces the net annual fee to <strong>$250</strong> if you reliably spend $300+ on travel each year.
-                    For frequent flyers, that’s easy to satisfy in the first month or two.
-                </p>
-                <p>
-                    Also, <strong>Priority Pass Select</strong> membership grants access to <strong>1,300+ airport lounges</strong> worldwide,
-                    plus some airport eateries offering dining credits.
-                    You can bring <strong>2</strong> guests for free (some policies vary by location).
-                    If you frequently endure layovers, lounge visits with free snacks/drinks can offset an airport’s pricey food.
-                    This lounge program is part of the 10 travel benefits theme:
-                </p>
-                {/* Simple list for themes */}
-                <ul>
-                    <li>1) Lounge Access</li>
-                    <li>2) Annual Travel Credit</li>
-                     {/* ...(Add other 8 themes here if needed from source) */}
-                </ul>
-                <p>
-                    In short, the $300 credit plus lounge membership forms the backbone of the Reserve’s premium experience.
-                </p>
-            </section>
-
-            {/* Section 7: 10 Key Travel Themes Spotlight */}
-            <section id="section-7" className={styles.reviewSection}>
-                <h2>10 Key Travel Themes for the Sapphire Reserve</h2>
-                <p>
-                    The Chase Sapphire Reserve addresses <strong>10</strong> essential travel card themes:
-                </p>
-                <ol className={styles.numberedList}>
-                    <li><strong>High Earning Potential:</strong> 3x on travel/dining</li>
-                    <li><strong>Valuable Travel Credit:</strong> $300 offsets flights, hotels, etc.</li>
-                    <li><strong>Lounge Access:</strong> Priority Pass membership</li>
-                    <li><strong>Flexible Rewards:</strong> UR points transfer or 1.5¢ in portal</li>
-                    <li><strong>Travel Protections:</strong> Trip delay/cancellation, primary rental car coverage</li>
-                    <li><strong>Global Entry/TSA PreCheck Credit:</strong> $100 credit every 4 years</li>
-                    <li><strong>No Foreign Transaction Fee:</strong> Use worldwide without penalty</li>
-                    <li><strong>Luxury Perks:</strong> Access to curated events, experiences via Chase</li>
-                    <li><strong>Easy Redemption Portal:</strong> Book flights/hotels simply at 1.5¢ each</li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Partner Synergy:</strong> Combine with other UR cards (Freedom, Ink) or transfer to airlines/hotels for bigger expansions"}}></li>
-                </ol>
-            </section>
-
-            {/* Section 8: 2025 Updates & Potential Changes */}
-            <section id="section-8" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html: "2025 Updates &amp; Potential Changes"}}></h2>
-                <ol className={styles.numberedList}>
-                    <li><strong>Annual Fee Increases:</strong>
-                    Some rumors swirl about potential $595 or $600.
-                    Historically, banks reevaluate fees periodically.
-                    If so, they might add new benefits (like more lounge networks or higher credits) to justify it.</li>
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Category Adjustments:</strong> Dining or travel might see partial expansions or promotions. Keep an eye on official T&amp;Cs for new bonus categories or additional partner perks (e.g., Peloton credits, DoorDash credits, etc.)."}}></li>
-                    <li><strong>Sign-Up Bonus Variations:</strong>
-                    Sometimes it’s 60k points, sometimes 70k.
-                    If you see an elevated offer in 2025, consider jumping in if you haven’t had the card previously (Chase’s 48-month rule applies for sign-up bonuses).
-                    </li>
-                    <li><strong>Chase Pay to Earn Additional Points:</strong>
-                    If Chase revives or modifies promotions for mobile wallet or Chase Offers,
-                    you might see short-term 5x or 10x deals in certain categories/merchants.</li>
-                </ol>
-                <p>
-                    Typically, the Reserve evolves slowly.
-                    The biggest watch might be the annual fee or expansions of lounge or partner networks.
-                    Check official announcements to confirm changes in 2025.
-                </p>
-            </section>
-
-            {/* Section 9: Real-Life Example Table */}
-            <section id="section-9" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html: "Real-Life Example: Annual Spend &amp; Points"}}></h2>
-                <p>
-                    Suppose you spend yearly:
-                </p>
-                <ul className={styles.featureList}>
-                    <li dangerouslySetInnerHTML={{ __html: "$5,000 on flights &amp; hotels (beyond the $300 credit usage)"}}></li>
-                    <li>$3,000 on other travel (rental cars, trains, etc.)</li>
-                    <li>$6,000 on dining</li>
-                    <li>$15,000 on general overhead (1x category)</li>
-                </ul>
-                <p>
-                    Once you pass the $300 credit, subsequent travel codes at 3x.
-                    Let’s assume the entire $8k on flights/hotels/other travel (minus the first $300) yields 3x.
-                    Here’s a simplified breakdown:
-                </p>
-                <div className={styles.tableContainer}>
-                    <table className={styles.statsTable}>
-                        <thead>
-                            <tr>
-                                <th>Category</th>
-                                <th>Annual Spend</th>
-                                <th>Points per $</th>
-                                <th>Total Points</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td data-label="Category">Travel (beyond $300 credit)</td>
-                                <td data-label="Annual Spend">$8,000</td>
-                                <td data-label="Points per $">3x</td>
-                                <td data-label="Total Points">24,000</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Category">Dining</td>
-                                <td data-label="Annual Spend">$6,000</td>
-                                <td data-label="Points per $">3x</td>
-                                <td data-label="Total Points">18,000</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Category">All Other</td>
-                                <td data-label="Annual Spend">$15,000</td>
-                                <td data-label="Points per $">1x</td>
-                                <td data-label="Total Points">15,000</td>
-                            </tr>
-                            <tr style={{fontWeight: 'bold', borderTop: '2px solid #dee2e6'}}>
-                                <th data-label="Category">Total</th>
-                                <th data-label="Annual Spend">$29,000</th>
-                                <th data-label="Points per $">—</th>
-                                <th data-label="Total Points">57,000</th>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html: "That’s <strong>57k</strong> UR points from organic spend, plus a sign-up bonus (say 60k). You’d total ~117k points. At 1.5¢ in the portal, that’s <strong>$1,755</strong> in travel. Or if you transfer to an airline/hotel partner for 2¢ each, that’s around <strong>$2,340</strong>. Subtract the net $250 fee (after the $300 credit). You still come out well ahead, especially if you appreciate lounge visits or top-shelf travel insurance." }}></p>
-            </section>
-
-            {/* Section 10: Competitor Analysis */}
-             <section id="section-10" className={styles.reviewSection}>
-                <h2>Competitor Analysis</h2>
-                <p>
-                    The premium travel card space includes:
-                </p>
-                <div className={styles.tableContainer}>
-                    <table className={styles.statsTable}>
-                        <thead>
-                            <tr>
-                                <th>Card</th>
-                                <th>Annual Fee</th>
-                                <th>Rewards</th>
-                                <th>Key Advantage</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td data-label="Card">Chase Sapphire Reserve</td>
-                                <td data-label="Annual Fee">$550</td>
-                                <td data-label="Rewards">3x on travel/dining, 1.5x redeem in UR portal</td>
-                                <td data-label="Key Advantage">$300 travel credit, Priority Pass lounge, broad travel insurance</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Card">Amex Platinum</td>
-                                <td data-label="Annual Fee">$695</td>
-                                <td data-label="Rewards">5x on flights/hotels (Amex Travel), big lounge network</td>
-                                <td data-label="Key Advantage">Centurion Lounges, many credits (Uber, airline fee), but less flexible insurance</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Card">Citi Prestige (limited availability)</td>
-                                <td data-label="Annual Fee">$495</td>
-                                <td data-label="Rewards">5x air/restaurants, 3x hotels/cruises</td>
-                                <td data-label="Key Advantage">4th night free perk (capped now), but less relevant as Citi cut sign-ups</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Card">Capital One Venture X</td>
-                                <td data-label="Annual Fee">$395</td>
-                                <td data-label="Rewards">2x everything, 10x hotels/cars in Cap One Travel</td>
-                                <td data-label="Key Advantage">$300 travel credit in Cap One Travel, lounge access, cheaper fee</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <p>
-                    The <strong>Sapphire Reserve</strong> thrives if you prefer:
-                </p>
-                <ul className={styles.featureList}>
-                    <li>A big pool of <strong>Ultimate Rewards</strong> partners (United, Southwest, Hyatt, etc.)</li>
-                    <li>The straightforward <strong>$300</strong> any-travel credit</li>
-                    <li><strong>3x</strong> on travel/dining globally plus 1.5¢ portal redemption synergy</li>
-                </ul>
-                <p>
-                    If you want more lounge networks or a heavier emphasis on airline fee credits,
-                    the Amex Platinum might outdo it but at a higher net cost.
-                    Meanwhile, the Venture X is cheaper and offers a simpler approach (2x on all),
-                    but the UR ecosystem is typically more valuable to many travelers than Cap One’s transfer partners.
-                </p>
-            </section>
-
-            {/* Section 11: Additional Benefits & Travel Protections */}
-             <section id="section-11" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html: "Additional Benefits &amp; Travel Protections"}}></h2>
-                <p>
-                    <strong>Chase Sapphire Reserve</strong> provides:
-                </p>
-                <ul className={styles.featureList}>
-                    <li><strong>Trip Delay/Cancellation Insurance:</strong>
-                    Up to $500 per person for delays 6+ hours (or requiring overnight),
-                    or coverage for nonrefundable expenses if your trip is canceled for covered reasons</li>
-                    <li><strong>Primary Auto Rental Collision Damage Waiver:</strong>
-                    Great for domestic/international car rentals—decline the rental company’s coverage and pay with Reserve for primary coverage</li>
-                    <li><strong>Baggage Delay/Lost Luggage Reimbursement:</strong>
-                    Reimburses essentials if your bags are delayed more than 6 hours or lost in transit</li>
-                    <li><strong>Global Entry/TSA PreCheck Fee Credit:</strong>
-                    Up to $100 every four years</li>
-                    <li><strong>DoorDash and Lyft Benefits:</strong>
-                    Periodically, statement credits or elevated earn rates (like 10x on Lyft)
-                    though these are subject to extension beyond 2025</li>
-                </ul>
-                <p>
-                    These perks significantly boost your travel security and convenience—
-                    one reason the Reserve is a champion among road warriors or frequent flyers.
-                    Combined with a no foreign transaction fee policy,
-                    you can rely on it globally for purchases without worrying about surcharges or minimal coverage.
-                </p>
-            </section>
-
-            {/* Section 12: APR & Carrying a Balance */}
-            <section id="section-12" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html: "APR &amp; Carrying a Balance"}}></h2>
-                <p>
-                    The Reserve’s variable APR typically ranges from <strong>20.49–27.49%</strong>.
-                    This is quite high for revolving a balance, so interest charges can easily dwarf the value of 3x points.
-                    The recommended approach:
-                    pay in full monthly.
-                    If you foresee large short-term financing,
-                    you might prefer a 0% intro APR or lower-interest business solution.
-                    The Reserve is primarily a travel rewards card—<strong>not</strong> an optimal choice for carrying big debts.
-                    Same caution for cash advances—fees + ~29% interest make them unwise except in emergencies.
-                </p>
-            </section>
-
-            {/* Section 13: Potential Downsides */}
-            <section id="section-13" className={styles.reviewSection}>
-                <h2>Potential Downsides</h2>
-                <ul className={styles.featureList}>
-                    <li><strong>$550 Annual Fee:</strong>
-                    Even though $300 can offset, net $250 is still significant for some, especially if you can’t use the lounge or prefer other cards’ cheaper approach.</li>
-                    <li><strong>Authorized User Fee:</strong>
-                    $75 each if you want them to have full lounge privileges—some cards let you add employees cheaper or free.</li>
-                     {/* Using dangerouslySetInnerHTML for &amp; */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Dining &amp; Travel Cap:</strong> Technically unlimited 3x, but once you factor in the $300 credit, you earn 3x only after that. Also, not all travel subcategories might code as such. Always confirm merchant codes."}}></li>
-                    <li><strong>Competing Premium Cards:</strong>
-                    Some might prefer Amex Platinum’s Centurion Lounges or Capital One Venture X’s cheaper fee.
-                    Weigh your preference for lounge networks, airline/hotel partners, intangible perks, etc.</li>
-                    <li><strong>High APR if you revolve:</strong>
-                    Not suitable for ongoing balances, interest quickly erodes your points advantage.</li>
-                </ul>
-            </section>
-
-            {/* Section 14: Advanced Tips & Strategies */}
-            <section id="section-14" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html: "Advanced Tips &amp; Strategies"}}></h2>
-                <ol className={styles.numberedList}>
-                    <li><strong>Combine with Chase Freedom Cards:</strong>
-                    Earn 5x on rotating categories with Freedom Flex or 1.5x on everything with Freedom Unlimited,
-                    then <strong>transfer</strong> those points into your Reserve UR pool for the 1.5¢ portal redemption or partner transfers—maximizing synergy.</li>
-                    <li><strong>Monitor the $300 Travel Credit Timing:</strong>
-                    If your annual fee posts in, say, July, your travel credit resets each cardmember year.
-                    Plan to use the credit as soon as possible to effectively reduce your net cost for the rest of the year.</li>
-                    <li><strong>Redeem for High-Value Partners:</strong>
-                    Hyatt is a top sweet spot.
-                    Also look at short-haul or premium flights via British Airways, Virgin Atlantic, or United for potential 2¢+ value.</li>
-                     {/* Using dangerouslySetInnerHTML for &amp; */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Maximize Lyft 10x &amp; DoorDash Credits (if extended):</strong> Some promotions allow extra multipliers or monthly statement credits. If you frequently use ride-shares or takeout, these can further offset fees."}}></li>
-                    <li><strong>Book Travel with Reserve for Protections:</strong>
-                    Ensure flights, hotels, or tours are paid with the Reserve to activate trip insurance, baggage coverage, etc.
-                    Even partial coverage can be triggered, but best practice is paying in full with Reserve for clarity.</li>
-                </ol>
-            </section>
-
-            {/* Section 15: Another Real-Life Example */}
-            <section id="section-15" className={styles.reviewSection}>
-                <h2>Another Example: Frequent Flyer’s Annual Spend</h2>
-                <p>
-                    A frequent traveler invests:
-                </p>
-                <ul className={styles.featureList}>
-                     {/* Using dangerouslySetInnerHTML for &amp; */}
-                    <li dangerouslySetInnerHTML={{__html:"$8,000 in flights &amp; hotels (beyond the $300 credit usage)"}}></li>
-                    <li>$5,000 in lodging (Airbnb/hotels coding as travel) + $2,000 on rideshares/trains</li>
-                    <li>$7,000 on dining across the year</li>
-                    <li>$10,000 on general spending</li>
-                </ul>
-                <p>
-                    Post-credit, you have $15k at 3x in travel total ($8k flights + $5k lodging + $2k rides?),
-                    plus $7k dining at 3x, $10k other at 1x:
-                </p>
-                <ul className={styles.featureList}>
-                    <li><strong>Travel:</strong> $15,000 → 3x = 45,000 UR points</li>
-                    <li><strong>Dining:</strong> $7,000 → 3x = 21,000 UR points</li>
-                    <li><strong>Others:</strong> $10,000 → 1x = 10,000 UR points</li>
-                </ul>
-                <p>
-                    Total = <strong>76,000</strong> from spend alone.
-                    If the sign-up bonus is 60k, you’d have ~136k.
-                    At 1.5¢ each in the portal, that’s $2,040 in travel.
-                    Possibly $2,720 if redeemed for ~2¢ each via airline/hotel partner sweet spots.
-                    Net fee after $300 credit is $250, so you’re up well over $1,700 in value if you leverage lounge visits, coverage, etc.
-                </p>
-            </section>
-
-            {/* Section 16: Synergy with Other Chase Cards or Partner Programs */}
-             <section id="section-16" className={styles.reviewSection}>
-                <h2>Synergy with Other Chase Cards or Partner Programs</h2>
-                <p>
-                    The <strong>Sapphire Reserve</strong> excels when combined with:
-                </p>
-                <ul className={styles.featureList}>
-                    <li><strong>Chase Freedom Flex</strong>
-                    for 5% rotating categories—transfer those points to Reserve, unlocking 1.5¢ or partner transfers</li>
-                    <li><strong>Chase Freedom Unlimited</strong>
-                    for 1.5% on all non-bonus spend—again move them into your Reserve UR pool for better redemptions</li>
-                    <li><strong>Chase Ink Business Cards</strong>
-                    for specialized 3–5x categories on shipping, phone services, or ads.
-                    All these UR points can funnel into your Reserve account, benefiting from the 1.5¢ or transfer partners</li>
-                </ul>
-                <p>
-                    Additionally, if you frequently fly United or Southwest,
-                    transferring UR to those programs at 1:1 can supercharge your travel.
-                    If you favor Hyatt, that’s also 1:1, often netting 2¢ or more per point at top properties.
-                    Overall, the Reserve is the anchor for maximizing UR’s potential across personal or business lines.
-                </p>
-            </section>
-
-             {/* Section 17: Redemption & UR Value Insights */}
-             <section id="section-17" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html: "Redemption &amp; UR Value Insights"}}></h2>
-                <p>
-                    <strong>Ultimate Rewards</strong> typically yield:
-                </p>
-                <ul className={styles.featureList}>
-                    <li><strong>1.5¢ each in Chase Travel Portal</strong> with the Reserve</li>
-                    <li><strong>1:1 Transfers to Airlines/Hotels</strong>
-                    (United, Southwest, JetBlue, British Airways, Virgin Atlantic, Air Canada, Hyatt, Marriott, IHG, etc.)
-                    Potentially 2¢ or more if you find premium cabin or high-end hotel sweet spots</li>
-                    <li><strong>Cash/Statement Credits:</strong> ~1¢ each, not recommended if you can do better with travel</li>
-                </ul>
-                <p>
-                    Many advanced travelers see <strong>Hyatt</strong> as a top partner (2¢+ each),
-                    or certain airline redemptions in business/first class for 2.5–3¢.
-                    Meanwhile, the 1.5¢ portal approach is simpler if you want no complexity—
-                    $1,500 in flights for 100k UR points, for instance.
-                    If you want to keep your points flexible for multiple airlines/hotels,
-                    transferring from the Reserve is extremely powerful.
-                    This synergy is a major reason the Reserve consistently ranks among the top travel reward products.
-                </p>
-            </section>
-
-            {/* Section 18: Competitor & Alternative Cards */}
-            <section id="section-18" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html: "Competitor &amp; Alternative Cards"}}></h2>
-                <p>
-                    In the premium sphere, you might also consider:
-                </p>
-                <ul className={styles.featureList}>
-                    <li><strong>Amex Platinum</strong> ($695 AF):
-                    5x on airfare/hotels via Amex Travel, Centurion Lounges, many statement credits (Uber, Saks, airline incidentals), but the credits can be more fragmented.</li>
-                    <li><strong>Capital One Venture X</strong> ($395 AF):
-                    2x on everything, $300 travel portal credit, Priority Pass, cheaper.
-                    But if you prefer UR partners over Cap One’s, the Reserve might be more valuable.</li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>U.S. Bank Altitude Reserve</strong> ($400 AF, partial offset), 3x on travel/mobile wallet, but smaller partner network, less mainstream lounge coverage."}}></li>
-                    <li><strong>Citi Prestige</strong> (phasing out sign-ups), or the <strong>Amex Gold</strong> ($250 AF, 4x dining/groceries, fewer travel perks).
-                    </li>
-                </ul>
-                <p>
-                    Each premium card has unique angles—Amex for lounge networks and airline credits,
-                    Venture X for simpler approach and cheaper fee,
-                    Reserve for broad travel coverage, flexible UR points, and an easy $300 credit.
-                    Decide based on your typical travel patterns, lounge usage, redemption style, and synergy with existing card ecosystems.
-                </p>
-            </section>
-
-            {/* Section 19: Who Should Get the Card? */}
-            <section id="section-19" className={styles.reviewSection}>
-                <h2>Who Should Get the Chase Sapphire Reserve?</h2>
-                 <div className={styles.prosCons}>
-                    <div className={styles.pros}>
-                        <h3>Yes, If You:</h3>
-                        <ul className={styles.featureList}>
-                            {/* Using dangerouslySetInnerHTML for &amp; */}
-                            <li dangerouslySetInnerHTML={{__html:"Frequently spend on <strong>travel &amp; dining</strong> (3x categories add up quickly)"}}></li>
-                             <li>Can fully use the <strong>$300 travel credit</strong> each year</li>
-                              {/* Using dangerouslySetInnerHTML for &amp; */}
-                             <li dangerouslySetInnerHTML={{__html:"Value <strong>Priority Pass lounge access</strong> for layovers &amp; want robust travel insurance"}}></li>
-                             <li>Want **flexible** <strong>Ultimate Rewards</strong> with 1.5¢ or transfer partners</li>
-                             <li>Plan to pay in full monthly (high APR if revolving)</li>
-                        </ul>
+             <div className={styles.reviewContainer}> 
+                <header className={styles.reviewHeader}>
+                    <div className={styles.summaryBox} id="summaryBoxTitle">
+                        <h2 className={styles.summaryBoxTitle}>{reviewDataNew.cardName}: Key Insights</h2>
+                        <div className={styles.summaryGrid}>
+                            <div className={styles.summaryItem}>
+                                <span className={styles.summaryIcon}><IconGift /></span> 
+                                <span className={styles.summaryLabel}>Welcome Offer:</span>
+                                <span className={styles.summaryValue}>{summaryBoxData.welcomeOffer}</span>
+                            </div>
+                            <div className={styles.summaryItem}>
+                                <span className={styles.summaryIcon}><IconCheck /></span>
+                                <span className={styles.summaryLabel}>Annual Fee:</span>
+                                <span className={styles.summaryValue}>{summaryBoxData.annualFee}</span>
+                            </div>
+                            <div className={styles.summaryItem}>
+                                <span className={styles.summaryIcon}><IconStar /></span>
+                                <span className={styles.summaryLabel}>Top Earning:</span>
+                                <span className={styles.summaryValue}>{summaryBoxData.topEarning}</span>
+                            </div>
+                             <div className={styles.summaryItem}>
+                                <span className={styles.summaryIcon}><IconDollar /></span>
+                                <span className={styles.summaryLabel}>Key Credits:</span>
+                                <span className={styles.summaryValue}>{summaryBoxData.keyCredits}</span>
+                            </div>
+                            <div className={styles.summaryItem}>
+                                <span className={styles.summaryIcon}><IconPlane /></span> 
+                                <span className={styles.summaryLabel}>Travel Perk:</span>
+                                <span className={styles.summaryValue}>{summaryBoxData.travelPerk}</span>
+                            </div>
+                            <div className={styles.summaryItem} data-full-width="true"> 
+                                <span className={styles.summaryIcon}><IconPlus /></span>
+                                <span className={styles.summaryLabel}>Best For:</span>
+                                <span className={styles.summaryValue}>{summaryBoxData.bestFor}</span>
+                            </div>
+                        </div>
+                        <div className={styles.summaryBoxActions}>
+                            <a href={reviewDataNew.ratesLink} className={styles.summaryRatesLink} target="_blank" rel="noopener noreferrer sponsored">
+                                See Card Pricing & Terms
+                            </a>
+                             <a href='/rewards-calculator' className={`${styles.heroRewardsCalculator} ${styles.summaryButton}`} target="_blank" rel="noopener noreferrer">
+                                Rewards Calculator
+                            </a>
+                        </div>
                     </div>
-                    <div className={styles.cons}>
-                        <h3>No, If You:</h3>
-                        <ul className={styles.featureList}>
-                             <li>Can’t justify the net cost after $300 credit (effectively ~<strong>$250</strong>) or <strong>rarely travel</strong></li>
-                              {/* Using dangerouslySetInnerHTML for &amp; */}
-                             <li dangerouslySetInnerHTML={{__html:"Prefer <strong>Amex</strong> lounge coverage or different airline/hotel relationships"}}></li>
-                             <li>Need a <strong>lower fee</strong>, simpler card with decent returns (like Freedom or CFU + maybe a $95 product)</li>
-                             <li>Carry a balance frequently, as <strong>interest</strong> at ~20–27% can overshadow your points benefits</li>
-                             <li>Don’t plan to use lounge benefits or redemption beyond baseline 1¢, making a cheaper card better</li>
-                        </ul>
+                </header>
+              <article>
+                <section id="section-intro" className={styles.reviewSection}>
+                  <h2>Executive Summary: The 2025 Overhaul &amp; The End of an Era</h2>
+                  <p>The premium credit card landscape has been shaken by a seismic shift. In a move signaling the end of an era, Chase has completely reimagined its flagship, the Sapphire Reserve. The headline news is the dramatic fee increase to a market-topping $795, while the cost to add an authorized user has more than doubled to $195 (<a href={reviewDataNew.ratesLink} target="_blank" rel="noopener noreferrer sponsored">Source: Chase.com, Cardmember Pricing & Terms</a>). This isn't a card you add to your wallet lightly.</p>
+                  <p>In Chase’s view, this steep new price is justified. The card is now loaded with over $1,500 in potential annual statement credits, a strategic pivot that moves it squarely into the territory of its chief rival, The Platinum Card® from American Express (<a href={reviewDataNew.officialBenefitsCreditsLink} target="_blank" rel="noopener noreferrer sponsored">Source: Chase.com, Sapphire Reserve Benefits Page</a>). In doing so, the Sapphire Reserve has effectively traded its celebrated simplicity for what many users have dubbed a "coupon-book" model. Value is no longer effortless; it must be actively extracted by using a complex web of benefits with specific partners.</p>
+                  <p>This transformation is rooted in stark business reality. The original Sapphire Reserve, launched in 2016 to massive fanfare, was famously a loss leader for Chase. It was brilliant at attracting a coveted demographic of young, affluent customers, but it cost the bank dearly. The 2025 overhaul is a clear and decisive move to make the product profitable. Consequently, the Chase Sapphire Reserve is now a fundamentally different product. To judge this new card by the standards of the old is to miss the point entirely.</p>
+                </section>
+
+                <Image
+                    src="/travel-lifestyle-montage.jpg" // Placeholder: create a lifestyle image
+                    alt="A montage showing upscale dining, travel, and lifestyle activities"
+                    width={800}
+                    height={500}
+                    className={styles.contentImage}
+                    loading="lazy"
+                />
+
+                <section id="section-1" className={styles.reviewSection}>
+                  <h2>The Ideal Cardholder: A Detailed User Profile</h2>
+                  <p>So, who is the new $795 Chase Sapphire Reserve® for? It's not for everyone. In fact, it has been re-engineered for a niche, ultra-premium user. A vivid picture emerges of the individual for whom this card is a powerful financial tool.</p>
+                  <h3>Spending Habits</h3>
+                  <p>The ideal cardholder is a high spender, someone whose lifestyle naturally aligns with the card’s new partners. Their spending is heavily concentrated in dining, particularly at the kind of upscale restaurants featured in the "Sapphire Reserve Exclusive Tables" program. Crucially, they are already an organic user of services like Apple Music, Peloton, DoorDash, and Lyft. For this person, the statement credits don't feel like forced spending; they feel like organic rebates.</p>
+                  <h3>Travel Patterns</h3>
+                  <p>This individual travels frequently, primarily booking flights and hotels. They are comfortable using the Chase Travel portal to chase the new 8x points multiplier or booking directly with airlines to secure 4x points (<a href={reviewDataNew.officialUltimateRewardsLink} target="_blank" rel="noopener noreferrer sponsored">Source: Chase.com, Ultimate Rewards Program</a>). Their home base is likely a major city with a Chase Sapphire Lounge—like New York (LGA, JFK) or Boston (BOS)—or at least an airport with solid Priority Pass options.</p>
+                  <h3>Lifestyle</h3>
+                  <p>Geographically, this person lives in a major metropolitan area where benefits like the Sapphire Dining program and DoorDash delivery are most convenient. They also possess a key personality trait: they are highly organized. They view the task of tracking multiple, semi-annual statement credits not as a chore, but as a rewarding challenge. This "lifestyle architect" is willing and able to meticulously manage the card's complexities.</p>
+                </section>
+
+                <section id="section-2" className={styles.reviewSection}>
+                  <h2>Deconstructing the Rewards: The New Points Earning Structure</h2>
+                  <p>The rewards-earning framework of the Sapphire Reserve has been surgically altered. The changes shift focus heavily toward bookings made through Chase or directly with select travel providers, creating a more complex decision-making process for cardholders. The new earning rates reveal a strategic redirection of rewards:</p>
+                   <DraggableTableWrapper>
+                    <div className={styles.tableContainer}>
+                      <table className={`${styles.statsTable} ${styles.earningRatesTable}`}>
+                        <thead>
+                          <tr>
+                            <th>Spending Category</th>
+                            <th>New Earning Rate</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr><td>All Travel via Chase Travel</td><td><strong>8x points</strong></td></tr>
+                          <tr><td>Flights &amp; Hotels (Direct)</td><td><strong>4x points</strong></td></tr>
+                          <tr><td>Chase Dining</td><td><strong>10x points</strong></td></tr>
+                          <tr><td>General Dining</td><td><strong>3x points</strong></td></tr>
+                          <tr><td>All Other Travel</td><td><strong>1x point</strong></td></tr>
+                          <tr><td>All Other Purchases</td><td><strong>1x point</strong></td></tr>
+                        </tbody>
+                      </table>
                     </div>
-                </div>
-            </section>
+                  </DraggableTableWrapper>
+                  <p>This new structure presents a difficult "protection versus points" dilemma. The Sapphire Reserve is legendary for its comprehensive, best-in-class travel insurance. Previously, you could book a complex cruise or a tour package through a travel agent, earn a solid 3x points, and know you were covered. Under the new system, that same booking now earns a paltry 1x point.</p>
+                  <p>Suddenly, a traveler booking a $5,000 cruise is forced to choose: book with the Reserve for its unparalleled insurance but earn only 5,000 points, or use a different card to earn more rewards but accept inferior protection? This conflict fundamentally undermines the card's former status as the undisputed, all-in-one travel card.</p>
+                </section>
+                
+                <section id="section-3" className={styles.reviewSection}>
+                    <h2>Unlocking True Value: The Ultimate Rewards Ecosystem</h2>
+                    <p>While the Sapphire Reserve is powerful on its own, its true potential has always been unlocked when it serves as the anchor of the "Chase Trifecta." That hasn't changed. This strategy involves pairing the Reserve with no-annual-fee cards that earn Ultimate Rewards points in different bonus categories.</p>
+                    <ul className={styles.featureList}>
+                        <li><strong>Chase Sapphire Reserve®:</strong> For premium travel benefits and bonuses on travel and dining.</li>
+                        <li><strong>Chase Freedom Flex®:</strong> For its rotating quarterly categories that earn 5% cash back (which is equivalent to 5x points) (<a href={reviewDataNew.freedomFlexLink} target="_blank" rel="noopener noreferrer sponsored">Source: Chase.com, Freedom Flex Product Page</a>).</li>
+                        <li><strong>Chase Freedom Unlimited®:</strong> For its baseline earning rate of 1.5% cash back (1.5x points) on all non-bonus category purchases.</li>
+                    </ul>
+                    <p>The magic of this system lies in the ability to pool points. Rewards earned on the Freedom cards can be transferred to the Sapphire Reserve account. Once there, they gain access to the Reserve's more valuable redemption options, most notably the 1:1 transfer to high-value airline and hotel partners. This synergy transforms the 1.5x points earned on the Freedom Unlimited into 1.5 transferable points per dollar—a remarkably strong earning rate for everyday spending.</p>
+                </section>
 
-           {/* Section 20: Bottom Line & Disclaimer */}
-           <section id="section-20" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html:"Final Thoughts &amp; Disclaimer"}}></h2>
-                <p>
-                    The <strong>Chase Sapphire Reserve</strong> stands tall as a <strong>best-in-class travel card</strong>
-                    for those who can exploit <strong>3x</strong> travel/dining,
-                    use the <strong>$300</strong> annual credit,
-                    appreciate lounge access,
-                    and redeem points for <strong>1.5–2.0¢</strong> each.
-                    Despite a <strong>$550</strong> sticker fee,
-                    net cost around $250 (post-credit) can be overshadowed by lounge visits,
-                    top-shelf travel insurance,
-                    and the immense value of <strong>Ultimate Rewards</strong>.
-                    If you also hold Chase Freedoms or Ink cards,
-                    all those points pool together for bigger payoff.
-                    In 2025, with possible expansions to lounge networks and partner promos,
-                    the Reserve remains a top pick for frequent flyers seeking convenience and high returns on travel/dining.
-                </p>
-                 <p dangerouslySetInnerHTML={{ __html:"<strong>Disclaimer:</strong> Terms, APR, bonus amounts, and lounge expansions can change. Always verify the <strong>current</strong> details with Chase. We may earn affiliate commissions from some links, but editorial opinions stand independent. Hypothetical redemption values (1.5–2¢ each) vary by route or partner. The $300 travel credit is straightforward but do confirm your purchases code as “travel.” If you revolve a balance at ~20–27% APR, interest quickly negates the card’s benefit. Evaluate how lounge usage, travel coverage, and UR partner synergy fit your usage before applying."}}></p>
-            </section>
+                <section id="section-4" className={styles.reviewSection}>
+                  <h2>Unpacking the &quot;Coupon Book&quot;: A Guide to the New Lifestyle Credits</h2>
+                  <p>The justification for that hefty annual fee hinges on a cardholder's ability to maximize a new suite of lifestyle credits. Chase advertises over $1,500 in potential value, but each credit comes with terms that demand careful attention (<a href={reviewDataNew.officialBenefitsCreditsLink} target="_blank" rel="noopener noreferrer sponsored">Source: Chase.com, Guide to Sapphire Reserve Benefits</a>). Here’s the one-time breakdown:</p>
+                  <ul className={styles.featureList}>
+                      <li><strong>$500 The Edit Credit:</strong> For bookings at The Edit by Chase Travel, a luxury hotel collection. This is split into two $250 allotments (Jan-Jun and Jul-Dec) and requires navigating Chase's portal.</li>
+                      <li><strong>$300 Sapphire Dining Credit:</strong> For restaurants in the "Sapphire Reserve Exclusive Tables" program. This is also split into two $150 semi-annual credits and is redeemable via OpenTable.</li>
+                      <li><strong>$300 StubHub Credit:</strong> For event tickets, delivered as two $150 semi-annual credits.</li>
+                      <li><strong>$250 Apple Credit:</strong> Toward subscriptions for Apple TV+ and Apple Music.</li>
+                      <li><strong>$120 Peloton Credit:</strong> Provided as a $10 monthly statement credit.</li>
+                  </ul>
+                  <p>The structure of these benefits reveals a core component of the card's new business model: "breakage." This term refers to the value of rewards or credits that go unused. By implementing semi-annual expiration dates and specific merchant restrictions, Chase maximizes the probability that cardholders will not use the full face value of every credit.</p>
+                </section>
 
-            {/* E-A-T Section */}
-             <section id="eat-expertise-authority-trustworthiness" className={`${styles.reviewSection} ${styles.eatSection}`}>
-                 <h2 dangerouslySetInnerHTML={{ __html: "Our Commitment to E-A-T: Expertise, Authority &amp; Trustworthiness"}}></h2>
-                <p>
-                    At <strong>TravelCardInsider</strong>, we prioritize
-                    reliable, unbiased reviews so you can make informed
-                    credit decisions. We adhere to Google’s E‑A‑T
-                    (Expertise, Authority, and Trustworthiness) guidelines
-                    through:
-                </p>
-                <h3>1. Expertise</h3>
-                <ul className={styles.featureList}>
-                    <li><strong>Specialized Research:</strong>
-                    Our writers and analysts have years of experience
-                    in credit cards and travel rewards, ensuring thorough,
-                    accurate content.</li>
-                    <li><strong>Real-Time Updates:</strong>
-                    We continually check official issuer materials
-                    and user data to maintain current rates and terms.</li>
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Conferences &amp; Webinars:</strong> Our team attends financial and travel events, enriching our knowledge base with industry insights."}}></li>
-                </ul>
-                <h3>2. Authority</h3>
-                <ul className={styles.featureList}>
-                    <li><strong>Detailed Coverage:</strong>
-                    This review offers an exhaustive look
-                    at the chase sapphire reserve, from fees to redemption tips.</li>
-                    <li><strong>Trusted By Major Outlets:</strong>
-                    Our articles are frequently cited by national finance
-                    and travel news sites.</li>
-                    <li><strong>Full Disclosure:</strong>
-                    If affiliate links or promotions exist, we clearly state them,
-                    ensuring objective editorial content.</li>
-                </ul>
-                <h3>3. Trustworthiness</h3>
-                <ul className={styles.featureList}>
-                    <li><strong>Independent Analysis:</strong>
-                    We never let advertisers influence our ratings or opinions.</li>
-                    <li><strong>Frequent Revisions:</strong>
-                    We revise reviews whenever new offers appear,
-                    so details remain accurate.</li>
-                    <li><strong>Community Feedback:</strong>
-                    We encourage open discussion in comments,
-                    fostering transparency and additional user insights.</li>
-                    <li>
-                        <strong>Data Security:</strong> We prioritize user privacy and follow best practices,
-                        outlined in our <Link href="/privacy-policy"><a>Privacy Policy</a></Link>.
-                    </li>
-                </ul>
-                <p>
-                    By following these E‑A‑T principles, we aim to guide you
-                    responsibly toward a credit card that fits your needs
-                    and maximizes your travel rewards.
-                </p>
-            </section>
+                <section id="section-5" className={styles.reviewSection}>
+                  <h2>The Protections: Why Many Loyalists Stay</h2>
+                  <p>One of the most compelling features of the Chase Sapphire Reserve is its comprehensive suite of travel and purchase insurance (<a href={reviewDataNew.officialTravelShoppingProtectionsLink} target="_blank" rel="noopener noreferrer sponsored">Source: Chase.com, Sapphire Reserve Guide to Benefits</a>). These protections are among the best in the industry.</p>
+                  <ul className={styles.featureList}>
+                    <li><strong>Primary Auto Rental Collision Damage Waiver:</strong> A superstar benefit providing reimbursement up to $75,000. It means you can confidently decline the rental agency’s expensive insurance without having to file with your personal insurance first.</li>
+                    <li><strong>Trip Cancellation/Interruption Insurance:</strong> Another heavyweight, covering up to $10,000 per person if your trip is cut short for a covered reason.</li>
+                    <li><strong>Other Key Protections:</strong> The card also includes Trip Delay Reimbursement, Baggage Delay Insurance, Lost Luggage Reimbursement, and Emergency Medical and Evacuation coverage.</li>
+                    <li><strong>Shopping Protections:</strong> You get excellent Purchase Protection against damage or theft, Extended Warranty Protection, and Return Protection.</li>
+                  </ul>
+                   <p>For many cardholders, this insurance suite alone justifies a significant portion of the annual fee.</p>
+                </section>
 
-          </article>
-        </div> {/* Close reviewContainer */}
+                <section id="section-6" className={styles.reviewSection}>
+                  <h2>A First-Person Test Drive: Using the &quot;Edit&quot; Portal</h2>
+                  <p>To understand what using these new benefits feels like, I decided to test-drive the '$500 The Edit' credit for a hypothetical weekend trip to Boston. Finding the portal itself was easy enough through the Chase dashboard (<a href={reviewDataNew.chaseTravelPortalLink} target="_blank" rel="noopener noreferrer sponsored">Source: Chase Travel, The Edit by Chase Portal</a>). The interface was clean, but the search functionality felt a bit clunky compared to booking directly with a major hotel chain.</p>
+                  <p>I priced out a two-night stay at a well-known luxury hotel. The Edit portal showed a rate of $650 per night. A quick search on the hotel's own website showed the exact same public rate. So, the credit isn't a discount. It's a rebate on a purchase you have to make through their specific system. It’s valuable, absolutely, but only if your plans already align perfectly with their curated offerings at their specified prices. It cemented the "lifestyle architect" idea for me—you have to be willing to build your plans around the card's rules to win.</p>
+                </section>
+
+                <section id="section-7" className={styles.reviewSection}>
+                  <h2>The Bottom Line: A Real-World Spending Example</h2>
+                  <p>To understand the card's value, you have to run the numbers. Let's create a profile for "Alex," our ideal cardholder, and analyze a year of spending.</p>
+                  <h3>Alex's Annual Spending Profile:</h3>
+                  <ul className={styles.featureList}>
+                      <li>Flights: $4,000 (booked directly)</li>
+                      <li>Hotels: $3,000 total ($2,000 via Chase Travel portal, $1,000 at a hotel from The Edit)</li>
+                      <li>Dining: $6,000 total ($1,000 at Sapphire Reserve Exclusive Tables restaurants)</li>
+                      <li>And Alex fully uses the full suite of lifestyle and partner credits.</li>
+                  </ul>
+                  <h3>Net Value Calculation:</h3>
+                  <DraggableTableWrapper>
+                    <div className={styles.tableContainer}>
+                      <table className={`${styles.statsTable}`}>
+                        <tbody>
+                            <tr><td>Rewards Earned:</td><td>84,500 Ultimate Rewards points</td></tr>
+                            <tr><td>Value of Points (at 1.5 cpp):</td><td>$1,267.50</td></tr>
+                            <tr><td>Value of Credits Used:</td><td>$1,970</td></tr>
+                            <tr><td><strong>Total Gross Annual Value:</strong></td><td><strong>$3,237.50</strong></td></tr>
+                            <tr><td>Less Annual Fee:</td><td>-$795</td></tr>
+                            <tr><td><strong>Net Annual Value for Alex:</strong></td><td><strong className={styles.positiveValue}>$2,442.50</strong></td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </DraggableTableWrapper>
+                  <p>For Alex, who perfectly aligns with the card's intended user profile, the Chase Sapphire Reserve® delivers an outstanding net positive value of over $2,400 per year. This demonstrates that while the card is not for everyone, it can be immensely profitable for the right person.</p>
+                </section>
+
+                <section id="section-8" className={styles.reviewSection}>
+                  <h2>The Premium Gauntlet: How the Sapphire Reserve Stacks Up</h2>
+                  <p>No card exists in a vacuum. Here’s how the Sapphire Reserve stacks up against its two main competitors in the premium space (<a href={reviewDataNew.officialOverviewLink} target="_blank" rel="noopener noreferrer sponsored">Source: Chase.com, Sapphire Reserve Card Details</a>).</p>
+                  <DraggableTableWrapper>
+                    <div className={styles.tableContainer}>
+                      <table className={`${styles.statsTable} ${styles.comparisonTable}`}>
+                        <thead>
+                          <tr>
+                            <th>Feature</th>
+                            <th>Chase Sapphire Reserve®</th>
+                            <th>The Platinum Card® from Amex</th>
+                            <th>Capital One Venture X</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td data-label="Feature">Annual Fee</td><td data-label="CSR">$795</td><td data-label="Amex Plat">$695</td><td data-label="Venture X">$395</td></tr>
+                            <tr><td data-label="Feature">Authorized User Fee</td><td data-label="CSR">$195</td><td data-label="Amex Plat">$195 (for 3)</td><td data-label="Venture X">$0 (for 4)</td></tr>
+                            <tr><td data-label="Feature">Key Earning Rates</td><td data-label="CSR">8x on Chase Travel; 4x on direct flights/hotels</td><td data-label="Amex Plat">5x on direct flights & AmexTravel hotels</td><td data-label="Venture X">10x on Cap One Travel hotels; 2x everywhere else</td></tr>
+                            <tr><td data-label="Feature">Key Credits</td><td data-label="CSR">Complex suite of lifestyle credits</td><td data-label="Amex Plat">Complex suite of travel & shopping credits</td><td data-label="Venture X">Simple travel credit & anniversary miles</td></tr>
+                            <tr><td data-label="Feature">Lounge Access</td><td data-label="CSR">Priority Pass, Sapphire Lounges</td><td data-label="Amex Plat">Centurion, Delta Sky Club, Priority Pass (Most extensive)</td><td data-label="Venture X">Priority Pass, Capital One Lounges</td></tr>
+                            <tr><td data-label="Feature">Travel Insurance</td><td data-label="CSR">Industry-leading</td><td data-label="Amex Plat">Strong</td><td data-label="Venture X">Good</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </DraggableTableWrapper>
+                </section>
+
+                <section id="section-9" className={styles.reviewSection}>
+                    <h2>The Verdict: A Balanced Look at Pros and Cons</h2>
+                    <p>The reimagined Chase Sapphire Reserve® presents a compelling but polarizing value proposition.</p>
+                    <div className={styles.prosConsContainer}>
+                        <div className={styles.prosBox}>
+                            <h3 className={styles.prosConsTitle}>The Bright Side: Key Strengths</h3>
+                            <ul className={styles.featureList}>
+                                <li><strong>Massive Potential Value:</strong> For the cardholder who can organically use the new suite of lifestyle credits, the potential value is enormous.</li>
+                                <li><strong>High Earning on Key Travel:</strong> The 8x multiplier on Chase Travel and 4x on direct flights and hotels are lucrative rates.</li>
+                                <li><strong>Industry-Leading Protections:</strong> The card retains its best-in-class travel and purchase protections.</li>
+                                <li><strong>Premium Proprietary Lounges:</strong> The growing network of high-quality Chase Sapphire Lounges provides a superior airport experience (<a href={reviewDataNew.loungeAccessLink} target="_blank" rel="noopener noreferrer sponsored">Source: Chase.com, Airport Lounge Access</a>).</li>
+                            </ul>
+                        </div>
+                        <div className={styles.consBox}>
+                            <h3 className={styles.prosConsTitle}>The Reality Check: Major Drawbacks</h3>
+                            <ul className={styles.featureList}>
+                                <li><strong>Extremely High Annual Fee:</strong> That $795 figure creates a high barrier to entry and requires significant work to justify.</li>
+                                <li><strong>Complex "Coupon Book" Model:</strong> Maximizing the card's value requires actively tracking numerous credits with specific restrictions.</li>
+                                <li><strong>Devalued General Travel Category:</strong> The reduction of rewards on "other travel" (like cruises and tours) from 3x to 1x is a major blow.</li>
+                                <li><strong>Costly for Families:</strong> The steep $195 authorized user fee makes it an expensive proposition for those who want to share benefits.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="section-10" className={styles.reviewSection}>
+                  <h2>Final Verdict: Who Should Get the Chase Sapphire Reserve in 2025?</h2>
+                  <p>The new Chase Sapphire Reserve® is a powerful, complex, and highly specialized financial instrument. Its worth is no longer a simple calculation but a personalized assessment of your lifestyle, spending habits, and organizational diligence.</p>
+                  <h3>Get this card if:</h3>
+                  <p>You are the "Ideal Cardholder" profiled in this review. You live in a major city, spend heavily on travel and dining, and are an existing user of the card's new partner services. You have done the math, and those piecemeal credits represent real, organic savings, not forced spending. You value the peace of mind from best-in-class travel insurance and will frequent the high-quality Sapphire Lounges. You are the kind of person who enjoys the challenge of maximizing a complex system.</p>
+                  <h3>Consider another card if:</h3>
+                  <p>You are a more budget-conscious traveler, your primary travel spend is on cruises or tour packages, or you simply dislike the hassle of that high-stakes scavenger hunt for rebates. If you need to add family members as authorized users affordably, this card is no longer a good fit. For these individuals, the Chase Sapphire Preferred® Card, with its lower $95 fee, or the Capital One Venture X® Rewards Credit Card, with its simple and effective credits, will almost certainly provide better and more straightforward value (<a href={reviewDataNew.sapphirePreferredLink} target="_blank" rel="noopener noreferrer sponsored">Source: Chase.com, Sapphire Preferred Product Page</a>).</p>
+                  <p>In conclusion, the Chase Sapphire Reserve® is no longer a simple travel tool for the masses. It is an intricate lifestyle architecture. For the select few who can master its design, the rewards are immense. For everyone else, the golden age of the Sapphire Reserve is over, and it's time to look elsewhere.</p>
+                </section>
+                
+                <section id="section-faq" className={`${styles.reviewSection} ${styles.faqSection}`}>
+                  <h2>Frequently Asked Questions (FAQs)</h2>
+                  <div className={styles.faqContainer}>
+                      {structuredDataOptimized['@graph'].find(item => item['@type'] === 'FAQPage').mainEntity.map((faq, index) => (
+                          <details key={index} className={styles.faqItem} name={`faq-${index + 1}`}>
+                              <summary className={styles.faqQuestion}>{`${index + 1}. ${faq.name}`}</summary>
+                              <div className={styles.faqAnswer}>
+                                <p>{faq.acceptedAnswer.text}</p>
+                              </div>
+                          </details>
+                      ))}
+                  </div>
+                </section>
+
+                <section id="section-eat" className={`${styles.reviewSection} ${styles.eatSection}`}>
+                    <h2 dangerouslySetInnerHTML={{ __html: `Our Commitment to E-A-T: Expertise, Authority &amp; Trustworthiness`}}></h2>
+                    <p>At <strong>{siteName}</strong>, we are committed to providing content that exemplifies Expertise, Authoritativeness, and Trustworthiness (E-A-T). This review of the <strong>{reviewDataNew.cardName}</strong> has been meticulously researched and crafted. We've analyzed the card's features, benefits, rewards structure, and fees, referencing official issuer documentation from Chase and considering real-world user experiences and data points from the travel rewards community. Our goal is to present a balanced, comprehensive, and reliable guide to help you make an informed decision. All information is current as of <strong>{new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</strong>, but we always recommend verifying details directly with the issuer as terms can change.</p>
+                </section>
+
+              </article>
+            </div>
+          </div>
+          <aside className={styles.sidebarArea}>
+                <TableOfContents sections={tocSections} />
+          </aside>
+        </div>
       </main>
-
-      
+        <div className={styles.stickyFooterContainer}>
+            <div className={styles.stickyFooterContent}>
+                <Image src={reviewDataNew.imageUrl} alt={`${reviewDataNew.cardName} small image`} width={60} height={38} className={styles.stickyFooterCardImage} /> 
+                <div className={styles.stickyFooterText}>
+                  <span className={styles.stickyFooterCardName}>{reviewDataNew.cardName}</span>
+                  <span className={styles.stickyFooterRating}>{siteName} Rating: {reviewDataNew.ratingValue.toFixed(1)}/10</span>
+                </div>
+                <div className={styles.stickyFooterButtons}>
+                    <a
+                        href={reviewDataNew.applyLink}
+                        className={`${styles.stickyFooterBtn} ${styles.stickyFooterBtnApply}`}
+                        target="_blank"
+                        rel="noopener noreferrer sponsored"
+                    >
+                        Apply Now
+                    </a>
+                    <a
+                        href={reviewDataNew.ratesLink}
+                        className={`${styles.stickyFooterBtn} ${styles.stickyFooterBtnRates}`}
+                        target="_blank"
+                        rel="noopener noreferrer sponsored"
+                    >
+                        See Pricing & Terms
+                    </a>
+                </div>
+            </div>
+      </div>
     </>
   );
 }
