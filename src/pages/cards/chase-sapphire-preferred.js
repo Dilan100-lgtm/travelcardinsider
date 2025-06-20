@@ -540,7 +540,7 @@ function ChaseSapphirePreferredCardReviewPage() {
                     )}
                 </div>
                 <p className={styles.heroSubtitle}>
-                  In the world of travel rewards, few cards command the respect of the Chase Sapphire Preferred®. For over a decade, it has been a cornerstone of the points-and-miles landscape, celebrated as the quintessential "starter" travel card. But to call it a beginner card is to sell it short. Its powerful blend of value, flexibility, and accessibility makes it a long-term keeper for even seasoned rewards veterans.
+                  The Chase Sapphire Preferred® isn’t just a starter travel card—it’s a longtime favorite for a reason. With a perfect mix of value, flexibility, and ease of use, it’s a smart choice for both beginners and seasoned points pros alike.
                 </p>
                 <div className={styles.heroCtaContainer}>
                   <div>
