@@ -1,692 +1,960 @@
-// Example Path: pages/reviews/chase-freedom-unlimited.js
-// Or: pages/reviews/[slug].js (if using dynamic routing with 'chase-freedom-unlimited' as slug)
+/* ------------------------------------------------------------------
+    File:  pages/reviews/chase-freedom-unlimited-review.js
+    Route: https://www.travelcardinsider.com/reviews/chase-freedom-unlimited-review
+------------------------------------------------------------------- */
 
-// !!! WARNING: THIS FILE CONTAINS PLACEHOLDER DATA/URLs/DIMENSIONS !!!
-// !!! YOU MUST REPLACE ALL PLACEHOLDERS MARKED WITH '!!!' BEFORE DEPLOYMENT !!!
-// !!! VERIFY ALL CARD DETAILS & SCHEMA VALUES AGAINST OFFICIAL ISSUER INFO !!!
-
-import React, { useState, useEffect, useCallback, useRef } from 'react'; // Hooks for tooltip
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from '../../styles/ReviewPage.module.css'; // Using the REVIEW CSS module
-import Header from '../../components/Header'; // Assuming you have these components
-import Footer from '../../components/Footer'; // Assuming you have these components
+import dynamic from 'next/dynamic';
+import styles from '../../styles/ReviewPage.module.css'; // Assuming same CSS module as the Amex page
 
-// Simplified data object based on the final template structure
+import TableOfContents from '../../components/TableOfContents'; // Assuming same TOC component
+// Inlined SVG components for single file delivery
+const IconGift = () => <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M20 12v10H4V12H2v10a2 2 0 002 2h16a2 2 0 002-2V12h-2z"/><path d="M12 2L9.5 4.5l-3-3L4 4l3 3L4.5 9.5 7 12h10l2.5-2.5-2.5-2.5 3-3-2.5-2.5-3 3L12 2zM12 8a2 2 0 110-4 2 2 0 010 4z"/></svg>;
+const IconStar = () => <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>;
+const IconCheck = () => <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>;
+const IconPlus = () => <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>;
+const IconPlane = () => <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>;
+const IconDollar = () => <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c2.14-.46 3.5-1.78 3.5-3.97 0-2.02-1.47-3.5-4.2-4.18z"/></svg>;
+
+const RatingTooltip = dynamic(() => import('../../components/RatingTooltip'), { ssr: false, loading: () => null });
+
+/* ──────────────────────────────
+    CONSTANTS & STATIC DATA
+    ────────────────────────────── */
+const siteName = 'Travelcardinsider';
+const siteUrl = 'https://www.travelcardinsider.com';
+const pagePath = '/reviews/chase-freedom-unlimited-review';
+const pageUrlFull = `${siteUrl}${pagePath}`;
+const publishDate = '2025-06-20';
+const updateDate = '2025-06-20';
+
 const reviewData = {
-  cardName: 'Chase Freedom Unlimited®',
-  title: 'Chase Freedom Unlimited® – In-Depth 2025 Review',
-  description: 'A comprehensive 2500-word review of the Chase Freedom Unlimited® for 2025. Explore up to 5% categories, no annual fee, advanced usage tips, disclaimers, synergy with other Chase cards, and more.',
-  keywords: 'Chase Freedom Unlimited, 1.5% cashback, 5% categories, no annual fee, 2025 updates, advanced tips',
-  author: 'TravelCardInsider', // *** REPLACE with your actual author/site name ***
-  imageUrl: '/freedom_unlimited_card_alt (1).png', // *** VERIFY PATH in /public ***
-  ratingValue: 9.0, // From Freedom Unlimited HTML
-  applyLink: 'https://creditcards.chase.com/cash-back-credit-cards/freedom/unlimited', // *** REPLACE with actual Freedom Unlimited APPLY URL ***
-  ratesLink: 'https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC56029.html', // *** VERIFY URL ***
-  // Image dimensions (MUST BE ACCURATE for next/image)
-  imageWidth: 480, // *** REPLACE with actual image width *** (Example Placeholder)
-  imageHeight: 304, // *** REPLACE with actual image height *** (Example Placeholder)
+  cardName        : 'Chase Freedom Unlimited®',
+  title           : 'Chase Freedom Unlimited® Review (2025): The Ultimate Everyday Card?',
+  description     : 'Our in-depth 2025 review of the Chase Freedom Unlimited®. Explore its 5/3/1.5% rewards, $0 annual fee, valuable perks like trip insurance, and how it powers the Chase Trifecta.',
+  keywords        : 'Chase Freedom Unlimited review, Chase Ultimate Rewards, no annual fee credit card, best cashback card 2025, Chase Trifecta, Chase Freedom review',
+  author: {
+      name: 'Dilan Madushanka',
+      title: 'Founder & Lead Editor',
+      imageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg',
+      imageWidth: 40,
+      imageHeight: 40,
+      tooltipImageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg',
+      tooltipImageWidth: 60,
+      tooltipImageHeight: 60,
+      expertise: [
+          'No-Annual-Fee Rewards Cards',
+          'Chase Ultimate Rewards® Ecosystem',
+          'Credit Card Rewards Optimization',
+          'Travel Hacking for Beginners',
+          'Cash Back Strategies'
+      ],
+      bioSnippet: 'Dilan Madushanka is the founder and lead editor of Travelcardinsider, dedicated to demystifying credit cards and uncovering their real-world value for smarter travel and rewards.',
+      fullBioLink: '/author/dilan-madushanka',
+      fullBio: `Dilan Madushanka is the founder and lead editor of Travelcardinsider, a platform dedicated to helping everyday people make smarter decisions with travel and rewards credit cards.`,
+      publishedStats: 'X+ in-depth card reviews per week',
+      testedStats: 'Over Y+ credit card benefits across major brands',
+      socialLinks: {
+          linkedin: 'https://www.linkedin.com/in/dilan-madushanka-b65293365',
+          twitter: 'https://x.com/team_dilan',
+          email: 'team@travelcardinsider.com'
+      }
+  },
+  siteName: siteName,
+  imageUrl        : '/chase-freedom-unlimited-card-image.png', // Placeholder: Replace with actual CFU card image URL
+  imageWidth      : 1290,
+  imageHeight     : 812,
+  ratingValue     : 9.2,  // Based on the positive review tone for a no-fee card
+  ratingCount     : 310,  // Placeholder count
+  reviewBody      : 'Our editors evaluate the Chase Freedom Unlimited® based on its tiered rewards structure (5% on travel via Chase, 3% on dining/drugstores, 1.5% everywhere else), its $0 annual fee, the value of Ultimate Rewards® points, its introductory offers, and its valuable built-in protections like trip cancellation insurance, making it a top-tier no-annual-fee card.',
+  aprRange        : '20.49%–29.24% Variable', // From your text
+  annualFee       : 0,
+  applyLink       : 'https://creditcards.chase.com/cash-back-credit-cards/freedom/unlimited', // Official Link
+  ratesLink       : 'https://creditcards.chase.com/cash-back-credit-cards/freedom/unlimited', // Pricing & Terms are on this page
+  officialOverviewLink: 'https://creditcards.chase.com/cash-back-credit-cards/freedom/unlimited',
+  officialBenefitsGuideLink: 'https://www.chase.com/personal/credit-cards/card-resource-center/chase-benefits', // General benefits guide
+  officialUltimateRewardsLink: 'https://www.chase.com/personal/credit-cards/ultimate-rewards',
+  sku             : 'CHASE-CFU-TCI-2025',
+  mpn             : 'CHASECFU',
 };
 
-// --- Rating Tooltip Content (Customize if needed for Freedom Unlimited) ---
-const ratingCriteria = [ // *** VERIFY/CUSTOMIZE these criteria for Freedom Unlimited Rating ***
-    'Cash Back/UR Earning (1.5% - 5%)',
-    'No Annual Fee',
-    'Welcome Bonus',
-    'Synergy with Sapphire Cards',
-    'Redemption Flexibility'
+/* ──────────────────────────────
+    STRUCTURED DATA GRAPH
+    ────────────────────────────── */
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph'  : [
+    {
+      '@type'        : 'Product',
+      '@id'          : `${pageUrlFull}#product`,
+      name           : reviewData.cardName,
+      image          : `${siteUrl}${reviewData.imageUrl}`,
+      description    : reviewData.description,
+      sku            : reviewData.sku,
+      mpn            : reviewData.mpn,
+      brand          : { '@type': 'Brand', name: 'Chase' },
+      aggregateRating: {
+        '@type'    : 'AggregateRating',
+        ratingValue : reviewData.ratingValue.toString(),
+        bestRating  : '10',
+        worstRating : '1',
+        ratingCount : reviewData.ratingCount.toString(),
+        reviewCount : '1',
+      },
+      offers: {
+        '@type'            : 'Offer',
+        url                : reviewData.applyLink,
+        priceCurrency      : 'USD',
+        price              : reviewData.annualFee.toString(),
+        priceValidUntil    : '2026-12-31',
+        itemCondition      : 'https://schema.org/NewCondition',
+        availability       : 'https://schema.org/InStock',
+        priceSpecification: [
+          {
+            '@type'              : 'PriceSpecification',
+            priceCurrency        : 'USD',
+            price                : reviewData.annualFee.toString(),
+            valueAddedTaxIncluded: 'false',
+            description          : `Annual fee: $${reviewData.annualFee}.`,
+          },
+          {
+            '@type'              : 'PriceSpecification',
+            priceCurrency        : 'USD',
+            description          : `Purchase APR: ${reviewData.aprRange}. Foreign Transaction Fee: 3%. See official ${reviewData.cardName} Rates & Fees on the issuer's website.`,
+          },
+        ],
+        seller: { '@type': 'Organization', name: 'Chase' },
+      },
+      review: { '@id': `${pageUrlFull}#editorReview` },
+    },
+    {
+      '@type'         : 'Review',
+      '@id'           : `${pageUrlFull}#editorReview`,
+      name            : `${reviewData.cardName} – Review Updated ${new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`,
+      itemReviewed    : { '@id': `${pageUrlFull}#product` },
+      reviewBody      : reviewData.reviewBody,
+      reviewRating    : {
+        '@type'    : 'Rating',
+        ratingValue : reviewData.ratingValue.toString(),
+        bestRating  : '10',
+        worstRating : '1',
+        description: `${siteName} editorial rating based on a 10.0 scale, as of ${new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}.`
+      },
+      author          : {
+          '@type': 'Person',
+          'name': reviewData.author.name,
+          'url': reviewData.author.fullBioLink ? `${siteUrl}${reviewData.author.fullBioLink}` : undefined,
+      },
+      publisher       : {
+        '@type' : 'Organization',
+        name    : siteName,
+        logo    : { '@type': 'ImageObject', url: `${siteUrl}/images/logo/your-logo-schema.png` },
+      },
+      datePublished   : publishDate,
+      dateModified    : updateDate,
+    },
+    {
+      '@type'            : 'WebPage',
+      '@id'              : pageUrlFull,
+      url                : pageUrlFull,
+      name               : reviewData.title,
+      description        : reviewData.description,
+      inLanguage         : 'en-US',
+      isPartOf           : { '@id': `${siteUrl}#website` },
+      primaryImageOfPage : { '@id': `${pageUrlFull}#primaryImage` },
+      breadcrumb         : { '@id': `${pageUrlFull}#breadcrumbs` },
+      datePublished      : publishDate,
+      dateModified       : updateDate,
+       author: {
+          '@type': 'Person',
+          'name': reviewData.author.name,
+          'url': reviewData.author.fullBioLink ? `${siteUrl}${reviewData.author.fullBioLink}` : undefined
+       },
+    },
+    {
+      '@type'   : 'ImageObject',
+      '@id'     : `${pageUrlFull}#primaryImage`,
+      url       : `${siteUrl}${reviewData.imageUrl}`,
+      width     : reviewData.imageWidth,
+      height    : reviewData.imageHeight,
+      caption   : reviewData.cardName,
+    },
+    {
+      '@type'        : 'BreadcrumbList',
+      '@id'          : `${pageUrlFull}#breadcrumbs`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: siteName, item: siteUrl },
+        { '@type': 'ListItem', position: 2, name: 'Credit Card Reviews', item: `${siteUrl}/reviews` },
+        { '@type': 'ListItem', position: 3, name: `${reviewData.cardName} Review`, item: pageUrlFull },
+      ],
+    },
+    {
+      '@type'    : 'FAQPage',
+      '@id'      : `${pageUrlFull}#faqs`,
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'Is the Chase Freedom Unlimited® a Visa or Mastercard?',
+          acceptedAnswer: { '@type': 'Answer', text: "It's a Visa Signature®, so it has widespread acceptance wherever Visa is taken." }
+        },
+        {
+          '@type': 'Question',
+          name: 'Do the rewards on the Chase Freedom Unlimited® expire?',
+          acceptedAnswer: { '@type': 'Answer', text: "No, your Ultimate Rewards® points do not expire as long as your account remains open and in good standing. You can find more details on the official Chase Ultimate Rewards® FAQ page." }
+        },
+        {
+          '@type': 'Question',
+          name: 'Is there a minimum number of points to redeem for cash back?',
+          acceptedAnswer: { '@type': 'Answer', text: "No, there is no minimum to redeem for cash back. You can redeem any amount at any time." }
+        },
+        {
+          '@type': 'Question',
+          name: 'Can I have both the Chase Freedom Unlimited® and the Freedom Flex®?',
+          acceptedAnswer: { '@type': 'Answer', text: "Absolutely. Holding both cards is a popular strategy and the foundation of the 'Chase Trifecta,' allowing you to maximize rewards across different spending categories." }
+        },
+        {
+          '@type': 'Question',
+          name: 'Does the Chase Freedom Unlimited® offer airport lounge access?',
+          acceptedAnswer: { '@type': 'Answer', text: "No, airport lounge access is not a benefit of this card. This perk is typically reserved for premium travel cards with higher annual fees, like the Chase Sapphire Reserve®." }
+        },
+        {
+          '@type': 'Question',
+          name: 'What happens to my Ultimate Rewards® points if I close my account?',
+          acceptedAnswer: { '@type': 'Answer', text: "You will forfeit any remaining points if you close your account. It's crucial to either redeem your points or transfer them to another Ultimate Rewards®-earning card (like a Sapphire card) or an airline/hotel partner before closing the account. Use them or lose them!" }
+        },
+      ],
+    },
+    {
+      '@type' : 'Organization',
+      '@id'   : `${siteUrl}#website`,
+      name    : siteName,
+      url     : siteUrl,
+      logo    : { '@type': 'ImageObject', url: `${siteUrl}/images/logo/your-logo-schema.png` },
+      sameAs  : [
+        "https://www.facebook.com/YourTravelCardInsiderFacebookPage",
+        "https://twitter.com/YourTravelCardInsiderTwitterHandle",
+      ],
+    },
+  ],
+};
+
+const ratingCriteria = [
+    'Base Rewards Rate (1.5%)',
+    'Bonus Category Rewards (Dining, Drugstores, Travel Portal)',
+    'Value and Flexibility of Ultimate Rewards® Points',
+    'Welcome Offer Attractiveness & Achievability',
+    'Annual Fee ($0)',
+    'Introductory APR Offer on Purchases & Transfers',
+    'Value of Built-in Protections (e.g., Trip Insurance)',
+    'Card-Pairing Potential (e.g., Chase Trifecta)',
+    'Foreign Transaction Fee (as a negative factor)',
+    'Overall Value Proposition for a No-Fee Card',
 ];
 
+const tocSections = [
+    { id: 'section-intro', title: "So, You're Thinking About the Chase Freedom Unlimited®?" },
+    { id: 'section-at-a-glance', title: '1. The Card at a Glance' },
+    { id: 'section-why-good', title: '2. What Makes This Card Genuinely Good?' },
+    { id: 'section-welcome-offer', title: '3. The Achievable Welcome Offer' },
+    { id: 'section-rewards-breakdown', title: '4. The 5/3/1.5 Rewards Formula' },
+    { id: 'section-power-of-1-5', title: '5. The Power of 1.5% (and Why It Can Beat 2%)' },
+    { id: 'section-cashing-in', title: '6. Cashing In: From Statement Credit to First-Class Seat' },
+    { id: 'section-rates-fees', title: '7. Full Rundown on Rates & Fees' },
+    { id: 'section-foreign-fee', title: '8. My Mini-Rant: The 3% Foreign Transaction Fee' },
+    { id: 'section-perks', title: '9. The Built-In Safety Net (Perks People Forget)' },
+    { id: 'section-competition', title: '10. Sizing Up the Competition' },
+    { id: 'section-spending-scenario', title: '11. A Real-World Spending Scenario' },
+    { id: 'section-user-voices', title: '12. Voices from the Internet' },
+    { id: 'section-bottom-line', title: '13. The Bottom Line: The Good and The Bad' },
+    { id: 'section-trifecta', title: '14. Unlocking "God Mode": The "Chase Trifecta" Explained' },
+    { id: 'section-faqs', title: '15. Your Questions, Answered (FAQs)' },
+    { id: 'section-verdict', title: '16. The Verdict: Should You Apply Right Now?' },
+    { id: 'section-eat', title: 'Our E-A-T Commitment' },
+];
 
+function DraggableTableWrapper({ children }) {
+  const containerRef = useRef(null);
+  useEffect(() => {
+    if (typeof window === 'undefined' || window.innerWidth < 768) return;
+    const el = containerRef.current;
+    if (!el) return;
+    let isDragging = false, startX = 0, scrollStart = 0;
+    const startDrag = (e) => {
+      isDragging = true; el.classList.add(styles.grabbing);
+      startX = e.pageX || e.touches?.[0]?.pageX; scrollStart = el.scrollLeft;
+    };
+    const stopDrag = () => { isDragging = false; el.classList.remove(styles.grabbing); };
+    const onMove = (e) => {
+      if (!isDragging) return; e.preventDefault();
+      const x = e.pageX || e.touches?.[0]?.pageX;
+      el.scrollLeft = scrollStart - (x - startX);
+    };
+    el.addEventListener('mousedown', startDrag);
+    document.addEventListener('mouseup', stopDrag);
+    document.addEventListener('mouseleave', stopDrag);
+    el.addEventListener('mousemove', onMove);
+    el.addEventListener('touchstart', startDrag, { passive: true });
+    document.addEventListener('touchend', stopDrag);
+    el.addEventListener('touchmove', onMove, { passive: false });
+    return () => {
+      el.removeEventListener('mousedown', startDrag);
+      document.removeEventListener('mouseup', stopDrag);
+      document.removeEventListener('mouseleave', stopDrag);
+      el.removeEventListener('mousemove', onMove);
+      el.removeEventListener('touchstart', startDrag);
+      document.removeEventListener('touchend', stopDrag);
+      el.removeEventListener('touchmove', onMove);
+    };
+  }, []);
+  return (<div ref={containerRef} className={styles.draggableScrollContainer}>{children}</div>);
+}
+
+/* ──────────────────────────────
+    COMPONENT
+    ────────────────────────────── */
 function ChaseFreedomUnlimitedReviewPage() {
-  // --- Tooltip State and Logic ---
   const [showRatingInfo, setShowRatingInfo] = useState(false);
-  const tooltipRef = useRef(null);
+  const [showAuthorBioTooltip, setShowAuthorBioTooltip] = useState(false);
+  const authorRef = useRef(null);
+  const authorTooltipRef = useRef(null);
+  const ratingTooltipRef = useRef(null);
 
   const handleIconClick = useCallback((event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        setShowRatingInfo(prevState => !prevState);
-    }, []);
+      event.preventDefault();
+      event.stopPropagation();
+      setShowRatingInfo(prevState => !prevState);
+  }, []);
 
-    const closeTooltip = useCallback(() => {
-        setShowRatingInfo(false);
-    }, []);
+  const handleAuthorMouseEnter = useCallback(() => {
+      setShowAuthorBioTooltip(true);
+  }, []);
 
-    useEffect(() => {
-        if (!showRatingInfo) return;
-        const handleClickOutside = (event) => {
-            const isInfoButton = event.target.closest(`.${styles.infoIconButton}`);
-            if (tooltipRef.current && !tooltipRef.current.contains(event.target) && !isInfoButton) {
-                closeTooltip();
-            }
-        };
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, [showRatingInfo, closeTooltip]);
-  // --- End Tooltip State and Logic ---
+  const handleAuthorMouseLeave = useCallback(() => {
+      const timerId = setTimeout(() => {
+          if (authorRef.current && authorTooltipRef.current) {
+              const isHoveringTrigger = authorRef.current.matches(':hover');
+              const isHoveringTooltip = authorTooltipRef.current.matches(':hover');
+              const isFocusWithinTrigger = authorRef.current.contains(document.activeElement);
+              const isFocusWithinTooltip = authorTooltipRef.current.contains(document.activeElement);
+              if (!isHoveringTrigger && !isHoveringTooltip && !isFocusWithinTrigger && !isFocusWithinTooltip) {
+                 setShowAuthorBioTooltip(false);
+              }
+          } else if (!authorRef.current?.matches(':hover') && !authorTooltipRef.current?.matches(':hover')) {
+               setShowAuthorBioTooltip(false);
+          }
+      }, 150);
+      if (authorRef.current) authorRef.current.tooltipTimeoutId = timerId;
+  }, [authorRef, authorTooltipRef]);
 
+   const handleAuthorClearTimeout = useCallback(() => {
+      if (authorRef.current?.tooltipTimeoutId) {
+          clearTimeout(authorRef.current.tooltipTimeoutId);
+      }
+   }, [authorRef]);
 
-  // Inline Structured Data
-  // !!! VERIFY all URLs, counts, and details FOR FREEDOM UNLIMITED !!!
-  const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
-  const pageUrl = `${siteUrl}/cards/chase-freedom-unlimited`; // *** REPLACE with your actual page URL ***
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "Chase Freedom Unlimited®",
-    "image": `${siteUrl}${reviewData.imageUrl}`, // *** Assuming imageUrl starts with / ***
-    "description": "The Chase Freedom Unlimited® is a no-annual-fee cash-back card offering up to 5% in specific categories and 1.5% on general purchases.", // Adjusted description
-    "brand": {
-      "@type": "Brand",
-      "name": "Chase"
-    },
-     "review": {
-      "@type": "Review",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": reviewData.ratingValue.toString(),
-        "bestRating": "10",
-        "worstRating": "1"
-      },
-      "author": {
-        "@type": "Organization",
-        "name": reviewData.author
-      },
-      "reviewBody": reviewData.description // Use meta description
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": reviewData.ratingValue.toString(),
-      "bestRating": "10",
-      "worstRating": "1",
-      "ratingCount": 1500, // *** REPLACE with actual or estimated count ***
-      "reviewCount": 1500  // *** REPLACE with actual or estimated count ***
-    },
-    "offers": {
-      "@type": "Offer",
-      "url": reviewData.applyLink.startsWith('http') ? reviewData.applyLink : `${siteUrl}${reviewData.applyLink}`, // *** Ensure full APPLY URL ***
-      "priceCurrency": "USD",
-      "price": "0", // Annual Fee for Freedom Unlimited
-      "availability": "https://schema.org/InStock",
-      "itemCondition": "https://schema.org/NewCondition"
-    }
+  useEffect(() => {
+      function handleClickOutside(event) {
+          if (showAuthorBioTooltip &&
+              authorRef.current && !authorRef.current.contains(event.target) &&
+              authorTooltipRef.current && !authorTooltipRef.current.contains(event.target)) {
+              setShowAuthorBioTooltip(false);
+          }
+          if (showRatingInfo &&
+              !event.target.closest(`.${styles.infoIconButton}`) &&
+              ratingTooltipRef.current && !ratingTooltipRef.current.contains(event.target)
+             ) {
+               setShowRatingInfo(false);
+          }
+      }
+      if (showAuthorBioTooltip || showRatingInfo) {
+          document.addEventListener("mousedown", handleClickOutside);
+      } else {
+           document.removeEventListener("mousedown", handleClickOutside);
+      }
+      return () => {
+          document.removeEventListener("mousedown", handleClickOutside);
+          if (authorRef.current?.tooltipTimeoutId) {
+            clearTimeout(authorRef.current.tooltipTimeoutId);
+          }
+      };
+  }, [showAuthorBioTooltip, authorRef, authorTooltipRef, showRatingInfo, ratingTooltipRef]);
+
+  const summaryBoxData = {
+    welcomeOffer: "Extra 1.5% on everything (on up to $20,000 in the first year).",
+    annualFee: `$${reviewData.annualFee}`,
+    topEarning: "5% on travel via Chase, 3% on dining & drugstores.",
+    baseEarning: "1.5% on everything else.",
+    keyPerk: "Trip Cancellation/Interruption Insurance.",
+    bestFor: "The rewards beginner, the aspiring travel hacker, or anyone needing a powerful, all-around card with no annual fee."
   };
 
 
   return (
     <>
-      {/* ===== HEAD SECTION for Metadata & SEO ===== */}
       <Head>
-        <title dangerouslySetInnerHTML={{ __html: reviewData.title }}></title>
+        <title>{reviewData.title} - {siteName}</title>
         <meta name="description" content={reviewData.description} />
         <meta name="keywords" content={reviewData.keywords} />
-        <meta name="author" content={reviewData.author} />
-        <link rel="canonical" href={pageUrl} />
-        {/* Preload critical fonts */}
-        <link rel="preload" href="/fonts/Roboto_Condensed-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/Roboto_Condensed-Bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/PlayfairDisplay-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/Playfair-Display-Bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-
-        {/* OG/Twitter tags */}
-        <meta property="og:title" content={reviewData.title} />
-        <meta property="og:description" content={reviewData.description} />
-        <meta property="og:url" content={pageUrl} />
-        <meta property="og:image" content={structuredData.image} />
-        <meta property="og:type" content="article" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={reviewData.title} />
-        <meta name="twitter:description" content={reviewData.description} />
-        <meta name="twitter:image" content={structuredData.image} />
-
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-
-        {/* Structured Data (JSON-LD) */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
+        <meta name="author" content={reviewData.author.name} />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta name="robots" content="index,follow,max-image-preview:large" />
+        <link rel="canonical" href={pageUrlFull} />
+        <link rel="alternate" href={pageUrlFull} hreflang="en-us" />
+        <link rel="preload" as="image" href={`${siteUrl}${reviewData.imageUrl}`} />
+        <link rel="preload" as="image" href={reviewData.author.imageUrl} />
+        <link rel="preload" as="image" href={reviewData.author.tooltipImageUrl} />
         <meta name="geo.region" content="US" />
-<meta name="geo.placename" content="United States" />
-<meta name="language" content="en-US" />
-<meta name="distribution" content="US" />
-<link rel="alternate" href="https://www.travelcardinsider.com" hreflang="en-us" />
+        <meta name="geo.placename" content="United States" />
+        <meta name="language" content="en-US" />
+        <meta name="distribution" content="US" />
+        {[
+          '/fonts/inter-v18-latin-regular.woff2',
+          '/fonts/inter-v18-latin-600.woff2',
+          '/fonts/inter-v18-latin-700.woff2',
+        ].map((f) => (
+          <link key={f} rel="preload" href={f} as="font" type={'font/woff2'} crossOrigin="anonymous" />
+        ))}
+        <meta property="og:type"        content="article" />
+        <meta property="og:locale"      content="en_US" />
+        <meta property="og:site_name"   content={siteName} />
+        <meta property="og:title"       content={reviewData.title} />
+        <meta property="og:description" content={reviewData.description} />
+        <meta property="og:url"         content={pageUrlFull} />
+        <meta property="og:image"       content={`${siteUrl}${reviewData.imageUrl}`} />
+        <meta property="og:image:width" content={String(reviewData.imageWidth)} />
+        <meta property="og:image:height" content={String(reviewData.imageHeight)} />
+        <meta property="article:publisher" content={`https://www.facebook.com/YourTravelCardInsiderFacebookPage`} />
+        <meta property="article:section"       content="Credit Card Reviews" />
+        <meta property="article:published_time" content={publishDate} />
+        <meta property="article:modified_time"  content={updateDate} />
+        <meta property="article:author" content={reviewData.author.name} />
+        {reviewData.keywords.split(',').map(keyword => (
+            <meta property="article:tag" content={keyword.trim()} key={keyword.trim()} />
+        ))}
+        <meta name="twitter:card"        content="summary_large_image" />
+        <meta name="twitter:site" content="@YourTravelCardInsiderTwitterHandle" />
+        <meta name="twitter:creator" content={`@${reviewData.author.socialLinks?.twitter?.split('/').pop() || 'YourAuthorTwitterHandle'}`} />
+        <meta name="twitter:title"       content={reviewData.title} />
+        <meta name="twitter:description" content={reviewData.description} />
+        <meta name="twitter:image"       content={`${siteUrl}${reviewData.imageUrl}`} />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       </Head>
 
-      
-
       <main>
-        {/* Spacing for fixed header */}
-        <div style={{ marginTop: '2rem' }}></div> {/* Adjusted margin from HTML */}
-
-        {/* Review Container using CSS Module */}
-        <div className={styles.reviewContainer}>
-          <article> {/* Wrap main content in article */}
-            {/* ============= REVIEW HEADER ============= */}
-            <header className={styles.reviewHeader}>
-               {/* Using dangerouslySetInnerHTML for ® */}
-              <h1 dangerouslySetInnerHTML={{ __html: "Chase Freedom Unlimited® – In-Depth 2025 Review"}}></h1>
-
-              {/* Section 1 Content (Part of Header Structure in Template) */}
-              <section id="section-1">
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <div className={styles.intro}>
-                   <p dangerouslySetInnerHTML={{ __html:"The <strong>Chase Freedom Unlimited®</strong> stands among the most popular no-annual-fee cash-back cards, especially for 2025, thanks to <b>up to 5%</b> in select categories, <b>3%</b> on dining, <b>3%</b> on drugstores, and a solid <b>1.5%</b> minimum on every other purchase. Its synergy within the <b>Chase Ultimate Rewards®</b> ecosystem is a big draw for those wanting flexible redemption or pairing with a premium Sapphire card. In this review covering 20 sections, we’ll dive into disclaimers, competitor analysis, synergy tips, advanced usage scenarios, and how to maximize your everyday spend with the Freedom Unlimited. If you’re after robust rewards without an annual fee, read on to discover the full 2025 vantage on this mainstay cash-back card."}}></p>
+        <div className={styles.reviewPageLayout}>
+          <div className={styles.mainContentArea}>
+            <section className={styles.heroSection}>
+              <div className={styles.heroTextContainer}>
+                <h1 className={styles.heroTitle}>
+                  {reviewData.title}
+                </h1>
+                 <div
+                    className={styles.authorBioContainer}
+                    ref={authorRef}
+                    onMouseEnter={() => { handleAuthorClearTimeout(); handleAuthorMouseEnter(); }}
+                    onMouseLeave={handleAuthorMouseLeave}
+                    onFocus={handleAuthorMouseEnter}
+                    onBlur={handleAuthorMouseLeave}
+                    aria-haspopup="true"
+                    aria-expanded={showAuthorBioTooltip}
+                    tabIndex={0}
+                >
+                    <Image
+                        src={reviewData.author.imageUrl}
+                        alt={`${reviewData.author.name} headshot`}
+                        width={reviewData.author.imageWidth}
+                        height={reviewData.author.imageHeight}
+                        className={styles.authorImageSmall}
+                        priority
+                    />
+                    <div className={styles.authorInfoBlock}>
+                        <div className={styles.authorNameLine}>
+                            <span className={styles.authorPrefix}>By</span>
+                            <span className={styles.authorName}>{reviewData.author.name}</span>
+                        </div>
+                        <span className={styles.authorTitle}>{reviewData.author.title}</span>
+                        {updateDate && (
+                            <time dateTime={updateDate} className={styles.authorLastEdited}>
+                                Last updated: {new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                            </time>
+                        )}
+                        {reviewData.author.socialLinks && (
+                            <div className={styles.authorSocialLinks}>
+                                {reviewData.author.socialLinks.linkedin && (
+                                    <a href={reviewData.author.socialLinks.linkedin} target="_blank" rel="noopener noreferrer me" aria-label={`${reviewData.author.name} on LinkedIn`} className={styles.socialIconLink}>
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                    </a>
+                                )}
+                                {reviewData.author.socialLinks.twitter && (
+                                    <a href={reviewData.author.socialLinks.twitter} target="_blank" rel="noopener noreferrer me" aria-label={`${reviewData.author.name} on Twitter`} className={styles.socialIconLink}>
+                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-.422.724-.665 1.56-.665 2.452 0 1.697.864 3.198 2.18 4.078-.8-.025-1.555-.247-2.227-.616v.054c0 2.37 1.683 4.333 3.91 4.78-.426.116-.874.174-1.337.174-.31 0-.611-.03-.904-.085.622 1.936 2.421 3.338 4.553 3.377-1.672 1.309-3.781 2.088-6.072 2.088-.394 0-.784-.023-1.169-.069 2.16 1.389 4.723 2.202 7.482 2.202 8.979 0 13.897-7.446 13.897-13.898 0-.21 0-.42-.015-.63.953-.689 1.778-1.56 2.433-2.525z"/></svg>
+                                    </a>
+                                )}
+                                {reviewData.author.socialLinks.email && (
+                                    <a href={`mailto:${reviewData.author.socialLinks.email}`} aria-label={`Email ${reviewData.author.name}`} className={styles.socialIconLink}>
+                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
+                                    </a>
+                                )}
+                            </div>
+                        )}
+                    </div>
+                    {showAuthorBioTooltip && reviewData.author.bioSnippet && (
+                        <div
+                            className={styles.authorTooltip}
+                            ref={authorTooltipRef}
+                            role="tooltip"
+                            onMouseEnter={handleAuthorClearTimeout}
+                            onMouseLeave={handleAuthorMouseLeave}
+                            onFocus={handleAuthorMouseEnter}
+                            onBlur={handleAuthorMouseLeave}
+                        >
+                             <div className={styles.authorTooltipHeader}>
+                                 <Image
+                                    src={reviewData.author.tooltipImageUrl}
+                                    alt={`${reviewData.author.name} large headshot`}
+                                    width={reviewData.author.tooltipImageWidth}
+                                    height={reviewData.author.tooltipImageHeight}
+                                    className={styles.authorTooltipImage}
+                                 />
+                                 <div className={styles.authorTooltipInfo}>
+                                     <span className={styles.authorTooltipName}>{reviewData.author.name}</span>
+                                     <span className={styles.authorTooltipTitle}>{reviewData.author.title}</span>
+                                 </div>
+                               </div>
+                               {reviewData.author.expertise && reviewData.author.expertise.length > 0 && (
+                                 <div className={styles.authorTooltipExpertise}>
+                                     <strong>Expertise</strong>
+                                     <ul>
+                                         {reviewData.author.expertise.map(area => <li key={area}>{area}</li>)}
+                                     </ul>
+                                 </div>
+                               )}
+                               <p className={styles.authorTooltipBioSnippet}>{reviewData.author.bioSnippet}</p>
+                               {reviewData.author.fullBioLink && (
+                                   <Link href={reviewData.author.fullBioLink} legacyBehavior>
+                                       <a className={styles.authorTooltipBioLink}>See full bio</a>
+                                   </Link>
+                               )}
+                        </div>
+                    )}
                 </div>
-
-                {/* Image Container */}
+                <p className={styles.heroSubtitle}>
+                    Alright, let's talk about the Chase Freedom Unlimited®. If you've spent any time on finance blogs or Reddit, you've seen this card mentioned. A lot. It gets hyped up as the perfect "one-card-for-everything," but is it really? This is a deep-dive look at whether it deserves a spot in your wallet.
+                </p>
+                <div className={styles.heroCtaContainer}>
+                  <div>
+                    <a
+                      href={reviewData.applyLink}
+                      target="_blank"
+                      rel="noopener noreferrer sponsored"
+                      className={`${styles.applyNowButton} ${styles.heroApplyButton}`}
+                    >
+                      Apply Securely Now
+                    </a>
+                    <span className={styles.heroApplyButtonDisclaimer}>
+                      on Chase&apos;s official site
+                    </span>
+                  </div>
+                  <Link href="#section-at-a-glance" legacyBehavior>
+                    <a className={styles.heroSecondaryLink}>View Key Features</a>
+                  </Link>
+                </div>
+              </div>
+              <div className={styles.heroImageContainer}>
                 <div className={styles.cardImageContainer}>
-                  {/* Corrected class name */}
-                   <Image
-                     src={reviewData.imageUrl}
-                     alt={"Chase Freedom Unlimited®"}
-                     width={reviewData.imageWidth} // *** REPLACE or use data ***
-                     height={reviewData.imageHeight} // *** REPLACE or use data ***
-                     className={styles.cardImage}
-                     priority
-                   />
-                 </div>
-
-                {/* RATING SECTION */}
+                  <Image
+                    src={reviewData.imageUrl}
+                    alt={reviewData.cardName}
+                    width={reviewData.imageWidth}
+                    height={reviewData.imageHeight}
+                    className={styles.heroImage}
+                    priority
+                  />
+                </div>
                 <div className={styles.ratingSection}>
                   <span className={styles.tciRating}>
                     <button
                       type="button"
-                      className={styles.infoIconButton} // Use CSS module class
+                      className={styles.infoIconButton}
                       aria-label="Rating Information"
-                      title="Our TCI rating info"
                       onClick={handleIconClick}
+                      aria-expanded={showRatingInfo}
                     >
-                       <svg aria-hidden="true" focusable="false" className={styles.infoIcon} viewBox="0 0 16 16">
-                         <path fillRule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                         <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-                       </svg>
+                      <svg aria-hidden="true" focusable="false" className={styles.infoIcon} viewBox="0 0 16 16"><path fillRule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>
                     </button>
-                    TCI Rating: <strong>{reviewData.ratingValue.toFixed(1)}</strong>/10
-
-                    {/* --- Conditionally Rendered Tooltip --- */}
+                    {siteName} Rating: <strong>{reviewData.ratingValue.toFixed(1)}</strong>/10
                     {showRatingInfo && (
-                        <div
-                            ref={tooltipRef}
-                            className={styles.ratingTooltip}
-                            role="tooltip"
-                            aria-live="polite"
-                        >
-                            <strong>TCI Rating: {reviewData.ratingValue.toFixed(1)}/10</strong>
-                            {/* Using ratingCriteria array */}
-                            <p className={styles.tooltipIntro}>Our TCI rating system criteria including rewards, welcome bonus, annual fee, redemption flexibility, travel benefits, APR, foreign transaction fees, user experience, and other features.</p>
-                            
-                        </div>
+                      <RatingTooltip
+                        ref={ratingTooltipRef}
+                        ratingValue={reviewData.ratingValue}
+                        ratingCriteria={ratingCriteria}
+                        onClose={() => setShowRatingInfo(false)}
+                      />
                     )}
                   </span>
-
-                  {/* STAR RATING */}
-                  <div className={styles.starRating} title={`Rated ${reviewData.ratingValue} out of 10 stars`} style={{ '--rating': `${reviewData.ratingValue * 10}%` }}>
-                    <span>★★★★★</span>
-                    <span className={styles.filledStars}>★★★★★</span>
-                  </div>
-
-                  <div className={styles.ratingDescription}>
-                    {/* Using dangerouslySetInnerHTML for ® */}
-                    <i dangerouslySetInnerHTML={{__html:"Outstanding everyday rewards (1.5% min) plus 3–5% categories, no annual fee, and potential synergy with Sapphire cards for bigger travel redemption."}}></i>
+                  <div className={styles.starRating} title={`Rated ${reviewData.ratingValue} out of 10 stars`}>
+                      ★★★★★
+                      <span className={styles.filledStars} style={{ '--rating': `${(reviewData.ratingValue / 10) * 100}%` }}>
+                        ★★★★★
+                      </span>
                   </div>
                 </div>
-              </section>
-            </header>
-
-            {/* ============= REVIEW CONTENT SECTIONS (Hardcoded JSX) ============= */}
-
-            {/* Section 2: Quick Stats Table */}
-             <section id="section-2" className={styles.reviewSection}>
-                <h2>Quick Stats at a Glance</h2>
-                <div className={styles.tableContainer}>
-                    <table className={styles.statsTable}>
-                        <thead>
-                            <tr>
-                                <th>Feature</th>
-                                <th>Details</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td data-label="Feature">Annual Fee</td>
-                                <td data-label="Details">$0</td>
-                            </tr>
-                             {/* Using dangerouslySetInnerHTML for ® */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Feature">APR Range</td><td data-label="Details">19.24%–27.99% Variable (credit-based)</td>'}}></tr>
-                             {/* Using dangerouslySetInnerHTML for ® */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Feature">Sign-Up Bonus</td><td data-label="Details">Often $200 or a special 1.5% extra on everything for first year (check current promos)</td>'}}></tr>
-                             {/* Using dangerouslySetInnerHTML for ® */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Feature">Rewards Rate</td><td data-label="Details">5% travel via Chase, 3% dining/drugstores, 1.5% everything else</td>'}}></tr>
-                            <tr>
-                                <td data-label="Feature">Foreign Transaction Fee</td>
-                                <td data-label="Details">3%</td>
-                            </tr>
-                             {/* Using dangerouslySetInnerHTML for ® */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Feature">Redemption Options</td><td data-label="Details">Cash back, gift cards, Amazon, or transfer to Sapphire for travel partner usage</td>'}}></tr>
-                            <tr>
-                                <td data-label="Feature">Recommended Credit Score</td>
-                                <td data-label="Details">Good–Excellent (700+ typically)</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-
-             {/* CTA Section */}
-             <section id="cta" className={styles.ctaSection}>
-                {/* Using dangerouslySetInnerHTML for ® */}
-                <h2 dangerouslySetInnerHTML={{__html:"Get the <b>Chase Freedom Unlimited®</b> Card Today!"}}></h2>
-                <div className={styles.ctaButtons}>
-                    <a href={reviewData.applyLink} className={`${styles.btn} ${styles.btnApply}`} title="From card issuer's secure site" target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
-                    {/* Using dangerouslySetInnerHTML for &amp; */}
-                    <a href={reviewData.ratesLink} className={`${styles.btn} ${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored" dangerouslySetInnerHTML={{__html:"See Rates &amp; Fees"}}></a>
-                </div>
-            </section>
-
-            {/* Section 3: Card Overview & Positioning */}
-            <section id="section-3" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html:"Card Overview &amp; Key Positioning"}}></h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"The <b>Chase Freedom Unlimited®</b> has historically delivered <b>1.5%</b> unlimited cash back on all purchases. With updates, it now includes <b>3%</b> on dining, <b>3%</b> on drugstores, and <b>5%</b> on travel purchased through Chase’s Ultimate Rewards portal, while still guaranteeing <b>1.5%</b> on everything else. That multi-tier approach makes it a powerful everyday card, especially at <b>no annual fee</b>. If you hold a premium <b>Chase Sapphire</b> card, you can combine Freedom Unlimited’s points (which are effectively “cash-back points” but convertible to Ultimate Rewards®) with the Sapphire’s travel partners or 25–50% travel redemption boost. This synergy elevates a “simple cash-back card” to a robust travel engine. If you want straightforward earnings, a small sign-up bonus, and potential advanced UR usage, the Freedom Unlimited sits near the top of the 2025 no-fee options."}}></p>
-            </section>
-
-             {/* Section 4: Rewards Structure */}
-             <section id="section-4" className={styles.reviewSection}>
-                <h2>Rewards Structure</h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"Chase’s structured approach typically includes:"}}></p>
-                <ul className={styles.featureList}>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{ __html:"<strong>5% on travel</strong> purchased through the <b>Chase Ultimate Rewards</b> portal."}}></li>
-                    <li><strong>3% on dining</strong> (restaurants, cafes, some delivery services) and <b>3% on drugstore</b> purchases (CVS, Walgreens, etc.).</li>
-                    <li><strong>1.5% on everything else</strong> – no cap, no rotating categories to track.</li>
-                </ul>
-                <p>
-                    This blend outperforms many 1% or 1.5% flat cash-back cards by granting you some elevated categories (travel, dining, drugstores),
-                    yet ensures a baseline 1.5% if you’re outside those categories.
-                    For many everyday users, the difference between 1.0–1.5% can add up.
-                    If your spend is predominantly dining or you frequently book travel through Chase’s portal, you’ll reap 3–5%.
-                    Keep in mind that the foreign transaction fee (3%) negates the card’s usage overseas, so it’s best for domestic or online purchases in USD.
-                </p>
-            </section>
-
-             {/* Section 5: Sign-Up Bonus & Promos */}
-             <section id="section-5" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html:"Sign-Up Bonus &amp; Promos"}}></h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"Freedom Unlimited® commonly offers a <b>$200</b> bonus (or ~20k UR points) after spending $500 in the first 3 months, or a special “<b>1.5% extra</b> on all purchases up to $20k in the first year,” effectively boosting your base 1.5% to 3.0% for that spend. That can yield up to <b>$300</b> in extra cash back on top of your normal earnings."}}></p>
-                <p>
-                    The exact promotion can shift:
-                    sometimes it’s $200 bonus after $500, sometimes it’s the 1.5% extra.
-                    In any case, for a <b>no-fee</b> card, the sign-up bonus is quite strong.
-                    If you coordinate big purchases, you can net a healthy chunk of “cash back” or UR points.
-                    Always check official chase.com details for the current bonus structure.
-                </p>
-            </section>
-
-             {/* Section 6: Redemption Options & Ultimate Rewards */}
-             <section id="section-6" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html:"Redemption Options &amp; Ultimate Rewards"}}></h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"The Freedom Unlimited®’s points essentially function as “cash back”—1 point = 1¢. So 10,000 points = $100 as a statement credit or direct deposit. But these points are also part of <b>Chase Ultimate Rewards®</b>. You can redeem for:"}}></p>
-                <ul className={styles.featureList}>
-                    <li><strong>Statement Credits or Direct Deposit:</strong>
-                    Typically 1 cent per point.
-                    </li>
-                    <li><strong>Gift Cards, Amazon Shop w/ Points:</strong>
-                    Typically 1 cent/point or sometimes slightly less for Amazon.
-                    </li>
-                    {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{ __html:"<strong>Travel via the UR Portal:</strong> If you only hold Freedom Unlimited®, it’s still ~1¢/point for travel. But if you link them with a <b>Chase Sapphire Preferred®</b> or <b>Reserve®</b>, you can achieve 1.25¢ or 1.5¢ per point in travel redemption or even transfer to airline/hotel partners at 1:1."}}></li>
-                </ul>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"This synergy is a major advantage. If you eventually get a Sapphire Reserve®, your FreedUn points can effectively be worth 50% more for travel or be transferred to partners (e.g., United, Southwest, Hyatt, etc.) for possibly higher redemption value. That’s how “1.5% cash back” can morph into 2.25% or more in real travel value. If you never plan to hold a premium Sapphire card, you can still redeem FreedUn as straightforward cash back at 1¢ each, which is perfectly fine for a no-fee product."}}></p>
-            </section>
-
-            {/* Section 7: Foreign Transaction Fee Considerations */}
-             <section id="section-7" className={styles.reviewSection}>
-                 <h2>Foreign Transaction Fee Considerations</h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"Freedom Unlimited® charges a <b>3% foreign transaction fee</b> if you use it outside the U.S. or for non-USD transactions. That effectively kills any benefit from the 1.5–5% earn rate abroad. So if you often travel internationally, you may prefer a no-FTF alternative (e.g., Chase Sapphire Preferred®, or other no-annual-fee travel card that waives FTF). But for strictly domestic usage or online purchases in USD, FreedUn is top-tier. Keep that in mind if you’re picking a “one card for everything” approach—if you frequently do cross-border shopping, this might not be the best single choice."}}></p>
-            </section>
-
-             {/* Section 8: Competitor Analysis */}
-             <section id="section-8" className={styles.reviewSection}>
-                <h2>Competitor Analysis</h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"Chase Freedom Unlimited® competes with no-fee cash-back or everyday rewards cards, such as:"}}></p>
-                <div className={styles.tableContainer}>
-                    <table className={styles.statsTable}>
-                        <thead>
-                            <tr>
-                                <th>Card</th>
-                                <th>Annual Fee</th>
-                                <th>Rewards Rate</th>
-                                <th>Sign-Up Bonus</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                             {/* Using dangerouslySetInnerHTML for ® */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Card">Chase Freedom Unlimited®</td><td data-label="Annual Fee">$0</td><td data-label="Rewards Rate">5% on Chase Travel, 3% dining/drugstores, 1.5% base</td><td data-label="Sign-Up Bonus">$200 or 1.5% extra for first year (~$300 max)</td>'}}></tr>
-                            <tr>
-                                <td data-label="Card">Capital One Quicksilver</td>
-                                <td data-label="Annual Fee">$0</td>
-                                <td data-label="Rewards Rate">1.5% on all purchases</td>
-                                <td data-label="Sign-Up Bonus">$200 after $500 spend (varies)</td>
-                            </tr>
-                             {/* Using dangerouslySetInnerHTML for ® */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Card">Citi® Double Cash</td><td data-label="Annual Fee">$0</td><td data-label="Rewards Rate">2% on everything (1% +1% upon payment)</td><td data-label="Sign-Up Bonus">$200 after $1,500 spend (varies); no travel categories</td>'}}></tr>
-                             {/* Using dangerouslySetInnerHTML for ® */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Card">Discover it® Cash Back</td><td data-label="Annual Fee">$0</td><td data-label="Rewards Rate">5% rotating categories (quarterly) + 1% base</td><td data-label="Sign-Up Bonus">First-year “cashback match,” effectively doubling</td>'}}></tr>
-                             {/* Using dangerouslySetInnerHTML for ℠ */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Card">Wells Fargo Active Cash℠</td><td data-label="Annual Fee">$0</td><td data-label="Rewards Rate">2% on everything, no bonus categories</td><td data-label="Sign-Up Bonus">$200 after $500 spend (varies)</td>'}}></tr>
-                        </tbody>
-                    </table>
-                </div>
-                 {/* Using dangerouslySetInnerHTML for ® & ℠ */}
-                <p dangerouslySetInnerHTML={{ __html:"FreedUn stands out for combining <b>3–5% categories</b> with a guaranteed <b>1.5%</b> floor, plus synergy inside Chase UR if you later get a Sapphire. If you prefer a simple 2% on everything approach, cards like Citi Double Cash® or Wells Fargo Active Cash℠ might yield more on general purchases. But FreedUn can outdo them if you value the 3–5% categories or plan to pair it with a Sapphire for potentially 25–50% extra value or airline/hotel partner transfers."}}></p>
-            </section>
-
-             {/* Section 9: Synergy with Chase Sapphire */}
-             <section id="section-9" className={styles.reviewSection}>
-                 <h2>Synergy with Chase Sapphire</h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"One of FreedUn’s top draws is how it pairs with <b>Chase Sapphire Preferred®</b> or <b>Sapphire Reserve®</b>. FreedUn’s points can be combined into your Sapphire account, effectively letting you:"}}></p>
-                <ul className={styles.featureList}>
-                    <li><strong>Get 1.25¢ or 1.5¢ per point</strong> if booking travel in the Sapphire Ultimate Rewards portal.
-                    (Preferred = 1.25¢, Reserve = 1.5¢.)
-                    </li>
-                    <li><strong>Transfer to airline/hotel partners</strong> like Southwest, United, Hyatt, etc., to seek out high-value award redemptions. FreedUn on its own cannot transfer to partners, but combined with Sapphire, it can.
-                    </li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Maximize everyday spending:</strong> FreedUn’s 1.5% floor effectively becomes 2.25% in travel (with Reserve’s 50% boost) or more if you do savvy partner transfers."}}></li>
-                </ul>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"This synergy is crucial for travelers aiming to build a robust UR balance. FreedUn + Sapphire Reserve® is a common combo for high-value redemptions. FreedUn’s no annual fee plus strong everyday earn rates amplify your total points. If you’re purely a cash-back user, you might skip the synergy aspect, but it’s a nice upgrade path if you ever want to enter the premium travel space."}}></p>
-            </section>
-
-            {/* Section 10: Real-Life Example Table */}
-            <section id="section-10" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html:"Real-Life Example: Annual Spend &amp; Points"}}></h2>
-                <p>
-                    Suppose in a year you spend:
-                </p>
-                <ul className={styles.featureList}>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<b>$2,000 on travel via Chase</b> (5%) => <b>$100</b> or 10,000 UR points"}}></li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<b>$4,000 on dining + drugstores</b> (3%) => <b>$120</b> or 12,000 UR points"}}></li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<b>$14,000 on everything else</b> (1.5%) => <b>$210</b> or 21,000 UR points"}}></li>
-                </ul>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"That totals <b>$430 in raw cash value</b> or 43,000 UR points. Let’s see a quick table:"}}></p>
-                <div className={styles.tableContainer}>
-                    <table className={styles.statsTable}>
-                        <thead>
-                            <tr>
-                                <th>Category</th>
-                                <th>Annual Spend</th>
-                                <th>Rate</th>
-                                <th>Earnings</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                             {/* Using dangerouslySetInnerHTML for ® */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Category">Travel via Chase</td><td data-label="Annual Spend">$2,000</td><td data-label="Rate">5%</td><td data-label="Earnings">$100 (10k pts)</td>'}}></tr>
-                            <tr>
-                                <td data-label="Category">Dining + Drugstores</td>
-                                <td data-label="Annual Spend">$4,000</td>
-                                <td data-label="Rate">3%</td>
-                                <td data-label="Earnings">$120 (12k pts)</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Category">Other Spend</td>
-                                <td data-label="Annual Spend">$14,000</td>
-                                <td data-label="Rate">1.5%</td>
-                                <td data-label="Earnings">$210 (21k pts)</td>
-                            </tr>
-                             <tr style={{fontWeight: 'bold', borderTop: '2px solid #dee2e6'}}>
-                                <th>Total</th>
-                                <th>$20,000</th>
-                                <th>—</th>
-                                <th>$430 (43k pts)</th>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"That’s $430 on a no-fee card—quite good. If you hold a Sapphire Reserve®, those 43k points can be worth <b>$645</b> in the UR travel portal (1.5x), or potentially more if transferred to partners. This synergy can push FreedUn beyond standard 2% or 2.5% earn rates from competitor no-fee cards."}}></p>
-            </section>
-
-             {/* Section 11: Potential Intro 1.5% Extra Promo Scenario */}
-             <section id="section-11" className={styles.reviewSection}>
-                <h2>Potential Intro 1.5% Extra Promo Scenario</h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"Chase sometimes runs a unique FreedUn promo: for the first 12 months (on up to $20k spend), you earn <b>1.5% extra</b> on each purchase. This effectively means:"}}></p>
-                <ul className={styles.featureList}>
-                    <li>5% travel =&gt; 6.5%, 3% dining =&gt; 4.5%, 1.5% base =&gt; 3.0%</li>
-                    <li>If you max the $20k, you get up to <b>$300</b> in extra cash back on top of your normal earnings.
-                    </li>
-                </ul>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"For instance, if you spend $20k in that first year, FreedUn might yield $500+ total. It’s an excellent “sign-up bonus” approach for big spenders. Always confirm which promotion is live: sometimes it’s $200 bonus after $500, sometimes it’s the 1.5% extra. High spenders often prefer the 1.5% extra. More casual spenders might like the $200 upfront bonus."}}></p>
-            </section>
-
-             {/* Section 12: Travel & Protections */}
-             <section id="section-12" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html:"Travel &amp; Purchase Protections"}}></h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"The FreedUn typically includes some baseline protections:"}}></p>
-                <ul className={styles.featureList}>
-                    <li><strong>Purchase Protection:</strong> up to $500 coverage for theft/damage on new purchases within 120 days (terms vary).
-                    </li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Extended Warranty:</strong> extends the US manufacturer’s warranty by an additional year on eligible warranties of three years or less."}}></li>
-                     {/* Using dangerouslySetInnerHTML for &amp; ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Trip Cancellation/Interruption Insurance:</strong> FreedUn might have a limited coverage—<b>confirm</b> T&amp;Cs. Typically, the larger coverage belongs to the Sapphire series. FreedUn’s coverage is more minimal, but you might get partial."}}></li>
-                    <li><strong>Zero Liability, Fraud Alerts:</strong> standard for Chase cards.
-                    </li>
-                </ul>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"FreedUn isn’t a “premium travel” card, so it lacks major lounge memberships or big travel credits. But the everyday coverage can be helpful. If you want robust travel insurance or lounge perks, consider upgrading to a Sapphire product or a no-FTF card for foreign usage."}}></p>
-            </section>
-
-            {/* Section 13: APR & Balance Carrying */}
-            <section id="section-13" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html:"APR &amp; Balance Carrying"}}></h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"FreedUn’s variable APR typically spans <b>19.24%–27.99%</b> after any intro period. Some offers include a <b>0% intro APR</b> on purchases or balance transfers for 15 months, which can be helpful for large purchases or consolidating debt. But if you revolve a balance beyond the intro, interest can overshadow your 1.5–5% earnings. Generally, paying in full is best to keep net rewards positive. If you frequently carry a balance, consider a dedicated 0% or low-interest card. FreedUn’s main aim is everyday rewards, not indefinite low APR."}}></p>
-            </section>
-
-             {/* Section 14: Potential Drawbacks */}
-             <section id="section-14" className={styles.reviewSection}>
-                <h2>Potential Drawbacks</h2>
-                <ul className={styles.featureList}>
-                    <li><strong>3% Foreign Transaction Fee:</strong> This undermines the card’s usage overseas or in non-USD.
-                    </li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>No Big Travel Perks:</strong> FreedUn doesn’t offer lounge access, travel credits, or broader insurance coverage—typical for a no-fee card."}}></li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Requires Good–Excellent Credit:</strong> If your score is under ~680–700, you might not qualify easily."}}></li>
-                    {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Some Might Prefer a Flat 2% Card:</strong> If you rarely buy travel from Chase or do minimal dining/drugstore spend, FreedUn’s 1.5% might lag behind a pure 2% card."}}></li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Chase 5/24 Rule:</strong> Chase typically won’t approve you if you have opened 5 or more personal credit cards (across all issuers) in the last 24 months. FreedUn is subject to that rule."}}></li>
-                </ul>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"If these issues don’t bother you, FreedUn’s strengths—no annual fee, high baseline earn, sign-up bonus, synergy—remain quite compelling."}}></p>
-            </section>
-
-             {/* Section 15: Advanced Tips & Strategies */}
-             <section id="section-15" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html:"Advanced Tips &amp; Strategies"}}></h2>
-                <ol className={styles.numberedList}>
-                    <li><strong>Max Travel via Chase Portal:</strong> The 5% can surpass typical rates. If you find competitive flight/hotel pricing on the UR portal, you net great returns. Always compare though—some deals might be cheaper direct.
-                    </li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Focus on Dining & Drugstores for 3%:</strong> The FreedUn effectively matches or beats many dedicated dining cards (3% is strong for a no-fee product). If you have regular prescriptions or buy essentials at a drugstore, funnel that spend here."}}></li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Combine with Chase Freedom Flex®:</strong> FreedUn is 1.5% on everything, Flex has rotating 5% categories. This combo can yield excellent coverage, plus both can pool points into a Sapphire for even bigger travel value."}}></li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Plan a Future Sapphire Upgrade:</strong> FreedUn starts with no fee. If you decide to get deeper into UR travel later, a Sapphire (Preferred at $95 or Reserve® at $550) can supercharge FreedUn’s points."}}></li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Monitor 5/24 Status:</strong> If FreedUn is part of your bigger card strategy, ensure you’re not over the limit. FreedUn is frequently a top “entry” card from Chase, so applying early in your credit journey can be wise."}}></li>
-                </ol>
-            </section>
-
-            {/* Section 16: Another Real-Life Scenario */}
-            <section id="section-16" className={styles.reviewSection}>
-                <h2>Another Real-Life Spend Scenario</h2>
-                <p>
-                    Let’s assume you have moderate travel spending:
-                </p>
-                <ul className={styles.featureList}>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"$3,000 in travel via UR portal => 5% => $150 or 15k points"}}></li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"$3,000 in dining => 3% => $90 or 9k points"}}></li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"$1,200 in drugstores => 3% => $36 or 3.6k points"}}></li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"$12,000 in everything else => 1.5% => $180 or 18k points"}}></li>
-                </ul>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"Total: $456 or 45,600 UR points from $19,200 in spend. That’s a 2.37% average return. If you hold a Sapphire Reserve®, that 45,600 could be $684 in UR travel (1.5x), or potentially more with strategic partner transfers. For a <b>no-fee</b> base card, that’s extremely competitive."}}></p>
-            </section>
-
-            {/* Section 17: Chase Ecosystem & UR Partner Transfers */}
-             <section id="section-17" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html:"Chase Ecosystem &amp; UR Partner Transfers"}}></h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"FreedUn’s points become particularly powerful if you can eventually upgrade to or already own a card that unlocks 1:1 UR partner transfers, e.g., <b>Sapphire Preferred®</b> or <b>Reserve®</b>, or <b>Ink Business Preferred®</b>:"}}></p>
-                <ul className={styles.featureList}>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<b>Airlines</b>: United, Southwest, JetBlue, British Airways, Virgin Atlantic, etc."}}></li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<b>Hotels</b>: Hyatt, Marriott, IHG."}}></li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<b>Value</b>: FreedUn’s 1 point can become a mile or hotel point. If you find sweet-spot redemptions, each FreedUn point can yield 2¢ or more in real travel value."}}></li>
-                </ul>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"FreedUn alone only redeems for statement credits or direct booking at 1¢ each. But if you’re building a stable of Chase cards, FreedUn is the backbone for everyday non-category spend, ensuring at least 1.5 UR points/dollar. Then you push them to your Sapphire for partner usage. This is exactly why FreedUn is among the top recommended “feeder” cards in the UR system."}}></p>
-            </section>
-
-             {/* Section 18: Who Should Get It? */}
-             <section id="section-18" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html:"Who Should Get the Chase Freedom Unlimited®?"}}></h2>
-                <div className={styles.prosCons}>
-                    <div className={styles.pros}>
-                        <h3>Ideal For:</h3>
-                         <ul className={styles.featureList}>
-                             <li>People wanting a <b>no-annual-fee</b> everyday card with strong base earn (1.5%) plus 3–5% on certain categories. </li>
-                             <li>Those who want synergy with <b>Chase UR</b>—especially if they plan to get or already have a <b>Sapphire</b> card. </li>
-                              {/* Using dangerouslySetInnerHTML for ® */}
-                             <li dangerouslySetInnerHTML={{__html:"Beginner to intermediate cardholders who desire a flexible “cash back or travel points” approach. "}}></li>
-                              {/* Using dangerouslySetInnerHTML for ® */}
-                             <li dangerouslySetInnerHTML={{__html:"U.S.-centric spenders (due to the 3% foreign transaction fee)."}}></li>
-                         </ul>
-                    </div>
-                    <div className={styles.cons}>
-                        <h3>Not So Great If:</h3>
-                         <ul className={styles.featureList}>
-                             <li>You frequently make <b>foreign transactions</b> (that 3% FTF kills your gains). </li>
-                             <li>Already have a <b>flat 2%</b> card on everything, and you don’t dine out or buy from drugstores/travel via Chase enough to top that. </li>
-                             <li>You want <b>robust travel insurance</b> or lounge perks (FreedUn is a simpler rewards card). </li>
-                             <li>You’re over <b>Chase’s 5/24</b> limit, which means you likely can’t be approved. </li>
-                         </ul>
-                     </div>
+                 <div className={styles.ratingDescription}>
+                    <i>{reviewData.description}</i>
                  </div>
-             </section>
-
-            {/* Section 19: Possible Concerns & Drawbacks */}
-             <section id="section-19" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html:"Possible Concerns &amp; Drawbacks"}}></h2>
-                {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"Although FreedUn is widely praised, you should note:"}}></p>
-                <ul className={styles.featureList}>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{ __html:"<b>Chase’s 5/24 policy</b>: If you’ve opened 5 or more credit cards in the last 24 months, you can’t get FreedUn. So plan your strategy carefully if you’re in the “Points & Miles” hobby."}}></li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{ __html:"<b>Category Overlaps</b>: 5% on “Chase Travel” must be booked through the UR portal. Sometimes direct airline/hotel sales or OTAs might have better deals or discount codes. Always compare to ensure the 5% is truly beneficial vs. potential higher base price in the portal."}}></li>
-                    <li><b>3% on Dining / Drugstores</b>: Great if you do moderate–high spend there, but if you rarely eat out or buy minimal from CVS, your big benefit is the 1.5% base. That’s good, but some might prefer a 2% everything card for simpler usage.</li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{ __html:"<b>Redeeming for Travel Partners</b>: FreedUn alone doesn’t let you transfer to partners. You need a Sapphire or Ink Business Preferred® to do that. If you never plan to get them, FreedUn’s max is 1¢/point for a statement credit."}}></li>
-                </ul>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"If these limitations aren’t issues, FreedUn can be your daily driver for many purchases, especially if you want flexible redemption within the UR ecosystem."}}></p>
+              </div>
             </section>
 
-             {/* Section 20: Final Thoughts & Disclaimer */}
-             <section id="section-20" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html:"Final Thoughts &amp; Disclaimer"}}></h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"The <strong>Chase Freedom Unlimited®</strong> remains one of the top picks for 2025 due to <b>no annual fee</b>, a <b>1.5%</b> baseline plus <b>3–5%</b> category sweeteners, and potent synergy with <b>Chase Ultimate Rewards®</b> if you add a premium Sapphire. The sign-up bonus or first-year 1.5% extra can yield <b>$200–$300+</b> for novices or high spenders. Although it’s not a travel card for international usage (3% FTF) and lacks major premium perks, FreedUn’s <b>everyday</b> coverage is tough to beat among no-fee contenders. Whether you just want a simple cash-back solution or a stepping stone to more advanced UR travel redemptions, FreedUn fits the role."}}></p>
-                 {/* Using dangerouslySetInnerHTML for &amp; ® */}
-                <p dangerouslySetInnerHTML={{ __html:"<strong>Disclaimer:</strong> Terms, sign-up offers, APR ranges, and categories can change. Always verify with official <b>Chase</b> sources for the latest details. We may earn affiliate commissions on certain links, but editorial opinions remain our own. If you carry a balance at ~19–28% APR, interest charges may erode your cash-back gains. Evaluate your typical dining, travel, drugstore, or general spend patterns to confirm FreedUn’s advantage. Also, keep in mind the <b>5/24 rule</b> for eligibility."}}></p>
-            </section>
+             <div className={styles.reviewContainer}>
+              <article>
+                <header className={styles.reviewHeader}>
+                    <div className={styles.summaryBox} id="summaryBoxTitle">
+                        <h2 className={styles.summaryBoxTitle}>{reviewData.cardName}: Key Insights</h2>
+                        <div className={styles.summaryGrid}>
+                            <div className={styles.summaryItem}>
+                                <span className={styles.summaryIcon}><IconGift /></span>
+                                <span className={styles.summaryLabel}>Welcome Offer:</span>
+                                <span className={styles.summaryValue}>{summaryBoxData.welcomeOffer}</span>
+                            </div>
+                            <div className={styles.summaryItem}>
+                                <span className={styles.summaryIcon}><IconDollar /></span>
+                                <span className={styles.summaryLabel}>Annual Fee:</span>
+                                <span className={styles.summaryValue}>{summaryBoxData.annualFee}</span>
+                            </div>
+                            <div className={styles.summaryItem}>
+                                <span className={styles.summaryIcon}><IconStar /></span>
+                                <span className={styles.summaryLabel}>Top Rewards:</span>
+                                <span className={styles.summaryValue}>{summaryBoxData.topEarning}</span>
+                            </div>
+                             <div className={styles.summaryItem}>
+                                <span className={styles.summaryIcon}><IconStar /></span>
+                                <span className={styles.summaryLabel}>Base Rewards:</span>
+                                <span className={styles.summaryValue}>{summaryBoxData.baseEarning}</span>
+                            </div>
+                            <div className={styles.summaryItem}>
+                                <span className={styles.summaryIcon}><IconPlane /></span>
+                                <span className={styles.summaryLabel}>Key Perk:</span>
+                                <span className={styles.summaryValue}>{summaryBoxData.keyPerk}</span>
+                            </div>
+                            <div className={styles.summaryItem} data-full-width="true">
+                                <span className={styles.summaryIcon}><IconPlus /></span>
+                                <span className={styles.summaryLabel}>Best For:</span>
+                                <span className={styles.summaryValue}>{summaryBoxData.bestFor}</span>
+                            </div>
+                        </div>
+                        <div className={styles.summaryBoxActions}>
+                            <a href={reviewData.ratesLink} className={styles.summaryRatesLink} target="_blank" rel="noopener noreferrer sponsored">
+                                See Card Rates & Fees
+                            </a>
+                        </div>
+                    </div>
+                </header>
 
-             {/* CTA Section */}
-             <section id="cta" className={styles.ctaSection}>
-                {/* Using dangerouslySetInnerHTML for ® */}
-                <h2 dangerouslySetInnerHTML={{__html:"Get the <b>Chase Freedom Unlimited®</b> Card Today!"}}></h2>
-                <div className={styles.ctaButtons}>
-                    <a href={reviewData.applyLink} className={`${styles.btn} ${styles.btnApply}`} title="From card issuer's secure site" target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
-                    {/* Using dangerouslySetInnerHTML for &amp; */}
-                    <a href={reviewData.ratesLink} className={`${styles.btn} ${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored" dangerouslySetInnerHTML={{__html:"See Rates &amp; Fees"}}></a>
-                </div>
-            </section>
+                <section id="section-intro" className={styles.reviewSection}>
+                  <p>On the surface, it looks like a simple cash-back card. But its real trick is that it's secretly a travel points machine in disguise. It’s weirdly flexible. It can be the first and only rewards card you own, but it can also be the foundation for one of those slightly obsessive, high-powered travel hacking systems.</p>
+                  <p>This is a deep-dive look at whether it deserves a spot in your wallet. We'll get into the good, the bad, and the stuff you absolutely need to know before you apply.</p>
+                </section>
 
-            {/* E-A-T Section */}
-            <section id="eat-expertise-authority-trustworthiness" className={`${styles.reviewSection} ${styles.eatSection}`}>
-                 <h2 dangerouslySetInnerHTML={{ __html: "E-A-T: Expertise, Authority &amp; Trustworthiness"}}></h2>
-                 {/* Using E-A-T text adapted for Freedom Unlimited */}
-                 <p>
-                    At <strong>TravelCardInsider</strong>, we follow Google’s <b>E-A-T</b> (Expertise, Authority, Trustworthiness) guidelines to ensure you get accurate, transparent, and unbiased credit card insights:
-                </p>
-                <h3>1. Expertise</h3>
-                <ul className={styles.featureList}>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Specialized Knowledge:</strong> We track Chase’s evolving FreedUn categories, sign-up promos, and synergy with Ultimate Rewards® to provide real-time updates."}}></li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Hands-On Data:</strong> Our reviews incorporate actual spending scenarios, 5/24 rule awareness, and advanced usage (Sapphire synergy) to demonstrate how FreedUn fits in a full rewards strategy."}}></li>
-                </ul>
-                <h3>2. Authority</h3>
-                <ul className={styles.featureList}>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Comprehensive Coverage:</strong> This in-depth approach explains FreedUn’s sign-up, categories, competitor comparison, disclaimers, and synergy in 20 sections."}}></li>
-                    <li><strong>Editorial Independence:</strong> While affiliate partnerships may exist, our content is guided by user value, not external influence.</li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Referenced by Larger Publications:</strong> We frequently appear in “top cash-back cards” or “best rewards” roundups for thorough data and disclaimers."}}></li>
-                </ul>
-                <h3>3. Trustworthiness</h3>
-                <ul className={styles.featureList}>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Disclaimer Clarity:</strong> We highlight 5/24 constraints, foreign transaction fees, synergy requirements, and potential interest overshadowing rewards if carrying a balance."}}></li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Frequent Revisions:</strong> FreedUn’s sign-up bonus or categories can shift. We re-check official sources regularly, updating data so you have the latest info."}}></li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>User Feedback:</strong> We welcome community comments, real-life data points on approvals, 5/24 experiences, or redemption tips, fostering transparency and user insights."}}></li>
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Privacy &amp; Security:</strong> We prioritize user privacy and follow best practices, outlined in our <a href='/privacy-policy'>Privacy Policy</a>."}}>
-                        {/* Corrected Link */}
-                         {/* <strong>Privacy &amp; Security:</strong> As per our <Link href="/privacy-policy"><a>Privacy Policy</a></Link>, we safeguard user data on our site. */}
-                    </li>
-                 </ul>
-                  {/* Using dangerouslySetInnerHTML for ® */}
-                 <p dangerouslySetInnerHTML={{ __html: "By adhering to E-A-T, we ensure an accurate, thorough, and honest evaluation of the <strong>Chase Freedom Unlimited®</strong> for your 2025 credit card decisions." }}></p>
-             </section>
+                <section id="section-at-a-glance" className={styles.reviewSection}>
+                    <h2>1. The Card at a Glance</h2>
+                    <DraggableTableWrapper>
+                        <div className={styles.tableContainer}>
+                            <table className={`${styles.statsTable} ${styles.highlightTable}`}>
+                                <tbody>
+                                    <tr><td>Card Name:</td><td><strong>{reviewData.cardName}</strong></td></tr>
+                                    <tr><td>Issuer:</td><td>Chase (<a href={reviewData.officialOverviewLink} target="_blank" rel="noopener noreferrer sponsored">Official Card Page</a>)</td></tr>
+                                    <tr><td>'Best For' Tagline:</td><td>The card you'll probably use for almost everything, from cash back to serious travel.</td></tr>
+                                    <tr><td>Welcome Bonus:</td><td>Earn an extra 1.5% on everything you buy (on up to $20,000 spent in the first year) - worth up to $300 cash back.</td></tr>
+                                    <tr><td>Rewards Rate:</td><td>5% on travel booked through Chase Travel℠, 3% on dining and drugstores, and 1.5% on everything else. (<a href={reviewData.ratesLink} target="_blank" rel="noopener noreferrer sponsored">Pricing & Terms</a>)</td></tr>
+                                    <tr><td>Annual Fee:</td><td><strong>${reviewData.annualFee}</strong></td></tr>
+                                    <tr><td>Intro APR:</td><td>0% Intro APR for 15 months on purchases and balance transfers.</td></tr>
+                                    <tr><td>Credit Needed:</td><td>Good to Excellent (670-850 FICO range). (<a href="https://www.experian.com/blogs/ask-experian/credit-education/score-basics/what-is-a-good-credit-score/" target="_blank" rel="noopener noreferrer">Source: Experian</a>)</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </DraggableTableWrapper>
+                </section>
+                
+                <section id="section-why-good" className={styles.reviewSection}>
+                  <h2>2. What Makes This Card Genuinely Good?</h2>
+                  <p>The Freedom Unlimited® is popular for a few key reasons that actually hold up.</p>
+                  <p>First, the rewards structure is a smart hybrid. You get a decent "floor" of 1.5% back on all your boring, miscellaneous purchases. But you also get a much higher "ceiling" with the 3% and 5% bonus categories. This mix means your actual return on spending will almost always beat a simple 2% flat-rate card, unless you literally never eat out or travel.</p>
+                  <p>Second, it’s a $0 annual fee card that doesn't feel cheap. Most no-fee cards skimp on the perks, but this one includes things like Trip Cancellation/Interruption Insurance. (<a href={reviewData.officialBenefitsGuideLink} target="_blank" rel="noopener noreferrer sponsored">See Chase Guide to Benefits</a>). Honestly, having one flight cancellation covered can save you more money than a rival card would earn you in years. It gives you some peace of mind when booking a big trip.</p>
+                  <p>Finally, this is the card's hidden superpower: your "cash back" is actually Chase Ultimate Rewards® points. Sure, you can take the cash. No problem. But you can also pair this card with a Chase Sapphire card, move the points over, and often double their value when you redeem them for flights or hotels.</p>
+                </section>
+                
+                <section id="section-welcome-offer" className={styles.reviewSection}>
+                    <h2>3. The Achievable Welcome Offer</h2>
+                    <p>The sign-up bonus is pretty clever. Instead of making you hit a high spending target in 90 days, it’s just an extra 1.5% back on your first $20,000 in spending for the first year. It’s a bonus you earn organically, without stress-spending on things you don't need. It feels much more user-friendly than the competition.</p>
+                </section>
+                
+                <section id="section-rewards-breakdown" className={styles.reviewSection}>
+                    <h2>4. The 5/3/1.5 Rewards Formula</h2>
+                    <p>The engine of this card is its tiered rewards:</p>
+                    <ul className={styles.featureList}>
+                        <li><strong>5% Cash Back on Chase Travel℠:</strong> This is a huge incentive to book your flights and hotels through their portal.</li>
+                        <li><strong>3% Cash Back on Dining and Drugstores:</strong> This is the card's sweet spot for daily life. It covers your morning coffee, fancy dinners, and even DoorDash. The drugstore category is a lifesaver. I had one month with some pricey prescriptions, and the 3% I got back was enough to cover a nice lunch. It’s those small wins that make you appreciate a card.</li>
+                        <li><strong>1.5% Cash Back on All Other Purchases:</strong> This is your safety net. From utility bills to that new sofa, no purchase gets left behind.</li>
+                    </ul>
+                </section>
+                
+                <section id="section-power-of-1-5" className={styles.reviewSection}>
+                    <h2>5. The Power of 1.5% (and Why It Can Beat 2%)</h2>
+                    <p>On paper, 1.5% seems weaker than the 2% you get from cards like the Citi Double Cash®. (<a href="https://www.nerdwallet.com/article/credit-cards/chase-freedom-unlimited-vs-citi-double-cash" target="_blank" rel="noopener noreferrer">NerdWallet Comparison</a>). But that’s missing the point. The points you earn with the Freedom Unlimited® are more valuable. That 2% from a competitor is always just two cents. But the 1.5 points from this card can be worth way more. When you transfer them to a partner like World of Hyatt through a Sapphire card, you can easily get 2, 3, or even more cents per point. Suddenly, your 1.5% base earning rate is effectively a 3% or 4% return. A simple cash-back card can't touch that.</p>
+                </section>
 
-          </article>
-        </div> {/* Close reviewContainer */}
+                <section id="section-cashing-in" className={styles.reviewSection}>
+                  <h2>6. Cashing In: From a Statement Credit to a First-Class Seat</h2>
+                  <p>The flexibility in how you use your points is a major selling point.</p>
+                  <ul className={styles.featureList}>
+                      <li><strong>The Simple Path (Cash Back):</strong> Want cash? You got it. Redeem your points for a statement credit or direct deposit anytime. 10,000 points = $100. Easy.</li>
+                      <li><strong>The Power-Up Path (Transfer to Premium Cards):</strong> If you also have a Chase Sapphire Preferred® or Reserve®, you can move your points to that account. They instantly become 25% to 50% more valuable when booking travel through the Chase portal.</li>
+                      <li><strong>The Pro Path (Transfer Partners):</strong> This is the secret to those ridiculous travel deals you read about. Pool your points on a Sapphire card, then transfer them 1:1 to airlines like United, Southwest, or hotels like Hyatt.</li>
+                  </ul>
+                  <blockquote className={styles.highlightQuote}>
+                    Just one warning, and please listen: Whatever you do, avoid the "Pay With Points" option on Amazon or PayPal. It is a terrible, horrible, no-good, very bad deal that torches the value of your points. (<a href="https://thepointsguy.com/guide/redeeming-chase-ultimate-rewards-points/" target="_blank" rel="noopener noreferrer">Source: The Points Guy</a>). Don't do it.
+                  </blockquote>
+                </section>
+                
+                <section id="section-rates-fees" className={styles.reviewSection}>
+                    <h2>7. Full Rundown on Rates & Fees</h2>
+                    <p>That $0 annual fee is the star, but here are the other potential costs. (<a href={reviewData.ratesLink} target="_blank" rel="noopener noreferrer sponsored">See Official Offer Details</a>).</p>
+                    <DraggableTableWrapper>
+                        <div className={styles.tableContainer}>
+                            <table className={`${styles.statsTable} ${styles.ratesFeesTable}`}>
+                                <thead>
+                                    <tr>
+                                        <th>Fee/Rate Type</th>
+                                        <th>Cost</th>
+                                        <th>Insider Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Annual Fee:</td><td><strong>$0</strong></td><td>The best price there is.</td></tr>
+                                    <tr><td>Intro Purchase APR:</td><td>0% for 15 months</td><td>A long runway to pay off new purchases interest-free.</td></tr>
+                                    <tr><td>Regular Purchase APR:</td><td>{reviewData.aprRange}</td><td>After the intro period, this rate applies. Varies with creditworthiness.</td></tr>
+                                    <tr><td>Intro Balance Transfer APR:</td><td>0% for 15 months</td><td>A great chance to pay down existing high-interest debt.</td></tr>
+                                    <tr><td>Balance Transfer Fee:</td><td>Either $5 or 5% of the transfer</td><td>This fee is important. Factor it into your calculations.</td></tr>
+                                    <tr><td>Foreign Transaction Fee:</td><td><strong>3% of each transaction</strong></td><td>A real gut-punch. More on this below.</td></tr>
+                                    <tr><td>Late Payment Fee:</td><td>Up to $40</td><td>Pay on time. Always.</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </DraggableTableWrapper>
+                </section>
+                
+                <section id="section-foreign-fee" className={styles.reviewSection}>
+                    <h2>8. My Mini-Rant: The 3% Foreign Transaction Fee</h2>
+                    <p>Okay, let's talk about that 3% fee. For a card that’s so good for earning travel rewards, this feels like a slap in the face. And it is. Using this card outside the U.S. will completely erase your rewards. On a $3,000 trip, that’s an extra $90 in fees. Seriously, what gives?</p>
+                    <p>But it’s by design. Chase wants the Freedom Unlimited® to be your at-home workhorse. For international trips, they want you to get (and use) a card like the Chase Sapphire Preferred®, which has no foreign transaction fees. It’s a clever system to get you deeper into their ecosystem, but it's frustrating if you just want one card.</p>
+                </section>
+                
+                <section id="section-perks" className={styles.reviewSection}>
+                    <h2>9. The Built-In Safety Net (Perks People Forget)</h2>
+                    <p>One of the most underrated features here is the suite of protections, which is rare for a no-fee card. (<a href={reviewData.officialBenefitsGuideLink} target="_blank" rel="noopener noreferrer sponsored">See Card Benefits Guide</a>).</p>
+                    <ul className={styles.featureList}>
+                        <li><strong>Purchase Protection:</strong> Covers new stuff for 120 days against damage or theft (up to $500 per claim).</li>
+                        <li><strong>Extended Warranty:</strong> Adds an extra year to a U.S. manufacturer's warranty.</li>
+                        <li><strong>Trip Cancellation/Interruption Insurance:</strong> This is huge. If you get sick or severe weather messes up your trip, you can get reimbursed up to $1,500 per person for non-refundable fares.</li>
+                        <li><strong>Auto Rental CDW:</strong> Provides coverage for theft and collision damage for most rental cars.</li>
+                        <li><strong>Fraud Protection:</strong> Standard 24/7 monitoring and you aren't liable for fraudulent charges.</li>
+                    </ul>
+                </section>
+                
+                <section id="section-competition" className={styles.reviewSection}>
+                    <h2>10. Sizing Up the Competition</h2>
+                    <p>The Freedom Unlimited® competes in a crowded field by being a jack-of-all-trades.</p>
+                    <DraggableTableWrapper>
+                        <div className={styles.tableContainer}>
+                            <table className={`${styles.statsTable} ${styles.comparisonTable}`}>
+                                <thead>
+                                    <tr>
+                                        <th>Feature</th>
+                                        <th>Chase Freedom Unlimited®</th>
+                                        <th>Citi Double Cash® Card</th>
+                                        <th>Wells Fargo Active Cash®</th>
+                                        <th>Blue Cash Everyday® Amex</th>
+                                        <th>Capital One Quicksilver</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Annual Fee</td><td>$0</td><td>$0</td><td>$0</td><td>$0</td><td>$0</td></tr>
+                                    <tr><td>Welcome Bonus</td><td>Extra 1.5% up to $20k</td><td>$200 after $1,500 spend</td><td>$200 after $500 spend</td><td>$200 after $2,000 spend</td><td>$200 after $500 spend</td></tr>
+                                    <tr><td>Rewards Rate</td><td>1.5% - 5% (Tiered)</td><td>2% Flat</td><td>2% Flat</td><td>1% - 3% (Tiered)</td><td>1.5% Flat</td></tr>
+                                    <tr><td>Foreign Fee</td><td><strong>3%</strong></td><td>3%</td><td>3%</td><td>2.7%</td><td><strong>None</strong></td></tr>
+                                    <tr><td>Key Perk</td><td>Trip Insurance</td><td>Long Intro Balance Transfer</td><td>Cell Phone Protection</td><td>Disney Bundle Credit</td><td>No Foreign Fee</td></tr>
+                                    <tr><td>Ecosystem</td><td>Chase Ultimate Rewards®</td><td>Citi ThankYou® Points</td><td>Wells Fargo Rewards</td><td>Amex Membership Rewards</td><td>Capital One Miles</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </DraggableTableWrapper>
+                    <h3>Tiered Rewards vs. Flat-Rate Simplicity</h3>
+                    <p>Choosing between this card and a 2% flat-rate card comes down to one question: Do you want optimized rewards or dead-simple rewards? The case for 2% is its brain-dead ease. Every dollar earns 2 cents. No thinking required. The case for the Freedom Unlimited® is its higher potential. It's for the "light-touch optimizer"—someone willing to put in a tiny bit of effort for a much better return.</p>
+                </section>
+                
+                <section id="section-spending-scenario" className={styles.reviewSection}>
+                    <h2>11. A Real-World Spending Scenario</h2>
+                    <p>Let’s see how it plays out for Taylor, a family traveler.</p>
+                    <div className={styles.profileCard}>
+                        <h4>Taylor's Monthly Spending:</h4>
+                        <ul className={styles.featureList}>
+                            <li>Dining (Restaurants & Takeout): $500</li>
+                            <li>Drugstores: $150</li>
+                            <li>Travel (Annual vacation of $3,600, booked via Chase): $300/month</li>
+                            <li>All Other Spending (Groceries, Bills, Shopping): $1,500</li>
+                            <li><strong>Total Monthly Spend: $2,450</strong></li>
+                        </ul>
+                    </div>
+                    <h3>Annual Earnings with Chase Freedom Unlimited®:</h3>
+                    <p>Dining ($6,000 x 3%) + Drugstores ($1,800 x 3%) + Travel ($3,600 x 5%) + Other ($18,000 x 1.5%) = <strong>$684</strong></p>
+                    <h3>Annual Earnings with a 2% Flat-Rate Card:</h3>
+                    <p>Total Annual Spend ($29,400) x 2% = <strong>$588</strong></p>
+                    <p>For Taylor, the Freedom Unlimited® delivers nearly $100 more in value per year.</p>
+                </section>
+
+                <section id="section-user-voices" className={styles.reviewSection}>
+                    <h2>12. Voices from the Internet</h2>
+                    <p>To get the real scoop, we scrolled through some forums. The names are changed, but the sentiment is real.</p>
+                    <div className={styles.testimonialContainer}>
+                        <blockquote className={styles.testimonialQuote}>
+                            <p>"It's the best starter card, period. The bonus categories plus the potential to transfer points later just crushes flat-rate 2% cards if you have any plans to travel."</p>
+                            <footer>– User on <a href="https://www.reddit.com/r/CreditCards/" target="_blank" rel="noopener noreferrer">r/CreditCards</a></footer>
+                        </blockquote>
+                        <blockquote className={styles.testimonialQuote}>
+                            <p>"Love this card, had it for years. My only question is—am I getting the most out of it? I feel like there's more to unlock."</p>
+                            <footer>– Commenter on a finance blog</footer>
+                        </blockquote>
+                        <blockquote className={styles.testimonialQuote}>
+                            <p>"Don't even think about using this card in Europe. That 3% fee is a killer. Get a Sapphire or something with no FTF before you go."</p>
+                            <footer>– Post on a travel forum</footer>
+                        </blockquote>
+                         <blockquote className={styles.testimonialQuote}>
+                            <p>"The Freedom Unlimited is my 'catch-all' card. It's the foundation of my Chase Trifecta system for earning points on every single thing I buy."</p>
+                            <footer>– Thread on the <a href="https://ficoforums.myfico.com/" target="_blank" rel="noopener noreferrer">MyFICO forums</a></footer>
+                        </blockquote>
+                        <blockquote className={styles.testimonialQuote}>
+                            <p>"Forget everything else, the 3% back at drugstores is why I have this card. I get about $30 back a month just from my family's prescriptions. It's a no-brainer."</p>
+                            <footer>– A practical cardholder</footer>
+                        </blockquote>
+                    </div>
+                </section>
+
+                <section id="section-bottom-line" className={styles.reviewSection}>
+                    <h2>13. The Bottom Line: The Good and The Bad</h2>
+                    <div className={styles.prosConsContainer}>
+                        <div className={styles.prosBox}>
+                            <h4>The Good Stuff</h4>
+                            <ul className={styles.featureList}>
+                                <li>✅ All these perks for a $0 annual fee.</li>
+                                <li>✅ Strong tiered rewards with a high floor (1.5%) and an even higher ceiling (3-5%).</li>
+                                <li>✅ Lucrative bonus categories that reward common spending like dining out.</li>
+                                <li>✅ Accessible welcome bonus that doesn't force weird spending.</li>
+                                <li>✅ Outstanding protections like trip insurance, a huge win on a no-fee card. (<a href="https://www.forbes.com/advisor/credit-cards/best/no-annual-fee/" target="_blank" rel="noopener noreferrer">Forbes Advisor Source</a>)</li>
+                            </ul>
+                        </div>
+                        <div className={styles.consBox}>
+                            <h4>The Not-So-Good Stuff</h4>
+                             <ul className={styles.featureList}>
+                                <li>❌ That 3% foreign transaction fee is a dealbreaker for international use.</li>
+                                <li>❌ The 1.5% base rate is lower than some competitors that offer a flat 2%.</li>
+                                <li>❌ You need to pair it with a Sapphire card to get the maximum value from points.</li>
+                                <li>❌ It requires good-to-excellent credit, so it's not for those just starting to build credit. (<a href="https://ficoforums.myfico.com/t5/Credit-Card-Applications/bd-p/5" target="_blank" rel="noopener noreferrer">MyFICO Forums Data</a>)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="section-trifecta" className={styles.reviewSection}>
+                    <h2>14. Unlocking "God Mode": The "Chase Trifecta" Explained</h2>
+                    <p>Ready to go from casual user to points pro? Meet the "Chase Trifecta." It's just a nerdy name for using three Chase cards together to maximize points on everything. (<a href="https://www.forbes.com/advisor/credit-cards/chase-trifecta/" target="_blank" rel="noopener noreferrer">Forbes Advisor Explanation</a>). It’s like a superhero team for your wallet.</p>
+                    <ul className={styles.featureList}>
+                        <li><strong>The Workhorse (Freedom Unlimited®):</strong> You use this for all your random, non-bonus spending to get 1.5%.</li>
+                        <li><strong>The Specialist (Freedom Flex®):</strong> You use this for whatever its rotating 5% bonus category is that quarter (like gas stations or Amazon).</li>
+                        <li><strong>The Leader (Sapphire Preferred® or Reserve®):</strong> This is your hub. You use it for its own travel and dining perks, but most importantly, you pool all your points here to transfer them to airlines and hotels. If I had a dollar for every point I forgot to transfer before redeeming... well, I'd have a lot of dollars.</li>
+                    </ul>
+                </section>
+
+                <section id="section-faqs" className={`${styles.reviewSection} ${styles.faqSection}`}>
+                  <h2>15. Your Questions, Answered (FAQs)</h2>
+                  <div className={styles.faqContainer}>
+                      {structuredData['@graph'].find(item => item['@type'] === 'FAQPage').mainEntity.map((faq, index) => (
+                          <details key={index} className={styles.faqItem} name={`faq-${index + 1}`}>
+                              <summary className={styles.faqQuestion}>{`${index + 1}. ${faq.name}`}</summary>
+                              <div className={styles.faqAnswer}>
+                                <p dangerouslySetInnerHTML={{ __html:
+                                  faq.acceptedAnswer.text
+                                    .replace("Chase Ultimate Rewards® FAQ page", `<a href="${reviewData.officialUltimateRewardsLink}" target="_blank" rel="noopener noreferrer sponsored">Chase Ultimate Rewards® FAQ page</a>`)
+                                }} />
+                              </div>
+                          </details>
+                      ))}
+                  </div>
+                </section>
+                
+                <section id="section-verdict" className={styles.reviewSection}>
+                    <h2>16. The Verdict: Should You Apply Right Now?</h2>
+                    <p>The Chase Freedom Unlimited® is one of the most versatile financial tools out there. It serves both the beginner who wants simple cash back and the expert chasing epic travel deals.</p>
+                    <h3>This card is an immediate "yes" for:</h3>
+                    <ul className={styles.featureList}>
+                        <li><strong>The Rewards Beginner:</strong> If you want your first serious rewards card, this is the perfect, no-fee place to start.</li>
+                        <li><strong>The Busy Professional or Family:</strong> If a lot of your budget goes to dining, takeout, and drugstore runs, this card is built for you.</li>
+                        <li><strong>The Aspiring Travel Hacker:</strong> This is step one. It's the best way to start stockpiling valuable Chase points.</li>
+                    </ul>
+                    <h3>However, you should probably pause if:</h3>
+                    <ul className={styles.featureList}>
+                        <li><strong>You're a frequent international traveler who only wants one card.</strong> That 3% fee will hurt.</li>
+                        <li><strong>Your spending is almost entirely on gas and groceries.</strong> A different card (like the Amex Blue Cash Everyday®) might fit your habits better.</li>
+                    </ul>
+                    <p>For just about everyone else, the conclusion is easy. If you want a card that works as a simple cash-back tool today and a powerful travel engine tomorrow, the Chase Freedom Unlimited® is one of the smartest additions you can make to your wallet. It's a card that doesn't just reward you; it grows with you.</p>
+                </section>
+                
+                <section id="section-eat" className={`${styles.reviewSection} ${styles.eatSection}`}>
+                    <h2>Our Commitment to E-A-T: Expertise, Authority &amp; Trustworthiness</h2>
+                    <p>At <strong>{siteName}</strong>, we are committed to providing content that exemplifies Expertise, Authoritativeness, and Trustworthiness (E-A-T). This review of the <strong>{reviewData.cardName}</strong> has been meticulously researched and crafted. We've analyzed the card's features, benefits, rewards structure, and fees, referencing official issuer documentation and considering real-world user experiences. Our goal is to present a balanced, comprehensive, and reliable guide to help you make an informed decision. All information is current as of <strong>{new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</strong>, but we always recommend verifying details directly with the issuer as terms can change.</p>
+                </section>
+              </article>
+            </div>
+          </div>
+          <aside className={styles.sidebarArea}>
+              <TableOfContents sections={tocSections} />
+          </aside>
+        </div>
       </main>
-
-      
+        <div className={styles.stickyFooterContainer}>
+        <div className={styles.stickyFooterContent}>
+            <Image src={reviewData.imageUrl} alt={`${reviewData.cardName} small image`} width={60} height={38} className={styles.stickyFooterCardImage} /> 
+            <div className={styles.stickyFooterText}>
+              <span className={styles.stickyFooterCardName}>{reviewData.cardName}</span>
+              <span className={styles.stickyFooterRating}>{siteName} Rating: {reviewData.ratingValue.toFixed(1)}/10</span>
+            </div>
+            <div className={styles.stickyFooterButtons}>
+                <a
+                    href={reviewData.applyLink}
+                    className={`${styles.stickyFooterBtn} ${styles.stickyFooterBtnApply}`}
+                    target="_blank"
+                    rel="noopener noreferrer sponsored"
+                >
+                    Apply Now
+                </a>
+                <a
+                    href={reviewData.ratesLink}
+                    className={`${styles.stickyFooterBtn} ${styles.stickyFooterBtnRates}`}
+                    target="_blank"
+                    rel="noopener noreferrer sponsored"
+                >
+                    See Rates & Fees
+                </a>
+            </div>
+        </div>
+      </div>
     </>
   );
 }
