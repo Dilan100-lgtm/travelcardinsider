@@ -264,6 +264,7 @@ const tocSections = [
     { id: 'section-3', title: 'Unlocking True Value: The Ultimate Rewards Ecosystem' },
     { id: 'section-4', title: 'Unpacking the "Coupon Book": A Guide to the New Lifestyle Credits' },
     { id: 'section-5', title: 'The Protections: Why Many Loyalists Stay' },
+    { id: 'section-cta', title: 'Is The Reserve Right For You? Compare Top Cards' },
     { id: 'section-6', title: 'A First-Person Test Drive: Using the "Edit" Portal' },
     { id: 'section-7', title: 'The Bottom Line: A Real-World Spending Example' },
     { id: 'section-8', title: 'The Premium Gauntlet: How the Sapphire Reserve Stacks Up' },
@@ -676,9 +677,9 @@ function ChaseSapphireReserveReviewPage() {
                             <a href={reviewDataNew.ratesLink} className={styles.summaryRatesLink} target="_blank" rel="noopener noreferrer sponsored">
                                 See Card Pricing & Terms
                             </a>
-                             <a href='/rewards-calculator' className={`${styles.heroRewardsCalculator} ${styles.summaryButton}`} target="_blank" rel="noopener noreferrer">
-                                Rewards Calculator
-                            </a>
+                            <Link href="/rewards-compare" legacyBehavior>
+                                <a className={`${styles.heroRewardsCalculator} ${styles.summaryButton}`}>Rewards Calculator</a>
+                            </Link>
                         </div>
                     </div>
                 </header>
@@ -686,7 +687,7 @@ function ChaseSapphireReserveReviewPage() {
                 <section id="section-intro" className={styles.reviewSection}>
                   <h2>Executive Summary: The 2025 Overhaul &amp; The End of an Era</h2>
                   <p>The premium credit card landscape has been shaken by a seismic shift. In a move signaling the end of an era, Chase has completely reimagined its flagship, the Sapphire Reserve. The headline news is the dramatic fee increase to a market-topping $795, while the cost to add an authorized user has more than doubled to $195 (<a href={reviewDataNew.ratesLink} target="_blank" rel="noopener noreferrer sponsored">Source: Chase.com, Cardmember Pricing & Terms</a>). This isn't a card you add to your wallet lightly.</p>
-                  <p>In Chase’s view, this steep new price is justified. The card is now loaded with over $1,500 in potential annual statement credits, a strategic pivot that moves it squarely into the territory of its chief rival, The Platinum Card® from American Express (<a href={reviewDataNew.officialBenefitsCreditsLink} target="_blank" rel="noopener noreferrer sponsored">Source: Chase.com, Sapphire Reserve Benefits Page</a>). In doing so, the Sapphire Reserve has effectively traded its celebrated simplicity for what many users have dubbed a "coupon-book" model. Value is no longer effortless; it must be actively extracted by using a complex web of benefits with specific partners.</p>
+                  <p>In Chase’s view, this steep new price is justified. The card is now loaded with over $1,500 in potential annual statement credits, a strategic pivot that moves it squarely into the territory of its chief rival, <Link href="/review/amex-platinum-review-2025">The Platinum Card® from American Express</Link> (<a href={reviewDataNew.officialBenefitsCreditsLink} target="_blank" rel="noopener noreferrer sponsored">Source: Chase.com, Sapphire Reserve Benefits Page</a>). In doing so, the Sapphire Reserve has effectively traded its celebrated simplicity for what many users have dubbed a "coupon-book" model. Value is no longer effortless; it must be actively extracted by using a complex web of benefits with specific partners.</p>
                   <p>This transformation is rooted in stark business reality. The original Sapphire Reserve, launched in 2016 to massive fanfare, was famously a loss leader for Chase. It was brilliant at attracting a coveted demographic of young, affluent customers, but it cost the bank dearly. The 2025 overhaul is a clear and decisive move to make the product profitable. Consequently, the Chase Sapphire Reserve is now a fundamentally different product. To judge this new card by the standards of the old is to miss the point entirely.</p>
                 </section>
 
@@ -733,7 +734,7 @@ function ChaseSapphireReserveReviewPage() {
                       </table>
                     </div>
                   </DraggableTableWrapper>
-                  <p>This new structure presents a difficult "protection versus points" dilemma. The Sapphire Reserve is legendary for its comprehensive, best-in-class travel insurance. Previously, you could book a complex cruise or a tour package through a travel agent, earn a solid 3x points, and know you were covered. Under the new system, that same booking now earns a paltry 1x point.</p>
+                  <p>This new structure presents a difficult "protection versus points" dilemma. The Sapphire Reserve is legendary for its comprehensive, best-in-class travel insurance. Check out our guide to the <Link href="/review/best-travel-insurance-cards-2025">best cards for travel insurance</Link> to see how it compares. Previously, you could book a complex cruise or a tour package through a travel agent, earn a solid 3x points, and know you were covered. Under the new system, that same booking now earns a paltry 1x point.</p>
                   <p>Suddenly, a traveler booking a $5,000 cruise is forced to choose: book with the Reserve for its unparalleled insurance but earn only 5,000 points, or use a different card to earn more rewards but accept inferior protection? This conflict fundamentally undermines the card's former status as the undisputed, all-in-one travel card.</p>
                 </section>
                 
@@ -770,7 +771,18 @@ function ChaseSapphireReserveReviewPage() {
                     <li><strong>Other Key Protections:</strong> The card also includes Trip Delay Reimbursement, Baggage Delay Insurance, Lost Luggage Reimbursement, and Emergency Medical and Evacuation coverage.</li>
                     <li><strong>Shopping Protections:</strong> You get excellent Purchase Protection against damage or theft, Extended Warranty Protection, and Return Protection.</li>
                   </ul>
-                   <p>For many cardholders, this insurance suite alone justifies a significant portion of the annual fee.</p>
+                   <p>For many cardholders, this insurance suite alone justifies a significant portion of the annual fee. See how these protections stack up in our <Link href="/review/chase-vs-capital-one-travel-cards-2025">Chase vs. Capital One</Link> comparison.</p>
+                </section>
+
+                {/* Mid-Review CTA Section */}
+                <section id="section-cta" className={styles.ctaSection}>
+                    <h2>Is The Reserve The Right Card For You?</h2>
+                    <p>The Chase Sapphire Reserve® is a complex card with huge potential, but it's not for everyone. See how it stacks up against other top-tier travel cards before you decide.</p>
+                    <div className={styles.ctaButtonContainer}>
+                        <Link href="/compare" legacyBehavior>
+                            <a className={styles.ctaButton}>Compare Top Travel Cards</a>
+                        </Link>
+                    </div>
                 </section>
 
                 <section id="section-6" className={styles.reviewSection}>
@@ -816,9 +828,9 @@ function ChaseSapphireReserveReviewPage() {
                         <thead>
                           <tr>
                             <th>Feature</th>
-                            <th>Chase Sapphire Reserve®</th>
-                            <th>The Platinum Card® from Amex</th>
-                            <th>Capital One Venture X</th>
+                            <th><Link href="/review/chase-sapphire-reserve-2025">Chase Sapphire Reserve®</Link></th>
+                            <th><Link href="/review/amex-platinum-review-2025">The Platinum Card® from Amex</Link></th>
+                            <th><Link href="/cards/capital-one-venture-x">Capital One Venture X</Link></th>
                           </tr>
                         </thead>
                         <tbody>
@@ -865,7 +877,7 @@ function ChaseSapphireReserveReviewPage() {
                   <h3>Get this card if:</h3>
                   <p>You are the "Ideal Cardholder" profiled in this review. You live in a major city, spend heavily on travel and dining, and are an existing user of the card's new partner services. You have done the math, and those piecemeal credits represent real, organic savings, not forced spending. You value the peace of mind from best-in-class travel insurance and will frequent the high-quality Sapphire Lounges. You are the kind of person who enjoys the challenge of maximizing a complex system.</p>
                   <h3>Consider another card if:</h3>
-                  <p>You are a more budget-conscious traveler, your primary travel spend is on cruises or tour packages, or you simply dislike the hassle of that high-stakes scavenger hunt for rebates. If you need to add family members as authorized users affordably, this card is no longer a good fit. For these individuals, the Chase Sapphire Preferred® Card, with its lower $95 fee, or the Capital One Venture X® Rewards Credit Card, with its simple and effective credits, will almost certainly provide better and more straightforward value (<a href={reviewDataNew.sapphirePreferredLink} target="_blank" rel="noopener noreferrer sponsored">Source: Chase.com, Sapphire Preferred Product Page</a>).</p>
+                  <p>You are a more budget-conscious traveler, your primary travel spend is on cruises or tour packages, or you simply dislike the hassle of that high-stakes scavenger hunt for rebates. If you need to add family members as authorized users affordably, this card is no longer a good fit. For these individuals, the <Link href="/review/chase-sapphire-preferred-2025">Chase Sapphire Preferred® Card</Link>, with its lower $95 fee, or the <Link href="/cards/capital-one-venture-x">Capital One Venture X® Rewards Credit Card</Link>, with its simple and effective credits, will almost certainly provide better and more straightforward value (<a href={reviewDataNew.sapphirePreferredLink} target="_blank" rel="noopener noreferrer sponsored">Source: Chase.com, Sapphire Preferred Product Page</a>). For another strong alternative, see our <Link href="/review/citi-strata-premier-2025">Citi Strata Premier review</Link>.</p>
                   <p>In conclusion, the Chase Sapphire Reserve® is no longer a simple travel tool for the masses. It is an intricate lifestyle architecture. For the select few who can master its design, the rewards are immense. For everyone else, the golden age of the Sapphire Reserve is over, and it's time to look elsewhere.</p>
                 </section>
                 
