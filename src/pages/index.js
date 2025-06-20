@@ -351,29 +351,17 @@ export default function HomePage({ featuredReviews, latestNews }) {
                 <div className="reviews-grid">
                 {[
                     // Keep your existing array of review objects
+                    { img: "/cruise-ship-deck-sunset.webp", alt: "View from a cruise ship deck at sunset, overlooking the ocean", title: "Best Credit Cards for Cruise Travelers 2025: Earn More Than Just a Tan", desc: "Our expert guide to the best credit cards for cruises. Compare top cards for travel insurance, onboard perks, and maximizing rewards on your next voyage.", link: "/reviews/best-credit-cards-for-cruise-travelers-2025" },
                     { img: "/pexels-cliford-mervil-988071-2398220.webp", alt: "Guide to Capital One Transfer Partners", title: "Escape the Trap: Your 2025 Guide to Capital One Transfer Partners", desc: "Our definitive 2025 guide to maximizing Capital One miles. Learn how to transfer points to airline and hotel partners to unlock thousands of dollars in value from high-impact sweet spots.", link: "/review/capital-one-transfer-partners-2025", date: "2025-06-19" },
-                    { img: "/marriott-bevy-hero-image.jpg", alt: "Marriott Bonvoy Bevy card on a textured background, representing its 2025 review.", title: "Marriott Bonvoy Bevy™ Card Review 2025: Is It Worth the $250 Fee?", desc: "Our 2025 analysis of the Marriott Bonvoy Bevy™ Amex Card. We dissect the $250 annual fee, Gold Elite Status, and the controversial $15K spend for a Free Night Award.", link: "/review/marriott-bonvoy-bevy-2025" },
+                    { img: "/upgraded-points-xjTp2RjWg3A-unsplash.jpg", alt: "Marriott Bonvoy Bevy card on a textured background, representing its 2025 review.", title: "Marriott Bonvoy Bevy™ Card Review 2025: Is It Worth the $250 Fee?", desc: "Our 2025 analysis of the Marriott Bonvoy Bevy™ Amex Card. We dissect the $250 annual fee, Gold Elite Status, and the controversial $15K spend for a Free Night Award.", link: "/review/marriott-bonvoy-bevy-2025" },
                     { img: "/alex-guillaume-2VxHR3BkacM-unsplash.webp", alt: "Citi Strata Premier vs Amex Gold showdown, comparing rewards for dining and gas", title: "Citi Strata Premier vs. Amex Gold (2025): The Ultimate Showdown", desc: "The all-around value king vs. the foodie specialist. We compare rewards, credits, and fees on the Citi Strata Premier and Amex Gold to find the right 2025 travel card for you.", link: "/reviews/citi-strata-premier-vs-amex-gold-2025" },
                     { img: "/pexels-haleyve-2087391.webp", alt: "Airplane wing flying over clouds at sunset, symbolizing a dream trip made possible by 0% APR travel cards", title: "Best 0% APR Travel Cards (2025)", desc: "Our expert picks for the top US 0% APR travel credit cards for June 2025. Compare rewards, intro periods, and benefits to finance your next trip interest-free.", link: "/review/Best0AprTravelCardsPage2025" },
                     { img: "/pexels-tobiasbjorkli-2104152.webp", alt: "A suitcase with a passport and credit card, symbolizing travel preparedness", title: "Best Travel Insurance Credit Cards", desc: "Discover the 7 best credit cards with built-in travel insurance for 2025. Compare trip cancellation, rental car coverage, and see how your wallet can protect your next trip.", link: "/review/best-travel-insurance-cards-2025" },
                     { img: "/pexels-kelly-1179532-2869215.webp", alt: "World of Hyatt Business Credit Card on a desk, representing a key tool for SME travel perks.", title: "Hyatt Business Card 2025 Review: Elite Status via Your SME Spend", desc: "Our 2025 review of the World of Hyatt Business Credit Card. See how the $199 fee is justified through elite night credits, adaptive rewards, and perks for SMEs.", link: "/review/hyatt-business-card-2025" },
                     { img: "/barbara-maier-zp4q3mOSyBA-unsplash.webp", alt: "An hourglass with sand running out against a travel map, symbolizing expiring travel offers", title: "Final Call: Business Card Bonuses Expiring June 2025", desc: "Don't miss premier business credit card bonuses from Capital One & Amex, expiring in June 2025. Secure over $1,000 in travel value before they're gone.", link: "/review/expiring-business-card-bonuses-june-2025" },
                     { img: "/pexels-patrick-995764.webp", alt: "Traveler in modern airport symbolizing a seamless journey with Global Entry", title: "Global Entry Fee Guide (2025)", desc: "The Global Entry fee is now $120. Our guide covers the value, included perks, and how to get it for free via card credits.", link: "/review/global-entry-fee-guide-2025" },
-                    { img: "/peter-conlan-LEgwEaBVGMo-unsplash.webp", alt: "Chase Sapphire Reserve® Card", title: "Chase Sapphire Reserve® Review 2025: Navigating Value & Luxury", desc: "Get a $300 annual travel credit, premium lounge access, and powerful 3X points on travel and dining. Redeem points for 50% more value or transfer to top airline partners.", link: "/review/chase-sapphire-reserve-2025" },
                     
-                    
-                    
-                    
-                   
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
+
                   
                             ].map((review, index) => (
                     <div className="card review-card" key={review.link || index}>
