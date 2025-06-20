@@ -18,7 +18,7 @@ const SITE_BASE_URL = 'https://www.travelcardinsider.com';
 const PAGE_PATH = '/reviews/best-credit-cards-for-cruise-travelers-2025';
 const PAGE_URL = `${SITE_BASE_URL}${PAGE_PATH}`;
 const SITE_NAME = 'Travel Card Insider';
-const HERO_IMAGE_SRC = '/pexels-s-n-b-m-827240-1703909.webp'; // ❗ Replace with your optimised hero image for cruise cards
+const HERO_IMAGE_SRC = '/cruise-ship-deck-sunset.webp'; // ❗ Replace with your optimised hero image for cruise cards
 const HERO_IMAGE_ALT = 'View from a cruise ship deck at sunset, overlooking the ocean, symbolizing a rewarding cruise vacation.';
 const DATE_PUBLISHED = '2025-06-20'; // ✏️ Adjust to your actual publish date
 const DATE_MODIFIED = '2025-06-20'; // ✏️ Update whenever you edit copy
@@ -53,7 +53,7 @@ const cruiseCardData = [
     id: 'chaseSapphirePreferred',
     name: 'Chase Sapphire Preferred® Card',
     category: 'Mid-Tier',
-    imageSrc: '/sapphire_preferred_card.png', // ❗ Replace
+    imageSrc: '/chase-sapphire-preferred.png', // ❗ Replace
     imageAlt: 'Chase Sapphire Preferred® Card',
     annualFee: '$95',
     officialCardPageLink: 'https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred',
@@ -61,16 +61,16 @@ const cruiseCardData = [
     feature: 'Comprehensive trip cancellation/interruption insurance up to $20,000 per trip.',
     rewards: 'Earns 2x points on all general travel (including cruises) and 5x on travel booked through the Chase portal. The welcome bonus is typically worth $750 in travel via the Chase portal.',
     applyLink: 'https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred',
-    ratesFeesLink: 'https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC56014.html', // Find and link to terms
+    ratesFeesLink: 'https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred', // Find and link to terms
     learnMoreLink: '/cards/chase-sapphire-preferred', // ✏️ Create this internal page later
-    ratingValue: 8.2, // ✏️ Add rating
-    ratingStars: 4.1,   // ✏️ Add rating
+    ratingValue: 9.2, // ✏️ Add rating
+    ratingStars: 4.6,   // ✏️ Add rating
   },
   {
     id: 'capitalOneVentureX',
     name: 'Capital One Venture X Rewards Credit Card',
     category: 'Premium',
-    imageSrc: '/venturex-cg-static-card-1000x630-2.avif', // ❗ Replace
+    imageSrc: '/capital-one-venture-x.png', // ❗ Replace
     imageAlt: 'Capital One Venture X Rewards Credit Card',
     annualFee: '$395',
     officialCardPageLink: 'https://www.capitalone.com/credit-cards/venture-x/',
@@ -87,7 +87,7 @@ const cruiseCardData = [
     id: 'chaseSapphireReserve',
     name: 'Chase Sapphire Reserve®',
     category: 'Premium',
-    imageSrc: '/sapphire_reserve_card.png', // ❗ Replace
+    imageSrc: '/chase-sapphire-reserve.png', // ❗ Replace
     imageAlt: 'Chase Sapphire Reserve® Card',
     annualFee: '$550',
     officialCardPageLink: 'https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve',
@@ -95,16 +95,16 @@ const cruiseCardData = [
     feature: 'Robust trip cancellation insurance (up to $20,000 per trip) and up to $100,000 in emergency evacuation coverage—a key benefit for any cruiser.',
     rewards: 'Earn 3x points on travel (after using the $300 travel credit) and dining. The $300 annual travel credit is simple to use and applies to most travel purchases, including cruises.',
     applyLink: 'https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve',
-    ratesFeesLink: 'https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC56007.html',
+    ratesFeesLink: 'https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve',
     learnMoreLink: '/cards/chase-sapphire-reserve', // ✏️ Create this internal page later
-    ratingValue: 9.2,
-    ratingStars: 4.6,
+    ratingValue: 8.8,
+    ratingStars: 4.4,
   },
   {
     id: 'amexPlatinum',
     name: 'The Platinum Card® from American Express',
     category: 'Premium',
-    imageSrc: '/NUS000000237_480x304_straight_withname.avif', // ❗ Replace
+    imageSrc: '/amex-platinum.png', // ❗ Replace
     imageAlt: 'The Platinum Card® from American Express',
     annualFee: '$695',
     officialCardPageLink: 'https://www.americanexpress.com/us/credit-cards/card/platinum/',
@@ -112,16 +112,16 @@ const cruiseCardData = [
     feature: 'Access the American Express Cruise Privileges Program. Booking an eligible cruise of five nights or more through Amex Travel gets you up to $300 in onboard credit per stateroom.',
     rewards: 'Earn 5x points on flights booked directly with airlines or on amextravel.com. The strategy is to book your cruise via Amex Travel for the credits and enjoy luxury benefits like Centurion Lounge access.',
     applyLink: 'https://www.americanexpress.com/us/credit-cards/card/platinum/',
-    ratesFeesLink: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/platinum-card/25330-10-0#FeeTable',
+    ratesFeesLink: 'https://www.americanexpress.com/us/credit-cards/card/platinum/pricing-and-terms',
     learnMoreLink: '/cards/amex-platinum', // ✏️ Create this internal page later
-    ratingValue: 9.4,
-    ratingStars: 4.7,
+    ratingValue: 8.5,
+    ratingStars: 4.3,
   },
     {
     id: 'carnivalMastercard',
     name: 'Carnival® World Mastercard®',
     category: 'Co-Branded',
-    imageSrc: '/SMC_NewMC_card_angled_359x246_L.png', // ❗ Replace
+    imageSrc: '/carnival-mastercard.png', // ❗ Replace
     imageAlt: 'Carnival® World Mastercard®',
     annualFee: '$0',
     officialCardPageLink: 'https://www.carnival.com/credit-card',
@@ -241,6 +241,42 @@ function generateJsonLD() {
 // 🌐 COMPONENT
 // ─────────────────────────────────────────────────────────────────────────────
 function BestCruiseCardsPage2025() {
+    // Tooltip logic for author section
+    const [showTooltip, setShowTooltip] = useState(false);
+    const triggerRef = useRef(null);
+    const tooltipRef = useRef(null);
+    const tooltipTimeoutIdRef = useRef(null);
+
+    const handleMouseEnterTriggerOrTooltip = useCallback(() => {
+        if (tooltipTimeoutIdRef.current) clearTimeout(tooltipTimeoutIdRef.current);
+        setShowTooltip(true);
+    }, []);
+
+    const handleMouseLeaveTriggerOrTooltip = useCallback(() => {
+        tooltipTimeoutIdRef.current = setTimeout(() => {
+        let isStillHovering = false;
+        if (triggerRef.current && triggerRef.current.matches(':hover')) isStillHovering = true;
+        if (tooltipRef.current && tooltipRef.current.matches(':hover')) isStillHovering = true;
+        if (!isStillHovering) setShowTooltip(false);
+        }, 150);
+    }, []);
+    
+    useEffect(() => {
+        const currentTimeoutId = tooltipTimeoutIdRef.current;
+        return () => { if (currentTimeoutId) clearTimeout(currentTimeoutId); };
+    }, []);
+
+    useEffect(() => {
+        function handleClickOutside(event) {
+        if (showTooltip && triggerRef.current && !triggerRef.current.contains(event.target) && tooltipRef.current && !tooltipRef.current.contains(event.target)) {
+            setShowTooltip(false);
+        }
+        }
+        if (showTooltip) document.addEventListener("mousedown", handleClickOutside);
+        else document.removeEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, [showTooltip]);
+
     return (
         <>
             <Head>
@@ -294,6 +330,95 @@ function BestCruiseCardsPage2025() {
             <main className={styles.reviewContainer}>
                 <header className={styles.reviewHeader}>
                   <h1>Best Credit Cards for Cruise Travelers 2025: Earn More Than Just a Tan</h1>
+                  
+                  {/* --- AUTHOR SECTION (CORRECTED) --- */}
+                  <div
+                      className={styles.authorBioContainer}
+                      ref={triggerRef}
+                      onMouseEnter={handleMouseEnterTriggerOrTooltip}
+                      onMouseLeave={handleMouseLeaveTriggerOrTooltip}
+                      onFocus={handleMouseEnterTriggerOrTooltip} 
+                      onBlur={handleMouseLeaveTriggerOrTooltip} 
+                      aria-haspopup="true"
+                      aria-expanded={showTooltip}
+                      tabIndex={0} 
+                  >
+                      <Image
+                          src={author.image}
+                          alt={`${author.name} headshot`} 
+                          width={40} 
+                          height={40} 
+                          className={styles.authorImageSmall}
+                          priority
+                      />
+                      <div className={styles.authorInfo}>
+                          <span className={styles.authorName}>{author.name}</span> 
+                          <span className={styles.authorTitle}>{author.title}</span> 
+                          {DATE_MODIFIED && (
+                              <time dateTime={DATE_MODIFIED} className={styles.authorLastEdited}>
+                                  Last updated: {new Date(DATE_MODIFIED).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                              </time>
+                          )}
+                      </div>
+                      
+                      {showTooltip && (
+                          <div 
+                              className={styles.authorTooltip}
+                              ref={tooltipRef}
+                              role="tooltip"
+                              onMouseEnter={handleMouseEnterTriggerOrTooltip} 
+                              onMouseLeave={handleMouseLeaveTriggerOrTooltip}
+                          >
+                               <div className={styles.authorTooltipHeader}>
+                                   <Image
+                                      src={author.imageLarge}
+                                      alt={`${author.name} headshot`} 
+                                      width={60} 
+                                      height={60} 
+                                      className={styles.authorTooltipImage}
+                                   />
+                                   <div className={styles.authorTooltipInfo}>
+                                       <span className={styles.authorTooltipName}>{author.name}</span> 
+                                       <span className={styles.authorTooltipTitle}>{author.title}</span> 
+                                   </div>
+                                 </div>
+                                 {author.expertise && author.expertise.length > 0 && ( 
+                                   <div className={styles.authorTooltipExpertise}>
+                                       <strong>Expertise</strong>
+                                       <ul>
+                                           {author.expertise.map(area => <li key={area}>{area}</li>)} 
+                                       </ul>
+                                   </div>
+                                 )}
+                                 <p className={styles.authorTooltipBioSnippet}>{author.bio}</p> 
+                                 
+                                 <div className={styles.authorTooltipFooter}>
+                                     <div className={styles.authorTooltipSocials}>
+                                          {author.social.linkedin && ( 
+                                               <a href={author.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${author.name} on LinkedIn`} className={styles.socialIconLink}>
+                                                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                               </a>
+                                           )}
+                                           {author.social.twitter && ( 
+                                               <a href={author.social.twitter} target="_blank" rel="noopener noreferrer" aria-label={`${author.name} on Twitter`} className={styles.socialIconLink}>
+                                                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-.422.724-.665 1.56-.665 2.452 0 1.697.864 3.198 2.18 4.078-.8-.025-1.555-.247-2.227-.616v.054c0 2.37 1.683 4.333 3.91 4.78-.426.116-.874.174-1.337.174-.31 0-.611-.03-.904-.085.622 1.936 2.421 3.338 4.553 3.377-1.672 1.309-3.781 2.088-6.072 2.088-.394 0-.784-.023-1.169-.069 2.16 1.389 4.723 2.202 7.482 2.202 8.979 0 13.897-7.446 13.897-13.898 0-.21 0-.42-.015-.63.953-.689 1.778-1.56 2.433-2.525z"/></svg>
+                                               </a>
+                                           )}
+                                           {author.social.email && ( 
+                                               <a href={`mailto:${author.social.email}`} aria-label={`Email ${author.name}`} className={styles.socialIconLink}>
+                                                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
+                                               </a>
+                                           )}
+                                     </div>
+                                     <Link href={`/author/${author.name.toLowerCase().replace(' ', '-')}`} legacyBehavior>
+                                        <a className={styles.authorBioLink}>See Full Bio</a>
+                                     </Link>
+                                 </div>
+                          </div>
+                      )}
+                  </div>
+                  {/* --- END OF CORRECTION --- */}
+
                 </header>
                 
                 <div className={styles.heroSection}>
