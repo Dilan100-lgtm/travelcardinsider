@@ -317,7 +317,7 @@ function BestCruiseCardsPage2025() {
                     <section className={styles.reviewSection}>
                         <h2>Charting Your Course to Maximum Value</h2>
                         <p>The moment you book a cruise, the vacation daydreams begin. But for the savvy traveler, the first strategic decision—the credit card used for that initial deposit—can shape the value of the entire journey. The right travel rewards credit card can mean the difference between simply paying for your trip and earning flights, receiving reimbursement for delays, and being protected by robust travel insurance.</p>
-                        <p>So, where do you start? The world of travel rewards presents two main routes for cruisers: the incredible flexibility of general travel rewards cards versus the loyalty-focused perks of co-branded cruise line cards. This guide is your map to navigating these choices, ensuring your next voyage is not just memorable, but maximally rewarding.</p>
+                        <p>The world of travel rewards offers two primary paths for cruisers: the unmatched flexibility of general travel rewards cards and the niche, loyalty-driven perks of co-branded cruise line cards. This guide will help you navigate these options to select the optimal card for your wallet, ensuring your next voyage is not just memorable, but maximally rewarding.</p>
                     </section>
                     
                     <section id="general-vs-cobranded" className={styles.reviewSection}>
@@ -325,18 +325,16 @@ function BestCruiseCardsPage2025() {
                         <p>Before picking a card, you must decide: Are you a travel free agent seeking value across all your adventures, or a dedicated loyalist to a single cruise line?</p>
                         
                         <h3>The Generalist's Advantage (The Multi-Tool)</h3>
-                        <p>Think of general travel rewards cards from issuers like Chase, American Express, and Capital One as the Swiss Army knives of your wallet. Their power is in their flexibility. You earn points that can be transferred to dozens of airline and hotel partners, unlocking amazing value for flights or pre-cruise stays.</p>
-                        <p>But their key strengths go beyond just points. We're talking about huge welcome bonuses (often worth over $1,000), faster earning on everyday spending like dining, and—most critically for anyone at sea—<Link href="/review/best-travel-insurance-cards-2025"><a>superior travel protections</a></Link> that can literally save you thousands if things go wrong.</p>
+                        <p>General travel rewards cards from issuers like Chase, American Express, and Capital One are the Swiss Army knives of the travel world. Their power lies in flexible rewards currencies that can be transferred to a wide array of airline and hotel partners, unlocking immense value for flights or pre-cruise stays. Key strengths include large welcome bonuses (often worth over $1,000), accelerated earnings in broad categories like dining and travel, and—most critically for cruisers—<Link href="/review/best-travel-insurance-cards-2025"><a>superior travel protections</a></Link> that can save you thousands if things go wrong.</p>
                         
                         <h3>The Loyalist's Proposition (The Specialist's Wrench)</h3>
                         <p>Co-branded cards, a partnership between a cruise line and a bank, reward loyalty with brand-specific perks. These cards typically have no annual fee, offer a modest sign-up bonus for onboard credit, and provide accelerated earnings on purchases with that cruise line.</p>
-                        <p>Many are lured in by the siren song of a <Link href="/review/The-Best-Travel-Cards-with-No-Annual-Fee-Get-Big-Rewards-for-Free"><a>'$0 annual fee,'</a></Link> but this can be an illusion. The real cost is the opportunity cost of the benefits you're giving up. Most co-branded cards offer a meager 1 point per dollar on non-cruise spending. Why settle for that when a card like the Capital One Venture X gives a flat 2 miles per dollar on *everything*?</p>
-                        <p>Here's where it gets real: last year, I used my Chase Sapphire Preferred® on a Royal Caribbean trip. Not for the points, but for the peace of mind. Its trip cancellation insurance (up to $20,000) is a safety net that co-branded cards just don't offer. A single canceled cruise could save you thousands—a protection absent from its 'free' counterparts.</p>
+                        <p>Many are drawn to the <Link href="/review/The-Best-Travel-Cards-with-No-Annual-Fee-Get-Big-Rewards-for-Free"><a>$0 annual fee</a></Link>, but this can be an illusion. The real cost is the opportunity cost of the benefits you give up. Most co-branded cards offer a meager 1 point per dollar on non-cruise spending, whereas a card like the Capital One Venture X Rewards Credit Card gives a flat 2 miles per dollar on everything. More importantly, a mid-tier card like the Chase Sapphire Preferred® Card, with its $95 annual fee, includes trip cancellation insurance up to $20,000 per trip. A single canceled cruise could save you thousands—a protection absent from its "free" co-branded counterparts.</p>
                     </section>
                     
                     <section id="top-picks" className={styles.reviewSection}>
                         <h2>Our Top Recommended Cruise Cards for 2025</h2>
-                        <p>Ready to go all-in? For travelers who prioritize maximum comfort, protection, and a touch of luxury, premium cards offer compelling options. While their annual fees are higher, the perks can easily justify the cost, transforming your entire travel experience.</p>
+                        <p>The best card for you depends on your priorities: Do you value top-tier protection, luxury perks, or straightforward rewards? Here are our top picks across different categories.</p>
                         
                         {cruiseCardData.map((card, index) => (
                           <div key={card.id} className={`${styles.cardDetailSection} ${index < cruiseCardData.length - 1 ? styles.cardSeparator : ''}`}>
@@ -352,7 +350,7 @@ function BestCruiseCardsPage2025() {
                                   />
                                 </div>
                                 <div className={styles.cardTitleRating}>
-                                  <h3>
+                                  <h3><span className={styles.categoryLabel}>{card.category}</span>
                                     {card.id === 'amexPlatinum' ? (
                                         <Link href="/review/amex-platinum-review-2025"><a>{card.name}</a></Link>
                                     ) : card.id === 'chaseSapphirePreferred' ? (
@@ -360,8 +358,6 @@ function BestCruiseCardsPage2025() {
                                     ) : (
                                         card.name
                                     )}
-                                    {' - '}
-                                    <span className={styles.categoryLabel}>{card.category}</span>
                                   </h3>
                                   {card.ratingStars && <StarRating rating={card.ratingStars} />} 
                                   {card.ratingValue && <span className={styles.ratingValue}>Our Rating: {card.ratingValue.toFixed(1)}/10</span>}
@@ -382,10 +378,32 @@ function BestCruiseCardsPage2025() {
                         ))}
                     </section>
                     
-                    <section id="co-branded-deep-dive" className={styles.reviewSection}>
-                        <h2>Part IV: The Cruise Line's Own Fleet – A Deeper Dive</h2>
-                        <p>For the die-hard loyalist, a dedicated cruise line card seems like a no-brainer. But let's look closer. These cards often have mediocre rewards and lack the critical protections of the general travel cards we love. They follow a familiar script: no annual fee, a little onboard credit, and a small points bonus on their own cruises. That's fine, but they're missing the comprehensive insurance that gives you true peace of mind. And let’s be honest—nobody wants to discover their insurance is flimsy after their third Mai Tai on the lido deck.</p>
-                        <p>One to watch is the **Carnival® World Mastercard®**. Carnival is overhauling its loyalty program in 2026, which will tie elite status earning directly to credit card spending. This could transform the card from a simple discount tool into a fast track to valuable onboard perks (Source: <a href="https://www.carnival.com/credit-card" target="_blank" rel="noopener noreferrer">Carnival Cruise Line Official Site</a>).</p>
+                    <section id="head-to-head-comparison" className={styles.reviewSection}>
+                        <h2>Premium Cards at a Glance (June 2025 Estimates)</h2>
+                        <div className={styles.tableContainer}>
+                        <table className={styles.comparisonTable}>
+                            <thead>
+                            <tr>
+                                <th scope="col">Feature</th>
+                                <th scope="col">{cruiseCardData[0].name}</th>
+                                <th scope="col">{cruiseCardData[1].name}</th>
+                                <th scope="col">{cruiseCardData[2].name}</th>
+                                <th scope="col">{cruiseCardData[3].name}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {comparisonCruiseTableData.map((row) => (
+                                <tr key={row.feature}>
+                                <th scope="row">{row.feature}</th>
+                                <td>{row.chaseSapphirePreferred}</td>
+                                <td>{row.capitalOneVentureX}</td>
+                                <td>{row.chaseSapphireReserve}</td>
+                                <td>{row.amexPlatinum}</td>
+                                </tr>
+                            ))}
+                            </tbody>
+                        </table>
+                        </div>
                     </section>
 
                     <section id="user-reviews" className={styles.reviewSection}>
@@ -403,7 +421,7 @@ function BestCruiseCardsPage2025() {
                     
                     <section id="expert-strategy" className={styles.reviewSection}>
                         <h2>Part VI: The Expert's Log – Strategic Recommendations & Final Verdict</h2>
-                        <p>Alright, let's bring it all home. Choosing the right card isn't about finding a single 'best' card—it's about <Link href="/learn/credit-card-basics"><a>matching one to *your* specific travel style</a></Link>.</p>
+                        <p>Choosing the right card is about <Link href="/learn/credit-card-basics"><a>matching it to your travel style</a></Link>.</p>
                         <ul>
                           <li><strong>The "One-Card" Cruiser Strategy:</strong> For simplicity and power, the Chase Sapphire Preferred® Card is the top pick. Its robust travel insurance and flexible rewards make it a reliable choice.</li>
                           <li><strong>The "Maximizer's" Two-Card Strategy:</strong> For the points enthusiast, combine the Capital One Venture X for cruise bookings with the American Express® Gold Card for its 4x points on dining and U.S. supermarkets to create a powerhouse earning duo.</li>
@@ -411,7 +429,7 @@ function BestCruiseCardsPage2025() {
                         </ul>
 
                         <h3>Final Verdict</h3>
-                        <p>The tides of the credit card market are clear. For the vast majority of US cruise travelers in 2025, a general travel rewards card offers a sea of value that co-branded cards just can't navigate. The combination of flexible points, higher earning rates, and—I can't say this enough—comprehensive travel protections provides a level of financial security that's priceless. Choose your strategy wisely, and your credit card will become a powerful tool that enhances every aspect of your voyage, from booking to Bon Voyage!</p>
+                        <p>The tides of the credit card market are clear: for the vast majority of US cruise travelers in 2025, a general travel rewards card offers a far superior value proposition to a co-branded cruise line card. The combination of flexible points, higher earning rates, and, most importantly, comprehensive travel protections provides a level of financial security and long-term value that a no-fee co-branded card simply cannot match. Choose your strategy wisely, and your credit card will become a powerful tool that enhances every aspect of your voyage.</p>
                     </section>
                 </article>
             </main>
