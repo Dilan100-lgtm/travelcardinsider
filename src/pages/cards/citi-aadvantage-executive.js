@@ -678,7 +678,7 @@ function CitiAAdvantageExecutiveCardReviewPage() {
                 </section>
 
                 <Image
-                    src="/christine-roy-ir5MHI6rPg0-unsplash.webp" // Placeholder Image
+                    src="/kalisa-veer-Y1Ek7_a0wJ0-unsplash.webp" // Placeholder Image
                     alt="Comfortable interior of an American Airlines Admirals Club lounge"
                     width={800}
                     height={500}
@@ -871,6 +871,14 @@ function CitiAAdvantageExecutiveCardReviewPage() {
                     <p>For the right person, the card delivers value that dwarfs its annual fee.</p>
                 </section>
 
+<Image
+                    src="/ashim-d-silva-pGcqw1ARGyg-unsplash (1).jpg" // Placeholder Image
+                    alt="Comfortable interior of an American Airlines Admirals Club lounge"
+                    width={800}
+                    height={500}
+                    className={styles.contentImage}
+                    loading="lazy"
+                />
                 <section id="section-13" className={styles.reviewSection}>
                   <h2>13. Voices from the Field: 5 User Testimonials</h2>
                   <p>Here’s what real cardholders are saying, paraphrased from public forums and reviews:</p>
