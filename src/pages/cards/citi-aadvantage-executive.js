@@ -289,7 +289,7 @@ const tocSections = [
     { id: 'section-8', title: '8. Earning Power: Analyzing the Miles Multipliers' },
     { id: 'section-9', title: '9. Full Spectrum of Rates & Fees' },
     { id: 'section-10', title: '10. Welcome Bonus: Is the Spend Worth It?' },
-    { id:t: 'section-11', title: '11. User Profiling: Who Should (and Shouldn’t) Get This Card?' },
+    { id: 'section-11', title: '11. User Profiling: Who Should (and Shouldn’t) Get This Card?' },
     { id: 'section-12', title: '12. One-Year Value Example (“Alex” Case Study)' },
     { id: 'section-13', title: '13. Voices from the Field: 5 User Testimonials' },
     { id: 'section-14', title: '14. The Bottom Line: Pros & Cons' },
