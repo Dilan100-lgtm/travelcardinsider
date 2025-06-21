@@ -823,7 +823,7 @@ function CitiAAdvantageExecutiveCardReviewPage() {
                 {/* --- MID-REVIEW CTA --- */}
                 <section className={styles.midArticleCta}>
                     <h3>Ready to Elevate Your American Airlines Experience?</h3>
-                    <p>With Admirals Club access, a fast track to elite status, and a generous welcome offer, the Citi® / AAdvantage® Executive Card is the premier choice for the dedicated AA flyer. Get the VIP treatment you deserve.</p>
+                    
                     <a href={reviewData.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.applyNowButton}>
                         Apply Now on Citi's Site
                     </a>
