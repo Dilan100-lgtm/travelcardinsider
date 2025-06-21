@@ -64,16 +64,16 @@ const reviewData = {
       }
   },
   siteName: siteName,
-  imageUrl        : '/citi-aadvantage-executive-card-image.png', // Placeholder: Replace with actual card image URL
+  imageUrl        : '/CardArt-8.webp', // Placeholder: Replace with actual card image URL
   imageWidth      : 1290,
   imageHeight     : 812,
-  ratingValue     : 9.0,  // Rating based on strong niche value
+  ratingValue     : 8.6,  // Rating based on strong niche value
   ratingCount     : 310,  // Estimated user ratings
   reviewBody      : 'Our editors evaluate the Citi® / AAdvantage® Executive World Elite Mastercard® based on its primary benefit of Admirals Club membership, its unique ability to accelerate AAdvantage® elite status via Loyalty Point bonuses, its earning structure on AA purchases, travel perks like free checked bags, and its overall value proposition for dedicated American Airlines flyers against its annual fee.',
   aprRange        : '20.24% - 29.24% (Variable)', // From your text
   annualFee       : 595,
   applyLink       : 'https://creditcards.aa.com/citi-executive-card-american-airlines-direct/', // Official Link from your text
-  ratesLink       : 'https://creditcards.aa.com/citi-executive-card-american-airlines-direct/', // Rates are on the main page
+  ratesLink       : 'https://creditcards.aa.com/credit-cards/citi-executive-card-american-airlines-direct/#pricing', // Rates are on the main page
   officialOverviewLink: 'https://creditcards.aa.com/citi-executive-card-american-airlines-direct/',
   officialWelcomeOfferLink: 'https://creditcards.aa.com/citi-executive-card-american-airlines-direct/',
   officialBenefitsCreditsLink: 'https://www.citi.com/credit-cards/citi-aadvantage-executive-world-elite-mastercard/benefits-and-services', // More detailed benefits page
@@ -553,7 +553,7 @@ function CitiAAdvantageExecutiveCardReviewPage() {
                     )}
                 </div>
                 <p className={styles.heroSubtitle}>
-                  For loyal American Airlines flyers, travel isn’t just about the destination—it’s about comfort, rewards, and feeling like a VIP. So which card actually delivers on that promise?
+                  For the dedicated American Airlines traveler, the journey is about more than just getting from A to B. It’s about seamless airport experiences, earning valuable rewards, and feeling like a VIP from the curb to the clouds. But in a crowded market of travel cards, which one truly delivers on that promise?
                 </p>
                 <div className={styles.heroCtaContainer}>
                   <div>
@@ -675,7 +675,7 @@ function CitiAAdvantageExecutiveCardReviewPage() {
                 </section>
 
                 <Image
-                    src="/admirals-club-lounge-interior.jpg" // Placeholder Image
+                    src="/christine-roy-ir5MHI6rPg0-unsplash.webp" // Placeholder Image
                     alt="Comfortable interior of an American Airlines Admirals Club lounge"
                     width={800}
                     height={500}
