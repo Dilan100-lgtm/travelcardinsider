@@ -553,7 +553,7 @@ function CitiAAdvantageExecutiveCardReviewPage() {
                     )}
                 </div>
                 <p className={styles.heroSubtitle}>
-                  For the dedicated American Airlines traveler, the journey is about more than just getting from A to B. It’s about seamless airport experiences, earning valuable rewards, and feeling like a VIP from the curb to the clouds. But in a crowded market of travel cards, which one truly delivers on that promise?
+                  For loyal American Airlines flyers, travel isn’t just about the destination—it’s about comfort, rewards, and feeling like a VIP. So which card actually delivers on that promise?
                 </p>
                 <div className={styles.heroCtaContainer}>
                   <div>
