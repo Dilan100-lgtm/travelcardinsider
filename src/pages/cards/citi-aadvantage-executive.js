@@ -64,16 +64,16 @@ const reviewData = {
       }
   },
   siteName: siteName,
-  imageUrl        : '/CardArt-8.webp', // Placeholder: Replace with actual card image URL
+  imageUrl        : '/citi-aadvantage-executive-card-image.png', // Placeholder: Replace with actual card image URL
   imageWidth      : 1290,
   imageHeight     : 812,
-  ratingValue     : 8.6,  // Rating based on strong niche value
+  ratingValue     : 9.0,  // Rating based on strong niche value
   ratingCount     : 310,  // Estimated user ratings
   reviewBody      : 'Our editors evaluate the Citi® / AAdvantage® Executive World Elite Mastercard® based on its primary benefit of Admirals Club membership, its unique ability to accelerate AAdvantage® elite status via Loyalty Point bonuses, its earning structure on AA purchases, travel perks like free checked bags, and its overall value proposition for dedicated American Airlines flyers against its annual fee.',
   aprRange        : '20.24% - 29.24% (Variable)', // From your text
   annualFee       : 595,
   applyLink       : 'https://creditcards.aa.com/citi-executive-card-american-airlines-direct/', // Official Link from your text
-  ratesLink       : 'https://creditcards.aa.com/credit-cards/citi-executive-card-american-airlines-direct/#pricing', // Rates are on the main page
+  ratesLink       : 'https://creditcards.aa.com/citi-executive-card-american-airlines-direct/', // Rates are on the main page
   officialOverviewLink: 'https://creditcards.aa.com/citi-executive-card-american-airlines-direct/',
   officialWelcomeOfferLink: 'https://creditcards.aa.com/citi-executive-card-american-airlines-direct/',
   officialBenefitsCreditsLink: 'https://www.citi.com/credit-cards/citi-aadvantage-executive-world-elite-mastercard/benefits-and-services', // More detailed benefits page
@@ -663,6 +663,9 @@ function CitiAAdvantageExecutiveCardReviewPage() {
                             <a href={reviewData.ratesLink} className={styles.summaryRatesLink} target="_blank" rel="noopener noreferrer sponsored">
                                 See Card Rates & Fees
                             </a>
+                            <a href='/rewards-calculator' className={`${styles.ctaSecondaryButton} ${styles.summaryButton}`} target="_blank" rel="noopener noreferrer">
+                                Rewards Calculator
+                            </a>
                         </div>
                     </div>
                 </header>
@@ -675,7 +678,7 @@ function CitiAAdvantageExecutiveCardReviewPage() {
                 </section>
 
                 <Image
-                    src="/christine-roy-ir5MHI6rPg0-unsplash.webp" // Placeholder Image
+                    src="/admirals-club-lounge-interior.jpg" // Placeholder Image
                     alt="Comfortable interior of an American Airlines Admirals Club lounge"
                     width={800}
                     height={500}
@@ -704,7 +707,7 @@ function CitiAAdvantageExecutiveCardReviewPage() {
 
                 <section id="section-2" className={styles.reviewSection}>
                   <h2>2. The Verdict in 60 Seconds</h2>
-                  <p>For the committed American Airlines flyer, the math is simple. The card's $595 annual fee is substantially less than the up to $850 cost of a standalone membership. If you would otherwise pay for lounge access, this card is an economic necessity. Beyond the lounge, it accelerates your path to elite status with Loyalty Point bonuses and offers statement credits that can offset up to $360 of the fee. However, its weak 1x earning rate on everyday spending makes it a poor choice as a primary card.</p>
+                  <p>For the committed American Airlines flyer, the math is simple. The card's $595 annual fee is substantially less than the up to $850 cost of a standalone membership. If you would otherwise pay for lounge access, this card is an economic necessity. Beyond the lounge, it accelerates your path to elite status with Loyalty Point bonuses and offers statement credits that can offset up to $360 of the fee. However, its weak 1x earning rate on everyday spending makes it a poor choice as a primary card. For those who prefer flexible rewards, a card like the <Link href="/review/chase-sapphire-preferred-2025"><a>Chase Sapphire Preferred® Card</a></Link> might be a better fit.</p>
                 </section>
 
                 <section id="section-3" className={styles.reviewSection}>
@@ -714,7 +717,7 @@ function CitiAAdvantageExecutiveCardReviewPage() {
 
                 <section id="section-4" className={styles.reviewSection}>
                   <h2>4. The Crown Jewel: Admirals Club Membership</h2>
-                  <p>Let's be clear: the real star of the show here is the complimentary Admirals Club membership. This single benefit is the card's entire identity and the primary justification for its premium price.</p>
+                  <p>Let's be clear: the real star of the show here is the complimentary Admirals Club membership. This single benefit is the card's entire identity and the primary justification for its premium price. For travelers who want the most comprehensive lounge access, our <Link href="/review/best-lounge-access-cards-2025"><a>guide to the best lounge access cards</a></Link> offers more options.</p>
                   <h3>The Financial Case</h3>
                   <p>A new Admirals Club membership purchased directly costs between $700 and $850 per year. With a $595 annual fee, the card saves you at least $105 right off the top. Considering a single-day pass costs a steep $79 (<a href="https://www.aa.com/i18n/travel-info/clubs/admirals-club-access.jsp" target="_blank" rel="noopener noreferrer sponsored">AA.com: Admirals Club® Day Pass Information</a>), if you plan to visit a lounge just eight times a year, the card has already paid for itself.</p>
                   <h3>Access and Guest Privileges</h3>
@@ -726,7 +729,7 @@ function CitiAAdvantageExecutiveCardReviewPage() {
                 <section id="section-5" className={styles.reviewSection}>
                     <h2>5. Path to Status: Maximizing AAdvantage Loyalty Points</h2>
                     <p>For the serious AA traveler, elite status is the holy grail. The Executive Card is the most powerful credit card tool for this pursuit. The AAdvantage® program is built on Loyalty Points (LPs), and you earn 1 LP for every eligible mile earned from purchases on the card. This 1:1 ratio turns every dollar you spend into progress toward status.</p>
-                    <p>This creates a strategic choice for the "Status Grinder". While other cards might offer more redeemable miles, no other card provides this consistent accumulation of LPs tied to a premium lounge experience.</p>
+                    <p>This creates a strategic choice for the "Status Grinder". While other cards might offer more redeemable miles, no other card provides this consistent accumulation of LPs tied to a premium lounge experience. It's a key differentiator from other <Link href="/review/best-airline-credit-cards-2025"><a>top airline credit cards</a></Link>.</p>
                     <p>The card’s true power comes from its two massive LP bonuses. You’ll receive:</p>
                     <ul className={styles.featureList}>
                         <li>A 10,000 Loyalty Point bonus after earning 50,000 LPs in a status year.</li>
@@ -752,7 +755,7 @@ function CitiAAdvantageExecutiveCardReviewPage() {
                   <ul className={styles.featureList}>
                       <li><strong>First Checked Bag Free:</strong> You and up to eight companions on the same domestic reservation get your first bag checked free. (<a href="https://www.aa.com/i18n/travel-info/baggage/checked-baggage-policy.jsp" target="_blank" rel="noopener noreferrer sponsored">AA.com: Checked Baggage Policy for AAdvantage® Members</a>). For a family of four, that’s $240 saved on a single round-trip domestic flight.</li>
                       <li><strong>Priority Airport Experience:</strong> You and your eight companions also get priority check-in, priority security screening (where available), and Group 4 priority boarding.</li>
-                      <li><strong>Global Entry or TSA PreCheck® Credit:</strong> Receive up to a $120 statement credit every four years for the application fee. (<a href={reviewData.officialBenefitsCreditsLink} target="_blank" rel="noopener noreferrer sponsored">Citi.com: Global Entry and TSA PreCheck Application Fee Credit Details</a>)</li>
+                      <li><strong>Global Entry or TSA PreCheck® Credit:</strong> Receive up to a $100 statement credit every four years for the application fee. (<a href={reviewData.officialBenefitsCreditsLink} target="_blank" rel="noopener noreferrer sponsored">Citi.com: Global Entry and TSA PreCheck Application Fee Credit Details</a>)</li>
                       <li><strong>In-Flight Savings:</strong> Get a 25% statement credit on in-flight food and drink purchases on American Airlines flights.</li>
                   </ul>
                 </section>
@@ -814,7 +817,17 @@ function CitiAAdvantageExecutiveCardReviewPage() {
                     <blockquote className={styles.highlightQuote}>
                         Earn 100,000 AAdvantage® bonus miles after spending $10,000 in the first three months.
                     </blockquote>
-                    <p>This is an exceptional offer. Valued at approximately $1,500 to $1,650, these miles can cover the annual fee nearly three times over in the first year. However, the spending requirement is a high hurdle: $10,000 in the first three months. This equates to over $3,300 in monthly spending, signaling that the card is aimed at high-spenders or those who can time the application with a major purchase.</p>
+                    <p>This is an exceptional offer. Valued at approximately $1,500 to $1,650, these miles can cover the annual fee nearly three times over in the first year. However, the spending requirement is a high hurdle: $10,000 in the first three months. This equates to over $3,300 in monthly spending, signaling that the card is aimed at high-spenders or those who can time the application with a major purchase. See how this compares to other <Link href="/review/top-new-travel-credit-card-offers-2025"><a>top travel card offers</a></Link>.</p>
+                </section>
+                
+                {/* --- MID-REVIEW CTA --- */}
+                <section className={styles.midArticleCta}>
+                    <h3>Ready to Elevate Your American Airlines Experience?</h3>
+                    <p>With Admirals Club access, a fast track to elite status, and a generous welcome offer, the Citi® / AAdvantage® Executive Card is the premier choice for the dedicated AA flyer. Get the VIP treatment you deserve.</p>
+                    <a href={reviewData.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.applyNowButton}>
+                        Apply Now on Citi's Site
+                    </a>
+                    <span className={styles.ctaDisclaimer}>Terms and conditions apply.</span>
                 </section>
 
                 <section id="section-11" className={styles.reviewSection}>
@@ -831,7 +844,7 @@ function CitiAAdvantageExecutiveCardReviewPage() {
                         </div>
                         <div className={styles.profileCard}>
                             <h4>Persona 3: "The Brand-Agnostic Traveler"</h4>
-                            <p>This person flies often but has no allegiance to a single airline. For this traveler, the Executive card is a poor choice. Its benefits are overwhelmingly tied to the AA ecosystem. A card with transferable points and broader lounge access would be a far superior option.</p>
+                            <p>This person flies often but has no allegiance to a single airline. For this traveler, the Executive card is a poor choice. Its benefits are overwhelmingly tied to the AA ecosystem. A card with transferable points and broader lounge access, such as the <Link href="/review/amex-platinum-review-2025"><a>The Platinum Card® from Amex</a></Link>, would be a far superior option.</p>
                         </div>
                     </div>
                 </section>
@@ -927,7 +940,12 @@ function CitiAAdvantageExecutiveCardReviewPage() {
                           <tr><td data-label="Feature">Annual Fee</td><td data-label="Citi Exec">$595</td><td data-label="Amex Plat">$695</td><td data-label="Chase Reserve">$550</td></tr>
                           <tr><td data-label="Feature">Lounge Access</td><td data-label="Citi Exec">Admirals Club, select partners</td><td data-label="Amex Plat">Centurion, Priority Pass, Delta SkyClub</td><td data-label="Chase Reserve">Priority Pass, Sapphire Lounges</td></tr>
                           <tr><td data-label="Feature">Airline Earning</td><td data-label="Citi Exec">4x on American Airlines</td><td data-label="Amex Plat">5x on flights (direct/portal)</td><td data-label="Chase Reserve">5x on flights (portal)</td></tr>
-                          <tr><td data-label="Feature">X-Factor</td><td data-label="Citi Exec">AAdvantage® Status Path & AU Lounge Value</td><td data-label="Amex Plat">Broadest Lounge Access & Luxury Perks</td><td data-label="Chase Reserve">Flexible Points & Broad Travel Credit</td></tr>
+                          <tr>
+                            <td data-label="Feature">X-Factor</td>
+                            <td data-label="Citi Exec">AAdvantage® Status Path & AU Lounge Value</td>
+                            <td data-label="Amex Plat"><Link href="/review/amex-platinum-review-2025"><a>Broadest Lounge Access & Luxury Perks</a></Link></td>
+                            <td data-label="Chase Reserve"><Link href="/review/chase-sapphire-reserve-2025"><a>Flexible Points & Broad Travel Credit</a></Link></td>
+                          </tr>
                         </tbody>
                       </table>
                     </div>
