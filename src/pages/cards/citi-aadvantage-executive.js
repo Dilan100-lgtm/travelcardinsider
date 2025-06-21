@@ -64,10 +64,10 @@ const reviewData = {
       }
   },
   siteName: siteName,
-  imageUrl        : '/citi-aadvantage-executive-card-image.png', // Placeholder: Replace with actual card image URL
+  imageUrl        : '/CardArt-8.webp', // Placeholder: Replace with actual card image URL
   imageWidth      : 1290,
   imageHeight     : 812,
-  ratingValue     : 9.0,  // Rating based on strong niche value
+  ratingValue     : 8.6,  // Rating based on strong niche value
   ratingCount     : 310,  // Estimated user ratings
   reviewBody      : 'Our editors evaluate the Citi® / AAdvantage® Executive World Elite Mastercard® based on its primary benefit of Admirals Club membership, its unique ability to accelerate AAdvantage® elite status via Loyalty Point bonuses, its earning structure on AA purchases, travel perks like free checked bags, and its overall value proposition for dedicated American Airlines flyers against its annual fee.',
   aprRange        : '20.24% - 29.24% (Variable)', // From your text
@@ -81,7 +81,7 @@ const reviewData = {
   officialLoyaltyPointsLink: 'https://www.aa.com/i18n/aadvantage-program/loyalty-points/loyalty-point-rewards.jsp',
   sku             : 'CITI-AA-EXEC-TCI-2025',
   mpn             : 'CITIAAEXEC',
-  h1Content       : "The Executive Decision: Is This Your Ticket to the Top?",
+  h1Content       : "Citi® / AAdvantage® Executive Card Review (2025): Your First-Class Ticket?",
 };
 
 /* ──────────────────────────────
@@ -553,7 +553,7 @@ function CitiAAdvantageExecutiveCardReviewPage() {
                     )}
                 </div>
                 <p className={styles.heroSubtitle}>
-                  For the dedicated American Airlines traveler, the journey is about more than just getting from A to B. It’s about seamless airport experiences, earning valuable rewards, and feeling like a VIP from the curb to the clouds. But in a crowded market of travel cards, which one truly delivers on that promise?
+                  For loyal American Airlines flyers, travel isn’t just about the destination—it’s about comfort, rewards, and feeling like a VIP. So which card actually delivers on that promise?
                 </p>
                 <div className={styles.heroCtaContainer}>
                   <div>
@@ -673,12 +673,12 @@ function CitiAAdvantageExecutiveCardReviewPage() {
                 {/* --- CONTENT SECTIONS --- */}
 
                 <section id="section-intro" className={styles.reviewSection}>
-                  <h2>The Executive Decision: Is This Your Ticket to the Top?</h2>
+                  <h2>Citi® / AAdvantage® Executive Card Review (2025): Your First-Class Ticket?</h2>
                   <p>This card isn’t for the occasional vacationer or the brand-agnostic points collector. It's built for the AA loyalist—the business traveler navigating weekly connections, the family planning multiple domestic trips a year, and the strategist laser-focused on reaching AAdvantage® elite status. If you find value in a pre-flight oasis and see your travel as an investment in comfort and status, then this card demands your attention. It answers one simple question: Are you ready to elevate your travel with American Airlines?</p>
                 </section>
 
                 <Image
-                    src="/admirals-club-lounge-interior.jpg" // Placeholder Image
+                    src="/christine-roy-ir5MHI6rPg0-unsplash.webp" // Placeholder Image
                     alt="Comfortable interior of an American Airlines Admirals Club lounge"
                     width={800}
                     height={500}
