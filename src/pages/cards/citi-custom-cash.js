@@ -64,16 +64,16 @@ const reviewDataNew = {
       }
   },
   siteName: siteName,
-  imageUrl        : '/citi-custom-cash-card.png', // Placeholder: Replace with actual card image URL
+  imageUrl        : '/download.png', // Placeholder: Replace with actual card image URL
   imageWidth      : 1290, 
   imageHeight     : 812,  
-  ratingValue     : 8.5,  // Placeholder - Based on simplicity and value
+  ratingValue     : 7.5,  // Placeholder - Based on simplicity and value
   ratingCount     : 451,  // Placeholder - UPDATE AS NEEDED
   reviewBody      : 'Our editors evaluate the Citi Custom Cash® Card based on its automatic 5% rewards structure, the value of its welcome bonus, the flexibility of ThankYou® Points, its introductory APR offer, and its overall utility for both cash-back seekers and travel enthusiasts.',
   aprRange        : '19.24% - 29.24% (Variable)', 
   annualFee       : 0, 
   applyLink       : 'https://www.citi.com/credit-cards/citi-custom-cash-credit-card', 
-  ratesLink       : 'https://www.citi.com/credit-cards/citi-custom-cash-credit-card', 
+  ratesLink       : 'https://online.citi.com/US/ag/cards/displayterms?app=UNSOL&HKOP=541175b33e25f6837a0d7af4ba29114f264447b80dcde5f6be6db7d02fed5901', 
   officialOverviewLink: 'https://www.citi.com/credit-cards/citi-custom-cash-credit-card',
   officialWelcomeOfferLink: 'https://www.citi.com/credit-cards/citi-custom-cash-credit-card',
   officialRewardsProgramLink: 'https://www.citi.com/credit-cards/thankyou-rewards',
@@ -726,7 +726,7 @@ function CitiCustomCashReviewPage() {
                 </section>
                 
                 <Image
-                    src="/woman-with-credit-card-and-laptop.jpg" // Placeholder
+                    src="/pexels-helenalopes-697244.webp" // Placeholder
                     alt="A person smiling while using their Citi Custom Cash card for online shopping, symbolizing effortless rewards."
                     width={800}
                     height={500}
@@ -894,7 +894,7 @@ function CitiCustomCashReviewPage() {
                 </section>
                 
                 <Image
-                    src="/couple-planning-trip.jpg" // Placeholder
+                    src="/pexels-pixabay-460672.jpg" // Placeholder
                     alt="A couple looking at a map and a laptop, planning their next vacation funded by credit card points."
                     width={800}
                     height={500}
