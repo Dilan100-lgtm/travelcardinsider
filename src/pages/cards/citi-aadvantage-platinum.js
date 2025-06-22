@@ -797,7 +797,7 @@ function CitiAAdvantagePlatinumSelectReviewPage() {
                 <section className={styles.midArticleCta}>
                     <h3>Ready to Stop Paying Baggage Fees?</h3>
                     
-                    <a href={reviewData.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.applyNowButton}>
+                    <a href={reviewDataNew.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.applyNowButton}>
                         Apply Now on Citi's Site
                     </a>
                     <span className={styles.ctaDisclaimer}>Terms and conditions apply.</span>
