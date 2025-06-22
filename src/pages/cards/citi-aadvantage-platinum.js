@@ -764,14 +764,7 @@ function CitiAAdvantagePlatinumSelectReviewPage() {
                   <p><strong>Pro tip:</strong> To really put things in overdrive, use the AAdvantage eShopping portal or SimplyMiles program. You can stack bonus miles from hundreds of retailers on top of what the card already gives you.</p>
                 </section>
                 
-                <Image
-                    src="/pexels-ketut-subiyanto-4350108.webp" // Placeholder - person paying at restaurant
-                    alt="A person using a credit card to pay at a restaurant, highlighting the 2X rewards on dining."
-                    width={800}
-                    height={500}
-                    className={styles.contentImage}
-                    loading="lazy"
-                />
+               
 
                 <section id="section-7" className={styles.reviewSection}>
                     <h2>7. The Loyalty Point Engine: A Shortcut to Elite Status</h2>
@@ -800,25 +793,14 @@ function CitiAAdvantagePlatinumSelectReviewPage() {
                     </ul>
                 </section>
 
-                {/* Mid-Article CTA Section */}
+                {/* --- MID-REVIEW CTA --- */}
                 <section className={styles.midArticleCta}>
-                    <div className={styles.ctaCard}>
-                        <div className={styles.ctaIcon}>
-                            <IconGift />
-                        </div>
-                        <div className={styles.ctaText}>
-                            <h3>Ready to Stop Paying Baggage Fees?</h3>
-                            <p>The Citi / AAdvantage Platinum Select Card is the straightforward way to save money on every American Airlines flight. If you check bags, the math is simple.</p>
-                        </div>
-                        <div className={styles.ctaActions}>
-                            <a href={reviewDataNew.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.ctaButton}>
-                                Learn More & Apply
-                            </a>
-                             <a href={reviewDataNew.ratesLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.ctaSecondaryButton}>
-                                See Rates & Fees
-                            </a>
-                        </div>
-                    </div>
+                    <h3>Ready to Stop Paying Baggage Fees?</h3>
+                    
+                    <a href={reviewData.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.applyNowButton}>
+                        Apply Now on Citi's Site
+                    </a>
+                    <span className={styles.ctaDisclaimer}>Terms and conditions apply.</span>
                 </section>
 
 
