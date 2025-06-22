@@ -766,7 +766,7 @@ function CitiCustomCashReviewPage() {
                 {/* --- MID-REVIEW CTA --- */}
                 <section className={styles.midArticleCta}>
                     <h3>{reviewDataNew.cardName}</h3>
-                    <p>Earn 5% cash back automatically on your top eligible spend category. A simple, powerful way to make your spending work for you.</p>
+                    
                     <a href={reviewDataNew.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.applyNowButton}>
                         Apply Now on Citi's Site
                     </a>

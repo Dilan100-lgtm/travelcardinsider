@@ -1282,3 +1282,7 @@
   transform: translateY(1px);
   background-color: rgba(0, 82, 204, 0.1);
 }
+.statsTable td:first-child { 
+  font-weight: 500; 
+  color: var(--text-dark, #172b4d); 
+}
