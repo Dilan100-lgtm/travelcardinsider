@@ -569,7 +569,7 @@ function CitiAAdvantagePlatinumSelectReviewPage() {
                     )}
                 </div>
                 <p className={styles.heroSubtitle}>
-                  Let's be honest: turning your everyday spending into a vacation sounds great, but it can feel complicated. For anyone who regularly flies American Airlines, the {reviewDataNew.cardName} often comes up as the go-to solution. But is it really the workhorse card it claims to be? I've dug into every corner of this card to see who it’s truly for, how to squeeze every drop of value from its perks, and where it falls short. We'll go beyond the marketing points to see if it deserves a permanent spot in your wallet. If you find yourself on an AA flight even just a couple of times a year, this might be the key to unlocking serious savings.
+                  Can everyday spending really earn you free flights? For American Airlines flyers, the Citi® / AAdvantage® Platinum Select® Card might be the key. We took a closer look to see if it truly delivers—or just sounds good on paper.
                 </p>
                 <div className={styles.heroCtaContainer}>
                   <div>
