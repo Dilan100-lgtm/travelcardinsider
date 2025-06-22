@@ -718,10 +718,10 @@ function CitiCustomCashReviewPage() {
                     <li><strong>"Best For" Tagline:</strong> Automatic 5% cash back for focused spenders who value simplicity and want their everyday purchases to power their travel dreams.</li>
                     <li><strong>Welcome Bonus:</strong> Earn $200 cash back after spending $1,500 on purchases in the first 6 months of account opening. This bonus is awarded as 20,000 ThankYou® Points. (<a href={reviewDataNew.officialWelcomeOfferLink} target="_blank" rel="noopener noreferrer sponsored">Source: Citibank, Citi Custom Cash® Card Details</a>)</li>
                     <li><strong>Rewards Rate:</strong> 5% cash back on purchases in your top eligible spend category each billing cycle (on up to $500 spent), then 1% back. You'll earn unlimited 1% cash back on all other purchases. (<a href={reviewDataNew.officialRewardsProgramLink} target="_blank" rel="noopener noreferrer sponsored">Source: Citibank, Citi Custom Cash® Card Rewards Program</a>)</li>
-                    <li><strong>Annual Fee:</strong> $0. (<a href={reviewDataNew.ratesLink} target="_blank" rel="noopener noreferrer sponsored">Source: Citibank, Citi Custom Cash® Card Rates & Fees</a>)</li>
+                    <li><strong>Annual Fee:</strong> $0. For more options, see our list of the <Link href="/review/The-Best-Travel-Cards-with-No-Annual-Fee-Get-Big-Rewards-for-Free">best no-annual-fee travel cards</Link>. (<a href={reviewDataNew.ratesLink} target="_blank" rel="noopener noreferrer sponsored">Source: Citibank, Citi Custom Cash® Card Rates & Fees</a>)</li>
                     <li><strong>Introductory APR:</strong> 0% intro APR on purchases and balance transfers for 15 months from the date of account opening.</li>
                     <li><strong>Regular APR:</strong> After the intro period, a variable APR of {reviewDataNew.aprRange} applies.</li>
-                    <li><strong>Credit Needed:</strong> Good to Excellent (typically a FICO score of 690-850).</li>
+                    <li><strong>Credit Needed:</strong> Good to Excellent (typically a FICO score of 690-850). If you need help, check our <Link href="/review/How-to-Improve-Your-Credit-Score-Fast-for-Premium-Travel-Cards">guide on improving your credit score</Link>.</li>
                   </ul>
                 </section>
                 
@@ -738,7 +738,7 @@ function CitiCustomCashReviewPage() {
                   <h2>2. The Main Attraction: 5% Automatic Cash-Back, Deconstructed</h2>
                   <p>The soul of the {reviewDataNew.cardName} is its revolutionary simplicity. Forget activating bonus categories. Forget guessing where you’ll spend the most. This card does the work for you. Each billing cycle, it scans your spending and automatically gives you 5% cash back on the eligible category where you spent the most. Citi's tagline, "No enrolling. Just earning," nails it.</p>
                   <p>This powerful 5% reward, however, comes with a clear boundary: it only applies to the first $500 spent in that top category each billing cycle. After you hit that cap, you’ll earn a flat 1% on any further spending in that category, as well as on all other purchases.</p>
-                  <p>This means you can earn a maximum of $25 in 5% rewards each month ($500 x 5%). Annually, that’s a potential $300 in high-value cash back just from this feature alone—all for a card with no annual fee.</p>
+                  <p>This means you can earn a maximum of $25 in 5% rewards each month ($500 x 5%). Annually, that’s a potential $300 in high-value cash back just from this feature alone—all from a card with no annual fee.</p>
                   <p>The ten eligible spending categories are practical and cover the cornerstones of most household budgets: Restaurants, Gas Stations, Grocery Stores, Select Travel, Select Transit, Select Streaming Services, Drugstores, Home Improvement Stores, Fitness Clubs, Live Entertainment. (<a href={reviewDataNew.officialOverviewLink} target="_blank" rel="noopener noreferrer sponsored">Source: Citibank, Citi Custom Cash® Card Details</a>)</p>
                   <p>This isn’t just about the 5% return; it's about the effortlessness of achieving it. It’s designed for anyone who finds other 5% cards to be too much work, effectively selling peace of mind as much as it sells cash back.</p>
                 </section>
@@ -746,7 +746,7 @@ function CitiCustomCashReviewPage() {
                 <section id="section-3" className={styles.reviewSection}>
                   <h2>3. Welcome Aboard: Analyzing the Sign-Up Bonus</h2>
                   <p>To get you started, the {reviewDataNew.cardName} features a generous welcome offer: earn $200 in cash back after spending $1,500 on purchases within the first 6 months. This bonus is competitive, but its structure is exceptionally user-friendly.</p>
-                  <p>The $1,500 spending requirement averages out to just $250 per month, a very achievable target for most. More importantly, Citi gives you a full six-month window to get there. This is a huge advantage over competitors that often demand the same spending in a tighter three-month timeframe. It reduces the pressure to overspend just to snag the bonus.</p>
+                  <p>The $1,500 spending requirement averages out to just $250 per month, a very achievable target for most. More importantly, Citi gives you a full six-month window to get there. This is a huge advantage over competitors that often demand the same spending in a tighter three-month timeframe. It reduces the pressure to overspend just to snag the bonus. Find more great offers on our <Link href="/review/top-new-travel-credit-card-offers-2025">top new travel card offers</Link> page.</p>
                   <p>One key detail: while it's advertised as cash back, the bonus is technically awarded as 20,000 Citi ThankYou® Points. For most people, this is a distinction without a difference—you can redeem those points for a $200 statement credit or direct deposit. But as we'll explore later, this point-based system is the secret that unlocks the card's true travel potential.</p>
                 </section>
 
@@ -757,7 +757,7 @@ function CitiCustomCashReviewPage() {
                       <li><strong>Annual Fee: $0.</strong> This is the card’s cornerstone. Every dollar in rewards you earn is pure profit.</li>
                       <li><strong>Introductory APR:</strong> The 0% intro APR for 15 months on both new purchases and balance transfers is a fantastic feature. It’s perfect for financing a large purchase or tackling high-interest debt from other cards. (<a href={reviewDataNew.ratesLink} target="_blank" rel="noopener noreferrer sponsored">Source: Citibank, Citi Custom Cash® Card Rates & Fees</a>)</li>
                       <li><strong>Balance Transfer Fee:</strong> A fee of 5% of the transfer amount (or $5 minimum) applies. This is on the higher side, so be sure to factor it into your calculations.</li>
-                      <li><strong>Foreign Transaction Fee: 3%.</strong> This is a critical drawback. Any purchase you make abroad or from an international online seller will cost you an extra 3%. (<a href={reviewDataNew.ratesLink} target="_blank" rel="noopener noreferrer sponsored">Source: Citibank, Citi Custom Cash® Card Rates & Fees</a>)</li>
+                      <li><strong>Foreign Transaction Fee: 3%.</strong> This is a critical drawback. Any purchase you make abroad or from an international online seller will cost you an extra 3%. For better options, see our review of <Link href="/review/top-5-no-ftf-cards-2025">top cards with no foreign transaction fees</Link>. (<a href={reviewDataNew.ratesLink} target="_blank" rel="noopener noreferrer sponsored">Source: Citibank, Citi Custom Cash® Card Rates & Fees</a>)</li>
                       <li><strong>Late and Penalty Fees:</strong> Standard fees of up to $41 apply for late payments, and a penalty APR could be triggered if you miss a payment.</li>
                   </ul>
                   <p>The fee structure paints a clear picture: this is a phenomenal card for domestic spending and short-term financing. But for international travel, you’ll want to leave this one at home.</p>
@@ -840,7 +840,7 @@ function CitiCustomCashReviewPage() {
                         </thead>
                         <tbody>
                           <tr>
-                            <td data-label="Card"><strong>Citi Custom Cash® Card</strong></td>
+                            <td data-label="Card"><strong><Link href="/review/citi-custom-cash-2025">{reviewDataNew.cardName}</Link></strong></td>
                             <td data-label="Annual Fee">$0</td>
                             <td data-label="Signup Bonus">$200 after $1,500 spend in 6 months</td>
                             <td data-label="Top Earning Category">Automatic 5% on one category (up to $500/mo)</td>
@@ -848,7 +848,7 @@ function CitiCustomCashReviewPage() {
                             <td data-label="Domestic Travel Value">Excellent for gas on road trips or select travel bookings.</td>
                           </tr>
                            <tr>
-                            <td data-label="Card">Chase Freedom Flex℠</td>
+                            <td data-label="Card"><Link href="/cards/chase-freedom-unlimited">Chase Freedom Flex℠</Link></td>
                             <td data-label="Annual Fee">$0</td>
                             <td data-label="Signup Bonus">$200 after $500 spend in 3 months</td>
                             <td data-label="Top Earning Category">Rotating 5% on activated categories + 3% on dining & drugstores</td>
@@ -856,7 +856,7 @@ function CitiCustomCashReviewPage() {
                             <td data-label="Domestic Travel Value">Good. 5% on gas (when active) and 3% on dining covers key travel costs.</td>
                           </tr>
                           <tr>
-                            <td data-label="Card">Discover it® Cash Back</td>
+                            <td data-label="Card"><Link href="/cards/discover-it-miles">Discover it® Cash Back</Link></td>
                             <td data-label="Annual Fee">$0</td>
                             <td data-label="Signup Bonus">Cashback Match at the end of Year 1</td>
                             <td data-label="Top Earning Category">Rotating 5% on activated categories</td>
@@ -864,7 +864,7 @@ function CitiCustomCashReviewPage() {
                             <td data-label="Domestic Travel Value">Strong. The Cashback Match doubles your earnings on gas, dining, and more.</td>
                           </tr>
                           <tr>
-                            <td data-label="Card">Bank of America® Customized Cash Rewards</td>
+                            <td data-label="Card"><Link href="/cards/boa-travel-rewards">Bank of America® Customized Cash Rewards</Link></td>
                             <td data-label="Annual Fee">$0</td>
                             <td data-label="Signup Bonus">$200 after $1,000 spend in 90 days</td>
                             <td data-label="Top Earning Category">Choice of one 3% category + 2% at grocery/wholesale</td>
@@ -872,7 +872,7 @@ function CitiCustomCashReviewPage() {
                             <td data-label="Domestic Travel Value">Moderate. The 3% on gas is solid, but lower than competitors.</td>
                           </tr>
                           <tr>
-                            <td data-label="Card">Capital One SavorOne</td>
+                            <td data-label="Card"><Link href="/cards/capital-one-venture">Capital One SavorOne</Link></td>
                             <td data-label="Annual Fee">$0</td>
                             <td data-label="Signup Bonus">$200 after $500 spend in 3 months</td>
                             <td data-label="Top Earning Category">Unlimited 3% on dining, entertainment, groceries & streaming</td>
@@ -889,8 +889,8 @@ function CitiCustomCashReviewPage() {
                 <section id="section-8" className={styles.reviewSection}>
                     <h2>8. Beyond 5%: The Hidden Power of ThankYou® Points</h2>
                     <p>While Citi markets the Custom Cash as a simple cash-back card, its rewards are technically earned as Citi ThankYou® Points. This is where things get exciting for travel lovers.</p>
-                    <p>This hidden potential is unlocked with a strategy known as the "Citi Trifecta." By pairing the no-annual-fee Custom Cash Card with a premium travel card like the Citi Strata Premier℠ Card, the points you earn are transformed. Instead of just being worth 1 cent each for cash back, they can be pooled into your Premier account and transferred to Citi’s airline and hotel partners, like Avianca LifeMiles or Air France/KLM Flying Blue. (<a href={reviewDataNew.officialThankYouRewardsLink} target="_blank" rel="noopener noreferrer sponsored">Source: Citibank, Citi ThankYou® Rewards</a>).</p>
-                    <p>Why does this matter? A point redeemed for cash is worth exactly 1 cent. But that same point, transferred to an airline, could be redeemed for a business-class flight worth 2, 5, or even 10 cents per point. Suddenly, your 5% cash back on groceries is effectively a 10%+ return in travel value. This is the insider strategy that elevates the Custom Cash from a great card to an essential one.</p>
+                    <p>This hidden potential is unlocked with a strategy known as the "Citi Trifecta." By pairing the no-annual-fee Custom Cash Card with a premium travel card like the <Link href="/review/citi-strata-premier-2025">Citi Strata Premier℠ Card</Link>, the points you earn are transformed. Instead of just being worth 1 cent each for cash back, they can be pooled into your Premier account and transferred to Citi’s airline and hotel partners, like Avianca LifeMiles or Air France/KLM Flying Blue. (<a href={reviewDataNew.officialThankYouRewardsLink} target="_blank" rel="noopener noreferrer sponsored">Source: Citibank, Citi ThankYou® Rewards</a>).</p>
+                    <p>Why does this matter? A point redeemed for cash is worth exactly 1 cent. But that same point, transferred to an airline, could be redeemed for a business-class flight worth 2, 5, or even 10 cents per point. Suddenly, your 5% cash back on groceries is effectively a 10%+ return in travel value. This is the insider strategy that elevates the Custom Cash from a great card to an essential one for any <Link href="/review/amex-trifecta-2025">travel rewards strategist</Link>.</p>
                 </section>
                 
                 <Image
@@ -912,7 +912,7 @@ function CitiCustomCashReviewPage() {
                         <li><strong>Citi Entertainment:</strong> Get special access to presale tickets and VIP packages for concerts, sports, and other events.</li>
                         <li><strong>Mastercard ID Theft Protection™:</strong> Enroll for free monitoring and alerts to protect your identity. (<a href={reviewDataNew.mastercardIdTheftLink} target="_blank" rel="noopener noreferrer sponsored">Source: Mastercard, ID Theft Protection™</a>)</li>
                     </ul>
-                    <p>Notably absent are trip cancellation insurance and cell phone protection, which reinforces this card’s identity as a specialized rewards-earning tool, not an all-in-one protection product.</p>
+                    <p>Notably absent are trip cancellation insurance and cell phone protection, which reinforces this card’s identity as a specialized rewards-earning tool, not an all-in-one protection product. For cards with more robust protections, see our guide to the <Link href="/review/best-travel-insurance-cards-2025">best travel insurance cards</Link>.</p>
                 </section>
 
                 <section id="section-10" className={styles.reviewSection}>
@@ -962,7 +962,7 @@ function CitiCustomCashReviewPage() {
                             <ul>
                                 <li>Citi Custom Cash® Card: For your top spending category (5x points).</li>
                                 <li>Citi® Double Cash Card: For all other non-bonus spending (2x points).</li>
-                                <li>Citi Strata Premier℠ Card: To unlock airline and hotel transfer partners. (<a href={reviewDataNew.officialStrataPremierLink} target="_blank" rel="noopener noreferrer sponsored">Source: Citibank, Citi Strata Premier℠ Card Details</a>)</li>
+                                <li><Link href="/review/citi-strata-premier-2025">Citi Strata Premier℠ Card</Link>: To unlock airline and hotel transfer partners. (<a href={reviewDataNew.officialStrataPremierLink} target="_blank" rel="noopener noreferrer sponsored">Source: Citibank, Citi Strata Premier℠ Card Details</a>)</li>
                             </ul>
                         </li>
                         <li><strong>The Domestic/International Hybrid:</strong> A simple, powerful two-card setup.
