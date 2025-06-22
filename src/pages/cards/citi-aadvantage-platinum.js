@@ -795,7 +795,7 @@ function CitiAAdvantagePlatinumSelectReviewPage() {
 
                 {/* --- MID-REVIEW CTA --- */}
                 <section className={styles.midArticleCta}>
-                    <h3>Ready to Stop Paying Baggage Fees?</h3>
+                    <h3>Citi® / AAdvantage® Platinum Select® World Elite Mastercard®</h3>
                     
                     <a href={reviewDataNew.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.applyNowButton}>
                         Apply Now on Citi's Site
