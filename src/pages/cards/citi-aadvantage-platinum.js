@@ -725,7 +725,7 @@ function CitiAAdvantagePlatinumSelectReviewPage() {
                     </div>
                      <div className={styles.profileCard}>
                         <h4>The Family Vacationer</h4>
-                        <p>That free checked bag perk? It extends to four other people on your reservation. (<a href="https://www.aa.com/i18n/travel-info/baggage/checked-baggage-policy.jsp" target="_blank" rel="noopener noreferrer sponsored">Source: aa.com, "AAdvantage® Credit Card Benefits"</a>). A family of five can save a ridiculous $400 on a single round-trip flight. That’s not just a perk; it’s a game-changer.</p>
+                        <p>That free checked bag perk? It extends to four other people on your reservation. (<a href="https://www.aa.com/i18n/travel-info/baggage/checked-baggage-policy.jsp" target="_blank" rel="noopener noreferrer sponsored">Source: aa.com, "AAdvantage® Credit Card Benefits"</a>). A family of five can save a ridiculous $400 on a single round-trip flight. That’s not just a perk; it’s a game-changer for <Link href="/review/Top-5-Family-Friendly-Travel-Cards-for-2025-Maximize-Points-&-Perks-with-Kids-in-Tow">family travel</Link>.</p>
                     </div>
                   </div>
                 </section>
@@ -734,7 +734,7 @@ function CitiAAdvantagePlatinumSelectReviewPage() {
                   <h2>3. The Real Value Prop: A Closed-Door Rewards Program</h2>
                   <p>To get why this card punches above its weight, you have to understand something critical about the AAdvantage program: it's a fortress. You can't transfer your points from Chase, Amex, or Capital One to American Airlines. (<a href="https://www.aa.com/i18n/aadvantage-program/aadvantage-terms-and-conditions.jsp" target="_blank" rel="noopener noreferrer sponsored">Source: aa.com, "AAdvantage® Program Terms and Conditions"</a>).</p>
                   <p>That strategic wall creates a "moat." If you want to earn AA miles from credit card spending, you have to use an AAdvantage co-branded card. There’s no other way in.</p>
-                  <p>This is the card’s fundamental power. Other cards might boast higher earn rates, but this one gives you what you can't get elsewhere: direct, consistent access to AAdvantage miles. It’s not meant to compete with a Chase Sapphire Preferred; it's meant to work alongside it in a smart traveler's wallet.</p>
+                  <p>This is the card’s fundamental power. Other cards might boast higher earn rates, but this one gives you what you can't get elsewhere: direct, consistent access to AAdvantage miles. It’s not meant to compete with a <Link href="/review/chase-sapphire-preferred-2025">Chase Sapphire Preferred</Link>; it's meant to work alongside it in a smart traveler's wallet.</p>
                 </section>
 
                 <section id="section-4" className={styles.reviewSection}>
@@ -753,7 +753,7 @@ function CitiAAdvantagePlatinumSelectReviewPage() {
                 <section id="section-5" className={styles.reviewSection}>
                   <h2>5. That Welcome Bonus: What are 50,000 Miles Actually Worth?</h2>
                   <p>The card’s sign-up bonus gives your AAdvantage account a massive boost right out of the gate: 50,000 bonus miles after a $2,500 spend in three months.</p>
-                  <p>What's that worth in real money? Most experts value those miles between $800 and $965 when used for flights. That could easily cover a couple of round-trip tickets in the U.S., especially if you find a good "Web Special" deal. It's a fantastic return that pays for the annual fee for years to come.</p>
+                  <p>What's that worth in real money? Most experts value those miles between $800 and $965 when used for flights. That could easily cover a couple of round-trip tickets in the U.S., especially if you find a good "Web Special" deal. It's a fantastic return that pays for the annual fee for years to come. Explore our guide on <Link href="/review/2025-Points-&-Miles-Trends-Best-Ways-to-Redeem-for-Luxury-Travel-on-a-Budget">redeeming miles for luxury travel</Link> to see how far they can go.</p>
                   <p>Just know the rule: you can't get this bonus if you've received one for this same card in the last 48 months.</p>
                 </section>
 
@@ -799,6 +799,28 @@ function CitiAAdvantagePlatinumSelectReviewPage() {
                         <li><strong>Citi Entertainment:</strong> Gives you access to presale tickets for concerts and sporting events.</li>
                     </ul>
                 </section>
+
+                {/* Mid-Article CTA Section */}
+                <section className={styles.midArticleCta}>
+                    <div className={styles.ctaCard}>
+                        <div className={styles.ctaIcon}>
+                            <IconGift />
+                        </div>
+                        <div className={styles.ctaText}>
+                            <h3>Ready to Stop Paying Baggage Fees?</h3>
+                            <p>The Citi / AAdvantage Platinum Select Card is the straightforward way to save money on every American Airlines flight. If you check bags, the math is simple.</p>
+                        </div>
+                        <div className={styles.ctaActions}>
+                            <a href={reviewDataNew.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.ctaButton}>
+                                Learn More & Apply
+                            </a>
+                             <a href={reviewDataNew.ratesLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.ctaSecondaryButton}>
+                                See Rates & Fees
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
 
                 <section id="section-10" className={styles.reviewSection}>
                     <h2>10. The Nitty-Gritty: Full Rates &amp; Fees</h2>
@@ -846,10 +868,10 @@ function CitiAAdvantagePlatinumSelectReviewPage() {
                         <div className={styles.consBox}>
                             <ul className={styles.featureList}>
                                 <li><strong>The Annual Fee:</strong> After year one, you have to justify that $99 cost. If you don't check bags, it’s a tough sell.</li>
-                                <li><strong>No Luxury Perks:</strong> You won't find airport lounge access or a credit for TSA PreCheck®. This is a workhorse, not a show pony.</li>
+                                <li><strong>No Luxury Perks:</strong> You won't find airport <Link href="/review/The-Ultimate-Guide-to-Lounge-Access-in-2025-How-to-Get-VIP-Treatment-at-Airports">lounge access</Link> or a credit for TSA PreCheck®. This is a workhorse, not a show pony.</li>
                                 <li><strong>Inflexible Miles:</strong> AAdvantage miles are great for AA and its partners, but they aren't as flexible as points you can transfer to multiple airlines and hotels.</li>
                                 <li><strong>That Flight Discount Hurdle:</strong> The $20,000 spending requirement for the $125 discount is steep. Don't count on getting it.</li>
-                                <li><strong>No Travel Insurance:</strong> For me, this is a big one. Citi stripped away travel protections like trip cancellation coverage from this card. For booking big, important trips, I'd still use a card with better insurance.</li>
+                                <li><strong>No Travel Insurance:</strong> For me, this is a big one. Citi stripped away travel protections like trip cancellation coverage from this card. For booking big, important trips, I'd still use a card with better insurance, which you can read about in our <Link href="/review/best-travel-insurance-cards-2025">guide to travel insurance cards</Link>.</li>
                             </ul>
                         </div>
                     </div>
@@ -924,10 +946,10 @@ function CitiAAdvantagePlatinumSelectReviewPage() {
                           <tr>
                             <td data-label="Feature">Annual Fee</td>
                             <td data-label="Citi AAdvantage">$99 (waived yr 1)</td>
-                            <td data-label="Delta SkyMiles">$150 ($0 intro yr 1)</td>
-                            <td data-label="United Explorer">$95 ($0 intro yr 1)</td>
-                            <td data-label="Chase Sapphire">$95</td>
-                            <td data-label="Capital One Venture">$95</td>
+                            <td data-label="Delta SkyMiles"><Link href="/cards/delta-skymiles-platinum">$150 ($0 intro yr 1)</Link></td>
+                            <td data-label="United Explorer"><Link href="/cards/united-explorer">$95 ($0 intro yr 1)</Link></td>
+                            <td data-label="Chase Sapphire"><Link href="/cards/chase-sapphire-preferred">$95</Link></td>
+                            <td data-label="Capital One Venture"><Link href="/cards/capital-one-venture">$95</Link></td>
                           </tr>
                           <tr>
                             <td data-label="Feature">Free Checked Bag</td>
@@ -1015,7 +1037,7 @@ function CitiAAdvantagePlatinumSelectReviewPage() {
                 
                 <section id="section-20" className={styles.reviewSection}>
                   <h2>20. Ready for Takeoff: How to Apply</h2>
-                  <p>If you see yourself in the profile of the pragmatic AA loyalist, applying is the next step. You'll typically need a good to excellent credit score (usually 690+) to get approved. (<a href="https://www.citi.com/credit-cards/understanding-credit-cards/how-to-get-a-first-credit-card" target="_blank" rel="noopener noreferrer sponsored">Source: citi.com, "Credit Card Application FAQs"</a>). You can find the application on Citi's website, where you might even find a pre-qualified offer.</p>
+                  <p>If you see yourself in the profile of the pragmatic AA loyalist, applying is the next step. You'll typically need a good to excellent credit score (usually 690+) to get approved. (<a href="https://www.citi.com/credit-cards/understanding-credit-cards/how-to-get-a-first-credit-card" target="_blank" rel="noopener noreferrer sponsored">Source: citi.com, "Credit Card Application FAQs"</a>). You can find the application on Citi's website, where you might even find a pre-qualified offer. For more tips, see our guide on <Link href="/review/How-to-Improve-Your-Credit-Score-Fast-for-Premium-Travel-Cards">improving your credit score for premium cards</Link>.</p>
                   <p>Armed with this knowledge, you can confidently decide if this card is the right co-pilot for your travels.</p>
                 </section>
 
