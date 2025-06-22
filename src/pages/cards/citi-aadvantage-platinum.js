@@ -64,16 +64,16 @@ const reviewDataNew = {
       }
   },
   siteName: siteName,
-  imageUrl        : '/citi-aadvantage-platinum-select-card.png', // Placeholder: Replace with actual card image URL
+  imageUrl        : '/CardArt.png.webp', // Placeholder: Replace with actual card image URL
   imageWidth      : 1290, 
   imageHeight     : 812,  
-  ratingValue     : 8.5,  // Placeholder - Based on focus for AA Loyalists
+  ratingValue     : 7.8,  // Placeholder - Based on focus for AA Loyalists
   ratingCount     : 312,  // Placeholder - UPDATE AS NEEDED
   reviewBody      : 'Our editors evaluate the Citi / AAdvantage Platinum Select Card based on its rewards structure (2X on AA, gas, restaurants), key travel perks (first checked bag free for 5, preferred boarding), welcome bonus, Loyalty Point earnings, annual fee, and overall value proposition for American Airlines flyers.',
   aprRange        : '20.24% - 29.24% (Variable)', // From your text
   annualFee       : 99, 
   applyLink       : 'https://creditcards.aa.com/credit-cards/citi-platinum-card-american-airlines-direct/', 
-  ratesLink       : 'https://creditcards.aa.com/citi-platinum-select-card-terms-and-conditions/', // Direct link to terms
+  ratesLink       : 'https://creditcards.aa.com/credit-cards/citi-platinum-card-american-airlines-direct/#pricing', // Direct link to terms
   officialOverviewLink: 'https://creditcards.aa.com/credit-cards/citi-platinum-card-american-airlines-direct/',
   officialWelcomeOfferLink: 'https://creditcards.aa.com/credit-cards/citi-platinum-card-american-airlines-direct/',
   officialBenefitsCreditsLink: 'https://www.aa.com/i18n/aadvantage-program/aadvantage-credit-cards.jsp',
