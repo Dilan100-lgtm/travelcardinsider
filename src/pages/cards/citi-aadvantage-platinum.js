@@ -699,7 +699,7 @@ function CitiAAdvantagePlatinumSelectReviewPage() {
                 </section>
                 
                 <Image
-                    src="/pexels-pixabay-262524.webp" // Placeholder - image of family at airport
+                    src="/medium-shot-happy-family-airport_result.webp" // Placeholder - image of family at airport
                     alt="A family checking in at an American Airlines counter, symbolizing the card's travel perks."
                     width={800}
                     height={500}
@@ -925,6 +925,15 @@ function CitiAAdvantagePlatinumSelectReviewPage() {
                       </blockquote>
                   </div>
                 </section>
+
+                <Image
+                    src="/front-view-young-traveller-with-backpack-holding-up-ticket-making-thumbs-up-sign_result.webp" // Placeholder - image of family at airport
+                    alt="A family checking in at an American Airlines counter, symbolizing the card's travel perks."
+                    width={800}
+                    height={500}
+                    className={styles.contentImage}
+                    loading="lazy"
+                />
                 
                 <section id="section-15" className={styles.reviewSection}>
                   <h2>15. Head-to-Head: The Mid-Tier Travel Card Showdown</h2>
