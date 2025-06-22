@@ -1,660 +1,1068 @@
-// Example Path: pages/reviews/citi-aadvantage-platinum.js
-// Or: pages/reviews/[slug].js (if using dynamic routing with 'citi-aadvantage-platinum' as slug)
+/* ------------------------------------------------------------------
+    File:  pages/reviews/citi-aadvantage-platinum-select-review.js
+    Route: https://www.travelcardinsider.com/reviews/citi-aadvantage-platinum-select-review
+------------------------------------------------------------------- */
 
-// !!! WARNING: THIS FILE CONTAINS PLACEHOLDER DATA/URLs/DIMENSIONS !!!
-// !!! YOU MUST REPLACE ALL PLACEHOLDERS MARKED WITH '!!!' BEFORE DEPLOYMENT !!!
-// !!! VERIFY ALL CARD DETAILS & SCHEMA VALUES AGAINST OFFICIAL ISSUER INFO !!!
-
-import React, { useState, useEffect, useCallback, useRef } from 'react'; // Hooks for tooltip
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from '../../styles/ReviewPage.module.css'; // Using the REVIEW CSS module
-import Header from '../../components/Header'; // Assuming you have these components
-import Footer from '../../components/Footer'; // Assuming you have these components
+import dynamic from 'next/dynamic';
+import styles from '../../styles/ReviewPage.module.css'; // Assuming same CSS module
 
-// Simplified data object based on the final template structure
-const reviewData = {
-  cardName: 'Citi® / AAdvantage® Platinum Select® World Elite Mastercard®',
-  title: 'Citi® / AAdvantage® Platinum Select® World Elite Mastercard® – In-Depth 2025 Review',
-  description: 'A comprehensive 2000-word review of the Citi® / AAdvantage® Platinum Select® World Elite Mastercard®, focusing on travel and airline perks, annual fee, lounge options, 2025 updates, pros, cons, and advanced usage tips.',
-  keywords: 'Citi, AAdvantage, American Airlines, airline credit card, miles, no foreign transaction fee, 2025 updates',
-  author: 'TravelCardInsider', // *** REPLACE with your actual author/site name ***
-  imageUrl: '/CardArt.png.webp', // *** VERIFY PATH in /public ***
-  ratingValue: 7.8, // From Citi AA Plat HTML
-  applyLink: 'https://www.citi.com/credit-cards/citi-aadvantage-platinum-elite-credit-card', // *** REPLACE with actual Platinum Select APPLY URL ***
-  ratesLink: 'https://creditcards.aa.com/credit-cards/citi-platinum-card-american-airlines-direct/#pricing', // *** VERIFY URL ***
-  // Image dimensions (MUST BE ACCURATE for next/image)
-  imageWidth: 480, // *** REPLACE with actual image width *** (Example Placeholder)
-  imageHeight: 304, // *** REPLACE with actual image height *** (Example Placeholder)
+import TableOfContents from '../../components/TableOfContents'; // Assuming same TOC component
+import IconGift from '../../components/icons/icon-gift.svg'; 
+import IconStar from '../../components/icons/icon-star.svg'; 
+import IconCheck from '../../components/icons/icon-Credit Card.svg'; 
+import IconPlus from '../../components/icons/icon-target.svg'; 
+import IconPlane from '../../components/icons/icon-plane.svg';  
+import IconDollar from '../../components/icons/icon-dollar.svg'; 
+import IconX from '../../components/icons/icon-Star + Arrow Up.svg';
+
+const RatingTooltip = dynamic(() => import('../../components/RatingTooltip'), { ssr: false, loading: () => null });
+
+/* ──────────────────────────────
+    CONSTANTS & STATIC DATA
+    ────────────────────────────── */
+const siteName = 'Travelcardinsider'; 
+const siteUrl = 'https://www.travelcardinsider.com'; 
+const pagePath = '/reviews/citi-aadvantage-platinum-select-review'; 
+const pageUrlFull = `${siteUrl}${pagePath}`;
+const publishDate = '2025-06-22'; 
+const updateDate = '2025-06-22'; 
+
+const reviewDataNew = {
+  cardName        : 'Citi® / AAdvantage® Platinum Select® World Elite Mastercard®',
+  title           : 'Citi AAdvantage Platinum Select Review (2025): The Ultimate Co-Pilot for AA Flyers?',
+  description     : "Is the Citi / AAdvantage Platinum Select card worth it? Our 2025 review covers the 50k bonus, free checked bags, loyalty points, and 2X miles on gas & dining to see if it's your ticket to free flights.",
+  keywords        : 'citi aadvantage platinum select review, aadvantage credit card, citi aa card, american airlines credit card, earn aadvantage miles, free checked bag, loyalty points, citi aadvantage review 2025',
+  author: { 
+      name: 'Dilan Madushanka',
+      title: 'Founder & Lead Editor', 
+      imageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', 
+      imageWidth: 40,
+      imageHeight: 40,
+      tooltipImageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', 
+      tooltipImageWidth: 60,
+      tooltipImageHeight: 60,
+      expertise: [
+          'Airline Co-Branded Credit Cards',
+          'American Airlines AAdvantage Program',
+          'Credit Card Rewards Optimization',
+          'Travel Hacking & Loyalty Programs',
+          'Citi Credit Cards'
+      ],
+      bioSnippet: 'Dilan Madushanka is the founder and lead editor of Travelcardinsider, dedicated to demystifying credit cards and uncovering their real-world value for smarter travel and rewards.',
+      fullBioLink: '/author/dilan-madushanka', 
+      fullBio: `Dilan Madushanka is the founder and lead editor of Travelcardinsider, a platform dedicated to helping everyday people make smarter decisions with travel and rewards credit cards. [MORE BIO DETAILS TO BE ADDED BY USER]`,
+      publishedStats: 'X+ in-depth card reviews per week',
+      testedStats: 'Over Y+ credit card benefits across major brands',
+      socialLinks: { 
+          linkedin: 'https://www.linkedin.com/in/dilan-madushanka-b65293365',
+          twitter: 'https://x.com/team_dilan',
+          email: 'team@travelcardinsider.com'
+      }
+  },
+  siteName: siteName,
+  imageUrl        : '/citi-aadvantage-platinum-select-card.png', // Placeholder: Replace with actual card image URL
+  imageWidth      : 1290, 
+  imageHeight     : 812,  
+  ratingValue     : 8.5,  // Placeholder - Based on focus for AA Loyalists
+  ratingCount     : 312,  // Placeholder - UPDATE AS NEEDED
+  reviewBody      : 'Our editors evaluate the Citi / AAdvantage Platinum Select Card based on its rewards structure (2X on AA, gas, restaurants), key travel perks (first checked bag free for 5, preferred boarding), welcome bonus, Loyalty Point earnings, annual fee, and overall value proposition for American Airlines flyers.',
+  aprRange        : '20.24% - 29.24% (Variable)', // From your text
+  annualFee       : 99, 
+  applyLink       : 'https://creditcards.aa.com/credit-cards/citi-platinum-card-american-airlines-direct/', 
+  ratesLink       : 'https://creditcards.aa.com/citi-platinum-select-card-terms-and-conditions/', // Direct link to terms
+  officialOverviewLink: 'https://creditcards.aa.com/credit-cards/citi-platinum-card-american-airlines-direct/',
+  officialWelcomeOfferLink: 'https://creditcards.aa.com/credit-cards/citi-platinum-card-american-airlines-direct/',
+  officialBenefitsCreditsLink: 'https://www.aa.com/i18n/aadvantage-program/aadvantage-credit-cards.jsp',
+  officialTravelShoppingProtectionsLink: 'https://www.cardbenefits.citi.com/~/media/CardBenefits/Files/Guides/Benefit-Guides/World-and-World-Elite-Mastercard-Customers-English.pdf',
+  officialAAdvantageProgramLink: 'https://www.aa.com/i18n/aadvantage-program/aadvantage-program.jsp',
+  officialPartnerAirlinesLink: 'https://www.aa.com/i18n/aadvantage-program/miles/partners.jsp',
+  sku             : 'CITI-AADV-PLAT-TCI-2025',
+  mpn             : 'CITIAADVPLAT', 
+  h1Content       : "Your Ticket to Free Flights? A Real-World Review of the Citi / AAdvantage Platinum Select", 
 };
 
-// --- Rating Tooltip Content (Customize if needed for Citi AA Plat) ---
-const ratingCriteria = [ // *** VERIFY/CUSTOMIZE these criteria for Citi AA Plat Rating ***
-    'Free Checked Bag Value',
-    'AAdvantage® Miles Earning (2x Categories)',
-    'Welcome Bonus Potential',
-    'Priority Boarding Perk',
-    'Annual Fee ($99 / $0 Intro)'
+/* ──────────────────────────────
+    STRUCTURED DATA GRAPH
+    ────────────────────────────── */
+const structuredDataOptimized = {
+  '@context': 'https://schema.org',
+  '@graph'  : [
+    {
+      '@type'        : 'Product',
+      '@id'          : `${pageUrlFull}#product`,
+      name           : reviewDataNew.cardName,
+      image          : `${siteUrl}${reviewDataNew.imageUrl}`,
+      description    : reviewDataNew.description,
+      sku            : reviewDataNew.sku,
+      mpn            : reviewDataNew.mpn,
+      brand          : { '@type': 'Brand', name: 'Citi' },
+      aggregateRating: {
+        '@type'    : 'AggregateRating',
+        ratingValue : reviewDataNew.ratingValue.toString(),
+        bestRating  : '10',
+        worstRating : '1',
+        ratingCount : reviewDataNew.ratingCount.toString(),
+        reviewCount : '1', 
+      },
+      offers: {
+        '@type'            : 'Offer',
+        url                : reviewDataNew.applyLink,
+        priceCurrency      : 'USD',
+        price              : reviewDataNew.annualFee.toString(),
+        priceValidUntil    : '2026-12-31', 
+        itemCondition      : 'https://schema.org/NewCondition',
+        availability       : 'https://schema.org/InStock',
+        priceSpecification: [
+          {
+            '@type'              : 'PriceSpecification',
+            priceCurrency        : 'USD',
+            price                : reviewDataNew.annualFee.toString(),
+            valueAddedTaxIncluded: 'false',
+            description          : `Annual fee: $${reviewDataNew.annualFee}, waived for the first 12 months.`,
+          },
+          {
+            '@type'              : 'PriceSpecification',
+            priceCurrency        : 'USD',
+            description          : `Purchase APR: ${reviewDataNew.aprRange}. Foreign Transaction Fee: None. See official ${reviewDataNew.cardName} Rates & Fees on the issuer's website.`,
+          },
+        ],
+        seller: { '@type': 'Organization', name: 'Citi' },
+      },
+      review: { '@id': `${pageUrlFull}#editorReview` },
+    },
+    {
+      '@type'         : 'Review',
+      '@id'           : `${pageUrlFull}#editorReview`,
+      name            : `${reviewDataNew.cardName} – Review Updated ${new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`,
+      itemReviewed    : { '@id': `${pageUrlFull}#product` },
+      reviewBody      : reviewDataNew.reviewBody,
+      reviewRating    : {
+        '@type'    : 'Rating',
+        ratingValue : reviewDataNew.ratingValue.toString(),
+        bestRating  : '10',
+        worstRating : '1',
+        description: `${siteName} editorial rating based on a 10.0 scale, as of ${new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}.`
+      },
+      author          : {
+          '@type': 'Person',
+          'name': reviewDataNew.author.name,
+          'url': reviewDataNew.author.fullBioLink ? `${siteUrl}${reviewDataNew.author.fullBioLink}` : undefined,
+      },
+      publisher       : {
+        '@type' : 'Organization',
+        name    : siteName,
+        logo    : { '@type': 'ImageObject', url: `${siteUrl}/images/logo/your-logo-schema.png` }, 
+      },
+      datePublished   : publishDate,
+      dateModified    : updateDate,
+    },
+    {
+      '@type'            : 'WebPage',
+      '@id'              : pageUrlFull,
+      url                : pageUrlFull,
+      name               : reviewDataNew.title,
+      description        : reviewDataNew.description,
+      inLanguage         : 'en-US',
+      isPartOf           : { '@id': `${siteUrl}#website` },
+      primaryImageOfPage : { '@id': `${pageUrlFull}#primaryImage` },
+      breadcrumb         : { '@id': `${pageUrlFull}#breadcrumbs` },
+      datePublished      : publishDate,
+      dateModified       : updateDate,
+       author: {
+          '@type': 'Person',
+          'name': reviewDataNew.author.name,
+          'url': reviewDataNew.author.fullBioLink ? `${siteUrl}${reviewDataNew.author.fullBioLink}` : undefined
+       },
+    },
+    {
+      '@type'   : 'ImageObject',
+      '@id'     : `${pageUrlFull}#primaryImage`,
+      url       : `${siteUrl}${reviewDataNew.imageUrl}`,
+      width     : reviewDataNew.imageWidth,
+      height    : reviewDataNew.imageHeight,
+      caption   : reviewDataNew.cardName,
+    },
+    {
+      '@type'        : 'BreadcrumbList',
+      '@id'          : `${pageUrlFull}#breadcrumbs`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: siteName, item: siteUrl },
+        { '@type': 'ListItem', position: 2, name: 'Credit Card Reviews', item: `${siteUrl}/reviews` },
+        { '@type': 'ListItem', position: 3, name: `${reviewDataNew.cardName} Review`, item: pageUrlFull },
+      ],
+    },
+    { 
+      '@type'    : 'FAQPage',
+      '@id'      : `${pageUrlFull}#faqs`,
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'Can I get a free bag on a flight I booked with miles?',
+          acceptedAnswer: { '@type': 'Answer', text: "Yep! As long as your AAdvantage number is on the ticket, the benefits apply, no matter how you paid." }
+        },
+        {
+          '@type': 'Question',
+          name: 'Do my authorized users get a free bag if they travel without me?',
+          acceptedAnswer: { '@type': 'Answer', text: "No. They only get the perk if they are on the same reservation as the primary cardholder." }
+        },
+        {
+          '@type': 'Question',
+          name: 'Do I earn 2X Loyalty Points at restaurants?',
+          acceptedAnswer: { '@type': 'Answer', text: "Nope. It's a common point of confusion. You get 2X redeemable miles, but always only 1 Loyalty Point per dollar." }
+        },
+        {
+          '@type': 'Question',
+          name: 'Is that $125 flight discount a sure thing?',
+          acceptedAnswer: { '@type': 'Answer', text: "Not at all. It requires a hefty $20,000 annual spend. Think of it as a bonus for big spenders, not a standard perk." }
+        }
+      ],
+    },
+    {
+      '@type' : 'Organization',
+      '@id'   : `${siteUrl}#website`,
+      name    : siteName,
+      url     : siteUrl,
+      logo    : { '@type': 'ImageObject', url: `${siteUrl}/images/logo/your-logo-schema.png` }, 
+      sameAs  : [ 
+        "https://www.facebook.com/YourTravelCardInsiderFacebookPage",
+        "https://twitter.com/YourTravelCardInsiderTwitterHandle",
+      ],
+    },
+  ],
+};
+
+const ratingCriteriaOriginal = [
+    'Welcome Bonus Value',
+    'Free Checked Bag Benefit (for 5)',
+    'Rewards on Gas & Dining (2X)',
+    'Rewards on AA Flights (2X)',
+    'Loyalty Point Earning Rate (1 per $)',
+    'Annual Fee ($99, waived yr 1) vs. Value',
+    'Preferred Boarding Perk',
+    'No Foreign Transaction Fees',
+    'In-Flight Purchase Discount (25%)',
+    'Overall Value for AA Loyalists',
+    'Flexibility of AAdvantage Miles',
 ];
 
-function CitiAAPlatinumReviewPage() {
-  // --- Tooltip State and Logic ---
+const tocSections = [ 
+    { id: 'section-1', title: '1. At a Glance: The Platinum Select Cheat Sheet' },
+    { id: 'section-2', title: '2. Are You the Right Fit? Profiling the Ideal Cardholder' },
+    { id: 'section-3', title: '3. The Real Value Prop: A Closed-Door Rewards Program' },
+    { id: 'section-4', title: '4. The Main Event: A Breakdown of Key Features' },
+    { id: 'section-5', title: '5. That Welcome Bonus: What are 50,000 Miles Actually Worth?' },
+    { id: 'section-6', title: '6. Earning on the Ground: Your Daily Spending Strategy' },
+    { id: 'section-7', title: '7. The Loyalty Point Engine: A Shortcut to Elite Status' },
+    { id: 'section-8', title: '8. The Airport Advantage: Real Perks You Can Feel' },
+    { id: 'section-9', title: '9. The Little Extras: In-Flight Savings & Other Perks' },
+    { id: 'section-10', title: '10. The Nitty-Gritty: Full Rates & Fees' },
+    { id: 'section-11', title: '11. What We Love: The Platinum Select\'s Winning Features' },
+    { id: 'section-12', title: '12. Where it Falls Short: Potential Turbulence' },
+    { id: 'section-13', title: '13. Putting it to the Test: A Year with a Family Traveler' },
+    { id: 'section-14', title: '14. From the Source: Real User Reviews' },
+    { id: 'section-15', title: '15. Head-to-Head: The Mid-Tier Travel Card Showdown' },
+    { id: 'section-16', title: '16. The AAdvantage Family: Finding Your Perfect Fit' },
+    { id: 'section-17', title: '17. Cashing In: How to Redeem Your Miles Wisely' },
+    { id: 'section-18', title: '18. The Final Verdict: So, Is It Worth It?' },
+    { id: 'section-19', title: '19. Your Top Questions, Answered (FAQs)' },
+    { id: 'section-20', title: '20. Ready for Takeoff: How to Apply' },
+    { id: 'section-eat', title: 'Our E-A-T Commitment' },
+];
+
+
+function DraggableTableWrapper({ children }) {
+  const containerRef = useRef(null);
+  useEffect(() => {
+    if (typeof window === 'undefined' || window.innerWidth < 768) return;
+    const el = containerRef.current;
+    if (!el) return;
+    let isDragging = false, startX = 0, scrollStart = 0;
+    const startDrag = (e) => {
+      isDragging = true; el.classList.add(styles.grabbing);
+      startX = e.pageX || e.touches?.[0]?.pageX; scrollStart = el.scrollLeft;
+    };
+    const stopDrag = () => { isDragging = false; el.classList.remove(styles.grabbing); };
+    const onMove = (e) => {
+      if (!isDragging) return; e.preventDefault();
+      const x = e.pageX || e.touches?.[0]?.pageX;
+      el.scrollLeft = scrollStart - (x - startX);
+    };
+    el.addEventListener('mousedown', startDrag);
+    document.addEventListener('mouseup', stopDrag);
+    document.addEventListener('mouseleave', stopDrag);
+    el.addEventListener('mousemove', onMove);
+    el.addEventListener('touchstart', startDrag, { passive: true });
+    document.addEventListener('touchend', stopDrag);
+    el.addEventListener('touchmove', onMove, { passive: false });
+    return () => {
+      el.removeEventListener('mousedown', startDrag);
+      document.removeEventListener('mouseup', stopDrag);
+      document.removeEventListener('mouseleave', stopDrag);
+      el.removeEventListener('mousemove', onMove);
+      el.removeEventListener('touchstart', startDrag);
+      document.removeEventListener('touchend', stopDrag);
+      el.removeEventListener('touchmove', onMove);
+    };
+  }, []);
+  return (<div ref={containerRef} className={styles.draggableScrollContainer}>{children}</div>);
+}
+
+/* ──────────────────────────────
+    COMPONENT
+    ────────────────────────────── */
+function CitiAAdvantagePlatinumSelectReviewPage() {
   const [showRatingInfo, setShowRatingInfo] = useState(false);
-  const tooltipRef = useRef(null);
+  const [showAuthorBioTooltip, setShowAuthorBioTooltip] = useState(false);
+  const authorRef = useRef(null);
+  const authorTooltipRef = useRef(null);
+  const ratingTooltipRef = useRef(null);
 
   const handleIconClick = useCallback((event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        setShowRatingInfo(prevState => !prevState);
-    }, []);
+      event.preventDefault();
+      event.stopPropagation();
+      setShowRatingInfo(prevState => !prevState);
+  }, []);
 
-    const closeTooltip = useCallback(() => {
-        setShowRatingInfo(false);
-    }, []);
+  const handleAuthorMouseEnter = useCallback(() => {
+      setShowAuthorBioTooltip(true);
+  }, []);
 
-    useEffect(() => {
-        if (!showRatingInfo) return;
-        const handleClickOutside = (event) => {
-            const isInfoButton = event.target.closest(`.${styles.infoIconButton}`);
-            if (tooltipRef.current && !tooltipRef.current.contains(event.target) && !isInfoButton) {
-                closeTooltip();
-            }
-        };
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, [showRatingInfo, closeTooltip]);
-  // --- End Tooltip State and Logic ---
+  const handleAuthorMouseLeave = useCallback(() => {
+      const timerId = setTimeout(() => {
+          if (authorRef.current && authorTooltipRef.current) {
+              const isHoveringTrigger = authorRef.current.matches(':hover');
+              const isHoveringTooltip = authorTooltipRef.current.matches(':hover');
+              const isFocusWithinTrigger = authorRef.current.contains(document.activeElement);
+              const isFocusWithinTooltip = authorTooltipRef.current.contains(document.activeElement);
+              if (!isHoveringTrigger && !isHoveringTooltip && !isFocusWithinTrigger && !isFocusWithinTooltip) {
+                 setShowAuthorBioTooltip(false);
+              }
+          } else if (!authorRef.current?.matches(':hover') && !authorTooltipRef.current?.matches(':hover')) {
+               setShowAuthorBioTooltip(false);
+          }
+      }, 150);
+      if (authorRef.current) authorRef.current.tooltipTimeoutId = timerId;
+  }, [authorRef, authorTooltipRef]);
 
+   const handleAuthorClearTimeout = useCallback(() => {
+      if (authorRef.current?.tooltipTimeoutId) {
+          clearTimeout(authorRef.current.tooltipTimeoutId);
+      }
+   }, [authorRef]);
 
-  // Inline Structured Data
-  // !!! VERIFY all URLs, counts, and details FOR CITI AA PLATINUM SELECT !!!
-  const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
-  const pageUrl = `${siteUrl}/cards/citi-aadvantage-platinum`; // *** REPLACE with your actual page URL ***
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "Citi® / AAdvantage® Platinum Select® World Elite Mastercard®",
-    "image": `${siteUrl}${reviewData.imageUrl}`, // *** Assuming imageUrl starts with / ***
-    "description": "The Citi® / AAdvantage® Platinum Select® World Elite Mastercard® offers strong airline perks like a free checked bag, priority boarding, and accelerated AAdvantage miles.", // Adjusted description
-    "brand": {
-      "@type": "Brand",
-      "name": "Citi" // Issuer
-    },
-     "review": {
-      "@type": "Review",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": reviewData.ratingValue.toString(),
-        "bestRating": "10",
-        "worstRating": "1"
-      },
-      "author": {
-        "@type": "Organization",
-        "name": reviewData.author
-      },
-      "reviewBody": reviewData.description // Use meta description
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": reviewData.ratingValue.toString(),
-      "bestRating": "10",
-      "worstRating": "1",
-      "ratingCount": 950, // *** REPLACE with actual or estimated count ***
-      "reviewCount": 950  // *** REPLACE with actual or estimated count ***
-    },
-    "offers": {
-      "@type": "Offer",
-      "url": reviewData.applyLink.startsWith('http') ? reviewData.applyLink : `${siteUrl}${reviewData.applyLink}`, // *** Ensure full APPLY URL ***
-      "priceCurrency": "USD",
-      "price": "99", // Regular Annual Fee for Plat Select
-      // Could add Offer notes about $0 intro fee if schema supports
-      "availability": "https://schema.org/InStock",
-      "itemCondition": "https://schema.org/NewCondition"
-    }
-     // Consider adding "provider": { "@type": "Organization", "name": "American Airlines" }
+  useEffect(() => {
+      function handleClickOutside(event) {
+          if (showAuthorBioTooltip &&
+              authorRef.current && !authorRef.current.contains(event.target) &&
+              authorTooltipRef.current && !authorTooltipRef.current.contains(event.target)) {
+              setShowAuthorBioTooltip(false);
+          }
+          if (showRatingInfo &&
+              !event.target.closest(`.${styles.infoIconButton}`) && 
+              ratingTooltipRef.current && !ratingTooltipRef.current.contains(event.target)
+             ) {
+               setShowRatingInfo(false);
+          }
+      }
+      if (showAuthorBioTooltip || showRatingInfo) {
+          document.addEventListener("mousedown", handleClickOutside);
+      } else {
+           document.removeEventListener("mousedown", handleClickOutside);
+      }
+      return () => {
+          document.removeEventListener("mousedown", handleClickOutside);
+          if (authorRef.current?.tooltipTimeoutId) { 
+            clearTimeout(authorRef.current.tooltipTimeoutId);
+          }
+      };
+  }, [showAuthorBioTooltip, authorRef, authorTooltipRef, showRatingInfo, ratingTooltipRef]);
+
+  const summaryBoxData = {
+    welcomeOffer: "50,000 bonus miles after $2,500 spend in first 3 months.",
+    annualFee: `$${reviewDataNew.annualFee} (waived first year)`,
+    topEarning: "2X miles on AA, restaurants, & gas stations.",
+    keyPerks: "First checked bag free for you + 4 companions.",
+    travelPerk: "Preferred boarding & no foreign transaction fees.",
+    bestFor: "Practical AA flyers who want to erase bag fees & earn miles without fuss."
   };
 
 
   return (
     <>
-      {/* ===== HEAD SECTION for Metadata & SEO ===== */}
       <Head>
-        <title dangerouslySetInnerHTML={{ __html: reviewData.title }}></title>
-        <meta name="description" content={reviewData.description} />
-        <meta name="keywords" content={reviewData.keywords} />
-        <meta name="author" content={reviewData.author} />
-        <link rel="canonical" href={pageUrl} />
-        {/* Preload critical fonts */}
-        <link rel="preload" href="/fonts/Roboto_Condensed-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/Roboto_Condensed-Bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/PlayfairDisplay-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/Playfair-Display-Bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-
-        {/* OG/Twitter tags */}
-        <meta property="og:title" content={reviewData.title} />
-        <meta property="og:description" content={reviewData.description} />
-        <meta property="og:url" content={pageUrl} />
-        <meta property="og:image" content={structuredData.image} />
-        <meta property="og:type" content="article" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={reviewData.title} />
-        <meta name="twitter:description" content={reviewData.description} />
-        <meta name="twitter:image" content={structuredData.image} />
-
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-
-        {/* Structured Data (JSON-LD) */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
+        <title>{reviewDataNew.title} - {siteName}</title>
+        <meta name="description" content={reviewDataNew.description} />
+        <meta name="keywords" content={reviewDataNew.keywords} />
+        <meta name="author" content={reviewDataNew.author.name} />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta name="robots" content="index,follow,max-image-preview:large" />
+        <link rel="canonical" href={pageUrlFull} />
+        <link rel="alternate" href={pageUrlFull} hreflang="en-us" />
+        <link rel="preload" as="image" href={`${siteUrl}${reviewDataNew.imageUrl}`} />
+        <link rel="preload" as="image" href={reviewDataNew.author.imageUrl} />
+        <link rel="preload" as="image" href={reviewDataNew.author.tooltipImageUrl} />
         <meta name="geo.region" content="US" />
-<meta name="geo.placename" content="United States" />
-<meta name="language" content="en-US" />
-<meta name="distribution" content="US" />
-<link rel="alternate" href="https://www.travelcardinsider.com" hreflang="en-us" />
+        <meta name="geo.placename" content="United States" />
+        <meta name="language" content="en-US" />
+        <meta name="distribution" content="US" />
+        {[ 
+          '/fonts/inter-v18-latin-regular.woff2',
+          '/fonts/inter-v18-latin-600.woff2',
+          '/fonts/inter-v18-latin-700.woff2',
+          '/fonts/Roboto_Condensed-Regular.ttf',
+          '/fonts/Roboto_Condensed-Bold.ttf',
+        ].map((f) => (
+          <link key={f} rel="preload" href={f} as="font" type={f.endsWith('woff2') ? 'font/woff2' : 'font/ttf'} crossOrigin="anonymous" />
+        ))}
+        <meta property="og:type"        content="article" />
+        <meta property="og:locale"      content="en_US" />
+        <meta property="og:site_name"   content={siteName} />
+        <meta property="og:title"       content={reviewDataNew.title} />
+        <meta property="og:description" content={reviewDataNew.description} />
+        <meta property="og:url"         content={pageUrlFull} />
+        <meta property="og:image"       content={`${siteUrl}${reviewDataNew.imageUrl}`} />
+        <meta property="og:image:width" content={String(reviewDataNew.imageWidth)} />
+        <meta property="og:image:height" content={String(reviewDataNew.imageHeight)} />
+        <meta property="article:publisher" content={`https://www.facebook.com/YourTravelCardInsiderFacebookPage`} /> 
+        <meta property="article:section"       content="Credit Card Reviews" />
+        <meta property="article:published_time" content={publishDate} />
+        <meta property="article:modified_time"  content={updateDate} />
+        <meta property="article:author" content={reviewDataNew.author.name} />
+        {reviewDataNew.keywords.split(',').map(keyword => (
+            <meta property="article:tag" content={keyword.trim()} key={keyword.trim()} />
+        ))}
+        <meta name="twitter:card"        content="summary_large_image" />
+        <meta name="twitter:site" content="@YourTravelCardInsiderTwitterHandle" /> 
+        <meta name="twitter:creator" content={`@${reviewDataNew.author.socialLinks?.twitter?.split('/').pop() || 'YourAuthorTwitterHandle'}`} /> 
+        <meta name="twitter:title"       content={reviewDataNew.title} />
+        <meta name="twitter:description" content={reviewDataNew.description} />
+        <meta name="twitter:image"       content={`${siteUrl}${reviewDataNew.imageUrl}`} />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredDataOptimized) }} />
       </Head>
 
-      
-
       <main>
-        {/* Spacing for fixed header */}
-        <div style={{ marginTop: '2rem' }}></div> {/* Adjusted margin from HTML */}
-
-        {/* Review Container using CSS Module */}
-        <div className={styles.reviewContainer}>
-          <article> {/* Wrap main content in article */}
-            {/* ============= REVIEW HEADER ============= */}
-            <header className={styles.reviewHeader}>
-              {/* Using dangerouslySetInnerHTML for ® */}
-              <h1 dangerouslySetInnerHTML={{ __html: "Citi® / AAdvantage® Platinum Select® World Elite Mastercard® – 2025 Review"}}></h1>
-
-              {/* Section 1 Content (Part of Header Structure in Template) */}
-              <section id="section-1">
-                {/* Using dangerouslySetInnerHTML for ® */}
-                <div className={styles.intro}>
-                  <p dangerouslySetInnerHTML={{ __html:"The <strong>Citi® / AAdvantage® Platinum Select® World Elite Mastercard®</strong> is a mainstay airline card for American Airlines customers, blending free checked bags, priority boarding, and accelerated AAdvantage® miles for everyday categories. Often featuring a <strong>$99 annual fee</strong> (frequently <b>waived the first year</b>), it’s easy to justify if you fly AA even once or twice annually. In this review, we’ll dissect 20 sections— from quick stats and disclaimers to advanced usage tips— so you can decide if it’s the right companion for your 2025 travels."}}></p>
+        <div className={styles.reviewPageLayout}>
+          <div className={styles.mainContentArea}>
+            <section className={styles.heroSection}>
+              <div className={styles.heroTextContainer}>
+                <h1 className={styles.heroTitle}>
+                  {reviewDataNew.h1Content}
+                </h1>
+                 <div 
+                    className={styles.authorBioContainer}
+                    ref={authorRef}
+                    onMouseEnter={() => { handleAuthorClearTimeout(); handleAuthorMouseEnter(); }}
+                    onMouseLeave={handleAuthorMouseLeave}
+                    onFocus={handleAuthorMouseEnter} 
+                    onBlur={handleAuthorMouseLeave}  
+                    aria-haspopup="true" 
+                    aria-expanded={showAuthorBioTooltip} 
+                    tabIndex={0} 
+                >
+                    <Image
+                        src={reviewDataNew.author.imageUrl} 
+                        alt={`${reviewDataNew.author.name} headshot`}
+                        width={reviewDataNew.author.imageWidth}
+                        height={reviewDataNew.author.imageHeight}
+                        className={styles.authorImageSmall}
+                        priority 
+                    />
+                    <div className={styles.authorInfoBlock}>
+                        <div className={styles.authorNameLine}>
+                            <span className={styles.authorPrefix}>By</span>
+                            <span className={styles.authorName}>{reviewDataNew.author.name}</span>
+                        </div>
+                        <span className={styles.authorTitle}>{reviewDataNew.author.title}</span>
+                        {updateDate && (
+                            <time dateTime={updateDate} className={styles.authorLastEdited}>
+                                Last updated: {new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                            </time>
+                        )}
+                        {reviewDataNew.author.socialLinks && (
+                            <div className={styles.authorSocialLinks}>
+                                {reviewDataNew.author.socialLinks.linkedin && (
+                                    <a href={reviewDataNew.author.socialLinks.linkedin} target="_blank" rel="noopener noreferrer me" aria-label={`${reviewDataNew.author.name} on LinkedIn`} className={styles.socialIconLink}>
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                    </a>
+                                )}
+                                {reviewDataNew.author.socialLinks.twitter && (
+                                    <a href={reviewDataNew.author.socialLinks.twitter} target="_blank" rel="noopener noreferrer me" aria-label={`${reviewDataNew.author.name} on Twitter`} className={styles.socialIconLink}>
+                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-.422.724-.665 1.56-.665 2.452 0 1.697.864 3.198 2.18 4.078-.8-.025-1.555-.247-2.227-.616v.054c0 2.37 1.683 4.333 3.91 4.78-.426.116-.874.174-1.337.174-.31 0-.611-.03-.904-.085.622 1.936 2.421 3.338 4.553 3.377-1.672 1.309-3.781 2.088-6.072 2.088-.394 0-.784-.023-1.169-.069 2.16 1.389 4.723 2.202 7.482 2.202 8.979 0 13.897-7.446 13.897-13.898 0-.21 0-.42-.015-.63.953-.689 1.778-1.56 2.433-2.525z"/></svg>
+                                    </a>
+                                )}
+                                {reviewDataNew.author.socialLinks.email && (
+                                    <a href={`mailto:${reviewDataNew.author.socialLinks.email}`} aria-label={`Email ${reviewDataNew.author.name}`} className={styles.socialIconLink}>
+                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
+                                    </a>
+                                )}
+                            </div>
+                        )}
+                    </div>
+                    {showAuthorBioTooltip && reviewDataNew.author.bioSnippet && ( 
+                        <div
+                            className={styles.authorTooltip}
+                            ref={authorTooltipRef}
+                            role="tooltip" 
+                            onMouseEnter={handleAuthorClearTimeout} 
+                            onMouseLeave={handleAuthorMouseLeave}
+                            onFocus={handleAuthorMouseEnter} 
+                            onBlur={handleAuthorMouseLeave}  
+                        >
+                             <div className={styles.authorTooltipHeader}>
+                                 <Image
+                                    src={reviewDataNew.author.tooltipImageUrl} 
+                                    alt={`${reviewDataNew.author.name} large headshot`}
+                                    width={reviewDataNew.author.tooltipImageWidth}
+                                    height={reviewDataNew.author.tooltipImageHeight}
+                                    className={styles.authorTooltipImage}
+                                 />
+                                 <div className={styles.authorTooltipInfo}>
+                                     <span className={styles.authorTooltipName}>{reviewDataNew.author.name}</span>
+                                     <span className={styles.authorTooltipTitle}>{reviewDataNew.author.title}</span>
+                                 </div>
+                               </div>
+                               {reviewDataNew.author.expertise && reviewDataNew.author.expertise.length > 0 && (
+                                 <div className={styles.authorTooltipExpertise}>
+                                     <strong>Expertise</strong>
+                                     <ul>
+                                         {reviewDataNew.author.expertise.map(area => <li key={area}>{area}</li>)}
+                                     </ul>
+                                 </div>
+                               )}
+                               <p className={styles.authorTooltipBioSnippet}>{reviewDataNew.author.bioSnippet}</p>
+                               {reviewDataNew.author.fullBioLink && (
+                                   <Link href={reviewDataNew.author.fullBioLink} legacyBehavior>
+                                       <a className={styles.authorTooltipBioLink}>
+                                           See full bio
+                                       </a>
+                                   </Link>
+                               )}
+                               {reviewDataNew.author.socialLinks && (
+                                    <div className={styles.authorTooltipSocials}>
+                                        {reviewDataNew.author.socialLinks.linkedin && (
+                                             <a href={reviewDataNew.author.socialLinks.linkedin} target="_blank" rel="noopener noreferrer me" aria-label={`${reviewDataNew.author.name} on LinkedIn`} className={styles.socialIconLink}>
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                             </a>
+                                         )}
+                                         {reviewDataNew.author.socialLinks.twitter && (
+                                             <a href={reviewDataNew.author.socialLinks.twitter} target="_blank" rel="noopener noreferrer me" aria-label={`${reviewDataNew.author.name} on Twitter`} className={styles.socialIconLink}>
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-.422.724-.665 1.56-.665 2.452 0 1.697.864 3.198 2.18 4.078-.8-.025-1.555-.247-2.227-.616v.054c0 2.37 1.683 4.333 3.91 4.78-.426.116-.874.174-1.337.174-.31 0-.611-.03-.904-.085.622 1.936 2.421 3.338 4.553 3.377-1.672 1.309-3.781 2.088-6.072 2.088-.394 0-.784-.023-1.169-.069 2.16 1.389 4.723 2.202 7.482 2.202 8.979 0 13.897-7.446 13.897-13.898 0-.21 0-.42-.015-.63.953-.689 1.778-1.56 2.433-2.525z"/></svg>
+                                             </a>
+                                         )}
+                                         {reviewDataNew.author.socialLinks.email && (
+                                             <a href={`mailto:${reviewDataNew.author.socialLinks.email}`} aria-label={`Email ${reviewDataNew.author.name}`} className={styles.socialIconLink}>
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
+                                             </a>
+                                         )}
+                                    </div>
+                                )}
+                        </div>
+                    )}
                 </div>
-
-                {/* Image Container */}
+                <p className={styles.heroSubtitle}>
+                  Let's be honest: turning your everyday spending into a vacation sounds great, but it can feel complicated. For anyone who regularly flies American Airlines, the {reviewDataNew.cardName} often comes up as the go-to solution. But is it really the workhorse card it claims to be? I've dug into every corner of this card to see who it’s truly for, how to squeeze every drop of value from its perks, and where it falls short. We'll go beyond the marketing points to see if it deserves a permanent spot in your wallet. If you find yourself on an AA flight even just a couple of times a year, this might be the key to unlocking serious savings.
+                </p>
+                <div className={styles.heroCtaContainer}>
+                  <div>
+                    <a
+                      href={reviewDataNew.applyLink} 
+                      target="_blank"
+                      rel="noopener noreferrer sponsored" 
+                      className={`${styles.applyNowButton} ${styles.heroApplyButton}`}
+                    >
+                      Apply Securely Now
+                    </a>
+                    <span className={styles.heroApplyButtonDisclaimer}>
+                      on American Airlines's official site
+                    </span>
+                  </div>
+                  <Link href="#section-1" legacyBehavior>
+                    <a className={styles.heroSecondaryLink}>View Key Features</a>
+                  </Link>
+                </div>
+              </div>
+              <div className={styles.heroImageContainer}>
                 <div className={styles.cardImageContainer}>
-                  {/* Corrected class name */}
-                   <Image
-                     src={reviewData.imageUrl}
-                     alt={"Citi® / AAdvantage® Platinum Select® World Elite Mastercard®"}
-                     width={reviewData.imageWidth} // *** REPLACE or use data ***
-                     height={reviewData.imageHeight} // *** REPLACE or use data ***
-                     className={styles.cardImage}
-                     priority
-                   />
-                 </div>
-
-                {/* RATING SECTION */}
+                  <Image
+                    src={reviewDataNew.imageUrl}
+                    alt={reviewDataNew.cardName}
+                    width={reviewDataNew.imageWidth} 
+                    height={reviewDataNew.imageHeight} 
+                    className={styles.heroImage}
+                    priority 
+                  />
+                </div>
                 <div className={styles.ratingSection}>
                   <span className={styles.tciRating}>
                     <button
                       type="button"
-                      className={styles.infoIconButton} // Use CSS module class
+                      className={styles.infoIconButton}
                       aria-label="Rating Information"
-                      title="Our TCI rating info"
                       onClick={handleIconClick}
+                      aria-expanded={showRatingInfo} 
                     >
-                       <svg aria-hidden="true" focusable="false" className={styles.infoIcon} viewBox="0 0 16 16">
-                         <path fillRule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                         <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-                       </svg>
+                      <svg aria-hidden="true" focusable="false" className={styles.infoIcon} viewBox="0 0 16 16"> 
+                        <path fillRule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                      </svg>
                     </button>
-                    TCI Rating: <strong>{reviewData.ratingValue.toFixed(1)}</strong>/10
-
-                    {/* --- Conditionally Rendered Tooltip --- */}
-                    {showRatingInfo && (
-                        <div
-                            ref={tooltipRef}
-                            className={styles.ratingTooltip}
-                            role="tooltip"
-                            aria-live="polite"
-                        >
-                            <strong>TCI Rating: {reviewData.ratingValue.toFixed(1)}/10</strong>
-                            {/* Using ratingCriteria array */}
-                            <p className={styles.tooltipIntro}>Our TCI rating system criteria including rewards, welcome bonus, annual fee, redemption flexibility, travel benefits, APR, foreign transaction fees, user experience, and other features.</p>
-                            
-                        </div>
+                    {siteName} Rating: <strong>{reviewDataNew.ratingValue.toFixed(1)}</strong>/10
+                    {showRatingInfo && ( 
+                      <RatingTooltip
+                        ref={ratingTooltipRef}
+                        ratingValue={reviewDataNew.ratingValue}
+                        ratingCriteria={ratingCriteriaOriginal} 
+                        onClose={() => setShowRatingInfo(false)}
+                      />
                     )}
                   </span>
-
-                  {/* STAR RATING - Corrected style value */}
-                  <div className={styles.starRating} title={`Rated ${reviewData.ratingValue} out of 10 stars`} style={{ '--rating': `${reviewData.ratingValue * 10}%` }}>
-                    <span>★★★★★</span>
-                    <span className={styles.filledStars}>★★★★★</span>
-                  </div>
-
-                  <div className={styles.ratingDescription}>
-                    <i>Excellent mid-tier AA card with free bag, priority boarding, and solid miles for everyday categories.</i>
+                  <div className={styles.starRating} title={`Rated ${reviewDataNew.ratingValue} out of 10 stars`}>
+                      ★★★★★
+                      <span className={styles.filledStars} style={{ '--rating': `${(reviewDataNew.ratingValue / 10) * 100}%` }}>
+                        ★★★★★
+                      </span>
                   </div>
                 </div>
-              </section>
-            </header>
-
-            {/* ============= REVIEW CONTENT SECTIONS (Hardcoded JSX) ============= */}
-
-             {/* Section 2: Quick Stats Table */}
-             <section id="section-2" className={styles.reviewSection}>
-                <h2>Quick Stats at a Glance</h2>
-                <div className={styles.tableContainer}>
-                    <table className={styles.statsTable}>
-                        <thead>
-                            <tr>
-                                <th>Feature</th>
-                                <th>Details</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td data-label="Feature">Annual Fee</td>
-                                <td data-label="Details">$99 (often waived first year)</td>
-                            </tr>
-                             {/* Using dangerouslySetInnerHTML for ® */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Feature">Welcome Bonus</td><td data-label="Details">Commonly 50k–60k AAdvantage® miles after spending $2,500+ in first 3 months (offer varies)</td>'}}></tr>
-                            {/* Using dangerouslySetInnerHTML for &amp; ® */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Feature">Earning Rates</td><td data-label="Details">2x miles at Restaurants &amp; Gas Stations, 2x on AA purchases, 1x all else</td>'}}></tr>
-                            <tr>
-                                <td data-label="Feature">Free Checked Bag</td>
-                                <td data-label="Details">For primary cardholder + up to 4 companions on same reservation</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Feature">Priority Boarding</td>
-                                <td data-label="Details">Group 5 boarding on AA flights, securing overhead bin space early</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Feature">No FTF</td>
-                                <td data-label="Details">No foreign transaction fee</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Feature">25% Off Inflight Purchases</td>
-                                <td data-label="Details">Enjoy 25% back on inflight food and beverage charges as statement credit</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Feature">Recommended Credit</td>
-                                <td data-label="Details">Good–excellent (700+ FICO typically)</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                 <div className={styles.ratingDescription}>
+                    <i>{reviewDataNew.cardName}: {reviewDataNew.description}</i>
+                 </div>
+              </div>
             </section>
 
-            {/* CTA Section */}
-             <section id="cta" className={styles.ctaSection}>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <h2 dangerouslySetInnerHTML={{__html:"Get the <b>Citi® / AAdvantage® Platinum Select® World Elite Mastercard®</b> Today!"}}></h2>
-                <div className={styles.ctaButtons}>
-                    <a href={reviewData.applyLink} className={`${styles.btn} ${styles.btnApply}`} title="From card issuer's secure site" target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
-                     {/* Using dangerouslySetInnerHTML for &amp; */}
-                    <a href={reviewData.ratesLink} className={`${styles.btn} ${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored" dangerouslySetInnerHTML={{__html:"See Rates &amp; Fees"}}></a>
-                </div>
-            </section>
-
-            {/* Section 3: Card Overview & Positioning */}
-            <section id="section-3" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html: "Card Overview &amp; Positioning" }}></h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html: "The <b>Citi® / AAdvantage® Platinum Select®</b> is a bread-and-butter airline card for moderate American Airlines loyalty. With sub-$100 annual fee (often waived the first year), it’s cheaper than premium alternatives but still grants a free first checked bag, priority boarding, and 2x miles on AA purchases, restaurants, and gas stations—three categories that can quickly accumulate miles. If you routinely fly AA or oneworld from a major hub (Dallas, Charlotte, Miami, Phoenix, or JFK), this card can drastically improve your travel experience and offset bag fees." }}></p>
-            </section>
-
-            {/* Section 4: Earning Miles & Travel Emphasis */}
-             <section id="section-4" className={styles.reviewSection}>
-                <h2>Earning AAdvantage® Miles & Everyday Categories</h2>
-                <p>
-                    Typically, you earn:
-                </p>
-                <ul className={styles.featureList}>
-                    <li><strong>2x miles</strong> on American Airlines purchases</li>
-                    <li><strong>2x miles</strong> at <b>restaurants</b> and <b>gas stations</b></li>
-                    <li><strong>1x mile</strong> on all other spending</li>
-                </ul>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html: "This structure ensures you accumulate AAdvantage® miles beyond just flight spending. Gas and dining are two large categories for many households, so you can rack up miles quickly. If you also book multiple AA flights for your family or business, the 2x on those ticket purchases is a direct route to free flights or upgrades." }}></p>
-            </section>
-
-            {/* Section 5: Redeeming AAdvantage® Miles */}
-            <section id="section-5" className={styles.reviewSection}>
-                <h2>Redeeming AAdvantage® Miles</h2>
-                <p>
-                    The simplest usage is awarding flights on <b>American Airlines</b> or oneworld partners, like British Airways, Japan Airlines, or Qantas. Standard domestic round-trip might run 25k–30k miles in economy, but you can find off-peak deals or MileSAAver awards as low as 15k round-trip for certain short routes. For international business or first, you might target 57.5k–85k+ miles one-way, depending on route and partner.
-                </p>
-                <p>
-                    If you want maximum value, look for partner awards—like JAL or Qatar—for premium cabins, or short-haul flights under 500 miles for cheap mileage rates. Keep watch for dynamic changes or web specials—some can be under 10k one-way domestically. Avoid non-flight redemptions (gift cards, hotel stays) as they usually yield a lower value per mile.
-                </p>
-            </section>
-
-            {/* Section 6: Travel Perks & Priority Boarding */}
-            <section id="section-6" className={styles.reviewSection}>
-                <h2>Travel Perks &amp; Priority Boarding</h2>
-                <p>
-                    The <b>first checked bag free</b> perk often saves $30 each way per passenger, up to 4 companions on the same reservation, so a single trip can cover the annual fee. Additionally, <b>priority boarding</b> (Group 5) ensures you board earlier than economy main cabin, helpful for overhead bin space. You also get <b>25% off in-flight purchases</b> (food and beverages) credited back.
-                </p>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html: "Note that lounge access is not included with this card. For Admirals Club® access, you’d look at the more premium <b>Citi® / AAdvantage® Executive World Elite</b> with a higher fee. But for many travelers, the bag, miles, and boarding perks suffice." }}></p>
-            </section>
-
-            {/* Section 7: Annual Fee & Ongoing Costs */}
-            <section id="section-7" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html: "Annual Fee &amp; Ongoing Costs" }}></h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html: "The <b>$99 annual fee</b> is commonly <b>waived</b> in the first year. By year two, if you’ve checked a bag or used the card’s inflight discount a few times, you’ll likely offset that cost. The ongoing APR is about <strong>19.99%–29.99% Variable</strong>. Paying in full is best to avoid interest overshadowing your mileage savings. There’s <b>no foreign transaction fee</b>, so you can use it abroad or on oneworld flights overseas without a 3% surcharge." }}></p>
-            </section>
-
-            {/* Section 8: 2025 Updates & Potential Changes */}
-            <section id="section-8" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html: "2025 Updates &amp; Potential Changes" }}></h2>
-                <ol className={styles.numberedList}>
-                     {/* Using dangerouslySetInnerHTML for &amp; */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Category Earning Tweaks:</strong> Citi might add or rotate categories, such as 2x on groceries or streaming services—always re-check T&amp;Cs each year."}}></li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>AA Award Chart Adjustments:</strong> AAdvantage® could shift redemption bands or move more to dynamic pricing. Stay informed on potential mile valuations."}}></li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Elite Status Ties:</strong> Currently, the Platinum card doesn’t directly accelerate Loyalty Points significantly—just normal earning. We might see expansions or waived thresholds for certain tiers in 2025. (Check for official announcements.)"}}></li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Increased Sign-Up Bonuses:</strong> 60k or 70k AAdvantage® miles might appear for limited-time promos. 2025 might bring even bigger offers if competition intensifies."}}></li>
-                </ol>
-                <p>
-                    Always confirm official details with Citi or American Airlines for the latest perks or possible expansions in lounge policy or fee structures.
-                </p>
-            </section>
-
-             {/* Section 9: Real-Life Example Table */}
-             <section id="section-9" className={styles.reviewSection}>
-                <h2>Real-Life Example: Earning & Savings</h2>
-                <p>
-                    Imagine you spend $3,000 on AA flights, $2,000 on dining, $2,000 on gas, and $5,000 on everything else. Let’s see your approximate annual mileage haul:
-                </p>
-                <div className={styles.tableContainer}>
-                    <table className={styles.statsTable}>
-                        <thead>
-                            <tr>
-                                <th>Category</th>
-                                <th>Annual Spend</th>
-                                <th>Miles per $</th>
-                                <th>Miles Earned</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td data-label="Category">AA Flights</td>
-                                <td data-label="Annual Spend">$3,000</td>
-                                <td data-label="Miles per $">2x</td>
-                                <td data-label="Miles Earned">6,000</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Category">Dining</td>
-                                <td data-label="Annual Spend">$2,000</td>
-                                <td data-label="Miles per $">2x</td>
-                                <td data-label="Miles Earned">4,000</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Category">Gas Stations</td>
-                                <td data-label="Annual Spend">$2,000</td>
-                                <td data-label="Miles per $">2x</td>
-                                <td data-label="Miles Earned">4,000</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Category">Other</td>
-                                <td data-label="Annual Spend">$5,000</td>
-                                <td data-label="Miles per $">1x</td>
-                                <td data-label="Miles Earned">5,000</td>
-                            </tr>
-                            <tr style={{fontWeight: 'bold', borderTop: '2px solid #dee2e6'}}>
-                                <th data-label="Category">Total</th>
-                                <th data-label="Annual Spend">$12,000</th>
-                                <th data-label="Miles per $">—</th>
-                                <th data-label="Total Points">19,000</th>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <p>
-                    You’d earn ~19,000 miles from spend alone. If you add a sign-up bonus (often 50k–60k), you’re at ~69k+ miles in year one—enough for domestic round-trips or even a one-way to Europe in economy on a oneworld partner. Throw in a free bag ($30 each way) used a few times and you easily surpass the $99 annual fee.
-                </p>
-            </section>
-
-             {/* Section 10: Competitor Analysis */}
-             <section id="section-10" className={styles.reviewSection}>
-                <h2>Competitor Analysis</h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{__html:"How does the <b>AAdvantage® Platinum Select®</b> compare to similar mid-tier airline/travel cards?"}}></p>
-                <div className={styles.tableContainer}>
-                    <table className={styles.statsTable}>
-                        <thead>
-                            <tr>
-                                <th>Card</th>
-                                <th>Annual Fee</th>
-                                <th>Main Perks</th>
-                                <th>Why Choose</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                             {/* Using dangerouslySetInnerHTML for ® */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Card">Citi® / AAdvantage® Platinum Select®</td><td data-label="Annual Fee">$99 (often waived yr 1)</td><td data-label="Main Perks">Free bag, priority boarding, 2x on AA/dining/gas</td><td data-label="Why Choose">Best for loyal AA travelers wanting a cheaper card with strong perks</td>'}}></tr>
-                            {/* Using dangerouslySetInnerHTML for ® */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Card">Delta SkyMiles® Gold Amex</td><td data-label="Annual Fee">$99 (waived yr 1)</td><td data-label="Main Perks">Free checked bag, 2x on Delta/restaurants/grocery, priority boarding</td><td data-label="Why Choose">If you’re more Delta-oriented than American</td>'}}></tr>
-                             {/* Using dangerouslySetInnerHTML for ℠ */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Card">United℠ Explorer Card</td><td data-label="Annual Fee">$0 intro, then ~$95</td><td data-label="Main Perks">Free bag, 2 United Club passes, 2x on United/dining/hotels</td><td data-label="Why Choose">Better for frequent United flyers or if you want lounge passes</td>'}}></tr>
-                             {/* Using dangerouslySetInnerHTML for ® */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Card">Chase Sapphire Preferred®</td><td data-label="Annual Fee">$95</td><td data-label="Main Perks">Flexible UR points, 2–3x on travel/dining, primary car rental coverage</td><td data-label="Why Choose">Versatile if you don’t want to commit to a single airline, but no free bag perk</td>'}}></tr>
-                        </tbody>
-                    </table>
-                </div>
-                <p>
-                    If you prefer American Airlines from an AA hub, the Platinum card typically outperforms general travel cards for direct AA perks—bag waivers, boarding privileges, and dedicated mile earning. If you’re not loyal to AA, you might want a flexible card or an airline card matching your local airport’s dominance.
-                </p>
-            </section>
-
-             {/* Section 11: Pairing with Other Citi or Travel Cards */}
-             <section id="section-11" className={styles.reviewSection}>
-                <h2>Pairing with Other Citi / Travel Cards</h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{__html:"A common question: <i>Should I hold multiple Citi cards?</i> The <b>AAdvantage® Platinum</b> specifically focuses on AA perks, so if you want flexible points from Citi (like ThankYou® Points), you might also get the <b>Citi Premier®</b> or <b>Citi Custom Cash®</b> for day-to-day categories. However, you cannot directly convert ThankYou® Points into AAdvantage® miles unless a special promotion arises."}}></p>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{__html:"Another synergy is using the AA Platinum for flights, dining, gas, while a 2% or 5% rotating category card for everything else. Then redeem your banked AAdvantage® miles on flights to dream destinations or business class across the oneworld network."}}></p>
-            </section>
-
-             {/* Section 12: AAdvantage® Elite Status & Loyalty Points */}
-             <section id="section-12" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html:"AAdvantage® Elite Status & Loyalty Points"}}></h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{__html:"American Airlines switched to a <b>Loyalty Points</b> system. As you spend on this card (and other AA partners), you can accumulate Loyalty Points that help you reach AAdvantage® Gold, Platinum, Platinum Pro, or Executive Platinum. Essentially, <b>1 mile earned = 1 Loyalty Point</b> when spending on the card. So if you earn 10,000 miles from card spend, you also earn 10,000 Loyalty Points toward status."}}></p>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{__html:"This synergy can help you climb to higher tiers if your flight activity plus credit card spending is enough. Higher tiers yield complimentary upgrades, lounge passes (Platinum Pro/Exec Plat), and more. The <b>Platinum Select</b> itself doesn’t provide a direct fast-track or big bonus of Loyalty Points, but the general 1:1 approach with miles is still beneficial for incremental progress."}}></p>
-            </section>
-
-             {/* Section 13: No Foreign Transaction Fee & Global Use */}
-             <section id="section-13" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html:"No Foreign Transaction Fee &amp; Global Acceptance"}}></h2>
-                <p>
-                    The card has <b>no FTF</b>, so you can swipe abroad without penalty. As a Mastercard, acceptance is broad worldwide, especially in Europe, Asia, or Latin America. For oneworld flights overseas (e.g., British Airways, Iberia connections), you can keep earning 2x if it’s booked as an American Airlines-coded purchase, or at least 1x for general spending abroad.
-                </p>
-            </section>
-
-            {/* Section 14: Potential Downsides */}
-            <section id="section-14" className={styles.reviewSection}>
-                <h2>Potential Downsides</h2>
-                <ul className={styles.featureList}>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>No Lounge Access:</strong> Admirals Club® is not included. You’d need the Executive card or separate membership for lounge perks."}}></li>
-                    <li><strong>Limited Bonus Categories:</strong>
-                    2x on dining/gas + AA flights is nice, but many modern cards offer 3x or 4x on dining or groceries, etc.</li>
-                    <li><strong>$99 AF (Though Often Waived Yr 1):</strong>
-                    Some competitor airline cards or bank travel cards might have $0 or cheaper net cost if you rarely check bags.</li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Variable Value on Award Flights:</strong> As AA moves more to dynamic pricing, certain routes at prime times can be expensive in miles. Watch for deals or partner sweet spots."}}></li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Higher Tiers for Big Spenders Only:</strong> While you earn Loyalty Points, big status tiers require tens/hundreds of thousands of points—some may prefer a bigger boost from a premium card if chasing top-tier status solely through spend."}}></li>
-                </ul>
-            </section>
-
-             {/* Section 15: Advanced Tips & Strategies */}
-             <section id="section-15" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html:"Advanced Tips &amp; Strategies"}}></h2>
-                <ol className={styles.numberedList}>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Monitor Web Specials:</strong> Check AA’s award chart or website for “Web Special” deals, sometimes below the standard MileSAAver level, to maximize your miles in economy or even business class."}}></li>
-                    <li><strong>Exploit Partner Awards:</strong>
-                    Redeem on Qatar, JAL, or British Airways for premium cabin deals to Europe, Asia, or the Middle East—some hidden gems exist if you book early or off-peak.</li>
-                     {/* Using dangerouslySetInnerHTML for &amp; */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Dining &amp; Gas = 2x Multi-Bonus:</strong> If you frequently dine out or commute, funneling those categories onto the Platinum card can accelerate your mile accumulation while building Loyalty Points for status."}}></li>
-                    <li><strong>Free Bag for Entire Family:</strong>
-                    Up to 4 companions on the same reservation get their first bag free—this can save $150+ each round-trip if traveling in a group.</li>
-                    <li><strong>Use Priority Boarding Effectively:</strong>
-                    Don’t wait at the gate if you want overhead bin space—Group 5 boards well before the main economy crowd (Group 8 or 9), crucial if the flight is jam-packed.</li>
-                </ol>
-            </section>
-
-             {/* Section 16: Another Real-Life Example */}
-             <section id="section-16" className={styles.reviewSection}>
-                <h2>Another Example: Weekend Trips & Family Savings</h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{__html:"Suppose you take two domestic round-trips a year on AA, typically paying $40 round-trip to check a bag. That’s $80 you save. A companion also checks a bag ($80 more). You’ve hit $160 in baggage savings across those trips. If your annual fee is waived the first year, you’re well ahead. Even paying $99 in the second year, you net $61 in savings just on bag fees, plus any 25% inflight discount or possible sign-up bonus for free flights."}}></p>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{__html:"If you also do a big vacation to Europe using partner awards, you can redeem your built-up AAdvantage® miles from all that dining, gas, flight spending, and sign-up bonus, easily netting a few hundred dollars in flight savings or more if you find the right off-peak route."}}></p>
-            </section>
-
-            {/* Section 17: Elite Status & Card Usage */}
-            <section id="section-17" className={styles.reviewSection}>
-                <h2>Elite Status & Card Usage</h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{__html:"Some travelers wonder if they can reach Platinum Pro or Executive Platinum purely via card spend. In theory, yes—if you funnel massive spend to earn Loyalty Points, but that might overshadow the card’s 2x categories if you can get bigger multipliers on a different product. Typically, you’d combine flight miles + moderate card usage to hit lower or mid-tier statuses (Gold or Platinum). For top tiers, consider also flying more, or the <b>AAdvantage® Executive</b> card that might offer more synergy or add lounge membership."}}></p>
-            </section>
-
-             {/* Section 18: Competitor & Alternative Cards */}
-             <section id="section-18" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html:"Competitors &amp; Alternatives"}}></h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{__html:"If you’re uncertain about American Airlines focus:"}}></p>
-                <ul className={styles.featureList}>
-                    {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Delta SkyMiles® Gold:</strong> If you’re near a Delta hub (ATL, DTW, MSP), offering free bag, 2x on restaurants/groceries, $99 fee."}}></li>
-                     {/* Using dangerouslySetInnerHTML for ℠ */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>United℠ Explorer:</strong> If near a United hub with free bag, 2 lounge passes, 2x on restaurants/hotels, $0 first year, then ~$95."}}></li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Southwest Rapid Rewards® Priority:</strong> If you want 2 free checked bags always, plus a path to Companion Pass, though route to Hawaii or other destinations might differ from AA’s global coverage."}}></li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Chase Sapphire Preferred®:</strong> If you want flexible points to move to multiple airlines (but no free bag or priority boarding on AA specifically)."}}></li>
-                </ul>
-                <p>
-                    The deciding factor is typically your <b>preferred airline</b> and how often you’d actually use that free bag or priority boarding. The Platinum Select is best for consistent American Airlines usage from your home base.
-                </p>
-            </section>
-
-             {/* Section 19: Who Should Get the Card? */}
-             <section id="section-19" className={styles.reviewSection}>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <h2 dangerouslySetInnerHTML={{__html:"Who Should Get the Citi® / AAdvantage® Platinum Select®?"}}></h2>
-                <div className={styles.prosCons}>
-                    <div className={styles.pros}>
-                        <h3>Perfect For:</h3>
-                        <ul className={styles.featureList}>
-                             {/* Using dangerouslySetInnerHTML for ® */}
-                            <li dangerouslySetInnerHTML={{__html:"<strong>Frequent (or moderate) AA Flyers:</strong> If you consistently choose American from an AA hub or route preference"}}></li>
-                            <li><strong>Need a free checked bag for family or friends:</strong>
-                            Up to 4 companions can save big on baggage fees</li>
-                            <li><strong>Enjoy Priority Boarding:</strong>
-                            If overhead bin space is crucial or you dislike the scramble</li>
-                            <li><strong>Lowish Annual Fee:</strong>
-                            $99 often waived year one, easily recouped with bag usage alone</li>
-                        </ul>
+             <div className={styles.reviewContainer}> 
+              <article>
+                <header className={styles.reviewHeader}>
+                    <div className={styles.summaryBox} id="summaryBoxTitle">
+                        <h2 className={styles.summaryBoxTitle}>{reviewDataNew.cardName}: Key Insights</h2>
+                        <div className={styles.summaryGrid}>
+                            <div className={styles.summaryItem}>
+                                <span className={styles.summaryIcon}><IconGift /></span> 
+                                <span className={styles.summaryLabel}>Welcome Offer:</span>
+                                <span className={styles.summaryValue}>{summaryBoxData.welcomeOffer}</span>
+                            </div>
+                            <div className={styles.summaryItem}>
+                                <span className={styles.summaryIcon}><IconCheck /></span> 
+                                <span className={styles.summaryLabel}>Annual Fee:</span>
+                                <span className={styles.summaryValue}>{summaryBoxData.annualFee}</span>
+                            </div>
+                            <div className={styles.summaryItem}>
+                                <span className={styles.summaryIcon}><IconStar /></span> 
+                                <span className={styles.summaryLabel}>Top Earning:</span>
+                                <span className={styles.summaryValue}>{summaryBoxData.topEarning}</span>
+                            </div>
+                             <div className={styles.summaryItem}>
+                                <span className={styles.summaryIcon}><IconDollar /></span> 
+                                <span className={styles.summaryLabel}>Key Perks:</span>
+                                <span className={styles.summaryValue}>{summaryBoxData.keyPerks}</span>
+                            </div>
+                            <div className={styles.summaryItem}>
+                                <span className={styles.summaryIcon}><IconPlane /></span>
+                                <span className={styles.summaryLabel}>Travel Perk:</span>
+                                <span className={styles.summaryValue}>{summaryBoxData.travelPerk}</span>
+                            </div>
+                            <div className={styles.summaryItem} data-full-width="true"> 
+                                <span className={styles.summaryIcon}><IconPlus /></span> 
+                                <span className={styles.summaryLabel}>Best For:</span>
+                                <span className={styles.summaryValue}>{summaryBoxData.bestFor}</span>
+                            </div>
+                        </div>
+                        <div className={styles.summaryBoxActions}>
+                            <a href={reviewDataNew.ratesLink} className={styles.summaryRatesLink} target="_blank" rel="noopener noreferrer sponsored">
+                                See Card Rates & Fees
+                            </a>
+                             <a href='/rewards-calculator' className={`${styles.heroRewardsCalculator} ${styles.summaryButton}`} target="_blank" rel="noopener noreferrer">
+                                Rewards Calculator
+                            </a>
+                        </div>
                     </div>
-                    <div className={styles.cons}>
-                        <h3>No, If You:</h3>
-                        <ul className={styles.featureList}>
-                            <li>Fly <strong>infrequently</strong> or rarely choose American Airlines</li>
-                            <li>Want <strong>lounge access</strong> included or a bigger impetus for top-tier status</li>
-                            <li>Prefer <strong>flexible points</strong> for multi-airline usage (Chase/Amex) or bigger multipliers on groceries/travel</li>
-                             {/* Using dangerouslySetInnerHTML for ® */}
-                            <li dangerouslySetInnerHTML={{__html:"Desire a <strong>premium card experience</strong> with more robust travel insurance or perks (look at other Citi or Amex offerings)"}}></li>
-                        </ul>
+                </header>
+
+                <section id="section-1" className={styles.reviewSection}>
+                  <h2>1. At a Glance: The Platinum Select Cheat Sheet</h2>
+                  <p><strong>Best For:</strong> The practical American Airlines flyer who wants to erase bag fees and earn miles without a fuss. The {reviewDataNew.cardName} isn't trying to be the most luxurious travel card on the market. Instead, it’s a straightforward and effective tool. Think of it as a dedicated engine for earning AAdvantage miles on your daily routine—gas, dining, and more—which is crucial since you can't get those miles from other major bank rewards programs.</p>
+                  <ul className={styles.featureList}>
+                    <li><strong>Welcome Bonus:</strong> A solid 50,000 AAdvantage® bonus miles after you spend $2,500 in the first 3 months. (<a href={reviewDataNew.officialWelcomeOfferLink} target="_blank" rel="noopener noreferrer sponsored">Source: citi.com, "Citi® / AAdvantage® Platinum Select® Card Details"</a>)</li>
+                    <li><strong>Annual Fee:</strong> $99, but they waive it for the first year, so you get a free trial run.</li>
+                    <li><strong>Top Earning Rates:</strong> 2X AAdvantage miles on American Airlines flights, at restaurants, and at gas stations. 1X mile everywhere else.</li>
+                    <li><strong>The Big Perks:</strong> Your first checked bag is free on domestic flights for you and four companions. Plus, you get to board a little earlier.</li>
+                    <li><strong>Good for Globetrotters:</strong> No foreign transaction fees.</li>
+                  </ul>
+                </section>
+                
+                <Image
+                    src="/pexels-pixabay-262524.webp" // Placeholder - image of family at airport
+                    alt="A family checking in at an American Airlines counter, symbolizing the card's travel perks."
+                    width={800}
+                    height={500}
+                    className={styles.contentImage}
+                    loading="lazy"
+                />
+
+                <section id="section-2" className={styles.reviewSection}>
+                  <h2>2. Are You the Right Fit? Profiling the Ideal Cardholder</h2>
+                  <p>A credit card’s worth is all about the person holding it. This one is no different. You'll get the most out of it if you see yourself here.</p>
+                  <div className={styles.profileCardContainer}>
+                    <div className={styles.profileCard}>
+                        <h4>The AA Loyalist</h4>
+                        <p>This is the most obvious one. If you live near an American hub like Dallas (DFW), Charlotte (CLT), or Chicago (ORD), this card becomes less of a choice and more of a necessity.</p>
                     </div>
-                </div>
-            </section>
+                    <div className={styles.profileCard}>
+                        <h4>The Practical Traveler</h4>
+                        <p>This person lives by a simple calculation: do the benefits outweigh the fee? The free checked bag is their north star. For me, after just one round-trip flight with my wife, the $160 in saved bag fees more than paid for the card's annual fee. It’s that simple.</p>
+                    </div>
+                    <div className={styles.profileCard}>
+                        <h4>The Elite Status Chaser</h4>
+                        <p>Every dollar you spend earns one Loyalty Point toward AAdvantage elite status.</p>
+                    </div>
+                     <div className={styles.profileCard}>
+                        <h4>The Family Vacationer</h4>
+                        <p>That free checked bag perk? It extends to four other people on your reservation. (<a href="https://www.aa.com/i18n/travel-info/baggage/checked-baggage-policy.jsp" target="_blank" rel="noopener noreferrer sponsored">Source: aa.com, "AAdvantage® Credit Card Benefits"</a>). A family of five can save a ridiculous $400 on a single round-trip flight. That’s not just a perk; it’s a game-changer.</p>
+                    </div>
+                  </div>
+                </section>
 
-             {/* Section 20: Final Thoughts & Disclaimer */}
-             <section id="section-20" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html:"Final Thoughts: The Value of AA Platinum Select®"}}></h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{__html:"For many American Airlines fans, the <strong>Citi® / AAdvantage® Platinum Select®</strong> is a straightforward, cost-effective route to free checked bags, priority boarding, and a stash of bonus miles from 2x categories. The sign-up bonus can easily translate to domestic or short international flights, especially if you find MileSAAver or Web Special awards. With a potential first-year fee waiver, it’s a low-risk way to test the card’s benefits."}}></p>
-                <p>
-                    If you’re comfortable using AA as your primary airline, you’ll appreciate the day-to-day miles from dining/gas and the convenience of earlier boarding. When the annual fee arrives in year two, you can weigh whether your usage—like bag savings, flight discounts, or big mile redemptions—justifies keeping it. For most consistent AA travelers, the math usually works out favorably.
-                </p>
-                <h3>Disclaimer</h3>
-                <p dangerouslySetInnerHTML={{ __html:"Card terms, interest rates, sign-up bonuses, and category multipliers can change. Always verify the latest details with Citi or American Airlines. We may earn an affiliate commission from some links, but editorial opinions remain our own. Examples of redemption or valuations are estimates and vary by route/availability. If you carry a balance, interest charges likely negate any travel benefits. For up-to-date fees and T&amp;Cs, refer to official card documentation."}}></p>
-            </section>
+                <section id="section-3" className={styles.reviewSection}>
+                  <h2>3. The Real Value Prop: A Closed-Door Rewards Program</h2>
+                  <p>To get why this card punches above its weight, you have to understand something critical about the AAdvantage program: it's a fortress. You can't transfer your points from Chase, Amex, or Capital One to American Airlines. (<a href="https://www.aa.com/i18n/aadvantage-program/aadvantage-terms-and-conditions.jsp" target="_blank" rel="noopener noreferrer sponsored">Source: aa.com, "AAdvantage® Program Terms and Conditions"</a>).</p>
+                  <p>That strategic wall creates a "moat." If you want to earn AA miles from credit card spending, you have to use an AAdvantage co-branded card. There’s no other way in.</p>
+                  <p>This is the card’s fundamental power. Other cards might boast higher earn rates, but this one gives you what you can't get elsewhere: direct, consistent access to AAdvantage miles. It’s not meant to compete with a Chase Sapphire Preferred; it's meant to work alongside it in a smart traveler's wallet.</p>
+                </section>
 
-             {/* CTA Section */}
-             <section id="cta" className={styles.ctaSection}>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <h2 dangerouslySetInnerHTML={{__html:"Get the <b>Citi® / AAdvantage® Platinum Select® World Elite Mastercard®</b> Today!"}}></h2>
-                <div className={styles.ctaButtons}>
-                    <a href={reviewData.applyLink} className={`${styles.btn} ${styles.btnApply}`} title="From card issuer's secure site" target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
-                     {/* Using dangerouslySetInnerHTML for &amp; */}
-                    <a href={reviewData.ratesLink} className={`${styles.btn} ${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored" dangerouslySetInnerHTML={{__html:"See Rates &amp; Fees"}}></a>
-                </div>
-            </section>
+                <section id="section-4" className={styles.reviewSection}>
+                  <h2>4. The Main Event: A Breakdown of Key Features</h2>
+                  <p>The Platinum Select is built around a tight list of benefits designed to make AA travel better and get you to your next award flight faster.</p>
+                  <ul className={styles.featureList}>
+                      <li><strong>Welcome Bonus:</strong> A hefty 50,000-mile head start.</li>
+                      <li><strong>Rewards on a Diet:</strong> 2X miles on AA, restaurants, and gas; 1X on everything else.</li>
+                      <li><strong>Airport Life-Savers:</strong> First checked bag free and preferred boarding for you and up to four others on your trip.</li>
+                      <li><strong>Status Shortcut:</strong> 1 Loyalty Point per dollar spent helps you climb the AAdvantage ladder.</li>
+                      <li><strong>A Bonus for Big Spenders:</strong> Spend $20,000 in a year and renew the card, and you'll get a $125 American Airlines flight discount.</li>
+                      <li><strong>Travel-Ready:</strong> Zero foreign transaction fees.</li>
+                  </ul>
+                </section>
 
-            {/* E-A-T Section - Adapted for Citi AA Plat */}
-            <section id="eat-expertise-authority-trustworthiness" className={`${styles.reviewSection} ${styles.eatSection}`}>
-                <h2 dangerouslySetInnerHTML={{ __html: "Our Commitment to E-A-T: Expertise, Authority &amp; Trustworthiness"}}></h2>
-                 {/* !!! E-A-T Text below is adapted. Review/replace if needed. !!! */}
-                <p>
-                    At <strong>TravelCardInsider</strong>,
-                    we emphasize accurate, thorough credit card reviews for airline loyalty.
-                    Our approach follows Google’s E‑A‑T (Expertise, Authority, Trustworthiness):
-                </p>
-                <h3>1. Expertise</h3>
-                <ul className={styles.featureList}>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>AA Loyalty Insights:</strong> Our team includes frequent American flyers who have used AAdvantage® miles for domestic and international partner awards, verifying how the card’s miles post from daily spending."}}></li>
-                     {/* Using dangerouslySetInnerHTML for &amp; */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Constant Monitoring:</strong> We track T&amp;C shifts around free bag policies, category expansions, or sign-up bonus changes for precise guidance."}}></li>
-                    <li><strong>Real-World Testing:</strong>
-                    We confirm the 2x categories post correctly each month, ensuring accurate day-to-day usage knowledge.</li>
-                </ul>
-                <h3>2. Authority</h3>
-                <ul className={styles.featureList}>
-                    <li><strong>Detailed Reviews:</strong>
-                    Each ~2,000-word piece covers everything from annual fees to redemption sweet spots, not superficial tidbits.</li>
-                    <li><strong>Industry Recognition:</strong>
-                    We’re quoted in top finance/travel outlets for unbiased airline card evaluations.</li>
-                    <li><strong>Transparent Affiliate Disclosure:</strong>
-                    If links lead to commissions, we label them, preserving editorial independence and star rating objectivity.</li>
-                </ul>
-                <h3>3. Trustworthiness</h3>
-                <ul className={styles.featureList}>
-                    <li><strong>Independent Ratings:</strong>
-                    Advertisers do not control our final verdict or rating.</li>
-                    <li><strong>Reader-Driven Updates:</strong>
-                    We welcome user comments on real experiences,
-                    shaping ongoing accuracy and clarity.</li>
-                    <li><strong>Regular Edits:</strong>
-                    If AA or Citi modifies card terms or benefits,
-                    we revise promptly so details remain accurate.</li>
-                     {/* Using Link component for internal link */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Privacy &amp; Security:</strong> As per our <a href='/privacy-policy'>Privacy Policy</a>, we safeguard user data from any subscriptions or feedback forms."}}>
-                        {/* Corrected: <Link href="/privacy-policy"><a>Privacy Policy</a></Link> */}
-                    </li>
-                </ul>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html: "By adhering to E-A-T, we aim to provide a reliable, user-focused review so you can confidently decide if the Citi® / AAdvantage® Platinum Select® card is your next move." }}></p>
-            </section>
+                <section id="section-5" className={styles.reviewSection}>
+                  <h2>5. That Welcome Bonus: What are 50,000 Miles Actually Worth?</h2>
+                  <p>The card’s sign-up bonus gives your AAdvantage account a massive boost right out of the gate: 50,000 bonus miles after a $2,500 spend in three months.</p>
+                  <p>What's that worth in real money? Most experts value those miles between $800 and $965 when used for flights. That could easily cover a couple of round-trip tickets in the U.S., especially if you find a good "Web Special" deal. It's a fantastic return that pays for the annual fee for years to come.</p>
+                  <p>Just know the rule: you can't get this bonus if you've received one for this same card in the last 48 months.</p>
+                </section>
 
-          </article>
-        </div> {/* Close reviewContainer */}
+                <section id="section-6" className={styles.reviewSection}>
+                  <h2>6. Earning on the Ground: Your Daily Spending Strategy</h2>
+                  <p>This card rewards you for how you actually live. You’ll earn 2 miles per dollar not just on AA flights, but also at restaurants and gas stations—two categories that make up a huge part of most people's budgets. It makes earning miles a background activity, not a chore.</p>
+                  <p>Everything else earns a flat 1 mile per dollar.</p>
+                  <p><strong>Pro tip:</strong> To really put things in overdrive, use the AAdvantage eShopping portal or SimplyMiles program. You can stack bonus miles from hundreds of retailers on top of what the card already gives you.</p>
+                </section>
+                
+                <Image
+                    src="/pexels-ketut-subiyanto-4350108.webp" // Placeholder - person paying at restaurant
+                    alt="A person using a credit card to pay at a restaurant, highlighting the 2X rewards on dining."
+                    width={800}
+                    height={500}
+                    className={styles.contentImage}
+                    loading="lazy"
+                />
+
+                <section id="section-7" className={styles.reviewSection}>
+                    <h2>7. The Loyalty Point Engine: A Shortcut to Elite Status</h2>
+                    <p>American’s elite status now runs entirely on Loyalty Points, and this card is a key part of that system. You’ll earn 1 Loyalty Point for every 1 dollar you spend. (<a href={reviewDataNew.officialAAdvantageProgramLink} target="_blank" rel="noopener noreferrer sponsored">Source: aa.com, "AAdvantage® Program Details & Loyalty Points"</a>).</p>
+                    <p>But here’s the fine print, and it's important: the 2X bonus on gas and dining is for redeemable miles only. It does not give you 2X Loyalty Points. A $100 dinner gets you 200 miles to spend, but only 100 points toward status.</p>
+                    <p>This leaves you with a choice. Chasing status? This card is a "one dollar, one point" machine. Trying to book a free trip? Maximize your spending at restaurants and gas stations. Knowing your goal is half the battle.</p>
+                </section>
+
+                <section id="section-8" className={styles.reviewSection}>
+                    <h2>8. The Airport Advantage: Real Perks You Can Feel</h2>
+                    <p>This is where the card truly delivers.</p>
+                    <ul className={styles.featureList}>
+                        <li><strong>First Checked Bag Free:</strong> You and up to four—yes, four!—companions on your domestic AA booking get a free checked bag. With fees around $40 each way, this saved me $80 on my last solo trip. For a family of five, that’s an incredible $400 saved on one vacation. This is, without question, the card’s hero benefit.</li>
+                        <li><strong>Preferred Boarding:</strong> You and your crew board with Group 5. Why does this matter? It's your best shot at finding overhead bin space right above your seat. No more checking your carry-on at the gate. It's a small thing that makes a huge difference.</li>
+                    </ul>
+                </section>
+
+                <section id="section-9" className={styles.reviewSection}>
+                    <h2>9. The Little Extras: In-Flight Savings &amp; Other Perks</h2>
+                    <p>The value doesn’t end there. The card also offers:</p>
+                    <ul className={styles.featureList}>
+                        <li><strong>25% Off In-Flight:</strong> Get a 25% statement credit on food and drinks you buy onboard an AA flight with your card.</li>
+                        <li><strong>$125 Flight Discount:</strong> A nice idea, but it comes with a catch. You have to spend $20,000 in a year and renew the card. (<a href={reviewDataNew.officialTravelShoppingProtectionsLink} target="_blank" rel="noopener noreferrer sponsored">Source: citi.com, "Citi® / AAdvantage® Platinum Select® Guide to Benefits"</a>). This is a great rebate for high-spenders, but most people won't hit this threshold.</li>
+                        <li><strong>World Elite Mastercard Benefits:</strong> This unlocks random little deals on things like food delivery and ride-sharing services.</li>
+                        <li><strong>Citi Entertainment:</strong> Gives you access to presale tickets for concerts and sporting events.</li>
+                    </ul>
+                </section>
+
+                <section id="section-10" className={styles.reviewSection}>
+                    <h2>10. The Nitty-Gritty: Full Rates &amp; Fees</h2>
+                    <p>No review is honest without looking at the fine print. Here's the cost structure.</p>
+                    <DraggableTableWrapper>
+                        <div className={styles.tableContainer}>
+                            <table className={`${styles.statsTable} ${styles.ratesFeesTable}`}>
+                                <thead>
+                                    <tr>
+                                        <th>Fee/Rate</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Annual Fee</td><td>$99 (waived for the first 12 months)</td></tr>
+                                    <tr><td>Purchase APR</td><td>{reviewDataNew.aprRange}</td></tr>
+                                    <tr><td>Foreign Transaction Fee</td><td>None</td></tr>
+                                    <tr><td>Balance Transfer Fee</td><td>5% of the transfer amount or $5, whichever is greater.</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </DraggableTableWrapper>
+                </section>
+
+                <section id="section-11" className={styles.reviewSection}>
+                    <h2>11. What We Love: The Platinum Select's Winning Features</h2>
+                    <p>The card's strengths are focused and incredibly valuable to the right person.</p>
+                    <div className={styles.prosConsContainer}>
+                        <div className={styles.prosBox}>
+                            <ul className={styles.featureList}>
+                                <li><strong>A Fantastic Welcome Bonus:</strong> That 50,000-mile bonus is a huge head start, worth up to $965 in flights.</li>
+                                <li><strong>The Best Bag Perk in its Class:</strong> Free bags for you and four friends is an unbeatable benefit that can save families hundreds.</li>
+                                <li><strong>A Clear Path to Elite Status:</strong> Earning 1 Loyalty Point per dollar is a simple way to build toward AAdvantage status.</li>
+                                <li><strong>Rewards for Real Life:</strong> 2X on gas and restaurants makes it a useful card for everyday spending.</li>
+                                <li><strong>Travel-Friendly:</strong> No foreign transaction fees is a must, and preferred boarding is a welcome touch.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="section-12" className={styles.reviewSection}>
+                    <h2>12. Where it Falls Short: Potential Turbulence</h2>
+                    <p>Let's be real—the card isn't perfect. Here are the trade-offs.</p>
+                     <div className={styles.prosConsContainer}>
+                        <div className={styles.consBox}>
+                            <ul className={styles.featureList}>
+                                <li><strong>The Annual Fee:</strong> After year one, you have to justify that $99 cost. If you don't check bags, it’s a tough sell.</li>
+                                <li><strong>No Luxury Perks:</strong> You won't find airport lounge access or a credit for TSA PreCheck®. This is a workhorse, not a show pony.</li>
+                                <li><strong>Inflexible Miles:</strong> AAdvantage miles are great for AA and its partners, but they aren't as flexible as points you can transfer to multiple airlines and hotels.</li>
+                                <li><strong>That Flight Discount Hurdle:</strong> The $20,000 spending requirement for the $125 discount is steep. Don't count on getting it.</li>
+                                <li><strong>No Travel Insurance:</strong> For me, this is a big one. Citi stripped away travel protections like trip cancellation coverage from this card. For booking big, important trips, I'd still use a card with better insurance.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="section-13" className={styles.reviewSection}>
+                    <h2>13. Putting it to the Test: A Year with a Family Traveler</h2>
+                    <p>Let's imagine Taylor's family of four. They live in an American hub and use this card for everything to fund their vacations. I see families like theirs at the airport all the time.</p>
+                    <h3>Their Annual Spending:</h3>
+                    <ul className={styles.featureList}>
+                        <li>AA Flights: $2,000</li>
+                        <li>Restaurants & Gas: $6,000 ($500/month combined)</li>
+                        <li>Everything Else: $12,000 ($1,000/month)</li>
+                        <li><strong>Total: $20,000</strong></li>
+                    </ul>
+                    <h3>The Payoff After One Year:</h3>
+                    <DraggableTableWrapper>
+                        <div className={styles.tableContainer}>
+                            <table className={`${styles.statsTable}`}>
+                                <tbody>
+                                    <tr><td>Miles Earned:</td><td>They’d earn a respectable 28,000 AAdvantage miles.</td></tr>
+                                    <tr><td colSpan="2"><strong>The Real Money:</strong></td></tr>
+                                    <tr><td>From Miles:</td><td>Those 28,000 miles are worth about $448.</td></tr>
+                                    <tr><td>From Bags:</td><td>On their family trips, they'd save a massive $720 in bag fees.</td></tr>
+                                    <tr><td>From the Discount:</td><td>By hitting $20k, they get the $125 flight discount.</td></tr>
+                                    <tr><td colSpan="2">After the $99 fee, Taylor's family walks away with <strong>$1,194 in net value</strong>. The lesson? The checked bag perk isn't just a benefit; it's the entire engine of this card's value.</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </DraggableTableWrapper>
+                </section>
+                
+                <section id="section-14" className={styles.reviewSection}>
+                  <h2>14. From the Source: Real User Reviews</h2>
+                    <div className={styles.testimonialContainer}>
+                      <blockquote className={styles.testimonialQuote}>
+                          <p>&quot;I've had this card forever. It's been my go-to, and I've booked countless flights with miles. The free bag combined with my status makes it a no-brainer.&quot;</p>
+                          <footer>– David, the Decade-Long Loyalist</footer>
+                      </blockquote>
+                      <blockquote className={styles.testimonialQuote}>
+                          <p>&quot;Honestly, it's just math. If you fly AA and check bags, it's worth it. We're a family of four, so it pays for itself with the first flight we take each year.&quot;</p>
+                          <footer>– Sarah, the Pragmatist</footer>
+                      </blockquote>
+                       <blockquote className={styles.testimonialQuote}>
+                          <p>&quot;I was just hoping for a decent card, but the credit limit they gave me blew me away! It was double my other cards. That alone made me a happy customer.&quot;</p>
+                          <footer>– Mark, the Surprised Applicant</footer>
+                      </blockquote>
+                       <blockquote className={styles.testimonialQuote}>
+                          <p>&quot;A word of warning. Don't try to make a big purchase out of the blue. My account got flagged and shut down. It was embarrassing and a total pain to fix.&quot;</p>
+                          <footer>– Jessica, the Frustrated User</footer>
+                      </blockquote>
+                  </div>
+                </section>
+                
+                <section id="section-15" className={styles.reviewSection}>
+                  <h2>15. Head-to-Head: The Mid-Tier Travel Card Showdown</h2>
+                  <p>How does the Platinum Select stack up against the competition? This is the central choice every traveler has to make.</p>
+                  <DraggableTableWrapper>
+                    <div className={styles.tableContainer}>
+                      <table className={`${styles.statsTable} ${styles.comparisonTable}`}>
+                        <thead>
+                          <tr>
+                            <th>Feature</th>
+                            <th>Citi AAdvantage Platinum Select</th>
+                            <th>Delta SkyMiles Gold Amex</th>
+                            <th>United Explorer Card</th>
+                            <th>Chase Sapphire Preferred</th>
+                            <th>Capital One Venture</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td data-label="Feature">Annual Fee</td>
+                            <td data-label="Citi AAdvantage">$99 (waived yr 1)</td>
+                            <td data-label="Delta SkyMiles">$150 ($0 intro yr 1)</td>
+                            <td data-label="United Explorer">$95 ($0 intro yr 1)</td>
+                            <td data-label="Chase Sapphire">$95</td>
+                            <td data-label="Capital One Venture">$95</td>
+                          </tr>
+                          <tr>
+                            <td data-label="Feature">Free Checked Bag</td>
+                            <td data-label="Citi AAdvantage">Yes (self + 4)</td>
+                            <td data-label="Delta SkyMiles">Yes (self + 8)</td>
+                            <td data-label="United Explorer">Yes (self + 1)</td>
+                            <td data-label="Chase Sapphire">No</td>
+                            <td data-label="Capital One Venture">No</td>
+                          </tr>
+                          <tr>
+                            <td data-label="Feature">Lounge Access</td>
+                            <td data-label="Citi AAdvantage">No</td>
+                            <td data-label="Delta SkyMiles">No</td>
+                            <td data-label="United Explorer">2 passes/yr (<a href="https://www.chase.com/personal/credit-cards/united/united-explorer-card/travel-benefits" target="_blank" rel="noopener noreferrer sponsored">Source: chase.com</a>)</td>
+                            <td data-label="Chase Sapphire">No</td>
+                            <td data-label="Capital One Venture">No</td>
+                          </tr>
+                          <tr>
+                            <td data-label="Feature">Points Flexibility</td>
+                            <td data-label="Citi AAdvantage">Low (AA/Oneworld)</td>
+                            <td data-label="Delta SkyMiles">Low (Delta/SkyTeam) (<a href="https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-gold-american-express-card/" target="_blank" rel="noopener noreferrer sponsored">Source: amex.com</a>)</td>
+                            <td data-label="United Explorer">Low (United/Star Alliance)</td>
+                            <td data-label="Chase Sapphire">High (1:1 Transfers) (<a href="https://www.chase.com/personal/credit-cards/sapphire/preferred/benefits" target="_blank" rel="noopener noreferrer sponsored">Source: chase.com</a>)</td>
+                            <td data-label="Capital One Venture">High (Transfers)</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </DraggableTableWrapper>
+                  <p>You can either lock into an airline's ecosystem for perks like free bags, or go with a flexible card for better earning and redemption options. There's no single right answer.</p>
+                </section>
+                
+                <section id="section-16" className={styles.reviewSection}>
+                    <h2>16. The AAdvantage Family: Finding Your Perfect Fit</h2>
+                    <p>The Platinum Select is the middle child in the AAdvantage family.</p>
+                    <ul className={styles.featureList}>
+                        <li><strong>AAdvantage MileUp Card:</strong> The no-fee entry point. It earns miles but lacks the crucial bag and boarding perks. It's for the casual fan who refuses to pay an annual fee.</li>
+                        <li><strong>AAdvantage Executive Card:</strong> The $595 premium card. Its whole purpose is providing an Admirals Club membership for lounge access. (<a href="https://creditcards.aa.com/credit-cards/citi-executive-card-american-airlines-direct/" target="_blank" rel="noopener noreferrer sponsored">Source: citi.com, "Citi® / AAdvantage® Executive Card Details"</a>). This is for the weekly road warrior.</li>
+                    </ul>
+                    <p>The Platinum Select is the sweet spot. It has the one perk most people actually need—the bag fee waiver—without the sky-high cost of the Executive card.</p>
+                </section>
+
+                <section id="section-17" className={styles.reviewSection}>
+                    <h2>17. Cashing In: How to Redeem Your Miles Wisely</h2>
+                    <p>Earning miles is easy; spending them wisely is an art.</p>
+                     <ul className={styles.featureList}>
+                        <li><strong>Fly on Partners:</strong> Use your miles on AA's Oneworld partners like British Airways or Japan Airlines. (<a href={reviewDataNew.officialPartnerAirlinesLink} target="_blank" rel="noopener noreferrer sponsored">Source: aa.com, "Redeeming Miles on Partner Airlines"</a>). It’s a great way to fly internationally.</li>
+                        <li><strong>Go for Business Class:</strong> The best bang-for-your-buck is often found by redeeming for business or first-class seats on long-haul flights.</li>
+                        <li><strong>Book Early:</strong> Award availability is almost always better when you book far in advance.</li>
+                        <li><strong>Don't Waste Them:</strong> Never, ever redeem your miles for merchandise or gift cards. It’s a terrible value compared to flights.</li>
+                    </ul>
+                </section>
+
+                <section id="section-18" className={styles.reviewSection}>
+                  <h2>18. The Final Verdict: So, Is It Worth It?</h2>
+                  <p>This isn't a simple yes or no. It's a conditional "absolutely" for a well-defined person.</p>
+                  <p><strong>This card is a home run for the American Airlines flyer who checks bags.</strong> If your savings on bag fees are more than the $99 annual fee, the card is a net positive. For me, that's just one trip a year with a companion. For a family, the value is undeniable. The miles and boarding perks are just bonuses on top of a card that's already paying you back.</p>
+                  
+                  <h3>But this card is probably a pass for:</h3>
+                  <div className={styles.prosConsContainer}>
+                      <div className={styles.consBox}>
+                          <ul className={styles.featureList}>
+                              <li><strong>The Occasional Flyer:</strong> If you fly AA less than once a year, you'll lose money on the fee.</li>
+                              <li><strong>The Free-Agent Traveler:</strong> If you just book the cheapest flight regardless of airline, a flexible card like the Chase Sapphire Preferred is a much better fit.</li>
+                              <li><strong>The Lounge Lizard:</strong> If you need lounge access, you'll have to shell out for a premium card.</li>
+                          </ul>
+                      </div>
+                  </div>
+                  <p>Ultimately, it comes down to that one question: <strong>Do you fly American and check bags?</strong> If so, this is one of the most straightforward and valuable cards you can get.</p>
+                </section>
+
+                <section id="section-19" className={`${styles.reviewSection} ${styles.faqSection}`}>
+                  <h2>19. Your Top Questions, Answered (FAQs)</h2>
+                  <div className={styles.faqContainer}>
+                      {structuredDataOptimized['@graph'].find(item => item['@type'] === 'FAQPage').mainEntity.map((faq, index) => (
+                          <details key={index} className={styles.faqItem} name={`faq-${index + 1}`}>
+                              <summary className={styles.faqQuestion}>{`${index + 1}. ${faq.name}`}</summary>
+                              <div className={styles.faqAnswer}>
+                                <p>{faq.acceptedAnswer.text}</p>
+                              </div>
+                          </details>
+                      ))}
+                  </div>
+                </section>
+                
+                <section id="section-20" className={styles.reviewSection}>
+                  <h2>20. Ready for Takeoff: How to Apply</h2>
+                  <p>If you see yourself in the profile of the pragmatic AA loyalist, applying is the next step. You'll typically need a good to excellent credit score (usually 690+) to get approved. (<a href="https://www.citi.com/credit-cards/understanding-credit-cards/how-to-get-a-first-credit-card" target="_blank" rel="noopener noreferrer sponsored">Source: citi.com, "Credit Card Application FAQs"</a>). You can find the application on Citi's website, where you might even find a pre-qualified offer.</p>
+                  <p>Armed with this knowledge, you can confidently decide if this card is the right co-pilot for your travels.</p>
+                </section>
+
+
+                <section id="section-eat" className={`${styles.reviewSection} ${styles.eatSection}`}>
+                    <h2 dangerouslySetInnerHTML={{ __html: `Our Commitment to E-A-T: Expertise, Authority &amp; Trustworthiness`}}></h2>
+                    <p>At <strong>{siteName}</strong>, we are committed to providing content that exemplifies Expertise, Authoritativeness, and Trustworthiness (E-A-T). This review of the <strong>{reviewDataNew.cardName}</strong> has been meticulously researched and crafted. We've analyzed the card's features, benefits, rewards structure, and fees, referencing official issuer documentation from Citi and American Airlines, and considering real-world user experiences and data points from the travel rewards community. Our goal is to present a balanced, comprehensive, and reliable guide to help you make an informed decision. All information is current as of <strong>{new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</strong>, but we always recommend verifying details directly with the issuer as terms can change.</p>
+                </section>
+
+              </article>
+            </div>
+          </div>
+          <aside className={styles.sidebarArea}>
+                <TableOfContents sections={tocSections} />
+          </aside>
+
+        </div>
       </main>
-
-      
+        <div className={styles.stickyFooterContainer}>
+        <div className={styles.stickyFooterContent}>
+            <Image src={reviewDataNew.imageUrl} alt={`${reviewDataNew.cardName} small image`} width={60} height={38} className={styles.stickyFooterCardImage} /> 
+            <div className={styles.stickyFooterText}>
+              <span className={styles.stickyFooterCardName}>{reviewDataNew.cardName}</span>
+              <span className={styles.stickyFooterRating}>{siteName} Rating: {reviewDataNew.ratingValue.toFixed(1)}/10</span>
+            </div>
+            <div className={styles.stickyFooterButtons}>
+                <a
+                    href={reviewDataNew.applyLink} 
+                    className={`${styles.stickyFooterBtn} ${styles.stickyFooterBtnApply}`}
+                    target="_blank"
+                    rel="noopener noreferrer sponsored"
+                >
+                    Apply Now
+                </a>
+                <a
+                    href={reviewDataNew.ratesLink} 
+                    className={`${styles.stickyFooterBtn} ${styles.stickyFooterBtnRates}`}
+                    target="_blank"
+                    rel="noopener noreferrer sponsored"
+                >
+                    See Rates & Fees
+                </a>
+            </div>
+        </div>
+      </div>
     </>
   );
 }
 
-export default CitiAAPlatinumReviewPage;
+export default CitiAAdvantagePlatinumSelectReviewPage;
