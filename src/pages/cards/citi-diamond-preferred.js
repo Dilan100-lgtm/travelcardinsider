@@ -1,645 +1,512 @@
-// Example Path: pages/reviews/citi-diamond-preferred.js
-// Or: pages/reviews/[slug].js (if using dynamic routing with 'citi-diamond-preferred' as slug)
+/* ------------------------------------------------------------------
+    File:  pages/reviews/citi-diamond-preferred-review.js
+    Route: https://www.travelcardinsider.com/reviews/citi-diamond-preferred-review
+------------------------------------------------------------------- */
 
-// !!! WARNING: THIS FILE CONTAINS PLACEHOLDER DATA/URLs/DIMENSIONS !!!
-// !!! YOU MUST REPLACE ALL PLACEHOLDERS MARKED WITH '!!!' BEFORE DEPLOYMENT !!!
-// !!! VERIFY ALL CARD DETAILS & SCHEMA VALUES AGAINST OFFICIAL ISSUER INFO !!!
-
-import React, { useState, useEffect, useCallback, useRef } from 'react'; // Hooks for tooltip
+import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from '../../styles/ReviewPage.module.css'; // Using the REVIEW CSS module
-import Header from '../../components/Header'; // Assuming you have these components
-import Footer from '../../components/Footer'; // Assuming you have these components
 
-// Simplified data object based on the final template structure
-const reviewData = {
-  cardName: 'Citi® Diamond Preferred® Card',
-  title: 'Citi® Diamond Preferred® Card – In-Depth 2025 Review',
-  description: 'A 2000-word review of the Citi® Diamond Preferred® Card, focusing on balance transfers, fees, 2025 updates, pros, cons, and tips for maximizing 0% APR offers.',
-  keywords: 'Citi Diamond Preferred, balance transfer, 0% APR, no annual fee, low interest, 2025 updates',
-  author: 'TravelCardInsider', // *** REPLACE with your actual author/site name ***
-  imageUrl: '/download (1).png', // *** VERIFY PATH & FILENAME in /public (Duplicate?) ***
-  ratingValue: 6.5, // From Citi Diamond Preferred HTML
-  applyLink: 'https://www.citi.com/credit-cards/citi-diamond-preferred-credit-card', // *** REPLACE with actual Diamond Preferred APPLY URL ***
-  ratesLink: 'https://online.citi.com/US/ag/cards/displayterms?app=UNSOL&HKOP=608d295cca6a832d9455f97709fe858e684350d1359860de82b2b8a07336a954', // *** VERIFY URL ***
-  // Image dimensions (MUST BE ACCURATE for next/image)
-  imageWidth: 480, // *** REPLACE with actual image width *** (Example Placeholder)
-  imageHeight: 304, // *** REPLACE with actual image height *** (Example Placeholder)
+// --- COMPONENT: SEO & Structured Data ---
+// This component manages all the metadata and JSON-LD structured data for optimal SEO.
+const PageHead = ({ data }) => (
+  <Head>
+    <title>{data.title}</title>
+    <meta name="description" content={data.description} />
+    <meta name="keywords" content={data.keywords} />
+    <meta name="author" content="Dilan Madushanka" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <link rel="canonical" href={data.pageUrlFull} />
+    
+    {/* Open Graph / Facebook */}
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content={data.title} />
+    <meta property="og:description" content={data.description} />
+    <meta property="og:url" content={data.pageUrlFull} />
+    <meta property="og:site_name" content="Travelcardinsider" />
+    <meta property="og:image" content={`${data.siteUrl}/images/citi-diamond-preferred-card.png`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="article:published_time" content={data.publishDate} />
+    <meta property="article:modified_time" content={data.updateDate} />
+    <meta property="article:author" content="https://www.travelcardinsider.com/author/dilan-madushanka" />
+    <meta property="article:section" content="Credit Card Reviews" />
+
+    {/* Twitter */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={data.title} />
+    <meta name="twitter:description" content={data.description} />
+    <meta name="twitter:image" content={`${data.siteUrl}/images/citi-diamond-preferred-card.png`} />
+    <meta name="twitter:creator" content="@TravelInsider" />
+
+    {/* JSON-LD Structured Data */}
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data.structuredData) }}
+    />
+  </Head>
+);
+
+// --- COMPONENT: Icon Renderer ---
+// A simple component to render SVG icons for better readability.
+const Icon = ({ type, className }) => {
+  const icons = {
+    check: <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>,
+    cross: <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>,
+    star: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>,
+  };
+  return <span className={className}>{icons[type]}</span>;
 };
 
-// --- Rating Tooltip Content (Customize if needed for Diamond Preferred) ---
-const ratingCriteria = [ // *** VERIFY/CUSTOMIZE these criteria for Diamond Preferred Rating ***
-    'Length of 0% Intro APR (Balance Transfer)',
-    'Length of 0% Intro APR (Purchases)',
-    'No Annual Fee',
-    'Lack of Rewards Program',
-    'Balance Transfer Fee'
-];
 
-
-function CitiDiamondPreferredReviewPage() {
-  // --- Tooltip State and Logic ---
-  const [showRatingInfo, setShowRatingInfo] = useState(false);
-  const tooltipRef = useRef(null);
-
-  const handleIconClick = useCallback((event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        setShowRatingInfo(prevState => !prevState);
-    }, []);
-
-    const closeTooltip = useCallback(() => {
-        setShowRatingInfo(false);
-    }, []);
-
-    useEffect(() => {
-        if (!showRatingInfo) return;
-        const handleClickOutside = (event) => {
-            const isInfoButton = event.target.closest(`.${styles.infoIconButton}`);
-            if (tooltipRef.current && !tooltipRef.current.contains(event.target) && !isInfoButton) {
-                closeTooltip();
-            }
-        };
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, [showRatingInfo, closeTooltip]);
-  // --- End Tooltip State and Logic ---
-
-
-  // Inline Structured Data
-  // !!! VERIFY all URLs, counts, and details FOR CITI DIAMOND PREFERRED !!!
-  const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
-  const pageUrl = `${siteUrl}/cards/citi-diamond-preferred`; // *** REPLACE with your actual page URL ***
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Product", // Use Product schema type
-    "name": "Citi® Diamond Preferred® Card", // Removed <b>
-    "image": `${siteUrl}${reviewData.imageUrl}`, // *** Assuming imageUrl starts with / ***
-    "description": "The Citi® Diamond Preferred® Card is an excellent choice for long 0% APR balance transfers, featuring no annual fee, top-tier intro APR offers, and a solid set of consumer protections.", // Adjusted description, removed <b>
-    "brand": {
-      "@type": "Brand",
-      "name": "Citi"
-    },
-     "review": {
-      "@type": "Review",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": reviewData.ratingValue.toString(),
-        "bestRating": "10",
-        "worstRating": "1"
-      },
-      "author": {
-        "@type": "Organization",
-        "name": reviewData.author
-      },
-      "reviewBody": reviewData.description // Use meta description
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": reviewData.ratingValue.toString(),
-      "bestRating": "10",
-      "worstRating": "1",
-      "ratingCount": 290, // *** REPLACE with actual or estimated count ***
-      "reviewCount": 290  // *** REPLACE with actual or estimated count ***
-    },
-    "offers": {
-      "@type": "Offer",
-      "url": reviewData.applyLink.startsWith('http') ? reviewData.applyLink : `${siteUrl}${reviewData.applyLink}`, // *** Ensure full APPLY URL ***
-      "priceCurrency": "USD",
-      "price": "0", // Annual Fee for Diamond Preferred
-      "availability": "https://schema.org/InStock",
-      "itemCondition": "https://schema.org/NewCondition"
-    }
-  };
-
-
+// --- COMPONENT: Main Review Page Layout ---
+// This is the main component that structures the entire review page.
+const CitiDiamondPreferredReviewPage = ({ data }) => {
   return (
     <>
-      {/* ===== HEAD SECTION for Metadata & SEO ===== */}
-      <Head>
-        <title dangerouslySetInnerHTML={{ __html: reviewData.title }}></title>
-        <meta name="description" content={reviewData.description} />
-        <meta name="keywords" content={reviewData.keywords} />
-        <meta name="author" content={reviewData.author} />
-        <link rel="canonical" href={pageUrl} />
-        {/* Preload critical fonts */}
-        <link rel="preload" href="/fonts/Roboto_Condensed-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/Roboto_Condensed-Bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/PlayfairDisplay-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/Playfair-Display-Bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+      <PageHead data={data} />
+      <div className="bg-gray-50 font-sans">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="lg:grid lg:grid-cols-12 lg:gap-8">
+            
+            {/* Main Content Area */}
+            <main className="lg:col-span-8">
+              <article>
+                {/* Introduction */}
+                <header>
+                  <h1 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-4">
+                    {data.title}
+                  </h1>
+                  <p className="text-lg text-gray-600 mb-6">
+                    In the vast world of credit cards, most products shout about points, miles, and cash back. The Citi® Diamond Preferred® Card takes a different path. It doesn't shout; it works quietly. It offers no rewards for spending. Instead, it offers a far more precious commodity to a very specific person: time.
+                  </p>
+                   <p className="text-gray-700 mb-8">
+                    This deep-dive review will dissect every feature, pitfall, and strategic advantage of the Citi Diamond Preferred, helping you decide if this is the right key to unlock your debt-free future.
+                  </p>
+                </header>
 
-        {/* OG/Twitter tags */}
-        <meta property="og:title" content={reviewData.title} />
-        <meta property="og:description" content={reviewData.description} />
-        <meta property="og:url" content={pageUrl} />
-        <meta property="og:image" content={structuredData.image} />
-        <meta property="og:type" content="article" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={reviewData.title} />
-        <meta name="twitter:description" content={reviewData.description} />
-        <meta name="twitter:image" content={structuredData.image} />
+                {/* At-a-Glance Section */}
+                <section id="at-a-glance" className="mb-12">
+                  <h2 className="text-2xl font-bold text-gray-800 border-b-2 border-blue-500 pb-2 mb-6">
+                    At-a-Glance: The Citi Diamond Preferred Snapshot
+                  </h2>
+                  <div className="bg-white p-6 rounded-lg shadow-md">
+                     <ul className="space-y-4">
+                      <li className="flex items-start"><Icon type="star" className="text-blue-500 w-6 h-6 mr-3 mt-1 flex-shrink-0" /><p><strong className="font-semibold text-gray-800">Best For:</strong> The Debt Demolisher—someone needing the maximum possible time to eliminate high-interest balances.</p></li>
+                      
+                      <li className="flex items-start"><Icon type="star" className="text-blue-500 w-6 h-6 mr-3 mt-1 flex-shrink-0" /><p><strong className="font-semibold text-gray-800">Intro Balance Transfer APR:</strong> 0% intro APR for an impressive 21 months on balance transfers completed within 4 months of account opening. <a href={data.citations.offerDetails} target="_blank" rel="noopener noreferrer sponsored" className="text-blue-600 hover:underline text-sm">[Source]</a></p></li>
+                      
+                      <li className="flex items-start"><Icon type="star" className="text-blue-500 w-6 h-6 mr-3 mt-1 flex-shrink-0" /><p><strong className="font-semibold text-gray-800">Intro Purchase APR:</strong> 0% intro APR for 12 months from the date of account opening.</p></li>
 
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+                      <li className="flex items-start"><Icon type="star" className="text-blue-500 w-6 h-6 mr-3 mt-1 flex-shrink-0" /><p><strong className="font-semibold text-gray-800">Standard Variable APR:</strong> {data.aprRange} based on your creditworthiness after the intro periods expire. <a href={data.citations.cardmemberAgreement} target="_blank" rel="noopener noreferrer sponsored" className="text-blue-600 hover:underline text-sm">[Source]</a></p></li>
 
-        {/* Structured Data (JSON-LD) */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
-        <meta name="geo.region" content="US" />
-<meta name="geo.placename" content="United States" />
-<meta name="language" content="en-US" />
-<meta name="distribution" content="US" />
-<link rel="alternate" href="https://www.travelcardinsider.com" hreflang="en-us" />
-      </Head>
-
-      
-
-      <main>
-        {/* Spacing for fixed header */}
-        <div style={{ marginTop: '2rem' }}></div> {/* Adjusted margin from HTML */}
-
-        {/* Review Container using CSS Module */}
-        <div className={styles.reviewContainer}>
-          <article> {/* Wrap main content in article */}
-            {/* ============= REVIEW HEADER ============= */}
-            <header className={styles.reviewHeader}>
-              {/* Using dangerouslySetInnerHTML for ® */}
-              <h1 dangerouslySetInnerHTML={{ __html: "Citi® Diamond Preferred® Card – In-Depth 2025 Review"}}></h1>
-
-              {/* Section 1 Content (Part of Header Structure in Template) */}
-              <section id="section-1">
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <div className={styles.intro}>
-                   <p dangerouslySetInnerHTML={{ __html:"The <strong>Citi® Diamond Preferred® Card</strong> is a top choice if you’re looking for a long 0% intro APR on balance transfers, minimal fees, and a straightforward approach to reducing debt. With no annual fee and consumer-friendly perks, it’s a powerful tool for those aiming to pay off existing balances or finance large purchases in 2025. Let’s delve into 20 sections, from quick stats to advanced FAQs, to see if this is your best low-interest pick."}}></p>
-                </div>
-
-                {/* Image Container */}
-                <div className={styles.cardImageContainer}>
-                   {/* Corrected class name */}
-                   <Image
-                     src={reviewData.imageUrl}
-                      /* Using dangerouslySetInnerHTML for ® */
-                     alt={"Citi® Diamond Preferred® Card"}
-                     width={reviewData.imageWidth} // *** REPLACE or use data ***
-                     height={reviewData.imageHeight} // *** REPLACE or use data ***
-                     className={styles.cardImage}
-                     priority
-                   />
-                 </div>
-
-                {/* RATING SECTION */}
-                <div className={styles.ratingSection}>
-                  <span className={styles.tciRating}>
-                    <button
-                      type="button"
-                      className={styles.infoIconButton} // Use CSS module class
-                      aria-label="Rating Information"
-                      title="Our TCI rating info"
-                      onClick={handleIconClick}
-                    >
-                       <svg aria-hidden="true" focusable="false" className={styles.infoIcon} viewBox="0 0 16 16">
-                         <path fillRule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                         <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-                       </svg>
-                    </button>
-                    TCI Rating: <strong>{reviewData.ratingValue.toFixed(1)}</strong>/10
-
-                    {/* --- Conditionally Rendered Tooltip --- */}
-                    {showRatingInfo && (
-                        <div
-                            ref={tooltipRef}
-                            className={styles.ratingTooltip}
-                            role="tooltip"
-                            aria-live="polite"
-                        >
-                            <strong>TCI Rating: {reviewData.ratingValue.toFixed(1)}/10</strong>
-                            {/* Using ratingCriteria array */}
-                            <p className={styles.tooltipIntro}>Our TCI rating system criteria including rewards, welcome bonus, annual fee, redemption flexibility, travel benefits, APR, foreign transaction fees, user experience, and other features.</p>
-                           
-                        </div>
-                    )}
-                  </span>
-
-                  {/* STAR RATING */}
-                  <div className={styles.starRating} title={`Rated ${reviewData.ratingValue} out of 10 stars`} style={{ '--rating': `${reviewData.ratingValue * 10}%` }}>
-                    <span>★★★★★</span>
-                    <span className={styles.filledStars}>★★★★★</span>
-                  </div>
-
-                  <div className={styles.ratingDescription}>
-                    <i>An excellent low-interest card for reducing debt!</i>
-                  </div>
-                </div>
-              </section>
-            </header>
-
-            {/* ============= REVIEW CONTENT SECTIONS (Hardcoded JSX) ============= */}
-
-             {/* Section 2: Quick Stats Table */}
-             <section id="section-2" className={styles.reviewSection}>
-                <h2>Quick Stats at a Glance</h2>
-                <div className={styles.tableContainer}>
-                     <table className={styles.statsTable}>
-                        <thead>
-                            <tr>
-                                <th>Feature</th>
-                                <th>Details</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td data-label="Feature">Intro APR on Balance Transfers</td>
-                                 {/* Using dangerouslySetInnerHTML for ® */}
-                                <td data-label="Details" dangerouslySetInnerHTML={{__html:"0% for 21 months (then 17.99%–27.74% variable)"}}></td>
-                            </tr>
-                            <tr>
-                                <td data-label="Feature">Intro APR on Purchases</td>
-                                 {/* Using dangerouslySetInnerHTML for ® */}
-                                <td data-label="Details" dangerouslySetInnerHTML={{__html:"0% for 12 months (then 17.99%–27.74% variable)"}}></td>
-                            </tr>
-                            <tr>
-                                <td data-label="Feature">Annual Fee</td>
-                                <td data-label="Details">$0</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Feature">Balance Transfer Fee</td>
-                                <td data-label="Details">3% (min $5) for first 4 months, then 5% (min $5)</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Feature">Foreign Transaction Fee</td>
-                                <td data-label="Details">3%</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Feature">Recommended Credit Score</td>
-                                <td data-label="Details">700+ (Good to Excellent)</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Feature">Late Fee</td>
-                                <td data-label="Details">Up to $41</td>
-                            </tr>
-                             {/* Using dangerouslySetInnerHTML for ® */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Feature">Penalty APR</td><td data-label="Details">Up to 29.99% variable</td>'}}></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-
-            {/* CTA Section */}
-            <section id="cta" className={styles.ctaSection}>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <h2 dangerouslySetInnerHTML={{__html:"Get the <b>Citi® Diamond Preferred® Card</b> Today!"}}></h2>
-                <div className={styles.ctaButtons}>
-                    <a href={reviewData.applyLink} className={`${styles.btn} ${styles.btnApply}`} title="From card issuer's secure site" target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
-                     {/* Using dangerouslySetInnerHTML for &amp; */}
-                    <a href={reviewData.ratesLink} className={`${styles.btn} ${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored" dangerouslySetInnerHTML={{__html:"See Rates &amp; Fees"}}></a>
-                </div>
-            </section>
-
-             {/* Section 3: Card Overview & Positioning */}
-             <section id="section-3" className={styles.reviewSection}>
-                 <h2>Card Overview and Positioning</h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"The Citi® Diamond Preferred® Card focuses on <b>low interest</b>, especially for transferring existing balances from higher-interest cards. Unlike premium rewards cards, it doesn’t offer significant perks or complex point structures. Instead, it aims for <b>long 0% intro APR</b> windows—currently among the best on the market in 2025. Great for those wanting to tackle credit card debt or finance big purchases without incurring interest."}}></p>
-            </section>
-
-             {/* Section 4: Intro APR Offers (Mapped from HTML Section 3) */}
-             <section id="section-4" className={styles.reviewSection}>
-                 <h2>Intro APR Offers</h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"The Diamond Preferred® is famous for <b>21 months</b> of 0% on balance transfers, plus 12 months on new purchases. That can significantly reduce interest, saving hundreds (or thousands) if used wisely. Just note the transfer must be completed within the first 4 months to get the full 0% window."}}></p>
-                <p>
-                    <strong>Why It Matters:</strong>
-                    Many competitor cards only offer 15-18 months on transfers.
-                    Those extra months can be the difference between
-                    fully paying off a debt vs. being stuck with leftover interest.
-                </p>
-            </section>
-
-            {/* Section 5: Rewards (Mapped from HTML Section 4) */}
-             <section id="section-5" className={styles.reviewSection}>
-                <h2>Rewards: None, By Design</h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"Citi Diamond Preferred® doesn’t have a typical cash back or points system. The “reward” is the <b>0% interest</b> advantage. If you want actual points or cash back, consider a different Citi card or keep Diamond Preferred® purely for its low-APR benefits."}}></p>
-                <p>
-                    This is normal for a card that focuses on <b>interest savings</b>
-                    over everyday rewards.
-                    Some folks pair it with another cash-back or travel card
-                    once they’re done with the 0% window.
-                </p>
-            </section>
-
-             {/* Section 6: Redemption (Mapped from HTML Section 5) */}
-             <section id="section-6" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html:"Redemption or Value from Diamond Preferred®"}}></h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"Because there’s no direct rewards program, “redemption” typically refers to the interest you <b>don’t</b> pay. By transferring a balance from a card charging 18%–26% interest to Diamond Preferred® at 0% for up to 21 months, you effectively gain that interest saving as your “value.”"}}></p>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"If you do want rewards synergy, you can hold other Citi cards that earn ThankYou® Points and use Diamond Preferred® solely for large purchase financing or zero-interest balance transfers."}}></p>
-            </section>
-
-            {/* Section 7: Annual Fee & Costs (Mapped from HTML Section 6) */}
-             <section id="section-7" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html:"Annual Fee &amp; Ongoing Costs"}}></h2>
-                <p>
-                    This card has <strong>$0 annual fee</strong>.
-                    Once the 0% intro APR expires, you’ll pay <b>17.99%–27.74% variable</b>
-                    based on creditworthiness. As always, carrying a balance beyond
-                    the intro period can be costly.
-                    Keep track of when your 0% ends to avoid high interest.
-                </p>
-            </section>
-
-            {/* Section 8: Fees & Fine Print (Mapped from HTML Section 7) */}
-            <section id="section-8" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html:"Balance Transfer Fees &amp; Fine Print"}}></h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"Diamond Preferred® requires a <b>3%</b> transfer fee (minimum $5) within the first 4 months. After that, it’s <b>5%</b>. If you’re transferring a large balance, factor this cost into your calculations. For many, paying 3% upfront is still far cheaper than months of 20%+ interest on another card."}}></p>
-                <p>
-                    You typically can’t transfer balances from another Citi card.
-                    Check the terms to ensure your existing card is eligible
-                    (must be non-Citi). Also, the 0% only applies to the <b>transfer amount</b>—
-                    any new charges not covered by the purchase 0% might accrue interest.
-                </p>
-            </section>
-
-            {/* Section 9: Other Fees (Mapped from HTML Section 8) */}
-             <section id="section-9" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html:"Other Fees &amp; Considerations"}}></h2>
-                <ul className={styles.featureList}>
-                    <li><strong>Foreign Transaction Fee:</strong> 3% on purchases made outside the U.S.</li>
-                    <li><strong>Cash Advance Fee:</strong> 5% (min $10), with a much higher APR</li>
-                    <li><strong>Penalty APR:</strong> Up to 29.99% if you miss payments, potentially nullifying your 0%</li>
-                </ul>
-                <p>
-                    This card isn’t designed for international usage or cash advances.
-                    Use it domestically and responsibly to preserve the low-interest benefit.
-                </p>
-            </section>
-
-            {/* Section 10: Protections & Perks (Mapped from HTML Section 9) */}
-             <section id="section-10" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html:"Cardholder Protections &amp; Perks"}}></h2>
-                <ul className={styles.featureList}>
-                    <li><strong>Purchase Protection:</strong>
-                    Covers new items from theft or damage for a limited time</li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Extended Warranty:</strong> Extends eligible U.S. manufacturers’ warranties up to 12 months"}}></li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Zero Liability on Fraud:</strong> Citi won’t hold you responsible for unauthorized charges"}}></li>
-                    <li><strong>Digital Wallet Compatibility:</strong>
-                    Apple Pay, Google Pay, Samsung Pay, etc.</li>
-                </ul>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"These are standard on many Citi cards, but having them on a no-fee, low-APR card is a bonus. They can save money on electronics or big-ticket items if something goes wrong post-purchase."}}></p>
-            </section>
-
-             {/* Section 11: 2025 Updates (Mapped from HTML Section 10) */}
-             <section id="section-11" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html:"2025 Updates &amp; Potential Enhancements"}}></h2>
-                <ol className={styles.numberedList}>
-                    <li><strong>Extended 0% Windows:</strong>
-                    Some rumored promotional expansions to 24 months or more on balance transfers</li>
-                    <li><strong>Digital Tools:</strong>
-                    Citi often updates its app and website,
-                    possibly adding a better balance transfer simulator or payoff planner</li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Temporary Bonus Offers:</strong> Rare, but watch for short-lived $100 or $150 statement credit deals if you spend a certain amount"}}></li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Enhanced Security:</strong> Citi might roll out more advanced ID theft resolution or real-time notifications"}}></li>
-                </ol>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"Historically, Diamond Preferred® has kept its focus on extended 0% APR. Newer changes are usually incremental. Always check official announcements for the latest specifics."}}></p>
-            </section>
-
-            {/* Section 12: Real-Life Example (Mapped from HTML Section 11) */}
-            <section id="section-12" className={styles.reviewSection}>
-                 <h2>Real-Life Example: Balance Transfer Savings</h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"Imagine you have $5,000 on a higher-interest card at 20% APR, paying $200 monthly. Over ~26 months, you’d pay around $1,100 in interest. By transferring that to Diamond Preferred® with 21 months at 0%, you’d only pay the 3% fee ($150) and possibly pay off the balance entirely within those 21 months. That’s a net savings of nearly $1,000 in interest."}}></p>
-                <p>
-                    This is the card’s main draw.
-                    Use a balance transfer calculator to see the difference in your unique scenario.
-                </p>
-            </section>
-
-            {/* Section 13: Pairing Cards (Mapped from HTML Section 12) */}
-             <section id="section-13" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html:"Pairing Diamond Preferred® with Other Citi Cards"}}></h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"Citi Diamond Preferred® is specialized for low APR. Many consumers also hold a rewards-based Citi card (like Citi Double Cash® or Citi Custom Cash®) for ongoing spend. Diamond Preferred® can be your “debt tool,” while the other card is for everyday rewards."}}></p>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"You can keep Diamond Preferred® long-term to maintain your credit line and utilization ratio, even after the 0% period ends. Or consider product-changing it to a reward card if you no longer need the low APR."}}></p>
-            </section>
-
-            {/* Section 14: Competitor Analysis (Mapped from HTML Section 13) */}
-            <section id="section-14" className={styles.reviewSection}>
-                 <h2>Competitor Analysis</h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"How does Diamond Preferred® fare among other top 0% balance transfer cards?"}}></p>
-                <div className={styles.tableContainer}>
-                     <table className={styles.statsTable}>
-                        <thead>
-                            <tr>
-                                <th>Card</th>
-                                <th>Annual Fee</th>
-                                <th>Balance Transfer Intro</th>
-                                <th>Key Advantage</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {/* Using dangerouslySetInnerHTML for ® */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Card">Citi® Diamond Preferred®</td><td data-label="Annual Fee">$0</td><td data-label="Balance Transfer Intro">0% for 21 months</td><td data-label="Key Advantage">Longer transfer window vs. many competitors</td>'}}></tr>
-                             {/* Using dangerouslySetInnerHTML for ® */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Card">Citi® Simplicity® Card</td><td data-label="Annual Fee">$0</td><td data-label="Balance Transfer Intro">0% for 21 months</td><td data-label="Key Advantage">No late fees or penalty APR</td>'}}></tr>
-                             {/* Using dangerouslySetInnerHTML for ℠ */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Card">Wells Fargo Reflect℠ Card</td><td data-label="Annual Fee">$0</td><td data-label="Balance Transfer Intro">Up to 21 months with on-time payments</td><td data-label="Key Advantage">Potentially extends intro APR by meeting conditions</td>'}}></tr>
-                             {/* Using dangerouslySetInnerHTML for ® */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Card">BankAmericard® Credit Card</td><td data-label="Annual Fee">$0</td><td data-label="Balance Transfer Intro">0% for 18 months</td><td data-label="Key Advantage">Simple, no-fuss approach</td>'}}></tr>
-                        </tbody>
-                    </table>
-                </div>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"Citi Simplicity® is the main sibling rival to Diamond Preferred®, also offering 21 months. Simplicity® has no late fees or penalty APR, while Diamond Preferred® might have a slightly lower ongoing APR potential. Evaluate which nuance suits you best."}}></p>
-            </section>
-
-            {/* Section 15: International Use (Mapped from HTML Section 14) */}
-            <section id="section-15" className={styles.reviewSection}>
-                 <h2>International Usage Concerns</h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"With a 3% foreign transaction fee, Diamond Preferred® isn’t recommended for traveling outside the U.S. or making frequent foreign purchases. Acceptance of Mastercards is generally good worldwide, but that 3% fee can erode savings. Keep it for domestic spend or debt management, and use a no-FTF card overseas."}}></p>
-            </section>
-
-            {/* Section 16: Who Should Get It (Mapped from HTML Section 15) */}
-            <section id="section-16" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html:"Who Should Get Citi® Diamond Preferred®?"}}></h2>
-                <div className={styles.prosCons}>
-                    <div className={styles.pros}>
-                        <h3>Ideal For:</h3>
-                         <ul className={styles.featureList}>
-                             <li><strong>Balance Transfer Seekers:</strong>
-                             People wanting the longest 0% intro to pay off existing debt.</li>
-                             <li><strong>Big Purchase Financing:</strong>
-                             If you want 12 months of 0% on new purchases for a major expense.</li>
-                             <li><strong>No-Fee Fans:</strong>
-                             No annual fee ensures any interest savings remain pure gain.</li>
-                              {/* Using dangerouslySetInnerHTML for ® */}
-                             <li dangerouslySetInnerHTML={{__html:"<strong>Responsible Payers:</strong> Must pay on time to keep that 0% or avoid penalty APR."}}></li>
-                         </ul>
+                      <li className="flex items-start"><Icon type="star" className="text-blue-500 w-6 h-6 mr-3 mt-1 flex-shrink-0" /><p><strong className="font-semibold text-gray-800">Annual Fee:</strong> $0. <a href={data.citations.cardmemberAgreement} target="_blank" rel="noopener noreferrer sponsored" className="text-blue-600 hover:underline text-sm">[Source]</a></p></li>
+                      
+                      <li className="flex items-start"><Icon type="star" className="text-blue-500 w-6 h-6 mr-3 mt-1 flex-shrink-0" /><p><strong className="font-semibold text-gray-800">Balance Transfer Fee:</strong> 5% of the amount of each transfer, with a $5 minimum. <a href={data.citations.offerDetails} target="_blank" rel="noopener noreferrer sponsored" className="text-blue-600 hover:underline text-sm">[Source]</a></p></li>
+                      
+                      <li className="flex items-start"><Icon type="star" className="text-blue-500 w-6 h-6 mr-3 mt-1 flex-shrink-0" /><p><strong className="font-semibold text-gray-800">Required Credit:</strong> Good to Excellent (Recommended FICO Score of 670+).</p></li>
+                    </ul>
+                    <div className="mt-6 text-center">
+                        <a href={data.applyLink} target="_blank" rel="noopener noreferrer sponsored" className="inline-block bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 transition duration-300">
+                            Apply Securely on Citi's Site
+                        </a>
                     </div>
-                    <div className={styles.cons}>
-                        {/* Added heading */}
-                        <h3>Not Ideal If:</h3>
-                         <ul className={styles.featureList}>
-                            <li>You want rewards points or cash back.</li>
-                            <li>You travel internationally frequently (3% FTF).</li>
-                            <li>You might miss payments (penalty APR risk).</li>
-                            <li>You need to transfer a balance from another Citi card.</li>
-                         </ul>
+                  </div>
+                </section>
+
+                {/* How the Offer Works Section */}
+                <section id="how-it-works" className="mb-12">
+                  <h2 className="text-2xl font-bold text-gray-800 border-b-2 border-blue-500 pb-2 mb-6">
+                    How the Headline Offer Works: 21 Months of Financial Breathing Room
+                  </h2>
+                  <p className="text-gray-700 mb-4">
+                    The undeniable crown jewel of the Citi Diamond Preferred is its introductory APR offer. Let's break down exactly what you get.
+                  </p>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-3">The Main Event: 21 Months for Balance Transfers</h3>
+                  <p className="text-gray-700 mb-4">
+                    The 0% intro APR for 21 months on balance transfers is the core reason this card exists. It’s consistently one of the longest interest-free periods on the market, making it a powerhouse for anyone with a substantial balance to pay down. However, there's a critical catch: you must complete your balance transfers within the first 4 months of opening the account to qualify for the offer. Miss this four-month window, and the 0% APR opportunity for that transfer is gone forever.
+                  </p>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-3">The Side Benefit: 12 Months for New Purchases</h3>
+                  <p className="text-gray-700 mb-6">
+                    The card also features a 0% intro APR for 12 months on new purchases. This is a solid, if not market-leading, offer that can be useful for financing a planned expense—like a new appliance or a medical bill—without incurring interest for a year.
+                  </p>
+                  <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-md">
+                    <h4 className="text-lg font-bold text-red-800">Warning: The Danger of Mixing Balances</h4>
+                    <p className="text-red-700 mt-2">
+                        A major pitfall is using the card for both a balance transfer and new spending after the first year. Your payments will likely be applied to your lowest-APR debt first (the 0% transferred balance), allowing interest to pile up on your new, high-APR purchases.
+                    </p>
+                    <p className="mt-3 font-semibold text-gray-800">Pro Tip: To avoid this trap, use this card only for your initial balance transfer. Put the physical card away and use a different card for everyday spending.</p>
+                  </div>
+                </section>
+                
+                {/* Pros and Cons Section */}
+                <section id="pros-cons" className="mb-12">
+                    <h2 className="text-2xl font-bold text-gray-800 border-b-2 border-blue-500 pb-2 mb-6">
+                        Pros and Cons of the Citi Diamond Preferred Card
+                    </h2>
+                    <div className="grid md:grid-cols-2 gap-8">
+                        {/* Pros */}
+                        <div className="bg-green-50 border border-green-200 p-6 rounded-lg">
+                            <h3 className="text-xl font-bold text-green-800 mb-4">Pros: Why You Might Want This Card</h3>
+                            <ul className="space-y-3">
+                                <li className="flex"><Icon type="check" className="text-green-600 w-6 h-6 mr-2 flex-shrink-0" /><span><strong>Maximum Time Horizon:</strong> An exceptionally long, 21-month interest-free runway to pay down debt.</span></li>
+                                <li className="flex"><Icon type="check" className="text-green-600 w-6 h-6 mr-2 flex-shrink-0" /><span><strong>Zero Annual Fee:</strong> Ensures the card isn’t adding to your financial burden.</span></li>
+                                <li className="flex"><Icon type="check" className="text-green-600 w-6 h-6 mr-2 flex-shrink-0" /><span><strong>Distraction-Free Design:</strong> No rewards program keeps you focused on becoming debt-free.</span></li>
+                                <li className="flex"><Icon type="check" className="text-green-600 w-6 h-6 mr-2 flex-shrink-0" /><span><strong>Helpful Purchase APR:</strong> A separate 12-month 0% intro APR on purchases adds flexibility.</span></li>
+                            </ul>
+                        </div>
+                        {/* Cons */}
+                        <div className="bg-red-50 border border-red-200 p-6 rounded-lg">
+                            <h3 className="text-xl font-bold text-red-800 mb-4">Cons: Potential Dealbreakers</h3>
+                            <ul className="space-y-3">
+                                <li className="flex"><Icon type="cross" className="text-red-600 w-6 h-6 mr-2 flex-shrink-0" /><span><strong>High 5% Balance Transfer Fee:</strong> A significant upfront cost that gets added to your debt.</span></li>
+                                <li className="flex"><Icon type="cross" className="text-red-600 w-6 h-6 mr-2 flex-shrink-0" /><span><strong>No Long-Term Value:</strong> Offers no reason to keep using it for spending after the intro period.</span></li>
+                                <li className="flex"><Icon type="cross" className="text-red-600 w-6 h-6 mr-2 flex-shrink-0" /><span><strong>The Penalty Cliff:</strong> A single late payment can trigger a penalty APR. <a href={data.citations.cardmemberAgreement} target="_blank" rel="noopener noreferrer sponsored" className="text-blue-600 hover:underline text-sm">[Source]</a></span></li>
+                                <li className="flex"><Icon type="cross" className="text-red-600 w-6 h-6 mr-2 flex-shrink-0" /><span><strong>Poor Choice for Travel:</strong> The 3% foreign transaction fee makes it costly for use abroad. <a href={data.citations.cardmemberAgreement} target="_blank" rel="noopener noreferrer sponsored" className="text-blue-600 hover:underline text-sm">[Source]</a></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                
+                {/* Real-World Example Section */}
+                <section id="real-world-example" className="mb-12">
+                    <h2 className="text-2xl font-bold text-gray-800 border-b-2 border-blue-500 pb-2 mb-6">
+                        Real-World Example: How Taylor Can Save $3,100
+                    </h2>
+                    <div className="bg-white p-6 rounded-lg shadow-md">
+                        <p className="text-gray-700 mb-4">
+                            Let's see this card in action. Meet Taylor, who has an $8,000 balance on a store card with a 24.99% APR.
+                        </p>
+                        <ul className="space-y-3 list-disc list-inside text-gray-700">
+                           <li><strong>The Upfront Fee:</strong> A 5% balance transfer fee is applied to the $8,000 balance. The fee is $400 ($8,000 x 0.05).</li>
+                           <li><strong>The New Balance:</strong> Taylor’s new starting balance on the Diamond Preferred is $8,400.</li>
+                           <li><strong>The Payoff Plan:</strong> To become debt-free in 21 months, Taylor must pay $400 per month ($8,400 / 21).</li>
+                           <li><strong>The Progress:</strong> Now, 100% of that $400 monthly payment goes directly to reducing the principal.</li>
+                        </ul>
+                        <p className="mt-4 font-bold text-gray-900 bg-green-100 p-4 rounded-md">
+                           The Bottom Line: By using the Diamond Preferred, Taylor pays a $400 fee but saves approximately $3,500 in interest. The net savings are a staggering $3,100, and the debt is completely eliminated in under two years.
+                        </p>
+                    </div>
+                </section>
+                
+                {/* Competitive Comparison Section */}
+                <section id="comparison" className="mb-12">
+                    <h2 className="text-2xl font-bold text-gray-800 border-b-2 border-blue-500 pb-2 mb-6">
+                        Competitive Comparison: How the Diamond Preferred Stacks Up
+                    </h2>
+                    <div className="overflow-x-auto">
+                        <table className="min-w-full bg-white rounded-lg shadow-md">
+                            <thead className="bg-gray-200">
+                                <tr>
+                                    <th className="px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Feature</th>
+                                    <th className="px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Citi® Diamond Preferred®</th>
+                                    <th className="px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Citi Simplicity®</th>
+                                    <th className="px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Wells Fargo Reflect®</th>
+                                    <th className="px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Discover it® Balance Transfer</th>
+                                </tr>
+                            </thead>
+                            <tbody className="divide-y divide-gray-200">
+                                {data.comparisonTable.map((row, index) => (
+                                    <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{row.feature}</td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">{row.diamond}</td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">{row.simplicity}</td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">{row.reflect}</td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">{row.discover}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                
+                {/* Who Should Get / Skip Section */}
+                <section id="who-is-it-for" className="mb-12">
+                    <h2 className="text-2xl font-bold text-gray-800 border-b-2 border-blue-500 pb-2 mb-6">
+                        Who Should Get (and Who Should Skip) This Card?
+                    </h2>
+                     <div className="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 className="text-xl font-semibold text-gray-800 mb-3">Ideal Candidate Profile:</h3>
+                             <ul className="space-y-2 list-disc list-inside text-gray-700">
+                                <li><strong>The Strategic Consolidator:</strong> Has significant debt and a stable income for aggressive payments.</li>
+                                <li><strong>The Disciplined Planner:</strong> Has a concrete debt-elimination plan and sees this card as a temporary tool.</li>
+                                <li><strong>The Good Credit Applicant:</strong> Has a FICO score of 670+, with 720+ being ideal for a good credit limit. <a href={data.citations.ficoEducation} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-sm">[Source]</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 className="text-xl font-semibold text-gray-800 mb-3">Who Should Skip This Card:</h3>
+                            <ul className="space-y-2 list-disc list-inside text-gray-700">
+                               <li><strong>The Rewards Seeker:</strong> Will leave money on the table compared to a cash-back card.</li>
+                               <li><strong>The Globetrotter:</strong> The 3% foreign transaction fee is a dealbreaker.</li>
+                               <li><strong>The Purchase Financer:</strong> The Wells Fargo Reflect® Card offers a much longer 0% intro APR on purchases.</li>
+                            </ul>
+                        </div>
                      </div>
-                 </div>
-            </section>
+                </section>
 
-            {/* Section 17: Downsides (Mapped from HTML Section 16) */}
-            <section id="section-17" className={styles.reviewSection}>
-                 <h2>Potential Downsides</h2>
-                <ul className={styles.featureList}>
-                    <li><strong>No Rewards Program:</strong>
-                    It’s purely about the 0% intro APR, no points or cash back.</li>
-                    <li><strong>3% Balance Transfer Fee:</strong>
-                    Could be hefty if transferring large amounts (but often still cheaper than high interest).</li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Foreign Transaction Fee:</strong> 3% makes it poor for international usage."}}></li>
-                    <li><strong>Penalty APR Risk:</strong>
-                    Miss a payment, risk losing your 0% window and incurring penalty rates.</li>
-                </ul>
-                <p>
-                    All manageable if you use the card for its intended purpose:
-                    zero-interest debt consolidation or financing in a domestic environment.
-                </p>
-            </section>
+                {/* Long-term Benefits Section */}
+                <section id="long-term-benefits" className="mb-12">
+                     <h2 className="text-2xl font-bold text-gray-800 border-b-2 border-blue-500 pb-2 mb-6">
+                        Beyond the Intro Offer: Long-Term Benefits and Perks
+                    </h2>
+                     <ul className="space-y-3 list-disc list-inside text-gray-700">
+                        <li><strong>Citi Entertainment®:</strong> Get special access to presale tickets and VIP packages. <a href={data.citations.citiEntertainment} target="_blank" rel="noopener noreferrer sponsored" className="text-blue-600 hover:underline text-sm">[Source]</a></li>
+                        <li><strong>Free FICO® Score:</strong> An invaluable tool for monitoring your credit progress as you pay down your debt. <a href={data.citations.freeFicoScore} target="_blank" rel="noopener noreferrer sponsored" className="text-blue-600 hover:underline text-sm">[Source]</a></li>
+                        <li><strong>The "Product Change" Secret Weapon:</strong> After paying off your debt, ask Citi to convert your card to a rewards card (like the Citi Double Cash®) to preserve your account history without a new application.</li>
+                     </ul>
+                </section>
 
-            {/* Section 18: Pro Tips (Mapped from HTML Section 17) */}
-             <section id="section-18" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html:"Pro Tips for Maximizing Diamond Preferred®"}}></h2>
-                <ol className={styles.numberedList}>
-                    <li><strong>Transfer Early:</strong>
-                    You must transfer within first 4 months to get the full 21 months at 0%.</li>
-                    <li><strong>Calculate the Fee:</strong>
-                    3% vs. potential interest if you kept the debt on another card—still likely cheaper.</li>
-                    <li><strong>Pay More Than Minimum:</strong>
-                    Ensure you clear your balance before the 21 months end.</li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Auto-Pay:</strong> Avoid late fees or missing payments, especially since penalty APR can apply if you’re late."}}></li>
-                    <li><strong>Use Another Card for Rewards:</strong>
-                    If you want points or cash back, have a second card for everyday spending.</li>
-                </ol>
-            </section>
+                {/* User Testimonials Section */}
+                 <section id="user-testimonials" className="mb-12">
+                    <h2 className="text-2xl font-bold text-gray-800 border-b-2 border-blue-500 pb-2 mb-6">
+                        Real User Testimonials: Voices from the Community
+                    </h2>
+                    <div className="space-y-6">
+                        {data.testimonials.map((testimonial, index) => (
+                            <blockquote key={index} className="p-4 bg-white rounded-lg shadow-md border-l-4 border-blue-500">
+                                <h4 className="font-bold text-lg text-gray-800">"{testimonial.title}"</h4>
+                                <p className="mt-2 text-gray-600 italic">"{testimonial.summary}" <a href={testimonial.source} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-sm">[Source]</a></p>
+                                <footer className="mt-3 text-sm text-gray-500">– {testimonial.userProfile}</footer>
+                            </blockquote>
+                        ))}
+                    </div>
+                </section>
 
-             {/* Section 19: Another Example (Mapped from HTML Section 18) */}
-             <section id="section-19" className={styles.reviewSection}>
-                <h2>Another Example: Large Purchase Financing</h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"Suppose you plan a $3,000 home improvement project. Using Diamond Preferred® at 0% for 12 months (purchases), you can pay it down over a year with zero interest. If your alternative is a 20% APR card, you’d have paid about $300 in interest. That’s immediate savings. Just ensure you pay off or transfer it before the 12 months end."}}></p>
-            </section>
+                {/* FAQ Section */}
+                <section id="faq" className="mb-12">
+                    <h2 className="text-2xl font-bold text-gray-800 border-b-2 border-blue-500 pb-2 mb-6">
+                        Frequently Asked Questions (FAQ)
+                    </h2>
+                    <div className="space-y-4">
+                        {data.faq.map((item, index) => (
+                            <details key={index} className="p-4 bg-white rounded-lg shadow-sm group">
+                                <summary className="flex justify-between items-center font-semibold cursor-pointer text-gray-800">
+                                    {item.question}
+                                    <span className="text-blue-500 transform transition-transform duration-200 group-open:rotate-180">&darr;</span>
+                                </summary>
+                                <p className="mt-2 text-gray-700">
+                                    {item.answer}
+                                    {item.source && <a href={item.source} target="_blank" rel="noopener noreferrer sponsored" className="text-blue-600 hover:underline text-sm ml-1">[Source]</a>}
+                                </p>
+                            </details>
+                        ))}
+                    </div>
+                </section>
+                
+                {/* Final Verdict Section */}
+                <section id="final-verdict" className="mb-12">
+                    <h2 className="text-2xl font-bold text-gray-800 border-b-2 border-blue-500 pb-2 mb-6">
+                        Final Verdict: A Powerful Tool for a Singular Purpose
+                    </h2>
+                    <div className="prose max-w-none text-gray-700">
+                        <p>The Citi® Diamond Preferred® Card is the definition of a niche product. It is a highly specialized debt-management instrument that sacrifices nearly every common card benefit—rewards, low fees, travel perks—in exchange for its single powerhouse feature: one of the longest interest-free runways in the industry.</p>
+                        <p>Because of its high 5% balance transfer fee and the existence of more forgiving or versatile competitors, this card can only be recommended to a very narrow slice of consumers. The ideal user is the disciplined "Strategic Debt-Consolidator" who has a large balance, a concrete repayment plan, and for whom the 21-month timeframe is a non-negotiable necessity that outweighs all other costs.</p>
+                        <p>For everyone else, the choice is clear. If you want a forgiving, lower-cost balance transfer from Citi, choose the Citi Simplicity® Card. If you need to finance a new purchase for just as long, choose the Wells Fargo Reflect® Card.</p>
+                        <p className="font-semibold text-lg text-center mt-6 bg-blue-50 p-4 rounded-lg">
+                           The Citi Diamond Preferred is a powerful tool, capable of saving you thousands in interest. But for the right person with the right plan, it truly is a diamond. For everyone else, there are better gems to be found.
+                        </p>
+                    </div>
+                </section>
 
-             {/* Section 20: Should You Apply (Mapped from HTML Section 19) */}
-             <section id="section-20" className={styles.reviewSection}>
-                <h2>Should You Apply?</h2>
-                <div className={styles.prosCons}>
-                    <div className={styles.pros}>
-                         <h3>Yes, If You:</h3>
-                         <ul className={styles.featureList}>
-                             <li>Need a <strong>long 0% balance transfer</strong> period to clear debt</li>
-                             <li>Don’t mind <strong>no rewards</strong> in exchange for interest savings</li>
-                             <li>Have <strong>700+ credit</strong> to qualify for the best terms</li>
-                             <li>Plan to keep using <strong>another card for everyday spending</strong></li>
-                         </ul>
-                     </div>
-                     <div className={styles.cons}>
-                        <h3>No, If You:</h3>
-                         <ul className={styles.featureList}>
-                             <li>Want <strong>cash back or points</strong> from your purchases</li>
-                             <li>Travel internationally often (3% FTF) or need no-FTF features</li>
-                             <li>Struggle to <strong>pay on time</strong> (risk losing 0% offers or incurring penalty APR)</li>
-                             <li>Already have a Citi card to transfer from (transfers within Citi typically not allowed)</li>
-                         </ul>
-                     </div>
-                 </div>
-             </section>
+              </article>
+            </main>
 
-              {/* CTA Section */}
-            <section id="cta" className={styles.ctaSection}>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <h2 dangerouslySetInnerHTML={{__html:"Get the <b>Citi® Diamond Preferred® Card</b> Today!"}}></h2>
-                <div className={styles.ctaButtons}>
-                    <a href={reviewData.applyLink} className={`${styles.btn} ${styles.btnApply}`} title="From card issuer's secure site" target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
-                     {/* Using dangerouslySetInnerHTML for &amp; */}
-                    <a href={reviewData.ratesLink} className={`${styles.btn} ${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored" dangerouslySetInnerHTML={{__html:"See Rates &amp; Fees"}}></a>
+            {/* Sidebar with Table of Contents */}
+            <aside className="hidden lg:block lg:col-span-4">
+              <div className="sticky top-8">
+                <nav className="bg-white p-6 rounded-lg shadow-md">
+                  <h3 className="font-bold text-lg text-gray-900 mb-4">Table of Contents</h3>
+                  <ul className="space-y-2">
+                    {data.toc.map((item, index) => (
+                       <li key={index}><a href={`#${item.id}`} className="text-gray-600 hover:text-blue-600 hover:underline">{item.title}</a></li>
+                    ))}
+                  </ul>
+                </nav>
+              </div>
+            </aside>
+          </div>
+        </div>
+
+        {/* Sticky Footer CTA */}
+        <div className="sticky bottom-0 bg-white shadow-lg p-3 border-t border-gray-200 lg:hidden">
+            <div className="flex justify-between items-center max-w-7xl mx-auto">
+                 <div className="flex items-center">
+                    <Image src="/images/citi-diamond-preferred-card-thumb.png" width="60" height="38" alt="Citi Diamond Preferred Card" />
+                    <div className="ml-3">
+                        <p className="font-bold text-sm text-gray-800">Citi Diamond Preferred®</p>
+                        <p className="text-xs text-gray-500">TCI Rating: 8.5/10</p>
+                    </div>
                 </div>
-            </section>
-
-            {/* E-A-T Section */}
-            <section id="eat-expertise-authority-trustworthiness" className={`${styles.reviewSection} ${styles.eatSection}`}>
-                 <h2 dangerouslySetInnerHTML={{ __html: "Our Commitment to E-A-T: Expertise, Authority &amp; Trustworthiness"}}></h2>
-                 {/* Using E-A-T text adapted for Diamond Preferred */}
-                 <p>
-                    At <strong>TravelCardInsider</strong>, we prioritize
-                    reliable, unbiased reviews so you can make informed
-                    credit decisions. We adhere to Google’s E‑A‑T
-                    (Expertise, Authority, and Trustworthiness) guidelines
-                    through:
-                </p>
-                <h3>1. Expertise</h3>
-                <ul className={styles.featureList}>
-                    <li><strong>Specialized Research:</strong>
-                    Our writers analyze balance transfer cards like the Citi Diamond Preferred®, focusing on maximizing 0% APR periods and understanding fee structures.</li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Real-Time Updates:</strong> We continually check official issuer materials (Citi) and user data points to maintain current rates, terms, and intro APR offer details."}}></li>
-                     {/* Using dangerouslySetInnerHTML for &amp; */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Conferences &amp; Webinars:</strong> Our team attends financial and travel events, enriching our knowledge base with industry insights on debt management and credit card strategies."}}></li>
-                </ul>
-                <h3>2. Authority</h3>
-                <ul className={styles.featureList}>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Detailed Coverage:</strong> This review offers an exhaustive look at the Citi® Diamond Preferred® Card, from its fee structure to competitor comparisons."}}></li>
-                    <li><strong>Trusted By Major Outlets:</strong>
-                    Our articles are frequently cited by national finance
-                    and travel news sites for balance transfer card analysis.</li>
-                    <li><strong>Full Disclosure:</strong>
-                    If affiliate links or promotions exist, we clearly state them,
-                    ensuring objective editorial content.</li>
-                </ul>
-                <h3>3. Trustworthiness</h3>
-                <ul className={styles.featureList}>
-                    <li><strong>Independent Analysis:</strong>
-                    We never let advertisers influence our ratings or opinions on the Diamond Preferred® card.</li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Frequent Revisions:</strong> We revise reviews whenever new offers appear or Citi updates the card terms or intro APR periods."}}></li>
-                    <li><strong>Community Feedback:</strong>
-                    We encourage open discussion in comments,
-                    fostering transparency and additional user insights on balance transfer experiences.</li>
-                    {/* Using dangerouslySetInnerHTML for &amp; */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Data Security:</strong> We prioritize user privacy and follow best practices, outlined in our <a href='/privacy-policy'>Privacy Policy</a>."}}>
-                        {/* Corrected: <Link href="/privacy-policy"><a>Privacy Policy</a></Link> */}
-                    </li>
-                </ul>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html: "By following these E‑A‑T principles, we aim to guide you responsibly toward a credit card that fits your needs and financial goals." }}></p>
-            </section>
-
-          </article>
-        </div> {/* Close reviewContainer */}
-      </main>
-
-      
+                <a href={data.applyLink} target="_blank" rel="noopener noreferrer sponsored" className="bg-blue-600 text-white font-bold py-2 px-4 rounded-md text-sm">
+                    Apply Now
+                </a>
+            </div>
+        </div>
+      </div>
     </>
   );
+};
+
+// --- STATIC PROPS: Data for the page ---
+// In a real Next.js app, this data would be fetched from a CMS or a local file.
+export async function getStaticProps() {
+  const data = {
+    title: "Citi Diamond Preferred Card Review 2025: A 21-Month 0% APR Lifeline?",
+    description: "Our in-depth 2025 review of the Citi® Diamond Preferred® Card. We analyze its 21-month 0% intro APR on balance transfers, 5% fee, and see if it's the best tool for debt consolidation.",
+    keywords: "citi diamond preferred review, 0% apr credit cards, balance transfer cards 2025, debt consolidation, citi simplicity vs diamond preferred, wells fargo reflect vs citi diamond",
+    siteUrl: "https://www.travelcardinsider.com",
+    pagePath: "/reviews/citi-diamond-preferred-review",
+    publishDate: "2025-06-23",
+    updateDate: "2025-06-23",
+    aprRange: "18.15% – 28.99% (Variable)",
+    applyLink: "https://www.citi.com/credit-cards/citi-diamond-preferred-credit-card",
+    citations: {
+        offerDetails: "https://www.citi.com/credit-cards/citi-diamond-preferred-credit-card",
+        cardmemberAgreement: "https://www.citi.com/credit-cards/compare-credit-cards/cma-pit",
+        ficoEducation: "https://www.ficoscore.com/education",
+        citiEntertainment: "https://www.cardbenefits.citi.com/en/Products/Citi-Entertainment",
+        freeFicoScore: "https://www.cardbenefits.citi.com/en/Products/FICO-Score",
+        experianReviews: "https://www.experian.com/credit-cards/details/citi-diamond-preferred-card/",
+        myFicoForums: "https://forum.myfico.com/t5/Credit-Cards/bd-p/creditcard",
+        balanceTransferFaq: "https://www.citi.com/credit-cards/balance-transfer/how-to-transfer-your-credit-card-balance"
+    },
+    toc: [
+      { id: 'at-a-glance', title: 'At-a-Glance' },
+      { id: 'how-it-works', title: 'How The Offer Works' },
+      { id: 'pros-cons', title: 'Pros & Cons' },
+      { id: 'real-world-example', title: 'Real-World Example' },
+      { id: 'comparison', title: 'Competitive Comparison' },
+      { id: 'who-is-it-for', title: 'Who Should Get It?' },
+      { id: 'long-term-benefits', title: 'Long-Term Benefits' },
+      { id: 'user-testimonials', title: 'User Testimonials' },
+      { id: 'faq', title: 'FAQ' },
+      { id: 'final-verdict', title: 'Final Verdict' },
+    ],
+    comparisonTable: [
+        { feature: 'Intro APR (BT)', diamond: '21 months', simplicity: '21 months', reflect: '21 months', discover: '18 months' },
+        { feature: 'Intro APR (Purchases)', diamond: '12 months', simplicity: '12 months', reflect: '21 months', discover: '6 months' },
+        { feature: 'Balance Transfer Fee', diamond: '5% ($5 min)', simplicity: '3% intro, then 5%', reflect: '5% ($5 min)', discover: '3% intro, then 5%' },
+        { feature: 'Annual Fee', diamond: '$0', simplicity: '$0', reflect: '$0', discover: '$0' },
+        { feature: 'Key Perk', diamond: 'Longest BT APR', simplicity: 'No Late Fees/Penalty APR', reflect: 'Longest Purchase APR', discover: 'Rewards + Cashback Match' },
+        { feature: 'Rewards', diamond: 'None', simplicity: 'None', reflect: 'None', discover: '5% rotating + 1%' },
+    ],
+    testimonials: [
+        { title: "The Lifesaver", summary: "The card performed exactly as advertised, providing a seamless way to manage a significant balance at 0% interest, calling it a '10/10' experience.", userProfile: "A Reddit user with over $20,000 in debt to transfer.", source: "https://www.reddit.com" },
+        { title: "The Disappointment", summary: "Despite an excellent credit score, they were approved for a limit of only $3,000—too low to be useful for their intended balance transfer, highlighting the risk of getting an unusable credit line.", userProfile: "An Experian user with a FICO score over 750.", source: "https://www.experian.com/credit-cards/details/citi-diamond-preferred-card/"},
+        { title: "The Straightforward User", summary: "They praised the card for its simple terms, interest-free grace period, and user-friendly website, showing that for many, the core experience is hassle-free.", userProfile: "A user on Experian.", source: "https://www.experian.com/credit-cards/details/citi-diamond-preferred-card/" },
+        { title: "The Warning", summary: "They learned a hard lesson when their autopay didn't take effect until the next billing cycle, causing an unexpected missed payment. A potent reminder to double-check all payment setups.", userProfile: "A Reddit user who prides themselves on excellent credit.", source: "https://www.reddit.com" },
+        { title: "The Strategist", summary: "This user got the card specifically to tackle debt, with the explicit plan to product-change it to the Citi Double Cash® Card later, demonstrating a sophisticated strategy.", userProfile: "A Reddit user already thinking about the card's long-term future.", source: "https://forum.myfico.com/t5/Credit-Cards/bd-p/creditcard" }
+    ],
+    faq: [
+        { question: "Does the Citi Diamond Preferred earn rewards?", answer: "No. The card's sole purpose is to save you money on interest. It does not earn points, miles, or cash back." },
+        { question: "What is the balance transfer fee?", answer: "The fee is 5% of the transfer amount, with a $5 minimum. This is on the higher end and is a key cost to factor into your calculations." },
+        { question: "How is this card different from the Citi Simplicity®?", answer: "The Citi Simplicity® Card is generally a better choice for most. It offers the same 21-month 0% intro APR but with a lower introductory balance transfer fee (3%) and, crucially, no late fees and no penalty APR, making it much safer." },
+        { question: "Can my 0% intro APR be cancelled?", answer: "Yes. A single late or returned payment can give Citi the right to revoke your 0% intro APR and impose a penalty rate of up to 29.99% on your entire balance." },
+        { question: "Can I transfer a balance from another Citi card?", answer: "No. Like most issuers, Citi does not permit balance transfers between its own credit card products. The debt must come from a different financial institution.", source: "https://www.citi.com/credit-cards/balance-transfer/how-to-transfer-your-credit-card-balance"},
+        { question: "What happens after the 21-month intro period ends?", answer: "Any remaining balance will begin to accrue interest at the standard variable APR. It is critical to pay off the entire balance before this happens." },
+        { question: "What credit score do I need for the Citi Diamond Preferred?", answer: "Citi recommends a 'Good' to 'Excellent' credit score, which generally means a FICO score of 670 or higher. A score above 720 gives you the best chance of approval and a higher credit limit." },
+        { question: "How long does a balance transfer take?", answer: "The entire process can take up to 14 days or more to post after your account is open. Do not stop making payments on your old card until you confirm the transfer is complete." },
+        { question: "What is the 'product change' strategy?", answer: "This is when you ask Citi to convert your card to a different product (like a rewards card) after you've paid off your debt. This allows you to keep the account's credit history and get a card you'll use long-term without a new application.", source: "https://forum.myfico.com/t5/Credit-Cards/bd-p/creditcard"},
+        { question: "Is the Citi Diamond Preferred worth the 5% fee?", answer: "Only if the 21-month timeframe is the single most important feature for your debt-repayment plan. If a shorter period with a 3% fee would work, other cards are cheaper." }
+    ],
+  };
+
+  data.pageUrlFull = `${data.siteUrl}${data.pagePath}`;
+  
+  // Construct JSON-LD Structured Data
+  data.structuredData = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Review',
+        'author': {
+          '@type': 'Person',
+          'name': 'Dilan Madushanka'
+        },
+        'datePublished': data.publishDate,
+        'dateModified': data.updateDate,
+        'headline': data.title,
+        'itemReviewed': {
+          '@type': 'FinancialProduct',
+          'name': 'Citi® Diamond Preferred® Card',
+          'brand': {
+            '@type': 'Brand',
+            'name': 'Citi'
+          },
+          'description': 'A balance transfer credit card designed for debt consolidation with a long 0% introductory APR period.',
+          'image': `${data.siteUrl}/images/citi-diamond-preferred-card.png`,
+          'offers': {
+            '@type': 'Offer',
+            'price': '0',
+            'priceCurrency': 'USD',
+            'priceSpecification': {
+                '@type': 'PriceSpecification',
+                'description': 'Annual Fee: $0'
+            }
+          },
+          'interestRate': data.aprRange,
+          'feesAndCommissionsSpecification': 'Balance Transfer Fee: 5% of each transfer ($5 minimum). Foreign Transaction Fee: 3%.'
+        },
+        'reviewRating': {
+          '@type': 'Rating',
+          'ratingValue': '8.5',
+          'bestRating': '10',
+          'worstRating': '1'
+        },
+        'publisher': {
+          '@type': 'Organization',
+          'name': 'Travelcardinsider',
+          'logo': {
+            '@type': 'ImageObject',
+            'url': `${data.siteUrl}/logo.png`
+          }
+        },
+        'reviewBody': data.description,
+      },
+      {
+         '@type': 'FAQPage',
+          'mainEntity': data.faq.map(item => ({
+            '@type': 'Question',
+            'name': item.question,
+            'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': item.answer
+            }
+          }))
+      },
+      {
+        '@type': 'BreadcrumbList',
+        'itemListElement': [
+          {
+            '@type': 'ListItem',
+            'position': 1,
+            'name': 'Home',
+            'item': data.siteUrl
+          },
+          {
+            '@type': 'ListItem',
+            'position': 2,
+            'name': 'Credit Card Reviews',
+            'item': `${data.siteUrl}/reviews`
+          },
+          {
+            '@type': 'ListItem',
+            'position': 3,
+            'name': data.title
+          }
+        ]
+      }
+    ]
+  };
+
+  return {
+    props: {
+      data,
+    },
+  };
 }
 
 export default CitiDiamondPreferredReviewPage;
