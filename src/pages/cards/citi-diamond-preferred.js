@@ -797,8 +797,8 @@ function CitiDiamondPreferredReviewPage() {
                             <th>Feature</th>
                             <th>Citi® Diamond Preferred®</th>
                             <th>Citi Simplicity®</th>
-                            <th>Wells Fargo Reflect®</th>
-                            <th>Discover it® Balance Transfer</th>
+                            <th><Link href="/cards/wells-fargo-reflect">Wells Fargo Reflect®</Link></th>
+                            <th><Link href="/cards/discover-it-miles">Discover it® Balance Transfer</Link></th>
                           </tr>
                         </thead>
                         <tbody>
@@ -876,15 +876,15 @@ function CitiDiamondPreferredReviewPage() {
                     <div className={styles.profileCardContainer}>
                         <div className={styles.profileCard}>
                             <h4>The Rewards Seeker</h4>
-                            <p>If you pay your balances in full each month, this card’s 0% rewards rate is leaving money on the table. A cash-back card like the Citi Double Cash® Card is a far better choice.</p>
+                            <p>If you pay your balances in full each month, this card’s 0% rewards rate is leaving money on the table. A cash-back card like the <Link href="/review/citi-custom-cash-2025">Citi Custom Cash® Card</Link> is a far better choice.</p>
                         </div>
                         <div className={styles.profileCard}>
                             <h4>The Globetrotter</h4>
-                            <p>The 3% foreign transaction fee is a dealbreaker for international travel or online shopping from foreign merchants.</p>
+                            <p>The 3% foreign transaction fee is a dealbreaker for international travel or online shopping from foreign merchants. Consider one of our <Link href="/review/top-5-no-ftf-cards-2025">top cards with no foreign transaction fees</Link> instead.</p>
                         </div>
                         <div className={styles.profileCard}>
                             <h4>The Purchase Financer</h4>
-                            <p>If your main goal is to finance a new purchase, the Wells Fargo Reflect® Card is superior, offering a stunning 21-month 0% intro APR on purchases that crushes this card's 12-month offer.</p>
+                            <p>If your main goal is to finance a new purchase, the <Link href="/cards/wells-fargo-reflect">Wells Fargo Reflect® Card</Link> is superior, offering a stunning 21-month 0% intro APR on purchases that crushes this card's 12-month offer.</p>
                         </div>
                     </div>
                 </section>
@@ -895,7 +895,7 @@ function CitiDiamondPreferredReviewPage() {
                     <ul className={styles.featureList}>
                         <li><strong>Citi Entertainment®:</strong> Get special access to presale tickets and VIP packages for concerts, sports, and dining. (<a href={reviewDataNew.officialBenefitsLink} target="_blank" rel="noopener noreferrer sponsored">Source: Citi.com, Citi Entertainment Benefits Page</a>)</li>
                         <li><strong>Free FICO® Score:</strong> An invaluable tool for monitoring your credit progress as you pay down your debt. (<a href={reviewDataNew.officialFicoScoreLink} target="_blank" rel="noopener noreferrer sponsored">Source: Citi.com, Account Benefits Page</a>)</li>
-                        <li><strong>The Secret Weapon: The "Product Change"</strong> After you've paid off your debt, closing the account can hurt your credit score. Instead, you can often request a "product change." Citi may allow you to convert your Diamond Preferred into a rewards-earning card like the Citi Double Cash® Card without a new application. This preserves your account history and transforms the card into a valuable long-term tool.</li>
+                        <li><strong>The Secret Weapon: The "Product Change"</strong> After you've paid off your debt, closing the account can <Link href="/review/How-to-Improve-Your-Credit-Score-Fast-for-Premium-Travel-Cards">hurt your credit score</Link>. Instead, you can often request a "product change." Citi may allow you to convert your Diamond Preferred into a rewards-earning card like the <Link href="/review/citi-custom-cash-2025">Citi Custom Cash® Card</Link> without a new application. This preserves your account history and transforms the card into a valuable long-term tool.</li>
                     </ul>
                 </section>
 
@@ -956,11 +956,11 @@ function CitiDiamondPreferredReviewPage() {
                           <h4>For everyone else, the choice is clear:</h4>
                           <ul className={styles.featureList}>
                               <li>If you want a forgiving, lower-cost balance transfer from Citi, choose the <strong>Citi Simplicity® Card.</strong></li>
-                              <li>If you need to finance a new purchase for just as long, choose the <strong>Wells Fargo Reflect® Card.</strong></li>
+                              <li>If you need to finance a new purchase for just as long, choose the <strong><Link href="/cards/wells-fargo-reflect">Wells Fargo Reflect® Card</Link>.</strong></li>
                           </ul>
                       </div>
                   </div>
-                  <p>The Citi Diamond Preferred is a powerful tool, capable of saving you thousands in interest and changing your financial trajectory. But its value is conditional. For the right person with the right plan, it truly is a diamond. For everyone else, there are better gems to be found.</p>
+                  <p>The Citi Diamond Preferred is a powerful tool, capable of saving you thousands in interest and changing your financial trajectory. But its value is conditional. For the right person with the right plan, it truly is a diamond. For everyone else, there are <Link href="/zeroapr/Best-10-Zero-APR-And-Balance-Transfer-Credit-Cards-of-2025">better gems to be found</Link>.</p>
                 </section>
 
 
