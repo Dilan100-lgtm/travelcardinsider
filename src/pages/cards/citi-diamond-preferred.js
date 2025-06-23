@@ -64,16 +64,16 @@ const reviewDataNew = {
       }
   },
   siteName: siteName,
-  imageUrl        : '/citi-diamond-preferred-card-art.png', // Placeholder: Replace with actual card image URL
+  imageUrl        : '/download (1).png', // Placeholder: Replace with actual card image URL
   imageWidth      : 1290,
   imageHeight     : 812,
-  ratingValue     : 8.5,  // Rating based on its excellence in its niche (debt consolidation)
+  ratingValue     : 6.5,  // Rating based on its excellence in its niche (debt consolidation)
   ratingCount     : 247,  // Placeholder - UPDATE AS NEEDED
   reviewBody      : 'Our editors evaluate the Citi Diamond Preferred Card based on its introductory APR offers, balance transfer fee, annual fee, and overall effectiveness as a tool for debt consolidation and management.',
   aprRange        : '18.15% - 28.99% (Variable)',
   annualFee       : 0,
   applyLink       : 'https://www.citi.com/credit-cards/citi-diamond-preferred-credit-card',
-  ratesLink       : 'https://www.citi.com/credit-cards/compare-credit-cards/cma-pit',
+  ratesLink       : 'https://online.citi.com/US/ag/cards/displayterms?app=UNSOL&HKOP=608d295cca6a832d9455f97709fe858e684350d1359860de82b2b8a07336a954',
   officialOverviewLink: 'https://www.citi.com/credit-cards/citi-diamond-preferred-credit-card',
   officialBenefitsLink: 'https://www.cardbenefits.citi.com/en/Products/Citi-Entertainment',
   officialFicoScoreLink: 'https://www.cardbenefits.citi.com/en/Products/FICO-Score',
@@ -711,7 +711,7 @@ function CitiDiamondPreferredReviewPage() {
                 </section>
 
                 <Image
-                    src="/woman-reviewing-finances-with-laptop.webp" // Placeholder - image of someone looking relieved at their finances
+                    src="/SWAExterior-3.jpg" // Placeholder - image of someone looking relieved at their finances
                     alt="A person looking at their finances on a laptop with a sense of relief, symbolizing debt management."
                     width={800}
                     height={500}
@@ -765,7 +765,7 @@ function CitiDiamondPreferredReviewPage() {
                  {/* --- MID-REVIEW CTA --- */}
                 <section className={styles.midArticleCta}>
                     <h3>Citi® Diamond Preferred® Card</h3>
-                    <p>Ready to start your journey to being debt-free? Get one of the longest 0% intro APR periods on the market.</p>
+                   
                     <a href={reviewDataNew.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.applyNowButton}>
                         Apply Now on Citi's Site
                     </a>
