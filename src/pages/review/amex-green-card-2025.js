@@ -151,9 +151,33 @@ export default function AmexGreenCardReview2025() {
 
           <section id="introduction" className={styles.reviewSection}>
             <h2>I. Introduction: A Classic Card at a Crossroads</h2>
-             <div className={styles.introCardDetailsContainer}>
-                {/* ... (Intro Card Image and Rating, populated with reviewData) ... */}
+            
+            {/* === CODE ADDED START === */}
+            <div className={styles.introCardDetailsContainer}>
+              <div className={styles.introCardImage}>
+                <Image 
+                  src={reviewData.cardImageUrl} 
+                  alt={`${reviewData.cardName} card image`} 
+                  width={220}
+                  height={140}
+                  layout="intrinsic"
+                />
+              </div>
+              <div className={styles.introCardRatings}>
+                <div className={styles.starRating}>
+                  {reviewData.ratingValue && <StarRating rating={reviewData.ratingValue} />}
+                </div>
+                <p className={styles.ratingValueText}>
+                   ({reviewData.ratingValue.toFixed(1)} / 5 Stars)
+                </p>
+                <p className={styles.ratingOutOfTen}>
+                  TCI Rating: <strong>{(reviewData.ratingValue * 2).toFixed(1)} / 10</strong>
+                </p>
+                 <p className={styles.ratingAnnualFee}>Annual Fee: ${reviewData.annualFee}</p>
+              </div>
             </div>
+            {/* === CODE ADDED END === */}
+
             <p>In a world of flashy "premium" cards loaded with perks and aggressive no-fee competitors, does a quiet classic like the {reviewData.cardName} still have a place in your wallet? The answer for 2025 is more complicated—and interesting—than you might think.</p>
             <p>For decades, the Green Card was an icon of American travel. But in today's hyper-competitive market, legacy isn't enough. Following the major devaluation from losing its LoungeBuddy credit, the card now finds itself at a crossroads. Its value proposition has been sharpened to a fine point, forcing a crucial question for any U.S. traveler: Are its remaining benefits worth the ${reviewData.annualFee} annual fee?</p>
           </section>
@@ -177,7 +201,7 @@ export default function AmexGreenCardReview2025() {
           
           <section id="green-reality-check" className={styles.reviewSection}>
             <h2>III. Is the Amex "Green" Card Actually Green? A Reality Check</h2>
-            <p>With a name like the "Green Card," you’d be forgiven for thinking it comes with direct environmental perks. Let's be clear: a careful look at the official card benefits reveals no program for automatically offsetting your personal purchases. The carbon tracking and offsetting tools Amex promotes are sophisticated corporate-level programs offered through its Global Business Travel division. (Source: <a href={reviewData.amexGbtSustainabilityLink} target="_blank" rel="noopener noreferrer">Official Amex GBT Sustainability Report</a>). These are not features of your personal Green Card.</p>
+            <p>With a name like the "Green Card," you’d be forgiven for thinking it comes with direct environmental perks. Let's be clear: a careful look at the official card benefits reveals no program for automatically offsetting your personal purchases. The carbon tracking and offsetting tools Amex promotes are sophisticated corporate-level programs offered through its Global Business Travel division. (Source: <a href={reviewData.amexGbtSustainabilityLink} target="_blank" rel="noopener noreferrer">Official Amex GBT Sustainability Report</a>).</p>
             <p>So, what makes the card "green"? For you, the cardholder, it boils down to two things:</p>
             <ul className={styles.featureList}>
                 <li><strong>The Card Itself:</strong> The physical card is made from 70% reclaimed plastic.</li>
