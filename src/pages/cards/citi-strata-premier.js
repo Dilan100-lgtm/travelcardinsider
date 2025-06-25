@@ -14,7 +14,7 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import styles from '../../styles/ReviewPage.module.css'; // Using the established REVIEW CSS module
 
-// Import shared components
+// Import shared components & icons
 import TableOfContents from '../../components/TableOfContents';
 import IconGift from '../../components/icons/icon-gift.svg'; 
 import IconStar from '../../components/icons/icon-star.svg'; 
@@ -22,7 +22,6 @@ import IconCheck from '../../components/icons/icon-Credit Card.svg';
 import IconPlus from '../../components/icons/icon-target.svg'; 
 import IconPlane from '../../components/icons/icon-plane.svg';  
 import IconDollar from '../../components/icons/icon-dollar.svg'; 
-import IconX from '../../components/icons/icon-Star + Arrow Up.svg';
 
 const RatingTooltip = dynamic(() => import('../../components/RatingTooltip'), { ssr: false, loading: () => null });
 
@@ -33,8 +32,8 @@ const siteName = 'Travelcardinsider';
 const siteUrl = 'https://www.travelcardinsider.com'; 
 const pagePath = '/reviews/citi-strata-premier-review'; 
 const pageUrlFull = `${siteUrl}${pagePath}`;
-const publishDate = '2025-06-24'; 
-const updateDate = '2025-06-24'; 
+const publishDate = '2025-06-25'; 
+const updateDate = '2025-06-25'; 
 
 const reviewData = {
   cardName        : 'Citi Strata Premier℠ Card',
@@ -131,7 +130,7 @@ const structuredDataOptimized = {
       publisher       : {
         '@type' : 'Organization',
         name    : siteName,
-        logo    : { '@type': 'ImageObject', url: `${siteUrl}/images/logo/your-logo-schema.png` }, 
+        logo    : { '@type': 'ImageObject', url: `${siteUrl}/images/logo/your-logo-schema.png` }, // !!! Placeholder
       },
       datePublished   : publishDate,
       dateModified    : updateDate,
@@ -146,13 +145,6 @@ const structuredDataOptimized = {
       isPartOf           : { '@id': `${siteUrl}#website` },
       primaryImageOfPage : { '@id': `${pageUrlFull}#primaryImage` },
       breadcrumb         : { '@id': `${pageUrlFull}#breadcrumbs` },
-      datePublished      : publishDate,
-      dateModified       : updateDate,
-       author: {
-          '@type': 'Person',
-          'name': reviewData.author.name,
-          'url': reviewData.author.fullBioLink ? `${siteUrl}${reviewData.author.fullBioLink}` : undefined
-       },
     },
     {
       '@type'   : 'ImageObject',
@@ -177,12 +169,12 @@ const structuredDataOptimized = {
       mainEntity: [ // Populated from the review text
         {
           '@type': 'Question',
-          name: 'What credit score do I need for the Citi Strata Premier Card?',
+          name: 'What credit score do I need for the Citi Strata Premier℠ Card?',
           acceptedAnswer: { '@type': 'Answer', text: "Approval typically requires a Good to Excellent score (FICO 670+), but Citi considers multiple factors." }
         },
         {
           '@type': 'Question',
-          name: 'Can I get the welcome bonus if I had the old Citi Premier® Card?',
+          name: 'Can I get the bonus if I had the old Citi Premier® Card?',
           acceptedAnswer: { '@type': 'Answer', text: "Only if you haven't received a new account bonus for either the Citi Premier® or the Citi Strata Premier℠ in the past 48 months." }
         },
         {
@@ -202,7 +194,7 @@ const structuredDataOptimized = {
       '@id'   : `${siteUrl}#website`,
       name    : siteName,
       url     : siteUrl,
-      logo    : { '@type': 'ImageObject', url: `${siteUrl}/images/logo/your-logo-schema.png` }, 
+      logo    : { '@type': 'ImageObject', url: `${siteUrl}/images/logo/your-logo-schema.png` }, // !!! Placeholder
       sameAs  : [ 
         "https://www.facebook.com/YourTravelCardInsiderFacebookPage", // !!! Placeholder
         "https://twitter.com/YourTravelCardInsiderTwitterHandle", // !!! Placeholder
@@ -264,14 +256,9 @@ function DraggableTableWrapper({ children }) {
     };
     el.addEventListener('mousedown', startDrag);
     document.addEventListener('mouseup', stopDrag);
-    document.addEventListener('mouseleave', stopDrag);
+    el.addEventListener('mouseleave', stopDrag);
     el.addEventListener('mousemove', onMove);
-    return () => {
-      el.removeEventListener('mousedown', startDrag);
-      document.removeEventListener('mouseup', stopDrag);
-      document.removeEventListener('mouseleave', stopDrag);
-      el.removeEventListener('mousemove', onMove);
-    };
+    return () => { /* cleanup */ };
   }, []);
   return (<div ref={containerRef} className={styles.draggableScrollContainer}>{children}</div>);
 }
@@ -286,13 +273,13 @@ function CitiStrataPremierReviewPage() {
   const authorTooltipRef = useRef(null);
   const ratingTooltipRef = useRef(null);
 
-  // Replicating author tooltip logic from template
-  const handleAuthorMouseEnter = useCallback(() => setShowAuthorBioTooltip(true), []);
+  // Replicating all tooltip logic from the template
   const handleIconClick = useCallback((event) => {
       event.preventDefault();
       event.stopPropagation();
       setShowRatingInfo(prevState => !prevState);
   }, []);
+  const handleAuthorMouseEnter = useCallback(() => setShowAuthorBioTooltip(true), []);
   const handleAuthorMouseLeave = useCallback(() => {
       const timerId = setTimeout(() => {
           if (authorRef.current && authorTooltipRef.current && !authorRef.current.matches(':hover') && !authorTooltipRef.current.matches(':hover')) {
@@ -304,7 +291,6 @@ function CitiStrataPremierReviewPage() {
    const handleAuthorClearTimeout = useCallback(() => {
       if (authorRef.current?.tooltipTimeoutId) clearTimeout(authorRef.current.tooltipTimeoutId);
    }, []);
-
   useEffect(() => {
       function handleClickOutside(event) {
           if (showAuthorBioTooltip && authorRef.current && !authorRef.current.contains(event.target) && authorTooltipRef.current && !authorTooltipRef.current.contains(event.target)) {
@@ -324,9 +310,9 @@ function CitiStrataPremierReviewPage() {
   const summaryBoxData = {
     welcomeOffer: "60,000 bonus points after $4,000 spend in first 3 months.",
     annualFee: `$${reviewData.annualFee}`,
-    topEarning: "3X points on gas, groceries, dining, travel.",
-    keyPerks: "$100 Annual Hotel Credit & Reinstated Travel Protections.",
-    travelPerk: "10X on travel portal bookings & no foreign transaction fees.",
+    topEarning: "3X points on gas, groceries, dining, & travel.",
+    keyPerks: "$100 Annual Hotel Credit & Travel Protections.",
+    travelPerk: "10X on travel portal bookings & no FTFs.",
     bestFor: "Everyday spenders wanting to turn groceries & gas into premium travel."
   };
 
@@ -340,28 +326,20 @@ function CitiStrataPremierReviewPage() {
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <link rel="canonical" href={pageUrlFull} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredDataOptimized) }} />
-        {/* All other head tags from template would go here */}
+        {/* All other meta tags from template (OG, Twitter, etc.) would be included here */}
       </Head>
 
       <main>
         <div className={styles.reviewPageLayout}>
           <div className={styles.mainContentArea}>
             <section className={styles.heroSection}>
-              {/* Using same Hero structure as template */}
               <div className={styles.heroTextContainer}>
                 <h1 className={styles.heroTitle}>{reviewData.h1Content}</h1>
                 <p className={styles.heroSubtitle}>Your wallet is a well-worn compromise. There’s the card for groceries, the one for gas, and another for dining. What if one card could simplify this juggle and turn your everyday errands into extraordinary travel?</p>
               </div>
               <div className={styles.heroImageContainer}>
                   <div className={styles.cardImageContainer}>
-                    <Image
-                      src={reviewData.imageUrl}
-                      alt={reviewData.cardName}
-                      width={reviewData.imageWidth} 
-                      height={reviewData.imageHeight} 
-                      className={styles.heroImage}
-                      priority 
-                    />
+                    <Image src={reviewData.imageUrl} alt={reviewData.cardName} width={reviewData.imageWidth} height={reviewData.imageHeight} className={styles.heroImage} priority />
                   </div>
                   <div className={styles.ratingSection}>
                     <span className={styles.tciRating}>
@@ -369,18 +347,10 @@ function CitiStrataPremierReviewPage() {
                         <svg aria-hidden="true" focusable="false" className={styles.infoIcon} viewBox="0 0 16 16"><path fillRule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>
                       </button>
                       {siteName} Rating: <strong>{reviewData.ratingValue.toFixed(1)}</strong>/10
-                      {showRatingInfo && ( 
-                        <RatingTooltip
-                          ref={ratingTooltipRef}
-                          ratingValue={reviewData.ratingValue}
-                          ratingCriteria={ratingCriteria} 
-                          onClose={() => setShowRatingInfo(false)}
-                        />
-                      )}
+                      {showRatingInfo && <RatingTooltip ref={ratingTooltipRef} ratingValue={reviewData.ratingValue} ratingCriteria={ratingCriteria} onClose={() => setShowRatingInfo(false)} />}
                     </span>
                     <div className={styles.starRating} title={`Rated ${reviewData.ratingValue} out of 10 stars`}>
-                        ★★★★★
-                        <span className={styles.filledStars} style={{ '--rating': `${(reviewData.ratingValue / 10) * 100}%` }}>★★★★★</span>
+                        ★★★★★<span className={styles.filledStars} style={{ '--rating': `${(reviewData.ratingValue / 10) * 100}%` }}>★★★★★</span>
                     </div>
                   </div>
               </div>
@@ -390,14 +360,15 @@ function CitiStrataPremierReviewPage() {
               <article>
                 <header className={styles.reviewHeader}>
                     <div className={styles.summaryBox} id="summaryBoxTitle">
-                        <h2 className={styles.summaryBoxTitle}>{reviewData.cardName}: Key Insights</h2>
+                        <h2 className={styles.summaryBoxTitle} dangerouslySetInnerHTML={{ __html: `${reviewData.cardName}: Key Insights`}}/>
                         <div className={styles.summaryGrid}>
-                          {Object.entries(summaryBoxData).map(([key, value], index) => {
+                          {Object.entries(summaryBoxData).map(([key, value]) => {
                             const icons = { welcomeOffer: <IconGift/>, annualFee: <IconCheck/>, topEarning: <IconStar/>, keyPerks: <IconDollar/>, travelPerk: <IconPlane/>, bestFor: <IconPlus/> };
+                            const label = key.replace(/([A-Z])/g, ' $1').trim();
                             return (
                               <div key={key} className={styles.summaryItem} data-full-width={key === 'bestFor'}>
                                   <span className={styles.summaryIcon}>{icons[key]}</span> 
-                                  <span className={styles.summaryLabel}>{key.replace(/([A-Z])/g, ' $1').trim()}:</span>
+                                  <span className={styles.summaryLabel}>{label}:</span>
                                   <span className={styles.summaryValue}>{value}</span>
                               </div>
                             );
@@ -410,7 +381,8 @@ function CitiStrataPremierReviewPage() {
                   <p dangerouslySetInnerHTML={{ __html: "Enter the <strong>Citi Strata Premier℠ Card</strong>. In May 2024, Citi strategically refreshed its respected Premier® Card, relaunching it as the Strata Premier℠. This wasn't just a name change; it was a response. Citi listened, bringing back crucial travel protections that had vanished years prior, signaling a renewed commitment to the serious traveler." }}></p>
                   <p dangerouslySetInnerHTML={{ __html: "The result is a formidable <strong>&quot;workhorse&quot; card</strong>. It’s designed to excel at turning your largest household budget items—supermarket runs, gas fill-ups, and family dinners—into a powerful stash of flexible travel points. It’s built for the everyday spender with global ambitions, offering a pathway to premium travel without the premium price tag. This review will dissect every facet of the card to help you decide if it’s the new champion your wallet deserves." }}></p>
                 </section>
-
+                
+                {/* Section 1: Card Snapshot */}
                 <section id="section-1" className={styles.reviewSection}>
                   <h2>1. Card Snapshot & “Best For” Tagline</h2>
                   <p><strong>Best For: The Everyday Spender with Global Ambitions.</strong></p>
@@ -424,98 +396,169 @@ function CitiStrataPremierReviewPage() {
                   </ul>
                 </section>
 
+                {/* Section 2: User Profiling */}
                 <section id="section-2" className={styles.reviewSection}>
                   <h2>2. Detailed User Profiling — Who Should Get the Card</h2>
                   <p>A credit card’s worth is all about the person holding it. This one is no different. You'll get the most out of it if you see yourself here.</p>
                   <div className={styles.profileCardContainer}>
-                    <div className={styles.profileCard}><h4>The Family CFO</h4><p>You manage the household budget, where the biggest lines are groceries, gas, and dining. The Strata Premier’s broad 3X categories are a direct match, effortlessly converting weekly errands into points for the next family vacation.</p></div>
-                    <div className={styles.profileCard}><h4>The Aspiring Points Pro</h4><p>Ready to graduate from simple cash-back cards? The Strata Premier is an ideal "starter travel card" and the key that unlocks the powerful "Citi Trifecta" strategy.</p></div>
-                    <div className={styles.profileCard}><h4>The International Explorer</h4><p>You aren't deterred by unfamiliar airline names. The card’s transfer partners unlock phenomenal redemptions—like deeply discounted business class seats to Europe or Asia.</p></div>
+                    <div className={styles.profileCard}><h4>The Family CFO</h4><p>You manage the household budget, where the biggest lines are groceries, gas, and dining. The Strata Premier’s broad 3X categories are a direct match, effortlessly converting weekly errands into points for the next family vacation. Adding authorized users for no extra cost consolidates the family's spending, accelerating rewards even faster.</p></div>
+                    <div className={styles.profileCard}><h4>The Aspiring Points Pro</h4><p>Ready to graduate from simple cash-back cards? The Strata Premier is an ideal "starter travel card." It’s a manageable entry into the world of transferable points without the intimidating fee of a premium card. More importantly, it’s the essential key that unlocks the powerful "Citi Trifecta" strategy.</p></div>
+                    <div className={styles.profileCard}><h4>The International Explorer</h4><p>You aren't deterred by unfamiliar airline names. You know the true value of points lies in loyalty program alliances. The card’s transfer partners, rich with international powerhouses like Turkish Airlines and Air France-KLM, unlock phenomenal redemptions—like deeply discounted business class seats to Europe or Asia.</p></div>
                   </div>
                 </section>
 
+                {/* Section 3: Who Should Pass */}
                 <section id="section-3" className={styles.reviewSection}>
                   <h2>3. Who Should Pass on This Card</h2>
                    <div className={styles.profileCardContainer}>
-                    <div className={styles.profileCard}><h4>The Domestic-Only Flyer</h4><p>Loyal to U.S. airlines like Southwest or United? This card’s only domestic airline partner is JetBlue. A card like the Chase Sapphire Preferred® is a better tool.</p></div>
-                    <div className={styles.profileCard}><h4>The Simplicity Seeker</h4><p>Want one card that earns a great flat rate on everything? The Capital One Venture Rewards Credit Card is a superior choice.</p></div>
-                    <div className={styles.profileCard}><h4>The Ultra-Premium Traveler</h4><p>If you demand airport lounge access or hotel elite status, the Strata Premier will fall short. Look at premium cards instead.</p></div>
-                     <div className={styles.profileCard}><h4>The Cash-Back Enthusiast</h4><p>If your primary goal is cash, this card is not for you, as Citi is devaluing cash-back redemptions.</p></div>
+                    <div className={styles.profileCard}><h4>The Domestic-Only Flyer</h4><p>Loyal to U.S. airlines like Southwest or United? This card’s only domestic airline partner is JetBlue. A card like the Chase Sapphire Preferred® is a much more effective tool.</p></div>
+                    <div className={styles.profileCard}><h4>The Simplicity Seeker</h4><p>Want one card that earns a great flat rate on everything? The Capital One Venture Rewards Credit Card is a superior choice, earning 2 miles per dollar on every purchase.</p></div>
+                    <div className={styles.profileCard}><h4>The Ultra-Premium Traveler</h4><p>If you demand airport lounge access or hotel elite status, the Strata Premier will fall short. High-end travelers should look at premium cards like The Platinum Card® from American Express.</p></div>
+                     <div className={styles.profileCard}><h4>The Dedicated Cash-Back Enthusiast</h4><p>If your primary goal is cash, this card is not for you, as Citi is devaluing cash-back redemptions, cementing this card's identity as a travel-first product.</p></div>
                   </div>
                 </section>
                 
                 {/* --- MID-REVIEW CTA --- */}
                 <section className={styles.midArticleCta}>
-                    <h3>{reviewData.cardName}</h3>
+                    <h3 dangerouslySetInnerHTML={{ __html: reviewData.cardName }}/>
                     <a href={reviewData.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.applyNowButton}>Apply Now on Citi's Site</a>
                     <span className={styles.ctaDisclaimer}>Terms and conditions apply.</span>
                 </section>
                 
-                {/* All other 20 sections are mapped below, following the same pattern */}
+                {/* Section 4: Welcome Bonus */}
                 <section id="section-4" className={styles.reviewSection}>
                     <h2>4. Welcome Bonus & Citi 48-Month Eligibility Rules</h2>
-                    <p>The card greets you with 60,000 bonus ThankYou® Points after a $4,000 spend in three months. Before applying, understand Citi's strict eligibility rules:</p>
+                    <p>The card greets you with 60,000 bonus ThankYou® Points after a $4,000 spend in three months. At a minimum, that's worth $600 for travel or gift cards. Through transfer partners, however, that bonus could easily be worth $1,000 or more in airfare. Before applying, understand Citi's strict eligibility rules:</p>
                     <ul className={styles.featureList}>
-                        <li><strong>The 48-Month Rule:</strong> You cannot get the bonus if you have received one for this card in the past 48 months. <a href="https://www.citi.com/credit-cards/compare-credit-cards/CMA-PIT" target="_blank" rel="noopener noreferrer sponsored">[Citi: Cardmember Agreement]</a></li>
-                        <li><strong>The Product Change Trap:</strong> You are also ineligible if you have product-changed another card to a Premier or Strata Premier in the past 48 months.</li>
+                        <li><strong>The 48-Month Rule:</strong> You cannot get the welcome bonus if you have received one for the Citi Premier® or Strata Premier® in the past 48 months. <a href="https://www.citi.com/credit-cards/compare-credit-cards/CMA-PIT" target="_blank" rel="noopener noreferrer sponsored">[Citi: Cardmember Agreement]</a></li>
+                        <li><strong>The Product Change Trap:</strong> You are also ineligible if you have product-changed another card to a Premier or Strata Premier in the past 48 months. This prevents users from upgrading a no-fee card and then applying for a new one to get the bonus.</li>
+                        <li><strong>Application Velocity:</strong> While unwritten, a common rule of thumb is to apply for no more than one Citi card every 8 days and no more than two every 65 days.</li>
                     </ul>
                 </section>
 
+                {/* Section 5: Earning Power */}
                 <section id="section-5" className={styles.reviewSection}>
                     <h2>5. Earning Power: 3x & 10x Multipliers</h2>
-                    <p>The engine of the Citi Strata Premier℠ is its rewards structure. You’ll earn <strong>3 ThankYou® Points per dollar</strong> at restaurants, supermarkets, gas stations, EV charging stations, and on air travel and other hotel purchases. For those booking through Citi's own portal, the rewards are even richer: a staggering <strong>10 ThankYou® Points per dollar</strong> on hotels, car rentals, and attractions.</p>
+                    <p>The engine of the Citi Strata Premier℠ is its rewards structure, led by its expansive 3X bonus categories. You’ll earn 3 ThankYou® Points per dollar at restaurants, supermarkets, gas stations, EV charging stations, and on air travel and other hotel purchases.</p>
+                    <p>This collection is the card's superpower. It’s rare for a single card to offer an elevated rate across the three pillars of a typical household budget—groceries, gas, and dining. Note that the supermarket category excludes warehouse clubs like Costco and superstores like Target or Walmart.</p>
+                    <p>For those booking through Citi's own portal, the rewards are even richer: a staggering 10 ThankYou® Points per dollar on hotels, car rentals, and attractions booked via CitiTravel.com.</p>
+                    <p>This creates a brilliant strategic choice. The 10X portal rate is fantastic for value-maximizers at independent hotels. But if you have elite status with a major chain like Marriott or Hyatt, booking direct is key. The card’s 3X category for "Other Hotel Purchases" acts as a valuable escape hatch, letting you book direct, secure your elite benefits, and still earn a highly competitive 3X points.</p>
                 </section>
 
+                {/* Section 6: ThankYou Points */}
                 <section id="section-6" className={styles.reviewSection}>
-                    <h2>6. ThankYou® Points & Devaluation Warning</h2>
-                    <p>The currency you earn is Citi ThankYou® Points (TYPs). The best value is transferring to airline partners. But be warned: You can currently redeem for cash at 1 cent per point, but <strong>effective August 24, 2025, the value for cash back will drop 25% to just 0.75 cents per point</strong>. <a href="https://www.thankyou.com/cms.htm?pageName=tc" target="_blank" rel="noopener noreferrer sponsored">[Citi ThankYou Rewards: Program Terms and Conditions]</a></p>
-                </section>
-
-                <section id="section-7" className={styles.reviewSection}>
-                    <h2>7. Transfer-Partner Sweet Spots</h2>
-                    <p>The true power of the Strata Premier is converting points to airline miles. Sweet spots include:</p>
+                    <h2 dangerouslySetInnerHTML={{ __html: "6. ThankYou® Points Basics & Cash-Back Devaluation" }}/>
+                    <p>The currency you earn is Citi ThankYou® Points (TYPs), but not all redemptions are created equal.</p>
                     <ul className={styles.featureList}>
-                        <li><strong>Turkish Airlines Miles&Smiles:</strong> Book domestic United flights for as little as 10,000 miles each way.</li>
-                        <li><strong>Air France-KLM Flying Blue:</strong> Your gateway across the Atlantic with frequent "Promo Rewards."</li>
-                        <li><strong>Choice Privileges:</strong> An enhanced 1:2 transfer ratio for hotel stays. <a href="https://www.thankyou.com/transferPartner.htm" target="_blank" rel="noopener noreferrer sponsored">[Citi ThankYou Rewards: Transfer Partners List]</a></li>
+                      <li><strong>Poor Value (&lt;1¢/point):</strong> Using points at checkout with retailers like Amazon yields a low value of just 0.8 cents per point.</li>
+                      <li><strong>Standard Value (1¢/point):</strong> This is the baseline. Redeem points for 1 cent each for gift cards or travel booked through the Citi Travel portal.</li>
+                      <li><strong>The Big Warning—Cash Back Devaluation:</strong> You can currently redeem points for cash at the standard 1-cent rate. However, effective August 24, 2025, the value of points redeemed for cash back will drop 25% to just 0.75 cents per point. <a href="https://www.thankyou.com/cms.htm?pageName=tc" target="_blank" rel="noopener noreferrer sponsored">[Citi ThankYou Rewards: Program Terms and Conditions]</a></li>
+                      <li><strong>Best Value (1.5¢+/point):</strong> The undisputed best way to use TYPs is by transferring them to Citi's airline and hotel partners, where it’s possible to achieve values of 2, 5, or even 10 cents per point.</li>
                     </ul>
                 </section>
 
+                {/* Section 7: Transfer Partners */}
+                <section id="section-7" className={styles.reviewSection}>
+                    <h2>7. Transfer-Partner Sweet Spots (Airline & Hotel)</h2>
+                    <p>The true power of the Strata Premier lies in converting points to airline miles. While the partner list appears heavy on international carriers, this is a feature, not a bug. Here are some of the most valuable "sweet spot" redemptions:</p>
+                    <ul className={styles.featureList}>
+                        <li><strong>Turkish Airlines Miles&Smiles:</strong> This is arguably the program's crown jewel. You can book round-trip domestic flights on its Star Alliance partner, United Airlines, for as little as 10,000 miles each way—a fraction of what United often charges.</li>
+                        <li><strong>Air France-KLM Flying Blue:</strong> As your gateway across the Atlantic, Flying Blue frequently runs "Promo Rewards" that discount award tickets by 25-50%, making it possible to book one-way business class to Europe for as low as 50,000 miles.</li>
+                        <li><strong>Avianca LifeMiles:</strong> Another Star Alliance partner, LifeMiles is prized for offering premium cabin redemptions with no fuel surcharges, which can save you hundreds of dollars on award tickets.</li>
+                        <li><strong>Choice Privileges (The Hidden Gem):</strong> This hotel partner is a best-kept secret. The Strata Premier offers an enhanced 1:2 transfer ratio (10,000 Citi points become 20,000 Choice points). <a href="https://www.thankyou.com/transferPartner.htm" target="_blank" rel="noopener noreferrer sponsored">[Citi ThankYou Rewards: Transfer Partners List]</a> While known for budget hotels, its portfolio includes high-end collections, making it fantastic for luxury stays and trips to expensive regions like Scandinavia and Japan.</li>
+                    </ul>
+                </section>
+
+                {/* Section 8: Citi Trifecta */}
                 <section id="section-8" className={styles.reviewSection}>
-                    <h2>8. The “Citi Trifecta” Strategy</h2>
-                    <p>The Strata Premier's value multiplies when paired with its no-annual-fee siblings:</p>
+                    <h2 dangerouslySetInnerHTML={{ __html: "8. The “Citi Trifecta” Strategy (Premier + Custom Cash + Double Cash)" }}/>
+                    <p>While strong on its own, the Strata Premier's value multiplies when paired with its no-annual-fee siblings in a strategy known as the "Citi Trifecta." This three-card combo maximizes every dollar spent.</p>
                     <ol className={styles.numberedList}>
-                        <li><strong>Citi Strata Premier℠ (The Engine):</strong> Unlocks high-value transfers.</li>
-                        <li><strong>Citi Custom Cash® (The Specialist):</strong> Earns 5X on your top spend category. <a href="https://www.citi.com/credit-cards/citi-custom-cash-credit-card" target="_blank" rel="noopener noreferrer sponsored">[Citi: Citi Custom Cash® Card Details]</a></li>
-                        <li><strong>Citi Double Cash® (The Catch-All):</strong> Earns a flat 2X on all other purchases. <a href="https://www.citi.com/credit-cards/citi-double-cash-credit-card" target="_blank" rel="noopener noreferrer sponsored">[Citi: Citi Double Cash® Card Details]</a></li>
+                        <li><strong>Citi Strata Premier℠ Card ($95 annual fee): The Engine.</strong> Use it for its broad 3X categories. Most importantly, it's the key that unlocks transfers to high-value travel partners.</li>
+                        <li><strong>Citi Custom Cash® Card ($0 annual fee): The Specialist.</strong> It earns 5X points on your single highest eligible spending category each month (on up to $500). <a href="https://www.citi.com/credit-cards/citi-custom-cash-credit-card" target="_blank" rel="noopener noreferrer sponsored">[Citi: Citi Custom Cash® Card Details]</a> Use it for your top spend to get 5X, then switch to the Strata for 3X.</li>
+                        <li><strong>Citi Double Cash® Card ($0 annual fee): The Catch-All.</strong> This earns a flat 2X points on all other purchases (1X when you buy, 1X when you pay). <a href="https://www.citi.com/credit-cards/citi-double-cash-credit-card" target="_blank" rel="noopener noreferrer sponsored">[Citi: Citi Double Cash® Card Details]</a></li>
                     </ol>
+                    <p>The magic is pooling all points into your Strata Premier account, transforming them into a high-value, transferable currency. The $95 fee becomes the investment that elevates the earnings from two free cards.</p>
                 </section>
                 
+                {/* Section 9: Hotel Credit */}
                 <section id="section-9" className={styles.reviewSection}>
-                    <h2>9. $100 Annual Hotel Credit</h2>
-                    <p>The card offers a $100 annual hotel credit, but it requires a single, prepaid hotel booking of $500 or more through the CitiTravel.com portal. This can be challenging for some travelers to use effectively.</p>
+                    <h2>9. $100 Annual Hotel Credit – Use-Case & Limits</h2>
+                    <p>One of the card's headline benefits is its $100 annual hotel credit. You receive a $100 discount on a single, prepaid hotel stay of $500 or more (excluding taxes) booked through CitiTravel.com. However, this perk can be a puzzle:</p>
+                    <ul className={styles.featureList}>
+                        <li><strong>The $500 Minimum:</strong> Many stays won't reach this threshold.</li>
+                        <li><strong>Portal Booking Requirement:</strong> Booking via a portal means forfeiting hotel loyalty points and elite benefits.</li>
+                        <li><strong>Potentially Higher Prices:</strong> Portal prices can sometimes be higher than booking direct, negating the savings.</li>
+                    </ul>
+                    <p>View this credit as a bonus, not the core justification for the annual fee. If it fits your plans, it's a fantastic perk that puts you ahead.</p>
                 </section>
 
+                {/* Section 10: Travel Protections */}
                 <section id="section-10" className={styles.reviewSection}>
-                    <h2>10. Reinstated Travel Protections</h2>
-                    <p>A huge improvement was the return of travel protections, including Trip Cancellation & Interruption, Trip Delay, and Lost Luggage protection. <a href="https://www.cardbenefits.citi.com/" target="_blank" rel="noopener noreferrer sponsored">[Citi: Guide to Protection Benefits]</a></p>
+                    <h2>10. Reinstated Travel Protections (Trip Delay, Luggage, Rental Car)</h2>
+                    <p>A huge improvement with the Strata Premier rebrand was the return of travel protections. Their absence was a deal-breaker for many; their comeback makes the card a viable contender again. <a href="https://www.cardbenefits.citi.com/" target="_blank" rel="noopener noreferrer sponsored">[Citi: Guide to Protection Benefits]</a> Key protections include:</p>
+                    <ul className={styles.featureList}>
+                        <li>Trip Cancellation & Interruption Protection</li>
+                        <li>Trip Delay Protection (after a 6-hour delay)</li>
+                        <li>Lost or Damaged Luggage Protection</li>
+                        <li>MasterRental® Coverage (secondary in the U.S., primary abroad)</li>
+                    </ul>
                 </section>
                 
+                {/* Section 11: World Elite Perks */}
                 <section id="section-11" className={styles.reviewSection}>
-                    <h2>11. Extra World Elite Perks</h2>
-                    <p>As a World Elite Mastercard®, the card includes perks like a monthly Lyft credit and a complimentary DoorDash DashPass trial. <a href="https://www.mastercard.us/en-us/personal-credit-cards/world-elite-mastercard-credit-card.html" target="_blank" rel="noopener noreferrer sponsored">[Mastercard: World Elite Mastercard® Benefits]</a></p>
+                    <h2>11. Extra World Elite/Amex-Style Perks</h2>
+                    <p>As a World Elite Mastercard®, the Strata Premier includes a collection of often-overlooked perks that add real value: <a href="https://www.mastercard.us/en-us/personal-credit-cards/world-elite-mastercard-credit-card.html" target="_blank" rel="noopener noreferrer sponsored">[Mastercard: World Elite Mastercard® Benefits]</a></p>
+                    <ul className={styles.featureList}>
+                        <li>$5 Lyft credit each month after taking three rides.</li>
+                        <li>Complimentary trial membership to DoorDash DashPass.</li>
+                        <li>Complimentary ShopRunner membership for free two-day shipping.</li>
+                        <li>Citi Entertainment access for presale tickets and exclusive experiences.</li>
+                        <li>Points Sharing with another ThankYou® member (up to 100k per year).</li>
+                    </ul>
                 </section>
 
+                {/* Section 12: Rates & Fees */}
                 <section id="section-12" className={styles.reviewSection}>
                   <h2>12. Rates, Fees & Why You Must Pay in Full</h2>
-                  <p>The card carries a variable APR of {reviewData.aprRange} with no 0% intro offer. Rewards cards are not financing tools; always pay your balance in full to avoid interest charges that erase your earnings.</p>
+                  <p>Understanding the card's full cost structure is essential. This is a rewards card, not a financing tool.</p>
+                   <ul className={styles.featureList}>
+                        <li><strong>Annual Fee:</strong> $95</li>
+                        <li><strong>Purchase APR:</strong> A variable {reviewData.aprRange}. There is no 0% introductory APR offer.</li>
+                        <li><strong>Other Fees:</strong> Balance Transfer and Cash Advance fees are 5% ($5 or $10 minimum, respectively).</li>
+                    </ul>
+                  <p>The high interest rates underscore the golden rule of rewards cards: always pay your balance in full and on time. The value of any rewards earned is quickly erased by interest charges.</p>
                 </section>
 
+                {/* Section 13: Spending Example */}
                 <section id="section-13" className={styles.reviewSection}>
-                    <h2>13. Real-World Spending Example</h2>
-                    <p>A family using the "Citi Trifecta" with typical spending can earn a massive number of points. With $2,550 in monthly spend across key categories, they could rack up <strong>145,800 ThankYou® Points</strong> in the first year, including the welcome bonus.</p>
+                    <h2>13. Real-World Spending Example (Family Budget Math)</h2>
+                    <p>Let's see how the points add up for "Taylor, a family traveler," with a typical monthly budget.</p>
+                    <p><strong>Monthly Spending:</strong></p>
+                    <ul className={styles.featureList}>
+                        <li>Groceries: $500</li>
+                        <li>Gas/EV Charging: $250</li>
+                        <li>Dining: $300</li>
+                        <li>Other Non-Bonus Spending: $1,500</li>
+                    </ul>
+                    <div className={styles.tableContainer}>
+                    <table className={styles.statsTable}>
+                        <thead><tr><th>Annual Points Earned with the "Citi Trifecta"</th><th>Points</th></tr></thead>
+                        <tbody>
+                            <tr><td data-label="Source">Groceries (on Citi Custom Cash®)</td><td data-label="Points">30,000</td></tr>
+                            <tr><td data-label="Source">Gas (on Citi Strata Premier℠)</td><td data-label="Points">9,000</td></tr>
+                            <tr><td data-label="Source">Dining (on Citi Strata Premier℠)</td><td data-label="Points">10,800</td></tr>
+                            <tr><td data-label="Source">Other (on Citi Double Cash®)</td><td data-label="Points">36,000</td></tr>
+                            <tr style={{fontWeight: 'bold'}}><td>Annual Earning from Spending</td><td>85,800</td></tr>
+                            <tr style={{fontWeight: 'bold'}}><td>Welcome Bonus (Year 1)</td><td>+60,000</td></tr>
+                            <tr style={{fontWeight: 'bold', backgroundColor: '#f0f8ff'}}><td>Total Year 1 Points</td><td>145,800</td></tr>
+                        </tbody>
+                    </table>
+                    </div>
+                    <p>That's enough for three round-trip business class tickets to Europe during a Flying Blue promo or over a dozen domestic round-trip flights on United (booked via Turkish Airlines).</p>
                 </section>
 
+                {/* Section 14: Pros & Cons */}
                 <section id="section-14" className={styles.reviewSection}>
                   <h2>14. Pros & Cons One-Look Table</h2>
                    <div className={styles.prosCons}>
@@ -526,6 +569,7 @@ function CitiStrataPremierReviewPage() {
                               <li>Powerful 10X portal earning rate</li>
                               <li>Valuable international transfer partners</li>
                               <li>Reinstated travel protections</li>
+                              <li>Unlocks the powerful "Citi Trifecta"</li>
                           </ul>
                       </div>
                       <div className={styles.cons}>
@@ -535,43 +579,59 @@ function CitiStrataPremierReviewPage() {
                                <li>Restrictive $100 hotel credit</li>
                                <li>Lacks major U.S. airline partners</li>
                                <li>Upcoming cash-back devaluation</li>
+                               <li>No airport lounge access</li>
                           </ul>
                        </div>
                    </div>
                 </section>
                 
+                {/* Section 15: User Testimonials */}
                 <section id="section-15" className={styles.reviewSection}>
-                  <h2>15. Voices from the Community</h2>
+                  <h2>15. Voices from the Community – 5 Mini-Testimonials</h2>
                     <div className={styles.testimonialContainer}>
-                      <blockquote className={styles.testimonialQuote}><p>&quot;The Strata Premier...is required to make transfers work.&quot;</p><footer>– Andrew, The Strategist</footer></blockquote>
-                      <blockquote className={styles.testimonialQuote}><p>&quot;I do multiple cross Atlantic trips and Turkish Airlines have business class that you can get for 45,000 miles...&quot;</p><footer>– Reddit User, The Value Hunter</footer></blockquote>
+                      <blockquote className={styles.testimonialQuote}><p>"The Strata Premier...is required to make transfers work," highlighting its role as the key to his Trifecta system with the Double Cash and Custom Cash cards.</p><footer>– The Strategist (Andrew, One Mile at a Time)</footer></blockquote>
+                      <blockquote className={styles.testimonialQuote}><p>"I do multiple cross Atlantic trips and Turkish Airlines have business class that you can get for 45,000 miles, meaning that I will get a free business class flight on every $15,000 I spend."</p><footer>– The International Value Hunter (Reddit user)</footer></blockquote>
+                      <blockquote className={styles.testimonialQuote}><p>On the hotel credit: "I would not count on being able to use this benefit... Most likely you'll break even at best."</p><footer>– The Realist (TMagee, One Mile at a Time)</footer></blockquote>
+                      <blockquote className={styles.testimonialQuote}><p>"I will start using my Citi Premier more often as it also gets 3x on...restaurants, groceries and gas. And I will use my Venture X for everything else."</p><footer>– The Everyday Earner (alexarauz, Reddit)</footer></blockquote>
+                      <blockquote className={styles.testimonialQuote}><p>Detailed a struggle to get his bonus due to a "disconnect between the marketing department's offer...and the back-end terms."</p><footer>– The Frustrated Applicant (Jake Z., Frequent Miler)</footer></blockquote>
                     </div>
                 </section>
 
+                {/* Section 16: Competitor Table */}
                 <section id="section-16" className={styles.reviewSection}>
-                  <h2>16. Market Matchup vs. Competition</h2>
+                  <h2>16. Market Matchup Table vs. Competition</h2>
                   <DraggableTableWrapper>
                     <div className={styles.tableContainer}>
                       <table className={`${styles.statsTable} ${styles.comparisonTable}`}>
                         <thead><tr><th>Feature</th><th>Citi Strata Premier℠</th><th>Chase Sapphire Preferred®</th><th>Capital One Venture</th><th>American Express® Green</th></tr></thead>
                         <tbody>
                           <tr><td>Annual Fee</td><td>$95</td><td>$95</td><td>$95</td><td>$150</td></tr>
+                          <tr><td>Welcome Bonus</td><td>60k points ($4k spend)</td><td>60k points ($4k spend)</td><td>75k miles ($4k spend)</td><td>40k points ($3k spend)</td></tr>
                           <tr><td>Groceries</td><td><strong>3X (in-store)</strong></td><td>3X (online only)</td><td>2X</td><td>1X</td></tr>
+                          <tr><td>Gas</td><td><strong>3X</strong></td><td>1X</td><td>2X</td><td>1X</td></tr>
+                          <tr><td>Dining</td><td><strong>3X</strong></td><td><strong>3X</strong></td><td>2X</td><td><strong>3X</strong></td></tr>
                           <tr><td>Key Credit</td><td>$100 Hotel Credit</td><td>$50 Hotel Credit <a href="https://www.chase.com/card-benefits/sapphire-preferred/travel" target="_blank" rel="noopener noreferrer sponsored">[Chase]</a></td><td>$100 TSA/Global Entry <a href="https://www.capitalone.com/credit-cards/venture/" target="_blank" rel="noopener noreferrer sponsored">[Capital One]</a></td><td>$189 CLEAR® Plus <a href="https://www.americanexpress.com/us/credit-cards/card/green-card/" target="_blank" rel="noopener noreferrer sponsored">[Amex]</a></td></tr>
                           <tr><td>Portal Value</td><td>1.0¢ / point</td><td><strong>1.25¢ / point</strong></td><td>1.0¢ / mile</td><td>Up to 1.0¢ / point</td></tr>
+                          <tr><td>Top Partners</td><td>Int'l Focus (Turkish)</td><td>Domestic Focus (United, Hyatt)</td><td>Good Mix</td><td>Excellent Mix (Delta)</td></tr>
                         </tbody>
                       </table>
                     </div>
                   </DraggableTableWrapper>
                 </section>
                 
+                {/* Section 17: Deeper Analysis */}
                 <section id="section-17" className={styles.reviewSection}>
-                  <h2>17. Deeper Competitor Analysis</h2>
-                  <p><strong>vs. Chase Sapphire Preferred®:</strong> Strata wins on everyday earning; Sapphire wins on simpler redemptions and domestic partners. <strong>vs. Capital One Venture:</strong> Strata wins for category maximizers; Venture wins for simplicity. <strong>vs. Amex Green:</strong> Strata has a lower fee and better everyday earning; Amex Green offers unique travel credits.</p>
+                  <h2>17. Deeper Competitor Analysis – When Strata Wins/Loses</h2>
+                  <ul className={styles.featureList}>
+                    <li><strong>vs. Chase Sapphire Preferred®:</strong> The choice is spending vs. redeeming. Strata Premier is superior for earning on groceries and gas. Sapphire Preferred wins with its 25% portal points boost and its invaluable transfer partnerships with United, Southwest, and World of Hyatt. Choose Strata for everyday spending; choose Sapphire for simple redemptions and domestic travel.</li>
+                    <li><strong>vs. Capital One Venture Rewards:</strong> This is maximization vs. simplicity. Strata's 3X categories will out-earn Venture's flat 2X for most. But Venture is a "set it and forget it" card with a valuable Global Entry/TSA PreCheck credit. Choose Strata if you're a category maximizer; choose Venture for simplicity.</li>
+                    <li><strong>vs. American Express® Green Card:</strong> The Amex Green has a higher fee ($150) and weaker earning on essentials. Its strength is a broader definition of "travel" and unique credits for CLEAR Plus. It also unlocks the Amex ecosystem, including Delta. Choose Strata for its lower fee and stronger everyday earning; choose Amex Green if you value its specific credits.</li>
+                  </ul>
                 </section>
 
+                {/* Section 18: FAQs */}
                 <section id="section-18" className={`${styles.reviewSection} ${styles.faqSection}`}>
-                  <h2>18. Card-Specific FAQs</h2>
+                  <h2>18. Card-Specific FAQs (Top 5–7 Questions)</h2>
                   <div className={styles.faqContainer}>
                       {structuredDataOptimized['@graph'].find(item => item['@type'] === 'FAQPage').mainEntity.map((faq, index) => (
                           <details key={index} className={styles.faqItem} name={`faq-${index + 1}`}>
@@ -581,16 +641,19 @@ function CitiStrataPremierReviewPage() {
                       ))}
                   </div>
                 </section>
-
+                
+                {/* Section 19: Final Verdict */}
                 <section id="section-19" className={styles.reviewSection}>
                   <h2>19. Final Verdict: Is It Your New Front-of-Wallet Champ?</h2>
-                  <p>In a crowded field, the Citi Strata Premier℠ has carved out a distinct and compelling identity. Its value doesn’t come from flashy perks. Instead, its strength is fundamental: an unparalleled ability to convert the largest categories of everyday spending into a highly valuable travel currency. This card is built for the savvy consumer who wants their weekly grocery bill to fund their next great adventure.</p>
-                  <p>For those willing to engage with its features, the rewards are immense. It might just be your new front-of-wallet champion.</p>
+                  <p>In a crowded field, the Citi Strata Premier℠ has carved out a distinct and compelling identity. Its value doesn’t come from flashy perks like lounge access. Instead, its strength is more fundamental: an unparalleled ability to convert the largest, most common categories of everyday spending into a highly valuable travel currency.</p>
+                  <p>This card is built for the savvy consumer who looks beyond the surface. It is for the household that wants its weekly grocery bill and daily commute to fund its next great adventure. It's the perfect centerpiece for a low-cost, high-reward "Citi Trifecta," transforming two no-annual-fee cards into a point-earning powerhouse.</p>
+                  <p>The card is not without flaws. The hotel credit is restrictive, and the lack of major U.S. airline partners requires a learning curve. This card demands engagement from its holder to unlock its maximum potential.</p>
+                  <p>But for those willing to meet it halfway, the rewards are immense. If you’re looking for a card that works as hard as you do at the supermarket and gas pump—and then rewards that hard work with business class flights to Paris or a family trip to Hawaii—the Citi Strata Premier℠ isn't just a contender. It might just be your new front-of-wallet champion.</p>
                 </section>
 
                 <section id="section-eat" className={`${styles.reviewSection} ${styles.eatSection}`}>
                     <h2 dangerouslySetInnerHTML={{ __html: `Our Commitment to E-A-T: Expertise, Authority &amp; Trustworthiness`}}></h2>
-                    <p>At <strong>{siteName}</strong>, we are committed to providing content that exemplifies Expertise, Authoritativeness, and Trustworthiness (E-A-T). This review of the <strong>{reviewData.cardName}</strong> has been meticulously researched, referencing official issuer documentation from Citi, and considering real-world user experiences. Our goal is to present a balanced, reliable guide to help you make an informed decision. All information is current as of <strong>{new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</strong>.</p>
+                    <p>At <strong>{siteName}</strong>, we are committed to providing content that exemplifies Expertise, Authoritativeness, and Trustworthiness (E-A-T). This review of the <strong>{reviewData.cardName}</strong> has been meticulously researched and crafted. We've analyzed the card's features, benefits, rewards structure, and fees, referencing official issuer documentation from Citi and considering real-world user experiences and data points from the travel rewards community. Our goal is to present a balanced, comprehensive, and reliable guide to help you make an informed decision. All information is current as of <strong>{new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</strong>, but we always recommend verifying details directly with the issuer as terms can change.</p>
                 </section>
 
               </article>
@@ -605,7 +668,7 @@ function CitiStrataPremierReviewPage() {
         <div className={styles.stickyFooterContent}>
             <Image src={reviewData.imageUrl} alt={`${reviewData.cardName} small image`} width={60} height={38} className={styles.stickyFooterCardImage} /> 
             <div className={styles.stickyFooterText}>
-              <span className={styles.stickyFooterCardName}>{reviewData.cardName}</span>
+              <span className={styles.stickyFooterCardName} dangerouslySetInnerHTML={{ __html: reviewData.cardName }}/>
               <span className={styles.stickyFooterRating}>{siteName} Rating: {reviewData.ratingValue.toFixed(1)}/10</span>
             </div>
             <div className={styles.stickyFooterButtons}>
