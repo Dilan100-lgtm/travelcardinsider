@@ -53,7 +53,7 @@ const studentCardData = [
     id: 'capitalOneSavorOneStudent',
     name: 'Capital One SavorOne Student Cash Rewards Card',
     category: 'Cash Back',
-    imageSrc: '/savorone-student-card.png', // ❗ Replace
+    imageSrc: '/new-savor-card-art.avif', // ❗ Replace
     imageAlt: 'Capital One SavorOne Student Cash Rewards Card',
     annualFee: '$0',
     officialCardPageLink: 'https://www.capitalone.com/credit-cards/savorone-student/',
@@ -70,7 +70,7 @@ const studentCardData = [
     id: 'bofaTravelRewardsStudent',
     name: 'Bank of America® Travel Rewards for Students',
     category: 'Travel Points',
-    imageSrc: '/bofa-travel-rewards-student.png', // ❗ Replace
+    imageSrc: '/8blm_trvsigcm_v_250x158 (1).png', // ❗ Replace
     imageAlt: 'Bank of America® Travel Rewards for Students card',
     annualFee: '$0',
     officialCardPageLink: 'https://www.bankofamerica.com/credit-cards/products/student-travel-rewards-credit-card/',
@@ -87,7 +87,7 @@ const studentCardData = [
     id: 'discoverItStudentCashBack',
     name: 'Discover it® Student Cash Back',
     category: 'Rotating Cash Back',
-    imageSrc: '/discover-it-student-cash-back.png', // ❗ Replace
+    imageSrc: '/cardart-student-iridescent-390-243.webp', // ❗ Replace
     imageAlt: 'Discover it® Student Cash Back card',
     annualFee: '$0',
     officialCardPageLink: 'https://www.discover.com/credit-cards/student-credit-card/it-card.html',
