@@ -727,3 +727,116 @@
     font-size: 0.85rem; /* Adjust header font size for smaller screens */
   }
 }
+/* Styles the container that holds the table to allow horizontal scrolling on small screens */
+.comparisonTableContainer {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* Adds smooth scrolling on iOS */
+    border: 1px solid #e1e4e8; /* Subtle border around the scrollable area */
+    border-radius: 8px;
+    margin: 2em 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Core table styling */
+.comparisonTableContainer table {
+    width: 100%;
+    min-width: 700px; /* Ensures table content doesn't wrap too aggressively */
+    border-collapse: collapse; /* Removes space between cell borders */
+    text-align: left;
+    background-color: #ffffff;
+}
+
+/* Table header styling */
+.comparisonTableContainer th {
+    background-color: #f7f9fc; /* Light, neutral header background */
+    padding: 16px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #24292e; /* Dark, readable text */
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid #e1e4e8; /* Stronger bottom border for header */
+}
+
+/* Table data cell styling */
+.comparisonTableContainer td {
+    padding: 16px;
+    font-size: 1rem;
+    color: #333;
+    border-bottom: 1px solid #e1e4e8; /* Subtle line between rows */
+}
+
+/* Alternating row colors for better readability */
+.comparisonTableContainer tbody tr:nth-of-type(even) {
+    background-color: #fdfdfe;
+}
+
+/* Hover effect for rows to highlight the currently viewed item */
+.comparisonTableContainer tbody tr:hover {
+    background-color: #f0f4ff; /* A subtle blue hover effect */
+}
+
+/* Styling for the first column to act as a row header */
+.comparisonTableContainer td:first-child {
+    font-weight: 600;
+    color: #1a202c;
+}
+
+/* Bolding card names in the table for emphasis */
+.comparisonTableContainer td:first-child strong {
+    font-weight: 700;
+}
+
+/* --- Responsive Design for Mobile --- */
+@media (max-width: 768px) {
+    .comparisonTableContainer {
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+    }
+
+    .comparisonTableContainer table {
+         min-width: auto; /* Allow table to shrink on mobile */
+    }
+
+    /* On smaller screens, make the table headers and cells stack */
+    .comparisonTableContainer th,
+    .comparisonTableContainer td {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: right; /* Align cell content to the right */
+        padding-left: 50%; /* Create space for the label */
+        position: relative;
+    }
+
+    .comparisonTableContainer td {
+        border-bottom: none; /* Remove bottom borders between cells */
+    }
+
+    .comparisonTableContainer tr {
+        border-bottom: 2px solid #e1e4e8; /* Add border to the bottom of each "row" block */
+        display: block;
+        margin-bottom: 1em;
+    }
+
+    .comparisonTableContainer thead {
+        display: none; /* Hide the original table header */
+    }
+
+    /* Use a pseudo-element to create a label for each cell */
+    .comparisonTableContainer td:before {
+        content: attr(data-label); /* The label text comes from a data attribute */
+        position: absolute;
+        left: 16px;
+        width: calc(50% - 32px);
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        color: #24292e;
+    }
+}
