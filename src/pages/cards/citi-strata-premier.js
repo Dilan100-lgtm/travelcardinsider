@@ -65,10 +65,10 @@ const reviewData = {
       }
   },
   siteName: siteName,
-  imageUrl        : '/CardArt-Strata.png.webp', // !!! Placeholder: Replace with actual card image URL
+  imageUrl        : '/download1.png', // !!! Placeholder: Replace with actual card image URL
   imageWidth      : 1290, 
   imageHeight     : 812,  
-  ratingValue     : 8.5,  // !!! Placeholder - Based on focus for everyday spenders
+  ratingValue     : 7.7,  // !!! Placeholder - Based on focus for everyday spenders
   ratingCount     : 450,  // !!! Placeholder - UPDATE AS NEEDED
   reviewBody      : 'Our editors evaluate the Citi Strata Premier Card based on its rewards structure (3X on everyday spend, 10X on portal), the $100 hotel credit, valuable transfer partners, the Citi Trifecta strategy, annual fee, and overall value for travelers who want to earn on daily purchases.',
   aprRange        : '20.24% - 28.24% (Variable)',
@@ -489,6 +489,15 @@ function CitiStrataPremierReviewPage() {
                      <div className={styles.profileCard}><h4>The Dedicated Cash-Back Enthusiast</h4><p>If your primary goal is cash, this card is not for you. Citi is devaluing cash-back redemptions, cementing this card's identity as a travel-first product.</p></div>
                   </div>
                 </section>
+
+                <Image
+                                    src="/pexels-simonmigaj-951076.jpg" // Placeholder - image of someone looking relieved at their finances
+                                    alt="A person looking at their finances on a laptop with a sense of relief, symbolizing debt management."
+                                    width={800}
+                                    height={500}
+                                    className={styles.contentImage}
+                                    loading="lazy"
+                                />
                 
                 <section className={styles.midArticleCta}>
                     <h3 dangerouslySetInnerHTML={{ __html: reviewData.cardName }}/>
@@ -645,6 +654,15 @@ function CitiStrataPremierReviewPage() {
                        </div>
                    </div>
                 </section>
+
+                <Image
+                                    src="/pexels-pixabay-39691.jpg" // Placeholder - image of someone looking relieved at their finances
+                                    alt="A person looking at their finances on a laptop with a sense of relief, symbolizing debt management."
+                                    width={800}
+                                    height={500}
+                                    className={styles.contentImage}
+                                    loading="lazy"
+                                />
                 
                 <section id="section-15" className={styles.reviewSection}>
                   <h2>15. Voices from the Community – 5 Mini-Testimonials</h2>
