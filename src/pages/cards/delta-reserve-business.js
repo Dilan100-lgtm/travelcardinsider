@@ -880,9 +880,9 @@ function DeltaReserveBusinessReviewPage() {
                           <tr>
                             <th>Feature</th>
                             <th><Link href="/reviews/delta-reserve-business-review">Delta Reserve Business</Link></th>
-                            <th><Link href="/reviews/business-platinum-card-from-american-express-review">The Business Platinum Card®</Link></th>
+                            <th><Link href="/reviews/the-business-platinum-card-from-american-express-review">The Business Platinum Card®</Link></th>
                             <th><Link href="/reviews/chase-ink-business-preferred-credit-card-review">Chase Ink Business Preferred®</Link></th>
-                            <th><Link href="/reviews/capital-one-venture-x-business-review">Capital One Venture X Business</Link></th>
+                            <th><Link href="/reviews/capital-one-venture-x-business-credit-card-review">Capital One Venture X Business</Link></th>
                           </tr>
                         </thead>
                         <tbody>
