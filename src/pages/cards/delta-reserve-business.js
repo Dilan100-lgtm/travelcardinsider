@@ -716,7 +716,7 @@ function DeltaReserveBusinessReviewPage() {
                 </section>
 
                 <Image
-                    src="/hero-image-option-1 (1).jpg" // Placeholder - image of person in a lounge
+                    src="/21-09-mk346307_pco_deltaone_1a_0150_vs_r2 (1).jpg" // Placeholder - image of person in a lounge
                     alt="A business professional working in an airport lounge, symbolizing the card's premium access."
                     width={800}
                     height={500}
