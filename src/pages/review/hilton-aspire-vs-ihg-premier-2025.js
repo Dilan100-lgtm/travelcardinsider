@@ -18,7 +18,7 @@ const SITE_BASE_URL = 'https://www.travelcardinsider.com';
 const PAGE_PATH = '/reviews/hilton-aspire-vs-ihg-premier-2025';
 const PAGE_URL = `${SITE_BASE_URL}${PAGE_PATH}`;
 const SITE_NAME = 'Travel Card Insider';
-const HERO_IMAGE_SRC = '/hilton-vs-ihg-hero.webp'; // ❗ Replace with your optimised hero image
+const HERO_IMAGE_SRC = '/pexels-elina-sazonova-1838554.webp'; // ❗ Replace with your optimised hero image
 const HERO_IMAGE_ALT = 'A split image showing a luxurious Hilton resort on one side and a modern IHG hotel on the other, symbolizing the choice between the two brands.';
 const DATE_PUBLISHED = '2025-06-26'; // ✏️ Adjust to your actual publish date
 const DATE_MODIFIED = '2025-06-26'; // ✏️ Update whenever you edit copy
@@ -53,14 +53,14 @@ const cardData = [
     id: 'hiltonAspire',
     name: 'Hilton Honors American Express Aspire Card',
     issuer: 'American Express',
-    imageSrc: '/hilton_aspire_card.png', // ❗ Replace
+    imageSrc: '/NUS000000329_480x304_straight_withname.avif', // ❗ Replace
     imageAlt: 'Hilton Honors American Express Aspire Card',
     annualFee: '$550',
     officialCardPageLink: 'https://www.americanexpress.com/us/credit-cards/card/hilton-honors-aspire/',
     welcomeOffer: '175,000 Hilton Honors Bonus Points after meeting a minimum spending requirement.',
     freeNight: 'Uncapped Free Night Reward each year upon renewal, valid at almost any Hilton property worldwide.',
     status: 'Hilton Diamond status.',
-    ratingValue: 9.2,
+    ratingValue: 9.0,
     ratingStars: 4.6,
   },
   {
@@ -74,7 +74,7 @@ const cardData = [
     welcomeOffer: 'Often offers 5 Free Night certificates, each valid at properties costing up to a certain point threshold.',
     freeNight: 'Anniversary Free Night valid at properties costing up to 40,000 points, with the ability to top up with points.',
     status: 'IHG Platinum Elite status.',
-    ratingValue: 8.5,
+    ratingValue: 7.5,
     ratingStars: 4.3,
   }
 ];
