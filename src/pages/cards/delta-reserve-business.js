@@ -693,7 +693,7 @@ function DeltaReserveBusinessReviewPage() {
 
                 <section id="section-1" className={styles.reviewSection}>
                   <h2>1. At a Glance: The High-Flying Essentials</h2>
-                  <p><strong>Best For:</strong> The Delta-loyal business owner who prioritizes elite status and premium comfort. This card is precision-engineered for entrepreneurs whose business lives and breathes on Delta Air Lines.</p>
+                  <p><strong>Best For:</strong> The Delta-loyal business owner who prioritizes elite status and premium comfort. This card is precision-engineered for entrepreneurs whose business lives and breathes on Delta Air Lines. Explore our list of the <Link href="/reviews/best-business-credit-cards">best business credit cards</Link> for more options.</p>
                   <DraggableTableWrapper>
                         <div className={styles.tableContainer}>
                             <table className={`${styles.statsTable} ${styles.ratesFeesTable}`}>
@@ -730,7 +730,7 @@ function DeltaReserveBusinessReviewPage() {
                   <div className={styles.profileCardContainer}>
                     <div className={styles.profileCard}>
                         <h4>The Status Chaser</h4>
-                        <p>This person sees business spending as a strategic tool to chase elite status. They channel significant expenses to hit the MQD Boost and the $75,000 spend waiver for unlimited Sky Club visits.</p>
+                        <p>This person sees business spending as a strategic tool to chase elite status. They channel significant expenses to hit the MQD Boost and the $75,000 spend waiver for unlimited Sky Club visits. Learn more about <Link href="/guides/delta-medallion-status-guide">achieving Delta Medallion Status</Link>.</p>
                     </div>
                     <div className={styles.profileCard}>
                         <h4>The Hub-Based Traveler</h4>
@@ -747,7 +747,7 @@ function DeltaReserveBusinessReviewPage() {
                     <h2>3. The Welcome Wagon: Is the 110,000-Mile Offer Worth It?</h2>
                     <p>The card's first handshake is a firm and valuable one. Currently, new members can earn **110,000 Bonus Miles** after spending $12,000 in the first six months.</p>
                     <p>So, what’s that bonus really worth? Using a conservative valuation of 1.2 cents per SkyMile, 110,000 miles translates to about **$1,320 in travel value**. This value gets a further boost from the card's **TakeOff 15** benefit, which gives you a 15% discount when redeeming miles for Delta flights, stretching your rewards even further. (<a href="https://www.delta.com/us/en/skymiles/airline-credit-cards/takeoff-15" target="_blank" rel="noopener noreferrer">Source: Delta Air Lines</a>).</p>
-                    <p>The $12,000 spending requirement over six months breaks down to a manageable $2,000 per month for many businesses. More importantly, this welcome offer reframes the card's financial commitment. The ~$1,320 in initial value effectively covers the $650 annual fee for two years, giving you a risk-mitigated trial.</p>
+                    <p>The $12,000 spending requirement over six months breaks down to a manageable $2,000 per month for many businesses. More importantly, this welcome offer reframes the card's financial commitment. The ~$1,320 in initial value effectively covers the $650 annual fee for two years, giving you a risk-mitigated trial. Not sure how to meet the spend? Check our guide on <Link href="/guides/meeting-minimum-spend-requirements">meeting minimum spend requirements</Link>.</p>
                 </section>
 
                 <section id="section-4" className={styles.reviewSection}>
@@ -772,7 +772,7 @@ function DeltaReserveBusinessReviewPage() {
 
                 <section id="section-6" className={styles.reviewSection}>
                     <h2>6. The Crown Jewel: Unlocking the Companion Certificate</h2>
-                    <p>Each year you renew your card, you receive what is arguably its single most valuable benefit: the Annual Companion Certificate. What makes the Reserve’s version the crown jewel? It’s valid for one round-trip companion flight in **First Class, Delta Comfort+®, or Main Cabin**. (<a href={reviewDataNew.officialCompanionCertLink} target="_blank" rel="noopener noreferrer">Source: Delta Air Lines</a>). You buy your ticket, and your companion flies for just the cost of taxes and fees (capped at $80 domestically).</p>
+                    <p>Each year you renew your card, you receive what is arguably its single most valuable benefit: the Annual Companion Certificate. What makes the Reserve’s version the crown jewel? It’s valid for one round-trip companion flight in **First Class, Delta Comfort+®, or Main Cabin**. (<a href={reviewDataNew.officialCompanionCertLink} target="_blank" rel="noopener noreferrer">Source: Delta Air Lines</a>). You buy your ticket, and your companion flies for just the cost of taxes and fees (capped at $80 domestically). See our <Link href="/guides/maximizing-companion-certificates">guide to maximizing companion certificates</Link> for strategies.</p>
                     <p>When used strategically, this one perk can justify the entire annual fee. A last-minute, cross-country First Class ticket can easily top $1,500. Using the certificate in this scenario would save you that entire amount, resulting in a net value of over $850 after accounting for the annual fee. It’s the card’s ultimate high-impact win. Just be aware it's only valid for lower-priced fare classes (L, U, T, X, and V), which can sell out quickly.</p>
                 </section>
 
@@ -781,7 +781,7 @@ function DeltaReserveBusinessReviewPage() {
                     <p>One of the most tangible benefits of the Reserve Business card is the sanctuary it provides from chaotic airport terminals. Here are the current access rules:</p>
                     <ul className={styles.featureList}>
                         <li><strong>Delta Sky Club:</strong> You receive 15 visits per year to Delta Sky Clubs when flying Delta. You also get four one-time guest passes annually. Want unlimited access? You can remove the 15-visit cap by spending $75,000 on the card in a calendar year. (<a href={reviewDataNew.officialSkyClubAccessLink} target="_blank" rel="noopener noreferrer">Source: Delta Air Lines</a>).</li>
-                        <li><strong>The Centurion® Lounge & Escape Lounges:</strong> You also get complimentary access to the exclusive Amex Centurion Lounge network and Escape Lounges when flying on a Delta ticket purchased with your card.</li>
+                        <li><strong>The Centurion® Lounge & Escape Lounges:</strong> You also get complimentary access to the exclusive Amex Centurion Lounge network and Escape Lounges when flying on a Delta ticket purchased with your card. Read our <Link href="/guides/airport-lounge-access-guide">ultimate guide to airport lounge access</Link> for more details.</li>
                     </ul>
                     <p>The 15-visit cap is perfectly calibrated for the executive who travels once or twice a month, helping to address the common issue of lounge overcrowding.</p>
                 </section>
@@ -891,6 +891,13 @@ function DeltaReserveBusinessReviewPage() {
                           <tr><td>Lounge Access</td><td>Delta Sky Club, Centurion</td><td>Amex Global Lounge Collection (Widest Access)</td><td>None</td><td>Priority Pass™, Capital One</td></tr>
                           <tr><td>Key Perk</td><td>Annual First Class Companion Cert.</td><td>&gt;$1,000 in various statement credits</td><td>3X on key business categories</td><td>$300 travel credit + 10k miles</td></tr>
                           <tr><td>Status Boost</td><td>Direct path to Delta Status</td><td>Hilton & Marriott Gold Status</td><td>None</td><td>None</td></tr>
+                           <tr>
+                            <td>Card Link</td>
+                            <td><Link href="/reviews/delta-reserve-business-review">View Card</Link></td>
+                            <td><Link href="/reviews/business-platinum-card-from-american-express-review">View Card</Link></td>
+                            <td><Link href="/reviews/chase-ink-business-preferred-credit-card-review">View Card</Link></td>
+                            <td><Link href="/reviews/capital-one-venture-x-business-review">View Card</Link></td>
+                          </tr>
                         </tbody>
                       </table>
                     </div>
@@ -956,7 +963,7 @@ function DeltaReserveBusinessReviewPage() {
                     <ul className={styles.featureList}>
                         <li><strong>Cell Phone Protection:</strong> Pay your monthly wireless bill with the card and get up to $800 per claim for theft or damage (two claims per year, $50 deductible). (<a href={reviewDataNew.officialCellPhoneProtectionLink} target="_blank" rel="noopener noreferrer sponsored">Source: American Express</a>)</li>
                         <li><strong>Purchase Protection & Extended Warranty:</strong> Covers new purchases against damage or theft.</li>
-                        <li><strong>Trip Cancellation & Delay Insurance:</strong> Provides reimbursement for covered reasons.</li>
+                        <li><strong>Trip Cancellation & Delay Insurance:</strong> Provides reimbursement for covered reasons. For more robust coverage, consider one of the <Link href="/reviews/best-travel-insurance-credit-cards">best credit cards for travel insurance</Link>.</li>
                         <li><strong>Expense Management:</strong> Integrates with QuickBooks® and offers employee cards with spending limits.</li>
                     </ul>
                 </section>
@@ -975,7 +982,7 @@ function DeltaReserveBusinessReviewPage() {
                   <div className={styles.prosConsContainer}>
                       <div className={styles.consBox}>
                           <ul className={styles.featureList}>
-                              <li>You are airline-agnostic and always book the cheapest flight.</li>
+                              <li>You are airline-agnostic and always book the cheapest flight. A general <Link href="/reviews/best-travel-rewards-credit-cards">travel rewards card</Link> would be a better choice.</li>
                               <li>Your goal is earning the maximum number of flexible points on all business expenses.</li>
                               <li>You know you won't consistently use the monthly and annual statement credits.</li>
                               <li>You travel more than 30 times a year and the 15-visit Sky Club cap is a dealbreaker (and the $75k spend is out of reach).</li>
@@ -1006,7 +1013,7 @@ function DeltaReserveBusinessReviewPage() {
                      <li>Open the Resy and Uber/Lyft apps. Are they already part of your life?</li>
                      <li>Think of one specific trip for next year. Could the Companion Certificate save you more than $650?</li>
                   </ul>
-                  <p>If you answered a confident "yes," then this card isn't a cost—it's a comprehensive upgrade to your entire business travel life.</p>
+                  <p>If you answered a confident "yes," then this card isn't a cost—it's a comprehensive upgrade to your entire business travel life. Ready to apply? Read our <Link href="/guides/credit-card-application-guide">guide on applying for a credit card</Link> first.</p>
                 </section>
 
                 <section id="section-eat" className={`${styles.reviewSection} ${styles.eatSection}`}>
