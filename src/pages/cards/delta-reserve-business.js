@@ -879,25 +879,18 @@ function DeltaReserveBusinessReviewPage() {
                         <thead>
                           <tr>
                             <th>Feature</th>
-                            <th>Delta Reserve Business</th>
-                            <th>The Business Platinum Card®</th>
-                            <th>Chase Ink Business Preferred®</th>
-                            <th>Capital One Venture X Business</th>
+                            <th><Link href="/reviews/delta-reserve-business-review">Delta Reserve Business</Link></th>
+                            <th><Link href="/reviews/business-platinum-card-from-american-express-review">The Business Platinum Card®</Link></th>
+                            <th><Link href="/reviews/chase-ink-business-preferred-credit-card-review">Chase Ink Business Preferred®</Link></th>
+                            <th><Link href="/reviews/capital-one-venture-x-business-review">Capital One Venture X Business</Link></th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr><td>Annual Fee</td><td>$650</td><td>$695</td><td>$95</td><td>$395</td></tr>
                           <tr><td>Best For</td><td>The Delta Loyalist</td><td>The Luxury Traveler</td><td>The Pragmatic Maximizer</td><td>The Simplicity Seeker</td></tr>
                           <tr><td>Lounge Access</td><td>Delta Sky Club, Centurion</td><td>Amex Global Lounge Collection (Widest Access)</td><td>None</td><td>Priority Pass™, Capital One</td></tr>
-                          <tr><td>Key Perk</td><td>Annual First Class Companion Cert.</td><td>&gt;$1,000 in various statement credits</td><td>3X on key business categories</td><td>$300 travel credit + 10k miles</td></tr>
+                          <tr><td>Key Perk</td><td>Annual First Class Companion Cert.</td><td>{'>$1,000 in various statement credits'}</td><td>3X on key business categories</td><td>$300 travel credit + 10k miles</td></tr>
                           <tr><td>Status Boost</td><td>Direct path to Delta Status</td><td>Hilton & Marriott Gold Status</td><td>None</td><td>None</td></tr>
-                           <tr>
-                            <td>Card Link</td>
-                            <td><Link href="/reviews/delta-reserve-business-review">View Card</Link></td>
-                            <td><Link href="/reviews/business-platinum-card-from-american-express-review">View Card</Link></td>
-                            <td><Link href="/reviews/chase-ink-business-preferred-credit-card-review">View Card</Link></td>
-                            <td><Link href="/reviews/capital-one-venture-x-business-review">View Card</Link></td>
-                          </tr>
                         </tbody>
                       </table>
                     </div>
