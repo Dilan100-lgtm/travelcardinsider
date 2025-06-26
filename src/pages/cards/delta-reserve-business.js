@@ -889,7 +889,7 @@ function DeltaReserveBusinessReviewPage() {
                           <tr><td>Annual Fee</td><td>$650</td><td>$695</td><td>$95</td><td>$395</td></tr>
                           <tr><td>Best For</td><td>The Delta Loyalist</td><td>The Luxury Traveler</td><td>The Pragmatic Maximizer</td><td>The Simplicity Seeker</td></tr>
                           <tr><td>Lounge Access</td><td>Delta Sky Club, Centurion</td><td>Amex Global Lounge Collection (Widest Access)</td><td>None</td><td>Priority Pass™, Capital One</td></tr>
-                          <tr><td>Key Perk</td><td>Annual First Class Companion Cert.</td><td>{'>$1,000 in various statement credits'}</td><td>3X on key business categories</td><td>$300 travel credit + 10k miles</td></tr>
+                          <tr><td>Key Perk</td><td>Annual First Class Companion Cert.</td><td>&gt;$1,000 in various statement credits</td><td>3X on key business categories</td><td>$300 travel credit + 10k miles</td></tr>
                           <tr><td>Status Boost</td><td>Direct path to Delta Status</td><td>Hilton & Marriott Gold Status</td><td>None</td><td>None</td></tr>
                         </tbody>
                       </table>
