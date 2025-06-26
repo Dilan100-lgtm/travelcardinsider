@@ -63,16 +63,16 @@ const reviewDataNew = {
       }
   },
   siteName: siteName,
-  imageUrl        : '/delta-reserve-business-card.png', // Placeholder: Replace with actual card image URL
+  imageUrl        : '/delta-reserve-business.avif', // Placeholder: Replace with actual card image URL
   imageWidth      : 1290,
   imageHeight     : 812,
-  ratingValue     : 8.5,  // Placeholder - Based on focus for Delta Loyalists with high spend
+  ratingValue     : 8.7,  // Placeholder - Based on focus for Delta Loyalists with high spend
   ratingCount     : 428,  // Placeholder - UPDATE AS NEEDED
   reviewBody      : "Our editors evaluate the Delta SkyMiles® Reserve Business American Express Card based on its premium travel benefits (lounge access, companion certificate), elite status acceleration (MQD Headstart & Boost), statement credits, earning rates, annual fee, and overall value proposition for Delta-loyal business owners.",
   aprRange        : '20.24% - 29.24% (Variable)', // From your text
   annualFee       : 650,
   applyLink       : 'https://www.americanexpress.com/en-us/business/credit-cards/delta-skymiles-reserve/', // Official Link
-  ratesLink       : 'https://www.americanexpress.com/us/credit-cards/card-application/apply/business-card/delta-reserve-for-business-credit-card/ep-36427', // Direct link to terms
+  ratesLink       : 'https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/delta-skymiles-reserve-business-american-express-card/45094', // Direct link to terms
   officialOverviewLink: 'https://www.americanexpress.com/en-us/business/credit-cards/delta-skymiles-reserve/',
   officialWelcomeOfferLink: 'https://www.americanexpress.com/en-us/business/credit-cards/delta-skymiles-reserve/',
   officialBenefitsCreditsLink: 'https://global.americanexpress.com/card-benefits/listing/delta-reserve-business',
@@ -716,7 +716,7 @@ function DeltaReserveBusinessReviewPage() {
                 </section>
 
                 <Image
-                    src="/business-traveler-lounge.webp" // Placeholder - image of person in a lounge
+                    src="/hero-image-option-1 (1).jpg" // Placeholder - image of person in a lounge
                     alt="A business professional working in an airport lounge, symbolizing the card's premium access."
                     width={800}
                     height={500}
@@ -949,6 +949,15 @@ function DeltaReserveBusinessReviewPage() {
                         <li><strong>Employee Cards:</strong> They come with a fee, and premium perks like lounge access do not extend to employee cardholders.</li>
                     </ul>
                 </section>
+
+                <Image
+                    src="/dal_seasky25_39.webp" // Placeholder - image of person in a lounge
+                    alt="A business professional working in an airport lounge, symbolizing the card's premium access."
+                    width={800}
+                    height={500}
+                    className={styles.contentImage}
+                    loading="lazy"
+                />
 
                 <section id="section-16" className={styles.reviewSection}>
                     <h2>16. Beyond the Traveler: Business Tools & Protections</h2>
