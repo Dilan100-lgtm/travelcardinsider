@@ -1,15 +1,14 @@
 // File: pages/gear/best-travel-backpacks-2025.js
-"use client"; // 👈 Add this line at the very top
+"use client";
 
-// ❗ Replace image src paths with your optimised, WebP‑or‑AVIF images.
-// The paths below are placeholders. Gear images should be high quality.
+// This file has been updated to display a single, comprehensive article
+// based on your provided text, ensuring 100% content preservation.
 
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from '../../styles/NoFTFCardsReview.module.css'; // Reusing your site's existing review styles
-import StarRating from '../../components/StarRating'; // Assuming you have this component for ratings
+import styles from '../../styles/NoFTFCardsReview.module.css'; // Reusing existing review styles
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 🔗 CONFIG
@@ -20,7 +19,7 @@ const PAGE_URL = `${SITE_BASE_URL}${PAGE_PATH}`;
 const SITE_NAME = 'Travel Card Insider';
 const HERO_IMAGE_SRC = '/your-hero-image-backpacks.jpg'; // ❗ Replace with your optimised hero image for backpacks
 const HERO_IMAGE_ALT = 'A collection of high-quality travel backpacks ready for an adventure.';
-const DATE_PUBLISHED = '2025-06-27'; // ✏️ Adjust to your actual publish date
+const DATE_PUBLISHED = '2025-06-27';
 const DATE_MODIFIED = '2025-06-27'; // ✏️ Update whenever you edit copy
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -29,14 +28,14 @@ const DATE_MODIFIED = '2025-06-27'; // ✏️ Update whenever you edit copy
 const author = {
     name: 'Dilan Madushanka',
     title: 'Lead Gear Analyst',
-    image: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // ❗ Your 40x40px web‑optimised headshot
-    imageLarge: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // ❗ Your 60x60px for tooltip
+    image: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg',
+    imageLarge: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg',
     bio: 'A seasoned traveler and gear expert, Dilan specializes in finding the most durable and practical gear for any journey.',
     expertise: [
         'Travel Backpacks',
-        'Packing Cubes',
-        'Tech Organizers',
-        'Travel Comfort',
+        'Luggage & Carry-Ons',
+        'Sustainable Travel',
+        'Gear Value Analysis',
     ],
     social: {
         linkedin: 'https://www.linkedin.com/in/dilan-madushanka-b65293365',
@@ -46,116 +45,23 @@ const author = {
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 🎒 TRAVEL GEAR DATA
-// ─────────────────────────────────────────────────────────────────────────────
-const travelGearData = [
-    {
-        id: 'peak-design-travel-backpack',
-        name: 'Peak Design Travel Backpack 45L',
-        category: 'Versatility',
-        imageSrc: '/peak-design-backpack.webp', // ❗ Replace
-        imageAlt: 'Peak Design Travel Backpack 45L',
-        price: '$299.95',
-        officialPageLink: 'https://www.peakdesign.com/products/travel-backpack',
-        ourTake: "The ultimate all-in-one backpack. Its genius compression system, multitude of access points, and compatibility with Peak Design's packing cubes make it a top choice for photographers and one-bag travelers who demand organization and adaptability.",
-        feature: 'Expands from a 30L daypack to a 45L gear-hauler, with weatherproof construction.',
-        specs: 'Capacity: 30L to 45L | Weight: 4.5 lbs (2.05 kg) | Materials: Weatherproof 400D nylon canvas shell.',
-        buyLink: 'https://www.peakdesign.com/products/travel-backpack',
-        learnMoreLink: '/gear/peak-design-travel-backpack-review', // ✏️ Create this internal page later
-        ratingValue: 9.2,
-        ratingStars: 4.6,
-    },
-    {
-        id: 'osprey-farpoint-40',
-        name: 'Osprey Farpoint 40',
-        category: 'Carry-On King',
-        imageSrc: '/osprey-farpoint-40.webp', // ❗ Replace
-        imageAlt: 'Osprey Farpoint 40 backpack',
-        price: '$185.00',
-        officialPageLink: 'https://www.osprey.com/us/en/product/farpoint-40-FARPNT40.html',
-        ourTake: "A legend in the travel community for a reason. It's incredibly comfortable thanks to its harness system, carry-on compliant for most airlines, and durable enough to withstand years of abuse. The stowaway harness is perfect for checking the bag.",
-        feature: 'LightWire frame suspension for comfortable carrying and a large panel zip for easy access.',
-        specs: 'Capacity: 40L | Weight: 3.4 lbs (1.54 kg) | Materials: bluesign® approved, recycled 450D polyester.',
-        buyLink: 'https://www.osprey.com/us/en/product/farpoint-40-FARPNT40.html',
-        learnMoreLink: '/gear/osprey-farpoint-40-review', // ✏️ Create this internal page later
-        ratingValue: 9.0,
-        ratingStars: 4.5,
-    },
-    {
-        id: 'aer-travel-pack-3',
-        name: 'AER Travel Pack 3',
-        category: 'Urban Explorer',
-        imageSrc: '/aer-travel-pack-3.webp', // ❗ Replace
-        imageAlt: 'AER Travel Pack 3 backpack',
-        price: '$249.00',
-        officialPageLink: 'https://www.aersf.com/travel-pack-3-black',
-        ourTake: "Sleek, organized, and built for the modern digital nomad. Its thoughtful organization for tech, lay-flat main compartment, and robust materials make it perfect for city hopping and business trips. It looks professional and performs exceptionally.",
-        feature: 'Dedicated, padded laptop pocket and a separate compartment for shoes or dirty clothes.',
-        specs: 'Capacity: 35L | Weight: 4.12 lbs (1.87 kg) | Materials: 1680D Cordura® ballistic nylon exterior.',
-        buyLink: 'https://www.aersf.com/travel-pack-3-black',
-        learnMoreLink: '/gear/aer-travel-pack-3-review', // ✏️ Create this internal page later
-        ratingValue: 8.9,
-        ratingStars: 4.5,
-    }
-];
-
-// ─────────────────────────────────────────────────────────────────────────────
-// 📊 COMPARISON TABLE DATA
-// ─────────────────────────────────────────────────────────────────────────────
-const comparisonGearTableData = [
-    { name: 'Peak Design Travel Backpack', price: '$299.95', capacity: '30-45L', weight: '4.5 lbs', bestFor: 'Max Versatility' },
-    { name: 'Osprey Farpoint 40', price: '$185.00', capacity: '40L', weight: '3.4 lbs', bestFor: 'Comfortable Carry-On' },
-    { name: 'AER Travel Pack 3', price: '$249.00', capacity: '35L', weight: '4.12 lbs', bestFor: 'Urban & Tech Travel' }
-];
-
-// ─────────────────────────────────────────────────────────────────────────────
 // 🧠 HELPERS - JSON-LD SCHEMA
 // ─────────────────────────────────────────────────────────────────────────────
 function generateJsonLD() {
-    const itemListElements = travelGearData.map((item, i) => ({
-        '@type': 'ListItem',
-        position: i + 1,
-        item: {
-            '@type': 'Product',
-            name: item.name,
-            url: `${SITE_BASE_URL}${item.learnMoreLink}`,
-            image: `${SITE_BASE_URL}${item.imageSrc}`,
-            description: item.ourTake,
-            brand: {
-                '@type': 'Brand',
-                name: item.name.split(' ')[0], // Simple brand extraction
-            },
-            offers: {
-                '@type': 'Offer',
-                priceCurrency: 'USD',
-                price: item.price.replace('$', '').trim(),
-                url: item.buyLink,
-            },
-            ...(item.ratingValue && {
-              aggregateRating: {
-                '@type': 'AggregateRating',
-                ratingValue: item.ratingValue,
-                bestRating: '10',
-                ratingCount: 1, // Represents our single review rating
-              },
-            })
-        },
-    }));
-
     const breadcrumbsSchema = {
         '@type': 'BreadcrumbList',
         itemListElement: [
             { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_BASE_URL, },
             { '@type': 'ListItem', position: 2, name: 'Travel Gear', item: `${SITE_BASE_URL}/gear`, },
-            { '@type': 'ListItem', position: 3, name: 'Best Travel Backpacks 2025', item: PAGE_URL, },
+            { '@type': 'ListItem', position: 3, name: 'The 2025 Travel Backpack Portfolio', item: PAGE_URL, },
         ],
     };
 
     const articleSchema = {
-        '@type': 'Article', // Using 'Article' schema type for gear reviews
+        '@type': 'Article',
         mainEntityOfPage: { "@type": "WebPage", "@id": PAGE_URL },
-        headline: 'Best Travel Backpacks 2025: Find Your Perfect Pack',
-        description: 'Discover the best travel backpacks for any trip in 2025. We review top picks for versatility, carry-on compliance, and urban exploration.',
+        headline: 'The 2025 Travel Backpack Portfolio: An Expert Review of 7 Must-Have Packs',
+        description: 'An expert review of 2025’s top backpacks, analyzing comfort, security, style, and overall value to help you make a smart travel investment.',
         image: [`${SITE_BASE_URL}${HERO_IMAGE_SRC}`],
         author: {
             '@type': 'Person',
@@ -167,7 +73,7 @@ function generateJsonLD() {
             name: SITE_NAME,
             logo: {
                 '@type': 'ImageObject',
-                url: `${SITE_BASE_URL}/images/travel-card-insider-logo-120.png`, // ❗ Ensure this logo exists
+                url: `${SITE_BASE_URL}/images/travel-card-insider-logo-120.png`,
             },
         },
         datePublished: DATE_PUBLISHED,
@@ -177,11 +83,7 @@ function generateJsonLD() {
     return JSON.stringify(
         {
             '@context': 'https://schema.org',
-            '@graph': [
-                articleSchema,
-                breadcrumbsSchema,
-                { '@type': 'ItemList', name: 'Best Travel Backpacks 2025', url: PAGE_URL, numberOfItems: travelGearData.length, itemListElement: itemListElements, mainEntityOfPage: PAGE_URL },
-            ],
+            '@graph': [articleSchema, breadcrumbsSchema],
         },
         null,
         2
@@ -192,7 +94,7 @@ function generateJsonLD() {
 // 🌐 COMPONENT
 // ─────────────────────────────────────────────────────────────────────────────
 function BestTravelBackpacksPage2025() {
-    // This is the same tooltip logic from your other page. No changes needed.
+    // Tooltip logic for author section (reused from your component)
     const [showTooltip, setShowTooltip] = useState(false);
     const triggerRef = useRef(null);
     const tooltipRef = useRef(null);
@@ -211,7 +113,7 @@ function BestTravelBackpacksPage2025() {
         if (!isStillHovering) setShowTooltip(false);
         }, 150);
     }, []);
-
+    
     useEffect(() => {
         const currentTimeoutId = tooltipTimeoutIdRef.current;
         return () => { if (currentTimeoutId) clearTimeout(currentTimeoutId); };
@@ -232,15 +134,18 @@ function BestTravelBackpacksPage2025() {
     return (
         <>
             <Head>
-                <title>Best Travel Backpacks (June 2025) | {SITE_NAME}</title>
-                <meta name="description" content="Discover the best travel backpacks for any trip in 2025. We review top picks for versatility, carry-on compliance, and urban exploration." />
+                {/* Core SEO */}
+                <title>The 2025 Travel Backpack Portfolio: Expert Review | {SITE_NAME}</title>
+                <meta name="description" content="An expert review of 2025’s top backpacks, analyzing comfort, security, style, and overall value to help you make a smart travel investment." />
                 <meta name="viewport" content="width=device-width,initial-scale=1" />
                 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-                <meta name="keywords" content="best travel backpacks, travel backpack review, carry-on backpack, one-bag travel, peak design, osprey farpoint, aer travel pack" />
+                <meta name="keywords" content="best travel backpacks 2025, travel backpack review, backpack portfolio, one-bag travel, aer travel pack, osprey farpoint, cotopaxi allpa, peak design" />
                 <link rel="canonical" href={PAGE_URL} />
+
+                {/* Open Graph */}
                 <meta property="og:type" content="article" />
-                <meta property="og:title" content={`Best Travel Backpacks (June 2025) | ${SITE_NAME}`} />
-                <meta property="og:description" content="From cobblestone streets to mountain trails, find the perfect backpack for your next adventure. Our guide breaks down the top packs of 2025." />
+                <meta property="og:title" content={`The 2025 Travel Backpack Portfolio: Expert Review | ${SITE_NAME}`} />
+                <meta property="og:description" content="A strategic review of 2025's best travel backpacks, analyzed as long-term assets for efficiency, comfort, and value." />
                 <meta property="og:url" content={PAGE_URL} />
                 <meta property="og:site_name" content={SITE_NAME} />
                 <meta property="og:image" content={`${SITE_BASE_URL}${HERO_IMAGE_SRC}`} />
@@ -250,18 +155,23 @@ function BestTravelBackpacksPage2025() {
                 <meta property="article:modified_time" content={DATE_MODIFIED} />
                 <meta property="article:author" content={author.name} />
                 <meta property="article:section" content="Travel Gear" />
+                
+                {/* Twitter Card */}
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={`Best Travel Backpacks (2025) - ${SITE_NAME}`} />
-                <meta name="twitter:description" content="From cobblestone streets to mountain trails, find the perfect backpack for your next adventure. Our guide breaks down the top packs of 2025." />
+                <meta name="twitter:title" content={`The 2025 Travel Backpack Portfolio: Expert Review | ${SITE_NAME}`} />
+                <meta name="twitter:description" content="A strategic review of 2025's best travel backpacks, analyzed as long-term assets for efficiency, comfort, and value." />
                 <meta name="twitter:image" content={`${SITE_BASE_URL}${HERO_IMAGE_SRC}`} />
                 {author.social.twitter && <meta name="twitter:creator" content={`@${author.social.twitter.split('/').pop()}`} />}
+                
+                {/* JSON‑LD Schema */}
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: generateJsonLD() }} />
             </Head>
 
             <main className={styles.reviewContainer}>
                 <header className={styles.reviewHeader}>
-                    <h1>Best Travel Backpacks 2025: Your Guide to the Perfect Pack</h1>
+                    <h1>The 2025 Travel Backpack Portfolio: An Expert Review of 7 Must-Have Packs</h1>
                     
+                    {/* --- AUTHOR SECTION (Reused from your component) --- */}
                     <div
                         className={styles.authorBioContainer}
                         ref={triggerRef}
@@ -361,90 +271,109 @@ function BestTravelBackpacksPage2025() {
                         className={styles.heroImage}
                     />
                 </div>
-                
-                <p className={styles.disclaimer}>
-                    <strong>Disclaimer:</strong> Prices and specifications are subject to change and are accurate as of {new Date(DATE_MODIFIED).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}. Please verify all details with the manufacturer. This page may contain affiliate links.
-                </p>
 
-                <article>
-                    <section className={styles.reviewSection}>
-                        <h2>The Quest for the Perfect Pack</h2>
-                        <p>Your backpack isn't just a bag; it's your mobile base of operations. It protects your valuables, organizes your life, and carries the weight of your journey. The right backpack can make travel seamless, while the wrong one can be a literal pain in the neck.</p>
-                        <p>This guide cuts through the noise. We've hauled, packed, and tested dozens of bags to find the best travel backpacks for 2025. Whether you're a digital nomad, a weekend adventurer, or embarking on a trip around the world, we have a recommendation for you.</p>
-                    </section>
+                <article className={styles.reviewSection} style={{ maxWidth: '800px', margin: '2rem auto' }}>
                     
-                    <section id="top-picks" className={styles.reviewSection}>
-                        <h2>The 2025 Editor's Picks: Top Travel Backpacks</h2>
-                        <p>The "best" backpack is personal. It depends on your travel style, body type, and the gear you carry. Here are our top contenders.</p>
+                    {/* Part I */}
+                    <section>
+                        <h2>Part I: The Anatomy of a Sound Travel Investment</h2>
+                        <p>Choosing a travel backpack in 2025 is a strategic investment in your travel efficiency and comfort. The right pack is a durable asset; the wrong one is a liability, costing you in physical pain or surprise airline fees. This review analyzes 2025’s top backpacks not just on features, but on their long-term value. We'll break down the core pillars of a smart investment: comfort, security, style, and overall value.</p>
                         
-                        {travelGearData.map((item, index) => (
-                            <div key={item.id} className={`${styles.cardDetailSection} ${index < travelGearData.length - 1 ? styles.cardSeparator : ''}`}>
-                                <div className={styles.cardHeader}>
-                                    <div className={styles.cardImageContainer}>
-                                        <Image
-                                            src={item.imageSrc}
-                                            alt={item.imageAlt}
-                                            width={150} 
-                                            height={150}
-                                            objectFit="contain"
-                                            loading={index > 1 ? "lazy" : "eager"}
-                                        />
-                                    </div>
-                                    <div className={styles.cardTitleRating}>
-                                        <h3>
-                                            <Link href={item.learnMoreLink}><a>{item.name}</a></Link>
-                                            {' - '}
-                                            <span className={styles.categoryLabel}>{item.category}</span>
-                                        </h3>
-                                        {item.ratingStars && <StarRating rating={item.ratingStars} />} 
-                                        {item.ratingValue && <span className={styles.ratingValue}>Our Rating: {item.ratingValue.toFixed(1)}/10</span>}
-                                    </div>
-                                </div>
-                                <ul>
-                                    <li><strong>Expert Verdict:</strong> {item.ourTake}</li>
-                                    <li><strong>Key Specs:</strong> {item.specs}</li>
-                                    <li><strong>Price:</strong> {item.price} (<a href={item.officialPageLink} target="_blank" rel="noopener noreferrer sponsored">Official Product Page</a>)</li>
-                                </ul>
-                                <div className={styles.cardButtonsContainer}>
-                                    <a href={item.buyLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.cardButton} ${styles.applyButton}`}>Check Price</a>
-                                    <Link href={item.learnMoreLink} legacyBehavior><a className={`${styles.cardButton} ${styles.secondaryButton}`}>Learn More</a></Link>
-                                </div>
-                            </div>
-                        ))}
+                        <h3>The Comfort Equation</h3>
+                        <p>Comfort is your most valuable asset. It’s a science of ergonomic design and load distribution. Today's market is dominated by two philosophies: hiking-derived suspension systems and streamlined urban harnesses. Hiking-style packs, like the Osprey Farpoint 40, use robust hip belts to transfer up to 80% of the weight from your shoulders to your hips—a game-changer for long walks. Urban packs, like the Aer Travel Pack 3, prioritize a sleek profile for shorter journeys between airports and hotels.</p>
+                        <p>Your first step is to honestly assess your travel style. If you walk a lot, prioritize suspension. If you mainly use transport, an organized urban pack is a better fit.</p>
+
+                        <h3>Fortress on Your Back</h3>
+                        <p>Modern security is a multi-layered system. It starts with a rugged, weather-resistant shell, like the durable tarpaulin on The North Face Base Camp Voyager or the waterproof sailcloth on the Tortuga Travel Backpack Pro. Next is access control. Lockable YKK zippers are standard, but leaders like Cotopaxi and Peak Design add anti-theft loops to deter pickpockets. Finally, intelligent design adds another layer. The Aer Travel Pack 3 has a hidden pocket for a smart tracker, a brilliant security boost. Be mindful of carry-on compliance; some bags push the size limits, creating a risk on stricter international airlines.</p>
+
+                        <h3>Style and Function</h3>
+                        <p>A backpack's look reflects its function. Aer perfects the sleek, urban minimalist aesthetic. Cotopaxi’s Del Día collection offers vibrant, one-of-a-kind designs that champion sustainability. Brands like The North Face and Osprey have a rugged, utilitarian look that signals adventure-readiness. Peak Design and Nomatic offer a tech-inspired, hybrid style for creatives and hyper-organized professionals.</p>
+                        
+                        <h3>The Value Proposition</h3>
+                        <p>True value is the total cost of ownership, weighing price against durability and warranty. A strong lifetime warranty from brands like Osprey, Peak Design, and Tortuga is a financial safety net. Versatility is a value multiplier. The Peak Design Travel Backpack’s ability to change size makes it three bags in one, lowering its cost-per-use.</p>
                     </section>
-                    
-                    <section id="comparison-table" className={`${styles.reviewSection} ${styles.comparisonTableContainer}`}>
-                        <h2>Backpack Showdown: At a Glance</h2>
-                        <div className={styles.tableWrapper}>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Backpack Name</th>
-                                        <th>Price</th>
-                                        <th>Capacity</th>
-                                        <th>Weight</th>
-                                        <th>Best For...</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {comparisonGearTableData.map((item) => (
-                                        <tr key={item.name}>
-                                            <td>{item.name}</td>
-                                            <td>{item.price}</td>
-                                            <td>{item.capacity}</td>
-                                            <td>{item.weight}</td>
-                                            <td>{item.bestFor}</td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
+
+                    {/* Part II */}
+                    <section>
+                        <h2>Part II: The 2025 Elite Seven Portfolio: In-Depth Reviews</h2>
+                        
+                        <div className={styles.cardDetailSection}>
+                            <h4>1. Aer Travel Pack 3: The Blue-Chip Tech Stock</h4>
+                            <ul>
+                                <li><strong>Persona:</strong> The tech-savvy urbanist and business professional.</li>
+                                <li><strong>Bottom Line:</strong> A premium investment in organization and professional style. Its durable materials and lifetime warranty deliver exceptional long-term value for the tech-centric traveler.</li>
+                                <li><strong>User Testimonial:</strong> "Exactly what I was looking for. I am planning a backpacking trip in Europe... Travel pack 3 is the perfect one. It fits all the essential items without needing a roller." - Ming C., Verified Reviewer</li>
+                            </ul>
+                        </div>
+
+                        <div className={styles.cardDetailSection}>
+                            <h4>2. Osprey Farpoint 40: The Long-Term Growth Fund</h4>
+                            <ul>
+                                <li><strong>Persona:</strong> The comfort-seeking adventurer and world traveler who walks for miles.</li>
+                                <li><strong>Bottom Line:</strong> Backed by Osprey's legendary "All Mighty Guarantee," the Farpoint 40 offers an unbeatable return on investment for any traveler who prioritizes comfort above all else.</li>
+                                <li><strong>User Testimonial:</strong> "This backpack worked great for a 17 day Europe trip with many train rides and stairs. I would pack less next time but it held my overpacking and lots of comfort gear for the plane." - Elise, Verified Buyer</li>
+                            </ul>
+                        </div>
+
+                        <div className={styles.cardDetailSection}>
+                            <h4>3. Cotopaxi Allpa 35L: The Socially Responsible Investment</h4>
+                            <ul>
+                                <li><strong>Persona:</strong> The conscious, colorful, and hyper-organized explorer.</li>
+                                <li><strong>Bottom Line:</strong> The Allpa 35L is an investment in joyful organization and sustainable design. Its 100% recycled fabrics and lifetime warranty make it a purchase you can feel good about.</li>
+                                <li><strong>User Testimonial:</strong> "I am still in awe over how much stuff I can fit into this backpack and how well organized everything fits. Its compartments separate and are functionally thoughtful. Worth every penny." - Manny M., Verified Buyer</li>
+                            </ul>
+                        </div>
+
+                        <div className={styles.cardDetailSection}>
+                            <h4>4. Peak Design Travel Backpack 45L: The Diversified Mutual Fund</h4>
+                            <ul>
+                                <li><strong>Persona:</strong> The ultimate generalist—photographer one day, business traveler the next.</li>
+                                <li><strong>Bottom Line:</strong> Arguably the most versatile travel bag on the market. Its ability to adapt, combined with a lifetime guarantee, provides incredible long-term value for the traveler who does it all.</li>
+                                <li><strong>User Testimonial:</strong> "It rained so much in Central America, however the material held up and everything remained dry inside... 10/10 would recommend for regular travel, business travel and to school/work!!!" - Mr. Anderson, Verified Reviewer</li>
+                            </ul>
+                        </div>
+
+                        <div className={styles.cardDetailSection}>
+                            <h4>5. Tortuga Travel Backpack Pro 40L: The Gilt-Edged Bond</h4>
+                            <ul>
+                                <li><strong>Persona:</strong> The hardcore one-bag purist demanding peak performance.</li>
+                                <li><strong>Bottom Line:</strong> While expensive, this is an investment in absolute confidence. For travelers facing unpredictable weather or heavy loads, its extreme durability and comfort provide outstanding value.</li>
+                                <li><strong>User Testimonial:</strong> "Love this backpack. The exterior feels rugged and tough like a tank. While the interior is smart and feels luxurious like a Mercedes." - David, Verified Buyer</li>
+                            </ul>
+                        </div>
+
+                        <div className={styles.cardDetailSection}>
+                            <h4>6. The North Face Base Camp Voyager 35L: The High-Yield Stock</h4>
+                            <ul>
+                                <li><strong>Persona:</strong> The rugged weekender and practical adventurer needing a durable, no-fuss bag.</li>
+                                <li><strong>Bottom Line:</strong> This pack offers a tremendous return, delivering iconic durability in a travel-friendly format with smart features. It represents excellent value for years of adventure.</li>
+                                <li><strong>User Testimonial:</strong> "Comfortable, useful pocket design. Excellent travel backpack for a weekend or as a supplemental bag to a roller... The pocket configuration is great and there is no wasted space." - Ian, Verified Buyer</li>
+                            </ul>
+                        </div>
+
+                        <div className={styles.cardDetailSection}>
+                            <h4>7. Nomatic Travel Bag 40L: The Speculative Tech IPO</h4>
+                            <ul>
+                                <li><strong>Persona:</strong> The hyper-organized professional who wants a pocket for everything.</li>
+                                <li><strong>Bottom Line:</strong> A high-reward investment in a unique organizational system. For those whose packing style aligns with its feature-dense layout, it can be a game-changer. For others, it may feel overly complex.</li>
+                                <li><strong>User Testimonial:</strong> "I bought the NOMATIC Travel Bag 40L in 2017, and it's been a game-changer! ...What really stands out is NOMATIC's lifetime warranty and customer service... If you're on the fence, trust me—it's worth every penny!" - Carl L., Verified Buyer</li>
+                            </ul>
                         </div>
                     </section>
 
-                    <section id="final-verdict" className={styles.reviewSection}>
-                        <h2>Conclusion: Your Adventure Awaits</h2>
-                        <p>Choosing the right travel backpack is an investment in your comfort and peace of mind on the road. Consider your needs carefully, and you'll find a companion that will last for years of adventures. Happy travels!</p>
+                    {/* Part III */}
+                    <section>
+                        <h2>Part III: The Final Verdict: Your Persona-Based Recommendation</h2>
+                        <ul>
+                            <li><strong>For the Digital Nomad:</strong> The Aer Travel Pack 3 is your greatest asset for protecting and organizing your mobile office.</li>
+                            <li><strong>For the Adventurer Who Walks for Miles:</strong> The Osprey Farpoint 40 or Tortuga Pro 40L are your blue-chip investments in comfort. Choose Osprey for value or Tortuga for maximum durability.</li>
+                            <li><strong>For the Versatile Traveler:</strong> The Peak Design Travel Backpack 45L is your diversified mutual fund, ready for any trip you can imagine.</li>
+                            <li><strong>For the Style-Conscious Explorer:</strong> The Cotopaxi Allpa 35L perfectly aligns with your values and need for order, combining function with vibrant personality.</li>
+                            <li><strong>For the No-Nonsense Weekender:</strong> The North Face Base Camp Voyager 35L offers the best dividend yield—a tough, reliable asset at an accessible price.</li>
+                            <li><strong>For the Ultimate Organizer:</strong> The Nomatic Travel Bag 40L is a speculative but potentially high-reward play. If its hyper-compartmentalized system matches your style, the returns in efficiency will be immense.</li>
+                        </ul>
                     </section>
+
                 </article>
             </main>
         </>
