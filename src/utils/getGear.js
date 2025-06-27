@@ -6,6 +6,8 @@
 // - A Headless CMS (e.g., Contentful, Sanity, Strapi)
 // - A JSON API
 
+// utils/getGear.js
+
 const dummyGearData = [
   {
     slug: '2025-travel-backpack-portfolio-expert-review',
@@ -41,13 +43,12 @@ const dummyGearData = [
         <li><strong>For the Ultimate Organizer:</strong> The Nomatic Travel Bag 40L is a speculative but potentially high-reward play. If its hyper-compartmentalized system matches your style, the returns in efficiency will be immense.</li>
       </ul>
     `,
-    // NEW: Structured data for individual backpacks within the portfolio review
     backpacks: [
       {
         order: 1,
         name: 'Aer Travel Pack 3',
         slug: 'aer-travel-pack-3',
-        image: '/gear/aer-travel-pack-3.webp', // Specific image for Aer TP3
+        image: '/gear/aer-travel-pack-3.webp',
         subTitle: 'The Blue-Chip Tech Stock',
         persona: 'The tech-savvy urbanist and business professional.',
         bottomLine: 'A premium investment in organization and professional style. Its durable materials and lifetime warranty deliver exceptional long-term value for the tech-centric traveler.',
@@ -57,7 +58,7 @@ const dummyGearData = [
         order: 2,
         name: 'Osprey Farpoint 40',
         slug: 'osprey-farpoint-40',
-        image: '/gear/osprey-farpoint-40.webp', // Specific image for Osprey Farpoint 40
+        image: '/gear/osprey-farpoint-40.webp',
         subTitle: 'The Long-Term Growth Fund',
         persona: 'The comfort-seeking adventurer and world traveler who walks for miles.',
         bottomLine: 'Backed by Osprey\'s legendary "All Mighty Guarantee," the Farpoint 40 offers an unbeatable return on investment for any traveler who prioritizes comfort above all else.',
@@ -67,7 +68,7 @@ const dummyGearData = [
         order: 3,
         name: 'Cotopaxi Allpa 35L',
         slug: 'cotopaxi-allpa-35l',
-        image: '/gear/cotopaxi-allpa-35l.webp', // Specific image for Cotopaxi Allpa 35L
+        image: '/gear/cotopaxi-allpa-35l.webp',
         subTitle: 'The Socially Responsible Investment',
         persona: 'The conscious, colorful, and hyper-organized explorer.',
         bottomLine: 'The Allpa 35L is an investment in joyful organization and sustainable design. Its 100% recycled fabrics and lifetime warranty make it a purchase you can feel good about [Cotopaxi.com, Allpa 35L Product Page].',
@@ -77,7 +78,7 @@ const dummyGearData = [
         order: 4,
         name: 'Peak Design Travel Backpack 45L',
         slug: 'peak-design-travel-backpack-45l',
-        image: '/gear/peak-design-travel-backpack-45l.webp', // Specific image for Peak Design 45L
+        image: '/gear/peak-design-travel-backpack-45l.webp',
         subTitle: 'The Diversified Mutual Fund',
         persona: 'The ultimate generalist—photographer one day, business traveler the next.',
         bottomLine: 'Arguably the most versatile travel bag on the market. Its ability to adapt, combined with a lifetime guarantee, provides incredible long-term value for the traveler who does it all.',
@@ -87,7 +88,7 @@ const dummyGearData = [
         order: 5,
         name: 'Tortuga Travel Backpack Pro 40L',
         slug: 'tortuga-travel-backpack-pro-40l',
-        image: '/gear/tortuga-travel-backpack-pro-40l.webp', // Specific image for Tortuga 40L Pro
+        image: '/gear/tortuga-travel-backpack-pro-40l.webp',
         subTitle: 'The Gilt-Edged Bond',
         persona: 'The hardcore one-bag purist demanding peak performance.',
         bottomLine: 'While expensive, this is an investment in absolute confidence. For travelers facing unpredictable weather or heavy loads, its extreme durability and comfort provide outstanding value.',
@@ -97,7 +98,7 @@ const dummyGearData = [
         order: 6,
         name: 'The North Face Base Camp Voyager 35L',
         slug: 'the-north-face-base-camp-voyager-35l',
-        image: '/gear/north-face-base-camp-voyager-35l.webp', // Specific image for TNF Base Camp Voyager
+        image: '/gear/north-face-base-camp-voyager-35l.webp',
         subTitle: 'The High-Yield Stock',
         persona: 'The rugged weekender and practical adventurer needing a durable, no-fuss bag.',
         bottomLine: 'This pack offers a tremendous return, delivering iconic durability in a travel-friendly format with smart features. It represents excellent value for years of adventure.',
@@ -107,7 +108,7 @@ const dummyGearData = [
         order: 7,
         name: 'Nomatic Travel Bag 40L',
         slug: 'nomatic-travel-bag-40l',
-        image: '/gear/nomatic-travel-bag-40l.webp', // Specific image for Nomatic 40L
+        image: '/gear/nomatic-travel-bag-40l.webp',
         subTitle: 'The Speculative Tech IPO',
         persona: 'The hyper-organized professional who wants a pocket for everything.',
         bottomLine: 'A high-reward investment in a unique organizational system. For those whose packing style aligns with its feature-dense layout, it can be a game-changer. For others, it may feel overly complex.',
@@ -122,7 +123,20 @@ const dummyGearData = [
     image: '/gear/osprey-farpoint-55.webp', // Placeholder image path
     category: 'backpacks',
     publishedAt: '2025-05-01',
-    rating: 9.5, // Example rating out of 10
+    rating: 9.5,
+    // ADDED content field here
+    content: `
+      <h2>Osprey Farpoint 55 Overview</h2>
+      <p>The Osprey Farpoint 55 is a popular choice for backpackers and travelers due to its comfortable carry system and practical features. It's designed to meet carry-on size restrictions for most airlines while offering ample space.</p>
+      <h3>Key Features:</h3>
+      <ul>
+        <li><strong>Stowaway Harness and Hipbelt:</strong> Provides a comfortable carry and can be stowed for checking luggage.</li>
+        <li><strong>Detachable Daypack:</strong> A convenient smaller pack for daily excursions.</li>
+        <li><strong>Panel Loading:</strong> Easy access to main compartment.</li>
+        <li><strong>Lightweight Design:</strong> Ideal for keeping your overall luggage weight down.</li>
+      </ul>
+      <p>This pack is highly recommended for those looking for a versatile and reliable travel solution.</p>
+    `,
   },
   {
     slug: 'bose-quietcomfort-45',
@@ -132,6 +146,19 @@ const dummyGearData = [
     category: 'electronics',
     publishedAt: '2025-04-15',
     rating: 9.0,
+    // ADDED content field here
+    content: `
+      <h2>Bose QuietComfort 45 Overview</h2>
+      <p>The Bose QuietComfort 45 headphones are renowned for their world-class noise cancellation, making them an essential travel companion for peace and quiet on the go. They offer a comfortable fit for long listening sessions.</p>
+      <h3>Highlights:</h3>
+      <ul>
+        <li><strong>Exceptional Noise Cancellation:</strong> Blocks out engine hum, chatter, and urban noise.</li>
+        <li><strong>Aware Mode:</strong> Lets you hear your surroundings when needed.</li>
+        <li><strong>Comfortable Design:</strong> Plush earcups and a secure fit for extended wear.</li>
+        <li><strong>Long Battery Life:</strong> Enjoy hours of listening on a single charge.</li>
+      </ul>
+      <p>For travelers seeking an immersive audio experience and tranquility, the QC45s are a top pick.</p>
+    `,
   },
   {
     slug: 'peak-design-travel-tripod',
@@ -141,6 +168,19 @@ const dummyGearData = [
     category: 'photography',
     publishedAt: '2025-03-20',
     rating: 8.8,
+    // ADDED content field here
+    content: `
+      <h2>Peak Design Travel Tripod Overview</h2>
+      <p>The Peak Design Travel Tripod redefines portability without sacrificing stability. Its unique design allows it to pack down incredibly small, making it perfect for photographers who need a reliable tripod that won't weigh them down.</p>
+      <h3>Features:</h3>
+      <ul>
+        <li><strong>Compact Design:</strong> Packs down to the diameter of a water bottle.</li>
+        <li><strong>Quick Deploy:</strong> Fast setup and breakdown.</li>
+        <li><strong>Robust Construction:</strong> Made from high-quality aluminum for durability.</li>
+        <li><strong>Integrated Phone Mount:</strong> Convenient for mobile photography.</li>
+      </ul>
+      <p>A game-changer for serious travel photographers.</p>
+    `,
   },
   {
     slug: 'collapsible-water-bottle',
@@ -150,20 +190,30 @@ const dummyGearData = [
     category: 'accessories',
     publishedAt: '2025-02-10',
     rating: 8.0,
+    // ADDED content field here
+    content: `
+      <h2>Collapsible Silicone Water Bottle Overview</h2>
+      <p>A must-have for eco-conscious and minimalist travelers, a collapsible silicone water bottle saves space when empty and helps reduce plastic waste. They are typically leak-proof and durable.</p>
+      <h3>Benefits:</h3>
+      <ul>
+        <li><strong>Space-Saving:</strong> Folds down when not in use.</li>
+        <li><strong>Eco-Friendly:</strong> Reusable and reduces reliance on single-use plastic bottles.</li>
+        <li><strong>Leak-Proof Design:</strong> Secure cap prevents spills.</li>
+        <li><strong>BPA-Free:</strong> Safe for drinking.</li>
+      </ul>
+      <p>An essential item for staying hydrated sustainably on your travels.</p>
+    `,
   },
 ];
 
 export function getAllGearItems() {
-  // Sort by publishedAt date in descending order (latest first)
   return dummyGearData.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
 }
 
-// Function to get a single gear item by slug
 export function getGearItemBySlug(slug) {
   return dummyGearData.find(item => item.slug === slug);
 }
 
-// If you want filter options for gear, similar to reviews, you'd add:
 export function getUniqueGearFilterValues(field) {
   const values = new Set();
   dummyGearData.forEach(item => {
