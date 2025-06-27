@@ -1,0 +1,337 @@
+/* styles/NoFTFCardsReview.module.css */
+/* --- PREMIUM CSS REVISION --- */
+
+/* =============== Global Variables & Root (Assumed) =============== */
+/* This CSS assumes you have a :root setup like this in your global.css */
+/*
+:root {
+  --color-text-primary: #1a202c;
+  --color-text-secondary: #4a5568;
+  --color-text-muted: #718096;
+  --color-primary: #007bff;
+  --color-primary-hover: #0056b3;
+  --color-primary-light: #e9f5ff;
+  --color-background-body: #f7f9fc;
+  --color-background-card: #ffffff;
+  --color-background-subtle: #f8f9fa;
+  --color-border: #e2e8f0;
+  --color-border-light: #edf2f7;
+  --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-family-serif: 'Lora', 'Georgia', serif;
+  --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+  --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-hard: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --transition-speed: 0.2s;
+  --transition-timing: ease-in-out;
+}
+*/
+
+/* =============== Base Container & Layout =============== */
+.reviewContainer {
+  max-width: 900px; /* Optimal reading width for articles */
+  margin: 4rem auto;
+  padding: 0 1.5rem;
+  color: var(--color-text-secondary);
+  line-height: 1.75;
+  font-family: var(--font-family-sans);
+}
+
+/* =============== Header & Typography =============== */
+.reviewHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.reviewHeader h1 {
+  font-family: var(--font-family-serif);
+  font-size: clamp(2.25rem, 5vw, 3.25rem); /* Larger, more impactful title */
+  color: var(--color-text-primary);
+  line-height: 1.2;
+  margin: 0 0 1rem 0;
+  text-wrap: balance; /* Improves title flow */
+}
+
+/* Author bio container - unchanged */
+.authorBioContainer {
+  display: inline-flex;
+  align-items: center;
+  text-align: left;
+  gap: 12px;
+  position: relative;
+  cursor: default;
+}
+.authorImageSmall { border-radius: 50%; object-fit: cover; }
+.authorInfo { display: flex; flex-direction: column; line-height: 1.4; }
+.authorName { font-weight: 600; font-size: 0.95rem; }
+.authorTitle { font-size: 0.85rem; color: var(--color-text-muted); }
+.authorLastEdited { font-size: 0.8rem; color: var(--color-text-muted); margin-top: 4px; }
+
+
+/* =============== Hero Section =============== */
+.heroSection {
+  margin-bottom: 2rem;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-medium);
+  line-height: 0;
+}
+
+.heroImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* =============== Article Content & Typography =============== */
+.reviewSection {
+  margin-bottom: 3rem;
+}
+
+.reviewSection h2 {
+  font-family: var(--font-family-serif);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  color: var(--color-text-primary);
+  margin: 3rem 0 1.5rem 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--color-primary-light);
+  line-height: 1.3;
+}
+
+.reviewSection h3 {
+  font-family: var(--font-family-sans);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--color-text-primary);
+  margin: 2rem 0 1rem 0;
+  line-height: 1.4;
+}
+
+.reviewSection p,
+.reviewSection ul {
+  font-size: 1.05rem; /* Slightly larger for better readability */
+  margin-bottom: 1.5rem;
+}
+
+.reviewSection ul {
+  list-style-position: outside;
+  padding-left: 1.5rem;
+}
+
+.reviewSection li {
+  margin-bottom: 0.75rem;
+  padding-left: 0.5rem;
+}
+
+.reviewSection strong {
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+/* Link styling within the article body */
+.reviewSection a {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid var(--color-primary-light);
+  transition: all var(--transition-speed) var(--transition-timing);
+}
+
+.reviewSection a:hover {
+  background-color: var(--color-primary-light);
+  border-bottom-color: var(--color-primary);
+}
+
+
+/* =============== PREMIUM CARD DETAIL STYLING =============== */
+.cardDetailSection {
+  background-color: var(--color-background-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: 1.5rem 2rem;
+  transition: box-shadow var(--transition-speed) var(--transition-timing), transform var(--transition-speed) var(--transition-timing);
+}
+
+.cardDetailSection:not(:last-child) {
+  margin-bottom: 2.5rem; /* Generous space between review cards */
+}
+
+.cardDetailSection:hover {
+  box-shadow: var(--shadow-hard);
+  transform: translateY(-5px);
+}
+
+/* Card title */
+.cardDetailSection h3 {
+  font-size: 1.75rem; /* Larger, more prominent title for each backpack */
+  margin: 0 0 1.5rem 0; /* Space below the title */
+  color: var(--color-primary);
+  font-family: var(--font-family-serif);
+  border-bottom: 1px solid var(--color-border-light);
+  padding-bottom: 1rem;
+}
+
+/* Details list inside the card */
+.cardDetailSection ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+.cardDetailSection li {
+  font-size: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.5rem 0;
+}
+
+.cardDetailSection li strong {
+  flex-shrink: 0;
+  width: 90px; /* Aligns the descriptions vertically */
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.cardDetailSection li em {
+  font-style: normal;
+  color: var(--color-text-secondary);
+}
+
+/* Testimonial styling */
+.cardDetailSection li em {
+  display: block;
+  padding-left: 1rem;
+  border-left: 3px solid var(--color-primary-light);
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+
+
+/* =============== PREMIUM IMAGE GALLERY =============== */
+.gearImageGallery {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr; /* Main image larger, two smaller thumbnails */
+  grid-template-rows: auto;
+  gap: 0.75rem;
+  margin: 1.5rem 0 2rem 0;
+  height: 350px; /* Fixed height for the gallery container */
+}
+
+/* Styles for individual image wrappers */
+.galleryImageWrapper {
+  position: relative;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  transition: transform var(--transition-speed) var(--transition-timing);
+}
+
+.galleryImageWrapper:hover {
+  transform: scale(1.03);
+  z-index: 2; /* Bring hovered image to the front */
+  box-shadow: var(--shadow-medium);
+}
+
+/* The main (first) image in the gallery */
+.galleryImageWrapper:first-child {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3; /* Span two rows to be taller */
+}
+
+.galleryImageWrapper:nth-child(2) {
+  grid-column: 2 / 4; /* Span two columns for a wide image */
+  grid-row: 1 / 2;
+}
+
+.galleryImageWrapper:nth-child(3) {
+  grid-column: 2 / 4; /* Span two columns */
+  grid-row: 2 / 3;
+}
+
+/* The Next.js Image component itself */
+.gearImage {
+  object-fit: cover;
+}
+
+/* =============== PREMIUM BUY NOW BUTTON =============== */
+.buyNowButton {
+  display: inline-flex; /* Use inline-flex for icon alignment */
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem; /* Space between text and icon */
+  padding: 12px 24px;
+  border-radius: var(--border-radius-md);
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-speed) var(--transition-timing);
+  border: 2px solid var(--color-primary);
+  background-color: var(--color-primary);
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-top: 1rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.buyNowButton:hover,
+.buyNowButton:focus-visible {
+  background-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+  outline: none;
+}
+
+.buyNowButton:active {
+  transform: translateY(0) scale(0.99);
+}
+
+/* =============== Responsive Adjustments =============== */
+@media (max-width: 768px) {
+  .reviewContainer {
+    padding: 0 1rem;
+  }
+  .cardDetailSection {
+    padding: 1.5rem;
+  }
+  .cardDetailSection li {
+    flex-direction: column;
+    gap: 0.25rem;
+    align-items: flex-start;
+  }
+  .cardDetailSection li strong {
+    width: auto; /* Allow label to take its own width */
+  }
+
+  .gearImageGallery {
+    grid-template-columns: 1fr 1fr; /* Simpler 2-column layout */
+    height: auto; /* Auto height */
+  }
+  .galleryImageWrapper:first-child {
+    grid-column: 1 / 3; /* Main image takes full width */
+    grid-row: 1 / 2;
+    height: 300px;
+  }
+  .galleryImageWrapper:nth-child(2) {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    height: 150px;
+  }
+  .galleryImageWrapper:nth-child(3) {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .reviewHeader h1 { font-size: 2rem; }
+  .reviewSection h2 { font-size: 1.6rem; }
+  .cardDetailSection { padding: 1rem; }
+  .cardDetailSection h3 { font-size: 1.4rem; }
+}

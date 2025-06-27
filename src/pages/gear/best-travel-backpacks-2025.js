@@ -8,7 +8,7 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from '../../styles/NoFTFCardsReview.module.css'; // Reusing your site's existing review styles
+import styles from '../../styles/gearsReview.module.css'; // Reusing your site's existing review styles
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 🔗 CONFIG
