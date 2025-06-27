@@ -13,7 +13,7 @@ const gearReviews = [
     title: 'Best Travel Backpacks 2025: Your Guide to the Perfect Pack',
     description: 'We review top picks for versatility, carry-on compliance, and urban exploration to help you find the perfect travel companion.',
     link: '/gear/best-travel-backpacks-2025',
-    image: '/your-hero-image-backpacks.jpg', // ❗ You will replace this with a real image later
+    image: '/pexels-olly-837358.webp', // ❗ You will replace this with a real image later
   },
   // ✏️ When you write more gear reviews, you will add them here.
 ];
