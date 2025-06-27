@@ -13,6 +13,8 @@ import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
 
 
 import { getFeaturedReviews } from '@/utils/getAllReviews'; // Import the data fetching function
+import { getAllGearItems } from '@/utils/getGear'; // Import for featured gear
+import GearCard from '@/components/GearCard'; // Import the GearCard component
 
 
 // --- Helper Function to Render Premium SVG Stars (Handles 10-point scale) ---
@@ -44,7 +46,7 @@ function RenderStars({ ratingOutOf10, maxStars = 5 }) {
 // --- End Helper Function ---
 
 // Updated component definition to accept props
-export default function HomePage({ featuredReviews, latestNews }) {
+export default function HomePage({ featuredReviews, latestNews, latestGear }) { // Add latestGear prop
 
   // --- Define featured card data including ratings (OUT OF 10) ---
   // Example: Doubled the previous ratings (4.8*2=9.6, 4.6*2=9.2, 4.7*2=9.4)
@@ -354,7 +356,6 @@ export default function HomePage({ featuredReviews, latestNews }) {
                     { img: "/pexels-elina-sazonova-1838554.webp", alt: "A split image showing a luxurious Hilton resort on one side and a modern IHG hotel on the other, symbolizing the choice between the two brands.", title: "Hilton Aspire vs. IHG Premier Showdown", desc: "An in-depth 2025 comparison of the Hilton Aspire and IHG Premier cards. We analyze annual fees, welcome offers, elite status, and real-world value to see which card is right for you.", link: "/review/hilton-aspire-vs-ihg-premier-2025" },
                     { img: "/resi-kling-p2rEruJ3p0Y-unsplash (1).jpg", alt: "A group of students looking at a world map, symbolizing how a student credit card can make travel possible.", title: "Best Student Travel Credit Cards 2025: Earn Miles Before Graduation", desc: "Discover the best student credit cards for travel in 2025. Learn how to build credit, earn rewards on everyday spending, and avoid foreign transaction fees.", link: "/review/best-student-travel-credit-cards-2025" },
                     { img: "/pexels-veerasak-piyawatanakul-392493-1170184.webp", alt: "A stylized image of the American Express Green Card against a travel-themed background, representing the 2025 review", title: "The 2025 Amex Green Card: A Travel Classic or an Expensive Relic?", desc: "Our definitive 2025 review of the Amex Green Card. We analyze its $150 annual fee, the CLEAR Plus credit, 3X rewards, and if it's the right fit for your wallet.", link: "/review/amex-green-card-2025" },
-                    { img: "/pexels-ensearchofyou-2152213354-32558283.webp", alt: "Couple looking out an airplane window, symbolizing BOGO flights with the Southwest Companion Pass", title: "Southwest Companion Pass Guide (2025-2026)", desc: "Our complete 2025-2026 blueprint for earning the Southwest Companion Pass. Learn the two-card strategy, navigate Chase rules, and unlock BOGO flights.", link: "/review/southwest-companion-pass-strategy-2025" },
                     { img: "/pexels-s-n-b-m-827240-1703909.webp", alt: "View from a cruise ship deck at sunset, overlooking the ocean", title: "Best Credit Cards for Cruise Travelers 2025: Earn More Than Just a Tan", desc: "Our expert guide to the best credit cards for cruises. Compare top cards for travel insurance, onboard perks, and maximizing rewards on your next voyage.", link: "/review/best-credit-cards-for-cruise-travelers-2025" },
                     { img: "/pexels-cliford-mervil-988071-2398220.webp", alt: "Guide to Capital One Transfer Partners", title: "Escape the Trap: Your 2025 Guide to Capital One Transfer Partners", desc: "Our definitive 2025 guide to maximizing Capital One miles. Learn how to transfer points to airline and hotel partners to unlock thousands of dollars in value from high-impact sweet spots.", link: "/review/capital-one-transfer-partners-2025", date: "2025-06-19" },
                     { img: "/upgraded-points-xjTp2RjWg3A-unsplash.jpg", alt: "Marriott Bonvoy Bevy card on a textured background, representing its 2025 review.", title: "Marriott Bonvoy Bevy™ Card Review 2025: Is It Worth the $250 Fee?", desc: "Our 2025 analysis of the Marriott Bonvoy Bevy™ Amex Card. We dissect the $250 annual fee, Gold Elite Status, and the controversial $15K spend for a Free Night Award.", link: "/review/marriott-bonvoy-bevy-2025" },
@@ -396,6 +397,29 @@ export default function HomePage({ featuredReviews, latestNews }) {
                 </div>
             </div>
         </section>
+
+        {/* Latest Travel Gear Section - NEW SECTION */}
+        <section id="latest-gear" className="content-section" aria-labelledby="latest-gear-heading">
+          <div className="container">
+            <h2 id="latest-gear-heading" className="section-title">Latest Travel Gear Reviews</h2>
+            <div className="news-grid-homepage"> {/* Reusing news-grid-homepage for similar layout, or create a new one */}
+              {latestGear && latestGear.length > 0 ? (
+                latestGear.map((gearItem) => (
+                  <GearCard key={gearItem.slug} gearItem={gearItem} />
+                ))
+              ) : (
+                <p>No travel gear reviews available at the moment.</p>
+              )}
+            </div>
+            <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+              <Link href="/gear" className="cta-button view-all-news-button">
+                  View All Travel Gear
+              </Link>
+            </div>
+          </div>
+        </section>
+
+
       </main>
 
       {/* Footer Component (Unchanged) */}
@@ -407,14 +431,17 @@ export default function HomePage({ featuredReviews, latestNews }) {
   );
 }
 
-// getStaticProps (Unchanged)
+// getStaticProps (Updated to fetch latestGear)
 export async function getStaticProps() {
   const featuredReviews = getFeaturedReviews(8);
-  const latestNews = getFeaturedNews(4); // Get 4 latest news items
+  const latestNews = getFeaturedNews(4);
+  const latestGear = getAllGearItems().slice(0, 4); // Fetch latest 4 gear items
 
   return {
     props: {
       featuredReviews,
+      latestNews,
+      latestGear, // Pass latestGear as a prop
     },
     // revalidate: 3600,
   };
