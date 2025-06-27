@@ -271,7 +271,7 @@
   transition: all var(--transition-speed) var(--transition-timing);
   border: 2px solid var(--color-primary);
   background-color: var(--color-primary);
-  color: white;
+  color: white !important;
   font-size: 1rem;
   line-height: 1.5;
   margin-top: 1rem;
