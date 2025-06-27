@@ -1,0 +1,102 @@
+/* styles/GearCard.module.css */
+
+.card {
+    background-color: var(--card-background-color); /* Assuming you have global CSS variables */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.imageLink {
+    display: block;
+    width: 100%;
+    height: 200px; /* Fixed height for image container */
+    position: relative;
+    overflow: hidden;
+}
+
+.cardImage {
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover .cardImage {
+    transform: scale(1.05);
+}
+
+.cardContent {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Allows content to push button to bottom */
+}
+
+.cardTitle {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+.cardTitle a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.cardTitle a:hover {
+    color: var(--accent-color); /* Or a darker primary color */
+}
+
+.cardRating {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 0.75rem;
+    font-weight: bold;
+}
+
+.cardDescription {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    flex-grow: 1; /* Allows description to take up available space */
+}
+
+.readMoreButton {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.75rem 1.25rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.2s ease;
+    align-self: flex-start; /* Aligns button to the left if container is flex */
+    margin-top: auto; /* Pushes button to the bottom */
+}
+
+.readMoreButton:hover {
+    background-color: var(--accent-color); /* Or a slightly darker primary */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .cardTitle {
+        font-size: 1.2rem;
+    }
+    .cardDescription {
+        font-size: 0.9rem;
+    }
+    .readMoreButton {
+        width: 100%;
+        padding: 0.6rem 1rem;
+    }
+}

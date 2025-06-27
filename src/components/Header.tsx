@@ -122,6 +122,7 @@ export default function Header() {
               links: [
                 { label: "Guides", href: "/guides" },
                 { label: "News", href: "/news" }, // Assuming this is an anchor link
+                 { label: "Travel Gear", href: "/gear" },
               ],
           },
           {
