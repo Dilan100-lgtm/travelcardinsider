@@ -6,8 +6,115 @@
 // - A Headless CMS (e.g., Contentful, Sanity, Strapi)
 // - A JSON API
 
-// Dummy data for demonstration purposes
 const dummyGearData = [
+  {
+    slug: '2025-travel-backpack-portfolio-expert-review',
+    title: 'The 2025 Travel Backpack Portfolio: An Expert Review of 7 Must-Have Packs',
+    description: 'An in-depth expert review of 2025\'s top 7 travel backpacks, analyzing comfort, security, style, and long-term value for every type of traveler.',
+    image: '/gear/backpack-portfolio-main.webp', // Main image for the overall review
+    category: 'backpacks',
+    publishedAt: '2025-06-27',
+    rating: 9.2,
+    content: `
+      <h2>Part I: The Anatomy of a Sound Travel Investment</h2>
+      <p>Choosing a travel backpack in 2025 is a strategic investment in your travel efficiency and comfort. The right pack is a durable asset; the wrong one is a liability, costing you in physical pain or surprise airline fees. This review analyzes 2025’s top backpacks not just on features, but on their long-term value. We'll break down the core pillars of a smart investment: comfort, security, style, and overall value.</p>
+
+      <h3>The Comfort Equation</h3>
+      <p>Comfort is your most valuable asset. It’s a science of ergonomic design and load distribution. Today's market is dominated by two philosophies: hiking-derived suspension systems and streamlined urban harnesses. Hiking-style packs, like the Osprey Farpoint 40, use robust hip belts to transfer up to 80% of the weight from your shoulders to your hips—a game-changer for long walks [Osprey.com, Farpoint 40 Product Page]. Urban packs, like the Aer Travel Pack 3, prioritize a sleek profile for shorter journeys between airports and hotels [AerSF.com, Travel Pack 3 Product Page]. Your first step is to honestly assess your travel style. If you walk a lot, prioritize suspension. If you mainly use transport, an organized urban pack is a better fit.</p>
+
+      <h3>Fortress on Your Back</h3>
+      <p>Modern security is a multi-layered system. It starts with a rugged, weather-resistant shell, like the durable tarpaulin on The North Face Base Camp Voyager [TheNorthFace.com, Base Camp Voyager Product Page] or the waterproof sailcloth on the Tortuga Travel Backpack Pro [TortugaBackpacks.com, Travel Backpack Pro 40L Product Page]. Next is access control. Lockable YKK zippers are standard, but leaders like Cotopaxi and Peak Design add anti-theft loops to deter pickpockets. Finally, intelligent design adds another layer. The Aer Travel Pack 3 has a hidden pocket for a smart tracker, a brilliant security boost. Be mindful of carry-on compliance; some bags push the size limits, creating a risk on stricter international airlines.</p>
+
+      <h3>Style and Function</h3>
+      <p>A backpack's look reflects its function. Aer perfects the sleek, urban minimalist aesthetic. Cotopaxi’s Del Día collection offers vibrant, one-of-a-kind designs that champion sustainability [Cotopaxi.com, Del Día Collection]. Brands like The North Face and Osprey have a rugged, utilitarian look that signals adventure-readiness. Peak Design and Nomatic offer a tech-inspired, hybrid style for creatives and hyper-organized professionals.</p>
+
+      <h3>The Value Proposition</h3>
+      <p>True value is the total cost of ownership, weighing price against durability and warranty. A strong lifetime warranty from brands like Osprey, Peak Design, and Tortuga is a financial safety net [Osprey.com, All Mighty Guarantee]. Versatility is a value multiplier. The Peak Design Travel Backpack’s ability to change size makes it three bags in one, lowering its cost-per-use [PeakDesign.com, Travel Backpack 45L Product Page].</p>
+
+      <h2>Part III: The Final Verdict: Your Persona-Based Recommendation</h2>
+      <ul>
+        <li><strong>For the Digital Nomad:</strong> The Aer Travel Pack 3 is your greatest asset for protecting and organizing your mobile office.</li>
+        <li><strong>For the Adventurer Who Walks for Miles:</strong> The Osprey Farpoint 40 or Tortuga Pro 40L are your blue-chip investments in comfort. Choose Osprey for value or Tortuga for maximum durability.</li>
+        <li><strong>For the Versatile Traveler:</strong> The Peak Design Travel Backpack 45L is your diversified mutual fund, ready for any trip you can imagine.</li>
+        <li><strong>For the Style-Conscious Explorer:</strong> The Cotopaxi Allpa 35L perfectly aligns with your values and need for order, combining function with vibrant personality.</li>
+        <li><strong>For the No-Nonsense Weekender:</strong> The North Face Base Camp Voyager 35L offers the best dividend yield—a tough, reliable asset at an accessible price.</li>
+        <li><strong>For the Ultimate Organizer:</strong> The Nomatic Travel Bag 40L is a speculative but potentially high-reward play. If its hyper-compartmentalized system matches your style, the returns in efficiency will be immense.</li>
+      </ul>
+    `,
+    // NEW: Structured data for individual backpacks within the portfolio review
+    backpacks: [
+      {
+        order: 1,
+        name: 'Aer Travel Pack 3',
+        slug: 'aer-travel-pack-3',
+        image: '/gear/aer-travel-pack-3.webp', // Specific image for Aer TP3
+        subTitle: 'The Blue-Chip Tech Stock',
+        persona: 'The tech-savvy urbanist and business professional.',
+        bottomLine: 'A premium investment in organization and professional style. Its durable materials and lifetime warranty deliver exceptional long-term value for the tech-centric traveler.',
+        testimonial: '"Exactly what I was looking for. I am planning a backpacking trip in Europe... Travel pack 3 is the perfect one. It fits all the essential items without needing a roller." - Ming C., Verified Reviewer [AerSF.com, Customer Reviews]'
+      },
+      {
+        order: 2,
+        name: 'Osprey Farpoint 40',
+        slug: 'osprey-farpoint-40',
+        image: '/gear/osprey-farpoint-40.webp', // Specific image for Osprey Farpoint 40
+        subTitle: 'The Long-Term Growth Fund',
+        persona: 'The comfort-seeking adventurer and world traveler who walks for miles.',
+        bottomLine: 'Backed by Osprey\'s legendary "All Mighty Guarantee," the Farpoint 40 offers an unbeatable return on investment for any traveler who prioritizes comfort above all else.',
+        testimonial: '"This backpack worked great for a 17 day Europe trip with many train rides and stairs. I would pack less next time but it held my overpacking and lots of comfort gear for the plane." - Elise, Verified Buyer'
+      },
+      {
+        order: 3,
+        name: 'Cotopaxi Allpa 35L',
+        slug: 'cotopaxi-allpa-35l',
+        image: '/gear/cotopaxi-allpa-35l.webp', // Specific image for Cotopaxi Allpa 35L
+        subTitle: 'The Socially Responsible Investment',
+        persona: 'The conscious, colorful, and hyper-organized explorer.',
+        bottomLine: 'The Allpa 35L is an investment in joyful organization and sustainable design. Its 100% recycled fabrics and lifetime warranty make it a purchase you can feel good about [Cotopaxi.com, Allpa 35L Product Page].',
+        testimonial: '"I am still in awe over how much stuff I can fit into this backpack and how well organized everything fits. Its compartments separate and are functionally thoughtful. Worth every penny." - Manny M., Verified Buyer'
+      },
+      {
+        order: 4,
+        name: 'Peak Design Travel Backpack 45L',
+        slug: 'peak-design-travel-backpack-45l',
+        image: '/gear/peak-design-travel-backpack-45l.webp', // Specific image for Peak Design 45L
+        subTitle: 'The Diversified Mutual Fund',
+        persona: 'The ultimate generalist—photographer one day, business traveler the next.',
+        bottomLine: 'Arguably the most versatile travel bag on the market. Its ability to adapt, combined with a lifetime guarantee, provides incredible long-term value for the traveler who does it all.',
+        testimonial: '"It rained so much in Central America, however the material held up and everything remained dry inside... 10/10 would recommend for regular travel, business travel and to school/work!!!" - Mr. Anderson, Verified Reviewer'
+      },
+      {
+        order: 5,
+        name: 'Tortuga Travel Backpack Pro 40L',
+        slug: 'tortuga-travel-backpack-pro-40l',
+        image: '/gear/tortuga-travel-backpack-pro-40l.webp', // Specific image for Tortuga 40L Pro
+        subTitle: 'The Gilt-Edged Bond',
+        persona: 'The hardcore one-bag purist demanding peak performance.',
+        bottomLine: 'While expensive, this is an investment in absolute confidence. For travelers facing unpredictable weather or heavy loads, its extreme durability and comfort provide outstanding value.',
+        testimonial: '"Love this backpack. The exterior feels rugged and tough like a tank. While the interior is smart and feels luxurious like a Mercedes." - David, Verified Buyer'
+      },
+      {
+        order: 6,
+        name: 'The North Face Base Camp Voyager 35L',
+        slug: 'the-north-face-base-camp-voyager-35l',
+        image: '/gear/north-face-base-camp-voyager-35l.webp', // Specific image for TNF Base Camp Voyager
+        subTitle: 'The High-Yield Stock',
+        persona: 'The rugged weekender and practical adventurer needing a durable, no-fuss bag.',
+        bottomLine: 'This pack offers a tremendous return, delivering iconic durability in a travel-friendly format with smart features. It represents excellent value for years of adventure.',
+        testimonial: '"Comfortable, useful pocket design. Excellent travel backpack for a weekend or as a supplemental bag to a roller... The pocket configuration is great and there is no wasted space." - Ian, Verified Buyer'
+      },
+      {
+        order: 7,
+        name: 'Nomatic Travel Bag 40L',
+        slug: 'nomatic-travel-bag-40l',
+        image: '/gear/nomatic-travel-bag-40l.webp', // Specific image for Nomatic 40L
+        subTitle: 'The Speculative Tech IPO',
+        persona: 'The hyper-organized professional who wants a pocket for everything.',
+        bottomLine: 'A high-reward investment in a unique organizational system. For those whose packing style aligns with its feature-dense layout, it can be a game-changer. For others, it may feel overly complex.',
+        testimonial: '"I bought the NOMATIC Travel Bag 40L in 2017, and it\'s been a game-changer! ...What really stands out is NOMATIC\'s lifetime warranty and customer service... If you\'re on the fence, trust me—it\'s worth every penny!" - Carl L., Verified Buyer [Nomatic.com, Customer Reviews]'
+      }
+    ]
+  },
   {
     slug: 'osprey-farpoint-55',
     title: 'Osprey Farpoint 55 Travel Pack',
@@ -47,13 +154,11 @@ const dummyGearData = [
 ];
 
 export function getAllGearItems() {
-  // In a real scenario, you'd read files from a directory (e.g., 'content/gear')
-  // and parse them, then sort as needed.
-  // For now, we return the dummy data.
+  // Sort by publishedAt date in descending order (latest first)
   return dummyGearData.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
 }
 
-// You might also want a function to get a single gear item by slug
+// Function to get a single gear item by slug
 export function getGearItemBySlug(slug) {
   return dummyGearData.find(item => item.slug === slug);
 }

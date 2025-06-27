@@ -1,0 +1,186 @@
+/* styles/GearDetailPage.module.css */
+
+.gearDetailContainer {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.gearArticle {
+    background-color: var(--card-background-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 2rem;
+}
+
+.articleTitle {
+    font-size: 2.8rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.articleMeta {
+    text-align: center;
+    color: #777;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.articleMeta p {
+    margin: 0.25rem 0;
+}
+
+.articleImageWrapper {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.articleImage {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block; /* Ensures no extra space below image */
+    margin: 0 auto;
+}
+
+.articleContent {
+    line-height: 1.7;
+    color: #333;
+    font-size: 1.05rem;
+}
+
+.articleContent h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--light-gray-border);
+    padding-bottom: 0.5rem;
+}
+
+.articleContent h3 {
+    font-size: 1.5rem;
+    color: var(--dark-text-color);
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.articleContent p {
+    margin-bottom: 1rem;
+}
+
+.articleContent ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-bottom: 1rem;
+}
+
+.articleContent ol {
+    list-style-type: decimal;
+    margin-left: 20px;
+    margin-bottom: 1rem;
+}
+
+.articleContent li {
+    margin-bottom: 0.5rem;
+}
+
+.articleContent strong {
+    font-weight: bold;
+}
+
+/* NEW STYLES FOR BACKPACK PORTFOLIO SECTION */
+.backpackPortfolioSection {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.backpackPortfolioSection h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.75rem;
+}
+
+.backpackReviewCard {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Center items horizontally */
+    text-align: center; /* Center text within the card */
+}
+
+.backpackReviewCard h3 {
+    font-size: 1.8rem;
+    color: var(--dark-text-color);
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.backpackImageWrapper {
+    width: 100%; /* Take full width of its container */
+    max-width: 400px; /* Max width for backpack images */
+    height: auto;
+    margin-bottom: 1.5rem;
+    border-radius: 4px;
+    overflow: hidden; /* Ensure image corners are rounded */
+}
+
+.backpackReviewCard .backpackImageWrapper img {
+    border-radius: 4px;
+}
+
+.backpackDetailsList {
+    list-style: none; /* Remove default bullet points */
+    padding: 0;
+    margin: 0;
+    text-align: left; /* Align list items left */
+    width: 100%; /* Take full width */
+    max-width: 600px; /* Limit width of list for readability */
+}
+
+.backpackDetailsList li {
+    background-color: #fff;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    font-size: 1rem;
+    color: #444;
+}
+
+.backpackDetailsList li strong {
+    color: var(--primary-color);
+    margin-right: 0.5rem;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .articleTitle {
+        font-size: 2rem;
+    }
+    .articleContent h2, .backpackPortfolioSection h2 {
+        font-size: 1.7rem;
+    }
+    .articleContent h3, .backpackReviewCard h3 {
+        font-size: 1.3rem;
+    }
+    .gearArticle {
+        padding: 1rem;
+    }
+    .backpackDetailsList li {
+        font-size: 0.9rem;
+    }
+}
