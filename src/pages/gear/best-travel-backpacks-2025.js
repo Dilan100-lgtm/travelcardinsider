@@ -14,7 +14,7 @@ import styles from '../../styles/NoFTFCardsReview.module.css'; // Reusing your s
 // 🔗 CONFIG
 // ─────────────────────────────────────────────────────────────────────────────
 const SITE_BASE_URL = 'https://www.travelcardinsider.com';
-const PAGE_PATH = '/gear/best-travel-backpacks-2025';
+const PAGE_PATH = '/pexels-olly-837358.webp';
 const PAGE_URL = `${SITE_BASE_URL}${PAGE_PATH}`;
 const SITE_NAME = 'Travel Card Insider';
 const HERO_IMAGE_SRC = '/your-hero-image-backpacks.jpg'; // ❗ Replace with your optimised hero image
@@ -27,7 +27,7 @@ const DATE_MODIFIED = '2025-06-27';
 // ─────────────────────────────────────────────────────────────────────────────
 const author = {
     name: 'Dilan Madushanka',
-    title: 'Lead Gear Analyst',
+    title: 'Lead Analyst',
     image: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg',
     imageLarge: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg',
     bio: 'A seasoned traveler and gear expert, Dilan specializes in finding the most durable and practical gear for any journey.',
