@@ -1,11 +1,5 @@
 // utils/getGear.js
 
-// In a real application, you would fetch this data from:
-// - Markdown files (using gray-matter for frontmatter)
-// - A database (e.g., PostgreSQL, MongoDB)
-// - A Headless CMS (e.g., Contentful, Sanity, Strapi)
-// - A JSON API
-
 // utils/getGear.js
 
 const dummyGearData = [
@@ -17,7 +11,15 @@ const dummyGearData = [
     category: 'backpacks',
     publishedAt: '2025-06-27',
     rating: 9.2,
-    content: `
+    // NEW: Author information
+    author: {
+      name: 'TravelCardInsider Editorial Team',
+      bio: 'Our team of travel and finance experts meticulously researches and reviews the best gear to enhance your journeys. We combine real-world experience with in-depth analysis to provide trustworthy recommendations.',
+      image: '/authors/tci-editorial-team.webp', // Placeholder for author image
+      link: '/about/who-we-are' // Link to about page or author's profile
+    },
+    // NEW: Separate content into introduction and conclusion
+    introContent: `
       <h2>Part I: The Anatomy of a Sound Travel Investment</h2>
       <p>Choosing a travel backpack in 2025 is a strategic investment in your travel efficiency and comfort. The right pack is a durable asset; the wrong one is a liability, costing you in physical pain or surprise airline fees. This review analyzes 2025’s top backpacks not just on features, but on their long-term value. We'll break down the core pillars of a smart investment: comfort, security, style, and overall value.</p>
 
@@ -32,7 +34,8 @@ const dummyGearData = [
 
       <h3>The Value Proposition</h3>
       <p>True value is the total cost of ownership, weighing price against durability and warranty. A strong lifetime warranty from brands like Osprey, Peak Design, and Tortuga is a financial safety net [Osprey.com, All Mighty Guarantee]. Versatility is a value multiplier. The Peak Design Travel Backpack’s ability to change size makes it three bags in one, lowering its cost-per-use [PeakDesign.com, Travel Backpack 45L Product Page].</p>
-
+    `,
+    conclusionContent: `
       <h2>Part III: The Final Verdict: Your Persona-Based Recommendation</h2>
       <ul>
         <li><strong>For the Digital Nomad:</strong> The Aer Travel Pack 3 is your greatest asset for protecting and organizing your mobile office.</li>
@@ -120,11 +123,16 @@ const dummyGearData = [
     slug: 'osprey-farpoint-55',
     title: 'Osprey Farpoint 55 Travel Pack',
     description: 'A versatile and comfortable travel backpack, perfect for long trips and backpacking adventures. Features a detachable daypack.',
-    image: '/gear/osprey-farpoint-55.webp', // Placeholder image path
+    image: '/gear/osprey-farpoint-55.webp',
     category: 'backpacks',
     publishedAt: '2025-05-01',
     rating: 9.5,
-    // ADDED content field here
+    author: { // Example author for other items
+      name: 'Jane Doe',
+      bio: 'An avid traveler and gear tester with years of experience backpacking across continents.',
+      image: '/authors/jane-doe.webp',
+      link: '/authors/jane-doe'
+    },
     content: `
       <h2>Osprey Farpoint 55 Overview</h2>
       <p>The Osprey Farpoint 55 is a popular choice for backpackers and travelers due to its comfortable carry system and practical features. It's designed to meet carry-on size restrictions for most airlines while offering ample space.</p>
@@ -146,7 +154,12 @@ const dummyGearData = [
     category: 'electronics',
     publishedAt: '2025-04-15',
     rating: 9.0,
-    // ADDED content field here
+    author: {
+      name: 'John Smith',
+      bio: 'A tech enthusiast and frequent flyer who tests gadgets in real-world travel scenarios.',
+      image: '/authors/john-smith.webp',
+      link: '/authors/john-smith'
+    },
     content: `
       <h2>Bose QuietComfort 45 Overview</h2>
       <p>The Bose QuietComfort 45 headphones are renowned for their world-class noise cancellation, making them an essential travel companion for peace and quiet on the go. They offer a comfortable fit for long listening sessions.</p>
@@ -168,7 +181,12 @@ const dummyGearData = [
     category: 'photography',
     publishedAt: '2025-03-20',
     rating: 8.8,
-    // ADDED content field here
+    author: {
+      name: 'Sarah Lee',
+      bio: 'Professional travel photographer and gear reviewer, always seeking the best tools for the job.',
+      image: '/authors/sarah-lee.webp',
+      link: '/authors/sarah-lee'
+    },
     content: `
       <h2>Peak Design Travel Tripod Overview</h2>
       <p>The Peak Design Travel Tripod redefines portability without sacrificing stability. Its unique design allows it to pack down incredibly small, making it perfect for photographers who need a reliable tripod that won't weigh them down.</p>
@@ -190,7 +208,12 @@ const dummyGearData = [
     category: 'accessories',
     publishedAt: '2025-02-10',
     rating: 8.0,
-    // ADDED content field here
+    author: {
+      name: 'Eco Explorer',
+      bio: 'Focused on sustainable travel and practical solutions for responsible adventurers.',
+      image: '/authors/eco-explorer.webp',
+      link: '/authors/eco-explorer'
+    },
     content: `
       <h2>Collapsible Silicone Water Bottle Overview</h2>
       <p>A must-have for eco-conscious and minimalist travelers, a collapsible silicone water bottle saves space when empty and helps reduce plastic waste. They are typically leak-proof and durable.</p>

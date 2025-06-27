@@ -1,6 +1,7 @@
 // pages/gear/[slug].js
 import Head from 'next/head';
-import Image from 'next/image'; // Import Image component
+import Image from 'next/image';
+import Link from 'next/link'; // Import Link for author link
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { getAllGearItems, getGearItemBySlug } from '@/utils/getGear';
@@ -20,8 +21,8 @@ export default function GearDetailPage({ gearItem }) {
     );
   }
 
-  // Check if there are structured backpacks for "Part II"
   const hasStructuredBackpacks = gearItem.backpacks && gearItem.backpacks.length > 0;
+  const isPortfolioReview = gearItem.slug === '2025-travel-backpack-portfolio-expert-review';
 
   return (
     <>
@@ -45,8 +46,35 @@ export default function GearDetailPage({ gearItem }) {
             {gearItem.rating && <p>Overall Rating: {gearItem.rating.toFixed(1)} / 10</p>}
           </div>
 
-          {/* Main review image */}
-          {gearItem.image && (
+          {/* NEW: Author Section */}
+          {gearItem.author && (
+            <div className={styles.authorSection}>
+              <div className={styles.authorAvatar}>
+                <Image
+                  src={gearItem.author.image || '/authors/default-author.webp'} // Default avatar if not provided
+                  alt={gearItem.author.name}
+                  width={60}
+                  height={60}
+                  objectFit="cover"
+                  className={styles.authorImage}
+                />
+              </div>
+              <div className={styles.authorInfo}>
+                <p className={styles.authorName}>
+                  By{' '}
+                  {gearItem.author.link ? (
+                    <Link href={gearItem.author.link}>{gearItem.author.name}</Link>
+                  ) : (
+                    <span>{gearItem.author.name}</span>
+                  )}
+                </p>
+                <p className={styles.authorBio}>{gearItem.author.bio}</p>
+              </div>
+            </div>
+          )}
+
+          {/* Main review image (if it's not a portfolio review that uses sub-images heavily) */}
+          {gearItem.image && !isPortfolioReview && (
             <div className={styles.articleImageWrapper}>
               <Image
                 src={gearItem.image}
@@ -61,14 +89,21 @@ export default function GearDetailPage({ gearItem }) {
             </div>
           )}
 
-          {/* Render Part I content */}
-          <div
-            className={styles.articleContent}
-            dangerouslySetInnerHTML={{ __html: gearItem.content.split('<h2>Part III: The Final Verdict')[0] + '<h2>Part III: The Final Verdict' }}
-          />
+          {/* Render Part I content OR standard content */}
+          {isPortfolioReview ? (
+            <div
+              className={styles.articleContent}
+              dangerouslySetInnerHTML={{ __html: gearItem.introContent }}
+            />
+          ) : (
+            <div
+              className={styles.articleContent}
+              dangerouslySetInnerHTML={{ __html: gearItem.content }}
+            />
+          )}
 
-          {/* NEW: Render Part II - Structured Backpack Reviews */}
-          {hasStructuredBackpacks && (
+          {/* Render Part II - Structured Backpack Reviews (only for portfolio review) */}
+          {hasStructuredBackpacks && isPortfolioReview && (
             <section className={styles.backpackPortfolioSection}>
               <h2>Part II: The 2025 Elite Seven Portfolio: In-Depth Reviews</h2>
               {gearItem.backpacks.map((backpack) => (
@@ -81,7 +116,7 @@ export default function GearDetailPage({ gearItem }) {
                       width={400} // Adjust as needed for individual bag images
                       height={250} // Adjust as needed
                       layout="responsive"
-                      objectFit="contain" // Use 'contain' for card-like images
+                      objectFit="contain"
                     />
                   </div>
                   <ul className={styles.backpackDetailsList}>
@@ -94,11 +129,13 @@ export default function GearDetailPage({ gearItem }) {
             </section>
           )}
 
-          {/* Render Part III content (if separate from Part I) */}
-          <div
-            className={styles.articleContent}
-            dangerouslySetInnerHTML={{ __html: '<h2>Part III: The Final Verdict' + gearItem.content.split('<h2>Part III: The Final Verdict')[1] }}
-          />
+          {/* Render Part III content (only for portfolio review) */}
+          {isPortfolioReview && (
+            <div
+              className={styles.articleContent}
+              dangerouslySetInnerHTML={{ __html: gearItem.conclusionContent }}
+            />
+          )}
 
         </article>
       </main>
@@ -108,7 +145,7 @@ export default function GearDetailPage({ gearItem }) {
   );
 }
 
-// getStaticPaths and getStaticProps remain the same as before
+// getStaticPaths and getStaticProps remain the same
 export async function getStaticPaths() {
   const gearItems = getAllGearItems();
   const paths = gearItems.map((item) => ({
