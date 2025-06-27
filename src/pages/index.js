@@ -13,8 +13,7 @@ import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
 
 
 import { getFeaturedReviews } from '@/utils/getAllReviews'; // Import the data fetching function
-import { getAllGearItems } from '@/utils/getGear'; // Import for featured gear
-import GearCard from '@/components/GearCard'; // Import the GearCard component
+
 
 
 // --- Helper Function to Render Premium SVG Stars (Handles 10-point scale) ---
