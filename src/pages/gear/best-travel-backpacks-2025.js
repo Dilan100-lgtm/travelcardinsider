@@ -49,9 +49,9 @@ const travelGearData = [
         price: '$249.00',
         buyUrl: 'https://aersf.com/products/travel-pack-3',
         images: [
-            { src: '/gear-images/aer-front.webp', alt: 'Aer Travel Pack 3 front view' },
-            { src: '/gear-images/aer-open.webp', alt: 'Aer Travel Pack 3 open showing compartments' },
-            { src: '/gear-images/aer-lifestyle.webp', alt: 'Aer Travel Pack 3 in a travel setting' },
+            { src: '/AER22032_travelpack3_gray_front.webp', alt: 'Aer Travel Pack 3 front view' },
+            { src: '/AER22032_travelpack3_gray_laptop.webp', alt: 'Aer Travel Pack 3 open showing compartments' },
+            { src: '/AER21032_travelpack3_ls_7.jpg', alt: 'Aer Travel Pack 3 in a travel setting' },
         ],
         persona: 'The tech-savvy urbanist and business professional.',
         bottomLine: 'A premium investment in organization and professional style. Its durable materials and lifetime warranty deliver exceptional long-term value for the tech-centric traveler.',
