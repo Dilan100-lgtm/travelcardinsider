@@ -1,0 +1,93 @@
+/* /styles/GearPage.module.css */
+
+/* --- Main Container & Header --- */
+.pageContainer {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.header h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #1a1a1a;
+}
+
+.header p {
+  font-size: 1.2rem;
+  color: #555;
+  max-width: 650px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* --- Gear Review List --- */
+.gearList {
+  display: grid;
+  gap: 2.5rem;
+}
+
+/* --- Individual Review Card --- */
+.reviewCardLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Add a hover effect for interactivity */
+.reviewCardLink:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  /* Creates a 2:1 aspect ratio */
+  padding-top: 50%; 
+}
+
+.content {
+  padding: 1.5rem 2rem;
+}
+
+.content h2 {
+  font-size: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: #222;
+  line-height: 1.3;
+}
+
+.content p {
+  margin: 0;
+  color: #666;
+  line-height: 1.5;
+}
+
+.readMore {
+  display: inline-block;
+  margin-top: 1rem;
+  font-weight: bold;
+  color: #0056b3; /* A more professional blue */
+  font-size: 1rem;
+  transition: color 0.2s ease;
+}
+
+.reviewCardLink:hover .readMore {
+    color: #003d82;
+}
