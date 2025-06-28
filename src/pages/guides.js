@@ -158,10 +158,7 @@ export default function GuidesPage({ reviews: initialReviews, filterOptions }) {
         {/* Added internal links to popular pages to pass link equity and improve user navigation. */}
         <p className={styles.pageDescription}>
           Explore our expert reviews and find the perfect travel credit card for your adventures. 
-          We break down top-tier cards like the{' '}
-          <Link href="/cards/amex-platinum-review" legacyBehavior><a>Amex Platinum</a></Link> or the{' '}
-          <Link href="/cards/chase-sapphire-reserve-guide" legacyBehavior><a>Chase Sapphire Reserve</a></Link>{' '}
-          to help you choose.
+          
         </p>
 
         {/* --- Filters Section --- */}
