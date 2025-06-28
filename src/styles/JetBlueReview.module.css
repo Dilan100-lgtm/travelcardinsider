@@ -1,0 +1,313 @@
+/* File: styles/JetBlueReview.module.css */
+
+/* ─────────────────────────────────── */
+/* Global & Layout            */
+/* ─────────────────────────────────── */
+.reviewContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #333;
+  background-color: #ffffff;
+}
+
+.articleContent {
+  margin-top: 2rem;
+}
+
+.reviewSection {
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid #eef2f6;
+  padding-bottom: 2rem;
+}
+
+.reviewSection:last-of-type {
+  border-bottom: none;
+}
+
+/* ─────────────────────────────────── */
+/* Typography               */
+/* ─────────────────────────────────── */
+.reviewHeader h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1a202c;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.reviewSection h2, .sectionTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #0038a8; /* JetBlue Blue */
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #4a5568;
+  margin-bottom: 1rem;
+}
+
+p, li {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  color: #4a5568;
+}
+
+.introParagraph {
+  font-size: 1.2rem;
+  color: #2d3748;
+  line-height: 1.8;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* ─────────────────────────────────── */
+/* Header & Author           */
+/* ─────────────────────────────────── */
+.authorDateContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.authorBioContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.authorImageSmall {
+  border-radius: 50%;
+}
+.authorInfo {
+  display: flex;
+  flex-direction: column;
+}
+.authorName {
+  font-weight: 600;
+  color: #1a202c;
+}
+.authorTitle {
+  font-size: 0.9rem;
+  color: #718096;
+}
+.lastEdited {
+  font-size: 0.9rem;
+  color: #718096;
+  font-style: italic;
+}
+
+/* ─────────────────────────────────── */
+/* Card Comparison Box         */
+/* ─────────────────────────────────── */
+.cardComparisonContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin: 2.5rem 0;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+}
+
+@media (min-width: 768px) {
+  .cardComparisonContainer {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.cardComparisonItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.cardImageContainer img {
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.cardDetails h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+}
+
+.ratingContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 1.5rem;
+  color: #4a5568;
+}
+
+/* ─────────────────────────────────── */
+/* Buttons                 */
+/* ─────────────────────────────────── */
+.cardButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 220px;
+}
+
+.applyButton, .secondaryButton, .tertiaryButton {
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: center;
+  border: 1px solid transparent;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.applyButton {
+  background-color: #28a745; /* Green for action */
+  color: white;
+  border-color: #28a745;
+}
+.applyButton:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-decoration: none;
+}
+
+.secondaryButton {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+.secondaryButton:hover {
+  background-color: #0069d9;
+  transform: translateY(-2px);
+   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-decoration: none;
+}
+
+.tertiaryButton {
+  background-color: #f8f9fa;
+  color: #4a5568;
+  border-color: #ced4da;
+}
+.tertiaryButton:hover {
+  background-color: #e2e6ea;
+  border-color: #dae0e5;
+  text-decoration: none;
+}
+
+
+/* ─────────────────────────────────── */
+/* Tables & Lists            */
+/* ─────────────────────────────────── */
+.tableContainer {
+    overflow-x: auto;
+    margin: 2rem 0;
+}
+.comparisonTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+}
+.comparisonTable th, .comparisonTable td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+.comparisonTable th {
+    background-color: #f7fafc;
+    font-weight: 600;
+    color: #2d3748;
+}
+.comparisonTable tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+ul {
+  padding-left: 20px;
+}
+ul li {
+  margin-bottom: 0.75rem;
+}
+
+
+/* ─────────────────────────────────── */
+/* About Author Section        */
+/* ─────────────────────────────────── */
+.aboutAuthorSection {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #eef2f6;
+}
+
+.authorBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  background-color: #f8f9fa;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .authorBox {
+    flex-direction: row;
+    text-align: left;
+    align-items: flex-start;
+  }
+}
+
+.authorImageLargeContainer {
+  flex-shrink: 0;
+}
+
+.authorImageLarge {
+  border-radius: 50%;
+}
+
+.authorDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.authorNameLarge {
+  margin: 0 0 0.5rem 0;
+}
+
+.authorBio {
+  font-size: 1rem;
+  color: #4a5568;
+  margin-bottom: 1rem;
+}
+
+.authorProfileLink {
+  font-weight: 600;
+  color: #007bff;
+}
+
+.authorProfileLink:hover {
+  text-decoration: underline;
+}
