@@ -194,6 +194,8 @@
   border: 1px solid transparent;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
+  text-decoration: none;
+
 }
 
 .applyButton {
