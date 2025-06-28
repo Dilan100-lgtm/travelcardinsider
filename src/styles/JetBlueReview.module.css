@@ -195,6 +195,8 @@
   transition: all 0.2s ease-in-out;
   cursor: pointer;
   text-decoration: none;
+  margin-top: 0.25rem;
+
 
 }
 
@@ -214,6 +216,7 @@
   background-color: #007bff;
   color: white;
   border-color: #007bff;
+  text-decoration: none;
 }
 .secondaryButton:hover {
   background-color: #0069d9;
