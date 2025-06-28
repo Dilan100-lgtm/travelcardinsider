@@ -64,7 +64,7 @@ const cardData = [
     id: 'jetblueBusiness',
     name: 'JetBlue Business Card',
     issuer: 'Barclays',
-    imageSrc: '/jetblue-business-card.png',
+    imageSrc: '/BJT_card_BC_WE_Angle_359x246_L.png',
     imageAlt: 'JetBlue Business Card',
     annualFee: '$99',
     officialCardPageLink: 'https://cards.barclaycardus.com/banking/cards/jetblue-business-card/',
