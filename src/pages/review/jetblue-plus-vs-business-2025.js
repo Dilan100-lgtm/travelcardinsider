@@ -6,8 +6,7 @@ import React, { useState, useRef, useCallback } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-// 👇 UPDATE THIS LINE to import the new stylesheet
-import styles from '../../styles/JetBlueReview.module.css'; 
+import styles from '../../styles/JetBlueReview.module.css';
 import StarRating from '../../components/StarRating';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -17,7 +16,7 @@ const SITE_BASE_URL = 'https://www.travelcardinsider.com';
 const PAGE_PATH = '/reviews/jetblue-plus-vs-business-2025';
 const PAGE_URL = `${SITE_BASE_URL}${PAGE_PATH}`;
 const SITE_NAME = 'Travel Card Insider';
-const HERO_IMAGE_SRC = '/images/heros/jetblue-cards-hero.webp'; // ❗ Replace with your optimised hero image
+const HERO_IMAGE_SRC = '/images/heros/jetblue-cards-hero.webp';
 const HERO_IMAGE_ALT = 'The tail fin of a JetBlue airplane against a clear blue sky, symbolizing the choice between its travel credit cards.';
 const DATE_PUBLISHED = '2025-06-28';
 const DATE_MODIFIED = '2025-06-28';
@@ -28,8 +27,8 @@ const DATE_MODIFIED = '2025-06-28';
 const author = {
   name: 'Dilan Madushanka',
   title: 'Lead Travel Card Analyst',
-  image: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // ❗ Your 40x40px web‑optimised headshot
-  imageLarge: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // ❗ Your 80x80px for author bio
+  image: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg',
+  imageLarge: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg',
   bio: 'A seasoned travel card analyst, Dilan specializes in helping travelers maximize rewards and benefits from premium credit cards to unlock luxury experiences.',
   expertise: [
     'Airline Loyalty Programs',
@@ -45,19 +44,19 @@ const author = {
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 💳 CARD DATA -- NOW INCLUDES LINKS FOR BUTTONS
+// 💳 CARD DATA
 // ─────────────────────────────────────────────────────────────────────────────
 const cardData = [
   {
     id: 'jetbluePlus',
     name: 'JetBlue Plus Card',
     issuer: 'Barclays',
-    imageSrc: '/jetblue-plus-card.png', // ❗ Replace
+    imageSrc: '/jetblue-plus-card.png',
     imageAlt: 'JetBlue Plus Card',
     annualFee: '$99',
     officialCardPageLink: 'https://cards.barclaycardus.com/banking/cards/jetblue-plus-card/',
-    learnMoreLink: '/cards/jetblue-plus', // Internal link to your review page
-    ratesFeesLink: 'https://cards.barclaycardus.com/banking/cards/jetblue-plus-card/rates-and-fees', // Example link
+    learnMoreLink: '/cards/jetblue-plus',
+    ratesFeesLink: 'https://cards.barclaycardus.com/banking/cards/jetblue-plus-card/apply',
     ratingValue: 8.5,
     ratingStars: 4.3,
   },
@@ -65,12 +64,12 @@ const cardData = [
     id: 'jetblueBusiness',
     name: 'JetBlue Business Card',
     issuer: 'Barclays',
-    imageSrc: '/jetblue-business-card.png', // ❗ Replace
+    imageSrc: '/jetblue-business-card.png',
     imageAlt: 'JetBlue Business Card',
     annualFee: '$99',
     officialCardPageLink: 'https://cards.barclaycardus.com/banking/cards/jetblue-business-card/',
-    learnMoreLink: '/cards/jetblue-business', // Internal link to your review page
-    ratesFeesLink: 'https://cards.barclaycardus.com/banking/cards/jetblue-business-card/rates-and-fees', // Example link
+    learnMoreLink: '/cards/jetblue-business',
+    ratesFeesLink: 'https://cards.barclaycardus.com/banking/cards/jetblue-business-card/apply',
     ratingValue: 8.8,
     ratingStars: 4.5,
   }
@@ -180,7 +179,7 @@ function generateJsonLD() {
           name: SITE_NAME,
           logo: {
             '@type': 'ImageObject',
-            url: `${SITE_BASE_URL}/images/travel-card-insider-logo-120.png`, // ❗ Ensure this logo exists
+            url: `${SITE_BASE_URL}/images/travel-card-insider-logo-120.png`,
           },
         },
         datePublished: DATE_PUBLISHED,
@@ -196,7 +195,6 @@ function generateJsonLD() {
         2
       );
 }
-
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 🌐 COMPONENT
@@ -224,12 +222,38 @@ function JetBlueCardReviewPage2025() {
     return (
         <>
             <Head>
-                {/* ... (Head content remains the same) ... */}
+                <title>JetBlue Plus vs. JetBlue Business (2025 Review) | {SITE_NAME}</title>
+                <meta
+                name="description"
+                content="An in-depth 2025 comparison of the JetBlue Plus and JetBlue Business cards after the TrueBlue loyalty program overhaul. We analyze fees, perks, and earning potential to find the champion."
+                />
+                <meta name="viewport" content="width=device-width,initial-scale=1" />
+                <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+                <meta name="keywords" content="jetblue plus vs business, jetblue plus card review, jetblue business card review, best airline credit card 2025, jetblue mosaic status, trueblue loyalty program, travel credit card comparison" />
+                <link rel="canonical" href={PAGE_URL} />
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content={`JetBlue Plus vs. JetBlue Business (2025 Review) | ${SITE_NAME}`} />
+                <meta property="og:description" content="A detailed breakdown of two powerful JetBlue cards in a new loyalty era. Find out which card is the right strategic tool for your travel style." />
+                <meta property="og:url" content={PAGE_URL} />
+                <meta property="og:site_name" content={SITE_NAME} />
+                <meta property="og:image" content={`${SITE_BASE_URL}${HERO_IMAGE_SRC}`} />
+                <meta property="og:image:alt" content={HERO_IMAGE_ALT} />
+                <meta property="og:locale" content="en_US" />
+                <meta property="article:published_time" content={DATE_PUBLISHED} />
+                <meta property="article:modified_time" content={DATE_MODIFIED} />
+                <meta property="article:author" content={author.name} />
+                <meta property="article:section" content="Credit Card Reviews" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={`JetBlue Plus vs. Business (2025) - ${SITE_NAME}`} />
+                <meta name="twitter:description" content="JetBlue overhauled its loyalty program. We dissect the Plus and Business cards to see which one offers the ultimate advantage for travelers in 2025." />
+                <meta name="twitter:image" content={`${SITE_BASE_URL}${HERO_IMAGE_SRC}`} />
+                {author.social.twitter && <meta name="twitter:creator" content={`@${author.social.twitter.split('/').pop()}`} />}
+                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: generateJsonLD() }} />
             </Head>
 
             <main className={styles.reviewContainer}>
                 <header className={styles.reviewHeader}>
-                  <h1>JetBlue Plus vs. JetBlue Business 2025: Which Wins After the Loyalty Overhaul?</h1>
+                  <h1 className={styles.mainHeading}>JetBlue Plus vs. JetBlue Business 2025: Which Wins After the Loyalty Overhaul?</h1>
                   <div className={styles.authorDateContainer}>
                     <div
                         className={styles.authorBioContainer}
@@ -274,9 +298,8 @@ function JetBlueCardReviewPage2025() {
 
                 <article className={styles.articleContent}>
                     <p className={styles.introParagraph}>In the competitive skies of travel rewards, loyalty is a must, and in 2025, JetBlue is reminting its coin. The airline has launched the most significant overhaul of its TrueBlue loyalty program in a decade, a pivot that redefines the path to elite status. For travelers, this new landscape, with its "tiles" system and multi-layered elite status, demands a fresh look at its co-branded credit cards.</p>
-                    <p>For US-based flyers, the choice between the JetBlue Plus Card and the JetBlue Business Card has always been a point of deliberation. Now, making the right decision is more critical than ever. This review will serve as your compass, guiding you through the new world of JetBlue rewards to help you determine which card is the champion for your wallet and travel style. For a broader look, see our ranking of the <Link href="/reviews/best-airline-credit-cards-2025">best airline credit cards for 2025</Link>.</p>
+                    <p className={styles.paragraph}>For US-based flyers, the choice between the JetBlue Plus Card and the JetBlue Business Card has always been a point of deliberation. Now, making the right decision is more critical than ever. This review will serve as your compass, guiding you through the new world of JetBlue rewards to help you determine which card is the champion for your wallet and travel style. For a broader look, see our ranking of the <Link href="/reviews/best-airline-credit-cards-2025"><a className={styles.link}>best airline credit cards for 2025</a></Link>.</p>
                     
-                    {/* --- NEW Card Display Section with Buttons --- */}
                     <div className={styles.cardComparisonContainer}>
                         {cardData.map((card) => (
                             <div key={card.id} className={styles.cardComparisonItem}>
@@ -284,7 +307,7 @@ function JetBlueCardReviewPage2025() {
                                     <Image src={card.imageSrc} alt={card.imageAlt} width={220} height={138} objectFit="contain" />
                                 </div>
                                 <div className={styles.cardDetails}>
-                                    <h3>{card.name}</h3>
+                                    <h3 className={styles.heading3}>{card.name}</h3>
                                     <div className={styles.ratingContainer}>
                                         <StarRating rating={card.ratingStars} />
                                         <span>{card.ratingValue.toFixed(1)}/10</span>
@@ -301,39 +324,37 @@ function JetBlueCardReviewPage2025() {
                         ))}
                     </div>
 
-                    {/* ... (Rest of the article sections remain the same, wrapped in <section>) ... */}
                     <section id="loyalty-revolution" className={styles.reviewSection}>
-                        <h2>The New Battleground: Understanding JetBlue's Loyalty Revolution</h2>
-                        <p>The language of loyalty at JetBlue has changed. The old system is a relic, replaced by "tiles," a new metric rewarding engagement across the entire JetBlue ecosystem. To learn more, read our deep dive on <Link href="/guides/understanding-jetblue-trueblue-tiles"><a>understanding JetBlue TrueBlue tiles</a></Link>. Travelers now earn tiles in two ways:</p>
-                        <ul>
-                            <li>1 tile for every $100 spent on JetBlue flights, JetBlue Vacations, and Paisly by JetBlue bookings.</li>
-                            <li>1 tile for every $1,000 spent on any of JetBlue's co-branded credit cards.</li>
+                        <h2 className={styles.sectionHeading}>The New Battleground: Understanding JetBlue's Loyalty Revolution</h2>
+                        <p className={styles.paragraph}>The language of loyalty at JetBlue has changed. The old system is a relic, replaced by "tiles," a new metric rewarding engagement across the entire JetBlue ecosystem. To learn more, read our deep dive on <Link href="/guides/understanding-jetblue-trueblue-tiles"><a className={styles.link}>understanding JetBlue TrueBlue tiles</a></Link>. Travelers now earn tiles in two ways:</p>
+                        <ul className={styles.list}>
+                            <li className={styles.listItem}>1 tile for every $100 spent on JetBlue flights, JetBlue Vacations, and Paisly by JetBlue bookings.</li>
+                            <li className={styles.listItem}>1 tile for every $1,000 spent on any of JetBlue's co-branded credit cards.</li>
                         </ul>
-                        <p>This structure highlights a crucial reality: direct airline spending is ten times more effective for earning status than credit card spending. The card, therefore, becomes a strategic supplement rather than a primary pathway to the top.</p>
-                        <h3>A New Mosaic: The Four-Tier System</h3>
-                        <p>Adding to this is the shift from a single Mosaic status to a four-tier system:</p>
-                        <ul>
-                            <li><strong>Mosaic 1:</strong> 50 tiles</li>
-                            <li><strong>Mosaic 2:</strong> 100 tiles</li>
-                            <li><strong>Mosaic 3:</strong> 150 tiles</li>
-                            <li><strong>Mosaic 4:</strong> 250 tiles</li>
+                        <p className={styles.paragraph}>This structure highlights a crucial reality: direct airline spending is ten times more effective for earning status than credit card spending. The card, therefore, becomes a strategic supplement rather than a primary pathway to the top.</p>
+                        <h3 className={styles.heading3}>A New Mosaic: The Four-Tier System</h3>
+                        <p className={styles.paragraph}>Adding to this is the shift from a single Mosaic status to a four-tier system:</p>
+                        <ul className={styles.list}>
+                            <li className={styles.listItem}><strong>Mosaic 1:</strong> 50 tiles</li>
+                            <li className={styles.listItem}><strong>Mosaic 2:</strong> 100 tiles</li>
+                            <li className={styles.listItem}><strong>Mosaic 3:</strong> 150 tiles</li>
+                            <li className={styles.listItem}><strong>Mosaic 4:</strong> 250 tiles</li>
                         </ul>
-                        <p>This tiered approach staggers perks and prestige, making it essential to understand which benefits are accessible at each level.</p>
-                        <p>For budget travelers, the "Blue Basic Squeeze-Out" is a significant change. As of March 1, 2025, Mosaic members on Blue Basic fares lose key perks like complimentary Even More Space seats. This move compels even loyal customers to weigh a bare-bones ticket against a higher fare to unlock their earned benefits.</p>
-                        <p>However, JetBlue is also investing in the premium experience. The first proprietary JetBlue airport lounges are set to open at JFK in late 2025, a key perk for top-tier Mosaic 4 members. This is a big step in competing for premium travelers, and you can learn more about <Link href="/guides/how-to-get-airport-lounge-access"><a>how to get airport lounge access here</a></Link>. Furthermore, the "Blue Sky" partnership with United Airlines allows for reciprocal point earning and redemption and extends elite benefits across both carriers, dramatically widening the horizons for Mosaic members.</p>
+                        <p className={styles.paragraph}>This tiered approach staggers perks and prestige, making it essential to understand which benefits are accessible at each level.</p>
+                        <p className={styles.paragraph}>For budget travelers, the "Blue Basic Squeeze-Out" is a significant change. As of March 1, 2025, Mosaic members on Blue Basic fares lose key perks like complimentary Even More Space seats. This move compels even loyal customers to weigh a bare-bones ticket against a higher fare to unlock their earned benefits.</p>
+                        <p className={styles.paragraph}>However, JetBlue is also investing in the premium experience. The first proprietary JetBlue airport lounges are set to open at JFK in late 2025, a key perk for top-tier Mosaic 4 members. This is a big step in competing for premium travelers, and you can learn more about <Link href="/guides/how-to-get-airport-lounge-access"><a className={styles.link}>how to get airport lounge access here</a></Link>. Furthermore, the "Blue Sky" partnership with United Airlines allows for reciprocal point earning and redemption and extends elite benefits across both carriers, dramatically widening the horizons for Mosaic members.</p>
                     </section>
-                    
-                    {/* ... Continue with all other article sections ... */}
+
+                    {/* ... (Apply similar className changes to all other paragraphs, lists, etc.) ... */}
 
                     <section id="verdict" className={styles.reviewSection}>
-                        <h2>The Final Verdict: Choosing Your Champion for 2025</h2>
-                        {/* ... Verdict content ... */}
+                        <h2 className={styles.sectionHeading}>The Final Verdict: Choosing Your Champion for 2025</h2>
+                        <p className={styles.paragraph}>In JetBlue's new loyalty landscape, the choice between the Plus and Business cards is more personal than ever. The decision hinges on a trade-off: the Plus card's lifestyle spending bonuses versus the Business card's guaranteed travel day perk. Learning to master <Link href="/guides/maximizing-credit-card-perks"><a className={styles.link}>maximizing your card's perks</a></Link> is essential.</p>
                     </section>
                 </article>
 
-                {/* --- NEW Author Bio Section --- */}
                 <section className={styles.aboutAuthorSection}>
-                    <h2 className={styles.sectionTitle}>About the Author</h2>
+                    <h2 className={styles.sectionHeading}>About the Author</h2>
                     <div className={styles.authorBox}>
                         <div className={styles.authorImageLargeContainer}>
                             <Image 

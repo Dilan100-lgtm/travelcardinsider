@@ -1,4 +1,5 @@
 /* File: styles/JetBlueReview.module.css */
+/* Corrected version to prevent build errors */
 
 /* ─────────────────────────────────── */
 /* Global & Layout            */
@@ -29,7 +30,7 @@
 /* ─────────────────────────────────── */
 /* Typography               */
 /* ─────────────────────────────────── */
-.reviewHeader h1 {
+.mainHeading {
   font-size: 2.5rem;
   font-weight: 800;
   color: #1a202c;
@@ -37,7 +38,7 @@
   margin-bottom: 1.5rem;
 }
 
-.reviewSection h2, .sectionTitle {
+.sectionHeading {
   font-size: 2rem;
   font-weight: 700;
   color: #2d3748;
@@ -46,14 +47,14 @@
   border-bottom: 2px solid #0038a8; /* JetBlue Blue */
 }
 
-h3 {
+.heading3 {
   font-size: 1.5rem;
   font-weight: 600;
   color: #4a5568;
   margin-bottom: 1rem;
 }
 
-p, li {
+.paragraph {
   font-size: 1.1rem;
   line-height: 1.7;
   margin-bottom: 1rem;
@@ -61,21 +62,33 @@ p, li {
 }
 
 .introParagraph {
+  composes: paragraph; /* Inherits styles from .paragraph */
   font-size: 1.2rem;
   color: #2d3748;
   line-height: 1.8;
 }
 
-a {
+.link {
   color: #007bff;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s ease;
 }
 
-a:hover {
+.link:hover {
   color: #0056b3;
   text-decoration: underline;
+}
+
+.list {
+  padding-left: 20px;
+}
+
+.listItem {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 0.75rem;
+  color: #4a5568;
 }
 
 /* ─────────────────────────────────── */
@@ -146,7 +159,7 @@ a:hover {
   margin-bottom: 1rem;
 }
 
-.cardDetails h3 {
+.cardDetails .heading3 {
   margin: 0 0 0.5rem 0;
   font-size: 1.25rem;
 }
@@ -183,7 +196,7 @@ a:hover {
 }
 
 .applyButton {
-  background-color: #28a745; /* Green for action */
+  background-color: #28a745;
   color: white;
   border-color: #28a745;
 }
@@ -202,7 +215,7 @@ a:hover {
 .secondaryButton:hover {
   background-color: #0069d9;
   transform: translateY(-2px);
-   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   text-decoration: none;
 }
 
@@ -217,9 +230,8 @@ a:hover {
   text-decoration: none;
 }
 
-
 /* ─────────────────────────────────── */
-/* Tables & Lists            */
+/* Tables                 */
 /* ─────────────────────────────────── */
 .tableContainer {
     overflow-x: auto;
@@ -243,14 +255,6 @@ a:hover {
 .comparisonTable tbody tr:nth-child(even) {
     background-color: #f8f9fa;
 }
-
-ul {
-  padding-left: 20px;
-}
-ul li {
-  margin-bottom: 0.75rem;
-}
-
 
 /* ─────────────────────────────────── */
 /* About Author Section        */
@@ -295,12 +299,16 @@ ul li {
 
 .authorNameLarge {
   margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2d3748;
 }
 
 .authorBio {
   font-size: 1rem;
   color: #4a5568;
   margin-bottom: 1rem;
+  line-height: 1.6;
 }
 
 .authorProfileLink {
