@@ -22,7 +22,7 @@ const SITE_BASE_URL = 'https://www.travelcardinsider.com';
 const PAGE_PATH = '/reviews/cards-that-earn-bonus-points-on-ev-charging-2025';
 const PAGE_URL = `${SITE_BASE_URL}${PAGE_PATH}`;
 const SITE_NAME = 'Travel Card Insider';
-const HERO_IMAGE_SRC = '/images/reviews/ev-charging-at-scenic-overlook.webp'; // ❗ Replace with your optimised hero image
+const HERO_IMAGE_SRC = '/pexels-kindelmedia-9800009.webp'; // ❗ Replace with your optimised hero image
 const HERO_IMAGE_ALT = 'An electric car plugged into a charging station with a scenic mountain landscape in the background.';
 const DATE_PUBLISHED = '2025-07-02'; // ✏️ Adjust to your actual publish date
 const DATE_MODIFIED = '2025-07-02'; // ✏️ Update whenever you edit copy
@@ -57,7 +57,7 @@ const evCardData = [
     id: 'penfedPlatinumRewards',
     name: 'PenFed Platinum Rewards Visa Signature® Card',
     category: 'High-Octane Earner',
-    imageSrc: '/images/cards/penfed-platinum-rewards.png', // ❗ Replace
+    imageSrc: '/platinum-rewards.webp', // ❗ Replace
     imageAlt: 'PenFed Platinum Rewards Visa Signature® Card',
     officialCardPageLink: 'https://www.penfed.org/credit-cards/platinum-rewards-visa',
     ourTake: "The PenFed Platinum Rewards card is a showstopper with its offer of 5 points per dollar at EV charging stations and gas pumps, with no spending cap. This is on top of a solid 3 points per dollar on groceries, restaurants, and streaming services, all for a $0 annual fee.",
@@ -65,14 +65,14 @@ const evCardData = [
     applyLink: 'https://www.penfed.org/credit-cards/platinum-rewards-visa',
     ratesFeesLink: 'https://www.penfed.org/credit-cards/platinum-rewards-visa',
     learnMoreLink: '/cards/penfed-platinum-rewards', // ✏️ Create this internal page later
-    ratingValue: 9.0,
-    ratingStars: 4.5,
+    ratingValue: 8.0,
+    ratingStars: 4.0,
   },
   {
     id: 'usbankCashPlus',
     name: 'U.S. Bank Cash+® Visa Signature® Card (The Home Charging Champion)',
     category: 'High-Octane Earner',
-    imageSrc: '/images/cards/us-bank-cash-plus.png', // ❗ Replace
+    imageSrc: '/photo-cash-plus-signature-lg.png', // ❗ Replace
     imageAlt: 'U.S. Bank Cash+ Visa Signature Card',
     officialCardPageLink: 'https://www.usbank.com/credit-cards/cash-plus-visa-signature-credit-card.html',
     ourTake: "The U.S. Bank Cash+® card is a game-changer for the majority of EV owners who charge at home. It lets you choose two categories each quarter to earn 5% cash back on up to $2,000 in combined spending. Crucially, 'Home Utilities' is a permanent 5% category choice. By selecting this, you can get 5% back on your monthly electricity bill, which includes your primary EV 'fueling' cost.",
@@ -80,14 +80,14 @@ const evCardData = [
     applyLink: 'https://www.usbank.com/credit-cards/cash-plus-visa-signature-credit-card.html',
     ratesFeesLink: 'https://www.usbank.com/credit-cards/cash-plus-visa-signature-credit-card.html',
     learnMoreLink: '/cards/us-bank-cash-plus', // ✏️ Create this internal page later
-    ratingValue: 8.8,
-    ratingStars: 4.4,
+    ratingValue: 7.8,
+    ratingStars: 4.0,
   },
    {
     id: 'usbankAltitudeConnect',
     name: 'U.S. Bank Altitude® Connect Visa Signature® Card',
     category: 'Versatile Cruiser',
-    imageSrc: '/images/cards/us-bank-altitude-connect.png', // ❗ Replace
+    imageSrc: '/photo-altitude-connect-consumer (1).png', // ❗ Replace
     imageAlt: 'U.S. Bank Altitude Connect Visa Signature Card',
     officialCardPageLink: 'https://www.usbank.com/credit-cards/altitude-connect-visa-signature-credit-card.html',
     ourTake: "The U.S. Bank Altitude® Connect card has become a standout in the no-annual-fee travel space. It offers a generous 4x points on a broad travel category that includes airfare, hotels, gas, and EV charging stations. You also get 2x points on groceries and dining.",
@@ -95,14 +95,14 @@ const evCardData = [
     applyLink: 'https://www.usbank.com/credit-cards/altitude-connect-visa-signature-credit-card.html',
     ratesFeesLink: 'https://www.usbank.com/credit-cards/altitude-connect-visa-signature-credit-card.html',
     learnMoreLink: '/cards/us-bank-altitude-connect', // ✏️ Create this internal page later
-    ratingValue: 8.7,
-    ratingStars: 4.3,
+    ratingValue: 7.7,
+    ratingStars: 3.7,
   },
   {
     id: 'wellsFargoAutograph',
     name: 'Wells Fargo Autograph℠ Card',
     category: 'Versatile Cruiser',
-    imageSrc: '/images/cards/wells-fargo-autograph.png', // ❗ Replace
+    imageSrc: '/Autograph-No-Fee-Card-RGB_d.png', // ❗ Replace
     imageAlt: 'Wells Fargo Autograph Card',
     officialCardPageLink: 'https://www.wellsfargo.com/credit-cards/autograph-visa/',
     ourTake: "The Wells Fargo Autograph℠ Card is the definition of a simple, effective workhorse. It offers an unlimited 3x points across a wide range of practical categories: restaurants, travel, transit, gas stations, EV charging, popular streaming services, and phone plans.",
@@ -110,14 +110,14 @@ const evCardData = [
     applyLink: 'https://www.wellsfargo.com/credit-cards/autograph-visa/',
     ratesFeesLink: 'https://www.wellsfargo.com/credit-cards/autograph-visa/terms/',
     learnMoreLink: '/cards/wells-fargo-autograph', // ✏️ Create this internal page later
-    ratingValue: 8.9,
-    ratingStars: 4.5,
+    ratingValue: 7.1,
+    ratingStars: 3.5,
   },
   {
     id: 'costcoAnywhereVisa',
     name: 'Costco Anywhere Visa® Card by Citi',
     category: 'Versatile Cruiser',
-    imageSrc: '/images/cards/costco-anywhere-visa.png', // ❗ Replace
+    imageSrc: '/download (2).png', // ❗ Replace
     imageAlt: 'Costco Anywhere Visa Card by Citi',
     officialCardPageLink: 'https://www.costco.com/my-life-benefits-costco-anywhere-visa.html',
     ourTake: "For the millions of dedicated Costco members, the Costco Anywhere Visa® Card by Citi is a rewards powerhouse. It delivers 4% cash back on eligible EV charging and gas purchases worldwide, 3% cash back on restaurants and eligible travel, and 2% cash back on all purchases from Costco and Costco.com.",
@@ -125,14 +125,14 @@ const evCardData = [
     applyLink: 'https://www.costco.com/my-life-benefits-costco-anywhere-visa.html',
     ratesFeesLink: 'https://www.costco.com/my-life-benefits-costco-anywhere-visa.html',
     learnMoreLink: '/cards/costco-anywhere-visa', // ✏️ Create this internal page later
-    ratingValue: 8.5,
-    ratingStars: 4.2,
+    ratingValue: 7.5,
+    ratingStars: 3.7,
   },
   {
     id: 'bofaCustomizedCash',
     name: 'Bank of America® Customized Cash Rewards',
     category: 'Versatile Cruiser',
-    imageSrc: '/images/cards/bofa-customized-cash.png', // ❗ Replace
+    imageSrc: '/8ckn_cshsigcm_v_250x158.png', // ❗ Replace
     imageAlt: 'Bank of America Customized Cash Rewards Card',
     officialCardPageLink: 'https://www.bankofamerica.com/credit-cards/products/cash-back-credit-card/',
     ourTake: "On the surface, this card offers a solid 3% cash back in a category of your choice, including 'Gas and EV Charging Stations.' Its true potential, however, is unlocked through the Bank of America Preferred Rewards program.",
@@ -140,8 +140,8 @@ const evCardData = [
     applyLink: 'https://www.bankofamerica.com/credit-cards/products/cash-back-credit-card/',
     ratesFeesLink: 'https://www.bankofamerica.com/credit-cards/products/cash-back-credit-card/',
     learnMoreLink: '/cards/bofa-customized-cash', // ✏️ Create this internal page later
-    ratingValue: 8.6,
-    ratingStars: 4.3,
+    ratingValue: 7.6,
+    ratingStars: 3.8,
   },
 ];
 
