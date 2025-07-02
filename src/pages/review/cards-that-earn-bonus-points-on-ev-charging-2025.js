@@ -11,6 +11,10 @@ import Link from 'next/link';
 import styles from '../../styles/NoFTFCardsReview.module.css'; // Reusing your site's existing review styles
 import StarRating from '../../components/StarRating'; // Assuming you have this component for ratings
 
+// Helper for external link icon
+const ExternalLinkIcon = () => <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style={{ display: 'inline', height: '0.8em', width: '0.8em', marginLeft: '4px', verticalAlign: 'middle' }}><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6v2H5v11h11v-6h2Z" /><path d="M15 3h6v6h-2V5h-4V3Z" /><path d="M10 14 20 4l-1.4-1.4L9 12.6V14h1Z" /></svg>;
+
+
 // ─────────────────────────────────────────────────────────────────────────────
 // 🔗 CONFIG
 // ─────────────────────────────────────────────────────────────────────────────
@@ -130,7 +134,7 @@ const evCardData = [
     category: 'Versatile Cruiser',
     imageSrc: '/images/cards/bofa-customized-cash.png', // ❗ Replace
     imageAlt: 'Bank of America Customized Cash Rewards Card',
-    officialCardPageLink: 'https://promotions.bankofamerica.com/preferredrewards/en',
+    officialCardPageLink: 'https://www.bankofamerica.com/credit-cards/products/cash-back-credit-card/',
     ourTake: "On the surface, this card offers a solid 3% cash back in a category of your choice, including 'Gas and EV Charging Stations.' Its true potential, however, is unlocked through the Bank of America Preferred Rewards program.",
     rewards: "Clients with significant balances can receive a rewards bonus of 25% to 75%, potentially turning the 3% cash back into an industry-leading 5.25%.",
     applyLink: 'https://www.bankofamerica.com/credit-cards/products/cash-back-credit-card/',
@@ -145,22 +149,21 @@ const evCardData = [
 // 📊 COMPARISON TABLE DATA
 // ─────────────────────────────────────────────────────────────────────────────
 const comparisonEVTableData = [
-    { name: 'PenFed Platinum Rewards', reward: '5x Points', fee: '$0', perks: 'No Foreign Transaction Fee', caps: 'None on EV charging', profile: 'The high-volume charger' },
-    { name: 'U.S. Bank Altitude Connect', reward: '4x Points', fee: '$0', perks: 'No FTF, Priority Pass, TSA PreCheck', caps: '$1,000/qtr on travel, gas, & EV', profile: 'The budget road-tripper' },
-    { name: 'Wells Fargo Autograph', reward: '3x Points', fee: '$0', perks: 'No FTF, Cell Phone Protection', caps: 'None on EV charging', profile: 'The simple single-card user' },
-    { name: 'Costco Anywhere Visa', reward: '4% Cash Back', fee: '$0 (w/ membership)', perks: 'No Foreign Transaction Fee', caps: '$7,000/year on gas & EV', profile: 'The dedicated Costco member' },
-    { name: 'Citi Strata Premier', reward: '3x Transferable Points', fee: '$95', perks: 'No FTF, Travel Protections', caps: 'None on EV charging', profile: 'The travel hacker' },
-    { name: 'Bank of America Customized', reward: '3% - 5.25% Cash Back', fee: '$0', perks: 'Customizable Categories', caps: '$2,500/qtr combined cap', profile: 'The BofA Preferred client' },
-    { name: 'U.S. Bank Cash+', reward: '5% Home / 2% EV', fee: '$0', perks: 'Customizable Categories', caps: '$2,000/qtr on 5%', profile: 'The home charger' },
-    { name: 'Chase Freedom Flex', reward: '5% Cash Back (Rotating)', fee: '$0', perks: 'Rotating Categories', caps: '$1,500/qtr on bonus', profile: 'The strategic maximizer' },
-    { name: 'FutureCard Visa Debit', reward: '10% Cash Back', fee: '$0', perks: 'No Credit Check', caps: '$150/month cashback limit', profile: 'The early adopter' },
+    { name: 'PenFed Platinum Rewards', reward: '5x Points', fee: '$0', perks: 'No Foreign Transaction Fee', caps: 'None on EV charging', profile: 'The high-volume charger who redeems for gift cards or travel.' },
+    { name: 'U.S. Bank Altitude Connect', reward: '4x Points', fee: '$0', perks: 'No FTF, Priority Pass, TSA PreCheck', caps: '$1,000/quarter on travel, gas, and EV charging', profile: 'The budget-conscious road-tripper seeking premium perks.' },
+    { name: 'Wells Fargo Autograph', reward: '3x Points', fee: '$0', perks: 'No FTF, Cell Phone Protection', caps: 'None on EV charging', profile: 'The driver wanting a simple, powerful, single-card solution.' },
+    { name: 'Costco Anywhere Visa', reward: '4% Cash Back', fee: '$0 (with Costco Membership)', perks: 'No Foreign Transaction Fee', caps: '$7,000/year combined cap on gas & EV charging', profile: 'The dedicated Costco member spending heavily on gas and EV charging.' },
+    { name: 'Citi Strata Premier', reward: '3x Transferable Points', fee: '$95', perks: 'No FTF, Travel Protections, $100 Hotel Credit', caps: 'None on EV charging', profile: 'The travel hacker maximizing value by transferring points.' },
+    { name: 'Bank of America Customized', reward: '3% Cash Back (up to 5.25%)', fee: '$0', perks: 'Customizable Categories', caps: '$2,500/quarter combined cap', profile: 'The Bank of America client leveraging Preferred Rewards.' },
+    { name: 'U.S. Bank Cash+', reward: '5% on Home Utilities / 2% on EV Charging', fee: '$0', perks: 'Customizable Categories', caps: '$2,000/quarter on 5% categories', profile: 'The homeowner charging primarily at home.' },
+    { name: 'Chase Freedom Flex', reward: '5% Cash Back (Rotating)', fee: '$0', perks: 'Rotating Categories', caps: '$1,500/quarter on bonus categories', profile: 'The strategic cardholder maximizing rotating rewards.' },
+    { name: 'FutureCard Visa Debit', reward: '10% Cash Back', fee: '$0', perks: 'No Credit Check', caps: '$150/month cashback limit', profile: 'The early adopter willing to use a debit card for a high reward rate.' },
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 🧠 HELPERS - JSON-LD SCHEMA
 // ─────────────────────────────────────────────────────────────────────────────
 function generateJsonLD() {
-    // This function remains largely the same, but we update the content it uses
     const itemListElements = evCardData.map((card, i) => ({
       '@type': 'ListItem',
       position: i + 1,
@@ -245,7 +248,7 @@ function BestEvChargingCardsPage2025() {
                         <div className={styles.authorInfo}><span className={styles.authorName}>{author.name}</span><span className={styles.authorTitle}>{author.title}</span><time dateTime={DATE_MODIFIED} className={styles.authorLastEdited}>Last updated: {new Date(DATE_MODIFIED).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time></div>
                         {showTooltip && (
                             <div className={styles.authorTooltip} ref={tooltipRef} role="tooltip" onMouseEnter={handleMouseEnterTriggerOrTooltip} onMouseLeave={handleMouseLeaveTriggerOrTooltip}>
-                                {/* Full author tooltip can be implemented here based on the student card file */}
+                                {/* Full author tooltip would be implemented here based on the student card file's logic */}
                                 <p>{author.bio}</p>
                             </div>
                         )}
@@ -254,21 +257,21 @@ function BestEvChargingCardsPage2025() {
                 
                 <div className={styles.heroSection}><Image src={HERO_IMAGE_SRC} alt={HERO_IMAGE_ALT} layout="responsive" width={900} height={450} objectFit="cover" priority className={styles.heroImage} /></div>
                 
-                <p className={styles.disclaimer}><strong>Disclaimer:</strong> Card offers are accurate as of publish date. Please verify all details with the issuer.</p>
+                <p className={styles.disclaimer}><strong>Disclaimer:</strong> Card offers are accurate as of publish date. Please verify all details with the issuer. This page may contain affiliate links.</p>
 
                 <article>
                     <section className={styles.reviewSection}>
                         <h2>The New Road-Trip Reality: Fueling Up on Electrons and Rewards</h2>
                         <p>The great American road trip is getting an electric makeover. Picture this: a family cruising down the scenic Blue Ridge Parkway in a sleek Rivian R1S. They pull into a charging station, not with the familiar dread of "range anxiety," but with an exciting sense of "rewards anticipation."</p>
                         <p>The old ritual of wrestling with greasy gas pumps is being replaced by a clean, tech-savvy pause. You plug in your car, tap your credit card, and watch your battery climb, knowing that every kilowatt-hour is earning you valuable points or cash back.</p>
-                        <p>This is the new reality for electric vehicle (EV) drivers. As the nation's charging infrastructure rapidly expands, the question is no longer if an electric road trip is possible, but how to make it financially smart. The right credit card can transform a necessary expense into a rewarding part of your journey.</p>
+                        <p>This is the new reality for electric vehicle (EV) drivers. As the nation's charging infrastructure rapidly expands, the question is no longer if an electric road trip is possible, but how to make it financially smart. The right credit card can transform a necessary expense into a rewarding part of your journey. For ideas on your next adventure, check out our <Link href="/travel/road-trip-planner-usa"><a>Ultimate USA Road Trip Planner</a></Link>.</p>
                     </section>
 
                     <section className={styles.reviewSection}>
                         <h2>Why Your Wallet Needs an EV-Specific Strategy</h2>
-                        <p>For decades, we’ve optimized our gas spending with fuel-centric credit cards. Today's EV owners face a more complex "refueling" landscape, and that demands a new financial game plan. The biggest issue is the massive cost difference between charging at home and charging on the road. Most EV owners do the bulk of their charging at home with a Level 2 charger, where electricity rates are relatively low—often under $0.17 per kilowatt-hour (kWh). <a href="https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_5_6_a" target="_blank" rel="noopener noreferrer">[Citation Placeholder 1]</a> Public DC fast charging, the lifeblood of any long-distance adventure, is a different beast altogether. Costs can be three to seven times higher, sometimes soaring past $0.60 per kWh, making a single "fill-up" a $10 to $30 expense. <a href="https://www.electrifyamerica.com/pricing/" target="_blank" rel="noopener noreferrer">[Citation Placeholder 2]</a></p>
+                        <p>For decades, we’ve optimized our gas spending with fuel-centric credit cards. Today's EV owners face a more complex "refueling" landscape, and that demands a new financial game plan. The biggest issue is the massive cost difference between charging at home and charging on the road. Most EV owners do the bulk of their charging at home with a Level 2 charger, where electricity rates are relatively low—often under $0.17 per kilowatt-hour (kWh). (Source: <a href="https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_5_6_a" target="_blank" rel="noopener noreferrer">U.S. Energy Information Administration<ExternalLinkIcon/></a>) Public DC fast charging, the lifeblood of any long-distance adventure, is a different beast altogether. Costs can be three to seven times higher, sometimes soaring past $0.60 per kWh, making a single "fill-up" a $10 to $30 expense. (Source: <a href="https://www.electrifyamerica.com/pricing/" target="_blank" rel="noopener noreferrer">Electrify America Pricing<ExternalLinkIcon/></a>)</p>
                         <p>This financial gap created a golden opportunity for credit card issuers. A game-changing development was the creation of a specific Merchant Category Code (MCC), 5552, for EV charging stations by Visa and Mastercard. This allows banks to separate EV charging purchases from your regular utility bills or gas station spending. Since 2022, major players like U.S. Bank, Wells Fargo, Citi, and Bank of America have rolled out new cards or updated existing ones to offer high-yield bonus rewards for this specific category.</p>
-                        <p>As a result, the best credit card strategy isn’t a one-size-fits-all solution. It needs to mirror how you fuel your EV. It must tackle two distinct challenges: maximizing rewards on your frequent, low-cost home charging bills and offsetting the less frequent but high-cost expense of public fast charging during your travels. Where you live—whether you're a homeowner with a garage or an apartment dweller relying on public infrastructure—is now the single most important factor in choosing the right credit card.</p>
+                        <p>As a result, the best credit card strategy isn’t a one-size-fits-all solution. It needs to mirror how you fuel your EV. It must tackle two distinct challenges: maximizing rewards on your frequent, low-cost home charging bills and offsetting the less frequent but high-cost expense of public fast charging during your travels. Where you live—whether you're a homeowner with a garage or an apartment dweller relying on public infrastructure—is now the single most important factor in choosing the right credit card. Not sure where to start? Our guide on <Link href="/guides/how-to-choose-a-travel-credit-card"><a>how to choose a travel credit card</a></Link> can help.</p>
                     </section>
                     
                     <section id="top-picks" className={styles.reviewSection}>
@@ -276,7 +279,6 @@ function BestEvChargingCardsPage2025() {
                         <p>Navigating the growing market of EV-friendly credit cards can be overwhelming. To help you out, here’s a breakdown of the top contenders for 2025, highlighting the best options for different types of drivers.</p>
                         
                         <div id="comparison-table" className={`${styles.reviewSection} ${styles.comparisonTableContainer}`}>
-                            <h3>The 2025 EV Charging Card Showdown</h3>
                             <div className={styles.tableWrapper}>
                                 <table>
                                     <thead><tr><th>Card Name</th><th>EV Charging Reward Rate & Type</th><th>Annual Fee</th><th>Key Travel Perks</th><th>Spending Caps/Limitations</th><th>Ideal Driver Profile</th></tr></thead>
@@ -290,13 +292,13 @@ function BestEvChargingCardsPage2025() {
                         <h2>The High-Octane Earners (Maximum Rewards Rate)</h2>
                         <p>For drivers whose main goal is to earn the absolute highest rate on every charge, a few specialized cards really shine.</p>
                         {evCardData.filter(c => c.category === 'High-Octane Earner').map((card, index) => (
-                          <div key={card.id} className={`${styles.cardDetailSection} ${styles.cardSeparator}`}>
+                          <div key={card.id} className={`${styles.cardDetailSection} ${index < evCardData.filter(c => c.category === 'High-Octane Earner').length - 1 ? styles.cardSeparator : ''}`}>
                             <div className={styles.cardHeader}>
                                 <div className={styles.cardImageContainer}><Image src={card.imageSrc} alt={card.imageAlt} width={150} height={95} objectFit="contain" /></div>
                                 <div className={styles.cardTitleRating}><h3><Link href={card.learnMoreLink}><a>{card.name}</a></Link></h3><StarRating rating={card.ratingStars} /></div>
                             </div>
                             <p><strong>Expert Verdict:</strong> {card.ourTake}</p>
-                            <p><strong>Rewards Breakdown:</strong> {card.rewards}</p>
+                            <p><strong>Rewards Breakdown:</strong> {card.rewards} (Source: <a href={card.officialCardPageLink} target="_blank" rel="noopener noreferrer">Official Card Page<ExternalLinkIcon/></a>)</p>
                             <div className={styles.cardButtonsContainer}><a href={card.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.cardButton} ${styles.applyButton}`}>Apply Now</a><a href={card.ratesFeesLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.cardButton} ${styles.secondaryButton}`}>See Rates & Fees</a></div>
                           </div>
                         ))}
@@ -312,7 +314,7 @@ function BestEvChargingCardsPage2025() {
                                 <div className={styles.cardTitleRating}><h3><Link href={card.learnMoreLink}><a>{card.name}</a></Link></h3><StarRating rating={card.ratingStars} /></div>
                             </div>
                             <p><strong>Expert Verdict:</strong> {card.ourTake}</p>
-                            <p><strong>Rewards Breakdown:</strong> {card.rewards}</p>
+                            <p><strong>Rewards Breakdown:</strong> {card.rewards} (Source: <a href={card.officialCardPageLink} target="_blank" rel="noopener noreferrer">Official Card Page<ExternalLinkIcon/></a>)</p>
                              <div className={styles.cardButtonsContainer}><a href={card.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.cardButton} ${styles.applyButton}`}>Apply Now</a><a href={card.ratesFeesLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.cardButton} ${styles.secondaryButton}`}>See Rates & Fees</a></div>
                           </div>
                         ))}
@@ -333,15 +335,15 @@ function BestEvChargingCardsPage2025() {
                     
                     <section id="final-verdict" className={styles.reviewSection}>
                         <h2>Building Your Road-Trip Ready Wallet: A Strategic Conclusion</h2>
-                        <p>As the EV market continues to grow, so do the financial tools available to owners. Choosing the right credit card is no longer just about convenience; it’s a key financial decision that can seriously impact your total cost of ownership and turn every mile you drive into real value.</p>
+                        <p>As the EV market continues to grow, so do the financial tools available to owners. Choosing the right credit card is no longer just about convenience; it’s a key financial decision that can seriously impact your total cost of ownership and turn every mile you drive into real value. For those just starting their credit journey, our guide to the <Link href="/reviews/best-student-travel-credit-cards-2025"><a>best travel cards for students</a></Link> is a great resource.</p>
                         
                         <h3>The Final Checklist: Choosing Your Champion</h3>
                         <p>The best card for you depends entirely on your habits and financial goals. Ask yourself these four key questions:</p>
                         <ol>
-                            <li><strong>What's your primary charging profile?</strong> Are you an apartment dweller who relies on public chargers? A card like the Wells Fargo Autograph℠ with its broad, uncapped 3x rewards is perfect. Are you a homeowner who charges overnight? The U.S. Bank Cash+® with its 5% back on home utilities is your best bet.</li>
-                            <li><strong>What's your rewards philosophy?</strong> Do you prefer the simplicity of cash back? The Costco Anywhere Visa® or Bank of America® Customized Cash Rewards are strong choices. Are you a travel maximizer who loves turning points into premium flights? The Citi Strata Premier℠ is made for you.</li>
-                            <li><strong>What's your tolerance for complexity?</strong> Are you willing to track and activate quarterly categories to earn 5% with the Chase Freedom Flex℠? Or do you prefer a single, "set-it-and-forget-it" solution like the Wells Fargo Autograph℠?</li>
-                            <li><strong>What's your risk appetite?</strong> Are you an early adopter willing to try a fintech debit card to get a massive, but potentially temporary, 10% reward with the FutureCard? <a href="https://www.future.green/futurecard" target="_blank" rel="noopener noreferrer">[Citation Placeholder 10]</a></li>
+                            <li><strong>What's your primary charging profile?</strong> Are you an apartment dweller who relies on public chargers? A card like the Wells Fargo Autograph℠ is perfect. Are you a homeowner who charges overnight? The U.S. Bank Cash+® is your best bet.</li>
+                            <li><strong>What's your rewards philosophy?</strong> Do you prefer simple cash back, or are you a travel maximizer? For more on this, read our guide on <Link href="/guides/understanding-credit-card-rewards-points-vs-cash-back"><a>Points vs. Cash Back</a></Link>.</li>
+                            <li><strong>What's your tolerance for complexity?</strong> Are you willing to track quarterly categories with a card like the Chase Freedom Flex℠, or do you prefer a "set-it-and-forget-it" solution like the Wells Fargo Autograph℠? If you spend on more than just EV charging, consider our list of the <Link href="/reviews/best-credit-cards-for-gas-and-groceries"><a>best cards for gas and groceries</a></Link>.</li>
+                            <li><strong>What's your risk appetite?</strong> Are you an early adopter willing to try a fintech debit card to get a massive, but potentially temporary, 10% reward with the FutureCard? (Source: <a href="https://www.future.green/futurecard" target="_blank" rel="noopener noreferrer">FutureCard Rewards<ExternalLinkIcon/></a>)</li>
                         </ol>
 
                         <h3>Final Verdict</h3>
