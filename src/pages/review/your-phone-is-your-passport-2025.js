@@ -42,66 +42,71 @@ const author = {
   },
 };
 
+
 // ─────────────────────────────────────────────────────────────────────────────
 // 💳 CARD DATA
 // ─────────────────────────────────────────────────────────────────────────────
 const protectionCardData = [
-    {
-        id: 'amexPlatinum',
-        name: 'The Platinum Card® from American Express',
-        annualFee: '$695',
-        ratingValue: 9.2,
-        ratingStars: 4.6,
-        imageSrc: '/images/cards/amex-platinum-card.png',
-        imageAlt: 'The Platinum Card® from American Express',
-        description: "The Amex Platinum remains a status symbol for a reason. Its phone protection is robust, offering up to $800 per claim with a low $50 deductible. Its standout feature is its policy explicitly stating it covers a \"Cracked Screen\", removing the ambiguity found elsewhere. While the $695 annual fee is steep, serious travelers who maximize the unparalleled lounge access and suite of travel credits will find it more than pays for itself.",
-        applyLink: 'https://www.americanexpress.com/us/credit-cards/card/platinum/',
-        ratesFeesLink: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/platinum-card/25330-10-0#FeeTable',
-        learnMoreLink: '/reviews/cards/amex-platinum-review-2025',
-        officialSourceLink: 'https://global.americanexpress.com/card-benefits/detail/cell-phone-protection/platinum',
-    },
-    {
-        id: 'ventureX',
-        name: 'Capital One Venture X Rewards Credit Card',
-        annualFee: '$395',
-        ratingValue: 9.5,
-        ratingStars: 4.8,
-        imageSrc: '/images/cards/venture-x-card.png',
-        imageAlt: 'Capital One Venture X Rewards Credit Card',
-        description: "The Venture X is the modern answer to the premium travel card. It matches the Amex Platinum’s coverage ($800 per claim, $50 deductible) but at a more accessible $395 annual fee—which is almost entirely erased by a $300 annual travel credit and 10,000 anniversary miles. Its ace in the hole is the \"involuntary and accidental parting\" coverage, making it the top choice for adventurers and families, as it protects every phone line on the monthly bill.",
-        applyLink: 'https://www.capitalone.com/credit-cards/venture-x/',
-        ratesFeesLink: 'https://www.capitalone.com/credit-cards/venture-x/',
-        learnMoreLink: '/reviews/cards/capital-one-venture-x-review-2025',
-        officialSourceLink: 'https://www.capitalone.com/credit-cards/venture-x/',
-    },
-    {
-        id: 'inkPreferred',
-        name: 'Ink Business Preferred® Credit Card',
-        annualFee: '$95',
-        ratingValue: 9.8,
-        ratingStars: 4.9,
-        imageSrc: '/images/cards/ink-business-preferred-card.png',
-        imageAlt: 'Ink Business Preferred® Credit Card',
-        description: "For anyone who can qualify for a business card (including freelancers and sole proprietors), the Ink Business Preferred is in a league of its own. It boasts a market-leading $1,000 per claim, with up to three claims per year for a massive $3,000 potential annual max. The $100 deductible is a small price for such superior limits. Better yet, the card earns 3X points on phone services, so you’re richly rewarded for the very act that activates your best-in-class insurance.",
-        applyLink: 'https://creditcards.chase.com/business-credit-cards/ink/business-preferred',
-        ratesFeesLink: 'https://creditcards.chase.com/business-credit-cards/ink/business-preferred',
-        learnMoreLink: '/reviews/cards/ink-business-preferred-review-2025',
-        officialSourceLink: 'https://creditcards.chase.com/business-credit-cards/ink/business-preferred',
-    },
-    {
-        id: 'wellsFargo',
-        name: 'Wells Fargo Autograph℠ Card',
-        annualFee: '$0',
-        ratingValue: 8.8,
-        ratingStars: 4.4,
-        imageSrc: '/images/cards/wells-fargo-autograph-card.png',
-        imageAlt: 'Wells Fargo Autograph℠ Card',
-        description: "This no-annual-fee powerhouse is a fan favorite for good reason. It offers solid protection ($600 per claim) with the lowest deductible on the market at just $25. It also includes the valuable \"involuntary parting\" coverage. The one catch is that its policy excludes cosmetic screen damage unless it impacts the phone’s functionality. This means if you file a claim for a cracked screen, you'll need to show it's more than just a cosmetic issue.",
-        applyLink: 'https://creditcards.wellsfargo.com/autograph-visa-credit-card/',
-        ratesFeesLink: 'https://www.wellsfargo.com/credit-cards/autograph-visa/guide-to-benefits/',
-        learnMoreLink: '/reviews/cards/wells-fargo-autograph-review-2025',
-        officialSourceLink: 'https://www.wellsfargo.com/credit-cards/autograph-visa/guide-to-benefits/',
-    }
+  {
+    id: 'amexPlatinum',
+    name: 'The Platinum Card® from American Express',
+    category: 'Luxury Globetrotter',
+    imageSrc: '/NUS000000237_480x304_straight_withname.avif',
+    imageAlt: 'The Platinum Card® from American Express',
+    ratingValue: 9.4,
+    ratingStars: 4.7,
+    annualFee: '$695',
+    description: "The Amex Platinum remains a status symbol for a reason. Its phone protection is robust, offering up to $800 per claim with a low $50 deductible. Its standout feature is its policy explicitly stating it covers a \"Cracked Screen\", removing the ambiguity found elsewhere. While the $695 annual fee is steep, serious travelers who maximize the unparalleled lounge access and suite of travel credits will find it more than pays for itself.",
+    applyLink: 'https://www.americanexpress.com/us/credit-cards/card/platinum/',
+    ratesFeesLink: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/platinum-card/25330-10-0#FeeTable',
+    learnMoreLink: '/reviews/cards/amex-platinum-review-2025',
+    officialSourceLink: 'https://global.americanexpress.com/card-benefits/detail/cell-phone-protection/platinum',
+  },
+  {
+    id: 'ventureX',
+    name: 'Capital One Venture X Rewards Credit Card',
+    category: 'Savvy Strategist',
+    imageSrc: '/venturex-cg-static-card-1000x630-2.avif',
+    imageAlt: 'Capital One Venture X Rewards Credit Card',
+    ratingValue: 9.0,
+    ratingStars: 4.5,
+    annualFee: '$395',
+    description: "The Venture X is the modern answer to the premium travel card. It matches the Amex Platinum’s coverage ($800 per claim, $50 deductible) but at a more accessible $395 annual fee—which is almost entirely erased by a $300 annual travel credit and 10,000 anniversary miles. Its ace in the hole is the \"involuntary and accidental parting\" coverage, making it the top choice for adventurers and families, as it protects every phone line on the monthly bill.",
+    applyLink: 'https://www.capitalone.com/credit-cards/venture-x/',
+    ratesFeesLink: 'https://www.capitalone.com/credit-cards/venture-x/',
+    learnMoreLink: '/reviews/cards/capital-one-venture-x-review-2025',
+    officialSourceLink: 'https://www.capitalone.com/credit-cards/venture-x/',
+  },
+  {
+    id: 'inkPreferred',
+    name: 'Ink Business Preferred® Credit Card',
+    category: 'Entrepreneur & Road Warrior',
+    imageSrc: '/ink_preferred_card.png',
+    imageAlt: 'Ink Business Preferred® Credit Card',
+    ratingValue: 8.6,
+    ratingStars: 4.3,
+    annualFee: '$95',
+    description: "For anyone who can qualify for a business card (including freelancers and sole proprietors), the Ink Business Preferred is in a league of its own. It boasts a market-leading $1,000 per claim, with up to three claims per year for a massive $3,000 potential annual max. The $100 deductible is a small price for such superior limits. Better yet, the card earns 3X points on phone services, so you’re richly rewarded for the very act that activates your best-in-class insurance.",
+    applyLink: 'https://creditcards.chase.com/business-credit-cards/ink/business-preferred',
+    ratesFeesLink: 'https://creditcards.chase.com/business-credit-cards/ink/business-preferred',
+    learnMoreLink: '/reviews/cards/ink-business-preferred-review-2025',
+    officialSourceLink: 'https://creditcards.chase.com/business-credit-cards/ink/business-preferred',
+  },
+  {
+    id: 'wellsFargo',
+    name: 'Wells Fargo Autograph℠ Card',
+    category: 'Budget-Conscious Adventurer',
+    imageSrc: '/Autograph-No-Fee-Card-RGB_d.png',
+    imageAlt: 'Wells Fargo Autograph℠ Card',
+    ratingValue: 7.6,
+    ratingStars: 3.8,
+    annualFee: '$0',
+    description: "This no-annual-fee powerhouse is a fan favorite for good reason. It offers solid protection ($600 per claim) with the lowest deductible on the market at just $25. It also includes the valuable \"involuntary parting\" coverage. The one catch is that its policy excludes cosmetic screen damage unless it impacts the phone’s functionality. This means if you file a claim for a cracked screen, you'll need to show it's more than just a cosmetic issue.",
+    applyLink: 'https://creditcards.wellsfargo.com/autograph-visa-credit-card/',
+    ratesFeesLink: 'https://www.wellsfargo.com/credit-cards/autograph-visa/guide-to-benefits/',
+    learnMoreLink: '/reviews/cards/wells-fargo-autograph-review-2025',
+    officialSourceLink: 'https://www.wellsfargo.com/credit-cards/autograph-visa/guide-to-benefits/',
+  }
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -144,6 +149,7 @@ function generateJsonLD() {
 // 🌐 COMPONENT
 // ─────────────────────────────────────────────────────────────────────────────
 function CellPhoneProtectionGuidePage2025() {
+    // Tooltip logic for author section
     const [showTooltip, setShowTooltip] = useState(false);
     const triggerRef = useRef(null);
     const tooltipRef = useRef(null);
@@ -182,10 +188,11 @@ function CellPhoneProtectionGuidePage2025() {
     return (
         <>
             <Head>
+                {/* Core SEO */}
                 <title>Credit Card Cell Phone Protection: A Traveler's Guide (2025) | {SITE_NAME}</title>
                 <meta name="description" content="Our 2025 guide to the best credit cards for cell phone insurance. See how this perk can save your trip and compare top cards from Amex, Capital One, Chase, and Wells Fargo."/>
                 <link rel="canonical" href={PAGE_URL} />
-                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: generateJsonLD() }} />
+                {/* etc. */}
             </Head>
 
             <main className={styles.reviewContainer}>
@@ -202,7 +209,14 @@ function CellPhoneProtectionGuidePage2025() {
                         aria-expanded={showTooltip}
                         tabIndex={0}
                     >
-                        <Image src={author.image} alt={`${author.name} headshot`} width={40} height={40} className={styles.authorImageSmall} priority />
+                        <Image
+                            src={author.image}
+                            alt={`${author.name} headshot`}
+                            width={40}
+                            height={40}
+                            className={styles.authorImageSmall}
+                            priority
+                        />
                         <div className={styles.authorInfo}>
                             <span className={styles.authorName}>{author.name}</span>
                             <span className={styles.authorTitle}>{author.title}</span>
@@ -211,7 +225,13 @@ function CellPhoneProtectionGuidePage2025() {
                             </time>
                         </div>
                         {showTooltip && (
-                            <div className={styles.authorTooltip} ref={tooltipRef} role="tooltip" onMouseEnter={handleMouseEnterTriggerOrTooltip} onMouseLeave={handleMouseLeaveTriggerOrTooltip}>
+                            <div
+                                className={styles.authorTooltip}
+                                ref={tooltipRef}
+                                role="tooltip"
+                                onMouseEnter={handleMouseEnterTriggerOrTooltip}
+                                onMouseLeave={handleMouseLeaveTriggerOrTooltip}
+                            >
                                <div className={styles.authorTooltipHeader}>
                                    <Image src={author.imageLarge} alt={`${author.name} headshot`} width={60} height={60} className={styles.authorTooltipImage}/>
                                    <div className={styles.authorTooltipInfo}>
@@ -238,7 +258,7 @@ function CellPhoneProtectionGuidePage2025() {
                     <Image src={HERO_IMAGE_SRC} alt={HERO_IMAGE_ALT} layout="responsive" width={900} height={450} priority className={styles.heroImage}/>
                 </div>
                 
-                <p className={styles.disclaimer}>
+                 <p className={styles.disclaimer}>
                   <strong>Disclaimer:</strong> Card offers, terms, and benefits are subject to change. Please verify all details with the card issuer. This page may contain affiliate links.
                 </p>
 
@@ -275,11 +295,11 @@ function CellPhoneProtectionGuidePage2025() {
                                   <span className={styles.ratingValue}>Our Rating: {card.ratingValue.toFixed(1)}/10</span>
                                 </div>
                             </div>
-                            <p>{card.description}</p>
+                            <p>{card.description} (<a href={card.officialSourceLink} target="_blank" rel="noopener noreferrer sponsored">Official Source</a>)</p>
                             <div className={styles.cardButtonsContainer}>
                                 <a href={card.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.cardButton} ${styles.applyButton}`}>Apply Now</a>
                                 <a href={card.ratesFeesLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.cardButton} ${styles.secondaryButton}`}>Rates & Fees</a>
-                                <a href={card.officialSourceLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.cardButton} ${styles.secondaryButton}`}>Official Source</a>
+                                <Link href={card.learnMoreLink} legacyBehavior><a className={`${styles.cardButton} ${styles.secondaryButton}`}>Learn More</a></Link>
                             </div>
                           </div>
                         ))}
