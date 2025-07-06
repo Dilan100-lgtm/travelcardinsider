@@ -50,6 +50,10 @@ const protectionCardData = [
   {
     id: 'amexPlatinum',
     name: 'The Platinum Card® from American Express',
+    annualFee: '$695',
+        coverageLimit: '$800',
+        deductible: '$50',
+        keyFeature: 'Covers "Cracked Screen"',
     category: 'Luxury Globetrotter',
     imageSrc: '/NUS000000237_480x304_straight_withname.avif',
     imageAlt: 'The Platinum Card® from American Express',
@@ -65,6 +69,10 @@ const protectionCardData = [
   {
     id: 'ventureX',
     name: 'Capital One Venture X Rewards Credit Card',
+    annualFee: '$395',
+        coverageLimit: '$800',
+        deductible: '$50',
+        keyFeature: '"Involuntary Parting" Coverage',
     category: 'Savvy Strategist',
     imageSrc: '/venturex-cg-static-card-1000x630-2.avif',
     imageAlt: 'Capital One Venture X Rewards Credit Card',
@@ -80,6 +88,10 @@ const protectionCardData = [
   {
     id: 'inkPreferred',
     name: 'Ink Business Preferred® Credit Card',
+     annualFee: '$95',
+        coverageLimit: '$1,000',
+        deductible: '$100',
+        keyFeature: 'Highest Coverage Limit',
     category: 'Entrepreneur & Road Warrior',
     imageSrc: '/ink_preferred_card.png',
     imageAlt: 'Ink Business Preferred® Credit Card',
@@ -95,6 +107,10 @@ const protectionCardData = [
   {
     id: 'wellsFargo',
     name: 'Wells Fargo Autograph℠ Card',
+    annualFee: '$0',
+        coverageLimit: '$600',
+        deductible: '$25',
+        keyFeature: 'Lowest Deductible',
     category: 'Budget-Conscious Adventurer',
     imageSrc: '/Autograph-No-Fee-Card-RGB_d.png',
     imageAlt: 'Wells Fargo Autograph℠ Card',
