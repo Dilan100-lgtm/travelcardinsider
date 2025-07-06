@@ -59,7 +59,7 @@ const protectionCardData = [
     description: "The Amex Platinum remains a status symbol for a reason. Its phone protection is robust, offering up to $800 per claim with a low $50 deductible. Its standout feature is its policy explicitly stating it covers a \"Cracked Screen\", removing the ambiguity found elsewhere. While the $695 annual fee is steep, serious travelers who maximize the unparalleled lounge access and suite of travel credits will find it more than pays for itself.",
     applyLink: 'https://www.americanexpress.com/us/credit-cards/card/platinum/',
     ratesFeesLink: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/platinum-card/25330-10-0#FeeTable',
-    learnMoreLink: '/reviews/cards/amex-platinum-review-2025',
+    learnMoreLink: '/reviews/cards/amex-platinum',
     officialSourceLink: 'https://global.americanexpress.com/card-benefits/detail/cell-phone-protection/platinum',
   },
   {
@@ -74,7 +74,7 @@ const protectionCardData = [
     description: "The Venture X is the modern answer to the premium travel card. It matches the Amex Platinum’s coverage ($800 per claim, $50 deductible) but at a more accessible $395 annual fee—which is almost entirely erased by a $300 annual travel credit and 10,000 anniversary miles. Its ace in the hole is the \"involuntary and accidental parting\" coverage, making it the top choice for adventurers and families, as it protects every phone line on the monthly bill.",
     applyLink: 'https://www.capitalone.com/credit-cards/venture-x/',
     ratesFeesLink: 'https://www.capitalone.com/credit-cards/venture-x/',
-    learnMoreLink: '/reviews/cards/capital-one-venture-x-review-2025',
+    learnMoreLink: '/reviews/cards/capital-one-venture-x',
     officialSourceLink: 'https://www.capitalone.com/credit-cards/venture-x/',
   },
   {
@@ -89,7 +89,7 @@ const protectionCardData = [
     description: "For anyone who can qualify for a business card (including freelancers and sole proprietors), the Ink Business Preferred is in a league of its own. It boasts a market-leading $1,000 per claim, with up to three claims per year for a massive $3,000 potential annual max. The $100 deductible is a small price for such superior limits. Better yet, the card earns 3X points on phone services, so you’re richly rewarded for the very act that activates your best-in-class insurance.",
     applyLink: 'https://creditcards.chase.com/business-credit-cards/ink/business-preferred',
     ratesFeesLink: 'https://creditcards.chase.com/business-credit-cards/ink/business-preferred',
-    learnMoreLink: '/reviews/cards/ink-business-preferred-review-2025',
+    learnMoreLink: '/reviews/cards/ink-business-preferred',
     officialSourceLink: 'https://creditcards.chase.com/business-credit-cards/ink/business-preferred',
   },
   {
@@ -104,7 +104,7 @@ const protectionCardData = [
     description: "This no-annual-fee powerhouse is a fan favorite for good reason. It offers solid protection ($600 per claim) with the lowest deductible on the market at just $25. It also includes the valuable \"involuntary parting\" coverage. The one catch is that its policy excludes cosmetic screen damage unless it impacts the phone’s functionality. This means if you file a claim for a cracked screen, you'll need to show it's more than just a cosmetic issue.",
     applyLink: 'https://creditcards.wellsfargo.com/autograph-visa-credit-card/',
     ratesFeesLink: 'https://www.wellsfargo.com/credit-cards/autograph-visa/guide-to-benefits/',
-    learnMoreLink: '/reviews/cards/wells-fargo-autograph-review-2025',
+    learnMoreLink: '/reviews/cards/wells-fargo-autograph',
     officialSourceLink: 'https://www.wellsfargo.com/credit-cards/autograph-visa/guide-to-benefits/',
   }
 ];
