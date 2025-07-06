@@ -50,61 +50,29 @@ const protectionCardData = [
   {
     id: 'amexPlatinum',
     name: 'The Platinum Card® from American Express',
-    category: 'Luxury Globetrotter',
-    imageSrc: '/images/cards/amex-platinum-card.png',
-    imageAlt: 'The Platinum Card® from American Express',
-    ratingValue: 9.2,
-    ratingStars: 4.6,
-    annualFee: '$695',
     description: "The Amex Platinum remains a status symbol for a reason. Its phone protection is robust, offering up to $800 per claim with a low $50 deductible. Its standout feature is its policy explicitly stating it covers a \"Cracked Screen\", removing the ambiguity found elsewhere. While the $695 annual fee is steep, serious travelers who maximize the unparalleled lounge access and suite of travel credits will find it more than pays for itself.",
-    applyLink: 'https://www.americanexpress.com/us/credit-cards/card/platinum/',
-    ratesFeesLink: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/platinum-card/25330-10-0#FeeTable',
-    learnMoreLink: '/reviews/cards/amex-platinum-review-2025',
+    learnMoreLink: '/cards/amex-platinum-review-2025',
     officialSourceLink: 'https://global.americanexpress.com/card-benefits/detail/cell-phone-protection/platinum',
   },
   {
     id: 'ventureX',
     name: 'Capital One Venture X Rewards Credit Card',
-    category: 'Savvy Strategist',
-    imageSrc: '/images/cards/venture-x-card.png',
-    imageAlt: 'Capital One Venture X Rewards Credit Card',
-    ratingValue: 9.5,
-    ratingStars: 4.8,
-    annualFee: '$395',
     description: "The Venture X is the modern answer to the premium travel card. It matches the Amex Platinum’s coverage ($800 per claim, $50 deductible) but at a more accessible $395 annual fee—which is almost entirely erased by a $300 annual travel credit and 10,000 anniversary miles. Its ace in the hole is the \"involuntary and accidental parting\" coverage, making it the top choice for adventurers and families, as it protects every phone line on the monthly bill.",
-    applyLink: 'https://www.capitalone.com/credit-cards/venture-x/',
-    ratesFeesLink: 'https://www.capitalone.com/credit-cards/venture-x/',
-    learnMoreLink: '/reviews/cards/capital-one-venture-x-review-2025',
+    learnMoreLink: '/cards/capital-one-venture-x-review-2025',
     officialSourceLink: 'https://www.capitalone.com/credit-cards/venture-x/',
   },
   {
     id: 'inkPreferred',
     name: 'Ink Business Preferred® Credit Card',
-    category: 'Entrepreneur & Road Warrior',
-    imageSrc: '/images/cards/ink-business-preferred-card.png',
-    imageAlt: 'Ink Business Preferred® Credit Card',
-    ratingValue: 9.8,
-    ratingStars: 4.9,
-    annualFee: '$95',
     description: "For anyone who can qualify for a business card (including freelancers and sole proprietors), the Ink Business Preferred is in a league of its own. It boasts a market-leading $1,000 per claim, with up to three claims per year for a massive $3,000 potential annual max. The $100 deductible is a small price for such superior limits. Better yet, the card earns 3X points on phone services, so you’re richly rewarded for the very act that activates your best-in-class insurance.",
-    applyLink: 'https://creditcards.chase.com/business-credit-cards/ink/business-preferred',
-    ratesFeesLink: 'https://creditcards.chase.com/business-credit-cards/ink/business-preferred',
-    learnMoreLink: '/reviews/cards/ink-business-preferred-review-2025',
+    learnMoreLink: '/cards/ink-business-preferred-review-2025',
     officialSourceLink: 'https://creditcards.chase.com/business-credit-cards/ink/business-preferred',
   },
   {
     id: 'wellsFargo',
     name: 'Wells Fargo Autograph℠ Card',
-    category: 'Budget-Conscious Adventurer',
-    imageSrc: '/images/cards/wells-fargo-autograph-card.png',
-    imageAlt: 'Wells Fargo Autograph℠ Card',
-    ratingValue: 8.8,
-    ratingStars: 4.4,
-    annualFee: '$0',
     description: "This no-annual-fee powerhouse is a fan favorite for good reason. It offers solid protection ($600 per claim) with the lowest deductible on the market at just $25. It also includes the valuable \"involuntary parting\" coverage. The one catch is that its policy excludes cosmetic screen damage unless it impacts the phone’s functionality. This means if you file a claim for a cracked screen, you'll need to show it's more than just a cosmetic issue.",
-    applyLink: 'https://creditcards.wellsfargo.com/autograph-visa-credit-card/',
-    ratesFeesLink: 'https://www.wellsfargo.com/credit-cards/autograph-visa/guide-to-benefits/',
-    learnMoreLink: '/reviews/cards/wells-fargo-autograph-review-2025',
+    learnMoreLink: '/cards/wells-fargo-autograph-review-2025',
     officialSourceLink: 'https://www.wellsfargo.com/credit-cards/autograph-visa/guide-to-benefits/',
   }
 ];
@@ -128,16 +96,8 @@ function generateJsonLD() {
         headline: 'Your Phone is Your Passport: The Little-Known Credit Card Perk That Can Save Your Trip in 2025',
         description: 'Our 2025 guide to the best credit cards for cell phone insurance. See how this perk can save your trip and compare top cards from Amex, Capital One, Chase, and Wells Fargo.',
         image: [`${SITE_BASE_URL}${HERO_IMAGE_SRC}`],
-        author: {
-          '@type': 'Person',
-          name: author.name,
-          url: author.social.linkedin || SITE_BASE_URL,
-        },
-        publisher: {
-          '@type': 'Organization',
-          name: SITE_NAME,
-          logo: { '@type': 'ImageObject', url: `${SITE_BASE_URL}/images/travel-card-insider-logo-120.png` },
-        },
+        author: { '@type': 'Person', name: author.name, url: author.social.linkedin || SITE_BASE_URL },
+        publisher: { '@type': 'Organization', name: SITE_NAME, logo: { '@type': 'ImageObject', url: `${SITE_BASE_URL}/images/travel-card-insider-logo-120.png` } },
         datePublished: DATE_PUBLISHED,
         dateModified: DATE_MODIFIED,
     };
@@ -149,7 +109,6 @@ function generateJsonLD() {
 // 🌐 COMPONENT
 // ─────────────────────────────────────────────────────────────────────────────
 function CellPhoneProtectionGuidePage2025() {
-    // Tooltip logic for author section
     const [showTooltip, setShowTooltip] = useState(false);
     const triggerRef = useRef(null);
     const tooltipRef = useRef(null);
@@ -188,11 +147,10 @@ function CellPhoneProtectionGuidePage2025() {
     return (
         <>
             <Head>
-                {/* Core SEO */}
-                <title>Credit Card Cell Phone Protection: A Traveler's Guide (2025) | {SITE_NAME}</title>
-                <meta name="description" content="Our 2025 guide to the best credit cards for cell phone insurance. See how this perk can save your trip and compare top cards from Amex, Capital One, Chase, and Wells Fargo."/>
-                <link rel="canonical" href={PAGE_URL} />
-                {/* etc. */}
+                 <title>Credit Card Cell Phone Protection: A Traveler's Guide (2025) | {SITE_NAME}</title>
+                 <meta name="description" content="Our 2025 guide to the best credit cards for cell phone insurance. See how this perk can save your trip and compare top cards from Amex, Capital One, Chase, and Wells Fargo."/>
+                 <link rel="canonical" href={PAGE_URL} />
+                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: generateJsonLD() }} />
             </Head>
 
             <main className={styles.reviewContainer}>
@@ -209,14 +167,7 @@ function CellPhoneProtectionGuidePage2025() {
                         aria-expanded={showTooltip}
                         tabIndex={0}
                     >
-                        <Image
-                            src={author.image}
-                            alt={`${author.name} headshot`}
-                            width={40}
-                            height={40}
-                            className={styles.authorImageSmall}
-                            priority
-                        />
+                        <Image src={author.image} alt={`${author.name} headshot`} width={40} height={40} className={styles.authorImageSmall} priority />
                         <div className={styles.authorInfo}>
                             <span className={styles.authorName}>{author.name}</span>
                             <span className={styles.authorTitle}>{author.title}</span>
@@ -225,13 +176,7 @@ function CellPhoneProtectionGuidePage2025() {
                             </time>
                         </div>
                         {showTooltip && (
-                            <div
-                                className={styles.authorTooltip}
-                                ref={tooltipRef}
-                                role="tooltip"
-                                onMouseEnter={handleMouseEnterTriggerOrTooltip}
-                                onMouseLeave={handleMouseLeaveTriggerOrTooltip}
-                            >
+                            <div className={styles.authorTooltip} ref={tooltipRef} role="tooltip" onMouseEnter={handleMouseEnterTriggerOrTooltip} onMouseLeave={handleMouseLeaveTriggerOrTooltip}>
                                <div className={styles.authorTooltipHeader}>
                                    <Image src={author.imageLarge} alt={`${author.name} headshot`} width={60} height={60} className={styles.authorTooltipImage}/>
                                    <div className={styles.authorTooltipInfo}>
@@ -254,13 +199,9 @@ function CellPhoneProtectionGuidePage2025() {
                     </div>
                 </header>
                 
-                <div className={styles.heroSection}>
-                    <Image src={HERO_IMAGE_SRC} alt={HERO_IMAGE_ALT} layout="responsive" width={900} height={450} priority className={styles.heroImage}/>
-                </div>
+                <div className={styles.heroSection}><Image src={HERO_IMAGE_SRC} alt={HERO_IMAGE_ALT} layout="responsive" width={900} height={450} priority className={styles.heroImage}/></div>
                 
-                 <p className={styles.disclaimer}>
-                  <strong>Disclaimer:</strong> Card offers, terms, and benefits are subject to change. Please verify all details with the card issuer. This page may contain affiliate links.
-                </p>
+                <p className={styles.disclaimer}><strong>Disclaimer:</strong> Card offers, terms, and benefits are subject to change. Please verify all details with the card issuer. This page may contain affiliate links.</p>
 
                 <article>
                     <section className={styles.reviewSection}>
@@ -284,24 +225,11 @@ function CellPhoneProtectionGuidePage2025() {
                         <p>Choosing the right card means balancing the insurance policy against the card's annual fee and overall rewards. Here’s a look at the top picks for US travelers this year.</p>
                         
                         {protectionCardData.map((card, index) => (
-                          <div key={card.id} className={`${styles.cardDetailSection} ${index < protectionCardData.length - 1 ? styles.cardSeparator : ''}`}>
-                            <div className={styles.cardHeader}>
-                                <div className={styles.cardImageContainer}>
-                                  <Image src={card.imageSrc} alt={card.imageAlt} width={150} height={95} objectFit="contain" loading={index > 1 ? "lazy" : "eager"}/>
-                                </div>
-                                <div className={styles.cardTitleRating}>
-                                  <h3><Link href={card.learnMoreLink}><a>{card.name}</a></Link></h3>
-                                  <StarRating rating={card.ratingStars} /> 
-                                  <span className={styles.ratingValue}>Our Rating: {card.ratingValue.toFixed(1)}/10</span>
-                                </div>
+                            <div key={card.id} className={styles.cardDetailSection}>
+                                <h4>{card.name.split(':')[0]}</h4>
+                                <p>{card.description} (<a href={card.officialSourceLink} target="_blank" rel="noopener noreferrer sponsored">Official Source</a>)</p>
+                                <p>Learn more in our <Link href={card.learnMoreLink}><a>in-depth review</a></Link>.</p>
                             </div>
-                            <p>{card.description} (<a href={card.officialSourceLink} target="_blank" rel="noopener noreferrer sponsored">Official Source</a>)</p>
-                            <div className={styles.cardButtonsContainer}>
-                                <a href={card.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.cardButton} ${styles.applyButton}`}>Apply Now</a>
-                                <a href={card.ratesFeesLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.cardButton} ${styles.secondaryButton}`}>Rates & Fees</a>
-                                <Link href={card.learnMoreLink} legacyBehavior><a className={`${styles.cardButton} ${styles.secondaryButton}`}>Learn More</a></Link>
-                            </div>
-                          </div>
                         ))}
                     </section>
 
