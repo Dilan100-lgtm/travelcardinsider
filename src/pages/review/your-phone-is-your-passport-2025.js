@@ -109,6 +109,44 @@ const protectionCardData = [
   }
 ];
 
+const comparisonTableData = [
+  { 
+    feature: 'Card',
+    amexPlatinum: protectionCardData[0].name,
+    ventureX: protectionCardData[1].name,
+    inkPreferred: protectionCardData[2].name,
+    wellsFargo: protectionCardData[3].name,
+  },
+  {
+    feature: 'Annual Fee',
+    amexPlatinum: protectionCardData[0].annualFee,
+    ventureX: protectionCardData[1].annualFee,
+    inkPreferred: protectionCardData[2].annualFee,
+    wellsFargo: protectionCardData[3].annualFee,
+  },
+  {
+    feature: 'Coverage Limit (per claim)',
+    amexPlatinum: protectionCardData[0].coverageLimit,
+    ventureX: protectionCardData[1].coverageLimit,
+    inkPreferred: protectionCardData[2].coverageLimit,
+    wellsFargo: protectionCardData[3].coverageLimit,
+  },
+  {
+    feature: 'Deductible',
+    amexPlatinum: protectionCardData[0].deductible,
+    ventureX: protectionCardData[1].deductible,
+    inkPreferred: protectionCardData[2].deductible,
+    wellsFargo: protectionCardData[3].deductible,
+  },
+  {
+    feature: 'Key Insurance Feature',
+    amexPlatinum: protectionCardData[0].keyFeature,
+    ventureX: protectionCardData[1].keyFeature,
+    inkPreferred: protectionCardData[2].keyFeature,
+    wellsFargo: protectionCardData[3].keyFeature,
+  },
+];
+
 // ─────────────────────────────────────────────────────────────────────────────
 // 🧠 HELPERS - JSON-LD SCHEMA
 // ─────────────────────────────────────────────────────────────────────────────
