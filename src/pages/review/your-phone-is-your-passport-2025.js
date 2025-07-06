@@ -305,6 +305,34 @@ function CellPhoneProtectionGuidePage2025() {
                         ))}
                     </section>
 
+                    <section id="summary-table" className={styles.reviewSection}>
+                        <h2>Cell Phone Protection Cards: At a Glance</h2>
+                        <div className={styles.comparisonTableContainer}>
+                            <table className={styles.comparisonTable}>
+                                <thead>
+                                    <tr>
+                                        <th>Feature</th>
+                                        <th>Amex Platinum</th>
+                                        <th>Venture X</th>
+                                        <th>Ink Business Preferred</th>
+                                        <th>Wells Fargo Autograph</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {comparisonTableData.slice(1).map((row, rowIndex) => (
+                                        <tr key={rowIndex}>
+                                            <td>{row.feature}</td>
+                                            <td>{row.amexPlatinum}</td>
+                                            <td>{row.ventureX}</td>
+                                            <td>{row.inkPreferred}</td>
+                                            <td>{row.wellsFargo}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
                     <section id="filing-a-claim" className={styles.reviewSection}>
                         <h2>Navigating a Claim: From Disaster to Deposit</h2>
                         <p>Knowing you're covered is one thing; getting your money back is another. The claims process, handled by third-party administrators, requires prompt action and meticulous documentation.</p>
