@@ -1,4 +1,4 @@
-// File: pages/reviews/your-phone-is-your-passport-2025.js
+// File: pages/reviews/credit-card-cell-phone-protection-guide-2025.js
 "use client"; // 👈 Add this line at the very top
 
 import React from 'react';
@@ -6,18 +6,19 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from '../../styles/NoFTFCardsReview.module.css'; // Reusing your excellent, existing styles
+import StarRating from '../../components/StarRating'; // Assuming you have a StarRating component
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 🔗 CONFIG
 // ─────────────────────────────────────────────────────────────────────────────
 const SITE_BASE_URL = 'https://www.travelcardinsider.com';
-const PAGE_PATH = '/reviews/your-phone-is-your-passport-2025';
+const PAGE_PATH = '/reviews/credit-card-cell-phone-protection-guide-2025';
 const PAGE_URL = `${SITE_BASE_URL}${PAGE_PATH}`;
 const SITE_NAME = 'Travel Card Insider';
-const HERO_IMAGE_SRC = '/images/phone-and-passport-hero.webp'; // ❗ Replace with your optimised hero image
+const HERO_IMAGE_SRC = '/images/reviews/phone-passport-hero.webp'; // ❗ Replace with your optimised hero image
 const HERO_IMAGE_ALT = 'A smartphone displaying a digital passport next to a physical passport, symbolizing modern travel.';
-const DATE_PUBLISHED = '2025-07-07'; // ✏️ Adjust to your actual publish date
-const DATE_MODIFIED = '2025-07-07'; // ✏️ Update whenever you edit copy
+const DATE_PUBLISHED = '2025-07-07';
+const DATE_MODIFIED = '2025-07-07';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 👤 AUTHOR INFO
@@ -26,14 +27,74 @@ const author = {
   name: 'Dilan Madushanka',
   title: 'Lead Travel Tech Analyst',
   image: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // ❗ Your 40x40px web‑optimised headshot
-  imageLarge: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // ❗ Your 60x60px for tooltip
   bio: 'Dilan is a leading expert in the intersection of travel and technology, focusing on how digital tools and financial products can enhance the travel experience and provide critical safety nets for globetrotters.',
   social: {
     linkedin: 'https://www.linkedin.com/in/dilan-madushanka-b65293365',
     twitter: 'https://x.com/team_dilan',
-    email: 'team@travelcardinsider.com',
   },
 };
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 💳 CARD DATA
+// ─────────────────────────────────────────────────────────────────────────────
+const protectionCardData = [
+  {
+    id: 'amexPlatinum',
+    name: 'The Platinum Card® from American Express',
+    category: 'Luxury Globetrotter',
+    imageSrc: '/images/cards/amex-platinum-card.png', // ❗ Replace
+    imageAlt: 'The Platinum Card® from American Express',
+    ratingValue: 9.2,
+    ratingStars: 4.6,
+    ourTake: "Its phone protection is robust, offering up to $800 per claim with a low $50 deductible. Its standout feature is its policy explicitly stating it covers a \"Cracked Screen\", removing the ambiguity found elsewhere.",
+    applyLink: 'https://www.americanexpress.com/us/credit-cards/card/platinum/',
+    ratesFeesLink: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/platinum-card/25330-10-0#FeeTable',
+    learnMoreLink: '/reviews/cards/amex-platinum-review-2025',
+    officialSourceLink: 'https://global.americanexpress.com/card-benefits/detail/cell-phone-protection/platinum',
+  },
+  {
+    id: 'ventureX',
+    name: 'Capital One Venture X Rewards Credit Card',
+    category: 'Savvy Strategist',
+    imageSrc: '/images/cards/venture-x-card.png', // ❗ Replace
+    imageAlt: 'Capital One Venture X Rewards Credit Card',
+    ratingValue: 9.5,
+    ratingStars: 4.8,
+    ourTake: "It matches the Amex Platinum’s coverage ($800 per claim, $50 deductible) but at a more accessible $395 annual fee. Its ace in the hole is the \"involuntary and accidental parting\" coverage, making it the top choice for adventurers.",
+    applyLink: 'https://www.capitalone.com/credit-cards/venture-x/',
+    ratesFeesLink: 'https://www.capitalone.com/credit-cards/venture-x/',
+    learnMoreLink: '/reviews/cards/capital-one-venture-x-review-2025',
+    officialSourceLink: 'https://www.capitalone.com/credit-cards/venture-x/',
+  },
+  {
+    id: 'inkPreferred',
+    name: 'Ink Business Preferred® Credit Card',
+    category: 'Entrepreneur & Road Warrior',
+    imageSrc: '/images/cards/ink-business-preferred-card.png', // ❗ Replace
+    imageAlt: 'Ink Business Preferred® Credit Card',
+    ratingValue: 9.8,
+    ratingStars: 4.9,
+    ourTake: "In a league of its own for business users, it boasts a market-leading $1,000 per claim, with up to three claims per year. The $100 deductible is a small price for such superior limits, and it earns 3X points on phone services.",
+    applyLink: 'https://creditcards.chase.com/business-credit-cards/ink/business-preferred',
+    ratesFeesLink: 'https://creditcards.chase.com/business-credit-cards/ink/business-preferred',
+    learnMoreLink: '/reviews/cards/ink-business-preferred-review-2025', // ✏️ Create this internal page later
+    officialSourceLink: 'https://creditcards.chase.com/business-credit-cards/ink/business-preferred',
+  },
+  {
+    id: 'wellsFargo',
+    name: 'Wells Fargo Autograph℠ Card',
+    category: 'Budget-Conscious Adventurer',
+    imageSrc: '/images/cards/wells-fargo-autograph-card.png', // ❗ Replace
+    imageAlt: 'Wells Fargo Autograph℠ Card',
+    ratingValue: 8.8,
+    ratingStars: 4.4,
+    ourTake: "This no-annual-fee powerhouse offers solid protection ($600 per claim) with the lowest deductible on the market at just $25. It also includes the valuable \"involuntary parting\" coverage.",
+    applyLink: 'https://creditcards.wellsfargo.com/autograph-visa-credit-card/',
+    ratesFeesLink: 'https://www.wellsfargo.com/credit-cards/autograph-visa/guide-to-benefits/',
+    learnMoreLink: '/reviews/cards/wells-fargo-autograph-review-2025', // ✏️ Create this internal page later
+    officialSourceLink: 'https://www.wellsfargo.com/credit-cards/autograph-visa/guide-to-benefits/',
+  }
+];
 
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -45,7 +106,7 @@ function generateJsonLD() {
         itemListElement: [
           { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_BASE_URL, },
           { '@type': 'ListItem', position: 2, name: 'Guides', item: `${SITE_BASE_URL}/guides`, },
-          { '@type': 'ListItem', position: 3, name: 'Your Phone is Your Passport: The Credit Card Perk That Can Save Your Trip', item: PAGE_URL, },
+          { '@type': 'ListItem', position: 3, name: 'Credit Card Cell Phone Protection Guide', item: PAGE_URL, },
         ],
       };
 
@@ -53,7 +114,7 @@ function generateJsonLD() {
         '@type': 'NewsArticle',
         mainEntityOfPage: { "@type": "WebPage", "@id": PAGE_URL },
         headline: 'Your Phone is Your Passport: The Little-Known Credit Card Perk That Can Save Your Trip in 2025',
-        description: 'Discover how credit card cell phone protection can save your trip from disaster. We review the top cards from Amex, Chase, Capital One, and Wells Fargo for this essential travel benefit.',
+        description: 'Our 2025 guide to the best credit cards for cell phone insurance. See how this perk can save your trip and compare top cards from Amex, Capital One, Chase, and Wells Fargo.',
         image: [`${SITE_BASE_URL}${HERO_IMAGE_SRC}`],
         author: {
           '@type': 'Person',
@@ -65,40 +126,26 @@ function generateJsonLD() {
           name: SITE_NAME,
           logo: {
             '@type': 'ImageObject',
-            url: `${SITE_BASE_URL}/images/travel-card-insider-logo-120.png`, // ❗ Ensure this logo exists
+            url: `${SITE_BASE_URL}/images/travel-card-insider-logo-120.png`,
           },
         },
         datePublished: DATE_PUBLISHED,
         dateModified: DATE_MODIFIED,
     };
 
-    return JSON.stringify(
-        {
-          '@context': 'https://schema.org',
-          '@graph': [
-            articleSchema,
-            breadcrumbsSchema,
-          ],
-        },
-        null,
-        2
-      );
+    return JSON.stringify({ '@context': 'https://schema.org', '@graph': [articleSchema, breadcrumbsSchema] }, null, 2);
 }
-
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 🌐 COMPONENT
 // ─────────────────────────────────────────────────────────────────────────────
-function CellPhoneProtectionReviewPage() {
+function CellPhoneProtectionGuidePage2025() {
     return (
         <>
             <Head>
                 {/* Core SEO */}
                 <title>Credit Card Cell Phone Protection: A Traveler's Guide (2025) | {SITE_NAME}</title>
-                <meta
-                name="description"
-                content="Our 2025 guide to the best credit cards for cell phone insurance. See how this perk can save your trip and compare top cards from Amex, Capital One, Chase, and Wells Fargo."
-                />
+                <meta name="description" content="Our 2025 guide to the best credit cards for cell phone insurance. See how this perk can save your trip and compare top cards from Amex, Capital One, Chase, and Wells Fargo." />
                 <meta name="viewport" content="width=device-width,initial-scale=1" />
                 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
                 <meta name="keywords" content="credit card cell phone protection, travel insurance, smartphone insurance, best credit cards for travel, chase ink preferred, amex platinum, capital one venture x, wells fargo autograph" />
@@ -112,21 +159,12 @@ function CellPhoneProtectionReviewPage() {
                 <meta property="og:site_name" content={SITE_NAME} />
                 <meta property="og:image" content={`${SITE_BASE_URL}${HERO_IMAGE_SRC}`} />
                 <meta property="og:image:alt" content={HERO_IMAGE_ALT} />
-                <meta property="og:locale" content="en_US" />
                 <meta property="article:published_time" content={DATE_PUBLISHED} />
                 <meta property="article:modified_time" content={DATE_MODIFIED} />
                 <meta property="article:author" content={author.name} />
-                <meta property="article:section" content="Travel Guides" />
-                <meta property="article:tag" content="Cell Phone Protection" />
-                <meta property="article:tag" content="Credit Card Benefits" />
-                <meta property="article:tag" content="Travel Tech" />
-                <meta property="article:tag" content="2025" />
 
                 {/* Twitter Card */}
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={`The Traveler's Guide to Credit Card Cell Phone Insurance (2025) - ${SITE_NAME}`} />
-                <meta name="twitter:description" content="Don't let a broken phone derail your vacation. Our guide breaks down the essential credit card perk of cell phone protection." />
-                <meta name="twitter:image" content={`${SITE_BASE_URL}${HERO_IMAGE_SRC}`} />
                 {author.social.twitter && <meta name="twitter:creator" content={`@${author.social.twitter.split('/').pop()}`} />}
                 
                 {/* JSON‑LD Schema */}
@@ -136,6 +174,22 @@ function CellPhoneProtectionReviewPage() {
             <main className={styles.reviewContainer}>
                 <header className={styles.reviewHeader}>
                   <h1>Your Phone is Your Passport: The Little-Known Credit Card Perk That Can Save Your Trip in 2025</h1>
+                   <div className={styles.authorBioContainer}>
+                      <Image
+                          src={author.image}
+                          alt={`${author.name} headshot`}
+                          width={40}
+                          height={40}
+                          className={styles.authorImageSmall}
+                      />
+                      <div className={styles.authorInfo}>
+                          <span className={styles.authorName}>{author.name}</span>
+                          <span className={styles.authorTitle}>{author.title}</span>
+                          <time dateTime={DATE_MODIFIED} className={styles.authorLastEdited}>
+                              Last updated: {new Date(DATE_MODIFIED).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                          </time>
+                      </div>
+                  </div>
                 </header>
                 
                 <div className={styles.heroSection}>
@@ -145,64 +199,80 @@ function CellPhoneProtectionReviewPage() {
                         layout="responsive"
                         width={900}
                         height={450}
-                        objectFit="cover"
                         priority
                         className={styles.heroImage}
                     />
                 </div>
                 
+                 <p className={styles.disclaimer}>
+                  <strong>Disclaimer:</strong> Card offers, terms, and benefits are subject to change. Please verify all details with the card issuer. This page may contain affiliate links.
+                </p>
+
                 <article>
                     <section className={styles.reviewSection}>
+                        <h2>The Modern Traveler's Nightmare</h2>
                         <p>In the world of travel, some disasters are bigger than others. A missed flight is a headache. Bad weather is a disappointment. But a shattered or stolen smartphone? It’s a full-blown catastrophe.</p>
-                        <p>Imagine you’re navigating the bustling streets of Tokyo, relying on your phone for maps, your train pass, and to translate the menu for dinner. One slip, one moment of distraction, and your $1,200 lifeline is gone. In an instant, you're not just disconnected; you're digitally stranded. Your boarding passes, hotel confirmations, digital wallet, and connection to everyone back home—vanished.</p>
-                        <p>This single point of failure is the modern traveler’s nightmare. The cost isn't just the price of a new device; it's the chaos that follows. But what if a feature you already have could turn this travel nightmare into a mere inconvenience? Check out our list of the <Link href="/reviews/best-travel-credit-cards-2025"><a>best travel credit cards for 2025</a></Link> to learn more.</p>
-                        <p>Enter the hero of travel perks: complimentary cell phone protection, offered by a growing number of US credit cards. As card issuers compete for your loyalty in 2025, they’re moving beyond points and miles to offer tangible, real-world value. This insurance is a prime example, a powerful benefit hiding in the fine print that can reimburse you for the repair or replacement of your phone. But not all policies are created equal. Understanding how to unlock this value is the key to traveling with true peace of mind.</p>
+                        <p>Imagine you’re navigating the bustling streets of Tokyo, relying on your phone for maps, your train pass, and to translate the menu for dinner. One slip, one moment of distraction, and your $1,200 lifeline is gone. In an instant, you're not just disconnected; you're digitally stranded.</p>
+                        <p>This single point of failure is the modern traveler’s nightmare. But what if a feature you already have could turn this into a mere inconvenience? Enter the hero of travel perks: complimentary cell phone protection. Check out our list of the <Link href="/reviews/best-travel-credit-cards-2025"><a>best travel credit cards for 2025</a></Link> to learn more.</p>
                     </section>
                     
                     <section id="how-it-works" className={styles.reviewSection}>
                         <h2>How It Really Works: The Rules of the Game</h2>
-                        <p>Getting this "free" insurance isn't automatic. It's governed by a few critical rules you need to know before you travel.</p>
-                        <p>First and foremost, you must pay your monthly cell phone bill with the eligible credit card. This is the non-negotiable golden rule. Partial payments don't count, and coverage typically doesn't start the moment you pay. Protection usually kicks in on the first day of the month after your payment posts. To be safe, set your eligible card to autopay your wireless bill and leave it.</p>
-                        <p>So, what’s covered? Generally, policies reimburse you for two main events: physical damage that impairs your phone's function and outright theft. For a theft claim, you'll almost certainly need to file a police report, often within 48 hours of the incident <a href="https://www.wellsfargo.com/credit-cards/autograph-visa/guide-to-benefits/" target="_blank" rel="noopener noreferrer sponsored">[Link to Official Source]</a>.</p>
-                        <p>What’s almost never covered is simply losing your phone—what insurers call "mysterious disappearance." However, a crucial evolution in policy language has created a powerful exception. Some cards, notably from Capital One and Wells Fargo, now cover "involuntary and accidental parting."</p>
-                        <p>This is a game-changer. It’s defined as an unintended separation where the phone's location is known, but it's impractical to get it back. Think of it this way: a phone that vanishes from your pocket is lost and not covered. A phone you watch tumble from a ski lift into deep powder or slip from your grasp into a lake is a case of "involuntary parting." You know where it is, but it’s gone for good. For adventurous travelers, this specific language provides a far superior safety net.</p>
+                        <p>Getting this "free" insurance isn't automatic. First and foremost, you must pay your monthly cell phone bill with the eligible credit card. This is the non-negotiable golden rule.</p>
+                        <p>So, what’s covered? Generally, policies reimburse you for physical damage and outright theft. For a theft claim, you'll almost certainly need to file a police report, often within 48 hours.</p>
+                        <p>What’s almost never covered is simply losing your phone. However, a crucial evolution in policy language has created a powerful exception. Some cards now cover "involuntary and accidental parting"—an unintended separation where the phone's location is known, but it's impractical to get it back. For adventurous travelers, this specific language provides a far superior safety net.</p>
                     </section>
                     
                     <section id="top-picks" className={styles.reviewSection}>
                         <h2>The 2025 Contenders: A Breakdown for Every Traveler</h2>
-                        <p>Choosing the right card means balancing the insurance policy against the card's annual fee and overall rewards. Here’s a look at the top picks for US travelers this year.</p>
-
-                        <h3>For the Luxury Globetrotter: The Platinum Card® from American Express</h3>
-                        <p>The Amex Platinum remains a status symbol for a reason. Its phone protection is robust, offering up to $800 per claim with a low $50 deductible. Its standout feature is its policy explicitly stating it covers a "Cracked Screen" <a href="https://global.americanexpress.com/card-benefits/detail/cell-phone-protection/platinum" target="_blank" rel="noopener noreferrer sponsored">[Link to Official Source]</a>, removing the ambiguity found elsewhere. While the $695 annual fee is steep, serious travelers who maximize the unparalleled lounge access and suite of travel credits will find it more than pays for itself. Read our full <Link href="/cards/amex-platinum-review"><a>review of the Amex Platinum card</a></Link>.</p>
-
-                        <h3>For the Savvy Strategist: Capital One Venture X Rewards Credit Card</h3>
-                        <p>The Venture X is the modern answer to the premium travel card. It matches the Amex Platinum’s coverage ($800 per claim, $50 deductible) but at a more accessible $395 annual fee—which is almost entirely erased by a $300 annual travel credit and 10,000 anniversary miles. Its ace in the hole is the "involuntary and accidental parting" coverage, making it the top choice for adventurers and families, as it protects every phone line on the monthly bill <a href="https://www.capitalone.com/credit-cards/venture-x/" target="_blank" rel="noopener noreferrer sponsored">[Link to Official Source]</a>. Explore our in-depth <Link href="/cards/capital-one-venture-x-review"><a>Capital One Venture X review</a></Link> for more details.</p>
-
-                        <h3>For the Entrepreneur & Road Warrior: Ink Business Preferred® Credit Card</h3>
-                        <p>For anyone who can qualify for a business card (including freelancers and sole proprietors), the Ink Business Preferred is in a league of its own. It boasts a market-leading $1,000 per claim, with up to three claims per year for a massive $3,000 potential annual max. The $100 deductible is a small price for such superior limits. Better yet, the card earns 3X points on phone services, so you’re richly rewarded for the very act that activates your best-in-class insurance <a href="https://creditcards.chase.com/business-credit-cards/ink/business-preferred" target="_blank" rel="noopener noreferrer sponsored">[Link to Official Source]</a>.</p>
-
-                        <h3>For the Budget-Conscious Adventurer: Wells Fargo Autograph℠ Card</h3>
-                        <p>This no-annual-fee powerhouse is a fan favorite for good reason. It offers solid protection ($600 per claim) with the lowest deductible on the market at just $25. It also includes the valuable "involuntary parting" coverage. The one catch is that its policy excludes cosmetic screen damage unless it impacts the phone’s functionality <a href="https://www.wellsfargo.com/credit-cards/autograph-visa/guide-to-benefits/" target="_blank" rel="noopener noreferrer sponsored">[Link to Official Source]</a>. This means if you file a claim for a cracked screen, you'll need to show it's more than just a cosmetic issue.</p>
+                        
+                        {protectionCardData.map((card, index) => (
+                          <div key={card.id} className={`${styles.cardDetailSection} ${index < protectionCardData.length - 1 ? styles.cardSeparator : ''}`}>
+                            <div className={styles.cardHeader}>
+                                <div className={styles.cardImageContainer}>
+                                  <Image
+                                    src={card.imageSrc}
+                                    alt={card.imageAlt}
+                                    width={150} 
+                                    height={95}  
+                                    objectFit="contain"
+                                    loading={index > 1 ? "lazy" : "eager"}
+                                  />
+                                </div>
+                                <div className={styles.cardTitleRating}>
+                                  <h3><Link href={card.learnMoreLink}><a>{card.name}</a></Link></h3>
+                                  <StarRating rating={card.ratingStars} /> 
+                                  <span className={styles.ratingValue}>Our Rating: {card.ratingValue.toFixed(1)}/10</span>
+                                </div>
+                            </div>
+                            <ul>
+                              <li><strong>Our Take:</strong> {card.ourTake} (<a href={card.officialSourceLink} target="_blank" rel="noopener noreferrer sponsored">Official Source</a>)</li>
+                            </ul>
+                            <div className={styles.cardButtonsContainer}>
+                                <a href={card.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.cardButton} ${styles.applyButton}`}>Apply Now</a>
+                                <a href={card.ratesFeesLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.cardButton} ${styles.secondaryButton}`}>Rates & Fees</a>
+                                <Link href={card.learnMoreLink} legacyBehavior><a className={`${styles.cardButton} ${styles.secondaryButton}`}>Learn More</a></Link>
+                            </div>
+                          </div>
+                        ))}
                     </section>
 
                     <section id="filing-a-claim" className={styles.reviewSection}>
                         <h2>Navigating a Claim: From Disaster to Deposit</h2>
-                        <p>Knowing you're covered is one thing; getting your money back is another. The claims process, handled by third-party administrators, requires prompt action and meticulous documentation. Our <Link href="/guides/how-to-file-a-credit-card-insurance-claim"><a>guide on filing a claim</a></Link> walks you through the process step-by-step.</p>
-                        <p>If your phone is damaged or stolen, notify the benefits administrator immediately (usually within 60 days) and file a police report within 48 hours for theft. You will need to submit an arsenal of documents, including your credit card statement showing the phone bill payment, the phone bill itself, and a repair estimate or receipt for the replacement device.</p>
-                        <p>Real-world experiences show that a well-documented claim can be surprisingly smooth. One Capital One Venture X user who cracked their camera had their claim for a $238 repair approved in less than 24 hours. A business owner with the Ink Business Preferred card saw a nearly $700 iPhone replacement for their daughter’s phone become a manageable $100 deductible. The key in both cases was providing every required document upfront.</p>
+                        <p>Knowing you're covered is one thing; getting your money back is another. The claims process requires prompt action and meticulous documentation. Our <Link href="/guides/how-to-file-a-credit-card-insurance-claim"><a>guide on filing a claim</a></Link> walks you through the process step-by-step.</p>
+                        <p>You will need to submit your credit card statement showing the phone bill payment, the phone bill itself, and a repair estimate or receipt. Real-world experiences show that a well-documented claim can be surprisingly smooth.</p>
                     </section>
                     
                     <section id="final-verdict" className={styles.reviewSection}>
                         <h2>The Final Verdict: Insure Your Lifeline Wisely</h2>
-                        <p>In 2025, your smartphone is your most critical piece of travel gear. Relying on luck to protect it is no longer a viable strategy. Credit card cell phone protection has become an essential, high-value benefit that transforms a card from a simple payment tool into a powerful instrument for risk management. To learn more about other hidden benefits, check out our guide on <Link href="/learn/understanding-credit-card-perks"><a>understanding credit card perks</a></Link>.</p>
-                        <p>Whether you're a luxury traveler best served by the Amex Platinum's clear-cut screen coverage, a family who needs the multi-line protection of the Venture X, or a business owner leveraging the massive limits of the Ink Business Preferred, there is a card that fits your needs. Even no-fee cards like the Wells Fargo Autograph provide a robust safety net that far outweighs forgoing a carrier's autopay discount.</p>
-                        <p>Before your next trip, take a moment to review your wallet. Are you paying your phone bill with the right card? If not, you’re leaving one of your most valuable travel benefits on the table. Make the switch, and travel with the confidence that when the unexpected happens, your lifeline is insured.</p>
+                        <p>In 2025, your smartphone is your most critical piece of travel gear. Credit card cell phone protection has become an essential, high-value benefit. To learn about other hidden benefits, check out our guide on <Link href="/learn/understanding-credit-card-perks"><a>understanding credit card perks</a></Link>.</p>
+                        <p>Before your next trip, review your wallet. Are you paying your phone bill with the right card? If not, you’re leaving one of your most valuable travel benefits on the table. Make the switch, and travel with confidence.</p>
                     </section>
                 </article>
 
                 <footer className={styles.reviewFooter}>
                     <p className={styles.disclaimer}>
-                      <strong>Disclaimer:</strong> The terms and coverage limits for credit card benefits are subject to change. Cardholders should always consult their official Guide to Benefits for the most current and complete information. You can find general benefit information on the official network pages for <a href="https://www.mastercard.us/en-us/personal/find-a-card/card-benefits.html" target="_blank" rel="noopener noreferrer sponsored">Mastercard</a> and <a href="https://usa.visa.com/support/consumer/card-benefits.html" target="_blank" rel="noopener noreferrer sponsored">Visa</a>.
+                      <strong>Disclaimer:</strong> Cardholders should always consult their official Guide to Benefits. General benefit information is on the official network pages for <a href="https://www.mastercard.us/en-us/personal/find-a-card/card-benefits.html" target="_blank" rel="noopener noreferrer sponsored">Mastercard</a> and <a href="https://usa.visa.com/support/consumer/card-benefits.html" target="_blank" rel="noopener noreferrer sponsored">Visa</a>.
                     </p>
                 </footer>
             </main>
@@ -210,4 +280,4 @@ function CellPhoneProtectionReviewPage() {
     );
 }
 
-export default CellPhoneProtectionReviewPage;
+export default CellPhoneProtectionGuidePage2025;
