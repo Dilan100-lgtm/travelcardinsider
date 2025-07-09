@@ -454,7 +454,7 @@ function DeltaSkyMilesBlueReviewPage() {
                     {showRatingInfo && (
                       <RatingTooltip
                         ref={ratingTooltipRef}
-                        ratingValue={reviewDataNew.ratingValue}
+                        ratingValue={reviewData.ratingValue}
                         ratingCriteria={ratingCriteriaOriginal}
                         onClose={() => setShowRatingInfo(false)}
                       />
