@@ -527,8 +527,18 @@ function DeltaSkyMilesBlueReviewPage() {
                         <li><strong>2X Miles at Restaurants Worldwide:</strong> This is the card's secret weapon. You get double miles on dining, from your local cafe to U.S. takeout and delivery services. For a <Link href="/no-fee/best-no-fee-cards-2025"><a>no-fee airline card</a></Link>, this is an outstanding perk that lets you rack up miles with your everyday lifestyle spending.</li>
                         <li><strong>1X Mile on All Other Eligible Purchases:</strong> Your everyday spending on everything else earns a steady one mile per dollar.</li>
                     </ul>
-                    <p>This hybrid approach makes the Delta Blue a lifestyle card as much as a travel card—a rare and valuable combination in the no-fee space.</p>
+                    
+                <p>This hybrid approach makes the Delta Blue a lifestyle card as much as a travel card—a rare and valuable combination in the no-fee space.</p>
+                <Image
+                                    src="/WhatsApp Image 2025-07-09 at 9.51.30 AM.jpeg" // Placeholder - image of person in a lounge
+                                    alt="A business professional working in an airport lounge, symbolizing the card's premium access."
+                                    width={800}
+                                    height={500}
+                                    className={styles.contentImage}
+                                    loading="lazy"
+                                />
                 </section>
+
                 
                 <section id="section-spending-scenario" className={styles.reviewSection}>
                     <h2>The Real-World Value: A Spending Scenario for Taylor, the Family Traveler</h2>
@@ -598,6 +608,16 @@ function DeltaSkyMilesBlueReviewPage() {
                         <li><strong>The Rewards Maximizer:</strong> If you aren’t loyal to Delta, a general travel card like the Chase Sapphire Preferred® or <Link href="/cards/capital-one-ventureone"><a>Capital One Venture Rewards</a></Link> offers far more flexible points that transfer to many different airlines and hotels.</li>
                     </ul>
                 </section>
+                    <Image
+                                    src="/pexels-pixabay-460672 (1).jpg" // Placeholder - image of person in a lounge
+                                    alt="A business professional working in an airport lounge, symbolizing the card's premium access."
+                                    width={800}
+                                    height={500}
+                                    className={styles.contentImage}
+                                    loading="lazy"
+                                />
+
+                
                 
                 <section id="section-pros-cons" className={styles.reviewSection}>
                     <h2>Pros &amp; Cons: A Quick Summary</h2>
@@ -693,6 +713,16 @@ function DeltaSkyMilesBlueReviewPage() {
                         </blockquote>
                     </div>
                 </section>
+                <Image
+                                    src="/pexels-leah-newhouse-50725-3935702.webpb" // Placeholder - image of person in a lounge
+                                    alt="A business professional working in an airport lounge, symbolizing the card's premium access."
+                                    width={800}
+                                    height={500}
+                                    className={styles.contentImage}
+                                    loading="lazy"
+                                />
+
+
 
                 <section id="section-verdict" className={styles.reviewSection}>
                     <h2>Our Expert Verdict: The Bottom Line from Travelcardinsider</h2>
