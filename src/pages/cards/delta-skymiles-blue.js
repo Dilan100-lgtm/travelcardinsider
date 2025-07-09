@@ -714,7 +714,7 @@ function DeltaSkyMilesBlueReviewPage() {
                     </div>
                 </section>
                 <Image
-                                    src="/pexels-leah-newhouse-50725-3935702.webpb" // Placeholder - image of person in a lounge
+                                    src="/pexels-leah-newhouse-50725-3935702.webp" // Placeholder - image of person in a lounge
                                     alt="A business professional working in an airport lounge, symbolizing the card's premium access."
                                     width={800}
                                     height={500}
