@@ -421,8 +421,7 @@ function DeltaSkyMilesBlueReviewPage() {
                     )}
                 </div>
                 <p className={styles.heroSubtitle}>
-                    The dream of travel—exploring new cities, relaxing on distant shores—often collides with the hard reality of its cost. For years, travel rewards cards have been the answer, turning your everyday spending into flights and adventures. But this solution usually comes with a catch: a hefty annual fee.
-                </p>
+                    Travel dreams are exciting—but they’re not cheap. That’s where travel rewards cards come in, turning daily spending into flights. The catch? Most come with steep annual fees.</p>
                 <div className={styles.heroCtaContainer}>
                   <div>
                     <OfficialLink href={reviewData.applyLink} className={`${styles.applyNowButton} ${styles.heroApplyButton}`}>Apply Securely Now</OfficialLink>
