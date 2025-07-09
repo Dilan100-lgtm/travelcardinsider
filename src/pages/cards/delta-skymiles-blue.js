@@ -1,8 +1,8 @@
 /* ------------------------------------------------------------------
     File:  pages/reviews/delta-skymiles-blue-review.js
     Route: https://www.travelcardinsider.com/reviews/delta-skymiles-blue-review
-    Description: A complete, SEO-optimized review page for the Delta SkyMiles Blue Card,
-                 structured to match the quality and features of the Amex Gold review template.
+    Description: FINAL VERSION - A complete, SEO-optimized review page for the Delta SkyMiles Blue Card,
+                 structured to perfectly match the quality and layout of the Amex Gold review template.
 ------------------------------------------------------------------- */
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
@@ -21,7 +21,6 @@ import IconStar from '../../components/icons/icon-star.svg';
 import IconCheck from '../../components/icons/icon-Credit Card.svg'; // Using for Fee
 import IconPlus from '../../components/icons/icon-target.svg'; // Using for 'Best For'
 import IconPlane from '../../components/icons/icon-plane.svg';
-import IconX from '../../components/icons/icon-Star + Arrow Up.svg'; // Represents a 'Con' or 'Drawback'
 
 // Lazy-load the tooltip component for performance
 const RatingTooltip = dynamic(() => import('../../components/RatingTooltip'), { ssr: false, loading: () => null });
@@ -192,12 +191,12 @@ const structuredData = {
         {
           '@type': 'Question',
           name: 'What credit score do I need for the Delta Blue Card?',
-          acceptedAnswer: { '@type': 'Answer', text: "While not guaranteed, American Express generally looks for a Good to Excellent credit score (typically FICO 690+). You can learn more from American Express about credit score resources." }
+          acceptedAnswer: { '@type': 'Answer', text: "While not guaranteed, American Express generally looks for a Good to Excellent credit score (typically FICO 690+)." }
         },
         {
           '@type': 'Question',
           name: 'Do my Delta SkyMiles expire?',
-          acceptedAnswer: { '@type': 'Answer', text: "No. A huge perk of the SkyMiles program is that your miles never expire, according to the official program rules." }
+          acceptedAnswer: { '@type': 'Answer', text: "No. A huge perk of the SkyMiles program is that your miles never expire." }
         },
         {
           '@type': 'Question',
@@ -212,7 +211,7 @@ const structuredData = {
         {
           '@type': 'Question',
           name: 'Is "Pay with Miles" a good deal?',
-          acceptedAnswer: { '@type': 'Answer', text: "It’s convenient, but you generally get a better value (more cents per mile) by booking award travel directly instead of using the Pay with Miles feature." }
+          acceptedAnswer: { '@type': 'Answer', text: "It’s convenient, but you generally get a better value (more cents per mile) by booking award travel directly." }
         },
       ],
     },
@@ -245,6 +244,7 @@ const ratingCriteria = [
 ];
 
 const tocSections = [
+    { id: 'section-intro', title: 'Introduction: The Allure of a No-Fee Airline Card' },
     { id: 'section-snapshot', title: 'Card Snapshot & "Best For" Tagline' },
     { id: 'section-welcome-offer', title: 'The Welcome Offer' },
     { id: 'section-earning', title: 'How You Earn Miles' },
@@ -321,7 +321,7 @@ function DeltaSkyMilesBlueReviewPage() {
   const handleAuthorMouseEnter = useCallback(() => setShowAuthorBioTooltip(true), []);
   const handleAuthorMouseLeave = useCallback(() => setShowAuthorBioTooltip(false), []);
 
-  useEffect(() => {
+    useEffect(() => {
       function handleClickOutside(event) {
           if (showAuthorBioTooltip && authorRef.current && !authorRef.current.contains(event.target) && authorTooltipRef.current && !authorTooltipRef.current.contains(event.target)) {
               setShowAuthorBioTooltip(false);
@@ -334,12 +334,13 @@ function DeltaSkyMilesBlueReviewPage() {
       return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [showAuthorBioTooltip, showRatingInfo]);
 
+
   // --- Data for the summary box specific to Delta Blue ---
   const summaryBoxData = {
     welcomeOffer: "10,000 bonus miles after $1,000 spend in first 6 months.",
     annualFee: "$0",
     topEarning: "2X Miles on Delta & at restaurants worldwide.",
-    keyPerk: "No Foreign Transaction Fees.",
+    keyPerk: "No Foreign Transaction Fees & 20% in-flight savings.",
     bestFor: "The Delta-loyal foodie's first foray into flight rewards."
   };
 
@@ -420,8 +421,17 @@ function DeltaSkyMilesBlueReviewPage() {
                     )}
                 </div>
                 <p className={styles.heroSubtitle}>
-                    The dream of travel—exploring new cities, relaxing on distant shores—often collides with the hard reality of its cost. For years, <Link href="/general/best-travel-cards-2025"><a>travel rewards cards</a></Link> have been the answer, turning your everyday spending into flights and adventures. But this solution usually comes with a catch: a hefty annual fee. This leaves many travelers asking a simple question: Is paying a yearly fee for the privilege of earning rewards actually worth it?
+                    The dream of travel—exploring new cities, relaxing on distant shores—often collides with the hard reality of its cost. For years, travel rewards cards have been the answer, turning your everyday spending into flights and adventures. But this solution usually comes with a catch: a hefty annual fee.
                 </p>
+                <div className={styles.heroCtaContainer}>
+                  <div>
+                    <OfficialLink href={reviewData.applyLink} className={`${styles.applyNowButton} ${styles.heroApplyButton}`}>Apply Securely Now</OfficialLink>
+                    <span className={styles.heroApplyButtonDisclaimer}>on American Express&apos;s official site</span>
+                  </div>
+                  <Link href="#section-snapshot" legacyBehavior>
+                    <a className={styles.heroSecondaryLink}>View Key Features</a>
+                  </Link>
+                </div>
               </div>
               <div className={styles.heroImageContainer}>
                 <div className={styles.cardImageContainer}>
@@ -435,11 +445,8 @@ function DeltaSkyMilesBlueReviewPage() {
                   {showRatingInfo && <RatingTooltip ref={ratingTooltipRef} ratingValue={reviewData.ratingValue} ratingCriteria={ratingCriteria} onClose={() => setShowRatingInfo(false)} />}
                 </div>
                 <div className={styles.starRating} title={`Rated ${reviewData.ratingValue} out of 10 stars`}>★★★★★<span className={styles.filledStars} style={{'--rating': `${(reviewData.ratingValue / 10) * 100}%`}}>★★★★★</span></div>
-                <div className={styles.heroCtaContainer}>
-                  <div>
-                    <OfficialLink href={reviewData.applyLink} className={`${styles.applyNowButton} ${styles.heroApplyButton}`}>Apply Securely Now</OfficialLink>
-                    <span className={styles.heroApplyButtonDisclaimer}>on American Express&apos;s official site</span>
-                  </div>
+                <div className={styles.ratingDescription}>
+                    <i>A great starting point for Delta flyers who want to earn miles on dining without an annual fee, though it lacks premium perks.</i>
                 </div>
               </div>
             </section>
@@ -458,9 +465,17 @@ function DeltaSkyMilesBlueReviewPage() {
                         </div>
                          <div className={styles.summaryBoxActions}>
                             <OfficialLink href={reviewData.official.ratesAndFees} className={styles.summaryRatesLink}>See Card Rates & Fees</OfficialLink>
+                            <a href='/rewards-calculator' className={`${styles.heroRewardsCalculator} ${styles.summaryButton}`} target="_blank" rel="noopener noreferrer">Rewards Calculator</a>
                         </div>
                     </div>
                 </header>
+
+                <section id="section-intro" className={styles.reviewSection}>
+                    <h2>Introduction: The Allure of a No-Fee Airline Card</h2>
+                    <p>This leaves many travelers asking a simple question: Is paying a yearly fee for the privilege of earning rewards actually worth it?</p>
+                    <p>The {reviewData.cardName} aims to be the perfect answer. As the entry-level card from a global airline and a credit card powerhouse, it makes a tempting promise: earn valuable Delta SkyMiles without paying an annual fee. In a world of high-perk, high-fee cards, does the Delta Blue chart a winning course for the budget-conscious traveler? Or does it leave you stranded at the gate?</p>
+                    <p>This definitive review will explore every angle of the card—from its surprising earning potential to its critical drawbacks—to help you decide if it’s the right boarding pass for your wallet.</p>
+                </section>
 
                 <section id="section-snapshot" className={styles.reviewSection}>
                   <h2>Card Snapshot &amp; &quot;Best For&quot; Tagline</h2>
@@ -490,6 +505,7 @@ function DeltaSkyMilesBlueReviewPage() {
                         <li><strong>2X Miles at Restaurants Worldwide:</strong> This is the card's secret weapon. You get double miles on dining, from your local cafe to U.S. takeout and delivery services. For a <Link href="/no-fee/best-no-fee-cards-2025"><a>no-fee airline card</a></Link>, this is an outstanding perk that lets you rack up miles with your everyday lifestyle spending.</li>
                         <li><strong>1X Mile on All Other Eligible Purchases:</strong> Your everyday spending on everything else earns a steady one mile per dollar.</li>
                     </ul>
+                    <p>This hybrid approach makes the Delta Blue a lifestyle card as much as a travel card—a rare and valuable combination in the no-fee space.</p>
                 </section>
                 
                 <section id="section-spending-scenario" className={styles.reviewSection}>
@@ -503,19 +519,21 @@ function DeltaSkyMilesBlueReviewPage() {
                     </ul>
                     <p><strong>Total Miles from Spending:</strong> In one year, Taylor’s family earns a total of 27,600 SkyMiles.</p>
                     <p><strong>First-Year Total with Welcome Bonus:</strong> 27,600 miles (from spending) + 10,000 miles (welcome bonus) = <strong>37,600 SkyMiles</strong></p>
-                    <p>At a value of 1.2 cents per mile, Taylor’s miles are worth approximately $451 toward flights. That’s a massive return from a card with no annual fee.</p>
+                    <p>At a value of 1.2 cents per mile, Taylor’s miles are worth approximately $451 toward flights. That’s a massive return from a card with no annual fee and could easily cover a round-trip domestic ticket during a Delta SkyMiles Deal.</p>
                 </section>
 
                 <section id="section-redeeming" className={styles.reviewSection}>
                     <h2>Redeeming Your SkyMiles: Flexibility and Options</h2>
+                    <p>Earning miles is easy, but how do you use them? You have two main options:</p>
                      <ul className={styles.featureList}>
-                        <li><strong>Award Travel:</strong> This is your best bet for maximizing value. By booking flights with miles on Delta.com, you can find incredible deals, especially if your dates are flexible.</li>
-                        <li><strong>Pay with Miles:</strong> An exclusive perk for cardholders, this lets you redeem miles for a simple cash discount on flights. Every 5,000 miles gives you a $50 discount. (<OfficialLink href={reviewData.official.payWithMiles}>Delta Air Lines: Pay with Miles Program</OfficialLink>) This feature locks you into a redemption rate of 1 cent per mile, which is less than what you can get with Award Travel. It’s a good backup option, but always hunt for an award flight first.</li>
+                        <li><strong>Award Travel:</strong> This is your best bet for maximizing value. By booking flights with miles on Delta.com, you can find incredible deals, especially if your dates are flexible. Delta’s dynamic pricing means the miles needed can change, but it also creates opportunities for flash sales.</li>
+                        <li><strong>Pay with Miles:</strong> An exclusive perk for cardholders, this lets you redeem miles for a simple cash discount on flights. Every 5,000 miles gives you a $50 discount. (<OfficialLink href={reviewData.official.payWithMiles}>Delta Air Lines: Pay with Miles Program</OfficialLink>) While incredibly straightforward, this feature locks you into a redemption rate of 1 cent per mile, which is less than what you can get with Award Travel. It’s a good backup option, but always hunt for an award flight first.</li>
                     </ul>
                 </section>
 
                 <section id="section-key-features" className={styles.reviewSection}>
                     <h2>Key Features: The No-Fee Advantage</h2>
+                    <p>The Delta Blue’s appeal is built on delivering key travel perks without the cost.</p>
                     <ul className={styles.featureList}>
                         <li><strong>$0 Annual Fee:</strong> The cornerstone benefit. You can earn miles and keep the card forever without paying a dime.</li>
                         <li><strong>No Foreign Transaction Fees:</strong> A must-have for international travel. This saves you the typical 3% surcharge many other no-fee cards charge on purchases abroad. (<OfficialLink href={reviewData.official.ratesAndFees}>American Express: Card Rates & Fees</OfficialLink>)</li>
@@ -525,14 +543,16 @@ function DeltaSkyMilesBlueReviewPage() {
 
                 <section id="section-deal-breakers" className={styles.reviewSection}>
                     <h2>The Deal-Breakers: What You're Giving Up</h2>
+                    <p>To offer a $0 annual fee, some serious cuts had to be made. Be aware of what you’re missing:</p>
                     <ul className={styles.featureList}>
-                        <li><strong>No Free Checked Bags:</strong> This is the most significant drawback. A checked bag costs $35 each way on Delta. (<OfficialLink href={reviewData.official.baggageInfo}>Delta Air Lines: Baggage Information</OfficialLink>) A single round-trip with a bag costs $70, instantly making the Delta Gold card a better financial choice for anyone who doesn't travel light.</li>
+                        <li><strong>No Free Checked Bags:</strong> This is the most significant drawback. A checked bag costs $35 each way on Delta. (<OfficialLink href={reviewData.official.baggageInfo}>Delta Air Lines: Baggage Information</OfficialLink>) One round-trip with a bag costs $70, instantly making the Delta Gold card (with its free bag perk) a better financial choice for anyone who doesn't travel light.</li>
                         <li><strong>No Priority Boarding:</strong> You’ll board in one of the last groups. On full flights, this means you might be forced to gate-check your carry-on bag due to a lack of overhead bin space.</li>
                     </ul>
                 </section>
                 
                 <section id="section-amex-benefits" className={styles.reviewSection}>
                     <h2>Beyond the Basics: The Hidden Value of Amex Benefits</h2>
+                    <p>While the Delta perks are limited, the card comes loaded with valuable benefits from the American Express network that provide real security and savings.</p>
                      <ul className={styles.featureList}>
                         <li><strong>Car Rental Loss and Damage Insurance:</strong> Pay for your rental car with the card and you can be covered for damage or theft. (<OfficialLink href={reviewData.official.carRentalInsurance}>American Express: Car Rental Loss and Damage Insurance</OfficialLink>)</li>
                         <li><strong>Global Assist® Hotline:</strong> When you're traveling more than 100 miles from home, you have 24/7 access to a hotline for medical, legal, and other emergency assistance.</li>
@@ -543,16 +563,17 @@ function DeltaSkyMilesBlueReviewPage() {
 
                 <section id="section-user-profile" className={styles.reviewSection}>
                     <h2>Detailed User Profile: The Perfect Match for the Delta Blue</h2>
+                     <p>This card isn't for everyone. It shines brightest for three specific people:</p>
                     <div className={styles.profileCardContainer}>
                       <div className={styles.profileCard}><h4>The Aspiring Traveler</h4><p>You're new to travel rewards, live near a Delta hub, and want a simple, no-risk way to start earning miles for future trips without paying a fee.</p></div>
                       <div className={styles.profileCard}><h4>The Delta-Loyal Foodie</h4><p>Your biggest spending categories are dining out and occasional flights on Delta. The dual 2X rewards on both are a perfect match for your lifestyle.</p></div>
-                      <div className={styles.profileCard}><h4>The Strategic Downgrader</h4><p>You're a savvy card user who previously had a premium Delta card. You can downgrade to the Blue card to stop paying the annual fee while keeping your credit line and account history intact.</p></div>
+                      <div className={styles.profileCard}><h4>The Strategic Downgrader</h4><p>You're a savvy card user who previously had a premium Delta card. You can downgrade to the Blue card to stop paying the annual fee while keeping your credit line and account history intact—a smart move for your credit score.</p></div>
                     </div>
                     <h3>Who Should Look Elsewhere?</h3>
                     <ul className={styles.featureList}>
                         <li><strong>The Frequent Bag-Checker:</strong> If you check a bag on Delta even twice a year, get the Delta SkyMiles® Gold card instead. The baggage fee savings will outweigh the annual fee.</li>
-                        <li><strong>The Road Warrior:</strong> If you value comfort and efficiency, the lack of priority boarding and <Link href="/lounge/best-lounge-access-cards-2025"><a>lounge access</a></Link> will be a deal-breaker. Look to the Platinum or Reserve cards. (Small-business owners should check out the <Link href="/business/best-business-cards-2025"><a>best business travel cards</a></Link>).</li>
-                        <li><strong>The Rewards Maximizer:</strong> If you aren’t loyal to Delta, a general travel card like the Chase Sapphire Preferred® or <Link href="/cards/capital-one-ventureone"><a>Capital One Venture Rewards</a></Link> offers far more flexible points.</li>
+                        <li><strong>The Road Warrior:</strong> If you value comfort and efficiency, the lack of priority boarding and <Link href="/lounge/best-lounge-access-cards-2025"><a>lounge access</a></Link> will be a deal-breaker. Look to the Platinum or Reserve cards. (Small-business owners in this category should check out the <Link href="/business/best-business-cards-2025"><a>best business travel cards</a></Link>).</li>
+                        <li><strong>The Rewards Maximizer:</strong> If you aren’t loyal to Delta, a general travel card like the Chase Sapphire Preferred® or <Link href="/cards/capital-one-ventureone"><a>Capital One Venture Rewards</a></Link> offers far more flexible points that transfer to many different airlines and hotels.</li>
                     </ul>
                 </section>
                 
@@ -583,7 +604,7 @@ function DeltaSkyMilesBlueReviewPage() {
                 
                 <section id="section-competition" className={styles.reviewSection}>
                     <h2>The No-Fee Airline Gauntlet: Delta Blue vs. The Competition</h2>
-                    <p>How does the Delta Blue stack up against its direct, no-fee <Link href="/airlines/best-airline-cards-2025"><a>airline-specific competitors</a></Link>?</p>
+                    <p>How does the Delta Blue stack up against its direct, no-fee <Link href="/airlines/best-airline-cards-2025"><a>airline-specific competitors</a></Link>? This head-to-head comparison reveals that your ideal card depends entirely on your primary spending category.</p>
                     <DraggableTableWrapper>
                         <div className={styles.tableContainer}>
                             <table className={`${styles.statsTable} ${styles.comparisonTable}`}>
@@ -594,6 +615,7 @@ function DeltaSkyMilesBlueReviewPage() {
                                     <tr><td>Airline Rewards</td><td>2X on Delta</td><td>2X on American</td><td>2X on United</td></tr>
                                     <tr><td>In-Flight Discount</td><td>20% back</td><td>25% back</td><td>25% back</td></tr>
                                     <tr><td>Foreign Transaction Fee</td><td><strong>None</strong></td><td>3%</td><td>None</td></tr>
+                                    <tr><td>Flexibility</td><td>Low (Delta only)</td><td>Low (American only)</td><td>Low (United only)</td></tr>
                                 </tbody>
                             </table>
                         </div>
@@ -604,15 +626,21 @@ function DeltaSkyMilesBlueReviewPage() {
                 <section id="section-upgrade" className={styles.reviewSection}>
                     <h2>Stepping Up: Is the Delta Gold Card Worth the Fee?</h2>
                     <p>The biggest question for many is whether to pay for the next card up: the Delta SkyMiles® Gold American Express Card. It has a $150 annual fee. (<OfficialLink href={reviewData.official.goldCardDetails}>American Express: Delta SkyMiles Gold Card Details</OfficialLink>)</p>
+                    <p>Here’s the simple breakeven math:</p>
+                    <ul className={styles.featureList}>
+                        <li>A checked bag on Delta costs $35 each way.</li>
+                        <li>A single round-trip with a checked bag costs $70.</li>
+                        <li>Checking a bag on just three one-way flights in a year costs you $105—already covering a huge portion of the Gold card's fee.</li>
+                    </ul>
                     <p>The Gold card also comes with a much larger welcome bonus, a $200 Delta Flight Credit (after spending $10,000 in a year), and other valuable perks. For anyone who checks a bag more than once a year, the Gold card is the more financially sound choice.</p>
                 </section>
                 
                 <section id="section-fees" className={styles.reviewSection}>
                     <h2>The Full Spectrum of Rates &amp; Fees</h2>
-                    <p>While the headline is "$0 annual fee," carrying a balance can be costly. To avoid interest charges that will wipe out your miles' value, plan to pay your balance in full each month.</p>
+                    <p>While the headline is "$0 annual fee," carrying a balance can be costly. This card is for earning rewards, not for carrying debt. To avoid interest charges that will wipe out your miles' value, plan to pay your balance in full each month.</p>
                      <ul className={styles.featureList}>
                         <li><strong>Annual Fee:</strong> $0</li>
-                        <li><strong>Purchase APR:</strong> {reviewData.aprRange}, based on your creditworthiness.</li>
+                        <li><strong>Purchase APR:</strong> A variable APR, currently {reviewData.aprRange}, based on your creditworthiness.</li>
                         <li><strong>Foreign Transaction Fee:</strong> None</li>
                         <li><strong>Late/Returned Payment Fee:</strong> Up to $40.</li>
                     </ul>
@@ -633,12 +661,21 @@ function DeltaSkyMilesBlueReviewPage() {
                             <p>&quot;I would have expected Delta to provide far more... perks/benefits (e.g. free access to Sky Lounge, priority boarding... They offer none of that... DISAPPOINTING!!!&quot;)</p>
                             <footer>– An Anonymous User, the Disappointed</footer>
                         </blockquote>
+                        <blockquote className={styles.testimonialQuote}>
+                          <p>&quot;No, you should not open the delta blue card... You would be better served by a 2% cash back card... You could downgrade the gold to the blue after 1 year to avoid the annual fee.&quot;</p>
+                          <footer>– A Reddit User, the Maximizer</footer>
+                        </blockquote>
+                        <blockquote className={styles.testimonialQuote}>
+                          <p>&quot;A good travel card offset by horrendous service.&quot;</p>
+                          <footer>– A Credit Karma Member, the Service Warner (Reported a poor customer service experience after a name change).</footer>
+                        </blockquote>
                     </div>
                 </section>
 
                 <section id="section-verdict" className={styles.reviewSection}>
                     <h2>Our Expert Verdict: The Bottom Line from Travelcardinsider</h2>
-                    <p>The {reviewData.cardName} is a definite "Yes" for a very specific person—and a hard "No" for almost everyone else. It is an excellent choice for the fee-averse, Delta-loyal traveler whose spending leans heavily towards dining out. If you fly once or twice a year, travel light without checked bags, and want a no-cost way to turn restaurant meals into airline miles, this card is a simple, effective tool that will serve you well.</p>
+                    <p>So, what’s our final verdict? The {reviewData.cardName} is a definite "Yes" for a very specific person—and a hard "No" for almost everyone else.</p>
+                    <p>This card is an excellent choice for the fee-averse, Delta-loyal traveler whose spending leans heavily towards dining out. If you fly once or twice a year, travel light without checked bags, and want a no-cost way to turn restaurant meals into airline miles, this card is a simple, effective tool that will serve you well.</p>
                     <p>However, if you regularly check bags, you will lose money by choosing this card over its Gold counterpart. If you're a frequent flyer who values comfort, you'll be frustrated by the lack of perks. And if you aren't loyal to Delta, a flexible-points card is a far better option.</p>
                     <p>Think of this card not as your ultimate travel companion, but as your free boarding pass into the world of SkyMiles. It gets you on the plane, but if you want to bring luggage or sit closer to the front, you'll eventually need to upgrade your ticket.</p>
                 </section>
@@ -649,7 +686,11 @@ function DeltaSkyMilesBlueReviewPage() {
                       {structuredData['@graph'].find(item => item['@type'] === 'FAQPage').mainEntity.map((faq, index) => (
                           <details key={index} className={styles.faqItem}>
                               <summary className={styles.faqQuestion}>{faq.name}</summary>
-                              <div className={styles.faqAnswer} dangerouslySetInnerHTML={{ __html: faq.acceptedAnswer.text.replace('American Express about credit score resources', `<a href="${reviewData.official.creditScoreResources}" target="_blank" rel="noopener noreferrer sponsored">American Express about credit score resources</a>`).replace('official program rules', `<a href="${reviewData.official.skymilesProgramRules}" target="_blank" rel="noopener noreferrer sponsored">official program rules</a>`).replace('Pay with Miles feature', `<a href="${reviewData.official.payWithMiles}" target="_blank" rel="noopener noreferrer sponsored">Pay with Miles feature</a>`)}} />
+                              <div className={styles.faqAnswer}>
+                                <p dangerouslySetInnerHTML={{ __html: faq.acceptedAnswer.text }} />
+                                {index === 0 && <p><OfficialLink href={reviewData.official.creditScoreResources}>American Express: Credit Score Resources</OfficialLink></p>}
+                                {index === 1 && <p><OfficialLink href={reviewData.official.skymilesProgramRules}>Delta Air Lines: SkyMiles Program Rules</OfficialLink></p>}
+                              </div>
                           </details>
                       ))}
                     </div>
@@ -658,6 +699,7 @@ function DeltaSkyMilesBlueReviewPage() {
                 <section id="section-apply" className={styles.reviewSection}>
                     <h2>Your Next Step: How to Apply</h2>
                     <p>If your travel style and spending habits align with this card's unique profile, it's the perfect, cost-free way to start your travel rewards journey. Remember the <OfficialLink href={reviewData.official.applyWithConfidence}>"Apply with Confidence"</OfficialLink> feature, which lets you see if you're approved with no impact to your credit score.</p>
+                    <p>When you're ready to turn today's lattes into tomorrow's layovers, you can begin your application. Happy travels.</p>
                      <div className={styles.finalCtaContainer}>
                         <OfficialLink href={reviewData.applyLink} className={styles.applyNowButton}>Apply Securely on Amex's Site</OfficialLink>
                     </div>
