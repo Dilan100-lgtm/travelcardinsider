@@ -437,14 +437,37 @@ function DeltaSkyMilesBlueReviewPage() {
                 <div className={styles.cardImageContainer}>
                   <Image src={reviewData.imageUrl} alt={reviewData.cardName} width={reviewData.imageWidth} height={reviewData.imageHeight} className={styles.heroImage} priority />
                 </div>
-                <div className={styles.ratingSection}>
-                  <button type="button" className={styles.infoIconButton} aria-label="Rating Information" onClick={handleIconClick} aria-expanded={showRatingInfo}>
-                    <svg aria-hidden="true" focusable="false" className={styles.infoIcon} viewBox="0 0 16 16"><path fillRule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>
-                  </button>
-                  {siteName} Rating: <strong>{reviewData.ratingValue.toFixed(1)}/10</strong>
-                  {showRatingInfo && <RatingTooltip ref={ratingTooltipRef} ratingValue={reviewData.ratingValue} ratingCriteria={ratingCriteria} onClose={() => setShowRatingInfo(false)} />}
+               <div className={styles.ratingSection}>
+                  <span className={styles.tciRating}>
+                    <button
+                      type="button"
+                      className={styles.infoIconButton}
+                      aria-label="Rating Information"
+                      onClick={handleIconClick}
+                      aria-expanded={showRatingInfo}
+                    >
+                      <svg aria-hidden="true" focusable="false" className={styles.infoIcon} viewBox="0 0 16 16">
+                        <path fillRule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                      </svg>
+                    </button>
+                    {siteName} Rating: <strong>{reviewDataNew.ratingValue.toFixed(1)}</strong>/10
+                    {showRatingInfo && (
+                      <RatingTooltip
+                        ref={ratingTooltipRef}
+                        ratingValue={reviewDataNew.ratingValue}
+                        ratingCriteria={ratingCriteriaOriginal}
+                        onClose={() => setShowRatingInfo(false)}
+                      />
+                    )}
+                  </span>
+                  <div className={styles.starRating} title={`Rated ${reviewDataNew.ratingValue} out of 10 stars`}>
+                      ★★★★★
+                      <span className={styles.filledStars} style={{ '--rating': `${(reviewDataNew.ratingValue / 10) * 100}%` }}>
+                        ★★★★★
+                      </span>
+                  </div>
                 </div>
-                <div className={styles.starRating} title={`Rated ${reviewData.ratingValue} out of 10 stars`}>★★★★★<span className={styles.filledStars} style={{'--rating': `${(reviewData.ratingValue / 10) * 100}%`}}>★★★★★</span></div>
                 <div className={styles.ratingDescription}>
                     <i>A great starting point for Delta flyers who want to earn miles on dining without an annual fee, though it lacks premium perks.</i>
                 </div>
