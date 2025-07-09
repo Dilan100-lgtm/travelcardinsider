@@ -66,10 +66,10 @@ const reviewData = {
       }
   },
   siteName: siteName,
-  imageUrl        : '/cards/delta-skymiles-blue-card-promo.png', // UPDATE with your card image path
+  imageUrl        : '/NUS000000267_480x304_straight_withname.webp', // UPDATE with your card image path
   imageWidth      : 1290,
   imageHeight     : 812,
-  ratingValue     : 7.8,  // Assigned based on review verdict: good for a niche audience
+  ratingValue     : 6.3,  // Assigned based on review verdict: good for a niche audience
   ratingCount     : 185,  // Placeholder user rating count
   reviewBody      : 'Our editors evaluate the Delta SkyMiles® Blue American Express Card based on its rewards structure (2X on Dining & Delta), its value as a no-annual-fee card, welcome offer accessibility, travel perks like no foreign transaction fees, and its key drawbacks like the lack of a free checked bag, to determine its overall value for budget-conscious, Delta-loyal travelers.',
   aprRange        : '20.24% to 29.24% variable',
