@@ -646,7 +646,7 @@ function DeltaSkyMilesBlueReviewPage() {
                 
                 <section id="section-competition" className={styles.reviewSection}>
                     <h2>The No-Fee Airline Gauntlet: Delta Blue vs. The Competition</h2>
-                    <p>How does the Delta Blue stack up against its direct, no-fee <Link href="/airlines/best-airline-cards-2025"><a>airline-specific competitors</a></Link>? This head-to-head comparison reveals that your ideal card depends entirely on your primary spending category.</p>
+                    <p>How does the Delta Blue stack up against its direct, no-fee <Link href="/airline/best-airline-cards-2025"><a>airline-specific competitors</a></Link>? This head-to-head comparison reveals that your ideal card depends entirely on your primary spending category.</p>
                     <DraggableTableWrapper>
                         <div className={styles.tableContainer}>
                             <table className={`${styles.statsTable} ${styles.comparisonTable}`}>
