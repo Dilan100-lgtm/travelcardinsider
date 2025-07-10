@@ -74,7 +74,7 @@ const chaseDuoCardData = [
     id: 'chaseFreedomUnlimited',
     name: 'Chase Freedom Unlimited® Card',
     issuer: 'Chase',
-    imageSrc: '/path/to/your/freedom_unlimited_card.png', // ❗ Replace
+    imageSrc: '/freedom_unlimited_card_alt (1).png', // ❗ Replace
     imageAlt: 'Chase Freedom Unlimited Card',
     annualFee: '$0',
     officialCardPageLink: 'https://creditcards.chase.com/cash-back-credit-cards/freedom/unlimited',
