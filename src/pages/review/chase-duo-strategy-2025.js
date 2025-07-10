@@ -370,7 +370,7 @@ function ChaseDuoStrategyPage2025() {
         <article>
             <section className={styles.reviewSection}>
                 <p>For the modern American traveler, the world of credit card rewards can feel like a high-stakes game. On one side, you have premium travel cards offering luxurious perks like business-class flights and hotel suite upgrades, but they come with intimidating annual fees that can reach nearly $700. On the other, there are no-annual-fee cards that, while easy on the wallet, often leave significant value on the table through missed rewards and fewer travel protections. Many people settle for a middle-ground card but miss out on maximizing their earnings by using it for every purchase.</p>
-                <p>There is, however, a smarter way. The "two-card wallet" is an expert-backed strategy that delivers a rewards-earning powerhouse rivaling many premium setups, all while keeping your total annual fees under $150. For 2025, the clear winners in this strategy are the Chase Sapphire Preferred® Card and the Chase Freedom Unlimited® Card. Together, this "Chase Duo" creates a system designed to maximize the rewards on every dollar you spend.</p>
+                <p>There is, however, a smarter way. The "two-card wallet" is an expert-backed strategy that delivers a rewards-earning powerhouse rivaling many premium setups, all while keeping your total annual fees under $150. For 2025, the clear winners in this strategy are the<b> Chase Sapphire Preferred® Card and the Chase Freedom Unlimited® Card </b>. Together, this "Chase Duo" creates a system designed to maximize the rewards on every dollar you spend.</p>
             </section>
             
             <section className={styles.reviewSection}>
