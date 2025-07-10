@@ -795,34 +795,8 @@ function DeltaPlatinumAmexReviewPage() {
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>Card Review</td>
-      <td>
-        <Link href={pagePath}>
-          <a>Full Review</a>
-        </Link>
-      </td>
-      <td>
-        <Link href="/reviews/chase-sapphire-preferred-review">
-          <a>Review</a>
-        </Link>
-      </td>
-      <td>
-        <Link href="/reviews/capital-one-venture-x-review">
-          <a>Review</a>
-        </Link>
-      </td>
-      <td>
-        <Link href="/reviews/united-explorer-card-review">
-          <a>Review</a>
-        </Link>
-      </td>
-      <td>
-        <Link href="/reviews/delta-skymiles-gold-amex-review">
-          <a>Review</a>
-        </Link>
-      </td>
-    </tr>
+    
+      
     <tr>
       <td>Annual Fee</td>
       <td>${reviewData.annualFee}</td>
