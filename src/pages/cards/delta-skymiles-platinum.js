@@ -544,7 +544,7 @@ function DeltaPlatinumAmexReviewPage() {
                   <p>The Delta SkyMiles® Platinum Amex straddles the middle ground between entry-level airline cards and ultra-premium options. Its $350 annual fee buys Delta-only perks—an annual Main Cabin Companion Certificate, fast-track Medallion status boosts, and 15 % off Delta award flights—rather than flexible, transferable points. For loyal Delta flyers who’ll use those benefits, it’s a smart co-pilot; for everyone else, more versatile or lounge-focused cards may fly farther.</p>
                 </section>
 
-                <Image src="/delta-plane-wing.jpg" alt="View of a Delta plane wing from a window, symbolizing the Delta-centric travel experience." width={800} height={500} className={styles.contentImage} loading="lazy" />
+                <Image src="/Adobe Express - file.png" alt="View of a Delta plane wing from a window, symbolizing the Delta-centric travel experience." width={800} height={500} className={styles.contentImage} loading="lazy" />
 
                 <section id="section-snapshot" className={styles.reviewSection}>
                     <h2>Card Snapshot &amp; &quot;Best For&quot; Tagline</h2>
