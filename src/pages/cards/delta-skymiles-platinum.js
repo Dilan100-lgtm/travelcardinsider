@@ -63,16 +63,16 @@ const reviewData = {
       }
   },
   siteName: siteName,
-  imageUrl: '/delta-skymiles-platinum-card.png', // UPDATE with actual Delta Platinum card image URL
+  imageUrl: '/NUS000000269_480x304_straight_withname.avif', // UPDATE with actual Delta Platinum card image URL
   imageWidth: 1290,
   imageHeight: 812,
-  ratingValue: 8.7, // UPDATE AS NEEDED (e.g. 4.35/5 * 2)
+  ratingValue: 8.3, // UPDATE AS NEEDED (e.g. 4.35/5 * 2)
   ratingCount: 310, // UPDATE AS NEEDED
   reviewBody: 'Our editors evaluate the Delta SkyMiles® Platinum American Express Card based on its core airline loyalty benefits, including the annual Companion Certificate, MQD Headstart for elite status, TakeOff 15 discount, statement credits, rewards structure, the annual fee, and its overall value for frequent Delta Air Lines travelers.',
   aprRange: '20.24% to 29.24% variable', // From your text
   annualFee: 350,
   applyLink: 'https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-platinum-american-express-card/', // UPDATE THIS with your affiliate link
-  ratesLink: 'https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-platinum-american-express-card/rates-and-fees',
+  ratesLink: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/delta-skymiles-platinum-american-express-card/25330-10-0#FeeTable',
   // --- Official Citation Links ---
   officialCardPageLink: 'https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-platinum-american-express-card/',
   companionCertTermsLink: 'https://www.delta.com/us/en/skymiles/airline-credit-cards/companion-certificate',
