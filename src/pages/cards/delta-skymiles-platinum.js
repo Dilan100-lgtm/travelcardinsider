@@ -691,7 +691,10 @@ function DeltaPlatinumAmexReviewPage() {
                         <li><strong>Fee Credit for Global Entry or TSA PreCheck®:</strong> The card offers a statement credit to cover the application fee for Global Entry (up to $120) or TSA PreCheck® (up to $85). <a href={reviewData.globalEntryTSALink} target="_blank" rel="noopener noreferrer sponsored" className={styles.inlineLink}>Source: American Express</a></li>
                         <li><strong>20% Back on In-Flight Purchases:</strong> Receive a 20% savings as a statement credit on eligible in-flight purchases like food and drinks.</li>
                     </ul>
+
                 </section>
+
+                <Image src="/deltaamenitiesrefresh_hero.jpg" alt="View of a Delta plane wing from a window, symbolizing the Delta-centric travel experience." width={800} height={500} className={styles.contentImage} loading="lazy" />
                 
                 <section id="section-protections" className={styles.reviewSection}>
                     <h2>Essential Travel & Purchase Protections</h2>
@@ -757,6 +760,9 @@ function DeltaPlatinumAmexReviewPage() {
                         </div>
                     </DraggableTableWrapper>
                 </section>
+
+                <Image src="/dal_seasky0625_498.jpg" alt="View of a Delta plane wing from a window, symbolizing the Delta-centric travel experience." width={800} height={500} className={styles.contentImage} loading="lazy" />
+                
                 
                 <section id="section-comparison" className={styles.reviewSection}>
                     <h2>How It Stacks Up: Competitive Card Comparison</h2>
