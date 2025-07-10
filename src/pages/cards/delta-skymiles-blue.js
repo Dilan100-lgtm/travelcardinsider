@@ -180,7 +180,7 @@ const structuredData = {
       '@id'          : `${pageUrlFull}#breadcrumbs`,
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: siteName, item: siteUrl },
-        { '@type': 'ListItem', position: 2, name: 'Credit Card Reviews', item: `${siteUrl}/reviews` },
+        { '@type': 'ListItem', position: 2, name: 'Delta SkyMiles® Blue Amex Review', item: `${siteUrl}/reviews` },
         { '@type': 'ListItem', position: 3, name: `${reviewData.cardName} Review`, item: pageUrlFull },
       ],
     },
@@ -365,7 +365,7 @@ function DeltaSkyMilesBlueReviewPage() {
         <meta property="og:image:width" content={String(reviewData.imageWidth)} />
         <meta property="og:image:height" content={String(reviewData.imageHeight)} />
         <meta property="article:publisher" content={`https://www.facebook.com/YourTravelcardinsiderPage`} />
-        <meta property="article:section" content="Credit Card Reviews" />
+        <meta property="article:section" content="Delta SkyMiles® Blue Amex Review" />
         <meta property="article:published_time" content={publishDate} />
         <meta property="article:modified_time"  content={updateDate} />
         <meta property="article:author" content={`${siteUrl}${reviewData.author.fullBioLink}`} />
@@ -455,7 +455,7 @@ function DeltaSkyMilesBlueReviewPage() {
                       <RatingTooltip
                         ref={ratingTooltipRef}
                         ratingValue={reviewData.ratingValue}
-                        ratingCriteria={ratingCriteriaOriginal}
+                        ratingCriteria={ratingCriteria}
                         onClose={() => setShowRatingInfo(false)}
                       />
                     )}
