@@ -544,8 +544,19 @@ function DeltaPlatinumAmexReviewPage() {
                   <p>The Delta SkyMiles® Platinum Amex straddles the middle ground between entry-level airline cards and ultra-premium options. Its $350 annual fee buys Delta-only perks—an annual Main Cabin Companion Certificate, fast-track Medallion status boosts, and 15 % off Delta award flights—rather than flexible, transferable points. For loyal Delta flyers who’ll use those benefits, it’s a smart co-pilot; for everyone else, more versatile or lounge-focused cards may fly farther.</p>
                 </section>
 
-                <Image src="/Adobe Express - file.png" alt="View of a Delta plane wing from a window, symbolizing the Delta-centric travel experience." width={800} height={500} className={styles.contentImage} loading="lazy" />
-
+               <div className={styles.contentImageWrapper}>
+  <Image 
+    src="/Adobe Express - file.png" 
+    alt="Screenshot of the official American Express webpage for the Delta SkyMiles Platinum Card." 
+    width={800} 
+    height={500} 
+    className={styles.contentImage} 
+    loading="lazy" 
+  />
+  <p className={styles.caption}>
+    The official American Express website provides the most current details on the Delta SkyMiles® Platinum Card's benefits and terms.
+  </p>
+</div>
                 <section id="section-snapshot" className={styles.reviewSection}>
                     <h2>Card Snapshot &amp; &quot;Best For&quot; Tagline</h2>
                     <p><strong>Best For:</strong> {summaryBoxData.bestFor}</p>
@@ -753,23 +764,107 @@ function DeltaPlatinumAmexReviewPage() {
                     <DraggableTableWrapper>
                         <div className={styles.tableContainer}>
                             <table className={`${styles.statsTable} ${styles.comparisonTable}`}>
-                                <thead><tr><th>Feature</th><th>Delta SkyMiles® Platinum Amex</th><th>Chase Sapphire Preferred® Card</th><th>Capital One Venture X</th><th>United℠ Explorer Card</th><th>Delta SkyMiles® Gold Amex</th></tr></thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Card Review</td>
-                                        <td><Link href={pagePath}><a>Full Review</a></Link></td>
-                                        <td><Link href="/reviews/chase-sapphire-preferred-review"><a>Review</a></Link></td>
-                                        <td><Link href="/reviews/capital-one-venture-x-review"><a>Review</a></Link></td>
-                                        <td><Link href="/reviews/united-explorer-card-review"><a>Review</a></Link></td>
-                                        <td><Link href="/reviews/delta-skymiles-gold-amex-review"><a>Review</a></Link></td>
-                                    </tr>
-                                    <tr><td>Annual Fee</td><td>${reviewData.annualFee}</td><td>$95</td><td>$395</td><td>$0 intro, then $150</td><td>$0 intro, then $150</td></tr>
-                                    <tr><td>Welcome Offer</td><td>90,000 miles</td><td>75,000 points</td><td>75,000 miles</td><td>60,000 miles</td><td>80,000 miles</td></tr>
-                                    <tr><td>Primary Perk</td><td>Annual Companion Certificate</td><td>$50 annual hotel credit</td><td>$300 annual travel credit</td><td>2 United Club passes/year</td><td>$200 Delta flight credit</td></tr>
-                                    <tr><td>Status/Lounge</td><td>MQD Headstart & Boost</td><td>Points transfer 1:1</td><td>Unlimited Lounge Access</td><td>Free first checked bag</td><td>Free first checked bag</td></tr>
-                                    <tr><td>Foreign Fee</td><td>None</td><td>None</td><td>None</td><td>None</td><td>None</td></tr>
-                                </tbody>
-                            </table>
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th>
+        <Link href={pagePath}>
+          <a>Delta SkyMiles® Platinum Amex</a>
+        </Link>
+      </th>
+      <th>
+        <Link href="/reviews/chase-sapphire-preferred-review">
+          <a>Chase Sapphire Preferred® Card</a>
+        </Link>
+      </th>
+      <th>
+        <Link href="/reviews/capital-one-venture-x-review">
+          <a>Capital One Venture X</a>
+        </Link>
+      </th>
+      <th>
+        <Link href="/reviews/united-explorer-card-review">
+          <a>United℠ Explorer Card</a>
+        </Link>
+      </th>
+      <th>
+        <Link href="/reviews/delta-skymiles-gold-amex-review">
+          <a>Delta SkyMiles® Gold Amex</a>
+        </Link>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Card Review</td>
+      <td>
+        <Link href={pagePath}>
+          <a>Full Review</a>
+        </Link>
+      </td>
+      <td>
+        <Link href="/reviews/chase-sapphire-preferred-review">
+          <a>Review</a>
+        </Link>
+      </td>
+      <td>
+        <Link href="/reviews/capital-one-venture-x-review">
+          <a>Review</a>
+        </Link>
+      </td>
+      <td>
+        <Link href="/reviews/united-explorer-card-review">
+          <a>Review</a>
+        </Link>
+      </td>
+      <td>
+        <Link href="/reviews/delta-skymiles-gold-amex-review">
+          <a>Review</a>
+        </Link>
+      </td>
+    </tr>
+    <tr>
+      <td>Annual Fee</td>
+      <td>${reviewData.annualFee}</td>
+      <td>$95</td>
+      <td>$395</td>
+      <td>$0 intro, then $150</td>
+      <td>$0 intro, then $150</td>
+    </tr>
+    <tr>
+      <td>Welcome Offer</td>
+      <td>90,000 miles</td>
+      <td>75,000 points</td>
+      <td>75,000 miles</td>
+      <td>60,000 miles</td>
+      <td>80,000 miles</td>
+    </tr>
+    <tr>
+      <td>Primary Perk</td>
+      <td>Annual Companion Certificate</td>
+      <td>$50 annual hotel credit</td>
+      <td>$300 annual travel credit</td>
+      <td>2 United Club passes/year</td>
+      <td>$200 Delta flight credit</td>
+    </tr>
+    <tr>
+      <td>Status/Lounge</td>
+      <td>MQD Headstart & Boost</td>
+      <td>Points transfer 1:1</td>
+      <td>Unlimited Lounge Access</td>
+      <td>Free first checked bag</td>
+      <td>Free first checked bag</td>
+    </tr>
+    <tr>
+      <td>Foreign Fee</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
                         </div>
                     </DraggableTableWrapper>
                      <p>This comparison crystallizes the choice: flexible cards like the Sapphire Preferred and Venture X offer superior points ecosystems, but they cannot provide Delta-specific benefits like the Companion Certificate or a direct path to Medallion status. The choice comes down to a simple trade-off: are you a "points maximizer" who values flexibility, or a "Delta loyalist" who values an enhanced experience with your preferred airline? For those who need even more premium perks like lounge access, see our <Link href="/reviews/delta-skymiles-reserve-amex-review"><a>Delta SkyMiles® Reserve Amex review</a></Link>.</p>
