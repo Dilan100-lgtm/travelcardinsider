@@ -52,7 +52,7 @@ const worldEliteCardData = [
     id: 'citiAAdvantageExecutive',
     name: 'Citi® / AAdvantage® Executive Card',
     issuer: 'Citi',
-    imageSrc: '/citi_aadvantage_executive_card.png', // ❗ Replace
+    imageSrc: '/CardArt-8.webp', // ❗ Replace
     imageAlt: 'Citi / AAdvantage Executive World Elite Mastercard',
     annualFee: '$595',
     officialCardPageLink: 'https://www.citi.com/credit-cards/citi-aa-exec-card',
@@ -70,7 +70,7 @@ const worldEliteCardData = [
     id: 'bofaPremiumRewardsElite',
     name: 'Bank of America® Premium Rewards® Elite Card',
     issuer: 'Bank of America',
-    imageSrc: '/bofa_premium_rewards_elite_card.png', // ❗ Replace
+    imageSrc: '/prmeltcm_v_infinite_250px.png', // ❗ Replace
     imageAlt: 'Bank of America Premium Rewards Elite Card',
     annualFee: '$550',
     officialCardPageLink: 'https://www.bankofamerica.com/credit-cards/products/premium-rewards-elite-credit-card/',
@@ -89,7 +89,7 @@ const worldEliteCardData = [
     id: 'biltMastercard',
     name: 'Bilt Mastercard®',
     issuer: 'Bilt Rewards / Wells Fargo',
-    imageSrc: '/bilt_mastercard.png', // ❗ Replace
+    imageSrc: '/high.mp4', // ❗ Replace
     imageAlt: 'Bilt Mastercard',
     annualFee: '$0',
     officialCardPageLink: 'https://www.biltrewards.com/card',
