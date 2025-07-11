@@ -1209,6 +1209,7 @@
   border-radius: 8px;
   text-align: center;
   border: 1px solid #cce0ff;
+  text-align: center;
 }
 .midArticleCta h3 {
   margin-top: 0;
@@ -1242,6 +1243,7 @@
 .ctaSecondaryButton,
 .ratesFeesLinkButton {
   display: inline-block;
+  align-items: center;
   padding: var(--spacing-sm, 10px) var(--spacing-md, 16px);
   font-family: var(--font-family-main);
   font-size: 1rem;
@@ -1256,6 +1258,7 @@
   transition: all 0.2s ease-in-out;
   line-height: 1.4;
   white-space: nowrap;
+
 }
 
 .ctaSecondaryButton:hover,
