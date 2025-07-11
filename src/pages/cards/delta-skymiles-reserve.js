@@ -582,6 +582,20 @@ function DeltaReserveAmexReviewPage() {
                   <p>However, be aware of Amex’s “once per lifetime” rule, which means you’re likely ineligible for the bonus if you’ve had this specific card before. Also, closing your account shortly after receiving a bonus can cause the issuer to “claw back” the miles, so plan to keep the card for at least one full year.</p>
                 </section>
 
+                <div className={styles.contentImageWrapper}>
+                  <Image 
+                    src="/Untitled.png" 
+                    alt="Screenshot of the official American Express webpage for the Delta SkyMiles Platinum Card." 
+                    width={800} 
+                    height={500} 
+                    className={styles.contentImage} 
+                    loading="lazy" 
+                  />
+                  <p className={styles.caption}>
+                    The official American Express website provides the most current details on the Delta SkyMiles® Platinum Card's benefits and terms.
+                  </p>
+                </div>
+
                 <section id="section-companion-cert" className={styles.reviewSection}>
                   <h2>Golden Ticket: First-Class Companion Certificate</h2>
                   <p>After the welcome bonus, the Annual Companion Certificate becomes the card’s single most powerful perk. Received each year upon renewal (starting in year two), it’s a buy-one-get-one-free ticket that elevates the card far above its peers.</p>
@@ -632,6 +646,15 @@ function DeltaReserveAmexReviewPage() {
                     <p>However, outside of that category, the card's potential drops off. On all other purchases—groceries, gas, dining, and more—it earns a flat 1X mile per dollar. In today's competitive market, that's a significant weakness.</p>
                     <p>This structure encourages a "two-card" strategy: use the Reserve for all things Delta to unlock its unique travel perks and status benefits, and use a different, high-earning card (even a no-fee option like the one in our <Link href={reviewData.deltaBlueReviewLink}><a>Delta SkyMiles® Blue Amex review</a></Link>) for all other daily spending to maximize your overall rewards.</p>
                 </section>
+
+                <Image 
+                    src="/wooden-bridge-koh-nangyuan-island-surat-thani-thailand_result.webp" 
+                    alt="Screenshot of the official American Express webpage for the Delta SkyMiles Platinum Card." 
+                    width={800} 
+                    height={500} 
+                    className={styles.contentImage} 
+                    loading="lazy" 
+                  />
 
                 <section id="section-statement-credits" className={styles.reviewSection}>
                   <h2>Statement-Credit “Coupon Book” ($560 Potential)</h2>
@@ -810,6 +833,15 @@ function DeltaReserveAmexReviewPage() {
                       </blockquote>
                   </div>
                 </section>
+
+                <Image 
+                    src="/febe-vanermen-4mluzm805-I-unsplash_result.webp" 
+                    alt="Screenshot of the official American Express webpage for the Delta SkyMiles Platinum Card." 
+                    width={800} 
+                    height={500} 
+                    className={styles.contentImage} 
+                    loading="lazy" 
+                  />
 
                 <section id="section-protections" className={styles.reviewSection}>
                     <h2>Travel &amp; Purchase Protections</h2>
