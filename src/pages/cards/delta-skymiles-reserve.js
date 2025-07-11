@@ -11,7 +11,7 @@ import dynamic from 'next/dynamic';
 import styles from '../../styles/ReviewPage.module.css';
 
 // --- Component Imports ---
-import TableOfContents from '../../components/TableOfContents'; // <-- FIX: Added this import
+import TableOfContents from '../../components/TableOfContents';
 import IconGift from '../../components/icons/icon-gift.svg';
 import IconStar from '../../components/icons/icon-star.svg';
 import IconCheck from '../../components/icons/icon-Credit Card.svg';
@@ -540,8 +540,10 @@ function DeltaReserveAmexReviewPage() {
                             <div className={styles.summaryItem}><span className={styles.summaryIcon}><IconPlane /></span> <span className={styles.summaryLabel}>Premium Perks:</span> <span className={styles.summaryValue}>{summaryBoxData.travelPerk}</span></div>
                             <div className={styles.summaryItem} data-full-width="true"><span className={styles.summaryIcon}><IconPlus /></span> <span className={styles.summaryLabel}>Best For:</span> <span className={styles.summaryValue}>{summaryBoxData.bestFor}</span></div>
                         </div>
+                        {/* --- REWARDS CALCULATOR LINK ADDED --- */}
                         <div className={styles.summaryBoxActions}>
-                            <a href={reviewData.ratesLink} className={styles.summaryRatesLink} target="_blank" rel="noopener noreferrer sponsored">See Rates & Fees</a>
+                            <a href={reviewData.ratesLink} className={styles.summaryRatesLink} target="_blank" rel="noopener noreferrer sponsored">See Card Rates & Fees</a>
+                            <a href='/rewards-calculator' className={`${styles.heroRewardsCalculator} ${styles.summaryButton}`} target="_blank" rel="noopener noreferrer">Rewards Calculator</a>
                         </div>
                     </div>
                 </header>
@@ -639,6 +641,21 @@ function DeltaReserveAmexReviewPage() {
                       <li><strong>$200 Delta Stays Credit:</strong> Earn up to a $200 statement credit each year when you book a prepaid hotel or vacation rental through Delta Stays on delta.com.</li>
                   </ul>
                 </section>
+
+                {/* --- MID-ARTICLE CTA ADDED --- */}
+                <section className={styles.midArticleCta}>
+                    <h3>Ready to Elevate Your Travel?</h3>
+                    <p>With a First-Class Companion Certificate and premium lounge access, the Delta Reserve could be your key to a better travel experience.</p>
+                    <div className={styles.heroCtaContainer} style={{ marginTop: '1rem' }}>
+                        <a href={reviewData.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.applyNowButton}>
+                            Apply on Amex Site
+                        </a>
+                        <a href={reviewData.ratesLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.ratesFeesLinkButton}>
+                            See Rates & Fees
+                        </a>
+                    </div>
+                    <span className={styles.ctaDisclaimer}>Offers & benefits are subject to change. Terms apply.</span>
+                </section>
                 
                 <section id="section-real-world-value" className={styles.reviewSection}>
                     <h2>Year-in-Life Value Example</h2>
@@ -657,7 +674,7 @@ function DeltaReserveAmexReviewPage() {
                                     <tr><td><strong>Status Progress</strong></td><td></td><td></td></tr>
                                     <tr><td>MQD Headstart</td><td></td><td>+$2,500 MQDs</td></tr>
                                     <tr><td>MQD Boost</td><td>$30,000 annual spend / $10</td><td>+$3,000 MQDs</td></tr>
-                                    <tr><td><strong>Total MQDs Earned</strong></td><td></td><td><strong>$5,500 (Silver Medallion)</strong></td></tr>
+                                    <tr className={styles.totalRow}><td><strong>Total MQDs Earned</strong></td><td></td><td><strong>$5,500 (Silver Medallion)</strong></td></tr>
                                     <tr><td><strong>Value Gained</strong></td><td></td><td></td></tr>
                                     <tr><td>Welcome Offer Value</td><td>95,000 miles @ 1.2 cents/mile</td><td>+$1,140</td></tr>
                                     <tr><td>Statement Credits</td><td>Full use of Resy & Rideshare</td><td>+$360</td></tr>
