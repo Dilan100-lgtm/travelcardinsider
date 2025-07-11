@@ -89,7 +89,7 @@ const worldEliteCardData = [
     id: 'biltMastercard',
     name: 'Bilt Mastercard®',
     issuer: 'Bilt Rewards / Wells Fargo',
-    imageSrc: '/high.mp4', // ❗ Replace
+    imageSrc: '/Bilt_card_D.png', // ❗ Replace
     imageAlt: 'Bilt Mastercard',
     annualFee: '$0',
     officialCardPageLink: 'https://www.biltrewards.com/card',
