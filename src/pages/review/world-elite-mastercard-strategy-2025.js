@@ -15,7 +15,7 @@ const SITE_BASE_URL = 'https://www.travelcardinsider.com'; // Your website's bas
 const PAGE_PATH = '/guides/world-elite-mastercard-strategy-2025'; // ✏️ SEO-friendly URL for this page
 const PAGE_URL = `${SITE_BASE_URL}${PAGE_PATH}`;
 const SITE_NAME = 'Travel Card Insider';
-const HERO_IMAGE_SRC = '/world-elite-cards-on-desk.jpg'; // ❗ Replace with your optimised hero image
+const HERO_IMAGE_SRC = '/ross-sneddon-Kf7hX64kLw0-unsplash.webp'; // ❗ Replace with your optimised hero image
 const HERO_IMAGE_ALT = 'A World Elite Mastercard on a travel-themed desk, highlighting the card\'s hidden benefits.';
 const DATE_PUBLISHED = '2025-07-12'; // ✏️ As per article date
 const DATE_MODIFIED = '2025-07-12'; // ✏️ Update whenever you edit copy
@@ -311,7 +311,6 @@ function WorldEliteStrategyPage2025() {
       <main className={styles.reviewContainer}>
         <header className={styles.reviewHeader}>
           <h1>Your World Elite Mastercard Has Hidden Perks Worth Hundreds. Here’s How to Find Them.</h1>
-          <p className={styles.subheading}>That premium card in your wallet is more than just a piece of metal. But the most valuable benefits aren't from Mastercard—they're from your bank. We break down the hidden value almost everyone misses.</p>
           
           {/* Author Bio Component */}
           <div
@@ -365,7 +364,8 @@ function WorldEliteStrategyPage2025() {
           Please verify all details directly with the card issuer before applying. This page may contain affiliate links.
           The opinions expressed here are the author's alone and have not been reviewed or endorsed by any bank or credit card issuer.
         </p>
-
+<p className={styles.subheading}>That premium card in your wallet is more than just a piece of metal. But the most valuable benefits aren't from Mastercard—they're from your bank. We break down the hidden value almost everyone misses.</p>
+          
         <article>
             <section className={styles.reviewSection}>
                 <p>That shiny "World Elite Mastercard" in your wallet promises luxury and seamless travel. But many travelers face a confusing reality, like arriving at an airport lounge expecting free entry, only to be quoted a $35 fee. This frustration highlights the single most important truth about premium credit cards in 2025: The "World Elite" logo is a starting point, not the final destination.</p>
