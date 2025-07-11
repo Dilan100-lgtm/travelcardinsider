@@ -63,7 +63,7 @@ const reviewData = {
       }
   },
   siteName: siteName,
-  imageUrl: '/delta-reserve-card-image.png', // Replace with actual Delta Reserve card image URL
+  imageUrl: '/NUS000000270_480x304_straight_withname.avif', // Replace with actual Delta Reserve card image URL
   imageWidth: 1290,
   imageHeight: 812,
   ratingValue: 8.8,
