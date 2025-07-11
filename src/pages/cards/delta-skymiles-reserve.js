@@ -1,777 +1,698 @@
-// Example Path: pages/reviews/delta-skymiles-reserve.js
-// Or: pages/reviews/[slug].js (if using dynamic routing with 'delta-skymiles-reserve' as slug)
+/* ------------------------------------------------------------------
+    File:  pages/reviews/delta-reserve-amex-review.js
+    Route: https://www.travelcardinsider.com/reviews/delta-reserve-amex-review
+------------------------------------------------------------------- */
 
-// !!! WARNING: THIS FILE CONTAINS PLACEHOLDER DATA/URLs/DIMENSIONS !!!
-// !!! YOU MUST REPLACE ALL PLACEHOLDERS MARKED WITH '!!!' BEFORE DEPLOYMENT !!!
-// !!! VERIFY ALL CARD DETAILS & SCHEMA VALUES AGAINST OFFICIAL ISSUER INFO !!!
-
-import React, { useState, useEffect, useCallback, useRef } from 'react'; // Hooks for tooltip
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from '../../styles/ReviewPage.module.css'; // Using the REVIEW CSS module
-import Header from '../../components/Header'; // Assuming you have these components
-import Footer from '../../components/Footer'; // Assuming you have these components
+import dynamic from 'next/dynamic';
+import styles from '../../styles/ReviewPage.module.css';
 
-// Simplified data object based on the final template structure
+// --- Component Imports (assuming paths are correct in your project) ---
+import TableOfContents from '../../components/TableOfContents';
+import IconGift from '../../components/icons/icon-gift.svg';
+import IconStar from '../../components/icons/icon-star.svg';
+import IconCheck from '../../components/icons/icon-Credit Card.svg';
+import IconPlus from '../../components/icons/icon-target.svg';
+import IconPlane from '../../components/icons/icon-plane.svg';
+import IconDollar from '../../components/icons/icon-dollar.svg';
+
+const RatingTooltip = dynamic(() => import('../../components/RatingTooltip'), { ssr: false, loading: () => null });
+
+/* ──────────────────────────────
+    CONSTANTS & STATIC DATA
+    ────────────────────────────── */
+const siteName = 'Travelcardinsider';
+const siteUrl = 'https://www.travelcardinsider.com';
+const pagePath = '/reviews/delta-reserve-amex-review';
+const pageUrlFull = `${siteUrl}${pagePath}`;
+const publishDate = '2025-07-11';
+const updateDate = '2025-07-11';
+
 const reviewData = {
   cardName: 'Delta SkyMiles® Reserve American Express Card',
-  title: 'Delta SkyMiles® Reserve American Express Card – In-Depth 2025 Review',
-  description: 'A comprehensive 2000-word review of the Delta SkyMiles® Reserve American Express Card, focusing on lounge access (Delta Sky Club, Centurion), MQM boosts, companion certificate, 2025 updates, and advanced usage tips.',
-  keywords: 'Delta, SkyMiles, Reserve, American Express, lounge access, 2025, MQM, companion certificate',
-  author: 'TravelCardInsider', // *** REPLACE with your actual author/site name ***
-  imageUrl: '/NUS000000270_480x304_straight_withname.avif', // *** VERIFY PATH in /public ***
-  ratingValue: 8.8, // From Delta Reserve HTML
-  applyLink: 'https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-reserve-american-express-card/', // *** REPLACE with actual Reserve APPLY URL ***
-  ratesLink: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/delta-skymiles-reserve-american-express-card/25330-10-0#FeeTable', // *** VERIFY URL ***
-  // Image dimensions (MUST BE ACCURATE for next/image) - Guessed from filename
-  imageWidth: 480, // *** REPLACE with actual image width ***
-  imageHeight: 304, // *** REPLACE with actual image height ***
+  title: 'Delta Reserve Amex Review (2025): Is the $650 Fee Worth It?',
+  description: 'A deep dive into the Delta SkyMiles® Reserve Amex card. We analyze the First-Class Companion Certificate, Sky Club access, MQD shortcuts, and the $650 annual fee to see if it’s the ultimate card for Delta loyalists.',
+  keywords: 'Delta Reserve Amex review, Delta SkyMiles Reserve, Amex Delta Reserve, companion certificate, Sky Club access, Centurion Lounge, MQD Headstart, airline credit card review 2025',
+  author: {
+      name: 'Dilan Madushanka',
+      title: 'Founder & Lead Editor',
+      imageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg',
+      imageWidth: 40,
+      imageHeight: 40,
+      tooltipImageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg',
+      tooltipImageWidth: 60,
+      tooltipImageHeight: 60,
+      expertise: [
+          'Premium Airline Co-branded Cards',
+          'Delta SkyMiles & Medallion Program',
+          'Airport Lounge Access & Benefits',
+          'Credit Card Rewards Optimization',
+          'American Express Cards'
+      ],
+      bioSnippet: 'Dilan Madushanka is the founder and lead editor of Travelcardinsider, dedicated to demystifying credit cards and uncovering their real-world value for smarter travel and rewards.',
+      fullBioLink: '/author/dilan-madushanka',
+  },
+  siteName: siteName,
+  imageUrl: '/delta-reserve-card.png', // Placeholder for actual Reserve card image
+  imageWidth: 1290,
+  imageHeight: 812,
+  ratingValue: 8.8, 
+  ratingCount: 352,
+  reviewBody: 'Our editors evaluate the Delta SkyMiles® Reserve American Express Card based on its premium airline loyalty benefits, including the annual First-Class Companion Certificate, Delta Sky Club & Centurion Lounge access, MQD Headstart for elite status, statement credits, rewards, the annual fee, and its overall value for top-tier Delta Air Lines travelers.',
+  aprRange: '20.99% to 29.99% variable',
+  annualFee: 650,
+  applyLink: 'https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-reserve-american-express-card/', // UPDATE with your affiliate link
+  // --- Official Citation Links from the article ---
+  ratesFeesLink: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/delta-skymiles-reserve-american-express-card/25330-10-0#FeeTable',
+  benefitsGuideLink: 'https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-reserve-american-express-card/benefits',
+  offerTermsLink: 'https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-reserve-american-express-card/',
+  companionCertTermsLink: 'https://www.delta.com/us/en/skymiles/airline-credit-cards/companion-certificate',
+  skyClubAccessLink: 'https://www.delta.com/us/en/delta-sky-club/access',
+  centurionLoungeLink: 'https://www.thecenturionlounge.com/',
+  medallionProgramLink: 'https://www.delta.com/us/en/skymiles/medallion-program/how-to-qualify',
+  takeOff15Link: 'https://www.delta.com/us/en/skymiles/airline-credit-cards/takeoff-15',
+  statementCreditsGuideLink: 'https://global.americanexpress.com/card-benefits/guide',
+  travelProtectionsLink: 'https://www.americanexpress.com/us/credit-cards/features-benefits/policies/trip-cancellation-terms.html',
+  // --- Competitor & other links from article ---
+  deltaPlatinumReviewLink: '/reviews/delta-platinum-amex-review',
+  deltaGoldReviewLink: '/reviews/delta-skymiles-gold-amex-review',
+  deltaBlueReviewLink: '/reviews/delta-skymiles-blue-amex-review',
+  amexPlatinumCardPageLink: 'https://www.americanexpress.com/us/credit-cards/card/platinum/',
+  chaseSapphireReservePageLink: 'https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve',
+  amexPlatinumVsDeltaReserveLink: '/comparisons/amex-platinum-vs-delta-reserve',
+  bestAirlineCardsLink: '/guides/best-airline-credit-cards-2025',
+  sku: 'AMEX-DELTA-RES-TCI-2025',
+  mpn: 'AMEXDELTARES',
+  h1Content: "The Delta Reserve Card: Your Ticket to the Top, or Just an Expensive Ride?",
 };
 
-// --- Rating Tooltip Content (Customize if needed for Delta Reserve) ---
-const ratingCriteria = [ // *** VERIFY/CUSTOMIZE these criteria for Delta Reserve Rating ***
-    'Sky Club & Centurion Lounge Access',
-    'Companion Certificate Value (First/Comfort+)',
-    'MQM Boosts / Status Acceleration',
-    'Delta Points Earning Rate (3x)',
-    'Annual Fee ($550)',
+/* ──────────────────────────────
+    STRUCTURED DATA GRAPH
+    ────────────────────────────── */
+const structuredDataOptimized = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Product',
+      '@id': `${pageUrlFull}#product`,
+      name: reviewData.cardName,
+      image: `${siteUrl}${reviewData.imageUrl}`,
+      description: reviewData.description,
+      sku: reviewData.sku,
+      mpn: reviewData.mpn,
+      brand: { '@type': 'Brand', name: 'American Express' },
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: reviewData.ratingValue.toString(),
+        bestRating: '10',
+        worstRating: '1',
+        ratingCount: reviewData.ratingCount.toString(),
+        reviewCount: '1',
+      },
+      offers: {
+        '@type': 'Offer',
+        url: reviewData.applyLink,
+        priceCurrency: 'USD',
+        price: reviewData.annualFee.toString(),
+        priceValidUntil: '2026-12-31',
+        itemCondition: 'https://schema.org/NewCondition',
+        availability: 'https://schema.org/InStock',
+        seller: { '@type': 'Organization', name: 'American Express' },
+      },
+      review: { '@id': `${pageUrlFull}#editorReview` },
+    },
+    {
+      '@type': 'Review',
+      '@id': `${pageUrlFull}#editorReview`,
+      name: `${reviewData.cardName} – Review Updated ${new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`,
+      itemReviewed: { '@id': `${pageUrlFull}#product` },
+      reviewBody: reviewData.reviewBody,
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: reviewData.ratingValue.toString(),
+        bestRating: '10',
+        worstRating: '1',
+      },
+      author: { '@type': 'Person', 'name': reviewData.author.name, 'url': `${siteUrl}${reviewData.author.fullBioLink}` },
+      publisher: { '@type': 'Organization', name: siteName, logo: { '@type': 'ImageObject', url: `${siteUrl}/images/logo/your-logo-schema.png` } },
+      datePublished: publishDate,
+      dateModified: updateDate,
+    },
+    {
+      '@type': 'WebPage',
+      '@id': pageUrlFull,
+      url: pageUrlFull,
+      name: reviewData.title,
+      description: reviewData.description,
+      inLanguage: 'en-US',
+      isPartOf: { '@id': `${siteUrl}#website` },
+      primaryImageOfPage: { '@id': `${pageUrlFull}#primaryImage` },
+      breadcrumb: { '@id': `${pageUrlFull}#breadcrumbs` },
+      datePublished: publishDate,
+      dateModified: updateDate,
+    },
+    {
+      '@type': 'ImageObject',
+      '@id': `${pageUrlFull}#primaryImage`,
+      url: `${siteUrl}${reviewData.imageUrl}`,
+      width: reviewData.imageWidth,
+      height: reviewData.imageHeight,
+      caption: reviewData.cardName,
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${pageUrlFull}#breadcrumbs`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: siteName, item: siteUrl },
+        { '@type': 'ListItem', position: 2, name: 'Credit Card Reviews', item: `${siteUrl}/reviews` },
+        { '@type': 'ListItem', position: 3, name: `${reviewData.cardName} Review`, item: pageUrlFull },
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': `${pageUrlFull}#faqs`,
+      mainEntity: [
+        {
+          '@type': 'Question', name: `Is the $${reviewData.annualFee} annual fee worth it?`,
+          acceptedAnswer: { '@type': 'Answer', text: "It is, but only if you are a loyal Delta flyer who will maximize the Companion Certificate and the annual statement credits. If you use those, the card easily pays for itself." }
+        },
+        {
+          '@type': 'Question', name: 'How many guests can I bring into the Sky Club?',
+          acceptedAnswer: { '@type': 'Answer', text: "You get four complimentary one-time guest passes each year. After that, you can bring up to two guests per visit for a fee of $50 each." }
+        },
+        {
+          '@type': 'Question', name: 'Can I get unlimited Sky Club access?',
+          acceptedAnswer: { '@type': 'Answer', text: "Yes, but it requires spending $75,000 or more on the card in a calendar year." }
+        },
+        {
+            '@type': 'Question', name: 'Is the Companion Certificate easy to use?',
+            acceptedAnswer: { '@type': 'Answer', text: "It can be challenging. Success requires flexibility with your travel dates and booking well in advance to find eligible fare classes." }
+        },
+        {
+            '@type': 'Question', name: 'Does the card give me Medallion status automatically?',
+            acceptedAnswer: { '@type': 'Answer', text: "No, but it gives you the best shortcuts. You get a $2,500 MQD Headstart and can earn more MQDs through spending." }
+        },
+        {
+            '@type': 'Question', name: 'Can authorized users access the Sky Club?',
+            acceptedAnswer: { '@type': 'Answer', text: "Yes, for an annual fee of $175, authorized users get their own Sky Club access when flying Delta." }
+        },
+        {
+            '@type': 'Question', name: 'Is there a foreign transaction fee?',
+            acceptedAnswer: { '@type': 'Answer', text: "No. The card has no foreign transaction fees, making it great for international travel." }
+        },
+        {
+            '@type': 'Question', name: 'How does the TakeOff 15 benefit work?',
+            acceptedAnswer: { '@type': 'Answer', text: "It's automatic. When you're logged into your SkyMiles account and book a Delta flight with miles, you'll see the 15% discount reflected in the price." }
+        },
+        {
+            '@type': 'Question', name: "What happens if I don't use my monthly Resy or rideshare credits?",
+            acceptedAnswer: { '@type': 'Answer', text: "They do not roll over. The credits are \"use-it-or-lose-it,\" so you have to take advantage of them each month." }
+        },
+        {
+            '@type': 'Question', name: 'Is this a good card for everyday spending?',
+            acceptedAnswer: { '@type': 'Answer', text: "No. Its 1X earning rate on non-Delta purchases is poor. It's best paired with another card that earns more on categories like dining and groceries." }
+        }
+      ],
+    },
+    { '@type': 'Organization', '@id': `${siteUrl}#website`, name: siteName, url: siteUrl, logo: { '@type': 'ImageObject', url: `${siteUrl}/images/logo/your-logo-schema.png` } },
+  ],
+};
+
+const ratingCriteria = [
+    'Value of First-Class Companion Certificate',
+    'Delta Sky Club & Centurion Lounge Access Quality',
+    'Effectiveness of MQD Headstart & Boost for Status',
+    'Value of Statement Credits (Resy, Rideshare, Delta Stays)',
+    'Welcome Offer Attractiveness & Terms',
+    'Annual Fee ($650) vs. Overall Benefits',
+    'Rewards Earning Rates (3x on Delta)',
+    'Day-of-Travel Perks (Bags, Boarding)',
+    'Overall Value Proposition for Elite Delta Travelers',
 ];
 
-function DeltaSkyMilesReserveReviewPage() {
-  // --- Tooltip State and Logic ---
+const tocSections = [
+    { id: 'section-intro', title: 'Introduction: The $650 Question' },
+    { id: 'section-snapshot', title: 'Card Snapshot & "Best For" Tagline' },
+    { id: 'section-welcome-offer', title: 'Welcome Offer: 95K-Mile Jump-Start' },
+    { id: 'section-companion-cert', title: 'Golden Ticket: First-Class Companion Certificate' },
+    { id: 'section-lounge-access', title: 'Airport Oasis: Sky Club + Centurion Access' },
+    { id: 'section-status-boost', title: 'Fast-Track to Medallion: MQD Headstart & Boost' },
+    { id: 'section-every-trip-perks', title: 'Every-Trip Perks: Bags, Boarding, In-Flight Savings' },
+    { id: 'section-redemptions', title: 'TakeOff 15 & SkyMiles Redemptions' },
+    { id: 'section-earning-miles', title: 'Earning Miles: 3× Delta, 1× Everything Else' },
+    { id: 'section-statement-credits', title: 'Statement-Credit “Coupon Book” ($560 Potential)' },
+    { id: 'section-real-world-value', title: 'Year-in-Life Value Example' },
+    { id: 'section-rates-fees', title: 'Rates, Fees & Authorized-User Costs' },
+    { id: 'section-user-profile', title: 'Ideal vs. Poor-Fit Cardholders' },
+    { id: 'section-pros-cons', title: 'Pros & Cons Snapshot' },
+    { id: 'section-comparison', title: 'Reserve vs. Key Competitors' },
+    { id: 'section-testimonials', title: 'Real-World Voices (5 Mini-Testimonials)' },
+    { id: 'section-protections', title: 'Travel & Purchase Protections' },
+    { id: 'section-customer-service', title: 'Customer Service & App Experience' },
+    { id: 'section-faqs', title: 'FAQs: Quick Answers' },
+    { id: 'section-verdict', title: 'Final Verdict: Should You Board?' }
+];
+
+function DraggableTableWrapper({ children }) {
+  const containerRef = useRef(null);
+  useEffect(() => {
+    if (typeof window === 'undefined' || window.innerWidth < 768) return;
+    const el = containerRef.current;
+    if (!el) return;
+    let isDragging = false, startX = 0, scrollStart = 0;
+    const startDrag = (e) => {
+      isDragging = true; el.classList.add(styles.grabbing);
+      startX = e.pageX || e.touches?.[0]?.pageX; scrollStart = el.scrollLeft;
+    };
+    const stopDrag = () => { isDragging = false; el.classList.remove(styles.grabbing); };
+    const onMove = (e) => {
+      if (!isDragging) return; e.preventDefault();
+      const x = e.pageX || e.touches?.[0]?.pageX;
+      el.scrollLeft = scrollStart - (x - startX);
+    };
+    el.addEventListener('mousedown', startDrag);
+    el.addEventListener('mouseup', stopDrag);
+    el.addEventListener('mouseleave', stopDrag);
+    el.addEventListener('mousemove', onMove);
+    return () => {
+      el.removeEventListener('mousedown', startDrag);
+      document.removeEventListener('mouseup', stopDrag);
+      document.removeEventListener('mouseleave', stopDrag);
+      el.removeEventListener('mousemove', onMove);
+    };
+  }, []);
+  return (<div ref={containerRef} className={styles.draggableScrollContainer}>{children}</div>);
+}
+
+/* ──────────────────────────────
+    COMPONENT
+    ────────────────────────────── */
+function DeltaReserveAmexReviewPage() {
   const [showRatingInfo, setShowRatingInfo] = useState(false);
-  const tooltipRef = useRef(null);
+  const ratingTooltipRef = useRef(null);
 
   const handleIconClick = useCallback((event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        setShowRatingInfo(prevState => !prevState);
-    }, []);
+      event.preventDefault();
+      event.stopPropagation();
+      setShowRatingInfo(prevState => !prevState);
+  }, []);
 
-    const closeTooltip = useCallback(() => {
-        setShowRatingInfo(false);
-    }, []);
+  useEffect(() => {
+      function handleClickOutside(event) {
+          if (showRatingInfo && !event.target.closest(`.${styles.infoIconButton}`) && ratingTooltipRef.current && !ratingTooltipRef.current.contains(event.target)) {
+               setShowRatingInfo(false);
+          }
+      }
+      if (showRatingInfo) {
+          document.addEventListener("mousedown", handleClickOutside);
+      } else {
+           document.removeEventListener("mousedown", handleClickOutside);
+      }
+      return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [showRatingInfo, ratingTooltipRef]);
 
-    useEffect(() => {
-        if (!showRatingInfo) return;
-        const handleClickOutside = (event) => {
-            const isInfoButton = event.target.closest(`.${styles.infoIconButton}`);
-            if (tooltipRef.current && !tooltipRef.current.contains(event.target) && !isInfoButton) {
-                closeTooltip();
-            }
-        };
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, [showRatingInfo, closeTooltip]);
-  // --- End Tooltip State and Logic ---
-
-
-  // Inline Structured Data
-  // !!! VERIFY all URLs, counts, and details FOR DELTA RESERVE AMEX !!!
-  const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
-  const pageUrl = `${siteUrl}/cards/delta-skymiles-reserve-amex`; // *** REPLACE with your actual page URL ***
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "Delta SkyMiles® Reserve American Express Card",
-    "image": `${siteUrl}${reviewData.imageUrl}`, // *** Assuming imageUrl starts with / ***
-    "description": "A premium co-branded Delta credit card with lounge access to Delta Sky Club and Centurion Lounges, elevated MQM earnings, companion certificate, and robust travel benefits.", // Adjusted description
-    "brand": {
-      "@type": "Brand",
-      "name": "American Express" // Issuer
-    },
-    "review": {
-      "@type": "Review",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": reviewData.ratingValue.toString(),
-        "bestRating": "10",
-        "worstRating": "1"
-      },
-      "author": {
-        "@type": "Organization",
-        "name": reviewData.author
-      },
-      "reviewBody": reviewData.description // Use meta description
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": reviewData.ratingValue.toString(),
-      "bestRating": "10",
-      "worstRating": "1",
-      "ratingCount": 590, // *** REPLACE with actual or estimated count ***
-      "reviewCount": 590  // *** REPLACE with actual or estimated count ***
-    },
-    "offers": {
-      "@type": "Offer",
-      "url": reviewData.applyLink.startsWith('http') ? reviewData.applyLink : `${siteUrl}${reviewData.applyLink}`, // *** Ensure full APPLY URL ***
-      "priceCurrency": "USD",
-      "price": "550", // Annual Fee for Delta Reserve
-      "availability": "https://schema.org/InStock",
-      "itemCondition": "https://schema.org/NewCondition"
-    }
-     // Consider adding "provider": { "@type": "Organization", "name": "Delta Air Lines" }
+  const summaryBoxData = {
+    welcomeOffer: "Earn 95,000 Bonus Miles after spending $6,000 in eligible purchases in your first 6 months.",
+    annualFee: `$${reviewData.annualFee}`,
+    topEarning: "3X Miles on Delta purchases.",
+    keyPerks: "Annual First-Class Companion Certificate, Delta Sky Club & Centurion Lounge Access.",
+    keyCredits: "$240 Resy, $120 Rideshare, $200 Delta Stays credits annually.",
+    bestFor: "The aspiring or established Delta Medallion Member who values elite status and lounge access above all else."
   };
-
 
   return (
     <>
-      {/* ===== HEAD SECTION for Metadata & SEO ===== */}
       <Head>
-      <title>Delta SkyMiles® Reserve Amex – 2025 Review: Sky Club, MQD Boost, Status Fast-Track</title>
-      <meta name="description" content="Thinking of Delta SkyMiles® Reserve? This 2025 review covers MQD head starts, Sky Club access, 3x earnings on Delta flights, and elite status acceleration. See if it's worth the $550 fee." />
+        <title>{reviewData.title} - {siteName}</title>
+        <meta name="description" content={reviewData.description} />
         <meta name="keywords" content={reviewData.keywords} />
-        <meta name="author" content={reviewData.author} />
-        <link rel="canonical" href={pageUrl} />
-        {/* Preload critical fonts */}
-        <link rel="preload" href="/fonts/Roboto_Condensed-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/Roboto_Condensed-Bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/PlayfairDisplay-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/Playfair-Display-Bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-
-        {/* OG/Twitter tags */}
+        <meta name="author" content={reviewData.author.name} />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta name="robots" content="index,follow,max-image-preview:large" />
+        <link rel="canonical" href={pageUrlFull} />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content={siteName} />
         <meta property="og:title" content={reviewData.title} />
         <meta property="og:description" content={reviewData.description} />
-        <meta property="og:url" content={pageUrl} />
-        <meta property="og:image" content={structuredData.image} />
-        <meta property="og:type" content="article" />
+        <meta property="og:url" content={pageUrlFull} />
+        <meta property="og:image" content={`${siteUrl}${reviewData.imageUrl}`} />
+        <meta property="og:image:width" content={String(reviewData.imageWidth)} />
+        <meta property="og:image:height" content={String(reviewData.imageHeight)} />
+        <meta property="article:published_time" content={publishDate} />
+        <meta property="article:modified_time" content={updateDate} />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@TravelCardInsid" />
         <meta name="twitter:title" content={reviewData.title} />
         <meta name="twitter:description" content={reviewData.description} />
-        <meta name="twitter:image" content={structuredData.image} />
-
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <meta name="geo.region" content="US" />
-<meta name="geo.placename" content="United States" />
-<meta name="language" content="en-US" />
-<meta name="distribution" content="US" />
-<link rel="alternate" href="https://www.travelcardinsider.com" hreflang="en-us" />
-
-        {/* Structured Data (JSON-LD) */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
+        <meta name="twitter:image" content={`${siteUrl}${reviewData.imageUrl}`} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredDataOptimized) }} />
       </Head>
 
-      
-
       <main>
-        {/* Spacing for fixed header */}
-        <div style={{ marginTop: '5rem' }}></div>
-
-        {/* Review Container using CSS Module */}
-        <div className={styles.reviewContainer}>
-          <article> {/* Wrap main content in article */}
-            {/* ============= REVIEW HEADER ============= */}
-            <header className={styles.reviewHeader}>
-               {/* Using dangerouslySetInnerHTML for ® */}
-              <h1 dangerouslySetInnerHTML={{ __html: "Delta SkyMiles® Reserve American Express Card – In-Depth 2025 Review"}}></h1>
-
-              {/* Section 1 Content (Part of Header Structure in Template) */}
-              <section id="section-1">
-                 {/* Using dangerouslySetInnerHTML for ® & ™ */}
-                <div className={styles.intro}>
-                  <p dangerouslySetInnerHTML={{ __html: "The <strong>Delta SkyMiles® Reserve American Express Card</strong> stands at the top of Delta’s co-branded card lineup, offering premium perks—<strong>Delta Sky Club access</strong>, <strong>Centurion Lounge access</strong> (when flying Delta), accelerated Medallion Qualifying Miles (MQMs), and an <strong>annual companion certificate</strong> good for domestic First Class or Comfort+ (subject to T&amp;Cs). With a <strong>$550 annual fee</strong>, it targets frequent Delta flyers seeking elite status boosts, lounge privileges, and exclusive Delta experiences. This review will dissect the card’s lounge benefits, MQM accelerators, 2025 updates, disclaimers, advanced usage tips, and how it fits Delta loyalists’ strategy."}}></p>
+        <div className={styles.reviewPageLayout}>
+          <div className={styles.mainContentArea}>
+             <section className={styles.heroSection}>
+              <div className={styles.heroTextContainer}>
+                <h1 className={styles.heroTitle}>{reviewData.h1Content}</h1>
+                <p className={styles.heroSubtitle}>
+                  But this elevated experience comes with a steep ${reviewData.annualFee} annual fee. Is the Delta Reserve a master key that unlocks value far beyond its cost, or a luxury too niche for anyone but the most dedicated Delta road warrior?
+                </p>
+                <div className={styles.heroCtaContainer}>
+                  <div>
+                    <a href={reviewData.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.applyNowButton} ${styles.heroApplyButton}`}>Apply on Amex's Site</a>
+                    <span className={styles.heroApplyButtonDisclaimer}>Official & secure application</span>
+                  </div>
+                  <Link href="#section-snapshot" legacyBehavior><a className={styles.heroSecondaryLink}>See Card Snapshot</a></Link>
                 </div>
-
-                {/* Image Container */}
+              </div>
+              <div className={styles.heroImageContainer}>
                 <div className={styles.cardImageContainer}>
-                   {/* Class name adjusted */}
-                   <Image
-                     src={reviewData.imageUrl}
-                     alt={"Delta SkyMiles® Reserve American Express Card"}
-                     width={reviewData.imageWidth} // *** REPLACE or use data ***
-                     height={reviewData.imageHeight} // *** REPLACE or use data ***
-                     className={styles.cardImage}
-                     priority
-                   />
-                 </div>
-
-                {/* RATING SECTION */}
+                  <Image src={reviewData.imageUrl} alt={reviewData.cardName} width={reviewData.imageWidth} height={reviewData.imageHeight} className={styles.heroImage} priority />
+                </div>
                 <div className={styles.ratingSection}>
                   <span className={styles.tciRating}>
-                    <button
-                      type="button"
-                      className={styles.infoIconButton}
-                      aria-label="Rating Information"
-                      title="Our TCI rating info"
-                      onClick={handleIconClick}
-                    >
-                       <svg aria-hidden="true" focusable="false" className={styles.infoIcon} viewBox="0 0 16 16">
-                         <path fillRule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                         <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-                       </svg>
+                    <button type="button" className={styles.infoIconButton} aria-label="Rating Information" onClick={handleIconClick} aria-expanded={showRatingInfo}>
+                      <svg aria-hidden="true" focusable="false" className={styles.infoIcon} viewBox="0 0 16 16"><path fillRule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>
                     </button>
-                    TCI Rating: <strong>{reviewData.ratingValue.toFixed(1)}</strong>/10
-
-                     {/* --- Conditionally Rendered Tooltip --- */}
-                    {showRatingInfo && (
-                        <div
-                            ref={tooltipRef}
-                            className={styles.ratingTooltip}
-                            role="tooltip"
-                            aria-live="polite"
-                        >
-                            <strong>TCI Rating: {reviewData.ratingValue.toFixed(1)}/10</strong>
-                            {/* Using ratingCriteria array */}
-                            <p className={styles.tooltipIntro}>Our TCI rating system criteria including rewards, welcome bonus, annual fee, redemption flexibility, travel benefits, APR, foreign transaction fees, user experience, and other features.</p>
-                           
-                        </div>
-                    )}
+                    {siteName} Rating: <strong>{reviewData.ratingValue.toFixed(1)}</strong>/10
+                    {showRatingInfo && (<RatingTooltip ref={ratingTooltipRef} ratingValue={reviewData.ratingValue} ratingCriteria={ratingCriteria} onClose={() => setShowRatingInfo(false)} />)}
                   </span>
-
-                  {/* STAR RATING */}
-                  <div className={styles.starRating} title={`Rated ${reviewData.ratingValue} out of 10 stars`} style={{ '--rating': `${reviewData.ratingValue * 10}%` }}>
-                    <span>★★★★★</span>
-                    <span className={styles.filledStars}>★★★★★</span>
-                  </div>
-
-                  <div className={styles.ratingDescription}>
-                    <i>A premium card for Delta elites seeking Sky Club access, MQM boosts, and a valuable companion certificate if you can handle a $550 fee.</i>
+                  <div className={styles.starRating} title={`Rated ${reviewData.ratingValue} out of 10 stars`}>
+                      ★★★★★<span className={styles.filledStars} style={{ '--rating': `${(reviewData.ratingValue / 10) * 100}%` }}>★★★★★</span>
                   </div>
                 </div>
-              </section>
-            </header>
-
-            {/* ============= REVIEW CONTENT SECTIONS (Hardcoded JSX) ============= */}
-
-             {/* Section 2: Quick Stats Table */}
-             <section id="section-2" className={styles.reviewSection}>
-                <h2>Quick Stats at a Glance</h2>
-                <div className={styles.tableContainer}>
-                    <table className={styles.statsTable}>
-                        <thead>
-                            <tr>
-                                <th>Feature</th>
-                                <th>Details</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td data-label="Feature">Annual Fee</td>
-                                <td data-label="Details">$550 (plus $75 per authorized user)</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Feature">APR Range</td>
-                                <td data-label="Details" dangerouslySetInnerHTML={{ __html:"20.74%–29.74% Variable"}}></td>
-                            </tr>
-                            <tr>
-                                <td data-label="Feature">Sign-Up Bonus</td>
-                                <td data-label="Details">Often ~60k–80k SkyMiles + 10k MQMs after $5k in 3 months</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Feature">Rewards Rate</td>
-                                <td data-label="Details" dangerouslySetInnerHTML={{ __html:"3x on Delta, 1x everything else (2x often on restaurants, but check T&amp;Cs for promos)"}}></td>
-                            </tr>
-                            <tr>
-                                <td data-label="Feature">Lounge Access</td>
-                                <td data-label="Details">Delta Sky Club + Centurion Lounge (when flying Delta), guest passes typically $50 each</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Feature">Medallion Status Boost</td>
-                                <td data-label="Details">Earn MQMs for hitting certain spend thresholds ($25k, $50k, etc.)</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Feature">Companion Certificate</td>
-                                <td data-label="Details">Domestic First Class/Comfort+/Main Cabin after card renewal</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Feature">Foreign Transaction Fee</td>
-                                <td data-label="Details">None</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+              </div>
             </section>
-
-             {/* CTA Section */}
-             <section id="cta" className={styles.ctaSection}>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <h2 dangerouslySetInnerHTML={{__html:"Get the <b>Delta SkyMiles® Reserve American Express Card</b> Today!"}}></h2>
-                <div className={styles.ctaButtons}>
-                    <a href={reviewData.applyLink} className={`${styles.btn} ${styles.btnApply}`} title="From card issuer's secure site" target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
-                     {/* Using dangerouslySetInnerHTML for &amp; */}
-                    <a href={reviewData.ratesLink} className={`${styles.btn} ${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored" dangerouslySetInnerHTML={{__html:"See Rates &amp; Fees"}}></a>
-                </div>
-            </section>
-
-            {/* Section 3: Card Overview & Positioning */}
-            <section id="section-3" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html: "Card Overview &amp; Positioning" }}></h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html: "The <strong>Delta SkyMiles® Reserve Amex</strong> sits at the pinnacle of Delta’s personal cards (the business version is also available). For <strong>$550</strong>, it offers <strong>unlimited Sky Club access</strong> (when flying Delta), plus <strong>Centurion Lounge</strong> access (also must be on a Delta flight). It’s aimed at flyers chasing <strong>Medallion Elite</strong> status—helped by <strong>MQM boosts</strong> at high spend levels—and those who want the <strong>annual Companion Certificate</strong> good for domestic First Class or Comfort+ seating. If you’re devoted to Delta, the lounge privileges alone can recoup a big chunk of the fee. Competitors might be the Amex Platinum (broader lounge coverage but $695 fee) or Delta Platinum Amex (cheaper but fewer perks). If you want top-tier Delta loyalty synergy plus lounge perks, Reserve is your best bet."}}></p>
-            </section>
-
-            {/* Section 4: SkyMiles Earning & Category Rates */}
-            <section id="section-4" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html: "SkyMiles Earning &amp; Category Rates" }}></h2>
-                <p>
-                    The Reserve typically offers:
-                </p>
-                <ul className={styles.featureList}>
-                    <li><strong>3x SkyMiles</strong> on Delta purchases</li>
-                    <li><strong>1x SkyMiles</strong> on all other spending</li>
-                </ul>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html: "Occasionally, limited-time <strong>2x</strong> categories (like dining or groceries) appear. But the core is <strong>3x</strong> on Delta—less than some competitor airline cards offering 3–5x. The real selling point is the <strong>lounge</strong> and <strong>status</strong> aspects. SkyMiles valuations typically hover ~1.1–1.3 cents each, though business-class redemptions or partner awards can exceed that. If you’re big on everyday rewards, the 1x is subpar; you might pair this with an Amex Gold or a different card for dining/grocery multipliers. But if Delta is your airline, you want to put your ticket purchases on Reserve for 3x plus the intangible benefits (free checked bag, lounge)."}}></p>
-            </section>
-
-             {/* Section 5: Sign-Up Bonus & Redemption Potential */}
-             <section id="section-5" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html: "Sign-Up Bonus &amp; Redemption Potential" }}></h2>
-                <p>
-                    Sign-up offers often hover around <strong>60k–80k SkyMiles</strong> plus <strong>10k MQMs</strong> after spending $5k in the first 3 months (or a certain period).
-                    Some limited-time promos go higher (90k–100k miles).
-                    At ~1.2¢ each, 80k miles = ~$960 in flight value.
-                    Combined with 10k MQMs (boosting you closer to Silver, Gold, or beyond),
-                    this can jump-start your Delta Medallion journey.
-                    The bonus helps offset the $550 fee in year one.
-                    If you redeem for domestic or international Delta flights—like a $1,200+ round trip for 80k miles—
-                    you recoup significant value.
-                    Just watch for dynamic award pricing on Delta—peak times or routes might push the cost to 200k+ miles for premium cabins,
-                    so plan carefully for best redemption ROI.
-                </p>
-            </section>
-
-            {/* Section 6: Lounge Access: Delta Sky Club & Centurion Lounge */}
-             <section id="section-6" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html: "Lounge Access: Delta Sky Club &amp; Centurion (When Flying Delta)"}}></h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html: "The Reserve card grants <strong>unlimited Sky Club access</strong> whenever you’re flying Delta same-day. Show your Reserve plus your Delta boarding pass—no separate membership needed. Guests typically pay <strong>$50</strong> each per visit. Meanwhile, you also get <strong>Centurion Lounge</strong> access (Amex’s flagship lounges) but <strong>only</strong> on days you’re flying Delta (you must show a Delta boarding pass). This is narrower than the Amex Platinum’s Centurion access (which covers all airlines), but still a valuable perk if Delta is your go-to. These lounge privileges can easily be worth hundreds per year if you frequently utilize them, especially for preflight meals, drinks, or downtime. Combined, that’s a big reason to choose Reserve over cheaper Delta cards with limited lounge day passes or no lounge perks."}}></p>
-            </section>
-
-            {/* Section 7: MQMs & Status Boosts */}
-            <section id="section-7" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html: "MQMs &amp; Status Boosts" }}></h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html: "A key differentiator is how the Reserve helps you climb <strong>Delta Medallion</strong> tiers:"}}></p>
-                <ul className={styles.featureList}>
-                    <li><strong>10k MQMs</strong> sign-up bonus (commonly included if your offer states it)</li>
-                    <li><strong>Status Boosts</strong>:
-                    Earn <strong>15k MQMs</strong> after $30k spend in a calendar year,
-                    and another 15k after hitting $60k,
-                    and so on (subject to annual caps, typically up to 60k MQMs per year total).
-                    This can accelerate your path to <strong>Gold, Platinum, or even Diamond</strong> if you put heavy spend on the card.</li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>MQD Waiver:</strong> If you spend $25k annually on Reserve, you can waive the Medallion Qualifying Dollar requirement up to Platinum status. For Diamond, you need $250k spend for the full MQD waiver. That’s quite high, but big spenders might find it essential."}}></li>
-                </ul>
-                <p>
-                    These <strong>status boosts</strong> are crucial if you chase free upgrades, priority boarding, waived baggage fees, and other Medallion perks.
-                    If you’re not interested in Delta Elite status,
-                    you might find the $550 fee steep for just lounge benefits.
-                    But for those climbing to Platinum or Diamond, the Reserve can save you from physically flying all those MQM miles.
-                </p>
-            </section>
-
-             {/* Section 8: Companion Certificate & Value */}
-             <section id="section-8" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html: "Companion Certificate &amp; Value"}}></h2>
-                {/* Using dangerouslySetInnerHTML for &amp; */}
-                <p dangerouslySetInnerHTML={{ __html: "Each card renewal year, the Reserve offers a <strong>domestic companion certificate</strong> valid for <strong>First Class, Comfort+, or Main Cabin</strong> (continental US). You just pay taxes/fees (~$5.60 one-way). This alone can offset the $550 fee if you use it for a flight that might cost $400–$800 or more. Terms:"}}></p>
-                <ul className={styles.featureList}>
-                    <li>Must be a <strong>round-trip</strong> domestic flight,
-                    booking both passengers at the same time with the certificate code.
-                    </li>
-                    <li>Blackout dates are rare, but availability can be restricted.
-                    Book early for best seat selection, especially in First or Comfort+.</li>
-                    <li>You still earn miles/MQMs on the paid ticket but not on the companion seat typically.</li>
-                </ul>
-                <p>
-                    For many families or couples,
-                    the certificate is a big highlight each year—
-                    effectively a “buy one, get one free” for domestic first class if you coordinate your trip.
-                    This benefit often cements the Reserve’s value for loyal Delta travelers who can’t get a cheaper companion cert from the Delta Platinum card (which is main cabin only).
-                </p>
-            </section>
-
-            {/* Section 9: 2025 Lounge Changes & Delta Trends */}
-            <section id="section-9" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html: "2025 Lounge Changes &amp; Delta Trends"}}></h2>
-                <ol className={styles.numberedList}>
-                    <li><strong>Sky Club Overcrowding:</strong>
-                    Delta has been limiting lounge visits or introducing new entry rules (like boarding pass scanning, check-in windows).
-                    The Reserve Card remains a guaranteed pass, but watch for possible time limits or queueing at busy hubs (ATL, MSP, JFK).</li>
-                     {/* Using dangerouslySetInnerHTML for &amp; */}
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Guest Fees &amp; Limitations:</strong> Typically $50 for each guest. Delta might raise or revise that. No immediate signs, but a possibility if lounge crowding persists. If you frequently bring family, the cost can add up."}}></li>
-                    <li><strong>Centurion Access for Reserve:</strong>
-                    Possibly ongoing.
-                    Must be on a Delta flight.
-                    Amex might fine-tune access rules or times.
-                    Always confirm you can enter the Centurion Lounge with your Reserve + same-day Delta boarding pass in 2025.</li>
-                     {/* Using dangerouslySetInnerHTML for / */}
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>MQD / MQM Shifts:</strong> Delta rethinks loyalty requirements. By 2025, the spend thresholds or MQD waivers might change. Keep an eye on official Delta communications if your status-chase depends on Reserve’s boosts."}}></li>
-                </ol>
-                <p>
-                    Overall, the Reserve remains a strong lounge and status card,
-                    but keep watch on Delta’s evolving lounge policies.
-                    If you’re solely after lounge access across all airlines,
-                    you might prefer an Amex Platinum for universal Centurion (not just Delta flights),
-                    yet Reserve is best for Delta elites specifically.
-                </p>
-            </section>
-
-            {/* Section 10: Real-Life Example Table */}
-            <section id="section-10" className={styles.reviewSection}>
-                <h2>Real-Life Example: Annual Spend & MQMs</h2>
-                <p>
-                    Suppose you spend yearly:
-                </p>
-                <ul className={styles.featureList}>
-                     {/* Using dangerouslySetInnerHTML for &amp; */}
-                    <li dangerouslySetInnerHTML={{__html:"$5,000 on flights &amp; hotels (beyond the $300 credit usage)"}}></li> {/* Note: Text seems to reference $300 credit, but Reserve doesn't have one explicitly like CSR */}
-                    <li>$3,000 on other travel (rental cars, trains, etc.)</li>
-                    <li>$6,000 on dining</li>
-                    <li>$15,000 on general overhead (1x category)</li>
-                </ul>
-                 {/* Note: Calculation text from source seems slightly off for Reserve's 3x/1x structure. Re-calculating based on listed spend and Reserve's known rates. */}
-                <p>
-                    Once you pass the $300 credit, subsequent travel codes at 3x. {/* Keeping source text but adding a note */}
-                    Let’s assume the entire $8k on flights/hotels/other travel (minus the first $300) yields 3x. {/* Keeping source text but adding a note */}
-                    Here’s a simplified breakdown based on *Reserve's typical 3x Delta / 1x else*:
-                </p>
-                 <div className={styles.tableContainer}>
-                     <table className={styles.statsTable}>
-                        <thead>
-                            <tr>
-                                <th>Category</th>
-                                <th>Annual Spend</th>
-                                <th>Points per $</th>
-                                <th>Total Points</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td data-label="Category">Delta Flights (3x)</td>
-                                <td data-label="Annual Spend">$5,000</td>
-                                <td data-label="Points per $">3x</td>
-                                <td data-label="Total Points">15,000</td>
-                            </tr>
-                             {/* Assume Dining is 1x based on core structure unless promo */}
-                             <tr>
-                                <td data-label="Category">Dining (1x)</td>
-                                <td data-label="Annual Spend">$6,000</td>
-                                <td data-label="Points per $">1x</td>
-                                <td data-label="Total Points">6,000</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Category">Other Travel (1x)</td>
-                                <td data-label="Annual Spend">$3,000</td>
-                                <td data-label="Points per $">1x</td>
-                                <td data-label="Total Points">3,000</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Category">All Other (1x)</td>
-                                <td data-label="Annual Spend">$15,000</td>
-                                <td data-label="Points per $">1x</td>
-                                <td data-label="Total Points">15,000</td>
-                            </tr>
-                            <tr style={{fontWeight: 'bold', borderTop: '2px solid #dee2e6'}}>
-                                <th data-label="Category">Total</th>
-                                <th data-label="Annual Spend">$29,000</th> {/* Corrected Spend Total */}
-                                <th data-label="Points per $">—</th>
-                                <th data-label="Total Points">39,000</th> {/* Corrected Points Total */}
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <p>
-                    That’s <strong>39k</strong> UR points from organic spend, {/* Corrected points type */}
-                    plus a sign-up bonus (say 60k).
-                    You’d total ~99k points. {/* Corrected points type */}
-                    At 1.5¢ in the portal, that’s <strong>$1,485</strong> in travel. {/* Corrected value - NOTE: Reserve doesn't have 1.5cpp portal, this seems like CSR text */}
-                    Or if you transfer to an airline/hotel partner for 2¢ each, that’s around <strong>$1,980</strong>. {/* Corrected value */}
-                    Subtract the net $250 fee (after the $300 credit). {/* NOTE: Reserve doesn't have $300 credit like CSR */}
-                    You still come out well ahead, especially if you appreciate lounge visits or top-shelf travel insurance. {/* Corrected: This paragraph seems copied from CSR review in source HTML, values/logic don't match Reserve */}
-                </p>
-                {/* !!! ATTENTION: The calculation paragraph above appears copied from a Chase Sapphire Reserve review in your source HTML. It incorrectly references UR points, a 1.5cpp portal rate, and a $300 credit which the Delta Reserve does NOT have. Please replace this paragraph with an accurate calculation based on Delta Reserve's 3x/1x structure and SkyMiles value (e.g., 1.2cpp). Example: 39k miles * 1.2cpp = ~$468 value from spend. Add SUB value. Compare to $550 fee minus lounge/companion cert value. !!! */}
-            </section>
-
-            {/* Section 11: Competitor Analysis */}
-            <section id="section-11" className={styles.reviewSection}>
-                 <h2>Competitor Analysis</h2>
-                <p>
-                    Within the Delta card family and broader premium airline cards:
-                </p>
-                 <div className={styles.tableContainer}>
-                     <table className={styles.statsTable}>
-                        <thead>
-                            <tr>
-                                <th>Card</th>
-                                <th>Annual Fee</th>
-                                <th>Key Perks</th>
-                                <th>Why Choose?</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {/* Using dangerouslySetInnerHTML for ® */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Card">Delta SkyMiles® Reserve Amex</td><td data-label="Annual Fee">$550</td><td data-label="Key Perks">Sky Club + Centurion (Delta only), 3x Delta, 1x else, big MQM boosts, 1st class companion cert</td><td data-label="Why Choose?">Frequent Delta flyer seeking lounge, elite status shortcuts</td>'}}></tr>
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Card">Delta SkyMiles® Platinum Amex</td><td data-label="Annual Fee">$250</td><td data-label="Key Perks">2x dining/grocery/travel, main cabin companion cert, limited MQM boosts</td><td data-label="Why Choose?">Mid-tier option for partial status help, cheaper fee, no lounge membership</td>'}}></tr>
-                            <tr>
-                                <td data-label="Card">Amex Platinum</td>
-                                <td data-label="Annual Fee">$695</td>
-                                <td data-label="Key Perks">Centurion lounge (any flight), Priority Pass, 5x flights, broad travel credits</td>
-                                <td data-label="Why Choose?">All-airline lounge coverage, but no Delta MQM boosts or Delta companion cert</td>
-                            </tr>
-                             {/* Using dangerouslySetInnerHTML for ℠ */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Card">United Club℠ Infinite</td><td data-label="Annual Fee">$525</td><td data-label="Key Perks">United Club membership, 4x United, 2x dining/travel, Premier Access perks</td><td data-label="Why Choose?">United loyalty alternative with full lounge membership and a cheaper fee than Reserve</td>'}}></tr>
-                        </tbody>
-                    </table>
-                </div>
-                <p>
-                    <strong>Reserve</strong> is the top pick if you’re deeply embedded in Delta’s ecosystem,
-                    want to chase Medallion status,
-                    and desire Sky Club + limited Centurion access.
-                    If you prefer broader lounge networks,
-                    the Amex Platinum might be more flexible (though costlier).
-                    For a cheaper Delta card, the Platinum Delta Amex or Gold Delta Amex might suffice—but no lounge membership or first-class companion ticket there.
-                </p>
-            </section>
-
-            {/* Section 12: Additional Benefits & Travel Protections */}
-            <section id="section-12" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html: "Additional Benefits &amp; Travel Protections"}}></h2>
-                <p>
-                    The Reserve Card includes:
-                </p>
-                <ul className={styles.featureList}>
-                    <li><strong>First Checked Bag Free</strong> on Delta flights—saves $30 each way</li>
-                    <li><strong>Priority Boarding</strong> (Main Cabin 1) on Delta flights</li>
-                    <li><strong>20% In-Flight Savings</strong> on Delta purchases (Wi-Fi, snacks, drinks) as a statement credit</li>
-                     {/* Using dangerouslySetInnerHTML for &amp; */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Trip Delay/Cancellation Insurance</strong>, <strong>Car Rental Loss &amp; Damage Insurance</strong> (secondary in the US), <strong>Baggage Insurance Plan</strong>"}}></li>
-                    <li><strong>Global Entry/TSA PreCheck Credit</strong> (one credit every 4–4.5 years)</li>
-                </ul>
-                <p>
-                    These perks sweeten your overall Delta travel experience,
-                    reducing baggage/boarding hassles and offering moderate travel insurance coverage.
-                    Not as comprehensive as some top-tier travel cards,
-                    but enough for day-to-day mishaps.
-                    The big draw remains the lounge synergy and MQMs, but these secondary perks are convenient for frequent flyers.
-                </p>
-            </section>
-
-            {/* Section 13: APR & Paying in Full */}
-             <section id="section-13" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html: "APR &amp; Paying in Full"}}></h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{__html:"The Reserve is a <strong>credit card</strong> (not a charge card) with typical variable APR ~20.74–29.74%. As with most rewards cards, carrying a balance at these rates quickly negates your lounge or MQM gains. If you foresee big financing, consider a 0% intro product or lower-interest solution. The Reserve is best used by paying in full monthly, thus reaping status, lounge, and companion benefits without interest overshadowing them. Also, watch out for <strong>cash advances</strong> at ~29.99%+ fees—rarely cost-effective. Keep your usage to standard purchases for SkyMiles accrual and travel perks."}}></p>
-            </section>
-
-             {/* Section 14: Potential Downsides */}
-             <section id="section-14" className={styles.reviewSection}>
-                <h2>Potential Downsides</h2>
-                <ul className={styles.featureList}>
-                    <li><strong>$550 Annual Fee:</strong>
-                    If you rarely use the Sky Club or chase status, it’s expensive for minimal daily returns (1x on most spend).</li>
-                    <li><strong>Lounge Access Limited to Delta Flights:</strong>
-                    You only get Sky Club and Centurion access on days you’re flying Delta.
-                    If you often fly other carriers, you won’t have lounge coverage.</li>
-                    <li><strong>Guest Fees:</strong>
-                    Bringing friends/family to Sky Club or Centurion typically costs $50 each.
-                    Regularly traveling with others can be pricey unless they also hold their own Reserve/Platinum card or better.</li>
-                    <li><strong>1x on Non-Delta Spend:</strong>
-                    Not great for everyday categories.
-                    Pair it with a different Amex or general rewards card for better multipliers outside Delta purchases.</li>
-                    <li><strong>High MQD Waiver for Diamond:</strong>
-                    Spending $250k a year for Diamond MQD waiver is substantial, limiting that perk to extremely high spenders.
-                    For moderate travelers, you might only get the $25k spend waiver up to Platinum status.</li>
-                </ul>
-            </section>
-
-            {/* Section 15: Advanced Tips & Strategies */}
-            <section id="section-15" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html: "Advanced Tips &amp; Strategies"}}></h2>
-                <ol className={styles.numberedList}>
-                    <li><strong>Strategize Your Spend for MQMs:</strong>
-                    If your flight-based MQMs put you near a status threshold, aim for $30k or $60k card spend to push you over.
-                    Time it carefully in the calendar year so the MQMs post in time to qualify or roll over to next year if you exceed.
-                    </li>
-                    <li><strong>Use the Companion Certificate for First Class:</strong>
-                    Booking first-class domestic tickets might cost $800+ each.
-                    The companion seat is free plus taxes, easily recouping $550 if you plan an annual first-class trip with a partner or spouse.</li>
-                    <li><strong>Leverage Lounge for Short Connections Carefully:</strong>
-                    If your layover is under 30 minutes, you might not get full lounge enjoyment.
-                    On longer layovers, plan meal times to offset airport costs.
-                    If traveling with guests, consider if paying $50 is worthwhile or if they have their own lounge privileges.</li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Combine With Amex Gold or Blue Business:</strong> For better grocery/dining multipliers. Put Delta flights on Reserve for 3x + lounge synergy; put other categories on a 4x/2x card. You still keep all miles separate from your MQMs (which remain with Delta)."}}></li>
-                     {/* Using dangerouslySetInnerHTML for &amp; */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Monitor Delta Promotions &amp; Dynamic SkyMiles Pricing:</strong> Delta sometimes has flash sales (like 10k–15k round-trip). Redeem your sign-up bonus or daily SkyMiles. For premium cabins, watch for possible sweet spots or partner flights for better redemption value."}}></li>
-                </ol>
-            </section>
-
-             {/* Section 16: Another Real-Life Example */}
-             <section id="section-16" className={styles.reviewSection}>
-                <h2>Another Real-Life Example</h2>
-                <p>
-                    A frequent Delta traveler invests:
-                </p>
-                <ul className={styles.featureList}>
-                     {/* Using dangerouslySetInnerHTML for &amp; */}
-                    <li dangerouslySetInnerHTML={{__html:"$8,000 in flights (beyond the $300 credit usage)"}}></li> {/* Note: Text again mentions $300 credit */}
-                    <li>$5,000 in lodging (Airbnb/hotels coding as travel) + $2,000 on rideshares/trains</li>
-                    <li>$7,000 on dining across the year</li>
-                    <li>$10,000 on general spending</li>
-                </ul>
-                 {/* Note: Re-using incorrect calculation text from source HTML. See previous note in Section 10 */}
-                <p>
-                    Post-credit, you have $15k at 3x in travel total ($8k flights + $5k lodging + $2k rides?),
-                    plus $7k dining at 3x, $10k other at 1x:
-                </p>
-                <ul className={styles.featureList}>
-                    <li><strong>Travel:</strong> $15,000 → 3x = 45,000 UR points</li>
-                    <li><strong>Dining:</strong> $7,000 → 3x = 21,000 UR points</li>
-                    <li><strong>Others:</strong> $10,000 → 1x = 10,000 UR points</li>
-                </ul>
-                <p>
-                    Total = <strong>76,000</strong> from spend alone.
-                    If the sign-up bonus is 60k, you’d have ~136k.
-                    At 1.5¢ each in the portal, that’s $2,040 in travel.
-                    Possibly $2,720 if redeemed for ~2¢ each via airline/hotel partner sweet spots.
-                    Net fee after $300 credit is $250, so you’re up well over $1,700 in value if you leverage lounge visits, coverage, etc.
-                </p>
-                {/* !!! ATTENTION: The calculation above is incorrect for Delta Reserve. It refers to UR points, 1.5cpp portal, and a $300 credit. Please replace this with an accurate calculation based on Delta Reserve's 3x/1x structure and SkyMiles value (e.g., 1.2cpp). !!! */}
-            </section>
-
-             {/* Section 17: Synergy with Other Amex or Delta Products */}
-             <section id="section-17" className={styles.reviewSection}>
-                 <h2>Synergy with Other Amex or Delta Products</h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html: "You can pair the <strong>Reserve</strong> with:"}}></p>
-                <ul className={styles.featureList}>
-                    {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Amex Gold / Blue Business Plus</strong> for better everyday multipliers (4x dining/grocery on Gold, 2x everything on Blue Biz). Then use Reserve purely for Delta flights and to meet MQM thresholds. All Delta miles funnel into the same SkyMiles account regardless of which card you use."}}></li>
-                    {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Delta SkyMiles® Gold or Platinum</strong> for spouse or family members, so they can get their own free checked bag and possibly an additional companion certificate. But if you want them to have lounge access, they’d need their own Reserve or an Amex Platinum for broader lounge coverage."}}></li>
-                    {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{ __html: "<strong>Non-Delta Cards for International Travel:</strong> If you occasionally fly non-Delta, you might prefer a general travel card with Priority Pass restaurants (like Chase Sapphire Reserve®). The Reserve’s lounge perk only helps on Delta flights for Sky Club and Centurion."}}></li>
-                </ul>
-                <p>
-                    Typically, the Reserve is a “Delta flights” card.
-                    Use something else for everyday spend.
-                    If your spouse also travels Delta frequently without you,
-                    they might need their own Reserve for lounge access or a day pass each time.
-                    Weigh cost vs. frequency to see if that’s worthwhile.
-                </p>
-            </section>
-
-            {/* Section 18: Redemption & SkyTeam Insights */}
-             <section id="section-18" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html:"Redemption &amp; SkyTeam Insights"}}></h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"<strong>Delta SkyMiles</strong> can be redeemed for:"}}></p>
-                <ul className={styles.featureList}>
-                    <li><strong>Delta flights or partner flights (SkyTeam)</strong>, typically ~1.1–1.3¢/mile in value, but can be higher for some partner business class sweet spots (like Air France/KLM, Virgin Atlantic if booking via Delta, etc.).
-                    Delta uses dynamic pricing, meaning award costs vary widely by route/demand.</li>
-                    <li><strong>Upgrades</strong> (though often suboptimal vs. using miles for full tickets).
-                    Some travelers use miles to upgrade from Main Cabin to Delta One on long-hauls, but check the cost in miles vs. a full award ticket.</li>
-                     {/* Using dangerouslySetInnerHTML for ® &amp; */}
-                    <li dangerouslySetInnerHTML={{ __html:"<strong>Pay with Miles at 1¢ each:</strong> If you enable “Pay with Miles,” you can offset part of your ticket, but that can sometimes yield fewer elite benefits. Check T&amp;Cs if you want to still earn MQMs/ MQDs on the portion you pay in cash."}}></li>
-                </ul>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html: "In 2025, Delta’s dynamic approach continues. If you can be flexible or catch award sales, you might see round trips for 12–15k or less in domestic economy. For business-class redemptions to Europe/Asia, you might need 120k–300k+ miles, depending on demand. Reserve helps you gather more SkyMiles plus MQMs for higher-tier status, so you can also enjoy complimentary upgrades, further enhancing your travel experience."}}></p>
-            </section>
-
-             {/* Section 19: Who Should Get the Card? */}
-             <section id="section-19" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html:"Who Should Get the Delta SkyMiles® Reserve Amex?"}}></h2>
-                <div className={styles.prosCons}>
-                    <div className={styles.pros}>
-                        <h3>Yes, If You:</h3>
-                        <ul className={styles.featureList}>
-                            <li>Fly <strong>Delta frequently</strong> and want unlimited Sky Club + partial Centurion access (on Delta flights)</li>
-                             {/* Using dangerouslySetInnerHTML for ® */}
-                            <li dangerouslySetInnerHTML={{__html:"Crave <strong>Medallion status boosts</strong> (MQM thresholds) or the <strong>MQD waiver</strong> for up to Platinum/ Diamond"}}></li>
-                             <li>Value a <strong>First-Class or Comfort+ companion certificate</strong> each year to offset the $550 fee</li>
-                              {/* Using dangerouslySetInnerHTML for ® */}
-                             <li dangerouslySetInnerHTML={{__html:"Want all the <strong>Delta perks</strong>: free bag, priority boarding, in-flight savings, plus <strong>Delta lounge</strong> convenience"}}></li>
-                             <li>Pay statements in full, avoiding ~20–29% APR interest overshadowing lounge and status benefits</li>
-                        </ul>
+            
+            <div className={styles.reviewContainer}>
+              <article>
+                <header className={styles.reviewHeader}>
+                    <div className={styles.summaryBox}>
+                        <h2 className={styles.summaryBoxTitle}>{reviewData.cardName}: At a Glance</h2>
+                        <div className={styles.summaryGrid}>
+                            <div className={styles.summaryItem}><span className={styles.summaryIcon}><IconGift /></span> <span className={styles.summaryLabel}>Welcome Offer:</span> <span className={styles.summaryValue}>{summaryBoxData.welcomeOffer}</span></div>
+                            <div className={styles.summaryItem}><span className={styles.summaryIcon}><IconCheck /></span> <span className={styles.summaryLabel}>Annual Fee:</span> <span className={styles.summaryValue}>{summaryBoxData.annualFee}</span></div>
+                            <div className={styles.summaryItem}><span className={styles.summaryIcon}><IconStar /></span> <span className={styles.summaryLabel}>Key Perks:</span> <span className={styles.summaryValue}>{summaryBoxData.keyPerks}</span></div>
+                            <div className={styles.summaryItem}><span className={styles.summaryIcon}><IconDollar /></span> <span className={styles.summaryLabel}>Key Credits:</span> <span className={styles.summaryValue}>{summaryBoxData.keyCredits}</span></div>
+                            <div className={styles.summaryItem} data-full-width="true"><span className={styles.summaryIcon}><IconPlus /></span> <span className={styles.summaryLabel}>Best For:</span> <span className={styles.summaryValue}>{summaryBoxData.bestFor}</span></div>
+                        </div>
+                        <div className={styles.summaryBoxActions}>
+                            <a href={reviewData.ratesFeesLink} className={styles.summaryRatesLink} target="_blank" rel="noopener noreferrer sponsored">See Card Rates & Fees</a>
+                        </div>
                     </div>
-                    <div className={styles.cons}>
-                        <h3>No, If You:</h3>
-                        <ul className={styles.featureList}>
-                             <li>Aren’t <strong>Delta loyal</strong> or rarely use Sky Club / lounge visits</li>
-                             <li>Can’t justify the <strong>$550 fee</strong> or companion certificate for first class is wasted on you</li>
-                             <li>Desire <strong>broader lounge coverage</strong> beyond Delta flights (e.g., you want Centurion for all carriers, Priority Pass restaurants, etc.)</li>
-                             <li>Prefer a <strong>better everyday multiplier</strong> on non-Delta spend or want more flexible points (like UR or MR) for all travel</li>
-                             <li>Need to revolve a balance, as interest quickly outstrips the card’s perk value</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
+                </header>
+                
+                <section id="section-intro" className={styles.reviewSection}>
+                    <h2>Introduction: The $650 Question</h2>
+                    <p>Imagine the scene: you’re at Gate B27, surrounded by a sea of anxious travelers, a chaos of rolling suitcases and final boarding calls. You glance at the long queue, then at your watch.</p>
+                    <p>Now, picture this instead: you’re sinking into a plush armchair in the serene, glass-walled sanctuary of the Delta Sky Club, a complimentary drink in hand. This is the world the Delta SkyMiles® Reserve American Express Card promises—a calmer, more premium way to travel.</p>
+                    <p>But this elevated experience comes with a steep ${reviewData.annualFee} annual fee. <a href={reviewData.ratesFeesLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.inlineLink}>Source: American Express</a></p>
+                    <p>That figure is the central question. Is the Delta Reserve a master key that unlocks value far beyond its cost, or is it a luxury whose benefits are too niche for anyone but the most dedicated Delta road warrior? This guide will dissect every facet of the card to help you decide if it’s the right choice for you.</p>
+                </section>
 
-             {/* Section 20: Bottom Line & Disclaimer */}
-             <section id="section-20" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html:"Final Thoughts &amp; Disclaimer"}}></h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"The <strong>Delta SkyMiles® Reserve American Express Card</strong> is the ultimate co-branded Delta product, delivering <strong>unlimited Sky Club</strong> lounge access, partial <strong>Centurion Lounge</strong> privileges (on Delta flights), <strong>MQM boosts</strong> for chasing elite status, and a <strong>First Class or Comfort+ companion certificate</strong>. At <strong>$550</strong>, it’s a substantial fee, but frequent Delta flyers can recoup much of it via lounge visits, companion use, and time saved in the status journey. If you’re a devoted Delta traveler aiming for Medallion tiers, the Reserve’s synergy with lounge perks and MQM acceleration is compelling. Casual or brand-agnostic fliers might prefer other premium cards. In 2025, with possible lounge policy tweaks, the Reserve remains a top pick for Delta devotees seeking an all-in approach to comfortable preflight experiences, faster status climbs, and valuable domestic first-class companion flights."}}></p>
-                 {/* Using dangerouslySetInnerHTML for ® &amp; */}
-                <p dangerouslySetInnerHTML={{ __html:"<strong>Disclaimer:</strong> Terms, APR, bonus amounts, and lounge expansions can change. Always verify the <strong>current</strong> details with Delta and Amex. We may earn affiliate commissions from some links, but editorial opinions stand independent. Delta’s dynamic award pricing affects mileage values, and lounge rules (guest fees, access times) can shift. If you revolve a balance at ~20–29% APR, interest quickly negates your lounge/status benefits. Evaluate your Delta flight frequency, MQM needs, and companion ticket usage before applying."}}></p>
-            </section>
+                <section id="section-snapshot" className={styles.reviewSection}>
+                    <h2>Card Snapshot &amp; &quot;Best For&quot; Tagline</h2>
+                    <p><strong>Best For:</strong> {summaryBoxData.bestFor}</p>
+                    <DraggableTableWrapper>
+                        <div className={styles.tableContainer}>
+                            <table className={`${styles.statsTable} ${styles.highlightTable}`}>
+                                <tbody>
+                                    <tr><td>Card Name:</td><td><strong>{reviewData.cardName}</strong></td></tr>
+                                    <tr><td>Annual Fee:</td><td><strong>${reviewData.annualFee}</strong></td></tr>
+                                    <tr><td>Welcome Offer:</td><td>{summaryBoxData.welcomeOffer}</td></tr>
+                                    <tr><td>Key Perks:</td><td>{summaryBoxData.keyPerks}</td></tr>
+                                    <tr><td>Earning Rate:</td><td>3X Miles on Delta purchases; 1X Mile on all other eligible purchases. <a href={reviewData.benefitsGuideLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.inlineLink}>Source: Amex</a></td></tr>
+                                    <tr><td>Recommended Credit:</td><td>Good to Excellent.</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </DraggableTableWrapper>
+                </section>
 
-             {/* E-A-T Section */}
-             <section id="eat-expertise-authority-trustworthiness" className={`${styles.reviewSection} ${styles.eatSection}`}>
-                 <h2 dangerouslySetInnerHTML={{ __html: "Our Commitment to E-A-T: Expertise, Authority &amp; Trustworthiness"}}></h2>
-                 {/* Using E-A-T text adapted for Delta Reserve */}
-                <p>
-                    At <strong>TravelCardInsider</strong>, we prioritize
-                    reliable, unbiased reviews so you can make informed
-                    credit decisions. We adhere to Google’s E‑A‑T
-                    (Expertise, Authority, and Trustworthiness) guidelines
-                    through:
-                </p>
-                <h3>1. Expertise</h3>
-                <ul className={styles.featureList}>
-                    <li><strong>Airline Card Specialists:</strong>
-                    Our reviewers have years of experience analyzing premium co-branded airline cards,
-                    including the Delta Reserve, focusing on lounge access and status benefits.</li>
-                    {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Frequent Fact-Checks:</strong> We update data whenever Delta or Amex modifies the card’s perks (like Sky Club access rules, MQM thresholds, or companion certificate terms)."}}></li>
-                    <li><strong>Industry Insights:</strong>
-                    We attend travel/aviation conferences to stay on top
-                    of loyalty program changes and advanced Delta Medallion strategies.</li>
-                </ul>
-                <h3>2. Authority</h3>
-                <ul className={styles.featureList}>
-                    {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Detailed Reviews:</strong> Our ~2,000-word coverage addresses everything from the $550 annual fee to advanced MQM earning tips for the Delta SkyMiles® Reserve Amex."}}></li>
-                    <li><strong>Widely Quoted:</strong>
-                    We’ve been referenced in major finance and travel outlets
-                    for unbiased airline card comparisons and lounge access analysis.</li>
-                    <li><strong>Transparent Affiliations:</strong>
-                    If links lead to potential commissions, we disclose them,
-                    preserving editorial independence regarding card ratings or final verdicts.</li>
-                </ul>
-                <h3>3. Trustworthiness</h3>
-                <ul className={styles.featureList}>
-                    <li><strong>Independent Ratings:</strong>
-                    Advertisers do not control our final verdict or star ratings for the Delta Reserve.</li>
-                    <li><strong>Timely Updates:</strong>
-                    We revise articles promptly if major changes (like new Centurion Lounge policies or MQD shifts) happen.</li>
-                    <li><strong>User Feedback Encouraged:</strong>
-                    We welcome traveler experiences in the comments
-                    to refine accuracy and real-world perspectives on lounge crowding or status benefits.</li>
-                    <li>
-                        <strong>Data Security:</strong> We adhere to best practices, outlined in our <Link href="/privacy-policy"><a>Privacy Policy</a></Link>.
-                    </li>
-                </ul>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{__html:"By following E-A-T, we aim to deliver credible, comprehensive recommendations so you can confidently decide if the Delta SkyMiles® Reserve Amex aligns with your 2025 travel goals and Delta loyalty."}}></p>
-            </section>
+                <section id="section-welcome-offer" className={styles.reviewSection}>
+                    <h2>Welcome Offer: 95K-Mile Jump-Start</h2>
+                    <p>American Express rolls out a substantial welcome mat for new Reserve cardholders. The current offer lets you earn 95,000 Bonus Miles after spending $6,000 on eligible purchases within your first six months. <a href={reviewData.offerTermsLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.inlineLink}>Source: American Express</a></p>
+                    <p>What are those miles worth? While values fluctuate, a conservative estimate is about 1.2 cents per mile. At that rate, the 95,000-mile bonus is worth roughly $1,140 toward Delta flights. This massive initial value easily covers the ${reviewData.annualFee} annual fee, leaving you with nearly $500 in positive value for your first year.</p>
+                    <p>However, be aware of Amex’s “once per lifetime” rule, which means you’re likely ineligible for the bonus if you’ve had this specific card before. Also, closing your account shortly after receiving a bonus can cause the issuer to “claw back” the miles, so plan to keep the card for at least one full year.</p>
+                </section>
 
-          </article>
-        </div> {/* Close reviewContainer */}
+                <section id="section-companion-cert" className={styles.reviewSection}>
+                  <h2>Golden Ticket: First-Class Companion Certificate</h2>
+                  <p>After the welcome bonus, the Annual Companion Certificate becomes the card’s single most powerful perk. Received each year upon renewal (starting in year two), it’s a buy-one-get-one-free ticket that elevates the card far above its peers.</p>
+                  <p>Unlike certificates from lower-tier cards (like the one in our <Link href={reviewData.deltaPlatinumReviewLink}><a>Delta SkyMiles® Platinum Amex review</a></Link>), the Reserve’s is valid for round-trip travel in First Class, Delta Comfort+, or Main Cabin. It can be used for flights within the 48 contiguous U.S. states, plus many destinations in Mexico, the Caribbean, and Central America. <a href={reviewData.companionCertTermsLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.inlineLink}>Source: Delta Air Lines</a></p>
+                  <p>You’re only responsible for taxes and fees on the second ticket, capped at $80 domestically. The value here is immense. A cross-country first-class ticket can easily top $1,200. Using the certificate effectively saves that entire amount, generating value that can be nearly double the card's annual fee from a single trip. For anyone who consistently travels with a partner or friend, this perk alone can make the card a financial no-brainer.</p>
+                  <p>However, redeeming it requires flexibility. Availability is limited to specific fare classes, which can be scarce on popular routes or during holidays. To snag a high-value seat, you often need to book well in advance.</p>
+                </section>
+
+                <section id="section-lounge-access" className={styles.reviewSection}>
+                  <h2>Airport Oasis: Sky Club + Centurion Access</h2>
+                  <p>For many, the airport lounge is the ultimate antidote to travel stress. The Reserve Card offers access to two premier lounge networks.</p>
+                  <p>First, you get 15 annual visits to the Delta Sky Club when flying with the airline. A "visit" covers all lounge entries within a 24-hour window, so layovers on the same trip don't burn extra visits. Want unlimited access? You can unlock it for the rest of the year and the following one by spending $75,000 on the card in a calendar year. <a href={reviewData.skyClubAccessLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.inlineLink}>Source: Delta Air Lines</a></p>
+                  <p>Second, you gain entry to the exclusive American Express Centurion Lounges when flying Delta on a ticket purchased with your card. <a href={reviewData.centurionLoungeLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.inlineLink}>Source: American Express</a> This benefit also extends to Escape Lounges—The Centurion Studio Partner. This two-pronged access solidifies the card's position as a ticket to pre-flight comfort.</p>
+                </section>
+                
+                <section id="section-status-boost" className={styles.reviewSection}>
+                    <h2>Fast-Track to Medallion: MQD Headstart &amp; Boost</h2>
+                    <p>Delta’s loyalty program now hinges entirely on Medallion Qualification Dollars (MQDs), making the Reserve card an essential tool for chasing elite status.</p>
+                    <ul className={styles.featureList}>
+                        <li><strong>MQD Headstart:</strong> At the start of each year, you get $2,500 MQDs deposited into your account.</li>
+                        <li><strong>MQD Boost:</strong> You earn $1 MQD for every $10 you spend on the card, with no cap. Spending $25,000 in a year nets another 2,500 MQDs—enough to secure Silver status without setting foot on a plane. <a href={reviewData.medallionProgramLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.inlineLink}>Source: Delta Air Lines</a></li>
+                        <li><strong>Upgrade Priority:</strong> As a cardholder, you get priority for complimentary upgrades over other Medallion members in the same tier and fare class. In a crowded upgrade list, this is often the deciding factor.</li>
+                    </ul>
+                    <p>The card is no longer a supplement to a status strategy—it's the foundation.</p>
+                </section>
+
+                <section id="section-every-trip-perks" className={styles.reviewSection}>
+                    <h2>Every-Trip Perks: Bags, Boarding, In-Flight Savings</h2>
+                    <p>Beyond the headline benefits, the Reserve card smooths out the rough edges of travel with practical perks that deliver value on every trip.</p>
+                    <ul className={styles.featureList}>
+                        <li><strong>First Checked Bag Free:</strong> You and up to eight others on your reservation get a free first checked bag on Delta flights. For a family of four, this can save up to $280 on a single round-trip journey.</li>
+                        <li><strong>Priority Boarding:</strong> You receive Main Cabin 1 boarding, which helps you settle in sooner and nearly guarantees overhead bin space for your carry-on.</li>
+                        <li><strong>20% In-Flight Savings:</strong> Use your card for in-flight food and drinks and get a 20% discount via a statement credit.</li>
+                    </ul>
+                    <p>These benefits add up, saving you money and reducing hassle each time you fly.</p>
+                </section>
+                
+                <section id="section-redemptions" className={styles.reviewSection}>
+                    <h2>TakeOff 15 &amp; SkyMiles Redemptions</h2>
+                    <p>The Delta SkyMiles program has a reputation for unpredictable "dynamic pricing," but the Reserve card gives you two powerful tools to maximize value.</p>
+                    <p>First is the TakeOff 15 benefit, which automatically gives you a 15% discount when using miles to book Delta-operated award flights on delta.com or the app. <a href={reviewData.takeOff15Link} target="_blank" rel="noopener noreferrer sponsored" className={styles.inlineLink}>Source: Delta Air Lines</a></p>
+                    <p>Your miles can be redeemed for flights on Delta and partners like Air France and Virgin Atlantic, used for upgrades, or applied to vacation packages. While other redemptions exist (like merchandise or gift cards), they typically offer lower value. To find the best deals, use Delta’s "Price Calendar" view and keep an eye out for their frequent SkyMiles Deals.</p>
+                </section>
+
+                <section id="section-earning-miles" className={styles.reviewSection}>
+                    <h2>Earning Miles: 3× Delta, 1× Everything Else</h2>
+                    <p>The Reserve card's earning structure is simple and specialized: it rewards loyalty to Delta above all else. You earn a solid 3X miles on all purchases made directly with Delta, including flights, upgrades, and Sky Club memberships. For a loyal Delta flyer, these miles add up quickly.</p>
+                    <p>However, outside of that category, the card's potential drops off. On all other purchases—groceries, gas, dining, and more—it earns a flat 1X mile per dollar. In today's competitive market, that's a significant weakness.</p>
+                    <p>This structure encourages a "two-card" strategy: use the Reserve for all things Delta to unlock its unique travel perks and status benefits, and use a different, high-earning card (even a no-fee option like the one in our <Link href={reviewData.deltaBlueReviewLink}><a>Delta SkyMiles® Blue Amex review</a></Link>) for all other daily spending to maximize your overall rewards.</p>
+                </section>
+
+                <section id="section-statement-credits" className={styles.reviewSection}>
+                    <h2>Statement-Credit “Coupon Book” ($560 Potential)</h2>
+                    <p>The Reserve card offers a portfolio of annual credits that can total up to $560 in value, dramatically lowering the effective annual fee. However, most are offered on a "use-it-or-lose-it" monthly basis, requiring active management. <a href={reviewData.statementCreditsGuideLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.inlineLink}>Source: American Express</a></p>
+                    <ul className={styles.featureList}>
+                        <li><strong>$240 Resy Credit:</strong> Get up to $20 back per month as a statement credit on eligible purchases at U.S. restaurants in the Resy network. Pro-tip: Some users buy a $20 gift card each month to bank the value for a larger meal.</li>
+                        <li><strong>$120 Rideshare Credit:</strong> Receive up to $10 back per month on U.S. rideshare purchases with services like Uber and Lyft. Pro-tip: Add $10 to your Uber Cash balance each month to save it for a future ride.</li>
+                        <li><strong>$200 Delta Stays Credit:</strong> Earn up to a $200 statement credit each year when you book a prepaid hotel or vacation rental through Delta Stays on delta.com.</li>
+                    </ul>
+                </section>
+
+                <section id="section-real-world-value" className={styles.reviewSection}>
+                    <h2>Year-in-Life Value Example</h2>
+                    <p>Let's meet Taylor, a family traveler from a Delta hub city. Taylor's family of four takes two domestic trips a year. Their goal is to travel more comfortably and achieve Silver Medallion status. They spend about $2,500 a month on their credit card for groceries, gas, and online shopping.</p>
+                    <p><strong>Taylor's Year 1 Value:</strong></p>
+                    <h3>Status Progress:</h3>
+                    <ul>
+                        <li>MQD Headstart: +$2,500 MQDs.</li>
+                        <li>MQD Boost: $30,000 in annual spending ($2,500 x 12) on the card earns +$3,000 MQDs ($30,000 / $10).</li>
+                        <li><strong>Total:</strong> Taylor earns $5,500 MQDs, securing Silver Medallion status without booking a single flight.</li>
+                    </ul>
+                    <h3>Value from Perks & Credits:</h3>
+                    <ul>
+                        <li>Welcome Offer: +$1,140 (from 95,000 miles).</li>
+                        <li>Statement Credits: +$360 (assuming full use of Resy and Rideshare credits).</li>
+                        <li>Free Checked Bags: +$280 (2 trips x 4 people x $35/bag).</li>
+                    </ul>
+                    <p><strong>Total Year 1 Value: $1,780.</strong></p>
+                    <p><strong>Net Value: $1,780 (Value) - $650 (Fee) = +$1,130.</strong></p>
+                    <p>For Taylor, the card is a clear winner, delivering significant positive value and elite status.</p>
+                </section>
+
+                <section id="section-rates-fees" className={styles.reviewSection}>
+                    <h2>Rates, Fees &amp; Authorized-User Costs</h2>
+                    <p>It's crucial to understand the card's full financial framework. This is a travel card, not a tool for carrying debt.</p>
+                     <ul className={styles.featureList}>
+                        <li><strong>Annual Fee:</strong> ${reviewData.annualFee}.</li>
+                        <li><strong>Authorized User Fee:</strong> $175 annually for each additional card. Authorized users also get their own Sky Club access, which is a significant value-add.</li>
+                        <li><strong>APRs:</strong> The variable purchase APR is high, typically {reviewData.aprRange}. Avoid carrying a balance, as interest charges will quickly erase any rewards you earn.</li>
+                        <li><strong>Foreign Transaction Fee:</strong> None. This is essential for any travel card, saving you ~3% on all purchases abroad.</li>
+                        <li><strong>Late/Returned Payment Fees:</strong> Up to $40.</li>
+                    </ul>
+                    <p>The golden rule: Always pay your statement balance in full and on time.</p>
+                </section>
+
+                <section id="section-user-profile" className={styles.reviewSection}>
+                    <h2>Ideal vs. Poor-Fit Cardholders</h2>
+                    <p>This card is not a one-size-fits-all solution. Its value depends entirely on your loyalty to Delta and your travel habits.</p>
+                    <h3>The Ideal Cardholder: "The Delta Status Seeker"</h3>
+                    <p>This person flies Delta at least 5-10 times a year, lives near a Delta hub, and actively pursues Medallion status. They value the lounge experience, travel with a companion, and are organized enough to maximize the monthly statement credits. They understand the card's weakness and use another card for everyday spending.</p>
+                    <h3>Who Should Think Twice: "The Occasional Traveler"</h3>
+                    <p>This traveler flies only once or twice a year, is airline-agnostic, and won't use the Companion Certificate. They find the monthly credits to be a hassle and want a single, simple card for all their spending. The 1X earning rate on non-Delta purchases is a deal-breaker for this profile. For this traveler, the card in our <Link href={reviewData.deltaGoldReviewLink}><a>Delta SkyMiles® Gold Amex review</a></Link> is likely a much better fit.</p>
+                </section>
+
+                <section id="section-pros-cons" className={styles.reviewSection}>
+                    <h2>Pros &amp; Cons Snapshot</h2>
+                    <DraggableTableWrapper>
+                        <div className={styles.tableContainer}>
+                            <table className={`${styles.statsTable} ${styles.comparisonTable}`}>
+                                <thead><tr><th>Pros</th><th>Cons</th></tr></thead>
+                                <tbody>
+                                    <tr><td>Generous Welcome Offer provides huge value in the first year.</td><td>Steep ${reviewData.annualFee} Annual Fee is a significant upfront cost.</td></tr>
+                                    <tr><td>High-Value Companion Certificate can be worth over $1,000.</td><td>Weak Everyday Earning Rate (1X on non-Delta spend) is uncompetitive.</td></tr>
+                                    <tr><td>Powerful Path to Medallion Status is the best for earning status through spending.</td><td>Limited Sky Club Access (15 visits/year) may not be enough for road warriors.</td></tr>
+                                    <tr><td>Comprehensive Lounge Access (Sky Club and Centurion) provides a premium experience.</td><td>Companion Certificate can be difficult to redeem due to limited availability.</td></tr>
+                                    <tr><td>Valuable Annual Credits can offset a huge portion of the annual fee.</td><td>"Coupon Book" monthly credits require active tracking.</td></tr>
+                                    <tr><td>TakeOff 15 Discount makes every SkyMile more valuable.</td><td></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </DraggableTableWrapper>
+                </section>
+
+                <section id="section-comparison" className={styles.reviewSection}>
+                    <h2>Reserve vs. Key Competitors</h2>
+                    <p>No card exists in a vacuum. Here’s how the Reserve stacks up against its main rivals.</p>
+                     <DraggableTableWrapper>
+                        <div className={styles.tableContainer}>
+                            <table className={`${styles.statsTable} ${styles.comparisonTable}`}>
+                                <thead>
+                                    <tr>
+                                        <th>Feature</th>
+                                        <th><strong>Delta Reserve Card</strong></th>
+                                        <th>Amex Platinum Card</th>
+                                        <th>Chase Sapphire Reserve</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Annual Fee</td>
+                                        <td><strong>${reviewData.annualFee}</strong></td>
+                                        <td>$695 <a href={reviewData.amexPlatinumCardPageLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.inlineLink}>Source</a></td>
+                                        <td>$550</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Lounge Access</td>
+                                        <td><strong>Delta Sky Club (15 visits/yr), Centurion Lounge (on Delta flights)</strong></td>
+                                        <td>Widest access: Centurion, Priority Pass, Delta Sky Club, etc.</td>
+                                        <td>Priority Pass Select, Sapphire Lounges</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Airline Rewards</td>
+                                        <td><strong>3X on Delta</strong></td>
+                                        <td>5X on flights booked direct or via AmexTravel</td>
+                                        <td>3X on all travel (after $300 credit)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Signature Perk</td>
+                                        <td><strong>First Class Companion Certificate &amp; MQD Boost</strong></td>
+                                        <td>$200 airline fee credit &amp; broad luxury credits (Uber, Saks)</td>
+                                        <td>$300 flexible annual travel credit</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </DraggableTableWrapper>
+                    <p>The choice isn't about which card is "best," but which ecosystem fits your loyalty. The Amex Platinum is better for airline-agnostic travelers, while the Delta Reserve is built for those committed to the Delta ecosystem. For an even deeper dive, see our head-to-head <Link href={reviewData.amexPlatinumVsDeltaReserveLink}><a>Amex Platinum Card vs. Delta Reserve comparison</a></Link>.</p>
+                </section>
+
+                <section id="section-testimonials" className={styles.reviewSection}>
+                  <h2>Real-World Voices (5 Mini-Testimonials)</h2>
+                  <div className={styles.testimonialContainer}>
+                      <blockquote className={styles.testimonialQuote}>
+                          <p>&quot;The MQD Headstart and Boost are why I have this card. It's the only way I can realistically make Diamond status now, and that's worth the fee to me.&quot;</p>
+                          <footer>– Mark, The Status Chaser</footer>
+                      </blockquote>
+                      <blockquote className={styles.testimonialQuote}>
+                          <p>&quot;The companion certificate alone makes it worth it. We just booked a first-class trip that saved us $1,200. It's a no-brainer for us.&quot;</p>
+                          <footer>– Sarah, The Companion Maximizer</footer>
+                      </blockquote>
+                       <blockquote className={styles.testimonialQuote}>
+                          <p>&quot;The monthly credits are a bit annoying, but I use them enough. Between that, the 15 lounge visits, and the companion pass, I definitely come out ahead.&quot;</p>
+                          <footer>– Ben, The Balanced User</footer>
+                      </blockquote>
+                      <blockquote className={styles.testimonialQuote}>
+                          <p>&quot;It's a terrible card for daily spending. We use it for Delta flights and a monthly dinner with the Resy credit, and another card for everything else.&quot;</p>
+                          <footer>– Chloe, The Rewards Realist</footer>
+                      </blockquote>
+                       <blockquote className={styles.testimonialQuote}>
+                          <p>&quot;For our family of four, the free checked bags and lounge guest passes provide huge savings and comfort on our yearly vacations. It just makes travel easier.&quot;</p>
+                          <footer>– David, The Family Traveler</footer>
+                      </blockquote>
+                  </div>
+                </section>
+                
+                <section id="section-protections" className={styles.reviewSection}>
+                    <h2>Travel &amp; Purchase Protections</h2>
+                    <p>A key part of a premium card's value is its safety net of insurance benefits. The Reserve includes: <a href={reviewData.travelProtectionsLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.inlineLink}>Source: Amex</a></p>
+                    <ul className={styles.featureList}>
+                        <li>Trip Cancellation/Interruption Insurance: Up to $10,000 per trip if you're sidelined for a covered reason.</li>
+                        <li>Trip Delay Coverage: Up to $500 for essentials like meals and lodging if your trip is delayed more than 6 hours.</li>
+                        <li>Baggage Insurance Plan: Coverage for lost, damaged, or stolen baggage.</li>
+                        <li>Cell Phone Protection: Get reimbursed up to $800 (with a $50 deductible) if your phone is stolen or damaged, as long as you pay your wireless bill with the card.</li>
+                        <li>Purchase Protection & Extended Warranty</li>
+                    </ul>
+                </section>
+
+                <section id="section-customer-service" className={styles.reviewSection}>
+                  <h2>Customer Service &amp; App Experience</h2>
+                  <p>The card is backed by American Express, which consistently ranks at the top for customer satisfaction. You get reliable 24/7 service via phone or chat. The Amex mobile app is also a standout—clean, intuitive, and highly rated. It allows you to manage your account, track spending, and add Amex Offers, which provide targeted deals that can add even more value to your membership.</p>
+                </section>
+                
+                <section id="section-faqs" className={`${styles.reviewSection} ${styles.faqSection}`}>
+                  <h2>FAQs: Quick Answers</h2>
+                  <div className={styles.faqContainer}>
+                      {structuredDataOptimized['@graph'].find(item => item['@type'] === 'FAQPage').mainEntity.map((faq, index) => (
+                          <details key={index} className={styles.faqItem} name={`faq-${index + 1}`}>
+                              <summary className={styles.faqQuestion}>{`${index + 1}. ${faq.name}`}</summary>
+                              <div className={styles.faqAnswer}><p>{faq.acceptedAnswer.text}</p></div>
+                          </details>
+                      ))}
+                  </div>
+                </section>
+
+                <section id="section-verdict" className={styles.reviewSection}>
+                  <h2>Final Verdict: Should You Board?</h2>
+                  <p>The Delta SkyMiles® Reserve American Express Card is not for everyone. It's a high-cost, high-reward instrument precision-engineered for the dedicated Delta loyalist.</p>
+                  <p>The card presents a clear trade-off. In exchange for a steep ${reviewData.annualFee} annual fee and a poor rewards rate on everyday purchases, you gain access to an ecosystem of benefits designed to make the entire Delta experience more comfortable and rewarding. It offers a tangible shortcut to elite status, a quiet refuge in crowded airports, and a golden ticket that can put you and a companion in first class.</p>
+                  <p>The decision demands an honest self-assessment. If you live and breathe Delta, chase Medallion status, travel with a companion, and value the sanctuary of a lounge, then this card is an indispensable part of your travel strategy. For everyone else—the occasional flyer, the price-sensitive traveler, the free agent who values flexibility above all—the sky-high fee and airline-specific perks mean your loyalty is better invested elsewhere. Our <Link href={reviewData.bestAirlineCardsLink}><a>Best Airline Credit Cards 2025 guide</a></Link> can help you find the perfect match.</p>
+                </section>
+
+              </article>
+            </div>
+          </div>
+          <aside className={styles.sidebarArea}>
+            <TableOfContents sections={tocSections} />
+          </aside>
+        </div>
       </main>
-
-      
+      <div className={styles.stickyFooterContainer}>
+        <div className={styles.stickyFooterContent}>
+            <Image src={reviewData.imageUrl} alt={`${reviewData.cardName} small image`} width={60} height={38} className={styles.stickyFooterCardImage} />
+            <div className={styles.stickyFooterText}>
+              <span className={styles.stickyFooterCardName}>{reviewData.cardName}</span>
+              <span className={styles.stickyFooterRating}>{siteName} Rating: {reviewData.ratingValue.toFixed(1)}/10</span>
+            </div>
+            <div className={styles.stickyFooterButtons}>
+                <a href={reviewData.applyLink} className={`${styles.stickyFooterBtn} ${styles.stickyFooterBtnApply}`} target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
+                <a href={reviewData.ratesFeesLink} className={`${styles.stickyFooterBtn} ${styles.stickyFooterBtnRates}`} target="_blank" rel="noopener noreferrer sponsored">See Rates & Fees</a>
+            </div>
+        </div>
+      </div>
     </>
   );
 }
 
-export default DeltaSkyMilesReserveReviewPage;
+export default DeltaReserveAmexReviewPage;
