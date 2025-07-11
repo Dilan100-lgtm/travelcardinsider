@@ -92,6 +92,8 @@ const reviewData = {
   deltaBlueReviewLink: '/reviews/delta-skymiles-blue-amex-review',
   bestAirlineCardsLink: '/guides/best-airline-credit-cards-2025',
   amexPlatVsReserveComparisonLink: '/comparisons/amex-platinum-vs-delta-reserve',
+  amexPlatinumReviewLink: '/reviews/amex-platinum-review',
+  chaseSapphireReserveReviewLink: '/reviews/chase-sapphire-reserve-review',
   sku: 'AMEX-DELTA-RES-TCI-2025',
   mpn: 'AMEXDELTARES',
   h1Content: "The Delta Reserve Card: Your Ticket to the Top, or Just an Expensive Ride?",
@@ -540,7 +542,6 @@ function DeltaReserveAmexReviewPage() {
                             <div className={styles.summaryItem}><span className={styles.summaryIcon}><IconPlane /></span> <span className={styles.summaryLabel}>Premium Perks:</span> <span className={styles.summaryValue}>{summaryBoxData.travelPerk}</span></div>
                             <div className={styles.summaryItem} data-full-width="true"><span className={styles.summaryIcon}><IconPlus /></span> <span className={styles.summaryLabel}>Best For:</span> <span className={styles.summaryValue}>{summaryBoxData.bestFor}</span></div>
                         </div>
-                        {/* --- REWARDS CALCULATOR LINK ADDED --- */}
                         <div className={styles.summaryBoxActions}>
                             <a href={reviewData.ratesLink} className={styles.summaryRatesLink} target="_blank" rel="noopener noreferrer sponsored">See Card Rates & Fees</a>
                             <a href='/rewards-calculator' className={`${styles.heroRewardsCalculator} ${styles.summaryButton}`} target="_blank" rel="noopener noreferrer">Rewards Calculator</a>
@@ -642,7 +643,6 @@ function DeltaReserveAmexReviewPage() {
                   </ul>
                 </section>
 
-                {/* --- MID-ARTICLE CTA ADDED --- */}
                 <section className={styles.midArticleCta}>
                     <h3>Ready to Elevate Your Travel?</h3>
                     <p>With a First-Class Companion Certificate and premium lounge access, the Delta Reserve could be your key to a better travel experience.</p>
@@ -730,6 +730,7 @@ function DeltaReserveAmexReviewPage() {
                     </DraggableTableWrapper>
                 </section>
                 
+                {/* --- COMPARISON TABLE UPDATED WITH INTERNAL LINKS --- */}
                 <section id="section-comparison" className={styles.reviewSection}>
                     <h2>Reserve vs. Key Competitors</h2>
                     <p>No card exists in a vacuum. Here’s how the Reserve stacks up against its main rivals.</p>
@@ -740,8 +741,16 @@ function DeltaReserveAmexReviewPage() {
                                   <tr>
                                     <th>Feature</th>
                                     <th><strong>{reviewData.cardName}</strong></th>
-                                    <th>The Platinum Card® from American Express</th>
-                                    <th>Chase Sapphire Reserve®</th>
+                                    <th>
+                                        <Link href={reviewData.amexPlatinumReviewLink} legacyBehavior>
+                                            <a>The Platinum Card® from American Express</a>
+                                        </Link>
+                                    </th>
+                                    <th>
+                                        <Link href={reviewData.chaseSapphireReserveReviewLink} legacyBehavior>
+                                            <a>Chase Sapphire Reserve®</a>
+                                        </Link>
+                                    </th>
                                   </tr>
                                 </thead>
                                 <tbody>
