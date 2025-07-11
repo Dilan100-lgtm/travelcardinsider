@@ -11,6 +11,7 @@ import dynamic from 'next/dynamic';
 import styles from '../../styles/ReviewPage.module.css';
 
 // --- Component Imports ---
+import TableOfContents from '../../components/TableOfContents'; // <-- FIX: Added this import
 import IconGift from '../../components/icons/icon-gift.svg';
 import IconStar from '../../components/icons/icon-star.svg';
 import IconCheck from '../../components/icons/icon-Credit Card.svg';
