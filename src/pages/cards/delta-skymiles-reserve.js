@@ -551,7 +551,9 @@ function DeltaReserveAmexReviewPage() {
 
                 <section id="section-intro" className={styles.reviewSection}>
                     <h2>Introduction: The ${reviewData.annualFee} Question</h2>
-                    <p>You're at Gate B27, stressed and surrounded by chaos. Now imagine instead: you’re relaxing in the Delta Sky Club with a free drink in hand. That’s the experience the Delta SkyMiles® Reserve American Express Card offers—premium, peaceful travel. But with a $650 annual fee, the big question is: does it deliver enough value, or is it only for die-hard Delta flyers? Let’s break it down</p>
+                    <p>Imagine the scene: you’re at Gate B27, surrounded by a sea of anxious travelers, a chaos of rolling suitcases and final boarding calls. You glance at the long queue, then at your watch.</p>
+                    <p>Now, picture this instead: you’re sinking into a plush armchair in the serene, glass-walled sanctuary of the Delta Sky Club, a complimentary drink in hand. This is the world the {reviewData.cardName} promises—a calmer, more premium way to travel.</p>
+                    <p>But this elevated experience comes with a steep ${reviewData.annualFee} annual fee. <a href={reviewData.ratesLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.inlineLink}>Source: American Express</a> That figure is the central question. Is the Delta Reserve a master key that unlocks value far beyond its cost, or is it a luxury whose benefits are too niche for anyone but the most dedicated Delta road warrior? This guide will dissect every facet of the card to help you decide if it’s the right choice for you.</p>
                 </section>
 
                 <section id="section-snapshot" className={styles.reviewSection}>
@@ -641,10 +643,11 @@ function DeltaReserveAmexReviewPage() {
                   </ul>
                 </section>
 
+                {/* --- MID-ARTICLE CTA - UPDATED FOR VERTICAL ALIGNMENT --- */}
                 <section className={styles.midArticleCta}>
                     <h3>Ready to Elevate Your Travel?</h3>
                     <p>With a First-Class Companion Certificate and premium lounge access, the Delta Reserve could be your key to a better travel experience.</p>
-                    <div className={styles.heroCtaContainer} style={{ marginTop: '1rem' }}>
+                    <div className={styles.midArticleCtaButtons}>
                         <a href={reviewData.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.applyNowButton}>
                             Apply on Amex Site
                         </a>
@@ -728,7 +731,6 @@ function DeltaReserveAmexReviewPage() {
                     </DraggableTableWrapper>
                 </section>
                 
-                {/* --- COMPARISON TABLE UPDATED WITH INTERNAL LINKS --- */}
                 <section id="section-comparison" className={styles.reviewSection}>
                     <h2>Reserve vs. Key Competitors</h2>
                     <p>No card exists in a vacuum. Here’s how the Reserve stacks up against its main rivals.</p>
