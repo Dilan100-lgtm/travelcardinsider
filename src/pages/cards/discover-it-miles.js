@@ -734,24 +734,24 @@ function DiscoverItMilesReviewPage() {
                     <DraggableTableWrapper>
                         <div className={styles.tableContainer}>
                             <table className={`${styles.statsTable} ${styles.comparisonTable}`}>
-                                <thead>
-                                  <tr>
-                                    <th>Feature</th>
-                                    <th><strong>{reviewData.cardName}</strong></th>
-                                    <th>Capital One VentureOne</th>
-                                    <th>Bank of America Travel Rewards</th>
-                                    <th>Chase Freedom Unlimited®</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr><td>Annual Fee</td><td>$0</td><td>$0</td><td>$0</td><td>$0</td></tr>
-                                  <tr><td>Welcome Offer</td><td>Unlimited 1st-year match</td><td>20,000 miles after $500 spend</td><td>25,000 points after $1,000 spend</td><td>Extra 1.5% on everything (up to $20k spend)</td></tr>
-                                  <tr><td>Base Rewards</td><td>1.5x Miles</td><td>1.25x Miles</td><td>1.5x Points</td><td>1.5% Cash Back</td></tr>
-                                  <tr><td>Bonus Categories</td><td>None</td><td>5x on hotels/cars via portal</td><td>None</td><td>5% on travel via portal, 3% on dining & drugstores</td></tr>
-                                  <tr><td>Redemption Value</td><td>1 cent/mile (any method)</td><td>1 cent/mile (travel) or transfer</td><td>1 cent/point (travel), 0.6 cents (cash)</td><td>1 cent/point or transfer w/ Sapphire</td></tr>
-                                  <tr><td>Foreign Fee</td><td>None</td><td>None</td><td>None</td><td>3%</td></tr>
-                                </tbody>
-                            </table>
+    <thead>
+        <tr>
+            <th>Feature</th>
+            <th><a href="https://www.travelcardinsider.com/cards/discover-it-miles"><strong>{reviewData.cardName}</strong></a></th>
+            <th><a href="https://www.travelcardinsider.com/cards/capital-one-ventureone">Capital One VentureOne</a></th>
+            <th><a href="https://www.travelcardinsider.com/cards/bank-of-america-travel-rewards">Bank of America Travel Rewards</a></th>
+            <th><a href="https://www.travelcardinsider.com/cards/chase-freedom-unlimited">Chase Freedom Unlimited®</a></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>Annual Fee</td><td>$0</td><td>$0</td><td>$0</td><td>$0</td></tr>
+        <tr><td>Welcome Offer</td><td>Unlimited 1st-year match</td><td>20,000 miles after $500 spend</td><td>25,000 points after $1,000 spend</td><td>Extra 1.5% on everything (up to $20k spend)</td></tr>
+        <tr><td>Base Rewards</td><td>1.5x Miles</td><td>1.25x Miles</td><td>1.5x Points</td><td>1.5% Cash Back</td></tr>
+        <tr><td>Bonus Categories</td><td>None</td><td>5x on hotels/cars via portal</td><td>None</td><td>5% on travel via portal, 3% on dining & drugstores</td></tr>
+        <tr><td>Redemption Value</td><td>1 cent/mile (any method)</td><td>1 cent/mile (travel) or transfer</td><td>1 cent/point (travel), 0.6 cents (cash)</td><td>1 cent/point or transfer w/ Sapphire</td></tr>
+        <tr><td>Foreign Fee</td><td>None</td><td>None</td><td>None</td><td>3%</td></tr>
+    </tbody>
+</table>
                         </div>
                     </DraggableTableWrapper>
                     <h3>Competitive Landscape Analysis</h3>
