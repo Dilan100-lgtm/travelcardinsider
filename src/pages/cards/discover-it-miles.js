@@ -737,7 +737,7 @@ function DiscoverItMilesReviewPage() {
     <thead>
         <tr>
             <th>Feature</th>
-            <th><a href="https://www.travelcardinsider.com/cards/discover-it-miles"><strong>{reviewData.cardName}</strong></a></th>
+            <th><strong>{reviewData.cardName}</strong></th>
             <th><a href="https://www.travelcardinsider.com/cards/capital-one-ventureone">Capital One VentureOne</a></th>
             <th><a href="https://www.travelcardinsider.com/cards/bank-of-america-travel-rewards">Bank of America Travel Rewards</a></th>
             <th><a href="https://www.travelcardinsider.com/cards/chase-freedom-unlimited">Chase Freedom Unlimited®</a></th>
