@@ -546,8 +546,7 @@ function DiscoverItMilesReviewPage() {
 
                 <section id="section-intro" className={styles.reviewSection}>
                     <h2>Introduction: Cutting Through the Travel-Rewards Turbulence</h2>
-                    <p>The world of travel rewards cards often feels like navigating a sprawling metropolis without a map. You’re bombarded with complex points charts, shifting transfer values, blackout dates, and a dizzying array of cards brandishing hefty annual fees for perks you might never use. This complexity is a huge barrier, leaving many aspiring travelers feeling that the rewards game is rigged against them. It begs the question: is there a way to earn real, valuable travel rewards that doesn’t require a spreadsheet and a Ph.D. in loyalty programs?</p>
-                    <p>This review is your clear, honest guide to a card that charts its own, refreshingly simple course: the {reviewData.cardName}. Where other cards build walls of complexity, this one lays down a welcome mat. It’s a card designed for the huge number of people who want their everyday spending to help fund their next vacation, without the stress and guesswork. This isn't just a "budget" card; it's a smart choice for a consumer who values predictability and ease of use over the high-stakes, high-effort world of premium travel hacking. Let's dive in and see if this straightforward approach can truly deliver meaningful value.</p>
+                    <p>Travel rewards often feel like a confusing maze of points, fees, and fine print. But the Discover it® Miles takes a refreshingly simple path. No complex charts, no annual fee—just straightforward earning that turns your everyday spending into real travel value. Perfect for those who want rewards without the hassle.</p>
                 </section>
 
                 <section id="section-snapshot" className={styles.reviewSection}>
