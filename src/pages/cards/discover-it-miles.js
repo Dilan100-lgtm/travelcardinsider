@@ -63,10 +63,10 @@ const reviewData = {
       }
   },
   siteName: siteName,
-  imageUrl: '/discover-it-miles-card.png', // Replace with actual Discover it Miles card image URL
+  imageUrl: '/cardart-travel-beachcard-620-382.webp', // Replace with actual Discover it Miles card image URL
   imageWidth: 1290,
   imageHeight: 812,
-  ratingValue: 9.2,
+  ratingValue: 7.0,
   ratingCount: 417,
   reviewBody: 'Our editors evaluate the Discover it® Miles card based on its first-year Unlimited Miles Match welcome offer, flat-rate rewards, redemption simplicity, introductory APR, lack of fees, and overall value for rewards beginners and simplicity-seekers.',
   aprRange: '17.24% to 28.24% variable',
@@ -74,7 +74,7 @@ const reviewData = {
   applyLink: 'https://www.discover.com/credit-cards/travel/it-miles.html', // UPDATE THIS with your affiliate link
   // --- Official Citation Links from the article ---
   offerDetailsLink: 'https://www.discover.com/credit-cards/travel/it-miles.html',
-  ratesAndFeesLink: 'https://www.discover.com/credit-cards/help-center/account/rates-fees.html', // Generic, update if a specific table link is available
+  ratesAndFeesLink: 'https://www.discovercard.com/application/website/ratesrewards?srcCde=GJX4&adobe_mc=TS%3D1741447882%7CMCMID%3D39379935660807998981588704922154453327%7CMCORGID%3D0D6C4673527839230A490D45%2540AdobeOrg&sv_session_undefined=true&_gl=1*1ec64ug*_gcl_au*MTYyMTU5ODAxMS4xNzQwMzE1MDcw*_ga*MTk0MTA3MDUwOC4xNzQwMzE1MDcx*_ga_3MJNPV4VSE*MTc0MTQ0Nzg3NS40LjAuMTc0MTQ0Nzg3NS42MC4wLjA.', // Generic, update if a specific table link is available
   rewardsFaqLink: 'https://www.discover.com/credit-cards/help-center/faqs/rewards.html',
   cardmemberAgreementLink: 'https://www.discover.com/credit-cards/cardmember-agreement/',
   securityFeaturesLink: 'https://www.discover.com/credit-cards/member-benefits/security/',
