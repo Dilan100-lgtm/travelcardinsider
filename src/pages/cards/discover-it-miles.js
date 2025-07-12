@@ -684,6 +684,15 @@ function DiscoverItMilesReviewPage() {
                         <li><strong>The Category Optimizer:</strong> If you enjoy using different cards to get 3-5% back on groceries, dining, or gas, this card's flat 1.5% rate can't compete with a targeted, multi-card strategy.</li>
                     </ul>
                 </section>
+
+                <Image 
+                    src="/pexels-pixabay-39691.jpg" // Replace with a relevant image
+                    alt="Illustration showing Discover doubling a user's first year miles." 
+                    width={800} 
+                    height={450} 
+                    className={styles.contentImage} 
+                    loading="lazy" 
+                  />
                 
                 <section id="section-rates-fees" className={styles.reviewSection}>
                   <h2>Full Financial Itinerary: Rates & Fees</h2>
@@ -794,6 +803,15 @@ function DiscoverItMilesReviewPage() {
                       </blockquote>
                   </div>
                 </section>
+
+                <Image 
+                    src="/pexels-pixabay-46148.jpg" // Replace with a relevant image
+                    alt="Illustration showing Discover doubling a user's first year miles." 
+                    width={800} 
+                    height={450} 
+                    className={styles.contentImage} 
+                    loading="lazy" 
+                  />
 
                 <section id="section-verdict" className={styles.reviewSection}>
                   <h2>Final Verdict: Final Recommendation</h2>
