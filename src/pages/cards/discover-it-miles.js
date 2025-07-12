@@ -578,7 +578,7 @@ function DiscoverItMilesReviewPage() {
 
                 <div className={styles.contentImageWrapper}>
                   <Image 
-                    src="/discover-match-promo.png" // Replace with a relevant image
+                    src="/Untitled (1).png" // Replace with a relevant image
                     alt="Illustration showing Discover doubling a user's first year miles." 
                     width={800} 
                     height={450} 
