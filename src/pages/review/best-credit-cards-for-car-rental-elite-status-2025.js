@@ -18,7 +18,7 @@ const SITE_BASE_URL = 'https://www.travelcardinsider.com';
 const PAGE_PATH = '/reviews/best-credit-cards-for-car-rental-elite-status-2025';
 const PAGE_URL = `${SITE_BASE_URL}${PAGE_PATH}`;
 const SITE_NAME = 'Travel Card Insider';
-const HERO_IMAGE_SRC = '/rental-car-scenic-road-porshe.webp'; // ❗ Replace with your optimised hero image for rental cards
+const HERO_IMAGE_SRC = '/pexels-pripicart-620335.webp'; // ❗ Replace with your optimised hero image for rental cards
 const HERO_IMAGE_ALT = 'A luxury rental car driving on a scenic road, symbolizing the freedom of skipping the rental counter.';
 const DATE_PUBLISHED = '2025-07-12'; // ✏️ Adjust to your actual publish date
 const DATE_MODIFIED = '2025-07-12'; // ✏️ Update whenever you edit copy
@@ -53,7 +53,7 @@ const rentalCardData = [
     id: 'amexPlatinum',
     name: 'The Platinum Card® from American Express',
     category: 'Premium',
-    imageSrc: '/amex_platinum_card.png', // ❗ Replace
+    imageSrc: '/NUS000000237_480x304_straight_withname.avif', // ❗ Replace
     imageAlt: 'The Platinum Card® from American Express',
     annualFee: '$695',
     officialCardPageLink: 'https://global.americanexpress.com/card-benefits/view-all/platinum',
