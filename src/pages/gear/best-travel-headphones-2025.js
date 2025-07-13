@@ -5,7 +5,7 @@ import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from '../../styles/gearsReview.module.css'; // Reusing your site's existing review styles
+import styles from '../../styles/gearsReview.module.css';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 🔗 CONFIG
@@ -14,38 +14,20 @@ const SITE_BASE_URL = 'https://www.travelcardinsider.com';
 const PAGE_PATH = '/gear/best-travel-headphones-2025';
 const PAGE_URL = `${SITE_BASE_URL}${PAGE_PATH}`;
 const SITE_NAME = 'Travel Card Insider';
-const HERO_IMAGE_SRC = '/SF_QCUH_Modes_Quiet_Summit_1440x568_x2.webp'; // Your specified hero image
+const HERO_IMAGE_SRC = '/SF_QCUH_Modes_Quiet_Summit_1440x568_x2.webp';
 const HERO_IMAGE_ALT = 'A pair of premium noise-canceling headphones resting on a travel map.';
 const DATE_PUBLISHED = '2025-07-14';
 const DATE_MODIFIED = '2025-07-14';
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 👤 AUTHOR INFO
+// 👤 AUTHOR INFO (CORRECTED STRUCTURE)
 // ─────────────────────────────────────────────────────────────────────────────
-const author = { // Reusing structure from your example, update as needed
-      name: 'Dilan Madushanka',
-      title: 'Founder & Lead Editor',
-      imageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // Placeholder, update
-      imageWidth: 40,
-      imageHeight: 40,
-      tooltipImageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // Placeholder, update
-      tooltipImageWidth: 60,
-      tooltipImageHeight: 60,
-      expertise: [
-          'Business Credit Cards',
-          'Premium Travel Rewards',
-          'Capital One Miles Program',
-          'Maximizing Business Expenses',
-          'Airline & Hotel Transfer Partners'
-      ],
-      bioSnippet: 'Dilan Madushanka is the founder and lead editor of TravelCardInsider.com, dedicated to demystifying credit cards and uncovering their real-world value for smarter travel.',
-      fullBioLink: '/author/dilan-madushanka', // Assuming this path exists
-      socialLinks: {
-          linkedin: 'https://www.linkedin.com/in/dilan-madushanka-b65293365',
-          twitter: 'https://x.com/team_dilan', // Update with your site's Twitter
-          email: 'team@travelcardinsider.com'
-      }
-  };
+const author = {
+    name: 'Dilan Madushanka',
+    title: 'Founder & Lead Editor',
+    // The key 'image' is what the JSX expects.
+    image: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', 
+};
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 🎧 HEADPHONE DATA - Prices, Links, and Images
@@ -157,7 +139,7 @@ function generateJsonLD() {
                 '@type': 'Review',
                 reviewRating: {
                     '@type': 'Rating',
-                    ratingValue: '5', // Example rating, adjust as needed
+                    ratingValue: '5',
                     bestRating: '5'
                 },
                 author: {
@@ -200,7 +182,7 @@ function BestTravelHeadphonesPage2025() {
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: generateJsonLD() }} />
             </Head>
 
-            <div className={styles.reviewPageWrapper}> {/* ADDED WRAPPER */}
+            <div className={styles.reviewPageWrapper}>
                 <div className={styles.heroOverlaySection}>
                     <div className={styles.heroImageContainer}>
                          <Image 
@@ -216,6 +198,7 @@ function BestTravelHeadphonesPage2025() {
                         <h1 className={styles.heroTitle}>The Traveler’s Final Cut: A 2025 Headphone Showdown for the Savvy US Voyager</h1>
                         <p className={styles.heroSubtitle}>Compare top-rated noise-canceling headphones, maximize your peace and quiet, and unlock a better travel experience.</p>
                         <div className={styles.heroAuthorContainer}>
+                            {/* THIS IS THE FIX: It now correctly uses author.image */}
                             <Image src={author.image} alt={`${author.name} avatar`} width={40} height={40} className={styles.authorImageSmall} priority />
                             <div className={styles.authorInfo}>
                                 <span className={styles.authorName}>{author.name}</span>
@@ -227,7 +210,6 @@ function BestTravelHeadphonesPage2025() {
 
                 <main className={styles.reviewContainer}>
                     <article className={styles.reviewSection}>
-                        {/* The introductory text is now part of the main article body */}
                         <section>
                             <p>As a financial advisor who spends more time in airport lounges than in my own living room, I can tell you that the most valuable travel tool isn't a premium credit card or a fancy passport holder. It's silence.</p>
                             <p>The modern travel experience is a full-blown assault on the senses. It’s the constant roar of jet engines, the chaotic symphony of gate announcements, and the crying baby in seat 22B. This isn't just noise; it's a drain on your energy, your focus, and your sanity. In this environment, a pair of elite noise-canceling headphones isn't a luxury. It’s an essential piece of gear for wellness and productivity on the road.</p>
@@ -251,7 +233,6 @@ function BestTravelHeadphonesPage2025() {
                                         ))}
                                     </div>
 
-                                    {/* Dynamically inject review text based on ID */}
                                     {item.id === 'sony-wh-1000xm6' && (
                                         <>
                                             <p>The Sony WH-1000XM series has long been a favorite in the travel community, but the previous XM5 model made a critical error: it didn’t fold. For those of us who count every square inch of carry-on space, this was a dealbreaker.</p>
@@ -362,7 +343,7 @@ function BestTravelHeadphonesPage2025() {
                         </section>
                     </article>
                 </main>
-            </div> {/* END WRAPPER */}
+            </div>
         </>
     );
 }

@@ -30,7 +30,6 @@
 
 /* =============== NEW HERO STYLES =============== */
 .reviewPageWrapper {
-  /* This new wrapper allows the hero to be full-width while the content remains contained */
   width: 100%;
 }
 
@@ -39,16 +38,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 450px; /* Adjust height as needed */
+  min-height: 450px;
   padding: 2rem;
   text-align: left;
   color: var(--color-text-on-accent, #ffffff);
-  margin-bottom: 4rem; /* Space between hero and main content */
+  margin-bottom: 4rem;
 }
 
 .heroImageContainer {
   position: absolute;
-  top: 3rem;
+  top: 0;
   left: 0;
   width: 100%;
   height: 100%;
@@ -57,7 +56,6 @@
 
 .heroBackgroundImage {
   object-fit: cover;
-  /* Add a dark overlay for text contrast */
   filter: brightness(0.6);
 }
 
@@ -73,7 +71,7 @@
   font-size: clamp(2.5rem, 6vw, 3.5rem);
   font-weight: 700;
   line-height: 1.2;
-  margin: 1rem 0 1rem 0; /* <-- Added 1rem margin-top */
+  margin: 0 0 1rem 0;
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
   text-wrap: balance;
 }
@@ -82,38 +80,36 @@
   font-family: var(--font-family-sans);
   font-size: clamp(1rem, 2.5vw, 1.25rem);
   line-height: 1.6;
-  max-width: 700px; /* Constrain subtitle width */
+  max-width: 700px;
   margin-bottom: 2rem;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .heroAuthorContainer {
   position: absolute;
-  bottom: -60px; /* Position it just below the hero content area */
+  bottom: -60px;
   left: 0;
   display: flex;
   align-items: center;
   gap: 12px;
-  color: white; /* Make sure author text is visible */
+  color: white;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 /* =============== Base Container & Layout =============== */
 .reviewContainer {
   max-width: 900px;
-  margin: 0 auto; /* Changed margin to 0 auto for centering within wrapper */
-  padding: 0 1.5rem 4rem 1.5rem; /* Added bottom padding */
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem 1.5rem;
   color: var(--color-text-secondary);
   line-height: 1.75;
   font-family: var(--font-family-sans);
 }
 
-/* Hiding the original header as it's replaced by the new hero */
 .reviewHeader {
   display: none;
 }
 
-/* Author bio container - used in both old and new hero */
 .authorBioContainer {
   display: inline-flex;
   align-items: center;
@@ -155,13 +151,13 @@
 
 .reviewSection p,
 .reviewSection ul,
-.reviewSection ol { /* Added 'ol' for verdict list */
+.reviewSection ol {
   font-size: 1.05rem;
   margin-bottom: 1.5rem;
 }
 
 .reviewSection ul,
-.reviewSection ol { /* Added 'ol' */
+.reviewSection ol {
   list-style-position: outside;
   padding-left: 1.5rem;
 }
@@ -198,11 +194,8 @@
   box-shadow: var(--shadow-soft);
   padding: 1.5rem 2rem;
   transition: box-shadow var(--transition-speed) var(--transition-timing), transform var(--transition-speed) var(--transition-timing);
-  margin-bottom: 2.5rem; /* Added margin here */
+  margin-bottom: 2.5rem;
 }
-
-/* This selector was removed as the margin is now on the main class */
-/* .cardDetailSection:not(:last-child) { ... } */
 
 .cardDetailSection:hover {
   box-shadow: var(--shadow-hard);
@@ -380,7 +373,6 @@
 
 
 /* =============== MISC & RESPONSIVE =============== */
-/* Added testimonial styles from other file for completeness */
 .testimonial { margin-bottom: 2rem; }
 .quote { border-left: 4px solid var(--color-primary-light); padding-left: 1rem; margin: 1rem 0; font-style: italic; color: var(--color-text-muted); }
 .quote footer { font-style: normal; font-weight: 600; color: var(--color-text-secondary); margin-top: 0.5rem; }
@@ -388,9 +380,9 @@
 
 @media (max-width: 768px) {
   .heroAuthorContainer {
-      position: static; /* Stack author below hero content on mobile */
+      position: static;
       margin-top: 1.5rem;
-      color: var(--color-text-secondary); /* Change text color for static position */
+      color: var(--color-text-secondary);
       text-shadow: none;
   }
   .reviewContainer { padding: 0 1rem; }
