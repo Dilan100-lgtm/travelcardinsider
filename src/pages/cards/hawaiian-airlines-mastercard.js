@@ -508,9 +508,7 @@ function HawaiianAirlinesReviewPage() {
 
                 <section id="section-welcome-offer" className={styles.reviewSection}>
                     <h2>The Welcome Mat: Deconstructing the 70,000-Mile Bonus</h2>
-                    <p>A credit card’s first handshake is its welcome bonus, and this one is firm and valuable. New cardmembers can earn 70,000 bonus HawaiianMiles after making $2,000 in purchases within the first 90 days of opening an account. <a href={reviewData.offerTermsLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.inlineLink}>Source: Official Offer Details</a></p>
-                    <p>To put this bonus into perspective, its value is substantial. Based on valuations that place HawaiianMiles around 1.0 cent each, the 70,000-mile bonus translates to a tangible value of approximately $700. That’s more than enough for a round-trip Main Cabin award flight from the U.S. West Coast to Hawaii (which can start as low as 40,000 miles) or even a round-trip from the East Coast (starting at 60,000 miles).</p>
-                    <p>Equally important is the bonus's accessibility. The $2,000 spending requirement is significantly lower than that of many premium travel cards, which often demand $4,000 or more. This makes the bonus achievable for most people without requiring a major shift in spending habits. While in-flight applications sometimes feature slightly different offers, the current public offer provides excellent, straightforward value right from the start.</p>
+                    <p>Big Bonus, Low Spend: Earn 70,000 HawaiianMiles after spending just $2,000 in the first 90 days—a value of about $700. That’s enough for a round-trip to Hawaii. With a low spend requirement, it’s one of the easiest and most valuable travel bonuses around.</p>
                 </section>
                 
                 <section id="section-user-profile" className={styles.reviewSection}>
