@@ -276,33 +276,36 @@ function BestTravelHeadphonesPage2025() {
                     </section>
 
                     <section>
-                        <h2>The Traveler's Gauntlet: Comparing What Matters Most</h2>
-                        <p>To make the best decision, let's put these headphones head-to-head on the metrics that truly matter at 30,000 feet.</p>
-                        <div className={styles.tableContainer} style={{overflowX: 'auto'}}>
-                           <table className={styles.comparisonTable} style={{width: '100%', borderCollapse: 'collapse', marginTop: '1.5rem'}}>
-                                <thead>
-                                    <tr>
-                                        <th>Feature</th>
-                                        <th>Sony WH-1000XM6</th>
-                                        <th>Bose QC Ultra</th>
-                                        <th>Sennheiser Momentum 4</th>
-                                        <th>Apple AirPods Max</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {comparisonData.map((row, index) => (
-                                        <tr key={index}>
-                                            <td><strong>{row.feature}</strong></td>
-                                            <td>{row.sony}</td>
-                                            <td>{row.bose}</td>
-                                            <td>{row.sennheiser}</td>
-                                            <td>{row.apple}</td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                           </table>
-                        </div>
-                    </section>
+    <h2>The Traveler's Gauntlet: Comparing What Matters Most</h2>
+    <p>To make the best decision, let's put these headphones head-to-head on the metrics that truly matter at 30,000 feet.</p>
+    
+    {/* Use the new container class for responsive scrolling */}
+    <div className={styles.comparisonTableContainer}>
+       <table className={styles.comparisonTable}>
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Sony WH-1000XM6</th>
+                    <th>Bose QC Ultra</th>
+                    <th>Sennheiser Momentum 4</th>
+                    <th>Apple AirPods Max</th>
+                </tr>
+            </thead>
+            <tbody>
+                {comparisonData.map((row, index) => (
+                    // Apply the special verdict row style to the last row
+                    <tr key={index} className={index === comparisonData.length - 1 ? styles.verdictRow : ''}>
+                        <td>{row.feature}</td>
+                        <td>{row.sony}</td>
+                        <td>{row.bose}</td>
+                        <td>{row.sennheiser}</td>
+                        <td>{row.apple}</td>
+                    </tr>
+                ))}
+            </tbody>
+       </table>
+    </div>
+</section>
 
                     <section>
                         <h2>Real-World Validation: Voices from the Aisle Seat</h2>

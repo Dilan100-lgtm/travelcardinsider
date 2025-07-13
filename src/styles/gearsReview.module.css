@@ -339,3 +339,101 @@
 .buyNowButton * {
   color: white !important;
 }
+/* =============== PREMIUM COMPARISON TABLE =============== */
+.comparisonTableContainer {
+  margin: 2.5rem 0;
+  overflow-x: auto; /* Enables horizontal scrolling on small screens */
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-soft);
+  background-color: var(--color-background-card);
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+/* Custom scrollbar for a more premium feel (optional but recommended) */
+.comparisonTableContainer::-webkit-scrollbar {
+  height: 8px;
+}
+.comparisonTableContainer::-webkit-scrollbar-track {
+  background: var(--color-background-subtle);
+  border-radius: var(--border-radius-lg);
+}
+.comparisonTableContainer::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--border-radius-lg);
+}
+.comparisonTableContainer::-webkit-scrollbar-thumb:hover {
+  background: #c7d2e0; /* A slightly darker shade for hover */
+}
+
+.comparisonTable {
+  width: 100%;
+  border-collapse: collapse; /* Removes default spacing between cells */
+  min-width: 800px; /* Ensures table has enough space before scrolling starts */
+  text-align: center;
+}
+
+.comparisonTable th,
+.comparisonTable td {
+  padding: 1rem 1.25rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  vertical-align: middle;
+}
+
+/* --- Table Header --- */
+.comparisonTable thead {
+  background-color: var(--color-background-subtle);
+  border-bottom: 2px solid var(--color-border);
+}
+
+.comparisonTable th {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  font-size: 1rem;
+  font-family: var(--font-family-sans);
+}
+
+/* First header cell (Feature) aligned left */
+.comparisonTable thead th:first-child {
+  text-align: left;
+  width: 18%; /* Give the feature column a bit more space */
+}
+
+/* --- Table Body --- */
+.comparisonTable tbody tr {
+  border-bottom: 1px solid var(--color-border-light);
+  transition: background-color var(--transition-speed) var(--transition-timing);
+}
+
+/* Remove border from the last row for a cleaner look */
+.comparisonTable tbody tr:last-child {
+  border-bottom: none;
+}
+
+/* Hover effect for data rows */
+.comparisonTable tbody tr:hover {
+  background-color: var(--color-primary-light);
+}
+
+/* First cell in each data row (the feature name) */
+.comparisonTable tbody td:first-child {
+  text-align: left;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+/* --- Verdict Row Styling --- */
+.verdictRow,
+.verdictRow:hover {
+  background-color: var(--color-primary-light) !important;
+  font-weight: 700;
+}
+
+.verdictRow td {
+  color: var(--color-primary);
+}
+
+.verdictRow td:first-child {
+  color: var(--color-primary);
+}
