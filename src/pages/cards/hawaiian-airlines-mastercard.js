@@ -75,6 +75,9 @@ const reviewData = {
   partnerProgramLink: 'https://www.hawaiianairlines.com/hawaiianmiles/partners/alaska-airlines', // Placeholder - UPDATE THIS
   huakaiProgramLink: 'https://www.hawaiianairlines.com/huakai-by-hawaiian', // Placeholder - UPDATE THIS
   hawaiianMilesFaqsLink: 'https://www.hawaiianairlines.com/hawaiianmiles/faqs',
+  chaseFreedomFlexReviewLink: '/reviews/chase-freedom-flex-review',
+  citiCustomCashReviewLink: '/reviews/citi-custom-cash-review',
+  discoverItCashBackReviewLink: '/reviews/discover-it-cash-back-review',
   // --- Internal Links ---
   beginnerGuideLink: '/guides/travel-credit-card-basics',
   freeBagsGuideLink: '/guides/cards-with-free-checked-bags-2025',
@@ -451,7 +454,7 @@ function HawaiianAirlinesReviewPage() {
                     )}
                 </div>
                 <p className={styles.heroSubtitle}>
-                    The scent of plumeria, the sight of turquoise water—a trip to Hawaii is unforgettable. The Hawaiian Airlines® World Elite Mastercard® has recently transformed through a partnership with Alaska Airlines, making it a powerful asset for a wider audience. This review will dissect every feature to see if it’s right for you.
+                    Dreaming of Hawaii? The Hawaiian Airlines® World Elite Mastercard® just leveled up—thanks to a new Alaska Airlines partnership. More perks, more destinations. Let’s break down whether it deserves a spot in your wallet.
                 </p>
                 <div className={styles.heroCtaContainer}>
                   <div>
@@ -666,9 +669,21 @@ function HawaiianAirlinesReviewPage() {
                   <tr>
                     <th>Feature</th>
                     <th><strong>{reviewData.cardName}</strong></th>
-                    <th>Chase Freedom Flex℠</th>
-                    <th>Citi Custom Cash® Card</th>
-                    <th>Discover it® Cash Back</th>
+                    <th>
+                        <Link href={reviewData.chaseFreedomFlexReviewLink} legacyBehavior>
+                            <a>Chase Freedom Flex℠</a>
+                        </Link>
+                    </th>
+                    <th>
+                        <Link href={reviewData.citiCustomCashReviewLink} legacyBehavior>
+                            <a>Citi Custom Cash® Card</a>
+                        </Link>
+                    </th>
+                    <th>
+                        <Link href={reviewData.discoverItCashBackReviewLink} legacyBehavior>
+                            <a>Discover it® Cash Back</a>
+                        </Link>
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -713,6 +728,7 @@ function HawaiianAirlinesReviewPage() {
     </DraggableTableWrapper>
      <p>This comparison reveals a clear choice: no-fee cashback cards offer incredible flexibility and high earning rates in specific categories. However, for a traveler focused on trips to Hawaii, the Hawaiian Airlines card's built-in perks provide direct, outsized value that cash back alone can't match. The companion fare and free checked bags can save hundreds of dollars on a single trip, far outpacing the rewards from a cashback card for that specific travel goal. For a broader look at how this card stacks up, see our <Link href={reviewData.bestAirlineCardsLink}><a>Best Airline Credit Cards 2025 guide</a></Link>.</p>
 </section>
+        
                 <section id="section-testimonials" className={styles.reviewSection}>
                   <h2>Five Real User Testimonials</h2>
                   <p>Data tells one story; real experiences tell another. Here are five testimonials curated from public travel forums.</p>
