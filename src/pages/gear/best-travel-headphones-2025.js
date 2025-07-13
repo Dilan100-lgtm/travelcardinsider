@@ -14,7 +14,7 @@ const SITE_BASE_URL = 'https://www.travelcardinsider.com';
 const PAGE_PATH = '/gear/best-travel-headphones-2025';
 const PAGE_URL = `${SITE_BASE_URL}${PAGE_PATH}`;
 const SITE_NAME = 'Travel Card Insider';
-const HERO_IMAGE_SRC = '/SF_QCUH_Modes_Quiet_Summit_1440x568_x2.webp'; // ❗ Replace with your optimised hero image
+const HERO_IMAGE_SRC = '/SF_QCUH_Modes_Quiet_Summit_1440x568_x2.webp'; // Your specified hero image
 const HERO_IMAGE_ALT = 'A pair of premium noise-canceling headphones resting on a travel map.';
 const DATE_PUBLISHED = '2025-07-14';
 const DATE_MODIFIED = '2025-07-14';
@@ -29,7 +29,6 @@ const author = {
     bio: 'A financial advisor and seasoned traveler who analyzes travel gear not just for technical specs, but for its real-world value proposition to the discerning American traveler.',
     expertise: ['Noise-Canceling Headphones', 'Travel Technology', 'Airline Travel', 'Value Investing'],
     social: {
-        // Add social links if applicable, or leave empty
         linkedin: '',
         twitter: '',
         email: 'team@travelcardinsider.com',
@@ -189,165 +188,169 @@ function BestTravelHeadphonesPage2025() {
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: generateJsonLD() }} />
             </Head>
 
-            <main className={styles.reviewContainer}>
-                <header className={styles.reviewHeader}>
-                    <h1>The Traveler’s Final Cut: A 2025 Headphone Showdown for the Savvy US Voyager</h1>
-                     <div className={styles.authorBioContainer}>
-                        <Image src={author.image} alt={`${author.name} avatar`} width={40} height={40} className={styles.authorImageSmall} priority />
-                        <div className={styles.authorInfo}>
-                            <span className={styles.authorName}>{author.name}</span>
-                            <span className={styles.authorTitle}>{author.title}</span>
-                            <time dateTime={DATE_MODIFIED} className={styles.authorLastEdited}>Last updated: {new Date(DATE_MODIFIED).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+            <div className={styles.reviewPageWrapper}> {/* ADDED WRAPPER */}
+                <div className={styles.heroOverlaySection}>
+                    <div className={styles.heroImageContainer}>
+                         <Image 
+                            src={HERO_IMAGE_SRC} 
+                            alt={HERO_IMAGE_ALT} 
+                            layout="fill" 
+                            objectFit="cover" 
+                            priority 
+                            className={styles.heroBackgroundImage}
+                        />
+                    </div>
+                    <div className={styles.heroContent}>
+                        <h1 className={styles.heroTitle}>The Traveler’s Final Cut: A 2025 Headphone Showdown for the Savvy US Voyager</h1>
+                        <p className={styles.heroSubtitle}>Compare top-rated noise-canceling headphones, maximize your peace and quiet, and unlock a better travel experience.</p>
+                        <div className={styles.heroAuthorContainer}>
+                            <Image src={author.image} alt={`${author.name} avatar`} width={40} height={40} className={styles.authorImageSmall} priority />
+                            <div className={styles.authorInfo}>
+                                <span className={styles.authorName}>{author.name}</span>
+                                <span className={styles.authorTitle}>{author.title}</span>
+                            </div>
                         </div>
                     </div>
-                </header>
-
-                <div className={styles.heroSection}>
-                    <Image src={HERO_IMAGE_SRC} alt={HERO_IMAGE_ALT} layout="responsive" width={900} height={450} objectFit="cover" priority className={styles.heroImage} />
                 </div>
 
-                <article className={styles.reviewSection}>
-                    <section>
-                        <p>As a financial advisor who spends more time in airport lounges than in my own living room, I can tell you that the most valuable travel tool isn't a premium credit card or a fancy passport holder. It's silence.</p>
-                        <p>The modern travel experience is a full-blown assault on the senses. It’s the constant roar of jet engines, the chaotic symphony of gate announcements, and the crying baby in seat 22B. This isn't just noise; it's a drain on your energy, your focus, and your sanity. In this environment, a pair of elite noise-canceling headphones isn't a luxury. It’s an essential piece of gear for wellness and productivity on the road.</p>
-                        <p>The market for this portable peace is fiercely competitive, dominated by four giants: Sony, Bose, Sennheiser, and Apple. Each promises a sanctuary for your ears, but they deliver it in remarkably different ways, with unique strengths and critical flaws for the frequent flyer.</p>
-                        <p>For years, I've analyzed these products not just for their technical specs, but for their real-world value proposition. My goal is to help you, the discerning American traveler, make a smart investment. We’ll break down the titans of travel tech—the Sony WH-1000XM6, Bose QuietComfort Ultra, Sennheiser Momentum 4, and Apple AirPods Max—to find the perfect travel companion for your needs and your wallet.</p>
-                    </section>
-                    
-                    <section>
-                        <h2>The Contenders: A Head-to-Head Analysis</h2>
-                        <p>Before we dive deep, let's get to know the personality of each headphone. Understanding their core philosophy is the first step to figuring out which one belongs in your carry-on.</p>
+                <main className={styles.reviewContainer}>
+                    <article className={styles.reviewSection}>
+                        {/* The introductory text is now part of the main article body */}
+                        <section>
+                            <p>As a financial advisor who spends more time in airport lounges than in my own living room, I can tell you that the most valuable travel tool isn't a premium credit card or a fancy passport holder. It's silence.</p>
+                            <p>The modern travel experience is a full-blown assault on the senses. It’s the constant roar of jet engines, the chaotic symphony of gate announcements, and the crying baby in seat 22B. This isn't just noise; it's a drain on your energy, your focus, and your sanity. In this environment, a pair of elite noise-canceling headphones isn't a luxury. It’s an essential piece of gear for wellness and productivity on the road.</p>
+                            <p>The market for this portable peace is fiercely competitive, dominated by four giants: Sony, Bose, Sennheiser, and Apple. Each promises a sanctuary for your ears, but they deliver it in remarkably different ways, with unique strengths and critical flaws for the frequent flyer.</p>
+                            <p>For years, I've analyzed these products not just for their technical specs, but for their real-world value proposition. My goal is to help you, the discerning American traveler, make a smart investment. We’ll break down the titans of travel tech—the Sony WH-1000XM6, Bose QuietComfort Ultra, Sennheiser Momentum 4, and Apple AirPods Max—to find the perfect travel companion for your needs and your wallet.</p>
+                        </section>
                         
-                        {headphoneData.map((item, index) => (
-                            <div key={item.id} className={`${styles.cardDetailSection} ${index < headphoneData.length - 1 ? styles.cardSeparator : ''}`}>
-                                <h3>{item.name}</h3>
-                                
-                                <div className="gear-image-gallery" style={{ display: 'flex', gap: '1rem', margin: '1.5rem 0', flexWrap: 'wrap', background: '#f9f9f9', padding: '1rem', borderRadius: '8px' }}>
-                                    {item.images.map((image, imgIndex) => (
-                                        <div key={imgIndex} style={{ flex: '1 1 200px', minWidth: '200px', position: 'relative', height: '200px', borderRadius: '4px', overflow: 'hidden' }}>
-                                            <Image src={image.src} alt={image.alt} layout="fill" objectFit="cover" className="gear-image" />
-                                        </div>
-                                    ))}
+                        <section>
+                            <h2>The Contenders: A Head-to-Head Analysis</h2>
+                            <p>Before we dive deep, let's get to know the personality of each headphone. Understanding their core philosophy is the first step to figuring out which one belongs in your carry-on.</p>
+                            
+                            {headphoneData.map((item, index) => (
+                                <div key={item.id} className={styles.cardDetailSection}>
+                                    <h3>{item.name}</h3>
+                                    
+                                    <div className={styles.gearImageGallery}>
+                                        {item.images.map((image, imgIndex) => (
+                                            <div key={imgIndex} className={styles.galleryImageWrapper}>
+                                                <Image src={image.src} alt={image.alt} layout="fill" className={styles.gearImage} />
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    {/* Dynamically inject review text based on ID */}
+                                    {item.id === 'sony-wh-1000xm6' && (
+                                        <>
+                                            <p>The Sony WH-1000XM series has long been a favorite in the travel community, but the previous XM5 model made a critical error: it didn’t fold. For those of us who count every square inch of carry-on space, this was a dealbreaker.</p>
+                                            <p>With a solid 30-hour battery life (with ANC on), crystal-clear call quality for those on-the-go meetings, and a quick-charge feature that gives you three hours of juice in just three minutes, the WH-1000XM6 is the most complete, no-compromise package for the traveler who wants it all.</p>
+                                        </>
+                                    )}
+                                    {item.id === 'bose-qc-ultra' && (
+                                        <>
+                                          <p>If your one and only mission is to obliterate every last decibel of ambient noise, your search should start and end with Bose. The QuietComfort Ultra is a specialist, designed to deliver the most potent noise cancellation on the market.</p>
+                                          <p>This is achieved through a sophisticated system that creates a true bubble of tranquility. However, this laser focus on silence and comfort comes with trade-offs. The most notable is battery life at 24 hours.</p>
+                                        </>
+                                    )}
+                                    {item.id === 'sennheiser-momentum-4' && (
+                                        <>
+                                            <p>From a financial advisor’s perspective, the Sennheiser Momentum 4 is perhaps the most compelling headphone in this lineup. Its headline feature is a jaw-dropping 60-hour battery life with ANC enabled.</p>
+                                            <p>The only real caveat is that its ANC, while very good, isn't quite on the same level as Sony or Bose, but it presents an unbeatable value proposition.</p>
+                                        </>
+                                    )}
+                                    {item.id === 'apple-airpods-max' && (
+                                        <>
+                                          <p>The Apple AirPods Max is a gorgeous piece of engineering that, for most travelers, is a practical nightmare. The anodized aluminum and stainless steel build feels incredibly premium, but it comes at the cost of weight.</p>
+                                          <p>The biggest travel sins are in its design: it does not fold, it's bulky, and the included "Smart Case" is a joke. Couple that with a lackluster 20-hour battery life, and you have a product that seems actively hostile to the realities of travel.</p>
+                                        </>
+                                    )}
+
+                                    <ul>
+                                        <li><strong>Price:</strong> <em>{item.price}</em></li>
+                                        <li><strong>Persona:</strong> <em>{item.persona}</em></li>
+                                        <li><strong>Bottom Line:</strong> <em>{item.bottomLine}</em></li>
+                                        <li><strong>Testimonial:</strong> <em>{item.userTestimonial}</em></li>
+                                    </ul>
+
+                                    <a href={item.buyUrl} className={styles.buyNowButton} target="_blank" rel="noopener sponsored">
+                                        Check Price on {item.name.split(' ')[0]}
+                                    </a>
                                 </div>
+                            ))}
+                        </section>
 
-                                {/* Dynamically inject review text based on ID */}
-                                {item.id === 'sony-wh-1000xm6' && (
-                                    <>
-                                        <p>The Sony WH-1000XM series has long been a favorite in the travel community, but the previous XM5 model made a critical error: it didn’t fold. For those of us who count every square inch of carry-on space, this was a dealbreaker.</p>
-                                        <p>The WH-1000XM6 is Sony’s mea culpa, and it’s a triumphant return to form... But the upgrades are more than just physical. Sony has seriously upped its game under the hood... For the audiophiles, Sony collaborated with engineers from top-tier mastering studios to tune the XM6 for studio-level sound.</p>
-                                        <p>With a solid 30-hour battery life (with ANC on), crystal-clear call quality for those on-the-go meetings, and a quick-charge feature that gives you three hours of juice in just three minutes, the WH-1000XM6 is the most complete, no-compromise package for the traveler who wants it all.</p>
-                                        <p><strong>Further Reading:</strong> You can explore the full technical specifications on the <a href={item.buyUrl} target="_blank" rel="noopener noreferrer nofollow">official Sony website</a>.</p>
-                                    </>
-                                )}
-                                {item.id === 'bose-qc-ultra' && (
-                                    <>
-                                      <p>If your one and only mission is to obliterate every last decibel of ambient noise, your search should start and end with Bose. The QuietComfort Ultra is a specialist, designed to deliver the most potent noise cancellation on the market.</p>
-                                      <p>This is achieved through a sophisticated system that creates a true bubble of tranquility. Bose also nails the comfort factor... However, this laser focus on silence and comfort comes with trade-offs. The most notable is battery life. At 24 hours (dropping to 18 with Immersive Audio on), it’s adequate, but it falls well short of the competition.</p>
-                                      <p><strong>Learn More:</strong> Discover Bose's noise-canceling technology on the <a href={item.buyUrl} target="_blank" rel="noopener noreferrer nofollow">Bose official product page</a>.</p>
-                                    </>
-                                )}
-                                {item.id === 'sennheiser-momentum-4' && (
-                                    <>
-                                        <p>From a financial advisor’s perspective, the Sennheiser Momentum 4 is perhaps the most compelling headphone in this lineup... Its headline feature is a jaw-dropping 60-hour battery life with ANC enabled.</p>
-                                        <p>This has a powerful long-term financial benefit... Beyond its incredible stamina, the Momentum 4 is revered for its sound quality... The only real caveat is that its ANC, while very good, isn't quite on the same level as Sony or Bose.</p>
-                                        <p><strong>Official Details:</strong> Check out the full feature list on the <a href={item.buyUrl} target="_blank" rel="noopener noreferrer nofollow">Sennheiser Momentum 4 official site</a>.</p>
-                                    </>
-                                )}
-                                {item.id === 'apple-airpods-max' && (
-                                    <>
-                                      <p>The Apple AirPods Max is a gorgeous piece of engineering that, for most travelers, is a practical nightmare... The anodized aluminum and stainless steel build feels incredibly premium, but it comes at the cost of weight.</p>
-                                      <p>But the biggest travel sins are in its design. The AirPods Max do not fold. They are bulky. And the included "Smart Case" is a joke... Couple that with a lackluster 20-hour battery life, and you have a product that seems actively hostile to the realities of travel.</p>
-                                      <p><strong>Ecosystem Focus:</strong> For details on Apple-specific features, see the <a href={item.buyUrl} target="_blank" rel="noopener noreferrer nofollow">AirPods Max page on Apple.com</a>.</p>
-                                    </>
-                                )}
-
-                                <ul style={{ listStyleType: 'none', paddingLeft: '0', marginTop: '1rem' }}>
-                                    <li><strong>Price:</strong> {item.price}</li>
-                                    <li style={{ marginTop: '0.5rem' }}><strong>Persona:</strong> {item.persona}</li>
-                                    <li style={{ marginTop: '0.5rem' }}><strong>Bottom Line:</strong> {item.bottomLine}</li>
-                                    <li style={{ marginTop: '0.5rem' }}><strong>User Testimonial:</strong> <em style={{ display: 'block', paddingTop: '0.25rem', borderLeft: '3px solid #eee', paddingLeft: '1rem' }}>{item.userTestimonial}</em></li>
-                                </ul>
-
-                                <a href={item.buyUrl} className="cta-button submit" target="_blank" rel="noopener sponsored" style={{display: 'inline-block', marginTop: '1rem'}}>
-                                    Buy Now on {item.name.split(' ')[0]}
-                                </a>
+                        <section>
+                            <h2>The Traveler's Gauntlet: Comparing What Matters Most</h2>
+                            <p>To make the best decision, let's put these headphones head-to-head on the metrics that truly matter at 30,000 feet.</p>
+                            
+                            <div className={styles.comparisonTableContainer}>
+                               <table className={styles.comparisonTable}>
+                                    <thead>
+                                        <tr>
+                                            <th>Feature</th>
+                                            <th>Sony WH-1000XM6</th>
+                                            <th>Bose QC Ultra</th>
+                                            <th>Sennheiser Momentum 4</th>
+                                            <th>Apple AirPods Max</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {comparisonData.map((row, index) => (
+                                            <tr key={index} className={index === comparisonData.length - 1 ? styles.verdictRow : ''}>
+                                                <td>{row.feature}</td>
+                                                <td>{row.sony}</td>
+                                                <td>{row.bose}</td>
+                                                <td>{row.sennheiser}</td>
+                                                <td>{row.apple}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                               </table>
                             </div>
-                        ))}
-                    </section>
+                        </section>
 
-                    <section>
-    <h2>The Traveler's Gauntlet: Comparing What Matters Most</h2>
-    <p>To make the best decision, let's put these headphones head-to-head on the metrics that truly matter at 30,000 feet.</p>
-    
-    {/* Use the new container class for responsive scrolling */}
-    <div className={styles.comparisonTableContainer}>
-       <table className={styles.comparisonTable}>
-            <thead>
-                <tr>
-                    <th>Feature</th>
-                    <th>Sony WH-1000XM6</th>
-                    <th>Bose QC Ultra</th>
-                    <th>Sennheiser Momentum 4</th>
-                    <th>Apple AirPods Max</th>
-                </tr>
-            </thead>
-            <tbody>
-                {comparisonData.map((row, index) => (
-                    // Apply the special verdict row style to the last row
-                    <tr key={index} className={index === comparisonData.length - 1 ? styles.verdictRow : ''}>
-                        <td>{row.feature}</td>
-                        <td>{row.sony}</td>
-                        <td>{row.bose}</td>
-                        <td>{row.sennheiser}</td>
-                        <td>{row.apple}</td>
-                    </tr>
-                ))}
-            </tbody>
-       </table>
-    </div>
-</section>
-
-                    <section>
-                        <h2>Real-World Validation: Voices from the Aisle Seat</h2>
-                        <p>Expert reviews are one thing, but testimonials from fellow travelers provide the ultimate gut check.</p>
-                        <div className={styles.testimonial}>
-                            <p>On the Sony WH-1000XM6 for long-haul:</p>
-                            <blockquote className={styles.quote}>
-                                <p>"I've only had them for a short while, but I love the sound and absolutely love the noise cancellation. They were perfect for my flight to Japan."</p>
-                                <footer>– VanessaL, Verified Purchaser</footer>
-                            </blockquote>
-                        </div>
-                        <div className={styles.testimonial}>
-                            <p>On the Sennheiser Momentum 4's endurance:</p>
-                            <blockquote className={styles.quote}>
-                                <p>"I wore these for a 14-hour flight to Doha and never once worried about the battery. In fact, I used them for the whole trip and didn't charge them until I got home. The comfort was great, no pain at all. A game-changer for long travel."</p>
-                                <footer>– Real-world user feedback summary</footer>
-                            </blockquote>
-                        </div>
-                        <p><strong>Find More Reviews:</strong> You can typically find a wealth of user reviews on official retailer sites like <a href="https://www.bestbuy.com/site/headphones/all-headphones/pcmcat144700050004.c?id=pcmcat144700050004" target="_blank" rel="noopener noreferrer nofollow">BestBuy.com</a>.</p>
-                    </section>
-                    
-                    <section>
-                        <h2>The Financial Advisor's Verdict: Your Perfect Travel Partner</h2>
-                        <p>Ultimately, the "best" headphone isn't a single product. It's the one that best fits your personal travel style and financial priorities.</p>
-                        <ol>
-                            <li><strong>For the No-Compromise Road Warrior: Sony WH-1000XM6</strong>
-                                <p>This traveler wants the best of everything... For you, the Sony WH-1000XM6 is the new gold standard. It has no significant weaknesses for a traveler and is worth every penny of its premium price.</p>
-                            </li>
-                            <li><strong>For the Ultimate Silence Seeker: Bose QuietComfort Ultra</strong>
-                               <p>Your top priority is turning the chaotic world off... For you, the Bose QuietComfort Ultra is the ultimate investment in tranquility. Just be prepared to trade some battery life for that blissful silence.</p>
-                            </li>
-                            <li><strong>For the Smart Spender & Marathon Traveler: Sennheiser Momentum 4</strong>
-                               <p>You are a practical traveler who appreciates long-term value... The Sennheiser Momentum 4 is, without a doubt, the smartest financial decision in this category. Learn more at the <a href="https://www.sennheiser-hearing.com/en-US/" target="_blank" rel="noopener noreferrer nofollow">official Sennheiser store</a>.</p>
-                            </li>
-                            <li><strong>For the Die-Hard Apple Loyalist Only: Apple AirPods Max</strong>
-                               <p>You live and breathe Apple... The Apple AirPods Max should only be on your list if you fit this exact profile and are willing to accept its significant compromises in weight, portability, and price. For everyone else, your money is better spent elsewhere.</p>
-                            </li>
-                        </ol>
-                        <p><strong>Investing in the right pair of headphones is an investment in a better journey. Choose wisely, and you'll have a personal sanctuary ready for takeoff, wherever your travels take you.</strong></p>
-                    </section>
-                </article>
-            </main>
+                        <section>
+                            <h2>Real-World Validation: Voices from the Aisle Seat</h2>
+                            <p>Expert reviews are one thing, but testimonials from fellow travelers provide the ultimate gut check.</p>
+                            <div className={styles.testimonial}>
+                                <p>On the Sony WH-1000XM6 for long-haul:</p>
+                                <blockquote className={styles.quote}>
+                                    <p>"I've only had them for a short while, but I love the sound and absolutely love the noise cancellation. They were perfect for my flight to Japan."</p>
+                                    <footer>– VanessaL, Verified Purchaser</footer>
+                                </blockquote>
+                            </div>
+                            <div className={styles.testimonial}>
+                                <p>On the Sennheiser Momentum 4's endurance:</p>
+                                <blockquote className={styles.quote}>
+                                    <p>"I wore these for a 14-hour flight to Doha and never once worried about the battery. In fact, I used them for the whole trip and didn't charge them until I got home. The comfort was great, no pain at all. A game-changer for long travel."</p>
+                                    <footer>– Real-world user feedback summary</footer>
+                                </blockquote>
+                            </div>
+                            <p><strong>Find More Reviews:</strong> You can typically find a wealth of user reviews on official retailer sites like <a href="https://www.bestbuy.com/site/headphones/all-headphones/pcmcat144700050004.c?id=pcmcat144700050004" target="_blank" rel="noopener noreferrer nofollow">BestBuy.com</a>.</p>
+                        </section>
+                        
+                        <section>
+                            <h2>The Financial Advisor's Verdict: Your Perfect Travel Partner</h2>
+                            <p>Ultimately, the "best" headphone isn't a single product. It's the one that best fits your personal travel style and financial priorities.</p>
+                            <ol>
+                                <li><strong>For the No-Compromise Road Warrior: Sony WH-1000XM6</strong>
+                                    <p>This traveler wants the best of everything... For you, the Sony WH-1000XM6 is the new gold standard. It has no significant weaknesses for a traveler and is worth every penny of its premium price.</p>
+                                </li>
+                                <li><strong>For the Ultimate Silence Seeker: Bose QuietComfort Ultra</strong>
+                                   <p>Your top priority is turning the chaotic world off... For you, the Bose QuietComfort Ultra is the ultimate investment in tranquility. Just be prepared to trade some battery life for that blissful silence.</p>
+                                </li>
+                                <li><strong>For the Smart Spender & Marathon Traveler: Sennheiser Momentum 4</strong>
+                                   <p>You are a practical traveler who appreciates long-term value... The Sennheiser Momentum 4 is, without a doubt, the smartest financial decision in this category. Learn more at the <a href="https://www.sennheiser-hearing.com/en-US/" target="_blank" rel="noopener noreferrer nofollow">official Sennheiser store</a>.</p>
+                                </li>
+                                <li><strong>For the Die-Hard Apple Loyalist Only: Apple AirPods Max</strong>
+                                   <p>You live and breathe Apple... The Apple AirPods Max should only be on your list if you fit this exact profile and are willing to accept its significant compromises in weight, portability, and price. For everyone else, your money is better spent elsewhere.</p>
+                                </li>
+                            </ol>
+                            <p><strong>Investing in the right pair of headphones is an investment in a better journey. Choose wisely, and you'll have a personal sanctuary ready for takeoff, wherever your travels take you.</strong></p>
+                        </section>
+                    </article>
+                </main>
+            </div> {/* END WRAPPER */}
         </>
     );
 }
