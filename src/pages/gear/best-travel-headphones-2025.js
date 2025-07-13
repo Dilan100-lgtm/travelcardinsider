@@ -22,18 +22,30 @@ const DATE_MODIFIED = '2025-07-14';
 // ─────────────────────────────────────────────────────────────────────────────
 // 👤 AUTHOR INFO
 // ─────────────────────────────────────────────────────────────────────────────
-const author = {
-    name: 'Dilan Madushanka', // As per the article's voice
-    title: 'Frequent Flyer & Gear Analyst',
-    image: '/financial-advisor-avatar.jpg', // ❗ Replace with a suitable author image
-    bio: 'A financial advisor and seasoned traveler who analyzes travel gear not just for technical specs, but for its real-world value proposition to the discerning American traveler.',
-    expertise: ['Noise-Canceling Headphones', 'Travel Technology', 'Airline Travel', 'Value Investing'],
-    social: {
-        linkedin: '',
-        twitter: '',
-        email: 'team@travelcardinsider.com',
-    },
-};
+const author = { // Reusing structure from your example, update as needed
+      name: 'Dilan Madushanka',
+      title: 'Founder & Lead Editor',
+      imageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // Placeholder, update
+      imageWidth: 40,
+      imageHeight: 40,
+      tooltipImageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // Placeholder, update
+      tooltipImageWidth: 60,
+      tooltipImageHeight: 60,
+      expertise: [
+          'Business Credit Cards',
+          'Premium Travel Rewards',
+          'Capital One Miles Program',
+          'Maximizing Business Expenses',
+          'Airline & Hotel Transfer Partners'
+      ],
+      bioSnippet: 'Dilan Madushanka is the founder and lead editor of TravelCardInsider.com, dedicated to demystifying credit cards and uncovering their real-world value for smarter travel.',
+      fullBioLink: '/author/dilan-madushanka', // Assuming this path exists
+      socialLinks: {
+          linkedin: 'https://www.linkedin.com/in/dilan-madushanka-b65293365',
+          twitter: 'https://x.com/team_dilan', // Update with your site's Twitter
+          email: 'team@travelcardinsider.com'
+      }
+  };
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 🎧 HEADPHONE DATA - Prices, Links, and Images
