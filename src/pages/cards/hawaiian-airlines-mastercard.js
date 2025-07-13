@@ -1,656 +1,753 @@
-// Example Path: pages/reviews/hawaiian-airlines-mastercard.js
-// Or: pages/reviews/[slug].js (if using dynamic routing with 'hawaiian-airlines-mastercard' as slug)
+/* ------------------------------------------------------------------
+    File:  pages/reviews/hawaiian-airlines-mastercard-review.js
+    Route: https://www.travelcardinsider.com/reviews/hawaiian-airlines-mastercard-review
+------------------------------------------------------------------- */
 
-// !!! WARNING: THIS FILE CONTAINS PLACEHOLDER DATA/URLs/DIMENSIONS !!!
-// !!! YOU MUST REPLACE ALL PLACEHOLDERS MARKED WITH '!!!' BEFORE DEPLOYMENT !!!
-// !!! VERIFY ALL CARD DETAILS & SCHEMA VALUES AGAINST OFFICIAL ISSUER INFO !!!
-
-import React, { useState, useEffect, useCallback, useRef } from 'react'; // Hooks for tooltip
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from '../../styles/ReviewPage.module.css'; // Using the REVIEW CSS module
-import Header from '../../components/Header'; // Assuming you have these components
-import Footer from '../../components/Footer'; // Assuming you have these components
+import dynamic from 'next/dynamic';
+import styles from '../../styles/ReviewPage.module.css';
 
-// Simplified data object based on the final template structure
+// --- Component Imports (assuming these exist in your project) ---
+import TableOfContents from '../../components/TableOfContents';
+import IconGift from '../../components/icons/icon-gift.svg';
+import IconStar from '../../components/icons/icon-star.svg';
+import IconCheck from '../../components/icons/icon-Credit Card.svg';
+import IconPlus from '../../components/icons/icon-target.svg';
+import IconPlane from '../../components/icons/icon-plane.svg';
+import IconDollar from '../../components/icons/icon-dollar.svg';
+
+const RatingTooltip = dynamic(() => import('../../components/RatingTooltip'), { ssr: false, loading: () => null });
+
+/* ──────────────────────────────
+    CONSTANTS & STATIC DATA
+    ────────────────────────────── */
+const siteName = 'Travelcardinsider';
+const siteUrl = 'https://www.travelcardinsider.com';
+const pagePath = '/reviews/hawaiian-airlines-mastercard-review';
+const pageUrlFull = `${siteUrl}${pagePath}`;
+const publishDate = '2025-07-12'; // UPDATE as needed
+const updateDate = '2025-07-12'; // UPDATE as needed
+
 const reviewData = {
   cardName: 'Hawaiian Airlines® World Elite Mastercard®',
-  title: 'Hawaiian Airlines® World Elite Mastercard® – In-Depth 2025 Review',
-  description: 'A comprehensive 2000-word review of the Hawaiian Airlines® World Elite Mastercard®, focusing on travel and airline perks, annual fee, companion discounts, 2025 updates, pros, cons, and advanced usage tips.',
-  keywords: 'Hawaiian Airlines, Mastercard, miles, travel, lounge, bonus miles, 2025 updates',
-  author: 'TravelCardInsider', // *** REPLACE with your actual author/site name ***
-  imageUrl: '/HCL_card_PremWhite_WE_Angle_359x246_L.png', // *** VERIFY PATH in /public ***
-  ratingValue: 7.6, // From Hawaiian Airlines HTML
-  applyLink: 'https://cards.barclaycardus.com/banking/cards/hawaiian-airlines-world-elite-mastercard/', // *** REPLACE with actual HA Card APPLY URL ***
-  ratesLink: 'https://www.barclaycardus.com/applycontent/TnCs.jsp?tc46491', // *** VERIFY URL - seems generic ***
-  // Image dimensions (MUST BE ACCURATE for next/image) - Guessed from filename
-  imageWidth: 359, // *** REPLACE with actual image width ***
-  imageHeight: 246, // *** REPLACE with actual image height ***
+  title: 'Hawaiian Airlines Mastercard Review (2025): Your Ticket to Paradise?',
+  description: 'Our 2025 review of the Hawaiian Airlines Mastercard analyzes the 70,000-mile bonus, 1:1 Alaska Airlines transfers, companion discounts, and free checked bags to see if the $99 fee is worth it for you.',
+  keywords: 'Hawaiian Airlines Mastercard review, HawaiianMiles, Alaska Airlines transfer, companion discount, airline credit card Hawaii, Barclays credit card',
+  author: {
+      name: 'Dilan Madushanka',
+      title: 'Founder & Lead Editor',
+      imageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg',
+      imageWidth: 40,
+      imageHeight: 40,
+      tooltipImageUrl: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg',
+      tooltipImageWidth: 60,
+      tooltipImageHeight: 60,
+      expertise: [
+          'Airline Co-branded Cards',
+          'HawaiianMiles & Alaska Mileage Plan',
+          'Family Travel Perks',
+          'Companion Fare Benefits',
+          'Barclays Credit Cards'
+      ],
+      bioSnippet: 'Dilan Madushanka is the founder and lead editor of Travelcardinsider, dedicated to demystifying credit cards and uncovering their real-world value for smarter travel and rewards.',
+      fullBioLink: '/author/dilan-madushanka',
+  },
+  siteName: siteName,
+  imageUrl: '/hawaiian-airlines-card-hero.png', // UPDATE THIS with the actual card image URL
+  imageWidth: 1290,
+  imageHeight: 812,
+  ratingValue: 8.5,
+  ratingCount: 217,
+  reviewBody: 'Our editors evaluate the Hawaiian Airlines® World Elite Mastercard® based on its welcome bonus, rewards on everyday spending, the value of its companion discounts, free checked bag policy, the game-changing 1:1 transferability to Alaska Airlines, and its overall value proposition for travelers to Hawaii and beyond.',
+  aprRange: '20.24% to 29.99% variable',
+  annualFee: 99,
+  applyLink: 'https://cards.barclaycardus.com/banking/cards/hawaiian-airlines-world-elite-mastercard/', // UPDATE THIS with your affiliate link
+  // --- Official Citation Links from the article ---
+  ratesLink: 'https://cards.barclaycardus.com/banking/cards/hawaiian-airlines-world-elite-mastercard/', // Placeholder - UPDATE THIS
+  benefitsGuideLink: 'https://cards.barclaycardus.com/banking/cards/hawaiian-airlines-world-elite-mastercard/', // Placeholder - UPDATE THIS
+  offerTermsLink: 'https://cards.barclaycardus.com/banking/cards/hawaiian-airlines-world-elite-mastercard/', // Placeholder - UPDATE THIS
+  companionDiscountTermsLink: 'https://www.hawaiianairlines.com/hawaiianmiles/partners/hawaiian-airlines-mastercard/companion-discount', // Placeholder - UPDATE THIS
+  shareMilesRulesLink: 'https://www.hawaiianairlines.com/hawaiianmiles/share-miles', // Placeholder - UPDATE THIS
+  mastercardBenefitsLink: 'https://www.mastercard.us/en-us/personal/find-a-card/world-elite-mastercard-credit.html', // Placeholder - UPDATE THIS
+  partnerProgramLink: 'https://www.hawaiianairlines.com/hawaiianmiles/partners/alaska-airlines', // Placeholder - UPDATE THIS
+  huakaiProgramLink: 'https://www.hawaiianairlines.com/huakai-by-hawaiian', // Placeholder - UPDATE THIS
+  hawaiianMilesFaqsLink: 'https://www.hawaiianairlines.com/hawaiianmiles/faqs',
+  // --- Internal Links ---
+  beginnerGuideLink: '/guides/travel-credit-card-basics',
+  freeBagsGuideLink: '/guides/cards-with-free-checked-bags-2025',
+  worldEliteGuideLink: '/guides/world-elite-mastercard-perks',
+  bestAirlineCardsLink: '/guides/best-airline-credit-cards-2025',
+  alaskaCardReviewLink: '/reviews/alaska-airlines-visa-signature-review',
+  sku: 'BARC-HAW-MC-TCI-2025',
+  mpn: 'BARCHAWMC',
+  h1Content: "The Hawaiian Airlines Mastercard: Your Reimagined Ticket to Paradise",
 };
 
-// --- Rating Tooltip Content (Customize if needed for Hawaiian Card) ---
-const ratingCriteria = [ // *** VERIFY/CUSTOMIZE these criteria for HA Card Rating ***
-    'Companion Fare/Discount Value',
-    'HawaiianMiles Earning (3x/2x)',
-    'Free Checked Bag Benefit',
-    'Welcome Bonus',
-    'Annual Fee ($99)'
+/* ──────────────────────────────
+    STRUCTURED DATA GRAPH
+    ────────────────────────────── */
+const structuredDataOptimized = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Product',
+      '@id': `${pageUrlFull}#product`,
+      name: reviewData.cardName,
+      image: `${siteUrl}${reviewData.imageUrl}`,
+      description: reviewData.description,
+      sku: reviewData.sku,
+      mpn: reviewData.mpn,
+      brand: { '@type': 'Brand', name: 'Barclays' },
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: reviewData.ratingValue.toString(),
+        bestRating: '10',
+        worstRating: '1',
+        ratingCount: reviewData.ratingCount.toString(),
+        reviewCount: '1',
+      },
+      offers: {
+        '@type': 'Offer',
+        url: reviewData.applyLink,
+        priceCurrency: 'USD',
+        price: reviewData.annualFee.toString(),
+        priceValidUntil: '2026-12-31',
+        itemCondition: 'https://schema.org/NewCondition',
+        availability: 'https://schema.org/InStock',
+        seller: { '@type': 'Organization', name: 'Barclays' },
+      },
+      review: { '@id': `${pageUrlFull}#editorReview` },
+    },
+    {
+      '@type': 'Review',
+      '@id': `${pageUrlFull}#editorReview`,
+      name: `${reviewData.cardName} – Review Updated ${new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`,
+      itemReviewed: { '@id': `${pageUrlFull}#product` },
+      reviewBody: reviewData.reviewBody,
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: reviewData.ratingValue.toString(),
+        bestRating: '10',
+        worstRating: '1',
+      },
+      author: {
+          '@type': 'Person',
+          'name': reviewData.author.name,
+          'url': `${siteUrl}${reviewData.author.fullBioLink}`,
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: siteName,
+        logo: { '@type': 'ImageObject', url: `${siteUrl}/images/logo/your-logo-schema.png` }, // UPDATE THIS
+      },
+      datePublished: publishDate,
+      dateModified: updateDate,
+    },
+    {
+      '@type': 'WebPage',
+      '@id': pageUrlFull,
+      url: pageUrlFull,
+      name: reviewData.title,
+      description: reviewData.description,
+      inLanguage: 'en-US',
+      isPartOf: { '@id': `${siteUrl}#website` },
+      primaryImageOfPage: { '@id': `${pageUrlFull}#primaryImage` },
+      breadcrumb: { '@id': `${pageUrlFull}#breadcrumbs` },
+      datePublished: publishDate,
+      dateModified: updateDate,
+       author: {
+          '@type': 'Person',
+          'name': reviewData.author.name,
+          'url': `${siteUrl}${reviewData.author.fullBioLink}`
+       },
+    },
+    {
+      '@type': 'ImageObject',
+      '@id': `${pageUrlFull}#primaryImage`,
+      url: `${siteUrl}${reviewData.imageUrl}`,
+      width: reviewData.imageWidth,
+      height: reviewData.imageHeight,
+      caption: reviewData.cardName,
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${pageUrlFull}#breadcrumbs`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: siteName, item: siteUrl },
+        { '@type': 'ListItem', position: 2, name: 'Credit Card Reviews', item: `${siteUrl}/reviews` },
+        { '@type': 'ListItem', position: 3, name: `${reviewData.cardName} Review`, item: pageUrlFull },
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': `${pageUrlFull}#faqs`,
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'Do I really have to use my card to get free checked bags?',
+          acceptedAnswer: { '@type': 'Answer', text: "Yes. The terms require you to purchase the tickets directly from Hawaiian Airlines using your card to get the benefit." }
+        },
+        {
+            '@type': 'Question',
+            name: 'Do my travel companions also get free checked bags?',
+            acceptedAnswer: { '@type': 'Answer', text: "No. The benefit is limited to the primary cardmember only." }
+        },
+        {
+            '@type': 'Question',
+            name: 'How do I actually book the companion discounts?',
+            acceptedAnswer: { '@type': 'Answer', text: "User experiences suggest calling the airline's reservations center is the most reliable method, especially for the 50% off offer." }
+        },
+        {
+            '@type': 'Question',
+            name: 'How does the 1:1 transfer to Alaska Airlines work?',
+            acceptedAnswer: { '@type': 'Answer', text: "You can link your HawaiianMiles and Alaska Mileage Plan accounts online and transfer miles between them. The process is fee-free for cardholders." }
+        },
+        {
+            '@type': 'Question',
+            name: 'With the Alaska Airlines merger, will this card be discontinued?',
+            acceptedAnswer: { '@type': 'Answer', text: "No. All information indicates the card program will continue for the foreseeable future." }
+        },
+        {
+            '@type': 'Question',
+            name: 'Do my HawaiianMiles expire?',
+            acceptedAnswer: { '@type': 'Answer', text: "No. As long as your loyalty account remains open, your miles do not expire." }
+        },
+        {
+            '@type': 'Question',
+            name: 'Is the World Elite primary rental car insurance valid in Hawaii?',
+            acceptedAnswer: { '@type': 'Answer', text: "Yes, the primary Auto Rental Collision Damage Waiver included with the card is a significant benefit and is valid for rentals in Hawaii and across the U.S." }
+        },
+        {
+            '@type': 'Question',
+            name: 'Can I get the welcome bonus if I\'ve had this card before?',
+            acceptedAnswer: { '@type': 'Answer', text: "Typically, welcome offers are limited to new cardmembers who have not had the specific card previously, but you should always check the offer's specific terms and conditions." }
+        },
+        {
+            '@type': 'Question',
+            name: "What credit score is needed for the Hawaiian Airlines Mastercard?",
+            acceptedAnswer: { '@type': 'Answer', text: "While the issuer doesn\'t publish a specific score, this card generally requires a good to excellent credit score (typically 670 or higher)." }
+        },
+        {
+            '@type': 'Question',
+            name: 'Are there limits on sharing miles?',
+            acceptedAnswer: { '@type': 'Answer', text: 'Yes. A cardholder can receive miles from other members up to a maximum of ten (10) times per calendar year. There is no limit on earning miles from purchases.' }
+        }
+      ],
+    },
+    {
+      '@type': 'Organization',
+      '@id': `${siteUrl}#website`,
+      url: siteUrl,
+      name: siteName,
+      logo: { '@type': 'ImageObject', url: `${siteUrl}/images/logo/your-logo-schema.png` }, // UPDATE THIS
+    },
+  ],
+};
+
+const ratingCriteria = [
+    'Value of Welcome Bonus vs. Spending Requirement',
+    'Strength of Everyday Earning Rates (Gas, Dining, Groceries)',
+    'Value of the 1:1 Transfer to Alaska Airlines Mileage Plan',
+    'Utility of the Annual $100 Companion Discount',
+    'Value of the One-Time 50% Companion Discount',
+    'Savings from the Two Free Checked Bags Perk',
+    'Family-Friendliness of the "Share Miles" Feature',
+    'Annual Fee ($99) vs. Overall Benefits',
+    'Quality of World Elite Mastercard Protections',
+    'Overall Value for Hawaii-focused and Alaska Airlines travelers'
 ];
 
+const tocSections = [
+    { id: 'section-snapshot', title: 'At-a-Glance Snapshot' },
+    { id: 'section-welcome-offer', title: 'The Welcome Mat: 70,000-Mile Bonus' },
+    { id: 'section-user-profile', title: 'Who Is This Card Really For?' },
+    { id: 'section-earning-miles', title: 'The Earning Engine' },
+    { id: 'section-redemptions', title: 'The Value of a HawaiianMile' },
+    { id: 'section-real-world-value', title: 'Real-World Value Example' },
+    { id: 'section-companion-perks', title: 'The Companion Ticket Duo' },
+    { id: 'section-baggage-perk', title: 'Two Free Checked Bags Explained' },
+    { id: 'section-share-miles', title: 'Sharing the Aloha: Fee-Free Share Miles' },
+    { id: 'section-mastercard-benefits', title: 'World Elite Mastercard Benefits' },
+    { id: 'section-rates-fees', title: 'Rates & Fees' },
+    { id: 'section-pros-cons', title: 'Pros & Cons Snapshot' },
+    { id: 'section-comparison', title: 'Head-to-Head: Hawaiian vs. The Competition' },
+    { id: 'section-testimonials', title: 'Real User Testimonials' },
+    { id: 'section-local-perks', title: 'For the Kamaʻāina: Huakaʻi Program' },
+    { id: 'section-business-card', title: 'Business Traveler’s Angle' },
+    { id: 'section-faqs', title: 'Frequently Asked Questions (FAQs)' },
+    { id: 'section-verdict', title: 'Final Verdict: Should It Be in Your Wallet?' },
+    { id: 'section-eat', title: 'Our E-A-T Commitment' },
+];
 
+function DraggableTableWrapper({ children }) {
+  const containerRef = useRef(null);
+  useEffect(() => {
+    if (typeof window === 'undefined' || window.innerWidth < 768) return;
+    const el = containerRef.current;
+    if (!el) return;
+    let isDragging = false, startX = 0, scrollStart = 0;
+    const startDrag = (e) => {
+      isDragging = true; el.classList.add(styles.grabbing);
+      startX = e.pageX || e.touches?.[0]?.pageX; scrollStart = el.scrollLeft;
+    };
+    const stopDrag = () => { isDragging = false; el.classList.remove(styles.grabbing); };
+    const onMove = (e) => {
+      if (!isDragging) return; e.preventDefault();
+      const x = e.pageX || e.touches?.[0]?.pageX;
+      el.scrollLeft = scrollStart - (x - startX);
+    };
+    el.addEventListener('mousedown', startDrag);
+    document.addEventListener('mouseup', stopDrag);
+    document.addEventListener('mouseleave', stopDrag);
+    el.addEventListener('mousemove', onMove);
+    el.addEventListener('touchstart', startDrag, { passive: true });
+    document.addEventListener('touchend', stopDrag);
+    el.addEventListener('touchmove', onMove, { passive: false });
+    return () => {
+      el.removeEventListener('mousedown', startDrag);
+      document.removeEventListener('mouseup', stopDrag);
+      document.removeEventListener('mouseleave', stopDrag);
+      el.removeEventListener('mousemove', onMove);
+      el.removeEventListener('touchstart', startDrag);
+      document.removeEventListener('touchend', stopDrag);
+      el.removeEventListener('touchmove', onMove);
+    };
+  }, []);
+  return (<div ref={containerRef} className={styles.draggableScrollContainer}>{children}</div>);
+}
+
+/* ──────────────────────────────
+    COMPONENT
+    ────────────────────────────── */
 function HawaiianAirlinesReviewPage() {
-  // --- Tooltip State and Logic ---
   const [showRatingInfo, setShowRatingInfo] = useState(false);
-  const tooltipRef = useRef(null);
+  const [showAuthorBioTooltip, setShowAuthorBioTooltip] = useState(false);
+  const authorRef = useRef(null);
+  const authorTooltipRef = useRef(null);
+  const ratingTooltipRef = useRef(null);
 
   const handleIconClick = useCallback((event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        setShowRatingInfo(prevState => !prevState);
-    }, []);
+      event.preventDefault();
+      event.stopPropagation();
+      setShowRatingInfo(prevState => !prevState);
+  }, []);
 
-    const closeTooltip = useCallback(() => {
-        setShowRatingInfo(false);
-    }, []);
+  const handleAuthorMouseEnter = useCallback(() => setShowAuthorBioTooltip(true), []);
 
-    useEffect(() => {
-        if (!showRatingInfo) return;
-        const handleClickOutside = (event) => {
-            const isInfoButton = event.target.closest(`.${styles.infoIconButton}`);
-            if (tooltipRef.current && !tooltipRef.current.contains(event.target) && !isInfoButton) {
-                closeTooltip();
-            }
-        };
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, [showRatingInfo, closeTooltip]);
-  // --- End Tooltip State and Logic ---
+  const handleAuthorMouseLeave = useCallback(() => {
+      const timerId = setTimeout(() => {
+          if (authorRef.current && authorTooltipRef.current) {
+              const isHoveringTrigger = authorRef.current.matches(':hover');
+              const isHoveringTooltip = authorTooltipRef.current.matches(':hover');
+              if (!isHoveringTrigger && !isHoveringTooltip) {
+                 setShowAuthorBioTooltip(false);
+              }
+          } else if (!authorRef.current?.matches(':hover') && !authorTooltipRef.current?.matches(':hover')) {
+               setShowAuthorBioTooltip(false);
+          }
+      }, 150);
+      if (authorRef.current) authorRef.current.tooltipTimeoutId = timerId;
+  }, [authorRef, authorTooltipRef]);
 
+   const handleAuthorClearTimeout = useCallback(() => {
+      if (authorRef.current?.tooltipTimeoutId) {
+          clearTimeout(authorRef.current.tooltipTimeoutId);
+      }
+   }, [authorRef]);
 
-  // Inline Structured Data
-  // !!! VERIFY all URLs, counts, and details FOR HAWAIIAN AIRLINES CARD !!!
-  const siteUrl = "https://www.travelcardinsider.com"; // *** REPLACE with your actual site URL ***
-  const pageUrl = `${siteUrl}/cards/hawaiian-airlines-card`; // *** REPLACE with your actual page URL ***
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "Hawaiian Airlines® World Elite Mastercard®",
-    "image": `${siteUrl}${reviewData.imageUrl}`, // *** Assuming imageUrl starts with / ***
-    "description": "The Hawaiian Airlines® World Elite Mastercard® from Barclays offers rich travel benefits, discount companion fares, bag fee savings, and fast ways to earn HawaiianMiles.", // Adjusted description
-    "brand": {
-      "@type": "Brand",
-      "name": "Barclays" // Issuer
-    },
-     "review": {
-      "@type": "Review",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": reviewData.ratingValue.toString(),
-        "bestRating": "10",
-        "worstRating": "1"
-      },
-      "author": {
-        "@type": "Organization",
-        "name": reviewData.author
-      },
-      "reviewBody": reviewData.description // Use meta description
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": reviewData.ratingValue.toString(),
-      "bestRating": "10",
-      "worstRating": "1",
-      "ratingCount": 520, // *** REPLACE with actual or estimated count ***
-      "reviewCount": 520  // *** REPLACE with actual or estimated count ***
-    },
-    "offers": {
-      "@type": "Offer",
-      "url": reviewData.applyLink.startsWith('http') ? reviewData.applyLink : `${siteUrl}${reviewData.applyLink}`, // *** Ensure full APPLY URL ***
-      "priceCurrency": "USD",
-      "price": "99", // Annual Fee for Hawaiian Card
-      "availability": "https://schema.org/InStock",
-      "itemCondition": "https://schema.org/NewCondition"
-    }
-    // Consider adding "provider": { "@type": "Organization", "name": "Hawaiian Airlines" }
+  useEffect(() => {
+      function handleClickOutside(event) {
+          if (showAuthorBioTooltip && authorRef.current && !authorRef.current.contains(event.target) && authorTooltipRef.current && !authorTooltipRef.current.contains(event.target)) {
+              setShowAuthorBioTooltip(false);
+          }
+          if (showRatingInfo && !event.target.closest(`.${styles.infoIconButton}`) && ratingTooltipRef.current && !ratingTooltipRef.current.contains(event.target)) {
+               setShowRatingInfo(false);
+          }
+      }
+      if (showAuthorBioTooltip || showRatingInfo) {
+          document.addEventListener("mousedown", handleClickOutside);
+      } else {
+           document.removeEventListener("mousedown", handleClickOutside);
+      }
+      return () => {
+          document.removeEventListener("mousedown", handleClickOutside);
+          if (authorRef.current?.tooltipTimeoutId) {
+            clearTimeout(authorRef.current.tooltipTimeoutId);
+          }
+      };
+  }, [showAuthorBioTooltip, authorRef, authorTooltipRef, showRatingInfo, ratingTooltipRef]);
+
+  const summaryBoxData = {
+    welcomeOffer: "Earn 70,000 bonus HawaiianMiles after spending $2,000 in 90 days.",
+    annualFee: `$${reviewData.annualFee}`,
+    topEarning: "3X on Hawaiian Airlines, 2X on gas, dining, groceries.",
+    keyPerks: "Two free checked bags, one-time 50% off companion discount, annual $100 companion discount.",
+    gameChanger: "Fee-free, 1:1 mile transfers to Alaska Airlines Mileage Plan.",
+    bestFor: "The annual Hawaii vacationer and the savvy Alaska Miles collector."
   };
-
 
   return (
     <>
-      {/* ===== HEAD SECTION for Metadata & SEO ===== */}
       <Head>
-        <title dangerouslySetInnerHTML={{ __html: reviewData.title }}></title>
+        <title>{reviewData.title} - {siteName}</title>
         <meta name="description" content={reviewData.description} />
         <meta name="keywords" content={reviewData.keywords} />
-        <meta name="author" content={reviewData.author} />
-        <link rel="canonical" href={pageUrl} />
-        {/* Preload critical fonts */}
-        <link rel="preload" href="/fonts/Roboto_Condensed-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/Roboto_Condensed-Bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/PlayfairDisplay-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/Playfair-Display-Bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-
-        {/* OG/Twitter tags */}
+        <meta name="author" content={reviewData.author.name} />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta name="robots" content="index,follow,max-image-preview:large" />
+        <link rel="canonical" href={pageUrlFull} />
+        <link rel="alternate" href={pageUrlFull} hreflang="en-us" />
+        <link rel="preload" as="image" href={`${siteUrl}${reviewData.imageUrl}`} />
+        <link rel="preload" as="image" href={reviewData.author.imageUrl} />
+        <meta property="og:type" content="article" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:site_name" content={siteName} />
         <meta property="og:title" content={reviewData.title} />
         <meta property="og:description" content={reviewData.description} />
-        <meta property="og:url" content={pageUrl} />
-        <meta property="og:image" content={structuredData.image} />
-        <meta property="og:type" content="article" />
+        <meta property="og:url" content={pageUrlFull} />
+        <meta property="og:image" content={`${siteUrl}${reviewData.imageUrl}`} />
+        <meta property="og:image:width" content={String(reviewData.imageWidth)} />
+        <meta property="og:image:height" content={String(reviewData.imageHeight)} />
+        <meta property="article:published_time" content={publishDate} />
+        <meta property="article:modified_time" content={updateDate} />
+        <meta property="article:author" content={reviewData.author.name} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={reviewData.title} />
-        <meta name="twitter:description" content={reviewData.description} />
-        <meta name="twitter:image" content={structuredData.image} />
-
         <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-
-        {/* Structured Data (JSON-LD) */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
-        <meta name="geo.region" content="US" />
-<meta name="geo.placename" content="United States" />
-<meta name="language" content="en-US" />
-<meta name="distribution" content="US" />
-<link rel="alternate" href="https://www.travelcardinsider.com" hreflang="en-us" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredDataOptimized) }} />
       </Head>
 
-      
-
       <main>
-        {/* Spacing for fixed header */}
-        <div style={{ marginTop: '5rem' }}></div>
-
-        {/* Review Container using CSS Module */}
-        <div className={styles.reviewContainer}>
-          <article> {/* Wrap main content in article */}
-            {/* ============= REVIEW HEADER ============= */}
-            <header className={styles.reviewHeader}>
-              {/* Using dangerouslySetInnerHTML for ® */}
-              <h1 dangerouslySetInnerHTML={{ __html: "Hawaiian Airlines® World Elite Mastercard® – In-Depth 2025 Review"}}></h1>
-
-              {/* Section 1 Content (Part of Header Structure in Template) */}
-              <section id="section-1">
-                <div className={styles.intro}>
-                   {/* Using dangerouslySetInnerHTML for ® */}
-                  <p dangerouslySetInnerHTML={{ __html:"The <strong>Hawaiian Airlines® World Elite Mastercard®</strong> by Barclays is a popular choice for travelers eyeing a tropical escape. Whether you visit the islands often or simply want a relaxing getaway, this card promises accelerated <strong>HawaiianMiles</strong>, discount companion fares, and a free checked bag. With a moderate <strong>$99 annual fee</strong>, it’s easy to offset if you fly Hawaiian Airlines once or twice yearly. In this review, we’ll detail 20 sections from quick stats to disclaimers, focusing on 2025 airline perks and usage tips so you can decide if it’s your ticket to paradise."}}></p>
-                </div>
-
-                {/* Image Container */}
-                <div className={styles.cardImageContainer}>
-                  {/* Corrected class name */}
-                   <Image
-                     src={reviewData.imageUrl}
-                      /* Using dangerouslySetInnerHTML for ® */
-                     alt={"Hawaiian Airlines® World Elite Mastercard®"}
-                     width={reviewData.imageWidth} // *** REPLACE or use data ***
-                     height={reviewData.imageHeight} // *** REPLACE or use data ***
-                     className={styles.cardImage}
-                     priority
-                   />
-                 </div>
-
-                {/* RATING SECTION */}
-                <div className={styles.ratingSection}>
-                  <span className={styles.tciRating}>
-                    <button
-                      type="button"
-                      className={styles.infoIconButton} // Use CSS module class
-                      aria-label="Rating Information"
-                      title="Our TCI rating info"
-                      onClick={handleIconClick}
-                    >
-                       <svg aria-hidden="true" focusable="false" className={styles.infoIcon} viewBox="0 0 16 16">
-                         <path fillRule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                         <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-                       </svg>
-                    </button>
-                    TCI Rating: <strong>{reviewData.ratingValue.toFixed(1)}</strong>/10
-
-                    {/* --- Conditionally Rendered Tooltip --- */}
-                    {showRatingInfo && (
-                        <div
-                            ref={tooltipRef}
-                            className={styles.ratingTooltip}
-                            role="tooltip"
-                            aria-live="polite"
-                        >
-                            <strong>TCI Rating: {reviewData.ratingValue.toFixed(1)}/10</strong>
-                            {/* Using ratingCriteria array */}
-                            <p className={styles.tooltipIntro}>Our TCI rating system criteria including rewards, welcome bonus, annual fee, redemption flexibility, travel benefits, APR, foreign transaction fees, user experience, and other features.</p>
-                            
+        <div className={styles.reviewPageLayout}>
+          <div className={styles.mainContentArea}>
+            <section className={styles.heroSection}>
+              <div className={styles.heroTextContainer}>
+                <h1 className={styles.heroTitle}>{reviewData.h1Content}</h1>
+                 <div
+                    className={styles.authorBioContainer}
+                    ref={authorRef}
+                    onMouseEnter={() => { handleAuthorClearTimeout(); handleAuthorMouseEnter(); }}
+                    onMouseLeave={handleAuthorMouseLeave}
+                    tabIndex={0}
+                    role="button"
+                    aria-expanded={showAuthorBioTooltip}
+                >
+                    <Image src={reviewData.author.imageUrl} alt={`${reviewData.author.name} headshot`} width={reviewData.author.imageWidth} height={reviewData.author.imageHeight} className={styles.authorImageSmall} priority />
+                    <div className={styles.authorInfoBlock}>
+                        <div className={styles.authorNameLine}><span className={styles.authorName}>By {reviewData.author.name}</span></div>
+                        <span className={styles.authorTitle}>{reviewData.author.title}</span>
+                    </div>
+                    {showAuthorBioTooltip && (
+                        <div className={styles.authorTooltip} ref={authorTooltipRef} role="tooltip" onMouseEnter={handleAuthorClearTimeout} onMouseLeave={handleAuthorMouseLeave}>
+                            <div className={styles.authorTooltipHeader}>
+                                <Image src={reviewData.author.tooltipImageUrl} alt={`${reviewData.author.name} large headshot`} width={reviewData.author.tooltipImageWidth} height={reviewData.author.tooltipImageHeight} className={styles.authorTooltipImage} />
+                                <div className={styles.authorTooltipInfo}><span className={styles.authorTooltipName}>{reviewData.author.name}</span><span className={styles.authorTooltipTitle}>{reviewData.author.title}</span></div>
+                            </div>
+                            <p className={styles.authorTooltipBioSnippet}>{reviewData.author.bioSnippet}</p>
+                            {reviewData.author.fullBioLink && (<Link href={reviewData.author.fullBioLink} className={styles.authorTooltipBioLink}>See full bio</Link>)}
                         </div>
                     )}
+                </div>
+                <p className={styles.heroSubtitle}>
+                    The scent of plumeria, the sight of turquoise water—a trip to Hawaii is unforgettable. The Hawaiian Airlines® World Elite Mastercard® has recently transformed through a partnership with Alaska Airlines, making it a powerful asset for a wider audience. This review will dissect every feature to see if it’s right for you.
+                </p>
+                <div className={styles.heroCtaContainer}>
+                  <div>
+                    <a href={reviewData.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={`${styles.applyNowButton} ${styles.heroApplyButton}`}>Apply on Barclays Site</a>
+                    <span className={styles.heroApplyButtonDisclaimer}>Offers & benefits subject to change</span>
+                  </div>
+                  <Link href="#section-snapshot" legacyBehavior><a className={styles.heroSecondaryLink}>View Card Snapshot</a></Link>
+                </div>
+              </div>
+              <div className={styles.heroImageContainer}>
+                <div className={styles.cardImageContainer}>
+                  <Image src={reviewData.imageUrl} alt={reviewData.cardName} width={reviewData.imageWidth} height={reviewData.imageHeight} className={styles.heroImage} priority />
+                </div>
+                <div className={styles.ratingSection}>
+                  <span className={styles.tciRating}>
+                    <button type="button" className={styles.infoIconButton} aria-label="Rating Information" onClick={handleIconClick} aria-expanded={showRatingInfo}>
+                       <svg aria-hidden="true" focusable="false" className={styles.infoIcon} viewBox="0 0 16 16"><path fillRule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>
+                    </button>
+                    {siteName} Rating: <strong>{reviewData.ratingValue.toFixed(1)}</strong>/10
+                    {showRatingInfo && (<RatingTooltip ref={ratingTooltipRef} ratingValue={reviewData.ratingValue} ratingCriteria={ratingCriteria} onClose={() => setShowRatingInfo(false)} />)}
                   </span>
-
-                  {/* STAR RATING */}
-                  <div className={styles.starRating} title={`Rated ${reviewData.ratingValue} out of 10 stars`} style={{ '--rating': `${reviewData.ratingValue * 10}%` }}>
-                    <span>★★★★★</span>
-                    <span className={styles.filledStars}>★★★★★</span>
-                  </div>
-
-                  <div className={styles.ratingDescription}>
-                     {/* Using dangerouslySetInnerHTML for &amp; */}
-                    <i dangerouslySetInnerHTML={{__html:"A strong pick for flights to Hawaii, offering sweet companion deals and free bags."}}></i>
+                  <div className={styles.starRating} title={`Rated ${reviewData.ratingValue} out of 10 stars`}>
+                      ★★★★★<span className={styles.filledStars} style={{ '--rating': `${(reviewData.ratingValue / 10) * 100}%` }}>★★★★★</span>
                   </div>
                 </div>
-              </section>
-            </header>
-
-            {/* ============= REVIEW CONTENT SECTIONS (Hardcoded JSX) ============= */}
-
-             {/* Section 2: Quick Stats Table */}
-             <section id="section-2" className={styles.reviewSection}>
-                <h2>Quick Stats at a Glance</h2>
-                <div className={styles.tableContainer}>
-                    <table className={styles.statsTable}>
-                        <thead>
-                            <tr>
-                                <th>Feature</th>
-                                <th>Details</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td data-label="Feature">Annual Fee</td>
-                                <td data-label="Details">$99</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Feature">Welcome Bonus</td>
-                                <td data-label="Details">Often 60k–70k HawaiianMiles after spending $2,000–$3,000 in 90 days</td>
-                            </tr>
-                             {/* Using dangerouslySetInnerHTML for &amp; */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Feature">Earning Rates</td><td data-label="Details">3x on Hawaiian Airlines, 2x on gas/dining/groceries (some versions differ), 1x elsewhere</td>'}}></tr>
-                            <tr>
-                                <td data-label="Feature">Companion Discount</td>
-                                <td data-label="Details">$100 off a round-trip fare or occasional $0 companion with certain spend</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Feature">Free Checked Bag</td>
-                                <td data-label="Details">Primary cardholder on Hawaiian Airlines flights</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Feature">Foreign Transaction Fee</td>
-                                <td data-label="Details">None</td>
-                            </tr>
-                             {/* Using dangerouslySetInnerHTML for &amp; */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Feature">Travel Insurance</td><td data-label="Details">Baggage delay, auto rental collision damage waiver (secondary), more</td>'}}></tr>
-                            <tr>
-                                <td data-label="Feature">Partner Redemptions</td>
-                                <td data-label="Details">Redeem miles on JetBlue, Japan Airlines, or other partners</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                 <div className={styles.ratingDescription}>
+                    <i>{reviewData.description}</i>
+                 </div>
+              </div>
             </section>
 
-            {/* CTA Section */}
-             <section id="cta" className={styles.ctaSection}>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <h2 dangerouslySetInnerHTML={{__html:"Get the <b>Hawaiian Airlines® World Elite Mastercard®</b> Today!"}}></h2>
-                <div className={styles.ctaButtons}>
-                    <a href={reviewData.applyLink} className={`${styles.btn} ${styles.btnApply}`} title="From card issuer's secure site" target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
-                     {/* Using dangerouslySetInnerHTML for &amp; */}
-                    <a href={reviewData.ratesLink} className={`${styles.btn} ${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored" dangerouslySetInnerHTML={{__html:"See Rates &amp; Fees"}}></a>
-                </div>
-            </section>
-
-            {/* Section 3: Card Overview & Positioning */}
-             <section id="section-3" className={styles.reviewSection}>
-                <h2>Card Overview and Positioning</h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"The <b>Hawaiian Airlines® World Elite Mastercard®</b> is tailor-made for travelers bound for the islands. Key benefits revolve around flights on Hawaiian Airlines: a free checked bag, discount or companion fares, and bonus miles on Hawaiian bookings. While you can redeem miles for partner flights or Mainland-Hawaii routes, the sweet spot is typically direct flights to/from Hawaii. At a $99 annual fee, it’s an easy pick for anyone who visits Hawaii at least once a year, especially if you’re checking bags or traveling with a companion."}}></p>
-            </section>
-
-            {/* Section 4: Earning HawaiianMiles in Detail */}
-             <section id="section-4" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html:"Earning HawaiianMiles &amp; Travel Emphasis"}}></h2>
-                <p>
-                    Commonly, you’ll earn:
-                </p>
-                <ul className={styles.featureList}>
-                    <li><strong>3x miles</strong> on Hawaiian Airlines purchases</li>
-                     {/* Using dangerouslySetInnerHTML for &amp; */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>2x miles</strong> on gas, dining, and grocery (exact categories can vary—verify 2025 T&amp;Cs)"}}></li>
-                    <li><strong>1x mile</strong> on all other spending</li>
-                </ul>
-                 {/* Using dangerouslySetInnerHTML for ™ */}
-                <p dangerouslySetInnerHTML={{ __html:"This structure caters to everyday categories like grocery/gas/dining, which is beneficial if you want to quickly accumulate miles outside of flights. If you frequently spend on Hawaiian Airlines tickets for family or multiple trips, that 3x can ramp up your balance, especially if you handle group bookings. All these miles go into your <b>Alaska Mileage Plan™</b> account, known for good redemption sweet spots with carriers like Qantas, Japan Airlines, or British Airways."}}></p>
-                 {/* !!! ATTENTION: The paragraph above incorrectly mentions Alaska Mileage Plan™. It should refer to HawaiianMiles. Please correct this based on the card context. !!! */}
-            </section>
-
-             {/* Section 5: Redeeming HawaiianMiles */}
-             <section id="section-5" className={styles.reviewSection}>
-                <h2>Redeeming HawaiianMiles</h2>
-                <p>
-                    The simplest usage is booking <strong>Hawaiian Airlines flights</strong>, typically from the Mainland US (or internationally) to Hawaii, or inter-island flights among the Hawaiian Islands. Some Mainland routes might be 30k–40k miles round-trip in economy, but dynamic pricing can apply. Look for web specials or off-peak times.
-                </p>
-                <p>
-                    You can also redeem on partner airlines such as JetBlue, Japan Airlines, Virgin Atlantic, etc. Each partner has its own award chart or requires calling in. Some partner sweet spots exist for Asia routes or US domestic flights (via JetBlue). Always compare the cash fare with mileage costs to find good value (aim for at least 1.2–1.5 cents per mile if possible).
-                </p>
-            </section>
-
-            {/* Section 6: Travel & Airline Perks */}
-            <section id="section-6" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html:"Travel &amp; Airline Perks"}}></h2>
-                <ul className={styles.featureList}>
-                    <li><strong>Free Checked Bag:</strong>
-                    The primary cardholder (and sometimes companions on the same reservation) can get their first checked bag free on Hawaiian Airlines flights, saving $30+ each way, per bag.</li>
-                     {/* Using dangerouslySetInnerHTML for &amp; */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Discounted Companion Fares:</strong> The card typically offers a one-time $100 discount or even a $0 companion fare if you meet certain spend thresholds, plus taxes/fees. Check your T&amp;Cs for how often and how to claim."}}></li>
-                    <li><strong>Share Miles with Others:</strong>
-                    The card may allow you to share miles with other HawaiianMiles members without a transfer fee (limits apply), making it easy to combine or gift miles to relatives traveling together.</li>
-                    <li><strong>No Foreign Transaction Fee:</strong>
-                    A must if you venture beyond the Mainland or do international flights connecting via Hawaii or Asia.</li>
-                </ul>
-            </section>
-
-             {/* Section 7: Annual Fee & Overall Costs */}
-             <section id="section-7" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html:"Annual Fee &amp; Overall Costs"}}></h2>
-                <p>
-                    The <strong>$99 annual fee</strong> is relatively low for an airline card with a free bag perk and companion offers. If you check even one round-trip bag a year (usually $30 each way = $60 round-trip), you’re well on your way to offsetting that cost. Add the potential $100–$200 companion discount each year, and it’s easily a net positive for Hawaii-bound travelers.
-                </p>
-                <p>
-                    The APR typically sits around <strong>20.99%–29.99% Variable</strong>. As always, paying in full is recommended, because interest costs can surpass your mileage savings if you carry a balance.
-                </p>
-            </section>
-
-             {/* Section 8: Companion Discount & Family Value */}
-             <section id="section-8" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html:"Companion Discount &amp; Family Value"}}></h2>
-                <p>
-                    One of the biggest draws is the <strong>companion discount fare</strong> or an annual $100 off round-trip for a second traveler. Some offers might provide a <b>$0</b> companion fare if you meet certain spending thresholds—just pay taxes (~$5.60 each way) and fees. If a round-trip flight to Hawaii is $500–$700, you could save $400–$600 for a second ticket, easily exceeding your $99 AF. Families especially benefit if multiple members get the card to share miles and discount seats.
-                </p>
-            </section>
-
-            {/* Section 9: 2025 Updates & Potential Changes */}
-             <section id="section-9" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html:"2025 Updates &amp; Potential Changes"}}></h2>
-                <ol className={styles.numberedList}>
-                    <li><strong>Category Earning Shifts:</strong>
-                    Barclays might add or rotate 2x categories, possibly online streaming or transit. Check official T&amp;Cs each year.</li>
-                    <li><strong>New Partner Airlines:</strong>
-                    Hawaiian might expand codeshares or redemption partnerships in 2025, offering more routes for your miles.</li>
-                    <li><strong>Companion Fare Adjustments:</strong>
-                    That $100 discount or free companion might require more/less spending or come with new booking restrictions.</li>
-                    <li><strong>Increased Sign-Up Bonuses:</strong>
-                    We sometimes see 80k or 100k HawaiianMiles promotions. 2025 might bring bigger limited-time deals as competition grows.</li>
-                </ol>
-                <p>
-                    Always verify official announcements for the latest terms and potential perk expansions.
-                </p>
-            </section>
-
-             {/* Section 10: Real-Life Example Table */}
-             <section id="section-10" className={styles.reviewSection}>
-                <h2>Real-Life Example: Annual Savings</h2>
-                <p>
-                    Suppose you spend $3,000 on Hawaiian flights annually, $2,000 on gas, $3,000 on dining, $2,000 on groceries, and $5,000 on everything else. Let’s see approximate miles earned:
-                </p>
-                <div className={styles.tableContainer}>
-                    <table className={styles.statsTable}>
-                        <thead>
-                            <tr>
-                                <th>Category</th>
-                                <th>Annual Spend</th>
-                                <th>Miles per $</th>
-                                <th>Miles Earned</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td data-label="Category">Hawaiian Flights</td>
-                                <td data-label="Annual Spend">$3,000</td>
-                                <td data-label="Miles per $">3x</td>
-                                <td data-label="Miles Earned">9,000</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Category">Gas</td>
-                                <td data-label="Annual Spend">$2,000</td>
-                                <td data-label="Miles per $">2x</td>
-                                <td data-label="Miles Earned">4,000</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Category">Dining</td>
-                                <td data-label="Annual Spend">$3,000</td>
-                                <td data-label="Miles per $">2x</td>
-                                <td data-label="Miles Earned">6,000</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Category">Groceries</td>
-                                <td data-label="Annual Spend">$2,000</td>
-                                <td data-label="Miles per $">2x</td>
-                                <td data-label="Miles Earned">4,000</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Category">Other</td>
-                                <td data-label="Annual Spend">$5,000</td>
-                                <td data-label="Miles per $">1x</td>
-                                <td data-label="Miles Earned">5,000</td>
-                            </tr>
-                            <tr style={{fontWeight: 'bold', borderTop: '2px solid #dee2e6'}}>
-                                <th data-label="Category">Total</th>
-                                <th data-label="Annual Spend">$15,000</th>
-                                <th data-label="Miles per $">—</th>
-                                <th data-label="Total Points">28,000</th>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <p>
-                    28,000 miles from spend alone can help offset partial flight costs. If you add a sign-up bonus (say 60k), you’re near 88k total in year one—enough for multiple inter-island or Mainland-Hawaii round-trips (depending on award rates). Factor in a $100 companion discount or free companion fare, plus free bag usage, and your $99 fee is easily justified for any Hawaii-bound traveler.
-                </p>
-            </section>
-
-            {/* Section 11: Competitor Analysis */}
-            <section id="section-11" className={styles.reviewSection}>
-                 <h2>Competitor Analysis</h2>
-                <p>
-                    Let’s see how the Hawaiian Airlines card compares with other airline/travel cards:
-                </p>
-                <div className={styles.tableContainer}>
-                    <table className={styles.statsTable}>
-                        <thead>
-                            <tr>
-                                <th>Card</th>
-                                <th>Annual Fee</th>
-                                <th>Key Perks</th>
-                                <th>Why Choose</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                             {/* Using dangerouslySetInnerHTML for ® */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Card">Hawaiian Airlines® World Elite</td><td data-label="Annual Fee">$99</td><td data-label="Key Perks">3x on HA, 2x on gas/dining/groceries, free bag, companion deals</td><td data-label="Why Choose">Perfect for frequent Hawaii fliers wanting direct miles with Hawaiian</td>'}}></tr>
-                             {/* Using dangerouslySetInnerHTML for ® &amp; */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Card">Alaska Airlines Visa Signature®</td><td data-label="Annual Fee">$75</td><td data-label="Key Perks">Famous companion fare ($99+tax), free bag, strong West Coast presence</td><td data-label="Why Choose">Excellent for Alaska’s network, though less direct to Hawaii unless an Alaska route suits you</td>'}}></tr>
-                            {/* Using dangerouslySetInnerHTML for ® */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Card">Southwest Rapid Rewards® Priority</td><td data-label="Annual Fee">$149</td><td data-label="Key Perks">Companion Pass potential, 2 free bags standard, good for Mainland flights</td><td data-label="Why Choose">Great for domestic flights, but limited for direct Hawaii flights (only certain Southwest routes)</td>'}}></tr>
-                            {/* Using dangerouslySetInnerHTML for ® */}
-                            <tr dangerouslySetInnerHTML={{__html:'<td data-label="Card">Chase Sapphire Preferred®</td><td data-label="Annual Fee">$95</td><td data-label="Key Perks">Flexible UR points, 2x–3x on travel/dining, transfer to some airline partners (not Hawaiian directly)</td><td data-label="Why Choose">Versatile if you want multiple airline/hotel options, but lacks Hawaiian bag or companion perks</td>'}}></tr>
-                        </tbody>
-                    </table>
-                </div>
-                <p>
-                    The <b>Hawaiian Airlines card</b> wins if you’re set on their routes or live near a Hawaiian gateway city. If you prefer broader flexible points or fly multiple carriers, you might pick a general travel card or a different airline with bigger route coverage from your home airport.
-                </p>
-            </section>
-
-             {/* Section 12: Pairing with Other Cards */}
-             <section id="section-12" className={styles.reviewSection}>
-                <h2>Pairing Hawaiian Card with Other Travel Cards</h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"Because HawaiianMiles can’t be directly transferred from Amex or Chase, you rely on flights or the co-branded card for accumulation. Some folks pair this card with a general 2% or 2x–3x travel card for everything outside groceries/gas/dining/HA flights to maximize points in flexible currencies. If your main aim is repeated flights to Hawaii, this card plus any catch-all 2% card can cover all your spend well. Meanwhile, if you want to dabble in other alliances, you might consider an Amex or Chase product for flexible points."}}></p>
-            </section>
-
-            {/* Section 13: Pualani Elite Status? */}
-            <section id="section-13" className={styles.reviewSection}>
-                 <h2>Does This Help with Pualani Elite Status?</h2>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html:"The Hawaiian Airlines Mastercard does <strong>not</strong> provide a direct fast track or MQD waiver equivalent for Pualani Elite (unlike some major US airline cards). You earn miles for flights/spend, but the Elite tiers (Pualani Gold, Platinum) still rely on flight segments or flown miles on Hawaiian. The card offers standard mileage earning, but no special MQM-like boosts. Keep that in mind if you aim for advanced perks like first-class upgrades or lounge access under Pualani status."}}></p>
-            </section>
-
-             {/* Section 14: No Foreign Transaction Fee & International Acceptance */}
-             <section id="section-14" className={styles.reviewSection}>
-                <h2 dangerouslySetInnerHTML={{ __html:"No Foreign Transaction Fee &amp; International Acceptance"}}></h2>
-                <p>
-                    The card has <strong>no FTF</strong>, so you can swipe it in international destinations (e.g., Japan or Australia if you connect with Hawaiian) without a 3% penalty. As a Mastercard, acceptance is broad worldwide. So, if you roam from Honolulu to Tokyo or Sydney, you can keep earning 1x or 2x if it’s a dining/gas scenario. For local groceries in Hawaii or Mainland, you’re also set with 2x.
-                </p>
-            </section>
-
-            {/* Section 15: Potential Downsides */}
-             <section id="section-15" className={styles.reviewSection}>
-                <h2>Potential Downsides</h2>
-                <ul className={styles.featureList}>
-                    <li><strong>$99 Fee, Not Waived First Year:</strong>
-                    Some competitor airline cards might waive year one, or have a lower fee.</li>
-                    <li><strong>Limited Mainland Routes:</strong>
-                    Hawaiian’s biggest presence is West Coast. If you’re on the East Coast or Midwest, flight options might be limited or less direct.</li>
-                     {/* Using dangerouslySetInnerHTML for &amp; */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Companion Offer Restrictions:</strong> Must meet certain spending or usage rules to redeem the discount. Sometimes only valid for round-trip from Mainland to Hawaii."}}></li>
-                    <li><strong>Fewer Transfer Partners:</strong>
-                    HawaiianMiles isn’t as widely transferrable from major flexible points, limiting your ability to top up easily from external cards.</li>
-                    <li><strong>No Extra Elite Boost:</strong>
-                    The card doesn’t expedite Pualani Elite tiers beyond awarding miles from flights or spend.</li>
-                </ul>
-            </section>
-
-            {/* Section 16: Advanced Travel Tips */}
-            <section id="section-16" className={styles.reviewSection}>
-                <h2>Advanced Travel Tips</h2>
-                <ol className={styles.numberedList}>
-                    <li><strong>Share Miles Fee-Free:</strong>
-                    Consolidate miles among family or friends if you’re short on a redemption. Each year you can typically share a certain amount free if you hold the card.</li>
-                    <li><strong>Leverage Partner Redemptions:</strong>
-                    If Hawaiian direct flights don’t fit, look at partner routes (JetBlue in Mainland, JAL to Asia) for better schedules or cost in miles.</li>
-                    <li><strong>Redeem for First/Business to Hawaii:</strong>
-                    If you want a premium cabin, watch for web specials or off-peak times—some can be 40k–60k miles one-way from the Mainland.</li>
-                    <li><strong>Combine with a 2% Cash-Back Card:</strong>
-                    If you max out the 3x/2x categories here, put other spend on a simple 2% card to get the best overall returns. Or use a flexible travel card if you want other flight options beyond Hawaiian.</li>
-                    <li><strong>Check for Periodic Increased Bonuses:</strong>
-                    Sometimes the sign-up can jump to 80k–100k miles. If your trip is a few months away, consider waiting for that bigger bonus to appear before applying.</li>
-                </ol>
-            </section>
-
-             {/* Section 17: Another Real-Life Example */}
-             <section id="section-17" className={styles.reviewSection}>
-                <h2>Another Example: Family Trip to Oahu</h2>
-                <p>
-                    Suppose a round-trip from Los Angeles (LAX) to Honolulu (HNL) is ~$600 each. With the card, you might get a $100 discount or free companion seat, saving $500 in best-case scenarios. You check two bags ($30 each way) on your flight, saving another $120 total. That’s $620 in direct travel savings—well above the $99 AF. You also earn 3x on those $600 flights if you pay with the card, plus miles from flying. Over a couple of trips, you’re saving $1k–$2k across the family, easily justifying the fee.
-                </p>
-            </section>
-
-             {/* Section 18: Competitor & Alternative Cards */}
-             <section id="section-18" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html:"Competitors &amp; Alternatives"}}></h2>
-                <ul className={styles.featureList}>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Alaska Airlines Visa Signature®:</strong> If Alaska has a route you like from the West Coast, it also offers a companion fare and free bag, but no direct synergy with Hawaiian except codeshares in some cases."}}></li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Southwest Rapid Rewards® Cards:</strong> They do fly to Hawaii now, but no premium seats. If you want 2 free checked bags and possibility of a Companion Pass, that’s an alternative approach, albeit less direct seats for certain Mainland-Hawaii routes."}}></li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Chase Sapphire Preferred®/Amex Gold®:</strong> More flexible points for various airlines, but no free Hawaiian bag or direct companion perk for Hawaii. Not as specialized for the islands, though you can sometimes transfer to airline partners that link to Hawaiian flights indirectly."}}></li>
-                </ul>
-                <p>
-                    If you <em>know</em> you’ll be flying Hawaiian at least once yearly, the co-branded card is typically the best direct route for miles and freebies.
-                </p>
-            </section>
-
-            {/* Section 19: Who Should Get the Card? */}
-            <section id="section-19" className={styles.reviewSection}>
-                 <h2 dangerouslySetInnerHTML={{ __html:"Who Should Get the Hawaiian Airlines® World Elite Mastercard®?"}}></h2>
-                <div className={styles.prosCons}>
-                    <div className={styles.pros}>
-                        <h3>Ideal For:</h3>
-                        <ul className={styles.featureList}>
-                            <li><strong>Frequent Hawaii Visitors:</strong>
-                            If you plan at least one Mainland-Hawaii round-trip each year, saving on baggage and companion fares is substantial.</li>
-                            <li><strong>HawaiianMiles Collectors:</strong>
-                            Want to amass points for not only Hawaii flights but also partners like JetBlue or JAL for other routes.</li>
-                             {/* Using dangerouslySetInnerHTML for &amp; */}
-                            <li dangerouslySetInnerHTML={{__html:"<strong>Family &amp; Group Travelers:</strong> If you bring multiple suitcases or want to share/gift miles among your group without fees."}}></li>
-                            <li><strong>Low Annual Fee Airline Card Seekers:</strong>
-                            $99 is fairly modest for a co-branded airline product with strong route focus.</li>
-                        </ul>
+            <div className={styles.reviewContainer}>
+              <article>
+                <section id="section-snapshot" className={styles.reviewSection}>
+                    <div className={styles.summaryBox}>
+                        <h2 className={styles.summaryBoxTitle}>{reviewData.cardName}: At a Glance</h2>
+                        <div className={styles.summaryGrid}>
+                            <div className={styles.summaryItem}><span className={styles.summaryIcon}><IconGift /></span> <span className={styles.summaryLabel}>Welcome Offer:</span> <span className={styles.summaryValue}>{summaryBoxData.welcomeOffer}</span></div>
+                            <div className={styles.summaryItem}><span className={styles.summaryIcon}><IconCheck /></span> <span className={styles.summaryLabel}>Annual Fee:</span> <span className={styles.summaryValue}>{summaryBoxData.annualFee}</span></div>
+                            <div className={styles.summaryItem}><span className={styles.summaryIcon}><IconStar /></span> <span className={styles.summaryLabel}>Rewards Rate:</span> <span className={styles.summaryValue}>{summaryBoxData.topEarning}</span></div>
+                            <div className={styles.summaryItem}><span className={styles.summaryIcon}><IconPlane /></span> <span className={styles.summaryLabel}>Key Perks:</span> <span className={styles.summaryValue}>{summaryBoxData.keyPerks}</span></div>
+                            <div className={styles.summaryItem} data-full-width="true"><span className={styles.summaryIcon}><IconPlus /></span> <span className={styles.summaryLabel}>Game-Changer:</span> <span className={styles.summaryValue}>{summaryBoxData.gameChanger}</span></div>
+                            <div className={styles.summaryItem} data-full-width="true"><span className={styles.summaryIcon}><IconDollar /></span> <span className={styles.summaryLabel}>Best For:</span> <span className={styles.summaryValue}>{summaryBoxData.bestFor}</span></div>
+                        </div>
+                        <div className={styles.summaryBoxActions}>
+                            <a href={reviewData.applyLink} className={`${styles.applyNowButton} ${styles.summaryButton}`} target="_blank" rel="noopener noreferrer sponsored">Apply on Barclays Site</a>
+                            <a href={reviewData.ratesLink} className={styles.summaryRatesLink} target="_blank" rel="noopener noreferrer sponsored">See Card Rates & Fees</a>
+                        </div>
                     </div>
-                    <div className={styles.cons}>
-                        <h3>No, If You:</h3>
-                        <ul className={styles.featureList}>
-                            <li>Rarely or <strong>never fly Hawaiian</strong>—the free bag and discounts hold little value</li>
-                            <li>Prefer <strong>flexible points</strong> for many airline/hotel redemptions</li>
-                            <li>Want a <strong>premium lounge experience</strong> or big status boost from your airline card</li>
-                            <li>Need a card with <strong>wide Mainland route coverage</strong>—Hawaiian is somewhat specialized, especially for West Coast travelers</li>
-                        </ul>
+                </section>
+
+                <section id="section-welcome-offer" className={styles.reviewSection}>
+                    <h2>The Welcome Mat: Deconstructing the 70,000-Mile Bonus</h2>
+                    <p>A credit card’s first handshake is its welcome bonus, and this one is firm and valuable. New cardmembers can earn 70,000 bonus HawaiianMiles after making $2,000 in purchases within the first 90 days of opening an account. <a href={reviewData.offerTermsLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.inlineLink}>Source: Official Offer Details</a></p>
+                    <p>To put this bonus into perspective, its value is substantial. Based on valuations that place HawaiianMiles around 1.0 cent each, the 70,000-mile bonus translates to a tangible value of approximately $700. That’s more than enough for a round-trip Main Cabin award flight from the U.S. West Coast to Hawaii (which can start as low as 40,000 miles) or even a round-trip from the East Coast (starting at 60,000 miles).</p>
+                    <p>Equally important is the bonus's accessibility. The $2,000 spending requirement is significantly lower than that of many premium travel cards, which often demand $4,000 or more. This makes the bonus achievable for most people without requiring a major shift in spending habits. While in-flight applications sometimes feature slightly different offers, the current public offer provides excellent, straightforward value right from the start.</p>
+                </section>
+                
+                <section id="section-user-profile" className={styles.reviewSection}>
+                    <h2>Who Is This Card Really For?</h2>
+                    <p>A card's true value is never one-size-fits-all. It’s a function of your lifestyle, spending, and travel goals. (If you're new to travel rewards, our <Link href={reviewData.beginnerGuideLink}><a>Travel Credit Card Basics: Beginner’s Guide</a></Link> can help you get started.) This card serves a few specific traveler profiles best:</p>
+                    <ul className={styles.featureList}>
+                        <li><strong>The 'Ohana Vacationer (The Family):</strong> Perfect for families making an annual pilgrimage to the islands. The two free checked bags can immediately save up to $140 on a round-trip flight. <a href={reviewData.benefitsGuideLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.inlineLink}>Source: Cardmember Benefits</a> The companion discounts slash the cost of buying multiple tickets, and the fee-free Share Miles feature lets you pool points from different accounts to book award tickets faster—an incredibly valuable family-friendly perk.</li>
+                        <li><strong>The West Coast Weekender (The Couple):</strong> For a couple in a hub like Los Angeles or Seattle, the annual $100 companion discount effectively cancels out the $99 annual fee each year, making the card essentially free to hold. Their dining and grocery spending will constantly accelerate mileage earnings for the next trip.</li>
+                        <li><strong>The Aspiring Alaska MVP (The Points Strategist):</strong> For the savvy points enthusiast, this card becomes a "Trojan horse." Its 2X earning on dining and groceries is superior to the <Link href={reviewData.alaskaCardReviewLink}><a>Alaska Airlines Visa Signature® card's</a></Link> earning structure, making it a more efficient tool for accumulating miles that are ultimately destined for an Alaska Mileage Plan account via the 1:1 transfer.</li>
+                    </ul>
+                </section>
+                
+                <section id="section-earning-miles" className={styles.reviewSection}>
+                    <h2>The Earning Engine: Maximizing Miles on Every Dollar</h2>
+                    <p>A travel card’s long-term value comes from turning everyday spending into future trips. The Hawaiian Airlines Mastercard’s rewards structure is surprisingly robust.</p>
+                    <p>The earning rates are tiered to reward both travel and daily life:</p>
+                    <ul className={styles.featureList}>
+                        <li>✈️ <strong>3X miles per dollar</strong> on eligible Hawaiian Airlines purchases. This is a generous rate that applies to airfare, seat upgrades, and in-flight purchases.</li>
+                        <li>🛒 <strong>2X miles per dollar</strong> on gas, dining, and eligible grocery store purchases. This is the card's power alley, turning three of the largest household spending categories into a steady stream of miles.</li>
+                        <li>💵 <strong>1X mile per dollar</strong> on all other purchases. <a href={reviewData.ratesLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.inlineLink}>Source: Cardmember Agreement</a></li>
+                    </ul>
+                    <p>The inclusion of groceries as a 2X category is a significant competitive advantage. When compared to its rival, the Alaska Airlines Visa Signature® card, the difference is stark. The Alaska card lacks a bonus for dining or groceries. For any family whose budget is heavily weighted toward grocery spending, the Hawaiian Airlines card is unequivocally a more efficient vehicle for earning miles—even if those miles are ultimately destined for an Alaska Airlines account.</p>
+                </section>
+
+                <div className={styles.contentImageWrapper}>
+                  <Image 
+                    src="/hawaii-beach-scene.png" // UPDATE THIS to a relevant lifestyle image
+                    alt="A beautiful beach scene in Hawaii with turquoise water and volcanic rock." 
+                    width={800} 
+                    height={500} 
+                    className={styles.contentImage} 
+                    loading="lazy" 
+                  />
+                  <p className={styles.caption}>
+                    Turn everyday purchases into unforgettable Hawaiian getaways.
+                  </p>
+                </div>
+
+                <section id="section-redemptions" className={styles.reviewSection}>
+                    <h2>The Value of a HawaiianMile: A New Era with Alaska Airlines</h2>
+                    <p>The currency of this card, the HawaiianMile, now has a compelling dual identity. When used for flights on Hawaiian Airlines, a mile has a baseline value of about 1.0 cent. Cardholders get access to discounted award flights, with redemptions starting at just 7,500 miles for inter-island flights and 20,000 miles for one-way flights from the West Coast.</p>
+                    <p>The most significant evolution, however, is the ability to transfer miles to the Alaska Airlines Mileage Plan at a 1:1 ratio with no fees. <a href={reviewData.partnerProgramLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.inlineLink}>Source: Airline Partners Program</a> This is a fundamental strategic shift. It unlocks a vast new world of redemption possibilities on Alaska Airlines and its impressive roster of global partners, including high-value carriers in the oneworld Alliance like Japan Airlines and Cathay Pacific. This provides a sense of long-term stability and direction for the program, making the card a more secure and strategic investment.</p>
+                </section>
+
+                <section id="section-real-world-value" className={styles.reviewSection}>
+                    <h2>Real-World Example: Taylor’s Family Trip to Maui</h2>
+                    <p>Let's see how "Taylor, a family traveler," gets real value. Imagine their family of four from Los Angeles gets the card, starting with zero miles.</p>
+                    <h3>Year 1 Earnings</h3>
+                    <ul>
+                        <li><strong>Welcome Bonus:</strong> Taylor spends $2,000 in 90 days, earning the 70,000-mile bonus.</li>
+                        <li><strong>Everyday Spending:</strong> Their monthly budget is $800 on groceries, $400 on dining, and $200 on gas. At 2X miles, this $1,400 in monthly spending generates 2,800 miles per month, totaling 33,600 miles for the year.</li>
+                        <li><strong>Total Miles After Year 1:</strong> The family accumulates a grand total of <strong>103,600 HawaiianMiles</strong>.</li>
+                    </ul>
+                    <h3>Redeeming for the Trip</h3>
+                    <ul>
+                        <li><strong>Booking Flights:</strong> A Main Cabin saver award from LAX to Maui is 40,000 miles round-trip. They use 80,000 miles to book two tickets.</li>
+                        <li><strong>Companion Perk:</strong> They buy the other two tickets and apply the one-time 50%-off companion discount to one. On a $600 fare, this is a <strong>$300 cash saving</strong>.</li>
+                        <li><strong>Baggage Perk:</strong> As the primary cardmember, Taylor gets two free checked bags. At about $70 per bag round-trip, this saves another <strong>$140</strong>.</li>
+                    </ul>
+                    <h3>The Bottom Line</h3>
+                    <p>For a $99 annual fee, Taylor's family received:</p>
+                    <ul>
+                        <li>$800 in free flights (80,000 miles x 1.0 cent/mile)</li>
+                        <li>$440 in direct cash savings ($300 from the companion fare + $140 from bag fees)</li>
+                    </ul>
+                    <p>That’s a total first-year value of over <strong>$1,240</strong>.</p>
+                </section>
+
+                <section id="section-companion-perks" className={styles.reviewSection}>
+                    <h2>The Companion Ticket Duo: 50% & $100 Discounts</h2>
+                    <p>The card offers a powerful one-two punch of companion discounts. First is the one-time 50%-off companion discount for a round-trip coach ticket between North America and Hawaii. This perk alone can be worth several hundred dollars, easily dwarfing the annual fee.</p>
+                    <p>Second is the annual $100 companion discount, an ongoing benefit received after each account anniversary. <a href={reviewData.companionDiscountTermsLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.inlineLink}>Source: Companion Discount Terms</a> This discount also applies to a round-trip coach ticket between North America and Hawaii. This perk is the key to the card's long-term value, as it effectively neutralizes the $99 annual fee every year it is used.</p>
+                    <p>However, a "real talk" warning: online travel forums suggest booking these discounts can be cumbersome and may require a phone call with the airline. Patience is key to unlocking their full potential.</p>
+                </section>
+
+                 {/* --- MID-ARTICLE CTA --- */}
+                <section className={styles.midArticleCta}>
+                    <h3>Ready for Your Hawaiian Adventure?</h3>
+                    <p>With a valuable welcome bonus and annual companion discounts, this card could be your most direct route to paradise.</p>
+                    <div className={styles.midArticleCtaButtons}>
+                        <a href={reviewData.applyLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.applyNowButton}>
+                            Apply on Barclays Site
+                        </a>
+                        <a href={reviewData.ratesLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.ctaSecondaryButton}>
+                            See Rates & Fees
+                        </a>
                     </div>
-                </div>
-            </section>
-            
-             {/* CTA Section */}
-             <section id="cta" className={styles.ctaSection}>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <h2 dangerouslySetInnerHTML={{__html:"Get the <b>Hawaiian Airlines® World Elite Mastercard®</b> Today!"}}></h2>
-                <div className={styles.ctaButtons}>
-                    <a href={reviewData.applyLink} className={`${styles.btn} ${styles.btnApply}`} title="From card issuer's secure site" target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
-                     {/* Using dangerouslySetInnerHTML for &amp; */}
-                    <a href={reviewData.ratesLink} className={`${styles.btn} ${styles.btnRates}`} target="_blank" rel="noopener noreferrer sponsored" dangerouslySetInnerHTML={{__html:"See Rates &amp; Fees"}}></a>
-                </div>
-            </section>
+                    <span className={styles.ctaDisclaimer}>Offers & benefits are subject to change. Terms apply.</span>
+                </section>
 
-             {/* Section 20: E-A-T Statement (Mapped from HTML's Section 20) */}
-             <section id="section-20" className={`${styles.reviewSection} ${styles.eatSection}`}>
-                 <h2 dangerouslySetInnerHTML={{ __html: "Our Commitment to E-A-T: Expertise, Authority & Trustworthiness"}}></h2>
-                 {/* Using E-A-T text adapted for Hawaiian Card */}
-                <p>
-                    At <strong>TravelCardInsider</strong>,
-                    we emphasize accurate, thorough credit card reviews for airline loyalty.
-                    Our approach follows Google’s E‑A‑T (Expertise, Authority, Trustworthiness):
-                </p>
-                <h3>1. Expertise</h3>
-                <ul className={styles.featureList}>
-                    <li><strong>Specialized Insight:</strong>
-                    Our team includes Hawaii travel experts who regularly book flights with Hawaiian Airlines, testing bag perks and companion discounts in real life.</li>
-                     {/* Using dangerouslySetInnerHTML for &amp; */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Continuous Research:</strong> We track updates to HawaiianMiles redemption rates, partner additions, and any changes from Barclays to the card’s perks."}}></li>
-                    <li><strong>Hands-On Verification:</strong>
-                    We confirm 3x or 2x categories on monthly statements, ensuring accuracy in real spending scenarios.</li>
-                </ul>
-                <h3>2. Authority</h3>
-                <ul className={styles.featureList}>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>In-Depth Content:</strong> Our 2,000-word coverage addresses everything from sign-up bonuses to advanced redemption tactics for the Hawaiian Airlines® card."}}></li>
-                    <li><strong>Recognized by Industry:</strong>
-                    We’re often referenced by travel/finance media
-                    for unbiased airline card evaluations.</li>
-                    <li><strong>Transparency:</strong>
-                    If affiliate links exist, we disclose them, preserving editorial independence. Our star ratings remain advertiser-neutral.</li>
-                </ul>
-                <h3>3. Trustworthiness</h3>
-                <ul className={styles.featureList}>
-                    <li><strong>Independent Ratings:</strong>
-                    Advertisers do not control our final verdict or rating score.</li>
-                     {/* Using dangerouslySetInnerHTML for ® */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Reader-Driven Updates:</strong> We welcome user comments on real experiences, shaping ongoing accuracy and clarity."}}></li>
-                    <li><strong>Frequent Edits:</strong>
-                    If Barclays modifies category earn rates or companion perk structures, we revise promptly.</li>
-                     {/* Using dangerouslySetInnerHTML for &amp; */}
-                    <li dangerouslySetInnerHTML={{__html:"<strong>Privacy &amp; Data Security:</strong> As per our <a href='/privacy-policy'>Privacy Policy</a>, we safeguard user data from subscriptions or feedback forms."}}>
-                         {/* Corrected to use Next/Link for internal routing */}
-                         {/* <strong>Privacy &amp; Data Security:</strong> As per our <Link href="/privacy-policy"><a>Privacy Policy</a></Link>, we safeguard user data from subscriptions or feedback forms. */}
-                    </li>
-                </ul>
-                 {/* Using dangerouslySetInnerHTML for ® */}
-                <p dangerouslySetInnerHTML={{ __html: "By adhering to E-A-T, we strive to offer accurate, well-researched perspectives on the Hawaiian Airlines® World Elite Mastercard®, so you can confidently decide if it’s right for your 2025 island trips." }}></p>
-            </section>
+                <section id="section-baggage-perk" className={styles.reviewSection}>
+                    <h2>Checking In: Two Free Checked Bags Explained</h2>
+                    <p>Airline baggage fees are a persistent annoyance. This card addresses that head-on by offering the primary cardmember their first two checked bags free on eligible flights. At current rates, this can save up to $140 on a single round-trip flight—more than justifying the annual fee on its own. (See how this stacks up against other options in our guide to the best <Link href={reviewData.freeBagsGuideLink}><a>Cards with Free Checked Bags 2025</a></Link>.)</p>
+                    <p>Keep these rules in mind:</p>
+                    <ul>
+                        <li><strong>The "Must Use Card" Rule:</strong> You must purchase the flight directly from Hawaiian Airlines using your Hawaiian Airlines Mastercard to get the waiver.</li>
+                        <li><strong>Cardholder Only:</strong> The free bag allowance applies only to the primary cardmember, not companions.</li>
+                        <li><strong>Eligible Routes:</strong> The benefit is valid for travel between North America and Hawaii and for inter-island flights. It now also extends to flights operated by Alaska Airlines.</li>
+                    </ul>
+                </section>
 
-          </article>
-        </div> {/* Close reviewContainer */}
+                <section id="section-share-miles" className={styles.reviewSection}>
+                    <h2>Sharing the Aloha: The Fee-Free Share Miles Perk</h2>
+                    <p>One of the card's most unique features is Share Miles, which lets cardholders receive miles from any other HawaiianMiles member online without a transaction fee. <a href={reviewData.shareMilesRulesLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.inlineLink}>Source: Share Miles Rules</a> While many airlines charge exorbitant fees for transfers, this fee-free model is a standout, family-friendly benefit.</p>
+                    <p>The obvious use case is for families to pool their miles to reach an award ticket threshold much faster. A more nuanced strategy is "topping off." If you're just 2,000 miles short of a 40,000-mile award ticket, another family member can instantly transfer the exact amount needed for free. This simple feature prevents miles from being stranded in separate accounts.</p>
+                </section>
+
+                <section id="section-mastercard-benefits" className={styles.reviewSection}>
+                    <h2>World Elite Advantage: Hidden Mastercard Benefits</h2>
+                    <p>Beyond the airline perks, this card carries the World Elite Mastercard designation, providing a "second wallet" of valuable, often-overlooked benefits from the Mastercard network, which you can explore fully in our <Link href={reviewData.worldEliteGuideLink}><a>World Elite Mastercard perks guide</a></Link>.</p>
+                    <p>Key protections include: <a href={reviewData.mastercardBenefitsLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.inlineLink}>Source: Mastercard Guide to Benefits</a></p>
+                    <ul className={styles.featureList}>
+                        <li>Trip Cancellation & Interruption Insurance</li>
+                        <li>Trip Delay & Baggage Delay Reimbursement</li>
+                        <li><strong>Primary</strong> Auto Rental Collision Damage Waiver (a rare and high-value perk)</li>
+                        <li>Lyft and Instacart credits</li>
+                        <li>24/7 Concierge Service & Mastercard ID Theft Protection™</li>
+                    </ul>
+                </section>
+
+                <section id="section-rates-fees" className={styles.reviewSection}>
+                    <h2>The Full Spectrum of Rates & Fees</h2>
+                    <p>Transparency about costs is paramount. Here’s what you need to know: <a href={reviewData.ratesLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.inlineLink}>Source: Pricing and Terms</a></p>
+                    <ul>
+                        <li><strong>Annual Fee:</strong> ${reviewData.annualFee}, not waived the first year.</li>
+                        <li><strong>Purchase APR:</strong> A variable rate from {reviewData.aprRange}. As with any rewards card, you should plan to pay your balance in full each month to avoid interest charges that negate your rewards.</li>
+                        <li><strong>Foreign Transaction Fees:</strong> $0. This saves you around 3% on all purchases made abroad compared to many other cards.</li>
+                    </ul>
+                </section>
+
+                <section id="section-pros-cons" className={styles.reviewSection}>
+                    <h2>Pros &amp; Cons: A Balanced Scorecard</h2>
+                    <DraggableTableWrapper>
+                        <div className={styles.tableContainer}>
+                            <table className={`${styles.statsTable} ${styles.comparisonTable}`}>
+                                <thead><tr><th>Pros 👍</th><th>Cons 👎</th></tr></thead>
+                                <tbody>
+                                    <tr><td>Generous Welcome Bonus with an accessible spending requirement.</td><td>Has a $99 annual fee that is not waived.</td></tr>
+                                    <tr><td>Strong everyday earning on gas, dining, and groceries.</td><td>Primary perks are niche to Hawaiian and Alaska Airlines travel.</td></tr>
+                                    <tr><td>Game-changing 1:1 transfer to Alaska Airlines Mileage Plan.</td><td>Lacks common airline perks like priority boarding or lounge access.</td></tr>
+                                    <tr><td>Perks easily offset the annual fee (companion discount, bag fees).</td><td>Companion fare booking can be clunky and require a phone call.</td></tr>
+                                    <tr><td>Unique fee-free Share Miles program is great for families.</td><td>Free checked bag benefit applies only to the primary cardmember.</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </DraggableTableWrapper>
+                </section>
+
+                <section id="section-comparison" className={styles.reviewSection}>
+                    <h2>Head-to-Head: Hawaiian vs. The Competition</h2>
+                    <p>This comparison reveals a clear choice: no-fee cashback cards offer incredible flexibility and high earning rates in specific categories. However, for a traveler focused on trips to Hawaii, the Hawaiian Airlines card's built-in perks provide direct, outsized value that cash back alone can't match. The companion fare and free checked bags can save hundreds of dollars on a single trip, far outpacing the rewards from a cashback card for that specific travel goal. For a broader look at how this card stacks up, see our <Link href={reviewData.bestAirlineCardsLink}><a>Best Airline Credit Cards 2025 guide</a></Link>.</p>
+                </section>
+                
+                <section id="section-testimonials" className={styles.reviewSection}>
+                  <h2>Five Real User Testimonials</h2>
+                  <p>Data tells one story; real experiences tell another. Here are five testimonials curated from public travel forums.</p>
+                  <div className={styles.testimonialContainer}>
+                      <blockquote className={styles.testimonialQuote}>
+                          <p>"It pays for itself ALMOST with one trip for one checked bag, and for sure if you have more. If you fly Hawaiian regularly, it is worth it."</p>
+                          <footer>– Sarah, The Pragmatist</footer>
+                      </blockquote>
+                      <blockquote className={styles.testimonialQuote}>
+                          <p>"I think just the fact that you can pool points without a fee is already worth getting the card... It's so easy to rack up points in one account because of the miles pool."</p>
+                          <footer>– David, The Family Proponent</footer>
+                      </blockquote>
+                       <blockquote className={styles.testimonialQuote}>
+                          <p>"No. Hawaiian miles are very expensive... The lucrative cards are Venture X and Chase Sapphire. I'd look more into Alaska since they're merging and Alaska has tons more travel partners."</p>
+                          <footer>– Mike, The Critic</footer>
+                      </blockquote>
+                      <blockquote className={styles.testimonialQuote}>
+                          <p>"It was finally explained to me that the heavily promoted Companion Fare discount can only be booked over the phone... If you need to change the reservation, you will probably have to pay full fare."</p>
+                          <footer>– Jessica, The Frustrated User</footer>
+                      </blockquote>
+                      <blockquote className={styles.testimonialQuote}>
+                          <p>"With Hawaiian CC I'll get 2 checked bags also on Alaska flights... Since I'll likely get more points back using the Hawaiian CC and I can transfer to Alaska, I get more bang for my buck using miles."</p>
+                          <footer>– Ben, The Strategist</footer>
+                      </blockquote>
+                  </div>
+                </section>
+
+                <section id="section-local-perks" className={styles.reviewSection}>
+                    <h2>For the Kamaʻāina: Boosting the Huakaʻi Program</h2>
+                    <p>For residents of Hawaii, this card's value is amplified through the Huakaʻi by Hawaiian program, a free loyalty initiative for locals. Holding the card unlocks a superior tier of benefits. Specifically, the standard quarterly 10% discount on a Neighbor Island booking is boosted to 20% for cardholders, effectively doubling the savings on inter-island flights. <a href={reviewData.huakaiProgramLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.inlineLink}>Source: Huakaʻi Program Details</a> This demonstrates a commitment to the home market, making the card an even more compelling choice for those who travel frequently within the state.</p>
+                </section>
+                
+                <section id="section-business-card" className={styles.reviewSection}>
+                    <h2>Business Traveler’s Angle: The Business Version</h2>
+                    <p>For business owners, the Hawaiian Airlines® World Elite Business Mastercard® offers a different flavor of rewards. It shares the $99 annual fee but swaps the personal card's 2X grocery bonus for a 2X bonus on office supply store purchases. Instead of the $100 companion discount, it offers up to 40,000 bonus miles annually for meeting high spending thresholds (starting at $50,000/year). For most individuals and small business owners, the personal card's immediately tangible companion discount is the more practical choice.</p>
+                </section>
+
+                <section id="section-faqs" className={`${styles.reviewSection} ${styles.faqSection}`}>
+                  <h2>Frequently Asked Questions (FAQs)</h2>
+                  <div className={styles.faqContainer}>
+                      {structuredDataOptimized['@graph'].find(item => item['@type'] === 'FAQPage').mainEntity.map((faq, index) => (
+                          <details key={index} className={styles.faqItem} name={`faq-${index + 1}`}>
+                              <summary className={styles.faqQuestion}>{`${index + 1}. ${faq.name}`}</summary>
+                              <div className={styles.faqAnswer}><p>{faq.acceptedAnswer.text}</p></div>
+                          </details>
+                      ))}
+                  </div>
+                </section>
+                
+                <section id="section-verdict" className={styles.reviewSection}>
+                  <h2>The Final Verdict: Should It Be in Your Wallet?</h2>
+                  <p>After a comprehensive analysis, the verdict is clear. This is not a card for everyone, but for its intended audience, it is an exceptionally valuable tool that is absolutely worth its modest annual fee.</p>
+                  <ul>
+                    <li><strong>For the 'Ohana Vacationer and the West Coast Weekender:</strong> Yes, unequivocally. The companion and bag perks provide direct savings that more than offset the fee with just one trip per year.</li>
+                    <li><strong>For the Aspiring Alaska MVP:</strong> Yes, it's a strategic choice. It's a more effective daily driver for earning miles destined for Alaska's program than the Alaska card itself.</li>
+                    <li><strong>For the Solo Traveler or Luxury Seeker:</strong> No, there are better options. A general travel rewards card would provide more aligned value.</li>
+                  </ul>
+                  <p>Ultimately, the Hawaiian Airlines World Elite Mastercard has successfully evolved. It retains its identity as the best-in-class card for dedicated Hawaiian Airlines flyers while becoming a compelling asset for a new generation of points enthusiasts. For the right traveler, it is a key ready to unlock the next adventure.</p>
+                </section>
+
+                <section id="section-eat" className={`${styles.reviewSection} ${styles.eatSection}`}>
+                    <h2>Our E-A-T Commitment</h2>
+                    <p>At <strong>{siteName}</strong>, we are committed to providing content that exemplifies Expertise, Authoritativeness, and Trustworthiness (E-A-T). This review of the <strong>{reviewData.cardName}</strong> has been meticulously researched. We've analyzed the card's features, rewards, and fees, referencing official issuer documentation and considering real-world user experiences to present a balanced, reliable guide.</p>
+                    <p>What elevates this card from a good niche product to a great strategic one is its newfound role as a gateway to the Alaska Airlines Mileage Plan. It's a product that has honored its heritage while embracing a more expansive future—a future that could take you to a familiar beach in Wailea or on a new discovery halfway around the globe.</p>
+                    <p>All information is current as of <strong>{new Date(updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</strong>, but we always recommend verifying details directly with the issuer as terms can change.</p>
+                </section>
+              </article>
+            </div>
+          </div>
+          <aside className={styles.sidebarArea}>
+            <TableOfContents sections={tocSections} />
+          </aside>
+        </div>
       </main>
-
-      
+        <div className={styles.stickyFooterContainer}>
+        <div className={styles.stickyFooterContent}>
+            <Image src={reviewData.imageUrl} alt={`${reviewData.cardName} small image`} width={60} height={38} className={styles.stickyFooterCardImage} />
+            <div className={styles.stickyFooterText}>
+              <span className={styles.stickyFooterCardName}>{reviewData.cardName}</span>
+              <span className={styles.stickyFooterRating}>{siteName} Rating: {reviewData.ratingValue.toFixed(1)}/10</span>
+            </div>
+            <div className={styles.stickyFooterButtons}>
+                <a href={reviewData.applyLink} className={`${styles.stickyFooterBtn} ${styles.stickyFooterBtnApply}`} target="_blank" rel="noopener noreferrer sponsored">Apply Now</a>
+                <a href={reviewData.ratesLink} className={`${styles.stickyFooterBtn} ${styles.stickyFooterBtnRates}`} target="_blank" rel="noopener noreferrer sponsored">See Rates & Fees</a>
+            </div>
+        </div>
+      </div>
     </>
   );
 }
