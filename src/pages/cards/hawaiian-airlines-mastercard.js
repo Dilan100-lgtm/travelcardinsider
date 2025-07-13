@@ -56,17 +56,17 @@ const reviewData = {
       fullBioLink: '/author/dilan-madushanka',
   },
   siteName: siteName,
-  imageUrl: '/hawaiian-airlines-card-hero.png', // UPDATE THIS with the actual card image URL
+  imageUrl: '/HCL_card_PremWhite_WE_Angle_359x246_L.png', // UPDATE THIS with the actual card image URL
   imageWidth: 1290,
   imageHeight: 812,
-  ratingValue: 8.5,
+  ratingValue: 7.6,
   ratingCount: 217,
   reviewBody: 'Our editors evaluate the Hawaiian Airlines® World Elite Mastercard® based on its welcome bonus, rewards on everyday spending, the value of its companion discounts, free checked bag policy, the game-changing 1:1 transferability to Alaska Airlines, and its overall value proposition for travelers to Hawaii and beyond.',
   aprRange: '20.24% to 29.99% variable',
   annualFee: 99,
   applyLink: 'https://cards.barclaycardus.com/banking/cards/hawaiian-airlines-world-elite-mastercard/', // UPDATE THIS with your affiliate link
   // --- Official Citation Links from the article ---
-  ratesLink: 'https://cards.barclaycardus.com/banking/cards/hawaiian-airlines-world-elite-mastercard/', // Placeholder - UPDATE THIS
+  ratesLink: 'https://www.barclaycardus.com/applycontent/TnCs.jsp?tc46491', // Placeholder - UPDATE THIS
   benefitsGuideLink: 'https://cards.barclaycardus.com/banking/cards/hawaiian-airlines-world-elite-mastercard/', // Placeholder - UPDATE THIS
   offerTermsLink: 'https://cards.barclaycardus.com/banking/cards/hawaiian-airlines-world-elite-mastercard/', // Placeholder - UPDATE THIS
   companionDiscountTermsLink: 'https://www.hawaiianairlines.com/hawaiianmiles/partners/hawaiian-airlines-mastercard/companion-discount', // Placeholder - UPDATE THIS
