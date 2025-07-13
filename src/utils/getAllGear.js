@@ -10,6 +10,13 @@ const allGear = [
     image: '/pexels-olly-837358.webp', // Make sure this image exists in your /public folder
     date: '2025-06-27',
   },
+  {
+  slug: 'best-travel-headphones-2025',
+  title: 'The Traveler’s Final Cut: A 2025 Headphone Showdown',
+  description: 'An expert review of 2025’s top noise-canceling headphones from Sony, Bose, Sennheiser, and Apple, analyzed for the savvy US voyager.',
+  image: '/headphones-hero-2025.jpg', // Make sure this image exists in your /public folder
+  date: '2025-07-14',
+}
   // ✏️ When you write more gear reviews, you will add them here.
   // For example:
   // {
