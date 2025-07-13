@@ -525,9 +525,9 @@ function HawaiianAirlinesReviewPage() {
                     <p>A travel card’s long-term value comes from turning everyday spending into future trips. The Hawaiian Airlines Mastercard’s rewards structure is surprisingly robust.</p>
                     <p>The earning rates are tiered to reward both travel and daily life:</p>
                     <ul className={styles.featureList}>
-                        <li>✈️ <strong>3X miles per dollar</strong> on eligible Hawaiian Airlines purchases. This is a generous rate that applies to airfare, seat upgrades, and in-flight purchases.</li>
-                        <li>🛒 <strong>2X miles per dollar</strong> on gas, dining, and eligible grocery store purchases. This is the card's power alley, turning three of the largest household spending categories into a steady stream of miles.</li>
-                        <li>💵 <strong>1X mile per dollar</strong> on all other purchases. <a href={reviewData.ratesLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.inlineLink}>Source: Cardmember Agreement</a></li>
+                        <li> <strong>3X miles per dollar</strong> on eligible Hawaiian Airlines purchases. This is a generous rate that applies to airfare, seat upgrades, and in-flight purchases.</li>
+                        <li> <strong>2X miles per dollar</strong> on gas, dining, and eligible grocery store purchases. This is the card's power alley, turning three of the largest household spending categories into a steady stream of miles.</li>
+                        <li> <strong>1X mile per dollar</strong> on all other purchases. <a href={reviewData.ratesLink} target="_blank" rel="noopener noreferrer sponsored" className={styles.inlineLink}>Source: Cardmember Agreement</a></li>
                     </ul>
                     <p>The inclusion of groceries as a 2X category is a significant competitive advantage. When compared to its rival, the Alaska Airlines Visa Signature® card, the difference is stark. The Alaska card lacks a bonus for dining or groceries. For any family whose budget is heavily weighted toward grocery spending, the Hawaiian Airlines card is unequivocally a more efficient vehicle for earning miles—even if those miles are ultimately destined for an Alaska Airlines account.</p>
                 </section>
@@ -643,7 +643,7 @@ function HawaiianAirlinesReviewPage() {
                     <DraggableTableWrapper>
                         <div className={styles.tableContainer}>
                             <table className={`${styles.statsTable} ${styles.comparisonTable}`}>
-                                <thead><tr><th>Pros 👍</th><th>Cons 👎</th></tr></thead>
+                                <thead><tr><th>Pros </th><th>Cons </th></tr></thead>
                                 <tbody>
                                     <tr><td>Generous Welcome Bonus with an accessible spending requirement.</td><td>Has a $99 annual fee that is not waived.</td></tr>
                                     <tr><td>Strong everyday earning on gas, dining, and groceries.</td><td>Primary perks are niche to Hawaiian and Alaska Airlines travel.</td></tr>
@@ -657,10 +657,62 @@ function HawaiianAirlinesReviewPage() {
                 </section>
 
                 <section id="section-comparison" className={styles.reviewSection}>
-                    <h2>Head-to-Head: Hawaiian vs. The Competition</h2>
-                    <p>This comparison reveals a clear choice: no-fee cashback cards offer incredible flexibility and high earning rates in specific categories. However, for a traveler focused on trips to Hawaii, the Hawaiian Airlines card's built-in perks provide direct, outsized value that cash back alone can't match. The companion fare and free checked bags can save hundreds of dollars on a single trip, far outpacing the rewards from a cashback card for that specific travel goal. For a broader look at how this card stacks up, see our <Link href={reviewData.bestAirlineCardsLink}><a>Best Airline Credit Cards 2025 guide</a></Link>.</p>
-                </section>
-                
+    <h2>Head-to-Head: Hawaiian vs. The Competition</h2>
+    <p>To assess its place in the market, here’s how the Hawaiian Airlines card compares against key competitors.</p>
+    <DraggableTableWrapper>
+        <div className={styles.tableContainer}>
+            <table className={`${styles.statsTable} ${styles.comparisonTable}`}>
+                <thead>
+                  <tr>
+                    <th>Feature</th>
+                    <th><strong>{reviewData.cardName}</strong></th>
+                    <th>Chase Freedom Flex℠</th>
+                    <th>Citi Custom Cash® Card</th>
+                    <th>Discover it® Cash Back</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Annual Fee</td>
+                    <td>${reviewData.annualFee}</td>
+                    <td>$0</td>
+                    <td>$0</td>
+                    <td>$0</td>
+                  </tr>
+                  <tr>
+                    <td>Signup Bonus</td>
+                    <td>70,000 miles</td>
+                    <td>$200 bonus</td>
+                    <td>$200 bonus</td>
+                    <td>Cashback Match</td>
+                  </tr>
+                  <tr>
+                    <td>Top Earning Category</td>
+                    <td>3X on Hawaiian; 2X on dining, gas, groceries</td>
+                    <td>5% on rotating categories; 5% on travel via Chase</td>
+                    <td>5% on your top eligible spend category</td>
+                    <td>5% on rotating categories</td>
+                  </tr>
+                  <tr>
+                    <td>Effective Cash-Back Rate</td>
+                    <td>~2% on bonus categories</td>
+                    <td>Up to 5%</td>
+                    <td>Up to 5%</td>
+                    <td>Up to 5% (10% in Year 1)</td>
+                  </tr>
+                   <tr>
+                    <td>Domestic Travel Value</td>
+                    <td><strong>High</strong> via companion fare, bag fees & redemptions</td>
+                    <td>Moderate via cash back applied to any travel</td>
+                    <td>Moderate via cash back applied to any travel</td>
+                    <td>Moderate via cash back applied to any travel</td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>
+    </DraggableTableWrapper>
+     <p>This comparison reveals a clear choice: no-fee cashback cards offer incredible flexibility and high earning rates in specific categories. However, for a traveler focused on trips to Hawaii, the Hawaiian Airlines card's built-in perks provide direct, outsized value that cash back alone can't match. The companion fare and free checked bags can save hundreds of dollars on a single trip, far outpacing the rewards from a cashback card for that specific travel goal. For a broader look at how this card stacks up, see our <Link href={reviewData.bestAirlineCardsLink}><a>Best Airline Credit Cards 2025 guide</a></Link>.</p>
+</section>
                 <section id="section-testimonials" className={styles.reviewSection}>
                   <h2>Five Real User Testimonials</h2>
                   <p>Data tells one story; real experiences tell another. Here are five testimonials curated from public travel forums.</p>
