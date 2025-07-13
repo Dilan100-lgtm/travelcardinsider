@@ -88,9 +88,9 @@ const headphoneData = [
         price: '$549',
         buyUrl: 'https://www.apple.com/airpods-max/',
         images: [
-            { src: '/apple-airpods-max-front.jpg', alt: 'Apple AirPods Max front view' },
-            { src: '/apple-airpods-max-premium.jpg', alt: 'Apple AirPods Max showing premium materials' },
-            { src: '/apple-airpods-max-ecosystem.jpg', alt: 'Apple AirPods Max in the Apple ecosystem' },
+            { src: '/bento_1_airpod_max_midnight__4jy1tkqh9qay_large.jpg', alt: 'Apple AirPods Max front view' },
+            { src: '/anc_airpod_max_lifestyle__duzobvqwpz42_large.jpg', alt: 'Apple AirPods Max showing premium materials' },
+            { src: '/bento_4_airpod_max_midnight__d38igje6phm6_large.jpg', alt: 'Apple AirPods Max in the Apple ecosystem' },
         ],
         persona: 'The Die-Hard Apple Loyalist Only.',
         bottomLine: 'A luxury product designed for someone deeply embedded in the Apple ecosystem. Prioritizes seamless integration and build quality above travel-specific practicalities like portability and battery life.',
