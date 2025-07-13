@@ -535,7 +535,7 @@ function HawaiianAirlinesReviewPage() {
 
                 <div className={styles.contentImageWrapper}>
                   <Image 
-                    src="/hawaii-beach-scene.png" // UPDATE THIS to a relevant lifestyle image
+                    src="/christian-joudrey-DuD5D3lWC3c-unsplash.webp" // UPDATE THIS to a relevant lifestyle image
                     alt="A beautiful beach scene in Hawaii with turquoise water and volcanic rock." 
                     width={800} 
                     height={500} 
@@ -656,6 +656,18 @@ function HawaiianAirlinesReviewPage() {
                         </div>
                     </DraggableTableWrapper>
                 </section>
+
+                    <div className={styles.contentImageWrapper}>
+                  <Image 
+                    src="/karsten-winegeart-fd1cQ3mmBTE-unsplash.webp" // UPDATE THIS to a relevant lifestyle image
+                    alt="A beautiful beach scene in Hawaii with turquoise water and volcanic rock." 
+                    width={800} 
+                    height={500} 
+                    className={styles.contentImage} 
+                    loading="lazy" 
+                  />
+                  
+                </div>
 
                 <section id="section-comparison" className={styles.reviewSection}>
     <h2>Head-to-Head: Hawaiian vs. The Competition</h2>
