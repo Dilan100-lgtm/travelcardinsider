@@ -18,7 +18,7 @@ const gearReviews = [
     title: 'The Traveler’s Final Cut: A 2025 Headphone Showdown',
     description: 'An expert review of 2025’s top noise-canceling headphones from Sony, Bose, Sennheiser, and Apple, analyzed for the savvy US voyager.',
     link: '/gear/best-travel-headphones-2025',
-    image: '/headphones-hero-2025.jpg', // Make sure this image exists in your public folder
+    image: '/SF_QCUH_Modes_Quiet_Summit_1440x568_x2.webp', // Make sure this image exists in your public folder
     author: 'TravelCardInsider',
     publicationDate: '2025-07-14',
   },
