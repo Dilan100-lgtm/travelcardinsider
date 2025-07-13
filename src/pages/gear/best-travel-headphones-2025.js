@@ -23,7 +23,7 @@ const DATE_MODIFIED = '2025-07-14';
 // 👤 AUTHOR INFO
 // ─────────────────────────────────────────────────────────────────────────────
 const author = {
-    name: 'A Financial Advisor', // As per the article's voice
+    name: 'Dilan Madushanka', // As per the article's voice
     title: 'Frequent Flyer & Gear Analyst',
     image: '/financial-advisor-avatar.jpg', // ❗ Replace with a suitable author image
     bio: 'A financial advisor and seasoned traveler who analyzes travel gear not just for technical specs, but for its real-world value proposition to the discerning American traveler.',
