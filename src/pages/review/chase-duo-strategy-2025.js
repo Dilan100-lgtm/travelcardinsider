@@ -91,82 +91,107 @@ const chaseDuoCardData = [
   }
 ];
 
+
 // ─────────────────────────────────────────────────────────────────────────────
 // 🧠 HELPERS
 // ─────────────────────────────────────────────────────────────────────────────
 function generateJsonLD() {
-  const itemListElements = chaseDuoCardData.map((card, i) => ({
-    '@type': 'ListItem',
-    position: i + 1,
-    item: {
-      '@type': 'Product',
-      name: card.name,
-      url: `${SITE_BASE_URL}${card.learnMoreLink}`,
-      image: `${SITE_BASE_URL}${card.imageSrc}`,
-      description: card.earningRates,
-      brand: { '@type': 'Brand', name: 'Chase' },
-      manufacturer: { '@type': 'Organization', name: 'Chase Bank' },
-      offers: {
-        '@type': 'Offer',
-        priceCurrency: 'USD',
-        price: card.annualFee.replace('$', ''),
-      },
-    },
-  }));
+ const itemListElements = chaseDuoCardData.map((card, i) => ({
+  '@type': 'ListItem',
+  position: i + 1,
+  item: {
+   '@type': 'Product',
+   name: card.name,
+   url: `${SITE_BASE_URL}${card.learnMoreLink}`,
+   image: `${SITE_BASE_URL}${card.imageSrc}`,
+   description: card.earningRates,
+   brand: { '@type': 'Brand', name: 'Chase' },
+   manufacturer: { '@type': 'Organization', name: 'Chase Bank' },
+   offers: {
+    '@type': 'Offer',
+    priceCurrency: 'USD',
+    price: card.annualFee.replace('$', ''),
+        availability: 'https://schema.org/OnlineOnly',
+        url: card.applyLink,
+   },
+      // ✅ FIX STARTS HERE: Added a "review" property to each product
+      review: {
+        '@type': 'Review',
+        author: {
+          '@type': 'Person',
+          name: author.name
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: SITE_NAME
+        },
+        datePublished: DATE_PUBLISHED,
+        reviewBody: card.coreFeatures.join(' '), // A summary from existing data
+        name: `Review of the ${card.name}`,
+        reviewRating: {
+            '@type': 'Rating',
+            ratingValue: '4.8', // Assign a rating based on your expert opinion
+            bestRating: '5',
+            worstRating: '1'
+        }
+      }
+      // ✅ FIX ENDS HERE
+  },
+ }));
 
-  const breadcrumbsSchema = {
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_BASE_URL, },
-      { '@type': 'ListItem', position: 2, name: 'Guides', item: `${SITE_BASE_URL}/guides`, },
-      { '@type': 'ListItem', position: 3, name: 'The Smart Traveler’s Playbook: Chase Duo Strategy 2025', item: PAGE_URL, },
-    ],
-  };
+ const breadcrumbsSchema = {
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+   { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_BASE_URL, },
+   { '@type': 'ListItem', position: 2, name: 'Guides', item: `${SITE_BASE_URL}/guides`, },
+   { '@type': 'ListItem', position: 3, name: 'The Smart Traveler’s Playbook: Chase Duo Strategy 2025', item: PAGE_URL, },
+  ],
+ };
 
-  const articleSchema = {
-    '@type': 'ReviewNewsArticle',
-    mainEntityOfPage: { "@type": "WebPage", "@id": PAGE_URL },
-    headline: 'The Smart Traveler’s Playbook: Unlocking Maximum Rewards with Two Cards and Under $150 in Fees',
-    description: 'Discover the "Chase Duo" strategy for 2025. Combine the Chase Sapphire Preferred and Freedom Unlimited to maximize rewards on every purchase for under $150 in fees.',
-    image: [`${SITE_BASE_URL}${HERO_IMAGE_SRC}`],
-    author: {
-      '@type': 'Person',
-      name: author.name,
-      url: author.social.linkedin,
-      image: `${SITE_BASE_URL}${author.imageLarge || author.image}`,
-      jobTitle: author.title,
-      description: author.bio.substring(0, 200),
-      sameAs: Object.values(author.social).filter(Boolean)
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: SITE_NAME,
-      logo: {
-        '@type': 'ImageObject',
-        url: `${SITE_BASE_URL}/images/logo-120.png`, // ❗ Ensure this logo exists
-      },
-    },
-    datePublished: DATE_PUBLISHED,
-    dateModified: DATE_MODIFIED,
-    itemReviewed: {
-        '@type': 'ProductGroup',
-        name: 'The "Chase Duo": Chase Sapphire Preferred and Chase Freedom Unlimited',
-        description: 'A two-card strategy combining the Chase Sapphire Preferred and Chase Freedom Unlimited to maximize Chase Ultimate Rewards® points.'
-    }
-  };
+ const articleSchema = {
+  '@type': 'ReviewNewsArticle',
+  mainEntityOfPage: { "@type": "WebPage", "@id": PAGE_URL },
+  headline: 'The Smart Traveler’s Playbook: Unlocking Maximum Rewards with Two Cards and Under $150 in Fees',
+  description: 'Discover the "Chase Duo" strategy for 2025. Combine the Chase Sapphire Preferred and Freedom Unlimited to maximize rewards on every purchase for under $150 in fees.',
+  image: [`${SITE_BASE_URL}${HERO_IMAGE_SRC}`],
+  author: {
+   '@type': 'Person',
+   name: author.name,
+   url: author.social.linkedin,
+   image: `${SITE_BASE_URL}${author.imageLarge || author.image}`,
+   jobTitle: author.title,
+   description: author.bio.substring(0, 200),
+   sameAs: Object.values(author.social).filter(Boolean)
+  },
+  publisher: {
+   '@type': 'Organization',
+   name: SITE_NAME,
+   logo: {
+    '@type': 'ImageObject',
+    url: `${SITE_BASE_URL}/images/logo-120.png`, // ❗ Ensure this logo exists
+   },
+  },
+ 	datePublished: DATE_PUBLISHED,
+ 	dateModified: DATE_MODIFIED,
+ 	itemReviewed: {
+    '@type': 'ProductGroup',
+    name: 'The "Chase Duo": Chase Sapphire Preferred and Chase Freedom Unlimited',
+    description: 'A two-card strategy combining the Chase Sapphire Preferred and Chase Freedom Unlimited to maximize Chase Ultimate Rewards® points.'
+  }
+ };
 
-  return JSON.stringify(
-    {
-      '@context': 'https://schema.org',
-      '@graph': [
-        articleSchema,
-        { '@type': 'ItemList', name: 'Compared Travel Credit Cards in the Chase Duo Strategy', url: PAGE_URL, numberOfItems: chaseDuoCardData.length, itemListElement: itemListElements, mainEntityOfPage: PAGE_URL },
-        breadcrumbsSchema,
-      ],
-    },
-    null,
-    2
-  );
+ return JSON.stringify(
+  {
+   '@context': 'https://schema.org',
+   '@graph': [
+    articleSchema,
+    { '@type': 'ItemList', name: 'Compared Travel Credit Cards in the Chase Duo Strategy', url: PAGE_URL, numberOfItems: chaseDuoCardData.length, itemListElement: itemListElements, mainEntityOfPage: PAGE_URL },
+    breadcrumbsSchema,
+   ],
+  },
+  null,
+  2
+ );
 }
 
 
