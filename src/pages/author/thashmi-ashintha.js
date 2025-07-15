@@ -12,7 +12,7 @@ const authorData = {
     name: 'Thashmi Ashintha',
     title: 'Senior Writer & Financial Advisor',
     credentials: 'B.A. Geography',
-    profileImageUrl: '/path-to-your-image/thashmi-ashintha.jpg', // *** REPLACE WITH ACTUAL PATH ***
+    profileImageUrl: '/WhatsApp Image 2025-07-15 at 8.43.32 PM.jpeg', // *** REPLACE WITH ACTUAL PATH ***
     profileImageWidth: 150,
     profileImageHeight: 150,
     fullBio: `Thashmi Ashintha is a Senior Writer and Financial Advisor at TravelCardInsider.com. As a frequent traveler with a specialisation in Geography, she offers a unique lens on how location, travel logistics, and financial planning intersect. Her passion is to help travelers navigate the world more intelligently, both geographically and financially.\n\nWith a background in financial advising, Thashmi excels at breaking down complex credit card terms and reward ecosystems into simple, actionable strategies. She believes that the right financial choices can unlock transformative travel experiences. Her analysis is always grounded in practicality, aimed at helping readers extract maximum value from their travel rewards.\n\nAt TravelCardInsider, Thashmi is dedicated to creating content that is not only informative but also inspiring. She combines her geographic insights with financial acumen to craft guides that empower readers to travel farther, smarter, and more affordably.`,
@@ -20,8 +20,7 @@ const authorData = {
     testedStats: 'Personally analyzed over 40 credit card rewards programs for international travel benefits.',
     siteName: 'TravelCardInsider.com',
     socialLinks: {
-        linkedin: 'https://linkedin.com/in/your-profile-here', // *** REPLACE ***
-        twitter: 'https://x.com/your-handle-here', // *** REPLACE ***
+        
         email: 'thashmi@travelcardinsider.com'
     }
 };
@@ -61,17 +60,8 @@ function ThashmiAshinthaPage() {
                         </h1>
                         <p className={styles.authorTitle}>{authorData.title} at {authorData.siteName}</p>
                         <div className={styles.authorSocialLinks}>
-                            {authorData.socialLinks.linkedin && (
-                                <a href={authorData.socialLinks.linkedin} target="_blank" rel="noopener noreferrer me" aria-label={`${authorData.name} on LinkedIn`}>
-                                    <FaLinkedin />
-                                </a>
-                            )}
-                            {authorData.socialLinks.twitter && (
-                                <a href={authorData.socialLinks.twitter} target="_blank" rel="noopener noreferrer me" aria-label={`${authorData.name} on Twitter`}>
-                                    <FaTwitter />
-                                </a>
-                            )}
-                             {authorData.socialLinks.email && (
+                            
+                            {authorData.socialLinks.email && (
                                 <a href={`mailto:${authorData.socialLinks.email}`} aria-label={`Email ${authorData.name}`}>
                                     <FaEnvelope />
                                 </a>
