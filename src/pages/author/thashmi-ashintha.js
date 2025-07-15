@@ -3,9 +3,8 @@
 import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
-import Link from 'next/link';
-import styles from '../../styles/AuthorPage.module.css'; // Using the same stylesheet
-import { FaLinkedin, FaTwitter, FaEnvelope } from 'react-icons/fa';
+import styles from '../../styles/PremiumAuthorPage.module.css'; // <-- Use the new premium stylesheet
+import { FaEnvelope } from 'react-icons/fa';
 
 // --- Author Data for Thashmi Ashintha ---
 const authorData = {
@@ -20,7 +19,6 @@ const authorData = {
     testedStats: 'Personally analyzed over 40 credit card rewards programs for international travel benefits.',
     siteName: 'TravelCardInsider.com',
     socialLinks: {
-        
         email: 'thashmi@travelcardinsider.com'
     }
 };
@@ -39,52 +37,66 @@ function ThashmiAshinthaPage() {
                 <meta property="og:description" content={description} />
                 <meta property="og:type" content="profile" />
                 <link rel="preload" as="image" href={authorData.profileImageUrl} />
+                {/* Add Google Fonts for the premium look */}
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+                <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Lora:wght@600;700&display=swap" rel="stylesheet" />
             </Head>
 
-            <main className={styles.authorPageContainer}>
-                <header className={styles.authorHeader}>
-                    <div className={styles.authorImageContainer}>
-                         <Image
-                            src={authorData.profileImageUrl}
-                            alt={`${authorData.name} profile picture`}
-                            width={authorData.profileImageWidth}
-                            height={authorData.profileImageHeight}
-                            className={styles.authorProfileImage}
-                            priority
-                         />
-                    </div>
-                    <div className={styles.authorInfo}>
-                        <h1 className={styles.authorName}>
-                            {authorData.name}
-                            {authorData.credentials && <span className={styles.authorCredentials}>, {authorData.credentials}</span>}
-                        </h1>
-                        <p className={styles.authorTitle}>{authorData.title} at {authorData.siteName}</p>
-                        <div className={styles.authorSocialLinks}>
-                            
-                            {authorData.socialLinks.email && (
-                                <a href={`mailto:${authorData.socialLinks.email}`} aria-label={`Email ${authorData.name}`}>
-                                    <FaEnvelope />
-                                </a>
-                            )}
+            <div className={styles.authorPageContainer}>
+                <main className={styles.authorPageContent}>
+                    <header className={styles.authorHeader}>
+                        <div className={styles.authorImageContainer}>
+                            <Image
+                                src={authorData.profileImageUrl}
+                                alt={`${authorData.name} profile picture`}
+                                width={authorData.profileImageWidth}
+                                height={authorData.profileImageHeight}
+                                className={styles.authorProfileImage}
+                                priority
+                            />
                         </div>
+                        <div className={styles.authorInfo}>
+                            <h1 className={styles.authorName}>
+                                {authorData.name}
+                                {authorData.credentials && <span className={styles.authorCredentials}>, {authorData.credentials}</span>}
+                            </h1>
+                            <p className={styles.authorTitle}>{authorData.title} at {authorData.siteName}</p>
+                            <div className={styles.authorSocialLinks}>
+                                {authorData.socialLinks.email && (
+                                    <a href={`mailto:${authorData.socialLinks.email}`} aria-label={`Email ${authorData.name}`}>
+                                        <FaEnvelope />
+                                    </a>
+                                )}
+                            </div>
+                        </div>
+                    </header>
+                    
+                    {/* New Grid Layout for Bio and Stats */}
+                    <div className={styles.authorContentGrid}>
+                        <section className={styles.authorBioSection}>
+                            <h2 className={styles.sectionTitle}>About {authorData.name.split(' ')[0]}</h2>
+                            {authorData.fullBio.split('\n\n').map((paragraph, index) => (
+                                <p key={index}>{paragraph}</p>
+                            ))}
+                        </section>
+
+                        <aside className={styles.authorStatsSection}>
+                            <h2 className={styles.sectionTitle}>Quick Stats</h2>
+                            <ul>
+                                <li>
+                                    <span role="img" aria-label="Published">📝</span>
+                                    {authorData.publishedStats}
+                                </li>
+                                <li>
+                                    <span role="img" aria-label="Tested">✈️</span>
+                                    {authorData.testedStats}
+                                </li>
+                            </ul>
+                        </aside>
                     </div>
-                </header>
-
-                <section className={styles.authorBioSection}>
-                    <h2>About {authorData.name.split(' ')[0]}</h2>
-                    {authorData.fullBio.split('\n\n').map((paragraph, index) => (
-                        <p key={index}>{paragraph}</p>
-                    ))}
-                </section>
-
-                <section className={styles.authorStatsSection}>
-                    <h2>Experience & Activity</h2>
-                    <ul>
-                        {authorData.testedStats && <li><span role="img" aria-label="check mark">✅</span> {authorData.testedStats}</li>}
-                        {authorData.publishedStats && <li><span role="img" aria-label="pencil">✏️</span> {authorData.publishedStats}</li>}
-                    </ul>
-                </section>
-            </main>
+                </main>
+            </div>
         </>
     );
 }

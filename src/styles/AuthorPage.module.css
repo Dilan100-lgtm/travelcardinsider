@@ -1,12 +1,20 @@
-/* styles/AuthorPage.module.css */
+/* styles/PremiumAuthorPage.module.css */
+
+/* --- Premium Variables: Easily customize your theme --- */
+
 
 .authorPageContainer {
-  max-width: 900px;
-  margin: 2rem auto 4rem auto;
-  padding: 1rem var(--spacing-md, 16px);
-  font-family: var(--font-family-main, sans-serif);
-  line-height: 1.7;
+  font-family: var(--font-family-sans);
+  background-color: var(--bg-main);
   color: var(--text-medium);
+  line-height: 1.7;
+  padding: 2rem 0;
+}
+
+.authorPageContent {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
 }
 
 .authorHeader {
@@ -14,127 +22,158 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-bottom: var(--spacing-xl, 32px);
-  padding-bottom: var(--spacing-lg, 24px);
-  border-bottom: 1px solid var(--border-color-light);
+  padding: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+  background-color: var(--bg-card);
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-color);
 }
 
 .authorImageContainer {
-  margin-bottom: var(--spacing-md, 16px);
+  margin-bottom: var(--spacing-md);
+  position: relative;
 }
 
 .authorProfileImage {
   border-radius: 50%;
-  background-color: var(--border-color-light); /* Placeholder bg */
-  border: 3px solid var(--bg-white);
-  box-shadow: var(--shadow-md);
+  border: 4px solid var(--primary-accent); /* Accent border for pop */
+  background-color: var(--border-color);
+  box-shadow: 0 0 15px rgba(0, 112, 243, 0.3); /* Glow effect */
+  transition: transform 0.3s ease;
+}
+
+.authorProfileImage:hover {
+  transform: scale(1.05); /* Subtle zoom on hover */
 }
 
 .authorInfo {
-  /* Styles for the text info container */
+  /* Container for text info */
 }
 
 .authorName {
-  font-family: var(--font-family-serif, serif); /* Optional: Serif for name */
-  font-size: clamp(2rem, 5vw, 2.5rem);
-  font-weight: var(--font-weight-bold, 700);
+  font-family: var(--font-family-serif);
+  font-size: clamp(2rem, 5vw, 2.75rem); /* Responsive font size */
+  font-weight: 700;
   color: var(--text-dark);
-  margin: 0 0 var(--spacing-xs, 4px) 0;
+  margin: 0;
   line-height: 1.2;
 }
 
 .authorCredentials {
-  font-size: 0.7em; /* Smaller font size for credentials */
-  font-weight: var(--font-weight-medium, 500);
+  font-size: 0.6em;
+  font-weight: 500;
   color: var(--text-light);
-  vertical-align: middle; /* Align slightly better with name */
+  vertical-align: middle;
+  letter-spacing: 0.5px;
 }
 
 .authorTitle {
   font-size: 1.1rem;
-  font-weight: var(--font-weight-regular);
+  font-weight: 400;
   color: var(--text-medium);
-  margin: 0 0 var(--spacing-md, 16px) 0;
+  margin: var(--spacing-sm) 0 var(--spacing-md) 0;
 }
 
 .authorSocialLinks {
   display: flex;
   justify-content: center;
-  gap: var(--spacing-lg, 24px); /* Increased gap */
+  gap: var(--spacing-lg);
 }
 
 .authorSocialLinks a {
   color: var(--text-light);
-  font-size: 1.5rem; /* Larger icons */
+  font-size: 1.5rem;
   transition: color 0.2s ease, transform 0.2s ease;
-  display: inline-block;
 }
 
 .authorSocialLinks a:hover {
-  color: var(--primary-blue); /* Or your accent color */
-  transform: scale(1.1);
+  color: var(--primary-accent);
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+/* --- New Two-Column Grid for Bio & Stats --- */
+.authorContentGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl);
 }
 
 .authorBioSection,
 .authorStatsSection {
-  margin-bottom: var(--spacing-xl, 32px);
+  padding: var(--spacing-lg);
+  background-color: var(--bg-card);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
 }
 
-.authorBioSection h2,
-.authorStatsSection h2 {
-  font-family: var(--font-family-serif, serif);
-  font-size: 1.6rem;
-  font-weight: var(--font-weight-semibold, 600);
+.sectionTitle {
+  font-family: var(--font-family-serif);
+  font-size: 1.8rem;
+  font-weight: 600;
   color: var(--text-dark);
-  margin-bottom: var(--spacing-md, 16px);
-  padding-bottom: var(--spacing-sm, 8px);
-  border-bottom: 1px solid var(--border-color-light);
+  margin-top: 0;
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 2px solid var(--primary-accent); /* Accent underline */
+  display: inline-block; /* Make border only as wide as text */
 }
 
 .authorBioSection p {
-  margin-bottom: var(--spacing-md, 16px);
-  color: var(--text-medium);
+  margin-bottom: var(--spacing-md);
+}
+.authorBioSection p:last-child {
+  margin-bottom: 0;
 }
 
 .authorStatsSection ul {
   list-style: none;
   padding-left: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
 }
 
 .authorStatsSection li {
-  margin-bottom: var(--spacing-sm, 8px);
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm, 8px);
+  gap: var(--spacing-md); /* Increased gap for better spacing */
   font-size: 1rem;
-  color: var(--text-medium);
+  padding: var(--spacing-md);
+  border-left: 4px solid var(--primary-accent); /* Accent border */
+  background-color: var(--bg-main); /* Slightly different background */
+  border-radius: 8px;
 }
 
-.authorStatsSection li span[role="img"] { /* Style the emojis */
-   font-size: 1.1em;
+.authorStatsSection li span[role="img"] {
+  font-size: 1.5rem;
+  color: var(--primary-accent);
 }
 
-/* Responsive adjustments */
+/* --- Responsive Adjustments --- */
 @media (min-width: 768px) {
   .authorHeader {
     flex-direction: row;
     text-align: left;
-    align-items: flex-start; /* Align items to top */
-    gap: var(--spacing-lg, 24px);
+    align-items: flex-start;
+    gap: var(--spacing-lg);
   }
   .authorImageContainer {
     margin-bottom: 0;
-    flex-shrink: 0; /* Prevent image shrinking */
+    flex-shrink: 0;
   }
   .authorInfo {
-    flex-grow: 1; /* Allow info to take remaining space */
-  }
-  .authorName {
-     font-size: clamp(2.2rem, 6vw, 2.8rem);
+    flex-grow: 1;
   }
   .authorSocialLinks {
-     justify-content: flex-start; /* Align links left on desktop */
+     justify-content: flex-start;
      margin-top: var(--spacing-md);
+  }
+  /* Activate the two-column layout on larger screens */
+  .authorContentGrid {
+     grid-template-columns: 2fr 1fr; /* Bio takes 2/3, stats take 1/3 */
+     align-items: start;
   }
 }
