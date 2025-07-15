@@ -24,10 +24,10 @@ const DATE_MODIFIED = '2025-07-12'; // ✏️ Update whenever you edit copy
 // 👤 AUTHOR INFO (Reused for consistency)
 // ─────────────────────────────────────────────────────────────────────────────
 const author = {
-  name: 'Dilan Madushanka',
+  name: 'Thashmi Ashintha',
   title: 'Lead Travel Card Analyst',
-  image: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // ❗ Your 40x40px web‑optimised headshot
-  imageLarge: '/WhatsApp Image 2025-05-12 at 4.09.58 PM.jpeg', // ❗ Your 60x60px for tooltip
+  image: '/WhatsApp Image 2025-07-15 at 8.43.32 PM.jpeg', // ❗ Your 40x40px web‑optimised headshot
+  imageLarge: '/WhatsApp Image 2025-07-15 at 8.43.32 PM.jpeg', // ❗ Your 60x60px for tooltip
   bio: 'Seasoned travel‑card analyst helping readers unlock elite travel perks & maximise credit card rewards.',
   expertise: [
     'Travel Credit Card Analysis',
