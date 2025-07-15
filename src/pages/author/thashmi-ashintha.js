@@ -3,7 +3,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
-import styles from '../../styles/PremiumAuthorPage.module.css'; // <-- Use the new premium stylesheet
+import styles from '../../styles/AuthorPage.module.css'; // <-- Use the new premium stylesheet
 import { FaEnvelope } from 'react-icons/fa';
 
 // --- Author Data for Thashmi Ashintha ---
