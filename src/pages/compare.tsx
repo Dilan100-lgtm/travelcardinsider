@@ -83,7 +83,7 @@ export default function ComparePage() {
       "@type": "ListItem",
       "position": 3,
       "name": "Amex Platinum Card",
-      "url": "https://www.travelcardinsider.com/cards/amex-platinum-card"
+      "url": "https://www.travelcardinsider.com/cards/amex-platinum"
     }
   ]
 }
