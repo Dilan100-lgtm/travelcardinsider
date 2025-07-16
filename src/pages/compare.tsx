@@ -56,6 +56,42 @@ export default function ComparePage() {
 <meta name="twitter:image:alt" content="Travel Card Comparison Tool" />
 <meta name="twitter:site" content="@TravelCardInsider" />
 
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: `
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Travel Credit Card Comparison",
+  "description": "Compare top travel credit cards side by side by rewards, fees, bonuses, lounge access, and more.",
+  "url": "https://www.travelcardinsider.com/compare",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Chase Sapphire Reserve",
+      "url": "https://www.travelcardinsider.com/cards/chase-sapphire-reserve"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Capital One Venture X",
+      "url": "https://www.travelcardinsider.com/cards/capital-one-venture-x"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Amex Platinum Card",
+      "url": "https://www.travelcardinsider.com/cards/amex-platinum-card"
+    }
+  ]
+}
+    `,
+  }}
+/>
+
+
       </Head>
 
       <Header />
