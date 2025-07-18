@@ -18,7 +18,7 @@ const SITE_BASE_URL = 'https://www.travelcardinsider.com';
 const PAGE_PATH = '/reviews/best-credit-cards-with-dining-credits-2025';
 const PAGE_URL = `${SITE_BASE_URL}${PAGE_PATH}`;
 const SITE_NAME = 'Travel Card Insider';
-const HERO_IMAGE_SRC = '/images/hero/dining-credits-hero.webp'; // ❗ Replace with your optimised hero image for dining cards
+const HERO_IMAGE_SRC = '/using-credit-card.webp'; // ❗ Replace with your optimised hero image for dining cards
 const HERO_IMAGE_ALT = 'A couple enjoying a fine dining meal at a restaurant, symbolizing the rewards of dining credit cards.';
 const DATE_PUBLISHED = '2025-07-18';
 const DATE_MODIFIED = '2025-07-18'; // ✏️ Update whenever you edit copy
@@ -53,7 +53,7 @@ const diningCardData = [
     id: 'amexGold',
     name: 'American Express® Gold Card',
     category: 'Foodie Powerhouse',
-    imageSrc: '/amex_gold_card.png', // ❗ Replace
+    imageSrc: '/NUS000000174_480x304_straight_withname.avif', // ❗ Replace
     imageAlt: 'American Express® Gold Card',
     annualFee: '$250',
     officialCardPageLink: 'https://www.americanexpress.com/us/credit-cards/card/gold-card/',
@@ -63,8 +63,8 @@ const diningCardData = [
     applyLink: 'https://www.americanexpress.com/us/credit-cards/card/gold-card/',
     ratesFeesLink: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/gold-card/25330-10-0',
     learnMoreLink: '/cards/amex-gold-card-review',
-    ratingValue: 9.5,
-    ratingStars: 4.8,
+    ratingValue: 8.8,
+    ratingStars: 4.4,
   },
   {
     id: 'chaseSapphireReserve',
@@ -80,7 +80,7 @@ const diningCardData = [
     applyLink: 'https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve',
     ratesFeesLink: 'https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC56007.html',
     learnMoreLink: '/cards/chase-sapphire-reserve-review',
-    ratingValue: 9.1,
+    ratingValue: 9.2,
     ratingStars: 4.6,
   },
   {
@@ -97,14 +97,14 @@ const diningCardData = [
     applyLink: 'https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred',
     ratesFeesLink: 'https://sites.chase.com/services/creatives/pricingandterms.html/content/dam/pricingandterms/LGC56014.html',
     learnMoreLink: '/cards/chase-sapphire-preferred-review',
-    ratingValue: 8.5,
-    ratingStars: 4.3,
+    ratingValue: 8.4,
+    ratingStars: 4.2,
   },
     {
     id: 'marriottBonvoyBrilliant',
     name: 'Marriott Bonvoy Brilliant® American Express® Card',
     category: 'Hotel Loyalist',
-    imageSrc: '/marriott_bonvoy_brilliant.png', // ❗ Replace
+    imageSrc: '/NUS000000313_480x304_straight_withname.avif', // ❗ Replace
     imageAlt: 'Marriott Bonvoy Brilliant American Express Card',
     annualFee: '$650',
     officialCardPageLink: 'https://www.americanexpress.com/us/credit-cards/card/marriott-bonvoy-brilliant/',
@@ -114,14 +114,14 @@ const diningCardData = [
     applyLink: 'https://www.americanexpress.com/us/credit-cards/card/marriott-bonvoy-brilliant/',
     ratesFeesLink: 'https://www.americanexpress.com/us/credit-cards/card-application/apply/prospect/terms/marriott-bonvoy-brilliant-card/36181-10-0',
     learnMoreLink: '/cards/marriott-bonvoy-brilliant-review',
-    ratingValue: 8.2,
+    ratingValue: 8.9,
     ratingStars: 4.1,
   },
   {
     id: 'capitalOneSavorOne',
     name: 'Capital One SavorOne Cash Rewards Credit Card',
     category: 'Pragmatic Maximizer',
-    imageSrc: '/capital_one_savorone.png', // ❗ Replace
+    imageSrc: '/new-savor-card-art.avifs', // ❗ Replace
     imageAlt: 'Capital One SavorOne Cash Rewards Credit Card',
     annualFee: '$0',
     officialCardPageLink: 'https://www.capitalone.com/credit-cards/savorone-rewards/',
