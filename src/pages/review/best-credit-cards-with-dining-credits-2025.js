@@ -121,7 +121,7 @@ const diningCardData = [
     id: 'capitalOneSavorOne',
     name: 'Capital One SavorOne Cash Rewards Credit Card',
     category: 'Pragmatic Maximizer',
-    imageSrc: '/new-savor-card-art.avifs', // ❗ Replace
+    imageSrc: '/new-savor-card-art (1).avif', // ❗ Replace
     imageAlt: 'Capital One SavorOne Cash Rewards Credit Card',
     annualFee: '$0',
     officialCardPageLink: 'https://www.capitalone.com/credit-cards/savorone-rewards/',
