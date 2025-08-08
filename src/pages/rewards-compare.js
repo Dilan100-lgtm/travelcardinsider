@@ -1,15 +1,17 @@
+// pages/rewards-compare.js
+
 import React from 'react';
 import Head from 'next/head';
-import RewardsCompareCalculator from '@/components/RewardsCompareCalculator';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import RewardsCompareCalculator from '../components/RewardsCompareCalculator';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { useRouter } from 'next/router';
 
 export default function RewardsComparePage() {
   const router = useRouter();
   const canonicalUrl = `https://www.travelcardinsider.com${router.asPath}`;
 
-  const lastDataUpdate = "August 8, 2025"; // Updated to current date
+  const lastDataUpdate = "August 8, 2025";
 
   /** ------------ JSON-LD STRUCTURED DATA ------------- **/
   const jsonLdWebPage = {
@@ -50,7 +52,6 @@ export default function RewardsComparePage() {
     ]
   };
 
-  // SEO ENHANCEMENT: Expanded the FAQ schema with new questions from Semrush data.
   const jsonLdFAQ = {
     '@context': 'https://schema.org',
     '@type'   : 'FAQPage',
@@ -101,19 +102,21 @@ export default function RewardsComparePage() {
           name="description"
           content="Use our free credit card points calculator to compare rewards from top cards. Enter your spending to see the estimated dollar value of points, perks, and bonuses in 2025."
         />
-        {/* SEO ENHANCEMENT: Added keyword variations to meta keywords. */}
         <meta name="keywords" content="credit card points calculator, rewards calculator, credit card points value calculator, points calculator credit card, how to calculate credit card points, credit card points to cash calculator" />
         <link rel="canonical" href={canonicalUrl} />
         <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 
-        {/* ---------- Open Graph / Twitter (no changes needed from previous version) ---------- */}
+        {/* ---------- Open Graph / Twitter ---------- */}
         <meta property="og:type"        content="website" />
         <meta property="og:title"       content="Credit Card Points & Rewards Calculator" />
         <meta property="og:description" content="Find the best card for your lifestyle. Our free calculator instantly shows you the real-world value of points, perks, and bonuses based on your spending." />
         <meta property="og:url"         content={canonicalUrl} />
         <meta property="og:image"       content="https://www.travelcardinsider.com/og/rewards-compare-1200x630.jpg" />
         <meta name="twitter:card"       content="summary_large_image" />
-        {/* ... other meta tags ... */}
+        <meta name="twitter:title"      content="Credit Card Points & Rewards Calculator" />
+        <meta name="twitter:description" content="See which credit card earns you the most value. This free tool calculates points, perks, and bonuses based on your personal spending." />
+        <meta name="twitter:image"      content="https://www.travelcardinsider.com/og/rewards-compare-1200x630.jpg" />
+        <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
 
         {/* ---------- Structured Data Scripts ---------- */}
@@ -133,55 +136,44 @@ export default function RewardsComparePage() {
 
       <Header />
 
-      <main>
-        <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '1rem 2rem' }}>
-          <h1 style={{ textAlign: 'center' }}>
-            Credit Card Points &amp; Rewards Value Calculator
-          </h1>
+      <main className="main-content">
+        <div className="container">
+          <h1>Credit Card Points &amp; Rewards Value Calculator</h1>
           
-          {/* SEO ENHANCEMENT: Integrated a keyword variation into the H2. */}
-          <h2 style={{ textAlign: 'center', margin: '0 auto 2.5rem auto', fontSize: '1.125rem', fontWeight: 'normal', maxWidth: '800px' }}>
+          <h2>
              Which card is best for you? Our free credit card points value calculator uses your spending to compare the real-world value of rewards, perks, and bonuses from top cards.
           </h2>
           
           <RewardsCompareCalculator />
 
           {/* --- E-E-A-T & CONTENT SECTIONS --- */}
-          <section style={{ maxWidth: '900px', margin: '4rem auto' }}>
-            <h2 style={{ fontSize: '1.5rem' }}>How We Calculate Estimated Value</h2>
-            {/* SEO ENHANCEMENT: Added variations to the descriptive text. */}
+          <section className="content-section">
+            <h2>How We Calculate Estimated Value</h2>
             <p>
-              This tool acts as a comprehensive **points calculator for your credit card** options. It provides an estimated annual value by processing your personal spending against each card's specific rules. We consider everything from simple **credit card points to cash** conversions to complex travel redemptions.
+              This tool acts as a comprehensive <strong>points calculator for your credit card</strong> options. It provides an estimated annual value by processing your personal spending against each card's specific rules. We consider everything from simple <strong>credit card points to cash</strong> conversions to complex travel redemptions.
             </p>
-            <ul>
-              <li>Annualizing your monthly spending inputs ($ Input × 12).</li>
-              {/* ... other list items ... */}
-            </ul>
+            {/* Additional details can go here */}
           </section>
 
-          {/* SEO ENHANCEMENT: Added a visible FAQ section that matches the JSON-LD schema. */}
-          <section style={{ maxWidth: '900px', margin: '4rem auto' }}>
-            <h2 style={{ fontSize: '1.5rem' }}>Frequently Asked Questions</h2>
-            <div>
+          <section className="content-section">
+            <h2>Frequently Asked Questions</h2>
+            <div className="faq-item">
               <h3>How does this credit card points calculator work?</h3>
               <p>Our calculator estimates value by matching your monthly spending to each card’s bonus categories, applying the point multiplier, and converting points to a dollar value using our latest Cents-Per-Point valuations. It also includes perk values and subtracts annual fees.</p>
             </div>
-            <div style={{marginTop: '1rem'}}>
+            <div className="faq-item">
               <h3>How do you calculate credit card points value?</h3>
               <p>The value of credit card points is calculated with a simple formula: Total Points × Cents Per Point (CPP) Value = Total Value. Our tool automates this by using our researched CPP valuations for redemption options like cash back, travel portals, or transfer partners.</p>
             </div>
-            <div style={{marginTop: '1rem'}}>
+            <div className="faq-item">
               <h3>How do I calculate how many reward points I will earn?</h3>
               <p>You can estimate the reward points you will earn by multiplying your spending in a specific category (e.g., $500 on dining) by the card's points multiplier for that category (e.g., 3x points). Our calculator does this for all spending categories automatically.</p>
             </div>
-             <div style={{marginTop: '1rem'}}>
+             <div className="faq-item">
                 <h3>Which credit cards are included in the comparison tool?</h3>
                 <p>The tool covers 50+ of the most popular U.S. travel, airline, hotel, and premium cash-back cards. Our database is updated weekly from issuers’ official sites to ensure accuracy.</p>
             </div>
           </section>
-          
-          {/* ... Other sections like Data Source, Disclaimers etc. ... */}
-
         </div>
       </main>
 
