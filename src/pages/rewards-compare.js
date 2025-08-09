@@ -177,7 +177,7 @@ export default function RewardsComparePage() {
         </div>
       </main>
 
-      <Footer />
+      
     </>
   );
 }
